@@ -18,6 +18,9 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "fibers": "^5.0.0",
+    "sass": "^1.27.0",
+    "sass-loader": "^10.0.3",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
