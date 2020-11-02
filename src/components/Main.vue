@@ -17,6 +17,14 @@ import Chart from 'chart.js';
 
 export default Vue.extend({
   name: 'MainCo',
+  data() {
+    return {
+      repos: {
+        vue: {closedIssues: {totalCount: 0}, openIssues: {totalCount: 0}},
+        react: {closedIssues: {totalCount: 0}, openIssues: {totalCount: 0}}
+      }
+    }
+  },
   apollo: {
     repos: {
       update: data => data,
@@ -24,9 +32,6 @@ export default Vue.extend({
         query {
           vue: repository(name: "vue", owner: "vuejs") {
             description
-            allIssues: issues {
-              totalCount
-            }
             openIssues: issues(filterBy: {states: [OPEN]}) {
               totalCount
             }
@@ -36,9 +41,6 @@ export default Vue.extend({
           }
           react: repository(name: "react", owner: "facebook") {
             description
-            allIssues: issues {
-              totalCount
-            }
             openIssues: issues(filterBy: {states: [OPEN]}) {
               totalCount
             }
@@ -50,13 +52,16 @@ export default Vue.extend({
       `,
     }  
   },
+
   updated() {
-    var ctx = document.getElementById('myChart');
+    var ctx = document.getElementById('myChart') as HTMLCanvasElement;
+
     if (this.$apollo.loading) {
      return; 
     }
-    console.log('updatee')
+    
     const {vue, react} = this.repos;
+
     new Chart(ctx, {
       type: 'bar',
       data: {
