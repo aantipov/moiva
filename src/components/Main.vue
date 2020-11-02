@@ -2,7 +2,8 @@
   <div>
     <h1>Vue vs React</h1>
     <div style="width: 400px; height: 400px">
-      <canvas id="myChart" width="400" height="400"></canvas>
+      <canvas id="issuesCount" width="400" height="400"></canvas>
+      <canvas id="createdAt" width="400" height="400"></canvas>
     </div>
     <div v-if="$apollo.loading">Loading...</div>
     <div v-else>
@@ -20,8 +21,8 @@ export default Vue.extend({
   data() {
     return {
       repos: {
-        vue: {closedIssues: {totalCount: 0}, openIssues: {totalCount: 0}},
-        react: {closedIssues: {totalCount: 0}, openIssues: {totalCount: 0}}
+        vue: {createdAt: '', closedIssues: {totalCount: 0}, openIssues: {totalCount: 0}},
+        react: {createdAt: '', closedIssues: {totalCount: 0}, openIssues: {totalCount: 0}}
       }
     }
   },
@@ -32,6 +33,7 @@ export default Vue.extend({
         query {
           vue: repository(name: "vue", owner: "vuejs") {
             description
+            createdAt
             openIssues: issues(filterBy: {states: [OPEN]}) {
               totalCount
             }
@@ -41,6 +43,7 @@ export default Vue.extend({
           }
           react: repository(name: "react", owner: "facebook") {
             description
+            createdAt
             openIssues: issues(filterBy: {states: [OPEN]}) {
               totalCount
             }
@@ -54,7 +57,9 @@ export default Vue.extend({
   },
 
   updated() {
-    var ctx = document.getElementById('myChart') as HTMLCanvasElement;
+    const ctx1 = document.getElementById('issuesCount') as HTMLCanvasElement;
+    const ctx2 = document.getElementById('createdAt') as HTMLCanvasElement;
+
 
     if (this.$apollo.loading) {
      return; 
@@ -62,7 +67,7 @@ export default Vue.extend({
     
     const {vue, react} = this.repos;
 
-    new Chart(ctx, {
+    new Chart(ctx1, {
       type: 'bar',
       data: {
           labels: ['Vue', 'React'],
@@ -79,6 +84,38 @@ export default Vue.extend({
               data: [vue.closedIssues.totalCount, react.closedIssues.totalCount],
               backgroundColor: 'rgba(255, 99, 132, 0.2)',
               borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 1
+          },
+        ]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+      }
+    });
+
+    function getAge(date: string): number {
+      const now = (new Date()).getTime();
+      const then = (new Date(date)).getTime();
+      
+      return Number(((now - then)/(1000*3600*24*365)).toFixed(2));
+    }
+
+    new Chart(ctx2, {
+      type: 'bar',
+      data: {
+          labels: ['Vue', 'React'],
+          datasets: [
+          {
+              label:['Age, years'],
+              data: [getAge(vue.createdAt), getAge(react.createdAt)],
+              backgroundColor: ['rgba(54, 162, 235, 0.2)', 'rgba(255, 99, 132, 0.2)'],
+              borderColor:[ 'rgba(54, 162, 235, 1)',  'rgba(255, 99, 132, 1)'],
               borderWidth: 1
           },
         ]
