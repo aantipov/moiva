@@ -11,8 +11,8 @@ module.exports = async (req, res) => {
     headers: {
       Authorization: `Bearer ${skey}`,
       accept: req.headers.accept,
-      "content-type": req.headers["content-type"]
-    }
+      "content-type": req.headers["content-type"],
+    },
   });
 
   res.status(resp.status).json(resp.data);
