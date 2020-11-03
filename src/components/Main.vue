@@ -2,20 +2,27 @@
   <div>
     <h1>Vue vs React</h1>
 
+    <h1>Github</h1>
     <div v-if="$apollo.loading">Loading...</div>
 
-    <div class="chart">
-      <canvas id="issuesCount" width="400" height="400"></canvas>
+    <div v-else class="chart-list">
+      <div class="chart">
+        <canvas id="issuesCount" width="400" height="400"></canvas>
+      </div>
+      <div class="chart">
+        <canvas id="createdAt" width="400" height="400"></canvas>
+      </div>
+      <div class="chart">
+        <canvas id="starsCount" width="400" height="400"></canvas>
+      </div>
+      <div class="chart">
+        <canvas id="prsCount" width="400" height="400"></canvas>
+      </div>
     </div>
-    <div class="chart">
-      <canvas id="createdAt" width="400" height="400"></canvas>
-    </div>
-    <div class="chart">
-      <canvas id="starsCount" width="400" height="400"></canvas>
-    </div>
-    <div class="chart">
-      <canvas id="prsCount" width="400" height="400"></canvas>
-    </div>
+
+    <h1>NPM downloads</h1>
+
+    <h1>Google Trends</h1>
   </div>
 </template>
 
@@ -251,10 +258,13 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
+.chart-list {
+  display: flex;
+  flex-wrap: wrap;
+}
 .chart {
   width: 400px;
   height: 400px;
-  float: left;
   margin: 20px;
 }
 </style>
