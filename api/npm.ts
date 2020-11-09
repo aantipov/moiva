@@ -1,4 +1,5 @@
-const axios = require("axios");
+import { NowRequest, NowResponse } from "@vercel/node";
+import axios from "axios";
 
 const startYear = 2015;
 const cYear = new Date().getFullYear();
@@ -7,7 +8,7 @@ const years = Array.from(
   (v, k) => startYear + k
 );
 
-module.exports = (req, res) => {
+export default (req: NowRequest, res: NowResponse) => {
   const promises = years
     .map(
       (year) =>
