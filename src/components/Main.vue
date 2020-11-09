@@ -1,7 +1,7 @@
 <template>
   <div class="root">
     <h2>Github</h2>
-    <div v-if="$apollo.loading">Loading...</div>
+    <div v-if="isLoading">Loading...</div>
 
     <div v-else class="chart-list">
       <div class="chart">
@@ -24,7 +24,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import gql from 'graphql-tag';
+import axios from 'axios';
 import Chart from 'chart.js';
 import Npm from './Npm.vue';
 
@@ -33,6 +33,17 @@ export default Vue.extend({
   components: {
     Npm,
   },
+
+  mounted() {
+    axios
+      .get('/api/gh')
+      .then((res) => res.data.data)
+      .then((res): any => {
+        this.isLoading = false;
+        this.repos = res;
+      });
+  },
+
   data() {
     const initData = {
       stars: 0,
@@ -44,60 +55,12 @@ export default Vue.extend({
       openIssues: { totalCount: 0 },
     };
     return {
+      isLoading: true,
       repos: {
         vue: { ...initData },
         react: { ...initData },
       },
     };
-  },
-  apollo: {
-    repos: {
-      update: (data) => data,
-      query: gql`
-        query {
-          vue: repository(name: "vue", owner: "vuejs") {
-            description
-            stars: stargazerCount
-            createdAt
-            openPRs: pullRequests(states: [OPEN]) {
-              totalCount
-            }
-            mergedPRs: pullRequests(states: [MERGED]) {
-              totalCount
-            }
-            closedPRs: pullRequests(states: [CLOSED]) {
-              totalCount
-            }
-            openIssues: issues(filterBy: { states: [OPEN] }) {
-              totalCount
-            }
-            closedIssues: issues(filterBy: { states: [CLOSED] }) {
-              totalCount
-            }
-          }
-          react: repository(name: "react", owner: "facebook") {
-            description
-            stars: stargazerCount
-            createdAt
-            openPRs: pullRequests(states: [OPEN]) {
-              totalCount
-            }
-            mergedPRs: pullRequests(states: [MERGED]) {
-              totalCount
-            }
-            closedPRs: pullRequests(states: [CLOSED]) {
-              totalCount
-            }
-            openIssues: issues(filterBy: { states: [OPEN] }) {
-              totalCount
-            }
-            closedIssues: issues(filterBy: { states: [CLOSED] }) {
-              totalCount
-            }
-          }
-        }
-      `,
-    },
   },
 
   updated() {
@@ -106,7 +69,7 @@ export default Vue.extend({
     const ctx3 = document.getElementById('starsCount') as HTMLCanvasElement;
     const ctx4 = document.getElementById('prsCount') as HTMLCanvasElement;
 
-    if (this.$apollo.loading) {
+    if (this.isLoading) {
       return;
     }
 
