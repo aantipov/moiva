@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="root">
     <h1>Vue vs React</h1>
 
-    <h1>Github</h1>
+    <h2>Github</h2>
     <div v-if="$apollo.loading">Loading...</div>
 
     <div v-else class="chart-list">
@@ -20,9 +20,14 @@
       </div>
     </div>
 
-    <h1>NPM downloads</h1>
+    <Npm />
 
-    <h1>Google Trends</h1>
+    <div class="footer">
+      <hr />
+      <div class="sign">
+        Made by <a href="https://alexei.me" target="_blank">Alexey Antipov</a>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -30,9 +35,13 @@
 import Vue from "vue";
 import gql from "graphql-tag";
 import Chart from "chart.js";
+import Npm from "./Npm.vue";
 
 export default Vue.extend({
   name: "MainCo",
+  components: {
+    Npm,
+  },
   data() {
     const initData = {
       stars: 0,
@@ -258,6 +267,10 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
+.root {
+  max-width: 1700px;
+  margin: 0 auto;
+}
 .chart-list {
   display: flex;
   flex-wrap: wrap;
@@ -265,6 +278,13 @@ export default Vue.extend({
 .chart {
   width: 400px;
   height: 400px;
-  margin: 20px;
+  margin: 20px auto;
+}
+.footer {
+  width: 800px;
+  margin: 60px auto 20px;
+}
+.sign {
+  margin-top: 20px;
 }
 </style>
