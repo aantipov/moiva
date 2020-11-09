@@ -1,5 +1,5 @@
-import { NowRequest, NowResponse } from "@vercel/node";
-import axios from "axios";
+import { NowRequest, NowResponse } from '@vercel/node';
+import axios from 'axios';
 
 const startYear = 2015;
 const cYear = new Date().getFullYear();
@@ -44,16 +44,16 @@ export default (req: NowRequest, res: NowResponse) => {
       const day = date.slice(-2);
       const month = date.slice(-10, -3);
 
-      if (day === "01" || !newList.length) {
+      if (day === '01' || !newList.length) {
         newList.push({ vue, react, month });
       } else {
         const last = newList.slice(-1)[0];
-        last["vue"] += vue;
-        last["react"] += react;
+        last['vue'] += vue;
+        last['react'] += react;
       }
     });
 
-    res.setHeader("Cache-Control", "max-age=0, s-maxage=43200");
+    res.setHeader('Cache-Control', 'max-age=0, s-maxage=43200');
     res.status(200).json(newList);
   });
 };

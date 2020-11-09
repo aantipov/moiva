@@ -9,12 +9,12 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import axios from "axios";
-import Chart from "chart.js";
+import Vue from 'vue';
+import axios from 'axios';
+import Chart from 'chart.js';
 
 export default Vue.extend({
-  name: "Npm",
+  name: 'Npm',
   data() {
     return {
       loading: true,
@@ -23,7 +23,7 @@ export default Vue.extend({
   },
   mounted() {
     axios
-      .get("/api/npm")
+      .get('/api/npm')
       .then((res) => res.data)
       .then((res): any => {
         this.loading = false;
@@ -31,7 +31,7 @@ export default Vue.extend({
       });
   },
   updated() {
-    const ctx = document.getElementById("npmDownloads") as HTMLCanvasElement;
+    const ctx = document.getElementById('npmDownloads') as HTMLCanvasElement;
 
     if (this.loading) {
       return;
@@ -42,22 +42,22 @@ export default Vue.extend({
     const reactData = this.downloads.map(({ react }) => react);
 
     new Chart(ctx, {
-      type: "line",
+      type: 'line',
       data: {
         labels: categories,
         datasets: [
           {
-            label: "Vue",
+            label: 'Vue',
             data: vueData,
-            backgroundColor: "rgba(54, 162, 235, 0.2)",
-            borderColor: "rgba(54, 162, 235, 1)",
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
             borderWidth: 1,
           },
           {
-            label: "React",
+            label: 'React',
             data: reactData,
-            backgroundColor: "rgba(255, 99, 132, 0.2)",
-            borderColor: "rgba(255, 99, 132, 1)",
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
             borderWidth: 1,
           },
         ],

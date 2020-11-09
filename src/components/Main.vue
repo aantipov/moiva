@@ -23,20 +23,20 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import gql from "graphql-tag";
-import Chart from "chart.js";
-import Npm from "./Npm.vue";
+import Vue from 'vue';
+import gql from 'graphql-tag';
+import Chart from 'chart.js';
+import Npm from './Npm.vue';
 
 export default Vue.extend({
-  name: "MainCo",
+  name: 'MainCo',
   components: {
     Npm,
   },
   data() {
     const initData = {
       stars: 0,
-      createdAt: "",
+      createdAt: '',
       openPRs: { totalCount: 0 },
       closedPRs: { totalCount: 0 },
       mergedPRs: { totalCount: 0 },
@@ -101,10 +101,10 @@ export default Vue.extend({
   },
 
   updated() {
-    const ctx1 = document.getElementById("issuesCount") as HTMLCanvasElement;
-    const ctx2 = document.getElementById("createdAt") as HTMLCanvasElement;
-    const ctx3 = document.getElementById("starsCount") as HTMLCanvasElement;
-    const ctx4 = document.getElementById("prsCount") as HTMLCanvasElement;
+    const ctx1 = document.getElementById('issuesCount') as HTMLCanvasElement;
+    const ctx2 = document.getElementById('createdAt') as HTMLCanvasElement;
+    const ctx3 = document.getElementById('starsCount') as HTMLCanvasElement;
+    const ctx4 = document.getElementById('prsCount') as HTMLCanvasElement;
 
     if (this.$apollo.loading) {
       return;
@@ -113,22 +113,22 @@ export default Vue.extend({
     const { vue, react } = this.repos;
 
     new Chart(ctx1, {
-      type: "bar",
+      type: 'bar',
       data: {
-        labels: ["Vue", "React"],
+        labels: ['Vue', 'React'],
         datasets: [
           {
-            label: "# of open issues",
+            label: '# of open issues',
             data: [vue.openIssues.totalCount, react.openIssues.totalCount],
-            backgroundColor: "rgba(54, 162, 235, 0.2)",
-            borderColor: "rgba(54, 162, 235, 1)",
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
             borderWidth: 1,
           },
           {
-            label: "# of closed issues",
+            label: '# of closed issues',
             data: [vue.closedIssues.totalCount, react.closedIssues.totalCount],
-            backgroundColor: "rgba(255, 99, 132, 0.2)",
-            borderColor: "rgba(255, 99, 132, 1)",
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
             borderWidth: 1,
           },
         ],
@@ -147,29 +147,29 @@ export default Vue.extend({
     });
 
     new Chart(ctx4, {
-      type: "bar",
+      type: 'bar',
       data: {
-        labels: ["Vue", "React"],
+        labels: ['Vue', 'React'],
         datasets: [
           {
-            label: "# of open PRs",
+            label: '# of open PRs',
             data: [vue.openPRs.totalCount, react.openPRs.totalCount],
-            backgroundColor: "rgba(54, 162, 235, 0.2)",
-            borderColor: "rgba(54, 162, 235, 1)",
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
             borderWidth: 1,
           },
           {
-            label: "# of closed PRs",
+            label: '# of closed PRs',
             data: [vue.closedPRs.totalCount, react.closedPRs.totalCount],
-            backgroundColor: "rgba(255, 99, 132, 0.2)",
-            borderColor: "rgba(255, 99, 132, 1)",
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
             borderWidth: 1,
           },
           {
-            label: "# of merged PRs",
+            label: '# of merged PRs',
             data: [vue.mergedPRs.totalCount, react.mergedPRs.totalCount],
-            backgroundColor: "rgba(75, 192, 192, 0.2)",
-            borderColor: "rgba(75, 192, 192, 1)",
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
             borderWidth: 1,
           },
         ],
@@ -195,18 +195,18 @@ export default Vue.extend({
     }
 
     new Chart(ctx2, {
-      type: "bar",
+      type: 'bar',
       data: {
-        labels: ["Vue", "React"],
+        labels: ['Vue', 'React'],
         datasets: [
           {
-            label: "Age, years",
+            label: 'Age, years',
             data: [getAge(vue.createdAt), getAge(react.createdAt)],
             backgroundColor: [
-              "rgba(54, 162, 235, 0.2)",
-              "rgba(255, 99, 132, 0.2)",
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 99, 132, 0.2)',
             ],
-            borderColor: ["rgba(54, 162, 235, 1)", "rgba(255, 99, 132, 1)"],
+            borderColor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
             borderWidth: 1,
           },
         ],
@@ -225,18 +225,18 @@ export default Vue.extend({
     });
 
     new Chart(ctx3, {
-      type: "bar",
+      type: 'bar',
       data: {
-        labels: ["Vue", "React"],
+        labels: ['Vue', 'React'],
         datasets: [
           {
-            label: "Github stars",
+            label: 'Github stars',
             data: [vue.stars, react.stars],
             backgroundColor: [
-              "rgba(54, 162, 235, 0.2)",
-              "rgba(255, 99, 132, 0.2)",
+              'rgba(54, 162, 235, 0.2)',
+              'rgba(255, 99, 132, 0.2)',
             ],
-            borderColor: ["rgba(54, 162, 235, 1)", "rgba(255, 99, 132, 1)"],
+            borderColor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
             borderWidth: 1,
           },
         ],
