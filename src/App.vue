@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>JsStats - use numbers to decide which package/library to use!</h1>
+    <h1>JsStats - use numbers to decide which library to use!</h1>
     <p>
       This project is a <strong>work in progress</strong> and is currently
       limited to Vue/React only
