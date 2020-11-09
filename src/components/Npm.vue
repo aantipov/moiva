@@ -1,7 +1,9 @@
 <template>
   <div>
     <h2>NPM downloads</h2>
+
     <div v-if="loading">Loading...</div>
+
     <div v-else class="chart">
       <canvas id="npmDownloads" width="1200" height="600"></canvas>
     </div>
