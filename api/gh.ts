@@ -1,11 +1,12 @@
-const axios = require("axios");
+import { NowRequest, NowResponse } from "@vercel/node";
+import axios from "axios";
 
-module.exports = async (req, res) => {
+export default async (req: NowRequest, res: NowResponse) => {
   const skey = process.env.GITHUB_API_KEY;
   const url = "https://api.github.com/graphql";
 
   const resp = await axios({
-    method: req.method,
+    method: "POST",
     url,
     data: req.body,
     headers: {
