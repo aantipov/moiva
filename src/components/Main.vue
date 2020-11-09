@@ -1,7 +1,5 @@
 <template>
   <div class="root">
-    <h1>Vue vs React</h1>
-
     <h2>Github</h2>
     <div v-if="$apollo.loading">Loading...</div>
 
@@ -21,13 +19,6 @@
     </div>
 
     <Npm />
-
-    <div class="footer">
-      <hr />
-      <div class="sign">
-        Made by <a href="https://alexei.me" target="_blank">Alexey Antipov</a>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -279,12 +270,5 @@ export default Vue.extend({
   width: 400px;
   height: 400px;
   margin: 20px auto;
-}
-.footer {
-  width: 800px;
-  margin: 60px auto 20px;
-}
-.sign {
-  margin-top: 20px;
 }
 </style>
