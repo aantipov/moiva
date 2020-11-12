@@ -38,15 +38,6 @@ const initData = {
 
 export default Vue.extend({
   name: 'Github',
-  mounted() {
-    axios
-      .get('/api/gh')
-      .then((res) => res.data.data)
-      .then((res): any => {
-        this.isLoading = false;
-        this.repos = res;
-      });
-  },
 
   data() {
     return {
@@ -56,6 +47,16 @@ export default Vue.extend({
         react: { ...initData },
       },
     };
+  },
+
+  mounted() {
+    axios
+      .get('/api/gh')
+      .then((res) => res.data.data)
+      .then((res): void => {
+        this.isLoading = false;
+        this.repos = res;
+      });
   },
 
   updated() {

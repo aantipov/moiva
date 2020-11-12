@@ -15,7 +15,7 @@
         If you notice any issues or have a feature request, please open an issue
         on
         <a href="https://github.com/aantipov/jsstats-issues" target="_blank"
-          >github</a
+          >Github</a
         >!
       </div>
       <hr />
