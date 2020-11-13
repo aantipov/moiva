@@ -70,7 +70,10 @@
     "parserOptions": {
       "parser": "@typescript-eslint/parser"
     },
-    "rules": {},
+    "rules": {
+      "@typescript-eslint/ban-ts-ignore": "off",
+      "no-sparse-arrays": "off"
+    },
     "overrides": [
       {
         "files": [
