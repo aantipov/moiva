@@ -50,13 +50,13 @@ export default Vue.extend({
   },
 
   mounted() {
-    axios
-      .get('/api/gh')
-      .then((res) => res.data.data)
-      .then((res): void => {
-        this.isLoading = false;
-        this.repos = res;
-      });
+    Promise.all([
+      axios.get('/api/gh?app=vue').then((res) => res.data.data.repository),
+      axios.get('/api/gh?app=react').then((res) => res.data.data.repository),
+    ]).then(([vue, react]) => {
+      this.repos = { vue, react };
+      this.isLoading = false;
+    });
   },
 
   updated() {
