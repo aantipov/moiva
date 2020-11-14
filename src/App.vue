@@ -1,17 +1,19 @@
 <template>
   <div id="app">
     <h1>JsStats - use numbers to decide which library to use!</h1>
-    <p>
-      This project is a <strong>work in progress</strong> and is currently
+
+    <p class="text-center p-lead">
+      This project is a
+      <strong class="font-medium">work in progress</strong> and is currently
       limited to Vue/React only
     </p>
 
-    <h1>Vue vs React</h1>
+    <h2>Vue vs React</h2>
 
     <Main />
 
     <div class="footer">
-      <div>
+      <div class="text-center p">
         If you notice any issues or have a feature request, please open an issue
         on
         <a href="https://github.com/aantipov/jsstats-issues" target="_blank"
@@ -19,8 +21,9 @@
         >!
       </div>
       <hr />
-      <div class="sign">
-        Made by <a href="https://alexei.me" target="_blank">Alexey Antipov</a>
+      <div class="text-center mt-4 p">
+        Made by
+        <a href="https://alexei.me" target="_blank">Alexey Antipov</a>
       </div>
     </div>
   </div>
@@ -40,19 +43,13 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  max-width: 1700px;
+  margin: 40px auto 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  max-width: 1700px;
-  margin: 60px auto 0;
 }
 .footer {
   width: 800px;
-  margin: 60px auto 20px;
-}
-.sign {
-  margin-top: 20px;
+  margin: 60px auto 30px;
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h2>NPM downloads</h2>
+    <h3>NPM downloads</h3>
 
-    <div v-if="loading">Loading...</div>
+    <div v-if="isLoading" class="p text-center">Loading...</div>
 
     <div v-else class="chart">
       <canvas id="npmDownloads" width="1200" height="600"></canvas>
@@ -19,7 +19,7 @@ export default Vue.extend({
   name: 'Npm',
   data() {
     return {
-      loading: true,
+      isLoading: true,
       downloads: [],
     };
   },
@@ -28,14 +28,14 @@ export default Vue.extend({
       .get('/api/npm')
       .then((res) => res.data)
       .then((res): any => {
-        this.loading = false;
+        this.isLoading = false;
         this.downloads = res;
       });
   },
   updated() {
     const ctx = document.getElementById('npmDownloads') as HTMLCanvasElement;
 
-    if (this.loading) {
+    if (this.isLoading) {
       return;
     }
 

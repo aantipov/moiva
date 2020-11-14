@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>ThoughtWorks Technology Radar</h2>
+    <h3>ThoughtWorks Technology Radar</h3>
 
     <div class="chart">
       <canvas id="techRadar" width="800" height="400" />

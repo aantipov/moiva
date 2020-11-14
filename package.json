@@ -37,11 +37,9 @@
     "sass": "^1.27.0",
     "sass-loader": "^10.0.3",
     "typescript": "~3.9.3",
+    "vue-cli-plugin-tailwind": "^1.5.0",
     "vue-eslint-parser": "^7.1.1",
     "vue-template-compiler": "^2.6.11"
-  },
-  "prettier": {
-    "singleQuote": true
   },
   "eslintConfig": {
     "root": true,
@@ -82,6 +80,9 @@
         }
       }
     ]
+  },
+  "prettier": {
+    "singleQuote": true
   },
   "browserslist": [
     "> 1%",

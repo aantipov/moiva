@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h2>Github statistics</h2>
+    <h3>Github statistics</h3>
 
-    <div v-if="isLoading">Loading...</div>
+    <div v-if="isLoading" class="p text-center">Loading...</div>
 
     <div v-else class="chart-list">
       <div class="chart">
