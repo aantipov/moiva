@@ -12,9 +12,7 @@
     <Main />
 
     <div class="footer">
-      <div
-        class="text-center text-base font-light leading-relaxed mt-0 mb-4 text-gray-800"
-      >
+      <div class="text-center p">
         If you notice any issues or have a feature request, please open an issue
         on
         <a
