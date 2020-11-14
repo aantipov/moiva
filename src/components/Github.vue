@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 class="h3">Github statistics</h3>
+    <h3>Github statistics</h3>
 
     <div v-if="isLoading" class="p text-center">Loading...</div>
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 class="h3">NPM downloads</h3>
+    <h3>NPM downloads</h3>
 
     <div v-if="isLoading" class="p text-center">Loading...</div>
 
