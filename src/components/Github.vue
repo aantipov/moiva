@@ -1,12 +1,8 @@
 <template>
   <div>
-    <h2
-      class="text-center text-2xl font-normal leading-normal mt-0 mb-2 text-gray-800"
-    >
-      Github statistics
-    </h2>
+    <h3 class="h3">Github statistics</h3>
 
-    <div v-if="isLoading">Loading...</div>
+    <div v-if="isLoading" class="p text-center">Loading...</div>
 
     <div v-else class="chart-list">
       <div class="chart">

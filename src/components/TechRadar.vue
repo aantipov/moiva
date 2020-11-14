@@ -1,10 +1,6 @@
 <template>
   <div>
-    <h2
-      class="text-center text-2xl font-normal leading-normal mt-0 mb-2 text-gray-800"
-    >
-      ThoughtWorks Technology Radar
-    </h2>
+    <h3 class="h3">ThoughtWorks Technology Radar</h3>
 
     <div class="chart">
       <canvas id="techRadar" width="800" height="400" />
