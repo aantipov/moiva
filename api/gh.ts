@@ -1,14 +1,11 @@
 import { NowRequest, NowResponse } from '@vercel/node';
 import axios from 'axios';
+import config from '../apps-config'
 
 export default async (req: NowRequest, res: NowResponse) => {
   const skey = process.env.GITHUB_API_KEY;
   const url = 'https://api.github.com/graphql';
-  const config = {
-    vue: {name: 'vue', owner: 'vuejs'},
-    react: {name: 'react', owner: 'facebook'},
-  }
-  const app = config[req.query.app as string];
+  const app = config.find(appConfig => appConfig.name === req.query.app).github
 
   axios
     .post(
