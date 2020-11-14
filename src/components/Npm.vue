@@ -1,6 +1,10 @@
 <template>
   <div>
-    <h2>NPM downloads</h2>
+    <h2
+      class="text-center text-2xl font-normal leading-normal mt-0 mb-2 text-gray-800"
+    >
+      NPM downloads
+    </h2>
 
     <div v-if="loading">Loading...</div>
 
