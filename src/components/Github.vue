@@ -44,16 +44,6 @@ export interface RepoT {
   openIssues: { totalCount: number };
 }
 
-export const initData: RepoT = {
-  stars: 0,
-  createdAt: '',
-  openPRs: { totalCount: 0 },
-  closedPRs: { totalCount: 0 },
-  mergedPRs: { totalCount: 0 },
-  closedIssues: { totalCount: 0 },
-  openIssues: { totalCount: 0 },
-};
-
 export default Vue.extend({
   name: 'Github',
   components: {
@@ -73,7 +63,7 @@ export default Vue.extend({
   data() {
     return {
       isLoading: true,
-      repos: [{ ...initData }, { ...initData }],
+      repos: [] as RepoT[],
     };
   },
 
