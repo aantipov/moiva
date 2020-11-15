@@ -82,10 +82,11 @@ export default Vue.extend({
   },
 
   mounted() {
-    Promise.all([
-      axios.get('/api/gh?app=vue').then((res) => res.data),
-      axios.get('/api/gh?app=react').then((res) => res.data),
-    ]).then((data) => {
+    Promise.all(
+      this.apps.map((app) =>
+        axios.get(`/api/gh?app=${app}`).then((res) => res.data)
+      )
+    ).then((data) => {
       this.repos = data;
       this.isLoading = false;
     });
