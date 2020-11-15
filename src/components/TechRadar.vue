@@ -73,7 +73,10 @@ export default Vue.extend({
         },
 
         options: {
-          tooltips: { enabled: true },
+          tooltips: {
+            mode: 'index',
+            intersect: false,
+          },
           scales: {
             yAxes: [{ type: 'category', ticks: { reverse: true } }],
           },

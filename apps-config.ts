@@ -46,8 +46,8 @@ const appsConfigs: AppConfigT[] = [
       borderColor: COLOR_GREEN,
     },
     tradar: {
-      backgroundColor: 'rgba(54, 162, 235, 0.2)',
-      borderColor: 'rgba(54, 162, 235, 1)',
+      backgroundColor: COLOR_GREEN,
+      borderColor: COLOR_GREEN,
       data: {
         '2016-11': ASSESS,
         '2017-03': TRIAL,
@@ -63,8 +63,8 @@ const appsConfigs: AppConfigT[] = [
       borderColor: COLOR_RED,
     },
     tradar: {
-      backgroundColor: 'rgba(255, 99, 132, 0.2)',
-      borderColor: 'rgba(255, 99, 132, 1)',
+      backgroundColor: COLOR_RED,
+      borderColor: COLOR_RED,
       data: {
         '2015-01': ASSESS,
         '2015-05': TRIAL,
