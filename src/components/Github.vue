@@ -2,20 +2,25 @@
   <div>
     <h3>Github statistics</h3>
 
-    <div v-if="isLoading" class="p text-center">Loading...</div>
+    <div class="chart-list">
+      <div class="chart">
+        <div v-if="isLoading" class="p text-center">Loading...</div>
+        <OpenClosedIssues v-else :apps="apps" :repos="repos" />
+      </div>
 
-    <div v-else class="chart-list">
       <div class="chart">
-        <canvas id="issuesCount" width="400" height="400"></canvas>
+        <div v-if="isLoading" class="p text-center">Loading...</div>
+        <Age v-else :apps="apps" :repos="repos" />
       </div>
+
       <div class="chart">
-        <canvas id="createdAt" width="400" height="400"></canvas>
+        <div v-if="isLoading" class="p text-center">Loading...</div>
+        <Stars v-else :apps="apps" :repos="repos" />
       </div>
+
       <div class="chart">
-        <canvas id="starsCount" width="400" height="400"></canvas>
-      </div>
-      <div class="chart">
-        <canvas id="prsCount" width="400" height="400"></canvas>
+        <div v-if="isLoading" class="p text-center">Loading...</div>
+        <Prs v-else :apps="apps" :repos="repos" />
       </div>
     </div>
   </div>
@@ -24,193 +29,66 @@
 <script lang="ts">
 import Vue from 'vue';
 import axios from 'axios';
-import Chart from 'chart.js';
+import OpenClosedIssues from './GithubOpenClosedIssues.vue';
+import Age from './GithubAge.vue';
+import Stars from './GithubStars.vue';
+import Prs from './GithubPrs.vue';
 
-const initData = {
-  stars: 0,
-  createdAt: '',
-  openPRs: { totalCount: 0 },
-  closedPRs: { totalCount: 0 },
-  mergedPRs: { totalCount: 0 },
-  closedIssues: { totalCount: 0 },
-  openIssues: { totalCount: 0 },
-};
+export interface RepoT {
+  stars: number;
+  createdAt: string;
+  openPRs: { totalCount: number };
+  closedPRs: { totalCount: number };
+  mergedPRs: { totalCount: number };
+  closedIssues: { totalCount: number };
+  openIssues: { totalCount: number };
+}
 
 export default Vue.extend({
   name: 'Github',
+  components: {
+    OpenClosedIssues,
+    Age,
+    Stars,
+    Prs,
+  },
+
+  props: {
+    apps: {
+      type: Array as () => string[],
+      required: true,
+    },
+  },
 
   data() {
     return {
       isLoading: true,
-      repos: {
-        vue: { ...initData },
-        react: { ...initData },
-      },
+      repos: [] as RepoT[],
     };
   },
 
-  mounted() {
-    Promise.all([
-      axios.get('/api/gh?app=vue').then((res) => res.data),
-      axios.get('/api/gh?app=react').then((res) => res.data),
-    ]).then(([vue, react]) => {
-      this.repos = { vue, react };
-      this.isLoading = false;
-    });
+  watch: {
+    apps(apps: string[]): void {
+      this.isLoading = true;
+      Promise.all(
+        apps.map((app) =>
+          axios.get(`/api/gh?app=${app}`).then((res) => res.data)
+        )
+      ).then((data) => {
+        this.repos = data;
+        this.isLoading = false;
+      });
+    },
   },
 
-  updated() {
-    const ctx1 = document.getElementById('issuesCount') as HTMLCanvasElement;
-    const ctx2 = document.getElementById('createdAt') as HTMLCanvasElement;
-    const ctx3 = document.getElementById('starsCount') as HTMLCanvasElement;
-    const ctx4 = document.getElementById('prsCount') as HTMLCanvasElement;
-
-    if (this.isLoading) {
-      return;
-    }
-
-    const { vue, react } = this.repos;
-
-    new Chart(ctx1, {
-      type: 'bar',
-      data: {
-        labels: ['Vue', 'React'],
-        datasets: [
-          {
-            label: '# of open issues',
-            data: [vue.openIssues.totalCount, react.openIssues.totalCount],
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1,
-          },
-          {
-            label: '# of closed issues',
-            data: [vue.closedIssues.totalCount, react.closedIssues.totalCount],
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
-        },
-      },
-    });
-
-    new Chart(ctx4, {
-      type: 'bar',
-      data: {
-        labels: ['Vue', 'React'],
-        datasets: [
-          {
-            label: '# of open PRs',
-            data: [vue.openPRs.totalCount, react.openPRs.totalCount],
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1,
-          },
-          {
-            label: '# of closed PRs',
-            data: [vue.closedPRs.totalCount, react.closedPRs.totalCount],
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1,
-          },
-          {
-            label: '# of merged PRs',
-            data: [vue.mergedPRs.totalCount, react.mergedPRs.totalCount],
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
-        },
-      },
-    });
-
-    function getAge(date: string): number {
-      const now = new Date().getTime();
-      const then = new Date(date).getTime();
-
-      return Number(((now - then) / (1000 * 3600 * 24 * 365)).toFixed(2));
-    }
-
-    new Chart(ctx2, {
-      type: 'bar',
-      data: {
-        labels: ['Vue', 'React'],
-        datasets: [
-          {
-            label: 'Age, years',
-            data: [getAge(vue.createdAt), getAge(react.createdAt)],
-            backgroundColor: [
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 99, 132, 0.2)',
-            ],
-            borderColor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
-        },
-      },
-    });
-
-    new Chart(ctx3, {
-      type: 'bar',
-      data: {
-        labels: ['Vue', 'React'],
-        datasets: [
-          {
-            label: 'Github stars',
-            data: [vue.stars, react.stars],
-            backgroundColor: [
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 99, 132, 0.2)',
-            ],
-            borderColor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
-            borderWidth: 1,
-          },
-        ],
-      },
-      options: {
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-              },
-            },
-          ],
-        },
-      },
+  mounted() {
+    Promise.all(
+      this.apps.map((app) =>
+        axios.get(`/api/gh?app=${app}`).then((res) => res.data)
+      )
+    ).then((data) => {
+      this.repos = data;
+      this.isLoading = false;
     });
   },
 });
