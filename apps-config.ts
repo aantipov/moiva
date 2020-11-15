@@ -2,17 +2,15 @@ type TRadarLevel = 'Hold' | 'Adopt' | 'Trial' | 'Assess' | 'No Data';
 
 export interface AppConfigT {
   name: string;
+  color: string;
   github: {
     name: string;
     owner: string;
   };
   npm: {
-    backgroundColor: string;
-    borderColor: string;
+    name: string;
   };
   tradar: {
-    backgroundColor: string;
-    borderColor: string;
     data: Partial<Record<string, TRadarLevel>>;
   };
 }
@@ -28,6 +26,7 @@ export const COLOR_GRAY = '#a0aec0';
 export const COLOR_BLUE = '#4299e1';
 export const COLOR_PINK = '#ed64a6';
 export const COLOR_RED = '#f56565';
+export const COLOR_PURPLE = '#9f7aea';
 const COLOR_ORANGE_SVELTE = '#ff3e00';
 const COLOR_BLUE_REACT = '#3ed6ff';
 const COLOR_GREEN_VUE = '#42b983';
@@ -42,15 +41,11 @@ export const TRADAR_LEVELS: TRadarLevel[] = [
 
 const appsConfigs: AppConfigT[] = [
   {
-    name: 'vue',
+    name: 'Vue.js',
+    color: COLOR_GREEN_VUE,
     github: { name: 'vue', owner: 'vuejs' },
-    npm: {
-      backgroundColor: COLOR_GREEN_VUE,
-      borderColor: COLOR_GREEN_VUE,
-    },
+    npm: { name: 'vue' },
     tradar: {
-      backgroundColor: COLOR_GREEN_VUE,
-      borderColor: COLOR_GREEN_VUE,
       data: {
         '2016-11': ASSESS,
         '2017-03': TRIAL,
@@ -59,15 +54,11 @@ const appsConfigs: AppConfigT[] = [
     },
   },
   {
-    name: 'react',
+    name: 'React',
+    color: COLOR_BLUE_REACT,
     github: { name: 'react', owner: 'facebook' },
-    npm: {
-      backgroundColor: COLOR_BLUE_REACT,
-      borderColor: COLOR_BLUE_REACT,
-    },
+    npm: { name: 'react' },
     tradar: {
-      backgroundColor: COLOR_BLUE_REACT,
-      borderColor: COLOR_BLUE_REACT,
       data: {
         '2015-01': ASSESS,
         '2015-05': TRIAL,
@@ -78,17 +69,28 @@ const appsConfigs: AppConfigT[] = [
     },
   },
   {
-    name: 'svelte',
+    name: 'Svelte',
+    color: COLOR_ORANGE_SVELTE,
     github: { name: 'svelte', owner: 'sveltejs' },
-    npm: {
-      backgroundColor: COLOR_ORANGE_SVELTE,
-      borderColor: COLOR_ORANGE_SVELTE,
-    },
+    npm: { name: 'svelte' },
     tradar: {
-      backgroundColor: COLOR_ORANGE_SVELTE,
-      borderColor: COLOR_ORANGE_SVELTE,
       data: {
         '2020-10': ASSESS,
+      },
+    },
+  },
+  {
+    name: 'Ember.js',
+    color: COLOR_PURPLE,
+    github: { name: 'ember.js', owner: 'emberjs' },
+    npm: { name: 'ember-source' },
+    tradar: {
+      data: {
+        '2015-05': ASSESS,
+        '2015-11': ASSESS,
+        '2016-04': TRIAL,
+        '2016-11': ADOPT,
+        '2017-03': ADOPT,
       },
     },
   },

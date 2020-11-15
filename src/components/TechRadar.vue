@@ -62,8 +62,8 @@ export default Vue.extend({
             data: this.uniqDates.map(
               (date) => appsConfigsMap[app].tradar.data[date]
             ),
-            backgroundColor: appsConfigsMap[app].tradar.backgroundColor,
-            borderColor: appsConfigsMap[app].tradar.borderColor,
+            backgroundColor: appsConfigsMap[app].color,
+            borderColor: appsConfigsMap[app].color,
             spanGaps: true,
             borderWidth: 2,
             lineTension: 0,
