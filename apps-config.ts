@@ -15,6 +15,11 @@ export interface AppConfigT {
   };
 }
 
+export const numbersFormatter = new Intl.NumberFormat('en-US', {
+  // @ts-ignore
+  notation: 'compact',
+});
+
 // const HOLD: TRadarLevel = 'Hold';
 const ADOPT = 'Adopt';
 const TRIAL = 'Trial';
