@@ -28,6 +28,9 @@ export const COLOR_GRAY = '#a0aec0';
 export const COLOR_BLUE = '#4299e1';
 export const COLOR_PINK = '#ed64a6';
 export const COLOR_RED = '#f56565';
+const COLOR_ORANGE_SVELTE = '#ff3e00';
+const COLOR_BLUE_REACT = '#3ed6ff';
+const COLOR_GREEN_VUE = '#42b983';
 
 export const TRADAR_LEVELS: TRadarLevel[] = [
   'No Data',
@@ -42,12 +45,12 @@ const appsConfigs: AppConfigT[] = [
     name: 'vue',
     github: { name: 'vue', owner: 'vuejs' },
     npm: {
-      backgroundColor: COLOR_GREEN,
-      borderColor: COLOR_GREEN,
+      backgroundColor: COLOR_GREEN_VUE,
+      borderColor: COLOR_GREEN_VUE,
     },
     tradar: {
-      backgroundColor: COLOR_GREEN,
-      borderColor: COLOR_GREEN,
+      backgroundColor: COLOR_GREEN_VUE,
+      borderColor: COLOR_GREEN_VUE,
       data: {
         '2016-11': ASSESS,
         '2017-03': TRIAL,
@@ -59,18 +62,33 @@ const appsConfigs: AppConfigT[] = [
     name: 'react',
     github: { name: 'react', owner: 'facebook' },
     npm: {
-      backgroundColor: COLOR_RED,
-      borderColor: COLOR_RED,
+      backgroundColor: COLOR_BLUE_REACT,
+      borderColor: COLOR_BLUE_REACT,
     },
     tradar: {
-      backgroundColor: COLOR_RED,
-      borderColor: COLOR_RED,
+      backgroundColor: COLOR_BLUE_REACT,
+      borderColor: COLOR_BLUE_REACT,
       data: {
         '2015-01': ASSESS,
         '2015-05': TRIAL,
         '2015-11': TRIAL,
         '2016-04': ADOPT,
         '2016-11': ADOPT,
+      },
+    },
+  },
+  {
+    name: 'svelte',
+    github: { name: 'svelte', owner: 'sveltejs' },
+    npm: {
+      backgroundColor: COLOR_ORANGE_SVELTE,
+      borderColor: COLOR_ORANGE_SVELTE,
+    },
+    tradar: {
+      backgroundColor: COLOR_ORANGE_SVELTE,
+      borderColor: COLOR_ORANGE_SVELTE,
+      data: {
+        '2020-10': ASSESS,
       },
     },
   },

@@ -65,7 +65,7 @@ export default Vue.extend({
             backgroundColor: appsConfigsMap[app].tradar.backgroundColor,
             borderColor: appsConfigsMap[app].tradar.borderColor,
             spanGaps: true,
-            borderWidth: 1,
+            borderWidth: 2,
             lineTension: 0,
             pointStyle: 'triangle',
             radius: 8,

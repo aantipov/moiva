@@ -4,8 +4,8 @@
 
     <p class="text-center p-lead">
       This project is a
-      <strong class="font-medium">work in progress</strong> and is currently
-      limited to Vue/React only
+      <strong class="font-medium">work in progress</strong>. The number of
+      supported libraries is limited
     </p>
 
     <Main />
