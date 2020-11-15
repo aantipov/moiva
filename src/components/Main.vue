@@ -1,13 +1,19 @@
 <template>
   <div>
     <div class="text-center mb-5">
-      <VSwitch v-model="vue">Vue</VSwitch>
-      <VSwitch v-model="react" class="ml-3">React</VSwitch>
+      <template v-for="app in apps">
+        <VSwitch
+          :key="app"
+          v-model="appsMap[app]"
+          :disabled="appsMap[app] && enabledApps.length === 1"
+          >{{ app }}</VSwitch
+        >
+      </template>
     </div>
 
-    <Github :apps="apps" />
-    <Npm :apps="apps" />
-    <TechRadar :apps="apps" style="margin-top: 24px" />
+    <Github :apps="enabledApps" />
+    <Npm :apps="enabledApps" />
+    <TechRadar :apps="enabledApps" style="margin-top: 24px" />
   </div>
 </template>
 
@@ -30,17 +36,18 @@ export default Vue.extend({
     VSwitch,
   },
   data() {
-    return apps.reduce((acc: any, app) => {
-      acc[app] = true;
-      return acc;
-    }, {});
+    return {
+      apps,
+      appsMap: apps.reduce((acc, app) => {
+        acc[app] = true;
+        return acc;
+      }, {} as Record<string, boolean>),
+    };
   },
   computed: {
-    apps() {
-      // @ts-ignore
-      const { vue, react } = this;
-      return Object.entries({ vue, react })
-        .filter(([key, value]) => value)
+    enabledApps(): string[] {
+      return Object.entries(this.appsMap)
+        .filter(([, value]) => value)
         .map(([key]) => key);
     },
   },
