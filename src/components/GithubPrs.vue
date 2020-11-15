@@ -8,6 +8,8 @@
 import Vue from 'vue';
 import Chart from 'chart.js';
 import { RepoT } from './Github.vue';
+// @ts-ignore
+import { COLOR_GREEN, COLOR_GRAY, COLOR_PINK } from '../../apps-config';
 
 export default Vue.extend({
   name: 'GithubPrs',
@@ -33,31 +35,41 @@ export default Vue.extend({
         labels: apps,
         datasets: [
           {
-            label: '# of open PRs',
+            label: 'open',
             data: repos.map((repo) => repo.openPRs.totalCount),
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: 'rgba(54, 162, 235, 1)',
+            backgroundColor: COLOR_GREEN,
             borderWidth: 1,
           },
           {
-            label: '# of closed PRs',
+            label: 'closed',
             data: repos.map((repo) => repo.closedPRs.totalCount),
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
+            backgroundColor: COLOR_PINK,
             borderWidth: 1,
           },
           {
-            label: '# of merged PRs',
+            label: 'merged',
             data: repos.map((repo) => repo.mergedPRs.totalCount),
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: COLOR_GRAY,
             borderWidth: 1,
           },
         ],
       },
+
       options: {
+        legend: {
+          display: false,
+        },
+        title: {
+          display: true,
+          text: 'PRs, number',
+        },
+        tooltips: {
+          mode: 'index',
+          intersect: false,
+        },
         scales: {
-          yAxes: [{ ticks: { beginAtZero: true } }],
+          yAxes: [{ stacked: true, ticks: { beginAtZero: true } }],
+          xAxes: [{ stacked: true }],
         },
       },
     });

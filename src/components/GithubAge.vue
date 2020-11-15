@@ -8,6 +8,8 @@
 import Vue from 'vue';
 import Chart from 'chart.js';
 import { RepoT } from './Github.vue';
+// @ts-ignore
+import { COLOR_GRAY } from '../../apps-config';
 
 export default Vue.extend({
   name: 'GithubAge',
@@ -40,18 +42,21 @@ export default Vue.extend({
         labels: apps,
         datasets: [
           {
-            label: 'Age, years',
+            label: 'years',
             data: repos.map((repo) => getAge(repo.createdAt)),
-            backgroundColor: [
-              'rgba(54, 162, 235, 0.2)',
-              'rgba(255, 99, 132, 0.2)',
-            ],
-            borderColor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
+            backgroundColor: COLOR_GRAY,
             borderWidth: 1,
           },
         ],
       },
       options: {
+        legend: {
+          display: false,
+        },
+        title: {
+          display: true,
+          text: 'Age, years',
+        },
         scales: {
           yAxes: [{ ticks: { beginAtZero: true } }],
         },

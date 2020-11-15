@@ -23,6 +23,11 @@ const TRIAL = 'Trial';
 const ASSESS = 'Assess';
 // const NO_DATA = 'No Data';
 
+export const COLOR_GREEN = '#48bb78';
+export const COLOR_GRAY = '#a0aec0';
+export const COLOR_BLUE = '#4299e1';
+export const COLOR_PINK = '#ed64a6';
+
 export const TRADAR_LEVELS: TRadarLevel[] = [
   'No Data',
   'Assess',

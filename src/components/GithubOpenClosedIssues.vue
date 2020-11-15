@@ -8,6 +8,8 @@
 import Vue from 'vue';
 import Chart from 'chart.js';
 import { RepoT } from './Github.vue';
+// @ts-ignore
+import { COLOR_GREEN, COLOR_GRAY } from '../../apps-config';
 
 export default Vue.extend({
   name: 'GithubOpenClosedIssues',
@@ -34,24 +36,35 @@ export default Vue.extend({
         labels: apps,
         datasets: [
           {
-            label: '# of open issues',
+            label: 'open',
             data: repos.map((repo) => repo.openIssues.totalCount),
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: 'rgba(54, 162, 235, 1)',
+            backgroundColor: COLOR_GREEN,
             borderWidth: 1,
           },
           {
-            label: '# of closed issues',
+            label: 'closed',
             data: repos.map((repo) => repo.closedIssues.totalCount),
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
+            backgroundColor: COLOR_GRAY,
             borderWidth: 1,
           },
         ],
       },
+
       options: {
+        legend: {
+          display: false,
+        },
+        title: {
+          display: true,
+          text: 'Issues, number',
+        },
+        tooltips: {
+          mode: 'index',
+          intersect: false,
+        },
         scales: {
-          yAxes: [{ ticks: { beginAtZero: true } }],
+          yAxes: [{ stacked: true, ticks: { beginAtZero: true } }],
+          xAxes: [{ stacked: true }],
         },
       },
     });
