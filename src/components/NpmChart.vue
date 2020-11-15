@@ -36,11 +36,19 @@ export default Vue.extend({
         labels: categories,
         datasets: apps.map((app, key) => ({
           label: app,
+          fill: false,
           data: downloads[key].map(({ downloads }) => downloads),
           backgroundColor: appsConfigsMap[app].npm.backgroundColor,
           borderColor: appsConfigsMap[app].npm.borderColor,
           borderWidth: 1,
         })),
+      },
+
+      options: {
+        tooltips: {
+          mode: 'index',
+          intersect: false,
+        },
       },
     });
   },

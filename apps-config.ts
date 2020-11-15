@@ -27,6 +27,7 @@ export const COLOR_GREEN = '#48bb78';
 export const COLOR_GRAY = '#a0aec0';
 export const COLOR_BLUE = '#4299e1';
 export const COLOR_PINK = '#ed64a6';
+export const COLOR_RED = '#f56565';
 
 export const TRADAR_LEVELS: TRadarLevel[] = [
   'No Data',
@@ -41,8 +42,8 @@ const appsConfigs: AppConfigT[] = [
     name: 'vue',
     github: { name: 'vue', owner: 'vuejs' },
     npm: {
-      backgroundColor: 'rgba(54, 162, 235, 0.2)',
-      borderColor: 'rgba(54, 162, 235, 1)',
+      backgroundColor: COLOR_GREEN,
+      borderColor: COLOR_GREEN,
     },
     tradar: {
       backgroundColor: 'rgba(54, 162, 235, 0.2)',
@@ -58,8 +59,8 @@ const appsConfigs: AppConfigT[] = [
     name: 'react',
     github: { name: 'react', owner: 'facebook' },
     npm: {
-      backgroundColor: 'rgba(255, 99, 132, 0.2)',
-      borderColor: 'rgba(255, 99, 132, 1)',
+      backgroundColor: COLOR_RED,
+      borderColor: COLOR_RED,
     },
     tradar: {
       backgroundColor: 'rgba(255, 99, 132, 0.2)',
