@@ -1,12 +1,13 @@
 <template>
   <div>
-    <div v-if="false" class="text-center mb-5">
+    <div class="text-center mb-5">
       <VSwitch v-model="vue">Vue</VSwitch>
       <VSwitch v-model="react" class="ml-3">React</VSwitch>
     </div>
+
     <Github :apps="apps" />
     <Npm :apps="apps" />
-    <TechRadar style="margin-top: 24px" />
+    <TechRadar :apps="apps" style="margin-top: 24px" />
   </div>
 </template>
 
