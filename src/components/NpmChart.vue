@@ -9,12 +9,7 @@ import Vue from 'vue';
 import Chart from 'chart.js';
 import { NpmDownloadT } from './Npm.vue';
 // @ts-ignore
-import appsConfigs, { AppConfigT } from '../../apps-config';
-
-const appsConfigsMap = appsConfigs.reduce((accum, config) => {
-  accum[config.name] = config;
-  return accum;
-}, {} as { [key: string]: AppConfigT });
+import { appsConfigsMap } from '../../apps-config';
 
 export default Vue.extend({
   name: 'NpmChart',
