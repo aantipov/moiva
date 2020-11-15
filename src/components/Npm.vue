@@ -2,10 +2,9 @@
   <div>
     <h3>NPM downloads</h3>
 
-    <div v-if="isLoading" class="p text-center">Loading...</div>
-
-    <div v-else class="chart">
-      <canvas id="npmDownloads" width="1200" height="600"></canvas>
+    <div class="chart">
+      <div v-if="isLoading" class="p text-center">Loading...</div>
+      <NpmChart v-else :apps="apps" :downloads="downloads" />
     </div>
   </div>
 </template>
@@ -13,67 +12,62 @@
 <script lang="ts">
 import Vue from 'vue';
 import axios from 'axios';
-import Chart from 'chart.js';
+import NpmChart from './NpmChart.vue';
+
+export interface NpmDownloadT {
+  downloads: number;
+  month: string;
+}
 
 export default Vue.extend({
   name: 'Npm',
+
+  components: {
+    NpmChart,
+  },
+
+  props: {
+    apps: {
+      type: Array as () => string[],
+      required: true,
+    },
+  },
+
   data() {
     return {
       isLoading: true,
-      downloads: [],
+      downloads: [] as Array<Array<NpmDownloadT>>,
     };
   },
-  mounted() {
-    axios
-      .get('/api/npm')
-      .then((res) => res.data)
-      .then((res): any => {
+
+  watch: {
+    apps(apps: string[]): void {
+      this.isLoading = true;
+      Promise.all(
+        apps.map((app) =>
+          axios.get(`/api/npm?app=${app}`).then((res) => res.data)
+        )
+      ).then((data) => {
+        this.downloads = data;
         this.isLoading = false;
-        this.downloads = res;
       });
+    },
   },
-  updated() {
-    const ctx = document.getElementById('npmDownloads') as HTMLCanvasElement;
 
-    if (this.isLoading) {
-      return;
-    }
-
-    const categories = this.downloads.map(({ month }) => month);
-    const vueData = this.downloads.map(({ vue }) => vue);
-    const reactData = this.downloads.map(({ react }) => react);
-
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: categories,
-        datasets: [
-          {
-            label: 'Vue',
-            data: vueData,
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: 'rgba(54, 162, 235, 1)',
-            borderWidth: 1,
-          },
-          {
-            label: 'React',
-            data: reactData,
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1,
-          },
-        ],
-      },
+  mounted() {
+    Promise.all(
+      this.apps.map((app) =>
+        axios.get(`/api/npm?app=${app}`).then((res) => res.data)
+      )
+    ).then((data) => {
+      this.downloads = data;
+      this.isLoading = false;
     });
   },
 });
 </script>
 
 <style scoped lang="scss">
-.chart-list {
-  display: flex;
-  flex-wrap: wrap;
-}
 .chart {
   width: 1200px;
   height: 600px;

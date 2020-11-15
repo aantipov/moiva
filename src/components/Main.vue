@@ -5,7 +5,7 @@
       <VSwitch v-model="react" class="ml-3">React</VSwitch>
     </div>
     <Github :apps="apps" />
-    <Npm />
+    <Npm :apps="apps" />
     <TechRadar style="margin-top: 24px" />
   </div>
 </template>

@@ -8,52 +8,34 @@ const years = Array.from(
   (v, k) => startYear + k
 );
 
-export default (req: NowRequest, res: NowResponse) => {
-  const promises = years
+export default (req: NowRequest, res: NowResponse): void => {
+  const { app } = req.query;
+
+  const allYearsPromises = years
     .map(
       (year) =>
-        `https://api.npmjs.org/downloads/range/${year}-01-01:${year}-12-31/vue,react`
+        `https://api.npmjs.org/downloads/range/${year}-01-01:${year}-12-31/${app}`
     )
-    .map((url) =>
-      axios.get(url).then(({ data }) => ({
-        vue: data.vue.downloads,
-        react: data.react.downloads,
-      }))
-    );
+    .map((url) => axios.get(url).then(({ data }) => data.downloads));
 
-  Promise.all(promises).then((responces) => {
-    const combinedDownloads = responces.reduce(
-      (accum, { vue, react }) => ({
-        vue: accum.vue.concat(vue),
-        react: accum.react.concat(react),
-      }),
-      { vue: [], react: [] }
-    );
+  Promise.all(allYearsPromises).then((downloadsByYear) => {
+    // @ts-ignore
+    const downloads = downloadsByYear.flat();
+    const downloadsByMonth = [];
 
-    const list = combinedDownloads.vue.map(({ downloads, day }, key) => {
-      return {
-        vue: downloads,
-        react: combinedDownloads.react[key].downloads,
-        date: day,
-      };
-    });
+    downloads.forEach(({ downloads, day }) => {
+      const monthDay = day.slice(-2);
+      const month = day.slice(-10, -3);
 
-    const newList = [];
-
-    list.forEach(({ vue, react, date }) => {
-      const day = date.slice(-2);
-      const month = date.slice(-10, -3);
-
-      if (day === '01' || !newList.length) {
-        newList.push({ vue, react, month });
+      if (monthDay === '01' || !downloadsByMonth.length) {
+        downloadsByMonth.push({ downloads, month });
       } else {
-        const last = newList.slice(-1)[0];
-        last['vue'] += vue;
-        last['react'] += react;
+        const last = downloadsByMonth.slice(-1)[0];
+        last['downloads'] += downloads;
       }
     });
 
     res.setHeader('Cache-Control', 'max-age=0, s-maxage=43200');
-    res.status(200).json(newList);
+    res.status(200).json(downloadsByMonth);
   });
 };
