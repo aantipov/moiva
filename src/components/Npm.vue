@@ -13,6 +13,8 @@
 import Vue from 'vue';
 import axios from 'axios';
 import NpmChart from './NpmChart.vue';
+// @ts-ignore
+import { appsConfigsMap } from '../../apps-config';
 
 export interface NpmDownloadT {
   downloads: number;
@@ -41,28 +43,29 @@ export default Vue.extend({
   },
 
   watch: {
-    apps(apps: string[]): void {
+    apps(): void {
+      this.loadData();
+    },
+  },
+
+  mounted(): void {
+    this.loadData();
+  },
+
+  methods: {
+    loadData(): void {
       this.isLoading = true;
       Promise.all(
-        apps.map((app) =>
-          axios.get(`/api/npm?app=${app}`).then((res) => res.data)
+        this.apps.map((app) =>
+          axios
+            .get(`/api/npm?app=${appsConfigsMap[app].npm.name}`)
+            .then((res) => res.data)
         )
       ).then((data) => {
         this.downloads = data;
         this.isLoading = false;
       });
     },
-  },
-
-  mounted() {
-    Promise.all(
-      this.apps.map((app) =>
-        axios.get(`/api/npm?app=${app}`).then((res) => res.data)
-      )
-    ).then((data) => {
-      this.downloads = data;
-      this.isLoading = false;
-    });
   },
 });
 </script>
