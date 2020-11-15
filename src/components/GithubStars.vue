@@ -9,7 +9,7 @@ import Vue from 'vue';
 import Chart from 'chart.js';
 import { RepoT } from './Github.vue';
 // @ts-ignore
-import { COLOR_GRAY } from '../../apps-config';
+import { COLOR_GRAY, numbersFormatter } from '../../apps-config';
 
 export default Vue.extend({
   name: 'GithubStars',
@@ -52,7 +52,14 @@ export default Vue.extend({
           text: 'Stars',
         },
         scales: {
-          yAxes: [{ ticks: { beginAtZero: true } }],
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+                callback: (val: number): string => numbersFormatter.format(val),
+              },
+            },
+          ],
         },
       },
     });

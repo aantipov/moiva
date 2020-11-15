@@ -9,7 +9,7 @@ import Vue from 'vue';
 import Chart from 'chart.js';
 import { RepoT } from './Github.vue';
 // @ts-ignore
-import { COLOR_GREEN, COLOR_GRAY } from '../../apps-config';
+import { COLOR_GREEN, COLOR_GRAY, numbersFormatter } from '../../apps-config';
 
 export default Vue.extend({
   name: 'GithubOpenClosedIssues',
@@ -63,7 +63,15 @@ export default Vue.extend({
           intersect: false,
         },
         scales: {
-          yAxes: [{ stacked: true, ticks: { beginAtZero: true } }],
+          yAxes: [
+            {
+              stacked: true,
+              ticks: {
+                beginAtZero: true,
+                callback: (val: number): string => numbersFormatter.format(val),
+              },
+            },
+          ],
           xAxes: [{ stacked: true }],
         },
       },

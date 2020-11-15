@@ -9,7 +9,7 @@ import Vue from 'vue';
 import Chart from 'chart.js';
 import { NpmDownloadT } from './Npm.vue';
 // @ts-ignore
-import { appsConfigsMap } from '../../apps-config';
+import { appsConfigsMap, numbersFormatter } from '../../apps-config';
 
 export default Vue.extend({
   name: 'NpmChart',
@@ -48,6 +48,16 @@ export default Vue.extend({
         tooltips: {
           mode: 'index',
           intersect: false,
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                callback: (val: number): string => numbersFormatter.format(val),
+              },
+            },
+          ],
+          xAxes: [{ ticks: { fontSize: 13 } }],
         },
       },
     });
