@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="text-center mb-5">
+    <div class="text-center mt-5 mb-5">
       <template v-for="app in apps">
         <VSwitch
           :key="app"
@@ -11,9 +11,9 @@
       </template>
     </div>
 
-    <Github :apps="enabledApps" />
-    <Npm :apps="enabledApps" />
-    <TechRadar :apps="enabledApps" style="margin-top: 24px" />
+    <Github class="mt-10" :apps="enabledApps" />
+    <Npm class="mt-10" :apps="enabledApps" />
+    <TechRadar class="mt-10" :apps="enabledApps" />
   </div>
 </template>
 

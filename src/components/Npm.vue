@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>NPM downloads</h3>
+    <h2>NPM downloads</h2>
 
     <div class="chart">
       <div v-if="isLoading" class="p text-center">Loading...</div>
@@ -71,6 +71,6 @@ export default Vue.extend({
 .chart {
   width: 1200px;
   height: 600px;
-  margin: 20px auto;
+  margin: 0 auto;
 }
 </style>

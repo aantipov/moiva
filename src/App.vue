@@ -8,8 +8,6 @@
       limited to Vue/React only
     </p>
 
-    <h2>Vue vs React</h2>
-
     <Main />
 
     <div class="footer">

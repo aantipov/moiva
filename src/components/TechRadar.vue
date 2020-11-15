@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>ThoughtWorks Technology Radar</h3>
+    <h2>ThoughtWorks Technology Radar</h2>
 
     <div class="chart">
       <canvas id="techRadar" width="800" height="400" />
@@ -91,6 +91,6 @@ export default Vue.extend({
 .chart {
   width: 800px;
   height: 400px;
-  margin: 20px auto;
+  margin: 0 auto;
 }
 </style>

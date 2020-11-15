@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>Github statistics</h3>
+    <h2>Github statistics</h2>
 
     <div class="chart-list">
       <div class="chart">
@@ -102,6 +102,6 @@ export default Vue.extend({
 .chart {
   width: 400px;
   height: 400px;
-  margin: 20px auto;
+  margin: 0 auto;
 }
 </style>
