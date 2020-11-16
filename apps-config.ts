@@ -38,6 +38,7 @@ const COLOR_GREEN_VUE = '#42b983';
 const COLOR_YELLOW = '#FDD835';
 const COLOR_BROWN = '#6D4C41';
 const COLOR_BLACK = '#000000';
+const COLOR_RED_ANGULAR = '#C62828';
 
 export const TRADAR_LEVELS: TRadarLevel[] = [
   'No Data',
@@ -84,6 +85,18 @@ const appsConfigs: AppConfigT[] = [
     tradar: {
       data: {
         '2020-10': ASSESS,
+      },
+    },
+  },
+  {
+    name: 'Angular',
+    color: COLOR_RED_ANGULAR,
+    github: { name: 'angular', owner: 'angular' },
+    npm: { name: '@angular/core' },
+    tradar: {
+      data: {
+        '2017-03': ASSESS,
+        '2017-11': TRIAL,
       },
     },
   },
