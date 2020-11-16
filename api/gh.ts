@@ -5,8 +5,14 @@ import config from '../apps-config';
 export default (req: NowRequest, res: NowResponse): void => {
   const skey = process.env.GITHUB_API_KEY;
   const url = 'https://api.github.com/graphql';
-  const app = config.find((appConfig) => appConfig.name === req.query.app)
-    .github;
+  const app = config.find((appConfig) => appConfig.name === req.query.app);
+
+  if (!app) {
+    res.status(400).json({ error: 'Wrong app parameter' });
+    return;
+  }
+
+  const githubConfig = app.github;
 
   axios
     .post(
@@ -16,7 +22,7 @@ export default (req: NowRequest, res: NowResponse): void => {
         variables: {},
         query: `
         {
-          repository(name: "${app.name}", owner: "${app.owner}") {
+          repository(name: "${githubConfig.name}", owner: "${githubConfig.owner}") {
             description
             stars: stargazerCount
             createdAt
@@ -48,5 +54,8 @@ export default (req: NowRequest, res: NowResponse): void => {
     .then((resp) => {
       res.setHeader('Cache-Control', 'max-age=0, s-maxage=43200');
       res.status(200).json(resp.data.data.repository);
+    })
+    .catch(() => {
+      res.status(500).json({ error: 'Something went wrong' });
     });
 };
