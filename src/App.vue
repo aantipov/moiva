@@ -14,14 +14,19 @@
       <div class="text-center p">
         If you notice any issues or have a feature request, please open an issue
         on
-        <a href="https://github.com/aantipov/jsstats-issues" target="_blank"
+        <a
+          href="https://github.com/aantipov/jsstats-issues"
+          target="_blank"
+          rel="noopener"
           >Github</a
         >!
       </div>
       <hr />
       <div class="text-center mt-4 p">
         Made by
-        <a href="https://alexei.me" target="_blank">Alexey Antipov</a>
+        <a href="https://alexei.me" target="_blank" rel="noopener"
+          >Alexey Antipov</a
+        >
       </div>
     </div>
   </div>
