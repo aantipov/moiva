@@ -21,9 +21,9 @@
     @apply text-lg font-light leading-relaxed mt-6 mb-4 text-gray-800;
   }
   a {
-    @apply font-normal text-blue-600 underline;
+    @apply font-normal text-blue-700 underline;
   }
   a:hover {
-    @apply text-blue-800;
+    @apply text-blue-900;
   }
 }
