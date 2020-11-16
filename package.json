@@ -10,6 +10,9 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@sentry/browser": "^5.27.4",
+    "@sentry/integrations": "^5.27.4",
+    "@sentry/tracing": "^5.27.4",
     "@types/chart.js": "^2.9.27",
     "axios": "^0.21.0",
     "chart.js": "^2.9.4",
