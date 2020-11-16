@@ -1,5 +1,6 @@
 import { NowRequest, NowResponse } from '@vercel/node';
 import axios from 'axios';
+import config from '../apps-config';
 
 const startYear = 2015;
 const cYear = new Date().getFullYear();
@@ -10,6 +11,12 @@ const years = Array.from(
 
 export default (req: NowRequest, res: NowResponse): void => {
   const { app } = req.query;
+
+  // Check if we have a config for the provided app
+  if (!config.find((appConfig) => appConfig.npm.name === app)) {
+    res.status(400).json({ error: 'Wrong app parameter' });
+    return;
+  }
 
   const allYearsPromises = years
     .map(
