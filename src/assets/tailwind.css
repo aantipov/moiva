@@ -9,7 +9,7 @@
     @apply text-center text-5xl font-normal leading-normal mt-0 mb-2 text-gray-800;
   }
   h2 {
-    @apply text-center text-4xl font-normal leading-normal mt-6 mb-2 text-gray-800;
+    @apply text-center text-4xl font-normal leading-normal mt-5 mb-2 text-gray-800;
   }
   h3 {
     @apply text-center text-2xl font-normal leading-normal mt-0 mb-0 text-gray-800;
@@ -18,7 +18,7 @@
     @apply text-base font-light leading-relaxed mt-0 mb-4 text-gray-800;
   }
   .p-lead {
-    @apply text-lg font-light leading-relaxed mt-6 mb-4 text-gray-800;
+    @apply text-lg font-light leading-relaxed mt-4 mb-4 text-gray-800;
   }
   a {
     @apply font-normal text-blue-700 underline;

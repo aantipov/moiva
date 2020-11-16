@@ -1,6 +1,6 @@
 <template>
   <div>
-    <canvas id="npmDownloads" width="1200" height="600"></canvas>
+    <canvas id="npmDownloads" width="800" height="400"></canvas>
   </div>
 </template>
 

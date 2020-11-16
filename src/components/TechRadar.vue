@@ -3,7 +3,7 @@
     <h2>ThoughtWorks Technology Radar</h2>
 
     <div class="chart">
-      <canvas id="techRadar" width="800" height="400" />
+      <canvas id="techRadar" width="600" height="400" />
     </div>
   </div>
 </template>
@@ -106,7 +106,7 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 .chart {
-  width: 800px;
+  width: 600px;
   height: 400px;
   margin: 0 auto;
 }

@@ -33,7 +33,6 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import axios from 'axios';
 import OpenClosedIssues from './GithubOpenClosedIssues.vue';
 import Age from './GithubAge.vue';
 import Stars from './GithubStars.vue';
@@ -96,14 +95,15 @@ export default Vue.extend({
 });
 </script>
 
-<style scoped lang="scss">
+<style scoped lang="postcss">
 .chart-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 .chart {
-  width: 400px;
-  height: 400px;
-  margin: 0 auto;
+  width: 350px;
+  height: 350px;
+  @apply mx-3 mb-2;
 }
 </style>
