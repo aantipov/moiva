@@ -5,15 +5,19 @@
         <VSwitch
           :key="app"
           v-model="appsMap[app]"
+          class="mb-1"
           :disabled="appsMap[app] && enabledApps.length === 1"
           >{{ app }}</VSwitch
         >
       </template>
     </div>
 
-    <Github class="mt-10" :apps="enabledApps" />
-    <Npm class="mt-10" :apps="enabledApps" />
-    <TechRadar class="mt-10" :apps="enabledApps" />
+    <Github class="mt-0" :apps="enabledApps" />
+
+    <div class="flex flex-wrap justify-around">
+      <Npm class="mt-0" :apps="enabledApps" />
+      <TechRadar class="mt-0" :apps="enabledApps" />
+    </div>
   </div>
 </template>
 

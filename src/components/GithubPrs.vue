@@ -1,6 +1,6 @@
 <template>
   <div>
-    <canvas id="prsCount" width="400" height="400"></canvas>
+    <canvas id="prsCount" width="350" height="350"></canvas>
   </div>
 </template>
 
@@ -90,15 +90,3 @@ export default Vue.extend({
   },
 });
 </script>
-
-<style scoped lang="scss">
-.chart-list {
-  display: flex;
-  flex-wrap: wrap;
-}
-.chart {
-  width: 400px;
-  height: 400px;
-  margin: 20px auto;
-}
-</style>

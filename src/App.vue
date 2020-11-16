@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="mt-6 mx-10">
     <h1>JsStats - use numbers to decide which library to use!</h1>
 
     <p class="text-center p-lead">
@@ -8,7 +8,7 @@
       supported libraries is limited
     </p>
 
-    <Main />
+    <Main class="mt-8" />
 
     <div class="footer">
       <div class="text-center p">
@@ -46,8 +46,6 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 #app {
-  max-width: 1700px;
-  margin: 40px auto 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
