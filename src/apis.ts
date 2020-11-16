@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { appsConfigsMap } from '../apps-config';
 
 const npmCache = new Map();
 const ghCache = new Map();
@@ -24,12 +23,10 @@ export function fetchNpmData(app: string): Promise<NpmDownloadT[]> {
     return Promise.resolve(npmCache.get(app));
   }
 
-  return axios
-    .get(`/api/npm?app=${appsConfigsMap[app].npm.name}`)
-    .then(({ data }) => {
-      npmCache.set(app, data);
-      return data;
-    });
+  return axios.get(`/api/npm?app=${app}`).then(({ data }) => {
+    npmCache.set(app, data);
+    return data;
+  });
 }
 
 export function fetchGithubData(app: string): Promise<RepoT> {

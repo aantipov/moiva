@@ -10,10 +10,9 @@ const years = Array.from(
 );
 
 export default (req: NowRequest, res: NowResponse): void => {
-  const { app } = req.query;
+  const app = config.find((appConfig) => appConfig.name === req.query.app);
 
-  // Check if we have a config for the provided app
-  if (!config.find((appConfig) => appConfig.npm.name === app)) {
+  if (!app) {
     res.status(400).json({ error: 'Wrong app parameter' });
     return;
   }
@@ -21,7 +20,7 @@ export default (req: NowRequest, res: NowResponse): void => {
   const allYearsPromises = years
     .map(
       (year) =>
-        `https://api.npmjs.org/downloads/range/${year}-01-01:${year}-12-31/${app}`
+        `https://api.npmjs.org/downloads/range/${year}-01-01:${year}-12-31/${app.npm.name}`
     )
     .map((url) => axios.get(url).then(({ data }) => data.downloads));
 
