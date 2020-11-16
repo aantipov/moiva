@@ -35,6 +35,9 @@ export const COLOR_PURPLE = '#9f7aea';
 const COLOR_ORANGE_SVELTE = '#ff3e00';
 const COLOR_BLUE_REACT = '#3ed6ff';
 const COLOR_GREEN_VUE = '#42b983';
+const COLOR_YELLOW = '#FDD835';
+const COLOR_BROWN = '#6D4C41';
+const COLOR_BLACK = '#000000';
 
 export const TRADAR_LEVELS: TRadarLevel[] = [
   'No Data',
@@ -86,7 +89,7 @@ const appsConfigs: AppConfigT[] = [
   },
   {
     name: 'Ember.js',
-    color: COLOR_PURPLE,
+    color: COLOR_YELLOW,
     github: { name: 'ember.js', owner: 'emberjs' },
     npm: { name: 'ember-source' },
     tradar: {
@@ -96,6 +99,43 @@ const appsConfigs: AppConfigT[] = [
         '2016-04': TRIAL,
         '2016-11': ADOPT,
         '2017-03': ADOPT,
+      },
+    },
+  },
+  {
+    name: 'Redux',
+    color: COLOR_PURPLE,
+    github: { name: 'redux', owner: 'reduxjs' },
+    npm: { name: 'redux' },
+    tradar: {
+      data: {
+        '2016-04': TRIAL,
+        '2016-11': ADOPT,
+        '2017-03': ADOPT,
+        '2020-10': TRIAL,
+      },
+    },
+  },
+  {
+    name: 'Recoil',
+    color: COLOR_BROWN,
+    github: { name: 'Recoil', owner: 'facebookexperimental' },
+    npm: { name: 'recoil' },
+    tradar: {
+      data: {
+        '2020-10': ASSESS,
+      },
+    },
+  },
+  {
+    name: 'XState',
+    color: COLOR_BLACK,
+    github: { name: 'xstate', owner: 'davidkpiano' },
+    npm: { name: 'xstate' },
+    tradar: {
+      data: {
+        '2020-05': ASSESS,
+        '2020-10': TRIAL,
       },
     },
   },

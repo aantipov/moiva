@@ -46,7 +46,7 @@ export default Vue.extend({
         backgroundColor: appsConfigsMap[app].color,
         borderColor: appsConfigsMap[app].color,
         spanGaps: true,
-        borderWidth: 2,
+        borderWidth: 3,
         lineTension: 0,
         pointStyle: 'triangle',
         radius: 8,
