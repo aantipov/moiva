@@ -24,7 +24,7 @@ import Npm from './Npm.vue';
 import Github from './Github.vue';
 import TechRadar from './TechRadar.vue';
 import VSwitch from './Switch.vue';
-import config from '../../apps-config';
+import config, { appsConfigsMap } from '../../apps-config';
 
 // @ts-ignore
 Chart.defaults.global.title.fontSize = 14;
@@ -49,7 +49,7 @@ export default Vue.extend({
     return {
       apps,
       appsMap: apps.reduce((acc, app) => {
-        acc[app] = true;
+        acc[app] = appsConfigsMap[app].load;
         return acc;
       }, {} as Record<string, boolean>),
     };
