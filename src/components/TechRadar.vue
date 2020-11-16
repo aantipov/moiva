@@ -25,7 +25,7 @@ export default Vue.extend({
 
   data() {
     return {
-      chart: null as null | Chart,
+      chart: (null as unknown) as Chart,
     };
   },
 
@@ -66,7 +66,7 @@ export default Vue.extend({
 
   methods: {
     updateChart(): void {
-      const chart = this.chart as Chart;
+      const chart = this.chart;
 
       chart.data = {
         labels: this.uniqDates,
