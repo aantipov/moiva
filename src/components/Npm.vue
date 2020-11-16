@@ -16,15 +16,9 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import axios from 'axios';
 import NpmChart from './NpmChart.vue';
 // @ts-ignore
-import { appsConfigsMap } from '../../apps-config';
-
-export interface NpmDownloadT {
-  downloads: number;
-  month: string;
-}
+import { fetchNpmData, NpmDownloadT } from '../apis';
 
 export default Vue.extend({
   name: 'Npm',
@@ -63,13 +57,7 @@ export default Vue.extend({
       this.isLoading = true;
       this.isError = false;
 
-      Promise.all(
-        this.apps.map((app) =>
-          axios
-            .get(`/api/npm?app=${appsConfigsMap[app].npm.name}`)
-            .then((res) => res.data)
-        )
-      )
+      Promise.all(this.apps.map((app) => fetchNpmData(app)))
         .then((data) => {
           this.downloads = data;
           this.isError = false;

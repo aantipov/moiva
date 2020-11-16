@@ -7,7 +7,8 @@
 <script lang="ts">
 import Vue from 'vue';
 import Chart from 'chart.js';
-import { NpmDownloadT } from './Npm.vue';
+// @ts-ignore
+import { NpmDownloadT } from '../apis';
 // @ts-ignore
 import { appsConfigsMap, numbersFormatter } from '../../apps-config';
 
