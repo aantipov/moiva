@@ -2,7 +2,12 @@
   <div>
     <h2>NPM downloads</h2>
 
-    <div class="chart">
+    <div v-if="isError" class="text-center text-red-700">
+      Something went wrong while loading data. Try to reload the page or come
+      later
+    </div>
+
+    <div v-else class="chart">
       <div v-if="isLoading" class="p text-center">Loading...</div>
       <NpmChart v-else :apps="apps" :downloads="downloads" />
     </div>
@@ -38,6 +43,7 @@ export default Vue.extend({
   data() {
     return {
       isLoading: true,
+      isError: false,
       downloads: [] as Array<Array<NpmDownloadT>>,
     };
   },
@@ -55,16 +61,24 @@ export default Vue.extend({
   methods: {
     loadData(): void {
       this.isLoading = true;
+      this.isError = false;
+
       Promise.all(
         this.apps.map((app) =>
           axios
             .get(`/api/npm?app=${appsConfigsMap[app].npm.name}`)
             .then((res) => res.data)
         )
-      ).then((data) => {
-        this.downloads = data;
-        this.isLoading = false;
-      });
+      )
+        .then((data) => {
+          this.downloads = data;
+          this.isError = false;
+          this.isLoading = false;
+        })
+        .catch(() => {
+          this.isError = true;
+          this.isLoading = false;
+        });
     },
   },
 });
