@@ -38,16 +38,8 @@ import OpenClosedIssues from './GithubOpenClosedIssues.vue';
 import Age from './GithubAge.vue';
 import Stars from './GithubStars.vue';
 import Prs from './GithubPrs.vue';
-
-export interface RepoT {
-  stars: number;
-  createdAt: string;
-  openPRs: { totalCount: number };
-  closedPRs: { totalCount: number };
-  mergedPRs: { totalCount: number };
-  closedIssues: { totalCount: number };
-  openIssues: { totalCount: number };
-}
+// @ts-ignore
+import { fetchGithubData, RepoT } from '../apis';
 
 export default Vue.extend({
   name: 'Github',
@@ -89,11 +81,7 @@ export default Vue.extend({
       this.isLoading = true;
       this.isError = false;
 
-      Promise.all(
-        this.apps.map((app) =>
-          axios.get(`/api/gh?app=${app}`).then((res) => res.data)
-        )
-      )
+      Promise.all(this.apps.map((app) => fetchGithubData(app)))
         .then((data) => {
           this.repos = data;
           this.isError = false;

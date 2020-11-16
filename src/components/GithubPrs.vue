@@ -7,7 +7,8 @@
 <script lang="ts">
 import Vue from 'vue';
 import Chart from 'chart.js';
-import { RepoT } from './Github.vue';
+// @ts-ignore
+import { RepoT } from '../apis';
 // @ts-ignore
 import {
   COLOR_GREEN,
