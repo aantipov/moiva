@@ -66,16 +66,14 @@ export default Vue.extend({
 
   methods: {
     updateChart(): void {
-      const chart = this.chart;
-
-      chart.data = {
+      this.chart.data = {
         labels: this.uniqDates,
         xLabels: this.uniqDates,
         yLabels: TRADAR_LEVELS,
         datasets: this.chartDatasets,
       } as ChartData;
 
-      chart.update();
+      this.chart.update();
     },
 
     initChart(): void {
