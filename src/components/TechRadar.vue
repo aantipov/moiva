@@ -48,8 +48,8 @@ export default Vue.extend({
         spanGaps: true,
         borderWidth: 3,
         lineTension: 0,
-        pointStyle: 'triangle',
-        radius: 8,
+        radius: 6,
+        pointHoverRadius: 10,
       }));
     },
   },
