@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="mt-6 mx-10">
-    <h1>JsStats - use numbers to decide which library to use!</h1>
+    <h1>JsStats - compare javascript libraries with ease!</h1>
 
     <p class="text-center p-lead">
       This project is a
