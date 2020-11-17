@@ -41,7 +41,9 @@ export default Vue.extend({
           data: downloads[key].map(({ downloads }) => downloads),
           backgroundColor: appsConfigsMap[app].color,
           borderColor: appsConfigsMap[app].color,
-          borderWidth: 2,
+          borderWidth: 4,
+          pointRadius: 0,
+          pointHoverRadius: 6,
         })),
       },
 
