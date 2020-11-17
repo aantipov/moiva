@@ -4,8 +4,8 @@
 
     <p class="text-center p-lead">
       This project is a
-      <strong class="font-medium">work in progress</strong>. The number of
-      supported libraries is limited
+      <strong class="font-medium">work in progress</strong>. More charts and
+      supported libraries to come!
     </p>
 
     <Main class="mt-8" />
