@@ -50,6 +50,7 @@ export default Vue.extend({
       options: {
         tooltips: {
           mode: 'index',
+          position: 'nearest',
           intersect: false,
         },
         scales: {
