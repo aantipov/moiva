@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <canvas id="createdAt" width="350" height="350"></canvas>
-  </div>
+  <canvas id="createdAt"></canvas>
 </template>
 
 <script lang="ts">
@@ -54,6 +52,7 @@ export default Vue.extend({
         legend: {
           display: false,
         },
+        maintainAspectRatio: false,
         title: {
           display: true,
           text: 'Age, years',

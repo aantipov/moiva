@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <canvas id="npmDownloads" width="800" height="400"></canvas>
+  <div class="relative w-full h-full">
+    <canvas id="npmDownloads"></canvas>
   </div>
 </template>
 
@@ -53,6 +53,7 @@ export default Vue.extend({
           position: 'nearest',
           intersect: false,
         },
+        maintainAspectRatio: false,
         scales: {
           yAxes: [
             {

@@ -7,23 +7,23 @@
       later
     </div>
 
-    <div v-else class="chart-list">
-      <div class="chart">
+    <div v-else class="grid grid-cols-12 gap-4">
+      <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
         <div v-if="isLoading" class="p text-center">Loading...</div>
         <OpenClosedIssues v-else :apps="apps" :repos="repos" />
       </div>
 
-      <div class="chart">
+      <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
         <div v-if="isLoading" class="p text-center">Loading...</div>
         <Age v-else :apps="apps" :repos="repos" />
       </div>
 
-      <div class="chart">
+      <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
         <div v-if="isLoading" class="p text-center">Loading...</div>
         <Stars v-else :apps="apps" :repos="repos" />
       </div>
 
-      <div class="chart">
+      <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
         <div v-if="isLoading" class="p text-center">Loading...</div>
         <Prs v-else :apps="apps" :repos="repos" />
       </div>
@@ -96,14 +96,7 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="postcss">
-.chart-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
 .chart {
-  width: 350px;
   height: 350px;
-  @apply mx-3 mb-2;
 }
 </style>
