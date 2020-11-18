@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h2>ThoughtWorks Technology Radar</h2>
+    <h2>ThoughtWorks TechRadar</h2>
 
-    <div class="chart">
-      <canvas id="techRadar" width="600" height="400" />
+    <div class="chart relative">
+      <canvas id="techRadar" />
     </div>
   </div>
 </template>
@@ -95,6 +95,7 @@ export default Vue.extend({
             position: 'nearest',
             intersect: false,
           },
+          maintainAspectRatio: false,
           scales: {
             yAxes: [{ type: 'category', ticks: { reverse: true } }],
           },
@@ -107,8 +108,6 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 .chart {
-  width: 600px;
   height: 400px;
-  margin: 0 auto;
 }
 </style>

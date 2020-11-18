@@ -14,9 +14,9 @@
 
     <Github class="mt-0" :apps="enabledApps" />
 
-    <div class="flex flex-wrap justify-around">
-      <Npm class="mt-0" :apps="enabledApps" />
-      <TechRadar class="mt-0" :apps="enabledApps" />
+    <div class="grid grid-cols-12 gap-4">
+      <Npm :apps="enabledApps" class="col-span-12 xl:col-span-8" />
+      <TechRadar :apps="enabledApps" class="col-span-12 xl:col-span-4" />
     </div>
   </div>
 </template>

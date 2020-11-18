@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <canvas id="starsCount" width="350" height="350"></canvas>
-  </div>
+  <canvas id="starsCount"></canvas>
 </template>
 
 <script lang="ts">
@@ -48,6 +46,7 @@ export default Vue.extend({
         legend: {
           display: false,
         },
+        maintainAspectRatio: false,
         title: {
           display: true,
           text: 'Stars',

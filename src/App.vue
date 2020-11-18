@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="mt-6 mx-10">
+  <div id="app" class="container mx-auto">
     <h1>JsStats - compare javascript libraries with ease!</h1>
 
     <p class="text-center p-lead">
@@ -50,7 +50,6 @@ export default Vue.extend({
   -moz-osx-font-smoothing: grayscale;
 }
 .footer {
-  width: 800px;
   margin: 60px auto 30px;
 }
 </style>
