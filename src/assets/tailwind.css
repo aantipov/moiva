@@ -13,7 +13,7 @@
   }
   @screen md {
     h1 {
-      @apply text-5xl;
+      @apply text-5xl mt-4;
     }
     h2 {
       @apply text-4xl;
