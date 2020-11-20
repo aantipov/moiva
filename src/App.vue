@@ -1,32 +1,34 @@
 <template>
   <div id="app" class="container mx-auto">
-    <h1>JsStats - compare javascript libraries with ease!</h1>
+    <div class="mx-4 sm:mx-0">
+      <h1>JsStats - compare javascript libraries with ease!</h1>
 
-    <p class="text-center p-lead">
-      This project is a
-      <strong class="font-medium">work in progress</strong>. More charts and
-      supported libraries to come!
-    </p>
+      <p class="text-center p-lead">
+        This project is a
+        <strong class="font-medium">work in progress</strong>. More charts and
+        supported libraries to come!
+      </p>
 
-    <Main class="mt-8" />
+      <Main class="mt-8" />
 
-    <div class="footer">
-      <div class="text-center p">
-        If you notice any issues or have a feature request, please open an issue
-        on
-        <a
-          href="https://github.com/aantipov/jsstats-issues"
-          target="_blank"
-          rel="noopener"
-          >Github</a
-        >!
-      </div>
-      <hr />
-      <div class="text-center mt-4 p">
-        Made by
-        <a href="https://alexei.me" target="_blank" rel="noopener"
-          >Alexey Antipov</a
-        >
+      <div class="footer">
+        <div class="text-center p">
+          If you notice any issues or have a feature request, please open an
+          issue on
+          <a
+            href="https://github.com/aantipov/jsstats-issues"
+            target="_blank"
+            rel="noopener"
+            >Github</a
+          >!
+        </div>
+        <hr />
+        <div class="text-center mt-4 p">
+          Made by
+          <a href="https://alexei.me" target="_blank" rel="noopener"
+            >Alexey Antipov</a
+          >
+        </div>
       </div>
     </div>
   </div>
