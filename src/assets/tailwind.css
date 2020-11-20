@@ -6,14 +6,14 @@
 
 @layer components {
   h1 {
-    @apply text-center text-3xl font-normal leading-normal mt-0 mb-2 text-gray-800;
+    @apply text-center text-3xl font-normal leading-normal mt-4 mb-2 text-gray-800;
   }
   h2 {
     @apply text-center text-2xl font-normal leading-normal mt-5 mb-2 text-gray-800;
   }
   @screen md {
     h1 {
-      @apply text-5xl mt-4;
+      @apply text-5xl;
     }
     h2 {
       @apply text-4xl;
