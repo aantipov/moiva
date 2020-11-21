@@ -4,6 +4,7 @@
       <v-select
         v-model="selectedApps"
         multiple
+        placeholder="Add libraries to comparison"
         :close-on-select="false"
         :options="apps"
         label="name"
@@ -23,19 +24,17 @@
     </div>
 
     <div v-if="selectedApps.length">
-      <Github v-if="false" class="mt-0" :apps="selectedApps" />
+      <Github class="mt-0" :apps="selectedApps" />
 
       <div class="grid grid-cols-12 gap-4">
-        <Npm
-          v-if="false"
-          :apps="selectedApps"
-          class="col-span-12 xl:col-span-8"
-        />
+        <Npm :apps="selectedApps" class="col-span-12 xl:col-span-8" />
         <TechRadar :apps="selectedApps" class="col-span-12 xl:col-span-4" />
       </div>
     </div>
 
-    <div v-else>Select a library</div>
+    <div v-else class="p-lead text-center my-16">
+      Select libraries you wish to compare
+    </div>
   </div>
 </template>
 
