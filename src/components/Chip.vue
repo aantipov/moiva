@@ -1,6 +1,6 @@
 <template>
   <div
-    class="inline-flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-gray-100 bg-gray-700 border border-gray-700"
+    class="inline-flex justify-center items-center mx-1 font-medium py-1 px-2 bg-white rounded-full text-gray-100 bg-gray-700 border border-gray-700"
   >
     <div class="text-base font-normal leading-none max-w-full flex-initial">
       <slot></slot>

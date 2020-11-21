@@ -119,6 +119,7 @@ export default Vue.extend({
 
 <style lang="postcss">
 .vs__dropdown-toggle {
-  height: 40px;
+  height: auto;
+  @apply py-1;
 }
 </style>
