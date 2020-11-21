@@ -3,9 +3,7 @@ module.exports = {
     // removeDeprecatedGapUtilities: true,
     // purgeLayersByDefault: true,
   },
-  purge: {
-    // enabled: false,
-  },
+  purge: [],
   theme: {
     extend: {},
   },
