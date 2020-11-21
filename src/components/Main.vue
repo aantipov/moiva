@@ -50,7 +50,7 @@ import configApps, {
   LibraryCategoryT,
 } from '../../apps-config';
 import vSelect from 'vue-select';
-import 'vue-select/dist/vue-select.css';
+import 'vue-select/src/scss/vue-select.scss';
 
 Vue.component('v-select', vSelect);
 
