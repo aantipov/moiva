@@ -13,10 +13,11 @@
         :filter-by="filterOption"
       >
         <template #selected-option-container="{ option, deselect }">
-          <div
-            class="vs__selected cursor-pointer"
-            @click.prevent="deselect(option)"
-          >
+          <Chip @close="deselect(option)">{{ option.name }}</Chip>
+        </template>
+
+        <template #option="option">
+          <div :class="{ 'font-bold': isAppSelected(option.name) }">
             {{ option.name }}
           </div>
         </template>
@@ -51,6 +52,7 @@ import configApps, {
 } from '../../apps-config';
 import VSelect from 'vue-select';
 import 'vue-select/src/scss/vue-select.scss';
+import Chip from './Chip.vue';
 
 type OptionT =
   | AppConfigT
@@ -91,6 +93,7 @@ export default Vue.extend({
     Npm,
     TechRadar,
     VSelect,
+    Chip,
   },
   data() {
     return {
@@ -107,6 +110,15 @@ export default Vue.extend({
       }
       return label.toLowerCase().indexOf(search.toLowerCase()) > -1;
     },
+    isAppSelected(app: string): boolean {
+      return this.selectedApps.indexOf(app) > -1;
+    },
   },
 });
 </script>
+
+<style lang="postcss">
+.vs__dropdown-toggle {
+  height: 40px;
+}
+</style>
