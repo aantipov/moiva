@@ -1,11 +1,11 @@
 <template>
   <div
-    class="inline-flex justify-center items-center mx-1 font-medium py-1 px-2 bg-white rounded-full text-gray-100 bg-gray-700 border border-gray-700"
+    class="inline-flex items-center justify-center px-2 py-1 m-1 font-medium text-gray-100 bg-white bg-gray-700 border border-gray-700 rounded-full"
   >
-    <div class="text-base font-normal leading-none max-w-full flex-initial">
+    <div class="flex-initial max-w-full text-base font-normal leading-none">
       <slot></slot>
     </div>
-    <div class="flex flex-auto flex-row-reverse">
+    <div class="flex flex-row-reverse flex-auto">
       <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -17,7 +17,7 @@
           stroke-width="2"
           stroke-linecap="round"
           stroke-linejoin="round"
-          class="feather feather-x cursor-pointer hover:text-gray-400 rounded-full w-4 h-4 ml-2"
+          class="w-5 h-5 ml-2 rounded-full cursor-pointer feather feather-x hover:text-gray-400"
           @click="$emit('close')"
         >
           <line x1="18" y1="6" x2="6" y2="18"></line>

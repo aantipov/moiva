@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="xl:w-2/3 text-center mt-5 mb-5 mx-auto">
+    <div class="mx-auto mt-5 mb-5 text-center xl:w-2/3">
       <v-select
         v-model="selectedApps"
         multiple
@@ -33,7 +33,7 @@
       </div>
     </div>
 
-    <div v-else class="p-lead text-center my-16">
+    <div v-else class="my-16 text-center p-lead">
       Select libraries you wish to compare
     </div>
   </div>
@@ -121,5 +121,8 @@ export default Vue.extend({
 .vs__dropdown-toggle {
   height: auto;
   @apply py-1;
+}
+.vs__open-indicator {
+  @apply mr-1;
 }
 </style>
