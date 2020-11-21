@@ -1,9 +1,11 @@
-type TRadarLevel = 'Hold' | 'Adopt' | 'Trial' | 'Assess' | 'No Data';
+type TRadarLevelT = 'Hold' | 'Adopt' | 'Trial' | 'Assess' | 'No Data';
+type LibraryTypeT = 'Framework' | 'StateManagement';
 
 export interface AppConfigT {
   name: string;
   color: string;
-  load: boolean;
+  selected: boolean;
+  type: LibraryTypeT;
   github: {
     name: string;
     owner: string;
@@ -12,7 +14,7 @@ export interface AppConfigT {
     name: string;
   };
   tradar: {
-    data: Partial<Record<string, TRadarLevel>>;
+    data: Partial<Record<string, TRadarLevelT>>;
   };
 }
 
@@ -41,7 +43,7 @@ const COLOR_BROWN = '#6D4C41';
 const COLOR_BLACK = '#000000';
 const COLOR_RED_ANGULAR = '#C62828';
 
-export const TRADAR_LEVELS: TRadarLevel[] = [
+export const TRADAR_LEVELS: TRadarLevelT[] = [
   'No Data',
   'Assess',
   'Trial',
@@ -53,7 +55,8 @@ const appsConfigs: AppConfigT[] = [
   {
     name: 'Vue.js',
     color: COLOR_GREEN_VUE,
-    load: true,
+    selected: true,
+    type: 'Framework',
     github: { name: 'vue', owner: 'vuejs' },
     npm: { name: 'vue' },
     tradar: {
@@ -67,7 +70,8 @@ const appsConfigs: AppConfigT[] = [
   {
     name: 'React',
     color: COLOR_BLUE_REACT,
-    load: true,
+    selected: true,
+    type: 'Framework',
     github: { name: 'react', owner: 'facebook' },
     npm: { name: 'react' },
     tradar: {
@@ -83,7 +87,8 @@ const appsConfigs: AppConfigT[] = [
   {
     name: 'Svelte',
     color: COLOR_ORANGE_SVELTE,
-    load: true,
+    selected: true,
+    type: 'Framework',
     github: { name: 'svelte', owner: 'sveltejs' },
     npm: { name: 'svelte' },
     tradar: {
@@ -95,7 +100,8 @@ const appsConfigs: AppConfigT[] = [
   {
     name: 'Angular',
     color: COLOR_RED_ANGULAR,
-    load: true,
+    selected: true,
+    type: 'Framework',
     github: { name: 'angular', owner: 'angular' },
     npm: { name: '@angular/core' },
     tradar: {
@@ -108,7 +114,8 @@ const appsConfigs: AppConfigT[] = [
   {
     name: 'Ember.js',
     color: COLOR_YELLOW,
-    load: false,
+    selected: false,
+    type: 'Framework',
     github: { name: 'ember.js', owner: 'emberjs' },
     npm: { name: 'ember-source' },
     tradar: {
@@ -124,7 +131,8 @@ const appsConfigs: AppConfigT[] = [
   {
     name: 'Redux',
     color: COLOR_PURPLE,
-    load: false,
+    selected: false,
+    type: 'StateManagement',
     github: { name: 'redux', owner: 'reduxjs' },
     npm: { name: 'redux' },
     tradar: {
@@ -139,7 +147,8 @@ const appsConfigs: AppConfigT[] = [
   {
     name: 'Recoil',
     color: COLOR_BROWN,
-    load: false,
+    selected: false,
+    type: 'StateManagement',
     github: { name: 'Recoil', owner: 'facebookexperimental' },
     npm: { name: 'recoil' },
     tradar: {
@@ -151,7 +160,8 @@ const appsConfigs: AppConfigT[] = [
   {
     name: 'XState',
     color: COLOR_BLACK,
-    load: false,
+    selected: false,
+    type: 'StateManagement',
     github: { name: 'xstate', owner: 'davidkpiano' },
     npm: { name: 'xstate' },
     tradar: {
