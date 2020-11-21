@@ -1,10 +1,6 @@
 module.exports = {
   plugins: {
-    tailwindcss: {
-      purge: {
-        enabled: false,
-      },
-    },
+    tailwindcss: {},
     // 'vue-cli-plugin-tailwind/purgecss': {
     //   enabled: false,
     //   purge: {
@@ -12,8 +8,5 @@ module.exports = {
     //   },
     // },
     autoprefixer: {},
-  },
-  purge: {
-    enabled: false,
   },
 };
