@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="text-center mt-5 mb-5">
+    <div class="xl:w-2/3 text-center mt-5 mb-5 mx-auto">
       <v-select
         v-model="selectedApps"
         multiple
@@ -49,10 +49,8 @@ import configApps, {
   categoryMap,
   LibraryCategoryT,
 } from '../../apps-config';
-import vSelect from 'vue-select';
+import VSelect from 'vue-select';
 import 'vue-select/src/scss/vue-select.scss';
-
-Vue.component('v-select', vSelect);
 
 type OptionT =
   | AppConfigT
@@ -92,6 +90,7 @@ export default Vue.extend({
     Github,
     Npm,
     TechRadar,
+    VSelect,
   },
   data() {
     return {
