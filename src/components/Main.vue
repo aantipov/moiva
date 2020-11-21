@@ -6,6 +6,7 @@
         multiple
         placeholder="Add libraries to comparison"
         :close-on-select="false"
+        :clear-search-on-select="false"
         :options="apps"
         label="name"
         :reduce="(app) => app.name"
@@ -17,7 +18,10 @@
         </template>
 
         <template #option="option">
-          <div :class="{ 'font-bold': isAppSelected(option.name) }">
+          <div
+            class="option"
+            :class="{ 'option--category': option.isCategory }"
+          >
             {{ option.name }}
           </div>
         </template>
@@ -124,5 +128,23 @@ export default Vue.extend({
 }
 .vs__open-indicator {
   @apply mr-1;
+}
+.vs__dropdown-option {
+  @apply h-12 p-0;
+}
+.vs__dropdown-option .option {
+  @apply h-full px-3 flex items-center;
+}
+.vs__dropdown-option .option--category {
+  @apply uppercase;
+}
+.vs__dropdown-option--selected {
+  @apply font-bold bg-gray-200;
+}
+.vs__dropdown-option--selected.vs__dropdown-option--highlight {
+  @apply bg-red-400;
+}
+.vs__dropdown-option--highlight {
+  @apply font-bold bg-green-400;
 }
 </style>

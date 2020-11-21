@@ -19,8 +19,8 @@ export interface AppConfigT {
 }
 
 export const categoryMap: Record<LibraryCategoryT, string> = {
-  Framework: 'Frameworks',
-  StateManagement: 'State Management',
+  Framework: '# Frameworks',
+  StateManagement: '# State Management',
 };
 
 export const numbersFormatter = new Intl.NumberFormat('en-US', {
@@ -105,7 +105,7 @@ const appsConfigs: AppConfigT[] = [
   {
     name: 'Angular',
     color: COLOR_RED_ANGULAR,
-    selected: true,
+    selected: false,
     category: 'Framework',
     github: { name: 'angular', owner: 'angular' },
     npm: { name: '@angular/core' },
