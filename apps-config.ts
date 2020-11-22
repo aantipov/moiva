@@ -1,5 +1,5 @@
 type TRadarLevelT = 'Hold' | 'Adopt' | 'Trial' | 'Assess' | 'No Data';
-export type LibraryCategoryT = 'Framework' | 'StateManagement';
+export type LibraryCategoryT = 'Framework' | 'StateManagement' | 'Testing';
 
 export interface AppConfigT {
   name: string;
@@ -21,6 +21,7 @@ export interface AppConfigT {
 export const categoryMap: Record<LibraryCategoryT, string> = {
   Framework: '# Frameworks',
   StateManagement: '# State Management',
+  Testing: '# Testing',
 };
 
 export const numbersFormatter = new Intl.NumberFormat('en-US', {
@@ -28,12 +29,13 @@ export const numbersFormatter = new Intl.NumberFormat('en-US', {
   notation: 'compact',
 });
 
-// const HOLD: TRadarLevel = 'Hold';
-const ADOPT = 'Adopt';
-const TRIAL = 'Trial';
-const ASSESS = 'Assess';
+const HOLD: TRadarLevelT = 'Hold';
+const ADOPT: TRadarLevelT = 'Adopt';
+const TRIAL: TRadarLevelT = 'Trial';
+const ASSESS: TRadarLevelT = 'Assess';
 // const NO_DATA = 'No Data';
 
+// https://material.io/design/color/the-color-system.html#tools-for-picking-colors
 export const COLOR_GREEN = '#48bb78';
 export const COLOR_GRAY = '#a0aec0';
 export const COLOR_BLUE = '#4299e1';
@@ -47,6 +49,8 @@ const COLOR_YELLOW = '#FDD835';
 const COLOR_BROWN = '#6D4C41';
 const COLOR_BLACK = '#000000';
 const COLOR_RED_ANGULAR = '#C62828';
+const COLOR_REACT_TESTIING = '#5C6BC0'; // Indigo 400
+const COLOR_ENZYME = '#D4E157'; // Lime 400
 
 export const TRADAR_LEVELS: TRadarLevelT[] = [
   'No Data',
@@ -176,7 +180,39 @@ const appsConfigs: AppConfigT[] = [
       },
     },
   },
-] as AppConfigT[];
+  {
+    name: 'React Testing Library',
+    color: COLOR_REACT_TESTIING,
+    selected: false,
+    category: 'Testing',
+    github: { name: 'react-testing-library', owner: 'testing-library' },
+    npm: { name: '@testing-library/react' },
+    tradar: {
+      data: {
+        '2019-04': ASSESS,
+        '2019-11': TRIAL,
+        '2020-05': ADOPT,
+      },
+    },
+  },
+  {
+    name: 'Enzyme',
+    color: COLOR_ENZYME,
+    selected: false,
+    category: 'Testing',
+    github: { name: 'enzyme', owner: 'enzymejs' },
+    npm: { name: 'enzyme' },
+    tradar: {
+      data: {
+        '2016-11': TRIAL,
+        '2017-03': TRIAL,
+        '2018-05': ADOPT,
+        '2019-11': HOLD,
+        '2020-05': HOLD,
+      },
+    },
+  },
+];
 
 export default appsConfigs;
 

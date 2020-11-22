@@ -7,7 +7,7 @@
         placeholder="Add libraries to comparison"
         :close-on-select="false"
         :clear-search-on-select="false"
-        :options="apps"
+        :options="appsWithCategories"
         label="name"
         :reduce="(app) => app.name"
         :selectable="(option) => !option.isCategory"
@@ -74,19 +74,20 @@ Chart.defaults.global.title.fontFamily =
 Chart.defaults.global.defaultFontFamily =
   'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
 
-const apps: OptionT[] = [...configApps];
-let category = '';
+const appsWithCategories: OptionT[] = [...configApps];
 
-// Insert Categories in front
-(apps as AppConfigT[]).forEach((app, i) => {
+// Add categories to appsWithCategories
+let category = '';
+let cats = 0;
+configApps.forEach((app, i) => {
   if (app.category !== category) {
     category = app.category;
 
-    apps.splice(i, 0, ({
+    appsWithCategories.splice(cats + i, 0, {
       name: categoryMap[category as LibraryCategoryT],
-      category: category,
       isCategory: true,
-    } as unknown) as AppConfigT);
+    });
+    cats++;
   }
 });
 
@@ -101,8 +102,8 @@ export default Vue.extend({
   },
   data() {
     return {
-      apps,
-      selectedApps: (apps as AppConfigT[])
+      appsWithCategories,
+      selectedApps: configApps
         .filter((app) => app.selected)
         .map((app) => app.name),
     };

@@ -23,7 +23,7 @@
           >!
         </div>
         <hr />
-        <div class="text-center mt-4 p">
+        <div class="mt-4 text-center p">
           Made by
           <a href="https://alexei.me" target="_blank" rel="noopener"
             >Alexey Antipov</a
