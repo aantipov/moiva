@@ -37,6 +37,16 @@
 <script lang="ts">
 import Vue from 'vue';
 import Main from './components/Main.vue';
+import Chart from 'chart.js';
+
+// @ts-ignore
+Chart.defaults.global.title.fontSize = 14;
+Chart.defaults.global.defaultFontSize = 14;
+// @ts-ignore
+Chart.defaults.global.title.fontFamily =
+  'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
+Chart.defaults.global.defaultFontFamily =
+  'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
 
 export default Vue.extend({
   name: 'App',

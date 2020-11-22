@@ -45,7 +45,6 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import Chart from 'chart.js';
 import Npm from './Npm.vue';
 import Github from './Github.vue';
 import TechRadar from './TechRadar.vue';
@@ -53,6 +52,7 @@ import configApps, {
   AppConfigT,
   categoryMap,
   LibraryCategoryT,
+  appsConfigsMap,
 } from '../../apps-config';
 import VSelect from 'vue-select';
 import 'vue-select/src/scss/vue-select.scss';
@@ -65,18 +65,8 @@ type OptionT =
       isCategory: boolean;
     };
 
-// @ts-ignore
-Chart.defaults.global.title.fontSize = 14;
-Chart.defaults.global.defaultFontSize = 14;
-// @ts-ignore
-Chart.defaults.global.title.fontFamily =
-  'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
-Chart.defaults.global.defaultFontFamily =
-  'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
-
+// Define options list - apps + categories
 const appsWithCategories: OptionT[] = [...configApps];
-
-// Add categories to appsWithCategories
 let category = '';
 let cats = 0;
 configApps.forEach((app, i) => {
@@ -91,6 +81,47 @@ configApps.forEach((app, i) => {
   }
 });
 
+// Define a default list of apps and fix the url if wrong apps are passed
+const Url = new URL(window.location.href);
+const appsUrlParam = Url.searchParams.get('apps');
+const appsFromUrl = appsUrlParam?.split('--') || [];
+const appsFromUrlValidated = appsFromUrl.filter(
+  (urlApp) => !!configApps.find((app) => app.urlname === urlApp)
+);
+let defaultSelectedUrlApps = configApps
+  .filter((app) => app.selected)
+  .map((app) => app.urlname);
+
+// Make sure the url is valid - update it if not empty
+if (!appsFromUrlValidated.length) {
+  Url.searchParams.delete('apps');
+  window.history.replaceState(null, '', Url.href);
+} else {
+  Url.searchParams.set('apps', appsFromUrlValidated.join('--'));
+  window.history.replaceState(null, '', Url.href);
+  defaultSelectedUrlApps = appsFromUrlValidated;
+}
+
+// @ts-ignore
+const selectedApps = defaultSelectedUrlApps.map(
+  (urlApp) =>
+    (configApps.find((app) => app.urlname === urlApp) as AppConfigT).name
+);
+
+function updateUrl(selectedApps: string[]): void {
+  if (!selectedApps.length) {
+    Url.searchParams.delete('apps');
+    window.history.replaceState(null, '', Url.href);
+    return;
+  }
+
+  const selectedAppsUrlnames = selectedApps.map(
+    (app) => appsConfigsMap[app].urlname
+  );
+  Url.searchParams.set('apps', selectedAppsUrlnames.join('--'));
+  window.history.replaceState(null, '', Url.href);
+}
+
 export default Vue.extend({
   name: 'Main',
   components: {
@@ -103,10 +134,13 @@ export default Vue.extend({
   data() {
     return {
       appsWithCategories,
-      selectedApps: configApps
-        .filter((app) => app.selected)
-        .map((app) => app.name),
+      selectedApps,
     };
+  },
+  watch: {
+    selectedApps(): void {
+      updateUrl(this.selectedApps);
+    },
   },
   methods: {
     filterOption(option: OptionT, label = '', search: string): boolean {

@@ -3,6 +3,7 @@ export type LibraryCategoryT = 'Framework' | 'StateManagement' | 'Testing';
 
 export interface AppConfigT {
   name: string;
+  urlname: string;
   color: string;
   selected: boolean;
   category: LibraryCategoryT;
@@ -61,6 +62,7 @@ export const TRADAR_LEVELS: TRadarLevelT[] = [
 const appsConfigs: AppConfigT[] = [
   {
     name: 'Vue.js',
+    urlname: 'vue',
     color: COLOR_GREEN_VUE,
     selected: true,
     category: 'Framework',
@@ -76,6 +78,7 @@ const appsConfigs: AppConfigT[] = [
   },
   {
     name: 'React',
+    urlname: 'react',
     color: COLOR_BLUE_REACT,
     selected: true,
     category: 'Framework',
@@ -93,6 +96,7 @@ const appsConfigs: AppConfigT[] = [
   },
   {
     name: 'Svelte',
+    urlname: 'svelte',
     color: COLOR_ORANGE_SVELTE,
     selected: true,
     category: 'Framework',
@@ -106,6 +110,7 @@ const appsConfigs: AppConfigT[] = [
   },
   {
     name: 'Angular',
+    urlname: 'angular',
     color: COLOR_RED_ANGULAR,
     selected: false,
     category: 'Framework',
@@ -120,6 +125,7 @@ const appsConfigs: AppConfigT[] = [
   },
   {
     name: 'Ember.js',
+    urlname: 'emberjs',
     color: COLOR_YELLOW,
     selected: false,
     category: 'Framework',
@@ -137,6 +143,7 @@ const appsConfigs: AppConfigT[] = [
   },
   {
     name: 'Redux',
+    urlname: 'redux',
     color: COLOR_PURPLE,
     selected: false,
     category: 'StateManagement',
@@ -153,6 +160,7 @@ const appsConfigs: AppConfigT[] = [
   },
   {
     name: 'Recoil',
+    urlname: 'recoil',
     color: COLOR_BROWN,
     selected: false,
     category: 'StateManagement',
@@ -166,6 +174,7 @@ const appsConfigs: AppConfigT[] = [
   },
   {
     name: 'XState',
+    urlname: 'xstate',
     color: COLOR_BLACK,
     selected: false,
     category: 'StateManagement',
@@ -180,6 +189,7 @@ const appsConfigs: AppConfigT[] = [
   },
   {
     name: 'React Testing Library',
+    urlname: 'react-testing-library',
     color: COLOR_REACT_TESTIING,
     selected: false,
     category: 'Testing',
@@ -195,6 +205,7 @@ const appsConfigs: AppConfigT[] = [
   },
   {
     name: 'Enzyme',
+    urlname: 'enzyme',
     color: COLOR_ENZYME,
     selected: false,
     category: 'Testing',
