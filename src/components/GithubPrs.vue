@@ -68,10 +68,6 @@ export default Vue.extend({
           display: true,
           text: 'PRs, number',
         },
-        tooltips: {
-          mode: 'index',
-          intersect: false,
-        },
         scales: {
           yAxes: [
             {

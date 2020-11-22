@@ -58,10 +58,6 @@ export default Vue.extend({
           display: true,
           text: 'Issues, number',
         },
-        tooltips: {
-          mode: 'index',
-          intersect: false,
-        },
         scales: {
           yAxes: [
             {

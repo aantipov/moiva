@@ -49,6 +49,9 @@ Chart.defaults.global.defaultFontFamily =
   'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
 // @ts-ignore
 Chart.defaults.global.legend.labels.boxWidth = 20;
+Chart.defaults.global.tooltips.mode = 'index';
+Chart.defaults.global.tooltips.position = 'nearest';
+Chart.defaults.global.tooltips.intersect = false;
 
 export default Vue.extend({
   name: 'App',
