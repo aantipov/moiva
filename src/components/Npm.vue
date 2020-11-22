@@ -8,7 +8,7 @@
     </div>
 
     <div v-else class="chart">
-      <div v-if="isLoading" class="p text-center">Loading...</div>
+      <div v-if="isLoading" class="text-center p">Loading...</div>
       <NpmChart v-else :apps="apps" :downloads="downloads" />
     </div>
   </div>
@@ -39,6 +39,7 @@ export default Vue.extend({
       isLoading: true,
       isError: false,
       downloads: [] as Array<Array<NpmDownloadT>>,
+      downloadsPromise: null as null | Promise<unknown>,
     };
   },
 
@@ -57,16 +58,24 @@ export default Vue.extend({
       this.isLoading = true;
       this.isError = false;
 
-      Promise.all(this.apps.map((app) => fetchNpmData(app)))
+      const promise = (this.downloadsPromise = Promise.all(
+        this.apps.map((app) => fetchNpmData(app))
+      )
         .then((data) => {
-          this.downloads = data;
-          this.isError = false;
-          this.isLoading = false;
+          // Do nothing if there is a new request already in place
+          if (this.downloadsPromise === promise) {
+            this.downloads = data;
+            this.isError = false;
+            this.isLoading = false;
+          }
         })
         .catch(() => {
-          this.isError = true;
-          this.isLoading = false;
-        });
+          // Do nothing if there is a new request already in place
+          if (this.downloadsPromise === promise) {
+            this.isError = true;
+            this.isLoading = false;
+          }
+        }));
     },
   },
 });
