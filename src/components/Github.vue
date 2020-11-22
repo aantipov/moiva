@@ -9,22 +9,22 @@
 
     <div v-else class="grid grid-cols-12 gap-4">
       <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
-        <div v-if="isLoading" class="p text-center">Loading...</div>
+        <div v-if="isLoading" class="text-center p">Loading...</div>
         <OpenClosedIssues v-else :apps="apps" :repos="repos" />
       </div>
 
       <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
-        <div v-if="isLoading" class="p text-center">Loading...</div>
+        <div v-if="isLoading" class="text-center p">Loading...</div>
         <Age v-else :apps="apps" :repos="repos" />
       </div>
 
       <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
-        <div v-if="isLoading" class="p text-center">Loading...</div>
+        <div v-if="isLoading" class="text-center p">Loading...</div>
         <Stars v-else :apps="apps" :repos="repos" />
       </div>
 
       <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
-        <div v-if="isLoading" class="p text-center">Loading...</div>
+        <div v-if="isLoading" class="text-center p">Loading...</div>
         <Prs v-else :apps="apps" :repos="repos" />
       </div>
     </div>
@@ -62,6 +62,7 @@ export default Vue.extend({
       isLoading: true,
       isError: false,
       repos: [] as RepoT[],
+      reposPromise: null as null | Promise<unknown>,
     };
   },
 
@@ -80,16 +81,24 @@ export default Vue.extend({
       this.isLoading = true;
       this.isError = false;
 
-      Promise.all(this.apps.map((app) => fetchGithubData(app)))
+      const promise = (this.reposPromise = Promise.all(
+        this.apps.map((app) => fetchGithubData(app))
+      )
         .then((data) => {
-          this.repos = data;
-          this.isError = false;
-          this.isLoading = false;
+          // Do nothing if there is a new request already in place
+          if (this.reposPromise === promise) {
+            this.repos = data;
+            this.isError = false;
+            this.isLoading = false;
+          }
         })
         .catch(() => {
-          this.isError = true;
-          this.isLoading = false;
-        });
+          // Do nothing if there is a new request already in place
+          if (this.reposPromise === promise) {
+            this.isError = true;
+            this.isLoading = false;
+          }
+        }));
     },
   },
 });

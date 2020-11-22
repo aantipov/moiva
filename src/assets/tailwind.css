@@ -22,7 +22,8 @@
   h3 {
     @apply text-center text-2xl font-normal leading-normal mt-0 mb-0 text-gray-800;
   }
-  p, .p {
+  p,
+  .p {
     @apply text-base font-light leading-relaxed mt-0 mb-4 text-gray-800;
   }
   .p-lead {
