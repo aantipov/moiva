@@ -1,4 +1,4 @@
-type TRadarLevelT = 'Hold' | 'Adopt' | 'Trial' | 'Assess' | 'No Data';
+type TRadarLevelT = 'Hold' | 'Adopt' | 'Trial' | 'Assess';
 export type LibraryCategoryT = 'Framework' | 'StateManagement' | 'Testing';
 
 export interface AppConfigT {
@@ -33,7 +33,6 @@ const HOLD: TRadarLevelT = 'Hold';
 const ADOPT: TRadarLevelT = 'Adopt';
 const TRIAL: TRadarLevelT = 'Trial';
 const ASSESS: TRadarLevelT = 'Assess';
-// const NO_DATA = 'No Data';
 
 // https://material.io/design/color/the-color-system.html#tools-for-picking-colors
 export const COLOR_GREEN = '#48bb78';
@@ -53,7 +52,6 @@ const COLOR_REACT_TESTIING = '#5C6BC0'; // Indigo 400
 const COLOR_ENZYME = '#D4E157'; // Lime 400
 
 export const TRADAR_LEVELS: TRadarLevelT[] = [
-  'No Data',
   'Assess',
   'Trial',
   'Adopt',
