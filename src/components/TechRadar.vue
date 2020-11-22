@@ -2,7 +2,7 @@
   <div>
     <h2>ThoughtWorks TechRadar</h2>
 
-    <div class="chart relative">
+    <div class="relative chart">
       <canvas id="techRadar" />
     </div>
   </div>
