@@ -17,7 +17,6 @@
 <script lang="ts">
 import Vue from 'vue';
 import GTrendsChart from './GTrendsChart.vue';
-// @ts-ignore
 import { fetchGTrendsData, GTrendsT } from '../apis';
 
 export default Vue.extend({
@@ -88,6 +87,6 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 .chart {
-  height: 400px;
+  height: 500px;
 }
 </style>
