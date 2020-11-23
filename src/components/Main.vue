@@ -22,6 +22,9 @@
             class="option"
             :class="{ 'option--category': option.isCategory }"
           >
+            <div v-if="!option.isCategory" class="w-8">
+              <Checkmark v-if="isAppSelected(option.name)" />
+            </div>
             {{ option.name }}
           </div>
         </template>
@@ -51,6 +54,7 @@ import Npm from './Npm.vue';
 import Github from './Github.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
+import Checkmark from './Checkmark.vue';
 import configApps, {
   AppConfigT,
   categoryMap,
@@ -134,6 +138,7 @@ export default Vue.extend({
     GoogleTrends,
     VSelect,
     Chip,
+    Checkmark,
   },
   data() {
     return {
@@ -172,18 +177,18 @@ export default Vue.extend({
   @apply h-12 p-0;
 }
 .vs__dropdown-option .option {
-  @apply h-full px-3 flex items-center;
+  @apply h-full px-3 flex items-center text-gray-800;
 }
 .vs__dropdown-option .option--category {
-  @apply uppercase;
+  @apply uppercase text-gray-800;
 }
 .vs__dropdown-option--selected {
-  @apply font-bold bg-gray-200;
+  @apply font-bold text-gray-800;
 }
 .vs__dropdown-option--selected.vs__dropdown-option--highlight {
-  @apply bg-red-400;
+  @apply cursor-default;
 }
 .vs__dropdown-option--highlight {
-  @apply font-bold bg-green-400;
+  @apply text-black bg-gray-200 text-black;
 }
 </style>
