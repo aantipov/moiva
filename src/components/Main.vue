@@ -7,6 +7,7 @@
         placeholder="Add libraries to comparison"
         :close-on-select="false"
         :clear-search-on-select="false"
+        :clear-search-on-blur="() => true"
         :options="appsWithCategories"
         label="name"
         :reduce="(app) => app.name"
