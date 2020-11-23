@@ -38,20 +38,20 @@ export default Vue.extend({
     return {
       isLoading: true,
       isError: false,
-      data: {} as GTrendsT, // as Array<Array<NpmDownloadT>>,
-      downloadsPromise: null as null | Promise<unknown>,
+      data: {} as GTrendsT,
+      dataPromise: null as null | Promise<unknown>,
     };
   },
 
   computed: {
     slicedApps(): string[] {
-      // Google Trends allow compare only 5 terms at max
+      // Google Trends allows to compare only 5 terms at max
       return this.apps.slice(0, 5);
     },
   },
 
   watch: {
-    apps(): void {
+    slicedApps(): void {
       this.loadData();
     },
   },
@@ -65,10 +65,10 @@ export default Vue.extend({
       this.isLoading = true;
       this.isError = false;
 
-      const promise = (this.downloadsPromise = fetchGTrendsData(this.slicedApps)
+      const promise = (this.dataPromise = fetchGTrendsData(this.slicedApps)
         .then((data) => {
           // Do nothing if there is a new request already in place
-          if (this.downloadsPromise === promise) {
+          if (this.dataPromise === promise) {
             this.data = data;
             this.isError = false;
             this.isLoading = false;
@@ -76,7 +76,7 @@ export default Vue.extend({
         })
         .catch(() => {
           // Do nothing if there is a new request already in place
-          if (this.downloadsPromise === promise) {
+          if (this.dataPromise === promise) {
             this.isError = true;
             this.isLoading = false;
           }
