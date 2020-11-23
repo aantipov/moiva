@@ -1,35 +1,35 @@
 <template>
   <div class="relative w-full h-full">
-    <canvas id="npmDownloads"></canvas>
+    <canvas id="googleTrends"></canvas>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import Chart from 'chart.js';
-// @ts-ignore
-import { NpmDownloadT } from '../apis';
-// @ts-ignore
-import { appsConfigsMap, numbersFormatter } from '../../apps-config';
+import { GTrendPointT } from '../apis';
+import { appsConfigsMap } from '../../apps-config';
 
 export default Vue.extend({
-  name: 'NpmChart',
+  name: 'GTrendsChart',
 
   props: {
     apps: {
       type: Array as () => string[],
       required: true,
     },
-    downloads: {
-      type: Array as () => Array<Array<NpmDownloadT>>,
+    data: {
+      type: Array as () => Array<GTrendPointT>,
       required: true,
     },
   },
 
   mounted() {
-    const { apps, downloads } = this;
-    const ctx = document.getElementById('npmDownloads') as HTMLCanvasElement;
-    const categories = downloads[0].map(({ month }) => month);
+    const { apps, data } = this;
+    const ctx = document.getElementById('googleTrends') as HTMLCanvasElement;
+    const categories = data.map(({ time }) =>
+      new Date(time * 1000).toISOString().slice(0, 10)
+    );
 
     new Chart(ctx, {
       type: 'line',
@@ -38,7 +38,7 @@ export default Vue.extend({
         datasets: apps.map((app, key) => ({
           label: app,
           fill: false,
-          data: downloads[key].map(({ downloads }) => downloads),
+          data: data.map(({ value }) => value[key]),
           backgroundColor: appsConfigsMap[app].color,
           borderColor: appsConfigsMap[app].color,
           borderWidth: 4,
@@ -46,16 +46,10 @@ export default Vue.extend({
           pointHoverRadius: 6,
         })),
       },
-
       options: {
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                callback: (val: number): string => numbersFormatter.format(val),
-              },
-            },
-          ],
+        title: {
+          display: true,
+          text: 'Interest Over Time',
         },
       },
     });

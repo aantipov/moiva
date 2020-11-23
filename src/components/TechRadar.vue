@@ -90,7 +90,6 @@ export default Vue.extend({
         },
 
         options: {
-          maintainAspectRatio: false,
           scales: {
             yAxes: [{ type: 'category', ticks: { reverse: true } }],
           },

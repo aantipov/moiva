@@ -8,6 +8,20 @@ export interface NpmDownloadT {
   month: string;
 }
 
+export interface GTrendPointT {
+  formattedAxisTime: string;
+  formattedTime: string;
+  formattedValue: string[];
+  hasData: boolean[];
+  time: number;
+  value: number[];
+}
+
+export interface GTrendsT {
+  averages: number[];
+  timelineData: GTrendPointT[];
+}
+
 export interface RepoT {
   stars: number;
   createdAt: string;
@@ -37,5 +51,17 @@ export function fetchGithubData(app: string): Promise<RepoT> {
   return axios.get(`/api/gh?app=${app}`).then(({ data }) => {
     ghCache.set(app, data);
     return data;
+  });
+}
+
+export function fetchGTrendsData(apps: string[]): Promise<GTrendsT> {
+  // TODO: add cache
+  // if (ghCache.get(app)) {
+  //   return Promise.resolve(ghCache.get(app));
+  // }
+
+  return axios.get(`/api/gtrends?apps=${apps.join(',')}`).then(({ data }) => {
+    // ghCache.set(app, data);
+    return data.default;
   });
 }

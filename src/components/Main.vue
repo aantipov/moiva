@@ -35,6 +35,8 @@
         <Npm :apps="selectedApps" class="col-span-12 xl:col-span-8" />
         <TechRadar :apps="selectedApps" class="col-span-12 xl:col-span-4" />
       </div>
+
+      <GoogleTrends :apps="selectedApps" />
     </div>
 
     <div v-else class="my-16 text-center p-lead">
@@ -48,6 +50,7 @@ import Vue from 'vue';
 import Npm from './Npm.vue';
 import Github from './Github.vue';
 import TechRadar from './TechRadar.vue';
+import GoogleTrends from './GTrends.vue';
 import configApps, {
   AppConfigT,
   categoryMap,
@@ -128,6 +131,7 @@ export default Vue.extend({
     Github,
     Npm,
     TechRadar,
+    GoogleTrends,
     VSelect,
     Chip,
   },

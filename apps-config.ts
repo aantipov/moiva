@@ -14,6 +14,9 @@ export interface AppConfigT {
   npm: {
     name: string;
   };
+  gTrend: {
+    keyword: string;
+  };
   tradar: {
     data: Partial<Record<string, TRadarLevelT>>;
   };
@@ -68,6 +71,7 @@ const appsConfigs: AppConfigT[] = [
     category: 'Framework',
     github: { name: 'vue', owner: 'vuejs' },
     npm: { name: 'vue' },
+    gTrend: { keyword: '/g/11c0vmgx5d' }, // Vue.js; type: Topic
     tradar: {
       data: {
         '2016-11': ASSESS,
@@ -84,6 +88,7 @@ const appsConfigs: AppConfigT[] = [
     category: 'Framework',
     github: { name: 'react', owner: 'facebook' },
     npm: { name: 'react' },
+    gTrend: { keyword: '/m/012l1vxv' }, // React; type: Topic
     tradar: {
       data: {
         '2015-01': ASSESS,
@@ -102,6 +107,7 @@ const appsConfigs: AppConfigT[] = [
     category: 'Framework',
     github: { name: 'svelte', owner: 'sveltejs' },
     npm: { name: 'svelte' },
+    gTrend: { keyword: 'Svelte' },
     tradar: {
       data: {
         '2020-10': ASSESS,
@@ -116,6 +122,7 @@ const appsConfigs: AppConfigT[] = [
     category: 'Framework',
     github: { name: 'angular', owner: 'angular' },
     npm: { name: '@angular/core' },
+    gTrend: { keyword: '/g/11c6w0ddw9' }, // Angular; type: Web framework
     tradar: {
       data: {
         '2017-03': ASSESS,
@@ -131,6 +138,7 @@ const appsConfigs: AppConfigT[] = [
     category: 'Framework',
     github: { name: 'ember.js', owner: 'emberjs' },
     npm: { name: 'ember-source' },
+    gTrend: { keyword: '/m/0s8wr70' }, // Ember.js; type: Topic
     tradar: {
       data: {
         '2015-05': ASSESS,
@@ -149,6 +157,7 @@ const appsConfigs: AppConfigT[] = [
     category: 'StateManagement',
     github: { name: 'redux', owner: 'reduxjs' },
     npm: { name: 'redux' },
+    gTrend: { keyword: '/g/11dxf0gf92' }, // Redux; type: JavaScript library
     tradar: {
       data: {
         '2016-04': TRIAL,
@@ -166,6 +175,7 @@ const appsConfigs: AppConfigT[] = [
     category: 'StateManagement',
     github: { name: 'Recoil', owner: 'facebookexperimental' },
     npm: { name: 'recoil' },
+    gTrend: { keyword: '/m/01dyp7' }, // Recoil; type: Topic
     tradar: {
       data: {
         '2020-10': ASSESS,
@@ -180,6 +190,7 @@ const appsConfigs: AppConfigT[] = [
     category: 'StateManagement',
     github: { name: 'xstate', owner: 'davidkpiano' },
     npm: { name: 'xstate' },
+    gTrend: { keyword: 'xstate' },
     tradar: {
       data: {
         '2020-05': ASSESS,
@@ -195,6 +206,7 @@ const appsConfigs: AppConfigT[] = [
     category: 'Testing',
     github: { name: 'react-testing-library', owner: 'testing-library' },
     npm: { name: '@testing-library/react' },
+    gTrend: { keyword: 'react testing library' },
     tradar: {
       data: {
         '2019-04': ASSESS,
@@ -211,6 +223,7 @@ const appsConfigs: AppConfigT[] = [
     category: 'Testing',
     github: { name: 'enzyme', owner: 'enzymejs' },
     npm: { name: 'enzyme' },
+    gTrend: { keyword: '/m/02jgw' }, // Enzyme; type: Topic
     tradar: {
       data: {
         '2016-11': TRIAL,
