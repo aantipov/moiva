@@ -63,7 +63,6 @@ export default Vue.extend({
         legend: {
           display: false,
         },
-        maintainAspectRatio: false,
         title: {
           display: true,
           text: 'PRs, number',

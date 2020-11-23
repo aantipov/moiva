@@ -52,6 +52,7 @@ Chart.defaults.global.legend.labels.boxWidth = 20;
 Chart.defaults.global.tooltips.mode = 'index';
 Chart.defaults.global.tooltips.position = 'nearest';
 Chart.defaults.global.tooltips.intersect = false;
+Chart.defaults.global.maintainAspectRatio = false;
 
 export default Vue.extend({
   name: 'App',
