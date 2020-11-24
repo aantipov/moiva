@@ -1,11 +1,14 @@
 import { NowRequest, NowResponse } from '@vercel/node';
 import axios from 'axios';
 import config from '../apps-config';
+import { logRequest } from './utils';
 
 export default (req: NowRequest, res: NowResponse): void => {
   const skey = process.env.GITHUB_API_KEY;
   const url = 'https://api.github.com/graphql';
   const app = config.find((appConfig) => appConfig.name === req.query.app);
+
+  logRequest('github', req.query);
 
   if (!app) {
     res.status(400).json({ error: 'Wrong app parameter' });
