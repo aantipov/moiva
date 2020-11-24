@@ -1,6 +1,7 @@
 import { NowRequest, NowResponse } from '@vercel/node';
 import axios from 'axios';
 import config from '../apps-config';
+import { logRequest } from './utils';
 
 const startYear = 2015;
 const cYear = new Date().getFullYear();
@@ -11,6 +12,8 @@ const years = Array.from(
 
 export default (req: NowRequest, res: NowResponse): void => {
   const app = config.find((appConfig) => appConfig.name === req.query.app);
+
+  logRequest('npm', req.query);
 
   if (!app) {
     res.status(400).json({ error: 'Wrong app parameter' });
