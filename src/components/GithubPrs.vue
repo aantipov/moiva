@@ -61,11 +61,11 @@ export default Vue.extend({
 
       options: {
         legend: {
-          display: false,
+          display: true,
         },
         title: {
           display: true,
-          text: 'PRs, number',
+          text: 'Pull requests, count',
         },
         scales: {
           yAxes: [

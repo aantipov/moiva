@@ -8,21 +8,25 @@
     </div>
 
     <div v-else class="grid grid-cols-12 gap-4">
-      <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
-        <div v-if="isLoading" class="text-center p">Loading...</div>
-        <OpenClosedIssues v-else :apps="apps" :repos="repos" />
-      </div>
-
-      <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
-        <div v-if="isLoading" class="text-center p">Loading...</div>
-        <Age v-else :apps="apps" :repos="repos" />
-      </div>
-
+      <!-- Stars  -->
       <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
         <div v-if="isLoading" class="text-center p">Loading...</div>
         <Stars v-else :apps="apps" :repos="repos" />
       </div>
 
+      <!-- Age, years -->
+      <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
+        <div v-if="isLoading" class="text-center p">Loading...</div>
+        <Age v-else :apps="apps" :repos="repos" />
+      </div>
+
+      <!-- Issues, count  -->
+      <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
+        <div v-if="isLoading" class="text-center p">Loading...</div>
+        <OpenClosedIssues v-else :apps="apps" :repos="repos" />
+      </div>
+
+      <!-- Pull Requests, count  -->
       <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
         <div v-if="isLoading" class="text-center p">Loading...</div>
         <Prs v-else :apps="apps" :repos="repos" />

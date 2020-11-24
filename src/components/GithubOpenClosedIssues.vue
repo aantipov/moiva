@@ -51,11 +51,11 @@ export default Vue.extend({
 
       options: {
         legend: {
-          display: false,
+          display: true,
         },
         title: {
           display: true,
-          text: 'Issues, number',
+          text: 'Issues, count',
         },
         scales: {
           yAxes: [
