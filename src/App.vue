@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="container mx-auto">
     <div class="mx-4 sm:mx-0">
-      <h1>JsStats - compare javascript libraries with ease!</h1>
+      <h1>JsDiff - compare javascript libraries with ease!</h1>
 
       <p class="text-center p-lead">
         This project is a
@@ -16,7 +16,7 @@
           If you notice any issues or have a feature request, please open an
           issue on
           <a
-            href="https://github.com/aantipov/jsstats-issues"
+            href="https://github.com/aantipov/jsdiff-issues"
             target="_blank"
             rel="noopener"
             >Github</a
