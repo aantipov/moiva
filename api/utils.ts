@@ -1,6 +1,9 @@
 import * as faunadb from 'faunadb';
 
-export function logRequest(type: 'npm' | 'github', urlQuery: unknown): void {
+export function logRequest(
+  type: 'npm' | 'github' | 'googleTrends',
+  urlQuery: unknown
+): void {
   const skey = process.env.FAUNA_DB;
   const { VERCEL_ENV, VERCEL_REGION } = process.env;
 
