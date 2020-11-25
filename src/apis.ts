@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const npmCache = new Map();
 const ghCache = new Map();
+const gTrendsCache = new Map();
 
 export interface NpmDownloadT {
   downloads: number;
@@ -55,13 +56,15 @@ export function fetchGithubData(app: string): Promise<RepoT> {
 }
 
 export function fetchGTrendsData(apps: string[]): Promise<GTrendsT> {
-  // TODO: add cache
-  // if (ghCache.get(app)) {
-  //   return Promise.resolve(ghCache.get(app));
-  // }
+  // TODO: implement a proper cache
+  const appsStr = apps.join(',');
 
-  return axios.get(`/api/gtrends?apps=${apps.join(',')}`).then(({ data }) => {
-    // ghCache.set(app, data);
+  if (gTrendsCache.get(appsStr)) {
+    return Promise.resolve(gTrendsCache.get(appsStr));
+  }
+
+  return axios.get(`/api/gtrends?apps=${appsStr}`).then(({ data }) => {
+    gTrendsCache.set(appsStr, data.default);
     return data.default;
   });
 }
