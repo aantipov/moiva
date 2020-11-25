@@ -17,11 +17,11 @@ export function logRequest(type: 'npm' | 'github', urlQuery: unknown): void {
     .query(
       q.Create(q.Collection('api_calls_logs'), {
         data: {
-          type,
-          env: VERCEL_ENV,
           ts,
-          region: VERCEL_REGION,
+          env: VERCEL_ENV,
+          type,
           urlQuery: JSON.stringify(urlQuery),
+          region: VERCEL_REGION,
         },
       })
     )
