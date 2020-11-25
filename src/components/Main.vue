@@ -149,6 +149,13 @@ export default Vue.extend({
   },
   watch: {
     selectedApps(): void {
+      // This is a workaround for a problem of being able to select "State Management" category
+      const stateManIndex = this.selectedApps.indexOf('# State Management');
+      if (stateManIndex !== -1) {
+        this.selectedApps.splice(stateManIndex, 1);
+        return;
+      }
+
       updateUrl(this.selectedApps);
     },
   },

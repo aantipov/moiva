@@ -1,8 +1,11 @@
 import { NowRequest, NowResponse } from '@vercel/node';
 import config from '../apps-config';
 import googleTrends from 'google-trends-api';
+import { logRequest } from './utils';
 
 export default (req: NowRequest, res: NowResponse): void => {
+  logRequest('googleTrends', req.query);
+
   if (!req.query.apps || typeof req.query.apps !== 'string') {
     res.status(400).json({ error: 'Wrong apps parameter' });
     return;
