@@ -27,7 +27,8 @@
           Made by
           <a href="https://alexei.me" target="_blank" rel="noopener"
             >Alexey Antipov</a
-          >
+          >. Follow me on
+          <a href="https://twitter.com/_aantipov" target="_blank">Twitter</a>
         </div>
       </div>
     </div>
