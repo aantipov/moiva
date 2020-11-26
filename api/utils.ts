@@ -14,7 +14,10 @@ export function logRequest(
   const serverClient = new faunadb.Client({ secret: skey });
   const q = faunadb.query;
   const now = new Date();
-  const ts = `${now.getFullYear()}-${now.getMonth()}-${now.getDay()}--${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+  const year = now.getFullYear();
+  const month = now.getMonth() + 1;
+  const day = now.getDate();
+  const ts = `${year}-${month}-${day}--${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
 
   serverClient
     .query(
