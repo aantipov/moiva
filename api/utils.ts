@@ -13,17 +13,14 @@ export function logRequest(
 
   const serverClient = new faunadb.Client({ secret: skey });
   const q = faunadb.query;
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth() + 1;
-  const day = now.getDate();
-  const ts = `${year}-${month}-${day}--${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+  const date = new Date().toISOString();
 
   serverClient
     .query(
       q.Create(q.Collection('api_calls_logs'), {
         data: {
-          ts,
+          date: date.slice(0, 10),
+          time: date.slice(11, 19),
           env: VERCEL_ENV,
           type,
           urlQuery: JSON.stringify(urlQuery),
