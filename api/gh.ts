@@ -55,7 +55,7 @@ export default (req: NowRequest, res: NowResponse): void => {
       }
     )
     .then((resp) => {
-      res.setHeader('Cache-Control', 'max-age=0, s-maxage=43200');
+      res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
       res.status(200).json(resp.data.data.repository);
     })
     .catch(() => {

@@ -74,6 +74,7 @@
     },
     "rules": {
       "@typescript-eslint/ban-ts-ignore": "off",
+      "@typescript-eslint/no-use-before-define": "off",
       "no-sparse-arrays": "off"
     },
     "overrides": [

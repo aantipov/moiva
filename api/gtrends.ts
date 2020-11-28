@@ -32,7 +32,7 @@ export default (req: NowRequest, res: NowResponse): void => {
       category: 31, // Programming
     })
     .then((results: string) => {
-      res.setHeader('Cache-Control', 'max-age=0, s-maxage=43200');
+      res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
       res.status(200).json(JSON.parse(results));
     })
     .catch(() => {
