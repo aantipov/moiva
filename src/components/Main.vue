@@ -33,14 +33,14 @@
     </div>
 
     <div v-if="selectedApps.length">
-      <Github class="mt-0" :apps="selectedApps" />
-
-      <div class="grid grid-cols-12 gap-4">
+      <div class="-mt-4 grid grid-cols-12 gap-4">
         <Npm :apps="selectedApps" class="col-span-12 xl:col-span-8" />
         <TechRadar :apps="selectedApps" class="col-span-12 xl:col-span-4" />
       </div>
 
       <GoogleTrends :apps="selectedApps" />
+
+      <Github :apps="selectedApps" />
     </div>
 
     <div v-else class="my-16 text-center p-lead">
