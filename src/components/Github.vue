@@ -31,6 +31,12 @@
         <div v-if="isLoading" class="text-center p">Loading...</div>
         <Prs v-else :apps="apps" :repos="repos" />
       </div>
+
+      <!-- Release frequency, count/year  -->
+      <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
+        <div v-if="isLoading" class="text-center p">Loading...</div>
+        <Releases v-else :apps="apps" :repos="repos" />
+      </div>
     </div>
   </div>
 </template>
@@ -41,6 +47,7 @@ import OpenClosedIssues from './GithubOpenClosedIssues.vue';
 import Age from './GithubAge.vue';
 import Stars from './GithubStars.vue';
 import Prs from './GithubPrs.vue';
+import Releases from './GithubReleases.vue';
 // @ts-ignore
 import { fetchGithubData, RepoT } from '../apis';
 
@@ -52,6 +59,7 @@ export default Vue.extend({
     Age,
     Stars,
     Prs,
+    Releases,
   },
 
   props: {

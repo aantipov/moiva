@@ -44,6 +44,13 @@ export default (req: NowRequest, res: NowResponse): void => {
             closedIssues: issues(filterBy: { states: [CLOSED] }) {
               totalCount
             }
+            releases (last: 100) {
+              nodes {
+                createdAt
+                tagName
+                isPrerelease
+              }
+            }
           }
         }
       `,
@@ -56,9 +63,32 @@ export default (req: NowRequest, res: NowResponse): void => {
     )
     .then((resp) => {
       res.setHeader('Cache-Control', 'max-age=0, s-maxage=43200');
-      res.status(200).json(resp.data.data.repository);
+      const data = {
+        ...resp.data.data.repository,
+        releases: aggregateReleasesByYear(
+          resp.data.data.repository.releases.nodes
+        ),
+      };
+      res.status(200).json(data);
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log('Error', err);
       res.status(500).json({ error: 'Something went wrong' });
     });
 };
+
+function aggregateReleasesByYear(
+  releases: { createdAt: string; isPrerelease: boolean }[]
+): Record<string, number> {
+  return releases
+    .filter(({ isPrerelease }) => !isPrerelease)
+    .map(({ createdAt }) => createdAt.slice(0, 4))
+    .reduce((accum, cur) => {
+      if (!accum[cur]) {
+        accum[cur] = 1;
+      } else {
+        accum[cur]++;
+      }
+      return accum;
+    }, {});
+}

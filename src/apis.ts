@@ -31,6 +31,7 @@ export interface RepoT {
   mergedPRs: { totalCount: number };
   closedIssues: { totalCount: number };
   openIssues: { totalCount: number };
+  releases: Record<string, number>;
 }
 
 export function fetchNpmData(app: string): Promise<NpmDownloadT[]> {
