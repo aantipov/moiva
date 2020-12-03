@@ -11,14 +11,6 @@
   h2 {
     @apply mt-5 mb-2 text-2xl font-normal leading-normal text-center text-gray-800;
   }
-  @screen md {
-    h1 {
-      @apply text-5xl;
-    }
-    h2 {
-      @apply text-3xl;
-    }
-  }
   h3 {
     @apply mt-0 mb-0 text-2xl font-normal leading-normal text-center text-gray-800;
   }
@@ -34,5 +26,21 @@
   }
   a:hover {
     @apply text-blue-900;
+  }
+  @screen sm {
+    h1 {
+      @apply text-4xl font-medium;
+    }
+    h2 {
+      @apply text-3xl;
+    }
+    .p-lead {
+      @apply text-2xl font-light;
+    }
+  }
+  @screen lg {
+    h1 {
+      @apply text-5xl font-medium;
+    }
   }
 }
