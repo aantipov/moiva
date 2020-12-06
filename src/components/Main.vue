@@ -6,7 +6,7 @@
       :libs="appsWithCategories"
     />
 
-    <div class="hidden mx-auto mt-5 mb-5 text-center sm:block xl:w-2/3">
+    <div class="hidden mx-auto mt-5 text-center sm:block xl:w-2/3">
       <v-select
         v-model="selectedApps"
         multiple
@@ -39,7 +39,7 @@
     </div>
 
     <div v-if="selectedApps.length">
-      <div class="-mt-4 grid grid-cols-12 gap-4">
+      <div class="grid grid-cols-12 gap-4">
         <Npm :apps="selectedApps" class="col-span-12 xl:col-span-8" />
         <TechRadar :apps="selectedApps" class="col-span-12 xl:col-span-4" />
       </div>

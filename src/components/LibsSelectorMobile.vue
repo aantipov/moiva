@@ -1,28 +1,56 @@
 <template>
   <div>
-    <button @click="showModal = true">Hello</button>
+    <div
+      class="flex items-center justify-between w-full h-12 px-3 mt-2 mb-4 text-gray-600 border border-gray-400 cursor-pointer rounded-md select-field"
+      @click="showModal = true"
+    >
+      Add libraries to comparison...
+      <ArrowDown />
+    </div>
 
-    <Modal class="modal" :show-modal="showModal">
-      <template v-slot:header>
-        <div class="flex items-center justify-between h-12 px-5">
-          Select libs
-          <button @click="showModal = false">Close Modal</button>
+    <div>
+      <Chip v-for="lib in value" :key="lib" selected @close="deselect(lib)">{{
+        lib
+      }}</Chip>
+    </div>
+
+    <Modal class="modal" :show-modal="showModal" @close="showModal = false">
+      <div class="mt-4">
+        <div class="mb-2 text-gray-600 uppercase"># Frameworks</div>
+        <div>
+          <Chip
+            v-for="lib in frameworks"
+            :key="lib.name"
+            :selected="isAppSelected(lib.name)"
+            @toggle="toggle(lib.name)"
+            >{{ lib.name }}</Chip
+          >
         </div>
-      </template>
+      </div>
 
-      <div v-for="lib in libs" :key="lib.name">
-        <div
-          class="option"
-          :class="{
-            'option--category': lib.isCategory,
-            'option--selected': isAppSelected(lib.name),
-          }"
-          @click="toggle(lib.name)"
-        >
-          <div v-if="!lib.isCategory" class="w-8">
-            <Checkmark v-if="isAppSelected(lib.name)" />
-          </div>
-          {{ lib.name }}
+      <div class="mt-4">
+        <div class="mb-2 text-gray-600 uppercase"># State Management</div>
+        <div>
+          <Chip
+            v-for="lib in stateManageLibs"
+            :key="lib.name"
+            :selected="isAppSelected(lib.name)"
+            @toggle="toggle(lib.name)"
+            >{{ lib.name }}</Chip
+          >
+        </div>
+      </div>
+
+      <div class="mt-4 mb-4">
+        <div class="mb-2 text-gray-600 uppercase"># Testing</div>
+        <div>
+          <Chip
+            v-for="lib in testingLibs"
+            :key="lib.name"
+            :selected="isAppSelected(lib.name)"
+            @toggle="toggle(lib.name)"
+            >{{ lib.name }}</Chip
+          >
         </div>
       </div>
     </Modal>
@@ -31,13 +59,16 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import Checkmark from './Checkmark.vue';
 import Modal from './Modal.vue';
+import Chip from './Chip.vue';
+import ArrowDown from './icons/ArrowDown.vue';
+import configApps from '../../apps-config';
 
 export default Vue.extend({
   components: {
-    Checkmark,
     Modal,
+    Chip,
+    ArrowDown,
   },
   props: {
     value: {
@@ -54,24 +85,34 @@ export default Vue.extend({
       showModal: false,
     };
   },
+  computed: {
+    frameworks() {
+      return configApps.filter((lib) => lib.category === 'Framework');
+    },
+    stateManageLibs() {
+      return configApps.filter((lib) => lib.category === 'StateManagement');
+    },
+    testingLibs() {
+      return configApps.filter((lib) => lib.category === 'Testing');
+    },
+  },
   methods: {
-    // filterOption(option: OptionT, label = '', search: string): boolean {
-    //   if ('isCategory' in option) {
-    //     return true;
-    //   }
-    //   return label.toLowerCase().indexOf(search.toLowerCase()) > -1;
-    // },
     isAppSelected(app: string): boolean {
       return this.value.indexOf(app) > -1;
     },
     toggle(libName: string): void {
-      console.log('toggle', libName);
-      let newSelectedApps;
       if (this.isAppSelected(libName)) {
-        newSelectedApps = this.value.filter((lib) => lib !== libName);
+        this.deselect(libName);
       } else {
-        newSelectedApps = [...this.value, libName];
+        this.select(libName);
       }
+    },
+    deselect(libname: string): void {
+      const newSelectedApps = this.value.filter((lib) => lib !== libname);
+      this.$emit('input', newSelectedApps);
+    },
+    select(libname: string): void {
+      const newSelectedApps = [...this.value, libname];
       this.$emit('input', newSelectedApps);
     },
   },
@@ -79,6 +120,9 @@ export default Vue.extend({
 </script>
 
 <style lang="postcss" scoped>
+.select-field {
+  /* @apply border-solid border-gray-100; */
+}
 .option {
   @apply h-12 p-0 px-5 flex items-center text-gray-800 cursor-pointer;
 }

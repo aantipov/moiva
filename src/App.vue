@@ -14,7 +14,7 @@
         supported libraries to come!
       </p>
 
-      <Main class="mt-8" />
+      <Main class="mt-4 sm:mt-8" />
 
       <div class="footer">
         <div class="text-center">

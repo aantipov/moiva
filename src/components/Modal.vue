@@ -2,11 +2,17 @@
   <transition name="modal">
     <div v-show="showModal" class="modal-mask">
       <div class="modal-wrapper">
-        <div class="modal-container">
-          <div class="modal-header">
-            <slot name="header"></slot>
-          </div>
-          <div class="modal-body">
+        <div class="relative rounded-md modal-container">
+          <button
+            class="absolute right-0 px-3 py-1 my-1 mr-1 text-xs font-bold text-gray-500 uppercase outline-none background-transparent focus:outline-none"
+            type="button"
+            style="transition: all 0.15s ease"
+            @click="$emit('close')"
+          >
+            Close
+          </button>
+
+          <div class="px-4 modal-body">
             <slot></slot>
           </div>
         </div>
@@ -70,14 +76,12 @@ export default Vue.extend({
   margin: 0 auto;
   padding: 0;
   background-color: #fff;
-  border-radius: 2px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
   font-family: Helvetica, Arial, sans-serif;
 }
 
 .modal-body {
-  padding: 0 0 20px;
   max-height: 500px;
   overflow-y: scroll;
 }
