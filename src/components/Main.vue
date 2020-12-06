@@ -1,6 +1,12 @@
 <template>
   <div>
-    <div class="mx-auto mt-5 mb-5 text-center xl:w-2/3">
+    <LibsSelectorMobile
+      v-model="selectedApps"
+      class="block sm:hidden"
+      :libs="appsWithCategories"
+    />
+
+    <div class="hidden mx-auto mt-5 mb-5 text-center sm:block xl:w-2/3">
       <v-select
         v-model="selectedApps"
         multiple
@@ -53,6 +59,7 @@
 import Vue from 'vue';
 import Npm from './Npm.vue';
 import Github from './Github.vue';
+import LibsSelectorMobile from './LibsSelectorMobile.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
 import Checkmark from './Checkmark.vue';
@@ -140,6 +147,7 @@ export default Vue.extend({
     VSelect,
     Chip,
     Checkmark,
+    LibsSelectorMobile,
   },
   data() {
     return {
