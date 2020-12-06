@@ -149,10 +149,19 @@ export default Vue.extend({
   },
   watch: {
     selectedApps(): void {
-      // This is a workaround for a problem of being able to select "State Management" category
+      // This is a workaround for a problem of being able to select a category
+      // TODO: fix the problem
       const stateManIndex = this.selectedApps.indexOf('# State Management');
-      if (stateManIndex !== -1) {
-        this.selectedApps.splice(stateManIndex, 1);
+      const testingIndex = this.selectedApps.indexOf('# Testing');
+      const frameworksIndex = this.selectedApps.indexOf('# Frameworks');
+      const foundElementIndex = [
+        stateManIndex,
+        testingIndex,
+        frameworksIndex,
+      ].find((i) => i > -1);
+
+      if (foundElementIndex !== undefined) {
+        this.selectedApps.splice(foundElementIndex, 1);
         return;
       }
 
