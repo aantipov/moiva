@@ -63,7 +63,7 @@ import configApps, {
   appsConfigsMap,
 } from '../../apps-config';
 import VSelect from 'vue-select';
-import 'vue-select/src/scss/vue-select.scss';
+import '../vue-select-override.scss';
 import Chip from './Chip.vue';
 
 type OptionT =
@@ -208,4 +208,8 @@ export default Vue.extend({
 .vs__dropdown-option--highlight {
   @apply text-black bg-gray-200 text-black;
 }
+</style>
+
+<style lang="scss">
+$vs-dropdown-max-height: 30px;
 </style>
