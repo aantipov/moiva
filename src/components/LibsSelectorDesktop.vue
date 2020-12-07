@@ -130,7 +130,3 @@ export default Vue.extend({
   @apply text-gray-600;
 }
 </style>
-
-<style lang="scss">
-$vs-dropdown-max-height: 30px;
-</style>
