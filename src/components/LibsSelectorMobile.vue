@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!--  Input    -->
     <div
       class="flex items-center justify-between w-full h-12 px-3 mt-2 mb-2 text-gray-600 border border-gray-400 cursor-pointer rounded-md"
       @click="showModal = true"
@@ -8,6 +9,7 @@
       <jd-arrow-down />
     </div>
 
+    <!--  Selected libs  -->
     <div>
       <jd-chip
         v-for="lib in value"
@@ -18,6 +20,7 @@
       >
     </div>
 
+    <!--  Modal  -->
     <Modal class="modal" :show-modal="showModal" @close="showModal = false">
       <div v-for="cat in catsWithLibs" :key="cat.categoryName" class="mb-4">
         <div class="mb-2 text-gray-600 uppercase">{{ cat.categoryName }}</div>
