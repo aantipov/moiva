@@ -19,7 +19,7 @@ export default Vue.extend({
   name: 'GithubPrs',
 
   props: {
-    apps: {
+    libs: {
       type: Array as () => string[],
       required: true,
     },
@@ -31,12 +31,12 @@ export default Vue.extend({
 
   mounted(): void {
     const ctx = document.getElementById('prsCount') as HTMLCanvasElement;
-    const { apps, repos } = this;
+    const { libs, repos } = this;
 
     new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: apps,
+        labels: libs,
         datasets: [
           {
             label: 'open',

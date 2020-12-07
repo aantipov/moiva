@@ -9,13 +9,13 @@
 
     <div v-if="selectedLibs.length">
       <div class="grid grid-cols-12 gap-4">
-        <Npm :apps="selectedLibs" class="col-span-12 xl:col-span-8" />
-        <TechRadar :apps="selectedLibs" class="col-span-12 xl:col-span-4" />
+        <Npm :libs="selectedLibs" class="col-span-12 xl:col-span-8" />
+        <TechRadar :libs="selectedLibs" class="col-span-12 xl:col-span-4" />
       </div>
 
-      <GoogleTrends :apps="selectedLibs" />
+      <GoogleTrends :libs="selectedLibs" />
 
-      <Github :apps="selectedLibs" />
+      <Github :libs="selectedLibs" />
     </div>
 
     <div v-else class="my-16 text-center p-lead">

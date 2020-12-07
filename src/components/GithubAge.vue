@@ -14,7 +14,7 @@ export default Vue.extend({
   name: 'GithubAge',
 
   props: {
-    apps: {
+    libs: {
       type: Array as () => string[],
       required: true,
     },
@@ -26,7 +26,7 @@ export default Vue.extend({
 
   mounted(): void {
     const ctx = document.getElementById('createdAt') as HTMLCanvasElement;
-    const { apps, repos } = this;
+    const { libs, repos } = this;
 
     function getAge(date: string): number {
       const now = new Date().getTime();
@@ -38,7 +38,7 @@ export default Vue.extend({
     new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: apps,
+        labels: libs,
         datasets: [
           {
             label: 'years',

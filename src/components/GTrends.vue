@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Google Trends <span class="text-base">(max. 5 apps)</span></h2>
+    <h2>Google Trends <span class="text-base">(max. 5 libs)</span></h2>
 
     <div v-if="isError" class="text-center text-red-700">
       Something went wrong while loading data. Try to reload the page or come
@@ -9,7 +9,7 @@
 
     <div v-else class="chart">
       <div v-if="isLoading" class="text-center p">Loading...</div>
-      <GTrendsChart v-else :apps="slicedApps" :data="data.timelineData" />
+      <GTrendsChart v-else :libs="slicedLibs" :data="data.timelineData" />
     </div>
   </div>
 </template>
@@ -27,7 +27,7 @@ export default Vue.extend({
   },
 
   props: {
-    apps: {
+    libs: {
       type: Array as () => string[],
       required: true,
     },
@@ -43,14 +43,14 @@ export default Vue.extend({
   },
 
   computed: {
-    slicedApps(): string[] {
+    slicedLibs(): string[] {
       // Google Trends allows to compare only 5 terms at max
-      return this.apps.slice(0, 5);
+      return this.libs.slice(0, 5);
     },
   },
 
   watch: {
-    slicedApps(): void {
+    slicedLibs(): void {
       this.loadData();
     },
   },
@@ -64,7 +64,7 @@ export default Vue.extend({
       this.isLoading = true;
       this.isError = false;
 
-      const promise = (this.dataPromise = fetchGTrendsData(this.slicedApps)
+      const promise = (this.dataPromise = fetchGTrendsData(this.slicedLibs)
         .then((data) => {
           // Do nothing if there is a new request already in place
           if (this.dataPromise === promise) {

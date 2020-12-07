@@ -9,7 +9,7 @@
 
     <div v-else class="chart">
       <div v-if="isLoading" class="text-center p">Loading...</div>
-      <NpmChart v-else :apps="apps" :downloads="downloads" />
+      <NpmChart v-else :libs="libs" :downloads="downloads" />
     </div>
   </div>
 </template>
@@ -17,7 +17,6 @@
 <script lang="ts">
 import Vue from 'vue';
 import NpmChart from './NpmChart.vue';
-// @ts-ignore
 import { fetchNpmData, NpmDownloadT } from '../apis';
 
 export default Vue.extend({
@@ -28,7 +27,7 @@ export default Vue.extend({
   },
 
   props: {
-    apps: {
+    libs: {
       type: Array as () => string[],
       required: true,
     },
@@ -44,7 +43,7 @@ export default Vue.extend({
   },
 
   watch: {
-    apps(): void {
+    libs(): void {
       this.loadData();
     },
   },
@@ -59,7 +58,7 @@ export default Vue.extend({
       this.isError = false;
 
       const promise = (this.downloadsPromise = Promise.all(
-        this.apps.map((app) => fetchNpmData(app))
+        this.libs.map((app) => fetchNpmData(app))
       )
         .then((data) => {
           // Do nothing if there is a new request already in place
