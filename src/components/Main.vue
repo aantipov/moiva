@@ -1,21 +1,21 @@
 <template>
   <div>
-    <LibsSelectorMobile v-model="selectedApps" class="block md:hidden" />
+    <LibsSelectorMobile v-model="selectedLibs" class="block md:hidden" />
 
     <LibsSelectorDesktop
-      v-model="selectedApps"
+      v-model="selectedLibs"
       class="hidden mx-auto mt-5 text-center md:block xl:w-2/3"
     />
 
-    <div v-if="selectedApps.length">
+    <div v-if="selectedLibs.length">
       <div class="grid grid-cols-12 gap-4">
-        <Npm :apps="selectedApps" class="col-span-12 xl:col-span-8" />
-        <TechRadar :apps="selectedApps" class="col-span-12 xl:col-span-4" />
+        <Npm :apps="selectedLibs" class="col-span-12 xl:col-span-8" />
+        <TechRadar :apps="selectedLibs" class="col-span-12 xl:col-span-4" />
       </div>
 
-      <GoogleTrends :apps="selectedApps" />
+      <GoogleTrends :apps="selectedLibs" />
 
-      <Github :apps="selectedApps" />
+      <Github :apps="selectedLibs" />
     </div>
 
     <div v-else class="my-16 text-center p-lead">
@@ -32,46 +32,32 @@ import LibsSelectorMobile from './LibsSelectorMobile.vue';
 import LibsSelectorDesktop from './LibsSelectorDesktop.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
-import configApps, { AppConfigT, appsConfigsMap } from '../../apps-config';
+import libsConfigs, { AppConfigT, appsConfigsMap } from '../../apps-config';
+import { cleanupUrl } from '../utils';
 
-// Define a default list of apps and fix the url if wrong apps are passed
+// Validate URL's 'apps' parameter and remove wrong libs
+cleanupUrl();
+
+// Define a default list of libs
 const Url = new URL(window.location.href);
-const appsUrlParam = Url.searchParams.get('apps');
-const appsFromUrl = appsUrlParam?.split('--') || [];
-const appsFromUrlValidated = appsFromUrl.filter(
-  (urlApp) => !!configApps.find((app) => app.urlname === urlApp)
-);
-let defaultSelectedUrlApps = configApps
-  .filter((app) => app.selected)
-  .map((app) => app.urlname);
+const libsFromUrl = Url.searchParams.get('apps')?.split('--') || [];
+const defaultSelectedLibs = libsFromUrl.length
+  ? libsFromUrl
+  : libsConfigs
+      .filter((libConfig) => libConfig.selected)
+      .map((libConfig) => libConfig.urlname);
 
-// Make sure the url is valid - update it if not empty
-if (!appsFromUrlValidated.length) {
-  Url.searchParams.delete('apps');
-  window.history.replaceState(null, '', Url.href);
-} else {
-  Url.searchParams.set('apps', appsFromUrlValidated.join('--'));
-  window.history.replaceState(null, '', Url.href);
-  defaultSelectedUrlApps = appsFromUrlValidated;
-}
-
-// @ts-ignore
-const selectedApps = defaultSelectedUrlApps.map(
-  (urlApp) =>
-    (configApps.find((app) => app.urlname === urlApp) as AppConfigT).name
-);
-
-function updateUrl(selectedApps: string[]): void {
-  if (!selectedApps.length) {
+function updateUrl(selectedLibs: string[]): void {
+  if (!selectedLibs.length) {
     Url.searchParams.delete('apps');
     window.history.replaceState(null, '', Url.href);
     return;
   }
 
-  const selectedAppsUrlnames = selectedApps.map(
-    (app) => appsConfigsMap[app].urlname
+  const selectedLibsUrlnames = selectedLibs.map(
+    (lib) => appsConfigsMap[lib].urlname
   );
-  Url.searchParams.set('apps', selectedAppsUrlnames.join('--'));
+  Url.searchParams.set('apps', selectedLibsUrlnames.join('--'));
   window.history.replaceState(null, '', Url.href);
 }
 
@@ -88,17 +74,22 @@ export default Vue.extend({
 
   data() {
     return {
-      selectedApps,
+      selectedLibs: defaultSelectedLibs.map(
+        (lib) =>
+          (libsConfigs.find(
+            (libConfig) => libConfig.urlname === lib
+          ) as AppConfigT).name
+      ),
     };
   },
 
   watch: {
-    selectedApps(): void {
+    selectedLibs(): void {
       // This is a workaround for a problem of being able to select a category
       // TODO: fix the problem
-      const stateManIndex = this.selectedApps.indexOf('# State Management');
-      const testingIndex = this.selectedApps.indexOf('# Testing');
-      const frameworksIndex = this.selectedApps.indexOf('# Frameworks');
+      const stateManIndex = this.selectedLibs.indexOf('# State Management');
+      const testingIndex = this.selectedLibs.indexOf('# Testing');
+      const frameworksIndex = this.selectedLibs.indexOf('# Frameworks');
       const foundElementIndex = [
         stateManIndex,
         testingIndex,
@@ -106,11 +97,11 @@ export default Vue.extend({
       ].find((i) => i > -1);
 
       if (foundElementIndex !== undefined) {
-        this.selectedApps.splice(foundElementIndex, 1);
+        this.selectedLibs.splice(foundElementIndex, 1);
         return;
       }
 
-      updateUrl(this.selectedApps);
+      updateUrl(this.selectedLibs);
     },
   },
 });
