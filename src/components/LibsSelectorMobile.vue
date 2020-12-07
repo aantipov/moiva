@@ -41,7 +41,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import Modal from './Modal.vue';
-import configApps, { categoryMap } from '../../apps-config';
+import libsConfigs, { categoryMap } from '../../apps-config';
 
 export default Vue.extend({
   components: { Modal },
@@ -67,7 +67,7 @@ export default Vue.extend({
     catsWithLibs(): { categoryName: string; libs: string[] }[] {
       return Object.entries(categoryMap).map(([category, categoryName]) => ({
         categoryName,
-        libs: configApps
+        libs: libsConfigs
           .filter((lib) => lib.category === category)
           .map((lib) => lib.name),
       }));
@@ -75,8 +75,8 @@ export default Vue.extend({
   },
 
   methods: {
-    isLibSelected(app: string): boolean {
-      return this.value.indexOf(app) > -1;
+    isLibSelected(lib: string): boolean {
+      return this.value.indexOf(lib) > -1;
     },
     toggle(libName: string): void {
       if (this.isLibSelected(libName)) {
@@ -86,12 +86,12 @@ export default Vue.extend({
       }
     },
     deselect(libname: string): void {
-      const newSelectedApps = this.value.filter((lib) => lib !== libname);
-      this.$emit('input', newSelectedApps);
+      const newSelectedLibs = this.value.filter((lib) => lib !== libname);
+      this.$emit('input', newSelectedLibs);
     },
     select(libname: string): void {
-      const newSelectedApps = [...this.value, libname];
-      this.$emit('input', newSelectedApps);
+      const newSelectedLibs = [...this.value, libname];
+      this.$emit('input', newSelectedLibs);
     },
   },
 });
