@@ -96,21 +96,3 @@ export default Vue.extend({
   },
 });
 </script>
-
-<style lang="postcss" scoped>
-.option {
-  @apply h-12 p-0 px-5 flex items-center text-gray-800 cursor-pointer;
-}
-.option--category {
-  @apply uppercase text-gray-800 cursor-default;
-}
-.option--selected {
-  @apply font-bold text-gray-800;
-}
-.option:hover {
-  @apply text-black bg-gray-200;
-}
-.option.option--category:hover {
-  @apply bg-white text-gray-800;
-}
-</style>
