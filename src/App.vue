@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="container mx-auto">
-    <div class="mx-4 sm:mx-0">
+    <div class="mx-4 sm:mx-2">
       <h1>JsDiff - compare javascript libraries with ease!</h1>
 
       <p class="text-center p-lead">
@@ -14,7 +14,7 @@
         supported libraries to come!
       </p>
 
-      <Main class="mt-8" />
+      <Main class="mt-4 sm:mt-8" />
 
       <div class="footer">
         <div class="text-center">
@@ -49,28 +49,10 @@
 <script lang="ts">
 import Vue from 'vue';
 import Main from './components/Main.vue';
-import Chart from 'chart.js';
-
-// @ts-ignore
-Chart.defaults.global.title.fontSize = 14;
-Chart.defaults.global.defaultFontSize = 14;
-// @ts-ignore
-Chart.defaults.global.title.fontFamily =
-  'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
-Chart.defaults.global.defaultFontFamily =
-  'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
-// @ts-ignore
-Chart.defaults.global.legend.labels.boxWidth = 20;
-Chart.defaults.global.tooltips.mode = 'index';
-Chart.defaults.global.tooltips.position = 'nearest';
-Chart.defaults.global.tooltips.intersect = false;
-Chart.defaults.global.maintainAspectRatio = false;
 
 export default Vue.extend({
   name: 'App',
-  components: {
-    Main,
-  },
+  components: { Main },
 });
 </script>
 

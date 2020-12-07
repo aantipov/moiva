@@ -1,8 +1,12 @@
 import Vue from 'vue';
+import Chart from 'chart.js';
 import * as Sentry from '@sentry/browser';
 import { Vue as VueIntegration } from '@sentry/integrations';
 import { Integrations } from '@sentry/tracing';
 import App from './App.vue';
+import Close from './components/icons/Close.vue';
+import Chip from './components/Chip.vue';
+import ArrowDown from './components/icons/ArrowDown.vue';
 import './assets/tailwind.css';
 
 Sentry.init({
@@ -24,6 +28,25 @@ Sentry.init({
 });
 
 Vue.config.productionTip = false;
+
+// @ts-ignore
+Chart.defaults.global.title.fontSize = 14;
+Chart.defaults.global.defaultFontSize = 14;
+// @ts-ignore
+Chart.defaults.global.title.fontFamily =
+  'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
+Chart.defaults.global.defaultFontFamily =
+  'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
+// @ts-ignore
+Chart.defaults.global.legend.labels.boxWidth = 20;
+Chart.defaults.global.tooltips.mode = 'index';
+Chart.defaults.global.tooltips.position = 'nearest';
+Chart.defaults.global.tooltips.intersect = false;
+Chart.defaults.global.maintainAspectRatio = false;
+
+Vue.component('jd-arrow-down', ArrowDown);
+Vue.component('jd-close', Close);
+Vue.component('jd-chip', Chip);
 
 new Vue({
   render: (h) => h(App),

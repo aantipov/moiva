@@ -1,10 +1,12 @@
 <template>
   <div>
-    <div class="mx-auto mt-5 mb-5 text-center xl:w-2/3">
+    <LibsSelectorMobile v-model="selectedApps" class="block md:hidden" />
+
+    <div class="hidden mx-auto mt-5 text-center md:block xl:w-2/3">
       <v-select
         v-model="selectedApps"
         multiple
-        placeholder="Add libraries to comparison"
+        placeholder="Add libraries to comparison..."
         :close-on-select="false"
         :clear-search-on-select="false"
         :clear-search-on-blur="() => true"
@@ -15,7 +17,9 @@
         :filter-by="filterOption"
       >
         <template #selected-option-container="{ option, deselect }">
-          <Chip @close="deselect(option)">{{ option.name }}</Chip>
+          <jd-chip selected @close="deselect(option)">{{
+            option.name
+          }}</jd-chip>
         </template>
 
         <template #option="option">
@@ -33,7 +37,7 @@
     </div>
 
     <div v-if="selectedApps.length">
-      <div class="-mt-4 grid grid-cols-12 gap-4">
+      <div class="grid grid-cols-12 gap-4">
         <Npm :apps="selectedApps" class="col-span-12 xl:col-span-8" />
         <TechRadar :apps="selectedApps" class="col-span-12 xl:col-span-4" />
       </div>
@@ -44,7 +48,7 @@
     </div>
 
     <div v-else class="my-16 text-center p-lead">
-      Select libraries you wish to compare
+      Add libraries to comparison
     </div>
   </div>
 </template>
@@ -53,6 +57,7 @@
 import Vue from 'vue';
 import Npm from './Npm.vue';
 import Github from './Github.vue';
+import LibsSelectorMobile from './LibsSelectorMobile.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
 import Checkmark from './Checkmark.vue';
@@ -64,7 +69,6 @@ import configApps, {
 } from '../../apps-config';
 import VSelect from 'vue-select';
 import '../vue-select-override.scss';
-import Chip from './Chip.vue';
 
 type OptionT =
   | AppConfigT
@@ -138,8 +142,8 @@ export default Vue.extend({
     TechRadar,
     GoogleTrends,
     VSelect,
-    Chip,
     Checkmark,
+    LibsSelectorMobile,
   },
   data() {
     return {
@@ -207,6 +211,12 @@ export default Vue.extend({
 }
 .vs__dropdown-option--highlight {
   @apply text-black bg-gray-200 text-black;
+}
+.vs__search {
+  @apply h-8;
+}
+.vs__search::placeholder {
+  @apply text-gray-600;
 }
 </style>
 
