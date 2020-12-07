@@ -89,6 +89,10 @@ export default Vue.extend({
   },
 
   computed: {
+    // TODO
+    catsWithLibs(): unknown[] {
+      return [];
+    },
     frameworks(): string[] {
       return configApps
         .filter((lib) => lib.category === 'Framework')
