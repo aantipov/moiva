@@ -51,10 +51,6 @@ export default Vue.extend({
       type: Array,
       required: true,
     },
-    libs: {
-      type: Array,
-      required: true,
-    },
   },
 
   data() {

@@ -1,10 +1,6 @@
 <template>
   <div>
-    <LibsSelectorMobile
-      v-model="selectedApps"
-      class="block md:hidden"
-      :libs="appsWithCategories"
-    />
+    <LibsSelectorMobile v-model="selectedApps" class="block md:hidden" />
 
     <div class="hidden mx-auto mt-5 text-center md:block xl:w-2/3">
       <v-select
