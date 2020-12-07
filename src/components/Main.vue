@@ -21,7 +21,9 @@
         :filter-by="filterOption"
       >
         <template #selected-option-container="{ option, deselect }">
-          <Chip selected @close="deselect(option)">{{ option.name }}</Chip>
+          <jd-chip selected @close="deselect(option)">{{
+            option.name
+          }}</jd-chip>
         </template>
 
         <template #option="option">
@@ -71,7 +73,6 @@ import configApps, {
 } from '../../apps-config';
 import VSelect from 'vue-select';
 import '../vue-select-override.scss';
-import Chip from './Chip.vue';
 
 type OptionT =
   | AppConfigT
@@ -145,7 +146,6 @@ export default Vue.extend({
     TechRadar,
     GoogleTrends,
     VSelect,
-    Chip,
     Checkmark,
     LibsSelectorMobile,
   },

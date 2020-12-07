@@ -10,7 +10,7 @@
 
     <div v-show="selected" class="flex flex-row-reverse flex-auto">
       <div @click="$emit('close')">
-        <Close />
+        <jd-close />
       </div>
     </div>
   </div>
@@ -18,13 +18,9 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import Close from './icons/Close.vue';
 
 export default Vue.extend({
-  name: 'VChip',
-  components: {
-    Close,
-  },
+  name: 'Chip',
   props: {
     selected: {
       type: Boolean,

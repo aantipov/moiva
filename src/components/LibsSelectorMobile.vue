@@ -5,25 +5,29 @@
       @click="showModal = true"
     >
       Add libraries to comparison...
-      <ArrowDown />
+      <jd-arrow-down />
     </div>
 
     <div>
-      <Chip v-for="lib in value" :key="lib" selected @toggle="deselect(lib)">{{
-        lib
-      }}</Chip>
+      <jd-chip
+        v-for="lib in value"
+        :key="lib"
+        selected
+        @toggle="deselect(lib)"
+        >{{ lib }}</jd-chip
+      >
     </div>
 
     <Modal class="modal" :show-modal="showModal" @close="showModal = false">
       <div v-for="cat in catsWithLibs" :key="cat.categoryName" class="mb-4">
         <div class="mb-2 text-gray-600 uppercase">{{ cat.categoryName }}</div>
         <div>
-          <Chip
+          <jd-chip
             v-for="libName in cat.libs"
             :key="libName"
             :selected="isAppSelected(libName)"
             @toggle="toggle(libName)"
-            >{{ libName }}</Chip
+            >{{ libName }}</jd-chip
           >
         </div>
       </div>
@@ -34,16 +38,10 @@
 <script lang="ts">
 import Vue from 'vue';
 import Modal from './Modal.vue';
-import Chip from './Chip.vue';
-import ArrowDown from './icons/ArrowDown.vue';
 import configApps, { categoryMap } from '../../apps-config';
 
 export default Vue.extend({
-  components: {
-    Modal,
-    Chip,
-    ArrowDown,
-  },
+  components: { Modal },
 
   props: {
     value: {

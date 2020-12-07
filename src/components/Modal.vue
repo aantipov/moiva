@@ -3,6 +3,7 @@
     <div v-show="showModal" class="modal-mask" @click="$emit('close')">
       <div class="modal-wrapper">
         <div class="overflow-hidden rounded-md modal-container" @click.stop>
+          <!--  Header  -->
           <div class="flex justify-end bg-gray-100 border">
             <button
               class="px-4 py-2 my-2 mr-1 text-sm font-bold text-gray-500 uppercase outline-none background-transparent focus:outline-none"
@@ -14,6 +15,7 @@
             </button>
           </div>
 
+          <!--  Body  -->
           <div class="p-4 modal-body">
             <slot></slot>
           </div>
@@ -25,6 +27,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
+
 export default Vue.extend({
   name: 'Modal',
   props: {
