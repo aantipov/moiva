@@ -1,8 +1,8 @@
 <template>
   <transition name="modal">
-    <div v-show="showModal" class="modal-mask">
+    <div v-show="showModal" class="modal-mask" @click="$emit('close')">
       <div class="modal-wrapper">
-        <div class="relative rounded-md modal-container">
+        <div class="relative rounded-md modal-container" @click.stop>
           <button
             class="absolute right-0 px-4 py-2 my-2 mr-1 text-sm font-bold text-gray-500 uppercase outline-none background-transparent focus:outline-none"
             type="button"
