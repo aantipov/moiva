@@ -3,10 +3,16 @@ import axios from 'axios';
 const npmCache = new Map();
 const ghCache = new Map();
 const gTrendsCache = new Map();
+const bphobiaCache = new Map();
 
 export interface NpmDownloadT {
   downloads: number;
   month: string;
+}
+
+export interface BundlephobiaT {
+  gzip: number;
+  raw: number;
 }
 
 export interface GTrendPointT {
@@ -66,5 +72,16 @@ export function fetchGTrendsData(apps: string[]): Promise<GTrendsT> {
   return axios.get(`/api/gtrends?apps=${appsStr}`).then(({ data }) => {
     gTrendsCache.set(appsStr, data.default);
     return data.default;
+  });
+}
+
+export function fetchBundlephobiaData(lib: string): Promise<BundlephobiaT[]> {
+  if (bphobiaCache.get(lib)) {
+    return Promise.resolve(bphobiaCache.get(lib));
+  }
+
+  return axios.get(`/api/bphobia?lib=${lib}`).then(({ data }) => {
+    bphobiaCache.set(lib, data);
+    return data;
   });
 }

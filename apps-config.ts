@@ -20,6 +20,9 @@ export interface AppConfigT {
   tradar: {
     data: Partial<Record<string, TRadarLevelT>>;
   };
+  bphobia: {
+    name: string;
+  };
 }
 
 export const categoryMap: Record<LibraryCategoryT, string> = {
@@ -79,7 +82,11 @@ const appsConfigs: AppConfigT[] = [
         '2020-05': ADOPT,
       },
     },
+    bphobia: {
+      name: 'vue',
+    },
   },
+
   {
     name: 'React',
     urlname: 'react',
@@ -98,7 +105,11 @@ const appsConfigs: AppConfigT[] = [
         '2016-11': ADOPT,
       },
     },
+    bphobia: {
+      name: 'react',
+    },
   },
+
   {
     name: 'Svelte',
     urlname: 'svelte',
@@ -113,7 +124,11 @@ const appsConfigs: AppConfigT[] = [
         '2020-10': ASSESS,
       },
     },
+    bphobia: {
+      name: 'svelte',
+    },
   },
+
   {
     name: 'Angular',
     urlname: 'angular',
@@ -129,7 +144,11 @@ const appsConfigs: AppConfigT[] = [
         '2017-11': TRIAL,
       },
     },
+    bphobia: {
+      name: 'angular',
+    },
   },
+
   {
     name: 'Ember.js',
     urlname: 'emberjs',
@@ -148,7 +167,11 @@ const appsConfigs: AppConfigT[] = [
         '2017-03': ADOPT,
       },
     },
+    bphobia: {
+      name: 'ember-source',
+    },
   },
+
   {
     name: 'Redux',
     urlname: 'redux',
@@ -166,7 +189,11 @@ const appsConfigs: AppConfigT[] = [
         '2020-10': TRIAL,
       },
     },
+    bphobia: {
+      name: 'redux',
+    },
   },
+
   {
     name: 'Recoil',
     urlname: 'recoil',
@@ -181,7 +208,11 @@ const appsConfigs: AppConfigT[] = [
         '2020-10': ASSESS,
       },
     },
+    bphobia: {
+      name: 'recoil',
+    },
   },
+
   {
     name: 'XState',
     urlname: 'xstate',
@@ -197,7 +228,11 @@ const appsConfigs: AppConfigT[] = [
         '2020-10': TRIAL,
       },
     },
+    bphobia: {
+      name: 'xstate',
+    },
   },
+
   {
     name: 'React Testing Library',
     urlname: 'react-testing-library',
@@ -214,7 +249,11 @@ const appsConfigs: AppConfigT[] = [
         '2020-05': ADOPT,
       },
     },
+    bphobia: {
+      name: '@testing-library/react',
+    },
   },
+
   {
     name: 'Enzyme',
     urlname: 'enzyme',
@@ -232,6 +271,9 @@ const appsConfigs: AppConfigT[] = [
         '2019-11': HOLD,
         '2020-05': HOLD,
       },
+    },
+    bphobia: {
+      name: 'enzyme',
     },
   },
 ];

@@ -1,0 +1,75 @@
+<template>
+  <canvas id="bundlephobia"></canvas>
+</template>
+
+<script lang="ts">
+import Vue from 'vue';
+import Chart from 'chart.js';
+import { BundlephobiaT } from '../apis';
+import { COLOR_GREEN, COLOR_GRAY, numbersFormatter } from '../../apps-config';
+
+const roundBytesFn = (bytes: number): number => Math.round(bytes / 102.4) / 10;
+
+export default Vue.extend({
+  name: 'BundlephobiaChart',
+
+  props: {
+    libs: {
+      type: Array as () => string[],
+      required: true,
+    },
+    sizes: {
+      type: Array as () => BundlephobiaT[],
+      required: true,
+    },
+  },
+
+  mounted(): void {
+    const ctx = document.getElementById('bundlephobia') as HTMLCanvasElement;
+    const { libs, sizes } = this;
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: libs,
+        datasets: [
+          {
+            label: 'minified',
+            data: sizes.map((size) => roundBytesFn(size.raw)),
+            backgroundColor: COLOR_GRAY,
+            borderWidth: 1,
+          },
+          {
+            label: 'minified + gzipped',
+            data: sizes.map((size) => roundBytesFn(size.gzip)),
+            backgroundColor: COLOR_GREEN,
+            borderWidth: 1,
+          },
+        ],
+      },
+
+      options: {
+        legend: {
+          display: true,
+        },
+        title: {
+          display: true,
+          text: 'Bundle size, kB',
+        },
+        scales: {
+          yAxes: [
+            {
+              stacked: true,
+              ticks: {
+                beginAtZero: true,
+                callback: (val: number): string => numbersFormatter.format(val),
+              },
+            },
+          ],
+          xAxes: [{ stacked: true }],
+        },
+      },
+    });
+  },
+});
+</script>
