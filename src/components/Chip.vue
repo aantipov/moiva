@@ -1,6 +1,6 @@
 <template>
   <div
-    class="inline-flex items-center justify-center h-8 py-1 m-1 font-medium border border-gray-700 rounded-full cursor-pointer tab"
+    class="inline-flex items-center justify-center h-8 py-1 m-1 font-medium border rounded-full outline-none cursor-pointer tab"
     :class="{ selected: selected }"
     @click="$emit('toggle')"
   >
@@ -36,9 +36,9 @@ export default Vue.extend({
 
 <style lang="postcss" scoped>
 .tab {
-  @apply bg-gray-200 text-gray-800 px-5;
+  @apply bg-gray-200 text-gray-600 pl-2 pr-8 border-gray-400;
 }
 .tab.selected {
-  @apply bg-gray-700 text-gray-100 px-2;
+  @apply bg-gray-700 text-gray-100 px-2 border-gray-700;
 }
 </style>

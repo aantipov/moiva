@@ -4,7 +4,7 @@
       <div class="modal-wrapper">
         <div class="relative rounded-md modal-container">
           <button
-            class="absolute right-0 px-3 py-1 my-1 mr-1 text-xs font-bold text-gray-500 uppercase outline-none background-transparent focus:outline-none"
+            class="absolute right-0 px-4 py-2 my-2 mr-1 text-sm font-bold text-gray-500 uppercase outline-none background-transparent focus:outline-none"
             type="button"
             style="transition: all 0.15s ease"
             @click="$emit('close')"
@@ -12,7 +12,7 @@
             Close
           </button>
 
-          <div class="px-4 modal-body">
+          <div class="p-4 modal-body">
             <slot></slot>
           </div>
         </div>
@@ -70,8 +70,8 @@ export default Vue.extend({
 }
 
 .modal-container {
-  width: 80%;
-  max-width: 400px;
+  width: 90%;
+  max-width: 450px;
   min-width: 280px;
   margin: 0 auto;
   padding: 0;

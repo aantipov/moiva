@@ -9,7 +9,7 @@
     </div>
 
     <div>
-      <Chip v-for="lib in value" :key="lib" selected @close="deselect(lib)">{{
+      <Chip v-for="lib in value" :key="lib" selected @toggle="deselect(lib)">{{
         lib
       }}</Chip>
     </div>
@@ -19,11 +19,11 @@
         <div class="mb-2 text-gray-600 uppercase"># Frameworks</div>
         <div>
           <Chip
-            v-for="lib in frameworks"
-            :key="lib.name"
-            :selected="isAppSelected(lib.name)"
-            @toggle="toggle(lib.name)"
-            >{{ lib.name }}</Chip
+            v-for="libName in frameworks"
+            :key="libName"
+            :selected="isAppSelected(libName)"
+            @toggle="toggle(libName)"
+            >{{ libName }}</Chip
           >
         </div>
       </div>
@@ -32,11 +32,11 @@
         <div class="mb-2 text-gray-600 uppercase"># State Management</div>
         <div>
           <Chip
-            v-for="lib in stateManageLibs"
-            :key="lib.name"
-            :selected="isAppSelected(lib.name)"
-            @toggle="toggle(lib.name)"
-            >{{ lib.name }}</Chip
+            v-for="libName in stateManageLibs"
+            :key="libName"
+            :selected="isAppSelected(libName)"
+            @toggle="toggle(libName)"
+            >{{ libName }}</Chip
           >
         </div>
       </div>
@@ -45,11 +45,11 @@
         <div class="mb-2 text-gray-600 uppercase"># Testing</div>
         <div>
           <Chip
-            v-for="lib in testingLibs"
-            :key="lib.name"
-            :selected="isAppSelected(lib.name)"
-            @toggle="toggle(lib.name)"
-            >{{ lib.name }}</Chip
+            v-for="libName in testingLibs"
+            :key="libName"
+            :selected="isAppSelected(libName)"
+            @toggle="toggle(libName)"
+            >{{ libName }}</Chip
           >
         </div>
       </div>
@@ -70,6 +70,7 @@ export default Vue.extend({
     Chip,
     ArrowDown,
   },
+
   props: {
     value: {
       type: Array,
@@ -80,22 +81,31 @@ export default Vue.extend({
       required: true,
     },
   },
+
   data() {
     return {
       showModal: false,
     };
   },
+
   computed: {
-    frameworks() {
-      return configApps.filter((lib) => lib.category === 'Framework');
+    frameworks(): string[] {
+      return configApps
+        .filter((lib) => lib.category === 'Framework')
+        .map((lib) => lib.name);
     },
-    stateManageLibs() {
-      return configApps.filter((lib) => lib.category === 'StateManagement');
+    stateManageLibs(): string[] {
+      return configApps
+        .filter((lib) => lib.category === 'StateManagement')
+        .map((lib) => lib.name);
     },
-    testingLibs() {
-      return configApps.filter((lib) => lib.category === 'Testing');
+    testingLibs(): string[] {
+      return configApps
+        .filter((lib) => lib.category === 'Testing')
+        .map((lib) => lib.name);
     },
   },
+
   methods: {
     isAppSelected(app: string): boolean {
       return this.value.indexOf(app) > -1;

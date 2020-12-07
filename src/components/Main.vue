@@ -21,7 +21,7 @@
         :filter-by="filterOption"
       >
         <template #selected-option-container="{ option, deselect }">
-          <Chip @close="deselect(option)">{{ option.name }}</Chip>
+          <Chip selected @close="deselect(option)">{{ option.name }}</Chip>
         </template>
 
         <template #option="option">
@@ -50,7 +50,7 @@
     </div>
 
     <div v-else class="my-16 text-center p-lead">
-      Select libraries you wish to compare
+      Add libraries to comparison
     </div>
   </div>
 </template>
