@@ -11,25 +11,25 @@
       <!-- Stars  -->
       <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
         <div v-if="isLoading" class="text-center p">Loading...</div>
-        <Stars v-else :apps="apps" :repos="repos" />
+        <Stars v-else :libs="libs" :repos="repos" />
       </div>
 
       <!-- Age, years -->
       <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
         <div v-if="isLoading" class="text-center p">Loading...</div>
-        <Age v-else :apps="apps" :repos="repos" />
+        <Age v-else :libs="libs" :repos="repos" />
       </div>
 
       <!-- Issues, count  -->
       <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
         <div v-if="isLoading" class="text-center p">Loading...</div>
-        <OpenClosedIssues v-else :apps="apps" :repos="repos" />
+        <OpenClosedIssues v-else :libs="libs" :repos="repos" />
       </div>
 
       <!-- Pull Requests, count  -->
       <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
         <div v-if="isLoading" class="text-center p">Loading...</div>
-        <Prs v-else :apps="apps" :repos="repos" />
+        <Prs v-else :libs="libs" :repos="repos" />
       </div>
     </div>
   </div>
@@ -55,7 +55,7 @@ export default Vue.extend({
   },
 
   props: {
-    apps: {
+    libs: {
       type: Array as () => string[],
       required: true,
     },
@@ -71,7 +71,7 @@ export default Vue.extend({
   },
 
   watch: {
-    apps(): void {
+    libs(): void {
       this.loadData();
     },
   },
@@ -86,7 +86,7 @@ export default Vue.extend({
       this.isError = false;
 
       const promise = (this.reposPromise = Promise.all(
-        this.apps.map((app) => fetchGithubData(app))
+        this.libs.map((app) => fetchGithubData(app))
       )
         .then((data) => {
           // Do nothing if there is a new request already in place

@@ -14,7 +14,7 @@ export default Vue.extend({
   name: 'GTrendsChart',
 
   props: {
-    apps: {
+    libs: {
       type: Array as () => string[],
       required: true,
     },
@@ -25,7 +25,7 @@ export default Vue.extend({
   },
 
   mounted() {
-    const { apps, data } = this;
+    const { libs, data } = this;
     const ctx = document.getElementById('googleTrends') as HTMLCanvasElement;
     const categories = data.map(({ time }) =>
       new Date(time * 1000).toISOString().slice(0, 10)
@@ -35,7 +35,7 @@ export default Vue.extend({
       type: 'line',
       data: {
         labels: categories,
-        datasets: apps.map((app, key) => ({
+        datasets: libs.map((app, key) => ({
           label: app,
           fill: false,
           data: data.map(({ value }) => value[key]),

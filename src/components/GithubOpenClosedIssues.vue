@@ -14,7 +14,7 @@ export default Vue.extend({
   name: 'GithubOpenClosedIssues',
 
   props: {
-    apps: {
+    libs: {
       type: Array as () => string[],
       required: true,
     },
@@ -27,12 +27,12 @@ export default Vue.extend({
   mounted(): void {
     const ctx1 = document.getElementById('issuesCount') as HTMLCanvasElement;
 
-    const { apps, repos } = this;
+    const { libs, repos } = this;
 
     new Chart(ctx1, {
       type: 'bar',
       data: {
-        labels: apps,
+        labels: libs,
         datasets: [
           {
             label: 'open',

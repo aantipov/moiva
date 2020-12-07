@@ -16,7 +16,7 @@ export default Vue.extend({
   name: 'NpmChart',
 
   props: {
-    apps: {
+    libs: {
       type: Array as () => string[],
       required: true,
     },
@@ -27,7 +27,7 @@ export default Vue.extend({
   },
 
   mounted() {
-    const { apps, downloads } = this;
+    const { libs, downloads } = this;
     const ctx = document.getElementById('npmDownloads') as HTMLCanvasElement;
     const categories = downloads[0].map(({ month }) => month);
 
@@ -35,7 +35,7 @@ export default Vue.extend({
       type: 'line',
       data: {
         labels: categories,
-        datasets: apps.map((app, key) => ({
+        datasets: libs.map((app, key) => ({
           label: app,
           fill: false,
           data: downloads[key].map(({ downloads }) => downloads),

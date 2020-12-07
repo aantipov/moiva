@@ -17,7 +17,7 @@ import { appsConfigsMap, TRADAR_LEVELS } from '../../apps-config';
 export default Vue.extend({
   name: 'TechRadar',
   props: {
-    apps: {
+    libs: {
       type: Array as () => string[],
       required: true,
     },
@@ -31,13 +31,13 @@ export default Vue.extend({
 
   computed: {
     uniqDates(): string[] {
-      const dates = this.apps
+      const dates = this.libs
         .map((app) => Object.keys(appsConfigsMap[app].tradar.data))
         .flat();
       return [...new Set(dates)].sort();
     },
     chartDatasets(): any {
-      return this.apps.map((app) => ({
+      return this.libs.map((app) => ({
         label: app,
         fill: false,
         data: this.uniqDates.map(
@@ -55,7 +55,7 @@ export default Vue.extend({
   },
 
   watch: {
-    apps(): void {
+    libs(): void {
       this.updateChart();
     },
   },
