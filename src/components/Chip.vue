@@ -1,6 +1,6 @@
 <template>
   <div
-    class="inline-flex items-center justify-center h-8 py-1 mx-1 my-2 font-medium border rounded-full outline-none cursor-pointer focus:outline-none tab"
+    class="inline-flex items-center justify-center h-8 py-1 mx-1 my-2 font-medium border rounded-full outline-none cursor-pointer focus:outline-none root"
     :class="{ selected: selected }"
     @click="$emit('toggle')"
   >
@@ -35,10 +35,12 @@ export default Vue.extend({
 </script>
 
 <style lang="postcss" scoped>
-.tab {
+.root {
+  /* Remove highlight on tap */
+  -webkit-tap-highlight-color: transparent;
   @apply bg-gray-200 text-gray-600 pl-2 pr-8 border-gray-400;
 }
-.tab.selected {
+.root.selected {
   @apply bg-gray-700 text-gray-100 px-2 border-gray-700;
 }
 </style>

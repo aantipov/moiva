@@ -10,7 +10,7 @@
       <v-select
         v-model="selectedApps"
         multiple
-        placeholder="Add libraries to comparison"
+        placeholder="Add libraries to comparison..."
         :close-on-select="false"
         :clear-search-on-select="false"
         :clear-search-on-blur="() => true"
@@ -215,6 +215,12 @@ export default Vue.extend({
 }
 .vs__dropdown-option--highlight {
   @apply text-black bg-gray-200 text-black;
+}
+.vs__search {
+  @apply h-8;
+}
+.vs__search::placeholder {
+  @apply text-gray-600;
 }
 </style>
 
