@@ -36,9 +36,6 @@ export default Vue.extend({
       required: true,
     },
   },
-  data() {
-    return {};
-  },
   watch: {
     showModal(): void {
       if (this.showModal) {
