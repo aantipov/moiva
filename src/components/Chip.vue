@@ -1,6 +1,6 @@
 <template>
   <div
-    class="inline-flex items-center justify-center h-8 py-1 m-1 font-medium border rounded-full outline-none cursor-pointer focus:outline-none tab"
+    class="inline-flex items-center justify-center h-8 py-1 mx-1 my-2 font-medium border rounded-full outline-none cursor-pointer focus:outline-none tab"
     :class="{ selected: selected }"
     @click="$emit('toggle')"
   >
