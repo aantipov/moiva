@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="flex items-center justify-between w-full h-12 px-3 mt-2 mb-4 text-gray-600 border border-gray-400 cursor-pointer rounded-md select-field"
+      class="flex items-center justify-between w-full h-12 px-3 mt-2 mb-2 text-gray-600 border border-gray-400 cursor-pointer rounded-md"
       @click="showModal = true"
     >
       Add libraries to comparison...
@@ -15,37 +15,11 @@
     </div>
 
     <Modal class="modal" :show-modal="showModal" @close="showModal = false">
-      <div class="mt-4">
-        <div class="mb-2 text-gray-600 uppercase"># Frameworks</div>
+      <div v-for="cat in catsWithLibs" :key="cat.categoryName" class="mb-4">
+        <div class="mb-2 text-gray-600 uppercase">{{ cat.categoryName }}</div>
         <div>
           <Chip
-            v-for="libName in frameworks"
-            :key="libName"
-            :selected="isAppSelected(libName)"
-            @toggle="toggle(libName)"
-            >{{ libName }}</Chip
-          >
-        </div>
-      </div>
-
-      <div class="mt-4">
-        <div class="mb-2 text-gray-600 uppercase"># State Management</div>
-        <div>
-          <Chip
-            v-for="libName in stateManageLibs"
-            :key="libName"
-            :selected="isAppSelected(libName)"
-            @toggle="toggle(libName)"
-            >{{ libName }}</Chip
-          >
-        </div>
-      </div>
-
-      <div class="mt-4 mb-4">
-        <div class="mb-2 text-gray-600 uppercase"># Testing</div>
-        <div>
-          <Chip
-            v-for="libName in testingLibs"
+            v-for="libName in cat.libs"
             :key="libName"
             :selected="isAppSelected(libName)"
             @toggle="toggle(libName)"
@@ -62,7 +36,7 @@ import Vue from 'vue';
 import Modal from './Modal.vue';
 import Chip from './Chip.vue';
 import ArrowDown from './icons/ArrowDown.vue';
-import configApps from '../../apps-config';
+import configApps, { categoryMap } from '../../apps-config';
 
 export default Vue.extend({
   components: {
@@ -89,24 +63,13 @@ export default Vue.extend({
   },
 
   computed: {
-    // TODO
-    catsWithLibs(): unknown[] {
-      return [];
-    },
-    frameworks(): string[] {
-      return configApps
-        .filter((lib) => lib.category === 'Framework')
-        .map((lib) => lib.name);
-    },
-    stateManageLibs(): string[] {
-      return configApps
-        .filter((lib) => lib.category === 'StateManagement')
-        .map((lib) => lib.name);
-    },
-    testingLibs(): string[] {
-      return configApps
-        .filter((lib) => lib.category === 'Testing')
-        .map((lib) => lib.name);
+    catsWithLibs(): { categoryName: string; libs: string[] }[] {
+      return Object.entries(categoryMap).map(([category, categoryName]) => ({
+        categoryName,
+        libs: configApps
+          .filter((lib) => lib.category === category)
+          .map((lib) => lib.name),
+      }));
     },
   },
 
@@ -134,9 +97,6 @@ export default Vue.extend({
 </script>
 
 <style lang="postcss" scoped>
-.select-field {
-  /* @apply border-solid border-gray-100; */
-}
 .option {
   @apply h-12 p-0 px-5 flex items-center text-gray-800 cursor-pointer;
 }

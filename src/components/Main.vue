@@ -2,11 +2,11 @@
   <div>
     <LibsSelectorMobile
       v-model="selectedApps"
-      class="block sm:hidden"
+      class="block md:hidden"
       :libs="appsWithCategories"
     />
 
-    <div class="hidden mx-auto mt-5 text-center sm:block xl:w-2/3">
+    <div class="hidden mx-auto mt-5 text-center md:block xl:w-2/3">
       <v-select
         v-model="selectedApps"
         multiple
