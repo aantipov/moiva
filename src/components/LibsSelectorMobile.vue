@@ -28,7 +28,7 @@
           <jd-chip
             v-for="libName in cat.libs"
             :key="libName"
-            :selected="isAppSelected(libName)"
+            :selected="isLibSelected(libName)"
             @toggle="toggle(libName)"
             >{{ libName }}</jd-chip
           >
@@ -75,11 +75,11 @@ export default Vue.extend({
   },
 
   methods: {
-    isAppSelected(app: string): boolean {
+    isLibSelected(app: string): boolean {
       return this.value.indexOf(app) > -1;
     },
     toggle(libName: string): void {
-      if (this.isAppSelected(libName)) {
+      if (this.isLibSelected(libName)) {
         this.deselect(libName);
       } else {
         this.select(libName);
