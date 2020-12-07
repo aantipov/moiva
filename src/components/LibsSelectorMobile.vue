@@ -44,6 +44,8 @@ import Modal from './Modal.vue';
 import libsConfigs, { categoryMap } from '../../apps-config';
 
 export default Vue.extend({
+  name: 'LibsSelectorMobile',
+
   components: { Modal },
 
   props: {

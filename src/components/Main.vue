@@ -2,39 +2,10 @@
   <div>
     <LibsSelectorMobile v-model="selectedApps" class="block md:hidden" />
 
-    <div class="hidden mx-auto mt-5 text-center md:block xl:w-2/3">
-      <v-select
-        v-model="selectedApps"
-        multiple
-        placeholder="Add libraries to comparison..."
-        :close-on-select="false"
-        :clear-search-on-select="false"
-        :clear-search-on-blur="() => true"
-        :options="appsWithCategories"
-        label="name"
-        :reduce="(app) => app.name"
-        :selectable="(option) => !option.isCategory"
-        :filter-by="filterOption"
-      >
-        <template #selected-option-container="{ option, deselect }">
-          <jd-chip selected @close="deselect(option)">{{
-            option.name
-          }}</jd-chip>
-        </template>
-
-        <template #option="option">
-          <div
-            class="option"
-            :class="{ 'option--category': option.isCategory }"
-          >
-            <div v-if="!option.isCategory" class="w-8">
-              <Checkmark v-if="isAppSelected(option.name)" />
-            </div>
-            {{ option.name }}
-          </div>
-        </template>
-      </v-select>
-    </div>
+    <LibsSelectorDesktop
+      v-model="selectedApps"
+      class="hidden mx-auto mt-5 text-center md:block xl:w-2/3"
+    />
 
     <div v-if="selectedApps.length">
       <div class="grid grid-cols-12 gap-4">
@@ -58,40 +29,10 @@ import Vue from 'vue';
 import Npm from './Npm.vue';
 import Github from './Github.vue';
 import LibsSelectorMobile from './LibsSelectorMobile.vue';
+import LibsSelectorDesktop from './LibsSelectorDesktop.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
-import Checkmark from './Checkmark.vue';
-import configApps, {
-  AppConfigT,
-  categoryMap,
-  LibraryCategoryT,
-  appsConfigsMap,
-} from '../../apps-config';
-import VSelect from 'vue-select';
-import '../vue-select-override.scss';
-
-type OptionT =
-  | AppConfigT
-  | {
-      name: string;
-      isCategory: boolean;
-    };
-
-// Define options list - apps + categories
-const appsWithCategories: OptionT[] = [...configApps];
-let category = '';
-let cats = 0;
-configApps.forEach((app, i) => {
-  if (app.category !== category) {
-    category = app.category;
-
-    appsWithCategories.splice(cats + i, 0, {
-      name: categoryMap[category as LibraryCategoryT],
-      isCategory: true,
-    });
-    cats++;
-  }
-});
+import configApps, { AppConfigT, appsConfigsMap } from '../../apps-config';
 
 // Define a default list of apps and fix the url if wrong apps are passed
 const Url = new URL(window.location.href);
@@ -141,16 +82,16 @@ export default Vue.extend({
     Npm,
     TechRadar,
     GoogleTrends,
-    VSelect,
-    Checkmark,
     LibsSelectorMobile,
+    LibsSelectorDesktop,
   },
+
   data() {
     return {
-      appsWithCategories,
       selectedApps,
     };
   },
+
   watch: {
     selectedApps(): void {
       // This is a workaround for a problem of being able to select a category
@@ -172,54 +113,5 @@ export default Vue.extend({
       updateUrl(this.selectedApps);
     },
   },
-  methods: {
-    filterOption(option: OptionT, label = '', search: string): boolean {
-      if ('isCategory' in option) {
-        return true;
-      }
-      return label.toLowerCase().indexOf(search.toLowerCase()) > -1;
-    },
-    isAppSelected(app: string): boolean {
-      return this.selectedApps.indexOf(app) > -1;
-    },
-  },
 });
 </script>
-
-<style lang="postcss">
-.vs__dropdown-toggle {
-  height: auto;
-  @apply py-1;
-}
-.vs__open-indicator {
-  @apply mr-1;
-}
-.vs__dropdown-option {
-  @apply h-12 p-0;
-}
-.vs__dropdown-option .option {
-  @apply h-full px-3 flex items-center text-gray-800;
-}
-.vs__dropdown-option .option--category {
-  @apply uppercase text-gray-800;
-}
-.vs__dropdown-option--selected {
-  @apply font-bold text-gray-800;
-}
-.vs__dropdown-option--selected.vs__dropdown-option--highlight {
-  @apply cursor-default;
-}
-.vs__dropdown-option--highlight {
-  @apply text-black bg-gray-200 text-black;
-}
-.vs__search {
-  @apply h-8;
-}
-.vs__search::placeholder {
-  @apply text-gray-600;
-}
-</style>
-
-<style lang="scss">
-$vs-dropdown-max-height: 30px;
-</style>
