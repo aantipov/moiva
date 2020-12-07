@@ -8,10 +8,12 @@
       <slot></slot>
     </div>
 
-    <div v-show="selected" class="flex flex-row-reverse flex-auto">
-      <div @click="$emit('close')">
-        <jd-close />
-      </div>
+    <div
+      v-show="selected"
+      class="flex flex-row-reverse flex-auto"
+      @click="$emit('close')"
+    >
+      <jd-close />
     </div>
   </div>
 </template>
