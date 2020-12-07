@@ -10,10 +10,15 @@
     <div v-if="selectedLibs.length">
       <div class="grid grid-cols-12 gap-4">
         <Npm :libs="selectedLibs" class="col-span-12 xl:col-span-8" />
+
         <TechRadar :libs="selectedLibs" class="col-span-12 xl:col-span-4" />
       </div>
 
-      <GoogleTrends :libs="selectedLibs" />
+      <div class="grid grid-cols-12 gap-4">
+        <GoogleTrends :libs="selectedLibs" class="col-span-12 xl:col-span-8" />
+
+        <Bundlephobia :libs="selectedLibs" class="col-span-12 xl:col-span-4" />
+      </div>
 
       <Github :libs="selectedLibs" />
     </div>
@@ -32,6 +37,7 @@ import LibsSelectorMobile from './LibsSelectorMobile.vue';
 import LibsSelectorDesktop from './LibsSelectorDesktop.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
+import Bundlephobia from './Bundlephobia.vue';
 import libsConfigs, { AppConfigT, appsConfigsMap } from '../../apps-config';
 import { cleanupUrl } from '../utils';
 
@@ -68,6 +74,7 @@ export default Vue.extend({
     Npm,
     TechRadar,
     GoogleTrends,
+    Bundlephobia,
     LibsSelectorMobile,
     LibsSelectorDesktop,
   },
