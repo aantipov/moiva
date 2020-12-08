@@ -7,6 +7,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import Chart from 'chart.js';
+import moment from 'moment';
 import { GTrendPointT } from '../apis';
 import { appsConfigsMap } from '../../apps-config';
 
@@ -47,9 +48,28 @@ export default Vue.extend({
         })),
       },
       options: {
+        tooltips: {
+          callbacks: {
+            title: (tooltipItems): string => {
+              const month = tooltipItems[0].xLabel;
+
+              return moment(month).format('ll');
+            },
+          },
+        },
         title: {
           display: true,
           text: 'Interest Over Time',
+        },
+        scales: {
+          xAxes: [
+            {
+              type: 'time',
+              time: {
+                unit: 'year',
+              },
+            },
+          ],
         },
       },
     });

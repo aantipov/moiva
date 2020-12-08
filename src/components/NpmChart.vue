@@ -56,15 +56,6 @@ export default Vue.extend({
 
               return moment(month).format('MMM, YYYY');
             },
-            label: (tooltipItem, data): string => {
-              // @ts-ignore
-              const label = data.datasets[tooltipItem.datasetIndex].label;
-
-              // @ts-ignore
-              return ` ${label}: ${Number(
-                tooltipItem.yLabel
-              ).toLocaleString()}`;
-            },
           },
         },
         scales: {

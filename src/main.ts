@@ -45,6 +45,17 @@ Chart.defaults.global.tooltips.bodyFontFamily =
   "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif";
 Chart.defaults.global.tooltips.position = 'nearest';
 Chart.defaults.global.tooltips.intersect = false;
+// @ts-ignore
+Chart.defaults.global.tooltips.callbacks.label = (
+  tooltipItem,
+  data
+): string => {
+  // @ts-ignore
+  const label = data.datasets[tooltipItem.datasetIndex].label;
+
+  // @ts-ignore
+  return ` ${label}: ${Number(tooltipItem.yLabel).toLocaleString()}`;
+};
 Chart.defaults.global.maintainAspectRatio = false;
 
 Vue.component('jd-arrow-down', ArrowDown);

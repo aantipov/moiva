@@ -10,6 +10,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
+import moment from 'moment';
 import Chart, { ChartConfiguration, ChartData } from 'chart.js';
 // @ts-ignore
 import { appsConfigsMap, TRADAR_LEVELS } from '../../apps-config';
@@ -90,7 +91,32 @@ export default Vue.extend({
         },
 
         options: {
+          tooltips: {
+            callbacks: {
+              title: (tooltipItems): string => {
+                const month = tooltipItems[0].xLabel;
+
+                return moment(month).format('MMM, YYYY');
+              },
+              label: (tooltipItem, data): string => {
+                // @ts-ignore
+                const label = data.datasets[tooltipItem.datasetIndex].label;
+
+                // @ts-ignore
+                return ` ${label}: ${tooltipItem.yLabel}`;
+              },
+            },
+          },
           scales: {
+            xAxes: [
+              {
+                ticks: {
+                  callback(value): string {
+                    return moment(value).format('MMM, YYYY');
+                  },
+                },
+              },
+            ],
             yAxes: [{ type: 'category', ticks: { reverse: true } }],
           },
         },
