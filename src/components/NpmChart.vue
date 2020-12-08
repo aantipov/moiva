@@ -7,6 +7,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import Chart from 'chart.js';
+import moment from 'moment';
 // @ts-ignore
 import { NpmDownloadT } from '../apis';
 // @ts-ignore
@@ -50,6 +51,11 @@ export default Vue.extend({
       options: {
         tooltips: {
           callbacks: {
+            title: (tooltipItems): string => {
+              const month = tooltipItems[0].xLabel;
+
+              return moment(month).format('MMM, YYYY');
+            },
             label: (tooltipItem, data): string => {
               // @ts-ignore
               const label = data.datasets[tooltipItem.datasetIndex].label;
