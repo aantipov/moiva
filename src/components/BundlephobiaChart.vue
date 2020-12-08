@@ -58,7 +58,7 @@ export default Vue.extend({
               // @ts-ignore
               return ` ${label}: ${Number(
                 tooltipItem.yLabel
-              ).toLocaleString()} kB`;
+              ).toLocaleString()}kB`;
             },
           },
         },
