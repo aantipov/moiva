@@ -48,6 +48,19 @@ export default Vue.extend({
       },
 
       options: {
+        tooltips: {
+          callbacks: {
+            label: (tooltipItem, data): string => {
+              // @ts-ignore
+              const label = data.datasets[tooltipItem.datasetIndex].label;
+
+              // @ts-ignore
+              return ` ${label}: ${Number(
+                tooltipItem.yLabel
+              ).toLocaleString()}`;
+            },
+          },
+        },
         scales: {
           yAxes: [
             {

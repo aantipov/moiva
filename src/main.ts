@@ -40,6 +40,9 @@ Chart.defaults.global.defaultFontFamily =
 // @ts-ignore
 Chart.defaults.global.legend.labels.boxWidth = 20;
 Chart.defaults.global.tooltips.mode = 'index';
+Chart.defaults.global.tooltips.bodySpacing = 6;
+Chart.defaults.global.tooltips.bodyFontFamily =
+  "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif";
 Chart.defaults.global.tooltips.position = 'nearest';
 Chart.defaults.global.tooltips.intersect = false;
 Chart.defaults.global.maintainAspectRatio = false;
