@@ -68,6 +68,14 @@ export default Vue.extend({
           },
         },
         scales: {
+          xAxes: [
+            {
+              type: 'time',
+              time: {
+                unit: 'year',
+              },
+            },
+          ],
           yAxes: [
             {
               ticks: {
