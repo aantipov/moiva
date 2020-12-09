@@ -59,6 +59,9 @@ const COLOR_ORANGE_SVELTE = '#ff3e00';
 const COLOR_BLUE_REACT = '#3ed6ff';
 const COLOR_BLUE_VUETIFY = '#1867C0';
 const COLOR_GREEN_VUE = '#42b983';
+const COLOR_GREEN_QUASAR = '#00796B';
+const COLOR_BLUE_ELEMENT_VUE = '#00B0FF';
+const COLOR_PURPLE_BOOTSTRAP_VUE = '#673AB7';
 const COLOR_YELLOW = '#FDD835';
 const COLOR_BROWN = '#6D4C41';
 const COLOR_BLACK = '#000000';
@@ -264,6 +267,7 @@ const appsConfigs: AppConfigT[] = [
     },
     bphobia: { name: 'enzyme' },
   },
+
   {
     name: 'Vuetify',
     urlname: 'vuetify',
@@ -275,6 +279,45 @@ const appsConfigs: AppConfigT[] = [
     gTrend: { keyword: 'vuetify' },
     tradar: null,
     bphobia: { name: 'vuetify' },
+  },
+
+  {
+    name: 'Quasar',
+    urlname: 'quasar',
+    color: COLOR_GREEN_QUASAR,
+    selected: false,
+    category: 'Components',
+    github: { name: 'quasar', owner: 'quasarframework' },
+    npm: { name: 'quasar' },
+    gTrend: { keyword: 'quasar framework' },
+    tradar: null,
+    bphobia: { name: 'quasar' },
+  },
+
+  {
+    name: 'BootstrapVue',
+    urlname: 'bootstrap-vue',
+    color: COLOR_PURPLE_BOOTSTRAP_VUE,
+    selected: false,
+    category: 'Components',
+    github: { name: 'bootstrap-vue', owner: 'bootstrap-vue' },
+    npm: { name: 'bootstrap-vue' },
+    gTrend: { keyword: 'bootstrap-vue' },
+    tradar: null,
+    bphobia: { name: 'bootstrap-vue' },
+  },
+
+  {
+    name: 'Element UI',
+    urlname: 'element-ui',
+    color: COLOR_BLUE_ELEMENT_VUE,
+    selected: false,
+    category: 'Components',
+    github: { name: 'element', owner: 'elemefe' },
+    npm: { name: 'element-ui' },
+    gTrend: { keyword: 'element vue' },
+    tradar: null,
+    bphobia: { name: 'element-ui' },
   },
 ];
 

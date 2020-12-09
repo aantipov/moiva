@@ -3,7 +3,15 @@
     <h2>ThoughtWorks TechRadar</h2>
 
     <div class="relative chart">
-      <canvas id="techRadar" />
+      <div
+        v-if="!filteredLibs.length"
+        class="h-full pt-40 text-2xl text-red-600 bg-gray-200"
+      >
+        <div class="flex justify-center">No Data</div>
+        <div class="flex justify-center">for selected libraries</div>
+      </div>
+
+      <canvas v-show="filteredLibs.length" id="techRadar" />
     </div>
   </div>
 </template>
@@ -62,7 +70,9 @@ export default Vue.extend({
 
   watch: {
     libs(): void {
-      this.updateChart();
+      if (this.filteredLibs.length) {
+        this.updateChart();
+      }
     },
   },
 
