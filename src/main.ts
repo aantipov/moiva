@@ -32,6 +32,7 @@ Vue.config.productionTip = false;
 Chart.defaults.global.defaultFontSize = 14;
 Chart.defaults.global.defaultFontFamily =
   'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
+// @ts-ignore
 Chart.defaults.global.title.padding = 0;
 // @ts-ignore
 Chart.defaults.global.title.fontSize = 14;
