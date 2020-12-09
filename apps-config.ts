@@ -1,5 +1,13 @@
 type TRadarLevelT = 'Hold' | 'Adopt' | 'Trial' | 'Assess';
-export type LibraryCategoryT = 'Framework' | 'StateManagement' | 'Testing';
+export type LibraryCategoryT =
+  | 'Framework'
+  | 'StateManagement'
+  | 'Components'
+  | 'Testing';
+
+export interface TechRadarT {
+  data: Partial<Record<string, TRadarLevelT>>;
+}
 
 export interface AppConfigT {
   name: string;
@@ -16,10 +24,8 @@ export interface AppConfigT {
   };
   gTrend: {
     keyword: string;
-  };
-  tradar: {
-    data: Partial<Record<string, TRadarLevelT>>;
-  };
+  } | null;
+  tradar: null | TechRadarT;
   bphobia: {
     name: string;
   };
@@ -27,6 +33,7 @@ export interface AppConfigT {
 
 export const categoryMap: Record<LibraryCategoryT, string> = {
   Framework: '# Frameworks',
+  Components: '# Component Libraries',
   StateManagement: '# State Management',
   Testing: '# Testing',
 };
@@ -50,6 +57,7 @@ export const COLOR_RED = '#f56565';
 export const COLOR_PURPLE = '#9f7aea';
 const COLOR_ORANGE_SVELTE = '#ff3e00';
 const COLOR_BLUE_REACT = '#3ed6ff';
+const COLOR_BLUE_VUETIFY = '#1867C0';
 const COLOR_GREEN_VUE = '#42b983';
 const COLOR_YELLOW = '#FDD835';
 const COLOR_BROWN = '#6D4C41';
@@ -82,9 +90,7 @@ const appsConfigs: AppConfigT[] = [
         '2020-05': ADOPT,
       },
     },
-    bphobia: {
-      name: 'vue',
-    },
+    bphobia: { name: 'vue' },
   },
 
   {
@@ -105,9 +111,7 @@ const appsConfigs: AppConfigT[] = [
         '2016-11': ADOPT,
       },
     },
-    bphobia: {
-      name: 'react',
-    },
+    bphobia: { name: 'react' },
   },
 
   {
@@ -124,9 +128,7 @@ const appsConfigs: AppConfigT[] = [
         '2020-10': ASSESS,
       },
     },
-    bphobia: {
-      name: 'svelte',
-    },
+    bphobia: { name: 'svelte' },
   },
 
   {
@@ -144,9 +146,7 @@ const appsConfigs: AppConfigT[] = [
         '2017-11': TRIAL,
       },
     },
-    bphobia: {
-      name: 'angular',
-    },
+    bphobia: { name: 'angular' },
   },
 
   {
@@ -167,9 +167,7 @@ const appsConfigs: AppConfigT[] = [
         '2017-03': ADOPT,
       },
     },
-    bphobia: {
-      name: 'ember-source',
-    },
+    bphobia: { name: 'ember-source' },
   },
 
   {
@@ -189,9 +187,7 @@ const appsConfigs: AppConfigT[] = [
         '2020-10': TRIAL,
       },
     },
-    bphobia: {
-      name: 'redux',
-    },
+    bphobia: { name: 'redux' },
   },
 
   {
@@ -208,9 +204,7 @@ const appsConfigs: AppConfigT[] = [
         '2020-10': ASSESS,
       },
     },
-    bphobia: {
-      name: 'recoil',
-    },
+    bphobia: { name: 'recoil' },
   },
 
   {
@@ -228,9 +222,7 @@ const appsConfigs: AppConfigT[] = [
         '2020-10': TRIAL,
       },
     },
-    bphobia: {
-      name: 'xstate',
-    },
+    bphobia: { name: 'xstate' },
   },
 
   {
@@ -249,9 +241,7 @@ const appsConfigs: AppConfigT[] = [
         '2020-05': ADOPT,
       },
     },
-    bphobia: {
-      name: '@testing-library/react',
-    },
+    bphobia: { name: '@testing-library/react' },
   },
 
   {
@@ -272,9 +262,19 @@ const appsConfigs: AppConfigT[] = [
         '2020-05': HOLD,
       },
     },
-    bphobia: {
-      name: 'enzyme',
-    },
+    bphobia: { name: 'enzyme' },
+  },
+  {
+    name: 'Vuetify',
+    urlname: 'vuetify',
+    color: COLOR_BLUE_VUETIFY,
+    selected: false,
+    category: 'Components',
+    github: { name: 'vuetify', owner: 'vuetifyjs' },
+    npm: { name: 'vuetify' },
+    gTrend: { keyword: 'vuetify' },
+    tradar: null,
+    bphobia: { name: 'vuetify' },
   },
 ];
 
