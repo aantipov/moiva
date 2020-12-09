@@ -3,7 +3,15 @@
     <h2>ThoughtWorks TechRadar</h2>
 
     <div class="relative chart">
-      <canvas id="techRadar" />
+      <div
+        v-if="!filteredLibs.length"
+        class="h-full pt-40 text-2xl text-red-600 bg-gray-200"
+      >
+        <div class="flex justify-center">No Data</div>
+        <div class="flex justify-center">for selected libraries</div>
+      </div>
+
+      <canvas v-show="filteredLibs.length" id="techRadar" />
     </div>
   </div>
 </template>
@@ -13,7 +21,7 @@ import Vue from 'vue';
 import moment from 'moment';
 import Chart, { ChartConfiguration, ChartData } from 'chart.js';
 // @ts-ignore
-import { appsConfigsMap, TRADAR_LEVELS } from '../../apps-config';
+import { appsConfigsMap, TRADAR_LEVELS, TechRadarT } from '../../apps-config';
 
 export default Vue.extend({
   name: 'TechRadar',
@@ -32,20 +40,22 @@ export default Vue.extend({
 
   computed: {
     uniqDates(): string[] {
-      const dates = this.libs
-        .map((app) => Object.keys(appsConfigsMap[app].tradar.data))
+      const dates = this.filteredLibs
+        .map((lib) =>
+          Object.keys((appsConfigsMap[lib].tradar as TechRadarT).data)
+        )
         .flat();
       return [...new Set(dates)].sort();
     },
     chartDatasets(): any {
-      return this.libs.map((app) => ({
-        label: app,
+      return this.filteredLibs.map((lib) => ({
+        label: lib,
         fill: false,
         data: this.uniqDates.map(
-          (date) => appsConfigsMap[app].tradar.data[date]
+          (date) => (appsConfigsMap[lib].tradar as TechRadarT).data[date]
         ),
-        backgroundColor: appsConfigsMap[app].color,
-        borderColor: appsConfigsMap[app].color,
+        backgroundColor: appsConfigsMap[lib].color,
+        borderColor: appsConfigsMap[lib].color,
         spanGaps: true,
         borderWidth: 3,
         lineTension: 0,
@@ -53,11 +63,16 @@ export default Vue.extend({
         pointHoverRadius: 10,
       }));
     },
+    filteredLibs(): string[] {
+      return this.libs.filter((lib) => !!appsConfigsMap[lib].tradar);
+    },
   },
 
   watch: {
     libs(): void {
-      this.updateChart();
+      if (this.filteredLibs.length) {
+        this.updateChart();
+      }
     },
   },
 
