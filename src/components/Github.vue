@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Github statistics</h2>
+    <h2 class="mb-2">Github statistics</h2>
 
     <div v-if="isError" class="text-center text-red-700">
       Something went wrong while loading data. Try to reload the page or come

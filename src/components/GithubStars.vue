@@ -47,6 +47,7 @@ export default Vue.extend({
           display: false,
         },
         title: {
+          padding: 5,
           display: true,
           text: 'Stars',
         },

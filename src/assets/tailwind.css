@@ -32,7 +32,7 @@
       @apply text-4xl font-medium;
     }
     h2 {
-      @apply text-3xl;
+      @apply mb-0 text-3xl;
     }
     .p-lead {
       @apply text-2xl font-light;
