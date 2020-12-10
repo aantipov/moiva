@@ -67,5 +67,6 @@ Vue.component('jd-close', Close);
 Vue.component('jd-chip', Chip);
 
 new Vue({
+  // eslint-disable-next-line
   render: (h) => h(App),
 }).$mount('#app');
