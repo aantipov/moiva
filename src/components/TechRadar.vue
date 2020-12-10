@@ -18,7 +18,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import moment from 'moment';
+import { format } from 'date-fns';
 import Chart, { ChartConfiguration, ChartData } from 'chart.js';
 // @ts-ignore
 import { appsConfigsMap, TRADAR_LEVELS, TechRadarT } from '../../apps-config';
@@ -109,9 +109,9 @@ export default Vue.extend({
           tooltips: {
             callbacks: {
               title: (tooltipItems): string => {
-                const month = tooltipItems[0].xLabel;
+                const month = tooltipItems[0].xLabel as string;
 
-                return moment(month).format('MMM, YYYY');
+                return format(new Date(month), 'MMM, yyyy');
               },
               label: (tooltipItem, data): string => {
                 // @ts-ignore
@@ -127,7 +127,7 @@ export default Vue.extend({
               {
                 ticks: {
                   callback(value): string {
-                    return moment(value).format('MMM, YYYY');
+                    return format(new Date(value), 'MMM, yyyy');
                   },
                 },
               },

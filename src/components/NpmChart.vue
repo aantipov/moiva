@@ -7,11 +7,12 @@
 <script lang="ts">
 import Vue from 'vue';
 import Chart from 'chart.js';
-import moment from 'moment';
+import { format } from 'date-fns';
 // @ts-ignore
 import { NpmDownloadT } from '../apis';
 // @ts-ignore
 import { appsConfigsMap, numbersFormatter } from '../../apps-config';
+import { enUS } from 'date-fns/locale';
 
 export default Vue.extend({
   name: 'NpmChart',
@@ -52,19 +53,18 @@ export default Vue.extend({
         tooltips: {
           callbacks: {
             title: (tooltipItems): string => {
-              const month = tooltipItems[0].xLabel;
+              const month = tooltipItems[0].xLabel as string;
 
-              return moment(month).format('MMM, YYYY');
+              return format(new Date(month), 'MMM, yyyy');
             },
           },
         },
         scales: {
+          adapters: { date: { locale: enUS } },
           xAxes: [
             {
               type: 'time',
-              time: {
-                unit: 'year',
-              },
+              time: { unit: 'year' },
             },
           ],
           yAxes: [
