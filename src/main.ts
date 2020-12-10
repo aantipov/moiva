@@ -1,32 +1,32 @@
 import Vue from 'vue';
 import Chart from 'chart.js';
 import 'chartjs-adapter-date-fns';
-import * as Sentry from '@sentry/browser';
-import { Vue as VueIntegration } from '@sentry/integrations';
-import { Integrations } from '@sentry/tracing';
+// import * as Sentry from '@sentry/browser';
+// import { Vue as VueIntegration } from '@sentry/integrations';
+// import { Integrations } from '@sentry/tracing';
 import App from './App.vue';
 import Close from './components/icons/Close.vue';
 import Chip from './components/Chip.vue';
 import ArrowDown from './components/icons/ArrowDown.vue';
 import './assets/tailwind.css';
 
-Sentry.init({
-  dsn:
-    'https://185bd9a836b146318babbd956881e8a0@o477177.ingest.sentry.io/5517696',
-  integrations: [
-    new VueIntegration({
-      Vue,
-      tracing: true,
-      logErrors: true,
-    }),
-    new Integrations.BrowserTracing(),
-  ],
-  // process.env.NODE_ENV is being replaced by the value during build
-  environment: process.env.NODE_ENV,
-  // We recommend adjusting this value in production, or using tracesSampler
-  // for finer control
-  tracesSampleRate: 1.0,
-});
+// Sentry.init({
+//   dsn:
+//     'https://185bd9a836b146318babbd956881e8a0@o477177.ingest.sentry.io/5517696',
+//   integrations: [
+//     new VueIntegration({
+//       Vue,
+//       tracing: true,
+//       logErrors: true,
+//     }),
+//     new Integrations.BrowserTracing(),
+//   ],
+//   // process.env.NODE_ENV is being replaced by the value during build
+//   environment: process.env.NODE_ENV,
+//   // We recommend adjusting this value in production, or using tracesSampler
+//   // for finer control
+//   tracesSampleRate: 1.0,
+// });
 
 Vue.config.productionTip = false;
 
@@ -67,5 +67,6 @@ Vue.component('jd-close', Close);
 Vue.component('jd-chip', Chip);
 
 new Vue({
+  // eslint-disable-next-line
   render: (h) => h(App),
 }).$mount('#app');

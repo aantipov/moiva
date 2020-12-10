@@ -47,7 +47,7 @@ export default Vue.extend({
         .flat();
       return [...new Set(dates)].sort();
     },
-    chartDatasets(): any {
+    chartDatasets(): unknown {
       return this.filteredLibs.map((lib) => ({
         label: lib,
         fill: false,
