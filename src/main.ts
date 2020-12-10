@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Chart from 'chart.js';
+import 'chartjs-adapter-date-fns';
 import * as Sentry from '@sentry/browser';
 import { Vue as VueIntegration } from '@sentry/integrations';
 import { Integrations } from '@sentry/tracing';
