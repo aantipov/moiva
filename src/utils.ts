@@ -2,12 +2,12 @@ import libsConfigs, { appsConfigsMap } from '../apps-config';
 
 const paramName = 'compare';
 const oldParamName = 'apps';
-const separator = ' ';
+const delimiter = ' ';
 
 // Validate URL's 'compare' parameter and remove wrong libs
 export function cleanupUrl(): void {
   const Url = new URL(window.location.href);
-  const libsFromUrl = Url.searchParams.get(paramName)?.split(separator) || [];
+  const libsFromUrl = Url.searchParams.get(paramName)?.split(delimiter) || [];
   const libsFromUrlValidated = libsFromUrl
     .filter((urlApp) => !!libsConfigs.find((app) => app.urlname === urlApp))
     .sort();
@@ -22,7 +22,7 @@ export function cleanupUrl(): void {
     return;
   }
 
-  Url.searchParams.set(paramName, libsFromUrlValidated.join(separator));
+  Url.searchParams.set(paramName, libsFromUrlValidated.join(delimiter));
   window.history.replaceState(null, '', Url.href);
 }
 
@@ -41,7 +41,7 @@ export function updateUrl(selectedLibs: string[]): void {
     .map((lib) => appsConfigsMap[lib].urlname)
     .sort();
 
-  Url.searchParams.set(paramName, selectedLibsUrlnames.join(separator));
+  Url.searchParams.set(paramName, selectedLibsUrlnames.join(delimiter));
   window.history.pushState(null, '', Url.href);
 }
 
@@ -50,7 +50,7 @@ export function updateUrl(selectedLibs: string[]): void {
  */
 export function getDefaultLibs(): string[] {
   const Url = new URL(window.location.href);
-  const libsFromUrl = Url.searchParams.get(paramName)?.split(separator) || [];
+  const libsFromUrl = Url.searchParams.get(paramName)?.split(delimiter) || [];
 
   return libsFromUrl.length
     ? libsFromUrl
