@@ -5,15 +5,9 @@
 <script lang="ts">
 import Vue from 'vue';
 import Chart from 'chart.js';
-// @ts-ignore
 import { RepoT } from '../apis';
-// @ts-ignore
-import {
-  COLOR_GREEN,
-  COLOR_GRAY,
-  COLOR_PINK,
-  numbersFormatter,
-} from '../../apps-config';
+import { numbersFormatter } from '../../apps-config';
+import { COLOR_GREEN, COLOR_GRAY, COLOR_PINK } from '../colors';
 
 export default Vue.extend({
   name: 'GithubPrs',
