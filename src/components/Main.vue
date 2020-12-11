@@ -38,7 +38,6 @@ import LibsSelectorDesktop from './LibsSelectorDesktop.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
 import Bundlephobia from './Bundlephobia.vue';
-import libsConfigs, { AppConfigT } from '../../apps-config';
 import { cleanupUrl, updateUrl, getDefaultLibs } from '../utils';
 
 // Validate URL's 'compare' parameter and remove wrong libs and sort libs
@@ -58,12 +57,7 @@ export default Vue.extend({
 
   data() {
     return {
-      selectedLibs: getDefaultLibs().map(
-        (lib) =>
-          (libsConfigs.find(
-            (libConfig) => libConfig.urlname === lib
-          ) as AppConfigT).name
-      ),
+      selectedLibs: getDefaultLibs(),
     };
   },
 

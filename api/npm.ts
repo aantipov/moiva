@@ -23,7 +23,7 @@ export default (req: NowRequest, res: NowResponse): void => {
   const allYearsPromises = years
     .map(
       (year) =>
-        `https://api.npmjs.org/downloads/range/${year}-01-01:${year}-12-31/${app.npm.name}`
+        `https://api.npmjs.org/downloads/range/${year}-01-01:${year}-12-31/${app.name}`
     )
     .map((url) => axios.get(url).then(({ data }) => data.downloads));
 
