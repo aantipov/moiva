@@ -12,7 +12,7 @@ export function cleanupUrl(): void {
     .filter((urlApp) => !!libsConfigs.find((app) => app.urlname === urlApp))
     .sort();
 
-  // Make the old parameter is not licked
+  // Make sure the old parameter is not licked
   Url.searchParams.delete(oldParamName);
 
   // Make sure the url is valid - update it if not empty
