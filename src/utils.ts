@@ -2,7 +2,7 @@ import libsConfigs, { appsConfigsMap } from '../apps-config';
 
 const paramName = 'compare';
 const oldParamName = 'apps';
-const separator = ',';
+const separator = ' ';
 
 // Validate URL's 'compare' parameter and remove wrong libs
 export function cleanupUrl(): void {
