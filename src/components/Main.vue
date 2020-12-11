@@ -38,34 +38,11 @@ import LibsSelectorDesktop from './LibsSelectorDesktop.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
 import Bundlephobia from './Bundlephobia.vue';
-import libsConfigs, { AppConfigT, appsConfigsMap } from '../../apps-config';
-import { cleanupUrl } from '../utils';
+import libsConfigs, { AppConfigT } from '../../apps-config';
+import { cleanupUrl, updateUrl, getDefaultLibs } from '../utils';
 
-// Validate URL's 'apps' parameter and remove wrong libs
+// Validate URL's 'compare' parameter and remove wrong libs and sort libs
 cleanupUrl();
-
-// Define a default list of libs
-const Url = new URL(window.location.href);
-const libsFromUrl = Url.searchParams.get('apps')?.split('--') || [];
-const defaultSelectedLibs = libsFromUrl.length
-  ? libsFromUrl
-  : libsConfigs
-      .filter((libConfig) => libConfig.selected)
-      .map((libConfig) => libConfig.urlname);
-
-function updateUrl(selectedLibs: string[]): void {
-  if (!selectedLibs.length) {
-    Url.searchParams.delete('apps');
-    window.history.replaceState(null, '', Url.href);
-    return;
-  }
-
-  const selectedLibsUrlnames = selectedLibs.map(
-    (lib) => appsConfigsMap[lib].urlname
-  );
-  Url.searchParams.set('apps', selectedLibsUrlnames.join('--'));
-  window.history.replaceState(null, '', Url.href);
-}
 
 export default Vue.extend({
   name: 'Main',
@@ -81,7 +58,7 @@ export default Vue.extend({
 
   data() {
     return {
-      selectedLibs: defaultSelectedLibs.map(
+      selectedLibs: getDefaultLibs().map(
         (lib) =>
           (libsConfigs.find(
             (libConfig) => libConfig.urlname === lib
