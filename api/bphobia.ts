@@ -19,7 +19,7 @@ export default (req: NowRequest, res: NowResponse): void => {
   axios
     .get(url, {
       params: {
-        package: lib.bphobia.name,
+        package: lib.name,
       },
     })
     .then((resp) => {

@@ -9,7 +9,7 @@ export function cleanupUrl(): void {
   const Url = new URL(window.location.href);
   const libsFromUrl = Url.searchParams.get(paramName)?.split(delimiter) || [];
   const libsFromUrlValidated = libsFromUrl
-    .filter((urlApp) => !!libsConfigs.find((app) => app.urlname === urlApp))
+    .filter((libFromUrl) => !!appsConfigsMap[libFromUrl])
     .sort();
 
   // Make sure the old parameter is not licked
@@ -38,7 +38,7 @@ export function updateUrl(selectedLibs: string[]): void {
   }
 
   const selectedLibsUrlnames = selectedLibs
-    .map((lib) => appsConfigsMap[lib].urlname)
+    .map((lib) => appsConfigsMap[lib].name)
     .sort();
 
   Url.searchParams.set(paramName, selectedLibsUrlnames.join(delimiter));
@@ -56,5 +56,5 @@ export function getDefaultLibs(): string[] {
     ? libsFromUrl
     : libsConfigs
         .filter((libConfig) => libConfig.selected)
-        .map((libConfig) => libConfig.urlname);
+        .map((libConfig) => libConfig.name);
 }

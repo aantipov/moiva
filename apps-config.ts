@@ -10,8 +10,7 @@ export interface TechRadarT {
 }
 
 export interface AppConfigT {
-  name: string;
-  urlname: string;
+  name: string; // the same as npm name. Used in url (in compare parameter)
   color: string;
   selected: boolean;
   category: LibraryCategoryT;
@@ -19,16 +18,10 @@ export interface AppConfigT {
     name: string;
     owner: string;
   };
-  npm: {
-    name: string;
-  };
   gTrend: {
     keyword: string;
   } | null;
   tradar: null | TechRadarT;
-  bphobia: {
-    name: string;
-  };
 }
 
 export const categoryMap: Record<LibraryCategoryT, string> = {
@@ -78,13 +71,11 @@ export const TRADAR_LEVELS: TRadarLevelT[] = [
 
 const appsConfigs: AppConfigT[] = [
   {
-    name: 'Vue.js',
-    urlname: 'vue',
+    name: 'vue',
     color: COLOR_GREEN_VUE,
     selected: true,
     category: 'Framework',
     github: { name: 'vue', owner: 'vuejs' },
-    npm: { name: 'vue' },
     gTrend: { keyword: '/g/11c0vmgx5d' }, // Vue.js; type: Topic
     tradar: {
       data: {
@@ -93,17 +84,14 @@ const appsConfigs: AppConfigT[] = [
         '2020-05': ADOPT,
       },
     },
-    bphobia: { name: 'vue' },
   },
 
   {
-    name: 'React',
-    urlname: 'react',
+    name: 'react',
     color: COLOR_BLUE_REACT,
     selected: true,
     category: 'Framework',
     github: { name: 'react', owner: 'facebook' },
-    npm: { name: 'react' },
     gTrend: { keyword: '/m/012l1vxv' }, // React; type: Topic
     tradar: {
       data: {
@@ -114,34 +102,28 @@ const appsConfigs: AppConfigT[] = [
         '2016-11': ADOPT,
       },
     },
-    bphobia: { name: 'react' },
   },
 
   {
-    name: 'Svelte',
-    urlname: 'svelte',
+    name: 'svelte',
     color: COLOR_ORANGE_SVELTE,
     selected: true,
     category: 'Framework',
     github: { name: 'svelte', owner: 'sveltejs' },
-    npm: { name: 'svelte' },
     gTrend: { keyword: 'Svelte' },
     tradar: {
       data: {
         '2020-10': ASSESS,
       },
     },
-    bphobia: { name: 'svelte' },
   },
 
   {
-    name: 'Angular',
-    urlname: 'angular',
+    name: '@angular/core',
     color: COLOR_RED_ANGULAR,
     selected: false,
     category: 'Framework',
     github: { name: 'angular', owner: 'angular' },
-    npm: { name: '@angular/core' },
     gTrend: { keyword: '/g/11c6w0ddw9' }, // Angular; type: Web framework
     tradar: {
       data: {
@@ -149,17 +131,14 @@ const appsConfigs: AppConfigT[] = [
         '2017-11': TRIAL,
       },
     },
-    bphobia: { name: '@angular/core' },
   },
 
   {
-    name: 'Ember.js',
-    urlname: 'emberjs',
+    name: 'ember-source',
     color: COLOR_YELLOW,
     selected: false,
     category: 'Framework',
     github: { name: 'ember.js', owner: 'emberjs' },
-    npm: { name: 'ember-source' },
     gTrend: { keyword: '/m/0s8wr70' }, // Ember.js; type: Topic
     tradar: {
       data: {
@@ -170,17 +149,14 @@ const appsConfigs: AppConfigT[] = [
         '2017-03': ADOPT,
       },
     },
-    bphobia: { name: 'ember-source' },
   },
 
   {
-    name: 'Redux',
-    urlname: 'redux',
+    name: 'redux',
     color: COLOR_PURPLE,
     selected: false,
     category: 'StateManagement',
     github: { name: 'redux', owner: 'reduxjs' },
-    npm: { name: 'redux' },
     gTrend: { keyword: '/g/11dxf0gf92' }, // Redux; type: JavaScript library
     tradar: {
       data: {
@@ -190,34 +166,28 @@ const appsConfigs: AppConfigT[] = [
         '2020-10': TRIAL,
       },
     },
-    bphobia: { name: 'redux' },
   },
 
   {
-    name: 'Recoil',
-    urlname: 'recoil',
+    name: 'recoil',
     color: COLOR_BROWN,
     selected: false,
     category: 'StateManagement',
     github: { name: 'Recoil', owner: 'facebookexperimental' },
-    npm: { name: 'recoil' },
     gTrend: { keyword: '/m/01dyp7' }, // Recoil; type: Topic
     tradar: {
       data: {
         '2020-10': ASSESS,
       },
     },
-    bphobia: { name: 'recoil' },
   },
 
   {
-    name: 'XState',
-    urlname: 'xstate',
+    name: 'xstate',
     color: COLOR_BLACK,
     selected: false,
     category: 'StateManagement',
     github: { name: 'xstate', owner: 'davidkpiano' },
-    npm: { name: 'xstate' },
     gTrend: { keyword: 'xstate' },
     tradar: {
       data: {
@@ -225,17 +195,14 @@ const appsConfigs: AppConfigT[] = [
         '2020-10': TRIAL,
       },
     },
-    bphobia: { name: 'xstate' },
   },
 
   {
-    name: 'React Testing Library',
-    urlname: 'react-testing-library',
+    name: '@testing-library/react',
     color: COLOR_REACT_TESTIING,
     selected: false,
     category: 'Testing',
     github: { name: 'react-testing-library', owner: 'testing-library' },
-    npm: { name: '@testing-library/react' },
     gTrend: { keyword: 'react testing library' },
     tradar: {
       data: {
@@ -244,17 +211,14 @@ const appsConfigs: AppConfigT[] = [
         '2020-05': ADOPT,
       },
     },
-    bphobia: { name: '@testing-library/react' },
   },
 
   {
-    name: 'Enzyme',
-    urlname: 'enzyme',
+    name: 'enzyme',
     color: COLOR_ENZYME,
     selected: false,
     category: 'Testing',
     github: { name: 'enzyme', owner: 'enzymejs' },
-    npm: { name: 'enzyme' },
     gTrend: { keyword: '/m/02jgw' }, // Enzyme; type: Topic
     tradar: {
       data: {
@@ -265,59 +229,46 @@ const appsConfigs: AppConfigT[] = [
         '2020-05': HOLD,
       },
     },
-    bphobia: { name: 'enzyme' },
   },
 
   {
-    name: 'Vuetify',
-    urlname: 'vuetify',
+    name: 'vuetify',
     color: COLOR_BLUE_VUETIFY,
     selected: false,
     category: 'Components',
     github: { name: 'vuetify', owner: 'vuetifyjs' },
-    npm: { name: 'vuetify' },
     gTrend: { keyword: 'vuetify' },
     tradar: null,
-    bphobia: { name: 'vuetify' },
   },
 
   {
-    name: 'Quasar',
-    urlname: 'quasar',
+    name: 'quasar',
     color: COLOR_GREEN_QUASAR,
     selected: false,
     category: 'Components',
     github: { name: 'quasar', owner: 'quasarframework' },
-    npm: { name: 'quasar' },
     gTrend: { keyword: 'quasar framework' },
     tradar: null,
-    bphobia: { name: 'quasar' },
   },
 
   {
-    name: 'BootstrapVue',
-    urlname: 'bootstrap-vue',
+    name: 'bootstrap-vue',
     color: COLOR_PURPLE_BOOTSTRAP_VUE,
     selected: false,
     category: 'Components',
     github: { name: 'bootstrap-vue', owner: 'bootstrap-vue' },
-    npm: { name: 'bootstrap-vue' },
     gTrend: { keyword: 'bootstrap-vue' },
     tradar: null,
-    bphobia: { name: 'bootstrap-vue' },
   },
 
   {
-    name: 'Element UI',
-    urlname: 'element-ui',
+    name: 'element-ui',
     color: COLOR_BLUE_ELEMENT_VUE,
     selected: false,
     category: 'Components',
     github: { name: 'element', owner: 'elemefe' },
-    npm: { name: 'element-ui' },
     gTrend: { keyword: 'element vue' },
     tradar: null,
-    bphobia: { name: 'element-ui' },
   },
 ];
 
