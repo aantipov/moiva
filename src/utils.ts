@@ -7,8 +7,7 @@ const separator = ',';
 // Validate URL's 'compare' parameter and remove wrong libs
 export function cleanupUrl(): void {
   const Url = new URL(window.location.href);
-  const urlParam = Url.searchParams.get(paramName);
-  const libsFromUrl = urlParam?.split(separator) || [];
+  const libsFromUrl = Url.searchParams.get(paramName)?.split(separator) || [];
   const libsFromUrlValidated = libsFromUrl
     .filter((urlApp) => !!libsConfigs.find((app) => app.urlname === urlApp))
     .sort();
@@ -44,4 +43,18 @@ export function updateUrl(selectedLibs: string[]): void {
 
   Url.searchParams.set(paramName, selectedLibsUrlnames.join(separator));
   window.history.pushState(null, '', Url.href);
+}
+
+/**
+ * Should be used after cleanupUrl
+ */
+export function getDefaultLibs(): string[] {
+  const Url = new URL(window.location.href);
+  const libsFromUrl = Url.searchParams.get(paramName)?.split(separator) || [];
+
+  return libsFromUrl.length
+    ? libsFromUrl
+    : libsConfigs
+        .filter((libConfig) => libConfig.selected)
+        .map((libConfig) => libConfig.urlname);
 }
