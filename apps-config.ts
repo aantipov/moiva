@@ -149,7 +149,7 @@ const appsConfigs: AppConfigT[] = [
         '2017-11': TRIAL,
       },
     },
-    bphobia: { name: 'angular' },
+    bphobia: { name: '@angular/core' },
   },
 
   {
