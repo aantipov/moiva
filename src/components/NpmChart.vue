@@ -8,10 +8,8 @@
 import Vue from 'vue';
 import Chart from 'chart.js';
 import { format } from 'date-fns';
-// @ts-ignore
 import { NpmDownloadT } from '../apis';
-// @ts-ignore
-import { appsConfigsMap, numbersFormatter } from '../../apps-config';
+import { numbersFormatter } from '../../apps-config';
 import { enUS } from 'date-fns/locale';
 
 export default Vue.extend({
@@ -20,6 +18,10 @@ export default Vue.extend({
   props: {
     libs: {
       type: Array as () => string[],
+      required: true,
+    },
+    libToColorMap: {
+      type: Object as () => Record<string, string>,
       required: true,
     },
     downloads: {
@@ -37,12 +39,12 @@ export default Vue.extend({
       type: 'line',
       data: {
         labels: categories,
-        datasets: libs.map((app, key) => ({
-          label: app,
+        datasets: libs.map((lib, key) => ({
+          label: lib,
           fill: false,
           data: downloads[key].map(({ downloads }) => downloads),
-          backgroundColor: appsConfigsMap[app].color,
-          borderColor: appsConfigsMap[app].color,
+          backgroundColor: this.libToColorMap[lib],
+          borderColor: this.libToColorMap[lib],
           borderWidth: 4,
           pointRadius: 0,
           pointHoverRadius: 6,

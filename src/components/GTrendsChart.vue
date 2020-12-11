@@ -9,7 +9,6 @@ import Vue from 'vue';
 import Chart from 'chart.js';
 import { format } from 'date-fns';
 import { GTrendPointT } from '../apis';
-import { appsConfigsMap } from '../../apps-config';
 import { enUS } from 'date-fns/locale';
 
 export default Vue.extend({
@@ -18,6 +17,10 @@ export default Vue.extend({
   props: {
     libs: {
       type: Array as () => string[],
+      required: true,
+    },
+    libToColorMap: {
+      type: Object as () => Record<string, string>,
       required: true,
     },
     data: {
@@ -37,17 +40,18 @@ export default Vue.extend({
       type: 'line',
       data: {
         labels: categories,
-        datasets: libs.map((app, key) => ({
-          label: app,
+        datasets: libs.map((lib, key) => ({
+          label: lib,
           fill: false,
           data: data.map(({ value }) => value[key]),
-          backgroundColor: appsConfigsMap[app].color,
-          borderColor: appsConfigsMap[app].color,
+          backgroundColor: this.libToColorMap[lib],
+          borderColor: this.libToColorMap[lib],
           borderWidth: 4,
           pointRadius: 0,
           pointHoverRadius: 6,
         })),
       },
+
       options: {
         tooltips: {
           callbacks: {

@@ -9,7 +9,12 @@
 
     <div v-else class="chart">
       <div v-if="isLoading" class="text-center p">Loading...</div>
-      <NpmChart v-else :libs="libs" :downloads="downloads" />
+      <NpmChart
+        v-else
+        :libs="libs"
+        :lib-to-color-map="libToColorMap"
+        :downloads="downloads"
+      />
     </div>
   </div>
 </template>
@@ -29,6 +34,10 @@ export default Vue.extend({
   props: {
     libs: {
       type: Array as () => string[],
+      required: true,
+    },
+    libToColorMap: {
+      type: Object as () => Record<string, string>,
       required: true,
     },
   },

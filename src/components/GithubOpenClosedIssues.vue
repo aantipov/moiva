@@ -5,10 +5,9 @@
 <script lang="ts">
 import Vue from 'vue';
 import Chart from 'chart.js';
-// @ts-ignore
 import { RepoT } from '../apis';
-// @ts-ignore
-import { COLOR_GRAY, numbersFormatter } from '../../apps-config';
+import { numbersFormatter } from '../../apps-config';
+import { COLOR_GRAY } from '../colors';
 
 export default Vue.extend({
   name: 'GithubOpenClosedIssues',
@@ -40,12 +39,6 @@ export default Vue.extend({
             backgroundColor: COLOR_GRAY,
             borderWidth: 1,
           },
-          //{
-          // label: 'closed',
-          // data: repos.map((repo) => repo.closedIssues.totalCount),
-          // backgroundColor: COLOR_GRAY,
-          // borderWidth: 1,
-          //},
         ],
       },
 

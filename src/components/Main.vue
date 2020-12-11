@@ -9,13 +9,25 @@
 
     <div v-if="selectedLibs.length">
       <div class="grid grid-cols-12 gap-4">
-        <Npm :libs="selectedLibs" class="col-span-12 xl:col-span-8" />
+        <Npm
+          :libs="selectedLibs"
+          :lib-to-color-map="libToColorMap"
+          class="col-span-12 xl:col-span-8"
+        />
 
-        <TechRadar :libs="selectedLibs" class="col-span-12 xl:col-span-4" />
+        <TechRadar
+          :libs="selectedLibs"
+          :lib-to-color-map="libToColorMap"
+          class="col-span-12 xl:col-span-4"
+        />
       </div>
 
       <div class="grid grid-cols-12 gap-4">
-        <GoogleTrends :libs="selectedLibs" class="col-span-12 xl:col-span-8" />
+        <GoogleTrends
+          :libs="selectedLibs"
+          :lib-to-color-map="libToColorMap"
+          class="col-span-12 xl:col-span-8"
+        />
 
         <Bundlephobia :libs="selectedLibs" class="col-span-12 xl:col-span-4" />
       </div>
@@ -39,6 +51,7 @@ import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
 import Bundlephobia from './Bundlephobia.vue';
 import { cleanupUrl, updateUrl, getDefaultLibs } from '../utils';
+import { getLibToColorMap } from '../colors';
 
 // Validate URL's 'compare' parameter and remove wrong libs and sort libs
 cleanupUrl();
@@ -59,6 +72,12 @@ export default Vue.extend({
     return {
       selectedLibs: getDefaultLibs(),
     };
+  },
+
+  computed: {
+    libToColorMap(): Record<string, string> {
+      return getLibToColorMap(this.selectedLibs);
+    },
   },
 
   watch: {

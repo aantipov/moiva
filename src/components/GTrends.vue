@@ -9,7 +9,12 @@
 
     <div v-else class="chart">
       <div v-if="isLoading" class="text-center p">Loading...</div>
-      <GTrendsChart v-else :libs="slicedLibs" :data="data.timelineData" />
+      <GTrendsChart
+        v-else
+        :libs="slicedLibs"
+        :lib-to-color-map="libToColorMap"
+        :data="data.timelineData"
+      />
     </div>
   </div>
 </template>
@@ -29,6 +34,10 @@ export default Vue.extend({
   props: {
     libs: {
       type: Array as () => string[],
+      required: true,
+    },
+    libToColorMap: {
+      type: Object as () => Record<string, string>,
       required: true,
     },
   },

@@ -30,6 +30,10 @@ export default Vue.extend({
       type: Array as () => string[],
       required: true,
     },
+    libToColorMap: {
+      type: Object as () => Record<string, string>,
+      required: true,
+    },
   },
 
   data() {
@@ -54,8 +58,8 @@ export default Vue.extend({
         data: this.uniqDates.map(
           (date) => (appsConfigsMap[lib].tradar as TechRadarT).data[date]
         ),
-        backgroundColor: appsConfigsMap[lib].color,
-        borderColor: appsConfigsMap[lib].color,
+        backgroundColor: this.libToColorMap[lib],
+        borderColor: this.libToColorMap[lib],
         spanGaps: true,
         borderWidth: 3,
         lineTension: 0,

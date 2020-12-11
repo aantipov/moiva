@@ -11,7 +11,6 @@ export interface TechRadarT {
 
 export interface AppConfigT {
   name: string; // the same as npm name. Used in url (in compare parameter)
-  color: string;
   selected: boolean;
   category: LibraryCategoryT;
   github: {
@@ -41,27 +40,6 @@ const ADOPT: TRadarLevelT = 'Adopt';
 const TRIAL: TRadarLevelT = 'Trial';
 const ASSESS: TRadarLevelT = 'Assess';
 
-// https://material.io/design/color/the-color-system.html#tools-for-picking-colors
-export const COLOR_GREEN = '#48bb78';
-export const COLOR_GRAY = '#a0aec0';
-export const COLOR_BLUE = '#4299e1';
-export const COLOR_PINK = '#ed64a6';
-export const COLOR_RED = '#f56565';
-export const COLOR_PURPLE = '#9f7aea';
-const COLOR_ORANGE_SVELTE = '#ff3e00';
-const COLOR_BLUE_REACT = '#3ed6ff';
-const COLOR_BLUE_VUETIFY = '#1867C0';
-const COLOR_GREEN_VUE = '#42b983';
-const COLOR_GREEN_QUASAR = '#00796B';
-const COLOR_BLUE_ELEMENT_VUE = '#00B0FF';
-const COLOR_PURPLE_BOOTSTRAP_VUE = '#673AB7';
-const COLOR_YELLOW = '#FDD835';
-const COLOR_BROWN = '#6D4C41';
-const COLOR_BLACK = '#000000';
-const COLOR_RED_ANGULAR = '#C62828';
-const COLOR_REACT_TESTIING = '#5C6BC0'; // Indigo 400
-const COLOR_ENZYME = '#D4E157'; // Lime 400
-
 export const TRADAR_LEVELS: TRadarLevelT[] = [
   'Assess',
   'Trial',
@@ -72,7 +50,6 @@ export const TRADAR_LEVELS: TRadarLevelT[] = [
 const appsConfigs: AppConfigT[] = [
   {
     name: 'vue',
-    color: COLOR_GREEN_VUE,
     selected: true,
     category: 'Framework',
     github: { name: 'vue', owner: 'vuejs' },
@@ -88,7 +65,6 @@ const appsConfigs: AppConfigT[] = [
 
   {
     name: 'react',
-    color: COLOR_BLUE_REACT,
     selected: true,
     category: 'Framework',
     github: { name: 'react', owner: 'facebook' },
@@ -106,7 +82,6 @@ const appsConfigs: AppConfigT[] = [
 
   {
     name: 'svelte',
-    color: COLOR_ORANGE_SVELTE,
     selected: true,
     category: 'Framework',
     github: { name: 'svelte', owner: 'sveltejs' },
@@ -120,7 +95,6 @@ const appsConfigs: AppConfigT[] = [
 
   {
     name: '@angular/core',
-    color: COLOR_RED_ANGULAR,
     selected: false,
     category: 'Framework',
     github: { name: 'angular', owner: 'angular' },
@@ -135,7 +109,6 @@ const appsConfigs: AppConfigT[] = [
 
   {
     name: 'ember-source',
-    color: COLOR_YELLOW,
     selected: false,
     category: 'Framework',
     github: { name: 'ember.js', owner: 'emberjs' },
@@ -153,7 +126,6 @@ const appsConfigs: AppConfigT[] = [
 
   {
     name: 'redux',
-    color: COLOR_PURPLE,
     selected: false,
     category: 'StateManagement',
     github: { name: 'redux', owner: 'reduxjs' },
@@ -170,7 +142,6 @@ const appsConfigs: AppConfigT[] = [
 
   {
     name: 'recoil',
-    color: COLOR_BROWN,
     selected: false,
     category: 'StateManagement',
     github: { name: 'Recoil', owner: 'facebookexperimental' },
@@ -184,7 +155,6 @@ const appsConfigs: AppConfigT[] = [
 
   {
     name: 'xstate',
-    color: COLOR_BLACK,
     selected: false,
     category: 'StateManagement',
     github: { name: 'xstate', owner: 'davidkpiano' },
@@ -199,7 +169,6 @@ const appsConfigs: AppConfigT[] = [
 
   {
     name: '@testing-library/react',
-    color: COLOR_REACT_TESTIING,
     selected: false,
     category: 'Testing',
     github: { name: 'react-testing-library', owner: 'testing-library' },
@@ -215,7 +184,6 @@ const appsConfigs: AppConfigT[] = [
 
   {
     name: 'enzyme',
-    color: COLOR_ENZYME,
     selected: false,
     category: 'Testing',
     github: { name: 'enzyme', owner: 'enzymejs' },
@@ -233,7 +201,6 @@ const appsConfigs: AppConfigT[] = [
 
   {
     name: 'vuetify',
-    color: COLOR_BLUE_VUETIFY,
     selected: false,
     category: 'Components',
     github: { name: 'vuetify', owner: 'vuetifyjs' },
@@ -243,7 +210,6 @@ const appsConfigs: AppConfigT[] = [
 
   {
     name: 'quasar',
-    color: COLOR_GREEN_QUASAR,
     selected: false,
     category: 'Components',
     github: { name: 'quasar', owner: 'quasarframework' },
@@ -253,7 +219,6 @@ const appsConfigs: AppConfigT[] = [
 
   {
     name: 'bootstrap-vue',
-    color: COLOR_PURPLE_BOOTSTRAP_VUE,
     selected: false,
     category: 'Components',
     github: { name: 'bootstrap-vue', owner: 'bootstrap-vue' },
@@ -263,7 +228,6 @@ const appsConfigs: AppConfigT[] = [
 
   {
     name: 'element-ui',
-    color: COLOR_BLUE_ELEMENT_VUE,
     selected: false,
     category: 'Components',
     github: { name: 'element', owner: 'elemefe' },
