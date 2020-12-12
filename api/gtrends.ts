@@ -1,33 +1,35 @@
 import { NowRequest, NowResponse } from '@vercel/node';
-import config from '../apps-config';
+import { libsToKeywordMap } from '../google-trends.config';
 import googleTrends from 'google-trends-api';
 import { logRequest } from './utils';
 
 export default (req: NowRequest, res: NowResponse): void => {
   logRequest('googleTrends', req.query);
 
-  if (!req.query.apps || typeof req.query.apps !== 'string') {
-    res.status(400).json({ error: 'Wrong apps parameter' });
+  const { libs } = req.query;
+
+  // Check if libs parameter is there
+  if (!libs || typeof libs !== 'string') {
+    res.status(400).json({ error: 'Wrong libs parameter' });
     return;
   }
 
-  const appsConfigs = req.query.apps
-    .split(',')
-    .map((reqApp) => config.find((appConfig) => appConfig.name === reqApp));
+  const keywords = libs.split(',').map((lib) => libsToKeywordMap[lib]);
+  const filteredKeywords = keywords.filter((keyword) => !!keyword);
 
+  // Checck if correct value was passed
   if (
-    appsConfigs.filter((appConfig) => !appConfig).length ||
-    appsConfigs.length > 5
+    !filteredKeywords.length ||
+    filteredKeywords.length > 5 ||
+    filteredKeywords.length !== keywords.length
   ) {
-    res.status(400).json({ error: 'Wrong app parameter' });
+    res.status(400).json({ error: 'Wrong libs parameter' });
     return;
   }
-
-  const gKeywords = appsConfigs.map(({ gTrend: { keyword } }) => keyword);
 
   googleTrends
     .interestOverTime({
-      keyword: gKeywords,
+      keyword: filteredKeywords,
       startTime: new Date('2017-01-01'),
       category: 31, // Programming
     })
