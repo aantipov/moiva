@@ -20,8 +20,7 @@
 import Vue from 'vue';
 import { format } from 'date-fns';
 import Chart, { ChartConfiguration, ChartData } from 'chart.js';
-// @ts-ignore
-import { appsConfigsMap, TRADAR_LEVELS, TechRadarT } from '../../apps-config';
+import { TRADAR_LEVELS, libsToDatadMap } from '../../techradar.config';
 
 export default Vue.extend({
   name: 'TechRadar',
@@ -45,9 +44,7 @@ export default Vue.extend({
   computed: {
     uniqDates(): string[] {
       const dates = this.filteredLibs
-        .map((lib) =>
-          Object.keys((appsConfigsMap[lib].tradar as TechRadarT).data)
-        )
+        .map((lib) => Object.keys(libsToDatadMap[lib]))
         .flat();
       return [...new Set(dates)].sort();
     },
@@ -55,9 +52,7 @@ export default Vue.extend({
       return this.filteredLibs.map((lib) => ({
         label: lib,
         fill: false,
-        data: this.uniqDates.map(
-          (date) => (appsConfigsMap[lib].tradar as TechRadarT).data[date]
-        ),
+        data: this.uniqDates.map((date) => libsToDatadMap[lib][date]),
         backgroundColor: this.libToColorMap[lib],
         borderColor: this.libToColorMap[lib],
         spanGaps: true,
@@ -68,7 +63,7 @@ export default Vue.extend({
       }));
     },
     filteredLibs(): string[] {
-      return this.libs.filter((lib) => !!appsConfigsMap[lib].tradar);
+      return this.libs.filter((lib) => !!libsToDatadMap[lib]);
     },
   },
 

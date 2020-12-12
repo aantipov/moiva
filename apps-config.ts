@@ -1,13 +1,8 @@
-type TRadarLevelT = 'Hold' | 'Adopt' | 'Trial' | 'Assess';
 export type LibraryCategoryT =
   | 'Framework'
   | 'StateManagement'
   | 'Components'
   | 'Testing';
-
-export interface TechRadarT {
-  data: Partial<Record<string, TRadarLevelT>>;
-}
 
 export interface AppConfigT {
   name: string; // the same as npm name. Used in url (in compare parameter)
@@ -17,7 +12,6 @@ export interface AppConfigT {
     name: string;
     owner: string;
   };
-  tradar: null | TechRadarT;
 }
 
 export const categoryMap: Record<LibraryCategoryT, string> = {
@@ -32,31 +26,12 @@ export const numbersFormatter = new Intl.NumberFormat('en-US', {
   notation: 'compact',
 });
 
-const HOLD: TRadarLevelT = 'Hold';
-const ADOPT: TRadarLevelT = 'Adopt';
-const TRIAL: TRadarLevelT = 'Trial';
-const ASSESS: TRadarLevelT = 'Assess';
-
-export const TRADAR_LEVELS: TRadarLevelT[] = [
-  'Assess',
-  'Trial',
-  'Adopt',
-  'Hold',
-];
-
 const appsConfigs: AppConfigT[] = [
   {
     name: 'vue',
     selected: true,
     category: 'Framework',
     github: { name: 'vue', owner: 'vuejs' },
-    tradar: {
-      data: {
-        '2016-11': ASSESS,
-        '2017-03': TRIAL,
-        '2020-05': ADOPT,
-      },
-    },
   },
 
   {
@@ -64,15 +39,6 @@ const appsConfigs: AppConfigT[] = [
     selected: true,
     category: 'Framework',
     github: { name: 'react', owner: 'facebook' },
-    tradar: {
-      data: {
-        '2015-01': ASSESS,
-        '2015-05': TRIAL,
-        '2015-11': TRIAL,
-        '2016-04': ADOPT,
-        '2016-11': ADOPT,
-      },
-    },
   },
 
   {
@@ -80,11 +46,6 @@ const appsConfigs: AppConfigT[] = [
     selected: true,
     category: 'Framework',
     github: { name: 'svelte', owner: 'sveltejs' },
-    tradar: {
-      data: {
-        '2020-10': ASSESS,
-      },
-    },
   },
 
   {
@@ -92,12 +53,6 @@ const appsConfigs: AppConfigT[] = [
     selected: false,
     category: 'Framework',
     github: { name: 'angular', owner: 'angular' },
-    tradar: {
-      data: {
-        '2017-03': ASSESS,
-        '2017-11': TRIAL,
-      },
-    },
   },
 
   {
@@ -105,15 +60,6 @@ const appsConfigs: AppConfigT[] = [
     selected: false,
     category: 'Framework',
     github: { name: 'ember.js', owner: 'emberjs' },
-    tradar: {
-      data: {
-        '2015-05': ASSESS,
-        '2015-11': ASSESS,
-        '2016-04': TRIAL,
-        '2016-11': ADOPT,
-        '2017-03': ADOPT,
-      },
-    },
   },
 
   {
@@ -121,14 +67,6 @@ const appsConfigs: AppConfigT[] = [
     selected: false,
     category: 'StateManagement',
     github: { name: 'redux', owner: 'reduxjs' },
-    tradar: {
-      data: {
-        '2016-04': TRIAL,
-        '2016-11': ADOPT,
-        '2017-03': ADOPT,
-        '2020-10': TRIAL,
-      },
-    },
   },
 
   {
@@ -136,11 +74,6 @@ const appsConfigs: AppConfigT[] = [
     selected: false,
     category: 'StateManagement',
     github: { name: 'Recoil', owner: 'facebookexperimental' },
-    tradar: {
-      data: {
-        '2020-10': ASSESS,
-      },
-    },
   },
 
   {
@@ -148,12 +81,6 @@ const appsConfigs: AppConfigT[] = [
     selected: false,
     category: 'StateManagement',
     github: { name: 'xstate', owner: 'davidkpiano' },
-    tradar: {
-      data: {
-        '2020-05': ASSESS,
-        '2020-10': TRIAL,
-      },
-    },
   },
 
   {
@@ -161,13 +88,6 @@ const appsConfigs: AppConfigT[] = [
     selected: false,
     category: 'Testing',
     github: { name: 'react-testing-library', owner: 'testing-library' },
-    tradar: {
-      data: {
-        '2019-04': ASSESS,
-        '2019-11': TRIAL,
-        '2020-05': ADOPT,
-      },
-    },
   },
 
   {
@@ -175,15 +95,6 @@ const appsConfigs: AppConfigT[] = [
     selected: false,
     category: 'Testing',
     github: { name: 'enzyme', owner: 'enzymejs' },
-    tradar: {
-      data: {
-        '2016-11': TRIAL,
-        '2017-03': TRIAL,
-        '2018-05': ADOPT,
-        '2019-11': HOLD,
-        '2020-05': HOLD,
-      },
-    },
   },
 
   {
@@ -191,7 +102,6 @@ const appsConfigs: AppConfigT[] = [
     selected: false,
     category: 'Components',
     github: { name: 'vuetify', owner: 'vuetifyjs' },
-    tradar: null,
   },
 
   {
@@ -199,7 +109,6 @@ const appsConfigs: AppConfigT[] = [
     selected: false,
     category: 'Components',
     github: { name: 'quasar', owner: 'quasarframework' },
-    tradar: null,
   },
 
   {
@@ -207,7 +116,6 @@ const appsConfigs: AppConfigT[] = [
     selected: false,
     category: 'Components',
     github: { name: 'bootstrap-vue', owner: 'bootstrap-vue' },
-    tradar: null,
   },
 
   {
@@ -215,7 +123,6 @@ const appsConfigs: AppConfigT[] = [
     selected: false,
     category: 'Components',
     github: { name: 'element', owner: 'elemefe' },
-    tradar: null,
   },
 ];
 
