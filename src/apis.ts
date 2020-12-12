@@ -39,6 +39,29 @@ export interface RepoT {
   openIssues: { totalCount: number };
 }
 
+export interface LibraryT {
+  name: string;
+  description: string;
+  githubName: string | null;
+  githubOwner: string | null;
+}
+
+export interface NpmSuggestionT {
+  label: string;
+  value: LibraryT;
+}
+
+export interface NpmSuggestionResponseT {
+  package: {
+    name: string;
+    version: string;
+    description: string;
+    links: {
+      repository: string;
+    };
+  };
+}
+
 export function fetchNpmData(app: string): Promise<NpmDownloadT[]> {
   if (npmCache.get(app)) {
     return Promise.resolve(npmCache.get(app));
@@ -50,15 +73,17 @@ export function fetchNpmData(app: string): Promise<NpmDownloadT[]> {
   });
 }
 
-export function fetchGithubData(app: string): Promise<RepoT> {
-  if (ghCache.get(app)) {
-    return Promise.resolve(ghCache.get(app));
+export function fetchGithubData(lib: LibraryT): Promise<RepoT> {
+  if (ghCache.get(lib.name)) {
+    return Promise.resolve(ghCache.get(lib.name));
   }
 
-  return axios.get(`/api/gh?app=${app}`).then(({ data }) => {
-    ghCache.set(app, data);
-    return data;
-  });
+  return axios
+    .get(`/api/gh?name=${lib.githubName}&owner=${lib.githubOwner}`)
+    .then(({ data }) => {
+      ghCache.set(lib.name, data);
+      return data;
+    });
 }
 
 export function fetchGTrendsData(libs: string[]): Promise<GTrendsT> {
@@ -84,4 +109,70 @@ export function fetchBundlephobiaData(lib: string): Promise<BundlephobiaT[]> {
     bphobiaCache.set(lib, data);
     return data;
   });
+}
+
+export function fetchNpmSuggestions(
+  keyword: string
+): Promise<NpmSuggestionT[]> {
+  return axios
+    .get(`https://api.npms.io/v2/search/suggestions?q=${keyword}&size=10`)
+    .then((resp) => {
+      const suggestions = resp.data as NpmSuggestionResponseT[];
+      return suggestions.map(({ package: packageObj }) => {
+        const repoParts = (packageObj.links.repository || '').split('/');
+
+        return {
+          label: packageObj.name,
+          value: {
+            name: packageObj.name,
+            description: packageObj.description,
+            githubOwner: repoParts[3] || null,
+            githubName: repoParts[4] || null,
+          },
+        };
+      });
+    });
+}
+
+interface NpmPackageResponseT {
+  collected: {
+    metadata: {
+      name: string;
+      description: string;
+      links: { repository: string };
+    };
+  };
+}
+
+export function fetchNpmPackage(packageName: string): Promise<LibraryT | null> {
+  return axios
+    .get(`https://api.npms.io/v2/package/${encodeURIComponent(packageName)}`)
+    .then((resp) => {
+      const {
+        collected: {
+          metadata: {
+            name,
+            description,
+            links: { repository },
+          },
+        },
+      } = resp.data as NpmPackageResponseT;
+
+      const repoParts = (repository || '').split('/');
+
+      return {
+        name,
+        description,
+        githubOwner: repoParts[3] || null,
+        githubName: repoParts[4] || null,
+      };
+    })
+    .catch((err) => {
+      console.log('ERR', { err: err.response });
+      if (err.response.status === 404) {
+        return null;
+      }
+
+      return Promise.reject(err);
+    });
 }

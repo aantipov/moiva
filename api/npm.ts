@@ -1,6 +1,5 @@
 import { NowRequest, NowResponse } from '@vercel/node';
 import axios from 'axios';
-import config from '../apps-config';
 import { logRequest } from './utils';
 
 const startYear = 2015;
@@ -11,7 +10,7 @@ const years = Array.from(
 );
 
 export default (req: NowRequest, res: NowResponse): void => {
-  const app = config.find((appConfig) => appConfig.name === req.query.app);
+  const { app } = req.query;
 
   logRequest('npm', req.query);
 
@@ -23,7 +22,7 @@ export default (req: NowRequest, res: NowResponse): void => {
   const allYearsPromises = years
     .map(
       (year) =>
-        `https://api.npmjs.org/downloads/range/${year}-01-01:${year}-12-31/${app.name}`
+        `https://api.npmjs.org/downloads/range/${year}-01-01:${year}-12-31/${app}`
     )
     .map((url) => axios.get(url).then(({ data }) => data.downloads));
 

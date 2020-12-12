@@ -1,13 +1,10 @@
 import { NowRequest, NowResponse } from '@vercel/node';
 import axios from 'axios';
-import libsConfigs from '../apps-config';
 import { logRequest } from './utils';
 
 export default (req: NowRequest, res: NowResponse): void => {
   const url = 'https://bundlephobia.com/api/size?record=true';
-  const lib = libsConfigs.find(
-    (libsConfig) => libsConfig.name === req.query.lib
-  );
+  const { lib } = req.query;
 
   logRequest('bundlephobia', req.query);
 
@@ -17,11 +14,7 @@ export default (req: NowRequest, res: NowResponse): void => {
   }
 
   axios
-    .get(url, {
-      params: {
-        package: lib.name,
-      },
-    })
+    .get(url, { params: { package: lib } })
     .then((resp) => {
       res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
       res.status(200).json({ gzip: resp.data.gzip, raw: resp.data.size });

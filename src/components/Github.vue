@@ -11,25 +11,25 @@
       <!-- Stars  -->
       <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
         <div v-if="isLoading" class="text-center p">Loading...</div>
-        <Stars v-else :libs="libs" :repos="repos" />
+        <Stars v-else :libs="librariesNames" :repos="repos" />
       </div>
 
       <!-- Age, years -->
       <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
         <div v-if="isLoading" class="text-center p">Loading...</div>
-        <Age v-else :libs="libs" :repos="repos" />
+        <Age v-else :libs="librariesNames" :repos="repos" />
       </div>
 
       <!-- Issues, count  -->
       <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
         <div v-if="isLoading" class="text-center p">Loading...</div>
-        <OpenClosedIssues v-else :libs="libs" :repos="repos" />
+        <OpenClosedIssues v-else :libs="librariesNames" :repos="repos" />
       </div>
 
       <!-- Pull Requests, count  -->
       <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
         <div v-if="isLoading" class="text-center p">Loading...</div>
-        <Prs v-else :libs="libs" :repos="repos" />
+        <Prs v-else :libs="librariesNames" :repos="repos" />
       </div>
     </div>
   </div>
@@ -41,8 +41,7 @@ import OpenClosedIssues from './GithubOpenClosedIssues.vue';
 import Age from './GithubAge.vue';
 import Stars from './GithubStars.vue';
 import Prs from './GithubPrs.vue';
-// @ts-ignore
-import { fetchGithubData, RepoT } from '../apis';
+import { fetchGithubData, RepoT, LibraryT } from '../apis';
 
 export default Vue.extend({
   name: 'Github',
@@ -56,7 +55,7 @@ export default Vue.extend({
 
   props: {
     libs: {
-      type: Array as () => string[],
+      type: Array as () => LibraryT[],
       required: true,
     },
   },
@@ -68,6 +67,12 @@ export default Vue.extend({
       repos: [] as RepoT[],
       reposPromise: null as null | Promise<unknown>,
     };
+  },
+
+  computed: {
+    librariesNames(): string[] {
+      return this.libs.map((lib) => lib.name);
+    },
   },
 
   watch: {
@@ -86,7 +91,7 @@ export default Vue.extend({
       this.isError = false;
 
       const promise = (this.reposPromise = Promise.all(
-        this.libs.map((app) => fetchGithubData(app))
+        this.libs.map((lib) => fetchGithubData(lib))
       )
         .then((data) => {
           // Do nothing if there is a new request already in place

@@ -11,7 +11,7 @@
       <div v-if="isLoading" class="text-center p">Loading...</div>
       <GTrendsChart
         v-else
-        :libs="slicedLibs"
+        :libs="filteredLibs"
         :lib-to-color-map="libToColorMap"
         :data="data.timelineData"
       />
@@ -22,6 +22,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import GTrendsChart from './GTrendsChart.vue';
+import { libsToKeywordMap } from '../../google-trends.config';
 import { fetchGTrendsData, GTrendsT } from '../apis';
 
 export default Vue.extend({
@@ -52,14 +53,14 @@ export default Vue.extend({
   },
 
   computed: {
-    slicedLibs(): string[] {
+    filteredLibs(): string[] {
       // Google Trends allows to compare only 5 terms at max
-      return this.libs.slice(0, 5);
+      return this.libs.filter((lib) => !!libsToKeywordMap[lib]).slice(0, 5);
     },
   },
 
   watch: {
-    slicedLibs(): void {
+    filteredLibs(): void {
       this.loadData();
     },
   },
@@ -73,7 +74,7 @@ export default Vue.extend({
       this.isLoading = true;
       this.isError = false;
 
-      const promise = (this.dataPromise = fetchGTrendsData(this.slicedLibs)
+      const promise = (this.dataPromise = fetchGTrendsData(this.filteredLibs)
         .then((data) => {
           // Do nothing if there is a new request already in place
           if (this.dataPromise === promise) {
