@@ -44,7 +44,7 @@ export default Vue.extend({
   computed: {
     uniqDates(): string[] {
       const dates = this.filteredLibs
-        .map((lib) => Object.keys(libsToDatadMap[lib].data))
+        .map((lib) => Object.keys(libsToDatadMap[lib]))
         .flat();
       return [...new Set(dates)].sort();
     },
