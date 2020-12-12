@@ -17,9 +17,6 @@ export interface AppConfigT {
     name: string;
     owner: string;
   };
-  gTrend: {
-    keyword: string;
-  } | null;
   tradar: null | TechRadarT;
 }
 
@@ -53,7 +50,6 @@ const appsConfigs: AppConfigT[] = [
     selected: true,
     category: 'Framework',
     github: { name: 'vue', owner: 'vuejs' },
-    gTrend: { keyword: '/g/11c0vmgx5d' }, // Vue.js; type: Topic
     tradar: {
       data: {
         '2016-11': ASSESS,
@@ -68,7 +64,6 @@ const appsConfigs: AppConfigT[] = [
     selected: true,
     category: 'Framework',
     github: { name: 'react', owner: 'facebook' },
-    gTrend: { keyword: '/m/012l1vxv' }, // React; type: Topic
     tradar: {
       data: {
         '2015-01': ASSESS,
@@ -85,7 +80,6 @@ const appsConfigs: AppConfigT[] = [
     selected: true,
     category: 'Framework',
     github: { name: 'svelte', owner: 'sveltejs' },
-    gTrend: { keyword: 'Svelte' },
     tradar: {
       data: {
         '2020-10': ASSESS,
@@ -98,7 +92,6 @@ const appsConfigs: AppConfigT[] = [
     selected: false,
     category: 'Framework',
     github: { name: 'angular', owner: 'angular' },
-    gTrend: { keyword: '/g/11c6w0ddw9' }, // Angular; type: Web framework
     tradar: {
       data: {
         '2017-03': ASSESS,
@@ -112,7 +105,6 @@ const appsConfigs: AppConfigT[] = [
     selected: false,
     category: 'Framework',
     github: { name: 'ember.js', owner: 'emberjs' },
-    gTrend: { keyword: '/m/0s8wr70' }, // Ember.js; type: Topic
     tradar: {
       data: {
         '2015-05': ASSESS,
@@ -129,7 +121,6 @@ const appsConfigs: AppConfigT[] = [
     selected: false,
     category: 'StateManagement',
     github: { name: 'redux', owner: 'reduxjs' },
-    gTrend: { keyword: '/g/11dxf0gf92' }, // Redux; type: JavaScript library
     tradar: {
       data: {
         '2016-04': TRIAL,
@@ -145,7 +136,6 @@ const appsConfigs: AppConfigT[] = [
     selected: false,
     category: 'StateManagement',
     github: { name: 'Recoil', owner: 'facebookexperimental' },
-    gTrend: { keyword: '/m/01dyp7' }, // Recoil; type: Topic
     tradar: {
       data: {
         '2020-10': ASSESS,
@@ -158,7 +148,6 @@ const appsConfigs: AppConfigT[] = [
     selected: false,
     category: 'StateManagement',
     github: { name: 'xstate', owner: 'davidkpiano' },
-    gTrend: { keyword: 'xstate' },
     tradar: {
       data: {
         '2020-05': ASSESS,
@@ -172,7 +161,6 @@ const appsConfigs: AppConfigT[] = [
     selected: false,
     category: 'Testing',
     github: { name: 'react-testing-library', owner: 'testing-library' },
-    gTrend: { keyword: 'react testing library' },
     tradar: {
       data: {
         '2019-04': ASSESS,
@@ -187,7 +175,6 @@ const appsConfigs: AppConfigT[] = [
     selected: false,
     category: 'Testing',
     github: { name: 'enzyme', owner: 'enzymejs' },
-    gTrend: { keyword: '/m/02jgw' }, // Enzyme; type: Topic
     tradar: {
       data: {
         '2016-11': TRIAL,
@@ -204,7 +191,6 @@ const appsConfigs: AppConfigT[] = [
     selected: false,
     category: 'Components',
     github: { name: 'vuetify', owner: 'vuetifyjs' },
-    gTrend: { keyword: 'vuetify' },
     tradar: null,
   },
 
@@ -213,7 +199,6 @@ const appsConfigs: AppConfigT[] = [
     selected: false,
     category: 'Components',
     github: { name: 'quasar', owner: 'quasarframework' },
-    gTrend: { keyword: 'quasar framework' },
     tradar: null,
   },
 
@@ -222,7 +207,6 @@ const appsConfigs: AppConfigT[] = [
     selected: false,
     category: 'Components',
     github: { name: 'bootstrap-vue', owner: 'bootstrap-vue' },
-    gTrend: { keyword: 'bootstrap-vue' },
     tradar: null,
   },
 
@@ -231,7 +215,6 @@ const appsConfigs: AppConfigT[] = [
     selected: false,
     category: 'Components',
     github: { name: 'element', owner: 'elemefe' },
-    gTrend: { keyword: 'element vue' },
     tradar: null,
   },
 ];

@@ -61,16 +61,16 @@ export function fetchGithubData(app: string): Promise<RepoT> {
   });
 }
 
-export function fetchGTrendsData(apps: string[]): Promise<GTrendsT> {
+export function fetchGTrendsData(libs: string[]): Promise<GTrendsT> {
   // TODO: implement a proper cache
-  const appsStr = apps.join(',');
+  const libsStr = libs.join(',');
 
-  if (gTrendsCache.get(appsStr)) {
-    return Promise.resolve(gTrendsCache.get(appsStr));
+  if (gTrendsCache.get(libsStr)) {
+    return Promise.resolve(gTrendsCache.get(libsStr));
   }
 
-  return axios.get(`/api/gtrends?apps=${appsStr}`).then(({ data }) => {
-    gTrendsCache.set(appsStr, data.default);
+  return axios.get(`/api/gtrends?libs=${libsStr}`).then(({ data }) => {
+    gTrendsCache.set(libsStr, data.default);
     return data.default;
   });
 }
