@@ -89,8 +89,19 @@ Multiple metrics and data sources like Github, NPM, Google Trends, ThoughtWorks 
       body {
         height: 100%;
       }
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+      .content {
+        flex: 1 0 auto;
+      }
       .footer {
-        margin: 60px auto 30px;
+        flex-shrink: 0;
+      }
+      #app {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
     </style>
 
@@ -110,32 +121,50 @@ Multiple metrics and data sources like Github, NPM, Google Trends, ThoughtWorks 
       >
     </noscript>
 
-    <div id="app"></div>
+    <!-- Header -->
+    <div class="container px-3 sm:mx-auto">
+      <h1>JsDiff - compare javascript libraries with ease!</h1>
 
+      <p class="text-center p-lead">
+        Unbiased always up-to-date visual side by side comparison of javascript
+        frameworks and libraries
+      </p>
+    </div>
+
+    <!-- Body -->
+    <div class="container px-3 mt-4 content sm:mx-auto sm:mt-8">
+      <div id="app"></div>
+    </div>
+
+    <!-- Footer -->
     <div class="footer">
-      <div class="text-center">
-        <p>
-          If you notice any issues or have a feature request, please open an
-          issue on
-          <a
-            href="https://github.com/aantipov/jsdiff-issues"
-            target="_blank"
-            rel="noopener"
-            >Github</a
-          >.
-        </p>
-        <p>
-          Follow me on
-          <a href="https://twitter.com/_aantipov" target="_blank">Twitter</a>
-          to be notified about project updates
-        </p>
-      </div>
-      <hr />
-      <div class="mt-4 text-center p">
-        Made by
-        <a href="https://alexei.me" target="_blank" rel="noopener"
-          >Alexey Antipov</a
-        >
+      <div class="mt-8">
+        <div class="px-3 text-center">
+          <p>
+            If you notice any issues or have a feature request, please open an
+            issue on
+            <a
+              href="https://github.com/aantipov/jsdiff-issues"
+              target="_blank"
+              rel="noopener"
+              >Github</a
+            >.
+          </p>
+          <p>
+            Follow me on
+            <a href="https://twitter.com/_aantipov" target="_blank">Twitter</a>
+            to be notified about project updates
+          </p>
+        </div>
+
+        <hr />
+
+        <div class="flex items-center justify-center h-16 my-0 bg-gray-400 p">
+          Made by&nbsp;
+          <a href="https://alexei.me" target="_blank" rel="noopener"
+            >Alexey Antipov</a
+          >
+        </div>
       </div>
     </div>
     <!-- built files will be auto injected -->
