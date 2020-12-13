@@ -117,6 +117,9 @@ export default Vue.extend({
 
   methods: {
     onSelect(lib: LibraryT): void {
+      if (this.librariesNames.includes(lib.name)) {
+        return;
+      }
       this.selectedLibs.push(lib);
       updateUrl(this.librariesNames);
     },

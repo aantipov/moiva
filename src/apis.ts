@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const npmCache = new Map();
+const npmSuggestionsCache = new Map();
 const ghCache = new Map();
 const gTrendsCache = new Map();
 const bphobiaCache = new Map();
@@ -44,22 +45,6 @@ export interface LibraryT {
   description: string;
   githubName: string | null;
   githubOwner: string | null;
-}
-
-export interface NpmSuggestionT {
-  label: string;
-  value: LibraryT;
-}
-
-export interface NpmSuggestionResponseT {
-  package: {
-    name: string;
-    version: string;
-    description: string;
-    links: {
-      repository: string;
-    };
-  };
 }
 
 export function fetchNpmData(app: string): Promise<NpmDownloadT[]> {
@@ -111,26 +96,63 @@ export function fetchBundlephobiaData(lib: string): Promise<BundlephobiaT[]> {
   });
 }
 
-export function fetchNpmSuggestions(
-  keyword: string
-): Promise<NpmSuggestionT[]> {
+export interface NpmSuggestionT {
+  label: string;
+  value: LibraryT;
+}
+
+export interface NpmSuggestionResponseT {
+  package: {
+    name: string;
+    version: string;
+    description: string;
+    links: {
+      repository: string;
+    };
+  };
+  score: {
+    detail: {
+      popularity: number;
+    };
+  };
+  searchScore: number;
+}
+
+export function fetchNpmSuggestions(keyword: string): Promise<LibraryT[]> {
+  if (!keyword || keyword.length < 2) {
+    return Promise.resolve([]);
+  }
+
+  if (npmSuggestionsCache.get(keyword)) {
+    return Promise.resolve(npmSuggestionsCache.get(keyword));
+  }
+
   return axios
-    .get(`https://api.npms.io/v2/search/suggestions?q=${keyword}&size=10`)
+    .get(`https://api.npms.io/v2/search/suggestions?q=${keyword}&size=20`)
     .then((resp) => {
       const suggestions = resp.data as NpmSuggestionResponseT[];
-      return suggestions.map(({ package: packageObj }) => {
-        const repoParts = (packageObj.links.repository || '').split('/');
+      const data = suggestions
+        .filter((lib) => !!lib.package.links.repository)
+        .sort((a, b) => {
+          if (b.searchScore - a.searchScore > 100) {
+            return b.searchScore - a.searchScore;
+          }
+          return b.score.detail.popularity - a.score.detail.popularity;
+        })
+        .map(({ package: packageObj }) => {
+          const repoParts = (packageObj.links.repository || '').split('/');
 
-        return {
-          label: packageObj.name,
-          value: {
+          return {
             name: packageObj.name,
             description: packageObj.description,
             githubOwner: repoParts[3] || null,
             githubName: repoParts[4] || null,
-          },
-        };
-      });
+          };
+        });
+
+      npmSuggestionsCache.set(keyword, data);
+
+      return data;
     });
 }
 
@@ -168,7 +190,6 @@ export function fetchNpmPackage(packageName: string): Promise<LibraryT | null> {
       };
     })
     .catch((err) => {
-      console.log('ERR', { err: err.response });
       if (err.response.status === 404) {
         return null;
       }
