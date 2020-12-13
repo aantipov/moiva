@@ -26,7 +26,6 @@
 <script lang="ts">
 import Vue from 'vue';
 import GTrendsChart from './GTrendsChart.vue';
-import { libsToKeywordMap } from '../../google-trends.config';
 import { fetchGTrendsData, GTrendsT } from '../apis';
 
 export default Vue.extend({
@@ -59,7 +58,7 @@ export default Vue.extend({
   computed: {
     filteredLibs(): string[] {
       // Google Trends allows to compare only 5 terms at max
-      return this.libs.filter((lib) => !!libsToKeywordMap[lib]).slice(0, 5);
+      return this.libs.slice(0, 5);
     },
   },
 
@@ -107,6 +106,6 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 .chart {
-  height: 500px;
+  height: 400px;
 }
 </style>

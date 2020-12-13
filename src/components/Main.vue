@@ -23,9 +23,8 @@
           class="col-span-12 xl:col-span-8"
         />
 
-        <TechRadar
+        <Bundlephobia
           :libs="librariesNames"
-          :lib-to-color-map="libToColorMap"
           class="col-span-12 xl:col-span-4"
         />
       </div>
@@ -37,8 +36,9 @@
           class="col-span-12 xl:col-span-8"
         />
 
-        <Bundlephobia
+        <TechRadar
           :libs="librariesNames"
+          :lib-to-color-map="libToColorMap"
           class="col-span-12 xl:col-span-4"
         />
       </div>

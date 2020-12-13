@@ -17,7 +17,7 @@ export default (req: NowRequest, res: NowResponse): void => {
     return;
   }
 
-  const keywords = libs.split(',').map((lib) => libsToKeywordMap[lib]);
+  const keywords = libs.split(',').map((lib) => libsToKeywordMap[lib] || lib);
   const filteredKeywords = keywords.filter((keyword) => !!keyword);
 
   // Checck if correct value was passed

@@ -82,6 +82,6 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 .chart {
-  height: 500px;
+  height: 400px;
 }
 </style>
