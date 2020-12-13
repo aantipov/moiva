@@ -2,15 +2,19 @@
   <div>
     <h2>Google Trends <span class="text-base">(max. 5 libs)</span></h2>
 
-    <div v-if="isError" class="text-center text-red-700">
+    <div v-if="isError" class="chart-error">
       Something went wrong while loading data. Try to reload the page or come
       later
     </div>
 
+    <div v-if="isLoading" class="text-center p">Loading...</div>
+
+    <div v-else-if="!filteredLibs.length" class="chart-error">
+      No data for selected libraries
+    </div>
+
     <div v-else class="chart">
-      <div v-if="isLoading" class="text-center p">Loading...</div>
       <GTrendsChart
-        v-else
         :libs="filteredLibs"
         :lib-to-color-map="libToColorMap"
         :data="data.timelineData"
@@ -60,13 +64,19 @@ export default Vue.extend({
   },
 
   watch: {
-    filteredLibs(): void {
-      this.loadData();
+    libs(): void {
+      if (this.filteredLibs.length) {
+        this.loadData();
+      }
     },
   },
 
   mounted(): void {
-    this.loadData();
+    if (this.filteredLibs.length) {
+      this.loadData();
+    } else {
+      this.isLoading = false;
+    }
   },
 
   methods: {
