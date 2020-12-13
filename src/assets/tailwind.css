@@ -43,4 +43,7 @@
       @apply text-5xl font-medium;
     }
   }
+  .chart-error {
+    @apply text-center text-red-700 my-32
+  }
 }

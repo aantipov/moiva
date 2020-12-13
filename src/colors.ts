@@ -8,8 +8,9 @@ const COLORS = [
   '#673AB7', // Deep Purple 500
   '#00796B', // Teal 700
   '#03A9F4', // Light Blue 500
-  '#4CAF50', // Green 500
   '#FFEB3B', // Yellow 500
+  '#4CAF50', // Green 500
+  '#795548', // Brown 500
   '#FF5722', // Deep Orange 500
   '#607D8B', // Blue Grey 500
   '#E91E63', // Pink 500
@@ -17,7 +18,6 @@ const COLORS = [
   '#00BCD4', // Cyan 500
   '#8BC34A', // Light Green 500
   '#FFC107', // Amber 500
-  '#795548', // Brown 500
   '#9C27B0', // Purple 500
   '#2196F3', // Blue 500
   '#009688', // Teal 500

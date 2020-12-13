@@ -6,7 +6,7 @@
 import Vue from 'vue';
 import Chart from 'chart.js';
 import { BundlephobiaT } from '../apis';
-import { numbersFormatter } from '../../apps-config';
+import { numbersFormatter } from '../utils';
 import { COLOR_GREEN, COLOR_GRAY } from '../colors';
 
 const roundBytesFn = (bytes: number): number => Math.round(bytes / 102.4) / 10;

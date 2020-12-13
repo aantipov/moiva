@@ -9,7 +9,7 @@ import Vue from 'vue';
 import Chart from 'chart.js';
 import { format } from 'date-fns';
 import { NpmDownloadT } from '../apis';
-import { numbersFormatter } from '../../apps-config';
+import { numbersFormatter } from '../utils';
 import { enUS } from 'date-fns/locale';
 
 export default Vue.extend({

@@ -7,7 +7,6 @@ import { Integrations } from '@sentry/tracing';
 import App from './App.vue';
 import Close from './components/icons/Close.vue';
 import Chip from './components/Chip.vue';
-import ArrowDown from './components/icons/ArrowDown.vue';
 import './assets/tailwind.css';
 
 Sentry.init({
@@ -62,7 +61,6 @@ Chart.defaults.global.tooltips = {
   },
 };
 
-Vue.component('jd-arrow-down', ArrowDown);
 Vue.component('jd-close', Close);
 Vue.component('jd-chip', Chip);
 

@@ -1,28 +1,33 @@
-import libsConfigs, { appsConfigsMap } from '../apps-config';
+import { LibraryT, fetchNpmPackage } from './apis';
 
 const paramName = 'compare';
 const oldParamName = 'apps';
 const delimiter = ' ';
 
-// Validate URL's 'compare' parameter and remove wrong libs
-export function cleanupUrl(): void {
+/**
+ * A function to ensure the url is valid
+ * It is called only once during the initial page load
+ */
+function cleanupUrl(validLibsFromUrl: string[]): void {
   const Url = new URL(window.location.href);
-  const libsFromUrl = Url.searchParams.get(paramName)?.split(delimiter) || [];
-  const libsFromUrlValidated = libsFromUrl
-    .filter((libFromUrl) => !!appsConfigsMap[libFromUrl])
-    .sort();
 
   // Make sure the old parameter is not licked
   Url.searchParams.delete(oldParamName);
 
-  // Make sure the url is valid - update it if not empty
-  if (!libsFromUrlValidated.length) {
+  // Do nothing if the URL doesn't have the parameter (loading root page use case)
+  if (Url.searchParams.get(paramName) === null) {
+    return;
+  }
+
+  // Delete the parameter if no valid libs are provided via url
+  if (!validLibsFromUrl.length) {
     Url.searchParams.delete(paramName);
     window.history.replaceState(null, '', Url.href);
     return;
   }
 
-  Url.searchParams.set(paramName, libsFromUrlValidated.join(delimiter));
+  // Update url with the valid libs in the right order
+  Url.searchParams.set(paramName, validLibsFromUrl.sort().join(delimiter));
   window.history.replaceState(null, '', Url.href);
 }
 
@@ -37,24 +42,29 @@ export function updateUrl(selectedLibs: string[]): void {
     return;
   }
 
-  const selectedLibsUrlnames = selectedLibs
-    .map((lib) => appsConfigsMap[lib].name)
-    .sort();
+  const selectedLibsUrlnames = selectedLibs.sort();
 
   Url.searchParams.set(paramName, selectedLibsUrlnames.join(delimiter));
   window.history.pushState(null, '', Url.href);
 }
 
-/**
- * Should be used after cleanupUrl
- */
-export function getDefaultLibs(): string[] {
+export function loadDefaultLibs(): Promise<LibraryT[]> {
   const Url = new URL(window.location.href);
-  const libsFromUrl = Url.searchParams.get(paramName)?.split(delimiter) || [];
+  const defaultLibs = Url.searchParams.get(paramName)?.split(delimiter) || [];
+  const uniqDefaultLibs = [...new Set(defaultLibs)];
 
-  return libsFromUrl.length
-    ? libsFromUrl
-    : libsConfigs
-        .filter((libConfig) => libConfig.selected)
-        .map((libConfig) => libConfig.name);
+  const promises = uniqDefaultLibs.map(fetchNpmPackage);
+
+  return Promise.all(promises).then((libs) => {
+    const filteredLibs = libs.filter((lib) => !!lib) as LibraryT[];
+
+    cleanupUrl(filteredLibs.map((lib) => lib.name));
+
+    return filteredLibs;
+  });
 }
+
+export const numbersFormatter = new Intl.NumberFormat('en-US', {
+  // @ts-ignore
+  notation: 'compact',
+});

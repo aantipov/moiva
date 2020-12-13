@@ -2,16 +2,13 @@
   <div>
     <h2>ThoughtWorks TechRadar</h2>
 
-    <div class="relative chart">
-      <div
-        v-if="!filteredLibs.length"
-        class="h-full pt-40 text-2xl text-red-600 bg-gray-200"
-      >
-        <div class="flex justify-center">No Data</div>
-        <div class="flex justify-center">for selected libraries</div>
-      </div>
+    <div v-if="!filteredLibs.length" class="chart-error">
+      <div class="flex justify-center">No Data</div>
+      <div class="flex justify-center">for selected libraries</div>
+    </div>
 
-      <canvas v-show="filteredLibs.length" id="techRadar" />
+    <div v-show="filteredLibs.length" class="chart">
+      <canvas id="techRadar" />
     </div>
   </div>
 </template>

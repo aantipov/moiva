@@ -1,21 +1,26 @@
 import { NowRequest, NowResponse } from '@vercel/node';
 import axios from 'axios';
-import config from '../apps-config';
-import { logRequest } from './utils';
+import { logRequest, initSentry, reportError } from './utils';
+
+initSentry();
 
 export default (req: NowRequest, res: NowResponse): void => {
   const skey = process.env.GITHUB_API_KEY;
   const url = 'https://api.github.com/graphql';
-  const app = config.find((appConfig) => appConfig.name === req.query.app);
+  const { name, owner } = req.query;
 
   logRequest('github', req.query);
 
-  if (!app) {
-    res.status(400).json({ error: 'Wrong app parameter' });
+  if (
+    !name ||
+    !owner ||
+    typeof name !== 'string' ||
+    typeof owner !== 'string'
+  ) {
+    reportError(new Error('API GITHUB: Wrong parameters'));
+    res.status(400).json({ error: 'Wrong parameters' });
     return;
   }
-
-  const githubConfig = app.github;
 
   axios
     .post(
@@ -25,7 +30,7 @@ export default (req: NowRequest, res: NowResponse): void => {
         variables: {},
         query: `
         {
-          repository(name: "${githubConfig.name}", owner: "${githubConfig.owner}") {
+          repository(name: "${name}", owner: "${owner}") {
             description
             stars: stargazerCount
             createdAt
@@ -58,7 +63,8 @@ export default (req: NowRequest, res: NowResponse): void => {
       res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
       res.status(200).json(resp.data.data.repository);
     })
-    .catch(() => {
+    .catch((e) => {
+      reportError(e);
       res.status(500).json({ error: 'Something went wrong' });
     });
 };

@@ -1,42 +1,49 @@
 <template>
   <div>
-    <LibsSelectorMobile v-model="selectedLibs" class="block md:hidden" />
+    <div class="w-full mx-auto xl:w-2/3">
+      <Autosuggest v-show="!loadingDefaultLibs" @select="select" />
 
-    <LibsSelectorDesktop
-      v-model="selectedLibs"
-      class="hidden mx-auto mt-5 text-center md:block xl:w-2/3"
-    />
+      <!--  Selected libs  -->
+      <div>
+        <jd-chip
+          v-for="lib in librariesNames"
+          :key="lib"
+          selected
+          @toggle="deselect(lib)"
+          >{{ lib }}</jd-chip
+        >
+      </div>
+    </div>
 
     <div v-if="selectedLibs.length">
       <div class="grid grid-cols-12 gap-4">
         <Npm
-          :libs="selectedLibs"
+          :libs="librariesNames"
           :lib-to-color-map="libToColorMap"
           class="col-span-12 xl:col-span-8"
         />
 
-        <TechRadar
-          :libs="selectedLibs"
-          :lib-to-color-map="libToColorMap"
+        <Bundlephobia
+          :libs="librariesNames"
           class="col-span-12 xl:col-span-4"
         />
       </div>
 
       <div class="grid grid-cols-12 gap-4">
         <GoogleTrends
-          :libs="selectedLibs"
+          :libs="librariesNames"
           :lib-to-color-map="libToColorMap"
           class="col-span-12 xl:col-span-8"
         />
 
-        <Bundlephobia :libs="selectedLibs" class="col-span-12 xl:col-span-4" />
+        <TechRadar
+          :libs="librariesNames"
+          :lib-to-color-map="libToColorMap"
+          class="col-span-12 xl:col-span-4"
+        />
       </div>
 
       <Github :libs="selectedLibs" />
-    </div>
-
-    <div v-else class="my-16 text-center p-lead">
-      Add libraries to comparison
     </div>
   </div>
 </template>
@@ -45,60 +52,63 @@
 import Vue from 'vue';
 import Npm from './Npm.vue';
 import Github from './Github.vue';
-import LibsSelectorMobile from './LibsSelectorMobile.vue';
-import LibsSelectorDesktop from './LibsSelectorDesktop.vue';
+import Autosuggest from './Autosuggest.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
 import Bundlephobia from './Bundlephobia.vue';
-import { cleanupUrl, updateUrl, getDefaultLibs } from '../utils';
+import { LibraryT } from '../apis';
+import { loadDefaultLibs, updateUrl } from '../utils';
 import { getLibToColorMap } from '../colors';
-
-// Validate URL's 'compare' parameter and remove wrong libs and sort libs
-cleanupUrl();
 
 export default Vue.extend({
   name: 'Main',
   components: {
+    Autosuggest,
     Github,
     Npm,
     TechRadar,
     GoogleTrends,
     Bundlephobia,
-    LibsSelectorMobile,
-    LibsSelectorDesktop,
   },
 
   data() {
     return {
-      selectedLibs: getDefaultLibs(),
+      selectedLibs: [] as LibraryT[],
+      loadingDefaultLibs: true,
     };
   },
 
   computed: {
     libToColorMap(): Record<string, string> {
-      return getLibToColorMap(this.selectedLibs);
+      return getLibToColorMap(this.librariesNames);
+    },
+
+    librariesNames(): string[] {
+      return this.selectedLibs.map((lib) => lib.name);
     },
   },
 
-  watch: {
-    selectedLibs(): void {
-      // This is a workaround for a problem of being able to select a category
-      // TODO: fix the problem
-      const stateManIndex = this.selectedLibs.indexOf('# State Management');
-      const testingIndex = this.selectedLibs.indexOf('# Testing');
-      const frameworksIndex = this.selectedLibs.indexOf('# Frameworks');
-      const foundElementIndex = [
-        stateManIndex,
-        testingIndex,
-        frameworksIndex,
-      ].find((i) => i > -1);
+  mounted(): void {
+    loadDefaultLibs().then((libs): LibraryT[] => {
+      this.selectedLibs = libs;
+      this.loadingDefaultLibs = false;
+      return libs;
+    });
+  },
 
-      if (foundElementIndex !== undefined) {
-        this.selectedLibs.splice(foundElementIndex, 1);
+  methods: {
+    select(lib: LibraryT): void {
+      if (this.librariesNames.includes(lib.name)) {
         return;
       }
-
-      updateUrl(this.selectedLibs);
+      this.selectedLibs.push(lib);
+      updateUrl(this.librariesNames);
+    },
+    deselect(libName: string): void {
+      this.selectedLibs = this.selectedLibs.filter(
+        (lib) => lib.name !== libName
+      );
+      updateUrl(this.librariesNames);
     },
   },
 });

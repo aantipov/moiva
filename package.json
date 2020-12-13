@@ -12,9 +12,10 @@
   "dependencies": {
     "@sentry/browser": "^5.27.4",
     "@sentry/integrations": "^5.27.4",
+    "@sentry/node": "^5.29.0",
     "@sentry/tracing": "^5.27.4",
     "@types/chart.js": "^2.9.27",
-    "@types/vue-select": "^2.5.1",
+    "autocompleter": "^6.0.5",
     "axios": "^0.21.0",
     "chart.js": "^2.9.4",
     "chartjs-adapter-date-fns": "^1.0.0",
@@ -22,8 +23,7 @@
     "date-fns": "^2.16.1",
     "faunadb": "^4.0.0",
     "google-trends-api": "^4.9.0",
-    "vue": "^2.6.11",
-    "vue-select": "^3.10.8"
+    "vue": "^2.6.11"
   },
   "devDependencies": {
     "@types/jest": "^24.0.19",

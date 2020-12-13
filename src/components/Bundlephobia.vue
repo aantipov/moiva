@@ -2,7 +2,7 @@
   <div>
     <h2>Bundlephobia</h2>
 
-    <div v-if="isError" class="text-center text-red-700">
+    <div v-if="isError" class="chart-error">
       Something went wrong while loading data. Try to reload the page or come
       later
     </div>
@@ -82,6 +82,6 @@ export default Vue.extend({
 
 <style scoped lang="scss">
 .chart {
-  height: 500px;
+  height: 400px;
 }
 </style>
