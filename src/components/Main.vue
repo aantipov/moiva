@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="w-full mx-auto xl:w-2/3">
-      <Autosuggest @select="select" />
+      <Autosuggest v-show="!loadingDefaultLibs" @select="select" />
 
       <!--  Selected libs  -->
       <div>
