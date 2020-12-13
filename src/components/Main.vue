@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="w-full mx-auto xl:w-2/3">
-      <Autosuggest @select="onSelect" />
+      <Autosuggest @select="select" />
 
       <!--  Selected libs  -->
       <div>
@@ -14,13 +14,6 @@
         >
       </div>
     </div>
-
-    <!-- <LibsSelectorMobile v&#45;model="selectedLibs" class="block md:hidden" /> -->
-    <!--  -->
-    <!-- <LibsSelectorDesktop -->
-    <!--   v&#45;model="selectedLibs" -->
-    <!--   class="hidden mx&#45;auto mt&#45;5 text&#45;center md:block xl:w&#45;2/3" -->
-    <!-- /> -->
 
     <div v-if="selectedLibs.length">
       <div class="grid grid-cols-12 gap-4">
@@ -63,19 +56,13 @@
 import Vue from 'vue';
 import Npm from './Npm.vue';
 import Github from './Github.vue';
-// import LibsSelectorMobile from './LibsSelectorMobile.vue';
-// import LibsSelectorDesktop from './LibsSelectorDesktop.vue';
 import Autosuggest from './Autosuggest.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
 import Bundlephobia from './Bundlephobia.vue';
 import { LibraryT } from '../apis';
-// import { cleanupUrl, updateUrl, getDefaultLibs } from '../utils';
 import { loadDefaultLibs, updateUrl } from '../utils';
 import { getLibToColorMap } from '../colors';
-
-// Validate URL's 'compare' parameter and remove wrong libs and sort libs
-// cleanupUrl();
 
 export default Vue.extend({
   name: 'Main',
@@ -86,8 +73,6 @@ export default Vue.extend({
     TechRadar,
     GoogleTrends,
     Bundlephobia,
-    // LibsSelectorMobile,
-    // LibsSelectorDesktop,
   },
 
   data() {
@@ -116,7 +101,7 @@ export default Vue.extend({
   },
 
   methods: {
-    onSelect(lib: LibraryT): void {
+    select(lib: LibraryT): void {
       if (this.librariesNames.includes(lib.name)) {
         return;
       }
