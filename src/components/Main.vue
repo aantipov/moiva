@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div class="w-full mx-auto xl:w-2/3">
+    <div
+      class="w-full mx-auto xl:w-2/3"
+      :class="{ 'mb-32': !selectedLibs.length }"
+    >
       <Autosuggest @select="select" />
 
       <!--  Selected libs  -->
