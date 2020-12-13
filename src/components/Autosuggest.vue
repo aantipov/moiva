@@ -72,7 +72,12 @@ export default Vue.extend({
   @apply rounded rounded-t-none border border-t-0 border-orange-300;
 }
 .ac > .ac-option {
-  @apply h-16 px-5 border-b flex flex-col justify-center;
+  @apply h-12 px-5 border-b flex flex-col justify-center;
+}
+@screen sm {
+  .ac > .ac-option {
+    @apply h-16;
+  }
 }
 .ac > .ac-option.selected,
 .ac > .ac-option:hover:not(.group) {
