@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex flex-wrap items-stretch w-full mb-3">
+  <div class="relative flex flex-wrap items-stretch w-full">
     <input
       id="country"
       type="text"

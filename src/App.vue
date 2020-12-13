@@ -8,40 +8,7 @@
         frameworks and libraries
       </p>
 
-      <p class="text-center">
-        This project is a
-        <strong class="font-medium">work in progress</strong>. More charts and
-        supported libraries to come!
-      </p>
-
       <Main class="mt-4 sm:mt-8" />
-
-      <div class="footer">
-        <div class="text-center">
-          <p>
-            If you notice any issues or have a feature request, please open an
-            issue on
-            <a
-              href="https://github.com/aantipov/jsdiff-issues"
-              target="_blank"
-              rel="noopener"
-              >Github</a
-            >.
-          </p>
-          <p>
-            Follow me on
-            <a href="https://twitter.com/_aantipov" target="_blank">Twitter</a>
-            to be notified about project updates
-          </p>
-        </div>
-        <hr />
-        <div class="mt-4 text-center p">
-          Made by
-          <a href="https://alexei.me" target="_blank" rel="noopener"
-            >Alexey Antipov</a
-          >
-        </div>
-      </div>
     </div>
   </div>
 </template>
@@ -60,8 +27,5 @@ export default Vue.extend({
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-.footer {
-  margin: 60px auto 30px;
 }
 </style>

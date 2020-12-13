@@ -4,20 +4,30 @@ const paramName = 'compare';
 const oldParamName = 'apps';
 const delimiter = ' ';
 
-function cleanupUrl(libs: string[]): void {
+/**
+ * A function to ensure the url is valid
+ * It is called only once during the initial page load
+ */
+function cleanupUrl(validLibsFromUrl: string[]): void {
   const Url = new URL(window.location.href);
 
   // Make sure the old parameter is not licked
   Url.searchParams.delete(oldParamName);
 
-  // Make sure the url is valid - update it if not empty
-  if (!libs.length) {
+  // Do nothing if the URL doesn't have the parameter (loading root page use case)
+  if (Url.searchParams.get(paramName) === null) {
+    return;
+  }
+
+  // Delete the parameter if no valid libs are provided via url
+  if (!validLibsFromUrl.length) {
     Url.searchParams.delete(paramName);
     window.history.replaceState(null, '', Url.href);
     return;
   }
 
-  Url.searchParams.set(paramName, libs.sort().join(delimiter));
+  // Update url with the valid libs in the right order
+  Url.searchParams.set(paramName, validLibsFromUrl.sort().join(delimiter));
   window.history.replaceState(null, '', Url.href);
 }
 
@@ -40,11 +50,7 @@ export function updateUrl(selectedLibs: string[]): void {
 
 export function loadDefaultLibs(): Promise<LibraryT[]> {
   const Url = new URL(window.location.href);
-  const defaultLibs = Url.searchParams.get(paramName)?.split(delimiter) || [
-    'vue',
-    'react',
-    'svelte',
-  ];
+  const defaultLibs = Url.searchParams.get(paramName)?.split(delimiter) || [];
   const uniqDefaultLibs = [...new Set(defaultLibs)];
 
   const promises = uniqDefaultLibs.map(fetchNpmPackage);

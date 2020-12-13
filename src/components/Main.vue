@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="w-full mx-auto xl:w-2/3">
-      <Autosuggest @select="select" />
+      <Autosuggest
+        :class="{ 'my-16 sm:my-16': !selectedLibs.length }"
+        @select="select"
+      />
 
       <!--  Selected libs  -->
       <div>
@@ -44,10 +47,6 @@
       </div>
 
       <Github :libs="selectedLibs" />
-    </div>
-
-    <div v-else class="my-16 text-center p-lead">
-      Add libraries to comparison
     </div>
   </div>
 </template>
