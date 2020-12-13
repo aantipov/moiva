@@ -138,7 +138,6 @@ export interface NpmSuggestionT {
 export interface NpmSuggestionResponseT {
   package: {
     name: string;
-    version: string;
     description: string;
     links: {
       repository: string;

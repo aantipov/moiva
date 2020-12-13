@@ -1,7 +1,7 @@
 <template>
   <div class="relative flex flex-wrap items-stretch w-full">
     <input
-      id="country"
+      id="npm-input"
       type="text"
       placeholder="Add npm packages to comparison"
       class="relative w-full px-3 py-3 pr-10 text-lg text-gray-700 placeholder-gray-500 bg-white border border-gray-400 rounded outline-none focus:outline-none focus:border-3 focus:bg-gray-300"
@@ -26,7 +26,7 @@ export default Vue.extend({
   name: 'AutoSuggest',
   mounted() {
     autocomplete<OptionT>({
-      input: document.getElementById('country') as HTMLInputElement,
+      input: document.getElementById('npm-input') as HTMLInputElement,
       debounceWaitMs: 200,
       fetch: (text: string, update: (items: LibraryT[]) => void) => {
         fetchNpmSuggestions(text).then((suggestions): void => {
@@ -35,7 +35,7 @@ export default Vue.extend({
       },
       onSelect: (item: LibraryT) => {
         this.$emit('select', item);
-        (document.getElementById('country') as HTMLInputElement).value = '';
+        (document.getElementById('npm-input') as HTMLInputElement).value = '';
       },
       className: 'ac',
       render(item) {
