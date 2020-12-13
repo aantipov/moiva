@@ -1,4 +1,5 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
+import * as Sentry from '@sentry/browser';
 
 const npmCache = new Map();
 const npmSuggestionsCache = new Map();
@@ -47,15 +48,32 @@ export interface LibraryT {
   githubOwner: string | null;
 }
 
-export function fetchNpmData(app: string): Promise<NpmDownloadT[]> {
-  if (npmCache.get(app)) {
-    return Promise.resolve(npmCache.get(app));
+function reportSentry(err: AxiosError, methodName: string): void {
+  err.name = `UI API (${methodName})`;
+
+  Sentry.captureException(err, {
+    tags: {
+      apiResponseMessage: err.response?.data?.error || '',
+      apiRequestUrl: err.config?.url || '',
+    },
+  });
+}
+
+export function fetchNpmData(lib: string): Promise<NpmDownloadT[]> {
+  if (npmCache.get(lib)) {
+    return Promise.resolve(npmCache.get(lib));
   }
 
-  return axios.get(`/api/npm?app=${app}`).then(({ data }) => {
-    npmCache.set(app, data);
-    return data;
-  });
+  return axios
+    .get(`/api/npm?lib=${lib}`)
+    .then(({ data }) => {
+      npmCache.set(lib, data);
+      return data;
+    })
+    .catch((err) => {
+      reportSentry(err, 'fetchNpmData');
+      return Promise.reject(err);
+    });
 }
 
 export function fetchGithubData(lib: LibraryT): Promise<RepoT> {
@@ -68,6 +86,10 @@ export function fetchGithubData(lib: LibraryT): Promise<RepoT> {
     .then(({ data }) => {
       ghCache.set(lib.name, data);
       return data;
+    })
+    .catch((err) => {
+      reportSentry(err, 'fetchGithubData');
+      return Promise.reject(err);
     });
 }
 
@@ -79,10 +101,16 @@ export function fetchGTrendsData(libs: string[]): Promise<GTrendsT> {
     return Promise.resolve(gTrendsCache.get(libsStr));
   }
 
-  return axios.get(`/api/gtrends?libs=${libsStr}`).then(({ data }) => {
-    gTrendsCache.set(libsStr, data.default);
-    return data.default;
-  });
+  return axios
+    .get(`/api/gtrends?libs=${libsStr}`)
+    .then(({ data }) => {
+      gTrendsCache.set(libsStr, data.default);
+      return data.default;
+    })
+    .catch((err) => {
+      reportSentry(err, 'fetchGTrendsData');
+      return Promise.reject(err);
+    });
 }
 
 export function fetchBundlephobiaData(lib: string): Promise<BundlephobiaT[]> {
@@ -90,10 +118,16 @@ export function fetchBundlephobiaData(lib: string): Promise<BundlephobiaT[]> {
     return Promise.resolve(bphobiaCache.get(lib));
   }
 
-  return axios.get(`/api/bphobia?lib=${lib}`).then(({ data }) => {
-    bphobiaCache.set(lib, data);
-    return data;
-  });
+  return axios
+    .get(`/api/bphobia?lib=${lib}`)
+    .then(({ data }) => {
+      bphobiaCache.set(lib, data);
+      return data;
+    })
+    .catch((err) => {
+      reportSentry(err, 'fetchBundlephobiaData');
+      return Promise.reject(err);
+    });
 }
 
 export interface NpmSuggestionT {
@@ -153,6 +187,10 @@ export function fetchNpmSuggestions(keyword: string): Promise<LibraryT[]> {
       npmSuggestionsCache.set(keyword, data);
 
       return data;
+    })
+    .catch((err) => {
+      reportSentry(err, 'fetchNpmSuggestions');
+      return Promise.reject(err);
     });
 }
 
@@ -194,6 +232,7 @@ export function fetchNpmPackage(packageName: string): Promise<LibraryT | null> {
         return null;
       }
 
+      reportSentry(err, 'fetchNpmPackage');
       return Promise.reject(err);
     });
 }

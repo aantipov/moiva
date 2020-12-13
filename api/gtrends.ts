@@ -1,15 +1,18 @@
 import { NowRequest, NowResponse } from '@vercel/node';
 import { libsToKeywordMap } from '../google-trends.config';
 import googleTrends from 'google-trends-api';
-import { logRequest } from './utils';
+import { logRequest, initSentry, reportError } from './utils';
+
+initSentry();
 
 export default (req: NowRequest, res: NowResponse): void => {
-  logRequest('googleTrends', req.query);
-
   const { libs } = req.query;
+
+  logRequest('googleTrends', req.query);
 
   // Check if libs parameter is there
   if (!libs || typeof libs !== 'string') {
+    reportError(new Error('API Google Trends: Wrong libs parameter'));
     res.status(400).json({ error: 'Wrong libs parameter' });
     return;
   }
@@ -23,6 +26,7 @@ export default (req: NowRequest, res: NowResponse): void => {
     filteredKeywords.length > 5 ||
     filteredKeywords.length !== keywords.length
   ) {
+    reportError(new Error('API Google Trends: Wrong libs parameter'));
     res.status(400).json({ error: 'Wrong libs parameter' });
     return;
   }
@@ -37,7 +41,8 @@ export default (req: NowRequest, res: NowResponse): void => {
       res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
       res.status(200).json(JSON.parse(results));
     })
-    .catch(() => {
+    .catch((e) => {
+      reportError(e);
       res.status(500).json({ error: 'Something went wrong' });
     });
 };

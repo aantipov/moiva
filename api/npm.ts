@@ -1,6 +1,8 @@
 import { NowRequest, NowResponse } from '@vercel/node';
 import axios from 'axios';
-import { logRequest } from './utils';
+import { logRequest, initSentry, reportError } from './utils';
+
+initSentry();
 
 const startYear = 2015;
 const cYear = new Date().getFullYear();
@@ -10,12 +12,13 @@ const years = Array.from(
 );
 
 export default (req: NowRequest, res: NowResponse): void => {
-  const { app } = req.query;
+  const { lib } = req.query;
 
   logRequest('npm', req.query);
 
-  if (!app) {
-    res.status(400).json({ error: 'Wrong app parameter' });
+  if (!lib || typeof lib !== 'string') {
+    reportError(new Error('API NPM: Wrong lib parameter'));
+    res.status(400).json({ error: 'Wrong lib parameter' });
     return;
   }
 
@@ -23,7 +26,7 @@ export default (req: NowRequest, res: NowResponse): void => {
     .map(
       (year) =>
         `https://api.npmjs.org/downloads/range/${year}-01-01:${year}-12-31/${encodeURIComponent(
-          app
+          lib
         )}`
     )
     .map((url) => axios.get(url).then(({ data }) => data.downloads));
@@ -49,7 +52,8 @@ export default (req: NowRequest, res: NowResponse): void => {
       res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
       res.status(200).json(downloadsByMonth);
     })
-    .catch(() => {
+    .catch((e) => {
+      reportError(e);
       res.status(500).json({ error: 'Something went wrong' });
     });
 };

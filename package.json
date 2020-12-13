@@ -12,6 +12,7 @@
   "dependencies": {
     "@sentry/browser": "^5.27.4",
     "@sentry/integrations": "^5.27.4",
+    "@sentry/node": "^5.29.0",
     "@sentry/tracing": "^5.27.4",
     "@types/chart.js": "^2.9.27",
     "autocompleter": "^6.0.5",

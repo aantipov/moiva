@@ -1,6 +1,8 @@
 import { NowRequest, NowResponse } from '@vercel/node';
 import axios from 'axios';
-import { logRequest } from './utils';
+import { logRequest, initSentry, reportError } from './utils';
+
+initSentry();
 
 export default (req: NowRequest, res: NowResponse): void => {
   const skey = process.env.GITHUB_API_KEY;
@@ -9,8 +11,14 @@ export default (req: NowRequest, res: NowResponse): void => {
 
   logRequest('github', req.query);
 
-  if (!name || !owner) {
-    res.status(400).json({ error: 'Wrong app parameter' });
+  if (
+    !name ||
+    !owner ||
+    typeof name !== 'string' ||
+    typeof owner !== 'string'
+  ) {
+    reportError(new Error('API GITHUB: Wrong parameters'));
+    res.status(400).json({ error: 'Wrong parameters' });
     return;
   }
 
@@ -55,7 +63,8 @@ export default (req: NowRequest, res: NowResponse): void => {
       res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
       res.status(200).json(resp.data.data.repository);
     })
-    .catch(() => {
+    .catch((e) => {
+      reportError(e);
       res.status(500).json({ error: 'Something went wrong' });
     });
 };
