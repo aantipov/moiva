@@ -6,7 +6,7 @@
 import Vue from 'vue';
 import Chart from 'chart.js';
 import { RepoT } from '../apis';
-import { numbersFormatter } from '../../apps-config';
+import { numbersFormatter } from '../utils';
 import { COLOR_GRAY } from '../colors';
 
 export default Vue.extend({

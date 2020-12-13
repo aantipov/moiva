@@ -63,3 +63,8 @@ export function loadDefaultLibs(): Promise<LibraryT[]> {
     return filteredLibs;
   });
 }
+
+export const numbersFormatter = new Intl.NumberFormat('en-US', {
+  // @ts-ignore
+  notation: 'compact',
+});
