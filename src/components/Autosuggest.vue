@@ -4,6 +4,7 @@
       id="npm-input"
       type="text"
       placeholder="Add npm packages to comparison"
+      autofocus
       class="relative w-full px-3 py-3 pr-10 text-lg text-gray-700 placeholder-gray-500 bg-white border border-gray-400 rounded outline-none focus:outline-none focus:border-3 focus:bg-gray-300"
     />
     <span
