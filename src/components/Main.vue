@@ -45,6 +45,10 @@
 
       <Github :libs="selectedLibs" />
     </div>
+
+    <div v-else class="chart-illustration">
+      <ChartIllustration />
+    </div>
   </div>
 </template>
 
@@ -56,6 +60,7 @@ import Autosuggest from './Autosuggest.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
 import Bundlephobia from './Bundlephobia.vue';
+import ChartIllustration from './icons/charts-illustration.vue';
 import { LibraryT } from '../apis';
 import { loadDefaultLibs, updateUrl } from '../utils';
 import { getLibToColorMap } from '../colors';
@@ -69,6 +74,7 @@ export default Vue.extend({
     TechRadar,
     GoogleTrends,
     Bundlephobia,
+    ChartIllustration,
   },
 
   data() {
@@ -113,3 +119,15 @@ export default Vue.extend({
   },
 });
 </script>
+
+<style lang="postcss" scoped>
+.chart-illustration {
+  @apply hidden;
+}
+@screen sm {
+  .chart-illustration {
+    width: 500px;
+    @apply block mt-10 mx-auto;
+  }
+}
+</style>
