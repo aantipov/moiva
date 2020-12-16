@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="w-full mx-auto xl:w-2/3">
-      <Autosuggest v-show="!loadingDefaultLibs" @select="select" />
+    <div v-show="!isLoadingDefaultLibs" class="w-full mx-auto xl:w-2/3">
+      <Autosuggest @select="select" />
 
       <!--  Selected libs  -->
       <div>
@@ -46,7 +46,7 @@
       <Github :libs="selectedLibs" />
     </div>
 
-    <div v-else class="chart-illustration">
+    <div v-else-if="!isLoadingDefaultLibs" class="chart-illustration">
       <ChartIllustration />
     </div>
   </div>
@@ -80,7 +80,7 @@ export default Vue.extend({
   data() {
     return {
       selectedLibs: [] as LibraryT[],
-      loadingDefaultLibs: true,
+      isLoadingDefaultLibs: true,
     };
   },
 
@@ -97,7 +97,7 @@ export default Vue.extend({
   mounted(): void {
     loadDefaultLibs().then((libs): LibraryT[] => {
       this.selectedLibs = libs;
-      this.loadingDefaultLibs = false;
+      this.isLoadingDefaultLibs = false;
       return libs;
     });
   },
