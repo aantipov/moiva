@@ -33,7 +33,7 @@ export default Vue.extend({
   mounted() {
     const { libs, downloads } = this;
     const ctx = document.getElementById('npmDownloads') as HTMLCanvasElement;
-    const categories = downloads[0].map(({ month }) => month);
+    const categories = downloads[0].slice(0, -1).map(({ month }) => month);
 
     new Chart(ctx, {
       type: 'line',
@@ -42,7 +42,7 @@ export default Vue.extend({
         datasets: libs.map((lib, key) => ({
           label: lib,
           fill: false,
-          data: downloads[key].map(({ downloads }) => downloads),
+          data: downloads[key].slice(0, -1).map(({ downloads }) => downloads),
           backgroundColor: this.libToColorMap[lib],
           borderColor: this.libToColorMap[lib],
           borderWidth: 4,
