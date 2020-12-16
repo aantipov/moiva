@@ -35,15 +35,15 @@ export default Vue.extend({
         labels: libs,
         datasets: [
           {
-            label: 'minified',
-            data: sizes.map((size) => roundBytesFn(size.raw)),
-            backgroundColor: COLOR_GRAY,
-            borderWidth: 1,
-          },
-          {
             label: 'minified + gzipped',
             data: sizes.map((size) => roundBytesFn(size.gzip)),
             backgroundColor: COLOR_GREEN,
+            borderWidth: 1,
+          },
+          {
+            label: 'minified',
+            data: sizes.map((size) => roundBytesFn(size.raw)),
+            backgroundColor: COLOR_GRAY,
             borderWidth: 1,
           },
         ],
@@ -73,7 +73,6 @@ export default Vue.extend({
         scales: {
           yAxes: [
             {
-              stacked: true,
               ticks: {
                 beginAtZero: true,
                 callback: (val: number): string =>
@@ -81,7 +80,6 @@ export default Vue.extend({
               },
             },
           ],
-          xAxes: [{ stacked: true }],
         },
       },
     });
