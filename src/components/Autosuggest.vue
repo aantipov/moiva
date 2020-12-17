@@ -5,7 +5,8 @@
       type="text"
       placeholder="Add npm packages to comparison"
       autofocus
-      class="relative w-full px-3 py-3 pr-10 text-xl text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded outline-none focus:border-gray-400 focus:outline-none focus:border-3 focus:bg-gray-100"
+      autocomplete="off"
+      class="relative w-full px-3 py-3 pr-10 text-xl font-light text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded outline-none focus:border-gray-400 focus:outline-none focus:border-3 focus:bg-gray-100"
     />
     <span
       class="absolute right-0 z-10 items-center justify-center w-8 h-full py-3 pr-3 text-base font-normal leading-snug text-center text-gray-400 bg-transparent rounded"
@@ -82,7 +83,7 @@ export default Vue.extend({
 }
 .ac > .ac-option.selected,
 .ac > .ac-option:hover:not(.group) {
-  @apply bg-gray-200;
+  @apply bg-gray-100;
 }
 .ac-option-title {
   @apply h-5 overflow-hidden text-gray-800 font-normal text-base;
