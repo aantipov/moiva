@@ -1,7 +1,11 @@
 <template>
   <div>
     <div v-show="!isLoadingDefaultLibs" class="w-full mx-auto xl:w-2/3">
-      <Autosuggest @select="select" />
+      <Autosuggest
+        @select="select"
+        @error="autosuggestApiError = true"
+        @success="autosuggestApiError = false"
+      />
 
       <!--  Selected libs  -->
       <div>
@@ -12,6 +16,14 @@
           @toggle="deselect(lib)"
           >{{ lib }}</jd-chip
         >
+      </div>
+
+      <div
+        v-if="autosuggestApiError"
+        class="my-4 text-xl font-medium text-red-600"
+      >
+        Oopsie, it looks like we have problems with the underlying suggestions
+        api. We are investigating the problem
       </div>
     </div>
 
@@ -81,6 +93,7 @@ export default Vue.extend({
     return {
       selectedLibs: [] as LibraryT[],
       isLoadingDefaultLibs: true,
+      autosuggestApiError: false,
     };
   },
 

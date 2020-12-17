@@ -31,9 +31,14 @@ export default Vue.extend({
       input: document.getElementById('npm-input') as HTMLInputElement,
       debounceWaitMs: 200,
       fetch: (text: string, update: (items: LibraryT[]) => void) => {
-        fetchNpmSuggestions(text).then((suggestions): void => {
-          update(suggestions);
-        });
+        fetchNpmSuggestions(text)
+          .then((suggestions): void => {
+            this.$emit('success');
+            update(suggestions);
+          })
+          .catch(() => {
+            this.$emit('error');
+          });
       },
       onSelect: (item: LibraryT) => {
         this.$emit('select', item);
