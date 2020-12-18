@@ -100,11 +100,13 @@ Multiple metrics and data sources like Github, NPM, Google Trends, ThoughtWorks 
       .footer {
         flex-shrink: 0;
       }
-      #app {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-      }
     </style>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap"
+      rel="stylesheet"
+    />
 
     <script
       async
@@ -123,17 +125,23 @@ Multiple metrics and data sources like Github, NPM, Google Trends, ThoughtWorks 
     </noscript>
 
     <!-- Header -->
-    <div class="container px-3 mt-3 md:mt-24 sm:mx-auto">
-      <h1>Measure and compare JavaScript libraries</h1>
+    <div class="container px-3 mt-5 antialiased md:mt-24 sm:mx-auto">
+      <div
+        style="font-family: 'Oswald', sans-serif"
+        class="text-center text-9xl"
+      >
+        MOIVA
+      </div>
 
-      <p class="text-center p-lead" style="display: none">
-        Unbiased always up-to-date visual side by side comparison of javascript
-        frameworks and libraries
-      </p>
+      <h1
+        class="mt-4 mb-2 text-2xl font-normal leading-normal text-center text-gray-800"
+      >
+        Measure and compare JavaScript libraries
+      </h1>
     </div>
 
     <!-- Body -->
-    <div class="container px-3 mt-4 content sm:mx-auto sm:mt-8">
+    <div class="container px-3 mt-4 antialiased content sm:mx-auto sm:mt-8">
       <div id="app"></div>
     </div>
 

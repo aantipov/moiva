@@ -5,9 +5,6 @@
 @tailwind utilities;
 
 @layer components {
-  h1 {
-    @apply mt-4 mb-2 text-3xl font-normal leading-normal text-center text-gray-800;
-  }
   h2 {
     @apply mt-5 mb-2 text-2xl font-normal leading-normal text-center text-gray-800;
   }
@@ -18,9 +15,6 @@
   .p {
     @apply mt-0 mb-4 text-base font-light leading-relaxed text-gray-800;
   }
-  .p-lead {
-    @apply mt-4 mb-4 text-xl font-light leading-relaxed text-gray-800;
-  }
   a {
     @apply font-normal text-blue-700 underline;
   }
@@ -28,19 +22,8 @@
     @apply text-blue-900;
   }
   @screen sm {
-    h1 {
-      @apply text-4xl font-medium;
-    }
     h2 {
       @apply mb-0 text-3xl;
-    }
-    .p-lead {
-      @apply text-2xl font-light;
-    }
-  }
-  @screen lg {
-    h1 {
-      @apply text-5xl font-medium;
     }
   }
   .chart-error {
