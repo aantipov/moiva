@@ -6,7 +6,7 @@
       placeholder="Add npm packages to comparison"
       autofocus
       autocomplete="off"
-      class="relative w-full px-3 py-3 pr-10 text-xl font-light text-gray-700 placeholder-gray-400 bg-white border border-gray-300 rounded outline-none focus:border-gray-400 focus:outline-none focus:border-3 focus:bg-gray-100"
+      class="relative w-full px-3 py-3 pr-10 text-xl font-light text-gray-700 placeholder-gray-400 bg-white border border-gray-400 rounded outline-none md:text-2xl focus:border-gray-400 focus:outline-none focus:border-3 focus:bg-gray-100"
     />
     <span
       class="absolute right-0 z-10 items-center justify-center w-8 h-full py-3 pr-3 text-base font-normal leading-snug text-center text-gray-400 bg-transparent rounded"

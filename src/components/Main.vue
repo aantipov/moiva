@@ -1,6 +1,9 @@
 <template>
   <div>
-    <div v-show="!isLoadingDefaultLibs" class="w-full mx-auto xl:w-2/3">
+    <div
+      v-show="!isLoadingDefaultLibs"
+      class="w-full mx-auto lg:w-9/12 xl:w-2/4"
+    >
       <Autosuggest
         @select="select"
         @error="autosuggestApiError = true"
@@ -57,10 +60,6 @@
 
       <Github :libs="selectedLibs" />
     </div>
-
-    <div v-else-if="!isLoadingDefaultLibs" class="chart-illustration">
-      <ChartIllustration />
-    </div>
   </div>
 </template>
 
@@ -72,7 +71,6 @@ import Autosuggest from './Autosuggest.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
 import Bundlephobia from './Bundlephobia.vue';
-import ChartIllustration from './icons/charts-illustration.vue';
 import { LibraryT } from '../apis';
 import { loadDefaultLibs, updateUrl } from '../utils';
 import { getLibToColorMap } from '../colors';
@@ -86,7 +84,6 @@ export default Vue.extend({
     TechRadar,
     GoogleTrends,
     Bundlephobia,
-    ChartIllustration,
   },
 
   data() {
