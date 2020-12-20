@@ -75,7 +75,7 @@
       <a href="/?compare=date-fns+dayjs+luxon+moment" class="cat-link"
         >Date utilities (Moment.js, Day.js, Luxon, date-fns)</a
       >
-      <a href="?compare=lodash+ramda+underscore" class="cat-link"
+      <a href="/?compare=lodash+ramda+underscore" class="cat-link"
         >Utilities (Lodash, Ramda, Underscore.js)</a
       >
       <a
