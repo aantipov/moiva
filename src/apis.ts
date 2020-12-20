@@ -160,6 +160,27 @@ export function fetchNpmSuggestions(keyword: string): Promise<LibraryT[]> {
     return Promise.resolve(npmSuggestionsCache.get(keyword));
   }
 
+  // eslint-disable-next-line
+  const suggestionsApi = true ? fetchNpmJSSuggestions : fetchNpmIOSuggestions;
+
+  return suggestionsApi(keyword)
+    .then((data): LibraryT[] => {
+      npmSuggestionsCache.set(keyword, data);
+      return data;
+    })
+    .catch((err) => {
+      reportSentry(err, 'fetchNpmSuggestions');
+      return Promise.reject(err);
+    });
+}
+
+function fetchNpmJSSuggestions(keyword: string): Promise<LibraryT[]> {
+  return axios
+    .get(`/api/npm-suggestions?q=${keyword}`)
+    .then((resp) => resp.data);
+}
+
+function fetchNpmIOSuggestions(keyword: string): Promise<LibraryT[]> {
   return axios
     .get(`https://api.npms.io/v2/search/suggestions?q=${keyword}&size=20`)
     .then((resp) => {
@@ -186,10 +207,6 @@ export function fetchNpmSuggestions(keyword: string): Promise<LibraryT[]> {
       npmSuggestionsCache.set(keyword, data);
 
       return data;
-    })
-    .catch((err) => {
-      reportSentry(err, 'fetchNpmSuggestions');
-      return Promise.reject(err);
     });
 }
 
