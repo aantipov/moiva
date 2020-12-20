@@ -5,11 +5,11 @@
 @tailwind utilities;
 
 @layer components {
-  h2 {
-    @apply mt-5 mb-2 text-2xl font-normal leading-normal text-center text-gray-800;
+  h1 {
+    @apply mt-8 mb-2 text-3xl font-normal leading-normal text-center text-gray-800
   }
-  h3 {
-    @apply mt-0 mb-0 text-2xl font-normal leading-normal text-center text-gray-800;
+  h2 {
+    @apply mt-5 mb-2 text-2xl font-normal leading-normal text-center text-gray-800 sm:mb-0;
   }
   p,
   .p {
@@ -21,10 +21,8 @@
   a:hover {
     @apply text-blue-900;
   }
-  @screen sm {
-    h2 {
-      @apply mb-0 text-3xl;
-    }
+  a.cat-link {
+    @apply text-base mb-2 sm:text-lg
   }
   .chart-error {
     @apply text-center text-red-700 my-32
