@@ -60,6 +60,43 @@
 
       <Github :libs="selectedLibs" />
     </div>
+
+    <div v-else class="flex flex-col items-start sm:items-center">
+      <h2 class="self-center mt-8 mb-2 sm:mt-12">
+        Popular comparisons by category
+      </h2>
+
+      <a href="/?compare=%40angular%2Fcore+react+svelte+vue" class="cat-link"
+        >Frontend frameworks (React, Svelte, Vue, Angular)</a
+      >
+      <a href="/?compare=bootstrap+bulma+tailwindcss" class="cat-link"
+        >CSS frameworks (Bootstrap, Tailwind CSS, Bulma)</a
+      >
+      <a href="/?compare=date-fns+dayjs+luxon+moment" class="cat-link"
+        >Date utilities (Moment.js, Day.js, Luxon, date-fns)</a
+      >
+      <a href="/?compare=lodash+ramda+underscore" class="cat-link"
+        >Utilities (Lodash, Ramda, Underscore.js)</a
+      >
+      <a
+        href="/?compare=cypress+playwright+puppeteer+selenium-webdriver"
+        class="cat-link"
+        >End-to-end testing (Puppeteer, Cypress, Playwright, Selenium
+        WebDriver)</a
+      >
+      <a href="/?compare=%40nestjs%2Fcore+fastify+koa" class="cat-link"
+        >Node.js frameworks (Koa, NestJS, Fastify)</a
+      >
+      <a href="/?compare=log4js+morgan+pino+winston" class="cat-link"
+        >Node.js logging (winston, morgan, log4js-node, pino)</a
+      >
+      <a href="/?compare=ejs+handlebars+mustache+pug" class="cat-link"
+        >Templating languages (EJS, Handlebars.js, Mustache.js, Pug)</a
+      >
+      <a href="/?compare=socket.io+ws" class="cat-link"
+        >Web sockets (Socket.IO, ws)</a
+      >
+    </div>
   </div>
 </template>
 
