@@ -76,24 +76,19 @@ export default Vue.extend({
 
 <style lang="postcss">
 .ac {
-  @apply rounded rounded-t-none border border-t-0 border-gray-300;
+  @apply rounded rounded-t-none border border-t-0 border-gray-400;
 }
 .ac > .ac-option {
-  @apply h-12 px-5 border-b flex flex-col justify-center;
-}
-@screen sm {
-  .ac > .ac-option {
-    @apply h-16;
-  }
+  @apply h-auto px-5 py-2 border-b flex flex-col justify-center;
 }
 .ac > .ac-option.selected,
 .ac > .ac-option:hover:not(.group) {
-  @apply bg-gray-100;
+  @apply bg-gray-200;
 }
 .ac-option-title {
-  @apply h-5 overflow-hidden text-gray-800 font-normal text-base;
+  @apply h-auto mb-0.5 text-gray-800 font-normal text-base;
 }
 .ac-option-desc {
-  @apply h-5 overflow-hidden text-gray-600 font-normal text-xs;
+  @apply h-auto text-gray-500 font-normal text-sm;
 }
 </style>
