@@ -6,7 +6,7 @@
 
 @layer components {
   h1 {
-    @apply mt-8 mb-2 text-3xl font-normal leading-normal text-center text-gray-800
+    @apply mt-5 sm:mt-8 mb-2 mx-auto w-10/12 sm:w-full text-2xl sm:text-3xl font-normal leading-normal text-center text-gray-800
   }
   h2 {
     @apply mt-5 mb-2 text-2xl font-normal leading-normal text-center text-gray-800 sm:mb-0;
