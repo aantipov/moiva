@@ -79,14 +79,14 @@ export default Vue.extend({
   @apply rounded rounded-t-none border border-t-0 border-gray-400;
 }
 .ac > .ac-option {
-  @apply h-auto px-5 py-2 border-b flex flex-col justify-center;
+  @apply h-auto px-5 py-1 sm:py-2 border-b flex flex-col justify-center;
 }
 .ac > .ac-option.selected,
 .ac > .ac-option:hover:not(.group) {
   @apply bg-gray-200;
 }
 .ac-option-title {
-  @apply h-auto mb-0.5 text-gray-800 font-normal text-base;
+  @apply h-auto mb-0 sm:mb-0.5 text-gray-800 font-normal text-base;
 }
 .ac-option-desc {
   @apply h-auto text-gray-500 font-normal text-sm;
