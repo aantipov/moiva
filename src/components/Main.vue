@@ -45,7 +45,7 @@
               <GithubIcon class="mr-4" />
             </a>
 
-            <CloseIcon @click="deselect(lib.name)" />
+            <m-close @click="deselect(lib.name)" />
           </div>
         </div>
       </div>
@@ -158,7 +158,6 @@ import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
 import Bundlephobia from './Bundlephobia.vue';
 import GithubIcon from './icons/Github.vue';
-import CloseIcon from './icons/Close.vue';
 import { LibraryT } from '../apis';
 import { loadDefaultLibs, updateUrl } from '../utils';
 import { getLibToColorMap } from '../colors';
@@ -173,7 +172,6 @@ export default Vue.extend({
     GoogleTrends,
     Bundlephobia,
     GithubIcon,
-    CloseIcon,
   },
 
   data() {
