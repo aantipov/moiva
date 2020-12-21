@@ -44,6 +44,7 @@ export interface RepoT {
 export interface LibraryT {
   name: string;
   description: string;
+  repo: string | null;
   githubName: string | null;
   githubOwner: string | null;
 }
@@ -180,6 +181,7 @@ export function fetchNpmSuggestions(keyword: string): Promise<LibraryT[]> {
             description: packageObj.description,
             githubOwner: repoParts[3] || null,
             githubName: repoParts[4] || null,
+            repo: packageObj.links.repository,
           };
         });
 
@@ -222,6 +224,7 @@ export function fetchNpmPackage(packageName: string): Promise<LibraryT | null> {
       return {
         name,
         description,
+        repo: repository || null,
         githubOwner: repoParts[3] || null,
         githubName: repoParts[4] || null,
       };

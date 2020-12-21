@@ -10,23 +10,42 @@
         @success="autosuggestApiError = false"
       />
 
-      <!--  Selected libs  -->
-      <div>
-        <jd-chip
-          v-for="lib in librariesNames"
-          :key="lib"
-          selected
-          @toggle="deselect(lib)"
-          >{{ lib }}</jd-chip
-        >
-      </div>
-
       <div
         v-if="autosuggestApiError"
         class="my-4 text-xl font-medium text-red-600"
       >
         Oopsie, it looks like we have problems with the underlying suggestions
         api. We are investigating the problem
+      </div>
+
+      <!--  Selected libs  -->
+      <div
+        v-if="selectedLibs.length"
+        class="mt-4 mb-2 divide-y divide-gray-200"
+      >
+        <div
+          v-for="lib in selectedLibs"
+          :key="lib.name"
+          class="flex items-center justify-between px-3 py-1 hover:bg-gray-50"
+        >
+          <div class="flex flex-col">
+            <div class="text-lg text-gray-800">
+              {{ lib.name }}
+            </div>
+
+            <div class="text-sm text-gray-600">
+              {{ lib.description }}
+            </div>
+          </div>
+
+          <div class="flex">
+            <a :href="lib.repo" target="_blank" class="mr-4">
+              <GithubIcon />
+            </a>
+
+            <m-close @click="deselect(lib.name)" />
+          </div>
+        </div>
       </div>
     </div>
 
@@ -62,7 +81,7 @@
     </div>
 
     <div v-else class="flex flex-col items-start sm:items-center">
-      <h2 class="self-center mt-8 mb-2 sm:mt-12">
+      <h2 class="self-center mt-8 mb-2 sm:mt-8">
         Popular comparisons by category
       </h2>
 
@@ -136,6 +155,7 @@ import Autosuggest from './Autosuggest.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
 import Bundlephobia from './Bundlephobia.vue';
+import GithubIcon from './icons/Github.vue';
 import { LibraryT } from '../apis';
 import { loadDefaultLibs, updateUrl } from '../utils';
 import { getLibToColorMap } from '../colors';
@@ -149,6 +169,7 @@ export default Vue.extend({
     TechRadar,
     GoogleTrends,
     Bundlephobia,
+    GithubIcon,
   },
 
   data() {
