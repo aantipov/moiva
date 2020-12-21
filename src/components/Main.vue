@@ -83,7 +83,7 @@
     </div>
 
     <div v-else class="flex flex-col items-start sm:items-center">
-      <h2 class="self-center mt-8 mb-2 sm:mt-12">
+      <h2 class="self-center mt-8 mb-2 sm:mt-8">
         Popular comparisons by category
       </h2>
 
