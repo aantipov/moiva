@@ -209,7 +209,6 @@ export default Vue.extend({
       updateUrl(this.librariesNames);
     },
     deselect(libName: string): void {
-      console.log('deselect', libName);
       this.selectedLibs = this.selectedLibs.filter(
         (lib) => lib.name !== libName
       );
