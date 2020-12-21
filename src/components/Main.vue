@@ -26,9 +26,7 @@
         <div
           v-for="lib in selectedLibs"
           :key="lib.name"
-          selected
           class="flex items-center justify-between px-3 py-1 hover:bg-gray-50"
-          @toggle="deselect(lib)"
         >
           <div class="flex flex-col">
             <div class="text-lg text-gray-800">
