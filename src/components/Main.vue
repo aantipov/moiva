@@ -10,23 +10,44 @@
         @success="autosuggestApiError = false"
       />
 
-      <!--  Selected libs  -->
-      <div>
-        <jd-chip
-          v-for="lib in librariesNames"
-          :key="lib"
-          selected
-          @toggle="deselect(lib)"
-          >{{ lib }}</jd-chip
-        >
-      </div>
-
       <div
         v-if="autosuggestApiError"
         class="my-4 text-xl font-medium text-red-600"
       >
         Oopsie, it looks like we have problems with the underlying suggestions
         api. We are investigating the problem
+      </div>
+
+      <!--  Selected libs  -->
+      <div
+        v-if="selectedLibs.length"
+        class="mt-4 mb-2 divide-y divide-gray-200"
+      >
+        <div
+          v-for="lib in selectedLibs"
+          :key="lib.name"
+          selected
+          class="flex items-center justify-between px-3 py-1 hover:bg-gray-50"
+          @toggle="deselect(lib)"
+        >
+          <div class="flex flex-col">
+            <div class="text-lg text-gray-800">
+              {{ lib.name }}
+            </div>
+
+            <div class="text-sm text-gray-600">
+              {{ lib.description }}
+            </div>
+          </div>
+
+          <div class="flex">
+            <a :href="lib.repo" target="_blank">
+              <GithubIcon class="mr-4" />
+            </a>
+
+            <CloseIcon @click="deselect(lib.name)" />
+          </div>
+        </div>
       </div>
     </div>
 
@@ -136,6 +157,8 @@ import Autosuggest from './Autosuggest.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
 import Bundlephobia from './Bundlephobia.vue';
+import GithubIcon from './icons/Github.vue';
+import CloseIcon from './icons/Close.vue';
 import { LibraryT } from '../apis';
 import { loadDefaultLibs, updateUrl } from '../utils';
 import { getLibToColorMap } from '../colors';
@@ -149,6 +172,8 @@ export default Vue.extend({
     TechRadar,
     GoogleTrends,
     Bundlephobia,
+    GithubIcon,
+    CloseIcon,
   },
 
   data() {
@@ -186,6 +211,7 @@ export default Vue.extend({
       updateUrl(this.librariesNames);
     },
     deselect(libName: string): void {
+      console.log('deselect', libName);
       this.selectedLibs = this.selectedLibs.filter(
         (lib) => lib.name !== libName
       );
