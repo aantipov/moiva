@@ -39,8 +39,8 @@
           </div>
 
           <div class="flex">
-            <a :href="lib.repo" target="_blank">
-              <GithubIcon class="mr-4" />
+            <a :href="lib.repo" target="_blank" class="mr-4">
+              <GithubIcon />
             </a>
 
             <m-close @click="deselect(lib.name)" />
