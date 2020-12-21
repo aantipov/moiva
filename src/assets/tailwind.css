@@ -21,8 +21,14 @@
   a:hover {
     @apply text-blue-900;
   }
-  a.cat-link {
-    @apply text-base mb-2 sm:text-lg
+  .cat-link {
+    @apply mb-2 
+  }
+  .cat-link a {
+    @apply text-lg
+  }
+  .cat-link span {
+    @apply text-base sm:text-lg text-gray-800
   }
   .chart-error {
     @apply text-center text-red-700 my-32
