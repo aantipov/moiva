@@ -46,21 +46,28 @@ export default Vue.extend({
       },
       className: 'ac',
       render(item) {
-        const div = document.createElement('div');
+        const divWrapper = document.createElement('div');
+        const divTitleWrapper = document.createElement('div');
         const divTitle = document.createElement('div');
         const divDescr = document.createElement('div');
+        const divVersion = document.createElement('div');
 
-        div.appendChild(divTitle);
-        div.appendChild(divDescr);
+        divTitleWrapper.appendChild(divTitle);
+        divTitleWrapper.appendChild(divVersion);
+        divWrapper.appendChild(divTitleWrapper);
+        divWrapper.appendChild(divDescr);
 
-        div.className = 'ac-option';
+        divWrapper.className = 'ac-option';
+        divTitleWrapper.className = 'ac-option-title-wrapper';
         divTitle.className = 'ac-option-title';
         divDescr.className = 'ac-option-desc';
+        divVersion.className = 'ac-option-version';
 
         divTitle.textContent = item.name;
         divDescr.textContent = item.description;
+        divVersion.textContent = item.version;
 
-        return div;
+        return divWrapper;
       },
       customize: function (input, inputRect, container, maxHeight) {
         if (maxHeight > 400) {
@@ -79,16 +86,22 @@ export default Vue.extend({
   @apply rounded rounded-t-none border border-t-0 border-gray-400;
 }
 .ac > .ac-option {
-  @apply h-auto px-5 py-1 sm:py-2 border-b flex flex-col justify-center;
+  @apply h-auto px-5 py-1 sm:py-2 border-b;
 }
 .ac > .ac-option.selected,
 .ac > .ac-option:hover:not(.group) {
   @apply bg-gray-200;
 }
+.ac-option-title-wrapper {
+  @apply flex justify-between mb-0.5 items-center;
+}
 .ac-option-title {
-  @apply h-auto mb-0 sm:mb-0.5 text-gray-800 font-normal text-base;
+  @apply text-gray-800 font-mono text-sm;
 }
 .ac-option-desc {
-  @apply h-auto text-gray-500 font-normal text-sm;
+  @apply text-gray-500 font-light text-sm;
+}
+.ac-option-version {
+  @apply text-gray-500 font-light text-sm hidden;
 }
 </style>

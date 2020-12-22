@@ -29,11 +29,11 @@
           class="flex items-center justify-between px-3 py-1 hover:bg-gray-50"
         >
           <div class="flex flex-col">
-            <div class="text-lg text-gray-800">
+            <div class="font-mono text-base text-gray-800">
               {{ lib.name }}
             </div>
 
-            <div class="text-sm text-gray-600">
+            <div class="text-sm text-gray-500">
               {{ lib.description }}
             </div>
           </div>

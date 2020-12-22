@@ -45,6 +45,7 @@ export interface LibraryT {
   name: string;
   description: string;
   repo: string | null;
+  version: string;
   githubName: string | null;
   githubOwner: string | null;
 }
@@ -140,6 +141,7 @@ export interface NpmSuggestionResponseT {
   package: {
     name: string;
     description: string;
+    version: string;
     links: {
       repository: string;
     };
@@ -179,6 +181,7 @@ export function fetchNpmSuggestions(keyword: string): Promise<LibraryT[]> {
           return {
             name: packageObj.name,
             description: packageObj.description,
+            version: packageObj.version,
             githubOwner: repoParts[3] || null,
             githubName: repoParts[4] || null,
             repo: packageObj.links.repository,
@@ -200,6 +203,7 @@ interface NpmPackageResponseT {
     metadata: {
       name: string;
       description: string;
+      version: string;
       links: { repository: string };
     };
   };
@@ -214,6 +218,7 @@ export function fetchNpmPackage(packageName: string): Promise<LibraryT | null> {
           metadata: {
             name,
             description,
+            version,
             links: { repository },
           },
         },
@@ -224,6 +229,7 @@ export function fetchNpmPackage(packageName: string): Promise<LibraryT | null> {
       return {
         name,
         description,
+        version,
         repo: repository || null,
         githubOwner: repoParts[3] || null,
         githubName: repoParts[4] || null,
