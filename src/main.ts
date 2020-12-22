@@ -4,6 +4,7 @@ import 'chartjs-adapter-date-fns';
 import * as Sentry from '@sentry/browser';
 import { Vue as VueIntegration } from '@sentry/integrations';
 import { Integrations } from '@sentry/tracing';
+import { updateTitle } from './utils';
 import App from './App.vue';
 import Close from './components/icons/Close.vue';
 import './assets/tailwind.css';
@@ -27,6 +28,9 @@ Sentry.init({
 });
 
 Vue.config.productionTip = false;
+
+// Make Document title SEO friendly
+updateTitle();
 
 Chart.defaults.global.defaultFontSize = 14;
 Chart.defaults.global.defaultFontFamily =
