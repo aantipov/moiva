@@ -79,7 +79,7 @@ export default Vue.extend({
   name: 'GithubIcon',
   data() {
     return {
-      color: '#6B7280',
+      color: '#9CA3AF',
       defaultColor: '#9CA3AF', // text-gray-400
       activeColor: '#1b1817', // github color
     };

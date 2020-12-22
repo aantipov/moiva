@@ -45,6 +45,7 @@ export interface LibraryT {
   name: string;
   description: string;
   repo: string | null;
+  npm: string;
   version: string;
   githubName: string | null;
   githubOwner: string | null;
@@ -144,6 +145,7 @@ export interface NpmSuggestionResponseT {
     version: string;
     links: {
       repository: string;
+      npm: string;
     };
   };
   score: {
@@ -182,6 +184,7 @@ export function fetchNpmSuggestions(keyword: string): Promise<LibraryT[]> {
             name: packageObj.name,
             description: packageObj.description,
             version: packageObj.version,
+            npm: packageObj.links.npm,
             githubOwner: repoParts[3] || null,
             githubName: repoParts[4] || null,
             repo: packageObj.links.repository,
@@ -204,7 +207,7 @@ interface NpmPackageResponseT {
       name: string;
       description: string;
       version: string;
-      links: { repository: string };
+      links: { repository: string; npm: string };
     };
   };
 }
@@ -219,7 +222,7 @@ export function fetchNpmPackage(packageName: string): Promise<LibraryT | null> {
             name,
             description,
             version,
-            links: { repository },
+            links: { repository, npm },
           },
         },
       } = resp.data as NpmPackageResponseT;
@@ -230,6 +233,7 @@ export function fetchNpmPackage(packageName: string): Promise<LibraryT | null> {
         name,
         description,
         version,
+        npm,
         repo: repository || null,
         githubOwner: repoParts[3] || null,
         githubName: repoParts[4] || null,
