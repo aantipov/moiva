@@ -14,10 +14,11 @@ const years = Array.from(
 export default (req: NowRequest, res: NowResponse): void => {
   const { lib } = req.query;
 
-  logRequest('npm', req.query);
+  logRequest('npmDownloads', req.query);
 
   if (!lib || typeof lib !== 'string') {
-    reportError(new Error('API NPM: Wrong lib parameter'));
+    console.error('API NPM DOWNLOADS: Wrong lib parameter');
+    reportError(new Error('API NPM DOWNLOADS: Wrong lib parameter'));
     res.status(400).json({ error: 'Wrong lib parameter' });
     return;
   }
@@ -53,6 +54,7 @@ export default (req: NowRequest, res: NowResponse): void => {
       res.status(200).json(downloadsByMonth);
     })
     .catch((e) => {
+      console.error('API NPM DOWNLOADS: ', e);
       reportError(e);
       res.status(500).json({ error: 'Something went wrong' });
     });

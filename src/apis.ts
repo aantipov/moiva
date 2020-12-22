@@ -68,7 +68,7 @@ export function fetchNpmData(lib: string): Promise<NpmDownloadT[]> {
   }
 
   return axios
-    .get(`/api/npm?lib=${lib}`)
+    .get(`/api/npm-downloads?lib=${lib}`)
     .then(({ data }) => {
       npmCache.set(lib, data);
       return data;
