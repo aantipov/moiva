@@ -3,7 +3,12 @@ import * as Sentry from '@sentry/node';
 import * as Tracing from '@sentry/tracing';
 
 export function logRequest(
-  type: 'npm' | 'github' | 'googleTrends' | 'bundlephobia' | 'npmPackage',
+  type:
+    | 'npmDownloads'
+    | 'github'
+    | 'googleTrends'
+    | 'bundlephobia'
+    | 'npmPackage',
   urlQuery: unknown
 ): void {
   const skey = process.env.FAUNA_DB as string;

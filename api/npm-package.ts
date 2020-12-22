@@ -33,7 +33,9 @@ export default (req: NowRequest, res: NowResponse): void => {
         throw new Error(`API NPM PACKAGE: wrong GitHub link for ${lib}`);
       }
 
-      const repoUrl = repository.url.slice(repository.url.indexOf('https'), -4);
+      const repoUrl =
+        'https://' +
+        repository.url.slice(repository.url.indexOf('github.com'), -4);
 
       const result = {
         name,
