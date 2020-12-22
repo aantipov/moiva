@@ -68,3 +68,47 @@ export const numbersFormatter = new Intl.NumberFormat('en-US', {
   // @ts-ignore
   notation: 'compact',
 });
+
+/**
+ * Make document title SEO friendly
+ */
+export function updateTitle(): string | void {
+  const Url = new URL(window.location.href);
+  const libs = Url.searchParams.get(paramName)?.split(delimiter) || [];
+  const seoFriendlyLibs = libs.map((libName) => {
+    if (libName === '@angular/core') {
+      return 'Angular';
+    }
+
+    if (libName === '@nestjs/core') {
+      return 'NestJS';
+    }
+
+    // Capitalise normal names
+    if (
+      libName.length > 2 &&
+      !libName.includes('@') &&
+      !libName.includes('/') &&
+      !libName.includes('-')
+    ) {
+      return libName.charAt(0).toUpperCase() + libName.slice(1);
+    }
+
+    return libName;
+  });
+
+  if (!seoFriendlyLibs.length) {
+    return;
+  }
+
+  if (seoFriendlyLibs.length === 1) {
+    window.document.title = `${seoFriendlyLibs[0]} infographics from NPM, GitHub, Google trends - Moiva.io`;
+    return;
+  }
+
+  // Commare separated string with 'and' as a last separator
+  const lastLib = seoFriendlyLibs.slice(-1)[0];
+  const libsStr = `${seoFriendlyLibs.slice(0, -1).join(', ')} and ${lastLib}`;
+
+  window.document.title = `Compare ${libsStr} - Moiva.io`;
+}
