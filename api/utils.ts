@@ -3,10 +3,10 @@ import * as Sentry from '@sentry/node';
 import * as Tracing from '@sentry/tracing';
 
 export function logRequest(
-  type: 'npm' | 'github' | 'googleTrends' | 'bundlephobia',
+  type: 'npm' | 'github' | 'googleTrends' | 'bundlephobia' | 'npmPackage',
   urlQuery: unknown
 ): void {
-  const skey = process.env.FAUNA_DB;
+  const skey = process.env.FAUNA_DB as string;
   const { VERCEL_ENV, VERCEL_REGION } = process.env;
 
   if (VERCEL_ENV === 'development') {

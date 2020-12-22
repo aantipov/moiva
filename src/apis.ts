@@ -213,6 +213,33 @@ interface NpmPackageResponseT {
 }
 
 export function fetchNpmPackage(packageName: string): Promise<LibraryT | null> {
+  // eslint-disable-next-line
+  const fetchFunc = true ? fetchNpmJSPackage : fetchNpmsIOPackage;
+
+  return fetchFunc(packageName).catch((err) => {
+    reportSentry(err, 'fetchNpmPackage');
+
+    if (err?.response?.status === 404) {
+      return null;
+    }
+
+    return Promise.reject(err);
+  });
+}
+
+function fetchNpmJSPackage(packageName: string): Promise<LibraryT | null> {
+  return axios.get(`/api/npm-package?lib=${packageName}`).then(({ data }) => {
+    const repoParts = (data.repo || '').split('/');
+
+    return {
+      ...data,
+      githubOwner: repoParts[3] || null,
+      githubName: repoParts[4] || null,
+    } as LibraryT;
+  });
+}
+
+function fetchNpmsIOPackage(packageName: string): Promise<LibraryT | null> {
   return axios
     .get(`https://api.npms.io/v2/package/${encodeURIComponent(packageName)}`)
     .then((resp) => {
@@ -238,13 +265,5 @@ export function fetchNpmPackage(packageName: string): Promise<LibraryT | null> {
         githubOwner: repoParts[3] || null,
         githubName: repoParts[4] || null,
       };
-    })
-    .catch((err) => {
-      if (err.response.status === 404) {
-        return null;
-      }
-
-      reportSentry(err, 'fetchNpmPackage');
-      return Promise.reject(err);
     });
 }
