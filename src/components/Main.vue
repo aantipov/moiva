@@ -33,7 +33,7 @@
               {{ lib.name }}
             </div>
 
-            <div class="text-sm text-gray-600">
+            <div class="text-sm text-gray-500">
               {{ lib.description }}
             </div>
           </div>
