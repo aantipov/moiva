@@ -38,7 +38,11 @@
             </div>
           </div>
 
-          <div class="flex">
+          <div class="flex items-center ml-2">
+            <a :href="lib.npm" target="_blank" class="hidden mr-4 sm:block">
+              <NpmIcon />
+            </a>
+
             <a :href="lib.repo" target="_blank" class="mr-4">
               <GithubIcon />
             </a>
@@ -156,6 +160,7 @@ import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
 import Bundlephobia from './Bundlephobia.vue';
 import GithubIcon from './icons/Github.vue';
+import NpmIcon from './icons/Npm.vue';
 import { LibraryT } from '../apis';
 import { loadDefaultLibs, updateUrl } from '../utils';
 import { getLibToColorMap } from '../colors';
@@ -170,6 +175,7 @@ export default Vue.extend({
     GoogleTrends,
     Bundlephobia,
     GithubIcon,
+    NpmIcon,
   },
 
   data() {
