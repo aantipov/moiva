@@ -22,7 +22,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import NpmChart from './NpmChart.vue';
-import { fetchNpmData, NpmDownloadT } from '../apis';
+import { fetchNpmDownloads, NpmDownloadT } from '../apis';
 
 export default defineComponent({
   name: 'Npm',
@@ -67,7 +67,7 @@ export default defineComponent({
       this.isError = false;
 
       const promise = (this.downloadsPromise = Promise.all(
-        this.libs.map((app) => fetchNpmData(app))
+        this.libs.map((app) => fetchNpmDownloads(app))
       )
         .then((data) => {
           // Do nothing if there is a new request already in place
