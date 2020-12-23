@@ -39,7 +39,11 @@
           </div>
 
           <div class="flex items-center ml-2">
-            <a :href="lib.npm" target="_blank" class="hidden mr-4 sm:block">
+            <a
+              :href="getNpmLink(lib.name)"
+              target="_blank"
+              class="hidden mr-4 sm:block"
+            >
               <NpmIcon />
             </a>
 
@@ -152,9 +156,9 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import Npm from './Npm.vue';
+import { defineComponent } from 'vue';
 import Github from './Github.vue';
+import Npm from './Npm.vue';
 import Autosuggest from './Autosuggest.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
@@ -165,7 +169,7 @@ import { LibraryT } from '../apis';
 import { loadDefaultLibs, updateUrl } from '../utils';
 import { getLibToColorMap } from '../colors';
 
-export default Vue.extend({
+export default defineComponent({
   name: 'Main',
   components: {
     Autosuggest,
@@ -217,6 +221,9 @@ export default Vue.extend({
         (lib) => lib.name !== libName
       );
       updateUrl(this.librariesNames);
+    },
+    getNpmLink(libName: string): string {
+      return `https://www.npmjs.com/package/${encodeURIComponent(libName)}`;
     },
   },
 });

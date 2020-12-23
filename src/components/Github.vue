@@ -36,14 +36,14 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { defineComponent } from 'vue';
 import OpenClosedIssues from './GithubOpenClosedIssues.vue';
 import Age from './GithubAge.vue';
 import Stars from './GithubStars.vue';
 import Prs from './GithubPrs.vue';
 import { fetchGithubData, RepoT, LibraryT } from '../apis';
 
-export default Vue.extend({
+export default defineComponent({
   name: 'Github',
 
   components: {

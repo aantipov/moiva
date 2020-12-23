@@ -17,19 +17,22 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { defineComponent } from 'vue';
 import autocomplete, { AutocompleteItem } from 'autocompleter';
 import 'autocompleter/autocomplete.css';
 import { fetchNpmSuggestions, LibraryT } from '../apis';
 
 type OptionT = LibraryT & AutocompleteItem;
 
-export default Vue.extend({
+export default defineComponent({
   name: 'AutoSuggest',
+  emits: ['select', 'success', 'error'],
+
   mounted() {
     autocomplete<OptionT>({
       input: document.getElementById('npm-input') as HTMLInputElement,
       debounceWaitMs: 200,
+
       fetch: (text: string, update: (items: LibraryT[]) => void) => {
         fetchNpmSuggestions(text)
           .then((suggestions): void => {
@@ -40,11 +43,14 @@ export default Vue.extend({
             this.$emit('error');
           });
       },
+
       onSelect: (item: LibraryT) => {
         this.$emit('select', item);
         (document.getElementById('npm-input') as HTMLInputElement).value = '';
       },
+
       className: 'ac',
+
       render(item) {
         const divWrapper = document.createElement('div');
         const divTitleWrapper = document.createElement('div');
@@ -69,6 +75,7 @@ export default Vue.extend({
 
         return divWrapper;
       },
+
       customize: function (input, inputRect, container, maxHeight) {
         if (maxHeight > 400) {
           container.style.maxHeight = '383px';

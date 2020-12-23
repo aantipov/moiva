@@ -15,11 +15,11 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { defineComponent } from 'vue';
 import BundlephobiaChart from './BundlephobiaChart.vue';
 import { fetchBundlephobiaData, BundlephobiaT } from '../apis';
 
-export default Vue.extend({
+export default defineComponent({
   name: 'Bundlephobia',
 
   components: {
