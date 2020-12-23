@@ -1,7 +1,7 @@
 import { NowRequest, NowResponse } from '@vercel/node';
 import axios from 'axios';
 import { logRequest, initSentry, reportError } from './utils';
-import { LibraryT } from '../src/apis';
+import { SuggestionT } from '../src/apis';
 
 initSentry();
 
@@ -34,9 +34,8 @@ export default (req: NowRequest, res: NowResponse): void => {
         return {
           name: packageObj.name,
           description: packageObj.description,
-          repo: packageObj.links.repository,
           version: packageObj.version,
-        } as LibraryT;
+        } as SuggestionT;
       });
     })
     .then((data) => {

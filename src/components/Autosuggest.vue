@@ -20,9 +20,9 @@
 import { defineComponent } from 'vue';
 import autocomplete, { AutocompleteItem } from 'autocompleter';
 import 'autocompleter/autocomplete.css';
-import { fetchNpmSuggestions, LibraryT } from '../apis';
+import { fetchNpmSuggestions, SuggestionT } from '../apis';
 
-type OptionT = LibraryT & AutocompleteItem;
+type OptionT = SuggestionT & AutocompleteItem;
 
 export default defineComponent({
   name: 'AutoSuggest',
@@ -33,7 +33,7 @@ export default defineComponent({
       input: document.getElementById('npm-input') as HTMLInputElement,
       debounceWaitMs: 200,
 
-      fetch: (text: string, update: (items: LibraryT[]) => void) => {
+      fetch: (text: string, update: (items: SuggestionT[]) => void) => {
         fetchNpmSuggestions(text)
           .then((suggestions): void => {
             this.$emit('success');
@@ -44,7 +44,7 @@ export default defineComponent({
           });
       },
 
-      onSelect: (item: LibraryT) => {
+      onSelect: (item: SuggestionT) => {
         this.$emit('select', item);
         (document.getElementById('npm-input') as HTMLInputElement).value = '';
       },

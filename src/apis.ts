@@ -4,7 +4,7 @@ import * as Sentry from '@sentry/browser';
 const npmDownloadsCache = new Map();
 const npmSuggestionsCache = new Map();
 const npmPackageCache = new Map();
-const ghCache = new Map();
+const githubCache = new Map();
 const gTrendsCache = new Map();
 const bphobiaCache = new Map();
 
@@ -45,10 +45,14 @@ export interface RepoT {
 export interface LibraryT {
   name: string;
   description: string;
-  repo: string | null;
+  repo: string;
   version: string;
-  githubName: string | null;
-  githubOwner: string | null;
+}
+
+export interface SuggestionT {
+  name: string;
+  description: string;
+  version: string;
 }
 
 interface NpmsIOSuggestionResponseT {
@@ -107,15 +111,17 @@ export function fetchNpmData(lib: string): Promise<NpmDownloadT[]> {
     });
 }
 
-export function fetchGithubData(lib: LibraryT): Promise<RepoT> {
-  if (ghCache.get(lib.name)) {
-    return Promise.resolve(ghCache.get(lib.name));
+export function fetchGithubData(name: string, owner: string): Promise<RepoT> {
+  const key = name + '/' + owner;
+
+  if (githubCache.get(key)) {
+    return Promise.resolve(githubCache.get(key));
   }
 
   return axios
-    .get(`/api/gh?name=${lib.githubName}&owner=${lib.githubOwner}`)
+    .get(`/api/gh?name=${name}&owner=${owner}`)
     .then(({ data }) => {
-      ghCache.set(lib.name, data);
+      githubCache.set(key, data);
       return data;
     })
     .catch((err) => {
@@ -161,7 +167,7 @@ export function fetchBundlephobiaData(lib: string): Promise<BundlephobiaT[]> {
     });
 }
 
-export function fetchNpmSuggestions(keyword: string): Promise<LibraryT[]> {
+export function fetchNpmSuggestions(keyword: string): Promise<SuggestionT[]> {
   // eslint-disable-next-line
   const fetchSuggestionsFunc = true
     ? fetchNpmJSSuggestions
@@ -187,26 +193,13 @@ export function fetchNpmSuggestions(keyword: string): Promise<LibraryT[]> {
     });
 }
 
-function fetchNpmJSSuggestions(keyword: string): Promise<LibraryT[]> {
-  return axios.get(`/api/npm-suggestions?q=${keyword}`).then((resp) => {
-    const suggestions = resp.data;
-
-    // @ts-ignore
-    const data = suggestions.map((packageObj) => {
-      const repoParts = (packageObj.repo || '').split('/');
-
-      return {
-        ...packageObj,
-        githubOwner: repoParts[3] || null,
-        githubName: repoParts[4] || null,
-      };
-    });
-
-    return data;
-  });
+function fetchNpmJSSuggestions(keyword: string): Promise<SuggestionT[]> {
+  return axios
+    .get(`/api/npm-suggestions?q=${keyword}`)
+    .then((resp) => resp.data);
 }
 
-function fetchNpmsIOSuggestions(keyword: string): Promise<LibraryT[]> {
+function fetchNpmsIOSuggestions(keyword: string): Promise<SuggestionT[]> {
   return axios
     .get(`https://api.npms.io/v2/search/suggestions?q=${keyword}&size=20`)
     .then((resp) => {
@@ -219,24 +212,16 @@ function fetchNpmsIOSuggestions(keyword: string): Promise<LibraryT[]> {
           }
           return b.score.detail.popularity - a.score.detail.popularity;
         })
-        .map(({ package: packageObj }) => {
-          const repoParts = (packageObj.links.repository || '').split('/');
-
-          return {
-            name: packageObj.name,
-            description: packageObj.description,
-            version: packageObj.version,
-            githubOwner: repoParts[3] || null,
-            githubName: repoParts[4] || null,
-            repo: packageObj.links.repository,
-          };
-        });
+        .map(({ package: { name, description, version } }) => ({
+          name,
+          description,
+          version,
+        }));
 
       return data;
     });
 }
 
-// TODO: Cache
 export function fetchNpmPackage(packageName: string): Promise<LibraryT | null> {
   // eslint-disable-next-line
   const fetchPackageFunc = true ? fetchNpmJSPackage : fetchNpmsIOPackage;
@@ -289,15 +274,11 @@ function fetchNpmsIOPackage(packageName: string): Promise<LibraryT | null> {
         },
       } = resp.data as NpmsIOPackageResponseT;
 
-      const repoParts = (repository || '').split('/');
-
       return {
         name,
         description,
         version,
-        repo: repository || null,
-        githubOwner: repoParts[3] || null,
-        githubName: repoParts[4] || null,
+        repo: repository,
       };
     });
 }

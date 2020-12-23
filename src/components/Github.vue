@@ -43,6 +43,11 @@ import Stars from './GithubStars.vue';
 import Prs from './GithubPrs.vue';
 import { fetchGithubData, RepoT, LibraryT } from '../apis';
 
+export interface LibraryGithubEnhancedT extends LibraryT {
+  githubName: string;
+  githubOwner: string;
+}
+
 export default defineComponent({
   name: 'Github',
 
@@ -73,6 +78,17 @@ export default defineComponent({
     librariesNames(): string[] {
       return this.libs.map((lib) => lib.name);
     },
+    librariesEnchanced(): LibraryGithubEnhancedT[] {
+      return this.libs.map((lib) => {
+        const repoParts = lib.repo.split('/');
+
+        return {
+          ...lib,
+          githubOwner: repoParts[3],
+          githubName: repoParts[4],
+        };
+      });
+    },
   },
 
   watch: {
@@ -91,7 +107,9 @@ export default defineComponent({
       this.isError = false;
 
       const promise = (this.reposPromise = Promise.all(
-        this.libs.map((lib) => fetchGithubData(lib))
+        this.librariesEnchanced.map((lib) =>
+          fetchGithubData(lib.githubName as string, lib.githubOwner as string)
+        )
       )
         .then((data) => {
           // Do nothing if there is a new request already in place

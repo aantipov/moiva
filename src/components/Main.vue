@@ -165,7 +165,7 @@ import GoogleTrends from './GTrends.vue';
 import Bundlephobia from './Bundlephobia.vue';
 import GithubIcon from './icons/Github.vue';
 import NpmIcon from './icons/Npm.vue';
-import { LibraryT, fetchNpmPackage } from '../apis';
+import { LibraryT, SuggestionT, fetchNpmPackage } from '../apis';
 import { loadDefaultLibs, updateUrl } from '../utils';
 import { getLibToColorMap } from '../colors';
 
@@ -209,7 +209,7 @@ export default defineComponent({
   },
 
   methods: {
-    select(lib: LibraryT): void {
+    select(lib: SuggestionT): void {
       if (this.librariesNames.includes(lib.name)) {
         return;
       }
