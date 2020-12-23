@@ -94,7 +94,7 @@ function reportSentry(err: AxiosError, methodName: string): void {
   });
 }
 
-export function fetchNpmData(lib: string): Promise<NpmDownloadT[]> {
+export function fetchNpmDownloads(lib: string): Promise<NpmDownloadT[]> {
   if (npmDownloadsCache.get(lib)) {
     return Promise.resolve(npmDownloadsCache.get(lib));
   }
@@ -106,7 +106,7 @@ export function fetchNpmData(lib: string): Promise<NpmDownloadT[]> {
       return data;
     })
     .catch((err) => {
-      reportSentry(err, 'fetchNpmData');
+      reportSentry(err, 'fetchNpmDownloads');
       return Promise.reject(err);
     });
 }
