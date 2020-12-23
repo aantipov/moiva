@@ -39,7 +39,11 @@
           </div>
 
           <div class="flex items-center ml-2">
-            <a :href="lib.npm" target="_blank" class="hidden mr-4 sm:block">
+            <a
+              :href="getNpmLink(lib.name)"
+              target="_blank"
+              class="hidden mr-4 sm:block"
+            >
               <NpmIcon />
             </a>
 
@@ -217,6 +221,9 @@ export default defineComponent({
         (lib) => lib.name !== libName
       );
       updateUrl(this.librariesNames);
+    },
+    getNpmLink(libName: string): string {
+      return `https://www.npmjs.com/package/${encodeURIComponent(libName)}`;
     },
   },
 });
