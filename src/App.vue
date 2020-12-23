@@ -3,10 +3,10 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { defineComponent } from 'vue';
 import Main from './components/Main.vue';
 
-export default Vue.extend({
+export default defineComponent({
   name: 'App',
   components: { Main },
 });

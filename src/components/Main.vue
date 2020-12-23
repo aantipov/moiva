@@ -152,9 +152,9 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import Npm from './Npm.vue';
+import { defineComponent } from 'vue';
 import Github from './Github.vue';
+import Npm from './Npm.vue';
 import Autosuggest from './Autosuggest.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
@@ -165,7 +165,7 @@ import { LibraryT } from '../apis';
 import { loadDefaultLibs, updateUrl } from '../utils';
 import { getLibToColorMap } from '../colors';
 
-export default Vue.extend({
+export default defineComponent({
   name: 'Main',
   components: {
     Autosuggest,

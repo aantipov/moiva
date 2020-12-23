@@ -1,5 +1,5 @@
-<template functional>
-  <div class="root" @click="listeners.click()">
+<template>
+  <div class="root">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="100%"
@@ -17,6 +17,19 @@
     </svg>
   </div>
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'Close',
+  data() {
+    return {
+      count: 0,
+    };
+  },
+});
+</script>
 
 <style lang="postcss" scoped>
 .root {

@@ -14,12 +14,12 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { defineComponent } from 'vue';
 import { format } from 'date-fns';
 import Chart, { ChartConfiguration, ChartData } from 'chart.js';
 import { TRADAR_LEVELS, libsToDatadMap } from '../../techradar.config';
 
-export default Vue.extend({
+export default defineComponent({
   name: 'TechRadar',
   props: {
     libs: {

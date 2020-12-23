@@ -5,13 +5,13 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { defineComponent } from 'vue';
 import Chart from 'chart.js';
 import { format } from 'date-fns';
 import { GTrendPointT } from '../apis';
 import { enUS } from 'date-fns/locale';
 
-export default Vue.extend({
+export default defineComponent({
   name: 'GTrendsChart',
 
   props: {

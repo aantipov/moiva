@@ -5,14 +5,14 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { defineComponent } from 'vue';
 import Chart from 'chart.js';
 import { format } from 'date-fns';
 import { NpmDownloadT } from '../apis';
 import { numbersFormatter } from '../utils';
 import { enUS } from 'date-fns/locale';
 
-export default Vue.extend({
+export default defineComponent({
   name: 'NpmChart',
 
   props: {

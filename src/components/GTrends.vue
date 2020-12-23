@@ -24,11 +24,11 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { defineComponent } from 'vue';
 import GTrendsChart from './GTrendsChart.vue';
 import { fetchGTrendsData, GTrendsT } from '../apis';
 
-export default Vue.extend({
+export default defineComponent({
   name: 'GoogleTrends',
 
   components: {

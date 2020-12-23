@@ -3,13 +3,13 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { defineComponent } from 'vue';
 import Chart from 'chart.js';
 import { RepoT } from '../apis';
 import { numbersFormatter } from '../utils';
 import { COLOR_GRAY } from '../colors';
 
-export default Vue.extend({
+export default defineComponent({
   name: 'GithubStars',
 
   props: {

@@ -1,4 +1,4 @@
-<template functional>
+<template>
   <div class="root">
     <div class="wrapper">
       <svg
@@ -22,10 +22,18 @@
   </div>
 </template>
 
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  name: 'NpmIcon',
+});
+</script>
+
 <style lang="postcss" scoped>
 .root {
   height: 32px;
-  @apply flex items-center;
+  @apply flex items-center cursor-pointer;
 }
 .wrapper {
   width: 48px;

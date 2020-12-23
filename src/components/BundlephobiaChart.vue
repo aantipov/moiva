@@ -3,7 +3,7 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { defineComponent } from 'vue';
 import Chart from 'chart.js';
 import { BundlephobiaT } from '../apis';
 import { numbersFormatter } from '../utils';
@@ -11,7 +11,7 @@ import { COLOR_GREEN, COLOR_GRAY } from '../colors';
 
 const roundBytesFn = (bytes: number): number => Math.round(bytes / 102.4) / 10;
 
-export default Vue.extend({
+export default defineComponent({
   name: 'BundlephobiaChart',
 
   props: {

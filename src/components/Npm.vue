@@ -20,11 +20,11 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { defineComponent } from 'vue';
 import NpmChart from './NpmChart.vue';
 import { fetchNpmData, NpmDownloadT } from '../apis';
 
-export default Vue.extend({
+export default defineComponent({
   name: 'Npm',
 
   components: {

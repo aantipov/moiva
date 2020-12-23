@@ -3,12 +3,12 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
+import { defineComponent } from 'vue';
 import Chart from 'chart.js';
 import { RepoT } from '../apis';
 import { COLOR_GRAY } from '../colors';
 
-export default Vue.extend({
+export default defineComponent({
   name: 'GithubAge',
 
   props: {
