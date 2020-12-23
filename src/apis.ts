@@ -50,6 +50,39 @@ export interface LibraryT {
   githubOwner: string | null;
 }
 
+export interface NpmSuggestionT {
+  label: string;
+  value: LibraryT;
+}
+
+export interface NpmSuggestionResponseT {
+  package: {
+    name: string;
+    description: string;
+    version: string;
+    links: {
+      repository: string;
+    };
+  };
+  score: {
+    detail: {
+      popularity: number;
+    };
+  };
+  searchScore: number;
+}
+
+interface NpmPackageResponseT {
+  collected: {
+    metadata: {
+      name: string;
+      description: string;
+      version: string;
+      links: { repository: string };
+    };
+  };
+}
+
 function reportSentry(err: AxiosError, methodName: string): void {
   err.name = `UI API (${methodName})`;
 
@@ -132,29 +165,10 @@ export function fetchBundlephobiaData(lib: string): Promise<BundlephobiaT[]> {
     });
 }
 
-export interface NpmSuggestionT {
-  label: string;
-  value: LibraryT;
-}
-
-export interface NpmSuggestionResponseT {
-  package: {
-    name: string;
-    description: string;
-    version: string;
-    links: {
-      repository: string;
-    };
-  };
-  score: {
-    detail: {
-      popularity: number;
-    };
-  };
-  searchScore: number;
-}
-
 export function fetchNpmSuggestions(keyword: string): Promise<LibraryT[]> {
+  // eslint-disable-next-line
+  const fetchFunc = true ? fetchNpmJSSuggestions : fetchNpmsIOSuggestions;
+
   if (!keyword || keyword.length < 2) {
     return Promise.resolve([]);
   }
@@ -163,6 +177,38 @@ export function fetchNpmSuggestions(keyword: string): Promise<LibraryT[]> {
     return Promise.resolve(npmSuggestionsCache.get(keyword));
   }
 
+  return fetchFunc(keyword)
+    .then((data) => {
+      npmSuggestionsCache.set(keyword, data);
+
+      return data;
+    })
+    .catch((err) => {
+      reportSentry(err, 'fetchNpmSuggestions');
+      return Promise.reject(err);
+    });
+}
+
+function fetchNpmJSSuggestions(keyword: string): Promise<LibraryT[]> {
+  return axios.get(`/api/npm-suggestions?q=${keyword}`).then((resp) => {
+    const suggestions = resp.data;
+
+    // @ts-ignore
+    const data = suggestions.map((packageObj) => {
+      const repoParts = (packageObj.repo || '').split('/');
+
+      return {
+        ...packageObj,
+        githubOwner: repoParts[3] || null,
+        githubName: repoParts[4] || null,
+      };
+    });
+
+    return data;
+  });
+}
+
+function fetchNpmsIOSuggestions(keyword: string): Promise<LibraryT[]> {
   return axios
     .get(`https://api.npms.io/v2/search/suggestions?q=${keyword}&size=20`)
     .then((resp) => {
@@ -188,27 +234,11 @@ export function fetchNpmSuggestions(keyword: string): Promise<LibraryT[]> {
           };
         });
 
-      npmSuggestionsCache.set(keyword, data);
-
       return data;
-    })
-    .catch((err) => {
-      reportSentry(err, 'fetchNpmSuggestions');
-      return Promise.reject(err);
     });
 }
 
-interface NpmPackageResponseT {
-  collected: {
-    metadata: {
-      name: string;
-      description: string;
-      version: string;
-      links: { repository: string };
-    };
-  };
-}
-
+// TODO: Cache
 export function fetchNpmPackage(packageName: string): Promise<LibraryT | null> {
   // eslint-disable-next-line
   const fetchFunc = true ? fetchNpmJSPackage : fetchNpmsIOPackage;
