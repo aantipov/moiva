@@ -109,6 +109,6 @@ export default defineComponent({
   @apply text-gray-500 font-light text-sm;
 }
 .ac-option-version {
-  @apply text-gray-500 font-light text-sm hidden;
+  @apply text-gray-500 font-light text-sm;
 }
 </style>

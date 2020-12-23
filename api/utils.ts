@@ -8,6 +8,7 @@ export function logRequest(
     | 'github'
     | 'googleTrends'
     | 'bundlephobia'
+    | 'npmSuggestion'
     | 'npmPackage',
   urlQuery: unknown
 ): void {
