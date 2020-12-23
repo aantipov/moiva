@@ -1,8 +1,9 @@
 import axios, { AxiosError } from 'axios';
 import * as Sentry from '@sentry/browser';
 
-const npmCache = new Map();
+const npmDownloadsCache = new Map();
 const npmSuggestionsCache = new Map();
+const npmPackageCache = new Map();
 const ghCache = new Map();
 const gTrendsCache = new Map();
 const bphobiaCache = new Map();
@@ -50,12 +51,7 @@ export interface LibraryT {
   githubOwner: string | null;
 }
 
-export interface NpmSuggestionT {
-  label: string;
-  value: LibraryT;
-}
-
-export interface NpmSuggestionResponseT {
+interface NpmsIOSuggestionResponseT {
   package: {
     name: string;
     description: string;
@@ -72,7 +68,7 @@ export interface NpmSuggestionResponseT {
   searchScore: number;
 }
 
-interface NpmPackageResponseT {
+interface NpmsIOPackageResponseT {
   collected: {
     metadata: {
       name: string;
@@ -95,14 +91,14 @@ function reportSentry(err: AxiosError, methodName: string): void {
 }
 
 export function fetchNpmData(lib: string): Promise<NpmDownloadT[]> {
-  if (npmCache.get(lib)) {
-    return Promise.resolve(npmCache.get(lib));
+  if (npmDownloadsCache.get(lib)) {
+    return Promise.resolve(npmDownloadsCache.get(lib));
   }
 
   return axios
     .get(`/api/npm-downloads?lib=${lib}`)
     .then(({ data }) => {
-      npmCache.set(lib, data);
+      npmDownloadsCache.set(lib, data);
       return data;
     })
     .catch((err) => {
@@ -167,7 +163,9 @@ export function fetchBundlephobiaData(lib: string): Promise<BundlephobiaT[]> {
 
 export function fetchNpmSuggestions(keyword: string): Promise<LibraryT[]> {
   // eslint-disable-next-line
-  const fetchFunc = true ? fetchNpmJSSuggestions : fetchNpmsIOSuggestions;
+  const fetchSuggestionsFunc = true
+    ? fetchNpmJSSuggestions
+    : fetchNpmsIOSuggestions;
 
   if (!keyword || keyword.length < 2) {
     return Promise.resolve([]);
@@ -177,7 +175,7 @@ export function fetchNpmSuggestions(keyword: string): Promise<LibraryT[]> {
     return Promise.resolve(npmSuggestionsCache.get(keyword));
   }
 
-  return fetchFunc(keyword)
+  return fetchSuggestionsFunc(keyword)
     .then((data) => {
       npmSuggestionsCache.set(keyword, data);
 
@@ -212,7 +210,7 @@ function fetchNpmsIOSuggestions(keyword: string): Promise<LibraryT[]> {
   return axios
     .get(`https://api.npms.io/v2/search/suggestions?q=${keyword}&size=20`)
     .then((resp) => {
-      const suggestions = resp.data as NpmSuggestionResponseT[];
+      const suggestions = resp.data as NpmsIOSuggestionResponseT[];
       const data = suggestions
         .filter((lib) => !!lib.package.links.repository)
         .sort((a, b) => {
@@ -241,17 +239,27 @@ function fetchNpmsIOSuggestions(keyword: string): Promise<LibraryT[]> {
 // TODO: Cache
 export function fetchNpmPackage(packageName: string): Promise<LibraryT | null> {
   // eslint-disable-next-line
-  const fetchFunc = true ? fetchNpmJSPackage : fetchNpmsIOPackage;
+  const fetchPackageFunc = true ? fetchNpmJSPackage : fetchNpmsIOPackage;
 
-  return fetchFunc(packageName).catch((err) => {
-    reportSentry(err, 'fetchNpmPackage');
+  if (npmPackageCache.get(packageName)) {
+    return Promise.resolve(npmPackageCache.get(packageName));
+  }
 
-    if (err?.response?.status === 404) {
-      return null;
-    }
+  return fetchPackageFunc(packageName)
+    .then((data) => {
+      npmPackageCache.set(packageName, data);
 
-    return Promise.reject(err);
-  });
+      return data;
+    })
+    .catch((err) => {
+      reportSentry(err, 'fetchNpmPackage');
+
+      if (err?.response?.status === 404) {
+        return null;
+      }
+
+      return Promise.reject(err);
+    });
 }
 
 function fetchNpmJSPackage(packageName: string): Promise<LibraryT | null> {
@@ -279,7 +287,7 @@ function fetchNpmsIOPackage(packageName: string): Promise<LibraryT | null> {
             links: { repository },
           },
         },
-      } = resp.data as NpmPackageResponseT;
+      } = resp.data as NpmsIOPackageResponseT;
 
       const repoParts = (repository || '').split('/');
 

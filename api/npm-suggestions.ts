@@ -1,9 +1,18 @@
 import { NowRequest, NowResponse } from '@vercel/node';
 import axios from 'axios';
 import { logRequest, initSentry, reportError } from './utils';
-import { NpmSuggestionResponseT, LibraryT } from '../src/apis';
+import { LibraryT } from '../src/apis';
 
 initSentry();
+
+interface ResponseItemT {
+  name: string;
+  description: string;
+  links: {
+    repository: string;
+  };
+  version: string;
+}
 
 export default (req: NowRequest, res: NowResponse): void => {
   const { q } = req.query;
@@ -11,6 +20,7 @@ export default (req: NowRequest, res: NowResponse): void => {
   logRequest('npmSuggestion', req.query);
 
   if (!q || typeof q !== 'string') {
+    console.error('API NPM-SUGGESTIONS: Wrong lib parameter');
     reportError(new Error('API NPM-SUGGESTIONS: Wrong lib parameter'));
     res.status(400).json({ error: 'Wrong q parameter' });
     return;
@@ -18,18 +28,13 @@ export default (req: NowRequest, res: NowResponse): void => {
 
   axios
     .get(`https://www.npmjs.com/search/suggestions?q=${q}`)
-    // @ts-ignore
     .then((resp) => {
-      const suggestions = resp.data as NpmSuggestionResponseT[];
+      const suggestions = resp.data as ResponseItemT[];
       return suggestions.map((packageObj) => {
         return {
-          // @ts-ignore
           name: packageObj.name,
-          // @ts-ignore
           description: packageObj.description,
-          // @ts-ignore
           repo: packageObj.links.repository,
-          // @ts-ignore
           version: packageObj.version,
         } as LibraryT;
       });
@@ -39,9 +44,6 @@ export default (req: NowRequest, res: NowResponse): void => {
       res.status(200).json(data);
     })
     .catch((err) => {
-      // err.response.status,
-      // err.response.data.code,
-      // err.response.data.message
       console.error('ERROR', err);
       reportError(err);
       res.status(500).json({ error: 'Something went wrong' });

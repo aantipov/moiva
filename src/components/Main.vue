@@ -213,7 +213,7 @@ export default defineComponent({
       if (this.librariesNames.includes(lib.name)) {
         return;
       }
-      this.selectedLibs.push(lib);
+      this.selectedLibs = [...this.selectedLibs, lib];
       updateUrl(this.librariesNames);
     },
     deselect(libName: string): void {
