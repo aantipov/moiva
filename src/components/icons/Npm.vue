@@ -30,6 +30,10 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" scoped>
+.root {
+  height: 24px;
+  padding-top: 6px;
+}
 .icon {
   width: 48px;
   height: 15px;
