@@ -23,8 +23,9 @@ export default (req: NowRequest, res: NowResponse): void => {
       res.status(200).json({ gzip: resp.data.gzip, raw: resp.data.size });
     })
     .catch((e) => {
+      reportError(e);
+      res.status(500).json({ error: 'Something went wrong' });
       // console.error('ERROR', e.response);
-      res.status(500).json({ error: 'Something went wrong!!!' });
       // try {
       //   reportError(e);
       //   const { status, data } = e.response;
