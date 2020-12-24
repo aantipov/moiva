@@ -23,7 +23,7 @@ export default (req: NowRequest, res: NowResponse): void => {
       res.status(200).json({ gzip: resp.data.gzip, raw: resp.data.size });
     })
     .catch((e) => {
-      console.error('ERROR', e.response);
+      // console.error('ERROR', e.response);
       res.status(500).json({ error: 'Something went wrong!!!' });
       // try {
       //   reportError(e);
