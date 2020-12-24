@@ -15,7 +15,7 @@ export function logRequest(
   const skey = process.env.FAUNA_DB as string;
   const { VERCEL_ENV, VERCEL_REGION } = process.env;
 
-  if (VERCEL_ENV === 'development') {
+  if (VERCEL_ENV !== 'make-exression-falsy') {
     return;
   }
 
