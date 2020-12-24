@@ -26,12 +26,14 @@ export default (req: NowRequest, res: NowResponse): void => {
       console.error('ERROR', e.response);
       try {
         reportError(e);
-        const { status, data } = e.response;
+        const status = e.response.status;
+        const data = e.response.data;
         let errorCode = 'Urgent';
 
         if (status === 500 && data && data.error) {
           errorCode = data.error.code;
         }
+
         res
           .status(500)
           .json({ error: 'Something went wrong', code: errorCode });
