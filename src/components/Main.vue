@@ -21,8 +21,9 @@
       <!--  Selected libs  -->
       <div
         v-if="selectedLibs.length"
-        class="mt-4 mb-2 divide-y divide-gray-200"
+        class="relative mt-4 mb-2 divide-y divide-gray-200"
       >
+        <Loader v-if="isFetchingSelectedLib" />
         <div
           v-for="lib in selectedLibs"
           :key="lib.name"
@@ -164,6 +165,7 @@ import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
 import Bundlephobia from './Bundlephobia.vue';
 import GithubIcon from './icons/Github.vue';
+import Loader from './Loader.vue';
 import NpmIcon from './icons/Npm.vue';
 import { LibraryT, SuggestionT, fetchNpmPackage } from '../apis';
 import { loadDefaultLibs, updateUrl } from '../utils';
@@ -180,12 +182,14 @@ export default defineComponent({
     Bundlephobia,
     GithubIcon,
     NpmIcon,
+    Loader,
   },
 
   data() {
     return {
       selectedLibs: [] as LibraryT[],
       isLoadingDefaultLibs: true,
+      isFetchingSelectedLib: false,
       autosuggestApiError: false,
     };
   },
@@ -214,7 +218,9 @@ export default defineComponent({
         return;
       }
 
+      this.isFetchingSelectedLib = true;
       fetchNpmPackage(lib.name).then((npmPackage): void => {
+        this.isFetchingSelectedLib = false;
         this.selectedLibs = [...this.selectedLibs, npmPackage as LibraryT];
       });
 
