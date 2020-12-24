@@ -219,12 +219,13 @@ export default defineComponent({
       }
 
       this.isFetchingSelectedLib = true;
+
       fetchNpmPackage(lib.name).then((npmPackage): void => {
         this.isFetchingSelectedLib = false;
         this.selectedLibs = [...this.selectedLibs, npmPackage as LibraryT];
       });
 
-      updateUrl(this.librariesNames);
+      updateUrl([...this.librariesNames, lib.name]);
     },
     deselect(libName: string): void {
       this.selectedLibs = this.selectedLibs.filter(
