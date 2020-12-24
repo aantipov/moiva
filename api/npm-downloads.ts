@@ -1,8 +1,22 @@
 import { NowRequest, NowResponse } from '@vercel/node';
 import axios from 'axios';
+import * as admin from 'firebase-admin';
 import { logRequest, initSentry, reportError } from './utils';
 
 initSentry();
+
+const app = admin.initializeApp({
+  credential: admin.credential.cert({
+    client_email: process.env.FIREBASE_CLIENT_EMAIL,
+    private_key: process.env.FIREBASE_PRIVATE_KEY,
+    project_id: 'moivaio',
+  }),
+  databaseURL: 'https://moivaio-default-rtdb.firebaseio.com',
+});
+
+const db = admin.database();
+const ref = db.ref();
+ref.child('children').push({ foo: `timestamp-${Date.now()}` });
 
 const startYear = 2015;
 const cYear = new Date().getFullYear();
