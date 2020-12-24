@@ -9,7 +9,7 @@
 
     <div v-else class="chart">
       <div v-if="isLoading" class="text-center p">Loading...</div>
-      <BundlephobiaChart v-else :libs="libs" :sizes="sizes" />
+      <BundlephobiaChart v-else :libs="filteredLibs" :sizes="filteredSizes" />
     </div>
   </div>
 </template>
@@ -37,7 +37,7 @@ export default defineComponent({
     return {
       isLoading: true,
       isError: false,
-      sizes: [] as Array<Array<BundlephobiaT>>,
+      sizes: [] as Array<BundlephobiaT>,
       sizesPromise: null as null | Promise<unknown>,
     };
   },
@@ -50,6 +50,16 @@ export default defineComponent({
 
   mounted(): void {
     this.loadData();
+  },
+
+  computed: {
+    // Filter out libs for which Bundlephobia coudn't provide any data
+    filteredLibs(): string[] {
+      return this.libs.filter((_lib, i) => !!this.sizes[i]);
+    },
+    filteredSizes(): BundlephobiaT[] {
+      return this.sizes.filter((size) => !!size);
+    },
   },
 
   methods: {

@@ -150,13 +150,22 @@ export function fetchGTrendsData(libs: string[]): Promise<GTrendsT> {
     });
 }
 
-export function fetchBundlephobiaData(lib: string): Promise<BundlephobiaT[]> {
+export function fetchBundlephobiaData(lib: string): Promise<BundlephobiaT> {
   if (bphobiaCache.get(lib)) {
     return Promise.resolve(bphobiaCache.get(lib));
   }
 
   return axios
     .get(`/api/bphobia?lib=${lib}`)
+    .catch((err) => {
+      const { code } = err.response.data;
+
+      if (code === 'BuildError' || code === 'BlacklistedPackageError') {
+        return { data: null };
+      }
+
+      return Promise.reject(err);
+    })
     .then(({ data }) => {
       bphobiaCache.set(lib, data);
       return data;
