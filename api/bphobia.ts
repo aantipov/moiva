@@ -28,7 +28,7 @@ export default (req: NowRequest, res: NowResponse): void => {
       const { status, data } = e.response;
       let errorCode = 'Urgent';
 
-      if (status === 500 && data && data.error) {
+      if ((status === 500 || status === 403) && data && data.error) {
         errorCode = data.error.code;
       }
 
