@@ -25,22 +25,5 @@ export default (req: NowRequest, res: NowResponse): void => {
     .catch((e) => {
       reportError(e);
       res.status(500).json({ error: 'Something went wrong' });
-      // console.error('ERROR', e.response);
-      // try {
-      //   reportError(e);
-      //   const { status, data } = e.response;
-      //   let errorCode = 'Urgent';
-      //
-      //   if (status === 500 && data && data.error) {
-      //     errorCode = data.error.code;
-      //   }
-      //   res
-      //     .status(500)
-      //     .json({ error: 'Something went wrong', code: errorCode });
-      // } catch (e) {
-      //   /* handle error */
-      //   console.error(e);
-      //   res.status(511);
-      // }
     });
 };
