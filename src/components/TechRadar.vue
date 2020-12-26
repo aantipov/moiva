@@ -1,5 +1,5 @@
 <template>
-  <div v-if="filteredLibs.length">
+  <div v-show="filteredLibs.length">
     <h2>ThoughtWorks TechRadar</h2>
 
     <div class="chart">
