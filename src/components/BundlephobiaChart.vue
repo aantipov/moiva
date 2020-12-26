@@ -67,7 +67,7 @@ export default defineComponent({
           display: true,
         },
         title: {
-          display: true,
+          display: false,
           text: 'Bundle size, kB',
         },
         scales: {
@@ -76,7 +76,7 @@ export default defineComponent({
               ticks: {
                 beginAtZero: true,
                 callback: (val: number): string =>
-                  numbersFormatter.format(val) + 'kB',
+                  numbersFormatter.format(val) + ' kB',
               },
             },
           ],

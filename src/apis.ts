@@ -47,6 +47,7 @@ export interface LibraryT {
   description: string;
   repo: string;
   version: string;
+  dependencies: string[];
 }
 
 export interface SuggestionT {
@@ -286,6 +287,7 @@ function fetchNpmsIOPackage(packageName: string): Promise<LibraryT | null> {
       return {
         name,
         description,
+        dependencies: [],
         version,
         repo: repository,
       };

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="filteredLibs.length">
     <h2>ThoughtWorks TechRadar</h2>
 
     <div v-if="!filteredLibs.length" class="chart-error">
@@ -139,6 +139,6 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .chart {
-  height: 400px;
+  height: 350px;
 }
 </style>
