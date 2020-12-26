@@ -33,7 +33,7 @@ export default defineComponent({
         labels: libs,
         datasets: [
           {
-            label: 'open+closed',
+            label: 'vulnerabilities',
             data: repos.map((repo) => repo.vulnerabilitiesCount),
             backgroundColor: COLOR_GRAY,
             borderWidth: 1,

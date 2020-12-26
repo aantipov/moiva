@@ -34,7 +34,7 @@ export default defineComponent({
         labels: libs.map((lib) => lib.name),
         datasets: [
           {
-            label: 'Dependencies',
+            label: 'dependencies',
             data: libs.map((lib) => lib.dependencies.length),
             backgroundColor: COLOR_GRAY,
             borderWidth: 1,
