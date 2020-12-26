@@ -2,12 +2,7 @@
   <div v-if="filteredLibs.length">
     <h2>ThoughtWorks TechRadar</h2>
 
-    <div v-if="!filteredLibs.length" class="chart-error">
-      <div class="flex justify-center">No Data</div>
-      <div class="flex justify-center">for selected libraries</div>
-    </div>
-
-    <div v-show="filteredLibs.length" class="chart">
+    <div class="chart">
       <canvas id="techRadar" />
     </div>
   </div>
