@@ -65,26 +65,30 @@
         <Npm
           :libs="librariesNames"
           :lib-to-color-map="libToColorMap"
-          class="col-span-12 xl:col-span-8"
+          class="col-span-12 xl:col-span-6"
         />
 
-        <Bundlephobia
-          :libs="librariesNames"
-          class="col-span-12 xl:col-span-4"
-        />
-      </div>
-
-      <div class="grid grid-cols-12 gap-4">
         <GoogleTrends
           :libs="librariesNames"
           :lib-to-color-map="libToColorMap"
-          class="col-span-12 xl:col-span-8"
+          class="col-span-12 xl:col-span-6"
         />
 
         <TechRadar
           :libs="librariesNames"
           :lib-to-color-map="libToColorMap"
-          class="col-span-12 xl:col-span-4"
+          class="col-span-12 md:col-span-6 xl:col-span-3"
+        />
+
+        <Bundlephobia
+          :libs="librariesNames"
+          class="col-span-12 md:col-span-6 xl:col-span-3"
+        />
+
+        <Dependencies
+          style="350px"
+          :libs="selectedLibs"
+          class="col-span-12 md:col-span-6 xl:col-span-3"
         />
       </div>
 
@@ -101,6 +105,7 @@ import Autosuggest from './Autosuggest.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
 import Bundlephobia from './Bundlephobia.vue';
+import Dependencies from './Dependencies.vue';
 import GithubIcon from './icons/Github.vue';
 import Popular from './Popular.vue';
 import Loader from './Loader.vue';
@@ -118,6 +123,7 @@ export default defineComponent({
     TechRadar,
     GoogleTrends,
     Bundlephobia,
+    Dependencies,
     GithubIcon,
     NpmIcon,
     Loader,

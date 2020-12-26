@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>Bundlephobia</h2>
+    <h2>Bundle size<span class="text-base">, kB</span></h2>
 
     <div v-if="isError" class="chart-error">
       Something went wrong while loading data. Try to reload the page or come
@@ -92,6 +92,6 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .chart {
-  height: 400px;
+  height: 350px;
 }
 </style>
