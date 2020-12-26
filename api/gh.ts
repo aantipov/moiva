@@ -1,6 +1,7 @@
 import { NowRequest, NowResponse } from '@vercel/node';
 import axios from 'axios';
 import { logRequest, initSentry, reportError } from './utils';
+import { RepoT } from '../src/apis';
 
 initSentry();
 
@@ -70,7 +71,7 @@ export default (req: NowRequest, res: NowResponse): void => {
       res.status(200).json({
         ...repository,
         vulnerabilitiesCount: securityVulnerabilities.totalCount,
-      });
+      } as RepoT);
     })
     .catch((e) => {
       reportError(e);
