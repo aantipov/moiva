@@ -58,7 +58,9 @@
       </div>
     </div>
 
-    <div v-if="selectedLibs.length">
+    <Popular v-if="!selectedLibs.length" />
+
+    <div v-else>
       <div class="grid grid-cols-12 gap-4">
         <Npm
           :libs="librariesNames"
@@ -88,71 +90,6 @@
 
       <Github :libs="selectedLibs" />
     </div>
-
-    <div v-else class="flex flex-col items-start sm:items-center">
-      <h2 class="self-center mt-4 mb-2 sm:mt-8">
-        Popular comparisons by category
-      </h2>
-
-      <div class="cat-link">
-        <a href="/?compare=%40angular%2Fcore+react+svelte+vue"
-          >Frontend frameworks</a
-        >:
-        {{ ' ' }}
-        <span>React, Svelte, Vue, Angular</span>
-      </div>
-
-      <div class="cat-link">
-        <a href="/?compare=bootstrap+bulma+tailwindcss">CSS frameworks</a>:
-        {{ ' ' }}
-        <span>Bootstrap, Tailwind CSS, Bulma</span>
-      </div>
-
-      <div class="cat-link">
-        <a href="/?compare=date-fns+dayjs+luxon+moment">Date utilities</a>:
-        {{ ' ' }}
-        <span>Moment.js, Day.js, Luxon, date-fns</span>
-      </div>
-
-      <div class="cat-link">
-        <a href="/?compare=lodash+ramda+underscore">Utilities</a>:
-        {{ ' ' }}
-        <span>Lodash, Ramda, Underscore.js</span>
-      </div>
-
-      <div class="cat-link">
-        <a href="/?compare=cypress+playwright+puppeteer+selenium-webdriver"
-          >End-to-end testing</a
-        >:
-        {{ ' ' }}
-        <span>Puppeteer, Cypress, Playwright, Selenium</span>
-      </div>
-
-      <div class="cat-link">
-        <a href="/?compare=%40nestjs%2Fcore+fastify+koa">Node.js frameworks</a>:
-        {{ ' ' }}
-        <span>Koa, NestJS, Fastify</span>
-      </div>
-
-      <div class="cat-link">
-        <a href="/?compare=log4js+morgan+pino+winston">Node.js logging</a>:
-        {{ ' ' }}
-        <span>winston, morgan, log4js-node, pino</span>
-      </div>
-
-      <div class="cat-link">
-        <a href="/?compare=ejs+handlebars+mustache+pug">Templating languages</a
-        >:
-        {{ ' ' }}
-        <span>EJS, Handlebars.js, Mustache.js, Pug</span>
-      </div>
-
-      <div class="cat-link">
-        <a href="/?compare=socket.io+ws">Web sockets</a>:
-        {{ ' ' }}
-        <span>Socket.IO, ws</span>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -165,6 +102,7 @@ import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
 import Bundlephobia from './Bundlephobia.vue';
 import GithubIcon from './icons/Github.vue';
+import Popular from './Popular.vue';
 import Loader from './Loader.vue';
 import NpmIcon from './icons/Npm.vue';
 import { LibraryT, SuggestionT, fetchNpmPackage } from '../apis';
@@ -183,6 +121,7 @@ export default defineComponent({
     GithubIcon,
     NpmIcon,
     Loader,
+    Popular,
   },
 
   data() {
