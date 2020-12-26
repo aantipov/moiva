@@ -39,9 +39,6 @@ export default (req: NowRequest, res: NowResponse): void => {
             description
             stars: stargazerCount
             createdAt
-            vulnerabilityAlerts {
-              totalCount
-            }
             openPRs: pullRequests(states: [OPEN]) {
               totalCount
             }
