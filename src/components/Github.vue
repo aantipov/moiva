@@ -26,10 +26,10 @@
         <OpenClosedIssues v-else :libs="librariesNames" :repos="repos" />
       </div>
 
-      <!-- Pull Requests, count  -->
+      <!-- Vulnerabilities -->
       <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
         <div v-if="isLoading" class="text-center p">Loading...</div>
-        <Prs v-else :libs="librariesNames" :repos="repos" />
+        <Vulnerabilities v-else :libs="librariesNames" :repos="repos" />
       </div>
     </div>
   </div>
@@ -40,7 +40,7 @@ import { defineComponent } from 'vue';
 import OpenClosedIssues from './GithubOpenClosedIssues.vue';
 import Age from './GithubAge.vue';
 import Stars from './GithubStars.vue';
-import Prs from './GithubPrs.vue';
+import Vulnerabilities from './GithubVulnerabilities.vue';
 import { fetchGithubData, RepoT, LibraryT } from '../apis';
 
 export interface LibraryGithubEnhancedT extends LibraryT {
@@ -55,7 +55,7 @@ export default defineComponent({
     OpenClosedIssues,
     Age,
     Stars,
-    Prs,
+    Vulnerabilities,
   },
 
   props: {
@@ -108,7 +108,7 @@ export default defineComponent({
 
       const promise = (this.reposPromise = Promise.all(
         this.librariesEnchanced.map((lib) =>
-          fetchGithubData(lib.githubName as string, lib.githubOwner as string)
+          fetchGithubData(lib.githubName, lib.githubOwner, lib.name)
         )
       )
         .then((data) => {

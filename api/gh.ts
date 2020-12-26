@@ -7,15 +7,17 @@ initSentry();
 export default (req: NowRequest, res: NowResponse): void => {
   const skey = process.env.GITHUB_API_KEY;
   const url = 'https://api.github.com/graphql';
-  const { name, owner } = req.query;
+  const { name, owner, package: npmPackage } = req.query;
 
   logRequest('github', req.query);
 
   if (
     !name ||
     !owner ||
+    !npmPackage ||
     typeof name !== 'string' ||
-    typeof owner !== 'string'
+    typeof owner !== 'string' ||
+    typeof npmPackage !== 'string'
   ) {
     reportError(new Error('API GITHUB: Wrong parameters'));
     res.status(400).json({ error: 'Wrong parameters' });
@@ -30,10 +32,16 @@ export default (req: NowRequest, res: NowResponse): void => {
         variables: {},
         query: `
         {
+          securityVulnerabilities(package: "${npmPackage}", first: 20) {
+            totalCount
+          }
           repository(name: "${name}", owner: "${owner}") {
             description
             stars: stargazerCount
             createdAt
+            vulnerabilityAlerts {
+              totalCount
+            }
             openPRs: pullRequests(states: [OPEN]) {
               totalCount
             }
@@ -60,8 +68,12 @@ export default (req: NowRequest, res: NowResponse): void => {
       }
     )
     .then((resp) => {
+      const { repository, securityVulnerabilities } = resp.data.data;
       res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
-      res.status(200).json(resp.data.data.repository);
+      res.status(200).json({
+        ...repository,
+        vulnerabilitiesCount: securityVulnerabilities.totalCount,
+      });
     })
     .catch((e) => {
       reportError(e);

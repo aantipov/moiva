@@ -1,5 +1,5 @@
 <template>
-  <canvas id="prsCount"></canvas>
+  <canvas id="vulnerabilities"></canvas>
 </template>
 
 <script lang="ts">
@@ -7,10 +7,10 @@ import { defineComponent } from 'vue';
 import Chart from 'chart.js';
 import { RepoT } from '../apis';
 import { numbersFormatter } from '../utils';
-import { COLOR_GREEN, COLOR_GRAY, COLOR_PINK } from '../colors';
+import { COLOR_GRAY } from '../colors';
 
 export default defineComponent({
-  name: 'GithubPrs',
+  name: 'GithubVulnerabilities',
 
   props: {
     libs: {
@@ -24,7 +24,7 @@ export default defineComponent({
   },
 
   mounted(): void {
-    const ctx = document.getElementById('prsCount') as HTMLCanvasElement;
+    const ctx = document.getElementById('vulnerabilities') as HTMLCanvasElement;
     const { libs, repos } = this;
 
     new Chart(ctx, {
@@ -33,20 +33,8 @@ export default defineComponent({
         labels: libs,
         datasets: [
           {
-            label: 'open',
-            data: repos.map((repo) => repo.openPRs.totalCount),
-            backgroundColor: COLOR_GREEN,
-            borderWidth: 1,
-          },
-          {
-            label: 'closed',
-            data: repos.map((repo) => repo.closedPRs.totalCount),
-            backgroundColor: COLOR_PINK,
-            borderWidth: 1,
-          },
-          {
-            label: 'merged',
-            data: repos.map((repo) => repo.mergedPRs.totalCount),
+            label: 'open+closed',
+            data: repos.map((repo) => repo.vulnerabilitiesCount),
             backgroundColor: COLOR_GRAY,
             borderWidth: 1,
           },
@@ -55,23 +43,24 @@ export default defineComponent({
 
       options: {
         legend: {
-          display: true,
+          display: false,
         },
         title: {
+          padding: 5,
           display: true,
-          text: 'Pull requests, count',
+          text: 'Vulnerabilities (open + closed)',
         },
         scales: {
           yAxes: [
             {
-              stacked: true,
               ticks: {
                 beginAtZero: true,
+                // @ts-ignore
+                precision: 0,
                 callback: (val: number): string => numbersFormatter.format(val),
               },
             },
           ],
-          xAxes: [{ stacked: true }],
         },
       },
     });
