@@ -35,6 +35,7 @@ export interface GTrendsT {
 export interface RepoT {
   stars: number;
   createdAt: string;
+  vulnerabilitiesCount: number;
   openPRs: { totalCount: number };
   closedPRs: { totalCount: number };
   mergedPRs: { totalCount: number };
@@ -112,7 +113,11 @@ export function fetchNpmDownloads(lib: string): Promise<NpmDownloadT[]> {
     });
 }
 
-export function fetchGithubData(name: string, owner: string): Promise<RepoT> {
+export function fetchGithubData(
+  name: string,
+  owner: string,
+  npmPackage: string
+): Promise<RepoT> {
   const key = name + '/' + owner;
 
   if (githubCache.get(key)) {
@@ -120,7 +125,7 @@ export function fetchGithubData(name: string, owner: string): Promise<RepoT> {
   }
 
   return axios
-    .get(`/api/gh?name=${name}&owner=${owner}`)
+    .get(`/api/gh?name=${name}&owner=${owner}&package=${npmPackage}`)
     .then(({ data }) => {
       githubCache.set(key, data);
       return data;
