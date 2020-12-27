@@ -107,15 +107,13 @@
           class="col-span-12 md:col-span-6 xl:col-span-3"
         />
 
-        <!-- Issues, count  -->
-        <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
-          <div v-if="githubIsLoading" class="text-center p">Loading...</div>
-          <OpenClosedIssues
-            v-else
-            :libs="librariesNames"
-            :repos="githubRepositories"
-          />
-        </div>
+        <OpenClosedIssues
+          :libs="librariesNames"
+          :repos="githubRepositories"
+          :is-loading="githubIsLoading"
+          :is-error="githubIsError"
+          class="col-span-12 md:col-span-6 xl:col-span-3"
+        />
 
         <!-- Vulnerabilities -->
         <div class="chart col-span-12 md:col-span-6 xl:col-span-3">
