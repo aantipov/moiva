@@ -44,11 +44,6 @@ import Vulnerabilities from './GithubVulnerabilities.vue';
 import { LibraryT } from '../apis';
 import useGithub from '@/composables/useGithub';
 
-export interface LibraryGithubEnhancedT extends LibraryT {
-  githubName: string;
-  githubOwner: string;
-}
-
 export default defineComponent({
   name: 'Github',
 
