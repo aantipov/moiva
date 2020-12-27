@@ -86,7 +86,6 @@
         />
 
         <Dependencies
-          style="350px"
           :libs="selectedLibs"
           class="col-span-12 md:col-span-6 xl:col-span-3"
         />
@@ -115,7 +114,6 @@
           class="col-span-12 md:col-span-6 xl:col-span-3"
         />
 
-        <!-- Vulnerabilities -->
         <Vulnerabilities
           :libs="librariesNames"
           :repos="githubRepositories"
@@ -125,14 +123,11 @@
         />
       </div>
     </div>
-
-    <!-- <Github :libs="selectedLibs" /> -->
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted, ref, computed } from 'vue';
-import Github from './Github.vue';
 import Npm from './Npm.vue';
 import Autosuggest from './Autosuggest.vue';
 import TechRadar from './TechRadar.vue';
@@ -156,7 +151,6 @@ export default defineComponent({
   name: 'Main',
   components: {
     Autosuggest,
-    Github,
     Npm,
     TechRadar,
     GoogleTrends,
@@ -229,15 +223,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="postcss" scoped>
-.chart-illustration {
-  @apply hidden;
-}
-@screen sm {
-  .chart-illustration {
-    width: 500px;
-    @apply block mt-10 mx-auto;
-  }
-}
-</style>
