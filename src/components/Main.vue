@@ -98,7 +98,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, onMounted, ref, computed } from 'vue';
 import Github from './Github.vue';
 import Npm from './Npm.vue';
 import Autosuggest from './Autosuggest.vue';
@@ -130,57 +130,56 @@ export default defineComponent({
     Popular,
   },
 
-  data() {
-    return {
-      selectedLibs: [] as LibraryT[],
-      isLoadingDefaultLibs: true,
-      isFetchingSelectedLib: false,
-      autosuggestApiError: false,
-    };
-  },
+  setup() {
+    const selectedLibs = ref<LibraryT[]>([]);
+    const autosuggestApiError = ref(false);
+    const isLoadingDefaultLibs = ref(true);
+    const librariesNames = computed<string[]>(() =>
+      selectedLibs.value.map((lib) => lib.name)
+    );
+    const libToColorMap = computed<Record<string, string>>(() =>
+      getLibToColorMap(librariesNames.value)
+    );
+    const isFetchingSelectedLib = ref(false);
 
-  computed: {
-    libToColorMap(): Record<string, string> {
-      return getLibToColorMap(this.librariesNames);
-    },
-
-    librariesNames(): string[] {
-      return this.selectedLibs.map((lib) => lib.name);
-    },
-  },
-
-  mounted(): void {
-    loadDefaultLibs().then((libs): LibraryT[] => {
-      this.selectedLibs = libs;
-      this.isLoadingDefaultLibs = false;
-      return libs;
-    });
-  },
-
-  methods: {
-    select(lib: SuggestionT): void {
-      if (this.librariesNames.includes(lib.name)) {
-        return;
-      }
-
-      this.isFetchingSelectedLib = true;
-
-      fetchNpmPackage(lib.name).then((npmPackage): void => {
-        this.isFetchingSelectedLib = false;
-        this.selectedLibs = [...this.selectedLibs, npmPackage as LibraryT];
+    onMounted(() => {
+      loadDefaultLibs().then((libs): void => {
+        selectedLibs.value = libs;
+        isLoadingDefaultLibs.value = false;
       });
+    });
 
-      updateUrl([...this.librariesNames, lib.name]);
-    },
-    deselect(libName: string): void {
-      this.selectedLibs = this.selectedLibs.filter(
-        (lib) => lib.name !== libName
-      );
-      updateUrl(this.librariesNames);
-    },
-    getNpmLink(libName: string): string {
-      return `https://www.npmjs.com/package/${encodeURIComponent(libName)}`;
-    },
+    return {
+      selectedLibs,
+      librariesNames,
+      isLoadingDefaultLibs,
+      libToColorMap,
+      isFetchingSelectedLib,
+      autosuggestApiError,
+      getNpmLink(libName: string): string {
+        return `https://www.npmjs.com/package/${encodeURIComponent(libName)}`;
+      },
+      deselect(libName: string): void {
+        selectedLibs.value = selectedLibs.value.filter(
+          (lib) => lib.name !== libName
+        );
+        updateUrl(librariesNames.value);
+      },
+      select(lib: SuggestionT): void {
+        if (librariesNames.value.includes(lib.name)) {
+          return;
+        }
+
+        isFetchingSelectedLib.value = true;
+
+        fetchNpmPackage(lib.name).then((npmPackage): void => {
+          isFetchingSelectedLib.value = false;
+          selectedLibs.value = [...selectedLibs.value, npmPackage as LibraryT];
+        });
+
+        updateUrl([...librariesNames.value, lib.name]);
+      },
+    };
   },
 });
 </script>
