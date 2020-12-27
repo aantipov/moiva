@@ -86,20 +86,48 @@
         />
 
         <Dependencies
-          style="350px"
           :libs="selectedLibs"
           class="col-span-12 md:col-span-6 xl:col-span-3"
         />
-      </div>
 
-      <Github :libs="selectedLibs" />
+        <Stars
+          :libs="librariesNames"
+          :repos="githubRepositories"
+          :is-loading="githubIsLoading"
+          :is-error="githubIsError"
+          class="col-span-12 md:col-span-6 xl:col-span-3"
+        />
+
+        <Age
+          :libs="librariesNames"
+          :repos="githubRepositories"
+          :is-loading="githubIsLoading"
+          :is-error="githubIsError"
+          class="col-span-12 md:col-span-6 xl:col-span-3"
+        />
+
+        <OpenClosedIssues
+          :libs="librariesNames"
+          :repos="githubRepositories"
+          :is-loading="githubIsLoading"
+          :is-error="githubIsError"
+          class="col-span-12 md:col-span-6 xl:col-span-3"
+        />
+
+        <Vulnerabilities
+          :libs="librariesNames"
+          :repos="githubRepositories"
+          :is-loading="githubIsLoading"
+          :is-error="githubIsError"
+          class="col-span-12 md:col-span-6 xl:col-span-3"
+        />
+      </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted, ref, computed } from 'vue';
-import Github from './Github.vue';
 import Npm from './Npm.vue';
 import Autosuggest from './Autosuggest.vue';
 import TechRadar from './TechRadar.vue';
@@ -107,23 +135,31 @@ import GoogleTrends from './GTrends.vue';
 import Bundlephobia from './Bundlephobia.vue';
 import Dependencies from './Dependencies.vue';
 import GithubIcon from './icons/Github.vue';
+import OpenClosedIssues from './GithubOpenClosedIssues.vue';
+import Age from './GithubAge.vue';
+import Stars from './GithubStars.vue';
+import Vulnerabilities from './GithubVulnerabilities.vue';
 import Popular from './Popular.vue';
 import Loader from './Loader.vue';
 import NpmIcon from './icons/Npm.vue';
 import { LibraryT, SuggestionT, fetchNpmPackage } from '../apis';
 import { loadDefaultLibs, updateUrl } from '../utils';
 import { getLibToColorMap } from '../colors';
+import useGithub from '@/composables/useGithub';
 
 export default defineComponent({
   name: 'Main',
   components: {
     Autosuggest,
-    Github,
     Npm,
     TechRadar,
     GoogleTrends,
     Bundlephobia,
     Dependencies,
+    OpenClosedIssues,
+    Age,
+    Stars,
+    Vulnerabilities,
     GithubIcon,
     NpmIcon,
     Loader,
@@ -141,6 +177,7 @@ export default defineComponent({
       getLibToColorMap(librariesNames.value)
     );
     const isFetchingSelectedLib = ref(false);
+    const gh = useGithub(selectedLibs);
 
     onMounted(() => {
       loadDefaultLibs().then((libs): void => {
@@ -159,6 +196,9 @@ export default defineComponent({
       getNpmLink(libName: string): string {
         return `https://www.npmjs.com/package/${encodeURIComponent(libName)}`;
       },
+      githubIsError: gh.isError,
+      githubIsLoading: gh.isLoading,
+      githubRepositories: gh.repositories,
       deselect(libName: string): void {
         selectedLibs.value = selectedLibs.value.filter(
           (lib) => lib.name !== libName
@@ -183,15 +223,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="postcss" scoped>
-.chart-illustration {
-  @apply hidden;
-}
-@screen sm {
-  .chart-illustration {
-    width: 500px;
-    @apply block mt-10 mx-auto;
-  }
-}
-</style>
