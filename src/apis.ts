@@ -114,10 +114,12 @@ export function fetchNpmDownloads(lib: string): Promise<NpmDownloadT[]> {
 }
 
 export function fetchGithubData(
-  name: string,
-  owner: string,
+  repoUrl: string,
   npmPackage: string
 ): Promise<RepoT> {
+  const repoUrlParts = repoUrl.split('/');
+  const owner = repoUrlParts[3];
+  const name = repoUrlParts[4];
   const key = name + '/' + owner;
 
   if (githubCache.get(key)) {
@@ -263,15 +265,9 @@ export function fetchNpmPackage(packageName: string): Promise<LibraryT | null> {
 }
 
 function fetchNpmJSPackage(packageName: string): Promise<LibraryT | null> {
-  return axios.get(`/api/npm-package?lib=${packageName}`).then(({ data }) => {
-    const repoParts = (data.repo || '').split('/');
-
-    return {
-      ...data,
-      githubOwner: repoParts[3] || null,
-      githubName: repoParts[4] || null,
-    } as LibraryT;
-  });
+  return axios
+    .get(`/api/npm-package?lib=${packageName}`)
+    .then(({ data }) => data);
 }
 
 function fetchNpmsIOPackage(packageName: string): Promise<LibraryT | null> {

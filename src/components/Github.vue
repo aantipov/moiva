@@ -36,17 +36,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, toRefs } from 'vue';
 import OpenClosedIssues from './GithubOpenClosedIssues.vue';
 import Age from './GithubAge.vue';
 import Stars from './GithubStars.vue';
 import Vulnerabilities from './GithubVulnerabilities.vue';
-import { fetchGithubData, RepoT, LibraryT } from '../apis';
-
-export interface LibraryGithubEnhancedT extends LibraryT {
-  githubName: string;
-  githubOwner: string;
-}
+import { LibraryT } from '../apis';
+import useGithub from '@/composables/useGithub';
 
 export default defineComponent({
   name: 'Github',
@@ -65,67 +61,21 @@ export default defineComponent({
     },
   },
 
-  data() {
+  setup(props) {
+    const { libs } = toRefs(props);
+    const { isLoading, isError, dataPromise, repositories } = useGithub(libs);
+
     return {
-      isLoading: true,
-      isError: false,
-      repos: [] as RepoT[],
-      reposPromise: null as null | Promise<unknown>,
+      isLoading,
+      isError,
+      reposPromise: dataPromise,
+      repos: repositories,
     };
   },
 
   computed: {
     librariesNames(): string[] {
       return this.libs.map((lib) => lib.name);
-    },
-    librariesEnchanced(): LibraryGithubEnhancedT[] {
-      return this.libs.map((lib) => {
-        const repoParts = lib.repo.split('/');
-
-        return {
-          ...lib,
-          githubOwner: repoParts[3],
-          githubName: repoParts[4],
-        };
-      });
-    },
-  },
-
-  watch: {
-    libs(): void {
-      this.loadData();
-    },
-  },
-
-  mounted(): void {
-    this.loadData();
-  },
-
-  methods: {
-    loadData(): void {
-      this.isLoading = true;
-      this.isError = false;
-
-      const promise = (this.reposPromise = Promise.all(
-        this.librariesEnchanced.map((lib) =>
-          fetchGithubData(lib.githubName, lib.githubOwner, lib.name)
-        )
-      )
-        .then((data) => {
-          // Do nothing if there is a new request already in place
-          if (this.reposPromise === promise) {
-            this.repos = data;
-            this.isError = false;
-            this.isLoading = false;
-          }
-        })
-        .catch(() => {
-          // Do nothing if there is a new request already in place
-          if (this.reposPromise === promise) {
-            this.isError = true;
-            this.isLoading = false;
-          }
-        }));
     },
   },
 });
