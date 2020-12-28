@@ -1,6 +1,21 @@
 <template>
   <div>
-    <h2>Google Trends <span class="text-base">(max. 5 libs)</span></h2>
+    <div class="flex items-center justify-center mt-5">
+      <h2 class="my-0">
+        Google Trends <span class="text-base">(max. 5 libs)</span>
+      </h2>
+
+      <m-chart-info class="ml-2">
+        <p>
+          <a
+            href="https://trends.google.com/trends/explore?cat=31"
+            target="_blank"
+            >Google Trends</a
+          >
+          data is used to build the chart.
+        </p>
+      </m-chart-info>
+    </div>
 
     <div v-if="isError" class="chart-error">
       Something went wrong while loading data. Try to reload the page or come
