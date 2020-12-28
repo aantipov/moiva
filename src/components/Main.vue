@@ -32,7 +32,8 @@
         >
           <div class="flex flex-col">
             <div class="font-mono text-base text-gray-800">
-              {{ lib.name }}
+              <span>{{ lib.name }}</span>
+              <span class="text-gray-500">@{{ lib.version }}</span>
             </div>
 
             <div class="text-sm text-gray-500">
