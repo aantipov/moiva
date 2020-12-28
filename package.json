@@ -23,6 +23,7 @@
     "date-fns": "^2.16.1",
     "faunadb": "^4.0.0",
     "google-trends-api": "^4.9.0",
+    "tippy.js": "^6.2.7",
     "vue": "^3.0.4"
   },
   "devDependencies": {
