@@ -15,13 +15,14 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { constructHref } from '@/utils';
 
 export default defineComponent({
   name: 'Popular',
   setup() {
     return {
       makeHref(libs: string[]): string {
-        return '/?compare=' + libs.sort().join('+');
+        return constructHref(libs);
       },
       items: [
         {

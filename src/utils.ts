@@ -28,11 +28,7 @@ function cleanupUrl(validLibsFromUrl: string[]): void {
   }
 
   // Update url with the valid libs in the right order
-  window.history.replaceState(
-    null,
-    '',
-    `/?${paramName}=${validLibsFromUrl.sort().join(encodedDelimiter)}`
-  );
+  window.history.replaceState(null, '', constructHref(validLibsFromUrl));
 }
 
 // Update URL whenever a user selects/deselects a library
@@ -46,11 +42,7 @@ export function updateUrl(selectedLibs: string[]): void {
     return;
   }
 
-  window.history.pushState(
-    null,
-    '',
-    `/?${paramName}=${selectedLibs.sort().join(encodedDelimiter)}`
-  );
+  window.history.pushState(null, '', constructHref(selectedLibs));
 }
 
 export function loadDefaultLibs(): Promise<LibraryT[]> {
@@ -67,6 +59,10 @@ export function loadDefaultLibs(): Promise<LibraryT[]> {
 
     return filteredLibs;
   });
+}
+
+export function constructHref(libs: string[]): string {
+  return `/?${paramName}=${libs.sort().join(encodedDelimiter)}`;
 }
 
 export const numbersFormatter = new Intl.NumberFormat('en-US', {
