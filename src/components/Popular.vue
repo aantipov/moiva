@@ -5,10 +5,10 @@
     </h2>
 
     <div v-for="item in items" :key="item.url" class="mb-2">
-      <a class="text-lg" :href="item.url">{{ item.name }}</a
+      <a class="text-lg" :href="makeHref(item.libs)">{{ item.name }}</a
       >:
       {{ ' ' }}
-      <span class="text-base text-gray-800 sm:text-lg">{{ item.libs }}</span>
+      <span class="text-base text-gray-800 sm:text-lg">{{ item.libsStr }}</span>
     </div>
   </div>
 </template>
@@ -18,53 +18,57 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'Popular',
-  data() {
+  setup() {
     return {
+      makeHref(libs: string[]): string {
+        return '/?compare=' + libs.sort().join('+');
+      },
       items: [
         {
-          url: '/?compare=%40angular%2Fcore+react+svelte+vue',
           name: 'Frontend frameworks',
-          libs: 'React, Svelte, Vue, Angular',
+          libs: ['react', `@angular/core`, 'svelte', 'vue'],
+          libsStr: 'React, Svelte, Vue, Angular',
         },
         {
-          url: '/?compare=bootstrap+bulma+tailwindcss',
+          url: '/?compare=',
+          libs: ['bootstrap', 'tailwindcss', 'bulma'],
           name: 'CSS frameworks',
-          libs: 'Bootstrap, Tailwind CSS, Bulma',
+          libsStr: 'Bootstrap, Tailwind CSS, Bulma',
         },
         {
-          url: '/?compare=date-fns+dayjs+luxon+moment',
           name: 'Date utilities',
-          libs: 'Moment.js, Day.js, Luxon, date-fns',
+          libs: ['moment', 'dayjs', 'luxon', 'date-fns'],
+          libsStr: 'Moment.js, Day.js, Luxon, date-fns',
         },
         {
-          url: '/?compare=lodash+ramda+underscore',
           name: 'Utilities',
-          libs: 'Lodash, Ramda, Underscore.js',
+          libs: ['lodash', 'ramda', 'underscore'],
+          libsStr: 'Lodash, Ramda, Underscore.js',
         },
         {
-          url: '/?compare=cypress+playwright+puppeteer+selenium-webdriver',
           name: 'End-to-end testing',
-          libs: 'Puppeteer, Cypress, Playwright, Selenium',
+          libs: ['puppeteer', 'cypress', 'playwright', 'selenium-webdriver'],
+          libsStr: 'Puppeteer, Cypress, Playwright, Selenium',
         },
         {
-          url: '/?compare=%40nestjs%2Fcore+fastify+koa',
           name: 'Node.js frameworks',
-          libs: 'Koa, NestJS, Fastify',
+          libs: ['koa', '@nestjs/core', 'fastify'],
+          libsStr: 'Koa, NestJS, Fastify',
         },
         {
-          url: '/?compare=log4js+morgan+pino+winston',
           name: 'Node.js logging',
-          libs: 'winston, morgan, log4js-node, pino',
+          libs: ['winston', 'morgan', 'log4js', 'pino'],
+          libsStr: 'winston, morgan, log4js-node, pino',
         },
         {
-          url: '/?compare=ejs+handlebars+mustache+pug',
           name: 'Templating languages',
-          libs: 'EJS, Handlebars.js, Mustache.js, Pug',
+          libs: ['ejs', 'handlebars', 'mustache', 'pug'],
+          libsStr: 'EJS, Handlebars.js, Mustache.js, Pug',
         },
         {
-          url: '/?compare=socket.io+ws',
           name: 'Web sockets',
-          libs: 'Socket.IO, ws',
+          libs: ['socket.io', 'ws'],
+          libsStr: 'Socket.IO, ws',
         },
       ],
     };
