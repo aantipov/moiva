@@ -1,6 +1,24 @@
 <template>
   <div>
-    <h2>Vulnerabilities (open + closed)</h2>
+    <div class="flex items-center justify-center mt-5">
+      <h2 class="my-0">Vulnerabilities</h2>
+
+      <ChartInfo class="ml-2">
+        <p>Both open and closed vulnerabilities are included.</p>
+        <p>
+          Information is provided by
+          <a
+            href="https://github.com/advisories?query=ecosystem%3Anpm"
+            target="_blank"
+            >Github</a
+          >.
+        </p>
+        <p>
+          Another good resource to check for vulnerabilities is
+          <a href="https://snyk.io/vuln/?type=npm" target="_blank">Snyk</a>
+        </p>
+      </ChartInfo>
+    </div>
 
     <div v-if="isLoading" class="text-center p">Loading...</div>
 
@@ -18,9 +36,14 @@ import Chart, { ChartDataSets } from 'chart.js';
 import { RepoT } from '../apis';
 import { numbersFormatter } from '../utils';
 import { COLOR_GRAY } from '../colors';
+import ChartInfo from './ChartInfo.vue';
 
 export default defineComponent({
   name: 'GithubVulnerabilities',
+
+  components: {
+    ChartInfo,
+  },
 
   props: {
     isLoading: {

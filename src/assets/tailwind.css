@@ -13,7 +13,7 @@
   }
   p,
   .p {
-    @apply mt-0 mb-4 text-base font-light leading-relaxed text-gray-800;
+    @apply mt-0 mb-1 text-base font-light text-gray-800 leading-6;
   }
   a {
     @apply font-normal text-blue-700 underline;
