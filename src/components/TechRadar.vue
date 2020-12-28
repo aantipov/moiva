@@ -1,6 +1,19 @@
 <template>
   <div v-show="filteredLibs.length">
-    <h2>ThoughtWorks TechRadar</h2>
+    <div class="flex items-center justify-center mt-5">
+      <h2 class="my-0">ThoughtWorks TechRadar</h2>
+
+      <m-chart-info class="ml-2">
+        <p>
+          <a
+            href="https://www.thoughtworks.com/radar/languages-and-frameworks"
+            target="_blank"
+            >ThoughtWorks</a
+          >
+          data is used to build the chart.
+        </p>
+      </m-chart-info>
+    </div>
 
     <div class="chart">
       <canvas id="techRadar" />
