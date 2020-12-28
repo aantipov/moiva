@@ -1,29 +1,30 @@
 <template>
   <div>
-    <div
-      v-show="!isLoadingDefaultLibs"
+    <Autosuggest
       class="w-full mx-auto lg:w-9/12 xl:w-2/4"
-    >
-      <Autosuggest
-        @select="select"
-        @error="autosuggestApiError = true"
-        @success="autosuggestApiError = false"
-      />
+      :is-loading="isLoadingLibsData"
+      @select="select"
+    />
+
+    <!--   Pupular comparisons   -->
+    <div v-if="!selectedLibs.length">
+      <Popular v-if="!isLoadingLibsData" />
 
       <div
-        v-if="autosuggestApiError"
-        class="my-4 text-xl font-medium text-red-600"
+        v-else
+        class="relative w-full mx-auto lg:w-9/12 xl:w-2/4"
+        style="min-height: 200px"
       >
-        Oopsie, it looks like we have problems with the underlying suggestions
-        api. We are investigating the problem
+        <Loader />
       </div>
+    </div>
 
-      <!--  Selected libs  -->
+    <div v-else>
+      <!--  Selected libs list  -->
       <div
-        v-if="selectedLibs.length"
-        class="relative mt-4 mb-2 divide-y divide-gray-200"
+        class="relative w-full mx-auto mt-4 mb-2 lg:w-9/12 xl:w-2/4 divide-y divide-gray-200"
       >
-        <Loader v-if="isFetchingSelectedLib" />
+        <Loader v-if="isLoadingLibsData" />
         <div
           v-for="lib in selectedLibs"
           :key="lib.name"
@@ -56,71 +57,70 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <Popular v-if="!selectedLibs.length" />
+      <!-- Charts -->
+      <div>
+        <div class="grid grid-cols-12 gap-4">
+          <Npm
+            :libs="librariesNames"
+            :lib-to-color-map="libToColorMap"
+            class="col-span-12 xl:col-span-6"
+          />
 
-    <div v-else>
-      <div class="grid grid-cols-12 gap-4">
-        <Npm
-          :libs="librariesNames"
-          :lib-to-color-map="libToColorMap"
-          class="col-span-12 xl:col-span-6"
-        />
+          <GoogleTrends
+            :libs="librariesNames"
+            :lib-to-color-map="libToColorMap"
+            class="col-span-12 xl:col-span-6"
+          />
 
-        <GoogleTrends
-          :libs="librariesNames"
-          :lib-to-color-map="libToColorMap"
-          class="col-span-12 xl:col-span-6"
-        />
+          <TechRadar
+            :libs="librariesNames"
+            :lib-to-color-map="libToColorMap"
+            class="col-span-12 md:col-span-6 xl:col-span-3"
+          />
 
-        <TechRadar
-          :libs="librariesNames"
-          :lib-to-color-map="libToColorMap"
-          class="col-span-12 md:col-span-6 xl:col-span-3"
-        />
+          <Bundlephobia
+            :libs="librariesNames"
+            class="col-span-12 md:col-span-6 xl:col-span-3"
+          />
 
-        <Bundlephobia
-          :libs="librariesNames"
-          class="col-span-12 md:col-span-6 xl:col-span-3"
-        />
+          <Dependencies
+            :libs="selectedLibs"
+            class="col-span-12 md:col-span-6 xl:col-span-3"
+          />
 
-        <Dependencies
-          :libs="selectedLibs"
-          class="col-span-12 md:col-span-6 xl:col-span-3"
-        />
+          <Stars
+            :libs="librariesNames"
+            :repos="githubRepositories"
+            :is-loading="githubIsLoading"
+            :is-error="githubIsError"
+            class="col-span-12 md:col-span-6 xl:col-span-3"
+          />
 
-        <Stars
-          :libs="librariesNames"
-          :repos="githubRepositories"
-          :is-loading="githubIsLoading"
-          :is-error="githubIsError"
-          class="col-span-12 md:col-span-6 xl:col-span-3"
-        />
+          <Age
+            :libs="librariesNames"
+            :repos="githubRepositories"
+            :is-loading="githubIsLoading"
+            :is-error="githubIsError"
+            class="col-span-12 md:col-span-6 xl:col-span-3"
+          />
 
-        <Age
-          :libs="librariesNames"
-          :repos="githubRepositories"
-          :is-loading="githubIsLoading"
-          :is-error="githubIsError"
-          class="col-span-12 md:col-span-6 xl:col-span-3"
-        />
+          <OpenClosedIssues
+            :libs="librariesNames"
+            :repos="githubRepositories"
+            :is-loading="githubIsLoading"
+            :is-error="githubIsError"
+            class="col-span-12 md:col-span-6 xl:col-span-3"
+          />
 
-        <OpenClosedIssues
-          :libs="librariesNames"
-          :repos="githubRepositories"
-          :is-loading="githubIsLoading"
-          :is-error="githubIsError"
-          class="col-span-12 md:col-span-6 xl:col-span-3"
-        />
-
-        <Vulnerabilities
-          :libs="librariesNames"
-          :repos="githubRepositories"
-          :is-loading="githubIsLoading"
-          :is-error="githubIsError"
-          class="col-span-12 md:col-span-6 xl:col-span-3"
-        />
+          <Vulnerabilities
+            :libs="librariesNames"
+            :repos="githubRepositories"
+            :is-loading="githubIsLoading"
+            :is-error="githubIsError"
+            class="col-span-12 md:col-span-6 xl:col-span-3"
+          />
+        </div>
       </div>
     </div>
   </div>
@@ -168,31 +168,27 @@ export default defineComponent({
 
   setup() {
     const selectedLibs = ref<LibraryT[]>([]);
-    const autosuggestApiError = ref(false);
-    const isLoadingDefaultLibs = ref(true);
+    const isLoadingLibsData = ref(true);
     const librariesNames = computed<string[]>(() =>
       selectedLibs.value.map((lib) => lib.name)
     );
     const libToColorMap = computed<Record<string, string>>(() =>
       getLibToColorMap(librariesNames.value)
     );
-    const isFetchingSelectedLib = ref(false);
     const gh = useGithub(selectedLibs);
 
     onMounted(() => {
       loadDefaultLibs().then((libs): void => {
         selectedLibs.value = libs;
-        isLoadingDefaultLibs.value = false;
+        isLoadingLibsData.value = false;
       });
     });
 
     return {
       selectedLibs,
       librariesNames,
-      isLoadingDefaultLibs,
+      isLoadingLibsData,
       libToColorMap,
-      isFetchingSelectedLib,
-      autosuggestApiError,
       getNpmLink(libName: string): string {
         return `https://www.npmjs.com/package/${encodeURIComponent(libName)}`;
       },
@@ -210,10 +206,10 @@ export default defineComponent({
           return;
         }
 
-        isFetchingSelectedLib.value = true;
+        isLoadingLibsData.value = true;
 
         fetchNpmPackage(lib.name).then((npmPackage): void => {
-          isFetchingSelectedLib.value = false;
+          isLoadingLibsData.value = false;
           selectedLibs.value = [...selectedLibs.value, npmPackage as LibraryT];
         });
 

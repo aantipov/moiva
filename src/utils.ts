@@ -3,6 +3,7 @@ import { LibraryT, fetchNpmPackage } from './apis';
 const paramName = 'compare';
 const oldParamName = 'apps';
 const delimiter = ' ';
+const encodedDelimiter = '+';
 
 /**
  * A function to ensure the url is valid
@@ -27,8 +28,7 @@ function cleanupUrl(validLibsFromUrl: string[]): void {
   }
 
   // Update url with the valid libs in the right order
-  Url.searchParams.set(paramName, validLibsFromUrl.sort().join(delimiter));
-  window.history.replaceState(null, '', Url.href);
+  window.history.replaceState(null, '', constructHref(validLibsFromUrl));
 }
 
 // Update URL whenever a user selects/deselects a library
@@ -42,10 +42,7 @@ export function updateUrl(selectedLibs: string[]): void {
     return;
   }
 
-  const selectedLibsUrlnames = selectedLibs.sort();
-
-  Url.searchParams.set(paramName, selectedLibsUrlnames.join(delimiter));
-  window.history.pushState(null, '', Url.href);
+  window.history.pushState(null, '', constructHref(selectedLibs));
 }
 
 export function loadDefaultLibs(): Promise<LibraryT[]> {
@@ -62,6 +59,10 @@ export function loadDefaultLibs(): Promise<LibraryT[]> {
 
     return filteredLibs;
   });
+}
+
+export function constructHref(libs: string[]): string {
+  return `/?${paramName}=${libs.sort().join(encodedDelimiter)}`;
 }
 
 export const numbersFormatter = new Intl.NumberFormat('en-US', {
