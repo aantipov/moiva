@@ -5,7 +5,7 @@ const ASSESS = 'Assess';
 
 type TRadarLevelT = typeof HOLD | typeof ADOPT | typeof TRIAL | typeof ASSESS;
 
-export const TRADAR_LEVELS: TRadarLevelT[] = [ASSESS, TRIAL, ADOPT, HOLD];
+export const TRADAR_LEVELS: TRadarLevelT[] = [HOLD, ASSESS, TRIAL, ADOPT];
 
 const libs: { name: string; data: { [key: string]: TRadarLevelT } }[] = [
   {
