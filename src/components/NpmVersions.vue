@@ -47,11 +47,9 @@ export default defineComponent({
         .then((data) => {
           // Do nothing if there is a new request already in place
           if (versionsPromise === localPromise) {
-            // @ts-ignore
             versions.value = data;
             isLoading.value = false;
             isError.value = false;
-            console.log('DATA', data);
           }
         })
         .catch(() => {
