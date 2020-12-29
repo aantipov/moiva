@@ -1,12 +1,14 @@
 import axios, { AxiosError } from 'axios';
 import * as Sentry from '@sentry/browser';
 import { NpmPackagedDetailsResponseT } from '../api/npm-package-detailed';
+import { GithubLanguagesResponseT } from '../api/gh-languages';
 
 const npmDownloadsCache = new Map();
 const npmSuggestionsCache = new Map();
 const npmPackageCache = new Map();
 const npmPackageVersionsCache = new Map();
 const githubCache = new Map();
+const githubLanguagesCache = new Map();
 const gTrendsCache = new Map();
 const bphobiaCache = new Map();
 
@@ -111,6 +113,30 @@ export function fetchNpmDownloads(lib: string): Promise<NpmDownloadT[]> {
     })
     .catch((err) => {
       reportSentry(err, 'fetchNpmDownloads');
+      return Promise.reject(err);
+    });
+}
+
+export function fetchRepoLanguages(
+  repoUrl: string
+): Promise<GithubLanguagesResponseT> {
+  const repoUrlParts = repoUrl.split('/');
+  const owner = repoUrlParts[3];
+  const name = repoUrlParts[4];
+  const key = name + '/' + owner;
+
+  if (githubLanguagesCache.get(key)) {
+    return Promise.resolve(githubLanguagesCache.get(key));
+  }
+
+  return axios
+    .get(`/api/gh-languages?name=${name}&owner=${owner}`)
+    .then(({ data }) => {
+      githubLanguagesCache.set(key, data);
+      return data;
+    })
+    .catch((err) => {
+      reportSentry(err, 'fetchGithubLanguagesData');
       return Promise.reject(err);
     });
 }
