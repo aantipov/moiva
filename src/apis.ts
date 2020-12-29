@@ -1,9 +1,11 @@
 import axios, { AxiosError } from 'axios';
 import * as Sentry from '@sentry/browser';
+import { NpmPackagedDetailsResponseT } from '../api/npm-package-detailed';
 
 const npmDownloadsCache = new Map();
 const npmSuggestionsCache = new Map();
 const npmPackageCache = new Map();
+const npmPackageVersionsCache = new Map();
 const githubCache = new Map();
 const gTrendsCache = new Map();
 const bphobiaCache = new Map();
@@ -292,5 +294,35 @@ function fetchNpmsIOPackage(packageName: string): Promise<LibraryT | null> {
         version,
         repo: repository,
       };
+    });
+}
+
+export type NpmPackageVersionsT = Record<string, number>;
+
+export function fetchNpmPackageVersions(
+  pkg: string
+): Promise<NpmPackageVersionsT> {
+  if (npmPackageVersionsCache.get(pkg)) {
+    return Promise.resolve(npmPackageVersionsCache.get(pkg));
+  }
+
+  return axios
+    .get(`/api/npm-package-detailed?pkg=${pkg}`)
+    .then(({ data }: { data: NpmPackagedDetailsResponseT }) => {
+      const result = data.versions.reduce((acc, [, year]) => {
+        if (Number(year) < 2017) {
+          return acc;
+        }
+        if (acc[year]) {
+          acc[year]++;
+        } else {
+          acc[year] = 1;
+        }
+        return acc;
+      }, {} as NpmPackageVersionsT);
+
+      npmPackageVersionsCache.set(pkg, result);
+
+      return result;
     });
 }

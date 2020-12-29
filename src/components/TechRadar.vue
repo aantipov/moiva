@@ -61,10 +61,10 @@ export default defineComponent({
         backgroundColor: this.libToColorMap[lib],
         borderColor: this.libToColorMap[lib],
         spanGaps: true,
-        borderWidth: 3,
+        borderWidth: 4,
         lineTension: 0,
-        radius: 6,
-        pointHoverRadius: 10,
+        radius: 4,
+        pointHoverRadius: 7,
       }));
     },
     filteredLibs(): string[] {
