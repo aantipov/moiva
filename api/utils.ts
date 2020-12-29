@@ -9,7 +9,8 @@ export function logRequest(
     | 'googleTrends'
     | 'bundlephobia'
     | 'npmSuggestion'
-    | 'npmPackage',
+    | 'npmPackage'
+    | 'npmPackageDetailed',
   urlQuery: unknown
 ): void {
   const skey = process.env.FAUNA_DB as string;

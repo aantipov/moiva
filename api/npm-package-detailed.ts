@@ -12,11 +12,11 @@ export interface NpmPackagedDetailsResponseT {
 export default (req: NowRequest, res: NowResponse): void => {
   const { pkg } = req.query;
 
-  logRequest('npmPackage', req.query);
+  logRequest('npmPackageDetailed', req.query);
 
   if (!pkg || typeof pkg !== 'string') {
-    console.error('API NPM PACKAGE: Wrong pkg parameter');
-    reportError(new Error('API NPM PACKAGE: Wrong pkg parameter'));
+    console.error('API NPM PACKAGE DETAILED: Wrong pkg parameter');
+    reportError(new Error('API NPM PACKAGE DETAILED: Wrong pkg parameter'));
     res.status(400).json({ error: 'Wrong pkg parameter' });
     return;
   }
