@@ -111,7 +111,7 @@ export default defineComponent({
       }
     });
 
-    return { datasets };
+    return {};
   },
 });
 </script>
