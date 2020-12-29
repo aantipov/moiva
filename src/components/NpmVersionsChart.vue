@@ -1,6 +1,15 @@
 <template>
   <div>
-    <h2>Releases <span class="text-base">(per year)</span></h2>
+    <div class="flex items-center justify-center mt-5">
+      <h2 class="my-0">
+        Release frequency<span class="text-base">(per year)</span>
+      </h2>
+
+      <m-chart-info class="ml-2">
+        <p>Major, minor and bugfix releases count.</p>
+        <p>Pre-releases are not included.</p>
+      </m-chart-info>
+    </div>
 
     <div v-if="isError" class="chart-error">
       Something went wrong while loading data. Try to reload the page or come
