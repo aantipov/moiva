@@ -28,7 +28,7 @@
       No data for selected libraries
     </div>
 
-    <div v-else class="chart">
+    <div v-else style="height: 350px">
       <GTrendsChart
         :libs="filteredLibs"
         :lib-to-color-map="libToColorMap"
@@ -118,9 +118,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped lang="scss">
-.chart {
-  height: 400px;
-}
-</style>
