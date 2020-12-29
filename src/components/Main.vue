@@ -85,14 +85,19 @@
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
 
-          <Dependencies
+          <NpmVersions
+            :libs="librariesNames"
+            :lib-to-color-map="libToColorMap"
+            class="col-span-12 md:col-span-6 xl:col-span-3"
+          />
+
+          <Languages
             :libs="selectedLibs"
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
 
-          <NpmVersions
-            :libs="librariesNames"
-            :lib-to-color-map="libToColorMap"
+          <Dependencies
+            :libs="selectedLibs"
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
 
@@ -149,6 +154,7 @@ import Stars from './GithubStars.vue';
 import Vulnerabilities from './GithubVulnerabilities.vue';
 import Popular from './Popular.vue';
 import Loader from './Loader.vue';
+import Languages from './Languages.vue';
 import NpmIcon from './icons/Npm.vue';
 import { LibraryT, SuggestionT, fetchNpmPackage } from '../apis';
 import { loadDefaultLibs, updateUrl } from '../utils';
@@ -173,6 +179,7 @@ export default defineComponent({
     NpmIcon,
     Loader,
     Popular,
+    Languages,
   },
 
   setup() {

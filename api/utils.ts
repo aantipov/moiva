@@ -6,6 +6,7 @@ export function logRequest(
   type:
     | 'npmDownloads'
     | 'github'
+    | 'githubLanguages'
     | 'googleTrends'
     | 'bundlephobia'
     | 'npmSuggestion'
