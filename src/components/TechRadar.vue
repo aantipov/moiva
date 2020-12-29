@@ -89,7 +89,7 @@ export default defineComponent({
       this.chart.data = {
         labels: this.uniqDates,
         xLabels: this.uniqDates,
-        yLabels: TRADAR_LEVELS,
+        yLabels: [...TRADAR_LEVELS, ''],
         datasets: this.chartDatasets,
       } as ChartData;
 
@@ -105,7 +105,7 @@ export default defineComponent({
         data: {
           labels: this.uniqDates,
           xLabels: this.uniqDates,
-          yLabels: TRADAR_LEVELS,
+          yLabels: [...TRADAR_LEVELS, ''],
           datasets: this.chartDatasets,
         },
 

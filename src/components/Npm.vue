@@ -7,7 +7,7 @@
       later
     </div>
 
-    <div v-else class="chart">
+    <div v-else style="height: 350px">
       <div v-if="isLoading" class="text-center p">Loading...</div>
       <NpmChart
         v-else
@@ -88,9 +88,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style scoped lang="scss">
-.chart {
-  height: 400px;
-}
-</style>
