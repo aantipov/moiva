@@ -26,9 +26,27 @@ const COLORS = [
   '#9E9E9E', // Grey 500
 ];
 
+const libToColorMap = new Map<string, string>();
+
 export function getLibToColorMap(libs: string[]): Record<string, string> {
-  return libs.reduce((accum, lib, index) => {
-    accum[lib] = COLORS[index];
-    return accum;
-  }, {} as Record<string, string>);
+  // Clean up the Map - filter out unused libs
+  [...libToColorMap.keys()].forEach((lib) => {
+    if (!libs.includes(lib)) {
+      libToColorMap.delete(lib);
+    }
+  });
+
+  // Get a list of unused colors
+  const vacantColors = COLORS.filter(
+    (color) => ![...libToColorMap.values()].includes(color)
+  );
+
+  // Update the Map with the colors for new libs
+  libs.forEach((lib) => {
+    if (!libToColorMap.has(lib)) {
+      libToColorMap.set(lib, vacantColors.shift() || '#9E9E9E');
+    }
+  });
+
+  return Object.fromEntries(libToColorMap);
 }
