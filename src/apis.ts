@@ -335,10 +335,8 @@ export function fetchNpmPackageVersions(
   return axios
     .get(`/api/npm-package-detailed?pkg=${pkg}`)
     .then(({ data }: { data: NpmPackagedDetailsResponseT }) => {
-      const result = data.versions.reduce((acc, [, year]) => {
-        if (Number(year) < 2017) {
-          return acc;
-        }
+      // Calc release number per year
+      const aggregatedMap = data.versions.reduce((acc, [, year]) => {
         if (acc[year]) {
           acc[year]++;
         } else {
@@ -347,8 +345,17 @@ export function fetchNpmPackageVersions(
         return acc;
       }, {} as NpmPackageVersionsT);
 
-      npmPackageVersionsCache.set(pkg, result);
+      // Strip all data earlier 2017 and make sure every year is present
+      const res: Record<string, number> = {};
+      let year = 2017;
+      const currentYear = new Date().getFullYear();
+      while (year <= currentYear) {
+        res[year] = aggregatedMap[year] || 0;
+        year++;
+      }
 
-      return result;
+      npmPackageVersionsCache.set(pkg, res);
+
+      return res;
     });
 }

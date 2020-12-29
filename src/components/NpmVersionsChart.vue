@@ -96,14 +96,7 @@ export default defineComponent({
                 time: { unit: 'year' },
               },
             ],
-            yAxes: [
-              {
-                ticks: {
-                  callback: (val: number): string =>
-                    numbersFormatter.format(val),
-                },
-              },
-            ],
+            yAxes: [{}],
           },
         },
       });
