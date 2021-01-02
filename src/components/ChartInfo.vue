@@ -1,7 +1,7 @@
 <template>
   <div>
     <span ref="triggerRef" class="p-1 rounded cursor-pointer hover:bg-gray-200"
-      >&#128216;</span
+      >&#9432;</span
     >
     <div ref="contentRef">
       <slot></slot>
