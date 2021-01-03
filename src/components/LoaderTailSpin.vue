@@ -6,7 +6,6 @@
       height="20"
       viewBox="0 0 38 38"
       xmlns="http://www.w3.org/2000/svg"
-      class="inline"
     >
       <defs>
         <linearGradient id="a" x1="8.042%" y1="0%" x2="65.682%" y2="23.865%">

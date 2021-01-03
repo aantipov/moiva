@@ -37,12 +37,26 @@
                 <span>{{ lib.name }}</span>
                 <span class="text-gray-500">@{{ lib.version }}</span>
               </span>
-              <!-- Star -->
-              <span class="ml-3 text-sm text-gray-500">
-                <span class="">&#9733;</span>
-                <m-loader-tail-spin v-if="githubIsLoading" class="inline" />
-                <span>{{ getStars(libIndex) }}</span>
-              </span>
+            </div>
+
+            <div class="text-sm text-gray-500">
+              <div v-if="githubIsLoading">
+                <m-loader-tail-spin v-if="githubIsLoading" />
+              </div>
+
+              <div v-else-if="githubIsError" class="text-red-500">
+                Error while loading data
+              </div>
+
+              <div v-else class="">
+                <!-- Star -->
+                <span>
+                  <span class="">&#9733;</span>
+                  <span>{{ getStars(libIndex) }}</span>
+                </span>
+
+                <span class="ml-2">{{ getAge(libIndex) }}</span>
+              </div>
             </div>
 
             <div class="text-sm text-gray-500">
@@ -110,14 +124,6 @@
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
 
-          <Age
-            :libs="librariesNames"
-            :repos="githubRepositories"
-            :is-loading="githubIsLoading"
-            :is-error="githubIsError"
-            class="col-span-12 md:col-span-6 xl:col-span-3"
-          />
-
           <OpenClosedIssues
             :libs="librariesNames"
             :repos="githubRepositories"
@@ -150,7 +156,6 @@ import Bundlephobia from './Bundlephobia.vue';
 import Dependencies from './Dependencies.vue';
 import GithubIcon from './icons/Github.vue';
 import OpenClosedIssues from './GithubOpenClosedIssues.vue';
-import Age from './GithubAge.vue';
 import Vulnerabilities from './GithubVulnerabilities.vue';
 import Popular from './Popular.vue';
 import Loader from './Loader.vue';
@@ -160,6 +165,7 @@ import { LibraryT, SuggestionT, fetchNpmPackage } from '../apis';
 import { loadDefaultLibs, updateUrl, numbersFormatter } from '../utils';
 import { getLibToColorMap } from '../colors';
 import useGithub from '@/composables/useGithub';
+import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 
 export default defineComponent({
   name: 'Main',
@@ -172,7 +178,6 @@ export default defineComponent({
     Bundlephobia,
     Dependencies,
     OpenClosedIssues,
-    Age,
     Vulnerabilities,
     GithubIcon,
     NpmIcon,
@@ -234,6 +239,11 @@ export default defineComponent({
         return !gh.isLoading.value && !gh.isError.value
           ? numbersFormatter.format(gh.repositories.value[libIndex].stars)
           : null;
+      },
+      getAge(libIndex: number): string {
+        const date = gh.repositories.value[libIndex].createdAt;
+
+        return formatDistanceToNowStrict(new Date(date));
       },
     };
   },
