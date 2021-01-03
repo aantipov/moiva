@@ -7,12 +7,13 @@
 
       <m-chart-info class="ml-2">
         <p>
+          We use
           <a
             href="https://trends.google.com/trends/explore?cat=31"
             target="_blank"
             >Google Trends</a
           >
-          data is used to build the chart.
+          data to build the chart.
         </p>
       </m-chart-info>
     </div>

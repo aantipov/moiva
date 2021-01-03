@@ -58,20 +58,21 @@
               >
 
               <m-chart-info class="inline">
-                <p>Both open and closed vulnerabilities are included.</p>
+                <p>The number includes both open and closed vulnerabilities.</p>
                 <p>
+                  We use
                   <a
                     href="https://github.com/advisories?query=ecosystem%3Anpm"
                     target="_blank"
                     >Github</a
                   >
-                  data is used to build the chart.
+                  data to get the number.
                 </p>
                 <p>
-                  Another good resource to check for vulnerabilities is
                   <a href="https://snyk.io/vuln/?type=npm" target="_blank"
                     >Snyk</a
                   >
+                  is another good resource to check for vulnerabilities
                 </p>
               </m-chart-info>
             </div>

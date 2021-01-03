@@ -28,7 +28,6 @@
 import { defineComponent, toRefs, onMounted, watch, computed } from 'vue';
 import Chart, { ChartDataSets } from 'chart.js';
 import { NpmPackageVersionsT } from '../apis';
-import { numbersFormatter } from '../utils';
 import { enUS } from 'date-fns/locale';
 
 export default defineComponent({
