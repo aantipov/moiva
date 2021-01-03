@@ -26,14 +26,69 @@
       >
         <Loader v-if="isLoadingLibsData" />
         <div
-          v-for="lib in selectedLibs"
+          v-for="(lib, libIndex) in selectedLibs"
           :key="lib.name"
           class="flex items-center justify-between px-3 py-1 hover:bg-gray-50"
         >
-          <div class="flex flex-col">
-            <div class="font-mono text-base text-gray-800">
-              <span>{{ lib.name }}</span>
-              <span class="text-gray-500">@{{ lib.version }}</span>
+          <div class="flex flex-col flex-grow">
+            <div class="text-base text-gray-800">
+              <!-- Name -->
+              <span class="font-mono">
+                <span>{{ lib.name }}</span>
+                <span class="text-gray-500">@{{ lib.version }}</span>
+              </span>
+            </div>
+
+            <div class="text-sm text-gray-500">
+              <div v-if="githubIsLoading">
+                <m-loader-tail-spin v-if="githubIsLoading" />
+              </div>
+
+              <div v-else-if="githubIsError" class="text-red-500">
+                Error while loading data
+              </div>
+
+              <div v-else class="grid grid-cols-12">
+                <div class="col-span-6 sm:col-span-2">
+                  <span>&#9733;</span>
+                  <span>{{ getStars(libIndex) }}</span>
+                </div>
+
+                <div class="col-span-6 sm:col-span-2">
+                  {{ getAge(libIndex) }}
+                </div>
+
+                <div class="col-span-12 sm:col-span-4">
+                  <span
+                    >{{
+                      githubRepositories[libIndex].vulnerabilitiesCount
+                    }}
+                    vulnerabilities</span
+                  >
+
+                  <m-chart-info class="inline">
+                    <p>Both open and closed vulnerabilities are included.</p>
+                    <p>
+                      <a
+                        href="https://github.com/advisories?query=ecosystem%3Anpm"
+                        target="_blank"
+                        >Github</a
+                      >
+                      data is used to build the chart.
+                    </p>
+                    <p>
+                      Another good resource to check for vulnerabilities is
+                      <a href="https://snyk.io/vuln/?type=npm" target="_blank"
+                        >Snyk</a
+                      >
+                    </p>
+                  </m-chart-info>
+                </div>
+
+                <div class="col-span-12 sm:col-span-4">
+                  {{ lib.dependencies.length }} dependencies
+                </div>
+              </div>
             </div>
 
             <div class="text-sm text-gray-500">
@@ -96,36 +151,7 @@
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
 
-          <Dependencies
-            :libs="selectedLibs"
-            class="col-span-12 md:col-span-6 xl:col-span-3"
-          />
-
-          <Stars
-            :libs="librariesNames"
-            :repos="githubRepositories"
-            :is-loading="githubIsLoading"
-            :is-error="githubIsError"
-            class="col-span-12 md:col-span-6 xl:col-span-3"
-          />
-
-          <Age
-            :libs="librariesNames"
-            :repos="githubRepositories"
-            :is-loading="githubIsLoading"
-            :is-error="githubIsError"
-            class="col-span-12 md:col-span-6 xl:col-span-3"
-          />
-
           <OpenClosedIssues
-            :libs="librariesNames"
-            :repos="githubRepositories"
-            :is-loading="githubIsLoading"
-            :is-error="githubIsError"
-            class="col-span-12 md:col-span-6 xl:col-span-3"
-          />
-
-          <Vulnerabilities
             :libs="librariesNames"
             :repos="githubRepositories"
             :is-loading="githubIsLoading"
@@ -146,20 +172,17 @@ import Autosuggest from './Autosuggest.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
 import Bundlephobia from './Bundlephobia.vue';
-import Dependencies from './Dependencies.vue';
 import GithubIcon from './icons/Github.vue';
 import OpenClosedIssues from './GithubOpenClosedIssues.vue';
-import Age from './GithubAge.vue';
-import Stars from './GithubStars.vue';
-import Vulnerabilities from './GithubVulnerabilities.vue';
 import Popular from './Popular.vue';
 import Loader from './Loader.vue';
 import Languages from './Languages.vue';
 import NpmIcon from './icons/Npm.vue';
 import { LibraryT, SuggestionT, fetchNpmPackage } from '../apis';
-import { loadDefaultLibs, updateUrl } from '../utils';
+import { loadDefaultLibs, updateUrl, numbersFormatter } from '../utils';
 import { getLibToColorMap } from '../colors';
 import useGithub from '@/composables/useGithub';
+import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 
 export default defineComponent({
   name: 'Main',
@@ -170,11 +193,7 @@ export default defineComponent({
     TechRadar,
     GoogleTrends,
     Bundlephobia,
-    Dependencies,
     OpenClosedIssues,
-    Age,
-    Stars,
-    Vulnerabilities,
     GithubIcon,
     NpmIcon,
     Loader,
@@ -230,6 +249,16 @@ export default defineComponent({
         });
 
         updateUrl([...librariesNames.value, lib.name]);
+      },
+      getStars(libIndex: number): null | string {
+        return !gh.isLoading.value && !gh.isError.value
+          ? numbersFormatter.format(gh.repositories.value[libIndex].stars)
+          : null;
+      },
+      getAge(libIndex: number): string {
+        const date = gh.repositories.value[libIndex].createdAt;
+
+        return formatDistanceToNowStrict(new Date(date));
       },
     };
   },
