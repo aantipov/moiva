@@ -72,7 +72,7 @@
                   <a href="https://snyk.io/vuln/?type=npm" target="_blank"
                     >Snyk</a
                   >
-                  is another good resource to check for vulnerabilities
+                  is another good resource to check for vulnerabilities.
                 </p>
               </m-chart-info>
             </div>
