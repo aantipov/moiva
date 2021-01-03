@@ -6,10 +6,12 @@
     <div
       v-for="(lib, libIndex) in libs"
       :key="lib.name"
-      class="flex items-center justify-between px-3 py-1 hover:bg-gray-50"
+      class="flex items-center justify-between px-3 py-2 hover:bg-gray-50"
     >
       <div class="flex flex-col flex-grow">
-        <div class="flex items-center justify-between text-base text-gray-800">
+        <div
+          class="flex items-center justify-between mb-1 text-base text-gray-800"
+        >
           <!-- Name -->
           <span class="font-mono">
             <span>{{ lib.name }}</span>

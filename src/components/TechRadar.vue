@@ -5,12 +5,13 @@
 
       <m-chart-info class="ml-2">
         <p>
+          We use
           <a
             href="https://www.thoughtworks.com/radar/languages-and-frameworks"
             target="_blank"
             >ThoughtWorks</a
           >
-          data is used to build the chart.
+          data to build the chart.
         </p>
       </m-chart-info>
     </div>
