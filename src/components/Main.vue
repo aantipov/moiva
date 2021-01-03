@@ -32,12 +32,13 @@
         >
           <div class="flex flex-col">
             <div class="text-base text-gray-800">
+              <!-- Name -->
               <span class="font-mono">
                 <span>{{ lib.name }}</span>
                 <span class="text-gray-500">@{{ lib.version }}</span>
               </span>
+              <!-- Star -->
               <span class="ml-3 text-sm text-gray-500">
-                <!-- Star -->
                 <span class="">&#9733;</span>
                 <m-loader-tail-spin v-if="githubIsLoading" class="inline" />
                 <span>{{ getStars(libIndex) }}</span>
@@ -150,7 +151,6 @@ import Dependencies from './Dependencies.vue';
 import GithubIcon from './icons/Github.vue';
 import OpenClosedIssues from './GithubOpenClosedIssues.vue';
 import Age from './GithubAge.vue';
-import Stars from './GithubStars.vue';
 import Vulnerabilities from './GithubVulnerabilities.vue';
 import Popular from './Popular.vue';
 import Loader from './Loader.vue';
@@ -173,7 +173,6 @@ export default defineComponent({
     Dependencies,
     OpenClosedIssues,
     Age,
-    Stars,
     Vulnerabilities,
     GithubIcon,
     NpmIcon,
