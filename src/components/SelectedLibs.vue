@@ -80,6 +80,8 @@
               {{ lib.dependencies.length }} dependencies
             </div>
           </div>
+
+          <div>License: {{ lib.license }}</div>
         </div>
 
         <div class="font-serif text-sm text-gray-500">
