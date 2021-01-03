@@ -49,13 +49,13 @@
               </div>
 
               <div v-else class="grid grid-cols-12">
-                <div class="col-span-12 sm:col-span-3">
-                  <span>
-                    <span>&#9733;</span>
-                    <span>{{ getStars(libIndex) }}</span>
-                  </span>
+                <div class="col-span-6 sm:col-span-2">
+                  <span>&#9733;</span>
+                  <span>{{ getStars(libIndex) }}</span>
+                </div>
 
-                  <span class="ml-2">{{ getAge(libIndex) }}</span>
+                <div class="col-span-6 sm:col-span-2">
+                  {{ getAge(libIndex) }}
                 </div>
 
                 <div class="col-span-12 sm:col-span-4">
