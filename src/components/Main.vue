@@ -48,14 +48,38 @@
                 Error while loading data
               </div>
 
-              <div v-else class="">
-                <!-- Star -->
+              <div v-else>
                 <span>
-                  <span class="">&#9733;</span>
+                  <span>&#9733;</span>
                   <span>{{ getStars(libIndex) }}</span>
                 </span>
 
                 <span class="ml-2">{{ getAge(libIndex) }}</span>
+
+                <span class="ml-2"
+                  >{{
+                    githubRepositories[libIndex].vulnerabilitiesCount
+                  }}
+                  vulnerabilities</span
+                >
+
+                <m-chart-info class="inline">
+                  <p>Both open and closed vulnerabilities are included.</p>
+                  <p>
+                    <a
+                      href="https://github.com/advisories?query=ecosystem%3Anpm"
+                      target="_blank"
+                      >Github</a
+                    >
+                    data is used to build the chart.
+                  </p>
+                  <p>
+                    Another good resource to check for vulnerabilities is
+                    <a href="https://snyk.io/vuln/?type=npm" target="_blank"
+                      >Snyk</a
+                    >
+                  </p>
+                </m-chart-info>
               </div>
             </div>
 
@@ -131,14 +155,6 @@
             :is-error="githubIsError"
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
-
-          <Vulnerabilities
-            :libs="librariesNames"
-            :repos="githubRepositories"
-            :is-loading="githubIsLoading"
-            :is-error="githubIsError"
-            class="col-span-12 md:col-span-6 xl:col-span-3"
-          />
         </div>
       </div>
     </div>
@@ -156,7 +172,6 @@ import Bundlephobia from './Bundlephobia.vue';
 import Dependencies from './Dependencies.vue';
 import GithubIcon from './icons/Github.vue';
 import OpenClosedIssues from './GithubOpenClosedIssues.vue';
-import Vulnerabilities from './GithubVulnerabilities.vue';
 import Popular from './Popular.vue';
 import Loader from './Loader.vue';
 import Languages from './Languages.vue';
@@ -178,7 +193,6 @@ export default defineComponent({
     Bundlephobia,
     Dependencies,
     OpenClosedIssues,
-    Vulnerabilities,
     GithubIcon,
     NpmIcon,
     Loader,
