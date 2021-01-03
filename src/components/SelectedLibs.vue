@@ -9,12 +9,25 @@
       class="flex items-center justify-between px-3 py-1 hover:bg-gray-50"
     >
       <div class="flex flex-col flex-grow">
-        <div class="text-base text-gray-800">
+        <div class="flex items-center justify-between text-base text-gray-800">
           <!-- Name -->
           <span class="font-mono">
             <span>{{ lib.name }}</span>
             <span class="text-gray-500">@{{ lib.version }}</span>
           </span>
+
+          <m-close class="sm:hidden" @click="$emit('deselect', lib.name)" />
+        </div>
+
+        <!--  Links (mobile)  -->
+        <div class="flex sm:hidden">
+          <a :href="getNpmLink(lib.name)" target="_blank" class="mr-4">
+            <NpmIcon />
+          </a>
+
+          <a :href="lib.repo" target="_blank" class="mr-4">
+            <GithubIcon />
+          </a>
         </div>
 
         <div class="text-sm text-gray-500">
@@ -36,7 +49,7 @@
               {{ getAge(libIndex) }}
             </div>
 
-            <div class="col-span-12 sm:col-span-4">
+            <div class="col-span-6 sm:col-span-4">
               <span
                 >{{
                   githubRepos[libIndex].vulnerabilitiesCount
@@ -63,7 +76,7 @@
               </m-chart-info>
             </div>
 
-            <div class="col-span-12 sm:col-span-4">
+            <div class="col-span-6 sm:col-span-4">
               {{ lib.dependencies.length }} dependencies
             </div>
           </div>
@@ -74,7 +87,7 @@
         </div>
       </div>
 
-      <div class="flex items-center ml-2">
+      <div class="items-center hidden ml-2 sm:flex">
         <a
           :href="getNpmLink(lib.name)"
           target="_blank"
