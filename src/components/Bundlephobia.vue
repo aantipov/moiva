@@ -5,8 +5,9 @@
 
       <m-chart-info class="ml-2">
         <p>
+          We use
           <a href="https://bundlephobia.com/" target="_blank">Bundlephobia</a>
-          data is used to build the chart.
+          data to build the chart.
         </p>
       </m-chart-info>
     </div>

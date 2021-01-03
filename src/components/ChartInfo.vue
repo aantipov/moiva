@@ -39,9 +39,15 @@ export default defineComponent({
 
 <style lang="postcss">
 .tippy-box[data-theme~='moiva'] {
-  @apply bg-gray-50 border border-gray-200 shadow text-base;
+  @apply bg-gray-800 bg-opacity-95 border border-gray-200 shadow text-base;
 }
 .tippy-box[data-theme~='moiva'] > .tippy-arrow {
   @apply hidden;
+}
+.tippy-box[data-theme~='moiva'] p {
+  @apply text-gray-50;
+}
+.tippy-box[data-theme~='moiva'] a {
+  @apply text-blue-300;
 }
 </style>
