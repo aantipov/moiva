@@ -30,7 +30,7 @@
           :key="lib.name"
           class="flex items-center justify-between px-3 py-1 hover:bg-gray-50"
         >
-          <div class="flex flex-col">
+          <div class="flex flex-col flex-grow">
             <div class="text-base text-gray-800">
               <!-- Name -->
               <span class="font-mono">
@@ -48,42 +48,46 @@
                 Error while loading data
               </div>
 
-              <div v-else>
-                <span>
-                  <span>&#9733;</span>
-                  <span>{{ getStars(libIndex) }}</span>
-                </span>
+              <div v-else class="grid grid-cols-12">
+                <div class="col-span-12 sm:col-span-3">
+                  <span>
+                    <span>&#9733;</span>
+                    <span>{{ getStars(libIndex) }}</span>
+                  </span>
 
-                <span class="ml-2">{{ getAge(libIndex) }}</span>
+                  <span class="ml-2">{{ getAge(libIndex) }}</span>
+                </div>
 
-                <span class="ml-2"
-                  >{{
-                    githubRepositories[libIndex].vulnerabilitiesCount
-                  }}
-                  vulnerabilities</span
-                >
+                <div class="col-span-12 sm:col-span-4">
+                  <span
+                    >{{
+                      githubRepositories[libIndex].vulnerabilitiesCount
+                    }}
+                    vulnerabilities</span
+                  >
 
-                <m-chart-info class="inline">
-                  <p>Both open and closed vulnerabilities are included.</p>
-                  <p>
-                    <a
-                      href="https://github.com/advisories?query=ecosystem%3Anpm"
-                      target="_blank"
-                      >Github</a
-                    >
-                    data is used to build the chart.
-                  </p>
-                  <p>
-                    Another good resource to check for vulnerabilities is
-                    <a href="https://snyk.io/vuln/?type=npm" target="_blank"
-                      >Snyk</a
-                    >
-                  </p>
-                </m-chart-info>
+                  <m-chart-info class="inline">
+                    <p>Both open and closed vulnerabilities are included.</p>
+                    <p>
+                      <a
+                        href="https://github.com/advisories?query=ecosystem%3Anpm"
+                        target="_blank"
+                        >Github</a
+                      >
+                      data is used to build the chart.
+                    </p>
+                    <p>
+                      Another good resource to check for vulnerabilities is
+                      <a href="https://snyk.io/vuln/?type=npm" target="_blank"
+                        >Snyk</a
+                      >
+                    </p>
+                  </m-chart-info>
+                </div>
 
-                <span class="ml-2"
-                  >{{ lib.dependencies.length }} dependencies</span
-                >
+                <div class="col-span-12 sm:col-span-4">
+                  {{ lib.dependencies.length }} dependencies
+                </div>
               </div>
             </div>
 
