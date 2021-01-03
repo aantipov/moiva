@@ -26,14 +26,22 @@
       >
         <Loader v-if="isLoadingLibsData" />
         <div
-          v-for="lib in selectedLibs"
+          v-for="(lib, libIndex) in selectedLibs"
           :key="lib.name"
           class="flex items-center justify-between px-3 py-1 hover:bg-gray-50"
         >
           <div class="flex flex-col">
-            <div class="font-mono text-base text-gray-800">
-              <span>{{ lib.name }}</span>
-              <span class="text-gray-500">@{{ lib.version }}</span>
+            <div class="text-base text-gray-800">
+              <span class="font-mono">
+                <span>{{ lib.name }}</span>
+                <span class="text-gray-500">@{{ lib.version }}</span>
+              </span>
+              <span class="ml-3 text-sm text-gray-500">
+                <!-- Star -->
+                <span class="">&#9733;</span>
+                <m-loader-tail-spin v-if="githubIsLoading" class="inline" />
+                <span>{{ getStars(libIndex) }}</span>
+              </span>
             </div>
 
             <div class="text-sm text-gray-500">
@@ -101,14 +109,6 @@
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
 
-          <Stars
-            :libs="librariesNames"
-            :repos="githubRepositories"
-            :is-loading="githubIsLoading"
-            :is-error="githubIsError"
-            class="col-span-12 md:col-span-6 xl:col-span-3"
-          />
-
           <Age
             :libs="librariesNames"
             :repos="githubRepositories"
@@ -157,7 +157,7 @@ import Loader from './Loader.vue';
 import Languages from './Languages.vue';
 import NpmIcon from './icons/Npm.vue';
 import { LibraryT, SuggestionT, fetchNpmPackage } from '../apis';
-import { loadDefaultLibs, updateUrl } from '../utils';
+import { loadDefaultLibs, updateUrl, numbersFormatter } from '../utils';
 import { getLibToColorMap } from '../colors';
 import useGithub from '@/composables/useGithub';
 
@@ -230,6 +230,11 @@ export default defineComponent({
         });
 
         updateUrl([...librariesNames.value, lib.name]);
+      },
+      getStars(libIndex: number): null | string {
+        return !gh.isLoading.value && !gh.isError.value
+          ? numbersFormatter.format(gh.repositories.value[libIndex].stars)
+          : null;
       },
     };
   },
