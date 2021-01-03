@@ -80,6 +80,10 @@
                     >
                   </p>
                 </m-chart-info>
+
+                <span class="ml-2"
+                  >{{ lib.dependencies.length }} dependencies</span
+                >
               </div>
             </div>
 
@@ -143,11 +147,6 @@
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
 
-          <Dependencies
-            :libs="selectedLibs"
-            class="col-span-12 md:col-span-6 xl:col-span-3"
-          />
-
           <OpenClosedIssues
             :libs="librariesNames"
             :repos="githubRepositories"
@@ -169,7 +168,6 @@ import Autosuggest from './Autosuggest.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
 import Bundlephobia from './Bundlephobia.vue';
-import Dependencies from './Dependencies.vue';
 import GithubIcon from './icons/Github.vue';
 import OpenClosedIssues from './GithubOpenClosedIssues.vue';
 import Popular from './Popular.vue';
@@ -191,7 +189,6 @@ export default defineComponent({
     TechRadar,
     GoogleTrends,
     Bundlephobia,
-    Dependencies,
     OpenClosedIssues,
     GithubIcon,
     NpmIcon,
