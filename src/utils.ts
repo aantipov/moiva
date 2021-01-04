@@ -138,25 +138,30 @@ export function updateMetaDescription(libs: LibForDescriptionT[]): void {
 }
 
 function getMetaDescription(libs: LibForDescriptionT[]): string {
-  if (!libs.length) {
-    return '';
+  if (!libs.length || libs.length > 1) {
+    return 'Javascript libraries and frameworks comparison side by side. Visual with charts and graphs. Multiple metrics. Data from Github, NPM, Google Trends, ThoughtWorks Tech Radar, etc.';
   }
 
-  if (libs.length === 1) {
-    const {
-      name,
-      description,
-      starsCount,
-      age,
-      vulnerabilitiesCount,
-      dependenciesCount,
-      license,
-    } = libs[0];
-    const seoFriendlyName = getSeoFriendlyLibName(name);
-    const descrCut = description.slice(0, 57);
+  const {
+    name,
+    description,
+    starsCount,
+    age,
+    vulnerabilitiesCount,
+    dependenciesCount,
+    license,
+  } = libs[0];
+  const seoFriendlyName = getSeoFriendlyLibName(name);
+  const descrCut = description.slice(0, 57);
+  const seoDescrIntro = descrCut
+    .toLowerCase()
+    .startsWith(seoFriendlyName.toLowerCase())
+    ? descrCut
+    : `${seoFriendlyName}. ${descrCut}`;
 
-    return `${seoFriendlyName}. ${descrCut}... Stars: ${starsCount}. Age: ${age}. Vulnerabilities: ${vulnerabilitiesCount}. Dependencies: ${dependenciesCount}. License: ${license}`;
-  }
+  const words = seoDescrIntro.split(' ');
+  const seoDescrIntroCut =
+    words.length <= 7 ? seoDescrIntro : words.slice(0, 7).join(' ');
 
-  return 'Javascript libraries and frameworks comparison side by side. Visual with charts and graphs. Multiple metrics. Data from Github, NPM, Google Trends, ThoughtWorks Tech Radar, etc.';
+  return `${seoDescrIntroCut}... &#9733;${starsCount} stars; ${age} old; ${vulnerabilitiesCount} vulnerabilities; ${dependenciesCount} dependencies; license: ${license}...`;
 }
