@@ -159,5 +159,9 @@ function getMetaDescription(libs: LibForDescriptionT[]): string {
     ? descrCut
     : `${seoFriendlyName}. ${descrCut}`;
 
-  return `${seoDescrIntro}... &#9733;${starsCount} stars; ${age} old; ${vulnerabilitiesCount} vulnerabilities; ${dependenciesCount} dependencies; license: ${license}...`;
+  const words = seoDescrIntro.split(' ');
+  const seoDescrIntroCut =
+    words.length <= 7 ? seoDescrIntro : words.slice(0, 7).join(' ');
+
+  return `${seoDescrIntroCut}... &#9733;${starsCount} stars; ${age} old; ${vulnerabilitiesCount} vulnerabilities; ${dependenciesCount} dependencies; license: ${license}...`;
 }
