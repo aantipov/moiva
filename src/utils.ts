@@ -62,6 +62,10 @@ export function loadDefaultLibs(): Promise<LibraryT[]> {
 }
 
 export function constructHref(libs: string[]): string {
+  if (!libs.length) {
+    return '/';
+  }
+
   return `/?${paramName}=${libs.sort().join(encodedDelimiter)}`;
 }
 
