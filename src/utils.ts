@@ -118,3 +118,45 @@ function getSeoFriendlyLibName(libName: string): string {
 
   return libName;
 }
+
+interface LibForDescriptionT {
+  name: string;
+  description: string;
+  starsCount: string;
+  age: string;
+  vulnerabilitiesCount: number;
+  dependenciesCount: number;
+  license: string;
+}
+
+export function updateMetaDescription(libs: LibForDescriptionT[]): void {
+  const descr = getMetaDescription(libs);
+
+  (document.querySelector(
+    'meta[name="Description"]'
+  ) as HTMLElement).setAttribute('content', descr);
+}
+
+function getMetaDescription(libs: LibForDescriptionT[]): string {
+  if (!libs.length) {
+    return '';
+  }
+
+  if (libs.length === 1) {
+    const {
+      name,
+      description,
+      starsCount,
+      age,
+      vulnerabilitiesCount,
+      dependenciesCount,
+      license,
+    } = libs[0];
+    const seoFriendlyName = getSeoFriendlyLibName(name);
+    const descrCut = description.slice(0, 57);
+
+    return `${seoFriendlyName}. ${descrCut}... Stars: ${starsCount}. Age: ${age}. Vulnerabilities: ${vulnerabilitiesCount}. Dependencies: ${dependenciesCount}. License: ${license}`;
+  }
+
+  return 'Javascript libraries and frameworks comparison side by side. Visual with charts and graphs. Multiple metrics. Data from Github, NPM, Google Trends, ThoughtWorks Tech Radar, etc.';
+}
