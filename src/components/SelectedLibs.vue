@@ -105,19 +105,24 @@
           <GithubIcon />
         </a>
 
-        <m-close @click="$emit('deselect', lib.name)" />
+        <a
+          :href="getRemainedLibsLink(lib.name)"
+          @click.prevent="$emit('deselect', lib.name)"
+        >
+          <m-close />
+        </a>
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs } from 'vue';
+import { defineComponent, toRefs, computed } from 'vue';
 import GithubIcon from './icons/Github.vue';
 import Loader from './Loader.vue';
 import NpmIcon from './icons/Npm.vue';
 import { LibraryT, RepoT } from '../apis';
-import { numbersFormatter } from '../utils';
+import { numbersFormatter, constructHref } from '../utils';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 
 export default defineComponent({
@@ -155,7 +160,8 @@ export default defineComponent({
   },
 
   setup(props) {
-    const { githubRepos } = toRefs(props);
+    const { githubRepos, libs } = toRefs(props);
+    const libNames = computed(() => libs.value.map((lib) => lib.name));
 
     return {
       getNpmLink(libName: string): string {
@@ -168,6 +174,11 @@ export default defineComponent({
         const date = githubRepos.value[libIndex].createdAt;
 
         return formatDistanceToNowStrict(new Date(date));
+      },
+      getRemainedLibsLink(deletedLibName: string): string {
+        return constructHref(
+          libNames.value.filter((libName) => libName !== deletedLibName)
+        );
       },
     };
   },
