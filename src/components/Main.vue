@@ -80,7 +80,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, computed } from 'vue';
+import { defineComponent, onMounted, ref, computed, watch } from 'vue';
 import Npm from './Npm.vue';
 import NpmVersions from './NpmVersions.vue';
 import Autosuggest from './Autosuggest.vue';
@@ -93,7 +93,14 @@ import SelectedLibs from './SelectedLibs.vue';
 import Loader from './Loader.vue';
 import Languages from './Languages.vue';
 import { LibraryT, SuggestionT, fetchNpmPackage } from '../apis';
-import { loadDefaultLibs, updateUrl } from '../utils';
+import {
+  loadDefaultLibs,
+  updateUrl,
+  updateTitle,
+  updateMetaDescription,
+  numbersFormatter,
+} from '../utils';
+import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import { getLibToColorMap } from '../colors';
 import useGithub from '@/composables/useGithub';
 
@@ -131,6 +138,34 @@ export default defineComponent({
       });
     });
 
+    // Update url and title
+    watch([selectedLibs], () => {
+      updateUrl(librariesNames.value);
+      updateTitle();
+    });
+
+    // Update meta description
+    watch([gh.isLoading, gh.repositories, gh.isError], () => {
+      const repos = gh.repositories.value;
+
+      if (gh.isLoading.value || gh.isError.value) {
+        updateMetaDescription([]);
+        return;
+      }
+
+      const data = selectedLibs.value.map((lib, index) => ({
+        name: lib.name,
+        description: lib.description,
+        starsCount: numbersFormatter.format(repos[index].stars),
+        age: formatDistanceToNowStrict(new Date(repos[index].createdAt)),
+        vulnerabilitiesCount: repos[index].vulnerabilitiesCount,
+        dependenciesCount: lib.dependencies.length,
+        license: lib.license,
+      }));
+
+      updateMetaDescription(data);
+    });
+
     return {
       selectedLibs,
       librariesNames,
@@ -143,7 +178,6 @@ export default defineComponent({
         selectedLibs.value = selectedLibs.value.filter(
           (lib) => lib.name !== libName
         );
-        updateUrl(librariesNames.value);
       },
       select(lib: SuggestionT): void {
         if (librariesNames.value.includes(lib.name)) {
@@ -156,8 +190,6 @@ export default defineComponent({
           isLoadingLibsData.value = false;
           selectedLibs.value = [...selectedLibs.value, npmPackage as LibraryT];
         });
-
-        updateUrl([...librariesNames.value, lib.name]);
       },
     };
   },

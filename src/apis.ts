@@ -50,6 +50,7 @@ export interface RepoT {
 export interface LibraryT {
   name: string;
   description: string;
+  license: string;
   repo: string;
   version: string;
   dependencies: string[];
@@ -83,6 +84,7 @@ interface NpmsIOPackageResponseT {
     metadata: {
       name: string;
       description: string;
+      license: string;
       version: string;
       links: { repository: string };
     };
@@ -308,6 +310,7 @@ function fetchNpmsIOPackage(packageName: string): Promise<LibraryT | null> {
             name,
             description,
             version,
+            license,
             links: { repository },
           },
         },
@@ -318,6 +321,7 @@ function fetchNpmsIOPackage(packageName: string): Promise<LibraryT | null> {
         description,
         dependencies: [],
         version,
+        license,
         repo: repository,
       };
     });
