@@ -81,7 +81,7 @@ export function updateTitle(): void {
 
 function getTitle(libsNames: string[]): string {
   if (!libsNames.length) {
-    return '';
+    return 'Javascript libraries and frameworks comparison side by side. Visual with charts and graphs. Multiple metrics. Data from Github, NPM, Google Trends, ThoughtWorks Tech Radar, etc.';
   }
 
   const seoFriendlyNames = libsNames.map(getSeoFriendlyLibName);
