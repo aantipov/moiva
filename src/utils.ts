@@ -73,43 +73,48 @@ export const numbersFormatter = new Intl.NumberFormat('en-US', {
 /**
  * Make document title SEO friendly
  */
-export function updateTitle(): string | void {
+export function updateTitle(): void {
   const Url = new URL(window.location.href);
   const libs = Url.searchParams.get(paramName)?.split(delimiter) || [];
-  const seoFriendlyLibs = libs.map((libName) => {
-    if (libName === '@angular/core') {
-      return 'Angular';
-    }
+  window.document.title = getTitle(libs);
+}
 
-    if (libName === '@nestjs/core') {
-      return 'NestJS';
-    }
-
-    // Capitalise normal names
-    if (
-      libName.length > 2 &&
-      !libName.includes('@') &&
-      !libName.includes('/') &&
-      !libName.includes('-')
-    ) {
-      return libName.charAt(0).toUpperCase() + libName.slice(1);
-    }
-
-    return libName;
-  });
-
-  if (!seoFriendlyLibs.length) {
-    return;
+function getTitle(libsNames: string[]): string {
+  if (!libsNames.length) {
+    return '';
   }
 
-  if (seoFriendlyLibs.length === 1) {
-    window.document.title = `${seoFriendlyLibs[0]} infographics from NPM, GitHub, Google trends - Moiva.io`;
-    return;
+  const seoFriendlyNames = libsNames.map(getSeoFriendlyLibName);
+
+  if (seoFriendlyNames.length === 1) {
+    return `${seoFriendlyNames[0]}: stats and trends from NPM, GitHub, Google trends - Moiva.io`;
   }
 
   // Commare separated string with 'and' as a last separator
-  const lastLib = seoFriendlyLibs.slice(-1)[0];
-  const libsStr = `${seoFriendlyLibs.slice(0, -1).join(', ')} and ${lastLib}`;
+  const lastLib = seoFriendlyNames.slice(-1)[0];
+  const libsStr = `${seoFriendlyNames.slice(0, -1).join(', ')} and ${lastLib}`;
 
-  window.document.title = `Compare ${libsStr} - Moiva.io`;
+  return `Compare ${libsStr} - Moiva.io`;
+}
+
+function getSeoFriendlyLibName(libName: string): string {
+  if (libName === '@angular/core') {
+    return 'Angular';
+  }
+
+  if (libName === '@nestjs/core') {
+    return 'NestJS';
+  }
+
+  // Capitalise normal names
+  if (
+    libName.length > 2 &&
+    !libName.includes('@') &&
+    !libName.includes('/') &&
+    !libName.includes('-')
+  ) {
+    return libName.charAt(0).toUpperCase() + libName.slice(1);
+  }
+
+  return libName;
 }
