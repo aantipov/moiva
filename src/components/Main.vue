@@ -104,7 +104,7 @@ import Popular from './Popular.vue';
 import SelectedLibs from './SelectedLibs.vue';
 import Loader from './Loader.vue';
 import Languages from './Languages.vue';
-import { LibraryT, SuggestionT, fetchNpmPackage } from '../apis';
+import { LibraryT, fetchNpmPackage } from '../apis';
 import {
   loadDefaultLibs,
   updateUrl,
@@ -136,6 +136,7 @@ export default defineComponent({
 
   setup() {
     const selectedLibs = ref<LibraryT[]>([]);
+    const loadingLibs = ref<string[]>([]); // Track libs currently being loading
     const isLoadingLibsData = ref(true);
     const librariesNames = computed<string[]>(() =>
       selectedLibs.value.map((lib) => lib.name)
@@ -198,16 +199,30 @@ export default defineComponent({
         );
       },
       select(libName: string): void {
-        if (librariesNames.value.includes(libName)) {
+        if (
+          !libName ||
+          librariesNames.value.includes(libName) ||
+          loadingLibs.value.includes(libName)
+        ) {
           return;
         }
 
         isLoadingLibsData.value = true;
+        loadingLibs.value = [...loadingLibs.value, libName];
 
-        fetchNpmPackage(libName).then((npmPackage): void => {
-          isLoadingLibsData.value = false;
-          selectedLibs.value = [...selectedLibs.value, npmPackage as LibraryT];
-        });
+        fetchNpmPackage(libName)
+          .then((npmPackage): void => {
+            selectedLibs.value = [
+              ...selectedLibs.value,
+              npmPackage as LibraryT,
+            ];
+          })
+          .finally(() => {
+            isLoadingLibsData.value = false;
+            loadingLibs.value = loadingLibs.value.filter(
+              (val) => libName !== val
+            );
+          });
       },
       getHrefForAdditionalLib(lib: string): string {
         return constructHref([...librariesNames.value, lib]);

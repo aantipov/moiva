@@ -1,8 +1,5 @@
 import { LibraryT, fetchNpmPackage } from './apis';
-import librariesList, {
-  libsDataByName,
-  libsNamesByCategory,
-} from './libraries-list';
+import { libsDataByName, libsNamesByCategory } from './libraries-list';
 
 const paramName = 'compare';
 const oldParamName = 'apps';
