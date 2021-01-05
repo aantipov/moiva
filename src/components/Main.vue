@@ -1,10 +1,6 @@
 <template>
   <div>
-    <Autosuggest
-      class="w-full mx-auto lg:w-9/12 xl:w-2/4"
-      :is-loading="isLoadingLibsData"
-      @select="select"
-    />
+    <Autosuggest class="w-full mx-auto lg:w-9/12 xl:w-2/4" @select="select" />
 
     <!--  Suggestions    -->
     <div class="w-full px-3 mx-auto lg:w-9/12 xl:w-2/4">
@@ -19,7 +15,7 @@
     </div>
 
     <div v-if="!selectedLibs.length">
-      <Popular v-if="!isLoadingLibsData" />
+      <Popular v-if="!isLoadingLibsData" @select="selectMultiple" />
 
       <div
         v-else
@@ -221,6 +217,26 @@ export default defineComponent({
             isLoadingLibsData.value = false;
             loadingLibs.value = loadingLibs.value.filter(
               (val) => libName !== val
+            );
+          });
+      },
+      selectMultiple(libNames: string[]): void {
+        // Assumption - it's called from the Start Page
+        // when there is no selected libraries yes
+        isLoadingLibsData.value = true;
+        loadingLibs.value = [...libNames];
+
+        Promise.all(libNames.map(fetchNpmPackage))
+          .then((npmPackages): void => {
+            selectedLibs.value = [
+              ...selectedLibs.value,
+              ...(npmPackages as LibraryT[]),
+            ];
+          })
+          .finally(() => {
+            isLoadingLibsData.value = false;
+            loadingLibs.value = loadingLibs.value.filter(
+              (val) => !libNames.includes(val)
             );
           });
       },

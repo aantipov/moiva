@@ -5,7 +5,11 @@
     </h2>
 
     <div v-for="item in items" :key="item.url" class="mb-2">
-      <a class="text-lg" :href="makeHref(item.libs)">{{ item.name }}</a
+      <a
+        class="text-lg"
+        :href="makeHref(item.libs)"
+        @click.prevent="$emit('select', item.libs)"
+        >{{ item.name }}</a
       >:
       {{ ' ' }}
       <span class="text-base text-gray-800 sm:text-lg">{{ item.libsStr }}</span>
@@ -19,6 +23,7 @@ import { constructHref } from '@/utils';
 
 export default defineComponent({
   name: 'Popular',
+  emits: ['select'],
   setup() {
     return {
       makeHref(libs: string[]): string {
