@@ -67,7 +67,7 @@ export function constructHref(libs: string[]): string {
     return '/';
   }
 
-  return `/?${paramName}=${libs.sort().join(encodedDelimiter)}`;
+  return `/?${paramName}=${[...libs].sort().join(encodedDelimiter)}`;
 }
 
 export const numbersFormatter = new Intl.NumberFormat('en-US', {
