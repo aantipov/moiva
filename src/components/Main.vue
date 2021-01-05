@@ -3,8 +3,20 @@
     <Autosuggest
       class="w-full mx-auto lg:w-9/12 xl:w-2/4"
       :is-loading="isLoadingLibsData"
-      @select="select"
+      @select="select($event.name)"
     />
+
+    <!--  Suggestions    -->
+    <div class="w-full px-3 mx-auto lg:w-9/12 xl:w-2/4">
+      <a
+        v-for="sugestedLib in suggestions"
+        :key="sugestedLib"
+        class="inline-block mt-2 mr-3 text-base text-gray-500 no-underline hover:text-gray-700"
+        :href="getHrefForAdditionalLib(sugestedLib)"
+        @click.prevent="select(sugestedLib)"
+        >+ {{ sugestedLib }}</a
+      >
+    </div>
 
     <div v-if="!selectedLibs.length">
       <Popular v-if="!isLoadingLibsData" />
@@ -99,6 +111,8 @@ import {
   updateTitle,
   updateMetaDescription,
   numbersFormatter,
+  getSuggestions,
+  constructHref,
 } from '../utils';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import { getLibToColorMap } from '../colors';
@@ -126,6 +140,9 @@ export default defineComponent({
     const librariesNames = computed<string[]>(() =>
       selectedLibs.value.map((lib) => lib.name)
     );
+    const suggestions = computed<string[]>(() =>
+      getSuggestions(librariesNames.value)
+    );
     const libToColorMap = computed<Record<string, string>>(() =>
       getLibToColorMap(librariesNames.value)
     );
@@ -142,6 +159,7 @@ export default defineComponent({
     watch([selectedLibs], () => {
       updateUrl(librariesNames.value);
       updateTitle();
+      console.log('Suggestions', suggestions.value);
     });
 
     // Update meta description
@@ -169,6 +187,7 @@ export default defineComponent({
     return {
       selectedLibs,
       librariesNames,
+      suggestions,
       isLoadingLibsData,
       libToColorMap,
       githubIsError: gh.isError,
@@ -179,17 +198,20 @@ export default defineComponent({
           (lib) => lib.name !== libName
         );
       },
-      select(lib: SuggestionT): void {
-        if (librariesNames.value.includes(lib.name)) {
+      select(libName: string): void {
+        if (librariesNames.value.includes(libName)) {
           return;
         }
 
         isLoadingLibsData.value = true;
 
-        fetchNpmPackage(lib.name).then((npmPackage): void => {
+        fetchNpmPackage(libName).then((npmPackage): void => {
           isLoadingLibsData.value = false;
           selectedLibs.value = [...selectedLibs.value, npmPackage as LibraryT];
         });
+      },
+      getHrefForAdditionalLib(lib: string): string {
+        return constructHref([...librariesNames.value, lib]);
       },
     };
   },

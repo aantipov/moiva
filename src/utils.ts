@@ -1,4 +1,8 @@
 import { LibraryT, fetchNpmPackage } from './apis';
+import librariesList, {
+  libsDataByName,
+  libsNamesByCategory,
+} from './libraries-list';
 
 const paramName = 'compare';
 const oldParamName = 'apps';
@@ -168,4 +172,32 @@ function getMetaDescription(libs: LibForDescriptionT[]): string {
     words.length <= 7 ? seoDescrIntro : words.slice(0, 7).join(' ');
 
   return `${seoDescrIntroCut}... &#9733;${starsCount} stars; ${age} old; ${vulnerabilitiesCount} vulnerabilities; ${dependenciesCount} dependencies; license: ${license}...`;
+}
+
+/**
+ * Get suggestions for the selected libs
+ * based on the last selected lib
+ *
+ */
+export function getSuggestions(libsNames: string[]): string[] {
+  if (!libsNames.length) {
+    return [];
+  }
+
+  // We should not display any suggestions if the number of selected libraries is >=5
+  // So that Google Search doesn't discover long urls and display them in search results
+  if (libsNames.length >= 5) {
+    return [];
+  }
+
+  // @ts-ignore
+  const lastSelectedLibData = libsDataByName[libsNames[libsNames.length - 1]];
+
+  if (!lastSelectedLibData || lastSelectedLibData.category === 'Other') {
+    return [];
+  }
+
+  return libsNamesByCategory[lastSelectedLibData.category]
+    .filter((libName) => !libsNames.includes(libName))
+    .slice(0, 6);
 }
