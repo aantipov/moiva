@@ -6,6 +6,18 @@
       @select="select"
     />
 
+    <!--  Suggestions    -->
+    <div class="w-full px-3 mx-auto lg:w-9/12 xl:w-2/4">
+      <a
+        v-for="sugestedLib in suggestions"
+        :key="sugestedLib"
+        class="inline-block mt-2 mr-3 text-base text-gray-500 no-underline hover:text-gray-700"
+        :href="getHrefForAdditionalLib(sugestedLib)"
+        @click.prevent="select(sugestedLib)"
+        >+ {{ sugestedLib }}</a
+      >
+    </div>
+
     <div v-if="!selectedLibs.length">
       <Popular v-if="!isLoadingLibsData" />
 
@@ -92,13 +104,15 @@ import Popular from './Popular.vue';
 import SelectedLibs from './SelectedLibs.vue';
 import Loader from './Loader.vue';
 import Languages from './Languages.vue';
-import { LibraryT, SuggestionT, fetchNpmPackage } from '../apis';
+import { LibraryT, fetchNpmPackage } from '../apis';
 import {
   loadDefaultLibs,
   updateUrl,
   updateTitle,
   updateMetaDescription,
   numbersFormatter,
+  getSuggestions,
+  constructHref,
 } from '../utils';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import { getLibToColorMap } from '../colors';
@@ -122,9 +136,13 @@ export default defineComponent({
 
   setup() {
     const selectedLibs = ref<LibraryT[]>([]);
+    const loadingLibs = ref<string[]>([]); // Track libs currently being loading
     const isLoadingLibsData = ref(true);
     const librariesNames = computed<string[]>(() =>
       selectedLibs.value.map((lib) => lib.name)
+    );
+    const suggestions = computed<string[]>(() =>
+      getSuggestions(librariesNames.value)
     );
     const libToColorMap = computed<Record<string, string>>(() =>
       getLibToColorMap(librariesNames.value)
@@ -169,6 +187,7 @@ export default defineComponent({
     return {
       selectedLibs,
       librariesNames,
+      suggestions,
       isLoadingLibsData,
       libToColorMap,
       githubIsError: gh.isError,
@@ -179,17 +198,34 @@ export default defineComponent({
           (lib) => lib.name !== libName
         );
       },
-      select(lib: SuggestionT): void {
-        if (librariesNames.value.includes(lib.name)) {
+      select(libName: string): void {
+        if (
+          !libName ||
+          librariesNames.value.includes(libName) ||
+          loadingLibs.value.includes(libName)
+        ) {
           return;
         }
 
         isLoadingLibsData.value = true;
+        loadingLibs.value = [...loadingLibs.value, libName];
 
-        fetchNpmPackage(lib.name).then((npmPackage): void => {
-          isLoadingLibsData.value = false;
-          selectedLibs.value = [...selectedLibs.value, npmPackage as LibraryT];
-        });
+        fetchNpmPackage(libName)
+          .then((npmPackage): void => {
+            selectedLibs.value = [
+              ...selectedLibs.value,
+              npmPackage as LibraryT,
+            ];
+          })
+          .finally(() => {
+            isLoadingLibsData.value = false;
+            loadingLibs.value = loadingLibs.value.filter(
+              (val) => libName !== val
+            );
+          });
+      },
+      getHrefForAdditionalLib(lib: string): string {
+        return constructHref([...librariesNames.value, lib]);
       },
     };
   },

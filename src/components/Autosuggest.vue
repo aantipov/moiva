@@ -48,7 +48,7 @@ export default defineComponent({
         },
 
         onSelect: (item: SuggestionT) => {
-          emit('select', item);
+          emit('select', item.name);
           (document.getElementById('npm-input') as HTMLInputElement).value = '';
         },
 
