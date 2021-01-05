@@ -159,7 +159,6 @@ export default defineComponent({
     watch([selectedLibs], () => {
       updateUrl(librariesNames.value);
       updateTitle();
-      console.log('Suggestions', suggestions.value);
     });
 
     // Update meta description

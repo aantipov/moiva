@@ -190,7 +190,6 @@ export function getSuggestions(libsNames: string[]): string[] {
     return [];
   }
 
-  // @ts-ignore
   const lastSelectedLibData = libsDataByName[libsNames[libsNames.length - 1]];
 
   if (!lastSelectedLibData || lastSelectedLibData.category === 'Other') {
