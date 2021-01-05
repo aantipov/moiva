@@ -3,7 +3,7 @@
     <Autosuggest
       class="w-full mx-auto lg:w-9/12 xl:w-2/4"
       :is-loading="isLoadingLibsData"
-      @select="select($event.name)"
+      @select="select"
     />
 
     <!--  Suggestions    -->
