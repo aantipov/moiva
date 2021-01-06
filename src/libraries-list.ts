@@ -9,6 +9,7 @@ type CategoryT =
   | 'NodeFramework'
   | 'NodeLogging'
   | 'CSSFrameworks'
+  | 'VueComponents'
   | 'Other';
 type FrameworkT = 'React' | 'Vue';
 interface LibDataT {
@@ -125,6 +126,17 @@ const libraries: [string, LibDataT][] = [
   ['amcharts3', { category: 'Chart', framework: null }],
   ['peity', { category: 'Chart', framework: null }],
 
+  // State Management
+
+  // Vue component libraries
+  ['vuetify', { category: 'VueComponents', framework: null }],
+  ['quasar', { category: 'VueComponents', framework: null }],
+  ['bootstrap-vue', { category: 'VueComponents', framework: null }],
+  ['primevue', { category: 'VueComponents', framework: null }],
+  ['vue-material', { category: 'VueComponents', framework: null }],
+
+  // React component libraries
+
   ['@cucumber/cucumber', { category: 'Other', framework: null }],
   ['@emotion/css', { category: 'Other', framework: null }],
   ['@material-ui/core', { category: 'Other', framework: null }],
@@ -172,9 +184,7 @@ const libraries: [string, LibDataT][] = [
   ['prettier', { category: 'Other', framework: null }],
   ['prop-types', { category: 'Other', framework: null }],
   ['pm2', { category: 'Other', framework: null }],
-  ['primevue', { category: 'Other', framework: null }],
   ['protractor', { category: 'Other', framework: null }],
-  ['quasar', { category: 'Other', framework: null }],
   ['radium', { category: 'Other', framework: null }],
   ['react-autosuggest', { category: 'Other', framework: null }],
   ['react-bootstrap', { category: 'Other', framework: null }],
@@ -202,9 +212,7 @@ const libraries: [string, LibDataT][] = [
   ['universal-router', { category: 'Other', framework: null }],
   ['uuid', { category: 'Other', framework: null }],
   ['victory', { category: 'Other', framework: null }],
-  ['vuetify', { category: 'Other', framework: null }],
   ['vuex', { category: 'Other', framework: null }],
-  ['vue-material', { category: 'Other', framework: null }],
   ['webpack', { category: 'Other', framework: null }],
   ['yargs', { category: 'Other', framework: null }],
 ];

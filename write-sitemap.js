@@ -22,6 +22,7 @@ const urls = [
   ['bluebird'],
   ['blueimp-tmpl'],
   ['bootstrap'],
+  ['bootstrap-vue'],
   ['browserify'],
   ['bulma'],
   ['bunyan'],
@@ -103,6 +104,7 @@ const urls = [
   ['pm2'],
   ['playwright'],
   ['plotly.js'],
+  ['primevue'],
   ['pug'],
   ['puppeteer'],
 
@@ -151,6 +153,7 @@ const urls = [
   ['vue'],
   ['vuetify'],
   ['vuex'],
+  ['vue-material'],
   ['xtemplate'],
   ['webdriverio'],
   ['webpack'],
