@@ -4,6 +4,7 @@ type CategoryT =
   | 'Date'
   | 'Utilities'
   | 'e2e'
+  | 'Sockets'
   | 'Other';
 type FrameworkT = 'React' | 'Vue';
 interface LibDataT {
@@ -73,6 +74,10 @@ const libraries: [string, LibDataT][] = [
   ['casperjs', { category: 'e2e', framework: null }],
   ['slimerjs', { category: 'e2e', framework: null }],
   ['zombie', { category: 'e2e', framework: null }],
+
+  // Web Sockets
+  ['socket.io', { category: 'Sockets', framework: null }],
+  ['ws', { category: 'Sockets', framework: null }],
 
   ['@cucumber/cucumber', { category: 'Other', framework: null }],
   ['@emotion/css', { category: 'Other', framework: null }],
@@ -161,7 +166,6 @@ const libraries: [string, LibDataT][] = [
   ['semantic-ui', { category: 'Other', framework: null }],
   ['sanctuary', { category: 'Other', framework: null }],
   ['sass', { category: 'Other', framework: null }],
-  ['socket.io', { category: 'Other', framework: null }],
   ['superagent', { category: 'Other', framework: null }],
   ['select2', { category: 'Other', framework: null }],
   ['styled-jsx', { category: 'Other', framework: null }],
@@ -176,7 +180,6 @@ const libraries: [string, LibDataT][] = [
   ['vue-material', { category: 'Other', framework: null }],
   ['webpack', { category: 'Other', framework: null }],
   ['winston', { category: 'Other', framework: null }],
-  ['ws', { category: 'Other', framework: null }],
   ['yargs', { category: 'Other', framework: null }],
 ];
 
