@@ -72,6 +72,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?compare=@feathersjs/feathers</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?compare=@hapi/hapi</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -93,6 +98,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?compare=@hapi/hapi+koa</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=@loopback/core</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -847,6 +857,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?compare=loopback</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?compare=luxon</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -1237,6 +1252,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?compare=restify</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?compare=riot</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -1253,6 +1273,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?compare=rxjs</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=sails</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>weekly</changefreq>
   </url>

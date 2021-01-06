@@ -5,6 +5,7 @@ type CategoryT =
   | 'Utilities'
   | 'e2e'
   | 'Sockets'
+  | 'NodeFramework'
   | 'Other';
 type FrameworkT = 'React' | 'Vue';
 interface LibDataT {
@@ -79,11 +80,21 @@ const libraries: [string, LibDataT][] = [
   ['socket.io', { category: 'Sockets', framework: null }],
   ['ws', { category: 'Sockets', framework: null }],
 
+  // NodeJS Frameworks
+  ['express', { category: 'NodeFramework', framework: null }],
+  ['@nestjs/core', { category: 'NodeFramework', framework: null }],
+  ['koa', { category: 'NodeFramework', framework: null }],
+  ['fastify', { category: 'NodeFramework', framework: null }],
+  ['@hapi/hapi', { category: 'NodeFramework', framework: null }],
+  ['sails', { category: 'NodeFramework', framework: null }],
+  ['restify', { category: 'NodeFramework', framework: null }],
+  ['@feathersjs/feathers', { category: 'NodeFramework', framework: null }],
+  ['loopback', { category: 'NodeFramework', framework: null }],
+  ['@loopback/core', { category: 'NodeFramework', framework: null }],
+
   ['@cucumber/cucumber', { category: 'Other', framework: null }],
   ['@emotion/css', { category: 'Other', framework: null }],
-  ['@hapi/hapi', { category: 'Other', framework: null }],
   ['@material-ui/core', { category: 'Other', framework: null }],
-  ['@nestjs/core', { category: 'Other', framework: null }],
   ['@nivo/core', { category: 'Other', framework: null }],
   ['@parcel/core', { category: 'Other', framework: null }],
   ['antd', { category: 'Other', framework: null }],
@@ -107,8 +118,6 @@ const libraries: [string, LibDataT][] = [
   ['debug', { category: 'Other', framework: null }],
   ['downshift', { category: 'Other', framework: null }],
   ['eslint', { category: 'Other', framework: null }],
-  ['express', { category: 'Other', framework: null }],
-  ['fastify', { category: 'Other', framework: null }],
   ['forever', { category: 'Other', framework: null }],
   ['fp-ts', { category: 'Other', framework: null }],
   ['gatsby', { category: 'Other', framework: null }],
@@ -124,7 +133,6 @@ const libraries: [string, LibDataT][] = [
   ['js-beautify', { category: 'Other', framework: null }],
   ['jss', { category: 'Other', framework: null }],
   ['karma', { category: 'Other', framework: null }],
-  ['koa', { category: 'Other', framework: null }],
   ['less', { category: 'Other', framework: null }],
   ['log4js', { category: 'Other', framework: null }],
   ['mkdirp', { category: 'Other', framework: null }],
@@ -160,7 +168,6 @@ const libraries: [string, LibDataT][] = [
   ['recharts', { category: 'Other', framework: null }],
   ['recoil', { category: 'Other', framework: null }],
   ['redux', { category: 'Other', framework: null }],
-  ['restify', { category: 'Other', framework: null }],
   ['rollup', { category: 'Other', framework: null }],
   ['rxjs', { category: 'Other', framework: null }],
   ['semantic-ui', { category: 'Other', framework: null }],
