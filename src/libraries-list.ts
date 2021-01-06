@@ -1,4 +1,10 @@
-type CategoryT = 'Framework' | 'Template' | 'Date' | 'Utilities' | 'Other';
+type CategoryT =
+  | 'Framework'
+  | 'Template'
+  | 'Date'
+  | 'Utilities'
+  | 'e2e'
+  | 'Other';
 type FrameworkT = 'React' | 'Vue';
 interface LibDataT {
   category: CategoryT;
@@ -53,6 +59,21 @@ const libraries: [string, LibDataT][] = [
   ['sugar', { category: 'Utilities', framework: null }],
   ['lazy.js', { category: 'Utilities', framework: null }],
 
+  // E2E testing
+  ['puppeteer', { category: 'e2e', framework: null }],
+  ['cypress', { category: 'e2e', framework: null }],
+  ['playwright', { category: 'e2e', framework: null }],
+  ['selenium-webdriver', { category: 'e2e', framework: null }],
+  ['webdriverio', { category: 'e2e', framework: null }],
+  ['testcafe', { category: 'e2e', framework: null }],
+  ['nightwatch', { category: 'e2e', framework: null }],
+  ['taiko', { category: 'e2e', framework: null }],
+
+  ['nightmare', { category: 'e2e', framework: null }],
+  ['casperjs', { category: 'e2e', framework: null }],
+  ['slimerjs', { category: 'e2e', framework: null }],
+  ['zombie', { category: 'e2e', framework: null }],
+
   ['@cucumber/cucumber', { category: 'Other', framework: null }],
   ['@emotion/css', { category: 'Other', framework: null }],
   ['@hapi/hapi', { category: 'Other', framework: null }],
@@ -77,7 +98,6 @@ const libraries: [string, LibDataT][] = [
   ['classnames', { category: 'Other', framework: null }],
   ['cheerio', { category: 'Other', framework: null }],
   ['core-js', { category: 'Other', framework: null }],
-  ['cypress', { category: 'Other', framework: null }],
   ['d3', { category: 'Other', framework: null }],
   ['debug', { category: 'Other', framework: null }],
   ['downshift', { category: 'Other', framework: null }],
@@ -108,7 +128,6 @@ const libraries: [string, LibDataT][] = [
   ['morgan', { category: 'Other', framework: null }],
   ['materialize-css', { category: 'Other', framework: null }],
   ['next', { category: 'Other', framework: null }],
-  ['nightwatch', { category: 'Other', framework: null }],
   ['node-fetch', { category: 'Other', framework: null }],
   ['nodemon', { category: 'Other', framework: null }],
   ['nuxt', { category: 'Other', framework: null }],
@@ -119,9 +138,7 @@ const libraries: [string, LibDataT][] = [
   ['pm2', { category: 'Other', framework: null }],
   ['plotly.js', { category: 'Other', framework: null }],
   ['primevue', { category: 'Other', framework: null }],
-  ['playwright', { category: 'Other', framework: null }],
   ['protractor', { category: 'Other', framework: null }],
-  ['puppeteer', { category: 'Other', framework: null }],
   ['quasar', { category: 'Other', framework: null }],
   ['radium', { category: 'Other', framework: null }],
   ['react-autosuggest', { category: 'Other', framework: null }],
@@ -147,11 +164,9 @@ const libraries: [string, LibDataT][] = [
   ['socket.io', { category: 'Other', framework: null }],
   ['superagent', { category: 'Other', framework: null }],
   ['select2', { category: 'Other', framework: null }],
-  ['selenium-webdriver', { category: 'Other', framework: null }],
   ['styled-jsx', { category: 'Other', framework: null }],
   ['styled-components', { category: 'Other', framework: null }],
   ['tailwindcss', { category: 'Other', framework: null }],
-  ['testcafe', { category: 'Other', framework: null }],
   ['tslint', { category: 'Other', framework: null }],
   ['universal-router', { category: 'Other', framework: null }],
   ['uuid', { category: 'Other', framework: null }],
@@ -159,7 +174,6 @@ const libraries: [string, LibDataT][] = [
   ['vuetify', { category: 'Other', framework: null }],
   ['vuex', { category: 'Other', framework: null }],
   ['vue-material', { category: 'Other', framework: null }],
-  ['webdriverio', { category: 'Other', framework: null }],
   ['webpack', { category: 'Other', framework: null }],
   ['winston', { category: 'Other', framework: null }],
   ['ws', { category: 'Other', framework: null }],

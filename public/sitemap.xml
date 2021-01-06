@@ -312,6 +312,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?compare=casperjs</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?compare=chai</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -937,6 +942,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?compare=nightmare</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?compare=nightwatch</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -978,6 +988,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?compare=pino+winston</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=playwright</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -1262,6 +1277,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?compare=slimerjs</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?compare=socket.io</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -1298,6 +1318,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?compare=svelte+vue</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=taiko</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -1393,6 +1418,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?compare=yargs</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=zombie</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>weekly</changefreq>
   </url>

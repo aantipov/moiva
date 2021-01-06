@@ -22,6 +22,7 @@ const urls = [
   ['bulma'],
   ['bunyan'],
 
+  ['casperjs'],
   ['chai'],
   ['chart.js'],
   ['commander'],
@@ -80,6 +81,7 @@ const urls = [
   ['mustache'],
 
   ['next'],
+  ['nightmare'],
   ['nightwatch'],
   ['next'],
   ['node-fetch'],
@@ -91,8 +93,10 @@ const urls = [
   ['prettier'],
   ['prop-types'],
   ['pm2'],
+  ['playwright'],
   ['plotly.js'],
   ['pug'],
+  ['puppeteer'],
 
   ['radium'],
   ['ramda'],
@@ -117,11 +121,14 @@ const urls = [
   ['semantic-ui'],
   ['sanctuary'],
   ['sass'],
+  ['selenium-webdriver'],
+  ['slimerjs'],
   ['socket.io'],
   ['svelte'],
   ['sugar'],
   ['superagent'],
 
+  ['taiko'],
   ['tailwindcss'],
   ['testcafe'],
   ['timeago.js'],
@@ -139,6 +146,7 @@ const urls = [
   ['winston'],
   ['ws'],
   ['yargs'],
+  ['zombie'],
 
   ['@angular/core', 'angular'],
   ['@angular/core', 'jquery', 'react'],
@@ -262,7 +270,6 @@ const urls = [
   ['pino', 'winston'],
   ['preact', 'react'],
   ['primevue', 'vuetify'],
-  ['puppeteer'],
 
   ['radium', 'styled-components'],
   ['ramda', 'rxjs'],
@@ -286,7 +293,6 @@ const urls = [
   ['redux', 'rxjs'],
   ['riot'],
   ['rollup', 'webpack'],
-  ['selenium-webdriver'],
   ['socket.io', 'ws'],
   ['styled-components', 'styled-jsx'],
   ['styled-components', 'tailwindcss'],
