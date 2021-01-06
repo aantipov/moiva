@@ -1,9 +1,17 @@
 type CategoryT =
+  | 'Chart'
   | 'Framework'
   | 'Template'
   | 'Date'
   | 'Utilities'
   | 'e2e'
+  | 'Sockets'
+  | 'NodeFramework'
+  | 'NodeLogging'
+  | 'CSSFrameworks'
+  | 'VueComponents'
+  | 'ReactComponents'
+  | 'State'
   | 'Other';
 type FrameworkT = 'React' | 'Vue';
 interface LibDataT {
@@ -74,42 +82,99 @@ const libraries: [string, LibDataT][] = [
   ['slimerjs', { category: 'e2e', framework: null }],
   ['zombie', { category: 'e2e', framework: null }],
 
+  // Web Sockets
+  ['socket.io', { category: 'Sockets', framework: null }],
+  ['ws', { category: 'Sockets', framework: null }],
+
+  // NodeJS Frameworks
+  ['express', { category: 'NodeFramework', framework: null }],
+  ['@nestjs/core', { category: 'NodeFramework', framework: null }],
+  ['koa', { category: 'NodeFramework', framework: null }],
+  ['fastify', { category: 'NodeFramework', framework: null }],
+  ['@hapi/hapi', { category: 'NodeFramework', framework: null }],
+  ['sails', { category: 'NodeFramework', framework: null }],
+  ['restify', { category: 'NodeFramework', framework: null }],
+  ['@feathersjs/feathers', { category: 'NodeFramework', framework: null }],
+  ['loopback', { category: 'NodeFramework', framework: null }],
+  ['@loopback/core', { category: 'NodeFramework', framework: null }],
+
+  // NodeJS Logging
+  ['log4js', { category: 'NodeLogging', framework: null }],
+  ['pino', { category: 'NodeLogging', framework: null }],
+  ['winston', { category: 'NodeLogging', framework: null }],
+  ['morgan', { category: 'NodeLogging', framework: null }],
+  ['loglevel', { category: 'NodeLogging', framework: null }],
+  ['bunyan', { category: 'NodeLogging', framework: null }],
+
+  // CSS Frameworks
+  ['bootstrap', { category: 'CSSFrameworks', framework: null }],
+  ['bulma', { category: 'CSSFrameworks', framework: null }],
+  ['tailwindcss', { category: 'CSSFrameworks', framework: null }],
+  ['tachyons', { category: 'CSSFrameworks', framework: null }],
+  ['materialize-css', { category: 'CSSFrameworks', framework: null }],
+
+  // Charts
+  ['chart.js', { category: 'Chart', framework: null }],
+  ['d3', { category: 'Chart', framework: null }],
+  ['plotly.js', { category: 'Chart', framework: null }],
+  ['highcharts', { category: 'Chart', framework: null }],
+  ['recharts', { category: 'Chart', framework: null }],
+  ['echarts', { category: 'Chart', framework: null }],
+  ['@amcharts/amcharts4', { category: 'Chart', framework: null }],
+  ['apexcharts', { category: 'Chart', framework: null }],
+
+  ['chartist', { category: 'Chart', framework: null }],
+  ['vis', { category: 'Chart', framework: null }],
+  ['nvd3', { category: 'Chart', framework: null }],
+  ['amcharts3', { category: 'Chart', framework: null }],
+  ['peity', { category: 'Chart', framework: null }],
+
+  // Vue component libraries
+  ['vuetify', { category: 'VueComponents', framework: null }],
+  ['quasar', { category: 'VueComponents', framework: null }],
+  ['bootstrap-vue', { category: 'VueComponents', framework: null }],
+  ['primevue', { category: 'VueComponents', framework: null }],
+  ['vue-material', { category: 'VueComponents', framework: null }],
+  ['element-ui', { category: 'VueComponents', framework: null }],
+
+  // React component libraries
+  ['@material-ui/core', { category: 'ReactComponents', framework: null }],
+  ['antd', { category: 'ReactComponents', framework: null }],
+  ['react-bootstrap', { category: 'ReactComponents', framework: null }],
+  ['semantic-ui', { category: 'ReactComponents', framework: null }],
+  ['@chakra-ui/react', { category: 'ReactComponents', framework: null }],
+  ['reactstrap', { category: 'ReactComponents', framework: null }],
+
+  // State Management
+  ['redux', { category: 'State', framework: null }],
+  ['mobx', { category: 'State', framework: null }],
+  ['rxjs', { category: 'State', framework: null }],
+  ['recoil', { category: 'State', framework: null }],
+  ['vuex', { category: 'State', framework: null }],
+
   ['@cucumber/cucumber', { category: 'Other', framework: null }],
   ['@emotion/css', { category: 'Other', framework: null }],
-  ['@hapi/hapi', { category: 'Other', framework: null }],
-  ['@material-ui/core', { category: 'Other', framework: null }],
-  ['@nestjs/core', { category: 'Other', framework: null }],
   ['@nivo/core', { category: 'Other', framework: null }],
   ['@parcel/core', { category: 'Other', framework: null }],
-  ['antd', { category: 'Other', framework: null }],
-  ['apexcharts', { category: 'Other', framework: null }],
   ['apisauce', { category: 'Other', framework: null }],
   ['async', { category: 'Other', framework: null }],
   ['axios', { category: 'Other', framework: null }],
-  ['bootstrap', { category: 'Other', framework: null }],
   ['bluebird', { category: 'Other', framework: null }],
   ['browserify', { category: 'Other', framework: null }],
   ['buefy', { category: 'Other', framework: null }],
-  ['bulma', { category: 'Other', framework: null }],
-  ['bunyan', { category: 'Other', framework: null }],
   ['chai', { category: 'Other', framework: null }],
-  ['chart.js', { category: 'Other', framework: null }],
   ['commander', { category: 'Other', framework: null }],
   ['classnames', { category: 'Other', framework: null }],
   ['cheerio', { category: 'Other', framework: null }],
   ['core-js', { category: 'Other', framework: null }],
-  ['d3', { category: 'Other', framework: null }],
   ['debug', { category: 'Other', framework: null }],
   ['downshift', { category: 'Other', framework: null }],
   ['eslint', { category: 'Other', framework: null }],
-  ['express', { category: 'Other', framework: null }],
-  ['fastify', { category: 'Other', framework: null }],
   ['forever', { category: 'Other', framework: null }],
   ['fp-ts', { category: 'Other', framework: null }],
   ['gatsby', { category: 'Other', framework: null }],
   ['grunt', { category: 'Other', framework: null }],
   ['gulp', { category: 'Other', framework: null }],
-  ['highcharts', { category: 'Other', framework: null }],
   ['immer', { category: 'Other', framework: null }],
   ['inquirer', { category: 'Other', framework: null }],
   ['jasmine', { category: 'Other', framework: null }],
@@ -119,30 +184,20 @@ const libraries: [string, LibDataT][] = [
   ['js-beautify', { category: 'Other', framework: null }],
   ['jss', { category: 'Other', framework: null }],
   ['karma', { category: 'Other', framework: null }],
-  ['koa', { category: 'Other', framework: null }],
   ['less', { category: 'Other', framework: null }],
-  ['log4js', { category: 'Other', framework: null }],
   ['mkdirp', { category: 'Other', framework: null }],
-  ['mobx', { category: 'Other', framework: null }],
   ['mocha', { category: 'Other', framework: null }],
-  ['morgan', { category: 'Other', framework: null }],
-  ['materialize-css', { category: 'Other', framework: null }],
   ['next', { category: 'Other', framework: null }],
   ['node-fetch', { category: 'Other', framework: null }],
   ['nodemon', { category: 'Other', framework: null }],
   ['nuxt', { category: 'Other', framework: null }],
   ['passport', { category: 'Other', framework: null }],
-  ['pino', { category: 'Other', framework: null }],
   ['prettier', { category: 'Other', framework: null }],
   ['prop-types', { category: 'Other', framework: null }],
   ['pm2', { category: 'Other', framework: null }],
-  ['plotly.js', { category: 'Other', framework: null }],
-  ['primevue', { category: 'Other', framework: null }],
   ['protractor', { category: 'Other', framework: null }],
-  ['quasar', { category: 'Other', framework: null }],
   ['radium', { category: 'Other', framework: null }],
   ['react-autosuggest', { category: 'Other', framework: null }],
-  ['react-bootstrap', { category: 'Other', framework: null }],
   ['react-chartjs-2', { category: 'Other', framework: null }],
   ['react-datepicker', { category: 'Other', framework: null }],
   ['react-date-picker', { category: 'Other', framework: null }],
@@ -151,32 +206,18 @@ const libraries: [string, LibDataT][] = [
   ['react-router', { category: 'Other', framework: null }],
   ['react-select', { category: 'Other', framework: null }],
   ['react-vis', { category: 'Other', framework: null }],
-  ['reactstrap', { category: 'Other', framework: null }],
-  ['recharts', { category: 'Other', framework: null }],
-  ['recoil', { category: 'Other', framework: null }],
-  ['redux', { category: 'Other', framework: null }],
-  ['restify', { category: 'Other', framework: null }],
   ['rollup', { category: 'Other', framework: null }],
-  ['rxjs', { category: 'Other', framework: null }],
-  ['semantic-ui', { category: 'Other', framework: null }],
   ['sanctuary', { category: 'Other', framework: null }],
   ['sass', { category: 'Other', framework: null }],
-  ['socket.io', { category: 'Other', framework: null }],
   ['superagent', { category: 'Other', framework: null }],
   ['select2', { category: 'Other', framework: null }],
   ['styled-jsx', { category: 'Other', framework: null }],
   ['styled-components', { category: 'Other', framework: null }],
-  ['tailwindcss', { category: 'Other', framework: null }],
   ['tslint', { category: 'Other', framework: null }],
   ['universal-router', { category: 'Other', framework: null }],
   ['uuid', { category: 'Other', framework: null }],
   ['victory', { category: 'Other', framework: null }],
-  ['vuetify', { category: 'Other', framework: null }],
-  ['vuex', { category: 'Other', framework: null }],
-  ['vue-material', { category: 'Other', framework: null }],
   ['webpack', { category: 'Other', framework: null }],
-  ['winston', { category: 'Other', framework: null }],
-  ['ws', { category: 'Other', framework: null }],
   ['yargs', { category: 'Other', framework: null }],
 ];
 

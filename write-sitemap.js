@@ -2,12 +2,17 @@
 fs = require('fs');
 
 const urls = [
+  ['@amcharts/amcharts4'],
   ['@angular/core'],
+  ['@chakra-ui/react'],
   ['@cucumber/cucumber'],
+  ['@feathersjs/feathers'],
   ['@hapi/hapi'],
+  ['@material-ui/core'],
   ['@nestjs/core'],
   ['@nivo/core'],
   ['@parcel/core'],
+  ['@loopback/core'],
 
   ['alpinejs'],
   ['antd'],
@@ -18,6 +23,8 @@ const urls = [
   ['backbone.marionette'],
   ['bluebird'],
   ['blueimp-tmpl'],
+  ['bootstrap'],
+  ['bootstrap-vue'],
   ['browserify'],
   ['bulma'],
   ['bunyan'],
@@ -25,6 +32,7 @@ const urls = [
   ['casperjs'],
   ['chai'],
   ['chart.js'],
+  ['chartist'],
   ['commander'],
   ['classnames'],
   ['cheerio'],
@@ -38,8 +46,10 @@ const urls = [
   ['dot'],
   ['downshift'],
   ['dustjs-linkedin'],
+  ['echarts'],
   ['ehtml'],
   ['ejs'],
+  ['element-ui'],
   ['ember-source'],
   ['eslint'],
   ['express'],
@@ -69,8 +79,11 @@ const urls = [
   ['less'],
   ['lodash'],
   ['log4js'],
+  ['loglevel'],
+  ['loopback'],
   ['luxon'],
   ['marko'],
+  ['materialize-css'],
   ['mkdirp'],
   ['mobx'],
   ['mocha'],
@@ -95,6 +108,7 @@ const urls = [
   ['pm2'],
   ['playwright'],
   ['plotly.js'],
+  ['primevue'],
   ['pug'],
   ['puppeteer'],
 
@@ -116,8 +130,10 @@ const urls = [
   ['recharts'],
   ['recoil'],
   ['redux'],
+  ['restify'],
   ['rollup'],
   ['rxjs'],
+  ['sails'],
   ['semantic-ui'],
   ['sanctuary'],
   ['sass'],
@@ -130,6 +146,7 @@ const urls = [
 
   ['taiko'],
   ['tailwindcss'],
+  ['tachyons'],
   ['testcafe'],
   ['timeago.js'],
   ['tslint'],
@@ -140,6 +157,7 @@ const urls = [
   ['vue'],
   ['vuetify'],
   ['vuex'],
+  ['vue-material'],
   ['xtemplate'],
   ['webdriverio'],
   ['webpack'],
@@ -306,7 +324,7 @@ const urlsStr = urls.sort().reduce((acc, url) => {
     acc +
     `  <url>
     <loc>https://moiva.io/?compare=${url.join('+')}</loc>
-    <lastmod>2021-01-02</lastmod>
+    <lastmod>2021-01-06</lastmod>
     <changefreq>weekly</changefreq>
   </url>
 `
