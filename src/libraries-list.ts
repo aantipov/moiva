@@ -1,4 +1,5 @@
 type CategoryT =
+  | 'Chart'
   | 'Framework'
   | 'Template'
   | 'Date'
@@ -108,6 +109,21 @@ const libraries: [string, LibDataT][] = [
   ['tailwindcss', { category: 'CSSFrameworks', framework: null }],
   ['tachyons', { category: 'CSSFrameworks', framework: null }],
 
+  // Charts
+  ['chart.js', { category: 'Chart', framework: null }],
+  ['d3', { category: 'Chart', framework: null }],
+  ['plotly.js', { category: 'Chart', framework: null }],
+  ['highcharts', { category: 'Chart', framework: null }],
+  ['recharts', { category: 'Chart', framework: null }],
+  ['echarts', { category: 'Chart', framework: null }],
+  ['@amcharts/amcharts4', { category: 'Chart', framework: null }],
+
+  ['chartist', { category: 'Chart', framework: null }],
+  ['vis', { category: 'Chart', framework: null }],
+  ['nvd3', { category: 'Chart', framework: null }],
+  ['amcharts3', { category: 'Chart', framework: null }],
+  ['peity', { category: 'Chart', framework: null }],
+
   ['@cucumber/cucumber', { category: 'Other', framework: null }],
   ['@emotion/css', { category: 'Other', framework: null }],
   ['@material-ui/core', { category: 'Other', framework: null }],
@@ -122,12 +138,10 @@ const libraries: [string, LibDataT][] = [
   ['browserify', { category: 'Other', framework: null }],
   ['buefy', { category: 'Other', framework: null }],
   ['chai', { category: 'Other', framework: null }],
-  ['chart.js', { category: 'Other', framework: null }],
   ['commander', { category: 'Other', framework: null }],
   ['classnames', { category: 'Other', framework: null }],
   ['cheerio', { category: 'Other', framework: null }],
   ['core-js', { category: 'Other', framework: null }],
-  ['d3', { category: 'Other', framework: null }],
   ['debug', { category: 'Other', framework: null }],
   ['downshift', { category: 'Other', framework: null }],
   ['eslint', { category: 'Other', framework: null }],
@@ -136,7 +150,6 @@ const libraries: [string, LibDataT][] = [
   ['gatsby', { category: 'Other', framework: null }],
   ['grunt', { category: 'Other', framework: null }],
   ['gulp', { category: 'Other', framework: null }],
-  ['highcharts', { category: 'Other', framework: null }],
   ['immer', { category: 'Other', framework: null }],
   ['inquirer', { category: 'Other', framework: null }],
   ['jasmine', { category: 'Other', framework: null }],
@@ -159,7 +172,6 @@ const libraries: [string, LibDataT][] = [
   ['prettier', { category: 'Other', framework: null }],
   ['prop-types', { category: 'Other', framework: null }],
   ['pm2', { category: 'Other', framework: null }],
-  ['plotly.js', { category: 'Other', framework: null }],
   ['primevue', { category: 'Other', framework: null }],
   ['protractor', { category: 'Other', framework: null }],
   ['quasar', { category: 'Other', framework: null }],
@@ -175,7 +187,6 @@ const libraries: [string, LibDataT][] = [
   ['react-select', { category: 'Other', framework: null }],
   ['react-vis', { category: 'Other', framework: null }],
   ['reactstrap', { category: 'Other', framework: null }],
-  ['recharts', { category: 'Other', framework: null }],
   ['recoil', { category: 'Other', framework: null }],
   ['redux', { category: 'Other', framework: null }],
   ['rollup', { category: 'Other', framework: null }],

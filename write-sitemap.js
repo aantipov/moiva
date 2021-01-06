@@ -2,6 +2,7 @@
 fs = require('fs');
 
 const urls = [
+  ['@amcharts/amcharts4'],
   ['@angular/core'],
   ['@cucumber/cucumber'],
   ['@feathersjs/feathers'],
@@ -28,6 +29,7 @@ const urls = [
   ['casperjs'],
   ['chai'],
   ['chart.js'],
+  ['chartist'],
   ['commander'],
   ['classnames'],
   ['cheerio'],
@@ -41,6 +43,7 @@ const urls = [
   ['dot'],
   ['downshift'],
   ['dustjs-linkedin'],
+  ['echarts'],
   ['ehtml'],
   ['ejs'],
   ['ember-source'],

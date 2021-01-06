@@ -52,6 +52,11 @@ export default defineComponent({
           libsStr: 'Lodash, Ramda, Underscore.js',
         },
         {
+          name: 'Charts',
+          libs: ['chart.js', 'd3', 'highcharts'],
+          libsStr: 'Chart.js, D3, Highcharts',
+        },
+        {
           name: 'End-to-end testing',
           libs: ['puppeteer', 'cypress', 'playwright', 'selenium-webdriver'],
           libsStr: 'Puppeteer, Cypress, Playwright, Selenium',
