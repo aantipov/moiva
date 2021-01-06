@@ -1,4 +1,4 @@
-type CategoryT = 'Framework' | 'Other';
+type CategoryT = 'Framework' | 'Template' | 'Other';
 type FrameworkT = 'React' | 'Vue';
 interface LibDataT {
   category: CategoryT;
@@ -20,6 +20,19 @@ const libraries: [string, LibDataT][] = [
   ['angular', { category: 'Framework', framework: null }],
   ['backbone.marionette', { category: 'Framework', framework: null }],
   ['knockout', { category: 'Framework', framework: null }],
+
+  // Templating Engines
+  ['ejs', { category: 'Template', framework: null }],
+  ['handlebars', { category: 'Template', framework: null }],
+  ['mustache', { category: 'Template', framework: null }],
+  ['pug', { category: 'Template', framework: null }],
+  ['nunjucks', { category: 'Template', framework: null }],
+  ['marko', { category: 'Template', framework: null }],
+  ['blueimp-tmpl', { category: 'Template', framework: null }],
+  ['dot', { category: 'Template', framework: null }],
+  ['xtemplate', { category: 'Template', framework: null }],
+  ['dustjs-linkedin', { category: 'Template', framework: null }],
+  ['ehtml', { category: 'Template', framework: null }],
 
   ['@cucumber/cucumber', { category: 'Other', framework: null }],
   ['@emotion/css', { category: 'Other', framework: null }],
@@ -51,7 +64,6 @@ const libraries: [string, LibDataT][] = [
   ['dayjs', { category: 'Other', framework: null }],
   ['debug', { category: 'Other', framework: null }],
   ['downshift', { category: 'Other', framework: null }],
-  ['ejs', { category: 'Other', framework: null }],
   ['eslint', { category: 'Other', framework: null }],
   ['express', { category: 'Other', framework: null }],
   ['fastify', { category: 'Other', framework: null }],
@@ -60,7 +72,6 @@ const libraries: [string, LibDataT][] = [
   ['gatsby', { category: 'Other', framework: null }],
   ['grunt', { category: 'Other', framework: null }],
   ['gulp', { category: 'Other', framework: null }],
-  ['handlebars', { category: 'Other', framework: null }],
   ['highcharts', { category: 'Other', framework: null }],
   ['immer', { category: 'Other', framework: null }],
   ['inquirer', { category: 'Other', framework: null }],
@@ -82,7 +93,6 @@ const libraries: [string, LibDataT][] = [
   ['moment', { category: 'Other', framework: null }],
   ['morgan', { category: 'Other', framework: null }],
   ['materialize-css', { category: 'Other', framework: null }],
-  ['mustache', { category: 'Other', framework: null }],
   ['next', { category: 'Other', framework: null }],
   ['nightwatch', { category: 'Other', framework: null }],
   ['node-fetch', { category: 'Other', framework: null }],
@@ -94,7 +104,6 @@ const libraries: [string, LibDataT][] = [
   ['prop-types', { category: 'Other', framework: null }],
   ['pm2', { category: 'Other', framework: null }],
   ['plotly.js', { category: 'Other', framework: null }],
-  ['pug', { category: 'Other', framework: null }],
   ['primevue', { category: 'Other', framework: null }],
   ['playwright', { category: 'Other', framework: null }],
   ['protractor', { category: 'Other', framework: null }],
