@@ -462,6 +462,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?compare=date.js</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?compare=dayjs</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -583,6 +588,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?compare=fastify+restify</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=fecha</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -888,6 +898,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?compare=morgan+winston</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=ms</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -1278,6 +1293,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?compare=testcafe</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=timeago.js</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>weekly</changefreq>
   </url>

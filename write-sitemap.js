@@ -32,6 +32,7 @@ const urls = [
   ['date-fns'],
   ['d3'],
   ['dayjs'],
+  ['date.js'],
   ['debug'],
   ['dot'],
   ['downshift'],
@@ -42,6 +43,7 @@ const urls = [
   ['eslint'],
   ['express'],
   ['fastify'],
+  ['fecha'],
   ['forever'],
   ['fp-ts'],
   ['gatsby'],
@@ -72,6 +74,7 @@ const urls = [
   ['mocha'],
   ['moment'],
   ['morgan'],
+  ['ms'],
   ['mustache'],
 
   ['next'],
@@ -117,6 +120,7 @@ const urls = [
 
   ['tailwindcss'],
   ['testcafe'],
+  ['timeago.js'],
   ['tslint'],
   ['underscore'],
   ['universal-router'],

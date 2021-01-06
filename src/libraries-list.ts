@@ -1,4 +1,4 @@
-type CategoryT = 'Framework' | 'Template' | 'Other';
+type CategoryT = 'Framework' | 'Template' | 'Date' | 'Other';
 type FrameworkT = 'React' | 'Vue';
 interface LibDataT {
   category: CategoryT;
@@ -34,6 +34,16 @@ const libraries: [string, LibDataT][] = [
   ['dustjs-linkedin', { category: 'Template', framework: null }],
   ['ehtml', { category: 'Template', framework: null }],
 
+  // Date utilities
+  ['date-fns', { category: 'Date', framework: null }],
+  ['dayjs', { category: 'Date', framework: null }],
+  ['luxon', { category: 'Date', framework: null }],
+  ['moment', { category: 'Date', framework: null }],
+  ['fecha', { category: 'Date', framework: null }],
+  ['ms', { category: 'Date', framework: null }],
+  ['timeago.js', { category: 'Date', framework: null }],
+  ['date.js', { category: 'Date', framework: null }],
+
   ['@cucumber/cucumber', { category: 'Other', framework: null }],
   ['@emotion/css', { category: 'Other', framework: null }],
   ['@hapi/hapi', { category: 'Other', framework: null }],
@@ -59,9 +69,7 @@ const libraries: [string, LibDataT][] = [
   ['cheerio', { category: 'Other', framework: null }],
   ['core-js', { category: 'Other', framework: null }],
   ['cypress', { category: 'Other', framework: null }],
-  ['date-fns', { category: 'Other', framework: null }],
   ['d3', { category: 'Other', framework: null }],
-  ['dayjs', { category: 'Other', framework: null }],
   ['debug', { category: 'Other', framework: null }],
   ['downshift', { category: 'Other', framework: null }],
   ['eslint', { category: 'Other', framework: null }],
@@ -86,11 +94,9 @@ const libraries: [string, LibDataT][] = [
   ['less', { category: 'Other', framework: null }],
   ['lodash', { category: 'Other', framework: null }],
   ['log4js', { category: 'Other', framework: null }],
-  ['luxon', { category: 'Other', framework: null }],
   ['mkdirp', { category: 'Other', framework: null }],
   ['mobx', { category: 'Other', framework: null }],
   ['mocha', { category: 'Other', framework: null }],
-  ['moment', { category: 'Other', framework: null }],
   ['morgan', { category: 'Other', framework: null }],
   ['materialize-css', { category: 'Other', framework: null }],
   ['next', { category: 'Other', framework: null }],
