@@ -62,6 +62,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?compare=@chakra-ui/react</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?compare=@cucumber/cucumber</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -108,6 +113,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?compare=@loopback/core</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=@material-ui/core</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -572,6 +582,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?compare=element-ui</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?compare=ember-source</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -903,6 +918,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?compare=marko</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=materialize-css</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>weekly</changefreq>
   </url>

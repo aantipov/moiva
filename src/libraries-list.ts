@@ -10,6 +10,7 @@ type CategoryT =
   | 'NodeLogging'
   | 'CSSFrameworks'
   | 'VueComponents'
+  | 'ReactComponents'
   | 'Other';
 type FrameworkT = 'React' | 'Vue';
 interface LibDataT {
@@ -109,6 +110,7 @@ const libraries: [string, LibDataT][] = [
   ['bulma', { category: 'CSSFrameworks', framework: null }],
   ['tailwindcss', { category: 'CSSFrameworks', framework: null }],
   ['tachyons', { category: 'CSSFrameworks', framework: null }],
+  ['materialize-css', { category: 'CSSFrameworks', framework: null }],
 
   // Charts
   ['chart.js', { category: 'Chart', framework: null }],
@@ -134,15 +136,20 @@ const libraries: [string, LibDataT][] = [
   ['bootstrap-vue', { category: 'VueComponents', framework: null }],
   ['primevue', { category: 'VueComponents', framework: null }],
   ['vue-material', { category: 'VueComponents', framework: null }],
+  ['element-ui', { category: 'VueComponents', framework: null }],
 
   // React component libraries
+  ['@material-ui/core', { category: 'ReactComponents', framework: null }],
+  ['antd', { category: 'ReactComponents', framework: null }],
+  ['react-bootstrap', { category: 'ReactComponents', framework: null }],
+  ['semantic-ui', { category: 'ReactComponents', framework: null }],
+  ['@chakra-ui/react', { category: 'ReactComponents', framework: null }],
+  ['reactstrap', { category: 'ReactComponents', framework: null }],
 
   ['@cucumber/cucumber', { category: 'Other', framework: null }],
   ['@emotion/css', { category: 'Other', framework: null }],
-  ['@material-ui/core', { category: 'Other', framework: null }],
   ['@nivo/core', { category: 'Other', framework: null }],
   ['@parcel/core', { category: 'Other', framework: null }],
-  ['antd', { category: 'Other', framework: null }],
   ['apisauce', { category: 'Other', framework: null }],
   ['async', { category: 'Other', framework: null }],
   ['axios', { category: 'Other', framework: null }],
@@ -175,7 +182,6 @@ const libraries: [string, LibDataT][] = [
   ['mkdirp', { category: 'Other', framework: null }],
   ['mobx', { category: 'Other', framework: null }],
   ['mocha', { category: 'Other', framework: null }],
-  ['materialize-css', { category: 'Other', framework: null }],
   ['next', { category: 'Other', framework: null }],
   ['node-fetch', { category: 'Other', framework: null }],
   ['nodemon', { category: 'Other', framework: null }],
@@ -187,7 +193,6 @@ const libraries: [string, LibDataT][] = [
   ['protractor', { category: 'Other', framework: null }],
   ['radium', { category: 'Other', framework: null }],
   ['react-autosuggest', { category: 'Other', framework: null }],
-  ['react-bootstrap', { category: 'Other', framework: null }],
   ['react-chartjs-2', { category: 'Other', framework: null }],
   ['react-datepicker', { category: 'Other', framework: null }],
   ['react-date-picker', { category: 'Other', framework: null }],
@@ -196,12 +201,10 @@ const libraries: [string, LibDataT][] = [
   ['react-router', { category: 'Other', framework: null }],
   ['react-select', { category: 'Other', framework: null }],
   ['react-vis', { category: 'Other', framework: null }],
-  ['reactstrap', { category: 'Other', framework: null }],
   ['recoil', { category: 'Other', framework: null }],
   ['redux', { category: 'Other', framework: null }],
   ['rollup', { category: 'Other', framework: null }],
   ['rxjs', { category: 'Other', framework: null }],
-  ['semantic-ui', { category: 'Other', framework: null }],
   ['sanctuary', { category: 'Other', framework: null }],
   ['sass', { category: 'Other', framework: null }],
   ['superagent', { category: 'Other', framework: null }],
