@@ -58,8 +58,8 @@ export default defineComponent({
         },
         {
           name: 'End-to-end testing',
-          libs: ['puppeteer', 'cypress', 'playwright', 'selenium-webdriver'],
-          libsStr: 'Puppeteer, Cypress, Playwright, Selenium',
+          libs: ['puppeteer', 'cypress', 'playwright'],
+          libsStr: 'Puppeteer, Cypress, Playwright',
         },
         {
           name: 'Node.js frameworks',
