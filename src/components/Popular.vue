@@ -67,7 +67,7 @@ export default defineComponent({
           libsStr: 'winston, morgan, log4js-node, pino',
         },
         {
-          name: 'Templating languages',
+          name: 'Templating engines',
           libs: ['ejs', 'handlebars', 'mustache', 'pug'],
           libsStr: 'EJS, Handlebars.js, Mustache.js, Pug',
         },
