@@ -1,6 +1,7 @@
 import axios, { AxiosError } from 'axios';
 import * as Sentry from '@sentry/browser';
 import { NpmPackagedDetailsResponseT } from '../api/npm-package-detailed';
+import { ERROR_CODE_NO_GITHUB_DATA } from '@/constants';
 import { GithubLanguagesResponseT } from '../api/gh-languages';
 
 const npmDownloadsCache = new Map();
@@ -284,13 +285,19 @@ export function fetchNpmPackage(packageName: string): Promise<LibraryT | null> {
       return data;
     })
     .catch((err) => {
-      reportSentry(err, 'fetchNpmPackage');
+      const errorCode =
+        err?.response?.data?.error?.code || err?.response?.status || undefined;
 
-      if (err?.response?.status === 404) {
+      // Do not spam Sentry with "expected" errors
+      if (errorCode !== ERROR_CODE_NO_GITHUB_DATA) {
+        reportSentry(err, 'fetchNpmPackage');
+      }
+
+      if (errorCode === 404) {
         return null;
       }
 
-      return Promise.reject(err);
+      return Promise.reject(errorCode);
     });
 }
 
