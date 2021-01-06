@@ -117,6 +117,7 @@ const libraries: [string, LibDataT][] = [
   ['recharts', { category: 'Chart', framework: null }],
   ['echarts', { category: 'Chart', framework: null }],
   ['@amcharts/amcharts4', { category: 'Chart', framework: null }],
+  ['apexcharts', { category: 'Chart', framework: null }],
 
   ['chartist', { category: 'Chart', framework: null }],
   ['vis', { category: 'Chart', framework: null }],
@@ -130,7 +131,6 @@ const libraries: [string, LibDataT][] = [
   ['@nivo/core', { category: 'Other', framework: null }],
   ['@parcel/core', { category: 'Other', framework: null }],
   ['antd', { category: 'Other', framework: null }],
-  ['apexcharts', { category: 'Other', framework: null }],
   ['apisauce', { category: 'Other', framework: null }],
   ['async', { category: 'Other', framework: null }],
   ['axios', { category: 'Other', framework: null }],
