@@ -64,6 +64,7 @@ const urls = [
   ['karma'],
   ['knockout'],
   ['koa'],
+  ['lazy.js'],
   ['less'],
   ['lodash'],
   ['log4js'],
@@ -74,6 +75,7 @@ const urls = [
   ['mocha'],
   ['moment'],
   ['morgan'],
+  ['mout'],
   ['ms'],
   ['mustache'],
 
@@ -94,6 +96,7 @@ const urls = [
 
   ['radium'],
   ['ramda'],
+  ['rambda'],
   ['react'],
   ['react-autosuggest'],
   ['react-bootstrap'],
@@ -116,6 +119,7 @@ const urls = [
   ['sass'],
   ['socket.io'],
   ['svelte'],
+  ['sugar'],
   ['superagent'],
 
   ['tailwindcss'],

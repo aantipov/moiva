@@ -1,4 +1,4 @@
-type CategoryT = 'Framework' | 'Template' | 'Date' | 'Other';
+type CategoryT = 'Framework' | 'Template' | 'Date' | 'Utilities' | 'Other';
 type FrameworkT = 'React' | 'Vue';
 interface LibDataT {
   category: CategoryT;
@@ -43,6 +43,15 @@ const libraries: [string, LibDataT][] = [
   ['ms', { category: 'Date', framework: null }],
   ['timeago.js', { category: 'Date', framework: null }],
   ['date.js', { category: 'Date', framework: null }],
+
+  // Utilities
+  ['lodash', { category: 'Utilities', framework: null }],
+  ['ramda', { category: 'Utilities', framework: null }],
+  ['underscore', { category: 'Utilities', framework: null }],
+  ['rambda', { category: 'Utilities', framework: null }],
+  ['mout', { category: 'Utilities', framework: null }],
+  ['sugar', { category: 'Utilities', framework: null }],
+  ['lazy.js', { category: 'Utilities', framework: null }],
 
   ['@cucumber/cucumber', { category: 'Other', framework: null }],
   ['@emotion/css', { category: 'Other', framework: null }],
@@ -92,7 +101,6 @@ const libraries: [string, LibDataT][] = [
   ['karma', { category: 'Other', framework: null }],
   ['koa', { category: 'Other', framework: null }],
   ['less', { category: 'Other', framework: null }],
-  ['lodash', { category: 'Other', framework: null }],
   ['log4js', { category: 'Other', framework: null }],
   ['mkdirp', { category: 'Other', framework: null }],
   ['mobx', { category: 'Other', framework: null }],
@@ -116,7 +124,6 @@ const libraries: [string, LibDataT][] = [
   ['puppeteer', { category: 'Other', framework: null }],
   ['quasar', { category: 'Other', framework: null }],
   ['radium', { category: 'Other', framework: null }],
-  ['ramda', { category: 'Other', framework: null }],
   ['react-autosuggest', { category: 'Other', framework: null }],
   ['react-bootstrap', { category: 'Other', framework: null }],
   ['react-chartjs-2', { category: 'Other', framework: null }],
@@ -146,7 +153,6 @@ const libraries: [string, LibDataT][] = [
   ['tailwindcss', { category: 'Other', framework: null }],
   ['testcafe', { category: 'Other', framework: null }],
   ['tslint', { category: 'Other', framework: null }],
-  ['underscore', { category: 'Other', framework: null }],
   ['universal-router', { category: 'Other', framework: null }],
   ['uuid', { category: 'Other', framework: null }],
   ['victory', { category: 'Other', framework: null }],
