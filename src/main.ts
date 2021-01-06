@@ -54,20 +54,22 @@ app.component('m-loader-tail-spin', LoaderTailSpin);
 
 app.mount('#app');
 
-Sentry.init({
-  dsn:
-    'https://185bd9a836b146318babbd956881e8a0@o477177.ingest.sentry.io/5517696',
-  integrations: [
-    // new VueIntegration({
-    //   app,
-    //   tracing: true,
-    //   logErrors: true,
-    // }),
-    new Integrations.BrowserTracing(),
-  ],
-  // process.env.NODE_ENV is being replaced by the value during build
-  environment: process.env.NODE_ENV,
-  // We recommend adjusting this value in production, or using tracesSampler
-  // for finer control
-  tracesSampleRate: 1.0,
-});
+if (process.env.NODE_ENV !== 'development') {
+  Sentry.init({
+    dsn:
+      'https://185bd9a836b146318babbd956881e8a0@o477177.ingest.sentry.io/5517696',
+    integrations: [
+      // new VueIntegration({
+      //   app,
+      //   tracing: true,
+      //   logErrors: true,
+      // }),
+      new Integrations.BrowserTracing(),
+    ],
+    // process.env.NODE_ENV is being replaced by the value during build
+    environment: process.env.NODE_ENV,
+    // We recommend adjusting this value in production, or using tracesSampler
+    // for finer control
+    tracesSampleRate: 1.0,
+  });
+}
