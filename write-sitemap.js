@@ -71,6 +71,7 @@ const urls = [
   ['less'],
   ['lodash'],
   ['log4js'],
+  ['loglevel'],
   ['loopback'],
   ['luxon'],
   ['marko'],

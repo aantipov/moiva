@@ -6,6 +6,7 @@ type CategoryT =
   | 'e2e'
   | 'Sockets'
   | 'NodeFramework'
+  | 'NodeLogging'
   | 'Other';
 type FrameworkT = 'React' | 'Vue';
 interface LibDataT {
@@ -92,6 +93,14 @@ const libraries: [string, LibDataT][] = [
   ['loopback', { category: 'NodeFramework', framework: null }],
   ['@loopback/core', { category: 'NodeFramework', framework: null }],
 
+  // NodeJS Logging
+  ['log4js', { category: 'NodeLogging', framework: null }],
+  ['pino', { category: 'NodeLogging', framework: null }],
+  ['winston', { category: 'NodeLogging', framework: null }],
+  ['morgan', { category: 'NodeLogging', framework: null }],
+  ['loglevel', { category: 'NodeLogging', framework: null }],
+  ['bunyan', { category: 'NodeLogging', framework: null }],
+
   ['@cucumber/cucumber', { category: 'Other', framework: null }],
   ['@emotion/css', { category: 'Other', framework: null }],
   ['@material-ui/core', { category: 'Other', framework: null }],
@@ -107,7 +116,6 @@ const libraries: [string, LibDataT][] = [
   ['browserify', { category: 'Other', framework: null }],
   ['buefy', { category: 'Other', framework: null }],
   ['bulma', { category: 'Other', framework: null }],
-  ['bunyan', { category: 'Other', framework: null }],
   ['chai', { category: 'Other', framework: null }],
   ['chart.js', { category: 'Other', framework: null }],
   ['commander', { category: 'Other', framework: null }],
@@ -134,18 +142,15 @@ const libraries: [string, LibDataT][] = [
   ['jss', { category: 'Other', framework: null }],
   ['karma', { category: 'Other', framework: null }],
   ['less', { category: 'Other', framework: null }],
-  ['log4js', { category: 'Other', framework: null }],
   ['mkdirp', { category: 'Other', framework: null }],
   ['mobx', { category: 'Other', framework: null }],
   ['mocha', { category: 'Other', framework: null }],
-  ['morgan', { category: 'Other', framework: null }],
   ['materialize-css', { category: 'Other', framework: null }],
   ['next', { category: 'Other', framework: null }],
   ['node-fetch', { category: 'Other', framework: null }],
   ['nodemon', { category: 'Other', framework: null }],
   ['nuxt', { category: 'Other', framework: null }],
   ['passport', { category: 'Other', framework: null }],
-  ['pino', { category: 'Other', framework: null }],
   ['prettier', { category: 'Other', framework: null }],
   ['prop-types', { category: 'Other', framework: null }],
   ['pm2', { category: 'Other', framework: null }],
@@ -186,7 +191,6 @@ const libraries: [string, LibDataT][] = [
   ['vuex', { category: 'Other', framework: null }],
   ['vue-material', { category: 'Other', framework: null }],
   ['webpack', { category: 'Other', framework: null }],
-  ['winston', { category: 'Other', framework: null }],
   ['yargs', { category: 'Other', framework: null }],
 ];
 

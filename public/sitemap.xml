@@ -857,6 +857,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?compare=loglevel</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?compare=loopback</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>weekly</changefreq>
