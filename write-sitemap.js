@@ -324,7 +324,7 @@ const urlsStr = urls.sort().reduce((acc, url) => {
     acc +
     `  <url>
     <loc>https://moiva.io/?compare=${url.join('+')}</loc>
-    <lastmod>2021-01-02</lastmod>
+    <lastmod>2021-01-06</lastmod>
     <changefreq>weekly</changefreq>
   </url>
 `
