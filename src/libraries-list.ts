@@ -11,6 +11,7 @@ type CategoryT =
   | 'CSSFrameworks'
   | 'VueComponents'
   | 'ReactComponents'
+  | 'State'
   | 'Other';
 type FrameworkT = 'React' | 'Vue';
 interface LibDataT {
@@ -128,8 +129,6 @@ const libraries: [string, LibDataT][] = [
   ['amcharts3', { category: 'Chart', framework: null }],
   ['peity', { category: 'Chart', framework: null }],
 
-  // State Management
-
   // Vue component libraries
   ['vuetify', { category: 'VueComponents', framework: null }],
   ['quasar', { category: 'VueComponents', framework: null }],
@@ -145,6 +144,13 @@ const libraries: [string, LibDataT][] = [
   ['semantic-ui', { category: 'ReactComponents', framework: null }],
   ['@chakra-ui/react', { category: 'ReactComponents', framework: null }],
   ['reactstrap', { category: 'ReactComponents', framework: null }],
+
+  // State Management
+  ['redux', { category: 'State', framework: null }],
+  ['mobx', { category: 'State', framework: null }],
+  ['rxjs', { category: 'State', framework: null }],
+  ['recoil', { category: 'State', framework: null }],
+  ['vuex', { category: 'State', framework: null }],
 
   ['@cucumber/cucumber', { category: 'Other', framework: null }],
   ['@emotion/css', { category: 'Other', framework: null }],
@@ -180,7 +186,6 @@ const libraries: [string, LibDataT][] = [
   ['karma', { category: 'Other', framework: null }],
   ['less', { category: 'Other', framework: null }],
   ['mkdirp', { category: 'Other', framework: null }],
-  ['mobx', { category: 'Other', framework: null }],
   ['mocha', { category: 'Other', framework: null }],
   ['next', { category: 'Other', framework: null }],
   ['node-fetch', { category: 'Other', framework: null }],
@@ -201,10 +206,7 @@ const libraries: [string, LibDataT][] = [
   ['react-router', { category: 'Other', framework: null }],
   ['react-select', { category: 'Other', framework: null }],
   ['react-vis', { category: 'Other', framework: null }],
-  ['recoil', { category: 'Other', framework: null }],
-  ['redux', { category: 'Other', framework: null }],
   ['rollup', { category: 'Other', framework: null }],
-  ['rxjs', { category: 'Other', framework: null }],
   ['sanctuary', { category: 'Other', framework: null }],
   ['sass', { category: 'Other', framework: null }],
   ['superagent', { category: 'Other', framework: null }],
@@ -215,7 +217,6 @@ const libraries: [string, LibDataT][] = [
   ['universal-router', { category: 'Other', framework: null }],
   ['uuid', { category: 'Other', framework: null }],
   ['victory', { category: 'Other', framework: null }],
-  ['vuex', { category: 'Other', framework: null }],
   ['webpack', { category: 'Other', framework: null }],
   ['yargs', { category: 'Other', framework: null }],
 ];
