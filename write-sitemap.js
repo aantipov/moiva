@@ -20,6 +20,7 @@ const urls = [
   ['backbone.marionette'],
   ['bluebird'],
   ['blueimp-tmpl'],
+  ['bootstrap'],
   ['browserify'],
   ['bulma'],
   ['bunyan'],
@@ -136,6 +137,7 @@ const urls = [
 
   ['taiko'],
   ['tailwindcss'],
+  ['tachyons'],
   ['testcafe'],
   ['timeago.js'],
   ['tslint'],

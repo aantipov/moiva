@@ -7,6 +7,7 @@ type CategoryT =
   | 'Sockets'
   | 'NodeFramework'
   | 'NodeLogging'
+  | 'CSSFrameworks'
   | 'Other';
 type FrameworkT = 'React' | 'Vue';
 interface LibDataT {
@@ -101,6 +102,12 @@ const libraries: [string, LibDataT][] = [
   ['loglevel', { category: 'NodeLogging', framework: null }],
   ['bunyan', { category: 'NodeLogging', framework: null }],
 
+  // CSS Frameworks
+  ['bootstrap', { category: 'CSSFrameworks', framework: null }],
+  ['bulma', { category: 'CSSFrameworks', framework: null }],
+  ['tailwindcss', { category: 'CSSFrameworks', framework: null }],
+  ['tachyons', { category: 'CSSFrameworks', framework: null }],
+
   ['@cucumber/cucumber', { category: 'Other', framework: null }],
   ['@emotion/css', { category: 'Other', framework: null }],
   ['@material-ui/core', { category: 'Other', framework: null }],
@@ -111,11 +118,9 @@ const libraries: [string, LibDataT][] = [
   ['apisauce', { category: 'Other', framework: null }],
   ['async', { category: 'Other', framework: null }],
   ['axios', { category: 'Other', framework: null }],
-  ['bootstrap', { category: 'Other', framework: null }],
   ['bluebird', { category: 'Other', framework: null }],
   ['browserify', { category: 'Other', framework: null }],
   ['buefy', { category: 'Other', framework: null }],
-  ['bulma', { category: 'Other', framework: null }],
   ['chai', { category: 'Other', framework: null }],
   ['chart.js', { category: 'Other', framework: null }],
   ['commander', { category: 'Other', framework: null }],
@@ -182,7 +187,6 @@ const libraries: [string, LibDataT][] = [
   ['select2', { category: 'Other', framework: null }],
   ['styled-jsx', { category: 'Other', framework: null }],
   ['styled-components', { category: 'Other', framework: null }],
-  ['tailwindcss', { category: 'Other', framework: null }],
   ['tslint', { category: 'Other', framework: null }],
   ['universal-router', { category: 'Other', framework: null }],
   ['uuid', { category: 'Other', framework: null }],

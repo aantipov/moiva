@@ -262,6 +262,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?compare=bootstrap</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?compare=bootstrap-vue+vuetify</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>weekly</changefreq>
@@ -1348,6 +1353,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?compare=svelte+vue</loc>
+    <lastmod>2021-01-02</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=tachyons</loc>
     <lastmod>2021-01-02</lastmod>
     <changefreq>weekly</changefreq>
   </url>
