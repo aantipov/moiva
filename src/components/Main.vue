@@ -14,6 +14,13 @@
       >
     </div>
 
+    <div
+      v-if="errorFetchingNewLib"
+      class="w-full px-3 mx-auto mt-2 text-red-500 lg:w-9/12 xl:w-2/4"
+    >
+      {{ errorFetchingNewLib }}
+    </div>
+
     <div v-if="!selectedLibs.length">
       <Popular v-if="!isLoadingLibsData" @select="selectMultiple" />
 
@@ -100,6 +107,7 @@ import Popular from './Popular.vue';
 import SelectedLibs from './SelectedLibs.vue';
 import Loader from './Loader.vue';
 import Languages from './Languages.vue';
+import { ERROR_CODE_NO_GITHUB_DATA } from '@/constants';
 import { LibraryT, fetchNpmPackage } from '../apis';
 import {
   loadDefaultLibs,
@@ -132,6 +140,7 @@ export default defineComponent({
 
   setup() {
     const selectedLibs = ref<LibraryT[]>([]);
+    const errorFetchingNewLib = ref<string | null>(null);
     const loadingLibs = ref<string[]>([]); // Track libs currently being loading
     const isLoadingLibsData = ref(true);
     const librariesNames = computed<string[]>(() =>
@@ -185,16 +194,19 @@ export default defineComponent({
       librariesNames,
       suggestions,
       isLoadingLibsData,
+      errorFetchingNewLib,
       libToColorMap,
       githubIsError: gh.isError,
       githubIsLoading: gh.isLoading,
       githubRepositories: gh.repositories,
       deselect(libName: string): void {
+        errorFetchingNewLib.value = null;
         selectedLibs.value = selectedLibs.value.filter(
           (lib) => lib.name !== libName
         );
       },
       select(libName: string): void {
+        errorFetchingNewLib.value = null;
         if (
           !libName ||
           librariesNames.value.includes(libName) ||
@@ -213,6 +225,13 @@ export default defineComponent({
               npmPackage as LibraryT,
             ];
           })
+          .catch((err) => {
+            let errMsg = `Sorry, we couldn't fetch data for ${libName}`;
+            if (err === ERROR_CODE_NO_GITHUB_DATA) {
+              errMsg += ': the package information doesnt contain GitHub data';
+            }
+            errorFetchingNewLib.value = errMsg;
+          })
           .finally(() => {
             isLoadingLibsData.value = false;
             loadingLibs.value = loadingLibs.value.filter(
@@ -223,6 +242,7 @@ export default defineComponent({
       selectMultiple(libNames: string[]): void {
         // Assumption - it's called from the Start Page
         // when there is no selected libraries yes
+        errorFetchingNewLib.value = null;
         isLoadingLibsData.value = true;
         loadingLibs.value = [...libNames];
 

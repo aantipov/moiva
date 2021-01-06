@@ -1,6 +1,7 @@
 import { NowRequest, NowResponse } from '@vercel/node';
 import axios from 'axios';
 import { logRequest, initSentry, reportError } from './utils';
+import { ERROR_CODE_NO_GITHUB_DATA } from '../src/constants';
 
 initSentry();
 
@@ -30,7 +31,16 @@ export default (req: NowRequest, res: NowResponse): void => {
         },
       } = resp;
       if (!repository || repository.type !== 'git') {
-        throw new Error(`API NPM PACKAGE: wrong GitHub link for ${lib}`);
+        console.error(`API NPM PACKAGE: wrong GitHub link for ${lib}`);
+
+        res.status(500).json({
+          error: {
+            message: 'Package doesnt have Github data',
+            code: ERROR_CODE_NO_GITHUB_DATA,
+          },
+        });
+
+        return;
       }
 
       const repoUrl =
