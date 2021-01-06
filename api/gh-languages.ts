@@ -23,7 +23,7 @@ export default (req: NowRequest, res: NowResponse): void => {
   }
 
   axios
-    .get(`http://api.github.com/repos/${owner}/${name}/languages`)
+    .get(`https://api.github.com/repos/${owner}/${name}/languages`)
     .then(({ data }) => {
       const result: GithubLanguagesResponseT = data;
 
