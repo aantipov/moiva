@@ -38,6 +38,7 @@
         class="relative w-full mx-auto mt-4 mb-2 lg:w-9/12 xl:w-2/4 divide-y divide-gray-200"
         :is-loading="isLoadingLibsData"
         :libs="selectedLibs"
+        :lib-to-color-map="libToColorMap"
         :github-is-loading="githubIsLoading"
         :github-is-error="githubIsError"
         :github-repos="githubRepositories"

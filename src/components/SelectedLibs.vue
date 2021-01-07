@@ -8,6 +8,11 @@
       :key="lib.name"
       class="flex items-center justify-between px-3 py-2 hover:bg-gray-50"
     >
+      <div
+        class="self-stretch flex-shrink-0 w-2 mr-2 bg-green-200"
+        :style="{ backgroundColor: getLibColor(lib.name) }"
+      ></div>
+
       <div class="flex flex-col flex-grow">
         <div
           class="flex items-center justify-between mb-1 text-base text-gray-800"
@@ -145,6 +150,10 @@ export default defineComponent({
       type: Array as () => LibraryT[],
       required: true,
     },
+    libToColorMap: {
+      type: Object as () => Record<string, string>,
+      required: true,
+    },
     githubIsLoading: {
       type: Boolean,
       required: true,
@@ -160,7 +169,7 @@ export default defineComponent({
   },
 
   setup(props) {
-    const { githubRepos, libs } = toRefs(props);
+    const { githubRepos, libs, libToColorMap } = toRefs(props);
     const libNames = computed(() => libs.value.map((lib) => lib.name));
 
     return {
@@ -179,6 +188,9 @@ export default defineComponent({
         return constructHref(
           libNames.value.filter((libName) => libName !== deletedLibName)
         );
+      },
+      getLibColor(lib: string): string {
+        return libToColorMap.value[lib];
       },
     };
   },
