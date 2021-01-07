@@ -2,8 +2,7 @@
   <LanguagesChart
     :is-loading="isLoading"
     :is-error="isError"
-    :libs="libNames"
-    :languages="libsLanguages"
+    :libs-names="libNames"
     :libs-languages-shares="libsLanguagesShares"
     :languages-names="languagesNames"
   />
@@ -39,39 +38,41 @@ export default defineComponent({
     // Compute languages shares, counting only those which has >=10% share
     const libsLanguagesShares = computed<null | Record<string, number>[]>(
       () => {
-        return libsLanguages.value
-          ? libsLanguages.value.map((libLangs) => {
-              const libBytesTotal = Object.values(libLangs).reduce(
-                (a, b) => a + b,
-                0
-              );
+        if (!libsLanguages.value) {
+          return null;
+        }
 
-              const libLanguagesSharesWithoutOthers = Object.entries(libLangs)
-                .map(([lang, langBytes]) => ({
-                  lang,
-                  langShare: (100 * langBytes) / libBytesTotal,
-                }))
-                .filter(({ langShare }) => langShare >= 10)
-                .reduce((acc, { lang, langShare }) => {
-                  acc[lang] = Number.parseFloat(Number(langShare).toFixed(1));
-                  return acc;
-                }, {} as Record<string, number>);
+        return libsLanguages.value.map((libLangs) => {
+          const libBytesTotal = Object.values(libLangs).reduce(
+            (a, b) => a + b,
+            0
+          );
 
-              const othersShare =
-                100 -
-                Object.values(libLanguagesSharesWithoutOthers).reduce(
-                  (a, b) => a + b,
-                  0
-                );
+          const libLanguagesSharesWithoutOthers = Object.entries(libLangs)
+            .map(([lang, langBytes]) => ({
+              lang,
+              langShare: (100 * langBytes) / libBytesTotal,
+            }))
+            .filter(({ langShare }) => langShare >= 10)
+            .reduce((acc, { lang, langShare }) => {
+              acc[lang] = Number.parseFloat(Number(langShare).toFixed(1));
+              return acc;
+            }, {} as Record<string, number>);
 
-              const libLanguagesShares = {
-                ...libLanguagesSharesWithoutOthers,
-                Others: Number.parseFloat(Number(othersShare).toFixed(1)),
-              };
+          const othersShare =
+            100 -
+            Object.values(libLanguagesSharesWithoutOthers).reduce(
+              (a, b) => a + b,
+              0
+            );
 
-              return (libLanguagesShares as unknown) as Record<string, number>;
-            })
-          : null;
+          const libLanguagesShares = {
+            ...libLanguagesSharesWithoutOthers,
+            Others: Number.parseFloat(Number(othersShare).toFixed(1)),
+          };
+
+          return (libLanguagesShares as unknown) as Record<string, number>;
+        });
       }
     );
 
@@ -81,6 +82,7 @@ export default defineComponent({
       if (!libsLanguagesShares.value) {
         return null;
       }
+
       const languagesNamesWithDupes = libsLanguagesShares.value
         .map((libLangsShares) => Object.keys(libLangsShares))
         .flat();
@@ -105,6 +107,7 @@ export default defineComponent({
         items.splice(othersIndex, 1);
         items.push('Others');
       }
+
       return items;
     });
 
@@ -142,7 +145,6 @@ export default defineComponent({
     return {
       isLoading,
       isError,
-      libsLanguages,
       libsLanguagesShares,
       languagesNames,
       libNames,

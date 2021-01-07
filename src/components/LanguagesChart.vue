@@ -31,7 +31,6 @@
 <script lang="ts">
 import { defineComponent, toRefs, onMounted, watch, computed } from 'vue';
 import Chart, { ChartDataSets } from 'chart.js';
-import { GithubLanguagesResponseT } from '../../api/gh-languages';
 import { getLangToColorMap } from '../colors';
 
 export default defineComponent({
@@ -46,14 +45,9 @@ export default defineComponent({
       type: Boolean,
       required: true,
     },
-    libs: {
+    libsNames: {
       type: Array as () => string[],
       required: true,
-    },
-    languages: {
-      type: Array as () => null | GithubLanguagesResponseT[],
-      required: false,
-      default: null,
     },
     libsLanguagesShares: {
       type: Array as () => null | Record<string, number>[],
@@ -69,8 +63,7 @@ export default defineComponent({
 
   setup(props) {
     const {
-      libs,
-      languages,
+      libsNames,
       isLoading,
       isError,
       libsLanguagesShares,
@@ -84,7 +77,7 @@ export default defineComponent({
       () =>
         (languagesNames.value || []).map((langName) => ({
           label: langName,
-          data: (libs.value || []).map(
+          data: (libsNames.value || []).map(
             (libName, libIndex) =>
               // @ts-ignore
               libsLanguagesShares.value[libIndex][langName] || 0
@@ -102,7 +95,7 @@ export default defineComponent({
       mychart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: libs.value,
+          labels: libsNames.value,
           datasets: datasets.value,
         },
 
@@ -117,9 +110,9 @@ export default defineComponent({
 
     onMounted(initChart);
 
-    watch([libs, languages, isLoading, isError], () => {
+    watch([libsNames, languagesNames, isLoading, isError], () => {
       if (!isLoading.value && !isError.value) {
-        (mychart as Chart).data.labels = libs.value;
+        (mychart as Chart).data.labels = libsNames.value;
         (mychart as Chart).data.datasets = datasets.value;
         (mychart as Chart).update();
       }
