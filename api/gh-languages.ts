@@ -4,6 +4,8 @@ import { logRequest, initSentry, reportError } from './utils';
 
 initSentry();
 
+const token = process.env.GITHUB_MOIVA_REST;
+
 export type GithubLanguagesResponseT = Record<string, number>;
 
 export default (req: NowRequest, res: NowResponse): void => {
@@ -23,7 +25,12 @@ export default (req: NowRequest, res: NowResponse): void => {
   }
 
   axios
-    .get(`https://api.github.com/repos/${owner}/${name}/languages`)
+    .get(`https://api.github.com/repos/${owner}/${name}/languages`, {
+      headers: {
+        Accept: 'application/vnd.github.v3+json',
+        Authorization: `token ${token}`,
+      },
+    })
     .then(({ data }) => {
       const result: GithubLanguagesResponseT = data;
 
