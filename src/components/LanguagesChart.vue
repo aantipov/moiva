@@ -31,8 +31,7 @@
 <script lang="ts">
 import { defineComponent, toRefs, onMounted, watch, computed } from 'vue';
 import Chart, { ChartDataSets } from 'chart.js';
-import { GithubLanguagesResponseT } from '../../api/gh-languages';
-import { COLOR_GRAY } from '../colors';
+import { getLangToColorMap } from '../colors';
 
 export default defineComponent({
   name: 'LanguagesChart',
@@ -46,64 +45,47 @@ export default defineComponent({
       type: Boolean,
       required: true,
     },
-    libs: {
+    libsNames: {
       type: Array as () => string[],
       required: true,
     },
-    languages: {
-      type: Array as () => null | GithubLanguagesResponseT[],
+    libsLanguagesShares: {
+      type: Array as () => null | Record<string, number>[],
+      required: false,
+      default: null,
+    },
+    languagesNames: {
+      type: Array as () => null | string[],
       required: false,
       default: null,
     },
   },
 
   setup(props) {
-    const { libs, languages, isLoading, isError } = toRefs(props);
-    const languagesNames = ['JavaScript', 'TypeScript', 'Other'];
-    const languageColors = ['#F7E018', '#3178C6', COLOR_GRAY];
-    const languageBordersColors = ['#FCD34D', '#3178C6', COLOR_GRAY];
-    const libsLanguagesDistributions = computed(() =>
-      libs.value.map((lib, i) => {
-        if (languages.value === null) {
-          return languagesNames.map(() => 0);
-        }
-
-        const bytesTotal = Object.values(languages.value[i]).reduce(
-          (a, b) => a + b,
-          0
-        );
-        const distrsByLang = languagesNames.map((langName) => {
-          const distrsByLang =
-            (100 * ((languages.value && languages.value[i][langName]) || 0)) /
-            bytesTotal;
-
-          return Number.parseFloat(Number(distrsByLang).toFixed(1));
-        });
-
-        // Correct value for Other category
-        const allButLastTotal = distrsByLang
-          .slice(0, -1)
-          .reduce((a, b) => a + b, 0);
-
-        distrsByLang[distrsByLang.length - 1] = 100 - allButLastTotal;
-
-        return distrsByLang;
-      })
+    const {
+      libsNames,
+      isLoading,
+      isError,
+      libsLanguagesShares,
+      languagesNames,
+    } = toRefs(props);
+    const langToColorMap = computed<Record<string, string>>(() =>
+      getLangToColorMap(languagesNames.value || [])
     );
+
     const datasets = computed<ChartDataSets[]>(
       () =>
-        (languagesNames.map((lang, langIndex) => ({
-          label: lang,
-          data: libs.value
-            ? libs.value.map(
-                (libName, libIndex) =>
-                  libsLanguagesDistributions.value[libIndex][langIndex]
-              )
-            : [],
-          backgroundColor: languageColors[langIndex],
-          borderColor: languageBordersColors[langIndex],
+        (languagesNames.value || []).map((langName) => ({
+          label: langName,
+          data: (libsNames.value || []).map(
+            (libName, libIndex) =>
+              // @ts-ignore
+              libsLanguagesShares.value[libIndex][langName] || 0
+          ),
+          backgroundColor: langToColorMap.value[langName],
+          borderColor: langToColorMap.value[langName],
           borderWidth: 1,
-        })) as unknown) as ChartDataSets[]
+        })) as ChartDataSets[]
     );
     let mychart: Chart | undefined;
 
@@ -113,22 +95,14 @@ export default defineComponent({
       mychart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: libs.value,
+          labels: libsNames.value,
           datasets: datasets.value,
         },
 
         options: {
           scales: {
-            xAxes: [
-              {
-                stacked: true,
-              },
-            ],
-            yAxes: [
-              {
-                stacked: true,
-              },
-            ],
+            xAxes: [{ stacked: true }],
+            yAxes: [{ stacked: true }],
           },
         },
       });
@@ -136,9 +110,9 @@ export default defineComponent({
 
     onMounted(initChart);
 
-    watch([libs, languages, isLoading, isError], () => {
+    watch([libsNames, languagesNames, isLoading, isError], () => {
       if (!isLoading.value && !isError.value) {
-        (mychart as Chart).data.labels = libs.value;
+        (mychart as Chart).data.labels = libsNames.value;
         (mychart as Chart).data.datasets = datasets.value;
         (mychart as Chart).update();
       }

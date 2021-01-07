@@ -26,7 +26,29 @@ const COLORS = [
   '#9E9E9E', // Grey 500
 ];
 
+// Colors list for Languages Chart
+const LANGUAGE_COLORS = [
+  '#FACC15', // Yellow 400
+  '#22D3EE', // Cyan 400
+  '#818CF8', // Indigo 400
+  '#F87171', // Red 400
+  '#4ADE80', // Green 400
+  '#FB923C', // Orange 400
+  '#60A5FA', // Blue 400
+  '#34D399', // Emerald 400
+  '#A78BFA', // Violet
+  '#2DD4BF', // Teal 400
+  '#F472B6', // Pink 400
+  '#A3E635', // Lime 400
+  '#E879F9', // Fuchsia
+  '#FB7185', // Rose 400
+  '#38BDF8', // Light Blue 400
+  '#FBBF24', // Amber 400
+  '#C084FC', // Purple
+];
+
 const libToColorMap = new Map<string, string>();
+const langToColorMap = new Map<string, string>();
 
 export function getLibToColorMap(libs: string[]): Record<string, string> {
   // Clean up the Map - filter out unused libs
@@ -49,4 +71,34 @@ export function getLibToColorMap(libs: string[]): Record<string, string> {
   });
 
   return Object.fromEntries(libToColorMap);
+}
+
+export function getLangToColorMap(langs: string[]): Record<string, string> {
+  // Others "lang" should always be Gray
+  if (langs.includes('Others')) {
+    langToColorMap.set('Others', COLOR_GRAY);
+  }
+
+  // Clean up the lang colors Map - filter out unused langs
+  [...langToColorMap.keys()].forEach((lang) => {
+    if (!langs.includes(lang)) {
+      langToColorMap.delete(lang);
+    }
+  });
+
+  const usedColors = [...langToColorMap.values()];
+
+  // Get a list of unused colors
+  const vacantColors = LANGUAGE_COLORS.filter(
+    (color) => !usedColors.includes(color)
+  );
+
+  // Update the Map with the colors for new langs
+  langs.forEach((lang) => {
+    if (!langToColorMap.has(lang)) {
+      langToColorMap.set(lang, vacantColors.shift() || COLOR_GRAY);
+    }
+  });
+
+  return Object.fromEntries(langToColorMap);
 }
