@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 24px; height: 24px" class="root">
+  <div class="root">
     <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <title>GitHub icon</title>
       <path
