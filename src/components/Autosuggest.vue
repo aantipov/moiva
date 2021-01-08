@@ -1,16 +1,24 @@
 <template>
   <div>
-    <input
-      id="npm-input"
-      type="text"
-      placeholder="Add npm packages to comparison"
-      autofocus
-      autocomplete="off"
-      class="relative w-full px-3 py-3 pr-10 text-xl font-light text-gray-700 placeholder-gray-400 bg-gray-100 border border-transparent rounded outline-none md:text-2xl focus:bg-white focus:border-gray-400 focus:ring-0 focus:outline-none focus:border-3"
-    />
+    <div class="relative">
+      <input
+        id="npm-input"
+        type="text"
+        placeholder="Add npm packages to comparison"
+        autofocus
+        autocomplete="off"
+        class="relative w-full py-3 pl-3 text-xl font-light text-gray-700 placeholder-gray-400 bg-gray-100 border border-transparent rounded outline-none pr-11 md:text-2xl focus:bg-white focus:border-gray-400 focus:ring-0 focus:outline-none focus:border-3"
+      />
 
-    <div v-if="isError" class="my-4 text-xl font-medium text-red-600">
-      Oopsie, it looks like we have problems with the underlying suggestions api
+      <div
+        class="absolute top-0 right-0 z-10 flex items-center justify-center w-8 h-full py-1 pr-4"
+      >
+        <m-loader-tail-spin v-if="isLoading" />
+      </div>
+    </div>
+
+    <div v-if="isError" class="mt-2 text-red-600">
+      Sorry, we couldn't fetch suggestions. Try another search
     </div>
   </div>
 </template>
@@ -26,8 +34,11 @@ type OptionT = SuggestionT & AutocompleteItem;
 export default defineComponent({
   name: 'AutoSuggest',
   emits: ['select', 'success', 'error'],
+
   setup(_props, { emit }) {
     const isError = ref(false);
+    const isLoading = ref(false);
+    let dataPromise: null | Promise<void> = null;
 
     onMounted(() => {
       autocomplete<OptionT>({
@@ -35,7 +46,9 @@ export default defineComponent({
         debounceWaitMs: 200,
 
         fetch: (text: string, update: (items: SuggestionT[]) => void) => {
-          fetchNpmSuggestions(text)
+          isLoading.value = true;
+
+          const localPromise = (dataPromise = fetchNpmSuggestions(text)
             .then((suggestions): void => {
               emit('success');
               isError.value = false;
@@ -44,7 +57,14 @@ export default defineComponent({
             .catch(() => {
               emit('error');
               isError.value = true;
-            });
+            })
+            .finally(() => {
+              // We should remove loading indicator
+              // only after last call resolved
+              if (localPromise === dataPromise) {
+                isLoading.value = false;
+              }
+            }));
         },
 
         onSelect: (item: SuggestionT) => {
@@ -90,6 +110,7 @@ export default defineComponent({
     });
 
     return {
+      isLoading,
       isError,
     };
   },
