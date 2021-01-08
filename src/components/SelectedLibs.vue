@@ -6,7 +6,7 @@
     <div
       v-for="(lib, libIndex) in libs"
       :key="lib.name"
-      class="flex items-center justify-between px-3 py-2 hover:bg-gray-50"
+      class="flex items-center justify-between px-3 py-2 hover:bg-yellow-50"
     >
       <div
         class="self-stretch flex-shrink-0 w-2 mr-2 bg-green-200"

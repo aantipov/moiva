@@ -126,7 +126,7 @@ export default defineComponent({
 }
 .ac > .ac-option.selected,
 .ac > .ac-option:hover:not(.group) {
-  @apply bg-gray-200;
+  @apply bg-yellow-100;
 }
 .ac-option-title-wrapper {
   @apply flex justify-between mb-0.5 items-center;
