@@ -30,14 +30,14 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" scoped>
-.root {
-  height: 24px;
-  padding-top: 6px;
-}
-.icon {
-  width: 48px;
-  height: 15px;
-}
+/* .root { */
+/*   height: 24px; */
+/*   padding-top: 6px; */
+/* } */
+/* .icon { */
+/*   width: 48px; */
+/*   height: 15px; */
+/* } */
 .icon-path {
   @apply fill-current text-gray-400;
 }

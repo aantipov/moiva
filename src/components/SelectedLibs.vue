@@ -14,28 +14,37 @@
       ></div>
 
       <div class="flex flex-col flex-grow">
-        <div
-          class="flex items-center justify-between mb-1 text-base text-gray-800"
-        >
+        <div class="flex justify-between mb-1">
           <!-- Name -->
           <span class="font-mono">
             <span>{{ lib.name }}</span>
             <span class="text-gray-500">@{{ lib.version }}</span>
           </span>
 
-          <m-close class="sm:hidden" @click="$emit('deselect', lib.name)" />
+          <!--  Links  -->
+          <div class="flex">
+            <!-- Desktop -->
+            <LibExternalLinks
+              :lib-name="lib.name"
+              :repo-url="lib.repo"
+              class="hidden sm:flex"
+            />
+
+            <a
+              :href="getRemainedLibsLink(lib.name)"
+              @click.prevent="$emit('deselect', lib.name)"
+            >
+              <m-close />
+            </a>
+          </div>
         </div>
 
-        <!--  Links (mobile)  -->
-        <div class="flex sm:hidden">
-          <a :href="getNpmLink(lib.name)" target="_blank" class="mr-4">
-            <NpmIcon />
-          </a>
-
-          <a :href="lib.repo" target="_blank" class="mr-4">
-            <GithubIcon />
-          </a>
-        </div>
+        <!-- Mobile -->
+        <LibExternalLinks
+          :lib-name="lib.name"
+          :repo-url="lib.repo"
+          class="sm:hidden"
+        />
 
         <div class="text-sm text-gray-500">
           <div v-if="githubIsLoading">
@@ -96,27 +105,6 @@
           <i>{{ lib.description }}</i>
         </div>
       </div>
-
-      <div class="items-center hidden ml-2 sm:flex">
-        <a
-          :href="getNpmLink(lib.name)"
-          target="_blank"
-          class="hidden mr-4 sm:block"
-        >
-          <NpmIcon />
-        </a>
-
-        <a :href="lib.repo" target="_blank" class="mr-4">
-          <GithubIcon />
-        </a>
-
-        <a
-          :href="getRemainedLibsLink(lib.name)"
-          @click.prevent="$emit('deselect', lib.name)"
-        >
-          <m-close />
-        </a>
-      </div>
     </div>
   </div>
 </template>
@@ -124,7 +112,9 @@
 <script lang="ts">
 import { defineComponent, toRefs, computed } from 'vue';
 import GithubIcon from './icons/Github.vue';
+import BundlephobiaIcon from './icons/Bundlephobia.vue';
 import Loader from './Loader.vue';
+import LibExternalLinks from './LibExternalLinks.vue';
 import NpmIcon from './icons/Npm.vue';
 import { LibraryT, RepoT } from '../apis';
 import { numbersFormatter, constructHref } from '../utils';
@@ -137,6 +127,8 @@ export default defineComponent({
 
   components: {
     GithubIcon,
+    BundlephobiaIcon,
+    LibExternalLinks,
     NpmIcon,
     Loader,
   },
