@@ -66,8 +66,9 @@
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
 
-          <Bundlephobia
-            :libs="librariesNames"
+          <Contributors
+            :libs="selectedLibs"
+            :lib-to-color-map="libToColorMap"
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
 
@@ -80,6 +81,11 @@
           <Commits
             :libs="selectedLibs"
             :lib-to-color-map="libToColorMap"
+            class="col-span-12 md:col-span-6 xl:col-span-3"
+          />
+
+          <Bundlephobia
+            :libs="librariesNames"
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
 
@@ -114,6 +120,7 @@ import Popular from './Popular.vue';
 import SelectedLibs from './SelectedLibs.vue';
 import Loader from './Loader.vue';
 import Languages from './Languages.vue';
+import Contributors from './Contributors.vue';
 import Commits from './Commits.vue';
 import { ERROR_CODE_NO_GITHUB_DATA } from '@/constants';
 import { LibraryT, fetchNpmPackage } from '../apis';
@@ -145,6 +152,7 @@ export default defineComponent({
     Popular,
     Languages,
     Commits,
+    Contributors,
   },
 
   setup() {

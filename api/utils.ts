@@ -8,6 +8,7 @@ export function logRequest(
     | 'github'
     | 'githubLanguages'
     | 'githubCommits'
+    | 'githubContributors'
     | 'googleTrends'
     | 'bundlephobia'
     | 'npmSuggestion'

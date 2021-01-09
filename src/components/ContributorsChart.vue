@@ -1,15 +1,14 @@
 <template>
   <div>
     <div class="flex items-center justify-center mt-5">
-      <h2 class="my-0">Commits frequency</h2>
+      <h2 class="my-0">Number of Contributors</h2>
 
       <m-chart-info class="ml-2">
-        <p>Moiva uses commits data from GitHub.</p>
-        <p>The number of commits is aggregated by the 4 weeks interval.</p>
         <p>
-          Only commits to the default repository branch are included. Merge
-          commits are excluded.
+          This chart shows a number of developers contributed to the repository
+          per year.
         </p>
+        <p>Moiva uses data from Github to build the chart.</p>
       </m-chart-info>
     </div>
 
@@ -21,7 +20,7 @@
     <div v-else-if="isLoading" class="text-center p">Loading...</div>
 
     <div v-show="!isLoading && !isError" style="height: 350px">
-      <canvas id="commits"></canvas>
+      <canvas id="contributors"></canvas>
     </div>
   </div>
 </template>
@@ -29,11 +28,11 @@
 <script lang="ts">
 import { defineComponent, toRefs, onMounted, watch, computed } from 'vue';
 import Chart, { ChartDataSets } from 'chart.js';
-import { GithubCommitsResponseItemT } from '../../api/gh-commits';
+import { YearContributorsT } from '@/apis';
 import { enUS } from 'date-fns/locale';
 
 export default defineComponent({
-  name: 'CommitsChart',
+  name: 'ContributorsChart',
 
   props: {
     isLoading: {
@@ -52,8 +51,8 @@ export default defineComponent({
       type: Object as () => Record<string, string>,
       required: true,
     },
-    libsCommits: {
-      type: Array as () => GithubCommitsResponseItemT[][],
+    libsContributors: {
+      type: Array as () => YearContributorsT[][],
       required: false,
       default: null,
     },
@@ -62,33 +61,33 @@ export default defineComponent({
   setup(props) {
     const {
       libsNames,
-      libsCommits,
       libToColorMap,
+      libsContributors,
       isLoading,
       isError,
     } = toRefs(props);
     const datasets = computed<ChartDataSets[]>(
       () =>
-        (libsNames.value.map((libName, key) => ({
-          label: libName,
+        (libsNames.value.map((lib, libKey) => ({
+          label: lib,
           fill: false,
-          data: libsCommits.value
-            ? libsCommits.value[key].map(({ total, week }) => ({
-                x: week,
-                y: total,
+          data: libsContributors.value
+            ? libsContributors.value[libKey].map(({ year, contributors }) => ({
+                x: year.toString(),
+                y: contributors,
               }))
             : [],
-          backgroundColor: libToColorMap.value[libName],
-          borderColor: libToColorMap.value[libName],
+          backgroundColor: libToColorMap.value[lib],
+          borderColor: libToColorMap.value[lib],
           borderWidth: 4,
-          pointRadius: 3,
+          pointRadius: 4,
           pointHoverRadius: 7,
         })) as unknown) as ChartDataSets[]
     );
     let mychart: Chart | undefined;
 
     function initChart(): void {
-      const ctx = document.getElementById('commits') as HTMLCanvasElement;
+      const ctx = document.getElementById('contributors') as HTMLCanvasElement;
 
       mychart = new Chart(ctx, {
         type: 'line',
@@ -100,7 +99,7 @@ export default defineComponent({
             xAxes: [
               {
                 type: 'time',
-                time: { tooltipFormat: 'PP' },
+                time: { unit: 'year' },
               },
             ],
             yAxes: [{}],

@@ -6,6 +6,7 @@
       </h2>
 
       <m-chart-info class="ml-2">
+        <p>Moiva gets releases data from NPM.</p>
         <p>Major, minor and bugfix releases count.</p>
         <p>Pre-releases are not included.</p>
       </m-chart-info>
