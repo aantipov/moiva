@@ -6,7 +6,6 @@ initSentry();
 
 const token = process.env.GITHUB_MOIVA_REST;
 
-// Number of contributors by year
 export interface GithubContributorsResponseItemT {
   author: string;
   commits: number;
@@ -18,7 +17,7 @@ export interface GithubContributorsResponseItemT {
   }[];
 }
 
-// Resonse Item per Contributor
+// Response Item per Contributor
 export interface ResponseItemT {
   author: {
     login: string;
