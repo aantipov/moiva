@@ -5,9 +5,9 @@
 
       <m-chart-info class="ml-2">
         <p>
-          We use
+          Moiva uses data from
           <a href="https://bundlephobia.com/" target="_blank">Bundlephobia</a>
-          data to build the chart.
+          to build this chart.
         </p>
       </m-chart-info>
     </div>

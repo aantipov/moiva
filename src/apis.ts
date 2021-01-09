@@ -4,6 +4,7 @@ import { NpmPackagedDetailsResponseT } from '../api/npm-package-detailed';
 import { ERROR_CODE_NO_GITHUB_DATA } from '@/constants';
 import { GithubLanguagesResponseT } from '../api/gh-languages';
 import { GithubCommitsResponseItemT } from '../api/gh-commits';
+import { GithubContributorsResponseItemT } from '../api/gh-contributors';
 
 const npmDownloadsCache = new Map();
 const npmSuggestionsCache = new Map();
@@ -12,6 +13,7 @@ const npmPackageVersionsCache = new Map();
 const githubCache = new Map();
 const githubLanguagesCache = new Map();
 const githubCommitsCache = new Map();
+const githubContributorsCache = new Map();
 const gTrendsCache = new Map();
 const bphobiaCache = new Map();
 
@@ -186,6 +188,66 @@ export function fetchRepoCommits(
 
       return Promise.reject(err);
     });
+}
+
+export interface YearContributorsT {
+  year: number;
+  contributors: number;
+}
+
+export function fetchContributors(
+  repoUrl: string
+): Promise<YearContributorsT[]> {
+  const repoUrlParts = repoUrl.split('/');
+  const owner = repoUrlParts[3];
+  const name = repoUrlParts[4];
+
+  if (githubContributorsCache.get(repoUrl)) {
+    return Promise.resolve(githubContributorsCache.get(repoUrl));
+  }
+
+  return (
+    axios
+      .get<GithubContributorsResponseItemT[]>(
+        `/api/gh-contributors?name=${name}&owner=${owner}`
+      )
+      // @ts-ignore
+      .then(({ data: contributors }) => {
+        const yearToContributorsMap = {} as Record<string, number>;
+
+        // Fill yearToContributorsMap with data
+        (contributors as GithubContributorsResponseItemT[]).forEach(
+          ({ years }) => {
+            years.forEach(({ year, commits }) => {
+              if (!yearToContributorsMap[year]) {
+                yearToContributorsMap[year] = 0;
+              }
+
+              if (commits) {
+                yearToContributorsMap[year] += 1;
+              }
+            });
+          }
+        );
+
+        // Convert yearToContributorsMap into array sorted by year
+        const contributorsByYear = Object.entries(yearToContributorsMap)
+          .map(([year, contributors]) => ({
+            year: Number(year),
+            contributors,
+          }))
+          .sort((c1, c2) => c1.year - c2.year);
+
+        githubContributorsCache.set(repoUrl, contributorsByYear);
+
+        return contributorsByYear;
+      })
+      .catch((err) => {
+        reportSentry(err, 'fetchContributorsData');
+
+        return Promise.reject(err);
+      })
+  );
 }
 
 export function fetchGithubData(
