@@ -131,16 +131,15 @@ export function fetchRepoLanguages(
   const repoUrlParts = repoUrl.split('/');
   const owner = repoUrlParts[3];
   const name = repoUrlParts[4];
-  const key = name + '/' + owner;
 
-  if (githubLanguagesCache.get(key)) {
-    return Promise.resolve(githubLanguagesCache.get(key));
+  if (githubLanguagesCache.get(repoUrl)) {
+    return Promise.resolve(githubLanguagesCache.get(repoUrl));
   }
 
   return axios
     .get(`/api/gh-languages?name=${name}&owner=${owner}`)
     .then(({ data }) => {
-      githubLanguagesCache.set(key, data);
+      githubLanguagesCache.set(repoUrl, data);
       return data;
     })
     .catch((err) => {
@@ -155,10 +154,9 @@ export function fetchRepoCommits(
   const repoUrlParts = repoUrl.split('/');
   const owner = repoUrlParts[3];
   const name = repoUrlParts[4];
-  const key = name + '/' + owner;
 
-  if (githubCommitsCache.get(key)) {
-    return Promise.resolve(githubCommitsCache.get(key));
+  if (githubCommitsCache.get(repoUrl)) {
+    return Promise.resolve(githubCommitsCache.get(repoUrl));
   }
 
   return axios
@@ -182,7 +180,7 @@ export function fetchRepoCommits(
 
           return acc;
         }, [] as GithubCommitsResponseItemT[]);
-      githubCommitsCache.set(key, aggregatedCommits);
+      githubCommitsCache.set(repoUrl, aggregatedCommits);
 
       return aggregatedCommits;
     })
@@ -200,16 +198,15 @@ export function fetchGithubData(
   const repoUrlParts = repoUrl.split('/');
   const owner = repoUrlParts[3];
   const name = repoUrlParts[4];
-  const key = name + '/' + owner;
 
-  if (githubCache.get(key)) {
-    return Promise.resolve(githubCache.get(key));
+  if (githubCache.get(repoUrl)) {
+    return Promise.resolve(githubCache.get(repoUrl));
   }
 
   return axios
     .get(`/api/gh?name=${name}&owner=${owner}&package=${npmPackage}`)
     .then(({ data }) => {
-      githubCache.set(key, data);
+      githubCache.set(repoUrl, data);
       return data;
     })
     .catch((err) => {
