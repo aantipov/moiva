@@ -41,9 +41,6 @@ export default (req: NowRequest, res: NowResponse): void => {
       }
     )
     .then(({ data }) => {
-      if (!data.map) {
-        console.log('DATA', data);
-      }
       const stripedData = data.map(({ total, week }) => ({
         total,
         week,
