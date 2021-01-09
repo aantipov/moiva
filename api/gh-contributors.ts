@@ -63,27 +63,24 @@ export default (req: NowRequest, res: NowResponse): void => {
     .then(({ data: contributors }) => {
       const aggregatedData: GithubContributorsResponseItemT[] = (contributors as ResponseItemT[]).map(
         ({ author, total, weeks }) => {
-          const yearsObj = weeks.reduce(
-            (acc, { w, a, d, c }) => {
-              const year = new Date(w * 1000).getFullYear();
-              if (acc[year]) {
-                acc[year].additions += a;
-                acc[year].deletions += d;
-                acc[year].commits += c;
-              }
-              return acc;
-            },
-            {
-              2017: { additions: 0, deletions: 0, commits: 0 },
-              2018: { additions: 0, deletions: 0, commits: 0 },
-              2019: { additions: 0, deletions: 0, commits: 0 },
-              2020: { additions: 0, deletions: 0, commits: 0 },
-              2021: { additions: 0, deletions: 0, commits: 0 },
-            } as Record<
-              string,
-              { additions: number; deletions: number; commits: number }
-            >
-          );
+          const currentYear = new Date().getFullYear();
+          const yearsObj = {} as Record<
+            string,
+            { additions: number; deletions: number; commits: number }
+          >;
+          let year = 2017;
+          while (year <= currentYear) {
+            yearsObj[year] = { additions: 0, deletions: 0, commits: 0 };
+            year++;
+          }
+          weeks.forEach(({ w, a, d, c }) => {
+            const year = new Date(w * 1000).getFullYear();
+            if (yearsObj[year]) {
+              yearsObj[year].additions += a;
+              yearsObj[year].deletions += d;
+              yearsObj[year].commits += c;
+            }
+          });
 
           return {
             author: author.login,
