@@ -3,6 +3,10 @@ import * as Sentry from '@sentry/browser';
 import { NpmPackagedDetailsResponseT } from '../api/npm-package-detailed';
 import { ERROR_CODE_NO_GITHUB_DATA } from '@/constants';
 import { GithubLanguagesResponseT } from '../api/gh-languages';
+import {
+  GithubCommitsResponseT,
+  GithubCommitsResponseItemT,
+} from '../api/gh-commits';
 
 const npmDownloadsCache = new Map();
 const npmSuggestionsCache = new Map();
@@ -10,6 +14,7 @@ const npmPackageCache = new Map();
 const npmPackageVersionsCache = new Map();
 const githubCache = new Map();
 const githubLanguagesCache = new Map();
+const githubCommitsCache = new Map();
 const gTrendsCache = new Map();
 const bphobiaCache = new Map();
 
@@ -140,6 +145,50 @@ export function fetchRepoLanguages(
     })
     .catch((err) => {
       reportSentry(err, 'fetchGithubLanguagesData');
+      return Promise.reject(err);
+    });
+}
+
+export function fetchRepoCommits(
+  repoUrl: string
+): Promise<GithubCommitsResponseItemT[]> {
+  const repoUrlParts = repoUrl.split('/');
+  const owner = repoUrlParts[3];
+  const name = repoUrlParts[4];
+  const key = name + '/' + owner;
+
+  if (githubCommitsCache.get(key)) {
+    return Promise.resolve(githubCommitsCache.get(key));
+  }
+
+  return axios
+    .get<GithubCommitsResponseItemT[]>(
+      `/api/gh-commits?name=${name}&owner=${owner}`
+    )
+    .then(({ data }) => {
+      // Aggregate commits by 4 weeks
+      const aggregatedCommits = data
+        .map((item) => ({
+          ...item,
+          week: item.week * 1000,
+        }))
+        .reduce((acc, item, i) => {
+          if (i % 4 === 0) {
+            acc.push(item);
+          } else {
+            acc[acc.length - 1].total += item.total;
+            acc[acc.length - 1].week = item.week;
+          }
+
+          return acc;
+        }, [] as GithubCommitsResponseItemT[]);
+      githubCommitsCache.set(key, aggregatedCommits);
+
+      return aggregatedCommits;
+    })
+    .catch((err) => {
+      reportSentry(err, 'fetchGithubCommitsData');
+
       return Promise.reject(err);
     });
 }
