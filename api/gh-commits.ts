@@ -11,8 +11,6 @@ export interface GithubCommitsResponseItemT {
   week: number;
 }
 
-export type GithubCommitsResponseT = GithubCommitsResponseItemT[];
-
 export default (req: NowRequest, res: NowResponse): void => {
   const { name, owner } = req.query;
 

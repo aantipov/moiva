@@ -12,7 +12,7 @@
 import { defineComponent, onMounted, toRefs, ref, computed, watch } from 'vue';
 import CommitsChart from './CommitsChart.vue';
 import { fetchRepoCommits, LibraryT } from '@/apis';
-import { GithubCommitsResponseT } from '../../api/gh-commits';
+import { GithubCommitsResponseItemT } from '../../api/gh-commits';
 
 export default defineComponent({
   name: 'Commits',
@@ -37,7 +37,7 @@ export default defineComponent({
     const libsNames = computed<string[]>(() =>
       libs.value.map(({ name }) => name)
     );
-    const libsCommits = ref<null | GithubCommitsResponseT[]>(null);
+    const libsCommits = ref<null | GithubCommitsResponseItemT[][]>(null);
 
     const isLoading = ref(true);
     const isError = ref(false);

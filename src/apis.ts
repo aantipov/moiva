@@ -3,10 +3,7 @@ import * as Sentry from '@sentry/browser';
 import { NpmPackagedDetailsResponseT } from '../api/npm-package-detailed';
 import { ERROR_CODE_NO_GITHUB_DATA } from '@/constants';
 import { GithubLanguagesResponseT } from '../api/gh-languages';
-import {
-  GithubCommitsResponseT,
-  GithubCommitsResponseItemT,
-} from '../api/gh-commits';
+import { GithubCommitsResponseItemT } from '../api/gh-commits';
 
 const npmDownloadsCache = new Map();
 const npmSuggestionsCache = new Map();
