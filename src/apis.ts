@@ -3,6 +3,7 @@ import * as Sentry from '@sentry/browser';
 import { NpmPackagedDetailsResponseT } from '../api/npm-package-detailed';
 import { ERROR_CODE_NO_GITHUB_DATA } from '@/constants';
 import { GithubLanguagesResponseT } from '../api/gh-languages';
+import { GithubCommitsResponseItemT } from '../api/gh-commits';
 
 const npmDownloadsCache = new Map();
 const npmSuggestionsCache = new Map();
@@ -10,6 +11,7 @@ const npmPackageCache = new Map();
 const npmPackageVersionsCache = new Map();
 const githubCache = new Map();
 const githubLanguagesCache = new Map();
+const githubCommitsCache = new Map();
 const gTrendsCache = new Map();
 const bphobiaCache = new Map();
 
@@ -126,20 +128,62 @@ export function fetchRepoLanguages(
   const repoUrlParts = repoUrl.split('/');
   const owner = repoUrlParts[3];
   const name = repoUrlParts[4];
-  const key = name + '/' + owner;
 
-  if (githubLanguagesCache.get(key)) {
-    return Promise.resolve(githubLanguagesCache.get(key));
+  if (githubLanguagesCache.get(repoUrl)) {
+    return Promise.resolve(githubLanguagesCache.get(repoUrl));
   }
 
   return axios
     .get(`/api/gh-languages?name=${name}&owner=${owner}`)
     .then(({ data }) => {
-      githubLanguagesCache.set(key, data);
+      githubLanguagesCache.set(repoUrl, data);
       return data;
     })
     .catch((err) => {
       reportSentry(err, 'fetchGithubLanguagesData');
+      return Promise.reject(err);
+    });
+}
+
+export function fetchRepoCommits(
+  repoUrl: string
+): Promise<GithubCommitsResponseItemT[]> {
+  const repoUrlParts = repoUrl.split('/');
+  const owner = repoUrlParts[3];
+  const name = repoUrlParts[4];
+
+  if (githubCommitsCache.get(repoUrl)) {
+    return Promise.resolve(githubCommitsCache.get(repoUrl));
+  }
+
+  return axios
+    .get<GithubCommitsResponseItemT[]>(
+      `/api/gh-commits?name=${name}&owner=${owner}`
+    )
+    .then(({ data }) => {
+      // Aggregate commits by 4 weeks
+      const aggregatedCommits = data
+        .map((item) => ({
+          ...item,
+          week: item.week * 1000,
+        }))
+        .reduce((acc, item, i) => {
+          if (i % 4 === 0) {
+            acc.push(item);
+          } else {
+            acc[acc.length - 1].total += item.total;
+            acc[acc.length - 1].week = item.week;
+          }
+
+          return acc;
+        }, [] as GithubCommitsResponseItemT[]);
+      githubCommitsCache.set(repoUrl, aggregatedCommits);
+
+      return aggregatedCommits;
+    })
+    .catch((err) => {
+      reportSentry(err, 'fetchGithubCommitsData');
+
       return Promise.reject(err);
     });
 }
@@ -151,16 +195,15 @@ export function fetchGithubData(
   const repoUrlParts = repoUrl.split('/');
   const owner = repoUrlParts[3];
   const name = repoUrlParts[4];
-  const key = name + '/' + owner;
 
-  if (githubCache.get(key)) {
-    return Promise.resolve(githubCache.get(key));
+  if (githubCache.get(repoUrl)) {
+    return Promise.resolve(githubCache.get(repoUrl));
   }
 
   return axios
     .get(`/api/gh?name=${name}&owner=${owner}&package=${npmPackage}`)
     .then(({ data }) => {
-      githubCache.set(key, data);
+      githubCache.set(repoUrl, data);
       return data;
     })
     .catch((err) => {
