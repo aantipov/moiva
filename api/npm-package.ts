@@ -43,9 +43,14 @@ export default (req: NowRequest, res: NowResponse): void => {
         return;
       }
 
+      const endRepoUrlIndex = repository.url.slice(-4) === '.git' ? -4 : 400;
+
       const repoUrl =
         'https://' +
-        repository.url.slice(repository.url.indexOf('github.com'), -4);
+        repository.url.slice(
+          repository.url.indexOf('github.com'),
+          endRepoUrlIndex
+        );
 
       const result = {
         name,
