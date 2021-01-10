@@ -30,13 +30,14 @@ export default (req: NowRequest, res: NowResponse): void => {
           lib
         )}`
     )
+    // @ts-ignore
     .map((url) => axios.get(url).then(({ data }) => data.downloads));
 
   Promise.all(allYearsPromises)
     .then((downloadsByYear) => {
       // @ts-ignore
       const downloads = downloadsByYear.flat();
-      const downloadsByMonth = [];
+      const downloadsByMonth = [] as { downloads: number; month: string }[];
 
       downloads.forEach(({ downloads, day }) => {
         const monthDay = day.slice(-2);
