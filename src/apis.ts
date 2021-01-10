@@ -101,6 +101,7 @@ function reportSentry(err: AxiosError, methodName: string): void {
 
   Sentry.captureException(err, {
     tags: {
+      // @ts-ignore
       apiResponseMessage: err.response?.data?.error || '',
       apiRequestUrl: err.config?.url || '',
     },
@@ -112,16 +113,19 @@ export function fetchNpmDownloads(lib: string): Promise<NpmDownloadT[]> {
     return Promise.resolve(npmDownloadsCache.get(lib));
   }
 
-  return axios
-    .get(`/api/npm-downloads?lib=${lib}`)
-    .then(({ data }) => {
-      npmDownloadsCache.set(lib, data);
-      return data;
-    })
-    .catch((err) => {
-      reportSentry(err, 'fetchNpmDownloads');
-      return Promise.reject(err);
-    });
+  return (
+    axios
+      .get(`/api/npm-downloads?lib=${lib}`)
+      // @ts-ignore
+      .then(({ data }) => {
+        npmDownloadsCache.set(lib, data);
+        return data;
+      })
+      .catch((err) => {
+        reportSentry(err, 'fetchNpmDownloads');
+        return Promise.reject(err);
+      })
+  );
 }
 
 export function fetchRepoLanguages(
@@ -135,16 +139,19 @@ export function fetchRepoLanguages(
     return Promise.resolve(githubLanguagesCache.get(repoUrl));
   }
 
-  return axios
-    .get(`/api/gh-languages?name=${name}&owner=${owner}`)
-    .then(({ data }) => {
-      githubLanguagesCache.set(repoUrl, data);
-      return data;
-    })
-    .catch((err) => {
-      reportSentry(err, 'fetchGithubLanguagesData');
-      return Promise.reject(err);
-    });
+  return (
+    axios
+      .get(`/api/gh-languages?name=${name}&owner=${owner}`)
+      // @ts-ignore
+      .then(({ data }) => {
+        githubLanguagesCache.set(repoUrl, data);
+        return data;
+      })
+      .catch((err) => {
+        reportSentry(err, 'fetchGithubLanguagesData');
+        return Promise.reject(err);
+      })
+  );
 }
 
 export function fetchRepoCommits(
@@ -158,36 +165,39 @@ export function fetchRepoCommits(
     return Promise.resolve(githubCommitsCache.get(repoUrl));
   }
 
-  return axios
-    .get<GithubCommitsResponseItemT[]>(
-      `/api/gh-commits?name=${name}&owner=${owner}`
-    )
-    .then(({ data }) => {
-      // Aggregate commits by 4 weeks
-      const aggregatedCommits = data
-        .map((item) => ({
-          ...item,
-          week: item.week * 1000,
-        }))
-        .reduce((acc, item, i) => {
-          if (i % 4 === 0) {
-            acc.push(item);
-          } else {
-            acc[acc.length - 1].total += item.total;
-            acc[acc.length - 1].week = item.week;
-          }
+  return (
+    axios
+      .get<GithubCommitsResponseItemT[]>(
+        `/api/gh-commits?name=${name}&owner=${owner}`
+      )
+      // @ts-ignore
+      .then(({ data }) => {
+        // Aggregate commits by 4 weeks
+        const aggregatedCommits = (data as GithubCommitsResponseItemT[])
+          .map((item) => ({
+            ...item,
+            week: item.week * 1000,
+          }))
+          .reduce((acc, item, i) => {
+            if (i % 4 === 0) {
+              acc.push(item);
+            } else {
+              acc[acc.length - 1].total += item.total;
+              acc[acc.length - 1].week = item.week;
+            }
 
-          return acc;
-        }, [] as GithubCommitsResponseItemT[]);
-      githubCommitsCache.set(repoUrl, aggregatedCommits);
+            return acc;
+          }, [] as GithubCommitsResponseItemT[]);
+        githubCommitsCache.set(repoUrl, aggregatedCommits);
 
-      return aggregatedCommits;
-    })
-    .catch((err) => {
-      reportSentry(err, 'fetchGithubCommitsData');
+        return aggregatedCommits;
+      })
+      .catch((err) => {
+        reportSentry(err, 'fetchGithubCommitsData');
 
-      return Promise.reject(err);
-    });
+        return Promise.reject(err);
+      })
+  );
 }
 
 export interface YearContributorsT {
@@ -262,16 +272,19 @@ export function fetchGithubData(
     return Promise.resolve(githubCache.get(repoUrl));
   }
 
-  return axios
-    .get(`/api/gh?name=${name}&owner=${owner}&package=${npmPackage}`)
-    .then(({ data }) => {
-      githubCache.set(repoUrl, data);
-      return data;
-    })
-    .catch((err) => {
-      reportSentry(err, 'fetchGithubData');
-      return Promise.reject(err);
-    });
+  return (
+    axios
+      .get<RepoT>(`/api/gh?name=${name}&owner=${owner}&package=${npmPackage}`)
+      // @ts-ignore
+      .then(({ data }) => {
+        githubCache.set(repoUrl, data);
+        return data;
+      })
+      .catch((err) => {
+        reportSentry(err, 'fetchGithubData');
+        return Promise.reject(err);
+      })
+  );
 }
 
 export function fetchGTrendsData(libs: string[]): Promise<GTrendsT> {
@@ -282,16 +295,19 @@ export function fetchGTrendsData(libs: string[]): Promise<GTrendsT> {
     return Promise.resolve(gTrendsCache.get(libsStr));
   }
 
-  return axios
-    .get(`/api/gtrends?libs=${libsStr}`)
-    .then(({ data }) => {
-      gTrendsCache.set(libsStr, data.default);
-      return data.default;
-    })
-    .catch((err) => {
-      reportSentry(err, 'fetchGTrendsData');
-      return Promise.reject(err);
-    });
+  return (
+    axios
+      .get<GTrendsT>(`/api/gtrends?libs=${libsStr}`)
+      // @ts-ignore
+      .then(({ data }) => {
+        gTrendsCache.set(libsStr, data.default);
+        return data.default;
+      })
+      .catch((err) => {
+        reportSentry(err, 'fetchGTrendsData');
+        return Promise.reject(err);
+      })
+  );
 }
 
 export function fetchBundlephobiaData(lib: string): Promise<BundlephobiaT> {
@@ -299,25 +315,28 @@ export function fetchBundlephobiaData(lib: string): Promise<BundlephobiaT> {
     return Promise.resolve(bphobiaCache.get(lib));
   }
 
-  return axios
-    .get(`/api/bphobia?lib=${lib}`)
-    .catch((err) => {
-      const { code } = err.response.data;
+  return (
+    axios
+      .get(`/api/bphobia?lib=${lib}`)
+      .catch((err) => {
+        const { code } = err.response.data;
 
-      if (code === 'BuildError' || code === 'BlacklistedPackageError') {
-        return { data: null };
-      }
+        if (code === 'BuildError' || code === 'BlacklistedPackageError') {
+          return { data: null };
+        }
 
-      return Promise.reject(err);
-    })
-    .then(({ data }) => {
-      bphobiaCache.set(lib, data);
-      return data;
-    })
-    .catch((err) => {
-      reportSentry(err, 'fetchBundlephobiaData');
-      return Promise.reject(err);
-    });
+        return Promise.reject(err);
+      })
+      // @ts-ignore
+      .then(({ data }) => {
+        bphobiaCache.set(lib, data);
+        return data;
+      })
+      .catch((err) => {
+        reportSentry(err, 'fetchBundlephobiaData');
+        return Promise.reject(err);
+      })
+  );
 }
 
 export function fetchNpmSuggestions(keyword: string): Promise<SuggestionT[]> {
@@ -347,15 +366,21 @@ export function fetchNpmSuggestions(keyword: string): Promise<SuggestionT[]> {
 }
 
 function fetchNpmJSSuggestions(keyword: string): Promise<SuggestionT[]> {
-  return axios
-    .get(`/api/npm-suggestions?q=${keyword}`)
-    .then((resp) => resp.data);
+  return (
+    axios
+      .get(`/api/npm-suggestions?q=${keyword}`)
+      // @ts-ignore
+      .then(({ data }) => data)
+  );
 }
 
 function fetchNpmsIOSuggestions(keyword: string): Promise<SuggestionT[]> {
   return axios
-    .get(`https://api.npms.io/v2/search/suggestions?q=${keyword}&size=20`)
+    .get<NpmsIOSuggestionResponseT[]>(
+      `https://api.npms.io/v2/search/suggestions?q=${keyword}&size=20`
+    )
     .then((resp) => {
+      // @ts-ignore
       const suggestions = resp.data as NpmsIOSuggestionResponseT[];
       const data = suggestions
         .filter((lib) => !!lib.package.links.repository)
@@ -407,9 +432,12 @@ export function fetchNpmPackage(packageName: string): Promise<LibraryT | null> {
 }
 
 function fetchNpmJSPackage(packageName: string): Promise<LibraryT | null> {
-  return axios
-    .get(`/api/npm-package?lib=${packageName}`)
-    .then(({ data }) => data);
+  return (
+    axios
+      .get(`/api/npm-package?lib=${packageName}`)
+      // @ts-ignore
+      .then(({ data }) => data)
+  );
 }
 
 function fetchNpmsIOPackage(packageName: string): Promise<LibraryT | null> {
@@ -426,6 +454,7 @@ function fetchNpmsIOPackage(packageName: string): Promise<LibraryT | null> {
             links: { repository },
           },
         },
+        // @ts-ignore
       } = resp.data as NpmsIOPackageResponseT;
 
       return {
@@ -448,30 +477,33 @@ export function fetchNpmPackageVersions(
     return Promise.resolve(npmPackageVersionsCache.get(pkg));
   }
 
-  return axios
-    .get(`/api/npm-package-detailed?pkg=${pkg}`)
-    .then(({ data }: { data: NpmPackagedDetailsResponseT }) => {
-      // Calc release number per year
-      const aggregatedMap = data.versions.reduce((acc, [, year]) => {
-        if (acc[year]) {
-          acc[year]++;
-        } else {
-          acc[year] = 1;
+  return (
+    axios
+      .get(`/api/npm-package-detailed?pkg=${pkg}`)
+      // @ts-ignore
+      .then(({ data }: { data: NpmPackagedDetailsResponseT }) => {
+        // Calc release number per year
+        const aggregatedMap = data.versions.reduce((acc, [, year]) => {
+          if (acc[year]) {
+            acc[year]++;
+          } else {
+            acc[year] = 1;
+          }
+          return acc;
+        }, {} as NpmPackageVersionsT);
+
+        // Strip all data earlier 2017 and make sure every year is present
+        const res: Record<string, number> = {};
+        let year = 2017;
+        const currentYear = new Date().getFullYear();
+        while (year <= currentYear) {
+          res[year] = aggregatedMap[year] || 0;
+          year++;
         }
-        return acc;
-      }, {} as NpmPackageVersionsT);
 
-      // Strip all data earlier 2017 and make sure every year is present
-      const res: Record<string, number> = {};
-      let year = 2017;
-      const currentYear = new Date().getFullYear();
-      while (year <= currentYear) {
-        res[year] = aggregatedMap[year] || 0;
-        year++;
-      }
+        npmPackageVersionsCache.set(pkg, res);
 
-      npmPackageVersionsCache.set(pkg, res);
-
-      return res;
-    });
+        return res;
+      })
+  );
 }
