@@ -114,11 +114,10 @@ export default defineComponent({
                 stacked: true,
                 ticks: {
                   beginAtZero: true,
-                  // @ts-ignore
                   precision: 0,
                   callback: (val: number): string =>
                     numbersFormatter.format(val),
-                },
+                } as Chart.TickOptions,
               },
             ],
           },

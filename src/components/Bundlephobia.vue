@@ -52,16 +52,6 @@ export default defineComponent({
     };
   },
 
-  watch: {
-    libs(): void {
-      this.loadData();
-    },
-  },
-
-  mounted(): void {
-    this.loadData();
-  },
-
   computed: {
     // Filter out libs for which Bundlephobia coudn't provide any data
     filteredLibs(): string[] {
@@ -70,6 +60,16 @@ export default defineComponent({
     filteredSizes(): BundlephobiaT[] {
       return this.sizes.filter((size) => !!size);
     },
+  },
+
+  watch: {
+    libs(): void {
+      this.loadData();
+    },
+  },
+
+  mounted(): void {
+    this.loadData();
   },
 
   methods: {

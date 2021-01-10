@@ -30,13 +30,13 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'Modal',
-  emits: ['close'],
   props: {
     showModal: {
       type: Boolean,
       required: true,
     },
   },
+  emits: ['close'],
   watch: {
     showModal(): void {
       if (this.showModal) {
