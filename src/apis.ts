@@ -297,7 +297,7 @@ export function fetchGTrendsData(libs: string[]): Promise<GTrendsT> {
 
   return (
     axios
-      .get<GTrendsT>(`/api/gtrends?libs=${libsStr}`)
+      .get(`/api/gtrends?libs=${libsStr}`)
       // @ts-ignore
       .then(({ data }) => {
         gTrendsCache.set(libsStr, data.default);
