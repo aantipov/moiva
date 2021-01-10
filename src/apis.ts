@@ -45,11 +45,10 @@ export interface RepoT {
   stars: number;
   createdAt: string;
   vulnerabilitiesCount: number;
-  openPRs: { totalCount: number };
-  closedPRs: { totalCount: number };
-  mergedPRs: { totalCount: number };
   closedIssues: { totalCount: number };
+  closedBugIssues: { totalCount: number };
   openIssues: { totalCount: number };
+  openBugIssues: { totalCount: number };
 }
 
 export interface LibraryT {

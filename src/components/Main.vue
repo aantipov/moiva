@@ -84,6 +84,14 @@
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
 
+          <OpenClosedIssues
+            :libs="librariesNames"
+            :repos="githubRepositories"
+            :is-loading="githubIsLoading"
+            :is-error="githubIsError"
+            class="col-span-12 md:col-span-6 xl:col-span-3"
+          />
+
           <Bundlephobia
             :libs="librariesNames"
             class="col-span-12 md:col-span-6 xl:col-span-3"
@@ -91,14 +99,6 @@
 
           <Languages
             :libs="selectedLibs"
-            class="col-span-12 md:col-span-6 xl:col-span-3"
-          />
-
-          <OpenClosedIssues
-            :libs="librariesNames"
-            :repos="githubRepositories"
-            :is-loading="githubIsLoading"
-            :is-error="githubIsError"
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
         </div>
