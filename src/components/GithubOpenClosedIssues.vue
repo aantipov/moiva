@@ -107,7 +107,6 @@ export default defineComponent({
 
         options: {
           title: { display: false, text: 'Open issues, count' },
-          // legend: { display: false },
           scales: {
             xAxes: [{ stacked: true }],
             yAxes: [
