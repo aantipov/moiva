@@ -25,6 +25,14 @@ export default (req: NowRequest, res: NowResponse): void => {
     return;
   }
 
+  // 'Type: Bug' - React; 'triage: bug' - Svelte; 'type: bug/fix' - Angular; 'Bug-fix' - Moment; 'issue: bug' - Luxon
+  // '☢️Bug' - Dayjs; '🐜 Bug fix' & '🐛 Bug' - date-fns; 'type: bug' - chart.js; 'P2-bug' - Playwright
+  // 'type: bug :sob:' - nestjs/nest
+  const bugLabels =
+    'labels: ["bug", "Bug", "Type: Bug", "triage: bug", "type: bug/fix", "Bug-fix", "issue: bug", "☢️Bug", "🐜 Bug fix", "🐛 Bug", "type: bug", "P2-bug", "type: bug :sob:"]';
+  const halfAYearAgo = new Date(Date.now() - 1000 * 3600 * 24 * 183);
+  const since = `since: "${halfAYearAgo.toISOString()}"`;
+
   axios
     .post(
       url,
@@ -40,19 +48,16 @@ export default (req: NowRequest, res: NowResponse): void => {
             description
             stars: stargazerCount
             createdAt
-            openPRs: pullRequests(states: [OPEN]) {
+            openIssues: issues(filterBy: { states: [OPEN], ${since} }) {
               totalCount
             }
-            mergedPRs: pullRequests(states: [MERGED]) {
+            openBugIssues: issues(filterBy: { states: [OPEN], ${since}, ${bugLabels} }) {
               totalCount
             }
-            closedPRs: pullRequests(states: [CLOSED]) {
+            closedIssues: issues(filterBy: { states: [CLOSED], ${since} }) {
               totalCount
             }
-            openIssues: issues(filterBy: { states: [OPEN] }) {
-              totalCount
-            }
-            closedIssues: issues(filterBy: { states: [CLOSED] }) {
+            closedBugIssues: issues(filterBy: { states: [CLOSED], ${since}, ${bugLabels} }) {
               totalCount
             }
           }

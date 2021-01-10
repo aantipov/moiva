@@ -1,7 +1,6 @@
 // https://material.io/design/color/the-color-system.html#tools-for-picking-colors
-export const COLOR_GREEN = '#48bb78';
-export const COLOR_GRAY = '#a0aec0';
-export const COLOR_PINK = '#ed64a6';
+export const COLOR_GREEN = '#10B981'; // Emerald 500
+export const COLOR_GRAY = '#A1A1AA'; // Gray 400
 
 const COLORS = [
   '#F44336', // Red 500
@@ -46,6 +45,13 @@ const LANGUAGE_COLORS = [
   '#FBBF24', // Amber 400
   '#C084FC', // Purple
 ];
+
+export const ISSUES_COLORS = {
+  OPEN: '#71717A', // Gray 500
+  OPEN_BUGS: '#EF4444', // Red 500
+  CLOSED: '#D4D4D8', // Gray 300
+  CLOSED_BUGS: '#FCA5A5', // Red 300
+};
 
 const libToColorMap = new Map<string, string>();
 const langToColorMap = new Map<string, string>();

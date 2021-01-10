@@ -1,10 +1,21 @@
 <template>
   <div>
-    <h2>Open issues, count</h2>
+    <div class="flex items-center justify-center mt-5">
+      <h2 class="my-0">Recent Issues</h2>
 
-    <div v-if="isLoading" class="text-center p">Loading...</div>
+      <m-chart-info class="ml-2">
+        <p>
+          Amount of open/closed repository issues updated in the last 6 months
+        </p>
+      </m-chart-info>
+    </div>
 
-    <div v-else-if="isError" class="text-center p">Something went wrong...</div>
+    <div v-if="isError" class="chart-error">
+      Something went wrong while loading data. Try to reload the page or come
+      later
+    </div>
+
+    <div v-else-if="isLoading" class="text-center p">Loading...</div>
 
     <div v-show="!isLoading && !isError" style="height: 350px">
       <canvas id="issuesCount"></canvas>
@@ -17,7 +28,7 @@ import { defineComponent, onMounted, watch, toRefs, computed } from 'vue';
 import Chart, { ChartDataSets } from 'chart.js';
 import { RepoT } from '../apis';
 import { numbersFormatter } from '../utils';
-import { COLOR_GRAY } from '../colors';
+import { ISSUES_COLORS } from '@/colors';
 
 export default defineComponent({
   name: 'GithubOpenClosedIssues',
@@ -47,9 +58,37 @@ export default defineComponent({
       () =>
         [
           {
-            label: 'open',
-            data: repos.value.map((repo) => repo.openIssues.totalCount),
-            backgroundColor: COLOR_GRAY,
+            label: 'open bugs',
+            stack: '1',
+            data: repos.value.map((repo) => repo.openBugIssues.totalCount),
+            backgroundColor: ISSUES_COLORS.OPEN_BUGS,
+            borderWidth: 1,
+          },
+          {
+            label: 'open others',
+            stack: '1',
+            data: repos.value.map(
+              (repo) =>
+                repo.openIssues.totalCount - repo.openBugIssues.totalCount
+            ),
+            backgroundColor: ISSUES_COLORS.OPEN,
+            borderWidth: 1,
+          },
+          {
+            label: 'closed bugs',
+            stack: '2',
+            data: repos.value.map((repo) => repo.closedBugIssues.totalCount),
+            backgroundColor: ISSUES_COLORS.CLOSED_BUGS,
+            borderWidth: 1,
+          },
+          {
+            label: 'closed others',
+            stack: '2',
+            data: repos.value.map(
+              (repo) =>
+                repo.closedIssues.totalCount - repo.closedBugIssues.totalCount
+            ),
+            backgroundColor: ISSUES_COLORS.CLOSED,
             borderWidth: 1,
           },
         ] as ChartDataSets[]
@@ -68,10 +107,12 @@ export default defineComponent({
 
         options: {
           title: { display: false, text: 'Open issues, count' },
-          legend: { display: false },
+          // legend: { display: false },
           scales: {
+            xAxes: [{ stacked: true }],
             yAxes: [
               {
+                stacked: true,
                 ticks: {
                   beginAtZero: true,
                   // @ts-ignore
