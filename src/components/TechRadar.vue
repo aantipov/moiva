@@ -119,10 +119,10 @@ export default defineComponent({
                 return format(new Date(month), 'MMM, yyyy');
               },
               label: (tooltipItem, data): string => {
-                // @ts-ignore
-                const label = data.datasets[tooltipItem.datasetIndex].label;
+                const label = (data.datasets as Chart.ChartDataSets[])[
+                  tooltipItem.datasetIndex as number
+                ].label;
 
-                // @ts-ignore
                 return ` ${label}: ${tooltipItem.yLabel}`;
               },
             },

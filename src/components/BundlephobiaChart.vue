@@ -53,10 +53,10 @@ export default defineComponent({
         tooltips: {
           callbacks: {
             label: (tooltipItem, data): string => {
-              // @ts-ignore
-              const label = data.datasets[tooltipItem.datasetIndex].label;
+              const label = (data.datasets as Chart.ChartDataSets[])[
+                tooltipItem.datasetIndex as number
+              ].label;
 
-              // @ts-ignore
               return ` ${label}: ${Number(
                 tooltipItem.yLabel
               ).toLocaleString()}kB`;

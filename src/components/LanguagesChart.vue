@@ -79,8 +79,7 @@ export default defineComponent({
           label: langName,
           data: (libsNames.value || []).map(
             (libName, libIndex) =>
-              // @ts-ignore
-              libsLanguagesShares.value[libIndex][langName] || 0
+              (libsLanguagesShares.value || [])[libIndex][langName] || 0
           ),
           backgroundColor: langToColorMap.value[langName],
           borderColor: langToColorMap.value[langName],

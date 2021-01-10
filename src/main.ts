@@ -17,15 +17,15 @@ updateTitle();
 Chart.defaults.global.defaultFontSize = 14;
 Chart.defaults.global.defaultFontFamily =
   'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
-// @ts-ignore
-Chart.defaults.global.title.padding = 0;
-// @ts-ignore
-Chart.defaults.global.title.fontSize = 14;
-// @ts-ignore
-Chart.defaults.global.title.fontFamily =
-  'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
-// @ts-ignore
-Chart.defaults.global.legend.labels.boxWidth = 20;
+(Chart.defaults.global.title as Chart.ChartTitleOptions) = {
+  ...Chart.defaults.global.title,
+  padding: 0,
+  fontSize: 14,
+  fontFamily:
+    'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
+};
+((Chart.defaults.global.legend as Chart.ChartLegendOptions)
+  .labels as Chart.ChartLegendLabelOptions).boxWidth = 20;
 Chart.defaults.global.maintainAspectRatio = false;
 Chart.defaults.global.tooltips = {
   ...Chart.defaults.global.tooltips,
@@ -37,10 +37,10 @@ Chart.defaults.global.tooltips = {
   callbacks: {
     ...Chart.defaults.global.tooltips.callbacks,
     label(tooltipItem, data): string {
-      // @ts-ignore
-      const label = data.datasets[tooltipItem.datasetIndex].label;
+      const label = (data.datasets as Chart.ChartDataSets[])[
+        tooltipItem.datasetIndex as number
+      ].label;
 
-      // @ts-ignore
       return ` ${label}: ${Number(tooltipItem.yLabel).toLocaleString()}`;
     },
   },
@@ -48,9 +48,9 @@ Chart.defaults.global.tooltips = {
 
 const app = createApp(App);
 
-app.component('m-close', Close);
-app.component('m-chart-info', ChartInfo);
-app.component('m-loader-tail-spin', LoaderTailSpin);
+app.component('MClose', Close);
+app.component('MChartInfo', ChartInfo);
+app.component('MLoaderTailSpin', LoaderTailSpin);
 
 app.mount('#app');
 
