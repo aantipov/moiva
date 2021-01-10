@@ -71,7 +71,6 @@ export function constructHref(libs: string[]): string {
 }
 
 export const numbersFormatter = new Intl.NumberFormat('en-US', {
-  // @ts-ignore
   notation: 'compact',
 });
 

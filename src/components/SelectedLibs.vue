@@ -111,11 +111,8 @@
 
 <script lang="ts">
 import { defineComponent, toRefs, computed } from 'vue';
-import GithubIcon from './icons/Github.vue';
-import BundlephobiaIcon from './icons/Bundlephobia.vue';
 import Loader from './Loader.vue';
 import LibExternalLinks from './LibExternalLinks.vue';
-import NpmIcon from './icons/Npm.vue';
 import { LibraryT, RepoT } from '../apis';
 import { numbersFormatter, constructHref } from '../utils';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
@@ -123,13 +120,8 @@ import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 export default defineComponent({
   name: 'SelectedLibs',
 
-  emits: ['deselect'],
-
   components: {
-    GithubIcon,
-    BundlephobiaIcon,
     LibExternalLinks,
-    NpmIcon,
     Loader,
   },
 
@@ -159,6 +151,8 @@ export default defineComponent({
       required: true,
     },
   },
+
+  emits: ['deselect'],
 
   setup(props) {
     const { githubRepos, libs, libToColorMap } = toRefs(props);
