@@ -4,7 +4,11 @@ import { logRequest, initSentry, reportError } from './utils';
 
 initSentry();
 
-const startYear = 2015;
+interface NpmJSResponseT {
+  downloads: { downloads: number; day: string }[];
+}
+
+const startYear = 2017;
 const cYear = new Date().getFullYear();
 const years = Array.from(
   { length: cYear - startYear + 1 },
@@ -30,8 +34,9 @@ export default (req: NowRequest, res: NowResponse): void => {
           lib
         )}`
     )
-    // @ts-ignore
-    .map((url) => axios.get(url).then(({ data }) => data.downloads));
+    .map((url) =>
+      axios.get<NpmJSResponseT>(url).then(({ data }) => data.downloads)
+    );
 
   Promise.all(allYearsPromises)
     .then((downloadsByYear) => {
