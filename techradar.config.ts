@@ -292,6 +292,82 @@ const libs: [NameT, LinkT, DataT][] = [
       '2020-05': TRIAL,
     },
   ],
+  [
+    'mountebank',
+    'https://www.thoughtworks.com/radar/tools/mountebank',
+    {
+      '2014-07': ASSESS,
+      '2015-01': ASSESS,
+      '2015-05': ADOPT,
+      '2015-11': ADOPT,
+    },
+  ],
+  [
+    '@mlvis/manifold',
+    'https://www.thoughtworks.com/radar/tools/manifold',
+    { '2020-05': ASSESS },
+  ],
+  [
+    'mermaid',
+    'https://www.thoughtworks.com/radar/tools/mermaid',
+    { '2018-11': TRIAL },
+  ],
+  [
+    '@laconia/core',
+    'https://www.thoughtworks.com/radar/languages-and-frameworks/laconia',
+    { '2019-04': TRIAL },
+  ],
+  [
+    'jscodeshift',
+    'https://www.thoughtworks.com/radar/tools/jscodeshift',
+    { '2020-10': TRIAL },
+  ],
+  [
+    'gatsby',
+    'https://www.thoughtworks.com/radar/languages-and-frameworks/gatsby-js',
+    { '2019-11': ASSESS },
+  ],
+  [
+    'joi',
+    'https://www.thoughtworks.com/radar/languages-and-frameworks/joi',
+    { '2019-04': TRIAL },
+  ],
+  [
+    'hyperapp',
+    'https://www.thoughtworks.com/radar/languages-and-frameworks/hyperapp',
+    { '2018-05': ASSESS },
+  ],
+  [
+    'formik',
+    'https://www.thoughtworks.com/radar/languages-and-frameworks/formik',
+    { '2019-04': TRIAL },
+  ],
+  [
+    'flow-bin',
+    'https://www.thoughtworks.com/radar/tools/flow',
+    { '2017-11': ASSESS, '2018-05': ASSESS },
+  ],
+  [
+    '@11ty/eleventy',
+    'https://www.thoughtworks.com/radar/tools/eleventy',
+    { '2020-10': ASSESS },
+  ],
+  [
+    'eslint',
+    'https://www.thoughtworks.com/radar/tools/eslint',
+    { '2019-11': ADOPT },
+  ],
+  [
+    'clinic',
+    'https://www.thoughtworks.com/radar/languages-and-frameworks/clinic-js-bubbleprof',
+    { '2020-05': ASSESS },
+  ],
+  [
+    'commitizen',
+    'https://www.thoughtworks.com/radar/tools/commitizen',
+    { '2019-11': ADOPT },
+  ],
+  ['ava', 'https://www.thoughtworks.com/radar/tools/ava', { '2019-04': TRIAL }],
 ];
 
 export const libsToDatadMap = libs.reduce((accum, [name, _link, data]) => {

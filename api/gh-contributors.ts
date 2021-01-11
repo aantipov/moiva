@@ -59,8 +59,7 @@ export default (req: NowRequest, res: NowResponse): void => {
         },
       }
     )
-    // @ts-ignore
-    .then(({ data: contributors }) => {
+    .then(({ data: contributors, headers }) => {
       const aggregatedData: GithubContributorsResponseItemT[] = (contributors as ResponseItemT[]).map(
         ({ author, total, weeks }) => {
           const currentYear = new Date().getFullYear();
