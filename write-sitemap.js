@@ -19,6 +19,7 @@ const urls = [
   ['apexcharts'],
   ['apisauce'],
   ['async'],
+  ['auditjs'],
   ['axios'],
   ['backbone.marionette'],
   ['bluebird'],
