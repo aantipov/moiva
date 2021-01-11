@@ -1,6 +1,15 @@
 type CategoryT =
+  | '3D'
+  | 'ApiMocking'
+  | 'AwsLambdaFramework'
+  | 'BuildTools'
   | 'Chart'
+  | 'CSS-IN-JS'
   | 'Framework'
+  | 'GraphQLSupport'
+  | 'JAMstack'
+  | 'LintPrettify'
+  | 'Immutability'
   | 'Template'
   | 'Date'
   | 'Utilities'
@@ -8,217 +17,342 @@ type CategoryT =
   | 'Sockets'
   | 'NodeFramework'
   | 'NodeLogging'
+  | 'NodeMonitoring'
+  | 'NodeRunner'
+  | 'ObjectSchemaValidation'
   | 'CSSFrameworks'
   | 'VueComponents'
   | 'ReactComponents'
+  | 'ReactNativeAndroid'
+  | 'ReactForms'
+  | 'ReactSelect'
+  | 'ReactDates'
+  | 'RuntimeTypesChecks'
   | 'State'
+  | 'TypesChecking'
+  | 'ReactUnitTesting'
+  | 'UnitTestsRunner'
+  | 'VisualRegression'
+  | 'WebComponents'
+  | 'UIDevEnvironment'
   | 'Other';
 type FrameworkT = 'React' | 'Vue';
 interface LibDataT {
   category: CategoryT;
-  framework: FrameworkT | null;
+  framework?: FrameworkT;
 }
 
 const libraries: [string, LibDataT][] = [
   // Frameworks
-  ['react', { category: 'Framework', framework: null }],
-  ['vue', { category: 'Framework', framework: null }],
-  ['@angular/core', { category: 'Framework', framework: null }],
-  ['svelte', { category: 'Framework', framework: null }],
-  ['ember-source', { category: 'Framework', framework: null }],
-  ['alpinejs', { category: 'Framework', framework: null }],
-  ['inferno', { category: 'Framework', framework: null }],
-  ['preact', { category: 'Framework', framework: null }],
-  ['hyperapp', { category: 'Framework', framework: null }],
-  ['riot', { category: 'Framework', framework: null }],
-  ['angular', { category: 'Framework', framework: null }],
-  ['backbone.marionette', { category: 'Framework', framework: null }],
-  ['knockout', { category: 'Framework', framework: null }],
+  ['react', { category: 'Framework' }],
+  ['vue', { category: 'Framework' }],
+  ['@angular/core', { category: 'Framework' }],
+  ['svelte', { category: 'Framework' }],
+  ['ember-source', { category: 'Framework' }],
+  ['alpinejs', { category: 'Framework' }],
+  ['inferno', { category: 'Framework' }],
+  ['preact', { category: 'Framework' }],
+  ['hyperapp', { category: 'Framework' }],
+  ['riot', { category: 'Framework' }],
+  ['angular', { category: 'Framework' }],
+  ['backbone.marionette', { category: 'Framework' }],
+  ['knockout', { category: 'Framework' }],
+  ['solid-js', { category: 'Framework' }],
 
   // Templating Engines
-  ['ejs', { category: 'Template', framework: null }],
-  ['handlebars', { category: 'Template', framework: null }],
-  ['mustache', { category: 'Template', framework: null }],
-  ['pug', { category: 'Template', framework: null }],
-  ['nunjucks', { category: 'Template', framework: null }],
-  ['marko', { category: 'Template', framework: null }],
-  ['blueimp-tmpl', { category: 'Template', framework: null }],
-  ['dot', { category: 'Template', framework: null }],
-  ['xtemplate', { category: 'Template', framework: null }],
-  ['dustjs-linkedin', { category: 'Template', framework: null }],
-  ['ehtml', { category: 'Template', framework: null }],
+  ['ejs', { category: 'Template' }],
+  ['handlebars', { category: 'Template' }],
+  ['mustache', { category: 'Template' }],
+  ['pug', { category: 'Template' }],
+  ['nunjucks', { category: 'Template' }],
+  ['marko', { category: 'Template' }],
+  ['blueimp-tmpl', { category: 'Template' }],
+  ['dot', { category: 'Template' }],
+  ['xtemplate', { category: 'Template' }],
+  ['dustjs-linkedin', { category: 'Template' }],
+  ['ehtml', { category: 'Template' }],
 
   // Date utilities
-  ['date-fns', { category: 'Date', framework: null }],
-  ['dayjs', { category: 'Date', framework: null }],
-  ['luxon', { category: 'Date', framework: null }],
-  ['moment', { category: 'Date', framework: null }],
-  ['fecha', { category: 'Date', framework: null }],
-  ['ms', { category: 'Date', framework: null }],
-  ['timeago.js', { category: 'Date', framework: null }],
-  ['date.js', { category: 'Date', framework: null }],
+  ['date-fns', { category: 'Date' }],
+  ['dayjs', { category: 'Date' }],
+  ['luxon', { category: 'Date' }],
+  ['moment', { category: 'Date' }],
+  ['fecha', { category: 'Date' }],
+  ['ms', { category: 'Date' }],
+  ['timeago.js', { category: 'Date' }],
+  ['date.js', { category: 'Date' }],
 
   // Utilities
-  ['lodash', { category: 'Utilities', framework: null }],
-  ['ramda', { category: 'Utilities', framework: null }],
-  ['underscore', { category: 'Utilities', framework: null }],
-  ['rambda', { category: 'Utilities', framework: null }],
-  ['mout', { category: 'Utilities', framework: null }],
-  ['sugar', { category: 'Utilities', framework: null }],
-  ['lazy.js', { category: 'Utilities', framework: null }],
+  ['lodash', { category: 'Utilities' }],
+  ['ramda', { category: 'Utilities' }],
+  ['underscore', { category: 'Utilities' }],
+  ['rambda', { category: 'Utilities' }],
+  ['mout', { category: 'Utilities' }],
+  ['sugar', { category: 'Utilities' }],
+  ['lazy.js', { category: 'Utilities' }],
 
   // E2E testing
-  ['puppeteer', { category: 'e2e', framework: null }],
-  ['cypress', { category: 'e2e', framework: null }],
-  ['playwright', { category: 'e2e', framework: null }],
-  ['selenium-webdriver', { category: 'e2e', framework: null }],
-  ['webdriverio', { category: 'e2e', framework: null }],
-  ['testcafe', { category: 'e2e', framework: null }],
-  ['nightwatch', { category: 'e2e', framework: null }],
-  ['taiko', { category: 'e2e', framework: null }],
+  ['puppeteer', { category: 'e2e' }],
+  ['cypress', { category: 'e2e' }],
+  ['playwright', { category: 'e2e' }],
+  ['selenium-webdriver', { category: 'e2e' }],
+  ['webdriverio', { category: 'e2e' }],
+  ['testcafe', { category: 'e2e' }],
+  ['nightwatch', { category: 'e2e' }],
+  ['taiko', { category: 'e2e' }],
 
-  ['nightmare', { category: 'e2e', framework: null }],
-  ['casperjs', { category: 'e2e', framework: null }],
-  ['slimerjs', { category: 'e2e', framework: null }],
-  ['zombie', { category: 'e2e', framework: null }],
+  ['nightmare', { category: 'e2e' }],
+  ['casperjs', { category: 'e2e' }],
+  ['slimerjs', { category: 'e2e' }],
+  ['zombie', { category: 'e2e' }],
 
   // Web Sockets
-  ['socket.io', { category: 'Sockets', framework: null }],
-  ['ws', { category: 'Sockets', framework: null }],
+  ['socket.io', { category: 'Sockets' }],
+  ['ws', { category: 'Sockets' }],
 
   // NodeJS Frameworks
-  ['express', { category: 'NodeFramework', framework: null }],
-  ['@nestjs/core', { category: 'NodeFramework', framework: null }],
-  ['koa', { category: 'NodeFramework', framework: null }],
-  ['fastify', { category: 'NodeFramework', framework: null }],
-  ['@hapi/hapi', { category: 'NodeFramework', framework: null }],
-  ['sails', { category: 'NodeFramework', framework: null }],
-  ['restify', { category: 'NodeFramework', framework: null }],
-  ['@feathersjs/feathers', { category: 'NodeFramework', framework: null }],
-  ['loopback', { category: 'NodeFramework', framework: null }],
-  ['@loopback/core', { category: 'NodeFramework', framework: null }],
+  ['express', { category: 'NodeFramework' }],
+  ['@nestjs/core', { category: 'NodeFramework' }],
+  ['koa', { category: 'NodeFramework' }],
+  ['fastify', { category: 'NodeFramework' }],
+  ['@hapi/hapi', { category: 'NodeFramework' }],
+  ['sails', { category: 'NodeFramework' }],
+  ['restify', { category: 'NodeFramework' }],
+  ['@feathersjs/feathers', { category: 'NodeFramework' }],
+  ['loopback', { category: 'NodeFramework' }],
+  ['@loopback/core', { category: 'NodeFramework' }],
 
   // NodeJS Logging
-  ['log4js', { category: 'NodeLogging', framework: null }],
-  ['pino', { category: 'NodeLogging', framework: null }],
-  ['winston', { category: 'NodeLogging', framework: null }],
-  ['morgan', { category: 'NodeLogging', framework: null }],
-  ['loglevel', { category: 'NodeLogging', framework: null }],
-  ['bunyan', { category: 'NodeLogging', framework: null }],
+  ['log4js', { category: 'NodeLogging' }],
+  ['pino', { category: 'NodeLogging' }],
+  ['winston', { category: 'NodeLogging' }],
+  ['morgan', { category: 'NodeLogging' }],
+  ['loglevel', { category: 'NodeLogging' }],
+  ['bunyan', { category: 'NodeLogging' }],
 
   // CSS Frameworks
-  ['bootstrap', { category: 'CSSFrameworks', framework: null }],
-  ['bulma', { category: 'CSSFrameworks', framework: null }],
-  ['tailwindcss', { category: 'CSSFrameworks', framework: null }],
-  ['tachyons', { category: 'CSSFrameworks', framework: null }],
-  ['materialize-css', { category: 'CSSFrameworks', framework: null }],
+  ['bootstrap', { category: 'CSSFrameworks' }],
+  ['bulma', { category: 'CSSFrameworks' }],
+  ['tailwindcss', { category: 'CSSFrameworks' }],
+  ['tachyons', { category: 'CSSFrameworks' }],
+  ['materialize-css', { category: 'CSSFrameworks' }],
 
   // Charts
-  ['chart.js', { category: 'Chart', framework: null }],
-  ['d3', { category: 'Chart', framework: null }],
-  ['plotly.js', { category: 'Chart', framework: null }],
-  ['highcharts', { category: 'Chart', framework: null }],
-  ['recharts', { category: 'Chart', framework: null }],
-  ['echarts', { category: 'Chart', framework: null }],
-  ['@amcharts/amcharts4', { category: 'Chart', framework: null }],
-  ['apexcharts', { category: 'Chart', framework: null }],
+  ['chart.js', { category: 'Chart' }],
+  ['d3', { category: 'Chart' }],
+  ['plotly.js', { category: 'Chart' }],
+  ['highcharts', { category: 'Chart' }],
+  ['recharts', { category: 'Chart' }],
+  ['echarts', { category: 'Chart' }],
+  ['@amcharts/amcharts4', { category: 'Chart' }],
+  ['apexcharts', { category: 'Chart' }],
 
-  ['chartist', { category: 'Chart', framework: null }],
-  ['vis', { category: 'Chart', framework: null }],
-  ['nvd3', { category: 'Chart', framework: null }],
-  ['amcharts3', { category: 'Chart', framework: null }],
-  ['peity', { category: 'Chart', framework: null }],
+  ['chartist', { category: 'Chart' }],
+  ['vis', { category: 'Chart' }],
+  ['nvd3', { category: 'Chart' }],
+  ['amcharts3', { category: 'Chart' }],
+  ['peity', { category: 'Chart' }],
 
   // Vue component libraries
-  ['vuetify', { category: 'VueComponents', framework: null }],
-  ['quasar', { category: 'VueComponents', framework: null }],
-  ['bootstrap-vue', { category: 'VueComponents', framework: null }],
-  ['primevue', { category: 'VueComponents', framework: null }],
-  ['vue-material', { category: 'VueComponents', framework: null }],
-  ['element-ui', { category: 'VueComponents', framework: null }],
+  ['vuetify', { category: 'VueComponents' }],
+  ['quasar', { category: 'VueComponents' }],
+  ['bootstrap-vue', { category: 'VueComponents' }],
+  ['primevue', { category: 'VueComponents' }],
+  ['vue-material', { category: 'VueComponents' }],
+  ['element-ui', { category: 'VueComponents' }],
 
   // React component libraries
-  ['@material-ui/core', { category: 'ReactComponents', framework: null }],
-  ['antd', { category: 'ReactComponents', framework: null }],
-  ['react-bootstrap', { category: 'ReactComponents', framework: null }],
-  ['semantic-ui', { category: 'ReactComponents', framework: null }],
-  ['@chakra-ui/react', { category: 'ReactComponents', framework: null }],
-  ['reactstrap', { category: 'ReactComponents', framework: null }],
+  ['@material-ui/core', { category: 'ReactComponents' }],
+  ['antd', { category: 'ReactComponents' }],
+  ['react-bootstrap', { category: 'ReactComponents' }],
+  ['semantic-ui', { category: 'ReactComponents' }],
+  ['@chakra-ui/react', { category: 'ReactComponents' }],
+  ['reactstrap', { category: 'ReactComponents' }],
 
   // State Management
-  ['redux', { category: 'State', framework: null }],
-  ['mobx', { category: 'State', framework: null }],
-  ['rxjs', { category: 'State', framework: null }],
-  ['recoil', { category: 'State', framework: null }],
-  ['vuex', { category: 'State', framework: null }],
+  ['redux', { category: 'State' }],
+  ['mobx', { category: 'State' }],
+  ['rxjs', { category: 'State' }],
+  ['recoil', { category: 'State' }],
+  ['vuex', { category: 'State' }],
 
-  ['@cucumber/cucumber', { category: 'Other', framework: null }],
-  ['@emotion/css', { category: 'Other', framework: null }],
-  ['@nivo/core', { category: 'Other', framework: null }],
-  ['@parcel/core', { category: 'Other', framework: null }],
-  ['apisauce', { category: 'Other', framework: null }],
-  ['async', { category: 'Other', framework: null }],
-  ['axios', { category: 'Other', framework: null }],
-  ['bluebird', { category: 'Other', framework: null }],
-  ['browserify', { category: 'Other', framework: null }],
-  ['buefy', { category: 'Other', framework: null }],
-  ['chai', { category: 'Other', framework: null }],
-  ['commander', { category: 'Other', framework: null }],
-  ['classnames', { category: 'Other', framework: null }],
-  ['cheerio', { category: 'Other', framework: null }],
-  ['core-js', { category: 'Other', framework: null }],
-  ['debug', { category: 'Other', framework: null }],
-  ['downshift', { category: 'Other', framework: null }],
-  ['eslint', { category: 'Other', framework: null }],
-  ['forever', { category: 'Other', framework: null }],
-  ['fp-ts', { category: 'Other', framework: null }],
-  ['gatsby', { category: 'Other', framework: null }],
-  ['grunt', { category: 'Other', framework: null }],
-  ['gulp', { category: 'Other', framework: null }],
-  ['immer', { category: 'Other', framework: null }],
-  ['inquirer', { category: 'Other', framework: null }],
-  ['jasmine', { category: 'Other', framework: null }],
-  ['jest', { category: 'Other', framework: null }],
-  ['jshint', { category: 'Other', framework: null }],
-  ['jquery', { category: 'Other', framework: null }],
-  ['js-beautify', { category: 'Other', framework: null }],
-  ['jss', { category: 'Other', framework: null }],
-  ['karma', { category: 'Other', framework: null }],
-  ['less', { category: 'Other', framework: null }],
-  ['mkdirp', { category: 'Other', framework: null }],
-  ['mocha', { category: 'Other', framework: null }],
-  ['next', { category: 'Other', framework: null }],
-  ['node-fetch', { category: 'Other', framework: null }],
-  ['nodemon', { category: 'Other', framework: null }],
-  ['nuxt', { category: 'Other', framework: null }],
-  ['passport', { category: 'Other', framework: null }],
-  ['prettier', { category: 'Other', framework: null }],
-  ['prop-types', { category: 'Other', framework: null }],
-  ['pm2', { category: 'Other', framework: null }],
-  ['protractor', { category: 'Other', framework: null }],
-  ['radium', { category: 'Other', framework: null }],
-  ['react-autosuggest', { category: 'Other', framework: null }],
-  ['react-chartjs-2', { category: 'Other', framework: null }],
-  ['react-datepicker', { category: 'Other', framework: null }],
-  ['react-date-picker', { category: 'Other', framework: null }],
-  ['react-dates', { category: 'Other', framework: null }],
-  ['react-day-picker', { category: 'Other', framework: null }],
-  ['react-router', { category: 'Other', framework: null }],
-  ['react-select', { category: 'Other', framework: null }],
-  ['react-vis', { category: 'Other', framework: null }],
-  ['rollup', { category: 'Other', framework: null }],
-  ['sanctuary', { category: 'Other', framework: null }],
-  ['sass', { category: 'Other', framework: null }],
-  ['superagent', { category: 'Other', framework: null }],
-  ['select2', { category: 'Other', framework: null }],
-  ['styled-jsx', { category: 'Other', framework: null }],
-  ['styled-components', { category: 'Other', framework: null }],
-  ['tslint', { category: 'Other', framework: null }],
-  ['universal-router', { category: 'Other', framework: null }],
-  ['uuid', { category: 'Other', framework: null }],
-  ['victory', { category: 'Other', framework: null }],
-  ['webpack', { category: 'Other', framework: null }],
-  ['yargs', { category: 'Other', framework: null }],
+  // Api mocking
+  ['msw', { category: 'ApiMocking' }],
+  ['mountebank', { category: 'ApiMocking' }],
+
+  // AwsLambdaFramework
+  ['@middy/core', { category: 'AwsLambdaFramework' }],
+  ['@laconia/core', { category: 'AwsLambdaFramework' }],
+  ['vandium', { category: 'AwsLambdaFramework' }],
+
+  // WebComponents
+  ['@stencil/core', { category: 'WebComponents' }],
+  ['lit-element', { category: 'WebComponents' }],
+
+  // VisualRegression
+  ['backstopjs', { category: 'VisualRegression' }],
+  ['loki', { category: 'VisualRegression' }],
+  ['gemini', { category: 'VisualRegression' }],
+
+  // JAMstack
+  ['gatsby', { category: 'JAMstack' }],
+  ['next', { category: 'JAMstack' }],
+  ['nuxt', { category: 'JAMstack' }],
+  ['sapper', { category: 'JAMstack' }],
+  ['@11ty/eleventy', { category: 'JAMstack' }],
+  ['hexo', { category: 'JAMstack' }],
+  ['docusaurus', { category: 'JAMstack' }],
+  ['@docusaurus/core', { category: 'JAMstack' }],
+  ['vuepress', { category: 'JAMstack', framework: 'Vue' }],
+  ['docsify', { category: 'JAMstack' }],
+  ['umi', { category: 'JAMstack' }],
+  ['react-static', { category: 'JAMstack' }],
+  ['gridsome', { category: 'JAMstack', framework: 'Vue' }],
+
+  // ObjectSchemaValidation
+  ['joi', { category: 'ObjectSchemaValidation' }],
+  ['ajv', { category: 'ObjectSchemaValidation' }],
+  ['yup', { category: 'ObjectSchemaValidation' }],
+
+  // Immutability
+  ['immer', { category: 'Immutability' }],
+  ['immutable', { category: 'Immutability' }],
+
+  // RuntimeTypesChecks
+  ['io-ts', { category: 'RuntimeTypesChecks' }],
+  ['runtypes', { category: 'RuntimeTypesChecks' }],
+
+  // ReactNativeAndroid
+  ['hermes-engine', { category: 'ReactNativeAndroid' }],
+  ['jsc-android', { category: 'ReactNativeAndroid' }],
+  ['react-native-v8', { category: 'ReactNativeAndroid' }],
+
+  // GraphQLSupport
+  ['relay-runtime', { category: 'GraphQLSupport' }],
+  ['@apollo/client', { category: 'GraphQLSupport' }],
+  ['apollo-client', { category: 'GraphQLSupport' }],
+  ['vue-apollo', { category: 'GraphQLSupport' }],
+  ['svelte-apollo', { category: 'GraphQLSupport' }],
+  ['ember-apollo-client', { category: 'GraphQLSupport' }],
+
+  // ReactForms
+  ['formik', { category: 'ReactForms', framework: 'React' }],
+  ['react-hook-form', { category: 'ReactForms', framework: 'React' }],
+  ['redux-form', { category: 'ReactForms', framework: 'React' }],
+  ['final-form', { category: 'ReactForms', framework: 'React' }],
+
+  // TypesChecking
+  ['typescript', { category: 'TypesChecking' }],
+  ['flow-bin', { category: 'TypesChecking' }],
+
+  // ReactUnitTesting
+  ['enzyme', { category: 'ReactUnitTesting' }],
+  ['@testing-library/react', { category: 'ReactUnitTesting' }],
+
+  // LintPrettify
+  ['eslint', { category: 'LintPrettify' }],
+  ['tslint', { category: 'LintPrettify' }],
+  ['prettier', { category: 'LintPrettify' }],
+  ['jshint', { category: 'LintPrettify' }],
+  ['js-beautify', { category: 'LintPrettify' }],
+
+  // CSS-IN-JS
+  ['styled-jsx', { category: 'CSS-IN-JS' }],
+  ['styled-components', { category: 'CSS-IN-JS' }],
+  ['radium', { category: 'CSS-IN-JS' }],
+  ['emotion', { category: 'CSS-IN-JS' }],
+  ['@linaria/core', { category: 'CSS-IN-JS' }],
+  ['jss', { category: 'CSS-IN-JS' }],
+  ['aphrodite', { category: 'CSS-IN-JS' }],
+  ['@emotion/css', { category: 'CSS-IN-JS' }],
+
+  // NodeMonitoring
+  ['prom-client', { category: 'NodeMonitoring' }],
+  ['express-status-monitor', { category: 'NodeMonitoring' }],
+  ['clinic', { category: 'NodeMonitoring' }],
+  ['appmetrics-dash', { category: 'NodeMonitoring' }],
+
+  // 3D
+  ['babylonjs', { category: '3D' }],
+  ['three', { category: '3D' }],
+
+  // UnitTestsRunner
+  ['jest', { category: 'UnitTestsRunner' }],
+  ['ava', { category: 'UnitTestsRunner' }],
+
+  // UIDevEnvironment
+  ['@storybook/core', { category: 'UIDevEnvironment' }],
+  ['react-styleguidist', { category: 'UIDevEnvironment' }],
+
+  // BuildTools
+  ['webpack', { category: 'BuildTools' }],
+  ['rollup', { category: 'BuildTools' }],
+  ['@parcel/core', { category: 'BuildTools' }],
+  ['parcel', { category: 'BuildTools' }],
+  ['snowpack', { category: 'BuildTools' }],
+  ['esbuild', { category: 'BuildTools' }],
+
+  // NodeRunner
+  ['forever', { category: 'NodeRunner' }],
+  ['pm2', { category: 'NodeRunner' }],
+  ['nodemon', { category: 'NodeRunner' }],
+
+  // ReactSelect
+  ['downshift', { category: 'ReactSelect' }],
+  ['react-select', { category: 'ReactSelect' }],
+  ['select2', { category: 'ReactSelect' }],
+  ['react-autosuggest', { category: 'ReactSelect' }],
+  ['react-autocomplete', { category: 'ReactSelect' }],
+  ['react-virtualized-select', { category: 'ReactSelect' }],
+  ['react-dropdown', { category: 'ReactSelect' }],
+
+  // ReactDates
+  ['react-datepicker', { category: 'ReactDates' }],
+  ['react-date-picker', { category: 'ReactDates' }],
+  ['react-dates', { category: 'ReactDates' }],
+  ['react-datetime', { category: 'ReactDates' }],
+  ['react-day-picker', { category: 'ReactDates' }],
+  ['react-calendar', { category: 'ReactDates' }],
+
+  ['@cucumber/cucumber', { category: 'Other' }],
+  ['@nivo/core', { category: 'Other' }],
+  ['apisauce', { category: 'Other' }],
+  ['async', { category: 'Other' }],
+  ['axios', { category: 'Other' }],
+  ['bluebird', { category: 'Other' }],
+  ['browserify', { category: 'Other' }],
+  ['buefy', { category: 'Other' }],
+  ['chai', { category: 'Other' }],
+  ['commander', { category: 'Other' }],
+  ['commitizen', { category: 'Other' }],
+  ['classnames', { category: 'Other' }],
+  ['cheerio', { category: 'Other' }],
+  ['core-js', { category: 'Other' }],
+  ['debug', { category: 'Other' }],
+  ['fp-ts', { category: 'Other' }],
+  ['grunt', { category: 'Other' }],
+  ['gulp', { category: 'Other' }],
+  ['inquirer', { category: 'Other' }],
+  ['jasmine', { category: 'Other' }],
+  ['jquery', { category: 'Other' }],
+  ['karma', { category: 'Other' }],
+  ['less', { category: 'Other' }],
+  ['mkdirp', { category: 'Other' }],
+  ['mocha', { category: 'Other' }],
+  ['node-fetch', { category: 'Other' }],
+  ['passport', { category: 'Other' }],
+  ['prop-types', { category: 'Other' }],
+  ['protractor', { category: 'Other' }],
+  ['react-chartjs-2', { category: 'Other' }],
+  ['react-router', { category: 'Other' }],
+  ['react-vis', { category: 'Other' }],
+  ['sanctuary', { category: 'Other' }],
+  ['sass', { category: 'Other' }],
+  ['superagent', { category: 'Other' }],
+  ['universal-router', { category: 'Other' }],
+  ['uuid', { category: 'Other' }],
+  ['victory', { category: 'Other' }],
+  ['yargs', { category: 'Other' }],
 ];
 
 export const libsDataByName = libraries.reduce((acc, [libName, libData]) => {

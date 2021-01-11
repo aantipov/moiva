@@ -23,13 +23,20 @@ export default (req: NowRequest, res: NowResponse): void => {
       res.status(200).json({ gzip: resp.data.gzip, raw: resp.data.size });
     })
     .catch((e) => {
-      console.error('ERROR', e.response);
       reportError(e);
       const { status, data } = e.response;
       let errorCode = 'Urgent';
 
       if ((status === 500 || status === 403) && data && data.error) {
         errorCode = data.error.code;
+        console.error('API BUNDLEPHOBIA ERROR', {
+          status,
+          code: data.error.code,
+          message: data.error.message,
+          lib,
+        });
+      } else {
+        console.error('API BUNDLEPHOBIA ERROR', e.response);
       }
 
       res.status(500).json({ error: 'Something went wrong', code: errorCode });
