@@ -55,6 +55,7 @@
           />
 
           <GoogleTrends
+            v-if="showGTrendsChart"
             :libs="librariesNames"
             :lib-to-color-map="libToColorMap"
             class="col-span-12 xl:col-span-6"
@@ -136,6 +137,7 @@ import {
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import { getLibToColorMap } from '../colors';
 import useGithub from '@/composables/useGithub';
+import { libsToKeywordMap as gTrendsLibsToKeywordMap } from '../../google-trends.config';
 
 export default defineComponent({
   name: 'Main',
@@ -170,6 +172,13 @@ export default defineComponent({
       getLibToColorMap(librariesNames.value)
     );
     const gh = useGithub(selectedLibs);
+
+    const showGTrendsChart = computed<boolean>(
+      () =>
+        !!selectedLibs.value.filter(
+          ({ name }) => !!gTrendsLibsToKeywordMap[name]
+        ).length
+    );
 
     onMounted(() => {
       loadDefaultLibs().then((libs): void => {
@@ -216,6 +225,7 @@ export default defineComponent({
       githubIsError: gh.isError,
       githubIsLoading: gh.isLoading,
       githubRepositories: gh.repositories,
+      showGTrendsChart,
       deselect(libName: string): void {
         errorFetchingNewLib.value = null;
         selectedLibs.value = selectedLibs.value.filter(
