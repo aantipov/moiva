@@ -6,10 +6,10 @@
     <div
       v-for="(lib, libIndex) in libs"
       :key="lib.name"
-      class="flex items-center justify-between px-3 py-2 hover:bg-yellow-50"
+      class="flex items-center justify-between px-3 py-2 hover:bg-yellow-600 hover:bg-opacity-10"
     >
       <div
-        class="self-stretch flex-shrink-0 w-2 mr-2 bg-green-200"
+        class="self-stretch flex-shrink-0 w-2 mr-2"
         :style="{ backgroundColor: getLibColor(lib.name) }"
       ></div>
 

@@ -26,7 +26,7 @@
 
       <div
         v-else
-        class="relative w-full mx-auto lg:w-9/12 xl:w-2/4"
+        class="relative w-full mx-auto bg-yellow-600 lg:w-9/12 xl:w-2/4 bg-opacity-5"
         style="min-height: 200px"
       >
         <Loader />
@@ -35,7 +35,7 @@
 
     <div v-else>
       <SelectedLibs
-        class="relative w-full mx-auto mt-4 mb-2 lg:w-9/12 xl:w-2/4 divide-y divide-gray-200"
+        class="relative w-full mx-auto mt-4 mb-2 lg:w-9/12 xl:w-2/4 divide-y divide-yellow-600 divide-opacity-40"
         :is-loading="isLoadingLibsData"
         :libs="selectedLibs"
         :lib-to-color-map="libToColorMap"

@@ -1,6 +1,8 @@
 <template>
   <div>
-    <span ref="triggerRef" class="p-1 rounded cursor-pointer hover:bg-gray-200"
+    <span
+      ref="triggerRef"
+      class="p-1 rounded-full cursor-pointer hover:bg-yellow-600 hover:bg-opacity-30"
       >&#9432;</span
     >
     <div ref="contentRef">

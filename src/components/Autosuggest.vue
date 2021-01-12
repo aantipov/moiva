@@ -7,7 +7,7 @@
         placeholder="Add npm packages to comparison"
         autofocus
         autocomplete="off"
-        class="relative w-full py-3 pl-3 text-xl font-light text-gray-700 placeholder-gray-400 bg-gray-100 border border-transparent rounded outline-none pr-11 md:text-2xl focus:bg-white focus:border-gray-400 focus:ring-0 focus:outline-none focus:border-3"
+        class="relative w-full py-3 pl-3 text-xl font-light text-gray-700 rounded outline-none myinput pr-11 md:text-2xl focus:bg-white focus:ring-0 focus:outline-none"
       />
 
       <div
@@ -119,14 +119,14 @@ export default defineComponent({
 
 <style lang="postcss">
 .ac {
-  @apply rounded rounded-t-none border border-t-0 border-gray-400;
+  @apply rounded rounded-t-none border border-t-0 border-yellow-600 border-opacity-60;
 }
 .ac > .ac-option {
-  @apply h-auto px-5 py-1 sm:py-2 border-b;
+  @apply h-auto px-5 py-1 sm:py-2 border-b border-yellow-600 border-opacity-20 bg-yellow-600 bg-opacity-5;
 }
 .ac > .ac-option.selected,
 .ac > .ac-option:hover:not(.group) {
-  @apply bg-yellow-100;
+  @apply bg-yellow-600 bg-opacity-20;
 }
 .ac-option-title-wrapper {
   @apply flex justify-between mb-0.5 items-center;
@@ -139,5 +139,8 @@ export default defineComponent({
 }
 .ac-option-version {
   @apply text-gray-500 font-light text-sm;
+}
+.myinput {
+  @apply bg-yellow-600 bg-opacity-5 placeholder-yellow-600 placeholder-opacity-60 border border-transparent border-4 focus:border-yellow-600 focus:border-opacity-60;
 }
 </style>
