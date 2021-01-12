@@ -2,7 +2,7 @@
   <div>
     <div class="flex items-center justify-center mt-5">
       <h2 class="my-0">
-        Google Trends <span class="text-base">(max. 5 libs)</span>
+        Google Trends - <span class="text-base">Interest Over Time</span>
       </h2>
 
       <m-chart-info class="ml-2">

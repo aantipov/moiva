@@ -62,10 +62,7 @@ export default defineComponent({
             },
           },
         },
-        title: {
-          display: true,
-          text: 'Interest Over Time',
-        },
+        title: { display: false },
         scales: {
           adapters: { date: { locale: enUS } },
           xAxes: [

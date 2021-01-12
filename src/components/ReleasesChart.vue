@@ -1,9 +1,7 @@
 <template>
   <div>
     <div class="flex items-center justify-center mt-5">
-      <h2 class="my-0">
-        Release frequency<span class="text-base">(per year)</span>
-      </h2>
+      <h2 class="my-0">Releases per year</h2>
 
       <m-chart-info class="ml-2">
         <p>Moiva gets releases data from NPM.</p>
@@ -32,7 +30,7 @@ import { NpmPackageVersionsT } from '../apis';
 import { enUS } from 'date-fns/locale';
 
 export default defineComponent({
-  name: 'NpmVersionsChart',
+  name: 'ReleasesChart',
 
   props: {
     isLoading: {

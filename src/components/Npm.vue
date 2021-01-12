@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>NPM downloads <span class="text-base">(per month)</span></h2>
+    <h2>NPM monthly downloads</h2>
 
     <div v-if="isError" class="chart-error">
       Something went wrong while loading data. Try to reload the page or come

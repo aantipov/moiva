@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="flex items-center justify-center mt-5">
-      <h2 class="my-0">Number of Contributors</h2>
+      <h2 class="my-0">Contributors per year</h2>
 
       <m-chart-info class="ml-2">
         <p>

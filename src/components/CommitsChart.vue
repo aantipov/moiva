@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="flex items-center justify-center mt-5">
-      <h2 class="my-0">Commits frequency</h2>
+      <h2 class="my-0">Commits per ~month</h2>
 
       <m-chart-info class="ml-2">
         <p>Moiva uses commits data from GitHub.</p>
