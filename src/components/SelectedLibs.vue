@@ -31,6 +31,7 @@
             />
 
             <a
+              class="ml-3"
               :href="getRemainedLibsLink(lib.name)"
               @click.prevent="$emit('deselect', lib.name)"
             >
@@ -62,7 +63,11 @@
             </div>
 
             <div class="col-span-6 sm:col-span-2">
-              {{ getAge(libIndex) }}
+              {{ getAge(libIndex) }} old
+
+              <m-chart-info class="inline">
+                <p>Birthdate {{ getBirthdate(libIndex) }}</p>
+              </m-chart-info>
             </div>
 
             <div class="col-span-6 sm:col-span-4">
@@ -116,6 +121,7 @@ import LibExternalLinks from './LibExternalLinks.vue';
 import { LibraryT, RepoT } from '../apis';
 import { numbersFormatter, constructHref } from '../utils';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
+import format from 'date-fns/format';
 
 export default defineComponent({
   name: 'SelectedLibs',
@@ -169,6 +175,11 @@ export default defineComponent({
         const date = githubRepos.value[libIndex].createdAt;
 
         return formatDistanceToNowStrict(new Date(date));
+      },
+      getBirthdate(libIndex: number): string {
+        const date = githubRepos.value[libIndex].createdAt;
+
+        return format(new Date(date), 'yyyy-MM-dd');
       },
       getRemainedLibsLink(deletedLibName: string): string {
         return constructHref(
