@@ -374,3 +374,8 @@ export const libsToDatadMap = libs.reduce((accum, [name, _link, data]) => {
   accum[name] = data;
   return accum;
 }, {} as Record<string, Record<string, TRadarLevelT>>);
+
+export const libsToLinkMap = libs.reduce((accum, [name, link]) => {
+  accum[name] = link;
+  return accum;
+}, {} as Record<string, string>);

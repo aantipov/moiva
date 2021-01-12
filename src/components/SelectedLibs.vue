@@ -31,6 +31,7 @@
             />
 
             <a
+              class="ml-3"
               :href="getRemainedLibsLink(lib.name)"
               @click.prevent="$emit('deselect', lib.name)"
             >
