@@ -7,13 +7,23 @@
 
       <m-chart-info class="ml-2">
         <p>
-          We use
+          Moiva uses data from
+          <a :href="gTrendsLink" target="_blank">Google Trends</a>
+          to build this chart.
+        </p>
+        <p>
+          Google Trends doesn't provide sensible data for most of the libraries.
+          So we exclude those libraries altogether.
+        </p>
+        <p>
+          If you know a library for which it makes sense to include it in this
+          chart - feel free to submit an
           <a
-            href="https://trends.google.com/trends/explore?cat=31"
+            href="https://github.com/aantipov/moiva-issues"
             target="_blank"
-            >Google Trends</a
-          >
-          data to build the chart.
+            rel="noopener"
+            >issue</a
+          >.
         </p>
       </m-chart-info>
     </div>
@@ -41,6 +51,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { libsToKeywordMap } from '../../google-trends.config';
 import GTrendsChart from './GTrendsChart.vue';
 import { fetchGTrendsData, GTrendsT } from '../apis';
 
@@ -73,8 +84,25 @@ export default defineComponent({
 
   computed: {
     filteredLibs(): string[] {
+      // We need to compare only those libs for which Google trends
+      // has sensible data
       // Google Trends allows to compare only 5 terms at max
-      return this.libs.slice(0, 5);
+      return this.libs
+        .filter((libName) => !!libsToKeywordMap[libName])
+        .slice(0, 5);
+    },
+    filteredLibsKeywords(): string[] {
+      // We need to compare only those libs for which Google trends
+      // has sensible data
+      // Google Trends allows to compare only 5 terms at max
+      return this.filteredLibs.map((libName) => libsToKeywordMap[libName]);
+    },
+    gTrendsLink(): string {
+      const datesQueryParam = encodeURIComponent('2017-01-01 2021-01-11');
+      const libsQueryParam = encodeURIComponent(
+        this.filteredLibsKeywords.join(',')
+      );
+      return `https://trends.google.com/trends/explore?cat=31&date=${datesQueryParam}&q=${libsQueryParam}`;
     },
   },
 
