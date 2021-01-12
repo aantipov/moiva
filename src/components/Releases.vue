@@ -1,5 +1,5 @@
 <template>
-  <NpmVersionsChart
+  <ReleasesChart
     :is-loading="isLoading"
     :is-error="isError"
     :libs="libs"
@@ -10,14 +10,14 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, toRefs, ref, watch } from 'vue';
-import NpmVersionsChart from './NpmVersionsChart.vue';
+import ReleasesChart from './ReleasesChart.vue';
 import { fetchNpmPackageVersions, NpmPackageVersionsT } from '@/apis';
 
 export default defineComponent({
-  name: 'NpmVersions',
+  name: 'Releases',
 
   components: {
-    NpmVersionsChart,
+    ReleasesChart,
   },
 
   props: {

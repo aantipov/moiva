@@ -73,7 +73,7 @@
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
 
-          <NpmVersions
+          <Releases
             :libs="librariesNames"
             :lib-to-color-map="libToColorMap"
             class="col-span-12 md:col-span-6 xl:col-span-3"
@@ -111,7 +111,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref, computed, watch } from 'vue';
 import Npm from './Npm.vue';
-import NpmVersions from './NpmVersions.vue';
+import Releases from './Releases.vue';
 import Autosuggest from './Autosuggest.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
@@ -146,7 +146,7 @@ export default defineComponent({
     Autosuggest,
     SelectedLibs,
     Npm,
-    NpmVersions,
+    Releases,
     TechRadar,
     GoogleTrends,
     Bundlephobia,
