@@ -1,17 +1,12 @@
 <template>
   <div>
     <span
-      v-if="type === 'INFO'"
       ref="triggerRef"
       class="p-1 rounded-full cursor-pointer hover:bg-yellow-600 hover:bg-opacity-30"
-      >&#9432;</span
     >
-    <span
-      v-else
-      ref="triggerRef"
-      class="p-1 rounded-full cursor-pointer hover:bg-yellow-600 hover:bg-opacity-30"
-      >&#9888;</span
-    >
+      <template v-if="type === 'INFO'">&#9432;</template>
+      <template v-else>&#9888;</template>
+    </span>
     <div ref="contentRef">
       <slot></slot>
     </div>
