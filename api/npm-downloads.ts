@@ -62,6 +62,8 @@ export default (req: NowRequest, res: NowResponse): void => {
     .catch((e) => {
       console.error('API NPM DOWNLOADS: ', e);
       reportError(e);
-      res.status(500).json({ error: 'Something went wrong' });
+      res
+        .status((e.response && e.response.status) || 500)
+        .json({ error: 'Something went wrong' });
     });
 };
