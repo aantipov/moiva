@@ -20,8 +20,8 @@ export default (req: NowRequest, res: NowResponse): void => {
   logRequest('npmSuggestion', req.query);
 
   if (!q || typeof q !== 'string') {
-    console.error('API NPM-SUGGESTIONS: Wrong lib parameter');
-    reportError(new Error('API NPM-SUGGESTIONS: Wrong lib parameter'));
+    console.error('API NPM SUGGESTIONS: Wrong lib parameter');
+    reportError(new Error('API NPM SUGGESTIONS: Wrong lib parameter'));
     res.status(400).json({ error: 'Wrong q parameter' });
     return;
   }
@@ -42,9 +42,12 @@ export default (req: NowRequest, res: NowResponse): void => {
       res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
       res.status(200).json(data);
     })
-    .catch((err) => {
-      console.error('ERROR', err);
-      reportError(err);
-      res.status(500).json({ error: 'Something went wrong' });
+    .catch((e) => {
+      console.error('API NPM SUGGESTIONS', e);
+      reportError(e);
+
+      res
+        .status((e.response && e.response.status) || 500)
+        .json({ error: 'Something went wrong' });
     });
 };

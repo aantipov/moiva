@@ -39,6 +39,8 @@ export default (req: NowRequest, res: NowResponse): void => {
         console.error('API BUNDLEPHOBIA ERROR', e.response);
       }
 
-      res.status(500).json({ error: 'Something went wrong', code: errorCode });
+      res
+        .status(status || 500)
+        .json({ error: 'Something went wrong', code: errorCode });
     });
 };
