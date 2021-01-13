@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="flex items-center justify-center mt-5">
-      <h2 class="my-0">Recent Issues</h2>
+      <h2 class="my-0">Recently updated issues</h2>
 
       <m-chart-info class="ml-2">
         <p>
@@ -31,7 +31,7 @@ import { numbersFormatter } from '../utils';
 import { ISSUES_COLORS } from '@/colors';
 
 export default defineComponent({
-  name: 'GithubOpenClosedIssues',
+  name: 'Issues',
 
   props: {
     isLoading: {

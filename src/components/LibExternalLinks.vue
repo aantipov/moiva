@@ -31,6 +31,7 @@ import BundlephobiaIcon from './icons/Bundlephobia.vue';
 import NpmIcon from './icons/Npm.vue';
 import ThoughtworksIcon from './icons/Thoughtworks.vue';
 import { libsToLinkMap } from '../../techradar.config';
+import { getBundlephobiaUrl } from '@/utils';
 
 export default defineComponent({
   name: 'LibExternalLinks',
@@ -58,10 +59,7 @@ export default defineComponent({
     const npmUrl = computed(
       () => `https://www.npmjs.com/package/${encodeURIComponent(libName.value)}`
     );
-    const bundlephobiaUrl = computed(
-      () =>
-        `https://bundlephobia.com/result?p=${encodeURIComponent(libName.value)}`
-    );
+    const bundlephobiaUrl = computed(() => getBundlephobiaUrl(libName.value));
     const thoughtworksUrl = computed<string | null>(
       () => libsToLinkMap[libName.value] || null
     );

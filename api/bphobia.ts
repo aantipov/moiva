@@ -23,7 +23,6 @@ export default (req: NowRequest, res: NowResponse): void => {
       res.status(200).json({ gzip: resp.data.gzip, raw: resp.data.size });
     })
     .catch((e) => {
-      reportError(e);
       const { status, data } = e.response;
       let errorCode = 'Urgent';
 
@@ -36,6 +35,7 @@ export default (req: NowRequest, res: NowResponse): void => {
           lib,
         });
       } else {
+        reportError(e);
         console.error('API BUNDLEPHOBIA ERROR', e.response);
       }
 

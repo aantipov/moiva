@@ -10,6 +10,20 @@
           to build this chart.
         </p>
       </m-chart-info>
+
+      <m-chart-info v-if="failedLibs.length" class="ml-2" type="WARNING">
+        <div>
+          Sorry, we couldn't fetch data from
+          <a href="https://bundlephobia.com/" target="_blank">Bundlephobia</a>
+          for the following packages:
+          <div v-for="libName in failedLibs" :key="libName">
+            -
+            <a :href="getBundlephobiaUrl(libName)" target="_blank">{{
+              libName
+            }}</a>
+          </div>
+        </div>
+      </m-chart-info>
     </div>
 
     <div v-if="isError" class="chart-error">
@@ -28,6 +42,7 @@
 import { defineComponent } from 'vue';
 import BundlephobiaChart from './BundlephobiaChart.vue';
 import { fetchBundlephobiaData, BundlephobiaT } from '../apis';
+import { getBundlephobiaUrl } from '@/utils';
 
 export default defineComponent({
   name: 'Bundlephobia',
@@ -57,6 +72,9 @@ export default defineComponent({
     filteredLibs(): string[] {
       return this.libs.filter((_lib, i) => !!this.sizes[i]);
     },
+    failedLibs(): string[] {
+      return this.libs.filter((_lib, i) => !this.sizes[i]);
+    },
     filteredSizes(): BundlephobiaT[] {
       return this.sizes.filter((size) => !!size);
     },
@@ -73,6 +91,9 @@ export default defineComponent({
   },
 
   methods: {
+    getBundlephobiaUrl(libName: string): string {
+      return getBundlephobiaUrl(libName);
+    },
     loadData(): void {
       this.isLoading = true;
       this.isError = false;
