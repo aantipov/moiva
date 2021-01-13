@@ -196,3 +196,7 @@ export function getSuggestions(libsNames: string[]): string[] {
     .filter((libName) => !libsNames.includes(libName))
     .slice(0, 6);
 }
+
+export function getBundlephobiaUrl(libName: string): string {
+  return `https://bundlephobia.com/result?p=${encodeURIComponent(libName)}`;
+}

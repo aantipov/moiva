@@ -1,9 +1,16 @@
 <template>
   <div>
     <span
+      v-if="type === 'INFO'"
       ref="triggerRef"
       class="p-1 rounded-full cursor-pointer hover:bg-yellow-600 hover:bg-opacity-30"
       >&#9432;</span
+    >
+    <span
+      v-else
+      ref="triggerRef"
+      class="p-1 rounded-full cursor-pointer hover:bg-yellow-600 hover:bg-opacity-30"
+      >&#9888;</span
     >
     <div ref="contentRef">
       <slot></slot>
@@ -20,6 +27,15 @@ import 'tippy.js/themes/light-border.css';
 
 export default defineComponent({
   name: 'ChartInfo',
+
+  props: {
+    type: {
+      type: String as () => 'INFO' | 'WARNING',
+      required: false,
+      default: 'INFO',
+    },
+  },
+
   setup() {
     const contentRef = ref(null);
     const triggerRef = ref(null);

@@ -85,7 +85,7 @@
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
 
-          <OpenClosedIssues
+          <Issues
             :libs="librariesNames"
             :repos="githubRepositories"
             :is-loading="githubIsLoading"
@@ -116,7 +116,7 @@ import Autosuggest from './Autosuggest.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
 import Bundlephobia from './Bundlephobia.vue';
-import OpenClosedIssues from './GithubOpenClosedIssues.vue';
+import Issues from './Issues.vue';
 import Popular from './Popular.vue';
 import SelectedLibs from './SelectedLibs.vue';
 import Loader from './Loader.vue';
@@ -150,7 +150,7 @@ export default defineComponent({
     TechRadar,
     GoogleTrends,
     Bundlephobia,
-    OpenClosedIssues,
+    Issues,
     Popular,
     Languages,
     Commits,
