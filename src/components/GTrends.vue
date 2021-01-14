@@ -33,7 +33,7 @@
       later
     </div>
 
-    <div v-if="isLoading" class="text-center p">Loading...</div>
+    <div v-else-if="isLoading" class="text-center p">Loading...</div>
 
     <div v-else-if="!filteredLibs.length" class="chart-error">
       No data for selected libraries
