@@ -30,7 +30,11 @@ export default (req: NowRequest, res: NowResponse): void => {
           repository,
         },
       } = resp;
-      if (!repository || repository.type !== 'git') {
+      if (
+        !repository ||
+        repository.type !== 'git' ||
+        repository.url.indexOf('github.com') === -1
+      ) {
         console.error(`API NPM PACKAGE: wrong GitHub link for ${lib}`);
 
         res.status(500).json({

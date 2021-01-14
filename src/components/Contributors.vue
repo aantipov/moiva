@@ -33,7 +33,7 @@ export default defineComponent({
 
   setup(props) {
     const { libs } = toRefs(props);
-    const libsContributors = ref<null | YearContributorsT[][]>(null);
+    const libsContributors = ref<null | (YearContributorsT[] | null)[]>(null);
     const isLoading = ref(true);
     const isError = ref(false);
     const libsNames = computed(() => libs.value.map(({ name }) => name));
