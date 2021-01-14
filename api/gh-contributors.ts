@@ -61,9 +61,7 @@ export default (req: NowRequest, res: NowResponse): void => {
       }
     )
     .then(({ data: contributors, status }) => {
-      // name=svelte&owner=sveltejs
-      // if (status === 202) {
-      if (name === 'svelte') {
+      if (status === 202) {
         console.error(
           `API GITHUB CONTRIBUTORS: repo ${owner}/${name} is not ready - status 202`
         );
