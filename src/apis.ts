@@ -1,7 +1,10 @@
 import axios, { AxiosError } from 'axios';
 import * as Sentry from '@sentry/browser';
 import { NpmPackagedDetailsResponseT } from '../api/npm-package-detailed';
-import { ERROR_CODE_NO_GITHUB_DATA } from '@/constants';
+import {
+  ERROR_CODE_NO_GITHUB_DATA,
+  ERROR_CODE_GITHUB_CONTRIBUTORS_NEEDS_PROCESSING,
+} from '@/constants';
 import { GithubLanguagesResponseT } from '../api/gh-languages';
 import { GithubCommitsResponseItemT } from '../api/gh-commits';
 import { GithubContributorsResponseItemT } from '../api/gh-contributors';
@@ -196,7 +199,7 @@ export interface YearContributorsT {
 
 export function fetchContributors(
   repoUrl: string
-): Promise<YearContributorsT[]> {
+): Promise<YearContributorsT[] | null> {
   const repoUrlParts = repoUrl.split('/');
   const owner = repoUrlParts[3];
   const name = repoUrlParts[4];
@@ -240,6 +243,14 @@ export function fetchContributors(
       return contributorsByYear;
     })
     .catch((err) => {
+      const errorCode =
+        err?.response?.data?.error?.code || err?.response?.status || undefined;
+
+      if (errorCode === ERROR_CODE_GITHUB_CONTRIBUTORS_NEEDS_PROCESSING) {
+        return null;
+      }
+
+      // Report to Sentry unexpected errors only
       reportSentry(err, 'fetchContributorsData');
 
       return Promise.reject(err);

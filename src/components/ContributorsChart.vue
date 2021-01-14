@@ -10,6 +10,17 @@
         </p>
         <p>Moiva uses data from Github to build the chart.</p>
       </m-chart-info>
+
+      <m-chart-info v-if="failedLibsNames.length" class="ml-2" type="WARNING">
+        <div>
+          Sorry, we couldn't fetch data from GitHub for the following packages:
+          <div v-for="libName in failedLibsNames" :key="libName">
+            - {{ libName }}
+          </div>
+
+          Try reload the page or check later.
+        </div>
+      </m-chart-info>
     </div>
 
     <div v-if="isError" class="chart-error">
@@ -52,7 +63,7 @@ export default defineComponent({
       required: true,
     },
     libsContributors: {
-      type: Array as () => YearContributorsT[][],
+      type: Array as () => (YearContributorsT[] | null)[],
       required: false,
       default: null,
     },
@@ -66,16 +77,43 @@ export default defineComponent({
       isLoading,
       isError,
     } = toRefs(props);
+    const filteredLibsContributors = computed<YearContributorsT[][] | null>(
+      () => {
+        return (
+          libsContributors.value &&
+          (libsContributors.value.filter(
+            (libContributors) => !!libContributors
+          ) as YearContributorsT[][])
+        );
+      }
+    );
+
+    const filteredLibsNames = computed(() => {
+      return libsNames.value.filter(
+        (libName, libIndex) =>
+          !!(libsContributors.value && libsContributors.value[libIndex])
+      );
+    });
+
+    const failedLibsNames = computed(() => {
+      return libsNames.value.filter(
+        (libName, libIndex) =>
+          !isLoading.value && !libsContributors.value[libIndex]
+      );
+    });
+
     const datasets = computed<ChartDataSets[]>(
       () =>
-        (libsNames.value.map((lib, libKey) => ({
+        (filteredLibsNames.value.map((lib, libKey) => ({
           label: lib,
           fill: false,
-          data: libsContributors.value
-            ? libsContributors.value[libKey].map(({ year, contributors }) => ({
-                x: year.toString(),
-                y: contributors,
-              }))
+          data: filteredLibsContributors.value
+            ? filteredLibsContributors.value[libKey].map(
+                ({ year, contributors }) => ({
+                  x: year.toString(),
+                  y: contributors,
+                })
+              )
             : [],
           backgroundColor: libToColorMap.value[lib],
           borderColor: libToColorMap.value[lib],
@@ -117,7 +155,9 @@ export default defineComponent({
       }
     });
 
-    return {};
+    return {
+      failedLibsNames,
+    };
   },
 });
 </script>
