@@ -43,7 +43,7 @@
 <script lang="ts">
 import { defineComponent, toRefs, onMounted, watch, computed } from 'vue';
 import Chart, { ChartDataSets } from 'chart.js';
-import { GithubCommitsResponseItemT } from '../../api/gh-commits';
+import { CommitsResponseItemT } from '../../api/gh-commits';
 import { enUS } from 'date-fns/locale';
 
 export default defineComponent({
@@ -71,7 +71,7 @@ export default defineComponent({
       required: true,
     },
     libsCommits: {
-      type: Array as () => (GithubCommitsResponseItemT[] | null)[],
+      type: Array as () => (CommitsResponseItemT[] | null)[],
       required: true,
     },
   },
@@ -85,10 +85,10 @@ export default defineComponent({
       isError,
     } = toRefs(props);
 
-    const filteredLibsCommits = computed<GithubCommitsResponseItemT[][]>(() => {
+    const filteredLibsCommits = computed<CommitsResponseItemT[][]>(() => {
       return libsCommits.value.filter(
         (libCommits) => !!libCommits
-      ) as GithubCommitsResponseItemT[][];
+      ) as CommitsResponseItemT[][];
     });
 
     const filteredLibsNames = computed(() => {

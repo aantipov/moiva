@@ -7,7 +7,7 @@ initSentry();
 
 const token = process.env.GITHUB_MOIVA_REST;
 
-export interface GithubCommitsResponseItemT {
+export interface CommitsResponseItemT {
   total: number;
   week: number;
 }
@@ -30,7 +30,7 @@ export default (req: NowRequest, res: NowResponse): void => {
 
   // https://docs.github.com/en/free-pro-team@latest/rest/reference/repos#get-the-last-year-of-commit-activity
   axios
-    .get<GithubCommitsResponseItemT[]>(
+    .get<CommitsResponseItemT[]>(
       `https://api.github.com/repos/${owner}/${name}/stats/commit_activity`,
       {
         headers: {
