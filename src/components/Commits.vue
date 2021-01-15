@@ -1,5 +1,6 @@
 <template>
   <CommitsChart
+    :is-loading-libs-data="isLoadingLibsData"
     :is-loading="isLoading"
     :is-error="isError"
     :libs-names="libsNames"
@@ -12,7 +13,7 @@
 import { defineComponent, onMounted, toRefs, ref, computed, watch } from 'vue';
 import CommitsChart from './CommitsChart.vue';
 import { fetchRepoCommits, LibraryT } from '@/apis';
-import { GithubCommitsResponseItemT } from '../../api/gh-commits';
+import { CommitsResponseItemT } from '../../api/gh-commits';
 
 export default defineComponent({
   name: 'Commits',
@@ -30,15 +31,16 @@ export default defineComponent({
       type: Object as () => Record<string, string>,
       required: true,
     },
+    isLoadingLibsData: {
+      type: Boolean,
+      required: true,
+    },
   },
 
   setup(props) {
     const { libs } = toRefs(props);
-    const libsNames = computed<string[]>(() =>
-      libs.value.map(({ name }) => name)
-    );
-    const libsCommits = ref<null | GithubCommitsResponseItemT[][]>(null);
-
+    const libsCommits = ref<(CommitsResponseItemT[] | null)[]>([]);
+    const libsNames = computed(() => libs.value.map(({ name }) => name));
     const isLoading = ref(true);
     const isError = ref(false);
     let lastFetchPromise: null | Promise<void> = null;

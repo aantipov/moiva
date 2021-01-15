@@ -29,7 +29,7 @@
         class="relative w-full mx-auto bg-yellow-600 lg:w-9/12 xl:w-2/4 bg-opacity-5"
         style="min-height: 200px"
       >
-        <Loader />
+        <m-loader />
       </div>
     </div>
 
@@ -82,6 +82,7 @@
           <Commits
             :libs="selectedLibs"
             :lib-to-color-map="libToColorMap"
+            :is-loading-libs-data="isLoadingLibsData"
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
 
@@ -119,7 +120,6 @@ import Bundlephobia from './Bundlephobia.vue';
 import Issues from './Issues.vue';
 import Popular from './Popular.vue';
 import SelectedLibs from './SelectedLibs.vue';
-import Loader from './Loader.vue';
 import Languages from './Languages.vue';
 import Contributors from './Contributors.vue';
 import Commits from './Commits.vue';
@@ -142,7 +142,6 @@ import { libsToKeywordMap as gTrendsLibsToKeywordMap } from '../../google-trends
 export default defineComponent({
   name: 'Main',
   components: {
-    Loader,
     Autosuggest,
     SelectedLibs,
     Npm,

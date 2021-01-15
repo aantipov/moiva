@@ -4,9 +4,10 @@ import { NpmPackagedDetailsResponseT } from '../api/npm-package-detailed';
 import {
   ERROR_CODE_NO_GITHUB_DATA,
   ERROR_CODE_GITHUB_CONTRIBUTORS_NEEDS_PROCESSING,
+  ERROR_CODE_GITHUB_COMMITS_NEEDS_PROCESSING,
 } from '@/constants';
 import { GithubLanguagesResponseT } from '../api/gh-languages';
-import { GithubCommitsResponseItemT } from '../api/gh-commits';
+import { CommitsResponseItemT } from '../api/gh-commits';
 import { GithubContributorsResponseItemT } from '../api/gh-contributors';
 
 const npmDownloadsCache = new Map();
@@ -151,7 +152,7 @@ export function fetchRepoLanguages(
 
 export function fetchRepoCommits(
   repoUrl: string
-): Promise<GithubCommitsResponseItemT[]> {
+): Promise<CommitsResponseItemT[] | null> {
   const repoUrlParts = repoUrl.split('/');
   const owner = repoUrlParts[3];
   const name = repoUrlParts[4];
@@ -161,12 +162,10 @@ export function fetchRepoCommits(
   }
 
   return axios
-    .get<GithubCommitsResponseItemT[]>(
-      `/api/gh-commits?name=${name}&owner=${owner}`
-    )
+    .get<CommitsResponseItemT[]>(`/api/gh-commits?name=${name}&owner=${owner}`)
     .then(({ data }) => {
       // Aggregate commits by 4 weeks
-      const aggregatedCommits = (data as GithubCommitsResponseItemT[])
+      const aggregatedCommits = (data as CommitsResponseItemT[])
         .map((item) => ({
           ...item,
           week: item.week * 1000,
@@ -180,15 +179,21 @@ export function fetchRepoCommits(
           }
 
           return acc;
-        }, [] as GithubCommitsResponseItemT[]);
+        }, [] as CommitsResponseItemT[]);
       githubCommitsCache.set(repoUrl, aggregatedCommits);
 
       return aggregatedCommits;
     })
     .catch((err) => {
-      reportSentry(err, 'fetchGithubCommitsData');
+      const errorCode =
+        err?.response?.data?.error?.code || err?.response?.status || undefined;
 
-      return Promise.reject(err);
+      // Report to Sentry unexpected errors only
+      if (errorCode !== ERROR_CODE_GITHUB_COMMITS_NEEDS_PROCESSING) {
+        reportSentry(err, 'fetchGithubCommitsData');
+      }
+
+      return null;
     });
 }
 
@@ -246,14 +251,12 @@ export function fetchContributors(
       const errorCode =
         err?.response?.data?.error?.code || err?.response?.status || undefined;
 
-      if (errorCode === ERROR_CODE_GITHUB_CONTRIBUTORS_NEEDS_PROCESSING) {
-        return null;
+      // Report to Sentry unexpected errors only
+      if (errorCode !== ERROR_CODE_GITHUB_CONTRIBUTORS_NEEDS_PROCESSING) {
+        reportSentry(err, 'fetchContributorsData');
       }
 
-      // Report to Sentry unexpected errors only
-      reportSentry(err, 'fetchContributorsData');
-
-      return Promise.reject(err);
+      return null;
     });
 }
 

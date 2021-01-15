@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- Header -->
     <div class="flex items-center justify-center mt-5">
       <h2 class="my-0">Commits per ~month</h2>
 
@@ -11,17 +12,30 @@
           commits are excluded.
         </p>
       </m-chart-info>
+
+      <m-chart-info v-if="failedLibsNames.length" class="ml-2" type="WARNING">
+        <div>
+          Sorry, we couldn't fetch data from GitHub for the following packages:
+          <div v-for="libName in failedLibsNames" :key="libName">
+            - {{ libName }}
+          </div>
+
+          Try reload the page or check later.
+        </div>
+      </m-chart-info>
     </div>
 
-    <div v-if="isError" class="chart-error">
-      Something went wrong while loading data. Try to reload the page or come
-      later
-    </div>
+    <div class="relative" style="height: 350px">
+      <m-loader v-if="isLoading || isLoadingLibsData" />
 
-    <div v-else-if="isLoading" class="text-center p">Loading...</div>
+      <div v-else-if="isError || !filteredLibsNames.length" class="chart-error">
+        Sorry we couldn't load the data. Try to reload the page or come later
+      </div>
 
-    <div v-show="!isLoading && !isError" style="height: 350px">
-      <canvas id="commits"></canvas>
+      <canvas
+        v-show="!isError && filteredLibsNames.length"
+        id="commits"
+      ></canvas>
     </div>
   </div>
 </template>
@@ -29,13 +43,17 @@
 <script lang="ts">
 import { defineComponent, toRefs, onMounted, watch, computed } from 'vue';
 import Chart, { ChartDataSets } from 'chart.js';
-import { GithubCommitsResponseItemT } from '../../api/gh-commits';
+import { CommitsResponseItemT } from '../../api/gh-commits';
 import { enUS } from 'date-fns/locale';
 
 export default defineComponent({
   name: 'CommitsChart',
 
   props: {
+    isLoadingLibsData: {
+      type: Boolean,
+      required: true,
+    },
     isLoading: {
       type: Boolean,
       required: true,
@@ -53,9 +71,8 @@ export default defineComponent({
       required: true,
     },
     libsCommits: {
-      type: Array as () => GithubCommitsResponseItemT[][],
-      required: false,
-      default: null,
+      type: Array as () => (CommitsResponseItemT[] | null)[],
+      required: true,
     },
   },
 
@@ -67,17 +84,34 @@ export default defineComponent({
       isLoading,
       isError,
     } = toRefs(props);
+
+    const filteredLibsCommits = computed<CommitsResponseItemT[][]>(() => {
+      return libsCommits.value.filter(
+        (libCommits) => !!libCommits
+      ) as CommitsResponseItemT[][];
+    });
+
+    const filteredLibsNames = computed(() => {
+      return libsNames.value.filter(
+        (libName, libIndex) => !!libsCommits.value[libIndex]
+      );
+    });
+
+    const failedLibsNames = computed(() => {
+      return libsNames.value.filter(
+        (libName, libIndex) => !isLoading.value && !libsCommits.value[libIndex]
+      );
+    });
+
     const datasets = computed<ChartDataSets[]>(
       () =>
-        (libsNames.value.map((libName, key) => ({
+        (filteredLibsNames.value.map((libName, key) => ({
           label: libName,
           fill: false,
-          data: libsCommits.value
-            ? libsCommits.value[key].map(({ total, week }) => ({
-                x: week,
-                y: total,
-              }))
-            : [],
+          data: filteredLibsCommits.value[key].map(({ total, week }) => ({
+            x: week,
+            y: total,
+          })),
           backgroundColor: libToColorMap.value[libName],
           borderColor: libToColorMap.value[libName],
           borderWidth: 4,
@@ -111,14 +145,17 @@ export default defineComponent({
 
     onMounted(initChart);
 
-    watch([libsNames, isLoading, isError], () => {
+    watch([libsCommits, isLoading, isError], () => {
       if (!isLoading.value && !isError.value) {
         (mychart as Chart).data.datasets = datasets.value;
         (mychart as Chart).update();
       }
     });
 
-    return {};
+    return {
+      failedLibsNames,
+      filteredLibsNames,
+    };
   },
 });
 </script>
