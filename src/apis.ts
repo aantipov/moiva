@@ -246,14 +246,12 @@ export function fetchContributors(
       const errorCode =
         err?.response?.data?.error?.code || err?.response?.status || undefined;
 
-      if (errorCode === ERROR_CODE_GITHUB_CONTRIBUTORS_NEEDS_PROCESSING) {
-        return null;
+      // Report to Sentry unexpected errors only
+      if (errorCode !== ERROR_CODE_GITHUB_CONTRIBUTORS_NEEDS_PROCESSING) {
+        reportSentry(err, 'fetchContributorsData');
       }
 
-      // Report to Sentry unexpected errors only
-      reportSentry(err, 'fetchContributorsData');
-
-      return Promise.reject(err);
+      return null;
     });
 }
 
