@@ -42,7 +42,7 @@
 <script lang="ts">
 import { defineComponent, toRefs, onMounted, watch, computed } from 'vue';
 import Chart, { ChartDataSets } from 'chart.js';
-import { NpmPackageVersionsT } from '../apis';
+import { NpmPackageReleasesT } from '../apis';
 import { enUS } from 'date-fns/locale';
 
 export default defineComponent({
@@ -70,7 +70,7 @@ export default defineComponent({
       required: true,
     },
     libsReleases: {
-      type: Array as () => (NpmPackageVersionsT | null)[],
+      type: Array as () => (NpmPackageReleasesT | null)[],
       required: true,
     },
   },
@@ -85,10 +85,10 @@ export default defineComponent({
       isError,
     } = toRefs(props);
 
-    const filteredLibsReleases = computed<NpmPackageVersionsT[]>(() => {
+    const filteredLibsReleases = computed<NpmPackageReleasesT[]>(() => {
       return libsReleases.value.filter(
         (libReleases) => !!libReleases
-      ) as NpmPackageVersionsT[];
+      ) as NpmPackageReleasesT[];
     });
 
     const filteredLibsNames = computed(() => {

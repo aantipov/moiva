@@ -12,7 +12,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, toRefs, ref, watch } from 'vue';
 import ReleasesChart from './ReleasesChart.vue';
-import { fetchNpmPackageReleases, NpmPackageVersionsT } from '@/apis';
+import { fetchNpmPackageReleases, NpmPackageReleasesT } from '@/apis';
 
 export default defineComponent({
   name: 'Releases',
@@ -38,7 +38,7 @@ export default defineComponent({
 
   setup(props) {
     const { libsNames } = toRefs(props);
-    const libsReleases = ref<(NpmPackageVersionsT | null)[]>([]);
+    const libsReleases = ref<(NpmPackageReleasesT | null)[]>([]);
     const isLoading = ref(true);
     const isError = ref(false);
     let lastFetchPromise: null | Promise<void> = null;

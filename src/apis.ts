@@ -451,11 +451,11 @@ function fetchNpmsIOPackage(packageName: string): Promise<LibraryT | null> {
     });
 }
 
-export type NpmPackageVersionsT = Record<string, number>;
+export type NpmPackageReleasesT = Record<string, number>;
 
 export function fetchNpmPackageReleases(
   pkg: string
-): Promise<NpmPackageVersionsT | null> {
+): Promise<NpmPackageReleasesT | null> {
   if (npmPackageVersionsCache.get(pkg)) {
     return Promise.resolve(npmPackageVersionsCache.get(pkg));
   }
@@ -471,7 +471,7 @@ export function fetchNpmPackageReleases(
           acc[year] = 1;
         }
         return acc;
-      }, {} as NpmPackageVersionsT);
+      }, {} as NpmPackageReleasesT);
 
       // Strip all data earlier 2017 and make sure every year is present
       const res: Record<string, number> = {};
