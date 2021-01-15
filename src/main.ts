@@ -9,6 +9,7 @@ import App from './App.vue';
 import Close from './components/icons/Close.vue';
 import ChartInfo from '@/components/ChartInfo.vue';
 import LoaderTailSpin from '@/components/LoaderTailSpin.vue';
+import Loader from '@/components/Loader.vue';
 import './assets/tailwind.css';
 
 // Make Document title SEO friendly
@@ -51,6 +52,7 @@ const app = createApp(App);
 app.component('MClose', Close);
 app.component('MChartInfo', ChartInfo);
 app.component('MLoaderTailSpin', LoaderTailSpin);
+app.component('MLoader', Loader);
 
 app.mount('#app');
 

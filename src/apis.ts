@@ -4,6 +4,7 @@ import { NpmPackagedDetailsResponseT } from '../api/npm-package-detailed';
 import {
   ERROR_CODE_NO_GITHUB_DATA,
   ERROR_CODE_GITHUB_CONTRIBUTORS_NEEDS_PROCESSING,
+  ERROR_CODE_GITHUB_COMMITS_NEEDS_PROCESSING,
 } from '@/constants';
 import { GithubLanguagesResponseT } from '../api/gh-languages';
 import { GithubCommitsResponseItemT } from '../api/gh-commits';
@@ -151,7 +152,7 @@ export function fetchRepoLanguages(
 
 export function fetchRepoCommits(
   repoUrl: string
-): Promise<GithubCommitsResponseItemT[]> {
+): Promise<GithubCommitsResponseItemT[] | null> {
   const repoUrlParts = repoUrl.split('/');
   const owner = repoUrlParts[3];
   const name = repoUrlParts[4];
@@ -186,9 +187,15 @@ export function fetchRepoCommits(
       return aggregatedCommits;
     })
     .catch((err) => {
-      reportSentry(err, 'fetchGithubCommitsData');
+      const errorCode =
+        err?.response?.data?.error?.code || err?.response?.status || undefined;
 
-      return Promise.reject(err);
+      // Report to Sentry unexpected errors only
+      if (errorCode !== ERROR_CODE_GITHUB_COMMITS_NEEDS_PROCESSING) {
+        reportSentry(err, 'fetchGithubCommitsData');
+      }
+
+      return null;
     });
 }
 

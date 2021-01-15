@@ -1,6 +1,7 @@
 import { NowRequest, NowResponse } from '@vercel/node';
 import axios from 'axios';
 import { logRequest, initSentry, reportError } from './utils';
+import { ERROR_CODE_GITHUB_COMMITS_NEEDS_PROCESSING } from '../src/constants';
 
 initSentry();
 
@@ -38,7 +39,23 @@ export default (req: NowRequest, res: NowResponse): void => {
         },
       }
     )
-    .then(({ data }) => {
+    .then(({ data, status }) => {
+      if (status === 202) {
+        console.error(
+          `API GITHUB COMMITS: repo ${owner}/${name} is not ready - status 202`
+        );
+
+        res.status(500).json({
+          error: {
+            message:
+              'Package needs to be processed by Github data. Check later',
+            code: ERROR_CODE_GITHUB_COMMITS_NEEDS_PROCESSING,
+          },
+        });
+
+        return;
+      }
+
       const stripedData = data.map(({ total, week }) => ({
         total,
         week,
