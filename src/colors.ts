@@ -3,31 +3,31 @@ export const COLOR_GREEN = '#10B981'; // Emerald 500
 export const COLOR_GRAY = '#A1A1AA'; // Gray 400
 
 const COLORS = [
-  '#F44336', // Red 500
-  '#673AB7', // Deep Purple 500
-  '#00796B', // Teal 700
-  '#03A9F4', // Light Blue 500
-  '#FFEB3B', // Yellow 500
-  '#4CAF50', // Green 500
-  '#795548', // Brown 500
-  '#FF5722', // Deep Orange 500
-  '#607D8B', // Blue Grey 500
-  '#E91E63', // Pink 500
-  '#3F51B5', // Indigo 500
-  '#00BCD4', // Cyan 500
-  '#8BC34A', // Light Green 500
-  '#FFC107', // Amber 500
-  '#9C27B0', // Purple 500
-  '#2196F3', // Blue 500
-  '#009688', // Teal 500
-  '#CDDC39', // Lime 500
-  '#FF9800', // Orange 500
+  '#DC2626', // Red 600
+  '#CA8A04', // Yellow 600
+  '#2563EB', // Blue 600
+  '#16A34A', // Green 600
+  '#7C3AED', // Violet 600
+  '#475569', // Blue Grey 600
+  '#0891B2', // Cyan 600
+  '#EA580C', // Orange 600
+  '#65A30D', // Lime 600
+  '#0D9488', // Teal 600
+  '#DB2777', // Pink 600
+  '#57534E', // Warm Gray 600
+  '#4F46E5', // Indigo 600
+  '#D97706', // Amber 600
+  '#9333EA', // Purple 600
+  '#0284C7', // Light Blue 600
   '#9E9E9E', // Grey 500
+  '#059669', // Emerald 600
+  '#C026D3', // Fuchsia 600
+  '#E11D48', // Rose 600
 ];
 
 // Colors list for Languages Chart
 const LANGUAGE_COLORS = [
-  '#FACC15', // Yellow 400
+  '#FBBF24', // Amber 400
   '#22D3EE', // Cyan 400
   '#818CF8', // Indigo 400
   '#F87171', // Red 400
@@ -35,15 +35,15 @@ const LANGUAGE_COLORS = [
   '#FB923C', // Orange 400
   '#60A5FA', // Blue 400
   '#34D399', // Emerald 400
-  '#A78BFA', // Violet
+  '#A78BFA', // Violet 400
   '#2DD4BF', // Teal 400
   '#F472B6', // Pink 400
   '#A3E635', // Lime 400
   '#E879F9', // Fuchsia
   '#FB7185', // Rose 400
   '#38BDF8', // Light Blue 400
-  '#FBBF24', // Amber 400
   '#C084FC', // Purple
+  '#FACC15', // Yellow 400
 ];
 
 export const ISSUES_COLORS = {
