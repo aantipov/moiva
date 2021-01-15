@@ -15,10 +15,12 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue';
-import tippy from 'tippy.js';
+import tippy, { animateFill } from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/themes/light.css';
 import 'tippy.js/themes/light-border.css';
+import 'tippy.js/dist/backdrop.css';
+import 'tippy.js/animations/shift-away.css';
 
 export default defineComponent({
   name: 'ChartInfo',
@@ -39,9 +41,13 @@ export default defineComponent({
       tippy((triggerRef.value as unknown) as HTMLElement, {
         content: (contentRef.value as unknown) as HTMLElement,
         // trigger: 'click',
+        animateFill: true,
+        plugins: [animateFill],
+        delay: [300, 150],
         interactive: true,
         allowHTML: true,
         theme: 'moiva',
+        hideOnClick: 'toggle',
       });
     });
 
