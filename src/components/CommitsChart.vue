@@ -25,11 +25,13 @@
       </m-chart-info>
     </div>
 
+    <!-- Chart -->
     <div class="relative" style="height: 350px">
       <m-loader v-if="isLoading || isLoadingLibsData" />
 
       <div v-else-if="isError || !filteredLibsNames.length" class="chart-error">
-        Sorry we couldn't load the data. Try to reload the page or come later
+        Sorry we couldn't load the data. <br />
+        Try reload the page or check later
       </div>
 
       <canvas

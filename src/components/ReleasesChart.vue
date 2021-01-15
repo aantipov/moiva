@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- Header -->
     <div class="flex items-center justify-center mt-5">
       <h2 class="my-0">Releases per year</h2>
 
@@ -8,17 +9,32 @@
         <p>Major, minor and bugfix releases count.</p>
         <p>Pre-releases are not included.</p>
       </m-chart-info>
+
+      <m-chart-info v-if="failedLibsNames.length" class="ml-2" type="WARNING">
+        <div>
+          Sorry, we couldn't fetch data from NPM for the following packages:
+          <div v-for="libName in failedLibsNames" :key="libName">
+            - {{ libName }}
+          </div>
+
+          Try reload the page or check later.
+        </div>
+      </m-chart-info>
     </div>
 
-    <div v-if="isError" class="chart-error">
-      Something went wrong while loading data. Try to reload the page or come
-      later
-    </div>
+    <!-- Chart -->
+    <div class="relative" style="height: 350px">
+      <m-loader v-if="isLoading || isLoadingLibsData" />
 
-    <div v-else-if="isLoading" class="text-center p">Loading...</div>
+      <div v-else-if="isError || !filteredLibsNames.length" class="chart-error">
+        Sorry we couldn't load the data. <br />
+        Try reload the page or check later
+      </div>
 
-    <div v-show="!isLoading && !isError" style="height: 350px">
-      <canvas id="npmVersions"></canvas>
+      <canvas
+        v-show="!isError && filteredLibsNames.length"
+        id="npmReleases"
+      ></canvas>
     </div>
   </div>
 </template>
@@ -33,6 +49,10 @@ export default defineComponent({
   name: 'ReleasesChart',
 
   props: {
+    isLoadingLibsData: {
+      type: Boolean,
+      required: true,
+    },
     isLoading: {
       type: Boolean,
       required: true,
@@ -41,7 +61,7 @@ export default defineComponent({
       type: Boolean,
       required: true,
     },
-    libs: {
+    libsNames: {
       type: Array as () => string[],
       required: true,
     },
@@ -49,26 +69,54 @@ export default defineComponent({
       type: Object as () => Record<string, string>,
       required: true,
     },
-    versions: {
-      type: Array as () => NpmPackageVersionsT[],
-      required: false,
-      default: null,
+    libsReleases: {
+      type: Array as () => (NpmPackageVersionsT | null)[],
+      required: true,
     },
   },
 
   setup(props) {
-    const { libs, libToColorMap, versions, isLoading, isError } = toRefs(props);
+    const {
+      libsNames,
+      libToColorMap,
+      libsReleases,
+      isLoading,
+      isLoadingLibsData,
+      isError,
+    } = toRefs(props);
+
+    const filteredLibsReleases = computed<NpmPackageVersionsT[]>(() => {
+      return libsReleases.value.filter(
+        (libReleases) => !!libReleases
+      ) as NpmPackageVersionsT[];
+    });
+
+    const filteredLibsNames = computed(() => {
+      return libsNames.value.filter(
+        (libName, libIndex) => !!libsReleases.value[libIndex]
+      );
+    });
+
+    const failedLibsNames = computed(() => {
+      return libsNames.value.filter(
+        (libName, libIndex) =>
+          !isLoadingLibsData.value &&
+          !isLoading.value &&
+          !libsReleases.value[libIndex]
+      );
+    });
+
     const datasets = computed<ChartDataSets[]>(
       () =>
-        (libs.value.map((lib, key) => ({
+        (filteredLibsNames.value.map((lib, key) => ({
           label: lib,
           fill: false,
-          data: versions.value
-            ? Object.entries(versions.value[key]).map(([year, num]) => ({
-                x: year,
-                y: num,
-              }))
-            : [],
+          data: Object.entries(filteredLibsReleases.value[key]).map(
+            ([year, num]) => ({
+              x: year,
+              y: num,
+            })
+          ),
           backgroundColor: libToColorMap.value[lib],
           borderColor: libToColorMap.value[lib],
           borderWidth: 4,
@@ -79,7 +127,7 @@ export default defineComponent({
     let mychart: Chart | undefined;
 
     function initChart(): void {
-      const ctx = document.getElementById('npmVersions') as HTMLCanvasElement;
+      const ctx = document.getElementById('npmReleases') as HTMLCanvasElement;
 
       mychart = new Chart(ctx, {
         type: 'line',
@@ -102,14 +150,17 @@ export default defineComponent({
 
     onMounted(initChart);
 
-    watch([libs, isLoading, isError], () => {
+    watch([libsNames, isLoading, isError], () => {
       if (!isLoading.value && !isError.value) {
         (mychart as Chart).data.datasets = datasets.value;
         (mychart as Chart).update();
       }
     });
 
-    return {};
+    return {
+      failedLibsNames,
+      filteredLibsNames,
+    };
   },
 });
 </script>

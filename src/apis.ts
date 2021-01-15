@@ -453,9 +453,9 @@ function fetchNpmsIOPackage(packageName: string): Promise<LibraryT | null> {
 
 export type NpmPackageVersionsT = Record<string, number>;
 
-export function fetchNpmPackageVersions(
+export function fetchNpmPackageReleases(
   pkg: string
-): Promise<NpmPackageVersionsT> {
+): Promise<NpmPackageVersionsT | null> {
   if (npmPackageVersionsCache.get(pkg)) {
     return Promise.resolve(npmPackageVersionsCache.get(pkg));
   }
@@ -485,5 +485,10 @@ export function fetchNpmPackageVersions(
       npmPackageVersionsCache.set(pkg, res);
 
       return res;
+    })
+    .catch((err) => {
+      reportSentry(err, 'fetchNpmPackageReleases');
+
+      return null;
     });
 }

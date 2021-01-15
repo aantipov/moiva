@@ -1,17 +1,18 @@
 <template>
   <ReleasesChart
+    :is-loading-libs-data="isLoadingLibsData"
     :is-loading="isLoading"
     :is-error="isError"
-    :libs="libs"
+    :libs-names="libsNames"
     :lib-to-color-map="libToColorMap"
-    :versions="versions"
+    :libs-releases="libsReleases"
   />
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted, toRefs, ref, watch } from 'vue';
 import ReleasesChart from './ReleasesChart.vue';
-import { fetchNpmPackageVersions, NpmPackageVersionsT } from '@/apis';
+import { fetchNpmPackageReleases, NpmPackageVersionsT } from '@/apis';
 
 export default defineComponent({
   name: 'Releases',
@@ -21,7 +22,7 @@ export default defineComponent({
   },
 
   props: {
-    libs: {
+    libsNames: {
       type: Array as () => string[],
       required: true,
     },
@@ -29,32 +30,36 @@ export default defineComponent({
       type: Object as () => Record<string, string>,
       required: true,
     },
+    isLoadingLibsData: {
+      type: Boolean,
+      required: true,
+    },
   },
 
   setup(props) {
-    const { libs } = toRefs(props);
-    const versions = ref<null | NpmPackageVersionsT[]>(null);
+    const { libsNames } = toRefs(props);
+    const libsReleases = ref<(NpmPackageVersionsT | null)[]>([]);
     const isLoading = ref(true);
     const isError = ref(false);
-    let versionsPromise: null | Promise<void> = null;
+    let lastFetchPromise: null | Promise<void> = null;
 
     function loadData(): void {
       isLoading.value = true;
       isError.value = false;
-      const localPromise = (versionsPromise = Promise.all(
-        libs.value.map(fetchNpmPackageVersions)
+      const fetchPromise = (lastFetchPromise = Promise.all(
+        libsNames.value.map(fetchNpmPackageReleases)
       )
         .then((data) => {
           // Do nothing if there is a new request already in place
-          if (versionsPromise === localPromise) {
-            versions.value = data;
+          if (lastFetchPromise === fetchPromise) {
+            libsReleases.value = data;
             isLoading.value = false;
             isError.value = false;
           }
         })
         .catch(() => {
           // Do nothing if there is a new request already in place
-          if (versionsPromise === localPromise) {
+          if (lastFetchPromise === fetchPromise) {
             isLoading.value = false;
             isError.value = true;
           }
@@ -63,12 +68,12 @@ export default defineComponent({
 
     onMounted(loadData);
 
-    watch(libs, loadData);
+    watch(libsNames, loadData);
 
     return {
       isLoading,
       isError,
-      versions,
+      libsReleases,
     };
   },
 });
