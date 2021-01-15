@@ -47,8 +47,7 @@ export default (req: NowRequest, res: NowResponse): void => {
 
         res.status(500).json({
           error: {
-            message:
-              'Package needs to be processed by Github data. Check later',
+            message: 'Repo data needs to be processed by Github. Check later',
             code: ERROR_CODE_GITHUB_COMMITS_NEEDS_PROCESSING,
           },
         });
