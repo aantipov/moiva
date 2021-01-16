@@ -42,20 +42,15 @@ export default defineComponent({
     // We need to compare only those libs for which Google trends
     // has sensible data
     // Google Trends allows to compare only 5 terms at max
-    const filteredLibsNames = computed<string[]>(() => {
-      return libsNames.value
+    const filteredLibsNames = computed<string[]>(() =>
+      libsNames.value
         .filter((libName) => !!libsToKeywordMap[libName])
-        .slice(0, 5);
-    });
+        .slice(0, 5)
+    );
 
-    // We need to compare only those libs for which Google trends
-    // has sensible data
-    // Google Trends allows to compare only 5 terms at max
-    const filteredLibsKeywords = computed(() => {
-      return filteredLibsNames.value.map(
-        (libName) => libsToKeywordMap[libName]
-      );
-    });
+    const filteredLibsKeywords = computed(() =>
+      filteredLibsNames.value.map((libName) => libsToKeywordMap[libName])
+    );
 
     function loadData(): void {
       isError.value = false;
