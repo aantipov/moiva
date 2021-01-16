@@ -1,5 +1,6 @@
 <template>
   <ContributorsChart
+    :is-loading-libs-data="isLoadingLibsData"
     :is-loading="isLoading"
     :is-error="isError"
     :libs-names="libsNames"
@@ -29,25 +30,29 @@ export default defineComponent({
       type: Object as () => Record<string, string>,
       required: true,
     },
+    isLoadingLibsData: {
+      type: Boolean,
+      required: true,
+    },
   },
 
   setup(props) {
     const { libs } = toRefs(props);
-    const libsContributors = ref<null | (YearContributorsT[] | null)[]>(null);
+    const libsContributors = ref<(YearContributorsT[] | null)[]>([]);
+    const libsNames = computed(() => libs.value.map(({ name }) => name));
     const isLoading = ref(true);
     const isError = ref(false);
-    const libsNames = computed(() => libs.value.map(({ name }) => name));
-    let contributorsPromise: null | Promise<void> = null;
+    let lastFetchPromise: null | Promise<void> = null;
 
     function loadData(): void {
       isLoading.value = true;
       isError.value = false;
-      const localPromise = (contributorsPromise = Promise.all(
+      const fetchPromise = (lastFetchPromise = Promise.all(
         libs.value.map((lib) => fetchContributors(lib.repo))
       )
         .then((data) => {
           // Do nothing if there is a new request already in place
-          if (contributorsPromise === localPromise) {
+          if (lastFetchPromise === fetchPromise) {
             libsContributors.value = data;
             isLoading.value = false;
             isError.value = false;
@@ -55,7 +60,7 @@ export default defineComponent({
         })
         .catch(() => {
           // Do nothing if there is a new request already in place
-          if (contributorsPromise === localPromise) {
+          if (lastFetchPromise === fetchPromise) {
             isLoading.value = false;
             isError.value = true;
           }
