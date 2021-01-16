@@ -132,10 +132,6 @@ export default defineComponent({
           tooltips: {
             callbacks: {
               title: (tooltipItems): string => {
-                if (!tooltipItems.length) {
-                  return '';
-                }
-
                 const month = tooltipItems[0].xLabel as string;
 
                 return format(new Date(month), 'MMM, yyyy');
