@@ -155,13 +155,6 @@ export default defineComponent({
 
     watch([libsDownloads, isLoading, isError], () => {
       if (!isLoading.value && !isError.value) {
-        console.log('update chart downloads', {
-          isLoadingLibsData: isLoadingLibsData.value,
-          libsNames: [...filteredLibsNames.value],
-          libsDownloads: [...filteredLibsDownloads.value],
-          categories: [...filteredCategories.value],
-          datasets: [...datasets.value],
-        });
         (mychart as Chart).data.labels = filteredCategories.value;
         (mychart as Chart).data.datasets = datasets.value;
         (mychart as Chart).update();
