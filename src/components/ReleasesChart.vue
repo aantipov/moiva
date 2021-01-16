@@ -113,15 +113,12 @@ export default defineComponent({
 
     const datasets = computed<ChartDataSets[]>(
       () =>
-        (filteredLibsNames.value.map((lib, key) => ({
+        (filteredLibsNames.value.map((lib, libIndex) => ({
           label: lib,
           fill: false,
-          data: Object.entries(filteredLibsReleases.value[key]).map(
-            ([year, num]) => ({
-              x: year,
-              y: num,
-            })
-          ),
+          data: Object.entries(
+            filteredLibsReleases.value[libIndex]
+          ).map(([year, num]) => ({ x: year, y: num })),
           backgroundColor: libToColorMap.value[lib],
           borderColor: libToColorMap.value[lib],
           borderWidth: 4,
@@ -129,6 +126,7 @@ export default defineComponent({
           pointHoverRadius: 7,
         })) as unknown) as ChartDataSets[]
     );
+
     let mychart: Chart | undefined;
 
     function initChart(): void {
@@ -141,12 +139,7 @@ export default defineComponent({
         options: {
           scales: {
             adapters: { date: { locale: enUS } },
-            xAxes: [
-              {
-                type: 'time',
-                time: { unit: 'year' },
-              },
-            ],
+            xAxes: [{ type: 'time', time: { unit: 'year' } }],
             yAxes: [{}],
           },
         },

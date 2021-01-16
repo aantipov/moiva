@@ -114,22 +114,22 @@ export default defineComponent({
       );
     });
 
-    const datasets = computed<ChartDataSets[]>(
-      () =>
-        (filteredLibsNames.value.map((libName, key) => ({
-          label: libName,
-          fill: false,
-          data: filteredLibsCommits.value[key].map(({ total, week }) => ({
-            x: week,
-            y: total,
-          })),
-          backgroundColor: libToColorMap.value[libName],
-          borderColor: libToColorMap.value[libName],
-          borderWidth: 4,
-          pointRadius: 3,
-          pointHoverRadius: 7,
-        })) as unknown) as ChartDataSets[]
+    const datasets = computed<ChartDataSets[]>(() =>
+      filteredLibsNames.value.map((libName, libIndex) => ({
+        label: libName,
+        fill: false,
+        data: filteredLibsCommits.value[libIndex].map(({ total, week }) => ({
+          x: week,
+          y: total,
+        })),
+        backgroundColor: libToColorMap.value[libName],
+        borderColor: libToColorMap.value[libName],
+        borderWidth: 4,
+        pointRadius: 3,
+        pointHoverRadius: 7,
+      }))
     );
+
     let mychart: Chart | undefined;
 
     function initChart(): void {
@@ -142,12 +142,7 @@ export default defineComponent({
         options: {
           scales: {
             adapters: { date: { locale: enUS } },
-            xAxes: [
-              {
-                type: 'time',
-                time: { tooltipFormat: 'PP' },
-              },
-            ],
+            xAxes: [{ type: 'time', time: { tooltipFormat: 'PP' } }],
             yAxes: [{}],
           },
         },

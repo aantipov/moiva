@@ -1,24 +1,24 @@
 <template>
-  <ReleasesChart
+  <NpmDownloadsChart
     :is-loading-libs-data="isLoadingLibsData"
     :is-loading="isLoading"
     :is-error="isError"
     :libs-names="libsNames"
     :lib-to-color-map="libToColorMap"
-    :libs-releases="libsReleases"
+    :libs-downloads="libsDownloads"
   />
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted, toRefs, ref, watch } from 'vue';
-import ReleasesChart from './ReleasesChart.vue';
-import { fetchNpmPackageReleases, NpmPackageReleasesT } from '@/apis';
+import NpmDownloadsChart from './NpmDownloadsChart.vue';
+import { fetchNpmDownloads, NpmDownloadT } from '../apis';
 
 export default defineComponent({
-  name: 'Releases',
+  name: 'NpmDownloads',
 
   components: {
-    ReleasesChart,
+    NpmDownloadsChart,
   },
 
   props: {
@@ -38,7 +38,7 @@ export default defineComponent({
 
   setup(props) {
     const { libsNames } = toRefs(props);
-    const libsReleases = ref<(NpmPackageReleasesT | null)[]>([]);
+    const libsDownloads = ref<(NpmDownloadT[] | null)[]>([]);
     const isLoading = ref(true);
     const isError = ref(false);
     let lastFetchPromise: null | Promise<void> = null;
@@ -48,12 +48,12 @@ export default defineComponent({
       isError.value = false;
 
       const fetchPromise = (lastFetchPromise = Promise.all(
-        libsNames.value.map(fetchNpmPackageReleases)
+        libsNames.value.map(fetchNpmDownloads)
       )
         .then((data) => {
           // Do nothing if there is a new request already in place
           if (lastFetchPromise === fetchPromise) {
-            libsReleases.value = data;
+            libsDownloads.value = data;
             isLoading.value = false;
             isError.value = false;
           }
@@ -74,7 +74,7 @@ export default defineComponent({
     return {
       isLoading,
       isError,
-      libsReleases,
+      libsDownloads,
     };
   },
 });

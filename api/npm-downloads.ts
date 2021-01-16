@@ -16,14 +16,14 @@ const years = Array.from(
 );
 
 export default (req: NowRequest, res: NowResponse): void => {
-  const { lib } = req.query;
+  const { pkg } = req.query;
 
   logRequest('npmDownloads', req.query);
 
-  if (!lib || typeof lib !== 'string') {
-    console.error('API NPM DOWNLOADS: Wrong lib parameter');
-    reportError(new Error('API NPM DOWNLOADS: Wrong lib parameter'));
-    res.status(400).json({ error: 'Wrong lib parameter' });
+  if (!pkg || typeof pkg !== 'string') {
+    console.error('API NPM DOWNLOADS: Wrong pkg parameter');
+    reportError(new Error('API NPM DOWNLOADS: Wrong pkg parameter'));
+    res.status(400).json({ error: 'Wrong pkg parameter' });
     return;
   }
 
@@ -31,7 +31,7 @@ export default (req: NowRequest, res: NowResponse): void => {
     .map(
       (year) =>
         `https://api.npmjs.org/downloads/range/${year}-01-01:${year}-12-31/${encodeURIComponent(
-          lib
+          pkg
         )}`
     )
     .map((url) =>
