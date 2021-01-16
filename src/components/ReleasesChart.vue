@@ -78,26 +78,27 @@ export default defineComponent({
       isError,
     } = toRefs(props);
 
-    const filteredLibsReleases = computed<NpmPackageReleasesT[]>(() => {
-      return libsReleases.value.filter(
-        (libReleases) => !!libReleases
-      ) as NpmPackageReleasesT[];
-    });
+    const filteredLibsReleases = computed<NpmPackageReleasesT[]>(
+      () =>
+        libsReleases.value.filter(
+          (libReleases) => !!libReleases
+        ) as NpmPackageReleasesT[]
+    );
 
-    const filteredLibsNames = computed(() => {
-      return libsNames.value.filter(
+    const filteredLibsNames = computed(() =>
+      libsNames.value.filter(
         (libName, libIndex) => !!libsReleases.value[libIndex]
-      );
-    });
+      )
+    );
 
-    const failedLibsNames = computed(() => {
-      return libsNames.value.filter(
+    const failedLibsNames = computed(() =>
+      libsNames.value.filter(
         (libName, libIndex) =>
           !isLoadingLibsData.value &&
           !isLoading.value &&
           !libsReleases.value[libIndex]
-      );
-    });
+      )
+    );
 
     const datasets = computed<ChartDataSets[]>(() =>
       filteredLibsNames.value.map((lib, libIndex) => ({

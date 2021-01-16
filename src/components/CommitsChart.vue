@@ -81,26 +81,27 @@ export default defineComponent({
       isError,
     } = toRefs(props);
 
-    const filteredLibsCommits = computed<CommitsResponseItemT[][]>(() => {
-      return libsCommits.value.filter(
-        (libCommits) => !!libCommits
-      ) as CommitsResponseItemT[][];
-    });
+    const filteredLibsCommits = computed<CommitsResponseItemT[][]>(
+      () =>
+        libsCommits.value.filter(
+          (libCommits) => !!libCommits
+        ) as CommitsResponseItemT[][]
+    );
 
-    const filteredLibsNames = computed(() => {
-      return libsNames.value.filter(
+    const filteredLibsNames = computed(() =>
+      libsNames.value.filter(
         (libName, libIndex) => !!libsCommits.value[libIndex]
-      );
-    });
+      )
+    );
 
-    const failedLibsNames = computed(() => {
-      return libsNames.value.filter(
+    const failedLibsNames = computed(() =>
+      libsNames.value.filter(
         (libName, libIndex) =>
           !isLoadingLibsData.value &&
           !isLoading.value &&
           !libsCommits.value[libIndex]
-      );
-    });
+      )
+    );
 
     const datasets = computed<ChartDataSets[]>(() =>
       filteredLibsNames.value.map((libName, libIndex) => ({

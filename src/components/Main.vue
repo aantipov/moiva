@@ -57,8 +57,9 @@
 
           <GoogleTrends
             v-if="showGTrendsChart"
-            :libs="librariesNames"
+            :libs-names="librariesNames"
             :lib-to-color-map="libToColorMap"
+            :is-loading-libs-data="isLoadingLibsData"
             class="col-span-12 xl:col-span-6"
           />
 

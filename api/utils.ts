@@ -1,46 +1,48 @@
-import * as faunadb from 'faunadb';
+// import * as faunadb from 'faunadb';
 import * as Sentry from '@sentry/node';
-import * as Tracing from '@sentry/tracing';
+// import * as Tracing from '@sentry/tracing';
 
-export function logRequest(
-  type:
-    | 'npmDownloads'
-    | 'github'
-    | 'githubLanguages'
-    | 'githubCommits'
-    | 'githubContributors'
-    | 'googleTrends'
-    | 'bundlephobia'
-    | 'npmSuggestion'
-    | 'npmPackage'
-    | 'npmPackageDetailed',
-  urlQuery: unknown
-): void {
-  const skey = process.env.FAUNA_DB as string;
-  const { VERCEL_ENV, VERCEL_REGION } = process.env;
-
-  if (VERCEL_ENV !== 'make-exression-falsy') {
-    return;
-  }
-
-  const serverClient = new faunadb.Client({ secret: skey });
-  const q = faunadb.query;
-  const date = new Date().toISOString();
-
-  serverClient
-    .query(
-      q.Create(q.Collection('api_calls_logs'), {
-        data: {
-          date: date.slice(0, 10),
-          time: date.slice(11, 19),
-          env: VERCEL_ENV,
-          type,
-          urlQuery: JSON.stringify(urlQuery),
-          region: VERCEL_REGION,
-        },
-      })
-    )
-    .catch(console.error);
+export function logRequest(type: string, urlQuery: unknown): void {
+  // type:
+  //   | 'npmDownloads'
+  //   | 'github'
+  //   | 'githubLanguages'
+  //   | 'githubCommits'
+  //   | 'githubContributors'
+  //   | 'googleTrends'
+  //   | 'bundlephobia'
+  //   | 'npmSuggestion'
+  //   | 'npmPackage'
+  //   | 'npmPackageDetailed',
+  // urlQuery: unknown
+  //
+  // Do nothing until we come up with a good solution
+  return;
+  // const skey = process.env.FAUNA_DB as string;
+  // const { VERCEL_ENV, VERCEL_REGION } = process.env;
+  //
+  // if (VERCEL_ENV !== 'make-exression-falsy') {
+  //   return;
+  // }
+  //
+  // const serverClient = new faunadb.Client({ secret: skey });
+  // const q = faunadb.query;
+  // const date = new Date().toISOString();
+  //
+  // serverClient
+  //   .query(
+  //     q.Create(q.Collection('api_calls_logs'), {
+  //       data: {
+  //         date: date.slice(0, 10),
+  //         time: date.slice(11, 19),
+  //         env: VERCEL_ENV,
+  //         type,
+  //         urlQuery: JSON.stringify(urlQuery),
+  //         region: VERCEL_REGION,
+  //       },
+  //     })
+  //   )
+  //   .catch(console.error);
 }
 
 export function initSentry(): void {

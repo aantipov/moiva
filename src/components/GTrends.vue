@@ -1,59 +1,20 @@
 <template>
-  <div>
-    <div class="flex items-center justify-center mt-5">
-      <h2 class="my-0">
-        Google Trends - <span class="text-base">Interest Over Time</span>
-      </h2>
-
-      <m-chart-info class="ml-2">
-        <p>
-          Moiva uses data from
-          <a :href="gTrendsLink" target="_blank">Google Trends</a>
-          to build this chart.
-        </p>
-        <p>
-          Google Trends doesn't provide sensible data for most of the libraries.
-          So we exclude those libraries altogether.
-        </p>
-        <p>
-          If you know a library for which it makes sense to include it in this
-          chart - feel free to submit an
-          <a
-            href="https://github.com/aantipov/moiva-issues"
-            target="_blank"
-            rel="noopener"
-            >issue</a
-          >.
-        </p>
-      </m-chart-info>
-    </div>
-
-    <div v-if="isError" class="chart-error">
-      Something went wrong while loading data. Try to reload the page or come
-      later
-    </div>
-
-    <div v-else-if="isLoading" class="text-center p">Loading...</div>
-
-    <div v-else-if="!filteredLibs.length" class="chart-error">
-      No data for selected libraries
-    </div>
-
-    <div v-else style="height: 350px">
-      <GTrendsChart
-        :libs="filteredLibs"
-        :lib-to-color-map="libToColorMap"
-        :data="data.timelineData"
-      />
-    </div>
-  </div>
+  <GTrendsChart
+    :is-loading-libs-data="isLoadingLibsData"
+    :is-loading="isLoading"
+    :is-error="isError"
+    :libs-names="filteredLibsNames"
+    :lib-to-color-map="libToColorMap"
+    :libs-trends="libsTrends"
+    :libs-keywords="filteredLibsKeywords"
+  />
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, onMounted, toRefs, ref, watch, computed } from 'vue';
 import { libsToKeywordMap } from '../../google-trends.config';
 import GTrendsChart from './GTrendsChart.vue';
-import { fetchGTrendsData, GTrendsT } from '../apis';
+import { fetchGTrendsData, GTrendPointT } from '@/apis';
 
 export default defineComponent({
   name: 'GoogleTrends',
@@ -63,87 +24,80 @@ export default defineComponent({
   },
 
   props: {
-    libs: {
-      type: Array as () => string[],
-      required: true,
-    },
+    libsNames: { type: Array as () => string[], required: true },
     libToColorMap: {
       type: Object as () => Record<string, string>,
       required: true,
     },
+    isLoadingLibsData: { type: Boolean, required: true },
   },
 
-  data() {
-    return {
-      isLoading: true,
-      isError: false,
-      data: {} as GTrendsT,
-      dataPromise: null as null | Promise<unknown>,
-    };
-  },
+  setup(props) {
+    const { libsNames } = toRefs(props);
+    const libsTrends = ref<GTrendPointT[]>([]);
+    const isLoading = ref(true);
+    const isError = ref(false);
+    let lastFetchPromise: null | Promise<void> = null;
 
-  computed: {
-    filteredLibs(): string[] {
-      // We need to compare only those libs for which Google trends
-      // has sensible data
-      // Google Trends allows to compare only 5 terms at max
-      return this.libs
+    // We need to compare only those libs for which Google trends
+    // has sensible data
+    // Google Trends allows to compare only 5 terms at max
+    const filteredLibsNames = computed<string[]>(() => {
+      return libsNames.value
         .filter((libName) => !!libsToKeywordMap[libName])
         .slice(0, 5);
-    },
-    filteredLibsKeywords(): string[] {
-      // We need to compare only those libs for which Google trends
-      // has sensible data
-      // Google Trends allows to compare only 5 terms at max
-      return this.filteredLibs.map((libName) => libsToKeywordMap[libName]);
-    },
-    gTrendsLink(): string {
-      const datesQueryParam = encodeURIComponent('2017-01-01 2021-01-11');
-      const libsQueryParam = encodeURIComponent(
-        this.filteredLibsKeywords.join(',')
+    });
+
+    // We need to compare only those libs for which Google trends
+    // has sensible data
+    // Google Trends allows to compare only 5 terms at max
+    const filteredLibsKeywords = computed(() => {
+      return filteredLibsNames.value.map(
+        (libName) => libsToKeywordMap[libName]
       );
-      return `https://trends.google.com/trends/explore?cat=31&date=${datesQueryParam}&q=${libsQueryParam}`;
-    },
-  },
+    });
 
-  watch: {
-    libs(): void {
-      if (this.filteredLibs.length) {
-        this.loadData();
+    function loadData(): void {
+      isError.value = false;
+
+      if (!filteredLibsNames.value.length) {
+        isLoading.value = false;
+        return;
       }
-    },
-  },
 
-  mounted(): void {
-    if (this.filteredLibs.length) {
-      this.loadData();
-    } else {
-      this.isLoading = false;
-    }
-  },
+      isLoading.value = true;
 
-  methods: {
-    loadData(): void {
-      this.isLoading = true;
-      this.isError = false;
-
-      const promise = (this.dataPromise = fetchGTrendsData(this.filteredLibs)
+      const fetchPromise = (lastFetchPromise = fetchGTrendsData(
+        filteredLibsNames.value
+      )
         .then((data) => {
           // Do nothing if there is a new request already in place
-          if (this.dataPromise === promise) {
-            this.data = data;
-            this.isError = false;
-            this.isLoading = false;
+          if (lastFetchPromise === fetchPromise) {
+            libsTrends.value = data;
+            isLoading.value = false;
+            isError.value = false;
           }
         })
         .catch(() => {
           // Do nothing if there is a new request already in place
-          if (this.dataPromise === promise) {
-            this.isError = true;
-            this.isLoading = false;
+          if (lastFetchPromise === fetchPromise) {
+            isLoading.value = false;
+            isError.value = true;
           }
         }));
-    },
+    }
+
+    onMounted(loadData);
+
+    watch(libsNames, loadData);
+
+    return {
+      isLoading,
+      isError,
+      libsTrends,
+      filteredLibsNames,
+      filteredLibsKeywords,
+    };
   },
 });
 </script>

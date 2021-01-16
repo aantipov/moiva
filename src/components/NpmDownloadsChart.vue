@@ -74,26 +74,27 @@ export default defineComponent({
       isError,
     } = toRefs(props);
 
-    const filteredLibsDownloads = computed<NpmDownloadT[][]>(() => {
-      return libsDownloads.value.filter(
-        (libDownloads) => !!libDownloads
-      ) as NpmDownloadT[][];
-    });
+    const filteredLibsDownloads = computed<NpmDownloadT[][]>(
+      () =>
+        libsDownloads.value.filter(
+          (libDownloads) => !!libDownloads
+        ) as NpmDownloadT[][]
+    );
 
-    const filteredLibsNames = computed(() => {
-      return libsNames.value.filter(
+    const filteredLibsNames = computed(() =>
+      libsNames.value.filter(
         (libName, libIndex) => !!libsDownloads.value[libIndex]
-      );
-    });
+      )
+    );
 
-    const failedLibsNames = computed(() => {
-      return libsNames.value.filter(
+    const failedLibsNames = computed(() =>
+      libsNames.value.filter(
         (libName, libIndex) =>
           !isLoadingLibsData.value &&
           !isLoading.value &&
           !libsDownloads.value[libIndex]
-      );
-    });
+      )
+    );
 
     const datasets = computed<ChartDataSets[]>(() =>
       filteredLibsNames.value.map((libName, libIndex) => ({
@@ -112,11 +113,11 @@ export default defineComponent({
 
     let mychart: Chart | undefined;
 
-    const filteredCategories = computed<string[]>(() => {
-      return filteredLibsDownloads.value.length
+    const filteredCategories = computed<string[]>(() =>
+      filteredLibsDownloads.value.length
         ? filteredLibsDownloads.value[0].map(({ month }) => month)
-        : [];
-    });
+        : []
+    );
 
     function initChart(): void {
       const ctx = document.getElementById('npmDownloads') as HTMLCanvasElement;
