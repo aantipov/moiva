@@ -1,28 +1,28 @@
 <template>
-  <ContributorsChart
+  <NpmDownloadsChart
     :is-loading-libs-data="isLoadingLibsData"
     :is-loading="isLoading"
     :is-error="isError"
     :libs-names="libsNames"
     :lib-to-color-map="libToColorMap"
-    :libs-contributors="libsContributors"
+    :libs-downloads="libsDownloads"
   />
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, toRefs, ref, watch, computed } from 'vue';
-import ContributorsChart from './ContributorsChart.vue';
-import { fetchContributors, YearContributorsT, LibraryT } from '@/apis';
+import { defineComponent, onMounted, toRefs, ref, watch } from 'vue';
+import NpmDownloadsChart from './NpmDownloadsChart.vue';
+import { fetchNpmDownloads, NpmDownloadT } from '../apis';
 
 export default defineComponent({
-  name: 'Contributors',
+  name: 'NpmDownloads',
 
   components: {
-    ContributorsChart,
+    NpmDownloadsChart,
   },
 
   props: {
-    libs: { type: Array as () => LibraryT[], required: true },
+    libsNames: { type: Array as () => string[], required: true },
     libToColorMap: {
       type: Object as () => Record<string, string>,
       required: true,
@@ -31,9 +31,8 @@ export default defineComponent({
   },
 
   setup(props) {
-    const { libs } = toRefs(props);
-    const libsContributors = ref<(YearContributorsT[] | null)[]>([]);
-    const libsNames = computed(() => libs.value.map(({ name }) => name));
+    const { libsNames } = toRefs(props);
+    const libsDownloads = ref<(NpmDownloadT[] | null)[]>([]);
     const isLoading = ref(true);
     const isError = ref(false);
     let lastFetchPromise: null | Promise<void> = null;
@@ -41,13 +40,14 @@ export default defineComponent({
     function loadData(): void {
       isLoading.value = true;
       isError.value = false;
+
       const fetchPromise = (lastFetchPromise = Promise.all(
-        libs.value.map((lib) => fetchContributors(lib.repo))
+        libsNames.value.map(fetchNpmDownloads)
       )
         .then((data) => {
           // Do nothing if there is a new request already in place
           if (lastFetchPromise === fetchPromise) {
-            libsContributors.value = data;
+            libsDownloads.value = data;
             isLoading.value = false;
             isError.value = false;
           }
@@ -63,13 +63,12 @@ export default defineComponent({
 
     onMounted(loadData);
 
-    watch(libs, loadData);
+    watch(libsNames, loadData);
 
     return {
       isLoading,
       isError,
-      libsContributors,
-      libsNames,
+      libsDownloads,
     };
   },
 });

@@ -110,20 +110,24 @@ function reportSentry(err: AxiosError, methodName: string): void {
   });
 }
 
-export function fetchNpmDownloads(lib: string): Promise<NpmDownloadT[]> {
-  if (npmDownloadsCache.get(lib)) {
-    return Promise.resolve(npmDownloadsCache.get(lib));
+export function fetchNpmDownloads(
+  libName: string
+): Promise<NpmDownloadT[] | null> {
+  if (npmDownloadsCache.get(libName)) {
+    return Promise.resolve(npmDownloadsCache.get(libName));
   }
 
   return axios
-    .get(`/api/npm-downloads?lib=${lib}`)
+    .get(`/api/npm-downloads?pkg=${libName}`)
     .then(({ data }) => {
-      npmDownloadsCache.set(lib, data);
-      return data;
+      const dataWOLastMonth = data.slice(0, -1);
+      npmDownloadsCache.set(libName, dataWOLastMonth);
+      return dataWOLastMonth;
     })
     .catch((err) => {
       reportSentry(err, 'fetchNpmDownloads');
-      return Promise.reject(err);
+
+      return null;
     });
 }
 

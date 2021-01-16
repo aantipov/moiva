@@ -22,18 +22,12 @@ export default defineComponent({
   },
 
   props: {
-    libsNames: {
-      type: Array as () => string[],
-      required: true,
-    },
+    libsNames: { type: Array as () => string[], required: true },
     libToColorMap: {
       type: Object as () => Record<string, string>,
       required: true,
     },
-    isLoadingLibsData: {
-      type: Boolean,
-      required: true,
-    },
+    isLoadingLibsData: { type: Boolean, required: true },
   },
 
   setup(props) {
@@ -46,6 +40,7 @@ export default defineComponent({
     function loadData(): void {
       isLoading.value = true;
       isError.value = false;
+
       const fetchPromise = (lastFetchPromise = Promise.all(
         libsNames.value.map(fetchNpmPackageReleases)
       )

@@ -2,19 +2,11 @@
   <div>
     <!-- Header -->
     <div class="flex items-center justify-center mt-5">
-      <h2 class="my-0">Contributors per year</h2>
-
-      <m-chart-info class="ml-2">
-        <p>
-          This chart shows a number of developers contributed to the repository
-          per year.
-        </p>
-        <p>Moiva uses data from Github to build the chart.</p>
-      </m-chart-info>
+      <h2 class="my-0">NPM monthly downloads</h2>
 
       <m-chart-info v-if="failedLibsNames.length" class="ml-2" type="WARNING">
         <div>
-          Sorry, we couldn't fetch data from GitHub for the following packages:
+          Sorry, we couldn't fetch data from NPM for the following packages:
           <div v-for="libName in failedLibsNames" :key="libName">
             - {{ libName }}
           </div>
@@ -40,7 +32,7 @@
 
       <canvas
         v-show="!isError && filteredLibsNames.length"
-        id="contributors"
+        id="npmDownloads"
       ></canvas>
     </div>
   </div>
@@ -49,11 +41,13 @@
 <script lang="ts">
 import { defineComponent, toRefs, onMounted, watch, computed } from 'vue';
 import Chart, { ChartDataSets } from 'chart.js';
-import { YearContributorsT } from '@/apis';
+import { format } from 'date-fns';
+import { NpmDownloadT } from '../apis';
+import { numbersFormatter } from '../utils';
 import { enUS } from 'date-fns/locale';
 
 export default defineComponent({
-  name: 'ContributorsChart',
+  name: 'NpmDownloadsChart',
 
   props: {
     isLoadingLibsData: { type: Boolean, required: true },
@@ -64,8 +58,8 @@ export default defineComponent({
       type: Object as () => Record<string, string>,
       required: true,
     },
-    libsContributors: {
-      type: Array as () => (YearContributorsT[] | null)[],
+    libsDownloads: {
+      type: Array as () => (NpmDownloadT[] | null)[],
       required: true,
     },
   },
@@ -74,21 +68,21 @@ export default defineComponent({
     const {
       libsNames,
       libToColorMap,
-      libsContributors,
-      isLoadingLibsData,
+      libsDownloads,
       isLoading,
+      isLoadingLibsData,
       isError,
     } = toRefs(props);
 
-    const filteredLibsContributors = computed<YearContributorsT[][]>(() => {
-      return libsContributors.value.filter(
-        (libContributors) => !!libContributors
-      ) as YearContributorsT[][];
+    const filteredLibsDownloads = computed<NpmDownloadT[][]>(() => {
+      return libsDownloads.value.filter(
+        (libDownloads) => !!libDownloads
+      ) as NpmDownloadT[][];
     });
 
     const filteredLibsNames = computed(() => {
       return libsNames.value.filter(
-        (libName, libIndex) => !!libsContributors.value[libIndex]
+        (libName, libIndex) => !!libsDownloads.value[libIndex]
       );
     });
 
@@ -97,41 +91,57 @@ export default defineComponent({
         (libName, libIndex) =>
           !isLoadingLibsData.value &&
           !isLoading.value &&
-          !libsContributors.value[libIndex]
+          !libsDownloads.value[libIndex]
       );
     });
 
     const datasets = computed<ChartDataSets[]>(() =>
-      filteredLibsNames.value.map((lib, libIndex) => ({
-        label: lib,
+      filteredLibsNames.value.map((libName, libIndex) => ({
+        label: libName,
         fill: false,
-        data: filteredLibsContributors.value[libIndex].map(
-          ({ year, contributors }) => ({
-            x: year.toString(),
-            y: contributors,
-          })
+        data: filteredLibsDownloads.value[libIndex].map(
+          ({ downloads }) => downloads
         ),
-        backgroundColor: libToColorMap.value[lib],
-        borderColor: libToColorMap.value[lib],
+        backgroundColor: libToColorMap.value[libName],
+        borderColor: libToColorMap.value[libName],
         borderWidth: 4,
-        pointRadius: 4,
+        pointRadius: 0,
         pointHoverRadius: 7,
       }))
     );
+
     let mychart: Chart | undefined;
 
+    const filteredCategories = computed<string[]>(() => {
+      return filteredLibsDownloads.value.length
+        ? filteredLibsDownloads.value[0].map(({ month }) => month)
+        : [];
+    });
+
     function initChart(): void {
-      const ctx = document.getElementById('contributors') as HTMLCanvasElement;
+      const ctx = document.getElementById('npmDownloads') as HTMLCanvasElement;
 
       mychart = new Chart(ctx, {
         type: 'line',
-        data: { datasets: datasets.value },
+        data: {
+          labels: filteredCategories.value,
+          datasets: datasets.value,
+        },
 
         options: {
+          tooltips: {
+            callbacks: {
+              title: (tooltipItems): string => {
+                const month = tooltipItems[0].xLabel as string;
+
+                return format(new Date(month), 'MMM, yyyy');
+              },
+            },
+          },
           scales: {
             adapters: { date: { locale: enUS } },
             xAxes: [{ type: 'time', time: { unit: 'year' } }],
-            yAxes: [{}],
+            yAxes: [{ ticks: { callback: numbersFormatter.format } }],
           },
         },
       });
@@ -139,8 +149,9 @@ export default defineComponent({
 
     onMounted(initChart);
 
-    watch([libsContributors, isLoading, isError], () => {
+    watch([libsDownloads, isLoading, isError], () => {
       if (!isLoading.value && !isError.value) {
+        (mychart as Chart).data.labels = filteredCategories.value;
         (mychart as Chart).data.datasets = datasets.value;
         (mychart as Chart).update();
       }

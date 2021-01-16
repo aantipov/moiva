@@ -54,22 +54,10 @@ export default defineComponent({
   name: 'ReleasesChart',
 
   props: {
-    isLoadingLibsData: {
-      type: Boolean,
-      required: true,
-    },
-    isLoading: {
-      type: Boolean,
-      required: true,
-    },
-    isError: {
-      type: Boolean,
-      required: true,
-    },
-    libsNames: {
-      type: Array as () => string[],
-      required: true,
-    },
+    isLoadingLibsData: { type: Boolean, required: true },
+    isLoading: { type: Boolean, required: true },
+    isError: { type: Boolean, required: true },
+    libsNames: { type: Array as () => string[], required: true },
     libToColorMap: {
       type: Object as () => Record<string, string>,
       required: true,
@@ -111,24 +99,21 @@ export default defineComponent({
       );
     });
 
-    const datasets = computed<ChartDataSets[]>(
-      () =>
-        (filteredLibsNames.value.map((lib, key) => ({
-          label: lib,
-          fill: false,
-          data: Object.entries(filteredLibsReleases.value[key]).map(
-            ([year, num]) => ({
-              x: year,
-              y: num,
-            })
-          ),
-          backgroundColor: libToColorMap.value[lib],
-          borderColor: libToColorMap.value[lib],
-          borderWidth: 4,
-          pointRadius: 4,
-          pointHoverRadius: 7,
-        })) as unknown) as ChartDataSets[]
+    const datasets = computed<ChartDataSets[]>(() =>
+      filteredLibsNames.value.map((lib, libIndex) => ({
+        label: lib,
+        fill: false,
+        data: Object.entries(
+          filteredLibsReleases.value[libIndex]
+        ).map(([year, num]) => ({ x: year, y: num })),
+        backgroundColor: libToColorMap.value[lib],
+        borderColor: libToColorMap.value[lib],
+        borderWidth: 4,
+        pointRadius: 4,
+        pointHoverRadius: 7,
+      }))
     );
+
     let mychart: Chart | undefined;
 
     function initChart(): void {
@@ -141,12 +126,7 @@ export default defineComponent({
         options: {
           scales: {
             adapters: { date: { locale: enUS } },
-            xAxes: [
-              {
-                type: 'time',
-                time: { unit: 'year' },
-              },
-            ],
+            xAxes: [{ type: 'time', time: { unit: 'year' } }],
             yAxes: [{}],
           },
         },

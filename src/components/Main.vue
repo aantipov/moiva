@@ -48,9 +48,10 @@
       <!-- Charts -->
       <div>
         <div class="grid grid-cols-12 gap-4">
-          <Npm
-            :libs="librariesNames"
+          <NpmDownloads
+            :libs-names="librariesNames"
             :lib-to-color-map="libToColorMap"
+            :is-loading-libs-data="isLoadingLibsData"
             class="col-span-12 xl:col-span-6"
           />
 
@@ -113,7 +114,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref, computed, watch } from 'vue';
-import Npm from './Npm.vue';
+import NpmDownloads from './NpmDownloads.vue';
 import Releases from './Releases.vue';
 import Autosuggest from './Autosuggest.vue';
 import TechRadar from './TechRadar.vue';
@@ -146,7 +147,7 @@ export default defineComponent({
   components: {
     Autosuggest,
     SelectedLibs,
-    Npm,
+    NpmDownloads,
     Releases,
     TechRadar,
     GoogleTrends,
