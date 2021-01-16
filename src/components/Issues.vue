@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- Header -->
     <div class="flex items-center justify-center mt-5">
       <h2 class="my-0">Recently updated issues</h2>
 
@@ -8,17 +9,37 @@
           Amount of open/closed repository issues updated in the last 6 months
         </p>
       </m-chart-info>
+
+      <m-chart-info v-if="failedLibsNames.length" class="ml-2" type="WARNING">
+        <div>
+          Sorry, we couldn't fetch data from GitHub for the following packages:
+          <div v-for="libName in failedLibsNames" :key="libName">
+            - {{ libName }}
+          </div>
+
+          Try reload the page or check later.
+        </div>
+      </m-chart-info>
     </div>
 
-    <div v-if="isError" class="chart-error">
-      Something went wrong while loading data. Try to reload the page or come
-      later
-    </div>
+    <!-- Chart -->
+    <div class="relative" style="height: 350px">
+      <m-loader v-if="isLoading || isLoadingLibsData" />
 
-    <div v-else-if="isLoading" class="text-center p">Loading...</div>
+      <div
+        v-else-if="isError || !filteredLibsNames.length"
+        class="chart-error-new"
+      >
+        <div>
+          Sorry we couldn't load the data. <br />
+          Try reload the page or check later
+        </div>
+      </div>
 
-    <div v-show="!isLoading && !isError" style="height: 350px">
-      <canvas id="issuesCount"></canvas>
+      <canvas
+        v-show="!isError && filteredLibsNames.length"
+        id="issuesCount"
+      ></canvas>
     </div>
   </div>
 </template>
@@ -34,40 +55,49 @@ export default defineComponent({
   name: 'Issues',
 
   props: {
-    isLoading: {
-      type: Boolean,
-      required: true,
-    },
-    isError: {
-      type: Boolean,
-      required: true,
-    },
-    libs: {
-      type: Array as () => string[],
-      required: true,
-    },
-    repos: {
-      type: Array as () => RepoT[],
-      required: true,
-    },
+    isLoadingLibsData: { type: Boolean, required: true },
+    isLoading: { type: Boolean, required: true },
+    isError: { type: Boolean, required: true },
+    libsNames: { type: Array as () => string[], required: true },
+    repos: { type: Array as () => (RepoT | null)[], required: true },
   },
 
   setup(props) {
-    const { libs, repos, isLoading, isError } = toRefs(props);
+    const { libsNames, repos, isLoadingLibsData, isLoading, isError } = toRefs(
+      props
+    );
+
+    const filteredRepos = computed<RepoT[]>(
+      () => repos.value.filter((repo) => !!repo) as RepoT[]
+    );
+
+    const filteredLibsNames = computed(() =>
+      libsNames.value.filter((libName, libIndex) => !!repos.value[libIndex])
+    );
+
+    const failedLibsNames = computed(() =>
+      libsNames.value.filter(
+        (libName, libIndex) =>
+          !isLoadingLibsData.value && !isLoading.value && !repos.value[libIndex]
+      )
+    );
+
     const datasets = computed<ChartDataSets[]>(
       () =>
         [
           {
             label: 'open bugs',
             stack: '1',
-            data: repos.value.map((repo) => repo.openBugIssues.totalCount),
+            data: filteredRepos.value.map(
+              (repo) => repo.openBugIssues.totalCount
+            ),
             backgroundColor: ISSUES_COLORS.OPEN_BUGS,
             borderWidth: 1,
           },
           {
             label: 'open others',
             stack: '1',
-            data: repos.value.map(
+            data: filteredRepos.value.map(
               (repo) =>
                 repo.openIssues.totalCount - repo.openBugIssues.totalCount
             ),
@@ -77,14 +107,16 @@ export default defineComponent({
           {
             label: 'closed bugs',
             stack: '2',
-            data: repos.value.map((repo) => repo.closedBugIssues.totalCount),
+            data: filteredRepos.value.map(
+              (repo) => repo.closedBugIssues.totalCount
+            ),
             backgroundColor: ISSUES_COLORS.CLOSED_BUGS,
             borderWidth: 1,
           },
           {
             label: 'closed others',
             stack: '2',
-            data: repos.value.map(
+            data: filteredRepos.value.map(
               (repo) =>
                 repo.closedIssues.totalCount - repo.closedBugIssues.totalCount
             ),
@@ -93,6 +125,7 @@ export default defineComponent({
           },
         ] as ChartDataSets[]
     );
+
     let mychart: Chart | undefined;
 
     function initChart(): void {
@@ -101,7 +134,7 @@ export default defineComponent({
       mychart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: libs.value,
+          labels: filteredLibsNames.value,
           datasets: datasets.value,
         },
 
@@ -127,15 +160,18 @@ export default defineComponent({
 
     onMounted(initChart);
 
-    watch([libs, isLoading, isError], () => {
+    watch([libsNames, isLoading, isError], () => {
       if (!isLoading.value && !isError.value) {
-        (mychart as Chart).data.labels = libs.value;
+        (mychart as Chart).data.labels = filteredLibsNames.value;
         (mychart as Chart).data.datasets = datasets.value;
         (mychart as Chart).update();
       }
     });
 
-    return {};
+    return {
+      failedLibsNames,
+      filteredLibsNames,
+    };
   },
 });
 </script>

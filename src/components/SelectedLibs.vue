@@ -58,44 +58,52 @@
 
           <div v-else class="grid grid-cols-12">
             <div class="col-span-6 sm:col-span-2">
-              <span>&#9733;</span>
-              <span>{{ getStars(libIndex) }}</span>
+              <div v-if="!hasRepoError(libIndex)">
+                <span>&#9733;</span>
+                <span>{{ getStars(libIndex) }}</span>
+              </div>
             </div>
 
             <div class="col-span-6 sm:col-span-2">
-              {{ getAge(libIndex) }} old
+              <div v-if="!hasRepoError(libIndex)">
+                {{ getAge(libIndex) }} old
 
-              <m-chart-info class="inline">
-                <p>Birthdate {{ getBirthdate(libIndex) }}</p>
-              </m-chart-info>
+                <m-chart-info class="inline">
+                  <p>Birthdate {{ getBirthdate(libIndex) }}</p>
+                </m-chart-info>
+              </div>
             </div>
 
             <div class="col-span-6 sm:col-span-4">
-              <span
-                >{{
-                  githubRepos[libIndex].vulnerabilitiesCount
-                }}
-                vulnerabilities</span
-              >
+              <div v-if="!hasRepoError(libIndex)">
+                <span
+                  >{{
+                    githubRepos[libIndex].vulnerabilitiesCount
+                  }}
+                  vulnerabilities</span
+                >
 
-              <m-chart-info class="inline">
-                <p>The number includes both open and closed vulnerabilities.</p>
-                <p>
-                  We use
-                  <a
-                    href="https://github.com/advisories?query=ecosystem%3Anpm"
-                    target="_blank"
-                    >Github</a
-                  >
-                  data to get the number.
-                </p>
-                <p>
-                  <a href="https://snyk.io/vuln/?type=npm" target="_blank"
-                    >Snyk</a
-                  >
-                  is another good resource to check for vulnerabilities.
-                </p>
-              </m-chart-info>
+                <m-chart-info class="inline">
+                  <p>
+                    The number includes both open and closed vulnerabilities.
+                  </p>
+                  <p>
+                    We use
+                    <a
+                      href="https://github.com/advisories?query=ecosystem%3Anpm"
+                      target="_blank"
+                      >Github</a
+                    >
+                    data to get the number.
+                  </p>
+                  <p>
+                    <a href="https://snyk.io/vuln/?type=npm" target="_blank"
+                      >Snyk</a
+                    >
+                    is another good resource to check for vulnerabilities.
+                  </p>
+                </m-chart-info>
+              </div>
             </div>
 
             <div class="col-span-6 sm:col-span-4">
@@ -167,6 +175,9 @@ export default defineComponent({
     return {
       getNpmLink(libName: string): string {
         return `https://www.npmjs.com/package/${encodeURIComponent(libName)}`;
+      },
+      hasRepoError(libIndex: number): boolean {
+        return !githubRepos.value[libIndex];
       },
       getStars(libIndex: number): null | string {
         return numbersFormatter.format(githubRepos.value[libIndex].stars);
