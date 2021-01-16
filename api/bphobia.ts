@@ -37,7 +37,7 @@ export default (req: NowRequest, res: NowResponse): void => {
         console.error('API BUNDLEPHOBIA ERROR NEW', resp.status, resp.data);
         reportError({
           error: 'Bundlephobia API Error',
-          data: resp && resp.data,
+          data: resp.data,
         });
         res.status(500).json({
           error: {
