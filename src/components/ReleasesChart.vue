@@ -26,9 +26,14 @@
     <div class="relative" style="height: 350px">
       <m-loader v-if="isLoading || isLoadingLibsData" />
 
-      <div v-else-if="isError || !filteredLibsNames.length" class="chart-error">
-        Sorry we couldn't load the data. <br />
-        Try reload the page or check later
+      <div
+        v-else-if="isError || !filteredLibsNames.length"
+        class="chart-error-new"
+      >
+        <div>
+          Sorry we couldn't load the data. <br />
+          Try reload the page or check later
+        </div>
       </div>
 
       <canvas

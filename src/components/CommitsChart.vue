@@ -29,9 +29,14 @@
     <div class="relative" style="height: 350px">
       <m-loader v-if="isLoading || isLoadingLibsData" />
 
-      <div v-else-if="isError || !filteredLibsNames.length" class="chart-error">
-        Sorry we couldn't load the data. <br />
-        Try reload the page or check later
+      <div
+        v-else-if="isError || !filteredLibsNames.length"
+        class="chart-error-new"
+      >
+        <div>
+          Sorry we couldn't load the data. <br />
+          Try reload the page or check later
+        </div>
       </div>
 
       <canvas
@@ -83,6 +88,7 @@ export default defineComponent({
       libsNames,
       libsCommits,
       libToColorMap,
+      isLoadingLibsData,
       isLoading,
       isError,
     } = toRefs(props);
@@ -101,7 +107,10 @@ export default defineComponent({
 
     const failedLibsNames = computed(() => {
       return libsNames.value.filter(
-        (libName, libIndex) => !isLoading.value && !libsCommits.value[libIndex]
+        (libName, libIndex) =>
+          !isLoadingLibsData.value &&
+          !isLoading.value &&
+          !libsCommits.value[libIndex]
       );
     });
 

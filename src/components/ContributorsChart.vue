@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- Header -->
     <div class="flex items-center justify-center mt-5">
       <h2 class="my-0">Contributors per year</h2>
 
@@ -23,15 +24,24 @@
       </m-chart-info>
     </div>
 
-    <div v-if="isError" class="chart-error">
-      Something went wrong while loading data. Try to reload the page or come
-      later
-    </div>
+    <!-- Chart -->
+    <div class="relative" style="height: 350px">
+      <m-loader v-if="isLoading || isLoadingLibsData" />
 
-    <div v-else-if="isLoading" class="text-center p">Loading...</div>
+      <div
+        v-else-if="isError || !filteredLibsNames.length"
+        class="chart-error-new"
+      >
+        <div>
+          Sorry we couldn't load the data. <br />
+          Try reload the page or check later
+        </div>
+      </div>
 
-    <div v-show="!isLoading && !isError" style="height: 350px">
-      <canvas id="contributors"></canvas>
+      <canvas
+        v-show="!isError && filteredLibsNames.length"
+        id="contributors"
+      ></canvas>
     </div>
   </div>
 </template>
@@ -46,6 +56,10 @@ export default defineComponent({
   name: 'ContributorsChart',
 
   props: {
+    isLoadingLibsData: {
+      type: Boolean,
+      required: true,
+    },
     isLoading: {
       type: Boolean,
       required: true,
@@ -64,8 +78,7 @@ export default defineComponent({
     },
     libsContributors: {
       type: Array as () => (YearContributorsT[] | null)[],
-      required: false,
-      default: null,
+      required: true,
     },
   },
 
@@ -74,53 +87,48 @@ export default defineComponent({
       libsNames,
       libToColorMap,
       libsContributors,
+      isLoadingLibsData,
       isLoading,
       isError,
     } = toRefs(props);
-    const filteredLibsContributors = computed<YearContributorsT[][] | null>(
-      () => {
-        return (
-          libsContributors.value &&
-          (libsContributors.value.filter(
-            (libContributors) => !!libContributors
-          ) as YearContributorsT[][])
-        );
-      }
-    );
+
+    const filteredLibsContributors = computed<YearContributorsT[][]>(() => {
+      return libsContributors.value.filter(
+        (libContributors) => !!libContributors
+      ) as YearContributorsT[][];
+    });
 
     const filteredLibsNames = computed(() => {
       return libsNames.value.filter(
-        (libName, libIndex) =>
-          !!(libsContributors.value && libsContributors.value[libIndex])
+        (libName, libIndex) => !!libsContributors.value[libIndex]
       );
     });
 
     const failedLibsNames = computed(() => {
       return libsNames.value.filter(
         (libName, libIndex) =>
-          !isLoading.value && !libsContributors.value[libIndex]
+          !isLoadingLibsData.value &&
+          !isLoading.value &&
+          !libsContributors.value[libIndex]
       );
     });
 
-    const datasets = computed<ChartDataSets[]>(
-      () =>
-        (filteredLibsNames.value.map((lib, libKey) => ({
-          label: lib,
-          fill: false,
-          data: filteredLibsContributors.value
-            ? filteredLibsContributors.value[libKey].map(
-                ({ year, contributors }) => ({
-                  x: year.toString(),
-                  y: contributors,
-                })
-              )
-            : [],
-          backgroundColor: libToColorMap.value[lib],
-          borderColor: libToColorMap.value[lib],
-          borderWidth: 4,
-          pointRadius: 4,
-          pointHoverRadius: 7,
-        })) as unknown) as ChartDataSets[]
+    const datasets = computed<ChartDataSets[]>(() =>
+      filteredLibsNames.value.map((lib, libKey) => ({
+        label: lib,
+        fill: false,
+        data: filteredLibsContributors.value[libKey].map(
+          ({ year, contributors }) => ({
+            x: year.toString(),
+            y: contributors,
+          })
+        ),
+        backgroundColor: libToColorMap.value[lib],
+        borderColor: libToColorMap.value[lib],
+        borderWidth: 4,
+        pointRadius: 4,
+        pointHoverRadius: 7,
+      }))
     );
     let mychart: Chart | undefined;
 
@@ -148,7 +156,7 @@ export default defineComponent({
 
     onMounted(initChart);
 
-    watch([libsNames, isLoading, isError], () => {
+    watch([libsContributors, isLoading, isError], () => {
       if (!isLoading.value && !isError.value) {
         (mychart as Chart).data.datasets = datasets.value;
         (mychart as Chart).update();
@@ -157,6 +165,7 @@ export default defineComponent({
 
     return {
       failedLibsNames,
+      filteredLibsNames,
     };
   },
 });
