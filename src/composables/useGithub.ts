@@ -1,5 +1,6 @@
 import { ref, onMounted, watch, Ref } from 'vue';
-import { fetchGithubData, RepoT, LibraryT } from '../apis';
+import { fetchGithubData, RepoT, LibraryT } from '@/apis';
+import * as Sentry from '@sentry/browser';
 
 export default function useGithub(
   libs: Ref<LibraryT[]>
@@ -7,12 +8,12 @@ export default function useGithub(
   isLoading: Ref<boolean>;
   isError: Ref<boolean>;
   dataPromise: Ref<null | Promise<void>>;
-  repositories: Ref<RepoT[]>;
+  repositories: Ref<(RepoT | null)[]>;
 } {
   const isLoading = ref(true);
   const isError = ref(false);
   const dataPromise = ref<null | Promise<void>>(null);
-  const repositories = ref<RepoT[]>([]);
+  const repositories = ref<(RepoT | null)[]>([]);
 
   function loadData(): void {
     isLoading.value = true;
@@ -29,7 +30,9 @@ export default function useGithub(
           isError.value = false;
         }
       })
-      .catch(() => {
+      .catch((err) => {
+        Sentry.captureException(err);
+
         // Do nothing if there is a new request already in place
         if (dataPromise.value === localPromise) {
           isError.value = true;

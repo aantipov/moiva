@@ -267,7 +267,7 @@ export function fetchContributors(
 export function fetchGithubData(
   repoUrl: string,
   npmPackage: string
-): Promise<RepoT> {
+): Promise<RepoT | null> {
   const repoUrlParts = repoUrl.split('/');
   const owner = repoUrlParts[3];
   const name = repoUrlParts[4];
@@ -283,8 +283,8 @@ export function fetchGithubData(
       return data;
     })
     .catch((err) => {
-      reportSentry(err, 'fetchGithubData');
-      return Promise.reject(err);
+      reportSentry(err, `fetchGithubData (package: ${npmPackage})`);
+      return null;
     });
 }
 

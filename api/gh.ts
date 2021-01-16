@@ -20,7 +20,7 @@ export default (req: NowRequest, res: NowResponse): void => {
     typeof owner !== 'string' ||
     typeof npmPackage !== 'string'
   ) {
-    reportError(new Error('API GITHUB: Wrong parameters'));
+    reportError(new Error('API GITHUB MAIN: Wrong parameters'));
     res.status(400).json({ error: 'Wrong parameters' });
     return;
   }
@@ -71,7 +71,17 @@ export default (req: NowRequest, res: NowResponse): void => {
       }
     )
     .then((resp) => {
-      const { repository, securityVulnerabilities } = resp.data.data;
+      const { errors, data } = resp.data;
+
+      if (errors) {
+        console.error(`API GITHUB MAIN: (package: ${npmPackage})`, errors);
+        reportError(errors);
+        res.status(500).json({ errors: resp.data.errors });
+
+        return;
+      }
+
+      const { repository, securityVulnerabilities } = data;
       res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
       res.status(200).json({
         ...repository,
@@ -79,9 +89,10 @@ export default (req: NowRequest, res: NowResponse): void => {
       } as RepoT);
     })
     .catch((e) => {
+      console.error(`API GITHUB MAIN: (package: ${npmPackage})`, e);
       reportError(e);
       res
-        .status((e.response && e.response.code) || 500)
+        .status((e.response && (e.response.code || e.response.status)) || 500)
         .json({ error: 'Something went wrong' });
     });
 };

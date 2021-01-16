@@ -91,9 +91,10 @@
           />
 
           <Issues
-            :libs="librariesNames"
+            :libs-names="librariesNames"
             :repos="githubRepositories"
             :is-loading="githubIsLoading"
+            :is-loading-libs-data="isLoadingLibsData"
             :is-error="githubIsError"
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
@@ -128,7 +129,7 @@ import Languages from './Languages.vue';
 import Contributors from './Contributors.vue';
 import Commits from './Commits.vue';
 import { ERROR_CODE_NO_GITHUB_DATA } from '@/constants';
-import { LibraryT, fetchNpmPackage } from '../apis';
+import { LibraryT, fetchNpmPackage, RepoT } from '@/apis';
 import {
   loadDefaultLibs,
   updateUrl,
@@ -199,18 +200,21 @@ export default defineComponent({
     // Update meta description
     watch([gh.isLoading, gh.repositories, gh.isError], () => {
       const repos = gh.repositories.value;
+      const hasAnyRepoError = repos.includes(null);
 
-      if (gh.isLoading.value || gh.isError.value) {
+      if (gh.isLoading.value || gh.isError.value || hasAnyRepoError) {
         updateMetaDescription([]);
         return;
       }
 
-      const data = selectedLibs.value.map((lib, index) => ({
+      const data = selectedLibs.value.map((lib, libIndex) => ({
         name: lib.name,
         description: lib.description,
-        starsCount: numbersFormatter.format(repos[index].stars),
-        age: formatDistanceToNowStrict(new Date(repos[index].createdAt)),
-        vulnerabilitiesCount: repos[index].vulnerabilitiesCount,
+        starsCount: numbersFormatter.format((repos[libIndex] as RepoT).stars),
+        age: formatDistanceToNowStrict(
+          new Date((repos[libIndex] as RepoT).createdAt)
+        ),
+        vulnerabilitiesCount: (repos[libIndex] as RepoT).vulnerabilitiesCount,
         dependenciesCount: lib.dependencies.length,
         license: lib.license,
       }));
