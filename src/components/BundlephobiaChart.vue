@@ -1,13 +1,60 @@
 <template>
-  <canvas id="bundlephobia"></canvas>
+  <div>
+    <!-- Header -->
+    <div class="flex items-center justify-center mt-5">
+      <h2 class="my-0">Bundle size<span class="text-base">, kB</span></h2>
+
+      <m-chart-info class="ml-2">
+        <p>
+          Moiva uses data from
+          <a href="https://bundlephobia.com/" target="_blank">Bundlephobia</a>
+          to build this chart.
+        </p>
+      </m-chart-info>
+
+      <m-chart-info v-if="failedLibsNames.length" class="ml-2" type="WARNING">
+        <div>
+          Sorry, we couldn't fetch data from
+          <a href="https://bundlephobia.com/" target="_blank">Bundlephobia</a>
+          for the following packages:
+          <div v-for="libName in failedLibsNames" :key="libName">
+            -
+            <a :href="getBundlephobiaUrl(libName)" target="_blank">{{
+              libName
+            }}</a>
+          </div>
+        </div>
+      </m-chart-info>
+    </div>
+
+    <!-- Chart -->
+    <div class="relative" style="height: 350px">
+      <m-loader v-if="isLoading || isLoadingLibsData" />
+
+      <div
+        v-else-if="isError || !filteredLibsNames.length"
+        class="chart-error-new"
+      >
+        <div>
+          Sorry we couldn't load the data. <br />
+          Try reload the page or check later
+        </div>
+      </div>
+
+      <canvas
+        v-show="!isError && filteredLibsNames.length"
+        id="bundlephobia"
+      ></canvas>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import Chart from 'chart.js';
-import { BundlephobiaT } from '../apis';
-import { numbersFormatter } from '../utils';
-import { COLOR_GREEN, COLOR_GRAY } from '../colors';
+import { defineComponent, toRefs, onMounted, watch, computed } from 'vue';
+import Chart, { ChartDataSets } from 'chart.js';
+import { BundlephobiaT } from '@/apis';
+import { numbersFormatter, getBundlephobiaUrl } from '@/utils';
+import { COLOR_GREEN, COLOR_GRAY } from '@/colors';
 
 const roundBytesFn = (bytes: number): number => Math.round(bytes / 102.4) / 10;
 
@@ -15,74 +62,120 @@ export default defineComponent({
   name: 'BundlephobiaChart',
 
   props: {
-    libs: {
-      type: Array as () => string[],
-      required: true,
-    },
-    sizes: {
-      type: Array as () => BundlephobiaT[],
+    isLoadingLibsData: { type: Boolean, required: true },
+    isLoading: { type: Boolean, required: true },
+    isError: { type: Boolean, required: true },
+    libsNames: { type: Array as () => string[], required: true },
+    libsSizes: {
+      type: Array as () => (BundlephobiaT | null)[],
       required: true,
     },
   },
 
-  mounted(): void {
-    const ctx = document.getElementById('bundlephobia') as HTMLCanvasElement;
-    const { libs, sizes } = this;
+  setup(props) {
+    const {
+      libsNames,
+      libsSizes,
+      isLoading,
+      isLoadingLibsData,
+      isError,
+    } = toRefs(props);
 
-    new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels: libs,
-        datasets: [
-          {
-            label: 'minified + gzipped',
-            data: sizes.map((size) => roundBytesFn(size.gzip)),
-            backgroundColor: COLOR_GREEN,
-            borderWidth: 1,
-          },
-          {
-            label: 'minified',
-            data: sizes.map((size) => roundBytesFn(size.raw)),
-            backgroundColor: COLOR_GRAY,
-            borderWidth: 1,
-          },
-        ],
+    const filteredLibsSizes = computed<BundlephobiaT[]>(
+      () => libsSizes.value.filter((libSizes) => !!libSizes) as BundlephobiaT[]
+    );
+
+    const filteredLibsNames = computed(() =>
+      libsNames.value.filter((libName, libIndex) => !!libsSizes.value[libIndex])
+    );
+
+    const failedLibsNames = computed(() =>
+      libsNames.value.filter(
+        (libName, libIndex) =>
+          !isLoadingLibsData.value &&
+          !isLoading.value &&
+          !libsSizes.value[libIndex]
+      )
+    );
+
+    const datasets = computed<ChartDataSets[]>(() => [
+      {
+        label: 'minified + gzipped',
+        data: filteredLibsSizes.value.map((libSize) =>
+          roundBytesFn(libSize.gzip)
+        ),
+        backgroundColor: COLOR_GREEN,
+        borderWidth: 1,
       },
+      {
+        label: 'minified',
+        data: filteredLibsSizes.value.map((libSize) =>
+          roundBytesFn(libSize.raw)
+        ),
+        backgroundColor: COLOR_GRAY,
+        borderWidth: 1,
+      },
+    ]);
 
-      options: {
-        tooltips: {
-          callbacks: {
-            label: (tooltipItem, data): string => {
-              const label = (data.datasets as Chart.ChartDataSets[])[
-                tooltipItem.datasetIndex as number
-              ].label;
+    let mychart: Chart | undefined;
 
-              return ` ${label}: ${Number(
-                tooltipItem.yLabel
-              ).toLocaleString()}kB`;
-            },
-          },
+    function initChart(): void {
+      const ctx = document.getElementById('bundlephobia') as HTMLCanvasElement;
+
+      mychart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: filteredLibsNames.value,
+          datasets: datasets.value,
         },
-        legend: {
-          display: true,
-        },
-        title: {
-          display: false,
-          text: 'Bundle size, kB',
-        },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: true,
-                callback: (val: number): string =>
-                  numbersFormatter.format(val) + ' kB',
+
+        options: {
+          tooltips: {
+            callbacks: {
+              label: (tooltipItem, data): string => {
+                const label = (data.datasets as Chart.ChartDataSets[])[
+                  tooltipItem.datasetIndex as number
+                ].label;
+
+                return ` ${label}: ${Number(
+                  tooltipItem.yLabel
+                ).toLocaleString()}kB`;
               },
             },
-          ],
+          },
+
+          scales: {
+            yAxes: [
+              {
+                ticks: {
+                  beginAtZero: true,
+                  callback: (val: number): string =>
+                    numbersFormatter.format(val) + ' kB',
+                },
+              },
+            ],
+          },
         },
-      },
+      });
+    }
+
+    onMounted(initChart);
+
+    watch([libsNames, isLoading, isError], () => {
+      if (!isLoading.value && !isError.value) {
+        (mychart as Chart).data.labels = filteredLibsNames.value;
+        (mychart as Chart).data.datasets = datasets.value;
+        (mychart as Chart).update();
+      }
     });
+
+    return {
+      failedLibsNames,
+      filteredLibsNames,
+      getBundlephobiaUrl(libName: string): string {
+        return getBundlephobiaUrl(libName);
+      },
+    };
   },
 });
 </script>

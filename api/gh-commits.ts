@@ -1,6 +1,6 @@
 import { NowRequest, NowResponse } from '@vercel/node';
 import axios from 'axios';
-import { logRequest, initSentry, reportError } from './utils';
+import { logRequest, initSentry, reportError, ErrorT } from './utils';
 import { ERROR_CODE_GITHUB_COMMITS_NEEDS_PROCESSING } from '../src/constants';
 
 initSentry();
@@ -50,7 +50,7 @@ export default (req: NowRequest, res: NowResponse): void => {
             message: 'Repo data needs to be processed by Github. Check later',
             code: ERROR_CODE_GITHUB_COMMITS_NEEDS_PROCESSING,
           },
-        });
+        } as ErrorT);
 
         return;
       }

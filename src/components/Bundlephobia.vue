@@ -1,48 +1,17 @@
 <template>
-  <div>
-    <div class="flex items-center justify-center mt-5">
-      <h2 class="my-0">Bundle size<span class="text-base">, kB</span></h2>
-
-      <m-chart-info class="ml-2">
-        <p>
-          Moiva uses data from
-          <a href="https://bundlephobia.com/" target="_blank">Bundlephobia</a>
-          to build this chart.
-        </p>
-      </m-chart-info>
-
-      <m-chart-info v-if="failedLibs.length" class="ml-2" type="WARNING">
-        <div>
-          Sorry, we couldn't fetch data from
-          <a href="https://bundlephobia.com/" target="_blank">Bundlephobia</a>
-          for the following packages:
-          <div v-for="libName in failedLibs" :key="libName">
-            -
-            <a :href="getBundlephobiaUrl(libName)" target="_blank">{{
-              libName
-            }}</a>
-          </div>
-        </div>
-      </m-chart-info>
-    </div>
-
-    <div v-if="isError" class="chart-error">
-      Something went wrong while loading data. Try to reload the page or come
-      later
-    </div>
-
-    <div v-else class="chart">
-      <div v-if="isLoading" class="text-center p">Loading...</div>
-      <BundlephobiaChart v-else :libs="filteredLibs" :sizes="filteredSizes" />
-    </div>
-  </div>
+  <BundlephobiaChart
+    :is-loading-libs-data="isLoadingLibsData"
+    :is-loading="isLoading"
+    :is-error="isError"
+    :libs-names="libsNames"
+    :libs-sizes="libsSizes"
+  />
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, onMounted, toRefs, ref, watch } from 'vue';
 import BundlephobiaChart from './BundlephobiaChart.vue';
 import { fetchBundlephobiaData, BundlephobiaT } from '../apis';
-import { getBundlephobiaUrl } from '@/utils';
 
 export default defineComponent({
   name: 'Bundlephobia',
@@ -52,71 +21,50 @@ export default defineComponent({
   },
 
   props: {
-    libs: {
-      type: Array as () => string[],
-      required: true,
-    },
+    libsNames: { type: Array as () => string[], required: true },
+    isLoadingLibsData: { type: Boolean, required: true },
   },
 
-  data() {
-    return {
-      isLoading: true,
-      isError: false,
-      sizes: [] as Array<BundlephobiaT>,
-      sizesPromise: null as null | Promise<unknown>,
-    };
-  },
+  setup(props) {
+    const { libsNames } = toRefs(props);
+    const libsSizes = ref<(BundlephobiaT | null)[]>([]);
+    const isLoading = ref(true);
+    const isError = ref(false);
+    let lastFetchPromise: null | Promise<void> = null;
 
-  computed: {
-    // Filter out libs for which Bundlephobia coudn't provide any data
-    filteredLibs(): string[] {
-      return this.libs.filter((_lib, i) => !!this.sizes[i]);
-    },
-    failedLibs(): string[] {
-      return this.libs.filter((_lib, i) => !this.sizes[i]);
-    },
-    filteredSizes(): BundlephobiaT[] {
-      return this.sizes.filter((size) => !!size);
-    },
-  },
+    function loadData(): void {
+      isLoading.value = true;
+      isError.value = false;
 
-  watch: {
-    libs(): void {
-      this.loadData();
-    },
-  },
-
-  mounted(): void {
-    this.loadData();
-  },
-
-  methods: {
-    getBundlephobiaUrl(libName: string): string {
-      return getBundlephobiaUrl(libName);
-    },
-    loadData(): void {
-      this.isLoading = true;
-      this.isError = false;
-
-      const promise = (this.sizesPromise = Promise.all(
-        this.libs.map((lib) => fetchBundlephobiaData(lib))
+      const fetchPromise = (lastFetchPromise = Promise.all(
+        libsNames.value.map(fetchBundlephobiaData)
       )
         .then((data) => {
           // Do nothing if there is a new request already in place
-          if (this.sizesPromise === promise) {
-            this.sizes = data;
-            this.isError = false;
-            this.isLoading = false;
+          if (lastFetchPromise === fetchPromise) {
+            libsSizes.value = data;
+            isLoading.value = false;
+            isError.value = false;
           }
         })
         .catch(() => {
           // Do nothing if there is a new request already in place
-          if (this.sizesPromise === promise) {
-            this.isError = true;
-            this.isLoading = false;
+          if (lastFetchPromise === fetchPromise) {
+            isLoading.value = false;
+            isError.value = true;
           }
         }));
-    },
+    }
+
+    onMounted(loadData);
+
+    watch(libsNames, loadData);
+
+    return {
+      isLoading,
+      isError,
+      libsSizes,
+    };
   },
 });
 </script>

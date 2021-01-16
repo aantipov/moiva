@@ -308,29 +308,32 @@ export function fetchGTrendsData(libs: string[]): Promise<GTrendPointT[]> {
     });
 }
 
-export function fetchBundlephobiaData(lib: string): Promise<BundlephobiaT> {
-  if (bphobiaCache.get(lib)) {
-    return Promise.resolve(bphobiaCache.get(lib));
+export function fetchBundlephobiaData(
+  libName: string
+): Promise<BundlephobiaT | null> {
+  if (bphobiaCache.get(libName)) {
+    return Promise.resolve(bphobiaCache.get(libName));
   }
 
   return axios
-    .get(`/api/bphobia?lib=${lib}`)
-    .catch((err) => {
-      const { code } = err.response.data;
-
-      if (code === 'BuildError' || code === 'BlacklistedPackageError') {
-        return { data: null };
-      }
-
-      return Promise.reject(err);
-    })
+    .get(`/api/bphobia?lib=${libName}`)
     .then(({ data }) => {
-      bphobiaCache.set(lib, data);
+      bphobiaCache.set(libName, data);
       return data;
     })
     .catch((err) => {
-      reportSentry(err, 'fetchBundlephobiaData');
-      return Promise.reject(err);
+      const { error } = err.response.data;
+
+      // Report to Sentry unexpected errors only
+      if (
+        !error ||
+        (error.code !== 'BuildError' &&
+          error.code !== 'BlacklistedPackageError')
+      ) {
+        reportSentry(err, 'fetchBundlephobiaData');
+      }
+
+      return null;
     });
 }
 
