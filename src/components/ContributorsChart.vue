@@ -80,26 +80,27 @@ export default defineComponent({
       isError,
     } = toRefs(props);
 
-    const filteredLibsContributors = computed<YearContributorsT[][]>(() => {
-      return libsContributors.value.filter(
-        (libContributors) => !!libContributors
-      ) as YearContributorsT[][];
-    });
+    const filteredLibsContributors = computed<YearContributorsT[][]>(
+      () =>
+        libsContributors.value.filter(
+          (libContributors) => !!libContributors
+        ) as YearContributorsT[][]
+    );
 
-    const filteredLibsNames = computed(() => {
-      return libsNames.value.filter(
+    const filteredLibsNames = computed(() =>
+      libsNames.value.filter(
         (libName, libIndex) => !!libsContributors.value[libIndex]
-      );
-    });
+      )
+    );
 
-    const failedLibsNames = computed(() => {
-      return libsNames.value.filter(
+    const failedLibsNames = computed(() =>
+      libsNames.value.filter(
         (libName, libIndex) =>
           !isLoadingLibsData.value &&
           !isLoading.value &&
           !libsContributors.value[libIndex]
-      );
-    });
+      )
+    );
 
     const datasets = computed<ChartDataSets[]>(() =>
       filteredLibsNames.value.map((lib, libIndex) => ({

@@ -288,7 +288,7 @@ export function fetchGithubData(
     });
 }
 
-export function fetchGTrendsData(libs: string[]): Promise<GTrendsT> {
+export function fetchGTrendsData(libs: string[]): Promise<GTrendPointT[]> {
   // TODO: implement a proper cache
   const libsStr = libs.join(',');
 
@@ -299,8 +299,8 @@ export function fetchGTrendsData(libs: string[]): Promise<GTrendsT> {
   return axios
     .get(`/api/gtrends?libs=${libsStr}`)
     .then(({ data }) => {
-      gTrendsCache.set(libsStr, data.default);
-      return data.default;
+      gTrendsCache.set(libsStr, data.default.timelineData);
+      return data.default.timelineData;
     })
     .catch((err) => {
       reportSentry(err, 'fetchGTrendsData');

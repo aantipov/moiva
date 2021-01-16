@@ -12,7 +12,7 @@ export default (req: NowRequest, res: NowResponse): void => {
 
   // Check if libs parameter is there
   if (!libs || typeof libs !== 'string') {
-    reportError(new Error('API Google Trends: Wrong libs parameter'));
+    reportError(new Error('API GOOGLE TRENDS: Wrong libs parameter'));
     res.status(400).json({ error: 'Wrong libs parameter' });
     return;
   }
@@ -26,7 +26,7 @@ export default (req: NowRequest, res: NowResponse): void => {
     filteredKeywords.length > 5 ||
     filteredKeywords.length !== keywords.length
   ) {
-    reportError(new Error('API Google Trends: Wrong libs parameter'));
+    reportError(new Error('API GOOGLE TRENDS: Wrong libs parameter'));
     res.status(400).json({ error: 'Wrong libs parameter' });
     return;
   }
@@ -42,7 +42,9 @@ export default (req: NowRequest, res: NowResponse): void => {
       res.status(200).json(JSON.parse(results));
     })
     .catch((e) => {
+      console.error('API GOOGLE TRENDS: ', e);
       reportError(e);
+
       res
         .status((e.response && e.response.status) || 500)
         .json({ error: 'Something went wrong' });
