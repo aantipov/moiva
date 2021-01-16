@@ -56,22 +56,10 @@ export default defineComponent({
   name: 'ContributorsChart',
 
   props: {
-    isLoadingLibsData: {
-      type: Boolean,
-      required: true,
-    },
-    isLoading: {
-      type: Boolean,
-      required: true,
-    },
-    isError: {
-      type: Boolean,
-      required: true,
-    },
-    libsNames: {
-      type: Array as () => string[],
-      required: true,
-    },
+    isLoadingLibsData: { type: Boolean, required: true },
+    isLoading: { type: Boolean, required: true },
+    isError: { type: Boolean, required: true },
+    libsNames: { type: Array as () => string[], required: true },
     libToColorMap: {
       type: Object as () => Record<string, string>,
       required: true,

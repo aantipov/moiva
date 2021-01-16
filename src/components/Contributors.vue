@@ -22,18 +22,12 @@ export default defineComponent({
   },
 
   props: {
-    libs: {
-      type: Array as () => LibraryT[],
-      required: true,
-    },
+    libs: { type: Array as () => LibraryT[], required: true },
     libToColorMap: {
       type: Object as () => Record<string, string>,
       required: true,
     },
-    isLoadingLibsData: {
-      type: Boolean,
-      required: true,
-    },
+    isLoadingLibsData: { type: Boolean, required: true },
   },
 
   setup(props) {
