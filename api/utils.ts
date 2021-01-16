@@ -1,6 +1,13 @@
 // import * as faunadb from 'faunadb';
 import * as Sentry from '@sentry/node';
 // import * as Tracing from '@sentry/tracing';
+//
+export interface ErrorT {
+  error: {
+    message: string;
+    code?: string;
+  };
+}
 
 export function logRequest(type: string, urlQuery: unknown): void {
   // type:
@@ -54,6 +61,6 @@ export function initSentry(): void {
   });
 }
 
-export function reportError(e: Error): void {
+export function reportError(e: unknown): void {
   Sentry.captureException(e);
 }
