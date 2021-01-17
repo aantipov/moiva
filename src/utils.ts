@@ -51,7 +51,10 @@ export function loadDefaultLibs(): Promise<LibraryT[]> {
   const defaultLibs = Url.searchParams.get(paramName)?.split(delimiter) || [];
   const uniqDefaultLibs = [...new Set(defaultLibs)];
 
-  const promises = uniqDefaultLibs.map(fetchNpmPackage);
+  const promises = uniqDefaultLibs
+    .map(fetchNpmPackage)
+    // just ignore any cases (and filter those packages out)
+    .map((pkgPromise) => pkgPromise.catch(() => null));
 
   return Promise.all(promises).then((libs) => {
     const filteredLibs = libs.filter((lib) => !!lib) as LibraryT[];

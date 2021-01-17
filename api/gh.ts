@@ -8,17 +8,17 @@ initSentry();
 export default (req: NowRequest, res: NowResponse): void => {
   const skey = process.env.GITHUB_API_KEY;
   const url = 'https://api.github.com/graphql';
-  const { name, owner, package: npmPackage } = req.query;
+  const { name, owner, pkg } = req.query;
 
   logRequest('github', req.query);
 
   if (
     !name ||
     !owner ||
-    !npmPackage ||
+    !pkg ||
     typeof name !== 'string' ||
     typeof owner !== 'string' ||
-    typeof npmPackage !== 'string'
+    typeof pkg !== 'string'
   ) {
     reportError(new Error('API GITHUB MAIN: Wrong parameters'));
     res.status(400).json({ error: 'Wrong parameters' });
@@ -41,7 +41,7 @@ export default (req: NowRequest, res: NowResponse): void => {
         variables: {},
         query: `
         {
-          securityVulnerabilities(package: "${npmPackage}", first: 20) {
+          securityVulnerabilities(package: "${pkg}", first: 20) {
             totalCount
           }
           repository(name: "${name}", owner: "${owner}") {
@@ -74,7 +74,7 @@ export default (req: NowRequest, res: NowResponse): void => {
       const { errors, data } = resp.data;
 
       if (errors) {
-        console.error(`API GITHUB MAIN: (package: ${npmPackage})`, errors);
+        console.error(`API GITHUB MAIN: (package: ${pkg})`, errors);
         reportError(errors);
         res.status(500).json({ errors: resp.data.errors });
 
@@ -89,7 +89,7 @@ export default (req: NowRequest, res: NowResponse): void => {
       } as RepoT);
     })
     .catch((e) => {
-      console.error(`API GITHUB MAIN: (package: ${npmPackage})`, e);
+      console.error(`API GITHUB MAIN: (package: ${pkg})`, e);
       reportError(e);
       res
         .status((e.response && (e.response.code || e.response.status)) || 500)

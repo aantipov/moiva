@@ -266,7 +266,7 @@ export function fetchGithubData(
   }
 
   return axios
-    .get<RepoT>(`/api/gh?name=${name}&owner=${owner}&package=${npmPackage}`)
+    .get<RepoT>(`/api/gh?name=${name}&owner=${owner}&pkg=${npmPackage}`)
     .then(({ data }) => {
       githubCache.set(repoUrl, data);
       return data;
@@ -305,7 +305,7 @@ export function fetchBundlephobiaData(
   }
 
   return axios
-    .get(`/api/bphobia?lib=${libName}`)
+    .get(`/api/bphobia?pkg=${libName}`)
     .then(({ data }) => {
       bphobiaCache.set(libName, data);
       return data;
@@ -416,7 +416,7 @@ export function fetchNpmPackage(packageName: string): Promise<LibraryT | null> {
 
 function fetchNpmJSPackage(packageName: string): Promise<LibraryT | null> {
   return axios
-    .get(`/api/npm-package?lib=${packageName}`)
+    .get(`/api/npm-package?pkg=${packageName}`)
     .then(({ data }) => data);
 }
 

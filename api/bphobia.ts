@@ -6,11 +6,11 @@ initSentry();
 
 export default (req: NowRequest, res: NowResponse): void => {
   const url = 'https://bundlephobia.com/api/size?record=true';
-  const { lib } = req.query;
+  const { pkg } = req.query;
 
   logRequest('bundlephobia', req.query);
 
-  if (!lib || typeof lib !== 'string') {
+  if (!pkg || typeof pkg !== 'string') {
     console.error(
       'API BUNDLEPHOBIA ERROR NEW',
       'Wrong lib parameter',
@@ -25,7 +25,7 @@ export default (req: NowRequest, res: NowResponse): void => {
   }
 
   axios
-    .get(url, { params: { package: lib } })
+    .get(url, { params: { package: pkg } })
     .then((resp) => {
       // Maybe here is the cause of some 502 responses
       if (
@@ -62,7 +62,7 @@ export default (req: NowRequest, res: NowResponse): void => {
           status,
           code: errorCode,
           message: data.error.message,
-          lib,
+          lib: pkg,
         });
       } else {
         reportError(e);
