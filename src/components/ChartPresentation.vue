@@ -36,7 +36,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, toRefs, onMounted, watch } from 'vue';
-import Chart, { ChartDataSets } from 'chart.js';
+import Chart from 'chart.js';
 
 export default defineComponent({
   name: 'ChartPresentation',
@@ -51,18 +51,10 @@ export default defineComponent({
       type: Object as () => Chart.ChartConfiguration,
       required: true,
     },
-    chartLabels: { type: Array as () => string[], required: true },
-    chartDatasets: { type: Array as () => ChartDataSets[], required: true },
   },
 
   setup(props) {
-    const {
-      isLoading,
-      chartConfig,
-      chartLabels,
-      chartDatasets,
-      isError,
-    } = toRefs(props);
+    const { isLoading, chartConfig, isError } = toRefs(props);
 
     const chartEl = ref<null | HTMLCanvasElement>(null);
 
@@ -76,12 +68,10 @@ export default defineComponent({
 
     onMounted(initChart);
 
-    watch([chartLabels, chartDatasets, isLoading, isError], () => {
+    watch([chartConfig, isLoading, isError], () => {
       if (!isLoading.value && !isError.value) {
-        if (chartLabels.value) {
-          (mychart as Chart).data.labels = chartLabels.value;
-        }
-        (mychart as Chart).data.datasets = chartDatasets.value;
+        (mychart as Chart).data.labels = chartConfig.value.data?.labels;
+        (mychart as Chart).data.datasets = chartConfig.value.data?.datasets;
         (mychart as Chart).update();
       }
     });

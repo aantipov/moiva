@@ -6,8 +6,6 @@
     :libs-names="filteredLibsNames"
     :failed-libs-names="failedLibsNames"
     :chart-config="chartConfig"
-    :chart-labels="filteredLibsNames"
-    :chart-datasets="datasets"
   >
     <p>
       This chart shows distribution of languages used in libraries' repostories.
@@ -20,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, toRefs, computed } from 'vue';
+import { defineComponent, toRefs, computed } from 'vue';
 import Chart, { ChartDataSets } from 'chart.js';
 import { getLangToColorMap } from '@/colors';
 import { GithubLanguagesResponseT } from '../../api/gh-languages';
@@ -45,8 +43,6 @@ export default defineComponent({
     const { libsNames, libsLanguages, isLoadingLibsData, isLoading } = toRefs(
       props
     );
-
-    const chartEl = ref<null | HTMLCanvasElement>(null);
 
     const filteredLibsLanguages = computed<GithubLanguagesResponseT[]>(
       () =>
@@ -166,21 +162,15 @@ export default defineComponent({
         labels: filteredLibsNames.value,
         datasets: datasets.value,
       },
-
       options: {
-        scales: {
-          xAxes: [{ stacked: true }],
-          yAxes: [{ stacked: true }],
-        },
+        scales: { xAxes: [{ stacked: true }], yAxes: [{ stacked: true }] },
       },
     }));
 
     return {
-      chartEl,
       failedLibsNames,
       filteredLibsNames,
       chartConfig,
-      datasets,
     };
   },
 });
