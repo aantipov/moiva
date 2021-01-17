@@ -266,7 +266,6 @@ export default defineComponent({
           });
       },
       selectMultiple(libNames: string[]): void {
-        console.log('LOAD', libNames);
         // Assumption - it's called from the Start Page
         // when there is no selected libraries yes
         errorFetchingNewLib.value = null;
