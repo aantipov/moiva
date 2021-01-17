@@ -55,15 +55,12 @@ export default defineComponent({
 
   setup(props) {
     const { isLoading, chartConfig, isError } = toRefs(props);
-
     const chartEl = ref<null | HTMLCanvasElement>(null);
-
     let mychart: Chart | undefined;
 
     function initChart(): void {
       const ctx = chartEl.value as HTMLCanvasElement;
-
-      mychart = new Chart(ctx, chartConfig.value as Chart.ChartConfiguration);
+      mychart = new Chart(ctx, chartConfig.value);
     }
 
     onMounted(initChart);
