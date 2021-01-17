@@ -28,10 +28,7 @@ import ChartPresentation from './ChartPresentation.vue';
 
 export default defineComponent({
   name: 'LanguagesChart',
-
-  components: {
-    ChartPresentation,
-  },
+  components: { ChartPresentation },
 
   props: {
     isLoadingLibsData: { type: Boolean, required: true },
