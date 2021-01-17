@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="relative">
+    <div>
       <input
         id="npm-input"
         type="text"
@@ -10,10 +10,19 @@
         class="relative w-full py-3 pl-3 text-xl font-light text-gray-700 rounded outline-none myinput pr-11 md:text-2xl focus:bg-white focus:ring-0 focus:outline-none"
       />
 
+      <!-- progressbar -->
       <div
-        class="absolute top-0 right-0 z-10 flex items-center justify-center w-8 h-full py-1 pr-4"
+        v-if="isLoading"
+        class="relative w-full h-1 overflow-hidden bg-yellow-500 rounded-full bg-opacity-10 indeterminate"
       >
-        <m-loader-tail-spin v-if="isLoading" />
+        <div
+          class="absolute top-0 h-full bg-yellow-500 rounded-full progressbar"
+          :style="{ width: `80%` }"
+        >
+          <span class="flex items-center h-full">
+            <slot></slot>
+          </span>
+        </div>
       </div>
     </div>
 
@@ -103,6 +112,7 @@ export default defineComponent({
           if (maxHeight > 400) {
             container.style.maxHeight = '383px';
           }
+          container.style.top = inputRect.bottom + 4 + 'px';
         },
         preventSubmit: true,
         showOnFocus: true,
@@ -142,5 +152,26 @@ export default defineComponent({
 }
 .myinput {
   @apply bg-yellow-600 bg-opacity-5 placeholder-yellow-600 placeholder-opacity-60 border border-transparent border-4 focus:border-yellow-600 focus:border-opacity-60;
+}
+
+@keyframes progress-indeterminate {
+  0% {
+    width: 30%;
+    left: -40%;
+  }
+  60% {
+    left: 100%;
+    width: 100%;
+  }
+  to {
+    left: 100%;
+    width: 0;
+  }
+}
+.progressbar {
+  transition: width 0.25s ease;
+}
+.indeterminate .progressbar {
+  animation: progress-indeterminate 1s ease infinite;
 }
 </style>
