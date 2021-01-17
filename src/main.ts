@@ -26,9 +26,11 @@ Chart.defaults.global.defaultFontFamily =
   fontFamily:
     'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
 };
-((Chart.defaults.global.legend as Chart.ChartLegendOptions)
-  .labels as Chart.ChartLegendLabelOptions).boxWidth = 20;
+// @ts-ignore
+Chart.defaults.global.legend.labels.boxWidth = 20;
 Chart.defaults.global.maintainAspectRatio = false;
+// @ts-ignore
+Chart.defaults.global.elements.line.fill = false;
 Chart.defaults.global.tooltips = {
   ...Chart.defaults.global.tooltips,
   mode: 'index',

@@ -54,7 +54,6 @@ export default defineComponent({
         (libName) =>
           ({
             label: libName,
-            fill: false,
             data: uniqDates.value.map((date) => libsToDatadMap[libName][date]),
             backgroundColor: libToColorMap.value[libName],
             borderColor: libToColorMap.value[libName],

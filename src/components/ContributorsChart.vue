@@ -73,7 +73,6 @@ export default defineComponent({
     const datasets = computed<ChartDataSets[]>(() =>
       filteredLibsNames.value.map((lib, libIndex) => ({
         label: lib,
-        fill: false,
         data: filteredLibsContributors.value[libIndex].map(
           ({ year, contributors }) => ({
             x: year.toString(),

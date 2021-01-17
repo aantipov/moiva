@@ -70,7 +70,6 @@ export default defineComponent({
     const datasets = computed<ChartDataSets[]>(() =>
       filteredLibsNames.value.map((libName, libIndex) => ({
         label: libName,
-        fill: false,
         data: filteredLibsDownloads.value[libIndex].map(
           ({ downloads }) => downloads
         ),
