@@ -1,66 +1,42 @@
 <template>
-  <div>
-    <!-- Header -->
-    <div class="flex items-center justify-center mt-5">
-      <h2 class="my-0">
-        Google Trends - <span class="text-base">Interest Over Time</span>
-      </h2>
-
-      <m-chart-info class="ml-2">
-        <p>
-          Moiva uses data from
-          <a :href="gTrendsLink" target="_blank">Google Trends</a>
-          to build this chart.
-        </p>
-        <p>
-          Google Trends doesn't provide sensible data for most of the libraries.
-          So we exclude those libraries altogether.
-        </p>
-        <p>
-          If you know a library for which it makes sense to include it in this
-          chart - feel free to submit an
-          <a
-            href="https://github.com/aantipov/moiva-issues"
-            target="_blank"
-            rel="noopener"
-            >issue</a
-          >.
-        </p>
-      </m-chart-info>
-
-      <m-chart-info v-if="isError" class="ml-2" type="WARNING">
-        <div>
-          <div>Sorry, we couldn't fetch data from Google Trends.</div>
-          <div>Try reload the page or check later.</div>
-        </div>
-      </m-chart-info>
-    </div>
-
-    <!-- Chart -->
-    <div class="relative" style="height: 350px">
-      <m-loader v-if="isLoading || isLoadingLibsData" />
-
-      <div v-else-if="isError" class="chart-error-new">
-        <div>
-          Sorry we couldn't load the data. <br />
-          Try reload the page or check later
-        </div>
-      </div>
-
-      <canvas
-        v-show="!isError && filteredLibsNames.length"
-        id="googleTrends"
-      ></canvas>
-    </div>
-  </div>
+  <m-chart
+    v-if="libsKeywords.length"
+    title="Google Trends - "
+    subheader="Interest Over Time"
+    :is-loading="isLoading || isLoadingLibsData"
+    :is-error="isError"
+    :libs-names="filteredLibsNames"
+    :failed-libs-names="[]"
+    :chart-config="chartConfig"
+  >
+    <p>
+      Moiva uses data from
+      <a :href="gTrendsLink" target="_blank">Google Trends</a>
+      to build this chart.
+    </p>
+    <p>
+      Google Trends doesn't provide sensible data for most of the libraries. So
+      we exclude those libraries altogether.
+    </p>
+    <p>
+      If you know a library for which it makes sense to include it in this chart
+      - feel free to submit an
+      <a
+        href="https://github.com/aantipov/moiva-issues"
+        target="_blank"
+        rel="noopener"
+        >issue</a
+      >.
+    </p>
+  </m-chart>
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, onMounted, watch, computed } from 'vue';
-import Chart, { ChartDataSets } from 'chart.js';
+import { defineComponent, toRefs, computed } from 'vue';
+import { ChartDataSets, ChartConfiguration } from 'chart.js';
 import { format } from 'date-fns';
-import { numbersFormatter } from '../utils';
-import { GTrendPointT } from '../apis';
+import { numbersFormatter } from '@/utils';
+import { GTrendPointT } from '@/apis';
 import { enUS } from 'date-fns/locale';
 
 export default defineComponent({
@@ -80,14 +56,9 @@ export default defineComponent({
   },
 
   setup(props) {
-    const {
-      libsNames,
-      libToColorMap,
-      libsTrends,
-      libsKeywords,
-      isLoading,
-      isError,
-    } = toRefs(props);
+    const { libsNames, libToColorMap, libsTrends, libsKeywords } = toRefs(
+      props
+    );
 
     const filteredLibsNames = computed<string[]>(() =>
       libsNames.value.filter(
@@ -104,7 +75,6 @@ export default defineComponent({
     const datasets = computed<ChartDataSets[]>(() =>
       filteredLibsNames.value.map((libName, libIndex) => ({
         label: libName,
-        fill: false,
         data: libsTrends.value.map(({ value }) => value[libIndex]),
         backgroundColor: libToColorMap.value[libName],
         borderColor: libToColorMap.value[libName],
@@ -114,50 +84,32 @@ export default defineComponent({
       }))
     );
 
-    let mychart: Chart | undefined;
-
-    function initChart(): void {
-      const ctx = document.getElementById('googleTrends') as HTMLCanvasElement;
-
-      mychart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: categories.value,
-          datasets: datasets.value,
-        },
-
-        options: {
-          tooltips: {
-            callbacks: {
-              title: (tooltipItems): string => {
-                const month = tooltipItems[0].xLabel as string;
-
-                return format(new Date(month), 'MMM, yyyy');
-              },
+    const chartConfig = computed<ChartConfiguration>(() => ({
+      type: 'line',
+      data: {
+        labels: categories.value,
+        datasets: datasets.value,
+      },
+      options: {
+        tooltips: {
+          callbacks: {
+            title: (tooltipItems): string => {
+              const month = tooltipItems[0].xLabel as string;
+              return format(new Date(month), 'MMM, yyyy');
             },
           },
-          title: { display: false },
-          scales: {
-            adapters: { date: { locale: enUS } },
-            xAxes: [{ type: 'time', time: { unit: 'year' } }],
-            yAxes: [{ ticks: { callback: numbersFormatter.format } }],
-          },
         },
-      });
-    }
-
-    onMounted(initChart);
-
-    watch([libsTrends, isLoading, isError], () => {
-      if (!isLoading.value && !isError.value) {
-        (mychart as Chart).data.labels = categories.value;
-        (mychart as Chart).data.datasets = datasets.value;
-        (mychart as Chart).update();
-      }
-    });
+        scales: {
+          adapters: { date: { locale: enUS } },
+          xAxes: [{ type: 'time', time: { unit: 'year' } }],
+          yAxes: [{ ticks: { callback: numbersFormatter.format } }],
+        },
+      },
+    }));
 
     return {
       filteredLibsNames,
+      chartConfig,
       gTrendsLink: computed<string>(() => {
         const datesQueryParam = encodeURIComponent('2017-01-01 2021-01-11');
         const libsQueryParam = encodeURIComponent(libsKeywords.value.join(','));
