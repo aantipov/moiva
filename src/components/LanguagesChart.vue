@@ -1,6 +1,7 @@
 <template>
   <m-chart
-    title="Languages, %"
+    title="Languages,"
+    subtitle="%"
     :is-loading="isLoading || isLoadingLibsData"
     :is-error="isError"
     :libs-names="filteredLibsNames"

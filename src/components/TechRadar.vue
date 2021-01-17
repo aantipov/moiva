@@ -58,6 +58,7 @@ export default defineComponent({
             data: uniqDates.value.map((date) => libsToDatadMap[libName][date]),
             backgroundColor: libToColorMap.value[libName],
             borderColor: libToColorMap.value[libName],
+            spanGaps: true,
             borderWidth: 4,
             lineTension: 0,
             radius: 4,
@@ -67,7 +68,7 @@ export default defineComponent({
     );
 
     function formatDate(dateStr: string): string {
-      return format(new Date(dateStr), 'MMM, yyyy');
+      return format(new Date(dateStr), 'MMM yyyy');
     }
 
     const chartConfig = computed<ChartConfiguration>(() => ({

@@ -4,7 +4,7 @@
     <div class="flex items-center justify-center mt-5">
       <h2 class="my-0">
         {{ title }}
-        <span class="text-base">{{ subheader }}</span>
+        <span class="text-base">{{ subtitle }}</span>
       </h2>
 
       <m-chart-info v-if="hasInfo" class="ml-2"><slot /></m-chart-info>
@@ -46,7 +46,7 @@ export default defineComponent({
 
   props: {
     title: { type: String, required: true },
-    subheader: { type: String, required: false, default: '' },
+    subtitle: { type: String, required: false, default: '' },
     isLoading: { type: Boolean, required: true },
     isError: { type: Boolean, required: true },
     libsNames: { type: Array as () => string[], required: true },

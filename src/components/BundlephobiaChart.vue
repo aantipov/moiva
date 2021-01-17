@@ -1,6 +1,7 @@
 <template>
   <m-chart
-    title="Bundle size, kB"
+    title="Bundle size,"
+    subtitle="kB"
     :is-loading="isLoading || isLoadingLibsData"
     :is-error="isError"
     :libs-names="filteredLibsNames"

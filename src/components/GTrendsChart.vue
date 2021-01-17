@@ -2,7 +2,7 @@
   <m-chart
     v-if="libsKeywords.length"
     title="Google Trends - "
-    subheader="Interest Over Time"
+    subtitle="Interest Over Time"
     :is-loading="isLoading || isLoadingLibsData"
     :is-error="isError"
     :libs-names="filteredLibsNames"
