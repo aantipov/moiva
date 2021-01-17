@@ -53,7 +53,7 @@ export function loadDefaultLibs(): Promise<LibraryT[]> {
 
   const promises = uniqDefaultLibs
     .map(fetchNpmPackage)
-    // just ignore any cases (and filter those packages out)
+    // just ignore any errors (and filter those packages out)
     .map((pkgPromise) => pkgPromise.catch(() => null));
 
   return Promise.all(promises).then((libs) => {
