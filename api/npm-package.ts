@@ -6,11 +6,11 @@ import { ERROR_CODE_NO_GITHUB_DATA } from '../src/constants';
 initSentry();
 
 export default (req: NowRequest, res: NowResponse): void => {
-  const { lib } = req.query;
+  const { pkg } = req.query;
 
   logRequest('npmPackage', req.query);
 
-  if (!lib || typeof lib !== 'string') {
+  if (!pkg || typeof pkg !== 'string') {
     console.error('API NPM PACKAGE: Wrong lib parameter');
     reportError(new Error('API NPM PACKAGE: Wrong lib parameter'));
     res.status(400).json({ error: 'Wrong lib parameter' });
@@ -18,7 +18,7 @@ export default (req: NowRequest, res: NowResponse): void => {
   }
 
   axios
-    .get(`https://registry.npmjs.com/${encodeURIComponent(lib)}/latest`)
+    .get(`https://registry.npmjs.com/${encodeURIComponent(pkg)}/latest`)
     .then((resp) => {
       const {
         data: {
@@ -35,7 +35,7 @@ export default (req: NowRequest, res: NowResponse): void => {
         repository.type !== 'git' ||
         repository.url.indexOf('github.com') === -1
       ) {
-        console.error(`API NPM PACKAGE: wrong GitHub link for ${lib}`);
+        console.error(`API NPM PACKAGE: wrong GitHub link for ${pkg}`);
 
         res.status(500).json({
           error: {
