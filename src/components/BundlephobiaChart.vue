@@ -1,59 +1,25 @@
 <template>
-  <div>
-    <!-- Header -->
-    <div class="flex items-center justify-center mt-5">
-      <h2 class="my-0">Bundle size<span class="text-base">, kB</span></h2>
-
-      <m-chart-info class="ml-2">
-        <p>
-          Moiva uses data from
-          <a href="https://bundlephobia.com/" target="_blank">Bundlephobia</a>
-          to build this chart.
-        </p>
-      </m-chart-info>
-
-      <m-chart-info v-if="failedLibsNames.length" class="ml-2" type="WARNING">
-        <div>
-          Sorry, we couldn't fetch data from
-          <a href="https://bundlephobia.com/" target="_blank">Bundlephobia</a>
-          for the following packages:
-          <div v-for="libName in failedLibsNames" :key="libName">
-            -
-            <a :href="getBundlephobiaUrl(libName)" target="_blank">{{
-              libName
-            }}</a>
-          </div>
-        </div>
-      </m-chart-info>
-    </div>
-
-    <!-- Chart -->
-    <div class="relative" style="height: 350px">
-      <m-loader v-if="isLoading || isLoadingLibsData" />
-
-      <div
-        v-else-if="isError || !filteredLibsNames.length"
-        class="chart-error-new"
-      >
-        <div>
-          Sorry we couldn't load the data. <br />
-          Try reload the page or check later
-        </div>
-      </div>
-
-      <canvas
-        v-show="!isError && filteredLibsNames.length"
-        id="bundlephobia"
-      ></canvas>
-    </div>
-  </div>
+  <m-chart
+    title="Bundle size, kB"
+    :is-loading="isLoading || isLoadingLibsData"
+    :is-error="isError"
+    :libs-names="filteredLibsNames"
+    :failed-libs-names="failedLibsNames"
+    :chart-config="chartConfig"
+  >
+    <p>
+      Moiva uses data from
+      <a href="https://bundlephobia.com/" target="_blank">Bundlephobia</a>
+      to build this chart.
+    </p>
+  </m-chart>
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, onMounted, watch, computed } from 'vue';
-import Chart, { ChartDataSets } from 'chart.js';
+import { defineComponent, toRefs, computed } from 'vue';
+import { ChartDataSets, ChartConfiguration } from 'chart.js';
 import { BundlephobiaT } from '@/apis';
-import { numbersFormatter, getBundlephobiaUrl } from '@/utils';
+import { numbersFormatter } from '@/utils';
 import { COLOR_GREEN, COLOR_GRAY } from '@/colors';
 
 const roundBytesFn = (bytes: number): number => Math.round(bytes / 102.4) / 10;
@@ -73,13 +39,9 @@ export default defineComponent({
   },
 
   setup(props) {
-    const {
-      libsNames,
-      libsSizes,
-      isLoading,
-      isLoadingLibsData,
-      isError,
-    } = toRefs(props);
+    const { libsNames, libsSizes, isLoading, isLoadingLibsData } = toRefs(
+      props
+    );
 
     const filteredLibsSizes = computed<BundlephobiaT[]>(
       () => libsSizes.value.filter((libSizes) => !!libSizes) as BundlephobiaT[]
@@ -117,64 +79,39 @@ export default defineComponent({
       },
     ]);
 
-    let mychart: Chart | undefined;
+    const bytesFormatter = (val: number) =>
+      numbersFormatter.format(val) + ' kB';
 
-    function initChart(): void {
-      const ctx = document.getElementById('bundlephobia') as HTMLCanvasElement;
+    const chartConfig = computed<ChartConfiguration>(() => ({
+      type: 'bar',
+      data: {
+        labels: filteredLibsNames.value,
+        datasets: datasets.value,
+      },
+      options: {
+        tooltips: {
+          callbacks: {
+            label: (tooltipItem, data): string => {
+              const label = (data.datasets as ChartDataSets[])[
+                tooltipItem.datasetIndex as number
+              ].label;
 
-      mychart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: filteredLibsNames.value,
-          datasets: datasets.value,
-        },
-
-        options: {
-          tooltips: {
-            callbacks: {
-              label: (tooltipItem, data): string => {
-                const label = (data.datasets as Chart.ChartDataSets[])[
-                  tooltipItem.datasetIndex as number
-                ].label;
-
-                return ` ${label}: ${Number(
-                  tooltipItem.yLabel
-                ).toLocaleString()}kB`;
-              },
+              return ` ${label}: ${Number(
+                tooltipItem.yLabel
+              ).toLocaleString()}kB`;
             },
           },
-
-          scales: {
-            yAxes: [
-              {
-                ticks: {
-                  beginAtZero: true,
-                  callback: (val: number): string =>
-                    numbersFormatter.format(val) + ' kB',
-                },
-              },
-            ],
-          },
         },
-      });
-    }
-
-    onMounted(initChart);
-
-    watch([libsNames, isLoading, isError], () => {
-      if (!isLoading.value && !isError.value) {
-        (mychart as Chart).data.labels = filteredLibsNames.value;
-        (mychart as Chart).data.datasets = datasets.value;
-        (mychart as Chart).update();
-      }
-    });
+        scales: {
+          yAxes: [{ ticks: { beginAtZero: true, callback: bytesFormatter } }],
+        },
+      },
+    }));
 
     return {
       failedLibsNames,
       filteredLibsNames,
-      getBundlephobiaUrl(libName: string): string {
-        return getBundlephobiaUrl(libName);
-      },
+      chartConfig,
     };
   },
 });
