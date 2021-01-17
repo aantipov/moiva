@@ -1,21 +1,12 @@
 <template>
   <div>
     <div>
-      <input
-        id="npm-input"
-        type="text"
-        placeholder="Add npm packages to comparison"
-        autofocus
-        autocomplete="off"
-        class="relative w-full py-3 pl-3 text-xl font-light text-gray-700 rounded outline-none myinput pr-11 md:text-2xl focus:bg-white focus:ring-0 focus:outline-none"
-      />
-
       <!-- progressbar -->
       <div
-        v-if="isLoading"
-        class="relative w-full h-1 overflow-hidden bg-yellow-500 rounded-full bg-opacity-10 indeterminate"
+        class="relative w-full h-1 overflow-hidden rounded-full indeterminate"
       >
         <div
+          v-if="isLoading"
           class="absolute top-0 h-full bg-yellow-500 rounded-full progressbar"
           :style="{ width: `80%` }"
         >
@@ -24,6 +15,15 @@
           </span>
         </div>
       </div>
+
+      <input
+        id="npm-input"
+        type="text"
+        placeholder="Add npm packages to comparison"
+        autofocus
+        autocomplete="off"
+        class="relative w-full py-3 pl-3 text-xl font-light text-gray-700 rounded outline-none myinput pr-11 md:text-2xl focus:bg-white focus:ring-0 focus:outline-none"
+      />
     </div>
 
     <div v-if="isError" class="mt-2 text-red-600">
@@ -112,7 +112,6 @@ export default defineComponent({
           if (maxHeight > 400) {
             container.style.maxHeight = '383px';
           }
-          container.style.top = inputRect.bottom + 4 + 'px';
         },
         preventSubmit: true,
         showOnFocus: true,
