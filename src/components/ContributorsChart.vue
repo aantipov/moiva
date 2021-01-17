@@ -81,9 +81,6 @@ export default defineComponent({
         ),
         backgroundColor: libToColorMap.value[lib],
         borderColor: libToColorMap.value[lib],
-        borderWidth: 4,
-        pointRadius: 4,
-        pointHoverRadius: 7,
       }))
     );
 

@@ -29,8 +29,19 @@ Chart.defaults.global.defaultFontFamily =
 // @ts-ignore
 Chart.defaults.global.legend.labels.boxWidth = 20;
 Chart.defaults.global.maintainAspectRatio = false;
-// @ts-ignore
-Chart.defaults.global.elements.line.fill = false;
+Chart.defaults.global.elements = {
+  ...Chart.defaults.global.elements,
+  line: {
+    ...Chart.defaults.global.elements?.line,
+    fill: false,
+    borderWidth: 4,
+  },
+  point: {
+    ...Chart.defaults.global.elements?.point,
+    radius: 4,
+    hoverRadius: 6,
+  },
+};
 Chart.defaults.global.tooltips = {
   ...Chart.defaults.global.tooltips,
   mode: 'index',
