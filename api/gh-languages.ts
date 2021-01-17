@@ -24,6 +24,11 @@ export default (req: NowRequest, res: NowResponse): void => {
     return;
   }
 
+  if (name !== 'ssvelte') {
+    res.status(500).json({ error: 'smth went wrong' });
+    return;
+  }
+
   axios
     .get(`https://api.github.com/repos/${owner}/${name}/languages`, {
       headers: {

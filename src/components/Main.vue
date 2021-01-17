@@ -107,6 +107,7 @@
 
           <Languages
             :libs="selectedLibs"
+            :is-loading-libs-data="isLoadingLibsData"
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
         </div>
