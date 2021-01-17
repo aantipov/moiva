@@ -59,10 +59,7 @@ export default defineComponent({
             backgroundColor: libToColorMap.value[libName],
             borderColor: libToColorMap.value[libName],
             spanGaps: true,
-            borderWidth: 4,
             lineTension: 0,
-            radius: 4,
-            pointHoverRadius: 7,
           } as ChartDataSets)
       )
     );
