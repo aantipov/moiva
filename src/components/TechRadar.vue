@@ -1,5 +1,6 @@
 <template>
   <m-chart
+    v-if="filteredLibsNames.length"
     title="ThoughtWorks TechRadar"
     :is-loading="false"
     :is-error="false"
