@@ -174,25 +174,8 @@ export function fetchRepoCommits(
   return axios
     .get<CommitsResponseItemT[]>(`/api/gh-commits?name=${name}&owner=${owner}`)
     .then(({ data }) => {
-      // Aggregate commits by 4 weeks
-      const aggregatedCommits = (data as CommitsResponseItemT[])
-        .map((item) => ({
-          ...item,
-          week: item.week * 1000,
-        }))
-        .reduce((acc, item, i) => {
-          if (i % 4 === 0) {
-            acc.push(item);
-          } else {
-            acc[acc.length - 1].total += item.total;
-            acc[acc.length - 1].week = item.week;
-          }
-
-          return acc;
-        }, [] as CommitsResponseItemT[]);
-      githubCommitsCache.set(repoUrl, aggregatedCommits);
-
-      return aggregatedCommits;
+      githubCommitsCache.set(repoUrl, data);
+      return data;
     })
     .catch((err) => {
       const errorCode =
