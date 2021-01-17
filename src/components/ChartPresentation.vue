@@ -4,7 +4,7 @@
     <div class="flex items-center justify-center mt-5">
       <h2 class="my-0">{{ title }}</h2>
 
-      <m-chart-info class="ml-2"><slot /></m-chart-info>
+      <m-chart-info v-if="hasInfo" class="ml-2"><slot /></m-chart-info>
 
       <m-chart-info v-if="failedLibsNames.length" class="ml-2" type="WARNING">
         <div>
@@ -53,9 +53,10 @@ export default defineComponent({
     },
   },
 
-  setup(props) {
+  setup(props, { slots }) {
     const { isLoading, chartConfig, isError } = toRefs(props);
     const chartEl = ref<null | HTMLCanvasElement>(null);
+    const hasInfo = ref(!!slots.default);
     let mychart: Chart | undefined;
 
     function initChart(): void {
@@ -75,6 +76,7 @@ export default defineComponent({
 
     return {
       chartEl,
+      hasInfo,
     };
   },
 });

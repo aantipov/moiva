@@ -8,6 +8,7 @@ import { updateTitle } from './utils';
 import App from './App.vue';
 import Close from './components/icons/Close.vue';
 import ChartInfo from '@/components/ChartInfo.vue';
+import ChartPresentation from '@/components/ChartPresentation.vue';
 import LoaderTailSpin from '@/components/LoaderTailSpin.vue';
 import Loader from '@/components/Loader.vue';
 import './assets/tailwind.css';
@@ -53,6 +54,7 @@ app.component('MClose', Close);
 app.component('MChartInfo', ChartInfo);
 app.component('MLoaderTailSpin', LoaderTailSpin);
 app.component('MLoader', Loader);
+app.component('MChart', ChartPresentation);
 
 app.mount('#app');
 
