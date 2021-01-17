@@ -69,6 +69,10 @@ export default defineComponent({
     watch([chartConfig, isLoading, isError], () => {
       if (!isLoading.value && !isError.value) {
         (mychart as Chart).data.labels = chartConfig.value.data?.labels;
+        // @ts-ignore
+        (mychart as Chart).data.xLabels = chartConfig.value.data?.xLabels;
+        // @ts-ignore
+        (mychart as Chart).data.yLabels = chartConfig.value.data?.yLabels;
         (mychart as Chart).data.datasets = chartConfig.value.data?.datasets;
         (mychart as Chart).update();
       }

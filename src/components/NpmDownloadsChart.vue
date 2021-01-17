@@ -12,7 +12,7 @@
 
 <script lang="ts">
 import { defineComponent, toRefs, computed } from 'vue';
-import Chart, { ChartDataSets } from 'chart.js';
+import { ChartDataSets, ChartConfiguration } from 'chart.js';
 import { format } from 'date-fns';
 import { NpmDownloadT } from '../apis';
 import { numbersFormatter } from '../utils';
@@ -88,7 +88,7 @@ export default defineComponent({
         : []
     );
 
-    const chartConfig = computed<Chart.ChartConfiguration>(() => ({
+    const chartConfig = computed<ChartConfiguration>(() => ({
       type: 'line',
       data: {
         labels: filteredCategories.value,
