@@ -133,7 +133,7 @@ export function fetchNpmDownloads(
 
 export function fetchRepoLanguages(
   repoUrl: string
-): Promise<GithubLanguagesResponseT> {
+): Promise<GithubLanguagesResponseT | null> {
   const repoUrlParts = repoUrl.split('/');
   const owner = repoUrlParts[3];
   const name = repoUrlParts[4];
@@ -149,8 +149,14 @@ export function fetchRepoLanguages(
       return data;
     })
     .catch((err) => {
-      reportSentry(err, 'fetchGithubLanguagesData');
-      return Promise.reject(err);
+      const errorCode =
+        err?.response?.data?.error?.code || err?.response?.status || undefined;
+
+      if (errorCode !== 404) {
+        reportSentry(err, 'fetchGithubLanguagesData');
+      }
+
+      return null;
     });
 }
 

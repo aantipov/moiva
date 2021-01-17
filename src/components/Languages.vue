@@ -1,10 +1,10 @@
 <template>
   <LanguagesChart
+    :is-loading-libs-data="isLoadingLibsData"
     :is-loading="isLoading"
     :is-error="isError"
-    :libs-names="libNames"
-    :libs-languages-shares="libsLanguagesShares"
-    :languages-names="languagesNames"
+    :libs-names="libsNames"
+    :libs-languages="libsLanguages"
   />
 </template>
 
@@ -22,108 +22,30 @@ export default defineComponent({
   },
 
   props: {
-    libs: {
-      type: Array as () => LibraryT[],
-      required: true,
-    },
+    libs: { type: Array as () => LibraryT[], required: true },
+    isLoadingLibsData: { type: Boolean, required: true },
   },
 
   setup(props) {
     const { libs } = toRefs(props);
-    const libNames = computed<string[]>(() =>
+    const libsNames = computed<string[]>(() =>
       libs.value.map(({ name }) => name)
     );
-    const libsLanguages = ref<null | GithubLanguagesResponseT[]>(null);
-
-    // Compute languages shares, counting only those which has >=10% share
-    const libsLanguagesShares = computed<null | Record<string, number>[]>(
-      () => {
-        if (!libsLanguages.value) {
-          return null;
-        }
-
-        return libsLanguages.value.map((libLangs) => {
-          const libBytesTotal = Object.values(libLangs).reduce(
-            (a, b) => a + b,
-            0
-          );
-
-          const libLanguagesSharesWithoutOthers = Object.entries(libLangs)
-            .map(([lang, langBytes]) => ({
-              lang,
-              langShare: (100 * langBytes) / libBytesTotal,
-            }))
-            .filter(({ langShare }) => langShare >= 10)
-            .reduce((acc, { lang, langShare }) => {
-              acc[lang] = Number.parseFloat(Number(langShare).toFixed(1));
-              return acc;
-            }, {} as Record<string, number>);
-
-          const othersShare =
-            100 -
-            Object.values(libLanguagesSharesWithoutOthers).reduce(
-              (a, b) => a + b,
-              0
-            );
-
-          const libLanguagesShares = {
-            ...libLanguagesSharesWithoutOthers,
-            Others: Number.parseFloat(Number(othersShare).toFixed(1)),
-          };
-
-          return (libLanguagesShares as unknown) as Record<string, number>;
-        });
-      }
-    );
-
-    // Compute langauges names that has share >=10%
-    // and sort them
-    const languagesNames = computed<null | string[]>(() => {
-      if (!libsLanguagesShares.value) {
-        return null;
-      }
-
-      const languagesNamesWithDupes = libsLanguagesShares.value
-        .map((libLangsShares) => Object.keys(libLangsShares))
-        .flat();
-
-      // Deduplicate languages
-      const items = [...new Set(languagesNamesWithDupes)];
-
-      // Sort languages so that JavaScript/TypeScript are the first ones, Others is the last
-      const tsIndex = items.indexOf('TypeScript');
-      if (tsIndex !== -1) {
-        items.splice(tsIndex, 1);
-        items.unshift('TypeScript');
-      }
-
-      const jsIndex = items.indexOf('JavaScript');
-      if (jsIndex !== -1) {
-        items.splice(jsIndex, 1);
-        items.unshift('JavaScript');
-      }
-      const othersIndex = items.indexOf('Others');
-      if (othersIndex !== -1) {
-        items.splice(othersIndex, 1);
-        items.push('Others');
-      }
-
-      return items;
-    });
-
+    const libsLanguages = ref<(GithubLanguagesResponseT | null)[]>([]);
     const isLoading = ref(true);
     const isError = ref(false);
-    let dataPromise: null | Promise<void> = null;
+    let lastFetchPromise: null | Promise<void> = null;
 
     function loadData(): void {
       isLoading.value = true;
       isError.value = false;
-      const localPromise = (dataPromise = Promise.all(
+
+      const fetchPromise = (lastFetchPromise = Promise.all(
         libs.value.map(({ repo }) => fetchRepoLanguages(repo))
       )
         .then((data) => {
           // Do nothing if there is a new request already in place
-          if (dataPromise === localPromise) {
+          if (lastFetchPromise === fetchPromise) {
             libsLanguages.value = data;
             isLoading.value = false;
             isError.value = false;
@@ -131,7 +53,7 @@ export default defineComponent({
         })
         .catch(() => {
           // Do nothing if there is a new request already in place
-          if (dataPromise === localPromise) {
+          if (lastFetchPromise === fetchPromise) {
             isLoading.value = false;
             isError.value = true;
           }
@@ -145,9 +67,8 @@ export default defineComponent({
     return {
       isLoading,
       isError,
-      libsLanguagesShares,
-      languagesNames,
-      libNames,
+      libsNames,
+      libsLanguages,
     };
   },
 });
