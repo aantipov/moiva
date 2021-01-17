@@ -1,6 +1,7 @@
 <template>
-  <ChartPresentation
-    title="Languages, %"
+  <m-chart
+    title="Languages,"
+    subtitle="%"
     :is-loading="isLoading || isLoadingLibsData"
     :is-error="isError"
     :libs-names="filteredLibsNames"
@@ -14,7 +15,7 @@
       Calculation is based on the number of bytes of code written in each
       language.
     </p>
-  </ChartPresentation>
+  </m-chart>
 </template>
 
 <script lang="ts">
@@ -22,11 +23,9 @@ import { defineComponent, toRefs, computed } from 'vue';
 import Chart, { ChartDataSets } from 'chart.js';
 import { getLangToColorMap } from '@/colors';
 import { GithubLanguagesResponseT } from '../../api/gh-languages';
-import ChartPresentation from './ChartPresentation.vue';
 
 export default defineComponent({
   name: 'LanguagesChart',
-  components: { ChartPresentation },
 
   props: {
     isLoadingLibsData: { type: Boolean, required: true },

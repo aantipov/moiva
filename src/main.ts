@@ -8,6 +8,7 @@ import { updateTitle } from './utils';
 import App from './App.vue';
 import Close from './components/icons/Close.vue';
 import ChartInfo from '@/components/ChartInfo.vue';
+import ChartPresentation from '@/components/ChartPresentation.vue';
 import LoaderTailSpin from '@/components/LoaderTailSpin.vue';
 import Loader from '@/components/Loader.vue';
 import './assets/tailwind.css';
@@ -25,9 +26,11 @@ Chart.defaults.global.defaultFontFamily =
   fontFamily:
     'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"',
 };
-((Chart.defaults.global.legend as Chart.ChartLegendOptions)
-  .labels as Chart.ChartLegendLabelOptions).boxWidth = 20;
+// @ts-ignore
+Chart.defaults.global.legend.labels.boxWidth = 20;
 Chart.defaults.global.maintainAspectRatio = false;
+// @ts-ignore
+Chart.defaults.global.elements.line.fill = false;
 Chart.defaults.global.tooltips = {
   ...Chart.defaults.global.tooltips,
   mode: 'index',
@@ -53,6 +56,7 @@ app.component('MClose', Close);
 app.component('MChartInfo', ChartInfo);
 app.component('MLoaderTailSpin', LoaderTailSpin);
 app.component('MLoader', Loader);
+app.component('MChart', ChartPresentation);
 
 app.mount('#app');
 

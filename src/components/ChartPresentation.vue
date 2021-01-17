@@ -2,9 +2,12 @@
   <div>
     <!-- Header -->
     <div class="flex items-center justify-center mt-5">
-      <h2 class="my-0">{{ title }}</h2>
+      <h2 class="my-0">
+        {{ title }}
+        <span class="text-base">{{ subtitle }}</span>
+      </h2>
 
-      <m-chart-info class="ml-2"><slot /></m-chart-info>
+      <m-chart-info v-if="hasInfo" class="ml-2"><slot /></m-chart-info>
 
       <m-chart-info v-if="failedLibsNames.length" class="ml-2" type="WARNING">
         <div>
@@ -43,6 +46,7 @@ export default defineComponent({
 
   props: {
     title: { type: String, required: true },
+    subtitle: { type: String, required: false, default: '' },
     isLoading: { type: Boolean, required: true },
     isError: { type: Boolean, required: true },
     libsNames: { type: Array as () => string[], required: true },
@@ -53,9 +57,10 @@ export default defineComponent({
     },
   },
 
-  setup(props) {
+  setup(props, { slots }) {
     const { isLoading, chartConfig, isError } = toRefs(props);
     const chartEl = ref<null | HTMLCanvasElement>(null);
+    const hasInfo = ref(!!slots.default);
     let mychart: Chart | undefined;
 
     function initChart(): void {
@@ -68,6 +73,10 @@ export default defineComponent({
     watch([chartConfig, isLoading, isError], () => {
       if (!isLoading.value && !isError.value) {
         (mychart as Chart).data.labels = chartConfig.value.data?.labels;
+        // @ts-ignore
+        (mychart as Chart).data.xLabels = chartConfig.value.data?.xLabels;
+        // @ts-ignore
+        (mychart as Chart).data.yLabels = chartConfig.value.data?.yLabels;
         (mychart as Chart).data.datasets = chartConfig.value.data?.datasets;
         (mychart as Chart).update();
       }
@@ -75,6 +84,7 @@ export default defineComponent({
 
     return {
       chartEl,
+      hasInfo,
     };
   },
 });

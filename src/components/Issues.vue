@@ -1,52 +1,19 @@
 <template>
-  <div>
-    <!-- Header -->
-    <div class="flex items-center justify-center mt-5">
-      <h2 class="my-0">Recently updated issues</h2>
-
-      <m-chart-info class="ml-2">
-        <p>
-          Amount of open/closed repository issues updated in the last 6 months
-        </p>
-      </m-chart-info>
-
-      <m-chart-info v-if="failedLibsNames.length" class="ml-2" type="WARNING">
-        <div>
-          Sorry, we couldn't fetch data from GitHub for the following packages:
-          <div v-for="libName in failedLibsNames" :key="libName">
-            - {{ libName }}
-          </div>
-
-          Try reload the page or check later.
-        </div>
-      </m-chart-info>
-    </div>
-
-    <!-- Chart -->
-    <div class="relative" style="height: 350px">
-      <m-loader v-if="isLoading || isLoadingLibsData" />
-
-      <div
-        v-else-if="isError || !filteredLibsNames.length"
-        class="chart-error-new"
-      >
-        <div>
-          Sorry we couldn't load the data. <br />
-          Try reload the page or check later
-        </div>
-      </div>
-
-      <canvas
-        v-show="!isError && filteredLibsNames.length"
-        id="issuesCount"
-      ></canvas>
-    </div>
-  </div>
+  <m-chart
+    title="Recently updated issues"
+    :is-loading="isLoading || isLoadingLibsData"
+    :is-error="isError"
+    :libs-names="filteredLibsNames"
+    :failed-libs-names="failedLibsNames"
+    :chart-config="chartConfig"
+  >
+    <p>Amount of open/closed repository issues updated in the last 6 months</p>
+  </m-chart>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, watch, toRefs, computed } from 'vue';
-import Chart, { ChartDataSets } from 'chart.js';
+import { defineComponent, toRefs, computed } from 'vue';
+import { ChartDataSets, ChartConfiguration } from 'chart.js';
 import { RepoT } from '../apis';
 import { numbersFormatter } from '../utils';
 import { ISSUES_COLORS } from '@/colors';
@@ -63,9 +30,7 @@ export default defineComponent({
   },
 
   setup(props) {
-    const { libsNames, repos, isLoadingLibsData, isLoading, isError } = toRefs(
-      props
-    );
+    const { libsNames, repos, isLoadingLibsData, isLoading } = toRefs(props);
 
     const filteredRepos = computed<RepoT[]>(
       () => repos.value.filter((repo) => !!repo) as RepoT[]
@@ -126,51 +91,34 @@ export default defineComponent({
         ] as ChartDataSets[]
     );
 
-    let mychart: Chart | undefined;
-
-    function initChart(): void {
-      const ctx = document.getElementById('issuesCount') as HTMLCanvasElement;
-
-      mychart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: filteredLibsNames.value,
-          datasets: datasets.value,
-        },
-
-        options: {
-          title: { display: false, text: 'Open issues, count' },
-          scales: {
-            xAxes: [{ stacked: true }],
-            yAxes: [
-              {
-                stacked: true,
-                ticks: {
-                  beginAtZero: true,
-                  precision: 0,
-                  callback: (val: number): string =>
-                    numbersFormatter.format(val),
-                } as Chart.TickOptions,
+    const chartConfig = computed<ChartConfiguration>(() => ({
+      type: 'bar',
+      data: {
+        labels: filteredLibsNames.value,
+        datasets: datasets.value,
+      },
+      options: {
+        title: { display: false, text: 'Open issues, count' },
+        scales: {
+          xAxes: [{ stacked: true }],
+          yAxes: [
+            {
+              stacked: true,
+              ticks: {
+                beginAtZero: true,
+                precision: 0,
+                callback: (val: number): string => numbersFormatter.format(val),
               },
-            ],
-          },
+            },
+          ],
         },
-      });
-    }
-
-    onMounted(initChart);
-
-    watch([libsNames, isLoading, isError], () => {
-      if (!isLoading.value && !isError.value) {
-        (mychart as Chart).data.labels = filteredLibsNames.value;
-        (mychart as Chart).data.datasets = datasets.value;
-        (mychart as Chart).update();
-      }
-    });
+      },
+    }));
 
     return {
       failedLibsNames,
       filteredLibsNames,
+      chartConfig,
     };
   },
 });

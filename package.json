@@ -77,7 +77,7 @@
       "parser": "@typescript-eslint/parser"
     },
     "rules": {
-      "@typescript-eslint/ban-ts-ignore": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
       "@typescript-eslint/no-use-before-define": "off",
       "no-sparse-arrays": "off"
     },

@@ -1,153 +1,111 @@
 <template>
-  <div v-show="filteredLibs.length">
-    <div class="flex items-center justify-center mt-5">
-      <h2 class="my-0">ThoughtWorks TechRadar</h2>
-
-      <m-chart-info class="ml-2">
-        <p>
-          We use
-          <a
-            href="https://www.thoughtworks.com/radar/languages-and-frameworks"
-            target="_blank"
-            >ThoughtWorks</a
-          >
-          data to build the chart.
-        </p>
-      </m-chart-info>
-    </div>
-
-    <div class="chart">
-      <canvas id="techRadar" />
-    </div>
-  </div>
+  <m-chart
+    v-if="filteredLibsNames.length"
+    title="ThoughtWorks TechRadar"
+    :is-loading="false"
+    :is-error="false"
+    :libs-names="filteredLibsNames"
+    :failed-libs-names="[]"
+    :chart-config="chartConfig"
+  >
+    <p>
+      We use
+      <a
+        href="https://www.thoughtworks.com/radar/languages-and-frameworks"
+        target="_blank"
+        >ThoughtWorks</a
+      >
+      data to build the chart.
+    </p>
+  </m-chart>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, toRefs, computed } from 'vue';
 import { format } from 'date-fns';
-import Chart, { ChartConfiguration, ChartData } from 'chart.js';
+import { ChartConfiguration, ChartDataSets } from 'chart.js';
 import { TRADAR_LEVELS, libsToDatadMap } from '../../techradar.config';
 
 export default defineComponent({
   name: 'TechRadar',
   props: {
-    libs: {
-      type: Array as () => string[],
-      required: true,
-    },
+    libsNames: { type: Array as () => string[], required: true },
     libToColorMap: {
       type: Object as () => Record<string, string>,
       required: true,
     },
   },
 
-  data() {
-    return {
-      chart: (null as unknown) as Chart,
-    };
-  },
+  setup(props) {
+    const { libsNames, libToColorMap } = toRefs(props);
+    const filteredLibsNames = computed<string[]>(() =>
+      libsNames.value.filter((libName) => !!libsToDatadMap[libName])
+    );
 
-  computed: {
-    uniqDates(): string[] {
-      const dates = this.filteredLibs
-        .map((lib) => Object.keys(libsToDatadMap[lib]))
+    const uniqDates = computed<string[]>(() => {
+      const dates = filteredLibsNames.value
+        .map((libName) => Object.keys(libsToDatadMap[libName]))
         .flat();
+
       return [...new Set(dates)].sort();
-    },
-    chartDatasets(): unknown {
-      return this.filteredLibs.map((lib) => ({
-        label: lib,
-        fill: false,
-        data: this.uniqDates.map((date) => libsToDatadMap[lib][date]),
-        backgroundColor: this.libToColorMap[lib],
-        borderColor: this.libToColorMap[lib],
-        spanGaps: true,
-        borderWidth: 4,
-        lineTension: 0,
-        radius: 4,
-        pointHoverRadius: 7,
-      }));
-    },
-    filteredLibs(): string[] {
-      return this.libs.filter((lib) => !!libsToDatadMap[lib]);
-    },
-  },
+    });
 
-  watch: {
-    libs(): void {
-      if (this.filteredLibs.length) {
-        this.updateChart();
-      }
-    },
-  },
+    const datasets = computed<ChartDataSets[]>(() =>
+      filteredLibsNames.value.map(
+        (libName) =>
+          ({
+            label: libName,
+            data: uniqDates.value.map((date) => libsToDatadMap[libName][date]),
+            backgroundColor: libToColorMap.value[libName],
+            borderColor: libToColorMap.value[libName],
+            spanGaps: true,
+            borderWidth: 4,
+            lineTension: 0,
+            radius: 4,
+            pointHoverRadius: 7,
+          } as ChartDataSets)
+      )
+    );
 
-  mounted(): void {
-    this.initChart();
-  },
+    function formatDate(dateStr: string): string {
+      return format(new Date(dateStr), 'MMM yyyy');
+    }
 
-  methods: {
-    updateChart(): void {
-      this.chart.data = {
-        labels: this.uniqDates,
-        xLabels: this.uniqDates,
+    const chartConfig = computed<ChartConfiguration>(() => ({
+      type: 'line',
+      data: {
+        labels: uniqDates.value,
+        xLabels: uniqDates.value,
         yLabels: [...TRADAR_LEVELS, ''],
-        datasets: this.chartDatasets,
-      } as ChartData;
+        datasets: datasets.value,
+      },
+      options: {
+        tooltips: {
+          callbacks: {
+            title: (tooltipItems): string => {
+              const month = tooltipItems[0].xLabel as string;
+              return formatDate(month);
+            },
+            label: (tooltipItem, data): string => {
+              const label = (data.datasets as ChartDataSets[])[
+                tooltipItem.datasetIndex as number
+              ].label;
 
-      this.chart.update();
-    },
-
-    initChart(): void {
-      const ctx = document.getElementById('techRadar') as HTMLCanvasElement;
-
-      this.chart = new Chart(ctx, {
-        type: 'line',
-
-        data: {
-          labels: this.uniqDates,
-          xLabels: this.uniqDates,
-          yLabels: [...TRADAR_LEVELS, ''],
-          datasets: this.chartDatasets,
-        },
-
-        options: {
-          tooltips: {
-            callbacks: {
-              title: (tooltipItems): string => {
-                const month = tooltipItems[0].xLabel as string;
-
-                return format(new Date(month), 'MMM, yyyy');
-              },
-              label: (tooltipItem, data): string => {
-                const label = (data.datasets as Chart.ChartDataSets[])[
-                  tooltipItem.datasetIndex as number
-                ].label;
-
-                return ` ${label}: ${tooltipItem.yLabel}`;
-              },
+              return ` ${label}: ${tooltipItem.yLabel}`;
             },
           },
-          scales: {
-            xAxes: [
-              {
-                ticks: {
-                  callback(value): string {
-                    return format(new Date(value), 'MMM, yyyy');
-                  },
-                },
-              },
-            ],
-            yAxes: [{ type: 'category', ticks: { reverse: true } }],
-          },
         },
-      } as ChartConfiguration);
-    },
+        scales: {
+          xAxes: [{ ticks: { callback: formatDate } }],
+          yAxes: [{ type: 'category', ticks: { reverse: true } }],
+        },
+      },
+    }));
+
+    return {
+      filteredLibsNames,
+      chartConfig,
+    };
   },
 });
 </script>
-
-<style scoped lang="scss">
-.chart {
-  height: 350px;
-}
-</style>
