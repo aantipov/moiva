@@ -89,6 +89,13 @@
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
 
+          <DevelopersUsage
+            :libs-names="librariesNames"
+            :lib-to-color-map="libToColorMap"
+            :is-loading-libs-data="isLoadingLibsData"
+            class="col-span-12 md:col-span-6 xl:col-span-3"
+          />
+
           <Issues
             :libs-names="librariesNames"
             :repos="githubRepositories"
@@ -128,6 +135,7 @@ import Popular from './Popular.vue';
 import SelectedLibs from './SelectedLibs.vue';
 import Languages from './Languages.vue';
 import Contributors from './Contributors.vue';
+import DevelopersUsage from './DevelopersUsage.vue';
 import Commits from './Commits.vue';
 import { ERROR_CODE_NO_GITHUB_DATA } from '@/constants';
 import { LibraryT, fetchNpmPackage, RepoT } from '@/apis';
@@ -159,6 +167,7 @@ export default defineComponent({
     Languages,
     Commits,
     Contributors,
+    DevelopersUsage,
   },
 
   setup() {

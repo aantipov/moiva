@@ -20,6 +20,7 @@ const githubCommitsCache = new Map();
 const githubContributorsCache = new Map();
 const gTrendsCache = new Map();
 const bphobiaCache = new Map();
+const stateofjsCache = new Map();
 
 export interface NpmDownloadT {
   downloads: number;
@@ -294,6 +295,31 @@ export function fetchGTrendsData(libs: string[]): Promise<GTrendPointT[]> {
     .catch((err) => {
       reportSentry(err, 'fetchGTrendsData');
       return Promise.reject(err);
+    });
+}
+
+export interface StateOfJST {
+  interest: { percentage: number; year: number }[];
+  usage: { percentage: number; year: number }[];
+}
+
+export function fetchStateOfJSData(
+  toolName: string
+): Promise<StateOfJST | null> {
+  if (stateofjsCache.get(toolName)) {
+    return Promise.resolve(stateofjsCache.get(toolName));
+  }
+
+  return axios
+    .get(`/api/stateofjs?lib=${toolName}`)
+    .then(({ data }) => {
+      stateofjsCache.set(toolName, data);
+      return data;
+    })
+    .catch((err) => {
+      reportSentry(err, 'fetchBundlephobiaData');
+
+      return null;
     });
 }
 

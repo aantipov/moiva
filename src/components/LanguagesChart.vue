@@ -162,7 +162,19 @@ export default defineComponent({
         datasets: datasets.value,
       },
       options: {
-        scales: { xAxes: [{ stacked: true }], yAxes: [{ stacked: true }] },
+        scales: {
+          xAxes: [{ stacked: true }],
+          yAxes: [
+            {
+              stacked: true,
+              ticks: {
+                beginAtZero: true,
+                precision: 0,
+                callback: (val: number): string => val + '%',
+              },
+            },
+          ],
+        },
       },
     }));
 
