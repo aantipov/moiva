@@ -691,7 +691,7 @@ const tools = [
 ];
 
 const toolsStr = tools
-  .filter(({ entity }) => !!entity.npm)
+  .filter(({ entity }) => !entity.npm)
   .sort((a, b) => {
     if (a.entity.id < b.entity.id) {
       return -1;
@@ -709,7 +709,9 @@ const libs = [
 ${toolsStr}]
 `;
 
-fs.writeFile('stateofjs.config.ts', resultStr, function (err) {
-  if (err) return console.log(err);
-  console.log('StateOfJS config successfully written');
-});
+console.log('LIBS WO NPM', resultStr);
+
+// fs.writeFile('stateofjs.config.ts', resultStr, function (err) {
+//   if (err) return console.log(err);
+//   console.log('StateOfJS config successfully written');
+// });

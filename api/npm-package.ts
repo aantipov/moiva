@@ -35,7 +35,10 @@ export default (req: NowRequest, res: NowResponse): void => {
         repository.type !== 'git' ||
         repository.url.indexOf('github.com') === -1
       ) {
-        console.error(`API NPM PACKAGE: wrong GitHub link for ${pkg}`);
+        console.error(
+          `API NPM PACKAGE: wrong GitHub link for ${pkg}`,
+          resp.data && resp.data.repository
+        );
 
         res.status(500).json({
           error: {

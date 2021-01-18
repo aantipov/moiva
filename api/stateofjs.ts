@@ -58,6 +58,7 @@ export default (req: NowRequest, res: NowResponse): void => {
         (e.response && (e.response.code || e.response.status)) || 500;
 
       if (e.response && e.response.data && e.response.data.errors) {
+        console.error(`API STATEOFJS: (lib ${lib})`, e.response.data.errors);
         reportError(e.response.data.errors);
         res.status(status).json({
           errors: e.response.data.errors,
@@ -65,6 +66,7 @@ export default (req: NowRequest, res: NowResponse): void => {
         return;
       }
 
+      console.error(`API STATEOFJS: (lib: ${lib})`, e && e.response);
       reportError(e);
       res.status(status).json({
         error: { message: 'Something went wrong' },

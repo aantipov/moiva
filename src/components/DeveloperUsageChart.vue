@@ -68,14 +68,23 @@ export default defineComponent({
       )
     );
 
+    const filteredLibsMapsData = computed(() =>
+      filteredLibsData.value.map(({ usage }) => {
+        const t = usage.reduce((acc, yearUsageItem) => {
+          acc[yearUsageItem.year] = yearUsageItem.percentage;
+          return acc;
+        }, {} as Record<number, number>);
+        return t;
+      })
+    );
+
+    const years = [2016, 2017, 2018, 2019, 2020];
+
     const datasets = computed<ChartDataSets[]>(() =>
       filteredLibsNames.value.map((lib, libIndex) => ({
         label: lib,
-        data: filteredLibsData.value[libIndex].usage.map(
-          ({ percentage, year }) => ({
-            x: `${year}-01-01`,
-            y: percentage,
-          })
+        data: years.map(
+          (year) => filteredLibsMapsData.value[libIndex][year] || undefined
         ),
         backgroundColor: libToColorMap.value[lib],
         borderColor: libToColorMap.value[lib],
@@ -84,19 +93,12 @@ export default defineComponent({
 
     const chartConfig = computed<ChartConfiguration>(() => ({
       type: 'line',
-      data: { datasets: datasets.value },
+      data: {
+        labels: years,
+        datasets: datasets.value,
+      },
       options: {
-        tooltips: {
-          callbacks: {
-            title: (tooltipItems): string => {
-              const year = tooltipItems[0].xLabel as string;
-              return format(new Date(year), 'yyyy');
-            },
-          },
-        },
         scales: {
-          adapters: { date: { locale: enUS } },
-          xAxes: [{ type: 'time', time: { unit: 'year' } }],
           yAxes: [
             {
               ticks: {

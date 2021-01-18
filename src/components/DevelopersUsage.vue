@@ -1,6 +1,6 @@
 <template>
   <DeveloperUsageChart
-    v-if="filteredLibsNames.length"
+    v-if="filteredLibsNames.length && filteredLibsNamesWithData.length"
     :is-loading-libs-data="isLoadingLibsData"
     :is-loading="isLoading"
     :is-error="isError"
@@ -40,6 +40,9 @@ export default defineComponent({
     const filteredLibsNames = computed(() =>
       libsNames.value.filter((libName) => !!libToStateofjsIdMap[libName])
     );
+    const filteredLibsNamesWithData = computed(() =>
+      libsData.value.filter((libData) => libData && libData.usage.length)
+    );
     let lastFetchPromise: null | Promise<void> = null;
 
     function loadData(): void {
@@ -77,6 +80,7 @@ export default defineComponent({
       isError,
       libsData,
       filteredLibsNames,
+      filteredLibsNamesWithData,
     };
   },
 });
