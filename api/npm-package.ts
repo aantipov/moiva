@@ -11,8 +11,8 @@ export default (req: NowRequest, res: NowResponse): void => {
   logRequest('npmPackage', req.query);
 
   if (!pkg || typeof pkg !== 'string') {
-    console.error('API NPM PACKAGE: Wrong lib parameter');
-    reportError(new Error('API NPM PACKAGE: Wrong lib parameter'));
+    console.error('API NPM PACKAGE: Wrong pkg parameter');
+    reportError(new Error('API NPM PACKAGE: Wrong pkg parameter'));
     res.status(400).json({ error: 'Wrong lib parameter' });
     return;
   }
@@ -35,7 +35,10 @@ export default (req: NowRequest, res: NowResponse): void => {
         repository.type !== 'git' ||
         repository.url.indexOf('github.com') === -1
       ) {
-        console.error(`API NPM PACKAGE: wrong GitHub link for ${pkg}`);
+        console.error(
+          `API NPM PACKAGE: wrong GitHub link for ${pkg}`,
+          resp.data && resp.data.repository
+        );
 
         res.status(500).json({
           error: {

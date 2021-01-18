@@ -7,6 +7,7 @@ export interface ErrorT {
     message: string;
     code?: string;
   };
+  errors?: unknown[];
 }
 
 export function logRequest(type: string, urlQuery: unknown): void {
