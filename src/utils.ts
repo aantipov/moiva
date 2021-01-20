@@ -149,6 +149,10 @@ function getMetaDescription(libs: LibForDescriptionT[]): string {
     return 'Javascript libraries and frameworks comparison side by side. Visual with charts and graphs. Multiple metrics. Data from Github, NPM, Google Trends, ThoughtWorks Tech Radar, etc.';
   }
 
+  return getSingleLibDescription(libs[0]);
+}
+
+function getSingleLibDescription(lib: LibForDescriptionT): string {
   const {
     name,
     description,
@@ -157,20 +161,34 @@ function getMetaDescription(libs: LibForDescriptionT[]): string {
     vulnerabilitiesCount,
     dependenciesCount,
     license,
-  } = libs[0];
+  } = lib;
   const seoFriendlyName = getSeoFriendlyLibName(name);
-  const descrCut = description.slice(0, 57);
-  const seoDescrIntro = descrCut
+  const seoDescrIntro = description
     .toLowerCase()
     .startsWith(seoFriendlyName.toLowerCase())
-    ? descrCut
-    : `${seoFriendlyName}. ${descrCut}`;
+    ? description
+    : `${seoFriendlyName}. ${description}`;
 
   const words = seoDescrIntro.split(' ');
-  const seoDescrIntroCut =
-    words.length <= 7 ? seoDescrIntro : words.slice(0, 7).join(' ');
+  let seoDescrIntroCut =
+    words.length <= 11 ? seoDescrIntro : words.slice(0, 11).join(' ') + '...';
 
-  return `${seoDescrIntroCut}... &#9733;${starsCount} stars; ${age} old; ${vulnerabilitiesCount} vulnerabilities; ${dependenciesCount} dependencies; license: ${license}...`;
+  // Make sure there is a dot in the end
+  if (seoDescrIntroCut.slice(-1) !== '.') {
+    seoDescrIntroCut += '.';
+  }
+
+  return `${seoDescrIntroCut} 
+    &#9733;${starsCount} stars, ${age} old, ${vulnerabilitiesCount} vulnerabilities, ${dependenciesCount} dependencies, license: ${license}...
+    Compare ${seoFriendlyName} side-by-side with alternatives`;
+}
+
+function getTwoLibsDescription(
+  libA: LibForDescriptionT,
+  libB: LibForDescriptionT
+): string {
+  // TODO: implement it
+  return '';
 }
 
 /**
