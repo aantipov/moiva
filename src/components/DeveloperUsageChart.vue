@@ -19,10 +19,8 @@
 
 <script lang="ts">
 import { defineComponent, toRefs, computed } from 'vue';
-import { format } from 'date-fns';
 import { ChartDataSets, ChartConfiguration } from 'chart.js';
 import { StateOfJST } from '@/apis';
-import { enUS } from 'date-fns/locale';
 
 export default defineComponent({
   name: 'DevelopersUsageChart',

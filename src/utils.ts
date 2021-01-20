@@ -86,31 +86,44 @@ export function updateTitle(): void {
   window.document.title = getTitle(libs);
 }
 
-function getTitle(libsNames: string[]): string {
-  if (!libsNames.length) {
-    return 'Moiva.io - Measure and compare JavaScript libraries side by side';
+// Do not allow Google to index pages with >3 libraries in comparison
+// To avoid spamming Google and the user with useless links
+export function setNoFollowTag(): void {
+  const Url = new URL(window.location.href);
+  const libs = Url.searchParams.get(paramName)?.split(delimiter) || [];
+  if (libs.length > 3) {
+    const metaRobots = document.createElement('meta');
+    metaRobots.name = 'robots';
+    metaRobots.content = 'noindex';
+    document.head.appendChild(metaRobots);
   }
-
-  const seoFriendlyNames = libsNames.map(getSeoFriendlyLibName);
-
-  if (seoFriendlyNames.length === 1) {
-    return `${seoFriendlyNames[0]}: stats and trends from NPM, GitHub, Google trends - Moiva.io`;
-  }
-
-  // Commare separated string with 'and' as a last separator
-  const lastLib = seoFriendlyNames.slice(-1)[0];
-  const libsStr = `${seoFriendlyNames.slice(0, -1).join(', ')} and ${lastLib}`;
-
-  return `Compare ${libsStr} - Moiva.io`;
 }
 
-function getSeoFriendlyLibName(libName: string): string {
+function getTitle(libsNames: string[]): string {
+  if (!libsNames.length) {
+    return 'Moiva.io - Measure and Compare JavaScript libraries side by side';
+  }
+
+  const seoNames = libsNames.map(getSeoLibName);
+
+  if (seoNames.length === 1) {
+    return `${seoNames[0]}: Stats and Trends from NPM, GitHub, Google Search - Moiva.io`;
+  }
+
+  return `${seoNames.join(' vs ')}: Which One to Choose? - Moiva.io`;
+}
+
+function getSeoLibName(libName: string): string {
   if (libName === '@angular/core') {
     return 'Angular';
   }
 
   if (libName === '@nestjs/core') {
     return 'NestJS';
+  }
+
+  if (libName === 'ember-source') {
+    return 'Ember';
   }
 
   // Capitalise normal names
@@ -145,10 +158,30 @@ export function updateMetaDescription(libs: LibForDescriptionT[]): void {
 }
 
 function getMetaDescription(libs: LibForDescriptionT[]): string {
-  if (!libs.length || libs.length > 1) {
-    return 'Javascript libraries and frameworks comparison side by side. Visual with charts and graphs. Multiple metrics. Data from Github, NPM, Google Trends, ThoughtWorks Tech Radar, etc.';
+  if (!libs.length) {
+    return `Which JavaScript library to use? Need to find the best alternatives?
+    Compare Stats and Trends over time - Npm Downloads, Google Trends, Contributors, Releases, Commits, Developer usage, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
   }
 
+  if (libs.length === 1) {
+    return getSingleLibDescription(libs[0]);
+  }
+
+  if (libs.length === 2) {
+    return getTwoLibsDescription(libs[0], libs[1]);
+  }
+
+  if (libs.length === 3) {
+    return getThreeLibsDescription(libs[0], libs[1], libs[2]);
+  }
+
+  const seoNames = libs.map((lib) => getSeoLibName(lib.name));
+  const seoNamesStr = seoNames.join(', ');
+
+  return `Compare ${seoNamesStr}. Stats and Trends over time - Npm Downloads, Google Trends, Contributors, Releases, Commits, Developer usage, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
+}
+
+function getSingleLibDescription(lib: LibForDescriptionT): string {
   const {
     name,
     description,
@@ -157,20 +190,55 @@ function getMetaDescription(libs: LibForDescriptionT[]): string {
     vulnerabilitiesCount,
     dependenciesCount,
     license,
-  } = libs[0];
-  const seoFriendlyName = getSeoFriendlyLibName(name);
-  const descrCut = description.slice(0, 57);
-  const seoDescrIntro = descrCut
+  } = lib;
+  const seoName = getSeoLibName(name);
+  const seoDescrIntro = description
     .toLowerCase()
-    .startsWith(seoFriendlyName.toLowerCase())
-    ? descrCut
-    : `${seoFriendlyName}. ${descrCut}`;
+    .startsWith(seoName.toLowerCase())
+    ? description
+    : `${seoName}. ${description}`;
 
   const words = seoDescrIntro.split(' ');
-  const seoDescrIntroCut =
-    words.length <= 7 ? seoDescrIntro : words.slice(0, 7).join(' ');
+  let seoDescrIntroCut =
+    words.length <= 11 ? seoDescrIntro : words.slice(0, 11).join(' ') + '...';
 
-  return `${seoDescrIntroCut}... &#9733;${starsCount} stars; ${age} old; ${vulnerabilitiesCount} vulnerabilities; ${dependenciesCount} dependencies; license: ${license}...`;
+  // Make sure there is a dot in the end
+  if (seoDescrIntroCut.slice(-1) !== '.') {
+    seoDescrIntroCut += '.';
+  }
+
+  return `${seoDescrIntroCut} 
+    &#9733;${starsCount} stars, ${age} old, ${vulnerabilitiesCount} vulnerabilities, ${dependenciesCount} dependencies, license: ${license}...
+    Find the best ${seoName} alternatives and compare them side by side`;
+}
+
+function getTwoLibsDescription(
+  libA: LibForDescriptionT,
+  libB: LibForDescriptionT
+): string {
+  const seoNameA = getSeoLibName(libA.name);
+  const seoNameB = getSeoLibName(libB.name);
+
+  return `Which is better ${seoNameA} or ${seoNameB}? Compare Stats and Trends side by side.
+${seoNameA}: &#9733;${libA.starsCount} stars, ${libA.age} old, ${libA.vulnerabilitiesCount} vulnerabilities, ${libA.dependenciesCount} dependencies, license: ${libA.license}...
+${seoNameB}: &#9733;${libB.starsCount} stars, ${libB.age} old, ${libB.vulnerabilitiesCount} vulnerabilities, ${libB.dependenciesCount} dependencies, license: ${libB.license}...
+`;
+}
+
+function getThreeLibsDescription(
+  libA: LibForDescriptionT,
+  libB: LibForDescriptionT,
+  libC: LibForDescriptionT
+): string {
+  const seoNameA = getSeoLibName(libA.name);
+  const seoNameB = getSeoLibName(libB.name);
+  const seoNameC = getSeoLibName(libC.name);
+
+  return `Which is better ${seoNameA}, ${seoNameB}, or ${seoNameC}? Compare Stats and Trends side by side.
+${seoNameA}: &#9733;${libA.starsCount} stars, ${libA.age} old, ${libA.vulnerabilitiesCount} vulnerabilities, ${libA.dependenciesCount} dependencies, license: ${libA.license}...
+${seoNameB}: &#9733;${libB.starsCount} stars, ${libB.age} old, ${libB.vulnerabilitiesCount} vulnerabilities, ${libB.dependenciesCount} dependencies, license: ${libB.license}...
+${seoNameC}: &#9733;${libC.starsCount} stars, ${libC.age} old, ${libC.vulnerabilitiesCount} vulnerabilities, ${libC.dependenciesCount} dependencies, license: ${libC.license}...
+`;
 }
 
 /**
