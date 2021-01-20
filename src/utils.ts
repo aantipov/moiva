@@ -86,6 +86,19 @@ export function updateTitle(): void {
   window.document.title = getTitle(libs);
 }
 
+// Do not allow Google to index pages with >3 libraries in comparison
+// To avoid spamming Google and the user with useless links
+export function setNoFollowTag(): void {
+  const Url = new URL(window.location.href);
+  const libs = Url.searchParams.get(paramName)?.split(delimiter) || [];
+  if (libs.length > 3) {
+    const metaRobots = document.createElement('meta');
+    metaRobots.name = 'robots';
+    metaRobots.content = 'noindex';
+    document.head.appendChild(metaRobots);
+  }
+}
+
 function getTitle(libsNames: string[]): string {
   if (!libsNames.length) {
     return 'Moiva.io - Measure and Compare JavaScript libraries side by side';
