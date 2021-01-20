@@ -209,7 +209,7 @@ function getSingleLibDescription(lib: LibForDescriptionT): string {
 
   return `${seoDescrIntroCut} 
     &#9733;${starsCount} stars, ${age} old, ${vulnerabilitiesCount} vulnerabilities, ${dependenciesCount} dependencies, license: ${license}...
-    Find the best ${seoName} alternatives and compare them side-by-side`;
+    Find the best ${seoName} alternatives and compare them side by side`;
 }
 
 function getTwoLibsDescription(
