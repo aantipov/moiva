@@ -191,12 +191,12 @@ function getSingleLibDescription(lib: LibForDescriptionT): string {
     dependenciesCount,
     license,
   } = lib;
-  const seoFriendlyName = getSeoLibName(name);
+  const seoName = getSeoLibName(name);
   const seoDescrIntro = description
     .toLowerCase()
-    .startsWith(seoFriendlyName.toLowerCase())
+    .startsWith(seoName.toLowerCase())
     ? description
-    : `${seoFriendlyName}. ${description}`;
+    : `${seoName}. ${description}`;
 
   const words = seoDescrIntro.split(' ');
   let seoDescrIntroCut =
@@ -209,7 +209,7 @@ function getSingleLibDescription(lib: LibForDescriptionT): string {
 
   return `${seoDescrIntroCut} 
     &#9733;${starsCount} stars, ${age} old, ${vulnerabilitiesCount} vulnerabilities, ${dependenciesCount} dependencies, license: ${license}...
-    Find the best ${seoFriendlyName} alternatives and compare side-by-side`;
+    Find the best ${seoName} alternatives and compare side-by-side`;
 }
 
 function getTwoLibsDescription(
