@@ -88,29 +88,29 @@ export function updateTitle(): void {
 
 function getTitle(libsNames: string[]): string {
   if (!libsNames.length) {
-    return 'Moiva.io - Measure and compare JavaScript libraries side by side';
+    return 'Moiva.io - Measure and Compare JavaScript libraries side by side';
   }
 
-  const seoFriendlyNames = libsNames.map(getSeoFriendlyLibName);
+  const seoNames = libsNames.map(getSeoLibName);
 
-  if (seoFriendlyNames.length === 1) {
-    return `${seoFriendlyNames[0]}: stats and trends from NPM, GitHub, Google trends - Moiva.io`;
+  if (seoNames.length === 1) {
+    return `${seoNames[0]}: Stats and Trends from NPM, GitHub, Google Search - Moiva.io`;
   }
 
-  // Commare separated string with 'and' as a last separator
-  const lastLib = seoFriendlyNames.slice(-1)[0];
-  const libsStr = `${seoFriendlyNames.slice(0, -1).join(', ')} and ${lastLib}`;
-
-  return `Compare ${libsStr} - Moiva.io`;
+  return `${seoNames.join(' vs ')}: Which One to Choose? - Moiva.io`;
 }
 
-function getSeoFriendlyLibName(libName: string): string {
+function getSeoLibName(libName: string): string {
   if (libName === '@angular/core') {
     return 'Angular';
   }
 
   if (libName === '@nestjs/core') {
     return 'NestJS';
+  }
+
+  if (libName === 'ember-source') {
+    return 'Ember';
   }
 
   // Capitalise normal names
@@ -145,11 +145,27 @@ export function updateMetaDescription(libs: LibForDescriptionT[]): void {
 }
 
 function getMetaDescription(libs: LibForDescriptionT[]): string {
-  if (!libs.length || libs.length > 1) {
-    return 'Javascript libraries and frameworks comparison side by side. Visual with charts and graphs. Multiple metrics. Data from Github, NPM, Google Trends, ThoughtWorks Tech Radar, etc.';
+  if (!libs.length) {
+    return `Which JavaScript library to use? Need to find the best alternatives?
+    Compare stats and trends over time - Npm Downloads, Google Trends, Contributors, Releases, Commits, Developer usage, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
   }
 
-  return getSingleLibDescription(libs[0]);
+  if (libs.length === 1) {
+    return getSingleLibDescription(libs[0]);
+  }
+
+  if (libs.length === 2) {
+    return getTwoLibsDescription(libs[0], libs[1]);
+  }
+
+  if (libs.length === 3) {
+    return getThreeLibsDescription(libs[0], libs[1], libs[2]);
+  }
+
+  const seoNames = libs.map((lib) => getSeoLibName(lib.name));
+  const seoNamesStr = seoNames.join(', ');
+
+  return `Compare ${seoNamesStr}. Stats and trends over time - Npm Downloads, Google Trends, Contributors, Releases, Commits, Developer usage, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
 }
 
 function getSingleLibDescription(lib: LibForDescriptionT): string {
@@ -162,7 +178,7 @@ function getSingleLibDescription(lib: LibForDescriptionT): string {
     dependenciesCount,
     license,
   } = lib;
-  const seoFriendlyName = getSeoFriendlyLibName(name);
+  const seoFriendlyName = getSeoLibName(name);
   const seoDescrIntro = description
     .toLowerCase()
     .startsWith(seoFriendlyName.toLowerCase())
@@ -180,15 +196,36 @@ function getSingleLibDescription(lib: LibForDescriptionT): string {
 
   return `${seoDescrIntroCut} 
     &#9733;${starsCount} stars, ${age} old, ${vulnerabilitiesCount} vulnerabilities, ${dependenciesCount} dependencies, license: ${license}...
-    Compare ${seoFriendlyName} side-by-side with alternatives`;
+    Find the best ${seoFriendlyName} alternatives and compare side-by-side`;
 }
 
 function getTwoLibsDescription(
   libA: LibForDescriptionT,
   libB: LibForDescriptionT
 ): string {
-  // TODO: implement it
-  return '';
+  const seoNameA = getSeoLibName(libA.name);
+  const seoNameB = getSeoLibName(libB.name);
+
+  return `Which is better ${seoNameA} or ${seoNameB}? Compare Stats and Trends side by side.
+${seoNameA}: &#9733;${libA.starsCount} stars, ${libA.age} old, ${libA.vulnerabilitiesCount} vulnerabilities, ${libA.dependenciesCount} dependencies, license: ${libA.license}...
+${seoNameB}: &#9733;${libB.starsCount} stars, ${libB.age} old, ${libB.vulnerabilitiesCount} vulnerabilities, ${libB.dependenciesCount} dependencies, license: ${libB.license}...
+`;
+}
+
+function getThreeLibsDescription(
+  libA: LibForDescriptionT,
+  libB: LibForDescriptionT,
+  libC: LibForDescriptionT
+): string {
+  const seoNameA = getSeoLibName(libA.name);
+  const seoNameB = getSeoLibName(libB.name);
+  const seoNameC = getSeoLibName(libC.name);
+
+  return `Which is better ${seoNameA}, ${seoNameB}, or ${seoNameC}? Compare Stats and Trends side by side.
+${seoNameA}: &#9733;${libA.starsCount} stars, ${libA.age} old, ${libA.vulnerabilitiesCount} vulnerabilities, ${libA.dependenciesCount} dependencies, license: ${libA.license}...
+${seoNameB}: &#9733;${libB.starsCount} stars, ${libB.age} old, ${libB.vulnerabilitiesCount} vulnerabilities, ${libB.dependenciesCount} dependencies, license: ${libB.license}...
+${seoNameC}: &#9733;${libC.starsCount} stars, ${libC.age} old, ${libC.vulnerabilitiesCount} vulnerabilities, ${libC.dependenciesCount} dependencies, license: ${libC.license}...
+`;
 }
 
 /**
