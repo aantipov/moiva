@@ -160,7 +160,7 @@ export function updateMetaDescription(libs: LibForDescriptionT[]): void {
 function getMetaDescription(libs: LibForDescriptionT[]): string {
   if (!libs.length) {
     return `Which JavaScript library to use? Need to find the best alternatives?
-    Compare stats and trends over time - Npm Downloads, Google Trends, Contributors, Releases, Commits, Developer usage, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
+    Compare Stats and Trends over time - Npm Downloads, Google Trends, Contributors, Releases, Commits, Developer usage, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
   }
 
   if (libs.length === 1) {
@@ -178,7 +178,7 @@ function getMetaDescription(libs: LibForDescriptionT[]): string {
   const seoNames = libs.map((lib) => getSeoLibName(lib.name));
   const seoNamesStr = seoNames.join(', ');
 
-  return `Compare ${seoNamesStr}. Stats and trends over time - Npm Downloads, Google Trends, Contributors, Releases, Commits, Developer usage, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
+  return `Compare ${seoNamesStr}. Stats and Trends over time - Npm Downloads, Google Trends, Contributors, Releases, Commits, Developer usage, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
 }
 
 function getSingleLibDescription(lib: LibForDescriptionT): string {
@@ -209,7 +209,7 @@ function getSingleLibDescription(lib: LibForDescriptionT): string {
 
   return `${seoDescrIntroCut} 
     &#9733;${starsCount} stars, ${age} old, ${vulnerabilitiesCount} vulnerabilities, ${dependenciesCount} dependencies, license: ${license}...
-    Find the best ${seoName} alternatives and compare side-by-side`;
+    Find the best ${seoName} alternatives and compare them side-by-side`;
 }
 
 function getTwoLibsDescription(
