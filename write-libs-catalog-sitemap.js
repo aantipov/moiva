@@ -126,6 +126,11 @@ function sortLibsByName(libA, libB) {
 
 const twoLibsUrls = categories
   .map((cat) => {
+    // skip Misc category
+    if (cat.categoryName === 'misc') {
+      return [];
+    }
+
     const libsSorted = cat.libs.sort(sortLibsByName);
     const categoryPairsUrls = [];
 
