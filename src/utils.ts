@@ -260,7 +260,7 @@ export function getSuggestions(libsNames: string[]): string[] {
   const lastSelectedLibData =
     catalogLibsByName[libsNames[libsNames.length - 1]];
 
-  if (!lastSelectedLibData || lastSelectedLibData.category === 'Other') {
+  if (!lastSelectedLibData || lastSelectedLibData.category === 'misc') {
     return [];
   }
 
