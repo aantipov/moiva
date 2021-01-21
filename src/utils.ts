@@ -1,5 +1,5 @@
 import { LibraryT, fetchNpmPackage } from './apis';
-import { libsDataByName, libsNamesByCategory } from './libraries-list';
+import { catalogLibsByName, libsNamesByCategory } from './libraries-catalog';
 
 const paramName = 'compare';
 const oldParamName = 'apps';
@@ -257,9 +257,10 @@ export function getSuggestions(libsNames: string[]): string[] {
     return [];
   }
 
-  const lastSelectedLibData = libsDataByName[libsNames[libsNames.length - 1]];
+  const lastSelectedLibData =
+    catalogLibsByName[libsNames[libsNames.length - 1]];
 
-  if (!lastSelectedLibData || lastSelectedLibData.category === 'Other') {
+  if (!lastSelectedLibData || lastSelectedLibData.category === 'misc') {
     return [];
   }
 
