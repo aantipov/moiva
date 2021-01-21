@@ -2,22 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://moiva.io/</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>daily</changefreq>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=@11ty/eleventy</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=@amcharts/amcharts4</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
     <loc>https://moiva.io/?compare=@angular/core</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=@angular/core+alpinejs</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -27,7 +22,32 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=@angular/core+jquery+react</loc>
+    <loc>https://moiva.io/?compare=@angular/core+backbone.marionette</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=@angular/core+ember-source</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=@angular/core+hyperapp</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=@angular/core+inferno</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=@angular/core+knockout</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=@angular/core+preact</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -37,17 +57,12 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=@angular/core+react+svelte</loc>
+    <loc>https://moiva.io/?compare=@angular/core+riot</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=@angular/core+react+svelte+vue</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=@angular/core+react+vue</loc>
+    <loc>https://moiva.io/?compare=@angular/core+solid-js</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -57,42 +72,7 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=@angular/core+svelte+vue</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
     <loc>https://moiva.io/?compare=@angular/core+vue</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=@apollo/client</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=@chakra-ui/react</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=@cucumber/cucumber</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=@cucumber/cucumber+cypress</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=@docusaurus/core</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=@emotion/css+styled-components</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -102,7 +82,57 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?compare=@feathersjs/feathers+@hapi/hapi</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=@feathersjs/feathers+@loopback/core</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=@feathersjs/feathers+@nestjs/core</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=@feathersjs/feathers+express</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=@feathersjs/feathers+fastify</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=@feathersjs/feathers+koa</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=@feathersjs/feathers+loopback</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=@feathersjs/feathers+restify</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=@feathersjs/feathers+sails</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?compare=@hapi/hapi</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=@hapi/hapi+@loopback/core</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -127,12 +157,17 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=@laconia/core</loc>
+    <loc>https://moiva.io/?compare=@hapi/hapi+loopback</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=@linaria/core</loc>
+    <loc>https://moiva.io/?compare=@hapi/hapi+restify</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=@hapi/hapi+sails</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -142,62 +177,37 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=@material-ui/core</loc>
+    <loc>https://moiva.io/?compare=@loopback/core+@nestjs/core</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=@material-ui/core+antd</loc>
+    <loc>https://moiva.io/?compare=@loopback/core+express</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=@material-ui/core+bootstrap</loc>
+    <loc>https://moiva.io/?compare=@loopback/core+fastify</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=@material-ui/core+bulma</loc>
+    <loc>https://moiva.io/?compare=@loopback/core+koa</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=@material-ui/core+materialize-css</loc>
+    <loc>https://moiva.io/?compare=@loopback/core+loopback</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=@material-ui/core+react-bootstrap</loc>
+    <loc>https://moiva.io/?compare=@loopback/core+restify</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=@material-ui/core+semantic-ui</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=@material-ui/core+styled-components</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=@material-ui/core+tailwindcss</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=@material-ui/core+vuetify</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=@middy/core</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=@mlvis/manifold</loc>
+    <loc>https://moiva.io/?compare=@loopback/core+sails</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -217,37 +227,22 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=@nivo/core</loc>
+    <loc>https://moiva.io/?compare=@nestjs/core+koa</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=@nivo/core+recharts</loc>
+    <loc>https://moiva.io/?compare=@nestjs/core+loopback</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=@parcel/core</loc>
+    <loc>https://moiva.io/?compare=@nestjs/core+restify</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=@parcel/core+webpack</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=@stencil/core</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=@storybook/core</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=ajv</loc>
+    <loc>https://moiva.io/?compare=@nestjs/core+sails</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -257,82 +252,122 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=antd</loc>
+    <loc>https://moiva.io/?compare=alpinejs+angular</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=antd+react-bootstrap</loc>
+    <loc>https://moiva.io/?compare=alpinejs+backbone.marionette</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=apexcharts</loc>
+    <loc>https://moiva.io/?compare=alpinejs+ember-source</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=apexcharts+d3</loc>
+    <loc>https://moiva.io/?compare=alpinejs+hyperapp</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=aphrodite</loc>
+    <loc>https://moiva.io/?compare=alpinejs+inferno</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=apisauce</loc>
+    <loc>https://moiva.io/?compare=alpinejs+knockout</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=apisauce+axios</loc>
+    <loc>https://moiva.io/?compare=alpinejs+preact</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=apollo-client</loc>
+    <loc>https://moiva.io/?compare=alpinejs+react</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=async</loc>
+    <loc>https://moiva.io/?compare=alpinejs+riot</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=auditjs</loc>
+    <loc>https://moiva.io/?compare=alpinejs+solid-js</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=ava</loc>
+    <loc>https://moiva.io/?compare=alpinejs+svelte</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=axios</loc>
+    <loc>https://moiva.io/?compare=alpinejs+vue</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=axios+node-fetch</loc>
+    <loc>https://moiva.io/?compare=angular</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=axios+request</loc>
+    <loc>https://moiva.io/?compare=angular+backbone.marionette</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=axios+superagent</loc>
+    <loc>https://moiva.io/?compare=angular+ember-source</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=babylonjs</loc>
+    <loc>https://moiva.io/?compare=angular+hyperapp</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=angular+inferno</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=angular+knockout</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=angular+preact</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=angular+react</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=angular+riot</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=angular+solid-js</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=angular+svelte</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=angular+vue</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -342,347 +377,52 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=backstopjs</loc>
+    <loc>https://moiva.io/?compare=backbone.marionette+ember-source</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=bluebird</loc>
+    <loc>https://moiva.io/?compare=backbone.marionette+hyperapp</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=blueimp-tmpl</loc>
+    <loc>https://moiva.io/?compare=backbone.marionette+inferno</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=bootstrap</loc>
+    <loc>https://moiva.io/?compare=backbone.marionette+knockout</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=bootstrap-vue</loc>
+    <loc>https://moiva.io/?compare=backbone.marionette+preact</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=bootstrap-vue+vuetify</loc>
+    <loc>https://moiva.io/?compare=backbone.marionette+react</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=browserify</loc>
+    <loc>https://moiva.io/?compare=backbone.marionette+riot</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=buefy+vuetify</loc>
+    <loc>https://moiva.io/?compare=backbone.marionette+solid-js</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=bulma</loc>
+    <loc>https://moiva.io/?compare=backbone.marionette+svelte</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=bulma+tailwindcss</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=bulma+tailwindcss+vuetify</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=bulma+vuetify</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=bunyan</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=bunyan+log4js</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=bunyan+morgan</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=bunyan+pino</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=bunyan+winston</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=casperjs</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=chai</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=chai+mocha</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=chart.js</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=chart.js+d3</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=chart.js+highcharts</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=chart.js+plotly.js</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=chart.js+recharts</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=chartist</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=cheerio</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=classnames</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=commander</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=commander+inquirer</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=commander+yargs</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=commitizen</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=core-js</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=cypress</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=cypress+jest</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=cypress+karma</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=cypress+nightwatch</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=cypress+playwright</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=cypress+protractor</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=cypress+puppeteer</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=cypress+selenium-webdriver</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=cypress+testcafe</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=cypress+webdriverio</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=d3</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=d3+highcharts</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=d3+plotly.js</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=date-fns</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=date-fns+dayjs</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=date-fns+luxon</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=date-fns+moment</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=date.js</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=dayjs</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=dayjs+luxon</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=dayjs+moment</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=debug</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=docsify</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=docusaurus</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=dot</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=downshift</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=downshift+react-autosuggest</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=downshift+react-select</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=dustjs-linkedin</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=echarts</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=ehtml</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=ejs</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=ejs+handlebars</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=ejs+pug</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=element-ui</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=ember-apollo-client</loc>
+    <loc>https://moiva.io/?compare=backbone.marionette+vue</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -692,37 +432,47 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=emotion</loc>
+    <loc>https://moiva.io/?compare=ember-source+hyperapp</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=enzyme</loc>
+    <loc>https://moiva.io/?compare=ember-source+inferno</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=esbuild</loc>
+    <loc>https://moiva.io/?compare=ember-source+knockout</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=eslint</loc>
+    <loc>https://moiva.io/?compare=ember-source+preact</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=eslint+jshint</loc>
+    <loc>https://moiva.io/?compare=ember-source+react</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=eslint+prettier</loc>
+    <loc>https://moiva.io/?compare=ember-source+riot</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=eslint+tslint</loc>
+    <loc>https://moiva.io/?compare=ember-source+solid-js</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=ember-source+svelte</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=ember-source+vue</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -742,7 +492,17 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=express+next</loc>
+    <loc>https://moiva.io/?compare=express+loopback</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=express+restify</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=express+sails</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -757,117 +517,17 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?compare=fastify+loopback</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?compare=fastify+restify</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=fecha</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=flow-bin</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=forever</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=forever+pm2</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=formik</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=fp-ts</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=fp-ts+ramda</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=gatsby</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=gatsby+next</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=gatsby+nuxt</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=gemini</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=gridsome</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=grunt</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=gulp</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=gulp</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=handlebars</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=handlebars+mustache</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=handlebars+pug</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=hermes-engine</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=hexo</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=highcharts</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=highcharts+plotly.js</loc>
+    <loc>https://moiva.io/?compare=fastify+sails</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -877,17 +537,42 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=immer</loc>
+    <loc>https://moiva.io/?compare=hyperapp+inferno</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=immer+ramda</loc>
+    <loc>https://moiva.io/?compare=hyperapp+knockout</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=immutable</loc>
+    <loc>https://moiva.io/?compare=hyperapp+preact</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=hyperapp+react</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=hyperapp+riot</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=hyperapp+solid-js</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=hyperapp+svelte</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=hyperapp+vue</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -897,122 +582,37 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=inquirer</loc>
+    <loc>https://moiva.io/?compare=inferno+knockout</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=inquirer+yargs</loc>
+    <loc>https://moiva.io/?compare=inferno+preact</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=io-ts</loc>
+    <loc>https://moiva.io/?compare=inferno+react</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=jasmine</loc>
+    <loc>https://moiva.io/?compare=inferno+riot</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=jasmine+jest</loc>
+    <loc>https://moiva.io/?compare=inferno+solid-js</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=jasmine+karma</loc>
+    <loc>https://moiva.io/?compare=inferno+svelte</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=jasmine+mocha</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=jest</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=jest+karma</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=jest+mocha</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=jest-when</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=joi</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=jquery</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=jquery+lodash</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=jquery+react</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=jquery+vue</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=js-beautify+prettier</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=jsc-android</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=jscodeshift</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=jshint</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=jss</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=jss+styled-components</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=karma</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=karma+mocha</loc>
+    <loc>https://moiva.io/?compare=inferno+vue</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -1022,72 +622,52 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?compare=knockout+preact</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=knockout+react</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=knockout+riot</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=knockout+solid-js</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=knockout+svelte</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=knockout+vue</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?compare=koa</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=lazy.js</loc>
+    <loc>https://moiva.io/?compare=koa+loopback</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=less</loc>
+    <loc>https://moiva.io/?compare=koa+restify</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=less+sass</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=lit-element</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=lodash</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=lodash+ramda</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=lodash+underscore</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=log4js</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=log4js+morgan</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=log4js+pino</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=log4js+winston</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=loglevel</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=loki</loc>
+    <loc>https://moiva.io/?compare=koa+sails</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -1097,187 +677,17 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=luxon</loc>
+    <loc>https://moiva.io/?compare=loopback+restify</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=luxon+moment</loc>
+    <loc>https://moiva.io/?compare=loopback+sails</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=marko</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=materialize-css</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=mermaid</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=mkdirp</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=mobx</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=mobx+recoil</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=mobx+redux</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=mobx+rxjs</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=mobx+vuex</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=mocha</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=moment</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=morgan</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=morgan+winston</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=mountebank</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=mout</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=ms</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=msw</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=mustache</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=next</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=next</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=next+nuxt</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=nightmare</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=nightwatch</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=node-fetch</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=nodemon</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=nodemon+pm2</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=nunjucks</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=nuxt</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=parcel</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=passport</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=pino</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=pino+winston</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=playwright</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=plotly.js</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=pm2</loc>
+    <loc>https://moiva.io/?compare=preact</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -1287,72 +697,22 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=prettier</loc>
+    <loc>https://moiva.io/?compare=preact+riot</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=primevue</loc>
+    <loc>https://moiva.io/?compare=preact+solid-js</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=primevue+vuetify</loc>
+    <loc>https://moiva.io/?compare=preact+svelte</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=prop-types</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=pug</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=puppeteer</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=quasar</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=quasar+vuetify</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=radium</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=radium+styled-components</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=rambda</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=ramda</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=ramda+rxjs</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=ramda+sanctuary</loc>
+    <loc>https://moiva.io/?compare=preact+vue</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -1362,12 +722,17 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=react+svelte</loc>
+    <loc>https://moiva.io/?compare=react+riot</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=react+svelte+vue</loc>
+    <loc>https://moiva.io/?compare=react+solid-js</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=react+svelte</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -1377,187 +742,12 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=react-autosuggest</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-autosuggest+react-select</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-bootstrap</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-bootstrap+reactstrap</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-bootstrap+semantic-ui</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-calendar</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-chartjs-2</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-chartjs-2+recharts</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-date-picker</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-date-picker+react-datepicker</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-datepicker</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-datepicker+react-dates</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-dates</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-dates+react-day-picker</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-datetime</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-day-picker</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-native-v8</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-router</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-router+universal-router</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-select</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-select+select2</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-static</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-styleguidist</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-vis</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=react-vis+recharts</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=reactstrap</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=recast</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=recharts</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=recharts+victory</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=recoil</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=recoil+redux</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=redux</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=redux+rxjs</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=redux+vuex</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=redux-form</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=relay-runtime</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
     <loc>https://moiva.io/?compare=restify</loc>
+    <lastmod>2021-01-11</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=restify+sails</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -1567,22 +757,17 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=rollup</loc>
+    <loc>https://moiva.io/?compare=riot+solid-js</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=rollup+webpack</loc>
+    <loc>https://moiva.io/?compare=riot+svelte</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=runtypes</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=rxjs</loc>
+    <loc>https://moiva.io/?compare=riot+vue</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -1592,72 +777,17 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=sanctuary</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=sapper</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=sass</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=selenium-webdriver</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=semantic-ui</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=slimerjs</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=snowpack</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=socket.io</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=socket.io+ws</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
     <loc>https://moiva.io/?compare=solid-js</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=styled-components+styled-jsx</loc>
+    <loc>https://moiva.io/?compare=solid-js+svelte</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=styled-components+tailwindcss</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=sugar</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=superagent</loc>
+    <loc>https://moiva.io/?compare=solid-js+vue</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -1672,157 +802,7 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?compare=svelte-apollo</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=tachyons</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=taiko</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=tailwindcss</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=tailwindcss+vuetify</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=testcafe</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=three</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=timeago.js</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=tslint</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=typescript</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=umi</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=underscore</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=universal-router</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=uuid</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=vandium</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=victory</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
     <loc>https://moiva.io/?compare=vue</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=vue-apollo</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=vue-material</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=vue-material+vuetify</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=vuepress</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=vuetify</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=vuex</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=webdriverio</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=webpack</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=winston</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=ws</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=xtemplate</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=yargs</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=yup</loc>
-    <lastmod>2021-01-11</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?compare=zombie</loc>
     <lastmod>2021-01-11</lastmod>
     <changefreq>weekly</changefreq>
   </url>
