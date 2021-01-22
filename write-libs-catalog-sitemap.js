@@ -14,6 +14,7 @@ const data = [
   require('../moiva-issues/catalog/charts'),
   require('../moiva-issues/catalog/vue-component-libraries'),
   require('../moiva-issues/catalog/react-component-libraries'),
+  require('../moiva-issues/catalog/react-document-head-tags'),
   require('../moiva-issues/catalog/state'),
   require('../moiva-issues/catalog/api-mocks'),
   require('../moiva-issues/catalog/aws-lambda-frameworks'),
@@ -46,16 +47,16 @@ const categories = data.map((catObj) => ({
   libs: catObj.items.map((pkg) => ({
     name: Array.isArray(pkg) ? pkg[0] : pkg,
     category: catObj.name,
-    seoAlias: (Array.isArray(pkg) && pkg[1]) || null,
-    framework: (Array.isArray(pkg) && pkg[2]) || null,
+    seoAlias: (Array.isArray(pkg) && pkg[1] && `'${pkg[1]}'`) || null,
+    framework: (Array.isArray(pkg) && pkg[2] && `'${pkg[2]}'`) || null,
   })),
 }));
 
 let str = '';
 categories.forEach((cat) => {
-  str += `\n  // ${cat.categoryName} \n`;
+  str += `\n  // ${cat.categoryName}\n`;
   cat.libs.forEach((lib) => {
-    str += `  ['${lib.name}', '${lib.category}', '${lib.seoAlias}', '${lib.framework}'],\n`;
+    str += `  ['${lib.name}', '${lib.category}', ${lib.seoAlias}, ${lib.framework}],\n`;
   });
 });
 
@@ -63,7 +64,7 @@ categories.forEach((cat) => {
  * GENERATE LIBRARIES CATALOG
  */
 
-const resStr = `const libraries = [${str}];
+const resStr = `const libraries: [string, string, string | null, string | null][] = [${str}];
 
 interface CatalogLibraryT {
   name: string;
