@@ -114,7 +114,6 @@ function getTitle(libsNames: string[]): string {
 }
 
 function getSeoLibName(libName: string): string {
-  console.log('libname', libName, catalogLibsByName[libName]);
   if (catalogLibsByName[libName]?.seoAlias) {
     return catalogLibsByName[libName].seoAlias as string;
   }
