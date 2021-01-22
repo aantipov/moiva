@@ -2,7 +2,7 @@ const libraries: [string, string, string | null, string | null][] = [
   // Frontend Frameworks
   ['react', 'Frontend Frameworks', null, null],
   ['vue', 'Frontend Frameworks', null, null],
-  ['@angular/core', 'Frontend Frameworks', 'angular', null],
+  ['@angular/core', 'Frontend Frameworks', 'Angular', null],
   ['svelte', 'Frontend Frameworks', null, null],
   ['ember-source', 'Frontend Frameworks', 'Ember', null],
   ['alpinejs', 'Frontend Frameworks', null, null],
@@ -13,7 +13,7 @@ const libraries: [string, string, string | null, string | null][] = [
   ['angular', 'Frontend Frameworks', 'AngularJS', null],
   ['backbone.marionette', 'Frontend Frameworks', null, null],
   ['knockout', 'Frontend Frameworks', null, null],
-  ['solid-js', 'Frontend Frameworks', 'solid', null],
+  ['solid-js', 'Frontend Frameworks', 'Solid', null],
   ['mithril', 'Frontend Frameworks', null, null],
 
   // HTML Templating Engines

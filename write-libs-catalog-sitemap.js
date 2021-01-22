@@ -54,7 +54,7 @@ const categories = data.map((catObj) => ({
 
 let str = '';
 categories.forEach((cat) => {
-  str += `\n  // ${cat.categoryName} \n`;
+  str += `\n  // ${cat.categoryName}\n`;
   cat.libs.forEach((lib) => {
     str += `  ['${lib.name}', '${lib.category}', ${lib.seoAlias}, ${lib.framework}],\n`;
   });
