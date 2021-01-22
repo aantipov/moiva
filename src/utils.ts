@@ -114,16 +114,9 @@ function getTitle(libsNames: string[]): string {
 }
 
 function getSeoLibName(libName: string): string {
-  if (libName === '@angular/core') {
-    return 'Angular';
-  }
-
-  if (libName === '@nestjs/core') {
-    return 'NestJS';
-  }
-
-  if (libName === 'ember-source') {
-    return 'Ember';
+  console.log('libname', libName, catalogLibsByName[libName]);
+  if (catalogLibsByName[libName]?.seoAlias) {
+    return catalogLibsByName[libName].seoAlias as string;
   }
 
   // Capitalise normal names
