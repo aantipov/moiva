@@ -97,7 +97,12 @@ const libraries: [string, string, string | null, string | null][] = [
   ['html5-boilerplate', 'CSS Frameworks', 'HTML5 Boilerplate', null],
   ['foundation-sites', 'CSS Frameworks', 'Foundation', null],
   ['material-design-lite', 'CSS Frameworks', 'Material Design Lite', null],
-  ['material-components-web', 'CSS Frameworks', 'Material Components for the web', null],
+  [
+    'material-components-web',
+    'CSS Frameworks',
+    'Material Components for the web',
+    null,
+  ],
   ['spectre.css', 'CSS Frameworks', null, null],
 
   // Charts
@@ -174,11 +179,21 @@ const libraries: [string, string, string | null, string | null][] = [
   ['@11ty/eleventy', 'Static Site Generators / JAMStack', '11ty', null],
   ['hexo', 'Static Site Generators / JAMStack', null, null],
   ['docusaurus', 'Static Site Generators / JAMStack', null, 'react'],
-  ['@docusaurus/core', 'Static Site Generators / JAMStack', 'Docusaurus 2', 'react'],
+  [
+    '@docusaurus/core',
+    'Static Site Generators / JAMStack',
+    'Docusaurus 2',
+    'react',
+  ],
   ['vuepress', 'Static Site Generators / JAMStack', 'VuePress', 'vue'],
   ['docsify', 'Static Site Generators / JAMStack', null, null],
   ['umi', 'Static Site Generators / JAMStack', 'UmiJS', 'react'],
-  ['react-static', 'Static Site Generators / JAMStack', 'React Static', 'react'],
+  [
+    'react-static',
+    'Static Site Generators / JAMStack',
+    'React Static',
+    'react',
+  ],
   ['gridsome', 'Static Site Generators / JAMStack', null, 'vue'],
 
   // Object Schema Validation
@@ -220,7 +235,12 @@ const libraries: [string, string, string | null, string | null][] = [
 
   // React Unit Testing
   ['enzyme', 'React Unit Testing', null, null],
-  ['@testing-library/react', 'React Unit Testing', 'React Testing Library', null],
+  [
+    '@testing-library/react',
+    'React Unit Testing',
+    'React Testing Library',
+    null,
+  ],
 
   // Lint Prettify
   ['eslint', 'Lint Prettify', 'ESLint', null],
@@ -276,7 +296,12 @@ const libraries: [string, string, string | null, string | null][] = [
   ['select2', 'Select Box', null, null],
   ['react-autosuggest', 'Select Box', 'React Autosuggest', 'react'],
   ['react-autocomplete', 'Select Box', 'React Autocomplete', 'react'],
-  ['react-virtualized-select', 'Select Box', 'React Virtualized Select', 'react'],
+  [
+    'react-virtualized-select',
+    'Select Box',
+    'React Virtualized Select',
+    'react',
+  ],
   ['react-dropdown', 'Select Box', null, 'react'],
 
   // React Dates
