@@ -63,9 +63,10 @@ export function loadDefaultLibs(): Promise<LibraryT[]> {
     // This is needed for SEO - Google should not crawl "bad" pages
     if (filteredLibs.length < uniqDefaultLibs.length) {
       window.location.href = '/not-found';
-    } else {
-      cleanupUrl(filteredLibs.map((lib) => lib.name));
+      return Promise.reject();
     }
+
+    cleanupUrl(filteredLibs.map((lib) => lib.name));
 
     return filteredLibs;
   });
