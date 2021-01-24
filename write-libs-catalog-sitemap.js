@@ -44,25 +44,43 @@ const data = [
 
 const categories = data.map((catObj) => ({
   categoryName: catObj.name,
-  libs: catObj.items.map((pkg) => ({
-    name: Array.isArray(pkg) ? pkg[0] : pkg,
-    category: catObj.name,
-    seoAlias: (Array.isArray(pkg) && pkg[1] && `'${pkg[1]}'`) || null,
-    framework: (Array.isArray(pkg) && pkg[2] && `'${pkg[2]}'`) || null,
-  })),
+  libs: catObj.items.map((pkg) => {
+    const libCatalogData = Array.isArray(pkg) ? pkg : new Array(pkg);
+
+    return {
+      name: libCatalogData[0],
+      category: catObj.name,
+      seoAlias: libCatalogData[1] || null,
+      framework: libCatalogData[2] || null,
+    };
+  }),
 }));
 
-let str = '';
-categories.forEach((cat) => {
-  str += `\n  // ${cat.categoryName}\n`;
-  cat.libs.forEach((lib) => {
-    str += `  ['${lib.name}', '${lib.category}', ${lib.seoAlias}, ${lib.framework}],\n`;
-  });
-});
+const duplicates = getDuplicates(categories);
+if (duplicates.length) {
+  console.error(`Duplicate libraries names: ${duplicates.join('; ')}`);
+  return;
+}
+
+const wrongFrameworks = getWrongFrameworks(categories);
+if (wrongFrameworks.length) {
+  console.error(`Wrong frameworks found: ${wrongFrameworks.join('; ')}`);
+  return;
+}
 
 /**
  * GENERATE LIBRARIES CATALOG
  */
+let str = '';
+
+categories.forEach((cat) => {
+  str += `\n  // ${cat.categoryName}\n`;
+  cat.libs.forEach((lib) => {
+    const seoAlias = lib.seoAlias && `'${lib.seoAlias}'`;
+    const framework = lib.framework && `'${lib.framework}'`;
+    str += `  ['${lib.name}', '${lib.category}', ${seoAlias}, ${framework}],\n`;
+  });
+});
 
 const resStr = `const libraries: [string, string, string | null, string | null][] = [${str}];
 
@@ -179,3 +197,56 @@ fs.writeFile('public/sitemap.xml', content, (err) => {
   if (err) return console.log(err);
   console.log('Sitemap generated successfully');
 });
+
+function getDuplicates(categories) {
+  const libs = categories.map(({ libs }) => libs).flat();
+  const libsNames = libs.map(({ name }) => name);
+  const libsAliases = libs
+    .map(({ seoAlias }) => seoAlias)
+    .filter((alias) => alias);
+  const duplicates = [];
+
+  duplicates.push(
+    ...getDuplicatesGeneric(libsNames),
+    ...getDuplicatesGeneric(libsAliases),
+    // Add conflicts between aliases and names
+    ...libsAliases.filter((alias) => libsNames.includes(alias))
+  );
+
+  return duplicates;
+}
+
+function getDuplicatesGeneric(items) {
+  const duplicates = [];
+
+  if (new Set(items).size < items.length) {
+    const itemsMap = {};
+
+    items.forEach((item) => {
+      if (itemsMap[item]) {
+        duplicates.push(item);
+        return;
+      }
+      itemsMap[item] = true;
+    });
+  }
+
+  return duplicates;
+}
+
+function getWrongFrameworks(categories) {
+  const libs = categories.map(({ libs }) => libs).flat();
+  const frameworks = libs.map(({ framework }) => framework);
+  const allowedFrameworks = [
+    null,
+    'react',
+    'vue',
+    'svelte',
+    'ember',
+    'angular',
+  ];
+
+  return frameworks.filter(
+    (framework) => !allowedFrameworks.includes(framework)
+  );
+}
