@@ -22,7 +22,7 @@
       If you know a library for which it makes sense to include it in this chart
       - feel free to submit an
       <a
-        href="https://github.com/aantipov/moiva-issues"
+        href="https://github.com/aantipov/moiva-catalog"
         target="_blank"
         rel="noopener"
         >issue</a
