@@ -59,6 +59,13 @@ export function loadDefaultLibs(): Promise<LibraryT[]> {
   return Promise.all(promises).then((libs) => {
     const filteredLibs = libs.filter((lib) => !!lib) as LibraryT[];
 
+    // Redirect a user to 404 if there was a wrong lib in the url
+    // This is needed for SEO - Google should not crawl "bad" pages
+    if (filteredLibs.length < uniqDefaultLibs.length) {
+      window.location.href = '/not-found';
+      return Promise.reject();
+    }
+
     cleanupUrl(filteredLibs.map((lib) => lib.name));
 
     return filteredLibs;
