@@ -322,6 +322,16 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?compare=@cucumber/cucumber+livedoc-mocha</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=@cucumber/cucumber+mocha-cakes-2</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?compare=@docusaurus/core</loc>
     <lastmod>2021-01-21</lastmod>
     <changefreq>weekly</changefreq>
@@ -782,6 +792,16 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?compare=@redwoodjs/core</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=@redwoodjs/core+blitz</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?compare=@shopify/draggable</loc>
     <lastmod>2021-01-21</lastmod>
     <changefreq>weekly</changefreq>
@@ -848,6 +868,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?compare=@vue/cli</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=@vueuse/core</loc>
     <lastmod>2021-01-21</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -1128,6 +1153,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?compare=ant-design-vue+bootstrap-vue</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=ant-design-vue+element-plus</loc>
     <lastmod>2021-01-21</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -1532,6 +1562,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?compare=blitz</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?compare=bluebird</loc>
     <lastmod>2021-01-21</lastmod>
     <changefreq>weekly</changefreq>
@@ -1638,6 +1673,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?compare=bootstrap-vue</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=bootstrap-vue+element-plus</loc>
     <lastmod>2021-01-21</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -2578,6 +2618,41 @@
   </url>
   <url>
     <loc>https://moiva.io/?compare=electron-builder</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=element-plus</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=element-plus+element-ui</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=element-plus+iview</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=element-plus+primevue</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=element-plus+quasar</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=element-plus+vue-material</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=element-plus+vuetify</loc>
     <lastmod>2021-01-21</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -3782,6 +3857,16 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?compare=livedoc-mocha</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=livedoc-mocha+mocha-cakes-2</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?compare=localforage</loc>
     <lastmod>2021-01-21</lastmod>
     <changefreq>weekly</changefreq>
@@ -4173,6 +4258,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?compare=mocha</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=mocha-cakes-2</loc>
     <lastmod>2021-01-21</lastmod>
     <changefreq>weekly</changefreq>
   </url>
