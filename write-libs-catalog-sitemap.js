@@ -37,6 +37,7 @@ const data = [
   require('../moiva-catalog/catalog/ui-dev-env'),
   require('../moiva-catalog/catalog/build-tools'),
   require('../moiva-catalog/catalog/node-runners'),
+  require('../moiva-catalog/catalog/react-fullstack-serverless'),
   require('../moiva-catalog/catalog/select-autocomplete'),
   require('../moiva-catalog/catalog/react-dates'),
   require('../moiva-catalog/catalog/misc'),
@@ -52,6 +53,7 @@ const categories = data.map((catObj) => ({
       category: catObj.name,
       seoAlias: libCatalogData[1] || null,
       framework: libCatalogData[2] || null,
+      github: libCatalogData[3] || null,
     };
   }),
 }));
@@ -78,22 +80,24 @@ categories.forEach((cat) => {
   cat.libs.forEach((lib) => {
     const seoAlias = lib.seoAlias && `'${lib.seoAlias}'`;
     const framework = lib.framework && `'${lib.framework}'`;
-    str += `  ['${lib.name}', '${lib.category}', ${seoAlias}, ${framework}],\n`;
+    const github = lib.github && `'${lib.github}'`;
+    str += `  ['${lib.name}', '${lib.category}', ${seoAlias}, ${framework}, ${github}],\n`;
   });
 });
 
-const resStr = `const libraries: [string, string, string | null, string | null][] = [${str}];
+const resStr = `const libraries: [string, string, string | null, string | null, string | null][] = [${str}];
 
 interface CatalogLibraryT {
   name: string;
   category: string;
   seoAlias: string | null;
   framework: string | null;
+  github: string | null;
 }
 
 export const catalogLibsByName = libraries.reduce(
-  (acc, [name, category, seoAlias, framework]) => {
-    acc[name] = { name, category, seoAlias, framework };
+  (acc, [name, category, seoAlias, framework, github]) => {
+    acc[name] = { name, category, seoAlias, framework, github };
     return acc;
   },
   {} as Record<string, CatalogLibraryT>

@@ -2,6 +2,10 @@ import { NowRequest, NowResponse } from '@vercel/node';
 import axios from 'axios';
 import { logRequest, initSentry, reportError } from './utils';
 import { ERROR_CODE_NO_GITHUB_DATA } from '../src/constants';
+import {
+  catalogLibsByName,
+  libsNamesByCategory,
+} from '../src/libraries-catalog';
 
 initSentry();
 
@@ -30,11 +34,15 @@ export default (req: NowRequest, res: NowResponse): void => {
           repository,
         },
       } = resp;
-      if (
-        !repository ||
-        repository.type !== 'git' ||
-        repository.url.indexOf('github.com') === -1
-      ) {
+
+      const hasCatalogLibGithub =
+        catalogLibsByName[pkg] && catalogLibsByName[pkg].github;
+      const hasPackageGithub =
+        repository &&
+        repository.type === 'git' &&
+        repository.url.indexOf('github.com') !== -1;
+
+      if (!hasCatalogLibGithub && !hasPackageGithub) {
         console.error(
           `API NPM PACKAGE: wrong GitHub link for ${pkg}`,
           resp.data && resp.data.repository
@@ -50,14 +58,20 @@ export default (req: NowRequest, res: NowResponse): void => {
         return;
       }
 
-      const endRepoUrlIndex = repository.url.slice(-4) === '.git' ? -4 : 400;
+      let repoUrl: string;
 
-      const repoUrl =
-        'https://' +
-        repository.url.slice(
-          repository.url.indexOf('github.com'),
-          endRepoUrlIndex
-        );
+      if (hasCatalogLibGithub) {
+        repoUrl = `https://github.com/${catalogLibsByName[pkg].github}`;
+      } else {
+        const endRepoUrlIndex = repository.url.slice(-4) === '.git' ? -4 : 400;
+
+        repoUrl =
+          'https://' +
+          repository.url.slice(
+            repository.url.indexOf('github.com'),
+            endRepoUrlIndex
+          );
+      }
 
       const result = {
         name,
