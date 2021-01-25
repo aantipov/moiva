@@ -2,10 +2,7 @@ import { NowRequest, NowResponse } from '@vercel/node';
 import axios from 'axios';
 import { logRequest, initSentry, reportError } from './utils';
 import { ERROR_CODE_NO_GITHUB_DATA } from '../src/constants';
-import {
-  catalogLibsByName,
-  libsNamesByCategory,
-} from '../src/libraries-catalog';
+import { catalogLibsByName } from '../src/libraries-catalog';
 
 initSentry();
 
