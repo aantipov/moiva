@@ -40,6 +40,7 @@ const data = [
   require('../moiva-catalog/catalog/react-fullstack-serverless'),
   require('../moiva-catalog/catalog/select-autocomplete'),
   require('../moiva-catalog/catalog/react-dates'),
+  require('../moiva-catalog/catalog/testing-bdd'),
   require('../moiva-catalog/catalog/misc'),
 ];
 

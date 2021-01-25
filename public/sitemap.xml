@@ -317,6 +317,21 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?compare=@cucumber/cucumber</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=@cucumber/cucumber+livedoc-mocha</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=@cucumber/cucumber+mocha-cakes-2</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?compare=@docusaurus/core</loc>
     <lastmod>2021-01-21</lastmod>
     <changefreq>weekly</changefreq>
@@ -3842,6 +3857,16 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?compare=livedoc-mocha</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=livedoc-mocha+mocha-cakes-2</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?compare=localforage</loc>
     <lastmod>2021-01-21</lastmod>
     <changefreq>weekly</changefreq>
@@ -4233,6 +4258,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?compare=mocha</loc>
+    <lastmod>2021-01-21</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?compare=mocha-cakes-2</loc>
     <lastmod>2021-01-21</lastmod>
     <changefreq>weekly</changefreq>
   </url>
