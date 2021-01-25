@@ -14,24 +14,45 @@
       ></div>
 
       <div class="flex flex-col flex-grow">
-        <div class="flex justify-between mb-1">
+        <div class="flex justify-between">
           <!-- Name -->
-          <span class="font-mono">
-            <span>{{ lib.name }}</span>
-            <span class="text-gray-500">@{{ lib.version }}</span>
-          </span>
+          <div class="mb-1">
+            <div class="flex items-center mb-1">
+              <a
+                :href="getNpmLink(lib.name)"
+                target="_blank"
+                class="inline-block pt-1 w-9"
+              >
+                <NpmIcon class="w-8" />
+              </a>
+
+              <a :href="getNpmLink(lib.name)" target="_blank" class="ml-1 link">
+                <span>{{ lib.name }}</span>
+                <span class="text-gray-500">@{{ lib.version }}</span>
+              </a>
+            </div>
+
+            <div class="flex items-center">
+              <a
+                :href="lib.repo"
+                target="_blank"
+                class="flex justify-center inline-block w-9"
+              >
+                <GithubIcon class="w-4 h-4" />
+              </a>
+              <a :href="lib.repo" target="_blank" class="ml-1 link">
+                {{ getRepoId(lib.repo) }}
+              </a>
+            </div>
+          </div>
 
           <!--  Links  -->
           <div class="flex">
             <!-- Desktop -->
-            <LibExternalLinks
-              :lib-name="lib.name"
-              :repo-url="lib.repo"
-              class="hidden sm:flex"
-            />
+            <LibExternalLinks :lib-name="lib.name" class="hidden sm:flex" />
 
             <a
-              class="ml-3"
+              class="flex items-center ml-3"
               :href="getRemainedLibsLink(lib.name)"
               @click.prevent="$emit('deselect', lib.name)"
             >
@@ -41,11 +62,7 @@
         </div>
 
         <!-- Mobile -->
-        <LibExternalLinks
-          :lib-name="lib.name"
-          :repo-url="lib.repo"
-          class="sm:hidden"
-        />
+        <LibExternalLinks :lib-name="lib.name" class="my-2 sm:hidden" />
 
         <div class="text-sm text-gray-500">
           <div v-if="githubIsLoading">
@@ -127,6 +144,8 @@ import { defineComponent, toRefs, computed } from 'vue';
 import Loader from './Loader.vue';
 import LibExternalLinks from './LibExternalLinks.vue';
 import { LibraryT, RepoT } from '../apis';
+import NpmIcon from './icons/Npm.vue';
+import GithubIcon from './icons/Github.vue';
 import { numbersFormatter, constructHref } from '../utils';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import format from 'date-fns/format';
@@ -137,6 +156,8 @@ export default defineComponent({
   components: {
     LibExternalLinks,
     Loader,
+    NpmIcon,
+    GithubIcon,
   },
 
   props: {
@@ -176,6 +197,9 @@ export default defineComponent({
       getNpmLink(libName: string): string {
         return `https://www.npmjs.com/package/${encodeURIComponent(libName)}`;
       },
+      getRepoId(repoUrl: string): string {
+        return repoUrl.slice(repoUrl.indexOf('github.com') + 11);
+      },
       hasRepoError(libIndex: number): boolean {
         return !githubRepos.value[libIndex];
       },
@@ -204,3 +228,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="postcss" scoped>
+.link {
+  @apply font-mono text-sm sm:text-base text-gray-800 no-underline hover:text-gray-800 hover:underline font-medium;
+}
+</style>
