@@ -1,7 +1,7 @@
 <template>
   <!--  Selected libs list  -->
   <div>
-    <Loader v-if="isLoading" />
+    <Loader v-if="npmIsLoading" />
 
     <div
       v-for="(lib, libIndex) in libs"
@@ -10,7 +10,7 @@
     >
       <div
         class="self-stretch flex-shrink-0 w-2 mr-2"
-        :style="{ backgroundColor: getLibColor(lib.name) }"
+        :style="{ backgroundColor: getLibColor(lib.repoId) }"
       ></div>
 
       <div class="flex flex-col flex-grow">
@@ -33,11 +33,7 @@
             </div>
 
             <div class="flex items-center">
-              <a
-                :href="lib.repo"
-                target="_blank"
-                class="flex justify-center inline-block w-9"
-              >
+              <a :href="lib.repo" target="_blank" class="flex inline-block w-9">
                 <GithubIcon class="w-4 h-4" />
               </a>
               <a :href="lib.repo" target="_blank" class="ml-1 link">
@@ -161,7 +157,7 @@ export default defineComponent({
   },
 
   props: {
-    isLoading: {
+    npmIsLoading: {
       type: Boolean,
       required: true,
     },
@@ -169,7 +165,7 @@ export default defineComponent({
       type: Array as () => LibraryT[],
       required: true,
     },
-    libToColorMap: {
+    repoToColorMap: {
       type: Object as () => Record<string, string>,
       required: true,
     },
@@ -190,7 +186,7 @@ export default defineComponent({
   emits: ['deselect'],
 
   setup(props) {
-    const { githubRepos, libs, libToColorMap } = toRefs(props);
+    const { githubRepos, libs, repoToColorMap } = toRefs(props);
     const libNames = computed(() => libs.value.map((lib) => lib.name));
 
     return {
@@ -221,8 +217,8 @@ export default defineComponent({
           libNames.value.filter((libName) => libName !== deletedLibName)
         );
       },
-      getLibColor(lib: string): string {
-        return libToColorMap.value[lib];
+      getLibColor(repoId: string): string {
+        return repoToColorMap.value[repoId];
       },
     };
   },

@@ -4,6 +4,7 @@
     :is-loading="isLoading"
     :is-error="isError"
     :libs-names="libsNames"
+    :repos-names="reposNames"
     :libs-languages="libsLanguages"
   />
 </template>
@@ -30,6 +31,9 @@ export default defineComponent({
     const { libs } = toRefs(props);
     const libsNames = computed<string[]>(() =>
       libs.value.map(({ name }) => name)
+    );
+    const reposNames = computed(() =>
+      libs.value.map(({ repoName }) => repoName)
     );
     const libsLanguages = ref<(GithubLanguagesResponseT | null)[]>([]);
     const isLoading = ref(true);
@@ -68,6 +72,7 @@ export default defineComponent({
       isLoading,
       isError,
       libsNames,
+      reposNames,
       libsLanguages,
     };
   },

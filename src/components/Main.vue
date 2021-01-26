@@ -22,7 +22,7 @@
     </div>
 
     <div v-if="!selectedLibs.length">
-      <Popular v-if="!isLoadingLibsData" @select="selectMultiple" />
+      <Popular v-if="!isLoadingPackagesData" @select="selectMultiple" />
 
       <div
         v-else
@@ -36,12 +36,12 @@
     <div v-else>
       <SelectedLibs
         class="relative w-full mx-auto mt-4 mb-2 lg:w-9/12 xl:w-2/4 divide-y divide-yellow-600 divide-opacity-40"
-        :is-loading="isLoadingLibsData"
         :libs="selectedLibs"
-        :lib-to-color-map="libToColorMap"
+        :npm-is-loading="isLoadingPackagesData"
         :github-is-loading="githubIsLoading"
         :github-is-error="githubIsError"
         :github-repos="githubRepositories"
+        :repo-to-color-map="repoToColorMap"
         @deselect="deselect"
       />
 
@@ -49,71 +49,81 @@
       <div>
         <div class="grid grid-cols-12 gap-4">
           <NpmDownloads
-            :libs-names="librariesNames"
-            :lib-to-color-map="libToColorMap"
-            :is-loading-libs-data="isLoadingLibsData"
+            :packages-names="packagesNames"
+            :is-loading-packages-data="isLoadingPackagesData"
+            :repos-ids="reposIds"
+            :repo-to-color-map="repoToColorMap"
             class="col-span-12 xl:col-span-6"
           />
 
           <GoogleTrends
-            :libs-names="librariesNames"
-            :lib-to-color-map="libToColorMap"
-            :is-loading-libs-data="isLoadingLibsData"
+            v-if="false"
+            :libs-names="packagesNames"
+            :lib-to-color-map="repoToColorMap"
+            :is-loading-libs-data="isLoadingPackagesData"
             class="col-span-12 xl:col-span-6"
           />
 
           <TechRadar
-            :libs-names="librariesNames"
-            :lib-to-color-map="libToColorMap"
+            v-if="false"
+            :libs-names="packagesNames"
+            :lib-to-color-map="repoToColorMap"
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
 
           <Contributors
+            v-if="false"
             :libs="selectedLibs"
-            :lib-to-color-map="libToColorMap"
-            :is-loading-libs-data="isLoadingLibsData"
+            :lib-to-color-map="repoToColorMap"
+            :is-loading-libs-data="isLoadingPackagesData"
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
 
           <Releases
-            :libs-names="librariesNames"
-            :lib-to-color-map="libToColorMap"
-            :is-loading-libs-data="isLoadingLibsData"
+            v-if="false"
+            :libs-names="packagesNames"
+            :lib-to-color-map="repoToColorMap"
+            :is-loading-libs-data="isLoadingPackagesData"
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
 
           <Commits
+            v-if="false"
             :libs="selectedLibs"
-            :lib-to-color-map="libToColorMap"
-            :is-loading-libs-data="isLoadingLibsData"
+            :lib-to-color-map="repoToColorMap"
+            :is-loading-libs-data="isLoadingPackagesData"
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
 
           <DevelopersUsage
-            :libs-names="librariesNames"
-            :lib-to-color-map="libToColorMap"
-            :is-loading-libs-data="isLoadingLibsData"
+            v-if="false"
+            :libs-names="packagesNames"
+            :lib-to-color-map="repoToColorMap"
+            :is-loading-libs-data="isLoadingPackagesData"
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
 
           <Issues
-            :libs-names="librariesNames"
+            v-if="false"
+            :repos-names="reposNames"
             :repos="githubRepositories"
             :is-loading="githubIsLoading"
-            :is-loading-libs-data="isLoadingLibsData"
+            :is-loading-libs-data="isLoadingPackagesData"
             :is-error="githubIsError"
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
 
           <Bundlephobia
-            :libs-names="librariesNames"
-            :is-loading-libs-data="isLoadingLibsData"
+            v-if="false"
+            :libs-names="packagesNames"
+            :is-loading-libs-data="isLoadingPackagesData"
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
 
           <Languages
+            v-if="false"
             :libs="selectedLibs"
-            :is-loading-libs-data="isLoadingLibsData"
+            :is-loading-libs-data="isLoadingPackagesData"
             class="col-span-12 md:col-span-6 xl:col-span-3"
           />
         </div>
@@ -149,7 +159,7 @@ import {
   constructHref,
 } from '../utils';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
-import { getLibToColorMap } from '../colors';
+import { getRepoToColorMap } from '../colors';
 import useGithub from '@/composables/useGithub';
 
 export default defineComponent({
@@ -174,28 +184,34 @@ export default defineComponent({
     const selectedLibs = ref<LibraryT[]>([]);
     const errorFetchingNewLib = ref<string | null>(null);
     const loadingLibs = ref<string[]>([]); // Track libs currently being loading
-    const isLoadingLibsData = ref(true);
-    const librariesNames = computed<string[]>(() =>
+    const isLoadingPackagesData = ref(true);
+    const packagesNames = computed<string[]>(() =>
       selectedLibs.value.map((lib) => lib.name)
     );
-    const suggestions = computed<string[]>(() =>
-      getSuggestions(librariesNames.value)
+    const reposNames = computed<string[]>(() =>
+      selectedLibs.value.map((lib) => lib.repoName)
     );
-    const libToColorMap = computed<Record<string, string>>(() =>
-      getLibToColorMap(librariesNames.value)
+    const reposIds = computed<string[]>(() =>
+      selectedLibs.value.map((lib) => lib.repoId)
+    );
+    const suggestions = computed<string[]>(() =>
+      getSuggestions(packagesNames.value)
+    );
+    const repoToColorMap = computed<Record<string, string>>(() =>
+      getRepoToColorMap(reposIds.value)
     );
     const gh = useGithub(selectedLibs);
 
     onMounted(() => {
       loadDefaultLibs().then((libs): void => {
         selectedLibs.value = libs;
-        isLoadingLibsData.value = false;
+        isLoadingPackagesData.value = false;
       });
     });
 
     // Update url and title
     watch([selectedLibs], () => {
-      updateUrl(librariesNames.value);
+      updateUrl(packagesNames.value);
       updateTitle();
     });
 
@@ -226,11 +242,13 @@ export default defineComponent({
 
     return {
       selectedLibs,
-      librariesNames,
+      packagesNames,
+      reposNames,
+      reposIds,
       suggestions,
-      isLoadingLibsData,
+      isLoadingPackagesData,
       errorFetchingNewLib,
-      libToColorMap,
+      repoToColorMap,
       githubIsError: gh.isError,
       githubIsLoading: gh.isLoading,
       githubRepositories: gh.repositories,
@@ -244,13 +262,13 @@ export default defineComponent({
         errorFetchingNewLib.value = null;
         if (
           !libName ||
-          librariesNames.value.includes(libName) ||
+          packagesNames.value.includes(libName) ||
           loadingLibs.value.includes(libName)
         ) {
           return;
         }
 
-        isLoadingLibsData.value = true;
+        isLoadingPackagesData.value = true;
         loadingLibs.value = [...loadingLibs.value, libName];
 
         fetchNpmPackage(libName)
@@ -268,7 +286,7 @@ export default defineComponent({
             errorFetchingNewLib.value = errMsg;
           })
           .finally(() => {
-            isLoadingLibsData.value = false;
+            isLoadingPackagesData.value = false;
             loadingLibs.value = loadingLibs.value.filter(
               (val) => libName !== val
             );
@@ -276,9 +294,9 @@ export default defineComponent({
       },
       selectMultiple(libNames: string[]): void {
         // Assumption - it's called from the Start Page
-        // when there is no selected libraries yes
+        // when there is no selected libraries yet
         errorFetchingNewLib.value = null;
-        isLoadingLibsData.value = true;
+        isLoadingPackagesData.value = true;
         loadingLibs.value = [...libNames];
 
         Promise.all(libNames.map(fetchNpmPackage))
@@ -289,14 +307,14 @@ export default defineComponent({
             ];
           })
           .finally(() => {
-            isLoadingLibsData.value = false;
+            isLoadingPackagesData.value = false;
             loadingLibs.value = loadingLibs.value.filter(
               (val) => !libNames.includes(val)
             );
           });
       },
       getHrefForAdditionalLib(lib: string): string {
-        return constructHref([...librariesNames.value, lib]);
+        return constructHref([...packagesNames.value, lib]);
       },
     };
   },

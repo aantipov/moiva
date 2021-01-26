@@ -1,7 +1,7 @@
 <template>
   <m-chart
     title="NPM monthly downloads"
-    :is-loading="isLoading || isLoadingLibsData"
+    :is-loading="isLoadingPackagesDownloads || isLoadingPackagesData"
     :is-error="isError"
     :libs-names="filteredLibsNames"
     :failed-libs-names="failedLibsNames"
@@ -22,15 +22,16 @@ export default defineComponent({
   name: 'NpmDownloadsChart',
 
   props: {
-    isLoadingLibsData: { type: Boolean, required: true },
-    isLoading: { type: Boolean, required: true },
+    isLoadingPackagesData: { type: Boolean, required: true },
+    isLoadingPackagesDownloads: { type: Boolean, required: true },
     isError: { type: Boolean, required: true },
-    libsNames: { type: Array as () => string[], required: true },
-    libToColorMap: {
+    packagesNames: { type: Array as () => string[], required: true },
+    reposIds: { type: Array as () => string[], required: true },
+    repoToColorMap: {
       type: Object as () => Record<string, string>,
       required: true,
     },
-    libsDownloads: {
+    packagesDownloads: {
       type: Array as () => (NpmDownloadT[] | null)[],
       required: true,
     },
@@ -38,43 +39,51 @@ export default defineComponent({
 
   setup(props) {
     const {
-      libsNames,
-      libToColorMap,
-      libsDownloads,
-      isLoading,
-      isLoadingLibsData,
+      packagesNames,
+      reposIds,
+      repoToColorMap,
+      packagesDownloads,
+      isLoadingPackagesDownloads,
+      isLoadingPackagesData,
     } = toRefs(props);
 
-    const filteredLibsDownloads = computed<NpmDownloadT[][]>(
+    // Successful requests downloads
+    const filteredPackagesDownloads = computed<NpmDownloadT[][]>(
       () =>
-        libsDownloads.value.filter(
+        packagesDownloads.value.filter(
           (libDownloads) => !!libDownloads
         ) as NpmDownloadT[][]
     );
 
     const filteredLibsNames = computed(() =>
-      libsNames.value.filter(
-        (libName, libIndex) => !!libsDownloads.value[libIndex]
+      packagesNames.value.filter(
+        (libName, libIndex) => !!packagesDownloads.value[libIndex]
+      )
+    );
+
+    const filteredReposIds = computed(() =>
+      reposIds.value.filter(
+        (_, repoIndex) => !!packagesDownloads.value[repoIndex]
       )
     );
 
     const failedLibsNames = computed(() =>
-      libsNames.value.filter(
+      packagesNames.value.filter(
         (libName, libIndex) =>
-          !isLoadingLibsData.value &&
-          !isLoading.value &&
-          !libsDownloads.value[libIndex]
+          !isLoadingPackagesData.value &&
+          !isLoadingPackagesDownloads.value &&
+          !packagesDownloads.value[libIndex]
       )
     );
 
     const datasets = computed<ChartDataSets[]>(() =>
       filteredLibsNames.value.map((libName, libIndex) => ({
         label: libName,
-        data: filteredLibsDownloads.value[libIndex].map(
+        data: filteredPackagesDownloads.value[libIndex].map(
           ({ downloads }) => downloads
         ),
-        backgroundColor: libToColorMap.value[libName],
-        borderColor: libToColorMap.value[libName],
+        backgroundColor: repoToColorMap.value[filteredReposIds.value[libIndex]],
+        borderColor: repoToColorMap.value[filteredReposIds.value[libIndex]],
         borderWidth: 4,
         pointRadius: 0,
         pointHoverRadius: 7,
@@ -82,8 +91,8 @@ export default defineComponent({
     );
 
     const filteredCategories = computed<string[]>(() =>
-      filteredLibsDownloads.value.length
-        ? filteredLibsDownloads.value[0].map(({ month }) => month)
+      filteredPackagesDownloads.value.length
+        ? filteredPackagesDownloads.value[0].map(({ month }) => month)
         : []
     );
 

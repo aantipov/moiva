@@ -5,7 +5,7 @@
     :is-loading="isLoading || isLoadingLibsData"
     :is-error="isError"
     :libs-names="filteredLibsNames"
-    :failed-libs-names="failedLibsNames"
+    :failed-libs-names="failedReposNames"
     :chart-config="chartConfig"
   >
     <p>
@@ -36,12 +36,17 @@ export default defineComponent({
       type: Array as () => (GithubLanguagesResponseT | null)[],
       required: true,
     },
+    reposNames: { type: Array as () => string[], required: true },
   },
 
   setup(props) {
-    const { libsNames, libsLanguages, isLoadingLibsData, isLoading } = toRefs(
-      props
-    );
+    const {
+      libsNames,
+      reposNames,
+      libsLanguages,
+      isLoadingLibsData,
+      isLoading,
+    } = toRefs(props);
 
     const filteredLibsLanguages = computed<GithubLanguagesResponseT[]>(
       () =>
@@ -56,12 +61,18 @@ export default defineComponent({
       )
     );
 
-    const failedLibsNames = computed(() =>
-      libsNames.value.filter(
-        (libName, libIndex) =>
+    const filteredReposNames = computed(() =>
+      reposNames.value.filter(
+        (repoName, repoIndex) => !!libsLanguages.value[repoIndex]
+      )
+    );
+
+    const failedReposNames = computed(() =>
+      reposNames.value.filter(
+        (repoName, repoIndex) =>
           !isLoadingLibsData.value &&
           !isLoading.value &&
-          !libsLanguages.value[libIndex]
+          !libsLanguages.value[repoIndex]
       )
     );
 
@@ -158,7 +169,7 @@ export default defineComponent({
     const chartConfig = computed<Chart.ChartConfiguration>(() => ({
       type: 'bar',
       data: {
-        labels: filteredLibsNames.value,
+        labels: filteredReposNames.value,
         datasets: datasets.value,
       },
       options: {
@@ -179,7 +190,7 @@ export default defineComponent({
     }));
 
     return {
-      failedLibsNames,
+      failedReposNames,
       filteredLibsNames,
       chartConfig,
     };

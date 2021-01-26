@@ -1,11 +1,12 @@
 <template>
   <NpmDownloadsChart
-    :is-loading-libs-data="isLoadingLibsData"
-    :is-loading="isLoading"
+    :is-loading-packages-data="isLoadingPackagesData"
+    :is-loading-packages-downloads="isLoadingPackagesDownloads"
     :is-error="isError"
-    :libs-names="libsNames"
-    :lib-to-color-map="libToColorMap"
-    :libs-downloads="libsDownloads"
+    :packages-names="packagesNames"
+    :packages-downloads="libsDownloads"
+    :repos-ids="reposIds"
+    :repo-to-color-map="repoToColorMap"
   />
 </template>
 
@@ -22,40 +23,41 @@ export default defineComponent({
   },
 
   props: {
-    libsNames: { type: Array as () => string[], required: true },
-    libToColorMap: {
+    packagesNames: { type: Array as () => string[], required: true },
+    reposIds: { type: Array as () => string[], required: true },
+    repoToColorMap: {
       type: Object as () => Record<string, string>,
       required: true,
     },
-    isLoadingLibsData: { type: Boolean, required: true },
+    isLoadingPackagesData: { type: Boolean, required: true },
   },
 
   setup(props) {
-    const { libsNames } = toRefs(props);
+    const { packagesNames } = toRefs(props);
     const libsDownloads = ref<(NpmDownloadT[] | null)[]>([]);
-    const isLoading = ref(true);
+    const isLoadingPackagesDownloads = ref(true);
     const isError = ref(false);
     let lastFetchPromise: null | Promise<void> = null;
 
     function loadData(): void {
-      isLoading.value = true;
+      isLoadingPackagesDownloads.value = true;
       isError.value = false;
 
       const fetchPromise = (lastFetchPromise = Promise.all(
-        libsNames.value.map(fetchNpmDownloads)
+        packagesNames.value.map(fetchNpmDownloads)
       )
         .then((data) => {
           // Do nothing if there is a new request already in place
           if (lastFetchPromise === fetchPromise) {
             libsDownloads.value = data;
-            isLoading.value = false;
+            isLoadingPackagesDownloads.value = false;
             isError.value = false;
           }
         })
         .catch(() => {
           // Do nothing if there is a new request already in place
           if (lastFetchPromise === fetchPromise) {
-            isLoading.value = false;
+            isLoadingPackagesDownloads.value = false;
             isError.value = true;
           }
         }));
@@ -63,10 +65,10 @@ export default defineComponent({
 
     onMounted(loadData);
 
-    watch(libsNames, loadData);
+    watch(packagesNames, loadData);
 
     return {
-      isLoading,
+      isLoadingPackagesDownloads,
       isError,
       libsDownloads,
     };

@@ -47,6 +47,8 @@ export interface GTrendsT {
 }
 
 export interface RepoT {
+  repoId: string;
+  repoName: string;
   stars: number;
   createdAt: string;
   vulnerabilitiesCount: number;
@@ -61,6 +63,8 @@ export interface LibraryT {
   description: string;
   license: string;
   repo: string;
+  repoId: string;
+  repoName: string;
   version: string;
   dependencies: string[];
 }
@@ -269,8 +273,13 @@ export function fetchGithubData(
   return axios
     .get<RepoT>(`/api/gh?name=${name}&owner=${owner}&pkg=${npmPackage}`)
     .then(({ data }) => {
-      githubCache.set(repoUrl, data);
-      return data;
+      const enrichedData = {
+        ...data,
+        repoId: `${owner}/${name}`,
+        repoName: name,
+      };
+      githubCache.set(repoUrl, enrichedData);
+      return enrichedData;
     })
     .catch((err) => {
       reportSentry(err, `fetchGithubData (package: ${npmPackage})`);
@@ -441,9 +450,15 @@ export function fetchNpmPackage(packageName: string): Promise<LibraryT | null> {
 }
 
 function fetchNpmJSPackage(packageName: string): Promise<LibraryT | null> {
-  return axios
-    .get(`/api/npm-package?pkg=${packageName}`)
-    .then(({ data }) => data);
+  return axios.get(`/api/npm-package?pkg=${packageName}`).then(({ data }) => {
+    const repoId = data.repo.slice(data.repo.indexOf('github.com') + 11);
+
+    return {
+      ...data,
+      repoId,
+      repoName: repoId.slice(repoId.indexOf('/') + 1),
+    };
+  });
 }
 
 function fetchNpmsIOPackage(packageName: string): Promise<LibraryT | null> {
@@ -462,6 +477,8 @@ function fetchNpmsIOPackage(packageName: string): Promise<LibraryT | null> {
         },
       } = resp.data as NpmsIOPackageResponseT;
 
+      const repoId = repository.slice(repository.indexOf('github.com') + 11);
+
       return {
         name,
         description,
@@ -469,6 +486,8 @@ function fetchNpmsIOPackage(packageName: string): Promise<LibraryT | null> {
         version,
         license,
         repo: repository,
+        repoId,
+        repoName: repoId.slice(repoId.indexOf('/') + 1),
       };
     });
 }

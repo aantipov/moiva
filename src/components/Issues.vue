@@ -25,25 +25,27 @@ export default defineComponent({
     isLoadingLibsData: { type: Boolean, required: true },
     isLoading: { type: Boolean, required: true },
     isError: { type: Boolean, required: true },
-    libsNames: { type: Array as () => string[], required: true },
+    reposNames: { type: Array as () => string[], required: true },
     repos: { type: Array as () => (RepoT | null)[], required: true },
   },
 
   setup(props) {
-    const { libsNames, repos, isLoadingLibsData, isLoading } = toRefs(props);
+    const { reposNames, repos, isLoadingLibsData, isLoading } = toRefs(props);
 
     const filteredRepos = computed<RepoT[]>(
       () => repos.value.filter((repo) => !!repo) as RepoT[]
     );
 
     const filteredLibsNames = computed(() =>
-      libsNames.value.filter((libName, libIndex) => !!repos.value[libIndex])
+      filteredRepos.value.map(({ repoName }) => repoName)
     );
 
     const failedLibsNames = computed(() =>
-      libsNames.value.filter(
-        (libName, libIndex) =>
-          !isLoadingLibsData.value && !isLoading.value && !repos.value[libIndex]
+      reposNames.value.filter(
+        (reposNames, repoIndex) =>
+          !isLoadingLibsData.value &&
+          !isLoading.value &&
+          !repos.value[repoIndex]
       )
     );
 

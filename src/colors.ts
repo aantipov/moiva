@@ -53,30 +53,53 @@ export const ISSUES_COLORS = {
   CLOSED_BUGS: '#FCA5A5', // Red 300
 };
 
-const libToColorMap = new Map<string, string>();
+const repoToColorMap = new Map<string, string>();
 const langToColorMap = new Map<string, string>();
 
-export function getLibToColorMap(libs: string[]): Record<string, string> {
-  // Clean up the Map - filter out unused libs
-  [...libToColorMap.keys()].forEach((lib) => {
-    if (!libs.includes(lib)) {
-      libToColorMap.delete(lib);
+// export function getLibToColorMap(libs: string[]): Record<string, string> {
+//   // Clean up the Map - filter out unused libs
+//   [...libToColorMap.keys()].forEach((lib) => {
+//     if (!libs.includes(lib)) {
+//       libToColorMap.delete(lib);
+//     }
+//   });
+//
+//   // Get a list of unused colors
+//   const vacantColors = COLORS.filter(
+//     (color) => ![...libToColorMap.values()].includes(color)
+//   );
+//
+//   // Update the Map with the colors for new libs
+//   libs.forEach((lib) => {
+//     if (!libToColorMap.has(lib)) {
+//       libToColorMap.set(lib, vacantColors.shift() || '#9E9E9E');
+//     }
+//   });
+//
+//   return Object.fromEntries(libToColorMap);
+// }
+
+export function getRepoToColorMap(repoIds: string[]): Record<string, string> {
+  // Clean up the Map - filter out unused repos
+  [...repoToColorMap.keys()].forEach((repoId) => {
+    if (!repoIds.includes(repoId)) {
+      repoToColorMap.delete(repoId);
     }
   });
 
   // Get a list of unused colors
   const vacantColors = COLORS.filter(
-    (color) => ![...libToColorMap.values()].includes(color)
+    (color) => ![...repoToColorMap.values()].includes(color)
   );
 
   // Update the Map with the colors for new libs
-  libs.forEach((lib) => {
-    if (!libToColorMap.has(lib)) {
-      libToColorMap.set(lib, vacantColors.shift() || '#9E9E9E');
+  repoIds.forEach((repoId) => {
+    if (!repoToColorMap.has(repoId)) {
+      repoToColorMap.set(repoId, vacantColors.shift() || '#9E9E9E');
     }
   });
 
-  return Object.fromEntries(libToColorMap);
+  return Object.fromEntries(repoToColorMap);
 }
 
 export function getLangToColorMap(langs: string[]): Record<string, string> {

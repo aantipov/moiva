@@ -38,11 +38,13 @@ export default defineComponent({
       type: Array as () => (CommitsResponseItemT[] | null)[],
       required: true,
     },
+    reposNames: { type: Array as () => string[], required: true },
   },
 
   setup(props) {
     const {
       libsNames,
+      reposNames,
       libsCommits,
       libToColorMap,
       isLoadingLibsData,
@@ -73,7 +75,7 @@ export default defineComponent({
 
     const datasets = computed<ChartDataSets[]>(() =>
       filteredLibsNames.value.map((libName, libIndex) => ({
-        label: libName,
+        label: reposNames.value[libIndex],
         data: filteredLibsCommits.value[libIndex].map(({ total, week }) => ({
           x: week,
           y: total,

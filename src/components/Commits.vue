@@ -6,6 +6,7 @@
     :libs-names="libsNames"
     :lib-to-color-map="libToColorMap"
     :libs-commits="libsCommits"
+    :repos-names="reposNames"
   />
 </template>
 
@@ -102,6 +103,9 @@ export default defineComponent({
     const { libs } = toRefs(props);
     const libsCommits = ref<(CommitsResponseItemT[] | null)[]>([]);
     const libsNames = computed(() => libs.value.map(({ name }) => name));
+    const reposNames = computed(() =>
+      libs.value.map(({ repoName }) => repoName)
+    );
     const isLoading = ref(true);
     const isError = ref(false);
     let lastFetchPromise: null | Promise<void> = null;
@@ -142,6 +146,7 @@ export default defineComponent({
       isError,
       libsCommits,
       libsNames,
+      reposNames,
     };
   },
 });
