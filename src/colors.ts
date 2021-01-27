@@ -53,7 +53,6 @@ export const ISSUES_COLORS = {
   CLOSED_BUGS: '#FCA5A5', // Red 300
 };
 
-// const repoToColorMap = new Map<string, string>();
 const langToColorMap = new Map<string, string>();
 
 export function getLangToColorMap(langs: string[]): Record<string, string> {

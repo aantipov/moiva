@@ -49,13 +49,11 @@
         <div class="grid grid-cols-12 gap-4">
           <NpmDownloads
             :packages-names="packagesNames"
-            :repos-ids="reposIds"
             :is-loading-packages-data="isLoadingPackagesData"
             class="col-span-12 xl:col-span-6"
           />
 
           <GoogleTrends
-            :repos-ids="reposIds"
             :is-loading-packages-data="isLoadingPackagesData"
             class="col-span-12 xl:col-span-6"
           />
@@ -164,6 +162,7 @@ import {
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import useGithub from '@/composables/useGithub';
 import { updateReposColors } from '@/store/reposColors';
+import { reposIds, addRepoId, removeRepoId } from '@/store/selectedRepos';
 
 export default defineComponent({
   name: 'Main',
@@ -194,9 +193,6 @@ export default defineComponent({
     const reposNames = computed<string[]>(() =>
       selectedLibs.value.map((lib) => lib.repoName)
     );
-    const reposIds = computed<string[]>(() =>
-      selectedLibs.value.map((lib) => lib.repoId)
-    );
     const suggestions = computed<string[]>(() =>
       getSuggestions(packagesNames.value)
     );
@@ -208,6 +204,7 @@ export default defineComponent({
     onMounted(() => {
       loadDefaultLibs().then((libs): void => {
         selectedLibs.value = libs;
+        libs.forEach(({ repoId }) => addRepoId(repoId));
         isLoadingPackagesData.value = false;
       });
     });
@@ -247,19 +244,21 @@ export default defineComponent({
       selectedLibs,
       packagesNames,
       reposNames,
-      reposIds,
       suggestions,
       isLoadingPackagesData,
       errorFetchingNewLib,
-      // repoToColorMap,
       githubIsError: gh.isError,
       githubIsLoading: gh.isLoading,
       githubRepositories: gh.repositories,
       deselect(libName: string): void {
         errorFetchingNewLib.value = null;
+        const libToDelete = selectedLibs.value.find(
+          ({ name }) => name === libName
+        );
         selectedLibs.value = selectedLibs.value.filter(
           (lib) => lib.name !== libName
         );
+        removeRepoId((libToDelete as LibraryT).repoId);
       },
       select(libName: string): void {
         errorFetchingNewLib.value = null;
@@ -280,6 +279,7 @@ export default defineComponent({
               ...selectedLibs.value,
               npmPackage as LibraryT,
             ];
+            addRepoId((npmPackage as LibraryT).repoId);
           })
           .catch((err) => {
             let errMsg = `Sorry, we couldn't fetch data for ${libName}`;
@@ -308,6 +308,9 @@ export default defineComponent({
               ...selectedLibs.value,
               ...(npmPackages as LibraryT[]),
             ];
+            npmPackages.forEach((npmPackage) =>
+              addRepoId((npmPackage as LibraryT).repoId)
+            );
           })
           .finally(() => {
             isLoadingPackagesData.value = false;

@@ -10,11 +10,12 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, toRefs, ref, watch, computed } from 'vue';
+import { defineComponent, onMounted, ref, watch, computed } from 'vue';
 import { repoToGTrendDefMap } from '../../google-trends.config';
 import GTrendsChart from './GTrendsChart.vue';
 import { fetchGTrendsData, GTrendPointT } from '@/apis';
 import { repoToColorMap } from '@/store/reposColors';
+import { reposIds } from '@/store/selectedRepos';
 
 export default defineComponent({
   name: 'GoogleTrends',
@@ -24,12 +25,10 @@ export default defineComponent({
   },
 
   props: {
-    reposIds: { type: Array as () => string[], required: true },
     isLoadingPackagesData: { type: Boolean, required: true },
   },
 
   setup(props) {
-    const { reposIds } = toRefs(props);
     const libsTrends = ref<GTrendPointT[]>([]);
     const isLoading = ref(true);
     const isError = ref(false);
