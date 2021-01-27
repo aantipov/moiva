@@ -1,4 +1,4 @@
-import { LibraryT, fetchNpmPackage } from './apis';
+import { NpmPackageT, fetchNpmPackage } from './apis';
 import { catalogLibsByName, libsNamesByCategory } from './libraries-catalog';
 
 const paramName = 'compare';
@@ -46,7 +46,7 @@ export function updateUrl(selectedLibs: string[]): void {
   window.history.pushState(null, '', constructHref(selectedLibs));
 }
 
-export function loadDefaultLibs(): Promise<LibraryT[]> {
+export function loadDefaultLibs(): Promise<NpmPackageT[]> {
   const Url = new URL(window.location.href);
   const defaultLibs = Url.searchParams.get(paramName)?.split(delimiter) || [];
   const uniqDefaultLibs = [...new Set(defaultLibs)];
@@ -57,7 +57,7 @@ export function loadDefaultLibs(): Promise<LibraryT[]> {
     .map((pkgPromise) => pkgPromise.catch(() => null));
 
   return Promise.all(promises).then((libs) => {
-    const filteredLibs = libs.filter((lib) => !!lib) as LibraryT[];
+    const filteredLibs = libs.filter((lib) => !!lib) as NpmPackageT[];
 
     // Redirect a user to 404 if there was a wrong lib in the url
     // This is needed for SEO - Google should not crawl "bad" pages

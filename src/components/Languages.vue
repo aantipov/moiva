@@ -12,7 +12,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, toRefs, ref, computed, watch } from 'vue';
 import LanguagesChart from './LanguagesChart.vue';
-import { fetchRepoLanguages, LibraryT } from '@/apis';
+import { fetchRepoLanguages, NpmPackageT } from '@/apis';
 import { GithubLanguagesResponseT } from '../../api/gh-languages';
 
 export default defineComponent({
@@ -23,7 +23,7 @@ export default defineComponent({
   },
 
   props: {
-    libs: { type: Array as () => LibraryT[], required: true },
+    libs: { type: Array as () => NpmPackageT[], required: true },
     isLoadingLibsData: { type: Boolean, required: true },
   },
 

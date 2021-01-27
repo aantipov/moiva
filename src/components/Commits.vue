@@ -13,7 +13,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, toRefs, ref, computed, watch } from 'vue';
 import CommitsChart from './CommitsChart.vue';
-import { fetchRepoCommits, LibraryT } from '@/apis';
+import { fetchRepoCommits, NpmPackageT } from '@/apis';
 import { CommitsResponseItemT } from '../../api/gh-commits';
 
 /**
@@ -91,7 +91,7 @@ export default defineComponent({
   },
 
   props: {
-    libs: { type: Array as () => LibraryT[], required: true },
+    libs: { type: Array as () => NpmPackageT[], required: true },
     libToColorMap: {
       type: Object as () => Record<string, string>,
       required: true,

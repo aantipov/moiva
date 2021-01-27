@@ -1,9 +1,9 @@
 import { ref, onMounted, watch, Ref } from 'vue';
-import { fetchGithubData, RepoT, LibraryT } from '@/apis';
+import { fetchGithubData, RepoT, NpmPackageT } from '@/apis';
 import * as Sentry from '@sentry/browser';
 
 export default function useGithub(
-  libs: Ref<LibraryT[]>
+  libs: Ref<NpmPackageT[]>
 ): {
   isLoading: Ref<boolean>;
   isError: Ref<boolean>;

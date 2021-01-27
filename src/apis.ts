@@ -52,13 +52,13 @@ export interface RepoT {
   stars: number;
   createdAt: string;
   vulnerabilitiesCount: number;
-  closedIssues: { totalCount: number };
-  closedBugIssues: { totalCount: number };
-  openIssues: { totalCount: number };
-  openBugIssues: { totalCount: number };
+  closedIssues: number;
+  closedBugIssues: number;
+  openIssues: number;
+  openBugIssues: number;
 }
 
-export interface LibraryT {
+export interface NpmPackageT {
   name: string;
   description: string;
   license: string;
@@ -418,7 +418,9 @@ function fetchNpmsIOSuggestions(keyword: string): Promise<SuggestionT[]> {
     });
 }
 
-export function fetchNpmPackage(packageName: string): Promise<LibraryT | null> {
+export function fetchNpmPackage(
+  packageName: string
+): Promise<NpmPackageT | null> {
   // eslint-disable-next-line
   const fetchPackageFunc = true ? fetchNpmJSPackage : fetchNpmsIOPackage;
 
@@ -449,7 +451,7 @@ export function fetchNpmPackage(packageName: string): Promise<LibraryT | null> {
     });
 }
 
-function fetchNpmJSPackage(packageName: string): Promise<LibraryT | null> {
+function fetchNpmJSPackage(packageName: string): Promise<NpmPackageT | null> {
   return axios.get(`/api/npm-package?pkg=${packageName}`).then(({ data }) => {
     const repoId = data.repo.slice(data.repo.indexOf('github.com') + 11);
 
@@ -461,7 +463,7 @@ function fetchNpmJSPackage(packageName: string): Promise<LibraryT | null> {
   });
 }
 
-function fetchNpmsIOPackage(packageName: string): Promise<LibraryT | null> {
+function fetchNpmsIOPackage(packageName: string): Promise<NpmPackageT | null> {
   return axios
     .get(`https://api.npms.io/v2/package/${encodeURIComponent(packageName)}`)
     .then((resp) => {

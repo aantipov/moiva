@@ -12,7 +12,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, toRefs, ref, watch, computed } from 'vue';
 import ContributorsChart from './ContributorsChart.vue';
-import { fetchContributors, YearContributorsT, LibraryT } from '@/apis';
+import { fetchContributors, YearContributorsT, NpmPackageT } from '@/apis';
 
 export default defineComponent({
   name: 'Contributors',
@@ -22,7 +22,7 @@ export default defineComponent({
   },
 
   props: {
-    libs: { type: Array as () => LibraryT[], required: true },
+    libs: { type: Array as () => NpmPackageT[], required: true },
     libToColorMap: {
       type: Object as () => Record<string, string>,
       required: true,

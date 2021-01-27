@@ -21,8 +21,9 @@
       {{ errorFetchingNewLib }}
     </div>
 
-    <div v-if="!selectedLibs.length">
-      <Popular v-if="!isLoadingPackagesData" @select="selectMultiple" />
+    <!--  Show Popular Suggestions    -->
+    <div v-if="!libraries.length">
+      <Popular v-if="!isLoading" @select="selectMultiple" />
 
       <div
         v-else
@@ -33,30 +34,25 @@
       </div>
     </div>
 
+    <!--  Show Selected Libraries and Charts    -->
     <div v-else>
       <SelectedLibs
         class="relative w-full mx-auto mt-4 mb-2 lg:w-9/12 xl:w-2/4 divide-y divide-yellow-600 divide-opacity-40"
-        :libs="selectedLibs"
-        :npm-is-loading="isLoadingPackagesData"
-        :github-is-loading="githubIsLoading"
-        :github-is-error="githubIsError"
-        :github-repos="githubRepositories"
-        @deselect="deselect"
       />
 
       <!-- Charts -->
       <div>
         <div class="grid grid-cols-12 gap-4">
-          <NpmDownloads
-            :packages-names="packagesNames"
-            :is-loading-packages-data="isLoadingPackagesData"
-            class="col-span-12 xl:col-span-6"
-          />
+          <!-- <NpmDownloads -->
+          <!--   :packages&#45;names="packagesNames" -->
+          <!--   :is&#45;loading&#45;packages&#45;data="isLoadingPackagesData" -->
+          <!--   class="col&#45;span&#45;12 xl:col&#45;span&#45;6" -->
+          <!-- /> -->
 
-          <GoogleTrends
-            :is-loading-packages-data="isLoadingPackagesData"
-            class="col-span-12 xl:col-span-6"
-          />
+          <!-- <GoogleTrends -->
+          <!--   :is&#45;loading&#45;packages&#45;data="isLoadingPackagesData" -->
+          <!--   class="col&#45;span&#45;12 xl:col&#45;span&#45;6" -->
+          <!-- /> -->
 
           <!-- <TechRadar -->
           <!--   v&#45;if="false" -->
@@ -129,17 +125,17 @@
 <script lang="ts">
 import {
   defineComponent,
-  onMounted,
+  // onMounted,
   ref,
   computed,
   watch,
   watchEffect,
 } from 'vue';
-import NpmDownloads from './NpmDownloads.vue';
+// import NpmDownloads from './NpmDownloads.vue';
 // import Releases from './Releases.vue';
 import Autosuggest from './Autosuggest.vue';
 // import TechRadar from './TechRadar.vue';
-import GoogleTrends from './GTrends.vue';
+// import GoogleTrends from './GTrends.vue';
 // import Bundlephobia from './Bundlephobia.vue';
 // import Issues from './Issues.vue';
 import Popular from './Popular.vue';
@@ -149,9 +145,9 @@ import SelectedLibs from './SelectedLibs.vue';
 // import DevelopersUsage from './DevelopersUsage.vue';
 // import Commits from './Commits.vue';
 import { ERROR_CODE_NO_GITHUB_DATA } from '@/constants';
-import { LibraryT, fetchNpmPackage, RepoT } from '@/apis';
+import { NpmPackageT, RepoT } from '@/libraryApis';
 import {
-  loadDefaultLibs,
+  // loadDefaultLibs,
   updateUrl,
   updateTitle,
   updateMetaDescription,
@@ -161,18 +157,24 @@ import {
 } from '../utils';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import useGithub from '@/composables/useGithub';
-import { updateReposColors } from '@/store/reposColors';
-import { reposIds, addRepoId, removeRepoId } from '@/store/selectedRepos';
+import { updateLibrariesColors } from '@/store/librariesColors';
+import {
+  // reposIds,
+  isLoading,
+  libraries,
+  librariesIds,
+  addLibraryByNpmPackage,
+} from '@/store/libraries';
 
 export default defineComponent({
   name: 'Main',
   components: {
     Autosuggest,
     SelectedLibs,
-    NpmDownloads,
+    // NpmDownloads,
     // Releases,
     // TechRadar,
-    GoogleTrends,
+    // GoogleTrends,
     // Bundlephobia,
     // Issues,
     Popular,
@@ -183,9 +185,9 @@ export default defineComponent({
   },
 
   setup() {
-    const selectedLibs = ref<LibraryT[]>([]);
+    const selectedLibs = ref<NpmPackageT[]>([]);
     const errorFetchingNewLib = ref<string | null>(null);
-    const loadingLibs = ref<string[]>([]); // Track libs currently being loading
+    // const loadingLibs = ref<string[]>([]); // Track libs currently being loading
     const isLoadingPackagesData = ref(true);
     const packagesNames = computed<string[]>(() =>
       selectedLibs.value.map((lib) => lib.name)
@@ -197,17 +199,17 @@ export default defineComponent({
       getSuggestions(packagesNames.value)
     );
 
-    watchEffect(() => updateReposColors(reposIds.value));
+    watchEffect(() => updateLibrariesColors(librariesIds.value));
 
     const gh = useGithub(selectedLibs);
 
-    onMounted(() => {
-      loadDefaultLibs().then((libs): void => {
-        selectedLibs.value = libs;
-        libs.forEach(({ repoId }) => addRepoId(repoId));
-        isLoadingPackagesData.value = false;
-      });
-    });
+    // onMounted(() => {
+    //   loadDefaultLibs().then((libs): void => {
+    //     selectedLibs.value = libs;
+    //     libs.forEach(({ repoId }) => addRepoId(repoId));
+    //     isLoadingPackagesData.value = false;
+    //   });
+    // });
 
     // Update url and title
     watch([selectedLibs], () => {
@@ -241,7 +243,8 @@ export default defineComponent({
     });
 
     return {
-      selectedLibs,
+      libraries,
+      isLoading,
       packagesNames,
       reposNames,
       suggestions,
@@ -250,74 +253,19 @@ export default defineComponent({
       githubIsError: gh.isError,
       githubIsLoading: gh.isLoading,
       githubRepositories: gh.repositories,
-      deselect(libName: string): void {
+      select(npmPackageName: string): void {
         errorFetchingNewLib.value = null;
-        const libToDelete = selectedLibs.value.find(
-          ({ name }) => name === libName
-        );
-        selectedLibs.value = selectedLibs.value.filter(
-          (lib) => lib.name !== libName
-        );
-        removeRepoId((libToDelete as LibraryT).repoId);
+
+        addLibraryByNpmPackage(npmPackageName).catch((err) => {
+          let errMsg = `Sorry, we couldn't fetch data for ${npmPackageName}`;
+          if (err === ERROR_CODE_NO_GITHUB_DATA) {
+            errMsg += ': the package information doesnt contain GitHub data';
+          }
+          errorFetchingNewLib.value = errMsg;
+        });
       },
-      select(libName: string): void {
-        errorFetchingNewLib.value = null;
-        if (
-          !libName ||
-          packagesNames.value.includes(libName) ||
-          loadingLibs.value.includes(libName)
-        ) {
-          return;
-        }
-
-        isLoadingPackagesData.value = true;
-        loadingLibs.value = [...loadingLibs.value, libName];
-
-        fetchNpmPackage(libName)
-          .then((npmPackage): void => {
-            selectedLibs.value = [
-              ...selectedLibs.value,
-              npmPackage as LibraryT,
-            ];
-            addRepoId((npmPackage as LibraryT).repoId);
-          })
-          .catch((err) => {
-            let errMsg = `Sorry, we couldn't fetch data for ${libName}`;
-            if (err === ERROR_CODE_NO_GITHUB_DATA) {
-              errMsg += ': the package information doesnt contain GitHub data';
-            }
-            errorFetchingNewLib.value = errMsg;
-          })
-          .finally(() => {
-            isLoadingPackagesData.value = false;
-            loadingLibs.value = loadingLibs.value.filter(
-              (val) => libName !== val
-            );
-          });
-      },
-      selectMultiple(libNames: string[]): void {
-        // Assumption - it's called from the Start Page
-        // when there is no selected libraries yet
-        errorFetchingNewLib.value = null;
-        isLoadingPackagesData.value = true;
-        loadingLibs.value = [...libNames];
-
-        Promise.all(libNames.map(fetchNpmPackage))
-          .then((npmPackages): void => {
-            selectedLibs.value = [
-              ...selectedLibs.value,
-              ...(npmPackages as LibraryT[]),
-            ];
-            npmPackages.forEach((npmPackage) =>
-              addRepoId((npmPackage as LibraryT).repoId)
-            );
-          })
-          .finally(() => {
-            isLoadingPackagesData.value = false;
-            loadingLibs.value = loadingLibs.value.filter(
-              (val) => !libNames.includes(val)
-            );
-          });
+      selectMultiple(npmPackagesNames: string[]): void {
+        npmPackagesNames.forEach(addLibraryByNpmPackage);
       },
       getHrefForAdditionalLib(lib: string): string {
         return constructHref([...packagesNames.value, lib]);
