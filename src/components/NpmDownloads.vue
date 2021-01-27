@@ -14,6 +14,7 @@
 import { defineComponent, onMounted, toRefs, ref, watch } from 'vue';
 import NpmDownloadsChart from './NpmDownloadsChart.vue';
 import { fetchNpmDownloads, NpmDownloadT } from '../apis';
+import { repoToColorMap } from '@/store/reposColors';
 
 export default defineComponent({
   name: 'NpmDownloads',
@@ -25,10 +26,6 @@ export default defineComponent({
   props: {
     packagesNames: { type: Array as () => string[], required: true },
     reposIds: { type: Array as () => string[], required: true },
-    repoToColorMap: {
-      type: Object as () => Record<string, string>,
-      required: true,
-    },
     isLoadingPackagesData: { type: Boolean, required: true },
   },
 
@@ -71,6 +68,7 @@ export default defineComponent({
       isLoadingPackagesDownloads,
       isError,
       libsDownloads,
+      repoToColorMap,
     };
   },
 });

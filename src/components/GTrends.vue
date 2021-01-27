@@ -14,6 +14,7 @@ import { defineComponent, onMounted, toRefs, ref, watch, computed } from 'vue';
 import { repoToGTrendDefMap } from '../../google-trends.config';
 import GTrendsChart from './GTrendsChart.vue';
 import { fetchGTrendsData, GTrendPointT } from '@/apis';
+import { repoToColorMap } from '@/store/reposColors';
 
 export default defineComponent({
   name: 'GoogleTrends',
@@ -24,10 +25,6 @@ export default defineComponent({
 
   props: {
     reposIds: { type: Array as () => string[], required: true },
-    repoToColorMap: {
-      type: Object as () => Record<string, string>,
-      required: true,
-    },
     isLoadingPackagesData: { type: Boolean, required: true },
   },
 
@@ -95,6 +92,7 @@ export default defineComponent({
       libsTrends,
       filteredLibsKeywords,
       filteredLibsGTrendsDefs,
+      repoToColorMap,
     };
   },
 });

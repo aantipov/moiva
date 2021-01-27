@@ -145,6 +145,7 @@ import GithubIcon from './icons/Github.vue';
 import { numbersFormatter, constructHref } from '../utils';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import format from 'date-fns/format';
+import { repoToColorMap } from '@/store/reposColors';
 
 export default defineComponent({
   name: 'SelectedLibs',
@@ -165,10 +166,6 @@ export default defineComponent({
       type: Array as () => LibraryT[],
       required: true,
     },
-    repoToColorMap: {
-      type: Object as () => Record<string, string>,
-      required: true,
-    },
     githubIsLoading: {
       type: Boolean,
       required: true,
@@ -186,7 +183,7 @@ export default defineComponent({
   emits: ['deselect'],
 
   setup(props) {
-    const { githubRepos, libs, repoToColorMap } = toRefs(props);
+    const { githubRepos, libs } = toRefs(props);
     const libNames = computed(() => libs.value.map((lib) => lib.name));
 
     return {
