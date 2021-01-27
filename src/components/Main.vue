@@ -50,17 +50,16 @@
         <div class="grid grid-cols-12 gap-4">
           <NpmDownloads
             :packages-names="packagesNames"
-            :is-loading-packages-data="isLoadingPackagesData"
             :repos-ids="reposIds"
+            :is-loading-packages-data="isLoadingPackagesData"
             :repo-to-color-map="repoToColorMap"
             class="col-span-12 xl:col-span-6"
           />
 
           <GoogleTrends
-            v-if="false"
-            :libs-names="packagesNames"
-            :lib-to-color-map="repoToColorMap"
-            :is-loading-libs-data="isLoadingPackagesData"
+            :repos-ids="reposIds"
+            :is-loading-packages-data="isLoadingPackagesData"
+            :repo-to-color-map="repoToColorMap"
             class="col-span-12 xl:col-span-6"
           />
 

@@ -1,25 +1,46 @@
-export const libs = [
-  { name: 'vue', keyword: '/g/11c0vmgx5d' }, // Vue.js; type: Topic
-  { name: 'react', keyword: '/m/012l1vxv' }, // Vue.js; type: Topic
-  { name: '@angular/core', keyword: '/g/11c6w0ddw9' }, // Angular; type: Web framework
-  { name: 'redux', keyword: '/g/11dxf0gf92' }, // Redux; type: JavaScript library
-  { name: 'vuetify', keyword: 'vuetify' },
-  { name: 'bootstrap', keyword: '/m/0j671ln' },
-  { name: 'moment', keyword: 'moment js' },
-  { name: 'lodash', keyword: 'lodash' },
-  { name: 'underscore', keyword: '/m/0ndwxg_' },
-  { name: 'chart.js', keyword: '/g/11fqctpc5j' },
-  { name: 'd3', keyword: '/m/0k2kwt4' },
-  { name: 'highcharts', keyword: '/g/11bv3xdz92' },
-  { name: 'puppeteer', keyword: 'puppeteer' },
-  { name: 'cypress', keyword: 'cypress' },
-  { name: '@nestjs/core', keyword: 'nestjs' },
-  { name: 'express', keyword: '/m/0_v2szx' },
-  { name: 'ejs', keyword: 'ejs' },
-  { name: 'ws', keyword: 'ws' },
+type RepoIdT = string;
+type KeywordT = string;
+type KeywordAliasT = string; // To display on the chart. If not provided, then RepoName is used
+
+const gtrendsDefs: [RepoIdT, KeywordT, KeywordAliasT?][] = [
+  ['vuejs/vue', '/g/11c0vmgx5d', 'Vue.js'], // Vue.js; type: Topic
+  ['facebook/react', '/m/012l1vxv'], // Vue.js; type: Topic
+  ['angular/angular', '/g/11c6w0ddw9'], // Angular; type: Web framework
+  ['reduxjs/redux', '/g/11dxf0gf92'], // Redux; type: JavaScript library
+  ['vuetifyjs/vuetify', 'vuetify'],
+  ['twbs/bootstrap', '/m/0j671ln'],
+  ['moment/moment', 'moment js', 'Moment js'],
+  ['lodash/lodash', 'lodash'],
+  ['jashkenas/underscore', '/m/0ndwxg_', 'Underscore.js'],
+  ['chartjs/Chart.js', '/g/11fqctpc5j'],
+  ['d3/d3', '/m/0k2kwt4', 'D3.js'],
+  ['highcharts/highcharts', '/g/11bv3xdz92'],
+  ['puppeteer/puppeteer', 'puppeteer'],
+  ['cypress-io/cypress', 'cypress'],
+  ['nestjs/nest', 'nestjs', 'nestjs'],
+  ['expressjs/express', '/m/0_v2szx', 'Express.js'],
+  ['mde/ejs', 'ejs'],
+  ['websockets/ws', 'ws'],
 ];
 
-export const libsToKeywordMap = libs.reduce((accum, lib) => {
-  accum[lib.name] = lib.keyword;
-  return accum;
-}, {} as Record<string, string>);
+export interface GTrendDefT {
+  repoId: string;
+  keyword: string;
+  alias: string;
+}
+
+export const repoToGTrendDefMap = gtrendsDefs.reduce(
+  (accum, [repoId, keyword, keywordAlias]) => {
+    accum[repoId] = {
+      repoId,
+      keyword,
+      alias: capitalise(keywordAlias || repoId.slice(repoId.indexOf('/') + 1)),
+    };
+    return accum;
+  },
+  {} as Record<string, GTrendDefT>
+);
+
+function capitalise(str: string): string {
+  return str[0].toUpperCase() + str.slice(1);
+}

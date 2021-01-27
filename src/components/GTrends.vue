@@ -1,18 +1,17 @@
 <template>
   <GTrendsChart
-    :is-loading-libs-data="isLoadingLibsData"
-    :is-loading="isLoading"
+    :is-loading="isLoading || isLoadingPackagesData"
     :is-error="isError"
-    :libs-names="filteredLibsNames"
-    :lib-to-color-map="libToColorMap"
     :libs-trends="libsTrends"
     :libs-keywords="filteredLibsKeywords"
+    :libs-trends-defs="filteredLibsGTrendsDefs"
+    :repo-to-color-map="repoToColorMap"
   />
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted, toRefs, ref, watch, computed } from 'vue';
-import { libsToKeywordMap } from '../../google-trends.config';
+import { repoToGTrendDefMap } from '../../google-trends.config';
 import GTrendsChart from './GTrendsChart.vue';
 import { fetchGTrendsData, GTrendPointT } from '@/apis';
 
@@ -24,16 +23,16 @@ export default defineComponent({
   },
 
   props: {
-    libsNames: { type: Array as () => string[], required: true },
-    libToColorMap: {
+    reposIds: { type: Array as () => string[], required: true },
+    repoToColorMap: {
       type: Object as () => Record<string, string>,
       required: true,
     },
-    isLoadingLibsData: { type: Boolean, required: true },
+    isLoadingPackagesData: { type: Boolean, required: true },
   },
 
   setup(props) {
-    const { libsNames } = toRefs(props);
+    const { reposIds } = toRefs(props);
     const libsTrends = ref<GTrendPointT[]>([]);
     const isLoading = ref(true);
     const isError = ref(false);
@@ -42,20 +41,24 @@ export default defineComponent({
     // We need to compare only those libs for which Google trends
     // has sensible data
     // Google Trends allows to compare only 5 terms at max
-    const filteredLibsNames = computed<string[]>(() =>
-      libsNames.value
-        .filter((libName) => !!libsToKeywordMap[libName])
+    const filteredReposIds = computed<string[]>(() =>
+      reposIds.value
+        .filter((repoId) => !!repoToGTrendDefMap[repoId])
         .slice(0, 5)
     );
 
     const filteredLibsKeywords = computed(() =>
-      filteredLibsNames.value.map((libName) => libsToKeywordMap[libName])
+      filteredReposIds.value.map((repoId) => repoToGTrendDefMap[repoId].keyword)
+    );
+
+    const filteredLibsGTrendsDefs = computed(() =>
+      filteredReposIds.value.map((repoId) => repoToGTrendDefMap[repoId])
     );
 
     function loadData(): void {
       isError.value = false;
 
-      if (!filteredLibsNames.value.length) {
+      if (!filteredReposIds.value.length) {
         isLoading.value = false;
         return;
       }
@@ -63,7 +66,7 @@ export default defineComponent({
       isLoading.value = true;
 
       const fetchPromise = (lastFetchPromise = fetchGTrendsData(
-        filteredLibsNames.value
+        filteredReposIds.value
       )
         .then((data) => {
           // Do nothing if there is a new request already in place
@@ -84,14 +87,14 @@ export default defineComponent({
 
     onMounted(loadData);
 
-    watch(libsNames, loadData);
+    watch(reposIds, loadData);
 
     return {
       isLoading,
       isError,
       libsTrends,
-      filteredLibsNames,
       filteredLibsKeywords,
+      filteredLibsGTrendsDefs,
     };
   },
 });
