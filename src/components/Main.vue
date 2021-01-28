@@ -2,26 +2,9 @@
   <div>
     <Autosuggest class="w-full mx-auto lg:w-9/12 xl:w-2/4" @select="select" />
 
-    <!--  Suggestions    -->
-    <!-- <div class="w&#45;full px&#45;3 mx&#45;auto lg:w&#45;9/12 xl:w&#45;2/4"> -->
-    <!--   <a -->
-    <!--     v&#45;for="sugestedLib in suggestions" -->
-    <!--     :key="sugestedLib" -->
-    <!--     class="inline&#45;block mt&#45;2 mr&#45;3 text&#45;base text&#45;gray&#45;500 no&#45;underline hover:text&#45;gray&#45;700" -->
-    <!--     :href="getHrefForAdditionalLib(sugestedLib)" -->
-    <!--     @click.prevent="select(sugestedLib)" -->
-    <!--     >+ {{ sugestedLib }}</a -->
-    <!--   > -->
-    <!-- </div> -->
+    <Suggestions @select="select" />
 
-    <!-- <div -->
-    <!--   v&#45;if="errorFetchingNewLib" -->
-    <!--   class="w&#45;full px&#45;3 mx&#45;auto mt&#45;2 text&#45;red&#45;500 lg:w&#45;9/12 xl:w&#45;2/4" -->
-    <!-- > -->
-    <!--   {{ errorFetchingNewLib }} -->
-    <!-- </div> -->
-
-    <!--  Show Popular Suggestions    -->
+    <!--  Show Popular Comparisons    -->
     <div v-if="!libraries.length">
       <Popular v-if="!isLoading" @select="selectMultiple" />
 
@@ -134,6 +117,7 @@ import {
 // import NpmDownloads from './NpmDownloads.vue';
 // import Releases from './Releases.vue';
 import Autosuggest from './Autosuggest.vue';
+import Suggestions from './Suggestions.vue';
 // import TechRadar from './TechRadar.vue';
 // import GoogleTrends from './GTrends.vue';
 // import Bundlephobia from './Bundlephobia.vue';
@@ -153,11 +137,10 @@ import {
   getTitle,
   getMetaDescription,
   // numbersFormatter,
-  // getSuggestions,
   // constructHref,
   getNpmPackagesFromUrl,
   showErrorMsg,
-} from '../utils';
+} from '@/utils';
 // import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 // import useGithub from '@/composables/useGithub';
 import { updateLibrariesColors } from '@/store/librariesColors';
@@ -175,6 +158,7 @@ export default defineComponent({
   name: 'Main',
   components: {
     Autosuggest,
+    Suggestions,
     SelectedLibs,
     // NpmDownloads,
     // Releases,
@@ -191,7 +175,6 @@ export default defineComponent({
 
   setup() {
     // const selectedLibs = ref<NpmPackageT[]>([]);
-    // const errorFetchingNewLib = ref<string | null>(null);
     // const loadingLibs = ref<string[]>([]); // Track libs currently being loading
     // const isLoadingPackagesData = ref(true);
     // const packagesNames = computed<string[]>(() =>
@@ -199,9 +182,6 @@ export default defineComponent({
     // );
     // const reposNames = computed<string[]>(() =>
     //   selectedLibs.value.map((lib) => lib.repoName)
-    // );
-    // const suggestions = computed<string[]>(() =>
-    //   getSuggestions(packagesNames.value)
     // );
 
     watchEffect(() => updateLibrariesColors(librariesIds.value));
@@ -243,8 +223,6 @@ export default defineComponent({
     });
 
     function selectNpmPackage(npmPackageName: string): void {
-      // errorFetchingNewLib.value = null;
-
       addLibraryByNpmPackage(npmPackageName).catch(() => {
         showErrorMsg(`Sorry, we couldn't fetch data for ${npmPackageName}`);
         return Promise.reject();
@@ -256,9 +234,7 @@ export default defineComponent({
       isLoading,
       // packagesNames,
       // reposNames,
-      // suggestions,
       // isLoadingPackagesData,
-      // errorFetchingNewLib,
       // githubIsError: gh.isError,
       // githubIsLoading: gh.isLoading,
       // githubRepositories: gh.repositories,
@@ -266,9 +242,6 @@ export default defineComponent({
       selectMultiple(npmPackagesNames: string[]): void {
         npmPackagesNames.forEach(selectNpmPackage);
       },
-      // getHrefForAdditionalLib(lib: string): string {
-      //   return constructHref([...packagesNames.value, lib]);
-      // },
     };
   },
 });
