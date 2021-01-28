@@ -3,23 +3,23 @@
     <Autosuggest class="w-full mx-auto lg:w-9/12 xl:w-2/4" @select="select" />
 
     <!--  Suggestions    -->
-    <div class="w-full px-3 mx-auto lg:w-9/12 xl:w-2/4">
-      <a
-        v-for="sugestedLib in suggestions"
-        :key="sugestedLib"
-        class="inline-block mt-2 mr-3 text-base text-gray-500 no-underline hover:text-gray-700"
-        :href="getHrefForAdditionalLib(sugestedLib)"
-        @click.prevent="select(sugestedLib)"
-        >+ {{ sugestedLib }}</a
-      >
-    </div>
+    <!-- <div class="w&#45;full px&#45;3 mx&#45;auto lg:w&#45;9/12 xl:w&#45;2/4"> -->
+    <!--   <a -->
+    <!--     v&#45;for="sugestedLib in suggestions" -->
+    <!--     :key="sugestedLib" -->
+    <!--     class="inline&#45;block mt&#45;2 mr&#45;3 text&#45;base text&#45;gray&#45;500 no&#45;underline hover:text&#45;gray&#45;700" -->
+    <!--     :href="getHrefForAdditionalLib(sugestedLib)" -->
+    <!--     @click.prevent="select(sugestedLib)" -->
+    <!--     >+ {{ sugestedLib }}</a -->
+    <!--   > -->
+    <!-- </div> -->
 
-    <div
-      v-if="errorFetchingNewLib"
-      class="w-full px-3 mx-auto mt-2 text-red-500 lg:w-9/12 xl:w-2/4"
-    >
-      {{ errorFetchingNewLib }}
-    </div>
+    <!-- <div -->
+    <!--   v&#45;if="errorFetchingNewLib" -->
+    <!--   class="w&#45;full px&#45;3 mx&#45;auto mt&#45;2 text&#45;red&#45;500 lg:w&#45;9/12 xl:w&#45;2/4" -->
+    <!-- > -->
+    <!--   {{ errorFetchingNewLib }} -->
+    <!-- </div> -->
 
     <!--  Show Popular Suggestions    -->
     <div v-if="!libraries.length">
@@ -125,10 +125,10 @@
 <script lang="ts">
 import {
   defineComponent,
-  // onMounted,
-  ref,
-  computed,
-  watch,
+  onMounted,
+  // ref,
+  // computed,
+  // watch,
   watchEffect,
 } from 'vue';
 // import NpmDownloads from './NpmDownloads.vue';
@@ -144,19 +144,22 @@ import SelectedLibs from './SelectedLibs.vue';
 // import Contributors from './Contributors.vue';
 // import DevelopersUsage from './DevelopersUsage.vue';
 // import Commits from './Commits.vue';
-import { ERROR_CODE_NO_GITHUB_DATA } from '@/constants';
-import { NpmPackageT, RepoT } from '@/libraryApis';
+// import { ERROR_CODE_NO_GITHUB_DATA } from '@/constants';
+// import { NpmPackageT, RepoT } from '@/libraryApis';
 import {
   // loadDefaultLibs,
   updateUrl,
-  updateTitle,
-  updateMetaDescription,
-  numbersFormatter,
-  getSuggestions,
-  constructHref,
+  // cleanupUrl,
+  // updateTitle,
+  // updateMetaDescription,
+  // numbersFormatter,
+  // getSuggestions,
+  // constructHref,
+  getNpmPackagesFromUrl,
+  showErrorMsg,
 } from '../utils';
-import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
-import useGithub from '@/composables/useGithub';
+// import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
+// import useGithub from '@/composables/useGithub';
 import { updateLibrariesColors } from '@/store/librariesColors';
 import {
   // reposIds,
@@ -164,6 +167,7 @@ import {
   libraries,
   librariesIds,
   addLibraryByNpmPackage,
+  npmPackagesNames,
 } from '@/store/libraries';
 
 export default defineComponent({
@@ -185,91 +189,98 @@ export default defineComponent({
   },
 
   setup() {
-    const selectedLibs = ref<NpmPackageT[]>([]);
-    const errorFetchingNewLib = ref<string | null>(null);
+    // const selectedLibs = ref<NpmPackageT[]>([]);
+    // const errorFetchingNewLib = ref<string | null>(null);
     // const loadingLibs = ref<string[]>([]); // Track libs currently being loading
-    const isLoadingPackagesData = ref(true);
-    const packagesNames = computed<string[]>(() =>
-      selectedLibs.value.map((lib) => lib.name)
-    );
-    const reposNames = computed<string[]>(() =>
-      selectedLibs.value.map((lib) => lib.repoName)
-    );
-    const suggestions = computed<string[]>(() =>
-      getSuggestions(packagesNames.value)
-    );
+    // const isLoadingPackagesData = ref(true);
+    // const packagesNames = computed<string[]>(() =>
+    //   selectedLibs.value.map((lib) => lib.name)
+    // );
+    // const reposNames = computed<string[]>(() =>
+    //   selectedLibs.value.map((lib) => lib.repoName)
+    // );
+    // const suggestions = computed<string[]>(() =>
+    //   getSuggestions(packagesNames.value)
+    // );
 
     watchEffect(() => updateLibrariesColors(librariesIds.value));
 
-    const gh = useGithub(selectedLibs);
+    // const gh = useGithub(selectedLibs);
 
-    // onMounted(() => {
-    //   loadDefaultLibs().then((libs): void => {
-    //     selectedLibs.value = libs;
-    //     libs.forEach(({ repoId }) => addRepoId(repoId));
-    //     isLoadingPackagesData.value = false;
-    //   });
-    // });
+    onMounted(() => {
+      const npmPackagesNamesFromUrl = getNpmPackagesFromUrl();
+
+      Promise.all(
+        npmPackagesNamesFromUrl.map((pkgName) =>
+          addLibraryByNpmPackage(pkgName)
+        )
+      ).catch(() => {
+        // // Redirect a user to 404 if there was a wrong lib in the url
+        // // This is needed for SEO - Google should not crawl "bad" pages
+        window.location.href = '/not-found';
+      });
+
+      watchEffect(() => !isLoading.value && updateUrl(npmPackagesNames.value));
+    });
 
     // Update url and title
-    watch([selectedLibs], () => {
-      updateUrl(packagesNames.value);
-      updateTitle();
-    });
+    // watch([selectedLibs], () => {
+    //   updateUrl(packagesNames.value);
+    //   updateTitle();
+    // });
 
     // Update meta description
-    watch([gh.isLoading, gh.repositories, gh.isError], () => {
-      const repos = gh.repositories.value;
-      const hasAnyRepoError = repos.includes(null);
+    // watch([gh.isLoading, gh.repositories, gh.isError], () => {
+    //   const repos = gh.repositories.value;
+    //   const hasAnyRepoError = repos.includes(null);
+    //
+    //   if (gh.isLoading.value || gh.isError.value || hasAnyRepoError) {
+    //     updateMetaDescription([]);
+    //     return;
+    //   }
+    //
+    //   const data = selectedLibs.value.map((lib, libIndex) => ({
+    //     name: lib.name,
+    //     description: lib.description,
+    //     starsCount: numbersFormatter.format((repos[libIndex] as RepoT).stars),
+    //     age: formatDistanceToNowStrict(
+    //       new Date((repos[libIndex] as RepoT).createdAt)
+    //     ),
+    //     vulnerabilitiesCount: (repos[libIndex] as RepoT).vulnerabilitiesCount,
+    //     dependenciesCount: lib.dependencies.length,
+    //     license: lib.license,
+    //   }));
+    //
+    //   updateMetaDescription(data);
+    // });
 
-      if (gh.isLoading.value || gh.isError.value || hasAnyRepoError) {
-        updateMetaDescription([]);
-        return;
-      }
+    function selectNpmPackage(npmPackageName: string): void {
+      // errorFetchingNewLib.value = null;
 
-      const data = selectedLibs.value.map((lib, libIndex) => ({
-        name: lib.name,
-        description: lib.description,
-        starsCount: numbersFormatter.format((repos[libIndex] as RepoT).stars),
-        age: formatDistanceToNowStrict(
-          new Date((repos[libIndex] as RepoT).createdAt)
-        ),
-        vulnerabilitiesCount: (repos[libIndex] as RepoT).vulnerabilitiesCount,
-        dependenciesCount: lib.dependencies.length,
-        license: lib.license,
-      }));
-
-      updateMetaDescription(data);
-    });
+      addLibraryByNpmPackage(npmPackageName).catch(() => {
+        showErrorMsg(`Sorry, we couldn't fetch data for ${npmPackageName}`);
+        return Promise.reject();
+      });
+    }
 
     return {
       libraries,
       isLoading,
-      packagesNames,
-      reposNames,
-      suggestions,
-      isLoadingPackagesData,
-      errorFetchingNewLib,
-      githubIsError: gh.isError,
-      githubIsLoading: gh.isLoading,
-      githubRepositories: gh.repositories,
-      select(npmPackageName: string): void {
-        errorFetchingNewLib.value = null;
-
-        addLibraryByNpmPackage(npmPackageName).catch((err) => {
-          let errMsg = `Sorry, we couldn't fetch data for ${npmPackageName}`;
-          if (err === ERROR_CODE_NO_GITHUB_DATA) {
-            errMsg += ': the package information doesnt contain GitHub data';
-          }
-          errorFetchingNewLib.value = errMsg;
-        });
-      },
+      // packagesNames,
+      // reposNames,
+      // suggestions,
+      // isLoadingPackagesData,
+      // errorFetchingNewLib,
+      // githubIsError: gh.isError,
+      // githubIsLoading: gh.isLoading,
+      // githubRepositories: gh.repositories,
+      select: selectNpmPackage,
       selectMultiple(npmPackagesNames: string[]): void {
-        npmPackagesNames.forEach(addLibraryByNpmPackage);
+        npmPackagesNames.forEach(selectNpmPackage);
       },
-      getHrefForAdditionalLib(lib: string): string {
-        return constructHref([...packagesNames.value, lib]);
-      },
+      // getHrefForAdditionalLib(lib: string): string {
+      //   return constructHref([...packagesNames.value, lib]);
+      // },
     };
   },
 });

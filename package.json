@@ -25,6 +25,7 @@
     "faunadb": "^4.0.0",
     "google-trends-api": "^4.9.2",
     "nanoid": "^3.1.20",
+    "sweetalert2": "^10.13.3",
     "tippy.js": "^6.2.7",
     "vue": "^3.0.4"
   },

@@ -2,7 +2,6 @@ import axios, { AxiosError } from 'axios';
 import * as Sentry from '@sentry/browser';
 import { NpmPackagedDetailsResponseT } from '../api/npm-package-detailed';
 import {
-  ERROR_CODE_NO_GITHUB_DATA,
   ERROR_CODE_GITHUB_CONTRIBUTORS_NEEDS_PROCESSING,
   ERROR_CODE_GITHUB_COMMITS_NEEDS_PROCESSING,
 } from '@/constants';
@@ -12,9 +11,7 @@ import { GithubContributorsResponseItemT } from '../api/gh-contributors';
 
 const npmDownloadsCache = new Map();
 const npmSuggestionsCache = new Map();
-const npmPackageCache = new Map();
 const npmPackageVersionsCache = new Map();
-const githubCache = new Map();
 const githubLanguagesCache = new Map();
 const githubCommitsCache = new Map();
 const githubContributorsCache = new Map();
@@ -46,29 +43,6 @@ export interface GTrendsT {
   timelineData: GTrendPointT[];
 }
 
-export interface RepoT {
-  repoId: string;
-  repoName: string;
-  stars: number;
-  createdAt: string;
-  vulnerabilitiesCount: number;
-  closedIssues: number;
-  closedBugIssues: number;
-  openIssues: number;
-  openBugIssues: number;
-}
-
-export interface NpmPackageT {
-  name: string;
-  description: string;
-  license: string;
-  repo: string;
-  repoId: string;
-  repoName: string;
-  version: string;
-  dependencies: string[];
-}
-
 export interface SuggestionT {
   name: string;
   description: string;
@@ -90,18 +64,6 @@ interface NpmsIOSuggestionResponseT {
     };
   };
   searchScore: number;
-}
-
-interface NpmsIOPackageResponseT {
-  collected: {
-    metadata: {
-      name: string;
-      description: string;
-      license: string;
-      version: string;
-      links: { repository: string };
-    };
-  };
 }
 
 function reportSentry(err: AxiosError, methodName: string): void {
@@ -258,35 +220,6 @@ export function fetchContributors(
     });
 }
 
-export function fetchGithubData(
-  repoUrl: string,
-  npmPackage: string
-): Promise<RepoT | null> {
-  const repoUrlParts = repoUrl.split('/');
-  const owner = repoUrlParts[3];
-  const name = repoUrlParts[4];
-
-  if (githubCache.get(repoUrl)) {
-    return Promise.resolve(githubCache.get(repoUrl));
-  }
-
-  return axios
-    .get<RepoT>(`/api/gh?name=${name}&owner=${owner}&pkg=${npmPackage}`)
-    .then(({ data }) => {
-      const enrichedData = {
-        ...data,
-        repoId: `${owner}/${name}`,
-        repoName: name,
-      };
-      githubCache.set(repoUrl, enrichedData);
-      return enrichedData;
-    })
-    .catch((err) => {
-      reportSentry(err, `fetchGithubData (package: ${npmPackage})`);
-      return null;
-    });
-}
-
 export function fetchGTrendsData(libs: string[]): Promise<GTrendPointT[]> {
   // TODO: implement a proper cache
   const libsStr = libs.join(',');
@@ -415,82 +348,6 @@ function fetchNpmsIOSuggestions(keyword: string): Promise<SuggestionT[]> {
         }));
 
       return data;
-    });
-}
-
-export function fetchNpmPackage(
-  packageName: string
-): Promise<NpmPackageT | null> {
-  // eslint-disable-next-line
-  const fetchPackageFunc = true ? fetchNpmJSPackage : fetchNpmsIOPackage;
-
-  if (npmPackageCache.get(packageName)) {
-    return Promise.resolve(npmPackageCache.get(packageName));
-  }
-
-  return fetchPackageFunc(packageName)
-    .then((data) => {
-      npmPackageCache.set(packageName, data);
-
-      return data;
-    })
-    .catch((err) => {
-      const errorCode =
-        err?.response?.data?.error?.code || err?.response?.status || undefined;
-
-      // Do not spam Sentry with "expected" errors
-      if (errorCode !== ERROR_CODE_NO_GITHUB_DATA) {
-        reportSentry(err, 'fetchNpmPackage');
-      }
-
-      if (errorCode === 404) {
-        return null;
-      }
-
-      return Promise.reject(errorCode);
-    });
-}
-
-function fetchNpmJSPackage(packageName: string): Promise<NpmPackageT | null> {
-  return axios.get(`/api/npm-package?pkg=${packageName}`).then(({ data }) => {
-    const repoId = data.repo.slice(data.repo.indexOf('github.com') + 11);
-
-    return {
-      ...data,
-      repoId,
-      repoName: repoId.slice(repoId.indexOf('/') + 1),
-    };
-  });
-}
-
-function fetchNpmsIOPackage(packageName: string): Promise<NpmPackageT | null> {
-  return axios
-    .get(`https://api.npms.io/v2/package/${encodeURIComponent(packageName)}`)
-    .then((resp) => {
-      const {
-        collected: {
-          metadata: {
-            name,
-            description,
-            version,
-            license,
-            links: { repository },
-          },
-        },
-      } = resp.data as NpmsIOPackageResponseT;
-
-      const repoId = repository.slice(repository.indexOf('github.com') + 11);
-
-      return {
-        name,
-        description,
-        dependencies: [],
-        version,
-        license,
-        repo: repository,
-        repoId,
-        repoName: repoId.slice(repoId.indexOf('/') + 1),
-      };
     });
 }
 

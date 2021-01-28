@@ -1,75 +1,31 @@
-import { NpmPackageT, fetchNpmPackage } from './apis';
 import { catalogLibsByName, libsNamesByCategory } from './libraries-catalog';
+import Swal from 'sweetalert2';
 
 const paramName = 'compare';
-const oldParamName = 'apps';
 const delimiter = ' ';
 const encodedDelimiter = '+';
 
-/**
- * A function to ensure the url is valid
- * It is called only once during the initial page load
- */
-function cleanupUrl(validLibsFromUrl: string[]): void {
+// Update the URL whenever a user selects/deselects a library
+// TODO: do we need to update the document title?
+export function updateUrl(npmPackagesNames: string[]): void {
   const Url = new URL(window.location.href);
-
-  // Make sure the old parameter is not licked
-  Url.searchParams.delete(oldParamName);
-
-  // Do nothing if the URL doesn't have the parameter (loading root page use case)
-  if (Url.searchParams.get(paramName) === null) {
-    return;
-  }
 
   // Delete the parameter if no valid libs are provided via url
-  if (!validLibsFromUrl.length) {
-    Url.searchParams.delete(paramName);
-    window.history.replaceState(null, '', Url.href);
-    return;
-  }
-
-  // Update url with the valid libs in the right order
-  window.history.replaceState(null, '', constructHref(validLibsFromUrl));
-}
-
-// Update URL whenever a user selects/deselects a library
-// TODO: do we need to update the document title?
-export function updateUrl(selectedLibs: string[]): void {
-  const Url = new URL(window.location.href);
-
-  if (!selectedLibs.length) {
+  if (!npmPackagesNames.length) {
     Url.searchParams.delete(paramName);
     window.history.pushState(null, '', Url.href);
     return;
   }
 
-  window.history.pushState(null, '', constructHref(selectedLibs));
+  // Update the url with the npm packages names in the right order
+  window.history.pushState(null, '', constructHref(npmPackagesNames));
 }
 
-export function loadDefaultLibs(): Promise<NpmPackageT[]> {
+export function getNpmPackagesFromUrl(): string[] {
   const Url = new URL(window.location.href);
   const defaultLibs = Url.searchParams.get(paramName)?.split(delimiter) || [];
-  const uniqDefaultLibs = [...new Set(defaultLibs)];
 
-  const promises = uniqDefaultLibs
-    .map(fetchNpmPackage)
-    // just ignore any errors (and filter those packages out)
-    .map((pkgPromise) => pkgPromise.catch(() => null));
-
-  return Promise.all(promises).then((libs) => {
-    const filteredLibs = libs.filter((lib) => !!lib) as NpmPackageT[];
-
-    // Redirect a user to 404 if there was a wrong lib in the url
-    // This is needed for SEO - Google should not crawl "bad" pages
-    if (filteredLibs.length < uniqDefaultLibs.length) {
-      window.location.href = '/not-found';
-      return Promise.reject();
-    }
-
-    cleanupUrl(filteredLibs.map((lib) => lib.name));
-
-    return filteredLibs;
-  });
+  return [...new Set(defaultLibs)];
 }
 
 export function constructHref(libs: string[]): string {
@@ -270,4 +226,14 @@ export function getSuggestions(libsNames: string[]): string[] {
 
 export function getBundlephobiaUrl(libName: string): string {
   return `https://bundlephobia.com/result?p=${encodeURIComponent(libName)}`;
+}
+
+export function showErrorMsg(msg: string): void {
+  Swal.fire({
+    title: 'Error!',
+    text: msg,
+    confirmButtonText: 'Close',
+    toast: true,
+    position: 'top-end',
+  });
 }

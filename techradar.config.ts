@@ -370,7 +370,7 @@ const libs: [NameT, LinkT, DataT][] = [
   ['ava', 'https://www.thoughtworks.com/radar/tools/ava', { '2019-04': TRIAL }],
 ];
 
-export const libsToDatadMap = libs.reduce((accum, [name, _link, data]) => {
+export const libsToDatadMap = libs.reduce((accum, [name, , data]) => {
   accum[name] = data;
   return accum;
 }, {} as Record<string, Record<string, TRadarLevelT>>);
