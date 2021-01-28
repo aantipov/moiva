@@ -1,4 +1,6 @@
 import { catalogLibsByName, libsNamesByCategory } from './libraries-catalog';
+import { LibraryT, NpmPackageT } from '@/libraryApis';
+import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import Swal from 'sweetalert2';
 
 const paramName = 'compare';
@@ -28,26 +30,19 @@ export function getNpmPackagesFromUrl(): string[] {
   return [...new Set(defaultLibs)];
 }
 
-export function constructHref(libs: string[]): string {
-  if (!libs.length) {
+export function constructHref(npmPackagesNames: string[]): string {
+  if (!npmPackagesNames.length) {
     return '/';
   }
 
-  return `/?${paramName}=${[...libs].sort().join(encodedDelimiter)}`;
+  return `/?${paramName}=${[...npmPackagesNames]
+    .sort()
+    .join(encodedDelimiter)}`;
 }
 
 export const numbersFormatter = new Intl.NumberFormat('en-US', {
   notation: 'compact',
 });
-
-/**
- * Make document title SEO friendly
- */
-export function updateTitle(): void {
-  const Url = new URL(window.location.href);
-  const libs = Url.searchParams.get(paramName)?.split(delimiter) || [];
-  window.document.title = getTitle(libs);
-}
 
 // Do not allow Google to index pages with >3 libraries in comparison
 // To avoid spamming Google and the user with useless links
@@ -60,20 +55,6 @@ export function setNoFollowTag(): void {
     metaRobots.content = 'noindex';
     document.head.appendChild(metaRobots);
   }
-}
-
-function getTitle(libsNames: string[]): string {
-  if (!libsNames.length) {
-    return 'Moiva.io - Measure and Compare JavaScript libraries side by side';
-  }
-
-  const seoNames = libsNames.map(getSeoLibName);
-
-  if (seoNames.length === 1) {
-    return `${seoNames[0]}: Stats and Trends from NPM, GitHub, Google Search - Moiva.io`;
-  }
-
-  return `${seoNames.join(' vs ')}: Which One to Choose? - Moiva.io`;
 }
 
 function getSeoLibName(libName: string): string {
@@ -94,25 +75,44 @@ function getSeoLibName(libName: string): string {
   return libName;
 }
 
+export function getTitle(libsNames: string[]): string {
+  if (!libsNames.length) {
+    return 'Moiva.io - Measure and Compare JavaScript libraries side by side';
+  }
+
+  const seoNames = [...libsNames].sort().map(getSeoLibName);
+
+  if (seoNames.length === 1) {
+    return `${seoNames[0]}: Stats and Trends from NPM, GitHub, Google Search - Moiva.io`;
+  }
+
+  return `${seoNames.join(' vs ')}: Which One to Choose? - Moiva.io`;
+}
+
 interface LibForDescriptionT {
   name: string;
   description: string;
   starsCount: string;
   age: string;
-  vulnerabilitiesCount: number;
   dependenciesCount: number;
   license: string;
 }
 
-export function updateMetaDescription(libs: LibForDescriptionT[]): void {
-  const descr = getMetaDescription(libs);
+export function getMetaDescription(libraries: LibraryT[]): string {
+  const libs = [...libraries].sort(sortLibsByNpmPackageName).map((lib) => {
+    const { name, dependencies, license } = lib.npmPackage as NpmPackageT;
+    const { description, stars, createdAt } = lib.repo;
 
-  (document.querySelector(
-    'meta[name="Description"]'
-  ) as HTMLElement).setAttribute('content', descr);
-}
+    return {
+      name,
+      description,
+      starsCount: numbersFormatter.format(stars),
+      age: formatDistanceToNowStrict(new Date(createdAt)),
+      dependenciesCount: dependencies.length,
+      license,
+    };
+  });
 
-function getMetaDescription(libs: LibForDescriptionT[]): string {
   if (!libs.length) {
     return `Which JavaScript library to use? Need to find the best alternatives?
     Compare Stats and Trends over time - Npm Downloads, Google Trends, Contributors, Releases, Commits, Developer usage, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
@@ -142,7 +142,6 @@ function getSingleLibDescription(lib: LibForDescriptionT): string {
     description,
     starsCount,
     age,
-    vulnerabilitiesCount,
     dependenciesCount,
     license,
   } = lib;
@@ -163,7 +162,7 @@ function getSingleLibDescription(lib: LibForDescriptionT): string {
   }
 
   return `${seoDescrIntroCut} 
-    &#9733;${starsCount} stars, ${age} old, ${vulnerabilitiesCount} vulnerabilities, ${dependenciesCount} dependencies, license: ${license}...
+    &#9733;${starsCount} stars, ${age} old, ${dependenciesCount} dependencies, license: ${license}...
     Find the best ${seoName} alternatives and compare them side by side`;
 }
 
@@ -175,8 +174,8 @@ function getTwoLibsDescription(
   const seoNameB = getSeoLibName(libB.name);
 
   return `Which is better ${seoNameA} or ${seoNameB}? Compare Stats and Trends side by side.
-${seoNameA}: &#9733;${libA.starsCount} stars, ${libA.age} old, ${libA.vulnerabilitiesCount} vulnerabilities, ${libA.dependenciesCount} dependencies, license: ${libA.license}...
-${seoNameB}: &#9733;${libB.starsCount} stars, ${libB.age} old, ${libB.vulnerabilitiesCount} vulnerabilities, ${libB.dependenciesCount} dependencies, license: ${libB.license}...
+${seoNameA}: &#9733;${libA.starsCount} stars, ${libA.age} old, ${libA.dependenciesCount} dependencies, license: ${libA.license}...
+${seoNameB}: &#9733;${libB.starsCount} stars, ${libB.age} old, ${libB.dependenciesCount} dependencies, license: ${libB.license}...
 `;
 }
 
@@ -190,9 +189,9 @@ function getThreeLibsDescription(
   const seoNameC = getSeoLibName(libC.name);
 
   return `Which is better ${seoNameA}, ${seoNameB}, or ${seoNameC}? Compare Stats and Trends side by side.
-${seoNameA}: &#9733;${libA.starsCount} stars, ${libA.age} old, ${libA.vulnerabilitiesCount} vulnerabilities, ${libA.dependenciesCount} dependencies, license: ${libA.license}...
-${seoNameB}: &#9733;${libB.starsCount} stars, ${libB.age} old, ${libB.vulnerabilitiesCount} vulnerabilities, ${libB.dependenciesCount} dependencies, license: ${libB.license}...
-${seoNameC}: &#9733;${libC.starsCount} stars, ${libC.age} old, ${libC.vulnerabilitiesCount} vulnerabilities, ${libC.dependenciesCount} dependencies, license: ${libC.license}...
+${seoNameA}: &#9733;${libA.starsCount} stars, ${libA.age} old, ${libA.dependenciesCount} dependencies, license: ${libA.license}...
+${seoNameB}: &#9733;${libB.starsCount} stars, ${libB.age} old, ${libB.dependenciesCount} dependencies, license: ${libB.license}...
+${seoNameC}: &#9733;${libC.starsCount} stars, ${libC.age} old, ${libC.dependenciesCount} dependencies, license: ${libC.license}...
 `;
 }
 
@@ -236,4 +235,16 @@ export function showErrorMsg(msg: string): void {
     toast: true,
     position: 'top-end',
   });
+}
+
+function sortLibsByNpmPackageName(libA: LibraryT, libB: LibraryT) {
+  const nameA = (libA.npmPackage as NpmPackageT).name;
+  const nameB = (libB.npmPackage as NpmPackageT).name;
+  if (nameA < nameB) {
+    return -1;
+  }
+  if (nameA > nameB) {
+    return 1;
+  }
+  return 0;
 }

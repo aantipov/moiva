@@ -150,8 +150,8 @@ import {
   // loadDefaultLibs,
   updateUrl,
   // cleanupUrl,
-  // updateTitle,
-  // updateMetaDescription,
+  getTitle,
+  getMetaDescription,
   // numbersFormatter,
   // getSuggestions,
   // constructHref,
@@ -169,6 +169,7 @@ import {
   addLibraryByNpmPackage,
   npmPackagesNames,
 } from '@/store/libraries';
+import { LibraryT } from '@/libraryApis';
 
 export default defineComponent({
   name: 'Main',
@@ -220,39 +221,26 @@ export default defineComponent({
         window.location.href = '/not-found';
       });
 
-      watchEffect(() => !isLoading.value && updateUrl(npmPackagesNames.value));
+      watchEffect(() => {
+        if (isLoading.value) {
+          return;
+        }
+
+        // Update URL
+        updateUrl(npmPackagesNames.value);
+
+        // Update Document Title to make it SEO friendly
+        window.document.title = getTitle(npmPackagesNames.value);
+
+        // Update Meta Description
+        (document.querySelector(
+          'meta[name="Description"]'
+        ) as HTMLElement).setAttribute(
+          'content',
+          getMetaDescription(libraries as LibraryT[])
+        );
+      });
     });
-
-    // Update url and title
-    // watch([selectedLibs], () => {
-    //   updateUrl(packagesNames.value);
-    //   updateTitle();
-    // });
-
-    // Update meta description
-    // watch([gh.isLoading, gh.repositories, gh.isError], () => {
-    //   const repos = gh.repositories.value;
-    //   const hasAnyRepoError = repos.includes(null);
-    //
-    //   if (gh.isLoading.value || gh.isError.value || hasAnyRepoError) {
-    //     updateMetaDescription([]);
-    //     return;
-    //   }
-    //
-    //   const data = selectedLibs.value.map((lib, libIndex) => ({
-    //     name: lib.name,
-    //     description: lib.description,
-    //     starsCount: numbersFormatter.format((repos[libIndex] as RepoT).stars),
-    //     age: formatDistanceToNowStrict(
-    //       new Date((repos[libIndex] as RepoT).createdAt)
-    //     ),
-    //     vulnerabilitiesCount: (repos[libIndex] as RepoT).vulnerabilitiesCount,
-    //     dependenciesCount: lib.dependencies.length,
-    //     license: lib.license,
-    //   }));
-    //
-    //   updateMetaDescription(data);
-    // });
 
     function selectNpmPackage(npmPackageName: string): void {
       // errorFetchingNewLib.value = null;
