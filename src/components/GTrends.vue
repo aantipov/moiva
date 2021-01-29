@@ -1,10 +1,9 @@
 <template>
   <GTrendsChart
-    :is-loading="isLoading || isLoadingPackagesData"
+    :is-loading="isLoading"
     :is-error="isError"
     :libs-trends="libsTrends"
-    :libs-keywords="filteredLibsKeywords"
-    :libs-trends-defs="filteredLibsGTrendsDefs"
+    :libs-trends-defs="gTrendsDefs"
     :repo-to-color-map="repoToColorMap"
   />
 </template>
@@ -14,21 +13,19 @@ import { defineComponent, onMounted, ref, watch, computed } from 'vue';
 import { repoToGTrendDefMap } from '../../google-trends.config';
 import GTrendsChart from './GTrendsChart.vue';
 import { fetchGTrendsData, GTrendPointT } from '@/apis';
-import { repoToColorMap } from '@/store/reposColors';
-import { reposIds } from '@/store/selectedRepos';
+import { libraryToColorMap } from '@/store/librariesColors';
+import {
+  reposIds,
+  repoToLibraryIdMap,
+  isLoading as isLoadingLibraries,
+} from '@/store/libraries';
 
 export default defineComponent({
   name: 'GoogleTrends',
 
-  components: {
-    GTrendsChart,
-  },
+  components: { GTrendsChart },
 
-  props: {
-    isLoadingPackagesData: { type: Boolean, required: true },
-  },
-
-  setup(props) {
+  setup() {
     const libsTrends = ref<GTrendPointT[]>([]);
     const isLoading = ref(true);
     const isError = ref(false);
@@ -43,11 +40,7 @@ export default defineComponent({
         .slice(0, 5)
     );
 
-    const filteredLibsKeywords = computed(() =>
-      filteredReposIds.value.map((repoId) => repoToGTrendDefMap[repoId].keyword)
-    );
-
-    const filteredLibsGTrendsDefs = computed(() =>
+    const gTrendsDefs = computed(() =>
       filteredReposIds.value.map((repoId) => repoToGTrendDefMap[repoId])
     );
 
@@ -86,12 +79,17 @@ export default defineComponent({
     watch(reposIds, loadData);
 
     return {
-      isLoading,
+      isLoading: computed(() => isLoadingLibraries.value || isLoading.value),
       isError,
       libsTrends,
-      filteredLibsKeywords,
-      filteredLibsGTrendsDefs,
-      repoToColorMap,
+      gTrendsDefs,
+      repoToColorMap: computed(() =>
+        reposIds.value.reduce((acc, repoId) => {
+          acc[repoId] =
+            libraryToColorMap.value[repoToLibraryIdMap.value[repoId]];
+          return acc;
+        }, {} as Record<string, string>)
+      ),
     };
   },
 });

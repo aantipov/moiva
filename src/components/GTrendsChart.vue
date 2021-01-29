@@ -46,12 +46,12 @@ export default defineComponent({
   props: {
     isLoading: { type: Boolean, required: true },
     isError: { type: Boolean, required: true },
+    libsTrends: { type: Array as () => GTrendPointT[], required: true },
+    libsTrendsDefs: { type: Array as () => GTrendDefT[], required: true },
     repoToColorMap: {
       type: Object as () => Record<string, string>,
       required: true,
     },
-    libsTrends: { type: Array as () => GTrendPointT[], required: true },
-    libsTrendsDefs: { type: Array as () => GTrendDefT[], required: true },
   },
 
   setup(props) {

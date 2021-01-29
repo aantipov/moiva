@@ -49,9 +49,7 @@ export default defineComponent({
         ),
         backgroundColor: packageToColorMap.value[packageName],
         borderColor: packageToColorMap.value[packageName],
-        borderWidth: 4,
         pointRadius: 0,
-        pointHoverRadius: 7,
       }))
     );
 

@@ -28,10 +28,7 @@
         <div class="grid grid-cols-12 gap-4">
           <NpmDownloads class="col-span-12 xl:col-span-6" />
 
-          <!-- <GoogleTrends -->
-          <!--   :is&#45;loading&#45;packages&#45;data="isLoadingPackagesData" -->
-          <!--   class="col&#45;span&#45;12 xl:col&#45;span&#45;6" -->
-          <!-- /> -->
+          <GoogleTrends class="col-span-12 xl:col-span-6" />
 
           <!-- <TechRadar -->
           <!--   v&#45;if="false" -->
@@ -115,7 +112,7 @@ import NpmDownloads from './NpmDownloads.vue';
 import Autosuggest from './Autosuggest.vue';
 import Suggestions from './Suggestions.vue';
 // import TechRadar from './TechRadar.vue';
-// import GoogleTrends from './GTrends.vue';
+import GoogleTrends from './GTrends.vue';
 // import Bundlephobia from './Bundlephobia.vue';
 // import Issues from './Issues.vue';
 import Popular from './Popular.vue';
@@ -159,7 +156,7 @@ export default defineComponent({
     NpmDownloads,
     // Releases,
     // TechRadar,
-    // GoogleTrends,
+    GoogleTrends,
     // Bundlephobia,
     // Issues,
     Popular,
