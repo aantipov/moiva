@@ -7,20 +7,20 @@ type TRadarLevelT = typeof HOLD | typeof ADOPT | typeof TRIAL | typeof ASSESS;
 
 export const TRADAR_LEVELS: TRadarLevelT[] = [HOLD, ASSESS, TRIAL, ADOPT];
 
-type NameT = string;
+type RepoNameT = string;
 type LinkT = string;
 interface DataT {
   [key: string]: TRadarLevelT;
 }
 
-const libs: [NameT, LinkT, DataT][] = [
+const libs: [RepoNameT, LinkT, DataT][] = [
   [
-    'vue',
+    'vuejs/vue',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/vue-js',
     { '2016-11': ASSESS, '2017-03': TRIAL, '2020-05': ADOPT },
   ],
   [
-    'react',
+    'facebook/react',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/react-js',
     {
       '2015-01': ASSESS,
@@ -31,17 +31,17 @@ const libs: [NameT, LinkT, DataT][] = [
     },
   ],
   [
-    'svelte',
+    'sveltejs/svelte',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/svelte',
     { '2020-10': ASSESS },
   ],
   [
-    '@angular/core',
+    'angular/angular',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/angular',
     { '2017-03': ASSESS, '2017-11': TRIAL },
   ],
   [
-    'angular',
+    'angular/angular.js',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/angularjs',
     {
       '2014-07': TRIAL,
@@ -52,7 +52,7 @@ const libs: [NameT, LinkT, DataT][] = [
     },
   ],
   [
-    'ember-source',
+    'emberjs/ember.js',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/ember-js',
     {
       '2015-05': ASSESS,
@@ -63,7 +63,7 @@ const libs: [NameT, LinkT, DataT][] = [
     },
   ],
   [
-    'redux',
+    'reduxjs/redux',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/redux',
     {
       '2016-04': TRIAL,
@@ -73,27 +73,22 @@ const libs: [NameT, LinkT, DataT][] = [
     },
   ],
   [
-    'recoil',
+    'facebookexperimental/recoil',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/recoil',
     { '2020-10': ASSESS },
   ],
   [
-    'xstate',
+    'davidkpiano/xstate',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/xstate',
     { '2020-05': ASSESS, '2020-10': TRIAL },
   ],
   [
-    '@testing-library/react',
+    'testing-library/react-testing-library',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/react-testing-library',
     { '2019-04': ASSESS, '2019-11': TRIAL, '2020-05': ADOPT },
   ],
   [
-    '@testing-library/vue',
-    'https://www.thoughtworks.com/radar/languages-and-frameworks/testing-library',
-    { '2020-10': ASSESS },
-  ],
-  [
-    'enzyme',
+    'airbnb/enzyme',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/enzyme',
     {
       '2016-11': TRIAL,
@@ -104,37 +99,37 @@ const libs: [NameT, LinkT, DataT][] = [
     },
   ],
   [
-    'jest',
+    'facebook/jest',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/jest',
     { '2017-11': TRIAL },
   ],
   [
-    'jest-when',
+    'timkindberg/jest-when',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/jest-when',
     { '2019-11': TRIAL, '2020-10': ADOPT },
   ],
   [
-    'fastify',
+    'fastify/fastify',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/fastify',
     { '2020-10': TRIAL },
   ],
   [
-    'immer',
+    'immerjs/immer',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/immer',
     { '2019-04': ASSESS, '2020-10': TRIAL },
   ],
   [
-    'immutable',
+    'facebook/immutable-js',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/immutable-js',
     { '2016-04': ASSESS, '2016-11': TRIAL },
   ],
   [
-    'single-spa',
+    'single-spa/single-spa',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/single-spa',
     { '2017-11': ASSESS, '2020-10': TRIAL },
   ],
   [
-    'typescript',
+    'Microsoft/TypeScript',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/typescript',
     {
       '2014-01': ASSESS,
@@ -144,42 +139,37 @@ const libs: [NameT, LinkT, DataT][] = [
     },
   ],
   [
-    'babylonjs',
+    'BabylonJS/Babylon.js',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/babylon-js',
     { '2020-10': ASSESS },
   ],
   [
-    'hermes-engine',
+    'facebook/hermes',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/hermes',
     { '2020-10': ASSESS },
   ],
   [
-    'io-ts',
+    'gcanti/io-ts',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/io-ts',
     { '2020-10': ASSESS },
   ],
   [
-    'lit-element',
+    'Polymer/lit-element',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/litelement',
     { '2020-10': ASSESS },
   ],
   [
-    'msw',
+    'mswjs/msw',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/mock-service-worker',
     { '2020-10': ASSESS },
   ],
   [
-    'swr',
+    'vercel/swr',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/swr',
     { '2020-10': ASSESS },
   ],
   [
-    '@testing-library/react-native',
-    'https://www.thoughtworks.com/radar/languages-and-frameworks/swr',
-    { '2020-10': ASSESS },
-  ],
-  [
-    'yarn',
+    'yarnpkg/yarn',
     'https://www.thoughtworks.com/radar/tools/yarn',
     {
       '2017-03': ASSESS,
@@ -189,32 +179,32 @@ const libs: [NameT, LinkT, DataT][] = [
     },
   ],
   [
-    'npm',
+    'npm/cli',
     'https://www.thoughtworks.com/radar/techniques/npm-for-all-the-things',
     { '2015-11': TRIAL, '2016-04': TRIAL },
   ],
   [
-    'backstopjs',
+    'garris/backstopjs',
     'https://www.thoughtworks.com/radar/tools/backstopjs',
     { '2018-05': TRIAL },
   ],
   [
-    'loki',
+    'oblador/loki',
     'https://www.thoughtworks.com/radar/tools/loki',
     { '2019-11': TRIAL },
   ],
   [
-    'tailwindcss',
+    'tailwindlabs/tailwindcss',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/tailwind-css',
     { '2020-05': ASSESS },
   ],
   [
-    'testcafe',
+    'DevExpress/testcafe',
     'https://www.thoughtworks.com/radar/tools/testcafe',
     { '2018-11': ASSESS, '2019-04': TRIAL },
   ],
   [
-    'cypress',
+    'cypress-io/cypress',
     'https://www.thoughtworks.com/radar/tools/cypress',
     {
       '2017-11': ASSESS,
@@ -225,67 +215,62 @@ const libs: [NameT, LinkT, DataT][] = [
     },
   ],
   [
-    'puppeteer',
+    'puppeteer/puppeteer',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/puppeteer',
     { '2018-11': ASSESS, '2019-04': TRIAL },
   ],
   [
-    '@sentry/core',
+    'getsentry/sentry',
     'https://www.thoughtworks.com/radar/tools/sentry',
     { '2018-05': ASSESS, '2020-10': TRIAL },
   ],
   [
-    'styled-components',
+    'styled-components/styled-components',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/styled-components',
     { '2019-11': TRIAL },
   ],
   [
-    'snowpack',
+    'snowpackjs/snowpack',
     'https://www.thoughtworks.com/radar/tools/snowpack',
     { '2020-05': ASSESS },
   ],
   [
-    'react-styleguidist',
+    'styleguidist/react-styleguidist',
     'https://www.thoughtworks.com/radar/tools/react-styleguidist',
     { '2019-11': ADOPT },
   ],
   [
-    'pnpm',
+    'pnpm/pnpm',
     'https://www.thoughtworks.com/radar/tools/pnpm',
     { '2020-10': ASSESS },
   ],
   [
-    'playwright',
+    'Microsoft/playwright',
     'https://www.thoughtworks.com/radar/tools/playwright',
     { '2020-10': ASSESS },
   ],
   [
-    '@parcel/core',
+    'parcel-bundler/parcel',
     'https://www.thoughtworks.com/radar/tools/parcel',
     { '2018-05': ASSESS },
   ],
   [
-    'parcel',
-    'https://www.thoughtworks.com/radar/tools/parcel',
-    { '2018-05': ASSESS },
-  ],
-  [
-    'webpack',
+    'webpack/webpack',
     'https://www.thoughtworks.com/radar/tools/webpack',
     { '2016-04': TRIAL, '2016-11': TRIAL },
   ],
   [
-    'prettier',
+    'prettier/prettier',
     'https://www.thoughtworks.com/radar/tools/prettier',
     { '2018-11': TRIAL },
   ],
   [
-    '@pollyjs/core',
+    'Netflix/pollyjs',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/polly-js',
     { '2018-11': ASSESS },
   ],
   [
-    '@nestjs/core',
+    'nestjs/nest',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/nestjs',
     {
       '2019-11': ASSESS,
@@ -293,7 +278,7 @@ const libs: [NameT, LinkT, DataT][] = [
     },
   ],
   [
-    'mountebank',
+    'bbyars/mountebank',
     'https://www.thoughtworks.com/radar/tools/mountebank',
     {
       '2014-07': ASSESS,
@@ -303,71 +288,75 @@ const libs: [NameT, LinkT, DataT][] = [
     },
   ],
   [
-    '@mlvis/manifold',
+    'uber/manifold',
     'https://www.thoughtworks.com/radar/tools/manifold',
     { '2020-05': ASSESS },
   ],
   [
-    'mermaid',
+    'knsv/mermaid',
     'https://www.thoughtworks.com/radar/tools/mermaid',
     { '2018-11': TRIAL },
   ],
   [
-    '@laconia/core',
+    'laconiajs/laconia',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/laconia',
     { '2019-04': TRIAL },
   ],
   [
-    'jscodeshift',
+    'facebook/jscodeshift',
     'https://www.thoughtworks.com/radar/tools/jscodeshift',
     { '2020-10': TRIAL },
   ],
   [
-    'gatsby',
+    'gatsbyjs/gatsby',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/gatsby-js',
     { '2019-11': ASSESS },
   ],
   [
-    'joi',
+    'sideway/joi',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/joi',
     { '2019-04': TRIAL },
   ],
   [
-    'hyperapp',
+    'jorgebucaran/hyperapp',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/hyperapp',
     { '2018-05': ASSESS },
   ],
   [
-    'formik',
+    'formium/formik',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/formik',
     { '2019-04': TRIAL },
   ],
   [
-    'flow-bin',
+    'flowtype/flow-bin',
     'https://www.thoughtworks.com/radar/tools/flow',
     { '2017-11': ASSESS, '2018-05': ASSESS },
   ],
   [
-    '@11ty/eleventy',
+    '11ty/eleventy',
     'https://www.thoughtworks.com/radar/tools/eleventy',
     { '2020-10': ASSESS },
   ],
   [
-    'eslint',
+    'eslint/eslint',
     'https://www.thoughtworks.com/radar/tools/eslint',
     { '2019-11': ADOPT },
   ],
   [
-    'clinic',
+    'clinicjs/node-clinic-bubbleprof-examples',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/clinic-js-bubbleprof',
     { '2020-05': ASSESS },
   ],
   [
-    'commitizen',
+    'commitizen/cz-cli',
     'https://www.thoughtworks.com/radar/tools/commitizen',
     { '2019-11': ADOPT },
   ],
-  ['ava', 'https://www.thoughtworks.com/radar/tools/ava', { '2019-04': TRIAL }],
+  [
+    'avajs/ava',
+    'https://www.thoughtworks.com/radar/tools/ava',
+    { '2019-04': TRIAL },
+  ],
 ];
 
 export const libsToDatadMap = libs.reduce((accum, [name, , data]) => {
