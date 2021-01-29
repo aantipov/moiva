@@ -40,6 +40,16 @@ export const repoToLibraryIdMap = computed<Record<string, string>>(() => {
   }, {} as Record<string, string>);
 });
 
+export const npmPackageToLibraryIdMap = computed<Record<string, string>>(() => {
+  return libraries
+    .filter((lib) => !!lib.npmPackage)
+    .reduce((acc, lib) => {
+      acc[(lib.npmPackage as NpmPackageT).name] = lib.id;
+
+      return acc;
+    }, {} as Record<string, string>);
+});
+
 /**
  * Add a library via a Github repository
  */

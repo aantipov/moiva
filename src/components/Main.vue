@@ -26,11 +26,7 @@
       <!-- Charts -->
       <div>
         <div class="grid grid-cols-12 gap-4">
-          <!-- <NpmDownloads -->
-          <!--   :packages&#45;names="packagesNames" -->
-          <!--   :is&#45;loading&#45;packages&#45;data="isLoadingPackagesData" -->
-          <!--   class="col&#45;span&#45;12 xl:col&#45;span&#45;6" -->
-          <!-- /> -->
+          <NpmDownloads class="col-span-12 xl:col-span-6" />
 
           <!-- <GoogleTrends -->
           <!--   :is&#45;loading&#45;packages&#45;data="isLoadingPackagesData" -->
@@ -114,7 +110,7 @@ import {
   // watch,
   watchEffect,
 } from 'vue';
-// import NpmDownloads from './NpmDownloads.vue';
+import NpmDownloads from './NpmDownloads.vue';
 // import Releases from './Releases.vue';
 import Autosuggest from './Autosuggest.vue';
 import Suggestions from './Suggestions.vue';
@@ -160,7 +156,7 @@ export default defineComponent({
     Autosuggest,
     Suggestions,
     SelectedLibs,
-    // NpmDownloads,
+    NpmDownloads,
     // Releases,
     // TechRadar,
     // GoogleTrends,

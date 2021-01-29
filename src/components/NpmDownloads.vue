@@ -1,75 +1,55 @@
 <template>
   <NpmDownloadsChart
-    :is-loading-packages-data="isLoadingPackagesData"
-    :is-loading-packages-downloads="isLoadingPackagesDownloads"
+    :is-loading="isLoading"
     :is-error="isError"
-    :packages-names="packagesNames"
-    :packages-downloads="libsDownloads"
-    :repos-ids="reposIds"
-    :repo-to-color-map="repoToColorMap"
+    :packages-names="successItemsIds"
+    :failed-packages-names="failedItemsIds"
+    :packages-downloads="items"
+    :package-to-color-map="npmPackageToColorMap"
   />
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, toRefs, ref, watch } from 'vue';
+import { defineComponent, computed } from 'vue';
 import NpmDownloadsChart from './NpmDownloadsChart.vue';
-import { fetchNpmDownloads, NpmDownloadT } from '../apis';
-import { repoToColorMap } from '@/store/reposColors';
-import { reposIds } from '@/store/selectedRepos';
+import { fetchNpmDownloads } from '@/apis';
+import useChartApi from '@/composables/useChartApi';
+import { libraryToColorMap } from '@/store/librariesColors';
+import {
+  isLoading as isLoadingLibraries,
+  npmPackagesNames,
+  npmPackageToLibraryIdMap,
+} from '@/store/libraries';
 
 export default defineComponent({
   name: 'NpmDownloads',
 
-  components: {
-    NpmDownloadsChart,
-  },
+  components: { NpmDownloadsChart },
 
-  props: {
-    packagesNames: { type: Array as () => string[], required: true },
-    isLoadingPackagesData: { type: Boolean, required: true },
-  },
-
-  setup(props) {
-    const { packagesNames } = toRefs(props);
-    const libsDownloads = ref<(NpmDownloadT[] | null)[]>([]);
-    const isLoadingPackagesDownloads = ref(true);
-    const isError = ref(false);
-    let lastFetchPromise: null | Promise<void> = null;
-
-    function loadData(): void {
-      isLoadingPackagesDownloads.value = true;
-      isError.value = false;
-
-      const fetchPromise = (lastFetchPromise = Promise.all(
-        packagesNames.value.map(fetchNpmDownloads)
-      )
-        .then((data) => {
-          // Do nothing if there is a new request already in place
-          if (lastFetchPromise === fetchPromise) {
-            libsDownloads.value = data;
-            isLoadingPackagesDownloads.value = false;
-            isError.value = false;
-          }
-        })
-        .catch(() => {
-          // Do nothing if there is a new request already in place
-          if (lastFetchPromise === fetchPromise) {
-            isLoadingPackagesDownloads.value = false;
-            isError.value = true;
-          }
-        }));
-    }
-
-    onMounted(loadData);
-
-    watch(packagesNames, loadData);
+  setup() {
+    const {
+      isLoading,
+      isError,
+      items,
+      successItemsIds,
+      failedItemsIds,
+    } = useChartApi(npmPackagesNames, isLoadingLibraries, fetchNpmDownloads);
 
     return {
-      isLoadingPackagesDownloads,
+      isLoading: computed(() => isLoadingLibraries.value || isLoading.value),
       isError,
-      libsDownloads,
-      repoToColorMap,
-      reposIds,
+      items,
+      failedItemsIds,
+      successItemsIds,
+      npmPackageToColorMap: computed(() =>
+        (successItemsIds.value as string[]).reduce((acc, npmPackageName) => {
+          acc[npmPackageName] =
+            libraryToColorMap.value[
+              npmPackageToLibraryIdMap.value[npmPackageName]
+            ];
+          return acc;
+        }, {} as Record<string, string>)
+      ),
     };
   },
 });

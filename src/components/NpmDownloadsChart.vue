@@ -1,10 +1,10 @@
 <template>
   <m-chart
     title="NPM monthly downloads"
-    :is-loading="isLoadingPackagesDownloads || isLoadingPackagesData"
+    :is-loading="isLoading"
     :is-error="isError"
-    :libs-names="filteredLibsNames"
-    :failed-libs-names="failedLibsNames"
+    :libs-names="packagesNames"
+    :failed-libs-names="failedPackagesNames"
     :chart-config="chartConfig"
   >
   </m-chart>
@@ -14,76 +14,41 @@
 import { defineComponent, toRefs, computed } from 'vue';
 import { ChartDataSets, ChartConfiguration } from 'chart.js';
 import { format } from 'date-fns';
-import { NpmDownloadT } from '../apis';
-import { numbersFormatter } from '../utils';
+import { NpmDownloadT } from '@/apis';
+import { numbersFormatter } from '@/utils';
 import { enUS } from 'date-fns/locale';
 
 export default defineComponent({
   name: 'NpmDownloadsChart',
 
   props: {
-    isLoadingPackagesData: { type: Boolean, required: true },
-    isLoadingPackagesDownloads: { type: Boolean, required: true },
+    isLoading: { type: Boolean, required: true },
     isError: { type: Boolean, required: true },
     packagesNames: { type: Array as () => string[], required: true },
-    reposIds: { type: Array as () => string[], required: true },
-    repoToColorMap: {
-      type: Object as () => Record<string, string>,
+    failedPackagesNames: { type: Array as () => string[], required: true },
+    packagesDownloads: {
+      type: Array as () => NpmDownloadT[][],
       required: true,
     },
-    packagesDownloads: {
-      type: Array as () => (NpmDownloadT[] | null)[],
+    packageToColorMap: {
+      type: Object as () => Record<string, string>,
       required: true,
     },
   },
 
   setup(props) {
-    const {
-      packagesNames,
-      reposIds,
-      repoToColorMap,
-      packagesDownloads,
-      isLoadingPackagesDownloads,
-      isLoadingPackagesData,
-    } = toRefs(props);
-
-    // Successful requests downloads
-    const filteredPackagesDownloads = computed<NpmDownloadT[][]>(
-      () =>
-        packagesDownloads.value.filter(
-          (libDownloads) => !!libDownloads
-        ) as NpmDownloadT[][]
-    );
-
-    const filteredLibsNames = computed(() =>
-      packagesNames.value.filter(
-        (libName, libIndex) => !!packagesDownloads.value[libIndex]
-      )
-    );
-
-    const filteredReposIds = computed(() =>
-      reposIds.value.filter(
-        (_, repoIndex) => !!packagesDownloads.value[repoIndex]
-      )
-    );
-
-    const failedLibsNames = computed(() =>
-      packagesNames.value.filter(
-        (libName, libIndex) =>
-          !isLoadingPackagesData.value &&
-          !isLoadingPackagesDownloads.value &&
-          !packagesDownloads.value[libIndex]
-      )
+    const { packagesNames, packageToColorMap, packagesDownloads } = toRefs(
+      props
     );
 
     const datasets = computed<ChartDataSets[]>(() =>
-      filteredLibsNames.value.map((libName, libIndex) => ({
-        label: libName,
-        data: filteredPackagesDownloads.value[libIndex].map(
+      packagesNames.value.map((packageName, packageIndex) => ({
+        label: packageName,
+        data: packagesDownloads.value[packageIndex].map(
           ({ downloads }) => downloads
         ),
-        backgroundColor: repoToColorMap.value[filteredReposIds.value[libIndex]],
-        borderColor: repoToColorMap.value[filteredReposIds.value[libIndex]],
+        backgroundColor: packageToColorMap.value[packageName],
+        borderColor: packageToColorMap.value[packageName],
         borderWidth: 4,
         pointRadius: 0,
         pointHoverRadius: 7,
@@ -91,8 +56,8 @@ export default defineComponent({
     );
 
     const filteredCategories = computed<string[]>(() =>
-      filteredPackagesDownloads.value.length
-        ? filteredPackagesDownloads.value[0].map(({ month }) => month)
+      packagesDownloads.value.length
+        ? packagesDownloads.value[0].map(({ month }) => month)
         : []
     );
 
@@ -119,11 +84,7 @@ export default defineComponent({
       },
     }));
 
-    return {
-      failedLibsNames,
-      filteredLibsNames,
-      chartConfig,
-    };
+    return { chartConfig };
   },
 });
 </script>
