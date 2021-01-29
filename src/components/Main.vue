@@ -30,13 +30,8 @@
 
           <GoogleTrends class="col-span-12 xl:col-span-6" />
 
-          <!-- <TechRadar -->
-          <!--   v&#45;if="false" -->
-          <!--   :libs&#45;names="packagesNames" -->
-          <!--   :lib&#45;to&#45;color&#45;map="repoToColorMap" -->
-          <!--   class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;3" -->
-          <!-- /> -->
-          <!--  -->
+          <TechRadar class="col-span-12 md:col-span-6 xl:col-span-3" />
+
           <!-- <Contributors -->
           <!--   v&#45;if="false" -->
           <!--   :libs="selectedLibs" -->
@@ -111,7 +106,7 @@ import NpmDownloads from './NpmDownloads.vue';
 // import Releases from './Releases.vue';
 import Autosuggest from './Autosuggest.vue';
 import Suggestions from './Suggestions.vue';
-// import TechRadar from './TechRadar.vue';
+import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
 // import Bundlephobia from './Bundlephobia.vue';
 // import Issues from './Issues.vue';
@@ -155,7 +150,7 @@ export default defineComponent({
     SelectedLibs,
     NpmDownloads,
     // Releases,
-    // TechRadar,
+    TechRadar,
     GoogleTrends,
     // Bundlephobia,
     // Issues,

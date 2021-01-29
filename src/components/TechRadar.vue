@@ -1,10 +1,10 @@
 <template>
   <m-chart
-    v-if="filteredLibsNames.length"
+    v-if="tradarItemsAliases.length"
     title="ThoughtWorks TechRadar"
     :is-loading="false"
     :is-error="false"
-    :libs-names="filteredLibsNames"
+    :libs-names="tradarItemsAliases"
     :failed-libs-names="[]"
     :chart-config="chartConfig"
   >
@@ -21,43 +21,55 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, computed } from 'vue';
+import { defineComponent, computed } from 'vue';
 import { format } from 'date-fns';
 import { ChartConfiguration, ChartDataSets } from 'chart.js';
-import { TRADAR_LEVELS, libsToDatadMap } from '../../techradar.config';
+import {
+  TRADAR_LEVELS,
+  repoToTechRadarMap,
+  TechRadarT,
+} from '../../techradar.config';
+import { libraryToColorMap } from '@/store/librariesColors';
+import { reposIds, repoToLibraryIdMap } from '@/store/libraries';
 
 export default defineComponent({
   name: 'TechRadar',
-  props: {
-    libsNames: { type: Array as () => string[], required: true },
-    libToColorMap: {
-      type: Object as () => Record<string, string>,
-      required: true,
-    },
-  },
 
-  setup(props) {
-    const { libsNames, libToColorMap } = toRefs(props);
-    const filteredLibsNames = computed<string[]>(() =>
-      libsNames.value.filter((libName) => !!libsToDatadMap[libName])
+  setup() {
+    const tradarItems = computed<TechRadarT[]>(() =>
+      reposIds.value
+        .map((repoId) => repoToTechRadarMap[repoId])
+        .filter((item) => !!item)
+    );
+
+    const tradarItemsAliases = computed<TechRadarT[]>(() =>
+      tradarItems.value.map(
+        (tradarItem) => repoToTechRadarMap[tradarItem.alias]
+      )
     );
 
     const uniqDates = computed<string[]>(() => {
-      const dates = filteredLibsNames.value
-        .map((libName) => Object.keys(libsToDatadMap[libName]))
+      const dates = tradarItems.value
+        .map((tradarItem) => Object.keys(tradarItem.data))
         .flat();
 
       return [...new Set(dates)].sort();
     });
 
     const datasets = computed<ChartDataSets[]>(() =>
-      filteredLibsNames.value.map(
-        (libName) =>
+      tradarItems.value.map(
+        (tradarItem) =>
           ({
-            label: libName,
-            data: uniqDates.value.map((date) => libsToDatadMap[libName][date]),
-            backgroundColor: libToColorMap.value[libName],
-            borderColor: libToColorMap.value[libName],
+            label: tradarItem.alias,
+            data: uniqDates.value.map((date) => tradarItem.data[date]),
+            backgroundColor:
+              libraryToColorMap.value[
+                repoToLibraryIdMap.value[tradarItem.repo]
+              ],
+            borderColor:
+              libraryToColorMap.value[
+                repoToLibraryIdMap.value[tradarItem.repo]
+              ],
             spanGaps: true,
             lineTension: 0,
           } as ChartDataSets)
@@ -100,7 +112,7 @@ export default defineComponent({
     }));
 
     return {
-      filteredLibsNames,
+      tradarItemsAliases,
       chartConfig,
     };
   },

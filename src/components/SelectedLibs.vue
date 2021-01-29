@@ -53,11 +53,7 @@
           <!--  Links  -->
           <div class="flex">
             <!-- Desktop -->
-            <LibExternalLinks
-              v-if="lib.npmPackage"
-              :lib-name="lib.npmPackage.name"
-              class="hidden sm:flex"
-            />
+            <LibExternalLinks :library="lib" class="hidden sm:flex" />
 
             <a
               class="flex items-center ml-3"
@@ -70,11 +66,7 @@
         </div>
 
         <!-- Mobile -->
-        <LibExternalLinks
-          v-if="lib.npmPackage"
-          :lib-name="lib.npmPackage.name"
-          class="my-2 sm:hidden"
-        />
+        <LibExternalLinks :library="lib" class="my-2 sm:hidden" />
 
         <div class="text-sm text-gray-500">
           <div class="grid grid-cols-12">
