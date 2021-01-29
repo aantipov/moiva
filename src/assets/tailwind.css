@@ -28,4 +28,13 @@
   .chart-error-new {
     @apply flex items-center justify-center text-red-700 h-5/6;
   }
+  .toast-error-popup {
+    @apply bg-red-500 text-white py-3 !important;
+  }
+  .toast-error-title {
+    @apply text-white mr-8 font-normal !important;
+  }
+  .toast-error-close-btn {
+    @apply text-white static text-2xl font-semibold leading-none mr-1 outline-none focus:outline-none focus:shadow-none !important;
+  }
 }

@@ -229,11 +229,17 @@ export function getBundlephobiaUrl(libName: string): string {
 
 export function showErrorMsg(msg: string): void {
   Swal.fire({
-    title: 'Error!',
-    text: msg,
-    confirmButtonText: 'Close',
+    title: msg,
     toast: true,
+    showConfirmButton: false,
     position: 'top-end',
+    showCloseButton: true,
+    closeButtonHtml: '<span>×</span>',
+    customClass: {
+      title: 'toast-error-title',
+      popup: 'toast-error-popup',
+      closeButton: 'toast-error-close-btn',
+    },
   });
 }
 
