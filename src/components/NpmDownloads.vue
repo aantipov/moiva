@@ -12,7 +12,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import NpmDownloadsChart from './NpmDownloadsChart.vue';
-import { fetchNpmDownloads } from '@/apis';
+import { fetchNpmDownloads, NpmDownloadT } from '@/apis';
 import useChartApi from '@/composables/useChartApi';
 import { libraryToColorMap } from '@/store/librariesColors';
 import {
@@ -33,7 +33,11 @@ export default defineComponent({
       items,
       successItemsIds,
       failedItemsIds,
-    } = useChartApi(npmPackagesNames, isLoadingLibraries, fetchNpmDownloads);
+    } = useChartApi<NpmDownloadT[]>(
+      npmPackagesNames,
+      isLoadingLibraries,
+      fetchNpmDownloads
+    );
 
     return {
       isLoading: computed(() => isLoadingLibraries.value || isLoading.value),
@@ -42,7 +46,7 @@ export default defineComponent({
       failedItemsIds,
       successItemsIds,
       npmPackageToColorMap: computed(() =>
-        (successItemsIds.value as string[]).reduce((acc, npmPackageName) => {
+        successItemsIds.value.reduce((acc, npmPackageName) => {
           acc[npmPackageName] =
             libraryToColorMap.value[
               npmPackageToLibraryIdMap.value[npmPackageName]

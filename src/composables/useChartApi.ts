@@ -1,17 +1,16 @@
 import { ref, onMounted, watch, Ref, computed } from 'vue';
 import * as Sentry from '@sentry/browser';
 
-export default function useChartApi(
-  itemsIds: Ref<unknown[]>,
+export default function useChartApi<T>(
+  itemsIds: Ref<string[]>,
   isNotReadyToCall: Ref<boolean>,
-  // @ts-ignore
-  apiMethod
+  apiMethod: (dataKey: string) => Promise<T | null>
 ): {
   isLoading: Ref<boolean>;
   isError: Ref<boolean>;
-  items: Ref<unknown[]>;
-  successItemsIds: Ref<unknown[]>;
-  failedItemsIds: Ref<unknown[]>;
+  items: Ref<T[]>;
+  successItemsIds: Ref<string[]>;
+  failedItemsIds: Ref<string[]>;
 } {
   const items = ref<(unknown | null)[]>([]);
   const isLoading = ref(true);
@@ -55,7 +54,7 @@ export default function useChartApi(
   return {
     isLoading,
     isError,
-    items: computed(() => items.value.filter((item) => !!item)),
+    items: computed(() => items.value.filter((item) => !!item) as T[]),
     successItemsIds: computed(() =>
       itemsIds.value.filter((_, itemIdIndex) => !!items.value[itemIdIndex])
     ),
