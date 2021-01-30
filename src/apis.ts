@@ -128,20 +128,18 @@ export function fetchRepoLanguages(
 }
 
 export function fetchRepoCommits(
-  repoUrl: string
+  repoId: string
 ): Promise<CommitsResponseItemT[] | null> {
-  const repoUrlParts = repoUrl.split('/');
-  const owner = repoUrlParts[3];
-  const name = repoUrlParts[4];
+  const [owner, name] = repoId.split('/');
 
-  if (githubCommitsCache.get(repoUrl)) {
-    return Promise.resolve(githubCommitsCache.get(repoUrl));
+  if (githubCommitsCache.get(repoId)) {
+    return Promise.resolve(githubCommitsCache.get(repoId));
   }
 
   return axios
     .get<CommitsResponseItemT[]>(`/api/gh-commits?name=${name}&owner=${owner}`)
     .then(({ data }) => {
-      githubCommitsCache.set(repoUrl, data);
+      githubCommitsCache.set(repoId, data);
       return data;
     })
     .catch((err) => {

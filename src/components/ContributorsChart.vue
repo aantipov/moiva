@@ -71,9 +71,7 @@ export default defineComponent({
       },
     }));
 
-    return {
-      chartConfig,
-    };
+    return { chartConfig };
   },
 });
 </script>

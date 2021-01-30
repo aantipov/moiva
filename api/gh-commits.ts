@@ -20,7 +20,6 @@ export default (req: NowRequest, res: NowResponse): void => {
   if (
     !name ||
     !owner ||
-    name === 'angular' ||
     typeof name !== 'string' ||
     typeof owner !== 'string'
   ) {
