@@ -43,17 +43,20 @@ export default defineComponent({
     const { reposIds, repoToColorMap, reposContributors } = toRefs(props);
 
     const datasets = computed<ChartDataSets[]>(() =>
-      reposIds.value.map((repoId, repoIndex) => ({
-        label: repoId,
-        data: reposContributors.value[repoIndex].map(
-          ({ year, contributors }) => ({
-            x: year.toString(),
-            y: contributors,
-          })
-        ),
-        backgroundColor: repoToColorMap.value[repoId],
-        borderColor: repoToColorMap.value[repoId],
-      }))
+      reposIds.value.map((repoId, repoIndex) => {
+        const [, repoName] = repoId.split('/');
+        return {
+          label: repoName,
+          data: reposContributors.value[repoIndex].map(
+            ({ year, contributors }) => ({
+              x: year.toString(),
+              y: contributors,
+            })
+          ),
+          backgroundColor: repoToColorMap.value[repoId],
+          borderColor: repoToColorMap.value[repoId],
+        };
+      })
     );
 
     const chartConfig = computed<ChartConfiguration>(() => ({
