@@ -32,14 +32,8 @@
 
           <TechRadar class="col-span-12 md:col-span-6 xl:col-span-3" />
 
-          <!-- <Contributors -->
-          <!--   v&#45;if="false" -->
-          <!--   :libs="selectedLibs" -->
-          <!--   :lib&#45;to&#45;color&#45;map="repoToColorMap" -->
-          <!--   :is&#45;loading&#45;libs&#45;data="isLoadingPackagesData" -->
-          <!--   class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;3" -->
-          <!-- /> -->
-          <!--  -->
+          <Contributors class="col-span-12 md:col-span-6 xl:col-span-3" />
+
           <!-- <Releases -->
           <!--   v&#45;if="false" -->
           <!--   :libs&#45;names="packagesNames" -->
@@ -113,7 +107,7 @@ import GoogleTrends from './GTrends.vue';
 import Popular from './Popular.vue';
 import SelectedLibs from './SelectedLibs.vue';
 // import Languages from './Languages.vue';
-// import Contributors from './Contributors.vue';
+import Contributors from './Contributors.vue';
 // import DevelopersUsage from './DevelopersUsage.vue';
 // import Commits from './Commits.vue';
 // import { ERROR_CODE_NO_GITHUB_DATA } from '@/constants';
@@ -146,18 +140,18 @@ export default defineComponent({
   name: 'Main',
   components: {
     Autosuggest,
+    Contributors,
+    GoogleTrends,
+    NpmDownloads,
+    Popular,
     Suggestions,
     SelectedLibs,
-    NpmDownloads,
-    // Releases,
     TechRadar,
-    GoogleTrends,
+    // Releases,
     // Bundlephobia,
     // Issues,
-    Popular,
     // Languages,
     // Commits,
-    // Contributors,
     // DevelopersUsage,
   },
 

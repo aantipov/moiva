@@ -163,14 +163,12 @@ export interface YearContributorsT {
 }
 
 export function fetchContributors(
-  repoUrl: string
+  repoId: string
 ): Promise<YearContributorsT[] | null> {
-  const repoUrlParts = repoUrl.split('/');
-  const owner = repoUrlParts[3];
-  const name = repoUrlParts[4];
+  const [owner, name] = repoId.split('/');
 
-  if (githubContributorsCache.get(repoUrl)) {
-    return Promise.resolve(githubContributorsCache.get(repoUrl));
+  if (githubContributorsCache.get(repoId)) {
+    return Promise.resolve(githubContributorsCache.get(repoId));
   }
 
   return axios
@@ -203,7 +201,7 @@ export function fetchContributors(
         }))
         .sort((c1, c2) => c1.year - c2.year);
 
-      githubContributorsCache.set(repoUrl, contributorsByYear);
+      githubContributorsCache.set(repoId, contributorsByYear);
 
       return contributorsByYear;
     })
