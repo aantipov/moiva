@@ -2,7 +2,7 @@ import { NowRequest, NowResponse } from '@vercel/node';
 import axios from 'axios';
 import { logRequest, initSentry, reportError } from './utils';
 import { ERROR_CODE_NO_GITHUB_DATA } from '../src/constants';
-import { catalogLibsByName } from '../src/libraries-catalog';
+import { catalogNpmToLib } from '../src/libraries-catalog';
 
 initSentry();
 
@@ -33,7 +33,7 @@ export default (req: NowRequest, res: NowResponse): void => {
       } = resp;
 
       const hasCatalogLibGithub =
-        catalogLibsByName[pkg] && catalogLibsByName[pkg].github;
+        catalogNpmToLib[pkg] && catalogNpmToLib[pkg].repoId;
       const hasPackageGithub =
         repository &&
         repository.type === 'git' &&
@@ -58,7 +58,7 @@ export default (req: NowRequest, res: NowResponse): void => {
       let repoUrl: string;
 
       if (hasCatalogLibGithub) {
-        repoUrl = `https://github.com/${catalogLibsByName[pkg].github}`;
+        repoUrl = `https://github.com/${catalogNpmToLib[pkg].repoId}`;
       } else {
         const endRepoUrlIndex = repository.url.slice(-4) === '.git' ? -4 : 400;
 

@@ -1,4 +1,8 @@
-import { catalogLibsByName, libsNamesByCategory } from './libraries-catalog';
+import {
+  catalogRepoIdToLib,
+  catalogNpmToLib,
+  catalogNpmNamesByCategory,
+} from './libraries-catalog';
 import { LibraryT, NpmPackageT } from '@/libraryApis';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import Swal from 'sweetalert2';
@@ -57,30 +61,32 @@ export function setNoFollowTag(): void {
   }
 }
 
-function getSeoLibName(libName: string): string {
-  if (catalogLibsByName[libName]?.seoAlias) {
-    return catalogLibsByName[libName].seoAlias as string;
+function getSeoLibName(repoId: string): string {
+  if (catalogRepoIdToLib[repoId].seoAlias) {
+    return catalogRepoIdToLib[repoId].seoAlias as string;
   }
+
+  const [, repoName] = repoId.split('/');
 
   // Capitalise normal names
   if (
-    libName.length > 2 &&
-    !libName.includes('@') &&
-    !libName.includes('/') &&
-    !libName.includes('-')
+    repoName.length > 2 &&
+    !repoName.includes('@') &&
+    !repoName.includes('/') &&
+    !repoName.includes('-')
   ) {
-    return libName.charAt(0).toUpperCase() + libName.slice(1);
+    return repoName.charAt(0).toUpperCase() + repoName.slice(1);
   }
 
-  return libName;
+  return repoName;
 }
 
-export function getTitle(libsNames: string[]): string {
-  if (!libsNames.length) {
+export function getTitle(reposIds: string[]): string {
+  if (!reposIds.length) {
     return 'Moiva.io - Measure and Compare JavaScript libraries side by side';
   }
 
-  const seoNames = [...libsNames].sort().map(getSeoLibName);
+  const seoNames = [...reposIds].sort().map(getSeoLibName);
 
   if (seoNames.length === 1) {
     return `${seoNames[0]}: Stats and Trends from NPM, GitHub, Google Search - Moiva.io`;
@@ -90,7 +96,8 @@ export function getTitle(libsNames: string[]): string {
 }
 
 interface LibForDescriptionT {
-  name: string;
+  npm: string;
+  repoId: string;
   description: string;
   starsCount: string;
   age: string;
@@ -101,10 +108,11 @@ interface LibForDescriptionT {
 export function getMetaDescription(libraries: LibraryT[]): string {
   const libs = [...libraries].sort(sortLibsByNpmPackageName).map((lib) => {
     const { name, dependencies, license } = lib.npmPackage as NpmPackageT;
-    const { description, stars, createdAt } = lib.repo;
+    const { description, stars, createdAt, repoId } = lib.repo;
 
     return {
-      name,
+      npm: name,
+      repoId,
       description,
       starsCount: numbersFormatter.format(stars),
       age: formatDistanceToNowStrict(new Date(createdAt)),
@@ -130,7 +138,7 @@ export function getMetaDescription(libraries: LibraryT[]): string {
     return getThreeLibsDescription(libs[0], libs[1], libs[2]);
   }
 
-  const seoNames = libs.map((lib) => getSeoLibName(lib.name));
+  const seoNames = libs.map((lib) => getSeoLibName(lib.repoId));
   const seoNamesStr = seoNames.join(', ');
 
   return `Compare ${seoNamesStr}. Stats and Trends over time - Npm Downloads, Google Trends, Contributors, Releases, Commits, Developer usage, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
@@ -138,14 +146,14 @@ export function getMetaDescription(libraries: LibraryT[]): string {
 
 function getSingleLibDescription(lib: LibForDescriptionT): string {
   const {
-    name,
+    repoId,
     description,
     starsCount,
     age,
     dependenciesCount,
     license,
   } = lib;
-  const seoName = getSeoLibName(name);
+  const seoName = getSeoLibName(repoId);
   const seoDescrIntro = description
     .toLowerCase()
     .startsWith(seoName.toLowerCase())
@@ -170,8 +178,8 @@ function getTwoLibsDescription(
   libA: LibForDescriptionT,
   libB: LibForDescriptionT
 ): string {
-  const seoNameA = getSeoLibName(libA.name);
-  const seoNameB = getSeoLibName(libB.name);
+  const seoNameA = getSeoLibName(libA.repoId);
+  const seoNameB = getSeoLibName(libB.repoId);
 
   return `Which is better ${seoNameA} or ${seoNameB}? Compare Stats and Trends side by side.
 ${seoNameA}: &#9733;${libA.starsCount} stars, ${libA.age} old, ${libA.dependenciesCount} dependencies, license: ${libA.license}...
@@ -184,9 +192,9 @@ function getThreeLibsDescription(
   libB: LibForDescriptionT,
   libC: LibForDescriptionT
 ): string {
-  const seoNameA = getSeoLibName(libA.name);
-  const seoNameB = getSeoLibName(libB.name);
-  const seoNameC = getSeoLibName(libC.name);
+  const seoNameA = getSeoLibName(libA.repoId);
+  const seoNameB = getSeoLibName(libB.repoId);
+  const seoNameC = getSeoLibName(libC.repoId);
 
   return `Which is better ${seoNameA}, ${seoNameB}, or ${seoNameC}? Compare Stats and Trends side by side.
 ${seoNameA}: &#9733;${libA.starsCount} stars, ${libA.age} old, ${libA.dependenciesCount} dependencies, license: ${libA.license}...
@@ -196,30 +204,30 @@ ${seoNameC}: &#9733;${libC.starsCount} stars, ${libC.age} old, ${libC.dependenci
 }
 
 /**
- * Get suggestions for the selected libs
+ * Get NPM suggestions for the selected libs
  * based on the last selected lib
  *
  */
-export function getSuggestions(libsNames: string[]): string[] {
-  if (!libsNames.length) {
+export function getSuggestions(npmPackagesNames: string[]): string[] {
+  if (!npmPackagesNames.length) {
     return [];
   }
 
   // We should not display any suggestions if the number of selected libraries is >=5
   // So that Google Search doesn't discover long urls and display them in search results
-  if (libsNames.length >= 5) {
+  if (npmPackagesNames.length >= 5) {
     return [];
   }
 
   const lastSelectedLibData =
-    catalogLibsByName[libsNames[libsNames.length - 1]];
+    catalogNpmToLib[npmPackagesNames[npmPackagesNames.length - 1]];
 
   if (!lastSelectedLibData || lastSelectedLibData.category === 'misc') {
     return [];
   }
 
-  return libsNamesByCategory[lastSelectedLibData.category]
-    .filter((libName) => !libsNames.includes(libName))
+  return catalogNpmNamesByCategory[lastSelectedLibData.category]
+    .filter((libName) => !npmPackagesNames.includes(libName))
     .slice(0, 6);
 }
 

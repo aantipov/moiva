@@ -127,7 +127,7 @@ import {
 // import useGithub from '@/composables/useGithub';
 import { updateLibrariesColors } from '@/store/librariesColors';
 import {
-  // reposIds,
+  reposIds,
   isLoading,
   libraries,
   librariesIds,
@@ -192,7 +192,7 @@ export default defineComponent({
         updateUrl(npmPackagesNames.value);
 
         // Update Document Title to make it SEO friendly
-        window.document.title = getTitle(npmPackagesNames.value);
+        window.document.title = getTitle(reposIds.value);
 
         // Update Meta Description
         (document.querySelector(
