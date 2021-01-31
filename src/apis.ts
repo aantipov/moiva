@@ -98,20 +98,18 @@ export function fetchNpmDownloads(
 }
 
 export function fetchRepoLanguages(
-  repoUrl: string
+  repoId: string
 ): Promise<GithubLanguagesResponseT | null> {
-  const repoUrlParts = repoUrl.split('/');
-  const owner = repoUrlParts[3];
-  const name = repoUrlParts[4];
+  const [owner, name] = repoId.split('/');
 
-  if (githubLanguagesCache.get(repoUrl)) {
-    return Promise.resolve(githubLanguagesCache.get(repoUrl));
+  if (githubLanguagesCache.get(repoId)) {
+    return Promise.resolve(githubLanguagesCache.get(repoId));
   }
 
   return axios
     .get(`/api/gh-languages?name=${name}&owner=${owner}`)
     .then(({ data }) => {
-      githubLanguagesCache.set(repoUrl, data);
+      githubLanguagesCache.set(repoId, data);
       return data;
     })
     .catch((err) => {

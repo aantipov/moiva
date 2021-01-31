@@ -1,10 +1,9 @@
 <template>
   <div>
     <Autosuggest class="w-full mx-auto lg:w-9/12 xl:w-2/4" @select="select" />
-
     <Suggestions @select="select" />
 
-    <!--  Show Popular Comparisons    -->
+    <!--  Popular Comparisons    -->
     <div v-if="!libraries.length">
       <Popular v-if="!isLoading" @select="selectMultiple" />
 
@@ -17,7 +16,7 @@
       </div>
     </div>
 
-    <!--  Show Selected Libraries and Charts    -->
+    <!--  Selected Libraries and Charts    -->
     <div v-else>
       <SelectedLibs
         class="relative w-full mx-auto mt-4 mb-2 lg:w-9/12 xl:w-2/4 divide-y divide-yellow-600 divide-opacity-40"
@@ -35,13 +34,7 @@
           <DevelopersUsage class="col-span-12 md:col-span-6 xl:col-span-3" />
           <Issues class="col-span-12 md:col-span-6 xl:col-span-3" />
           <Bundlephobia class="col-span-12 md:col-span-6 xl:col-span-3" />
-
-          <!-- <Languages -->
-          <!--   v&#45;if="false" -->
-          <!--   :libs="selectedLibs" -->
-          <!--   :is&#45;loading&#45;libs&#45;data="isLoadingPackagesData" -->
-          <!--   class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;3" -->
-          <!-- /> -->
+          <Languages class="col-span-12 md:col-span-6 xl:col-span-3" />
         </div>
       </div>
     </div>
@@ -67,7 +60,7 @@ import Bundlephobia from './Bundlephobia.vue';
 import Issues from './Issues.vue';
 import Popular from './Popular.vue';
 import SelectedLibs from './SelectedLibs.vue';
-// import Languages from './Languages.vue';
+import Languages from './Languages.vue';
 import Contributors from './Contributors.vue';
 import DevelopersUsage from './developer-usage/DevelopersUsage.vue';
 import Commits from './Commits.vue';
@@ -107,13 +100,13 @@ export default defineComponent({
     DevelopersUsage,
     GoogleTrends,
     Issues,
+    Languages,
     NpmDownloads,
     Popular,
     Releases,
     Suggestions,
     SelectedLibs,
     TechRadar,
-    // Languages,
   },
 
   setup() {
