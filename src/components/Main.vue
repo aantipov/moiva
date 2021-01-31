@@ -34,14 +34,8 @@
           <Commits class="col-span-12 md:col-span-6 xl:col-span-3" />
           <DevelopersUsage class="col-span-12 md:col-span-6 xl:col-span-3" />
           <Issues class="col-span-12 md:col-span-6 xl:col-span-3" />
+          <Bundlephobia class="col-span-12 md:col-span-6 xl:col-span-3" />
 
-          <!-- <Bundlephobia -->
-          <!--   v&#45;if="false" -->
-          <!--   :libs&#45;names="packagesNames" -->
-          <!--   :is&#45;loading&#45;libs&#45;data="isLoadingPackagesData" -->
-          <!--   class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;3" -->
-          <!-- /> -->
-          <!--  -->
           <!-- <Languages -->
           <!--   v&#45;if="false" -->
           <!--   :libs="selectedLibs" -->
@@ -69,7 +63,7 @@ import Autosuggest from './Autosuggest.vue';
 import Suggestions from './Suggestions.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
-// import Bundlephobia from './Bundlephobia.vue';
+import Bundlephobia from './Bundlephobia.vue';
 import Issues from './Issues.vue';
 import Popular from './Popular.vue';
 import SelectedLibs from './SelectedLibs.vue';
@@ -107,6 +101,7 @@ export default defineComponent({
   name: 'Main',
   components: {
     Autosuggest,
+    Bundlephobia,
     Commits,
     Contributors,
     DevelopersUsage,
@@ -118,7 +113,6 @@ export default defineComponent({
     Suggestions,
     SelectedLibs,
     TechRadar,
-    // Bundlephobia,
     // Languages,
   },
 

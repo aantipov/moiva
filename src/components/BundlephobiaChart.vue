@@ -2,10 +2,10 @@
   <m-chart
     title="Bundle size,"
     subtitle="kB"
-    :is-loading="isLoading || isLoadingLibsData"
+    :is-loading="isLoading"
     :is-error="isError"
-    :libs-names="filteredLibsNames"
-    :failed-libs-names="failedLibsNames"
+    :libs-names="packagesNames"
+    :failed-libs-names="failedPackagesNames"
     :chart-config="chartConfig"
   >
     <p>
@@ -29,51 +29,32 @@ export default defineComponent({
   name: 'BundlephobiaChart',
 
   props: {
-    isLoadingLibsData: { type: Boolean, required: true },
     isLoading: { type: Boolean, required: true },
     isError: { type: Boolean, required: true },
-    libsNames: { type: Array as () => string[], required: true },
-    libsSizes: {
-      type: Array as () => (BundlephobiaT | null)[],
+    packagesNames: { type: Array as () => string[], required: true },
+    failedPackagesNames: { type: Array as () => string[], required: true },
+    packagesSizes: {
+      type: Array as () => BundlephobiaT[],
       required: true,
     },
   },
 
   setup(props) {
-    const { libsNames, libsSizes, isLoading, isLoadingLibsData } = toRefs(
-      props
-    );
-
-    const filteredLibsSizes = computed<BundlephobiaT[]>(
-      () => libsSizes.value.filter((libSizes) => !!libSizes) as BundlephobiaT[]
-    );
-
-    const filteredLibsNames = computed(() =>
-      libsNames.value.filter((libName, libIndex) => !!libsSizes.value[libIndex])
-    );
-
-    const failedLibsNames = computed(() =>
-      libsNames.value.filter(
-        (libName, libIndex) =>
-          !isLoadingLibsData.value &&
-          !isLoading.value &&
-          !libsSizes.value[libIndex]
-      )
-    );
+    const { packagesNames, packagesSizes } = toRefs(props);
 
     const datasets = computed<ChartDataSets[]>(() => [
       {
         label: 'minified + gzipped',
-        data: filteredLibsSizes.value.map((libSize) =>
-          roundBytesFn(libSize.gzip)
+        data: packagesSizes.value.map((packageSize) =>
+          roundBytesFn(packageSize.gzip)
         ),
         backgroundColor: COLOR_GREEN,
         borderWidth: 1,
       },
       {
         label: 'minified',
-        data: filteredLibsSizes.value.map((libSize) =>
-          roundBytesFn(libSize.raw)
+        data: packagesSizes.value.map((packageSize) =>
+          roundBytesFn(packageSize.raw)
         ),
         backgroundColor: COLOR_GRAY,
         borderWidth: 1,
@@ -86,7 +67,7 @@ export default defineComponent({
     const chartConfig = computed<ChartConfiguration>(() => ({
       type: 'bar',
       data: {
-        labels: filteredLibsNames.value,
+        labels: packagesNames.value,
         datasets: datasets.value,
       },
       options: {
@@ -109,11 +90,7 @@ export default defineComponent({
       },
     }));
 
-    return {
-      failedLibsNames,
-      filteredLibsNames,
-      chartConfig,
-    };
+    return { chartConfig };
   },
 });
 </script>

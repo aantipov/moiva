@@ -1,69 +1,47 @@
 <template>
   <BundlephobiaChart
-    :is-loading-libs-data="isLoadingLibsData"
     :is-loading="isLoading"
     :is-error="isError"
-    :libs-names="libsNames"
-    :libs-sizes="libsSizes"
+    :packages-names="successItemsIds"
+    :failed-packages-names="failedItemsIds"
+    :packages-sizes="items"
   />
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, toRefs, ref, watch } from 'vue';
+import { defineComponent, computed } from 'vue';
 import BundlephobiaChart from './BundlephobiaChart.vue';
 import { fetchBundlephobiaData, BundlephobiaT } from '../apis';
+import useChartApi from '@/composables/useChartApi';
+import {
+  isLoading as isLoadingLibraries,
+  npmPackagesNames,
+} from '@/store/libraries';
 
 export default defineComponent({
   name: 'Bundlephobia',
 
-  components: {
-    BundlephobiaChart,
-  },
+  components: { BundlephobiaChart },
 
-  props: {
-    libsNames: { type: Array as () => string[], required: true },
-    isLoadingLibsData: { type: Boolean, required: true },
-  },
-
-  setup(props) {
-    const { libsNames } = toRefs(props);
-    const libsSizes = ref<(BundlephobiaT | null)[]>([]);
-    const isLoading = ref(true);
-    const isError = ref(false);
-    let lastFetchPromise: null | Promise<void> = null;
-
-    function loadData(): void {
-      isLoading.value = true;
-      isError.value = false;
-
-      const fetchPromise = (lastFetchPromise = Promise.all(
-        libsNames.value.map(fetchBundlephobiaData)
-      )
-        .then((data) => {
-          // Do nothing if there is a new request already in place
-          if (lastFetchPromise === fetchPromise) {
-            libsSizes.value = data;
-            isLoading.value = false;
-            isError.value = false;
-          }
-        })
-        .catch(() => {
-          // Do nothing if there is a new request already in place
-          if (lastFetchPromise === fetchPromise) {
-            isLoading.value = false;
-            isError.value = true;
-          }
-        }));
-    }
-
-    onMounted(loadData);
-
-    watch(libsNames, loadData);
-
-    return {
+  setup() {
+    const {
       isLoading,
       isError,
-      libsSizes,
+      items,
+      successItemsIds,
+      failedItemsIds,
+    } = useChartApi<BundlephobiaT>(
+      npmPackagesNames,
+      isLoadingLibraries,
+      fetchBundlephobiaData
+    );
+
+    return {
+      isLoading: computed(() => isLoadingLibraries.value || isLoading.value),
+      isError,
+      items,
+      failedItemsIds,
+      successItemsIds,
     };
   },
 });
