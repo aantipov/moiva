@@ -42,14 +42,7 @@
 </template>
 
 <script lang="ts">
-import {
-  defineComponent,
-  onMounted,
-  // ref,
-  // computed,
-  // watch,
-  watchEffect,
-} from 'vue';
+import { defineComponent, onMounted, watchEffect } from 'vue';
 import NpmDownloads from './NpmDownloads.vue';
 import Releases from './Releases.vue';
 import Autosuggest from './Autosuggest.vue';
@@ -64,21 +57,13 @@ import Languages from './Languages.vue';
 import Contributors from './Contributors.vue';
 import DevelopersUsage from './developer-usage/DevelopersUsage.vue';
 import Commits from './Commits.vue';
-// import { ERROR_CODE_NO_GITHUB_DATA } from '@/constants';
-// import { NpmPackageT, RepoT } from '@/libraryApis';
 import {
-  // loadDefaultLibs,
   updateUrl,
-  // cleanupUrl,
   getTitle,
   getMetaDescription,
-  // numbersFormatter,
-  // constructHref,
   getNpmPackagesFromUrl,
   showErrorMsg,
 } from '@/utils';
-// import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
-// import useGithub from '@/composables/useGithub';
 import { updateLibrariesColors } from '@/store/librariesColors';
 import {
   reposIds,
@@ -110,32 +95,18 @@ export default defineComponent({
   },
 
   setup() {
-    // const selectedLibs = ref<NpmPackageT[]>([]);
-    // const loadingLibs = ref<string[]>([]); // Track libs currently being loading
-    // const isLoadingPackagesData = ref(true);
-    // const packagesNames = computed<string[]>(() =>
-    //   selectedLibs.value.map((lib) => lib.name)
-    // );
-    // const reposNames = computed<string[]>(() =>
-    //   selectedLibs.value.map((lib) => lib.repoName)
-    // );
-
     watchEffect(() => updateLibrariesColors(librariesIds.value));
-
-    // const gh = useGithub(selectedLibs);
 
     onMounted(() => {
       const npmPackagesNamesFromUrl = getNpmPackagesFromUrl();
 
-      Promise.all(
-        npmPackagesNamesFromUrl.map((pkgName) =>
-          addLibraryByNpmPackage(pkgName)
-        )
-      ).catch(() => {
-        // // Redirect a user to 404 if there was a wrong lib in the url
-        // // This is needed for SEO - Google should not crawl "bad" pages
-        window.location.href = '/not-found';
-      });
+      Promise.all(npmPackagesNamesFromUrl.map(addLibraryByNpmPackage)).catch(
+        () => {
+          // Redirect a user to 404 if there was a wrong lib in the url
+          // This is needed for SEO - Google should not crawl "bad" pages
+          window.location.href = '/not-found';
+        }
+      );
 
       watchEffect(() => {
         if (isLoading.value) {
@@ -168,12 +139,6 @@ export default defineComponent({
     return {
       libraries,
       isLoading,
-      // packagesNames,
-      // reposNames,
-      // isLoadingPackagesData,
-      // githubIsError: gh.isError,
-      // githubIsLoading: gh.isLoading,
-      // githubRepositories: gh.repositories,
       select: selectNpmPackage,
       selectMultiple(npmPackagesNames: string[]): void {
         npmPackagesNames.forEach(selectNpmPackage);
