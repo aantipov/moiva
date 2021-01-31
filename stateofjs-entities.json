@@ -1,0 +1,4989 @@
+[
+  {
+    "name": "Chrome",
+    "category": "browsers",
+    "id": "chrome",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Chrome Android",
+    "category": "browsers",
+    "id": "chrome_android",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Chrome iOS",
+    "category": "browsers",
+    "id": "chrome_ios",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Brave",
+    "category": "browsers",
+    "id": "brave",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Chromium",
+    "category": "browsers",
+    "id": "chromium",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Edge",
+    "category": "browsers",
+    "id": "edge",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Firefox",
+    "category": "browsers",
+    "id": "firefox",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Firefox Quantum",
+    "category": "browsers",
+    "id": "firefox_developer",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Firefox Android",
+    "category": "browsers",
+    "id": "firefox_android",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Internet Explorer 11",
+    "category": "browsers",
+    "id": "internet_explorer_11",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Internet Explorer 8/9/10",
+    "category": "browsers",
+    "id": "internet_explorer_8_9_10",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Opera",
+    "category": "browsers",
+    "id": "opera",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Opera Mini",
+    "category": "browsers",
+    "id": "opera_mini",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Samsung Internet",
+    "category": "browsers",
+    "id": "samsung_internet",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "UC Browser",
+    "category": "browsers",
+    "id": "ucbrowser",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Polypane",
+    "category": "browsers",
+    "id": "polypane",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Yandex",
+    "category": "browsers",
+    "id": "yandex",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Safari",
+    "category": "browsers",
+    "id": "safari",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Safari iOS",
+    "category": "browsers",
+    "id": "safari_ios",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Vivaldi",
+    "category": "browsers",
+    "id": "vivaldi",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Responsively",
+    "category": "browsers",
+    "id": "responsively",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/responsively-org/responsively-app"
+    }
+  },
+  {
+    "name": "Blisk",
+    "category": "browsers",
+    "id": "blisk",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Sizzy",
+    "category": "browsers",
+    "id": "sizzy",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Gnome Web",
+    "category": "browsers",
+    "id": "gnome_web",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "DuckDuckGo Browser",
+    "category": "browsers",
+    "id": "duckduckgo",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Sidekick",
+    "category": "browsers",
+    "id": "sidekick",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Grid",
+    "category": "features",
+    "id": "grid",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Subgrid",
+    "category": "features",
+    "id": "subgrid",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "CSS Regions",
+    "category": "features",
+    "id": "regions",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Flexbox",
+    "category": "features",
+    "id": "flexbox",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Multi-Column Layout",
+    "category": "features",
+    "id": "multi_column",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Writing Modes",
+    "category": "features",
+    "id": "writing_modes",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Exclusions",
+    "category": "features",
+    "id": "exclusions",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "CSS position:sticky",
+    "category": "features",
+    "id": "position_sticky",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "CSS Logical Properties",
+    "category": "features",
+    "id": "logical_properties",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "CSS property: aspect-ratio",
+    "category": "features",
+    "id": "aspect_ratio",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "CSS content-visibility",
+    "category": "features",
+    "id": "content_visibility",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Shapes",
+    "category": "features",
+    "id": "shapes",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "object-fit",
+    "category": "features",
+    "id": "object_fit",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "clip-path",
+    "category": "features",
+    "id": "clip_path",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Masking",
+    "category": "features",
+    "id": "masks",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "blend-mode",
+    "category": "features",
+    "id": "blend_modes",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Filters & Effects",
+    "category": "features",
+    "id": "filter_effects",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "backdrop-filter",
+    "category": "features",
+    "id": "backdrop_filter",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Scroll Snap",
+    "category": "features",
+    "id": "scroll_snap",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "overscroll-behavior",
+    "category": "features",
+    "id": "overscroll_behavior",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "overflow-anchor",
+    "category": "features",
+    "id": "overflow_anchor",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "touch-action",
+    "category": "features",
+    "id": "touch_action",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "pointer-events",
+    "category": "features",
+    "id": "pointer_events",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "@font-face\n",
+    "category": "features",
+    "id": "web_fonts",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Variable Fonts",
+    "category": "features",
+    "id": "variable_fonts",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Line Breaking Properties",
+    "category": "features",
+    "id": "line_breaking",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "font-variant",
+    "category": "features",
+    "id": "font_variant",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "initial_letter",
+    "category": "features",
+    "id": "initial_letter",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "font-variant-numeric",
+    "category": "features",
+    "id": "font_variant_numeric",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "font-display",
+    "category": "features",
+    "id": "font_display",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "line-clamp",
+    "category": "features",
+    "id": "line_clamp",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "leading-trim",
+    "category": "features",
+    "id": "leading_trim",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "direction",
+    "category": "features",
+    "id": "direction",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Transitions",
+    "category": "features",
+    "id": "transitions",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Transforms",
+    "category": "features",
+    "id": "transforms",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Animations",
+    "category": "features",
+    "id": "animations",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Perspective",
+    "category": "features",
+    "id": "perspective",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "prefers-reduced-motion",
+    "category": "features",
+    "id": "prefers_reduced_motion",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "prefers-color-scheme",
+    "category": "features",
+    "id": "prefers_color_scheme",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "color-gamut",
+    "category": "features",
+    "id": "color_gamut",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Variables",
+    "category": "features",
+    "id": "variables",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "@supports",
+    "category": "features",
+    "id": "feature_support_queries",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Contain",
+    "category": "features",
+    "id": "containment",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "will-change",
+    "category": "features",
+    "id": "will_change",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "calc()",
+    "category": "features",
+    "id": "calc",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "CSS Houdini",
+    "category": "features",
+    "id": "houdini",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "CSS Comparison Functions",
+    "category": "features",
+    "id": "comparison_functions",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Destructuring",
+    "category": "features",
+    "id": "destructuring",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Spread Operator",
+    "category": "features",
+    "id": "spread_operator",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Arrow Functions",
+    "category": "features",
+    "id": "arrow_functions",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Proxies",
+    "category": "features",
+    "id": "proxies",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Async/Await",
+    "category": "features",
+    "id": "async_await",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Promises",
+    "category": "features",
+    "id": "promises",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Decorators",
+    "category": "features",
+    "id": "decorators",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Maps",
+    "category": "features",
+    "id": "maps",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Sets",
+    "category": "features",
+    "id": "sets",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Typed Arrays",
+    "category": "features",
+    "id": "typed_arrays",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Array.prototype.flat()",
+    "category": "features",
+    "id": "array_prototype_flat",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Fetch",
+    "category": "features",
+    "id": "fetch",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/github/fetch"
+    }
+  },
+  {
+    "name": "i18n",
+    "category": "features",
+    "id": "i18n",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Local Storage",
+    "category": "features",
+    "id": "local_storage",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Service Workers",
+    "category": "features",
+    "id": "service_workers",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Web Animations",
+    "category": "features",
+    "id": "web_animations",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Web Audio",
+    "category": "features",
+    "id": "web_audio",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Web Components",
+    "category": "features",
+    "id": "web_components",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "WebGL",
+    "category": "features",
+    "id": "webgl",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "WebRTC",
+    "category": "features",
+    "id": "webrtc",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "WebSocket",
+    "category": "features",
+    "id": "websocket",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Web Speech API",
+    "category": "features",
+    "id": "web_speech",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "WebVR",
+    "category": "features",
+    "id": "webvr",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Progressive Web Apps",
+    "category": "features",
+    "id": "pwa",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/lukeed/pwa"
+    }
+  },
+  {
+    "name": "WebAssembly (WASM)",
+    "category": "features",
+    "id": "wasm",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Nullish Coalescing",
+    "category": "features",
+    "id": "nullish_coalescing",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Optional Chaining",
+    "category": "features",
+    "id": "optional_chaining",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Private Fields",
+    "category": "features",
+    "id": "private_fields",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Promise.allSettled()",
+    "category": "features",
+    "id": "promise_all_settled",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Dynamic Import",
+    "category": "features",
+    "id": "dynamic_import",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "BigInt",
+    "category": "features",
+    "id": "big_int",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Intl",
+    "category": "features",
+    "id": "intl",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Custom Elements",
+    "category": "features",
+    "id": "custom_elements",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Shadow DOM",
+    "category": "features",
+    "id": "shadow_dom",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "C#",
+    "category": "languages",
+    "id": "csharp",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "C/C++",
+    "category": "languages",
+    "id": "c_cplusplus",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Dart",
+    "category": "languages",
+    "id": "dart",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": ".NET",
+    "category": "languages",
+    "id": "dotnet",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Elixir",
+    "category": "languages",
+    "id": "elixir",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Java",
+    "category": "languages",
+    "id": "java",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Kotlin",
+    "category": "languages",
+    "id": "kotlin",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Go",
+    "category": "languages",
+    "id": "golang",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Haskell",
+    "category": "languages",
+    "id": "haskell",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Haxe",
+    "category": "languages",
+    "id": "haxe",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Objective-C",
+    "category": "languages",
+    "id": "objective_c",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "OCaml",
+    "category": "languages",
+    "id": "ocaml",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "PHP",
+    "category": "languages",
+    "id": "php",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Python",
+    "category": "languages",
+    "id": "python",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Ruby",
+    "category": "languages",
+    "id": "ruby",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Rust",
+    "category": "languages",
+    "id": "rust",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Scala",
+    "category": "languages",
+    "id": "scala",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Swift",
+    "category": "languages",
+    "id": "swift",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Go",
+    "category": "languages",
+    "id": "go",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Bash",
+    "category": "languages",
+    "id": "bash",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Perl",
+    "category": "languages",
+    "id": "perl",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "F#",
+    "category": "languages",
+    "id": "fsharp",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "SQL",
+    "category": "languages",
+    "id": "sql",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "HTML",
+    "category": "languages",
+    "id": "html",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "CSS",
+    "category": "languages",
+    "id": "css",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Elm",
+    "category": "languages",
+    "id": "elm",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/elm/compiler"
+    }
+  },
+  {
+    "name": "Reason",
+    "category": "languages",
+    "id": "reason",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/facebook/reason"
+    }
+  },
+  {
+    "name": "Clojure",
+    "category": "languages",
+    "id": "clojure",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Lua",
+    "category": "languages",
+    "id": "lua",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Lisp",
+    "category": "languages",
+    "id": "lisp",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Julia",
+    "category": "languages",
+    "id": "julia",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Groovy",
+    "category": "languages",
+    "id": "groovy",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Sass",
+    "category": "libraries",
+    "id": "sass",
+    "npm": "node-sass",
+    "github": {
+      "url": "https://github.com/sass/node-sass"
+    }
+  },
+  {
+    "name": "Less",
+    "category": "libraries",
+    "id": "less",
+    "npm": "less",
+    "github": {
+      "url": "https://github.com/less/less.js"
+    }
+  },
+  {
+    "name": "PostCSS",
+    "category": "libraries",
+    "id": "post_css",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Stylus",
+    "category": "libraries",
+    "id": "stylus",
+    "npm": "stylus",
+    "github": {
+      "url": "https://github.com/stylus/stylus"
+    }
+  },
+  {
+    "name": "Bootstrap",
+    "category": "libraries",
+    "id": "bootstrap",
+    "npm": "bootstrap",
+    "github": {
+      "url": "https://github.com/twbs/bootstrap"
+    }
+  },
+  {
+    "name": "Materialize CSS",
+    "category": "libraries",
+    "id": "materialize_css",
+    "npm": "materialize-css",
+    "github": {
+      "url": "https://github.com/Dogfalo/materialize"
+    }
+  },
+  {
+    "name": "Material UI",
+    "category": "libraries",
+    "id": "material_ui",
+    "npm": "@material-ui/core",
+    "github": {
+      "url": "https://github.com/mui-org/material-ui"
+    }
+  },
+  {
+    "name": "Ant Design",
+    "category": "libraries",
+    "id": "ant_design",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Semantic UI",
+    "category": "libraries",
+    "id": "semantic_ui",
+    "npm": "semantic-ui",
+    "github": null
+  },
+  {
+    "name": "Bulma",
+    "category": "libraries",
+    "id": "bulma",
+    "npm": "bulma",
+    "github": {
+      "url": "https://github.com/jgthms/bulma"
+    }
+  },
+  {
+    "name": "Foundation",
+    "category": "libraries",
+    "id": "foundation",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/foundation/foundation-sites"
+    }
+  },
+  {
+    "name": "UIKit",
+    "category": "libraries",
+    "id": "ui_kit",
+    "npm": "uikit",
+    "github": null
+  },
+  {
+    "name": "Tachyons",
+    "category": "libraries",
+    "id": "tachyons",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/tachyons-css/tachyons"
+    }
+  },
+  {
+    "name": "Primer",
+    "category": "libraries",
+    "id": "primer",
+    "npm": "@primer/css",
+    "github": {
+      "url": "https://github.com/primer/css"
+    }
+  },
+  {
+    "name": "Tailwind CSS",
+    "category": "libraries",
+    "id": "tailwind_css",
+    "npm": "tailwindcss",
+    "github": null
+  },
+  {
+    "name": "PureCSS",
+    "category": "libraries",
+    "id": "pure_css",
+    "npm": "purecss",
+    "github": {
+      "url": "https://github.com/pure-css/pure"
+    }
+  },
+  {
+    "name": "Skeleton",
+    "category": "libraries",
+    "id": "skeleton",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/dhg/Skeleton"
+    }
+  },
+  {
+    "name": "Spectre.css",
+    "category": "libraries",
+    "id": "spectre_css",
+    "npm": "spectre.css",
+    "github": null
+  },
+  {
+    "name": "Styled Components",
+    "category": "libraries",
+    "id": "styled_components",
+    "npm": "styled-components",
+    "github": null
+  },
+  {
+    "name": "JSS",
+    "category": "libraries",
+    "id": "jss",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/cssinjs/jss"
+    }
+  },
+  {
+    "name": "Styled JSX",
+    "category": "libraries",
+    "id": "styled_jsx",
+    "npm": "styled-jsx",
+    "github": null
+  },
+  {
+    "name": "Radium",
+    "category": "libraries",
+    "id": "radium",
+    "npm": "@emotion/core",
+    "github": {
+      "url": "https://github.com/FormidableLabs/radium"
+    }
+  },
+  {
+    "name": "Emotion",
+    "category": "libraries",
+    "id": "emotion",
+    "npm": "emotion",
+    "github": {
+      "url": "https://github.com/emotion-js/emotion"
+    }
+  },
+  {
+    "name": "CSS Modules",
+    "category": "libraries",
+    "id": "css_modules",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Styled System",
+    "category": "libraries",
+    "id": "styled_system",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Stitches",
+    "category": "libraries",
+    "id": "stitches",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/modulz/stitches"
+    }
+  },
+  {
+    "name": "Styletron",
+    "category": "libraries",
+    "id": "styletron",
+    "npm": "styletron-engine-atomic",
+    "github": {
+      "url": "https://github.com/styletron/styletron"
+    }
+  },
+  {
+    "name": "Fela",
+    "category": "libraries",
+    "id": "fela",
+    "npm": "fela",
+    "github": {
+      "url": "https://github.com/robinweser/fela"
+    }
+  },
+  {
+    "name": "Linaria",
+    "category": "libraries",
+    "id": "linaria",
+    "npm": "linaria",
+    "github": {
+      "url": "https://github.com/callstack/linaria"
+    }
+  },
+  {
+    "name": "Astroturf",
+    "category": "libraries",
+    "id": "astroturf",
+    "npm": "astroturf",
+    "github": {
+      "url": "https://github.com/4Catalyzer/astroturf"
+    }
+  },
+  {
+    "name": "Stylis",
+    "category": "libraries",
+    "id": "stylis",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/thysultan/stylis.js"
+    }
+  },
+  {
+    "name": "Autoprefixer",
+    "category": "libraries",
+    "id": "autoprefixer",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/postcss/autoprefixer"
+    }
+  },
+  {
+    "name": "CodyFrame",
+    "category": "libraries",
+    "id": "codyframe",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Chakra UI",
+    "category": "libraries",
+    "id": "chakra_ui",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Theme UI",
+    "category": "libraries",
+    "id": "theme_ui",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Element",
+    "category": "libraries",
+    "id": "element",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/ElemeFE/element"
+    }
+  },
+  {
+    "name": "SUIT CSS",
+    "category": "libraries",
+    "id": "suit",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Blueprint",
+    "category": "libraries",
+    "id": "blueprint",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/palantir/blueprint"
+    }
+  },
+  {
+    "name": "Goober",
+    "category": "libraries",
+    "id": "goober",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/cristianbote/goober"
+    }
+  },
+  {
+    "name": "Aphrodite",
+    "category": "libraries",
+    "id": "aphrodite",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/Khan/aphrodite"
+    }
+  },
+  {
+    "name": "Inuit CSS",
+    "category": "libraries",
+    "id": "inuit_css",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "CSSComb",
+    "category": "libraries",
+    "id": "css_comb",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "NormalizeCSS",
+    "category": "libraries",
+    "id": "normalize_css",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "cssnano",
+    "category": "libraries",
+    "id": "css_nano",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "TypeScript",
+    "category": "libraries",
+    "id": "typescript",
+    "npm": "typescript",
+    "github": {
+      "url": "https://github.com/microsoft/TypeScript"
+    }
+  },
+  {
+    "name": "Reason",
+    "category": "libraries",
+    "id": "reason",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/facebook/reason"
+    }
+  },
+  {
+    "name": "Elm",
+    "category": "libraries",
+    "id": "elm",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/elm/compiler"
+    }
+  },
+  {
+    "name": "ClojureScript",
+    "category": "libraries",
+    "id": "clojurescript",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/clojure/clojurescript"
+    }
+  },
+  {
+    "name": "PureScript",
+    "category": "libraries",
+    "id": "purescript",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/purescript/purescript"
+    }
+  },
+  {
+    "name": "CoffeeScript",
+    "category": "libraries",
+    "id": "coffeescript",
+    "npm": "coffeescript",
+    "github": {
+      "url": "https://github.com/jashkenas/coffeescript"
+    }
+  },
+  {
+    "name": "Flow",
+    "category": "libraries",
+    "id": "flow",
+    "npm": "flow-bin",
+    "github": {
+      "url": "https://github.com/facebook/flow"
+    }
+  },
+  {
+    "name": "AssemblyScript",
+    "category": "libraries",
+    "id": "assemblyscript",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/AssemblyScript/assemblyscript"
+    }
+  },
+  {
+    "name": "Scala.js",
+    "category": "libraries",
+    "id": "scalajs",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/scala-js/scala-js"
+    }
+  },
+  {
+    "name": "Aurelia",
+    "category": "libraries",
+    "id": "aurelia",
+    "npm": "aurelia-framework",
+    "github": {
+      "url": "https://github.com/aurelia/framework"
+    }
+  },
+  {
+    "name": "React",
+    "category": "libraries",
+    "id": "react",
+    "npm": "react",
+    "github": {
+      "url": "https://github.com/facebook/react"
+    }
+  },
+  {
+    "name": "Vue.js",
+    "category": "libraries",
+    "id": "vue",
+    "npm": "vue",
+    "github": null
+  },
+  {
+    "name": "Vue.js",
+    "category": "libraries",
+    "id": "vuejs",
+    "npm": "vue",
+    "github": {
+      "url": "https://github.com/vuejs/vue"
+    }
+  },
+  {
+    "name": "Angular",
+    "category": "libraries",
+    "id": "angular",
+    "npm": "@angular/core",
+    "github": {
+      "url": "https://github.com/angular/angular"
+    }
+  },
+  {
+    "name": "Angular 1",
+    "category": "libraries",
+    "id": "angular-1",
+    "npm": "angular",
+    "github": {
+      "url": "https://github.com/angular/angular.js"
+    }
+  },
+  {
+    "name": "Preact",
+    "category": "libraries",
+    "id": "preact",
+    "npm": "preact",
+    "github": {
+      "url": "https://github.com/preactjs/preact"
+    }
+  },
+  {
+    "name": "Ember",
+    "category": "libraries",
+    "id": "ember",
+    "npm": "ember-source",
+    "github": {
+      "url": "https://github.com/emberjs/ember.js"
+    }
+  },
+  {
+    "name": "Svelte",
+    "category": "libraries",
+    "id": "svelte",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/sveltejs/svelte"
+    }
+  },
+  {
+    "name": "Alpine.js",
+    "category": "libraries",
+    "id": "alpinejs",
+    "npm": "alpinejs",
+    "github": {
+      "url": "https://github.com/alpinejs/alpine"
+    }
+  },
+  {
+    "name": "LitElement",
+    "category": "libraries",
+    "id": "litelement",
+    "npm": "lit-element",
+    "github": {
+      "url": "https://github.com/Polymer/lit-element"
+    }
+  },
+  {
+    "name": "Stimulus",
+    "category": "libraries",
+    "id": "stimulus",
+    "npm": "stimulus",
+    "github": {
+      "url": "https://github.com/stimulusjs/stimulus"
+    }
+  },
+  {
+    "name": "Stencil",
+    "category": "libraries",
+    "id": "stencil",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/ionic-team/stencil"
+    }
+  },
+  {
+    "name": "Solid",
+    "category": "libraries",
+    "id": "solid",
+    "npm": "solid-js",
+    "github": {
+      "url": "https://github.com/ryansolid/solid"
+    }
+  },
+  {
+    "name": "Marko",
+    "category": "libraries",
+    "id": "marko",
+    "npm": "marko",
+    "github": {
+      "url": "https://github.com/marko-js/marko"
+    }
+  },
+  {
+    "name": "Polymer",
+    "category": "libraries",
+    "id": "polymer",
+    "npm": "polymer",
+    "github": {
+      "url": "https://github.com/Polymer/polymer"
+    }
+  },
+  {
+    "name": "lit-html",
+    "category": "libraries",
+    "id": "lit_html",
+    "npm": "lit-html",
+    "github": {
+      "url": "https://github.com/Polymer/lit-html"
+    }
+  },
+  {
+    "name": "Hyperapp",
+    "category": "libraries",
+    "id": "hyperapp",
+    "npm": "hyperapp",
+    "github": {
+      "url": "https://github.com/jorgebucaran/hyperapp"
+    }
+  },
+  {
+    "name": "Backbone",
+    "category": "libraries",
+    "id": "backbone",
+    "npm": "backbone",
+    "github": {
+      "url": "https://github.com/jashkenas/backbone"
+    }
+  },
+  {
+    "name": "Mithril",
+    "category": "libraries",
+    "id": "mithril",
+    "npm": "mithril",
+    "github": {
+      "url": "https://github.com/MithrilJS/mithril.js"
+    }
+  },
+  {
+    "name": "hyperHTML",
+    "category": "libraries",
+    "id": "hyperhtml",
+    "npm": "hyperhtml",
+    "github": {
+      "url": "https://github.com/WebReflection/hyperHTML"
+    }
+  },
+  {
+    "name": "Cycle.js",
+    "category": "libraries",
+    "id": "cyclejs",
+    "npm": "@cycle/rx-run",
+    "github": {
+      "url": "https://github.com/cyclejs/cyclejs"
+    }
+  },
+  {
+    "name": "RiotJS",
+    "category": "libraries",
+    "id": "riotjs",
+    "npm": "riot",
+    "github": {
+      "url": "https://github.com/riot/riot"
+    }
+  },
+  {
+    "name": "Knockout",
+    "category": "libraries",
+    "id": "knockout",
+    "npm": "knockout",
+    "github": {
+      "url": "https://github.com/knockout/knockout"
+    }
+  },
+  {
+    "name": "Redux",
+    "category": "libraries",
+    "id": "redux",
+    "npm": "redux",
+    "github": {
+      "url": "https://github.com/reduxjs/redux"
+    }
+  },
+  {
+    "name": "Apollo Client",
+    "category": "libraries",
+    "id": "apollo",
+    "npm": "apollo-client",
+    "github": {
+      "url": "https://github.com/apollographql/apollo-client"
+    }
+  },
+  {
+    "name": "GraphQL",
+    "category": "libraries",
+    "id": "graphql",
+    "npm": "graphql-relay",
+    "github": {
+      "url": "https://github.com/graphql/graphql-spec"
+    }
+  },
+  {
+    "name": "MobX",
+    "category": "libraries",
+    "id": "mobx",
+    "npm": "mobx",
+    "github": {
+      "url": "https://github.com/mobxjs/mobx"
+    }
+  },
+  {
+    "name": "Relay",
+    "category": "libraries",
+    "id": "relay",
+    "npm": "react-relay",
+    "github": {
+      "url": "https://github.com/facebook/relay"
+    }
+  },
+  {
+    "name": "XState",
+    "category": "libraries",
+    "id": "xstate",
+    "npm": "xstate",
+    "github": {
+      "url": "https://github.com/davidkpiano/xstate"
+    }
+  },
+  {
+    "name": "Firebase",
+    "category": "libraries",
+    "id": "firebase",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Vuex",
+    "category": "libraries",
+    "id": "vuex",
+    "npm": "vuex",
+    "github": {
+      "url": "https://github.com/vuejs/vuex"
+    }
+  },
+  {
+    "name": "swr",
+    "category": "libraries",
+    "id": "swr",
+    "npm": "swr",
+    "github": {
+      "url": "https://github.com/vercel/swr"
+    }
+  },
+  {
+    "name": "React Query",
+    "category": "libraries",
+    "id": "react_query",
+    "npm": "react-query",
+    "github": null
+  },
+  {
+    "name": "Recoil",
+    "category": "libraries",
+    "id": "recoil",
+    "npm": "recoil",
+    "github": {
+      "url": "https://github.com/facebookexperimental/Recoil"
+    }
+  },
+  {
+    "name": "NgRx",
+    "category": "libraries",
+    "id": "ngrx",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/ngrx/platform"
+    }
+  },
+  {
+    "name": "Effector",
+    "category": "libraries",
+    "id": "effector",
+    "npm": "effector",
+    "github": {
+      "url": "https://github.com/effector/effector"
+    }
+  },
+  {
+    "name": "Zustand",
+    "category": "libraries",
+    "id": "zustand",
+    "npm": "zustand",
+    "github": {
+      "url": "https://github.com/pmndrs/zustand"
+    }
+  },
+  {
+    "name": "Akita",
+    "category": "libraries",
+    "id": "akita",
+    "npm": "@datorama/akita",
+    "github": {
+      "url": "https://github.com/datorama/akita"
+    }
+  },
+  {
+    "name": "Jotai",
+    "category": "libraries",
+    "id": "jotai",
+    "npm": "jotai",
+    "github": {
+      "url": "https://github.com/pmndrs/jotai"
+    }
+  },
+  {
+    "name": "ember-data",
+    "category": "libraries",
+    "id": "ember_data",
+    "npm": "ember-data",
+    "github": {
+      "url": "https://github.com/emberjs/data"
+    }
+  },
+  {
+    "name": "NGXS",
+    "category": "libraries",
+    "id": "ngxs",
+    "npm": "@ngxs/store",
+    "github": {
+      "url": "https://github.com/ngxs/store"
+    }
+  },
+  {
+    "name": "Redux-Saga",
+    "category": "libraries",
+    "id": "redux_saga",
+    "npm": "redux-saga",
+    "github": null
+  },
+  {
+    "name": "URQL",
+    "category": "libraries",
+    "id": "urql",
+    "npm": "urql",
+    "github": {
+      "url": "https://github.com/FormidableLabs/urql"
+    }
+  },
+  {
+    "name": "Storeon",
+    "category": "libraries",
+    "id": "storeon",
+    "npm": "storeon",
+    "github": {
+      "url": "https://github.com/storeon/storeon"
+    }
+  },
+  {
+    "name": "Overmind",
+    "category": "libraries",
+    "id": "overmind",
+    "npm": "overmind",
+    "github": {
+      "url": "https://github.com/cerebral/overmind"
+    }
+  },
+  {
+    "name": "Express",
+    "category": "libraries",
+    "id": "express",
+    "npm": "express",
+    "github": {
+      "url": "https://github.com/expressjs/express"
+    }
+  },
+  {
+    "name": "Next.js",
+    "category": "libraries",
+    "id": "nextjs",
+    "npm": "next",
+    "github": {
+      "url": "https://github.com/vercel/next.js"
+    }
+  },
+  {
+    "name": "Koa",
+    "category": "libraries",
+    "id": "koa",
+    "npm": "koa",
+    "github": {
+      "url": "https://github.com/koajs/koa"
+    }
+  },
+  {
+    "name": "Meteor",
+    "category": "libraries",
+    "id": "meteor",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/meteor/meteor"
+    }
+  },
+  {
+    "name": "Sails",
+    "category": "libraries",
+    "id": "sails",
+    "npm": "sails",
+    "github": {
+      "url": "https://github.com/balderdashy/sails"
+    }
+  },
+  {
+    "name": "Feathers",
+    "category": "libraries",
+    "id": "feathers",
+    "npm": "@feathersjs/feathers",
+    "github": {
+      "url": "https://github.com/feathersjs/feathers"
+    }
+  },
+  {
+    "name": "Nuxt",
+    "category": "libraries",
+    "id": "nuxt",
+    "npm": "nuxt",
+    "github": {
+      "url": "https://github.com/nuxt/nuxt.js"
+    }
+  },
+  {
+    "name": "Gatsby",
+    "category": "libraries",
+    "id": "gatsby",
+    "npm": "gatsby",
+    "github": {
+      "url": "https://github.com/gatsbyjs/gatsby"
+    }
+  },
+  {
+    "name": "Nest",
+    "category": "libraries",
+    "id": "nest",
+    "npm": "@nestjs/core",
+    "github": {
+      "url": "https://github.com/nestjs/nest"
+    }
+  },
+  {
+    "name": "Strapi",
+    "category": "libraries",
+    "id": "strapi",
+    "npm": "strapi",
+    "github": {
+      "url": "https://github.com/strapi/strapi"
+    }
+  },
+  {
+    "name": "Razzle",
+    "category": "libraries",
+    "id": "razzle",
+    "npm": "razzle",
+    "github": {
+      "url": "https://github.com/jaredpalmer/razzle"
+    }
+  },
+  {
+    "name": "Fastify",
+    "category": "libraries",
+    "id": "fastify",
+    "npm": "fastify",
+    "github": {
+      "url": "https://github.com/fastify/fastify"
+    }
+  },
+  {
+    "name": "Deno",
+    "category": "libraries",
+    "id": "deno",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/denoland/deno"
+    }
+  },
+  {
+    "name": "Redwood",
+    "category": "libraries",
+    "id": "redwood",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/redwoodjs/redwood"
+    }
+  },
+  {
+    "name": "Hapi",
+    "category": "libraries",
+    "id": "hapi",
+    "npm": "@hapi/hapi",
+    "github": {
+      "url": "https://github.com/hapijs/hapi"
+    }
+  },
+  {
+    "name": "Adonis",
+    "category": "libraries",
+    "id": "adonis",
+    "npm": "adonis-framework",
+    "github": {
+      "url": "https://github.com/adonisjs/core"
+    }
+  },
+  {
+    "name": "Sapper",
+    "category": "libraries",
+    "id": "sapper",
+    "npm": "sapper",
+    "github": {
+      "url": "https://github.com/sveltejs/sapper"
+    }
+  },
+  {
+    "name": "Gridsome",
+    "category": "libraries",
+    "id": "gridsome",
+    "npm": "@gridsome/cli",
+    "github": {
+      "url": "https://github.com/gridsome/gridsome"
+    }
+  },
+  {
+    "name": "Blitz",
+    "category": "libraries",
+    "id": "blitz",
+    "npm": "blitz",
+    "github": {
+      "url": "https://github.com/blitz-js/blitz"
+    }
+  },
+  {
+    "name": "LoopBack 4",
+    "category": "libraries",
+    "id": "loopback_4",
+    "npm": "@loopback/core",
+    "github": {
+      "url": "https://github.com/strongloop/loopback-next"
+    }
+  },
+  {
+    "name": "tinyhttp",
+    "category": "libraries",
+    "id": "tinyhttp",
+    "npm": "@tinyhttp/app",
+    "github": {
+      "url": "https://github.com/talentlessguy/tinyhttp"
+    }
+  },
+  {
+    "name": "Polka",
+    "category": "libraries",
+    "id": "polka",
+    "npm": "polka",
+    "github": {
+      "url": "https://github.com/lukeed/polka"
+    }
+  },
+  {
+    "name": "FoalTS",
+    "category": "libraries",
+    "id": "foalts",
+    "npm": "@foal/core",
+    "github": {
+      "url": "https://github.com/FoalTS/foal"
+    }
+  },
+  {
+    "name": "Eleventy",
+    "category": "libraries",
+    "id": "eleventy",
+    "npm": "@11ty/eleventy",
+    "github": {
+      "url": "https://github.com/11ty/eleventy"
+    }
+  },
+  {
+    "name": "Jest",
+    "category": "libraries",
+    "id": "jest",
+    "npm": "jest",
+    "github": {
+      "url": "https://github.com/facebook/jest"
+    }
+  },
+  {
+    "name": "Mocha",
+    "category": "libraries",
+    "id": "mocha",
+    "npm": "mocha",
+    "github": {
+      "url": "https://github.com/mochajs/mocha"
+    }
+  },
+  {
+    "name": "Storybook",
+    "category": "libraries",
+    "id": "storybook",
+    "npm": "storybook",
+    "github": {
+      "url": "https://github.com/storybookjs/storybook"
+    }
+  },
+  {
+    "name": "Cypress",
+    "category": "libraries",
+    "id": "cypress",
+    "npm": "cypress",
+    "github": {
+      "url": "https://github.com/cypress-io/cypress"
+    }
+  },
+  {
+    "name": "Enzyme",
+    "category": "libraries",
+    "id": "enzyme",
+    "npm": "enzyme",
+    "github": {
+      "url": "https://github.com/enzymejs/enzyme"
+    }
+  },
+  {
+    "name": "AVA",
+    "category": "libraries",
+    "id": "ava",
+    "npm": "ava",
+    "github": {
+      "url": "https://github.com/avajs/ava"
+    }
+  },
+  {
+    "name": "Jasmine",
+    "category": "libraries",
+    "id": "jasmine",
+    "npm": "jasmine",
+    "github": {
+      "url": "https://github.com/jasmine/jasmine"
+    }
+  },
+  {
+    "name": "Puppeteer",
+    "category": "libraries",
+    "id": "puppeteer",
+    "npm": "puppeteer",
+    "github": {
+      "url": "https://github.com/puppeteer/puppeteer"
+    }
+  },
+  {
+    "name": "Testing Library",
+    "category": "libraries",
+    "id": "testing_library",
+    "npm": "@testing-library/react",
+    "github": null
+  },
+  {
+    "name": "Playwright",
+    "category": "libraries",
+    "id": "playwright",
+    "npm": "playwright",
+    "github": {
+      "url": "https://github.com/microsoft/playwright"
+    }
+  },
+  {
+    "name": "WebdriverIO",
+    "category": "libraries",
+    "id": "webdriverio",
+    "npm": "webdriverio",
+    "github": {
+      "url": "https://github.com/webdriverio/webdriverio"
+    }
+  },
+  {
+    "name": "TestCafe",
+    "category": "libraries",
+    "id": "testcafe",
+    "npm": "testcafe",
+    "github": {
+      "url": "https://github.com/DevExpress/testcafe"
+    }
+  },
+  {
+    "name": "Tape",
+    "category": "libraries",
+    "id": "tape",
+    "npm": "tape",
+    "github": {
+      "url": "https://github.com/substack/tape"
+    }
+  },
+  {
+    "name": "Chai",
+    "category": "libraries",
+    "id": "chai",
+    "npm": "chai",
+    "github": {
+      "url": "https://github.com/chaijs/chai"
+    }
+  },
+  {
+    "name": "Nightwatch",
+    "category": "libraries",
+    "id": "nightwatch",
+    "npm": "nightwatch",
+    "github": {
+      "url": "https://github.com/nightwatchjs/nightwatch"
+    }
+  },
+  {
+    "name": "QUnit",
+    "category": "libraries",
+    "id": "qunit",
+    "npm": "qunit",
+    "github": {
+      "url": "https://github.com/qunitjs/qunit"
+    }
+  },
+  {
+    "name": "Mock Service Worker",
+    "category": "libraries",
+    "id": "mock_service_worker",
+    "npm": "msw",
+    "github": {
+      "url": "https://github.com/mswjs/msw"
+    }
+  },
+  {
+    "name": "Node-tap",
+    "category": "libraries",
+    "id": "node_tap",
+    "npm": "tap",
+    "github": {
+      "url": "https://github.com/tapjs/node-tap"
+    }
+  },
+  {
+    "name": "react-testing-library",
+    "category": "libraries",
+    "id": "react_testing_library",
+    "npm": "@testing-library/react",
+    "github": null
+  },
+  {
+    "name": "Karma",
+    "category": "libraries",
+    "id": "karma",
+    "npm": "karma",
+    "github": {
+      "url": "https://github.com/karma-runner/karma"
+    }
+  },
+  {
+    "name": "Cucumber.js",
+    "category": "libraries",
+    "id": "cucumberjs",
+    "npm": "cucumber",
+    "github": {
+      "url": "https://github.com/cucumber/cucumber-js"
+    }
+  },
+  {
+    "name": "Sinon.JS",
+    "category": "libraries",
+    "id": "sinonjs",
+    "npm": "sinon",
+    "github": {
+      "url": "https://github.com/sinonjs/sinon"
+    }
+  },
+  {
+    "name": "Protractor",
+    "category": "libraries",
+    "id": "protractor",
+    "npm": "protractor",
+    "github": {
+      "url": "https://github.com/angular/protractor"
+    }
+  },
+  {
+    "name": "D3",
+    "category": "libraries",
+    "id": "d3",
+    "npm": "d3",
+    "github": {
+      "url": "https://github.com/d3/d3"
+    }
+  },
+  {
+    "name": "Three.js",
+    "category": "libraries",
+    "id": "threejs",
+    "npm": "three",
+    "github": {
+      "url": "https://github.com/mrdoob/three.js"
+    }
+  },
+  {
+    "name": "Fabric.js",
+    "category": "libraries",
+    "id": "fabricjs",
+    "npm": "fabric",
+    "github": {
+      "url": "https://github.com/fabricjs/fabric.js"
+    }
+  },
+  {
+    "name": "visx",
+    "category": "libraries",
+    "id": "visx",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/airbnb/visx"
+    }
+  },
+  {
+    "name": "Nivo",
+    "category": "libraries",
+    "id": "nivo",
+    "npm": "nivo",
+    "github": {
+      "url": "https://github.com/plouc/nivo"
+    }
+  },
+  {
+    "name": "Recharts",
+    "category": "libraries",
+    "id": "recharts",
+    "npm": "recharts",
+    "github": {
+      "url": "https://github.com/recharts/recharts"
+    }
+  },
+  {
+    "name": "Anime.js",
+    "category": "libraries",
+    "id": "animejs",
+    "npm": "animejs",
+    "github": {
+      "url": "https://github.com/juliangarnier/anime"
+    }
+  },
+  {
+    "name": "Popmotion",
+    "category": "libraries",
+    "id": "popmotion",
+    "npm": "popmotion",
+    "github": {
+      "url": "https://github.com/Popmotion/popmotion"
+    }
+  },
+  {
+    "name": "Greensock",
+    "category": "libraries",
+    "id": "greensock",
+    "npm": "gsap",
+    "github": {
+      "url": "https://github.com/greensock/GSAP"
+    }
+  },
+  {
+    "name": "Lottie",
+    "category": "libraries",
+    "id": "lottie",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/airbnb/lottie-web"
+    }
+  },
+  {
+    "name": "Velocity",
+    "category": "libraries",
+    "id": "velocity",
+    "npm": "velocity-animate",
+    "github": {
+      "url": "https://github.com/julianshapiro/velocity"
+    }
+  },
+  {
+    "name": "webpack",
+    "category": "libraries",
+    "id": "webpack",
+    "npm": "webpack",
+    "github": {
+      "url": "https://github.com/webpack/webpack"
+    }
+  },
+  {
+    "name": "Babel",
+    "category": "libraries",
+    "id": "babel",
+    "npm": "babel-core",
+    "github": {
+      "url": "https://github.com/babel/babel"
+    }
+  },
+  {
+    "name": "Parcel",
+    "category": "libraries",
+    "id": "parcel",
+    "npm": "parcel-bundler",
+    "github": {
+      "url": "https://github.com/parcel-bundler/parcel"
+    }
+  },
+  {
+    "name": "Gulp",
+    "category": "libraries",
+    "id": "gulp",
+    "npm": "gulp",
+    "github": {
+      "url": "https://github.com/gulpjs/gulp"
+    }
+  },
+  {
+    "name": "Rollup",
+    "category": "libraries",
+    "id": "rollup",
+    "npm": "rollup",
+    "github": {
+      "url": "https://github.com/rollup/rollup"
+    }
+  },
+  {
+    "name": "FuseBox",
+    "category": "libraries",
+    "id": "fusebox",
+    "npm": "fuse-box",
+    "github": {
+      "url": "https://github.com/fuse-box/fuse-box"
+    }
+  },
+  {
+    "name": "Browserify",
+    "category": "libraries",
+    "id": "browserify",
+    "npm": "browserify",
+    "github": {
+      "url": "https://github.com/browserify/browserify"
+    }
+  },
+  {
+    "name": "Rome",
+    "category": "libraries",
+    "id": "rome",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/rome/tools"
+    }
+  },
+  {
+    "name": "Snowpack",
+    "category": "libraries",
+    "id": "snowpack",
+    "npm": "snowpack",
+    "github": {
+      "url": "https://github.com/snowpackjs/snowpack"
+    }
+  },
+  {
+    "name": "SWC",
+    "category": "libraries",
+    "id": "swc",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/swc-project/swc"
+    }
+  },
+  {
+    "name": "esbuild",
+    "category": "libraries",
+    "id": "esbuild",
+    "npm": "esbuild",
+    "github": {
+      "url": "https://github.com/evanw/esbuild"
+    }
+  },
+  {
+    "name": "TypeScript (tsc CLI)",
+    "category": "libraries",
+    "id": "tsc",
+    "npm": "typescript",
+    "github": null
+  },
+  {
+    "name": "Vite",
+    "category": "libraries",
+    "id": "vite",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/vitejs/vite"
+    }
+  },
+  {
+    "name": "Microbundle",
+    "category": "libraries",
+    "id": "microbundle",
+    "npm": "microbundle",
+    "github": {
+      "url": "https://github.com/developit/microbundle"
+    }
+  },
+  {
+    "name": "Grunt",
+    "category": "libraries",
+    "id": "grunt",
+    "npm": "grunt",
+    "github": {
+      "url": "https://github.com/gruntjs/grunt"
+    }
+  },
+  {
+    "name": "Broccoli",
+    "category": "libraries",
+    "id": "broccoli",
+    "npm": "broccoli",
+    "github": {
+      "url": "https://github.com/broccolijs/broccoli"
+    }
+  },
+  {
+    "name": "Electron",
+    "category": "libraries",
+    "id": "electron",
+    "npm": "electron",
+    "github": {
+      "url": "https://github.com/electron/electron"
+    }
+  },
+  {
+    "name": "React Native",
+    "category": "libraries",
+    "id": "reactnative",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "React Native",
+    "category": "libraries",
+    "id": "react_native",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Native Apps",
+    "category": "libraries",
+    "id": "nativeapps",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Cordova",
+    "category": "libraries",
+    "id": "cordova",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Ionic",
+    "category": "libraries",
+    "id": "ionic",
+    "npm": "@ionic/core",
+    "github": {
+      "url": "https://github.com/ionic-team/ionic-framework"
+    }
+  },
+  {
+    "name": "NW.js",
+    "category": "libraries",
+    "id": "nwjs",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/nwjs/nw.js"
+    }
+  },
+  {
+    "name": "Expo",
+    "category": "libraries",
+    "id": "expo",
+    "npm": "expo",
+    "github": {
+      "url": "https://github.com/expo/expo"
+    }
+  },
+  {
+    "name": "Flutter",
+    "category": "libraries",
+    "id": "flutter",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Capacitor",
+    "category": "libraries",
+    "id": "capacitor",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/ionic-team/capacitor"
+    }
+  },
+  {
+    "name": "Quasar",
+    "category": "libraries",
+    "id": "quasar",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/quasarframework/quasar"
+    }
+  },
+  {
+    "name": "NativeScript",
+    "category": "libraries",
+    "id": "nativescript",
+    "npm": "nativescript",
+    "github": {
+      "url": "https://github.com/NativeScript/NativeScript"
+    }
+  },
+  {
+    "name": "Svelte Native",
+    "category": "libraries",
+    "id": "svelte_native",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Tauri",
+    "category": "libraries",
+    "id": "tauri",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/tauri-apps/tauri"
+    }
+  },
+  {
+    "name": "Vue Native",
+    "category": "libraries",
+    "id": "vue_native",
+    "npm": "vue-native",
+    "github": null
+  },
+  {
+    "name": "Framework7",
+    "category": "libraries",
+    "id": "framework7",
+    "npm": "framework7",
+    "github": {
+      "url": "https://github.com/framework7io/framework7"
+    }
+  },
+  {
+    "name": "QuickJS",
+    "category": "libraries",
+    "id": "quickjs",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Cloudflare Workers",
+    "category": "libraries",
+    "id": "cloudflare_workers",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "JSC",
+    "category": "libraries",
+    "id": "jsc",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Immer",
+    "category": "libraries",
+    "id": "immer",
+    "npm": "immer",
+    "github": {
+      "url": "https://github.com/immerjs/immer"
+    }
+  },
+  {
+    "name": "Lodash",
+    "category": "libraries",
+    "id": "lodash",
+    "npm": "lodash",
+    "github": {
+      "url": "https://github.com/lodash/lodash"
+    }
+  },
+  {
+    "name": "Underscore.js",
+    "category": "libraries",
+    "id": "underscore",
+    "npm": "underscore",
+    "github": {
+      "url": "https://github.com/jashkenas/underscore"
+    }
+  },
+  {
+    "name": "Moment",
+    "category": "libraries",
+    "id": "moment",
+    "npm": "moment",
+    "github": {
+      "url": "https://github.com/moment/moment"
+    }
+  },
+  {
+    "name": "Day.js",
+    "category": "libraries",
+    "id": "dayjs",
+    "npm": "dayjs",
+    "github": {
+      "url": "https://github.com/iamkun/dayjs"
+    }
+  },
+  {
+    "name": "date-fns",
+    "category": "libraries",
+    "id": "date_fns",
+    "npm": "date-fns",
+    "github": {
+      "url": "https://github.com/date-fns/date-fns"
+    }
+  },
+  {
+    "name": "Luxon",
+    "category": "libraries",
+    "id": "luxon",
+    "npm": "luxon",
+    "github": {
+      "url": "https://github.com/moment/luxon"
+    }
+  },
+  {
+    "name": "Ramda",
+    "category": "libraries",
+    "id": "ramda",
+    "npm": "ramda",
+    "github": {
+      "url": "https://github.com/ramda/ramda"
+    }
+  },
+  {
+    "name": "jQuery",
+    "category": "libraries",
+    "id": "jquery",
+    "npm": "jquery",
+    "github": {
+      "url": "https://github.com/jquery/jquery"
+    }
+  },
+  {
+    "name": "RxJS",
+    "category": "libraries",
+    "id": "rxjs",
+    "npm": "rx",
+    "github": {
+      "url": "https://github.com/ReactiveX/rxjs"
+    }
+  },
+  {
+    "name": "Axios",
+    "category": "libraries",
+    "id": "axios",
+    "npm": "axios",
+    "github": {
+      "url": "https://github.com/axios/axios"
+    }
+  },
+  {
+    "name": "Lerna",
+    "category": "libraries",
+    "id": "lerna",
+    "npm": "lerna",
+    "github": {
+      "url": "https://github.com/lerna/lerna"
+    }
+  },
+  {
+    "name": "Prettier",
+    "category": "libraries",
+    "id": "prettier",
+    "npm": "prettier",
+    "github": {
+      "url": "https://github.com/prettier/prettier"
+    }
+  },
+  {
+    "name": "ESLint",
+    "category": "libraries",
+    "id": "eslint",
+    "npm": "eslint",
+    "github": {
+      "url": "https://github.com/eslint/eslint"
+    }
+  },
+  {
+    "name": "nvm",
+    "category": "libraries",
+    "id": "nvm",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/nvm-sh/nvm"
+    }
+  },
+  {
+    "name": "Npm",
+    "category": "libraries",
+    "id": "npm",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/npm/cli"
+    }
+  },
+  {
+    "name": "Yarn",
+    "category": "libraries",
+    "id": "yarn",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/yarnpkg/yarn"
+    }
+  },
+  {
+    "name": "Node.js",
+    "category": "libraries",
+    "id": "node",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Node.js",
+    "category": "libraries",
+    "id": "nodejs",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/nodejs/node"
+    }
+  },
+  {
+    "name": "ChakraCore",
+    "category": "libraries",
+    "id": "chakracore",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Hermes",
+    "category": "libraries",
+    "id": "hermes",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/facebook/hermes"
+    }
+  },
+  {
+    "name": "pnpm",
+    "category": "libraries",
+    "id": "pnpm",
+    "npm": "pnpm",
+    "github": {
+      "url": "https://github.com/pnpm/pnpm"
+    }
+  },
+  {
+    "name": "Create React App",
+    "category": "libraries",
+    "id": "create_react_app",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Formik",
+    "category": "libraries",
+    "id": "formik",
+    "npm": "formik",
+    "github": {
+      "url": "https://github.com/formium/formik"
+    }
+  },
+  {
+    "name": "fp-ts",
+    "category": "libraries",
+    "id": "fp_ts",
+    "npm": "fp-ts",
+    "github": {
+      "url": "https://github.com/gcanti/fp-ts"
+    }
+  },
+  {
+    "name": "Classnames",
+    "category": "libraries",
+    "id": "classnames",
+    "npm": "classnames",
+    "github": {
+      "url": "https://github.com/JedWatson/classnames"
+    }
+  },
+  {
+    "name": "React Router",
+    "category": "libraries",
+    "id": "react_router",
+    "npm": "react-router",
+    "github": null
+  },
+  {
+    "name": "React Hook Form",
+    "category": "libraries",
+    "id": "react_hook_form",
+    "npm": "react-hook-form",
+    "github": null
+  },
+  {
+    "name": "Yup",
+    "category": "libraries",
+    "id": "yup",
+    "npm": "yup",
+    "github": {
+      "url": "https://github.com/jquense/yup"
+    }
+  },
+  {
+    "name": "Got",
+    "category": "libraries",
+    "id": "got",
+    "npm": "got",
+    "github": {
+      "url": "https://github.com/sindresorhus/got"
+    }
+  },
+  {
+    "name": "Ky",
+    "category": "libraries",
+    "id": "ky",
+    "npm": "ky",
+    "github": {
+      "url": "https://github.com/sindresorhus/ky"
+    }
+  },
+  {
+    "name": "N",
+    "category": "libraries",
+    "id": "n",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Nx",
+    "category": "libraries",
+    "id": "nx",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/nrwl/nx"
+    }
+  },
+  {
+    "name": "Husky",
+    "category": "libraries",
+    "id": "husky",
+    "npm": "husky",
+    "github": {
+      "url": "https://github.com/typicode/husky"
+    }
+  },
+  {
+    "name": "TSLint",
+    "category": "libraries",
+    "id": "tslint",
+    "npm": "tslint",
+    "github": {
+      "url": "https://github.com/palantir/tslint"
+    }
+  },
+  {
+    "name": "Standard",
+    "category": "libraries",
+    "id": "standard",
+    "npm": "standard",
+    "github": {
+      "url": "https://github.com/standard/standard"
+    }
+  },
+  {
+    "name": "nodemon",
+    "category": "libraries",
+    "id": "nodemon",
+    "npm": "nodemon",
+    "github": {
+      "url": "https://github.com/remy/nodemon"
+    }
+  },
+  {
+    "name": "Angular CLI",
+    "category": "libraries",
+    "id": "angular-cli",
+    "npm": "@angular/cli",
+    "github": {
+      "url": "https://github.com/angular/angular-cli"
+    }
+  },
+  {
+    "name": "Commitizen",
+    "category": "libraries",
+    "id": "commitizen",
+    "npm": "commitizen",
+    "github": {
+      "url": "https://github.com/commitizen/cz-cli"
+    }
+  },
+  {
+    "name": "Dotenv",
+    "category": "libraries",
+    "id": "dotenv",
+    "npm": "dotenv",
+    "github": {
+      "url": "https://github.com/motdotla/dotenv"
+    }
+  },
+  {
+    "name": "Chart.js",
+    "category": "libraries",
+    "id": "chartjs",
+    "npm": "chart.js",
+    "github": {
+      "url": "https://github.com/chartjs/Chart.js"
+    }
+  },
+  {
+    "name": "joi",
+    "category": "libraries",
+    "id": "joi",
+    "npm": "@hapi/joi",
+    "github": {
+      "url": "https://github.com/sideway/joi"
+    }
+  },
+  {
+    "name": "i18next",
+    "category": "libraries",
+    "id": "i18next",
+    "npm": "i18next",
+    "github": {
+      "url": "https://github.com/i18next/i18next"
+    }
+  },
+  {
+    "name": "io-ts",
+    "category": "libraries",
+    "id": "io_ts",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Rush",
+    "category": "libraries",
+    "id": "rush",
+    "npm": "@microsoft/rush",
+    "github": {
+      "url": "https://github.com/microsoft/rushstack"
+    }
+  },
+  {
+    "name": "PM2",
+    "category": "libraries",
+    "id": "pm2",
+    "npm": "pm2",
+    "github": {
+      "url": "https://github.com/Unitech/pm2"
+    }
+  },
+  {
+    "name": "vue-cli",
+    "category": "libraries",
+    "id": "vue_cli",
+    "npm": "@vue/cli",
+    "github": null
+  },
+  {
+    "name": "BEM",
+    "category": "other",
+    "id": "bem",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Atomic CSS (Utility-first CSS)",
+    "category": "other",
+    "id": "atomic_css",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "OOCSS",
+    "category": "other",
+    "id": "oocss",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "SMACSS",
+    "category": "other",
+    "id": "smacss",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "ITCSS",
+    "category": "other",
+    "id": "it_css",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "CUBE CSS",
+    "category": "other",
+    "id": "cube_css",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "CSS-in-JS",
+    "category": "other",
+    "id": "css_in_js",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "RSCSS",
+    "category": "other",
+    "id": "rscss",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Stylelint",
+    "category": "other",
+    "id": "stylelint",
+    "npm": "stylelint",
+    "github": {
+      "url": "https://github.com/stylelint/stylelint"
+    }
+  },
+  {
+    "name": "PurgeCSS",
+    "category": "other",
+    "id": "purge_css",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "PurifyCSS",
+    "category": "other",
+    "id": "purify_css",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Browser",
+    "category": "other",
+    "id": "browser_environment",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "jspm",
+    "category": "other",
+    "id": "jspm",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Soft Skills Engineering Podcast",
+    "category": "podcasts",
+    "id": "soft_skills_engineering",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Frontend Weekend",
+    "category": "podcasts",
+    "id": "frontend_weekend",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "The Odin Project",
+    "category": "podcasts",
+    "id": "odin_project",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Elm Town",
+    "category": "podcasts",
+    "id": "elmtown",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Command Line Heroes",
+    "category": "podcasts",
+    "id": "command_line_heroes",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Adventures in Angular",
+    "category": "podcasts",
+    "id": "adventures_in_angular",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Coding Blocks",
+    "category": "podcasts",
+    "id": "coding_blocks",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": ".NET Rocks",
+    "category": "podcasts",
+    "id": "dot_net_rocks",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "EmberMap",
+    "category": "podcasts",
+    "id": "embermap",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Views on Vue",
+    "category": "podcasts",
+    "id": "views_on_vue",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Reason Town",
+    "category": "podcasts",
+    "id": "reason_town",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "DevMode.fm",
+    "category": "podcasts",
+    "id": "devmode",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Hipsters Ponto Tech",
+    "category": "podcasts",
+    "id": "hipsters_tech",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Syntax",
+    "category": "podcasts",
+    "id": "syntaxfm",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "CSS Podcast",
+    "category": "podcasts",
+    "id": "css_podcast",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Shop Talk Show",
+    "category": "podcasts",
+    "id": "shop_talk_show",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "The Changelog",
+    "category": "podcasts",
+    "id": "changelog",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "The Web Ahead",
+    "category": "podcasts",
+    "id": "web_ahead",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "The Big Web Show",
+    "category": "podcasts",
+    "id": "big_web_show",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Style Guide Podcast",
+    "category": "podcasts",
+    "id": "style_guide_podcast",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Non Breaking Space Show",
+    "category": "podcasts",
+    "id": "non_breaking_space_show",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Front End Happy Hour",
+    "category": "podcasts",
+    "id": "frontend_happyhour",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "JavaScript Jabber",
+    "category": "podcasts",
+    "id": "javascript_jabber",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Full Stack Radio",
+    "category": "podcasts",
+    "id": "full_stack_radio",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "JS Party",
+    "category": "podcasts",
+    "id": "js_party",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "CodePen Radio",
+    "category": "podcasts",
+    "id": "codepen_radio",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "JAMStack Radio",
+    "category": "podcasts",
+    "id": "jamstack_radio",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Modern Web",
+    "category": "podcasts",
+    "id": "modern_web",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "The Web Platform Podcast",
+    "category": "podcasts",
+    "id": "web_platform_podcast",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Software Engineering Daily",
+    "category": "podcasts",
+    "id": "software_engineering_daily",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Ladybug Podcast",
+    "category": "podcasts",
+    "id": "ladybug",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Real Talk JavaScript",
+    "category": "podcasts",
+    "id": "real_talk_javascript",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "The Undefined Podcast",
+    "category": "podcasts",
+    "id": "undefined_podcast",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Toolsday",
+    "category": "podcasts",
+    "id": "tools_day",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Front End Happy Hour",
+    "category": "podcasts",
+    "id": "front_end_happy_hour",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Full Stack Radio",
+    "category": "podcasts",
+    "id": "fullstack_radio",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "React Podcast",
+    "category": "podcasts",
+    "id": "react_podcast",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Developer Tea",
+    "category": "podcasts",
+    "id": "developer_tea",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "The Web Platform Podcast",
+    "category": "podcasts",
+    "id": "the_web_platform",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "HTTP 203",
+    "category": "podcasts",
+    "id": "http_203",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Working Draft Podcast",
+    "category": "podcasts",
+    "id": "working_draft",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Software Engineering Radio",
+    "category": "podcasts",
+    "id": "software_engineering",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Smashing Podcast",
+    "category": "podcasts",
+    "id": "smashing_podcast",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "The F-Word",
+    "category": "podcasts",
+    "id": "f_word",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Frontend First",
+    "category": "podcasts",
+    "id": "frontend_first",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "#A11y Rules",
+    "category": "podcasts",
+    "id": "a11y_rules",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "The Bike Shed",
+    "category": "podcasts",
+    "id": "the_bike_shed",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "The Angular Show",
+    "category": "podcasts",
+    "id": "angular_show",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Svelte Radio",
+    "category": "podcasts",
+    "id": "svelte_radio",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Elm Radio",
+    "category": "podcasts",
+    "id": "elm_radio",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Remotely Interesting",
+    "category": "podcasts",
+    "id": "remotely_interesting",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Angular Air",
+    "category": "podcasts",
+    "id": "angular_air",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Enjoy The Vue",
+    "category": "podcasts",
+    "id": "enjoy_the_vue",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "CSS-Tricks",
+    "category": "sites",
+    "id": "css_tricks",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Smashing Magazine",
+    "category": "sites",
+    "id": "smashing_magazine",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "A List Apart",
+    "category": "sites",
+    "id": "a_list_apart",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Codrops",
+    "category": "sites",
+    "id": "codrops",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "SitePoint",
+    "category": "sites",
+    "id": "sitepoint",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Stack Overflow",
+    "category": "sites",
+    "id": "stack_overflow",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "MDN",
+    "category": "sites",
+    "id": "mdn",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "W3Schools",
+    "category": "sites",
+    "id": "w3schools",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "freeCodeCamp",
+    "category": "sites",
+    "id": "freecodecamp",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/freeCodeCamp/freeCodeCamp"
+    }
+  },
+  {
+    "name": "The CSS Specs",
+    "category": "sites",
+    "id": "css_specs",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "State of JS",
+    "category": "sites",
+    "id": "stateofjs",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "State of CSS",
+    "category": "sites",
+    "id": "stateofcss",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "One Page Love",
+    "category": "sites",
+    "id": "one_page_love",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Muzli",
+    "category": "sites",
+    "id": "muzli",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "WordPress Tavern",
+    "category": "sites",
+    "id": "wordpress_tavern",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Can I Use",
+    "category": "sites",
+    "id": "caniuse",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/Fyrd/caniuse"
+    }
+  },
+  {
+    "name": "CodePen",
+    "category": "sites",
+    "id": "codepen",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Alligator.io",
+    "category": "sites",
+    "id": "alligator",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Dev.to",
+    "category": "sites",
+    "id": "devto",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Medium",
+    "category": "sites",
+    "id": "medium",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Google",
+    "category": "sites",
+    "id": "google",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Flexbox Zombies",
+    "category": "sites",
+    "id": "flexbox_zombies",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Scrimba",
+    "category": "sites",
+    "id": "scrimba",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "devdocs.io",
+    "category": "sites",
+    "id": "devdocs",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Code Newbie",
+    "category": "sites",
+    "id": "code_newbie",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Best of JavaScript",
+    "category": "sites",
+    "id": "bestofjs",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "DailyJS",
+    "category": "sites",
+    "id": "daily_js",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "2ality",
+    "category": "sites",
+    "id": "2ality",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Scotch",
+    "category": "sites",
+    "id": "scotchio",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Hackernoon",
+    "category": "sites",
+    "id": "hackernoon",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Angular In Depth",
+    "category": "sites",
+    "id": "angular_in_depth",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Web.dev",
+    "category": "sites",
+    "id": "web_dev",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Elm Slack",
+    "category": "sites",
+    "id": "elm_slack",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "O'Reilly",
+    "category": "sites",
+    "id": "oreilly",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Mozilla Hacks",
+    "category": "sites",
+    "id": "mozilla_hacks",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Go Make Things",
+    "category": "sites",
+    "id": "gomakethings",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Cody House",
+    "category": "sites",
+    "id": "codyhouse",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Vzhůru dolů",
+    "category": "sites",
+    "id": "vzhurudolu",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Daily Dev",
+    "category": "sites",
+    "id": "daily_dev",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Web Designer News",
+    "category": "sites",
+    "id": "webdesignernews",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Awwwards",
+    "category": "sites",
+    "id": "awwwards",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Webdesigner Depot",
+    "category": "sites",
+    "id": "webdesigner_depot",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Web Standards",
+    "category": "sites",
+    "id": "web_standards_ru",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "W3C",
+    "category": "sites",
+    "id": "w3c",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Indie Hackers",
+    "category": "sites",
+    "id": "indie_hackers",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Nano",
+    "category": "text_editors",
+    "id": "nano",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Sublime Text",
+    "category": "text_editors",
+    "id": "sublime_text",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Atom",
+    "category": "text_editors",
+    "id": "atom",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/atom/atom"
+    }
+  },
+  {
+    "name": "Nova",
+    "category": "text_editors",
+    "id": "nova",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Vim",
+    "category": "text_editors",
+    "id": "vim",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "VS Code",
+    "category": "text_editors",
+    "id": "visual_studio",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Visual Studio",
+    "category": "text_editors",
+    "id": "visual_studio_not_code",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "BBEdit",
+    "category": "text_editors",
+    "id": "bbedit",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Brackets",
+    "category": "text_editors",
+    "id": "brackets",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/adobe/brackets"
+    }
+  },
+  {
+    "name": "Coda",
+    "category": "text_editors",
+    "id": "coda",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Emacs",
+    "category": "text_editors",
+    "id": "emacs",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "IntelliJ IDEA",
+    "category": "text_editors",
+    "id": "intellij",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Notepad++",
+    "category": "text_editors",
+    "id": "notepad",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "PyCharm",
+    "category": "text_editors",
+    "id": "pycharm",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "PhpStorm",
+    "category": "text_editors",
+    "id": "phpstorm",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "TextMate",
+    "category": "text_editors",
+    "id": "textmate",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "VSCodium",
+    "category": "text_editors",
+    "id": "vscodium",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Dreamweaver",
+    "category": "text_editors",
+    "id": "dreamweaver",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Kate Editor",
+    "category": "text_editors",
+    "id": "kate",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Eclipse",
+    "category": "text_editors",
+    "id": "eclipse",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Kakoune",
+    "category": "text_editors",
+    "id": "kakoune",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "CodeSandbox",
+    "category": "text_editors",
+    "id": "codesandbox",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Xcode",
+    "category": "text_editors",
+    "id": "xcode",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Geany",
+    "category": "text_editors",
+    "id": "geany",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "RubyMine",
+    "category": "text_editors",
+    "id": "rubymine",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "TextEdit",
+    "category": "text_editors",
+    "id": "textedit",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "WebStorm",
+    "category": "text_editors",
+    "id": "webstorm",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "NetBeans",
+    "category": "text_editors",
+    "id": "netbeans",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Onivim 2",
+    "category": "text_editors",
+    "id": "oni",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Rider",
+    "category": "text_editors",
+    "id": "rider",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "YouTube",
+    "category": "youtube",
+    "id": "youtube",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Fun Fun Function",
+    "category": "youtube",
+    "id": "fun_fun_function",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Design Course",
+    "category": "youtube",
+    "id": "design_course",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Container Queries",
+    "category": "missing_features",
+    "id": "container_queries",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Parent Selector",
+    "category": "missing_features",
+    "id": "parent_selector",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Nesting",
+    "category": "missing_features",
+    "id": "nesting",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Subgrid",
+    "category": "missing_features",
+    "id": "subgrid",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": ":has Selector",
+    "category": "missing_features",
+    "id": "has_selector",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Mixins",
+    "category": "missing_features",
+    "id": "mixins",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Scoping",
+    "category": "missing_features",
+    "id": "scoping",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Functions",
+    "category": "missing_features",
+    "id": "functions",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Browser Support",
+    "category": "missing_features",
+    "id": "browser_support",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Conditional Logic",
+    "category": "missing_features",
+    "id": "conditional_logic",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "CSS Houdini",
+    "category": "missing_features",
+    "id": "houdini",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Animation",
+    "category": "missing_features",
+    "id": "animation",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Flow Control",
+    "category": "missing_features",
+    "id": "flow_control",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Centering",
+    "category": "missing_features",
+    "id": "center",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Masonry Layout",
+    "category": "missing_features",
+    "id": "masonry",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/desandro/masonry"
+    }
+  },
+  {
+    "name": "Simplicity",
+    "category": "missing_features",
+    "id": "simplicty",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Typographic Controls",
+    "category": "missing_features",
+    "id": "typography",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Form Elements Styling",
+    "category": "missing_features",
+    "id": "form_elements",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Print Support",
+    "category": "missing_features",
+    "id": "print",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Optional Chaining",
+    "category": "missing_features",
+    "id": "optional_chaining",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Battery API",
+    "category": "missing_features",
+    "id": "battery_api",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Static Typing",
+    "category": "missing_features",
+    "id": "static_typing",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Interfaces",
+    "category": "missing_features",
+    "id": "interfaces",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Standard Library",
+    "category": "missing_features",
+    "id": "standard_library",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Documentation",
+    "category": "missing_features",
+    "id": "documentation",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Pipe Operator",
+    "category": "missing_features",
+    "id": "pipe_operator",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Pattern Matching",
+    "category": "missing_features",
+    "id": "pattern_matching",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Auto-Currying",
+    "category": "missing_features",
+    "id": "auto_currying",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Native Observables",
+    "category": "missing_features",
+    "id": "native_observables",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Decorators",
+    "category": "missing_features",
+    "id": "decorators",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Simplicity",
+    "category": "missing_features",
+    "id": "simplicity",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Sanity",
+    "category": "missing_features",
+    "id": "sanity",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Tree Shaking",
+    "category": "missing_features",
+    "id": "tree_shaking",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Immutable Data Structure",
+    "category": "missing_features",
+    "id": "immutable",
+    "npm": null,
+    "github": {
+      "url": "https://github.com/immutable-js/immutable-js"
+    }
+  },
+  {
+    "name": "Multi Threading",
+    "category": "missing_features",
+    "id": "multi_threading",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Date/Time Handling",
+    "category": "missing_features",
+    "id": "date_time",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Monads",
+    "category": "missing_features",
+    "id": "monads",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Work",
+    "category": "sources",
+    "id": "work",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Tyle McGinnis",
+    "category": "people",
+    "id": "tyler_mcginnis",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Quirksmode",
+    "category": "people",
+    "id": "quirksmode",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Sarah Drasner",
+    "category": "people",
+    "id": "sarah_drasner",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Heydon Pickering",
+    "category": "people",
+    "id": "heydon_pickering",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Kent C. Dodds",
+    "category": "people",
+    "id": "kentcdodds",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Overreacted",
+    "category": "people",
+    "id": "overreacted",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Robin Wieruch",
+    "category": "people",
+    "id": "robin_wieruch",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Pony Foo",
+    "category": "people",
+    "id": "ponyfoo",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "David Walsh Blog",
+    "category": "people",
+    "id": "david_walsh",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Flavio Copes",
+    "category": "people",
+    "id": "flaviocopes",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Ahmad Shadeed",
+    "category": "people",
+    "id": "ishadeed",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Piccalilli",
+    "category": "people",
+    "id": "picalilli",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Chen Hui Jing",
+    "category": "people",
+    "id": "chenhuijing",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Jeremy Keith",
+    "category": "people",
+    "id": "adactio",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Lea Verou",
+    "category": "people",
+    "id": "lea_verou",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Sara Soueidan",
+    "category": "people",
+    "id": "sara_soueidan",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Josh Comeau",
+    "category": "people",
+    "id": "josh_comeau",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Rachel Andrew",
+    "category": "people",
+    "id": "rachel_andrew",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Una Kravets",
+    "category": "people",
+    "id": "una_kravets",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Jen Simmons",
+    "category": "people",
+    "id": "jen_simmons",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Kevin Powell",
+    "category": "people",
+    "id": "kevin_powell",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "CSS Wizardry",
+    "category": "people",
+    "id": "css_wizardry",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Stéphanie Walter",
+    "category": "people",
+    "id": "stephanie_walter",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Tania Rascia",
+    "category": "people",
+    "id": "tania_rasca",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Brad Frost",
+    "category": "people",
+    "id": "brad_frost",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Dave Rupert",
+    "category": "people",
+    "id": "dave_rupert",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Wes Bos",
+    "category": "people",
+    "id": "wesbos",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Codecademy",
+    "category": "courses",
+    "id": "codecademy",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Pluralsight",
+    "category": "courses",
+    "id": "pluralsight",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Level Up Tutorials",
+    "category": "courses",
+    "id": "levelup",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Udemy",
+    "category": "courses",
+    "id": "udemy",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Lynda",
+    "category": "courses",
+    "id": "lynda",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Egghead.io",
+    "category": "courses",
+    "id": "egghead",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Udacity",
+    "category": "courses",
+    "id": "udacity",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Vue Mastery",
+    "category": "courses",
+    "id": "vuemastery",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Newline",
+    "category": "courses",
+    "id": "newline",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "SuperHi",
+    "category": "courses",
+    "id": "superhi",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Laracasts",
+    "category": "courses",
+    "id": "laracasts",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Testing JavaScript",
+    "category": "courses",
+    "id": "testingjavascript",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "LinkedIn Learning",
+    "category": "courses",
+    "id": "linkedin_learning",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Academind",
+    "category": "courses",
+    "id": "academind",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Ultimate Courses",
+    "category": "courses",
+    "id": "ultimate_courses",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Design+Code",
+    "category": "courses",
+    "id": "designcode",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Frontend Masters",
+    "category": "courses",
+    "id": "frontendmasters",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Treehouse",
+    "category": "courses",
+    "id": "treehouse",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Vue School",
+    "category": "courses",
+    "id": "vueschool",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "SuperHi",
+    "category": "courses",
+    "id": "superhi",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Platzi",
+    "category": "courses",
+    "id": "platzi",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Traversy Media",
+    "category": "courses",
+    "id": "traversy_media",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "JavaScript.info",
+    "category": "courses",
+    "id": "javascript_info",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Every Layout",
+    "category": "courses",
+    "id": "every_layout",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "HTML Academy",
+    "category": "courses",
+    "id": "html_academy",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Fireship",
+    "category": "courses",
+    "id": "fireship",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "In Depth Dev",
+    "category": "courses",
+    "id": "in_depth_dev",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Vue Mastery",
+    "category": "courses",
+    "id": "vue_mastery",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Epic React",
+    "category": "courses",
+    "id": "epic_react",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "The Odin Project",
+    "category": "courses",
+    "id": "odin_project",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Ember Times",
+    "category": "newsletters",
+    "id": "ember_times",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Sidebar",
+    "category": "newsletters",
+    "id": "sidebar",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "HeyDesigner",
+    "category": "newsletters",
+    "id": "heydesigner",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Front-End Front",
+    "category": "newsletters",
+    "id": "front_end_front",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "CSS Weekly",
+    "category": "newsletters",
+    "id": "css_weekly",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Frontend Horse",
+    "category": "newsletters",
+    "id": "frontend_horse",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "CSS Layout News",
+    "category": "newsletters",
+    "id": "css_layout_news",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Responsive Design Weekly",
+    "category": "newsletters",
+    "id": "responsive_design_weekly",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "JavaScript Weekly",
+    "category": "newsletters",
+    "id": "js_weekly",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "React Status",
+    "category": "newsletters",
+    "id": "react_status",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Node Weekly",
+    "category": "newsletters",
+    "id": "node_weekly",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "The Ember Times",
+    "category": "newsletters",
+    "id": "ember_times",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Web Development Reading List",
+    "category": "newsletters",
+    "id": "web_development_reading_list",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "ESNext News",
+    "category": "newsletters",
+    "id": "esnext",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Vue News",
+    "category": "newsletters",
+    "id": "vue_news",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Responsive Design Weekly",
+    "category": "newsletters",
+    "id": "rwd_weekly",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Frontend Focus",
+    "category": "newsletters",
+    "id": "frontend_focus",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "CSS Layout News",
+    "category": "newsletters",
+    "id": "css_layout_news",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "JavaScript Kicks",
+    "category": "newsletters",
+    "id": "javascriptkicks",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "A11y Weekly",
+    "category": "newsletters",
+    "id": "a11y_weekly",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Hacker News",
+    "category": "socialmedia",
+    "id": "hn",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Reddit",
+    "category": "socialmedia",
+    "id": "reddit",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Designer News",
+    "category": "socialmedia",
+    "id": "designernews",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Facebook",
+    "category": "socialmedia",
+    "id": "facebook",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Product Hunt",
+    "category": "socialmedia",
+    "id": "producthunt",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Telegram",
+    "category": "socialmedia",
+    "id": "telegram",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Slack",
+    "category": "socialmedia",
+    "id": "slack",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "GitHub",
+    "category": "socialmedia",
+    "id": "github",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "LinkedIn",
+    "category": "socialmedia",
+    "id": "linkedin",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Hangouts",
+    "category": "socialmedia",
+    "id": "hangouts",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Twitter",
+    "category": "socialmedia",
+    "id": "twitter",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Instagram",
+    "category": "socialmedia",
+    "id": "instagram",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Juejin",
+    "category": "socialmedia",
+    "id": "juejin",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Echo JS",
+    "category": "socialmedia",
+    "id": "echo_js",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "Habr",
+    "category": "socialmedia",
+    "id": "habr",
+    "npm": null,
+    "github": null
+  },
+  {
+    "name": "bar",
+    "category": "industry_sectors",
+    "id": "foo",
+    "npm": null,
+    "github": null
+  }
+]
