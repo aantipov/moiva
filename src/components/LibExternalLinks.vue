@@ -19,7 +19,8 @@
 import { defineComponent, toRefs, computed } from 'vue';
 import BundlephobiaIcon from './icons/Bundlephobia.vue';
 import ThoughtworksIcon from './icons/Thoughtworks.vue';
-import { libsToLinkMap } from '../../techradar.config';
+import { LibraryT, NpmPackageT } from '@/libraryApis';
+import { repoToTechRadarMap } from '../../techradar.config';
 import { getBundlephobiaUrl } from '@/utils';
 
 export default defineComponent({
@@ -31,18 +32,21 @@ export default defineComponent({
   },
 
   props: {
-    libName: {
-      type: String,
+    library: {
+      type: Object as () => LibraryT,
       required: true,
     },
   },
 
   setup(props) {
-    const { libName } = toRefs(props);
-    const bundlephobiaUrl = computed(() => getBundlephobiaUrl(libName.value));
-    const thoughtworksUrl = computed<string | null>(
-      () => libsToLinkMap[libName.value] || null
+    const { library } = toRefs(props);
+    const bundlephobiaUrl = computed(() =>
+      getBundlephobiaUrl((library.value.npmPackage as NpmPackageT).name)
     );
+    const thoughtworksUrl = computed<string | null>(() => {
+      const tradarItem = repoToTechRadarMap[library.value.repo.repoId] || null;
+      return tradarItem && tradarItem.link;
+    });
 
     return {
       bundlephobiaUrl,

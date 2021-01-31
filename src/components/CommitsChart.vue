@@ -1,10 +1,10 @@
 <template>
   <m-chart
     title="Commits per ~month"
-    :is-loading="isLoading || isLoadingLibsData"
+    :is-loading="isLoading"
     :is-error="isError"
-    :libs-names="filteredLibsNames"
-    :failed-libs-names="failedLibsNames"
+    :libs-names="reposIds"
+    :failed-libs-names="failedReposIds"
     :chart-config="chartConfig"
   >
     <p>Moiva uses commits data from GitHub.</p>
@@ -26,61 +26,36 @@ export default defineComponent({
   name: 'CommitsChart',
 
   props: {
-    isLoadingLibsData: { type: Boolean, required: true },
     isLoading: { type: Boolean, required: true },
     isError: { type: Boolean, required: true },
-    libsNames: { type: Array as () => string[], required: true },
-    libToColorMap: {
-      type: Object as () => Record<string, string>,
+    reposIds: { type: Array as () => string[], required: true },
+    failedReposIds: { type: Array as () => string[], required: true },
+    reposCommits: {
+      type: Array as () => CommitsResponseItemT[][],
       required: true,
     },
-    libsCommits: {
-      type: Array as () => (CommitsResponseItemT[] | null)[],
+    repoToColorMap: {
+      type: Object as () => Record<string, string>,
       required: true,
     },
   },
 
   setup(props) {
-    const {
-      libsNames,
-      libsCommits,
-      libToColorMap,
-      isLoadingLibsData,
-      isLoading,
-    } = toRefs(props);
-
-    const filteredLibsCommits = computed<CommitsResponseItemT[][]>(
-      () =>
-        libsCommits.value.filter(
-          (libCommits) => !!libCommits
-        ) as CommitsResponseItemT[][]
-    );
-
-    const filteredLibsNames = computed(() =>
-      libsNames.value.filter(
-        (libName, libIndex) => !!libsCommits.value[libIndex]
-      )
-    );
-
-    const failedLibsNames = computed(() =>
-      libsNames.value.filter(
-        (libName, libIndex) =>
-          !isLoadingLibsData.value &&
-          !isLoading.value &&
-          !libsCommits.value[libIndex]
-      )
-    );
+    const { reposIds, repoToColorMap, reposCommits } = toRefs(props);
 
     const datasets = computed<ChartDataSets[]>(() =>
-      filteredLibsNames.value.map((libName, libIndex) => ({
-        label: libName,
-        data: filteredLibsCommits.value[libIndex].map(({ total, week }) => ({
-          x: week,
-          y: total,
-        })),
-        backgroundColor: libToColorMap.value[libName],
-        borderColor: libToColorMap.value[libName],
-      }))
+      reposIds.value.map((repoId, repoIndex) => {
+        const [, repoName] = repoId.split('/');
+        return {
+          label: repoName,
+          data: reposCommits.value[repoIndex].map(({ total, week }) => ({
+            x: week,
+            y: total,
+          })),
+          backgroundColor: repoToColorMap.value[repoId],
+          borderColor: repoToColorMap.value[repoId],
+        };
+      })
     );
 
     const chartConfig = computed<ChartConfiguration>(() => ({
@@ -95,11 +70,7 @@ export default defineComponent({
       },
     }));
 
-    return {
-      failedLibsNames,
-      filteredLibsNames,
-      chartConfig,
-    };
+    return { chartConfig };
   },
 });
 </script>

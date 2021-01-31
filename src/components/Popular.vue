@@ -4,7 +4,7 @@
       Popular comparisons by category
     </h2>
 
-    <div v-for="item in items" :key="item.url" class="mb-2">
+    <div v-for="item in items" :key="item.name" class="mb-2">
       <a
         class="text-lg"
         :href="makeHref(item.libs)"
@@ -36,7 +36,6 @@ export default defineComponent({
           libsStr: 'React, Svelte, Vue, Angular',
         },
         {
-          url: '/?compare=',
           libs: ['bootstrap', 'tailwindcss', 'bulma'],
           name: 'CSS frameworks',
           libsStr: 'Bootstrap, Tailwind CSS, Bulma',

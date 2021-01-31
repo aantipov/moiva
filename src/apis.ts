@@ -2,7 +2,6 @@ import axios, { AxiosError } from 'axios';
 import * as Sentry from '@sentry/browser';
 import { NpmPackagedDetailsResponseT } from '../api/npm-package-detailed';
 import {
-  ERROR_CODE_NO_GITHUB_DATA,
   ERROR_CODE_GITHUB_CONTRIBUTORS_NEEDS_PROCESSING,
   ERROR_CODE_GITHUB_COMMITS_NEEDS_PROCESSING,
 } from '@/constants';
@@ -12,15 +11,12 @@ import { GithubContributorsResponseItemT } from '../api/gh-contributors';
 
 const npmDownloadsCache = new Map();
 const npmSuggestionsCache = new Map();
-const npmPackageCache = new Map();
 const npmPackageVersionsCache = new Map();
-const githubCache = new Map();
 const githubLanguagesCache = new Map();
 const githubCommitsCache = new Map();
 const githubContributorsCache = new Map();
 const gTrendsCache = new Map();
 const bphobiaCache = new Map();
-const stateofjsCache = new Map();
 
 export interface NpmDownloadT {
   downloads: number;
@@ -46,25 +42,6 @@ export interface GTrendsT {
   timelineData: GTrendPointT[];
 }
 
-export interface RepoT {
-  stars: number;
-  createdAt: string;
-  vulnerabilitiesCount: number;
-  closedIssues: { totalCount: number };
-  closedBugIssues: { totalCount: number };
-  openIssues: { totalCount: number };
-  openBugIssues: { totalCount: number };
-}
-
-export interface LibraryT {
-  name: string;
-  description: string;
-  license: string;
-  repo: string;
-  version: string;
-  dependencies: string[];
-}
-
 export interface SuggestionT {
   name: string;
   description: string;
@@ -86,18 +63,6 @@ interface NpmsIOSuggestionResponseT {
     };
   };
   searchScore: number;
-}
-
-interface NpmsIOPackageResponseT {
-  collected: {
-    metadata: {
-      name: string;
-      description: string;
-      license: string;
-      version: string;
-      links: { repository: string };
-    };
-  };
 }
 
 function reportSentry(err: AxiosError, methodName: string): void {
@@ -133,20 +98,18 @@ export function fetchNpmDownloads(
 }
 
 export function fetchRepoLanguages(
-  repoUrl: string
+  repoId: string
 ): Promise<GithubLanguagesResponseT | null> {
-  const repoUrlParts = repoUrl.split('/');
-  const owner = repoUrlParts[3];
-  const name = repoUrlParts[4];
+  const [owner, name] = repoId.split('/');
 
-  if (githubLanguagesCache.get(repoUrl)) {
-    return Promise.resolve(githubLanguagesCache.get(repoUrl));
+  if (githubLanguagesCache.get(repoId)) {
+    return Promise.resolve(githubLanguagesCache.get(repoId));
   }
 
   return axios
     .get(`/api/gh-languages?name=${name}&owner=${owner}`)
     .then(({ data }) => {
-      githubLanguagesCache.set(repoUrl, data);
+      githubLanguagesCache.set(repoId, data);
       return data;
     })
     .catch((err) => {
@@ -162,20 +125,18 @@ export function fetchRepoLanguages(
 }
 
 export function fetchRepoCommits(
-  repoUrl: string
+  repoId: string
 ): Promise<CommitsResponseItemT[] | null> {
-  const repoUrlParts = repoUrl.split('/');
-  const owner = repoUrlParts[3];
-  const name = repoUrlParts[4];
+  const [owner, name] = repoId.split('/');
 
-  if (githubCommitsCache.get(repoUrl)) {
-    return Promise.resolve(githubCommitsCache.get(repoUrl));
+  if (githubCommitsCache.get(repoId)) {
+    return Promise.resolve(githubCommitsCache.get(repoId));
   }
 
   return axios
     .get<CommitsResponseItemT[]>(`/api/gh-commits?name=${name}&owner=${owner}`)
     .then(({ data }) => {
-      githubCommitsCache.set(repoUrl, data);
+      githubCommitsCache.set(repoId, data);
       return data;
     })
     .catch((err) => {
@@ -197,14 +158,12 @@ export interface YearContributorsT {
 }
 
 export function fetchContributors(
-  repoUrl: string
+  repoId: string
 ): Promise<YearContributorsT[] | null> {
-  const repoUrlParts = repoUrl.split('/');
-  const owner = repoUrlParts[3];
-  const name = repoUrlParts[4];
+  const [owner, name] = repoId.split('/');
 
-  if (githubContributorsCache.get(repoUrl)) {
-    return Promise.resolve(githubContributorsCache.get(repoUrl));
+  if (githubContributorsCache.get(repoId)) {
+    return Promise.resolve(githubContributorsCache.get(repoId));
   }
 
   return axios
@@ -237,7 +196,7 @@ export function fetchContributors(
         }))
         .sort((c1, c2) => c1.year - c2.year);
 
-      githubContributorsCache.set(repoUrl, contributorsByYear);
+      githubContributorsCache.set(repoId, contributorsByYear);
 
       return contributorsByYear;
     })
@@ -250,30 +209,6 @@ export function fetchContributors(
         reportSentry(err, 'fetchContributorsData');
       }
 
-      return null;
-    });
-}
-
-export function fetchGithubData(
-  repoUrl: string,
-  npmPackage: string
-): Promise<RepoT | null> {
-  const repoUrlParts = repoUrl.split('/');
-  const owner = repoUrlParts[3];
-  const name = repoUrlParts[4];
-
-  if (githubCache.get(repoUrl)) {
-    return Promise.resolve(githubCache.get(repoUrl));
-  }
-
-  return axios
-    .get<RepoT>(`/api/gh?name=${name}&owner=${owner}&pkg=${npmPackage}`)
-    .then(({ data }) => {
-      githubCache.set(repoUrl, data);
-      return data;
-    })
-    .catch((err) => {
-      reportSentry(err, `fetchGithubData (package: ${npmPackage})`);
       return null;
     });
 }
@@ -295,31 +230,6 @@ export function fetchGTrendsData(libs: string[]): Promise<GTrendPointT[]> {
     .catch((err) => {
       reportSentry(err, 'fetchGTrendsData');
       return Promise.reject(err);
-    });
-}
-
-export interface StateOfJST {
-  interest: { percentage: number; year: number }[];
-  usage: { percentage: number; year: number }[];
-}
-
-export function fetchStateOfJSData(
-  toolName: string
-): Promise<StateOfJST | null> {
-  if (stateofjsCache.get(toolName)) {
-    return Promise.resolve(stateofjsCache.get(toolName));
-  }
-
-  return axios
-    .get(`/api/stateofjs?lib=${toolName}`)
-    .then(({ data }) => {
-      stateofjsCache.set(toolName, data);
-      return data;
-    })
-    .catch((err) => {
-      reportSentry(err, 'fetchBundlephobiaData');
-
-      return null;
     });
 }
 
@@ -406,70 +316,6 @@ function fetchNpmsIOSuggestions(keyword: string): Promise<SuggestionT[]> {
         }));
 
       return data;
-    });
-}
-
-export function fetchNpmPackage(packageName: string): Promise<LibraryT | null> {
-  // eslint-disable-next-line
-  const fetchPackageFunc = true ? fetchNpmJSPackage : fetchNpmsIOPackage;
-
-  if (npmPackageCache.get(packageName)) {
-    return Promise.resolve(npmPackageCache.get(packageName));
-  }
-
-  return fetchPackageFunc(packageName)
-    .then((data) => {
-      npmPackageCache.set(packageName, data);
-
-      return data;
-    })
-    .catch((err) => {
-      const errorCode =
-        err?.response?.data?.error?.code || err?.response?.status || undefined;
-
-      // Do not spam Sentry with "expected" errors
-      if (errorCode !== ERROR_CODE_NO_GITHUB_DATA) {
-        reportSentry(err, 'fetchNpmPackage');
-      }
-
-      if (errorCode === 404) {
-        return null;
-      }
-
-      return Promise.reject(errorCode);
-    });
-}
-
-function fetchNpmJSPackage(packageName: string): Promise<LibraryT | null> {
-  return axios
-    .get(`/api/npm-package?pkg=${packageName}`)
-    .then(({ data }) => data);
-}
-
-function fetchNpmsIOPackage(packageName: string): Promise<LibraryT | null> {
-  return axios
-    .get(`https://api.npms.io/v2/package/${encodeURIComponent(packageName)}`)
-    .then((resp) => {
-      const {
-        collected: {
-          metadata: {
-            name,
-            description,
-            version,
-            license,
-            links: { repository },
-          },
-        },
-      } = resp.data as NpmsIOPackageResponseT;
-
-      return {
-        name,
-        description,
-        dependencies: [],
-        version,
-        license,
-        repo: repository,
-      };
     });
 }
 

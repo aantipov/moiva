@@ -1,28 +1,11 @@
 <template>
   <div>
     <Autosuggest class="w-full mx-auto lg:w-9/12 xl:w-2/4" @select="select" />
+    <Suggestions @select="select" />
 
-    <!--  Suggestions    -->
-    <div class="w-full px-3 mx-auto lg:w-9/12 xl:w-2/4">
-      <a
-        v-for="sugestedLib in suggestions"
-        :key="sugestedLib"
-        class="inline-block mt-2 mr-3 text-base text-gray-500 no-underline hover:text-gray-700"
-        :href="getHrefForAdditionalLib(sugestedLib)"
-        @click.prevent="select(sugestedLib)"
-        >+ {{ sugestedLib }}</a
-      >
-    </div>
-
-    <div
-      v-if="errorFetchingNewLib"
-      class="w-full px-3 mx-auto mt-2 text-red-500 lg:w-9/12 xl:w-2/4"
-    >
-      {{ errorFetchingNewLib }}
-    </div>
-
-    <div v-if="!selectedLibs.length">
-      <Popular v-if="!isLoadingLibsData" @select="selectMultiple" />
+    <!--  Popular Comparisons    -->
+    <div v-if="!libraries.length">
+      <Popular v-if="!isLoading" @select="selectMultiple" />
 
       <div
         v-else
@@ -33,100 +16,35 @@
       </div>
     </div>
 
+    <!--  Selected Libraries and Charts    -->
     <div v-else>
       <SelectedLibs
         class="relative w-full mx-auto mt-4 mb-2 lg:w-9/12 xl:w-2/4 divide-y divide-yellow-600 divide-opacity-40"
-        :is-loading="isLoadingLibsData"
-        :libs="selectedLibs"
-        :lib-to-color-map="libToColorMap"
-        :github-is-loading="githubIsLoading"
-        :github-is-error="githubIsError"
-        :github-repos="githubRepositories"
-        @deselect="deselect"
       />
 
       <!-- Charts -->
-      <div>
-        <div class="grid grid-cols-12 gap-4">
-          <NpmDownloads
-            :libs-names="librariesNames"
-            :lib-to-color-map="libToColorMap"
-            :is-loading-libs-data="isLoadingLibsData"
-            class="col-span-12 xl:col-span-6"
-          />
-
-          <GoogleTrends
-            :libs-names="librariesNames"
-            :lib-to-color-map="libToColorMap"
-            :is-loading-libs-data="isLoadingLibsData"
-            class="col-span-12 xl:col-span-6"
-          />
-
-          <TechRadar
-            :libs-names="librariesNames"
-            :lib-to-color-map="libToColorMap"
-            class="col-span-12 md:col-span-6 xl:col-span-3"
-          />
-
-          <Contributors
-            :libs="selectedLibs"
-            :lib-to-color-map="libToColorMap"
-            :is-loading-libs-data="isLoadingLibsData"
-            class="col-span-12 md:col-span-6 xl:col-span-3"
-          />
-
-          <Releases
-            :libs-names="librariesNames"
-            :lib-to-color-map="libToColorMap"
-            :is-loading-libs-data="isLoadingLibsData"
-            class="col-span-12 md:col-span-6 xl:col-span-3"
-          />
-
-          <Commits
-            :libs="selectedLibs"
-            :lib-to-color-map="libToColorMap"
-            :is-loading-libs-data="isLoadingLibsData"
-            class="col-span-12 md:col-span-6 xl:col-span-3"
-          />
-
-          <DevelopersUsage
-            :libs-names="librariesNames"
-            :lib-to-color-map="libToColorMap"
-            :is-loading-libs-data="isLoadingLibsData"
-            class="col-span-12 md:col-span-6 xl:col-span-3"
-          />
-
-          <Issues
-            :libs-names="librariesNames"
-            :repos="githubRepositories"
-            :is-loading="githubIsLoading"
-            :is-loading-libs-data="isLoadingLibsData"
-            :is-error="githubIsError"
-            class="col-span-12 md:col-span-6 xl:col-span-3"
-          />
-
-          <Bundlephobia
-            :libs-names="librariesNames"
-            :is-loading-libs-data="isLoadingLibsData"
-            class="col-span-12 md:col-span-6 xl:col-span-3"
-          />
-
-          <Languages
-            :libs="selectedLibs"
-            :is-loading-libs-data="isLoadingLibsData"
-            class="col-span-12 md:col-span-6 xl:col-span-3"
-          />
-        </div>
+      <div class="grid grid-cols-12 gap-4">
+        <NpmDownloads class="col-span-12 xl:col-span-6" />
+        <GoogleTrends class="col-span-12 xl:col-span-6" />
+        <TechRadar class="col-span-12 md:col-span-6 xl:col-span-3" />
+        <Releases class="col-span-12 md:col-span-6 xl:col-span-3" />
+        <Contributors class="col-span-12 md:col-span-6 xl:col-span-3" />
+        <Commits class="col-span-12 md:col-span-6 xl:col-span-3" />
+        <DevelopersUsage class="col-span-12 md:col-span-6 xl:col-span-3" />
+        <Issues class="col-span-12 md:col-span-6 xl:col-span-3" />
+        <Bundlephobia class="col-span-12 md:col-span-6 xl:col-span-3" />
+        <Languages class="col-span-12 md:col-span-6 xl:col-span-3" />
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, computed, watch } from 'vue';
+import { defineComponent, onMounted, watchEffect } from 'vue';
 import NpmDownloads from './NpmDownloads.vue';
 import Releases from './Releases.vue';
 import Autosuggest from './Autosuggest.vue';
+import Suggestions from './Suggestions.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
 import Bundlephobia from './Bundlephobia.vue';
@@ -135,168 +53,93 @@ import Popular from './Popular.vue';
 import SelectedLibs from './SelectedLibs.vue';
 import Languages from './Languages.vue';
 import Contributors from './Contributors.vue';
-import DevelopersUsage from './DevelopersUsage.vue';
+import DevelopersUsage from './developer-usage/DevelopersUsage.vue';
 import Commits from './Commits.vue';
-import { ERROR_CODE_NO_GITHUB_DATA } from '@/constants';
-import { LibraryT, fetchNpmPackage, RepoT } from '@/apis';
 import {
-  loadDefaultLibs,
   updateUrl,
-  updateTitle,
-  updateMetaDescription,
-  numbersFormatter,
-  getSuggestions,
-  constructHref,
-} from '../utils';
-import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
-import { getLibToColorMap } from '../colors';
-import useGithub from '@/composables/useGithub';
+  getTitle,
+  getMetaDescription,
+  getNpmPackagesFromUrl,
+  showErrorMsg,
+} from '@/utils';
+import { updateLibrariesColors } from '@/store/librariesColors';
+import {
+  reposIds,
+  isLoading,
+  libraries,
+  librariesIds,
+  addLibraryByNpmPackage,
+  npmPackagesNames,
+} from '@/store/libraries';
+import { LibraryT } from '@/libraryApis';
 
 export default defineComponent({
   name: 'Main',
   components: {
     Autosuggest,
-    SelectedLibs,
-    NpmDownloads,
-    Releases,
-    TechRadar,
-    GoogleTrends,
     Bundlephobia,
-    Issues,
-    Popular,
-    Languages,
     Commits,
     Contributors,
     DevelopersUsage,
+    GoogleTrends,
+    Issues,
+    Languages,
+    NpmDownloads,
+    Popular,
+    Releases,
+    Suggestions,
+    SelectedLibs,
+    TechRadar,
   },
 
   setup() {
-    const selectedLibs = ref<LibraryT[]>([]);
-    const errorFetchingNewLib = ref<string | null>(null);
-    const loadingLibs = ref<string[]>([]); // Track libs currently being loading
-    const isLoadingLibsData = ref(true);
-    const librariesNames = computed<string[]>(() =>
-      selectedLibs.value.map((lib) => lib.name)
-    );
-    const suggestions = computed<string[]>(() =>
-      getSuggestions(librariesNames.value)
-    );
-    const libToColorMap = computed<Record<string, string>>(() =>
-      getLibToColorMap(librariesNames.value)
-    );
-    const gh = useGithub(selectedLibs);
+    watchEffect(() => updateLibrariesColors(librariesIds.value));
 
     onMounted(() => {
-      loadDefaultLibs().then((libs): void => {
-        selectedLibs.value = libs;
-        isLoadingLibsData.value = false;
-      });
-    });
+      const npmPackagesNamesFromUrl = getNpmPackagesFromUrl();
 
-    // Update url and title
-    watch([selectedLibs], () => {
-      updateUrl(librariesNames.value);
-      updateTitle();
-    });
+      Promise.all(npmPackagesNamesFromUrl.map(addLibraryByNpmPackage)).catch(
+        () => {
+          // Redirect a user to 404 if there was a wrong lib in the url
+          // This is needed for SEO - Google should not crawl "bad" pages
+          window.location.href = '/not-found';
+        }
+      );
 
-    // Update meta description
-    watch([gh.isLoading, gh.repositories, gh.isError], () => {
-      const repos = gh.repositories.value;
-      const hasAnyRepoError = repos.includes(null);
-
-      if (gh.isLoading.value || gh.isError.value || hasAnyRepoError) {
-        updateMetaDescription([]);
-        return;
-      }
-
-      const data = selectedLibs.value.map((lib, libIndex) => ({
-        name: lib.name,
-        description: lib.description,
-        starsCount: numbersFormatter.format((repos[libIndex] as RepoT).stars),
-        age: formatDistanceToNowStrict(
-          new Date((repos[libIndex] as RepoT).createdAt)
-        ),
-        vulnerabilitiesCount: (repos[libIndex] as RepoT).vulnerabilitiesCount,
-        dependenciesCount: lib.dependencies.length,
-        license: lib.license,
-      }));
-
-      updateMetaDescription(data);
-    });
-
-    return {
-      selectedLibs,
-      librariesNames,
-      suggestions,
-      isLoadingLibsData,
-      errorFetchingNewLib,
-      libToColorMap,
-      githubIsError: gh.isError,
-      githubIsLoading: gh.isLoading,
-      githubRepositories: gh.repositories,
-      deselect(libName: string): void {
-        errorFetchingNewLib.value = null;
-        selectedLibs.value = selectedLibs.value.filter(
-          (lib) => lib.name !== libName
-        );
-      },
-      select(libName: string): void {
-        errorFetchingNewLib.value = null;
-        if (
-          !libName ||
-          librariesNames.value.includes(libName) ||
-          loadingLibs.value.includes(libName)
-        ) {
+      watchEffect(() => {
+        if (isLoading.value) {
           return;
         }
 
-        isLoadingLibsData.value = true;
-        loadingLibs.value = [...loadingLibs.value, libName];
+        // Update URL
+        updateUrl(npmPackagesNames.value);
 
-        fetchNpmPackage(libName)
-          .then((npmPackage): void => {
-            selectedLibs.value = [
-              ...selectedLibs.value,
-              npmPackage as LibraryT,
-            ];
-          })
-          .catch((err) => {
-            let errMsg = `Sorry, we couldn't fetch data for ${libName}`;
-            if (err === ERROR_CODE_NO_GITHUB_DATA) {
-              errMsg += ': the package information doesnt contain GitHub data';
-            }
-            errorFetchingNewLib.value = errMsg;
-          })
-          .finally(() => {
-            isLoadingLibsData.value = false;
-            loadingLibs.value = loadingLibs.value.filter(
-              (val) => libName !== val
-            );
-          });
-      },
-      selectMultiple(libNames: string[]): void {
-        // Assumption - it's called from the Start Page
-        // when there is no selected libraries yes
-        errorFetchingNewLib.value = null;
-        isLoadingLibsData.value = true;
-        loadingLibs.value = [...libNames];
+        // Update Document Title to make it SEO friendly
+        window.document.title = getTitle(reposIds.value);
 
-        Promise.all(libNames.map(fetchNpmPackage))
-          .then((npmPackages): void => {
-            selectedLibs.value = [
-              ...selectedLibs.value,
-              ...(npmPackages as LibraryT[]),
-            ];
-          })
-          .finally(() => {
-            isLoadingLibsData.value = false;
-            loadingLibs.value = loadingLibs.value.filter(
-              (val) => !libNames.includes(val)
-            );
-          });
-      },
-      getHrefForAdditionalLib(lib: string): string {
-        return constructHref([...librariesNames.value, lib]);
+        // Update Meta Description
+        (document.querySelector(
+          'meta[name="Description"]'
+        ) as HTMLElement).setAttribute(
+          'content',
+          getMetaDescription(libraries as LibraryT[])
+        );
+      });
+    });
+
+    function selectNpmPackage(npmPackageName: string): void {
+      addLibraryByNpmPackage(npmPackageName).catch(() => {
+        showErrorMsg(`Sorry, we couldn't fetch data for ${npmPackageName}`);
+        return Promise.reject();
+      });
+    }
+
+    return {
+      libraries,
+      isLoading,
+      select: selectNpmPackage,
+      selectMultiple(npmPackagesNames: string[]): void {
+        npmPackagesNames.forEach(selectNpmPackage);
       },
     };
   },

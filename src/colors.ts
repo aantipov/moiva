@@ -2,7 +2,7 @@
 export const COLOR_GREEN = '#10B981'; // Emerald 500
 export const COLOR_GRAY = '#A1A1AA'; // Gray 400
 
-const COLORS = [
+export const COLORS = [
   '#DC2626', // Red 600
   '#CA8A04', // Yellow 600
   '#2563EB', // Blue 600
@@ -53,31 +53,7 @@ export const ISSUES_COLORS = {
   CLOSED_BUGS: '#FCA5A5', // Red 300
 };
 
-const libToColorMap = new Map<string, string>();
 const langToColorMap = new Map<string, string>();
-
-export function getLibToColorMap(libs: string[]): Record<string, string> {
-  // Clean up the Map - filter out unused libs
-  [...libToColorMap.keys()].forEach((lib) => {
-    if (!libs.includes(lib)) {
-      libToColorMap.delete(lib);
-    }
-  });
-
-  // Get a list of unused colors
-  const vacantColors = COLORS.filter(
-    (color) => ![...libToColorMap.values()].includes(color)
-  );
-
-  // Update the Map with the colors for new libs
-  libs.forEach((lib) => {
-    if (!libToColorMap.has(lib)) {
-      libToColorMap.set(lib, vacantColors.shift() || '#9E9E9E');
-    }
-  });
-
-  return Object.fromEntries(libToColorMap);
-}
 
 export function getLangToColorMap(langs: string[]): Record<string, string> {
   // Others "lang" should always be Gray

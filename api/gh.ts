@@ -15,10 +15,8 @@ export default (req: NowRequest, res: NowResponse): void => {
   if (
     !name ||
     !owner ||
-    !pkg ||
     typeof name !== 'string' ||
-    typeof owner !== 'string' ||
-    typeof pkg !== 'string'
+    typeof owner !== 'string'
   ) {
     reportError(new Error('API GITHUB MAIN: Wrong parameters'));
     res.status(400).json({ error: 'Wrong parameters' });
@@ -41,9 +39,6 @@ export default (req: NowRequest, res: NowResponse): void => {
         variables: {},
         query: `
         {
-          securityVulnerabilities(package: "${pkg}", first: 20) {
-            totalCount
-          }
           repository(name: "${name}", owner: "${owner}") {
             description
             stars: stargazerCount
@@ -74,7 +69,10 @@ export default (req: NowRequest, res: NowResponse): void => {
       const { errors, data } = resp.data;
 
       if (errors) {
-        console.error(`API GITHUB MAIN: (package: ${pkg})`, errors);
+        console.error(
+          `API GITHUB MAIN: ${owner}/${name} (package: ${pkg})`,
+          errors
+        );
         reportError(errors);
         res.status(500).json({ errors: resp.data.errors });
 
@@ -85,11 +83,16 @@ export default (req: NowRequest, res: NowResponse): void => {
       res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
       res.status(200).json({
         ...repository,
-        vulnerabilitiesCount: securityVulnerabilities.totalCount,
+        openIssues: repository.openIssues.totalCount,
+        openBugIssues: repository.openBugIssues.totalCount,
+        closedIssues: repository.closedIssues.totalCount,
+        closedBugIssues: repository.closedBugIssues.totalCount,
+        repoId: `${owner}/${name}`,
+        repoName: name,
       } as RepoT);
     })
     .catch((e) => {
-      console.error(`API GITHUB MAIN: (package: ${pkg})`, e);
+      console.error(`API GITHUB MAIN: ${owner}/${name} (package: ${pkg})`, e);
       reportError(e);
       res
         .status((e.response && (e.response.code || e.response.status)) || 500)

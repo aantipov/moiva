@@ -1,19 +1,65 @@
 <template>
   <CommitsChart
-    :is-loading-libs-data="isLoadingLibsData"
     :is-loading="isLoading"
     :is-error="isError"
-    :libs-names="libsNames"
-    :lib-to-color-map="libToColorMap"
-    :libs-commits="libsCommits"
+    :repos-ids="successItemsIds"
+    :failed-repos-ids="failedItemsIds"
+    :repos-commits="aggregatedNormalisedCommits"
+    :repo-to-color-map="repoToColorMap"
   />
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, toRefs, ref, computed, watch } from 'vue';
+import { defineComponent, computed } from 'vue';
 import CommitsChart from './CommitsChart.vue';
-import { fetchRepoCommits, LibraryT } from '@/apis';
+import { fetchRepoCommits } from '@/apis';
 import { CommitsResponseItemT } from '../../api/gh-commits';
+import useChartApi from '@/composables/useChartApi';
+import { libraryToColorMap } from '@/store/librariesColors';
+import {
+  isLoading as isLoadingLibraries,
+  reposIds,
+  repoToLibraryIdMap,
+} from '@/store/libraries';
+
+export default defineComponent({
+  name: 'Commits',
+
+  components: { CommitsChart },
+
+  setup() {
+    const {
+      isLoading,
+      isError,
+      items,
+      successItemsIds,
+      failedItemsIds,
+    } = useChartApi<CommitsResponseItemT[]>(
+      reposIds,
+      isLoadingLibraries,
+      fetchRepoCommits
+    );
+
+    const aggregatedNormalisedCommits = computed(() => {
+      return getAggregatedCommits(getNormalisedData(items.value));
+    });
+
+    return {
+      isLoading: computed(() => isLoadingLibraries.value || isLoading.value),
+      isError,
+      aggregatedNormalisedCommits,
+      failedItemsIds,
+      successItemsIds,
+      repoToColorMap: computed(() =>
+        successItemsIds.value.reduce((acc, repoId) => {
+          acc[repoId] =
+            libraryToColorMap.value[repoToLibraryIdMap.value[repoId]];
+          return acc;
+        }, {} as Record<string, string>)
+      ),
+    };
+  },
+});
 
 /**
  * Make sure commits of all the libs
@@ -81,68 +127,4 @@ function getAggregatedCommits(libsCommits: (CommitsResponseItemT[] | null)[]) {
 
   return aggregatedCommits;
 }
-
-export default defineComponent({
-  name: 'Commits',
-
-  components: {
-    CommitsChart,
-  },
-
-  props: {
-    libs: { type: Array as () => LibraryT[], required: true },
-    libToColorMap: {
-      type: Object as () => Record<string, string>,
-      required: true,
-    },
-    isLoadingLibsData: { type: Boolean, required: true },
-  },
-
-  setup(props) {
-    const { libs } = toRefs(props);
-    const libsCommits = ref<(CommitsResponseItemT[] | null)[]>([]);
-    const libsNames = computed(() => libs.value.map(({ name }) => name));
-    const isLoading = ref(true);
-    const isError = ref(false);
-    let lastFetchPromise: null | Promise<void> = null;
-
-    function loadData(): void {
-      isLoading.value = true;
-      isError.value = false;
-      const fetchPromise = (lastFetchPromise = Promise.all(
-        libs.value.map(({ repo }) => fetchRepoCommits(repo))
-      )
-        .then((data) => {
-          // Do nothing if there is a new request already in place
-          if (lastFetchPromise === fetchPromise) {
-            // Ther is a divergence in data between repos -
-            // commits data may start and end with different weeks
-            // We need to normalise data before using it
-            // And then aggregate data by 4 weeks
-            libsCommits.value = getAggregatedCommits(getNormalisedData(data));
-            isLoading.value = false;
-            isError.value = false;
-          }
-        })
-        .catch(() => {
-          // Do nothing if there is a new request already in place
-          if (lastFetchPromise === fetchPromise) {
-            isLoading.value = false;
-            isError.value = true;
-          }
-        }));
-    }
-
-    onMounted(loadData);
-
-    watch(libs, loadData);
-
-    return {
-      isLoading,
-      isError,
-      libsCommits,
-      libsNames,
-    };
-  },
-});
 </script>

@@ -1,11 +1,11 @@
 <template>
   <m-chart
-    v-if="libsKeywords.length"
+    v-if="libsKeywordsAliases.length"
     title="Google Trends - "
     subtitle="Interest Over Time"
-    :is-loading="isLoading || isLoadingLibsData"
+    :is-loading="isLoading"
     :is-error="isError"
-    :libs-names="filteredLibsNames"
+    :libs-names="libsKeywordsAliases"
     :failed-libs-names="[]"
     :chart-config="chartConfig"
   >
@@ -35,6 +35,7 @@
 import { defineComponent, toRefs, computed } from 'vue';
 import { ChartDataSets, ChartConfiguration } from 'chart.js';
 import { format } from 'date-fns';
+import { GTrendDefT } from '../../google-trends.config';
 import { numbersFormatter } from '@/utils';
 import { GTrendPointT } from '@/apis';
 import { enUS } from 'date-fns/locale';
@@ -43,51 +44,39 @@ export default defineComponent({
   name: 'GTrendsChart',
 
   props: {
-    isLoadingLibsData: { type: Boolean, required: true },
     isLoading: { type: Boolean, required: true },
     isError: { type: Boolean, required: true },
-    libsNames: { type: Array as () => string[], required: true },
-    libToColorMap: {
+    libsTrends: { type: Array as () => GTrendPointT[], required: true },
+    libsTrendsDefs: { type: Array as () => GTrendDefT[], required: true },
+    repoToColorMap: {
       type: Object as () => Record<string, string>,
       required: true,
     },
-    libsTrends: { type: Array as () => GTrendPointT[], required: true },
-    libsKeywords: { type: Array as () => string[], required: true },
   },
 
   setup(props) {
-    const { libsNames, libToColorMap, libsTrends, libsKeywords } = toRefs(
-      props
-    );
+    const { repoToColorMap, libsTrends, libsTrendsDefs } = toRefs(props);
 
-    const filteredLibsNames = computed<string[]>(() =>
-      libsNames.value.filter(
-        (libName, libIndex) => !!libsTrends.value[libIndex]
-      )
-    );
-
-    const categories = computed(() =>
+    const dates = computed(() =>
       libsTrends.value.map(({ time }) =>
         new Date(time * 1000).toISOString().slice(0, 10)
       )
     );
 
     const datasets = computed<ChartDataSets[]>(() =>
-      filteredLibsNames.value.map((libName, libIndex) => ({
-        label: libName,
+      libsTrendsDefs.value.map((gtrendDef, libIndex) => ({
+        label: gtrendDef.alias,
         data: libsTrends.value.map(({ value }) => value[libIndex]),
-        backgroundColor: libToColorMap.value[libName],
-        borderColor: libToColorMap.value[libName],
-        borderWidth: 4,
+        backgroundColor: repoToColorMap.value[gtrendDef.repoId],
+        borderColor: repoToColorMap.value[gtrendDef.repoId],
         pointRadius: 0,
-        pointHoverRadius: 6,
       }))
     );
 
     const chartConfig = computed<ChartConfiguration>(() => ({
       type: 'line',
       data: {
-        labels: categories.value,
+        labels: dates.value,
         datasets: datasets.value,
       },
       options: {
@@ -108,11 +97,17 @@ export default defineComponent({
     }));
 
     return {
-      filteredLibsNames,
       chartConfig,
+      libsKeywordsAliases: computed<string[]>(() =>
+        libsTrendsDefs.value.map((libGTrendDef) => libGTrendDef.alias)
+      ),
       gTrendsLink: computed<string>(() => {
+        const keywords = libsTrendsDefs.value.map(
+          (gtrendDef) => gtrendDef.keyword
+        );
         const datesQueryParam = encodeURIComponent('2017-01-01 2021-01-11');
-        const libsQueryParam = encodeURIComponent(libsKeywords.value.join(','));
+        const libsQueryParam = encodeURIComponent(keywords.join(','));
+
         return `https://trends.google.com/trends/explore?cat=31&date=${datesQueryParam}&q=${libsQueryParam}`;
       }),
     };

@@ -1,10 +1,10 @@
 <template>
   <m-chart
     title="Contributors per year"
-    :is-loading="isLoading || isLoadingLibsData"
+    :is-loading="isLoading"
     :is-error="isError"
-    :libs-names="filteredLibsNames"
-    :failed-libs-names="failedLibsNames"
+    :libs-names="reposIds"
+    :failed-libs-names="failedReposIds"
     :chart-config="chartConfig"
   >
     <p>
@@ -25,63 +25,38 @@ export default defineComponent({
   name: 'ContributorsChart',
 
   props: {
-    isLoadingLibsData: { type: Boolean, required: true },
     isLoading: { type: Boolean, required: true },
     isError: { type: Boolean, required: true },
-    libsNames: { type: Array as () => string[], required: true },
-    libToColorMap: {
-      type: Object as () => Record<string, string>,
+    reposIds: { type: Array as () => string[], required: true },
+    failedReposIds: { type: Array as () => string[], required: true },
+    reposContributors: {
+      type: Array as () => YearContributorsT[][],
       required: true,
     },
-    libsContributors: {
-      type: Array as () => (YearContributorsT[] | null)[],
+    repoToColorMap: {
+      type: Object as () => Record<string, string>,
       required: true,
     },
   },
 
   setup(props) {
-    const {
-      libsNames,
-      libToColorMap,
-      libsContributors,
-      isLoadingLibsData,
-      isLoading,
-    } = toRefs(props);
-
-    const filteredLibsContributors = computed<YearContributorsT[][]>(
-      () =>
-        libsContributors.value.filter(
-          (libContributors) => !!libContributors
-        ) as YearContributorsT[][]
-    );
-
-    const filteredLibsNames = computed(() =>
-      libsNames.value.filter(
-        (libName, libIndex) => !!libsContributors.value[libIndex]
-      )
-    );
-
-    const failedLibsNames = computed(() =>
-      libsNames.value.filter(
-        (libName, libIndex) =>
-          !isLoadingLibsData.value &&
-          !isLoading.value &&
-          !libsContributors.value[libIndex]
-      )
-    );
+    const { reposIds, repoToColorMap, reposContributors } = toRefs(props);
 
     const datasets = computed<ChartDataSets[]>(() =>
-      filteredLibsNames.value.map((lib, libIndex) => ({
-        label: lib,
-        data: filteredLibsContributors.value[libIndex].map(
-          ({ year, contributors }) => ({
-            x: year.toString(),
-            y: contributors,
-          })
-        ),
-        backgroundColor: libToColorMap.value[lib],
-        borderColor: libToColorMap.value[lib],
-      }))
+      reposIds.value.map((repoId, repoIndex) => {
+        const [, repoName] = repoId.split('/');
+        return {
+          label: repoName,
+          data: reposContributors.value[repoIndex].map(
+            ({ year, contributors }) => ({
+              x: year.toString(),
+              y: contributors,
+            })
+          ),
+          backgroundColor: repoToColorMap.value[repoId],
+          borderColor: repoToColorMap.value[repoId],
+        };
+      })
     );
 
     const chartConfig = computed<ChartConfiguration>(() => ({
@@ -96,11 +71,7 @@ export default defineComponent({
       },
     }));
 
-    return {
-      failedLibsNames,
-      filteredLibsNames,
-      chartConfig,
-    };
+    return { chartConfig };
   },
 });
 </script>

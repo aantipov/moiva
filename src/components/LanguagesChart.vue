@@ -2,10 +2,10 @@
   <m-chart
     title="Languages,"
     subtitle="%"
-    :is-loading="isLoading || isLoadingLibsData"
+    :is-loading="isLoading"
     :is-error="isError"
-    :libs-names="filteredLibsNames"
-    :failed-libs-names="failedLibsNames"
+    :libs-names="reposIds"
+    :failed-libs-names="failedReposIds"
     :chart-config="chartConfig"
   >
     <p>
@@ -28,53 +28,29 @@ export default defineComponent({
   name: 'LanguagesChart',
 
   props: {
-    isLoadingLibsData: { type: Boolean, required: true },
     isLoading: { type: Boolean, required: true },
     isError: { type: Boolean, required: true },
-    libsNames: { type: Array as () => string[], required: true },
-    libsLanguages: {
-      type: Array as () => (GithubLanguagesResponseT | null)[],
+    reposIds: { type: Array as () => string[], required: true },
+    failedReposIds: { type: Array as () => string[], required: true },
+    reposLanguages: {
+      type: Array as () => GithubLanguagesResponseT[],
       required: true,
     },
   },
 
   setup(props) {
-    const { libsNames, libsLanguages, isLoadingLibsData, isLoading } = toRefs(
-      props
-    );
-
-    const filteredLibsLanguages = computed<GithubLanguagesResponseT[]>(
-      () =>
-        libsLanguages.value.filter(
-          (libsLanguages) => !!libsLanguages
-        ) as GithubLanguagesResponseT[]
-    );
-
-    const filteredLibsNames = computed(() =>
-      libsNames.value.filter(
-        (libName, libIndex) => !!libsLanguages.value[libIndex]
-      )
-    );
-
-    const failedLibsNames = computed(() =>
-      libsNames.value.filter(
-        (libName, libIndex) =>
-          !isLoadingLibsData.value &&
-          !isLoading.value &&
-          !libsLanguages.value[libIndex]
-      )
-    );
+    const { reposIds, reposLanguages } = toRefs(props);
 
     // Compute languages shares, counting only those which has >=10% share
     const libsLanguagesShares = computed<null | Record<string, number>[]>(
       () => {
-        return filteredLibsLanguages.value.map((libLangs) => {
-          const libBytesTotal = Object.values(libLangs).reduce(
+        return reposLanguages.value.map((repoLanguages) => {
+          const libBytesTotal = Object.values(repoLanguages).reduce(
             (a, b) => a + b,
             0
           );
 
-          const libLanguagesSharesWithoutOthers = Object.entries(libLangs)
+          const libLanguagesSharesWithoutOthers = Object.entries(repoLanguages)
             .map(([lang, langBytes]) => ({
               lang,
               langShare: (100 * langBytes) / libBytesTotal,
@@ -145,9 +121,9 @@ export default defineComponent({
       () =>
         (languagesNames.value || []).map((langName) => ({
           label: langName,
-          data: (filteredLibsNames.value || []).map(
-            (libName, libIndex) =>
-              (libsLanguagesShares.value || [])[libIndex][langName] || 0
+          data: (reposLanguages.value || []).map(
+            (_, repoIndex) =>
+              (libsLanguagesShares.value || [])[repoIndex][langName] || 0
           ),
           backgroundColor: langToColorMap.value[langName],
           borderColor: langToColorMap.value[langName],
@@ -158,7 +134,10 @@ export default defineComponent({
     const chartConfig = computed<Chart.ChartConfiguration>(() => ({
       type: 'bar',
       data: {
-        labels: filteredLibsNames.value,
+        labels: reposIds.value.map((repoId) => {
+          const [, name] = repoId.split('/');
+          return name;
+        }),
         datasets: datasets.value,
       },
       options: {
@@ -178,11 +157,7 @@ export default defineComponent({
       },
     }));
 
-    return {
-      failedLibsNames,
-      filteredLibsNames,
-      chartConfig,
-    };
+    return { chartConfig };
   },
 });
 </script>
