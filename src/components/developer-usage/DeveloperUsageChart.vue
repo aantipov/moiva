@@ -20,7 +20,7 @@
 <script lang="ts">
 import { defineComponent, toRefs, computed } from 'vue';
 import { ChartDataSets, ChartConfiguration } from 'chart.js';
-import { StateOfJSItemT } from '../../stateof-js-css-data';
+import { StateOfJSItemT } from './stateof-js-css-data';
 
 export default defineComponent({
   name: 'DevelopersUsageChart',

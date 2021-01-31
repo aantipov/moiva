@@ -90,7 +90,7 @@ import Popular from './Popular.vue';
 import SelectedLibs from './SelectedLibs.vue';
 // import Languages from './Languages.vue';
 import Contributors from './Contributors.vue';
-import DevelopersUsage from './DevelopersUsage.vue';
+import DevelopersUsage from './developer-usage/DevelopersUsage.vue';
 import Commits from './Commits.vue';
 // import { ERROR_CODE_NO_GITHUB_DATA } from '@/constants';
 // import { NpmPackageT, RepoT } from '@/libraryApis';

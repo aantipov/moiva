@@ -11,7 +11,7 @@
 import { defineComponent, computed } from 'vue';
 import { libraryToColorMap } from '@/store/librariesColors';
 import DeveloperUsageChart from './DeveloperUsageChart.vue';
-import { repoIdToDataMap } from '../../stateof-js-css-data';
+import { repoIdToDataMap } from './stateof-js-css-data';
 import { isLoading, reposIds, repoToLibraryIdMap } from '@/store/libraries';
 
 export default defineComponent({
