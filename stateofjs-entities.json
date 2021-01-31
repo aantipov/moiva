@@ -1005,7 +1005,9 @@
     "category": "libraries",
     "id": "post_css",
     "npm": null,
-    "github": null
+    "github": {
+      "url": "https://github.com/postcss/postcss"
+    }
   },
   {
     "name": "Stylus",
@@ -1048,7 +1050,9 @@
     "category": "libraries",
     "id": "ant_design",
     "npm": null,
-    "github": null
+    "github": {
+      "url": "https://github.com/ant-design/ant-design"
+    }
   },
   {
     "name": "Semantic UI",
@@ -1190,14 +1194,18 @@
     "category": "libraries",
     "id": "css_modules",
     "npm": null,
-    "github": null
+    "github": {
+      "url": "https://github.com/css-modules/css-modules"
+    }
   },
   {
     "name": "Styled System",
     "category": "libraries",
     "id": "styled_system",
     "npm": null,
-    "github": null
+    "github": {
+      "url": "https://github.com/styled-system/styled-system"
+    }
   },
   {
     "name": "Stitches",
@@ -1267,21 +1275,27 @@
     "category": "libraries",
     "id": "codyframe",
     "npm": null,
-    "github": null
+    "github": {
+      "url": "https://github.com/CodyHouse/codyhouse-framework"
+    }
   },
   {
     "name": "Chakra UI",
     "category": "libraries",
     "id": "chakra_ui",
     "npm": null,
-    "github": null
+    "github": {
+      "url": "https://github.com/chakra-ui/chakra-ui"
+    }
   },
   {
     "name": "Theme UI",
     "category": "libraries",
     "id": "theme_ui",
     "npm": null,
-    "github": null
+    "github": {
+      "url": "https://github.com/system-ui/theme-ui"
+    }
   },
   {
     "name": "Element",
@@ -1297,7 +1311,9 @@
     "category": "libraries",
     "id": "suit",
     "npm": null,
-    "github": null
+    "github": {
+      "url": "https://github.com/suitcss/suit"
+    }
   },
   {
     "name": "Blueprint",
@@ -1331,28 +1347,36 @@
     "category": "libraries",
     "id": "inuit_css",
     "npm": null,
-    "github": null
+    "github": {
+      "url": "https://github.com/inuitcss/inuitcss"
+    }
   },
   {
     "name": "CSSComb",
     "category": "libraries",
     "id": "css_comb",
     "npm": null,
-    "github": null
+    "github": {
+      "url": "https://github.com/csscomb/csscomb.js"
+    }
   },
   {
     "name": "NormalizeCSS",
     "category": "libraries",
     "id": "normalize_css",
     "npm": null,
-    "github": null
+    "github": {
+      "url": "https://github.com/necolas/normalize.css"
+    }
   },
   {
     "name": "cssnano",
     "category": "libraries",
     "id": "css_nano",
     "npm": null,
-    "github": null
+    "github": {
+      "url": "https://github.com/cssnano/cssnano"
+    }
   },
   {
     "name": "TypeScript",
@@ -2498,16 +2522,11 @@
   {
     "name": "React Native",
     "category": "libraries",
-    "id": "reactnative",
-    "npm": null,
-    "github": null
-  },
-  {
-    "name": "React Native",
-    "category": "libraries",
     "id": "react_native",
     "npm": null,
-    "github": null
+    "github": {
+      "url": "https://github.com/facebook/react-native"
+    }
   },
   {
     "name": "Native Apps",
@@ -2555,7 +2574,9 @@
     "category": "libraries",
     "id": "flutter",
     "npm": null,
-    "github": null
+    "github": {
+      "url": "https://github.com/flutter/flutter"
+    }
   },
   {
     "name": "Capacitor",
@@ -2589,7 +2610,9 @@
     "category": "libraries",
     "id": "svelte_native",
     "npm": null,
-    "github": null
+    "github": {
+      "url": "https://github.com/halfnelson/svelte-native"
+    }
   },
   {
     "name": "Tauri",
@@ -2623,7 +2646,9 @@
     "category": "libraries",
     "id": "quickjs",
     "npm": null,
-    "github": null
+    "github": {
+      "url": "https://github.com/ldarren/QuickJS"
+    }
   },
   {
     "name": "Cloudflare Workers",
@@ -2795,13 +2820,6 @@
   {
     "name": "Node.js",
     "category": "libraries",
-    "id": "node",
-    "npm": null,
-    "github": null
-  },
-  {
-    "name": "Node.js",
-    "category": "libraries",
     "id": "nodejs",
     "npm": null,
     "github": {
@@ -2813,7 +2831,9 @@
     "category": "libraries",
     "id": "chakracore",
     "npm": null,
-    "github": null
+    "github": {
+      "url": "https://github.com/chakra-core/ChakraCore"
+    }
   },
   {
     "name": "Hermes",
@@ -2838,7 +2858,9 @@
     "category": "libraries",
     "id": "create_react_app",
     "npm": null,
-    "github": null
+    "github": {
+      "url": "https://github.com/facebook/create-react-app"
+    }
   },
   {
     "name": "Formik",
@@ -2917,7 +2939,9 @@
     "category": "libraries",
     "id": "n",
     "npm": null,
-    "github": null
+    "github": {
+      "url": "https://github.com/tj/n"
+    }
   },
   {
     "name": "Nx",
@@ -3023,7 +3047,9 @@
     "category": "libraries",
     "id": "io_ts",
     "npm": null,
-    "github": null
+    "github": {
+      "url": "https://github.com/gcanti/io-ts"
+    }
   },
   {
     "name": "Rush",
