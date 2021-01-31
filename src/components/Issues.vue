@@ -1,10 +1,10 @@
 <template>
   <m-chart
     title="Recently updated issues"
-    :is-loading="isLoading || isLoadingLibsData"
-    :is-error="isError"
-    :libs-names="filteredLibsNames"
-    :failed-libs-names="failedLibsNames"
+    :is-loading="isLoading"
+    :is-error="false"
+    :libs-names="reposIds"
+    :failed-libs-names="[]"
     :chart-config="chartConfig"
   >
     <p>Amount of open/closed repository issues updated in the last 6 months</p>
@@ -12,61 +12,31 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, computed } from 'vue';
+import { defineComponent, computed } from 'vue';
 import { ChartDataSets, ChartConfiguration } from 'chart.js';
-import { RepoT } from '../apis';
 import { numbersFormatter } from '../utils';
 import { ISSUES_COLORS } from '@/colors';
+import { isLoading, reposIds, libraries } from '@/store/libraries';
 
 export default defineComponent({
   name: 'Issues',
 
-  props: {
-    isLoadingLibsData: { type: Boolean, required: true },
-    isLoading: { type: Boolean, required: true },
-    isError: { type: Boolean, required: true },
-    reposNames: { type: Array as () => string[], required: true },
-    repos: { type: Array as () => (RepoT | null)[], required: true },
-  },
-
-  setup(props) {
-    const { reposNames, repos, isLoadingLibsData, isLoading } = toRefs(props);
-
-    const filteredRepos = computed<RepoT[]>(
-      () => repos.value.filter((repo) => !!repo) as RepoT[]
-    );
-
-    const filteredLibsNames = computed(() =>
-      filteredRepos.value.map(({ repoName }) => repoName)
-    );
-
-    const failedLibsNames = computed(() =>
-      reposNames.value.filter(
-        (reposNames, repoIndex) =>
-          !isLoadingLibsData.value &&
-          !isLoading.value &&
-          !repos.value[repoIndex]
-      )
-    );
-
+  setup() {
     const datasets = computed<ChartDataSets[]>(
       () =>
         [
           {
             label: 'open bugs',
             stack: '1',
-            data: filteredRepos.value.map(
-              (repo) => repo.openBugIssues.totalCount
-            ),
+            data: libraries.map(({ repo }) => repo.openBugIssues),
             backgroundColor: ISSUES_COLORS.OPEN_BUGS,
             borderWidth: 1,
           },
           {
             label: 'open others',
             stack: '1',
-            data: filteredRepos.value.map(
-              (repo) =>
-                repo.openIssues.totalCount - repo.openBugIssues.totalCount
+            data: libraries.map(
+              ({ repo }) => repo.openIssues - repo.openBugIssues
             ),
             backgroundColor: ISSUES_COLORS.OPEN,
             borderWidth: 1,
@@ -74,18 +44,15 @@ export default defineComponent({
           {
             label: 'closed bugs',
             stack: '2',
-            data: filteredRepos.value.map(
-              (repo) => repo.closedBugIssues.totalCount
-            ),
+            data: libraries.map(({ repo }) => repo.closedBugIssues),
             backgroundColor: ISSUES_COLORS.CLOSED_BUGS,
             borderWidth: 1,
           },
           {
             label: 'closed others',
             stack: '2',
-            data: filteredRepos.value.map(
-              (repo) =>
-                repo.closedIssues.totalCount - repo.closedBugIssues.totalCount
+            data: libraries.map(
+              ({ repo }) => repo.closedIssues - repo.closedBugIssues
             ),
             backgroundColor: ISSUES_COLORS.CLOSED,
             borderWidth: 1,
@@ -96,7 +63,7 @@ export default defineComponent({
     const chartConfig = computed<ChartConfiguration>(() => ({
       type: 'bar',
       data: {
-        labels: filteredLibsNames.value,
+        labels: libraries.map(({ repo }) => repo.repoName),
         datasets: datasets.value,
       },
       options: {
@@ -118,9 +85,9 @@ export default defineComponent({
     }));
 
     return {
-      failedLibsNames,
-      filteredLibsNames,
       chartConfig,
+      isLoading,
+      reposIds,
     };
   },
 });

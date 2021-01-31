@@ -27,29 +27,14 @@
       <div>
         <div class="grid grid-cols-12 gap-4">
           <NpmDownloads class="col-span-12 xl:col-span-6" />
-
           <GoogleTrends class="col-span-12 xl:col-span-6" />
-
           <TechRadar class="col-span-12 md:col-span-6 xl:col-span-3" />
-
           <Releases class="col-span-12 md:col-span-6 xl:col-span-3" />
-
           <Contributors class="col-span-12 md:col-span-6 xl:col-span-3" />
-
           <Commits class="col-span-12 md:col-span-6 xl:col-span-3" />
-
           <DevelopersUsage class="col-span-12 md:col-span-6 xl:col-span-3" />
+          <Issues class="col-span-12 md:col-span-6 xl:col-span-3" />
 
-          <!-- <Issues -->
-          <!--   v&#45;if="false" -->
-          <!--   :repos&#45;names="reposNames" -->
-          <!--   :repos="githubRepositories" -->
-          <!--   :is&#45;loading="githubIsLoading" -->
-          <!--   :is&#45;loading&#45;libs&#45;data="isLoadingPackagesData" -->
-          <!--   :is&#45;error="githubIsError" -->
-          <!--   class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;3" -->
-          <!-- /> -->
-          <!--  -->
           <!-- <Bundlephobia -->
           <!--   v&#45;if="false" -->
           <!--   :libs&#45;names="packagesNames" -->
@@ -85,7 +70,7 @@ import Suggestions from './Suggestions.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
 // import Bundlephobia from './Bundlephobia.vue';
-// import Issues from './Issues.vue';
+import Issues from './Issues.vue';
 import Popular from './Popular.vue';
 import SelectedLibs from './SelectedLibs.vue';
 // import Languages from './Languages.vue';
@@ -126,6 +111,7 @@ export default defineComponent({
     Contributors,
     DevelopersUsage,
     GoogleTrends,
+    Issues,
     NpmDownloads,
     Popular,
     Releases,
@@ -133,7 +119,6 @@ export default defineComponent({
     SelectedLibs,
     TechRadar,
     // Bundlephobia,
-    // Issues,
     // Languages,
   },
 
