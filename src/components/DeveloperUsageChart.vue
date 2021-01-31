@@ -2,10 +2,10 @@
   <m-chart
     title="Developer Usage,"
     subtitle="%"
-    :is-loading="isLoading || isLoadingLibsData"
-    :is-error="isError"
-    :libs-names="filteredLibsNames"
-    :failed-libs-names="failedLibsNames"
+    :is-loading="isLoading"
+    :is-error="false"
+    :libs-names="libsNames"
+    :failed-libs-names="[]"
     :chart-config="chartConfig"
   >
     <p>Percentage of developers using the library.</p>
@@ -13,80 +13,49 @@
       Data are based on the
       <a href="https://stateofjs.com/" target="_blank">State of JS</a> survey.
     </p>
-    <p>The survey provides data only for a reduced set of libraries.</p>
+    <p>The survey provides data only for a limited set of libraries.</p>
   </m-chart>
 </template>
 
 <script lang="ts">
 import { defineComponent, toRefs, computed } from 'vue';
 import { ChartDataSets, ChartConfiguration } from 'chart.js';
-import { StateOfJST } from '@/apis';
+import { StateOfJSItemT } from '../../stateof-js-css-data';
 
 export default defineComponent({
   name: 'DevelopersUsageChart',
 
   props: {
-    isLoadingLibsData: { type: Boolean, required: true },
     isLoading: { type: Boolean, required: true },
-    isError: { type: Boolean, required: true },
-    libsNames: { type: Array as () => string[], required: true },
-    libToColorMap: {
-      type: Object as () => Record<string, string>,
+    reposUsage: {
+      type: Array as () => StateOfJSItemT[],
       required: true,
     },
-    libsData: {
-      type: Array as () => (StateOfJST | null)[],
+    repoToColorMap: {
+      type: Object as () => Record<string, string>,
       required: true,
     },
   },
 
   setup(props) {
-    const {
-      libsNames,
-      libToColorMap,
-      libsData,
-      isLoading,
-      isLoadingLibsData,
-    } = toRefs(props);
-
-    const filteredLibsData = computed<StateOfJST[]>(
-      () => libsData.value.filter((libData) => !!libData) as StateOfJST[]
-    );
-
-    const filteredLibsNames = computed(() =>
-      libsNames.value.filter((libName, libIndex) => !!libsData.value[libIndex])
-    );
-
-    const failedLibsNames = computed(() =>
-      libsNames.value.filter(
-        (libName, libIndex) =>
-          !isLoadingLibsData.value &&
-          !isLoading.value &&
-          !libsData.value[libIndex]
-      )
-    );
-
-    const filteredLibsMapsData = computed(() =>
-      filteredLibsData.value.map(({ usage }) => {
-        const t = usage.reduce((acc, yearUsageItem) => {
-          acc[yearUsageItem.year] = yearUsageItem.percentage;
-          return acc;
-        }, {} as Record<number, number>);
-        return t;
-      })
-    );
+    const { reposUsage, repoToColorMap } = toRefs(props);
 
     const years = [2016, 2017, 2018, 2019, 2020];
 
     const datasets = computed<ChartDataSets[]>(() =>
-      filteredLibsNames.value.map((lib, libIndex) => ({
-        label: lib,
-        data: years.map(
-          (year) => filteredLibsMapsData.value[libIndex][year] || undefined
-        ),
-        backgroundColor: libToColorMap.value[lib],
-        borderColor: libToColorMap.value[lib],
-      }))
+      reposUsage.value.map((libUsageItem) => {
+        const libUsage = libUsageItem.usage.reduce((acc, item) => {
+          acc[item.year] = item.value;
+          return acc;
+        }, {} as Record<number, number>);
+
+        return {
+          label: libUsageItem.name,
+          data: years.map((year) => libUsage[year] || undefined),
+          backgroundColor: repoToColorMap.value[libUsageItem.repoId],
+          borderColor: repoToColorMap.value[libUsageItem.repoId],
+        };
+      })
     );
 
     const chartConfig = computed<ChartConfiguration>(() => ({
@@ -96,6 +65,7 @@ export default defineComponent({
         datasets: datasets.value,
       },
       options: {
+        spanGaps: true,
         scales: {
           yAxes: [
             {
@@ -111,9 +81,8 @@ export default defineComponent({
     }));
 
     return {
-      failedLibsNames,
-      filteredLibsNames,
       chartConfig,
+      libsNames: computed(() => reposUsage.value.map(({ name }) => name)),
     };
   },
 });
