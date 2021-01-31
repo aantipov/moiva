@@ -1055,7 +1055,9 @@
     "category": "libraries",
     "id": "semantic_ui",
     "npm": "semantic-ui",
-    "github": null
+    "github": {
+      "url": "https://github.com/Semantic-Org/Semantic-UI"
+    }
   },
   {
     "name": "Bulma",
@@ -1080,7 +1082,9 @@
     "category": "libraries",
     "id": "ui_kit",
     "npm": "uikit",
-    "github": null
+    "github": {
+      "url": "https://github.com/uikit/uikit"
+    }
   },
   {
     "name": "Tachyons",
@@ -1105,7 +1109,9 @@
     "category": "libraries",
     "id": "tailwind_css",
     "npm": "tailwindcss",
-    "github": null
+    "github": {
+      "url": "https://github.com/tailwindlabs/tailwindcss"
+    } 
   },
   {
     "name": "PureCSS",
@@ -1130,14 +1136,18 @@
     "category": "libraries",
     "id": "spectre_css",
     "npm": "spectre.css",
-    "github": null
+    "github": {
+      "url": "https://github.com/picturepan2/spectre"
+    }
   },
   {
     "name": "Styled Components",
     "category": "libraries",
     "id": "styled_components",
     "npm": "styled-components",
-    "github": null
+    "github": {
+      "url": "https://github.com/styled-components/styled-components"
+    }
   },
   {
     "name": "JSS",
@@ -1153,7 +1163,9 @@
     "category": "libraries",
     "id": "styled_jsx",
     "npm": "styled-jsx",
-    "github": null
+    "github": {
+      "url": "https://github.com/vercel/styled-jsx"
+    }
   },
   {
     "name": "Radium",
@@ -1444,13 +1456,6 @@
   {
     "name": "Vue.js",
     "category": "libraries",
-    "id": "vue",
-    "npm": "vue",
-    "github": null
-  },
-  {
-    "name": "Vue.js",
-    "category": "libraries",
     "id": "vuejs",
     "npm": "vue",
     "github": {
@@ -1721,7 +1726,9 @@
     "category": "libraries",
     "id": "react_query",
     "npm": "react-query",
-    "github": null
+    "github": {
+      "url": "https://github.com/tannerlinsley/react-query"
+    }
   },
   {
     "name": "Recoil",
@@ -1800,7 +1807,9 @@
     "category": "libraries",
     "id": "redux_saga",
     "npm": "redux-saga",
-    "github": null
+    "github": {
+      "url": "https://github.com/redux-saga/redux-saga"
+    }
   },
   {
     "name": "URQL",
@@ -2122,7 +2131,9 @@
     "category": "libraries",
     "id": "testing_library",
     "npm": "@testing-library/react",
-    "github": null
+    "github": {
+      "url": "https://github.com/testing-library/react-testing-library"
+    }
   },
   {
     "name": "Playwright",
@@ -2204,13 +2215,6 @@
     "github": {
       "url": "https://github.com/tapjs/node-tap"
     }
-  },
-  {
-    "name": "react-testing-library",
-    "category": "libraries",
-    "id": "react_testing_library",
-    "npm": "@testing-library/react",
-    "github": null
   },
   {
     "name": "Karma",
@@ -2447,13 +2451,6 @@
     }
   },
   {
-    "name": "TypeScript (tsc CLI)",
-    "category": "libraries",
-    "id": "tsc",
-    "npm": "typescript",
-    "github": null
-  },
-  {
     "name": "Vite",
     "category": "libraries",
     "id": "vite",
@@ -2607,8 +2604,10 @@
     "name": "Vue Native",
     "category": "libraries",
     "id": "vue_native",
-    "npm": "vue-native",
-    "github": null
+    "npm": null,
+    "github": {
+      "url": "https://github.com/GeekyAnts/vue-native-core"
+    }
   },
   {
     "name": "Framework7",
@@ -2873,14 +2872,18 @@
     "category": "libraries",
     "id": "react_router",
     "npm": "react-router",
-    "github": null
+    "github": {
+      "url": "https://github.com/ReactTraining/react-router"
+    }
   },
   {
     "name": "React Hook Form",
     "category": "libraries",
     "id": "react_hook_form",
     "npm": "react-hook-form",
-    "github": null
+    "github": {
+      "url": "https://github.com/react-hook-form/react-hook-form"
+    }
   },
   {
     "name": "Yup",
@@ -3045,7 +3048,9 @@
     "category": "libraries",
     "id": "vue_cli",
     "npm": "@vue/cli",
-    "github": null
+    "github": {
+      "url": "https://github.com/vuejs/vue-cli"
+    }
   },
   {
     "name": "BEM",
