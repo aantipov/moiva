@@ -23,19 +23,17 @@
       />
 
       <!-- Charts -->
-      <div>
-        <div class="grid grid-cols-12 gap-4">
-          <NpmDownloads class="col-span-12 xl:col-span-6" />
-          <GoogleTrends class="col-span-12 xl:col-span-6" />
-          <TechRadar class="col-span-12 md:col-span-6 xl:col-span-3" />
-          <Releases class="col-span-12 md:col-span-6 xl:col-span-3" />
-          <Contributors class="col-span-12 md:col-span-6 xl:col-span-3" />
-          <Commits class="col-span-12 md:col-span-6 xl:col-span-3" />
-          <DevelopersUsage class="col-span-12 md:col-span-6 xl:col-span-3" />
-          <Issues class="col-span-12 md:col-span-6 xl:col-span-3" />
-          <Bundlephobia class="col-span-12 md:col-span-6 xl:col-span-3" />
-          <Languages class="col-span-12 md:col-span-6 xl:col-span-3" />
-        </div>
+      <div class="grid grid-cols-12 gap-4">
+        <NpmDownloads class="col-span-12 xl:col-span-6" />
+        <GoogleTrends class="col-span-12 xl:col-span-6" />
+        <TechRadar class="col-span-12 md:col-span-6 xl:col-span-3" />
+        <Releases class="col-span-12 md:col-span-6 xl:col-span-3" />
+        <Contributors class="col-span-12 md:col-span-6 xl:col-span-3" />
+        <Commits class="col-span-12 md:col-span-6 xl:col-span-3" />
+        <DevelopersUsage class="col-span-12 md:col-span-6 xl:col-span-3" />
+        <Issues class="col-span-12 md:col-span-6 xl:col-span-3" />
+        <Bundlephobia class="col-span-12 md:col-span-6 xl:col-span-3" />
+        <Languages class="col-span-12 md:col-span-6 xl:col-span-3" />
       </div>
     </div>
   </div>
