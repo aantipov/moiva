@@ -5,7 +5,7 @@
       :key="suggestedNpmPackageName"
       class="inline-block mt-2 mr-3 text-base text-gray-500 no-underline hover:text-gray-700"
       :href="getHrefForAdditionalLib(suggestedNpmPackageName)"
-      @click.prevent="$emit('select', suggestedNpmPackageName)"
+      @click.prevent="$emit('select', suggestedNpmPackageName, true)"
       >+ {{ suggestedNpmPackageName }}</a
     >
   </div>

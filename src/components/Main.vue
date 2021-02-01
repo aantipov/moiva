@@ -137,7 +137,11 @@ export default defineComponent({
     return {
       libraries,
       isLoading,
-      select: selectNpmPackage,
+      select: (id: string, isNpm: boolean) => {
+        if (isNpm) {
+          selectNpmPackage(id);
+        }
+      },
       selectMultiple(npmPackagesNames: string[]): void {
         npmPackagesNames.forEach(selectNpmPackage);
       },

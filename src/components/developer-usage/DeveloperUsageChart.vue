@@ -11,7 +11,8 @@
     <p>Percentage of developers using the library.</p>
     <p>
       Data are based on the
-      <a href="https://stateofjs.com/" target="_blank">State of JS</a> survey.
+      <a href="https://stateofjs.com/" target="_blank">StateOfJS</a> and
+      <a href="https://stateofcss.com/" target="_blank">StateOfCSS</a> surveys.
     </p>
     <p>The survey provides data only for a limited set of libraries.</p>
   </m-chart>
