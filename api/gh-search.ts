@@ -58,17 +58,19 @@ export default (req: NowRequest, res: NowResponse): void => {
       const { errors, data } = resp.data;
 
       if (errors) {
-        console.error(`API GITHUB SEARCH: (q: ${q})`, errors);
+        console.error(
+          `API GITHUB SEARCH: (q: ${q}, rateLimit: ${data.rateLimit})`,
+          errors
+        );
         reportError(errors);
         res.status(500).json({ errors: resp.data.errors });
 
         return;
       }
 
-      const { search, rateLimit } = data;
+      const { search } = data;
       res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
 
-      console.log('RateLimit', rateLimit);
       res.status(200).json({ items: search.nodes });
     })
     .catch((e) => {
