@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Autosuggest class="w-full mx-auto lg:w-9/12 xl:w-2/4" @select="select" />
+    <Search class="w-full mx-auto lg:w-9/12 xl:w-2/4" @select="select" />
     <Suggestions @select="select" />
 
     <!--  Popular Comparisons    -->
@@ -43,7 +43,7 @@
 import { defineComponent, onMounted, watchEffect } from 'vue';
 import NpmDownloads from './NpmDownloads.vue';
 import Releases from './Releases.vue';
-import Autosuggest from './Autosuggest.vue';
+import Search from './search/Search.vue';
 import Suggestions from './Suggestions.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './GTrends.vue';
@@ -76,7 +76,10 @@ import { LibraryT } from '@/libraryApis';
 export default defineComponent({
   name: 'Main',
   components: {
-    Autosuggest,
+    Popular,
+    Search,
+    Suggestions,
+
     Bundlephobia,
     Commits,
     Contributors,
@@ -85,9 +88,7 @@ export default defineComponent({
     Issues,
     Languages,
     NpmDownloads,
-    Popular,
     Releases,
-    Suggestions,
     SelectedLibs,
     TechRadar,
   },

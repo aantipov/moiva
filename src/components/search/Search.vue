@@ -14,14 +14,23 @@
         </div>
       </div>
 
-      <input
-        id="lib-search"
-        type="text"
-        placeholder="Add npm packages to comparison"
-        autofocus
-        autocomplete="off"
-        class="relative w-full py-3 pl-3 text-xl font-light text-gray-700 rounded outline-none myinput pr-11 md:text-2xl focus:bg-white focus:ring-0 focus:outline-none"
-      />
+      <div class="relative flex flex-wrap items-stretch w-full mb-3">
+        <input
+          id="lib-search"
+          type="text"
+          placeholder="Add npm packages to comparison"
+          autofocus
+          autocomplete="off"
+          class="relative w-full py-3 pl-3 pr-16 text-xl font-light text-gray-700 rounded outline-none myinput md:text-2xl focus:bg-white focus:ring-0 focus:outline-none"
+          @input="onChange"
+        />
+        <span
+          class="absolute right-0 z-10 flex items-center justify-end h-full py-3 pr-3 w-14"
+        >
+          <NpmIcon v-if="isNpmSearchRef" class="w-14" />
+          <GithubIcon v-else class="w-8 h-8" />
+        </span>
+      </div>
     </div>
 
     <div v-if="isError" class="mt-2 text-red-600">
@@ -34,7 +43,9 @@
 import { defineComponent, onMounted, ref } from 'vue';
 import autocomplete, { AutocompleteItem } from 'autocompleter';
 import 'autocompleter/autocomplete.css';
-import { fetchNpmSuggestions, fetchGithubSearch, SuggestionT } from '../apis';
+import { fetchNpmSearch, fetchGithubSearch } from './search-api';
+import NpmIcon from '@/components/icons/Npm.vue';
+import GithubIcon from '@/components/icons/Github.vue';
 
 interface SearchItemT {
   isNpm: boolean;
@@ -49,12 +60,18 @@ interface SearchItemT {
 type OptionT = SearchItemT & AutocompleteItem;
 
 export default defineComponent({
-  name: 'AutoSuggest',
+  name: 'Search',
+
+  components: {
+    NpmIcon,
+    GithubIcon,
+  },
   emits: ['select'],
 
   setup(_props, { emit }) {
     const isError = ref(false);
     const isLoading = ref(false);
+    const isNpmSearchRef = ref(true);
     let dataPromise: null | Promise<void> = null;
 
     onMounted(() => {
@@ -65,38 +82,28 @@ export default defineComponent({
         fetch: (text: string, update: (items: SearchItemT[]) => void) => {
           const trimmedText = text.trim();
           let localPromise: Promise<void>;
+          let isNpmSearch = !trimmedText.startsWith('g:');
+          let q = isNpmSearch ? trimmedText : trimmedText.slice(2).trim();
 
-          if (!trimmedText.startsWith('g:')) {
-            // NPM SEARCH
-            if (trimmedText.length < 1) {
-              return;
-            }
+          if (q.length < 1) {
+            return;
+          }
 
-            isLoading.value = true;
+          isLoading.value = true;
 
-            localPromise = dataPromise = fetchNpmSuggestions(trimmedText).then(
-              (suggestions): void => {
+          localPromise = dataPromise = isNpmSearch
+            ? // NPM SEARCH
+              fetchNpmSearch(q).then((searchItems): void => {
                 isError.value = false;
                 update(
-                  suggestions.map((suggestion) => ({
-                    ...suggestion,
+                  searchItems.map((searchItem) => ({
+                    ...searchItem,
                     isNpm: true,
                   }))
                 );
-              }
-            );
-          } else {
-            // GITHUB SEARCH
-            const ghQuery = trimmedText.slice(2).trim();
-
-            if (ghQuery.length < 1) {
-              return;
-            }
-
-            isLoading.value = true;
-
-            localPromise = dataPromise = fetchGithubSearch(ghQuery).then(
-              (searchItems) => {
+              })
+            : // GITHUB SEARCH
+              fetchGithubSearch(q).then((searchItems) => {
                 isError.value = false;
                 update(
                   searchItems.map(({ repoId, description }) => ({
@@ -105,9 +112,7 @@ export default defineComponent({
                     isNpm: false,
                   }))
                 );
-              }
-            );
-          }
+              });
 
           localPromise
             .catch(() => {
@@ -142,7 +147,9 @@ export default defineComponent({
               item.version ? item.version : ''
             }</div>
           </div>
-          <div class="ac-option-desc">${item.description}</div>`;
+          <div class="ac-option-desc">${
+            item.description ? item.description : ''
+          }</div>`;
 
           divWrapper.innerHTML = html;
 
@@ -160,8 +167,14 @@ export default defineComponent({
     });
 
     return {
+      isNpmSearchRef,
       isLoading,
       isError,
+      onChange(event: InputEvent) {
+        // @ts-ignore
+        const val = event.target.value as string;
+        isNpmSearchRef.value = !val.startsWith('g:');
+      },
     };
   },
 });

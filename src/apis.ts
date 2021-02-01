@@ -10,8 +10,6 @@ import { CommitsResponseItemT } from '../api/gh-commits';
 import { GithubContributorsResponseItemT } from '../api/gh-contributors';
 
 const npmDownloadsCache = new Map();
-const npmSuggestionsCache = new Map();
-const githubSearchCache = new Map();
 const npmPackageVersionsCache = new Map();
 const githubLanguagesCache = new Map();
 const githubCommitsCache = new Map();
@@ -43,30 +41,7 @@ export interface GTrendsT {
   timelineData: GTrendPointT[];
 }
 
-export interface SuggestionT {
-  name: string;
-  description: string;
-  version: string;
-}
-
-interface NpmsIOSuggestionResponseT {
-  package: {
-    name: string;
-    description: string;
-    version: string;
-    links: {
-      repository: string;
-    };
-  };
-  score: {
-    detail: {
-      popularity: number;
-    };
-  };
-  searchScore: number;
-}
-
-function reportSentry(err: AxiosError, methodName: string): void {
+export function reportSentry(err: AxiosError, methodName: string): void {
   err.name = `UI API (${methodName})`;
 
   Sentry.captureException(err, {
@@ -260,88 +235,6 @@ export function fetchBundlephobiaData(
       }
 
       return null;
-    });
-}
-
-export interface GithubSearchItem {
-  repoId: string;
-  description: string;
-  updatedAt: string;
-  isArchived: string;
-  stars: number;
-}
-
-export function fetchGithubSearch(q: string): Promise<GithubSearchItem[]> {
-  if (githubSearchCache.get(q)) {
-    return Promise.resolve(githubSearchCache.get(q));
-  }
-
-  return axios
-    .get(`/api/gh-search?q=${q}`)
-    .then(({ data }) => {
-      githubSearchCache.set(q, data.items);
-      return data.items;
-    })
-    .catch((err) => {
-      reportSentry(err, 'fetchGithubSearch');
-      return Promise.reject(err);
-    });
-}
-
-export function fetchNpmSuggestions(keyword: string): Promise<SuggestionT[]> {
-  // eslint-disable-next-line
-  const fetchSuggestionsFunc = true
-    ? fetchNpmJSSuggestions
-    : fetchNpmsIOSuggestions;
-
-  if (!keyword || keyword.length < 2) {
-    return Promise.resolve([]);
-  }
-
-  if (npmSuggestionsCache.get(keyword)) {
-    return Promise.resolve(npmSuggestionsCache.get(keyword));
-  }
-
-  return fetchSuggestionsFunc(keyword)
-    .then((data) => {
-      npmSuggestionsCache.set(keyword, data);
-
-      return data;
-    })
-    .catch((err) => {
-      reportSentry(err, 'fetchNpmSuggestions');
-      return Promise.reject(err);
-    });
-}
-
-function fetchNpmJSSuggestions(keyword: string): Promise<SuggestionT[]> {
-  return axios
-    .get(`/api/npm-suggestions?q=${keyword}`)
-    .then(({ data }) => data);
-}
-
-function fetchNpmsIOSuggestions(keyword: string): Promise<SuggestionT[]> {
-  return axios
-    .get<NpmsIOSuggestionResponseT[]>(
-      `https://api.npms.io/v2/search/suggestions?q=${keyword}&size=20`
-    )
-    .then((resp) => {
-      const suggestions = resp.data as NpmsIOSuggestionResponseT[];
-      const data = suggestions
-        .filter((lib) => !!lib.package.links.repository)
-        .sort((a, b) => {
-          if (b.searchScore - a.searchScore > 100) {
-            return b.searchScore - a.searchScore;
-          }
-          return b.score.detail.popularity - a.score.detail.popularity;
-        })
-        .map(({ package: { name, description, version } }) => ({
-          name,
-          description,
-          version,
-        }));
-
-      return data;
     });
 }
 
