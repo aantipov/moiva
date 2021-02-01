@@ -11,6 +11,7 @@ import { GithubContributorsResponseItemT } from '../api/gh-contributors';
 
 const npmDownloadsCache = new Map();
 const npmSuggestionsCache = new Map();
+const githubSearchCache = new Map();
 const npmPackageVersionsCache = new Map();
 const githubLanguagesCache = new Map();
 const githubCommitsCache = new Map();
@@ -259,6 +260,31 @@ export function fetchBundlephobiaData(
       }
 
       return null;
+    });
+}
+
+export interface GithubSearchItem {
+  repoId: string;
+  description: string;
+  updatedAt: string;
+  isArchived: string;
+  stars: number;
+}
+
+export function fetchGithubSearch(q: string): Promise<GithubSearchItem[]> {
+  if (githubSearchCache.get(q)) {
+    return Promise.resolve(githubSearchCache.get(q));
+  }
+
+  return axios
+    .get(`/api/gh-search?q=${q}`)
+    .then(({ data }) => {
+      githubSearchCache.set(q, data.items);
+      return data.items;
+    })
+    .catch((err) => {
+      reportSentry(err, 'fetchGithubSearch');
+      return Promise.reject(err);
     });
 }
 

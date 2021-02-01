@@ -10,14 +10,12 @@
           class="absolute top-0 h-full bg-yellow-500 rounded-full progressbar"
           :style="{ width: `80%` }"
         >
-          <span class="flex items-center h-full">
-            <slot></slot>
-          </span>
+          <span class="flex items-center h-full"><slot></slot></span>
         </div>
       </div>
 
       <input
-        id="npm-input"
+        id="lib-search"
         type="text"
         placeholder="Add npm packages to comparison"
         autofocus
@@ -36,13 +34,23 @@
 import { defineComponent, onMounted, ref } from 'vue';
 import autocomplete, { AutocompleteItem } from 'autocompleter';
 import 'autocompleter/autocomplete.css';
-import { fetchNpmSuggestions, SuggestionT } from '../apis';
+import { fetchNpmSuggestions, fetchGithubSearch, SuggestionT } from '../apis';
 
-type OptionT = SuggestionT & AutocompleteItem;
+interface SearchItemT {
+  isNpm: boolean;
+  name: string;
+  version?: string;
+  description: string;
+  stars?: number;
+  updatedAt?: string;
+  isArchived?: boolean;
+}
+
+type OptionT = SearchItemT & AutocompleteItem;
 
 export default defineComponent({
   name: 'AutoSuggest',
-  emits: ['select', 'success', 'error'],
+  emits: ['select'],
 
   setup(_props, { emit }) {
     const isError = ref(false);
@@ -51,20 +59,58 @@ export default defineComponent({
 
     onMounted(() => {
       autocomplete<OptionT>({
-        input: document.getElementById('npm-input') as HTMLInputElement,
+        input: document.getElementById('lib-search') as HTMLInputElement,
         debounceWaitMs: 200,
 
-        fetch: (text: string, update: (items: SuggestionT[]) => void) => {
-          isLoading.value = true;
+        fetch: (text: string, update: (items: SearchItemT[]) => void) => {
+          const trimmedText = text.trim();
+          let localPromise: Promise<void>;
 
-          const localPromise = (dataPromise = fetchNpmSuggestions(text)
-            .then((suggestions): void => {
-              emit('success');
-              isError.value = false;
-              update(suggestions);
-            })
+          if (!trimmedText.startsWith('g:')) {
+            // NPM SEARCH
+            if (trimmedText.length < 1) {
+              return;
+            }
+
+            isLoading.value = true;
+
+            localPromise = dataPromise = fetchNpmSuggestions(trimmedText).then(
+              (suggestions): void => {
+                isError.value = false;
+                update(
+                  suggestions.map((suggestion) => ({
+                    ...suggestion,
+                    isNpm: true,
+                  }))
+                );
+              }
+            );
+          } else {
+            // GITHUB SEARCH
+            const ghQuery = trimmedText.slice(2).trim();
+
+            if (ghQuery.length < 1) {
+              return;
+            }
+
+            isLoading.value = true;
+
+            localPromise = dataPromise = fetchGithubSearch(ghQuery).then(
+              (searchItems) => {
+                isError.value = false;
+                update(
+                  searchItems.map(({ repoId, description }) => ({
+                    name: repoId,
+                    description,
+                    isNpm: false,
+                  }))
+                );
+              }
+            );
+          }
+
+          localPromise
             .catch(() => {
-              emit('error');
               isError.value = true;
             })
             .finally(() => {
@@ -73,37 +119,32 @@ export default defineComponent({
               if (localPromise === dataPromise) {
                 isLoading.value = false;
               }
-            }));
+            });
         },
 
-        onSelect: (item: SuggestionT) => {
-          emit('select', item.name);
-          (document.getElementById('npm-input') as HTMLInputElement).value = '';
+        onSelect: (item: SearchItemT) => {
+          emit('select', item.name, item.isNpm);
+          (document.getElementById('lib-search') as HTMLInputElement).value =
+            '';
         },
 
         className: 'ac',
 
         render(item) {
           const divWrapper = document.createElement('div');
-          const divTitleWrapper = document.createElement('div');
-          const divTitle = document.createElement('div');
-          const divDescr = document.createElement('div');
-          const divVersion = document.createElement('div');
-
-          divTitleWrapper.appendChild(divTitle);
-          divTitleWrapper.appendChild(divVersion);
-          divWrapper.appendChild(divTitleWrapper);
-          divWrapper.appendChild(divDescr);
 
           divWrapper.className = 'ac-option';
-          divTitleWrapper.className = 'ac-option-title-wrapper';
-          divTitle.className = 'ac-option-title';
-          divDescr.className = 'ac-option-desc';
-          divVersion.className = 'ac-option-version';
 
-          divTitle.textContent = item.name;
-          divDescr.textContent = item.description;
-          divVersion.textContent = item.version;
+          const html = `
+          <div class="ac-option-title-wrapper">
+            <div class="ac-option-title">${item.name}</div>
+            <div class="ac-option-version">${
+              item.version ? item.version : ''
+            }</div>
+          </div>
+          <div class="ac-option-desc">${item.description}</div>`;
+
+          divWrapper.innerHTML = html;
 
           return divWrapper;
         },
