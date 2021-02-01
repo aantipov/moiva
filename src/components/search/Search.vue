@@ -21,13 +21,13 @@
           placeholder="Add npm packages to comparison"
           autofocus
           autocomplete="off"
-          class="relative w-full py-3 pl-3 text-xl font-light text-gray-700 rounded outline-none myinput pr-11 md:text-2xl focus:bg-white focus:ring-0 focus:outline-none"
+          class="relative w-full py-3 pl-3 pr-16 text-xl font-light text-gray-700 rounded outline-none myinput md:text-2xl focus:bg-white focus:ring-0 focus:outline-none"
           @input="onChange"
         />
         <span
-          class="absolute right-0 z-10 flex items-center justify-end w-16 h-full py-3 pr-3 text-base font-normal leading-snug text-center text-gray-400 align-middle bg-transparent rounded"
+          class="absolute right-0 z-10 flex items-center justify-end h-full py-3 pr-3 w-14"
         >
-          <NpmIcon v-if="isNpmSearchRef" class="w-16" />
+          <NpmIcon v-if="isNpmSearchRef" class="w-14" />
           <GithubIcon v-else class="w-8 h-8" />
         </span>
       </div>
