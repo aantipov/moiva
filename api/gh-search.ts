@@ -14,7 +14,7 @@ export default (req: NowRequest, res: NowResponse): void => {
   const url = 'https://api.github.com/graphql';
   const { q } = req.query;
 
-  logRequest('github', req.query);
+  logRequest('github search', req.query);
 
   if (!q || typeof q !== 'string') {
     reportError(new Error('API GITHUB SEARCH: Wrong parameters'));
