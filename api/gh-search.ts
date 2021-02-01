@@ -69,7 +69,8 @@ export default (req: NowRequest, res: NowResponse): void => {
       }
 
       const { search } = data;
-      res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
+      // Cache for 5 days
+      res.setHeader('Cache-Control', 'max-age=0, s-maxage=432000');
 
       res.status(200).json({ items: search.nodes });
     })
