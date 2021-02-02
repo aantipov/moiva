@@ -2,9 +2,9 @@
 
 ## Goals
 [Moiva.io](https://moiva.io/)'s goals:
-- become the best tool to *evaluate* Any software project
-- become the best tool to *find alternatives* to Any software project
-- become the best tool to *compare* software projects
+- become the best tool to <ins>*evaluate*</ins> Any software project
+- become the best tool to <ins>*find alternatives*</ins> to Any software project
+- become the best tool to <ins>*compare*</ins> software projects
 
 ## The Library concept
 For evaluation, comparison, discovery and reference [Moiva.io](https://moiva.io/) uses a concept of Library.
