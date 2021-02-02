@@ -6,7 +6,7 @@
 - become the best tool to find alternatives to Any software project
 - become the best tool to compare software projects
 
-## The concept of a Library
+## The Library concept
 For evaluation, comparison, discovery and reference [Moiva.io](https://moiva.io/) uses a concept of Library.
 
 I came up with that concept when I wanted to make Moiva.io useful for any GitHub project, not just Npm packages.
@@ -36,31 +36,31 @@ A GitHub repository can have only one "main" npm package and multiple "by-produc
 - a Library should have a Category defined.
 - a Library optionally has an `Alias` prop defined which is used to show up in suggestions and also for SEO purposes.
 
-### Identification
+## Identification
 The combination of `repo`, `npm` and `isNpmAByProduct` uniquely identifies a Library.
 
 If a repository has an Npm package as its main product, then it's required for the Library to have that Npm package specified as `npm` property and have `isNpmAByProduct` flag set to `true`.
 
 In other words, it's forbidden to have a Library with missing `npm` when the repository has a "main" npm package.
  
-### URL Reference
+## URL Reference
 Every Library at [Moiva.io](https://moiva.io/) is uniquely referenced via URL.
 
 Libraries with `npm` property defined should be referenced using the name of their Npm package in the `npm` query parameter, for example `?npm=vue`
 
 Libraries without `npm` property should be referenced via a repository owner and repository name in the `github` query parameter, foe example `?github=facebook/react`
 
-### Aliases
+## Aliases
 A Library can have an optional `alias` property defined.
 
 Aliases are used to better represent the Library name in the Suggestions list and also in the page's Title and Description.
 
-If Alias is not defined, then repository name is used.
+If `alias` is not defined, then the repository's name is used.
 
-Repositories names and aliases should be unique. If there are two repositories with the same name, at least one of them should have an Alias.
+Repositories' names and aliases should be unique. If there are two repositories with the same name, at least one of them should have an `alias` defined.
 
-### Suggestions
+## Suggestions
 TODO
 
-### SEO
+## SEO
 TODO
