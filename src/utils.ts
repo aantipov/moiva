@@ -3,7 +3,7 @@ import {
   catalogNpmToLib,
   catalogNpmNamesByCategory,
 } from './libraries-catalog';
-import { LibraryT, NpmPackageT } from '@/libraryApis';
+import { LibraryT } from '@/libraryApis';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import Swal from 'sweetalert2';
 
@@ -84,6 +84,7 @@ export const numbersFormatter = new Intl.NumberFormat('en-US', {
 // Do not allow Google to index pages with >3 libraries in comparison
 // To avoid spamming Google and the user with useless links
 export function setNoFollowTag(): void {
+  // TODO: take into account Github projects
   const Url = new URL(window.location.href);
   const libs = Url.searchParams.get(npmQueryParamName)?.split(delimiter) || [];
   if (libs.length > 3) {
@@ -123,11 +124,11 @@ export function updateTitle(libraries: LibraryT[]): void {
     'Moiva.io - Measure and Compare JavaScript libraries side by side';
 
   if (libraries.length) {
-    const seoNames = libraries.map(({ alias }) => alias).sort();
-    title = `${seoNames[0]}: Stats and Trends from NPM, GitHub, Google Search - Moiva.io`;
+    const aliases = libraries.map(({ alias }) => alias).sort();
+    title = `${aliases[0]}: Stats and Trends from NPM, GitHub, Google Search - Moiva.io`;
 
-    if (seoNames.length > 1) {
-      title = `${seoNames.join(' vs ')}: Which One to Choose? - Moiva.io`;
+    if (aliases.length > 1) {
+      title = `${aliases.join(' vs ')}: Which One to Choose? - Moiva.io`;
     }
   }
 
@@ -135,76 +136,50 @@ export function updateTitle(libraries: LibraryT[]): void {
 }
 
 interface LibForDescriptionT {
-  npm: string;
-  repoId: string;
+  alias: string;
   description: string;
   starsCount: string;
   age: string;
-  dependenciesCount: number;
-  license: string;
 }
 
-export function updateMetaDescription(libraries: LibraryT[]): string {
-  // (document.querySelector(
-  //   'meta[name="Description"]'
-  // ) as HTMLElement).setAttribute(
-  //   'content',
-  //   udateMetaDescription(libraries as LibraryT[])
-  // );
-  return '';
-  const libs = [...libraries].sort(sortLibsByNpmPackageName).map((lib) => {
-    const { name, dependencies, license } = lib.npmPackage as NpmPackageT;
-    const { description, stars, createdAt, repoId } = lib.repo;
+export function updateMetaDescription(libraries: LibraryT[]): void {
+  let descr = `Which JavaScript library to use? Need to find the best alternatives?
+    Compare Stats and Trends over time - Google Trends, Contributors, Releases, Commits, Developer usage, Npm Downloads, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
+
+  const libs = [...libraries].sort(sortLibsByAlias).map((lib) => {
+    const { description, stars, createdAt } = lib.repo;
 
     return {
-      npm: name,
-      repoId,
+      alias: lib.alias,
       description,
       starsCount: numbersFormatter.format(stars),
       age: formatDistanceToNowStrict(new Date(createdAt)),
-      dependenciesCount: dependencies.length,
-      license,
     };
   });
 
-  if (!libs.length) {
-    return `Which JavaScript library to use? Need to find the best alternatives?
-    Compare Stats and Trends over time - Npm Downloads, Google Trends, Contributors, Releases, Commits, Developer usage, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
-  }
-
   if (libs.length === 1) {
-    return getSingleLibDescription(libs[0]);
+    descr = getSingleLibDescription(libs[0]);
+  } else if (libs.length === 2) {
+    descr = getTwoLibsDescription(libs[0], libs[1]);
+  } else if (libs.length === 3) {
+    descr = getThreeLibsDescription(libs[0], libs[1], libs[2]);
+  } else if (libs.length > 3) {
+    const aliasesStr = libs.map(({ alias }) => alias).join(', ');
+    descr = `Compare ${aliasesStr}. Stats and Trends over time - Google Trends, Contributors, Releases, Commits, Developer usage, Npm Downloads, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
   }
 
-  if (libs.length === 2) {
-    return getTwoLibsDescription(libs[0], libs[1]);
-  }
-
-  if (libs.length === 3) {
-    return getThreeLibsDescription(libs[0], libs[1], libs[2]);
-  }
-
-  const seoNames = libs.map((lib) => getSeoLibName(lib.repoId));
-  const seoNamesStr = seoNames.join(', ');
-
-  return `Compare ${seoNamesStr}. Stats and Trends over time - Npm Downloads, Google Trends, Contributors, Releases, Commits, Developer usage, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
+  (document.querySelector(
+    'meta[name="Description"]'
+  ) as HTMLElement).setAttribute('content', descr);
 }
 
 function getSingleLibDescription(lib: LibForDescriptionT): string {
-  const {
-    repoId,
-    description,
-    starsCount,
-    age,
-    dependenciesCount,
-    license,
-  } = lib;
-  const seoName = getSeoLibName(repoId);
+  const { alias, description, starsCount, age } = lib;
   const seoDescrIntro = description
     .toLowerCase()
-    .startsWith(seoName.toLowerCase())
+    .startsWith(alias.toLowerCase())
     ? description
-    : `${seoName}. ${description}`;
+    : `${alias}. ${description}`;
 
   const words = seoDescrIntro.split(' ');
   let seoDescrIntroCut =
@@ -216,20 +191,17 @@ function getSingleLibDescription(lib: LibForDescriptionT): string {
   }
 
   return `${seoDescrIntroCut} 
-    &#9733;${starsCount} stars, ${age} old, ${dependenciesCount} dependencies, license: ${license}...
-    Find the best ${seoName} alternatives and compare them side by side`;
+    &#9733;${starsCount} stars, ${age} old...
+    Find the best ${alias} alternatives and compare them side by side`;
 }
 
 function getTwoLibsDescription(
   libA: LibForDescriptionT,
   libB: LibForDescriptionT
 ): string {
-  const seoNameA = getSeoLibName(libA.repoId);
-  const seoNameB = getSeoLibName(libB.repoId);
-
-  return `Which is better ${seoNameA} or ${seoNameB}? Compare Stats and Trends side by side.
-${seoNameA}: &#9733;${libA.starsCount} stars, ${libA.age} old, ${libA.dependenciesCount} dependencies, license: ${libA.license}...
-${seoNameB}: &#9733;${libB.starsCount} stars, ${libB.age} old, ${libB.dependenciesCount} dependencies, license: ${libB.license}...
+  return `Which is better ${libA.alias} or ${libB.alias}? Compare Stats and Trends side by side.
+${libA.alias}: &#9733;${libA.starsCount} stars, ${libA.age} old...
+${libB.alias}: &#9733;${libB.starsCount} stars, ${libB.age} old...
 `;
 }
 
@@ -238,14 +210,10 @@ function getThreeLibsDescription(
   libB: LibForDescriptionT,
   libC: LibForDescriptionT
 ): string {
-  const seoNameA = getSeoLibName(libA.repoId);
-  const seoNameB = getSeoLibName(libB.repoId);
-  const seoNameC = getSeoLibName(libC.repoId);
-
-  return `Which is better ${seoNameA}, ${seoNameB}, or ${seoNameC}? Compare Stats and Trends side by side.
-${seoNameA}: &#9733;${libA.starsCount} stars, ${libA.age} old, ${libA.dependenciesCount} dependencies, license: ${libA.license}...
-${seoNameB}: &#9733;${libB.starsCount} stars, ${libB.age} old, ${libB.dependenciesCount} dependencies, license: ${libB.license}...
-${seoNameC}: &#9733;${libC.starsCount} stars, ${libC.age} old, ${libC.dependenciesCount} dependencies, license: ${libC.license}...
+  return `Which is better ${libA.alias}, ${libB.alias}, or ${libC.alias}? Compare Stats and Trends side by side.
+${libA.alias}: &#9733;${libA.starsCount} stars, ${libA.age} old...
+${libB.alias}: &#9733;${libB.starsCount} stars, ${libB.age} old...
+${libC.alias}: &#9733;${libC.starsCount} stars, ${libC.age} old...
 `;
 }
 
@@ -297,13 +265,13 @@ export function showErrorMsg(msg: string): void {
   });
 }
 
-function sortLibsByNpmPackageName(libA: LibraryT, libB: LibraryT) {
-  const nameA = (libA.npmPackage as NpmPackageT).name;
-  const nameB = (libB.npmPackage as NpmPackageT).name;
-  if (nameA < nameB) {
+function sortLibsByAlias(libA: LibraryT, libB: LibraryT) {
+  const aliasA = libA.alias;
+  const aliasB = libB.alias;
+  if (aliasA < aliasB) {
     return -1;
   }
-  if (nameA > nameB) {
+  if (aliasA > aliasB) {
     return 1;
   }
   return 0;
