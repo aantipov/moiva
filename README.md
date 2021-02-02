@@ -33,16 +33,25 @@ A GitHub repository can have only one "main" npm package and multiple "by-produc
 ### Identification
 The combination of `repo`, `npm` and `isNpmAByProduct` uniquely identifies a Library.
 
-If a repository has an npm package as its main product, then that it's required for the Library to have that npm package specified as `npm` property and have `isNpmAByProduct` flag set to true.
+If a repository has an Npm package as its main product, then it's required for the Library to have that Npm package specified as `npm` property and have `isNpmAByProduct` flag set to `true`.
 
 In other words, it's forbidden to have a Library with missing `npm` when the repository has a "main" npm package.
  
 ### URL Reference
-Every Library at Moiva.io is uniquely referenced via URL.
+Every Library at [Moiva.io](https://moiva.io/) is uniquely referenced via URL.
 
-Libraries with `npm` defined should be referenced using the name of their Npm package in the `npm` query parameter, for example `?npm=vue`
+Libraries with `npm` property defined should be referenced using the name of their Npm package in the `npm` query parameter, for example `?npm=vue`
 
 Libraries without `npm` property should be referenced via a repository owner and repository name in the `github` query parameter, foe example `?github=facebook/react`
+
+### Aliases
+A Library can have an optional `alias` property defined.
+
+Aliases are used to better represent the Library name in the Suggestions list and also in the page's Title and Description.
+
+If Alias is not defined, then repository name is used.
+
+Repositories names and aliases should be unique. If there are two repositories with the same name, at least one of them should have an Alias.
 
 ### Suggestions
 TODO
