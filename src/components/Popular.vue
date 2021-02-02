@@ -27,7 +27,7 @@ export default defineComponent({
   setup() {
     return {
       makeHref(libs: string[]): string {
-        return constructHref(libs);
+        return constructHref(libs, []);
       },
       items: [
         {

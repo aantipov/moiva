@@ -8,7 +8,7 @@ initSentry();
 export default (req: NowRequest, res: NowResponse): void => {
   const skey = process.env.GITHUB_API_KEY;
   const url = 'https://api.github.com/graphql';
-  const { name, owner, pkg } = req.query;
+  const { name, owner } = req.query;
 
   logRequest('github', req.query);
 
@@ -69,17 +69,14 @@ export default (req: NowRequest, res: NowResponse): void => {
       const { errors, data } = resp.data;
 
       if (errors) {
-        console.error(
-          `API GITHUB MAIN: ${owner}/${name} (package: ${pkg})`,
-          errors
-        );
+        console.error(`API GITHUB MAIN: ${owner}/${name}`, errors);
         reportError(errors);
         res.status(500).json({ errors: resp.data.errors });
 
         return;
       }
 
-      const { repository, securityVulnerabilities } = data;
+      const { repository } = data;
       res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
       res.status(200).json({
         ...repository,
@@ -92,7 +89,7 @@ export default (req: NowRequest, res: NowResponse): void => {
       } as RepoT);
     })
     .catch((e) => {
-      console.error(`API GITHUB MAIN: ${owner}/${name} (package: ${pkg})`, e);
+      console.error(`API GITHUB MAIN: ${owner}/${name}`, e);
       reportError(e);
       res
         .status((e.response && (e.response.code || e.response.status)) || 500)

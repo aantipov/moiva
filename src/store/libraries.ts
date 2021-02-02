@@ -1,14 +1,22 @@
 import { reactive, computed, readonly } from 'vue';
-import { LibraryT, fetchLibraryByNpm, NpmPackageT } from '@/libraryApis';
+import {
+  LibraryT,
+  fetchLibraryByRepo,
+  fetchLibraryByNpm,
+  NpmPackageT,
+} from '@/libraryApis';
 
 // ====== STATE ======
 const librariesR = reactive<LibraryT[]>([]);
-// Track Npm packages currently being loaded to avoid duplicates
+// Track Npm packages and Repos currently being loaded to avoid duplicates
 const npmPackagesLoading = reactive<string[]>([]);
+const reposLoading = reactive<string[]>([]);
 
 // ====== COMPUTED ======
 export const libraries = readonly(librariesR);
-export const isLoading = computed(() => !!npmPackagesLoading.length);
+export const isLoading = computed(
+  () => !!npmPackagesLoading.length || !!reposLoading.length
+);
 export const librariesIds = computed<string[]>(() =>
   librariesR.map((lib) => lib.id)
 );
@@ -53,17 +61,27 @@ export const npmPackageToLibraryIdMap = computed<Record<string, string>>(() => {
 /**
  * Add a library via a Github repository
  */
-export function addLibraryByRepo(): void {
-  // libraries.push({
-  //   repoId,
-  //   repoName: repoId.slice(repoId.indexOf('/') + 1),
-  // });
+export function addLibraryByRepo(repoId: string): Promise<void> {
+  console.log('addlib', repoId);
+  // TODO: make sure there is only one pair (npmName, repoId)
+  if (!repoId || reposLoading.includes(repoId)) {
+    return Promise.resolve();
+  }
+
+  reposLoading.push(repoId);
+
+  return fetchLibraryByRepo(repoId)
+    .then((lib) => {
+      librariesR.push(lib);
+    })
+    .finally(() => reposLoading.splice(reposLoading.indexOf(repoId), 1));
 }
 
 /**
  * Add a library via a Npm package
  */
 export function addLibraryByNpmPackage(pkgName: string): Promise<void> {
+  // TODO: make sure there is only one pair (npmName, repoId)
   if (
     !pkgName ||
     npmPackagesNames.value.includes(pkgName) ||

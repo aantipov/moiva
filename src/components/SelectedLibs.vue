@@ -155,7 +155,8 @@ export default defineComponent({
             npmPackagesNames.value.filter(
               (pkgName) =>
                 pkgName !== (deletedLib.npmPackage as NpmPackageT).name
-            )
+            ),
+            []
           );
         }
         return '/';

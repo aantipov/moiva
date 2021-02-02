@@ -27,7 +27,7 @@ export default defineComponent({
         getSuggestions(npmPackagesNames.value)
       ),
       getHrefForAdditionalLib(npmPackageName: string): string {
-        return constructHref([...npmPackagesNames.value, npmPackageName]);
+        return constructHref([...npmPackagesNames.value], []);
       },
     };
   },

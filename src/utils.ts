@@ -7,41 +7,74 @@ import { LibraryT, NpmPackageT } from '@/libraryApis';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import Swal from 'sweetalert2';
 
-const paramName = 'compare';
+const npmQueryParamName = 'compare';
+const githubQueryParamName = 'github';
 const delimiter = ' ';
 const encodedDelimiter = '+';
 
 // Update the URL whenever a user selects/deselects a library
-// TODO: do we need to update the document title?
-export function updateUrl(npmPackagesNames: string[]): void {
+export function updateUrl(libraries: LibraryT[]): void {
   const Url = new URL(window.location.href);
+  const originalHref = '/' + Url.search;
+  const npmPackagesNames = [] as string[];
+  const reposIds = [] as string[];
 
-  // Delete the parameter if no valid libs are provided via url
-  if (!npmPackagesNames.length) {
-    Url.searchParams.delete(paramName);
-    window.history.pushState(null, '', Url.href);
-    return;
+  libraries.forEach((library) => {
+    if (library.npmPackage) {
+      npmPackagesNames.push(library.npmPackage.name);
+    } else {
+      reposIds.push(library.repo.repoId);
+    }
+  });
+
+  const newHref = constructHref(npmPackagesNames, reposIds);
+
+  if (newHref !== originalHref) {
+    window.history.pushState(null, '', newHref);
   }
-
-  // Update the url with the npm packages names in the right order
-  window.history.pushState(null, '', constructHref(npmPackagesNames));
 }
 
 export function getNpmPackagesFromUrl(): string[] {
   const Url = new URL(window.location.href);
-  const defaultLibs = Url.searchParams.get(paramName)?.split(delimiter) || [];
+  const npmPackages =
+    Url.searchParams.get(npmQueryParamName)?.split(delimiter) || [];
 
-  return [...new Set(defaultLibs)];
+  return [...new Set(npmPackages)];
 }
 
-export function constructHref(npmPackagesNames: string[]): string {
-  if (!npmPackagesNames.length) {
+export function getReposIdsFromUrl(): string[] {
+  const Url = new URL(window.location.href);
+  const repos =
+    Url.searchParams.get(githubQueryParamName)?.split(delimiter) || [];
+
+  return [...new Set(repos)];
+}
+
+export function constructHref(
+  npmPackagesNames: string[],
+  reposIds: string[]
+): string {
+  if (!npmPackagesNames.length && !reposIds.length) {
     return '/';
   }
 
-  return `/?${paramName}=${[...npmPackagesNames]
-    .sort()
-    .join(encodedDelimiter)}`;
+  const params = [];
+
+  if (npmPackagesNames.length) {
+    params.push(
+      `${npmQueryParamName}=${[...npmPackagesNames]
+        .sort()
+        .join(encodedDelimiter)}`
+    );
+  }
+
+  if (reposIds.length) {
+    params.push(
+      `${githubQueryParamName}=${[...reposIds].sort().join(encodedDelimiter)}`
+    );
+  }
+
+  return `/?${params.join('&')}`;
 }
 
 export const numbersFormatter = new Intl.NumberFormat('en-US', {
@@ -52,7 +85,7 @@ export const numbersFormatter = new Intl.NumberFormat('en-US', {
 // To avoid spamming Google and the user with useless links
 export function setNoFollowTag(): void {
   const Url = new URL(window.location.href);
-  const libs = Url.searchParams.get(paramName)?.split(delimiter) || [];
+  const libs = Url.searchParams.get(npmQueryParamName)?.split(delimiter) || [];
   if (libs.length > 3) {
     const metaRobots = document.createElement('meta');
     metaRobots.name = 'robots';
@@ -61,7 +94,11 @@ export function setNoFollowTag(): void {
   }
 }
 
-function getSeoLibName(repoId: string): string {
+/**
+ * Get Alias using the alias from the catalog or repository's name
+ *
+ */
+export function getSeoLibName(repoId: string): string {
   if (catalogRepoIdToLib[repoId].seoAlias) {
     return catalogRepoIdToLib[repoId].seoAlias as string;
   }
@@ -81,18 +118,20 @@ function getSeoLibName(repoId: string): string {
   return repoName;
 }
 
-export function getTitle(reposIds: string[]): string {
-  if (!reposIds.length) {
-    return 'Moiva.io - Measure and Compare JavaScript libraries side by side';
+export function updateTitle(libraries: LibraryT[]): void {
+  let title =
+    'Moiva.io - Measure and Compare JavaScript libraries side by side';
+
+  if (libraries.length) {
+    const seoNames = libraries.map(({ alias }) => alias).sort();
+    title = `${seoNames[0]}: Stats and Trends from NPM, GitHub, Google Search - Moiva.io`;
+
+    if (seoNames.length > 1) {
+      title = `${seoNames.join(' vs ')}: Which One to Choose? - Moiva.io`;
+    }
   }
 
-  const seoNames = [...reposIds].sort().map(getSeoLibName);
-
-  if (seoNames.length === 1) {
-    return `${seoNames[0]}: Stats and Trends from NPM, GitHub, Google Search - Moiva.io`;
-  }
-
-  return `${seoNames.join(' vs ')}: Which One to Choose? - Moiva.io`;
+  window.document.title = title;
 }
 
 interface LibForDescriptionT {
@@ -105,7 +144,14 @@ interface LibForDescriptionT {
   license: string;
 }
 
-export function getMetaDescription(libraries: LibraryT[]): string {
+export function updateMetaDescription(libraries: LibraryT[]): string {
+  // (document.querySelector(
+  //   'meta[name="Description"]'
+  // ) as HTMLElement).setAttribute(
+  //   'content',
+  //   udateMetaDescription(libraries as LibraryT[])
+  // );
+  return '';
   const libs = [...libraries].sort(sortLibsByNpmPackageName).map((lib) => {
     const { name, dependencies, license } = lib.npmPackage as NpmPackageT;
     const { description, stars, createdAt, repoId } = lib.repo;
