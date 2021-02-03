@@ -105,7 +105,7 @@
 import { defineComponent } from 'vue';
 import Loader from './Loader.vue';
 import LibExternalLinks from './LibExternalLinks.vue';
-import { LibraryT, NpmPackageT } from '@/libraryApis';
+import { LibraryT } from '@/libraryApis';
 import NpmIcon from './icons/Npm.vue';
 import GithubIcon from './icons/Github.vue';
 import { constructHref, numbersFormatter } from '@/utils';

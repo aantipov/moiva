@@ -137,7 +137,7 @@ export const catalogNpmToLib = libraries.reduce(
 );
 
 export const catalogReposIdsByCategory = libraries.reduce(
-  (acc, [npm, repoId, category]) => {
+  (acc, [, repoId, category]) => {
     if (!acc[category]) {
       acc[category] = [];
     }
@@ -150,7 +150,7 @@ export const catalogReposIdsByCategory = libraries.reduce(
 );
 
 export const catalogNpmNamesByCategory = libraries.reduce(
-  (acc, [npm, repoId, category]) => {
+  (acc, [npm, , category]) => {
     if (!acc[category]) {
       acc[category] = [];
     }
