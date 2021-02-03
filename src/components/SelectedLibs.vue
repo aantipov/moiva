@@ -112,12 +112,7 @@ import { constructHref, numbersFormatter } from '@/utils';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import format from 'date-fns/format';
 import { libraryToColorMap } from '@/store/librariesColors';
-import {
-  libraries,
-  isLoading,
-  npmPackagesNames,
-  removeLibrary,
-} from '@/store/libraries';
+import { libraries, isLoading, removeLibrary } from '@/store/libraries';
 
 export default defineComponent({
   name: 'SelectedLibs',
@@ -150,16 +145,26 @@ export default defineComponent({
         return format(new Date(createdAt), 'yyyy-MM-dd');
       },
       getRemainedLibsLink(deletedLib: LibraryT): string {
+        const npmPackagesNames = [] as string[];
+        const reposIds = [] as string[];
+
+        libraries.forEach((library) => {
+          if (library.npmPackage) {
+            npmPackagesNames.push(library.npmPackage.name);
+          } else {
+            reposIds.push(library.repo.repoId);
+          }
+        });
+
         if (deletedLib.npmPackage) {
-          return constructHref(
-            npmPackagesNames.value.filter(
-              (pkgName) =>
-                pkgName !== (deletedLib.npmPackage as NpmPackageT).name
-            ),
-            []
-          );
+          const index = npmPackagesNames.indexOf(deletedLib.npmPackage.name);
+          npmPackagesNames.splice(index, 1);
+        } else {
+          const index = reposIds.indexOf(deletedLib.repo.repoId);
+          reposIds.splice(index, 1);
         }
-        return '/';
+
+        return constructHref(npmPackagesNames, reposIds);
       },
       getLibColor(libraryId: string): string {
         return libraryToColorMap.value[libraryId];
