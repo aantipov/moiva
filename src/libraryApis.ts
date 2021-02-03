@@ -1,5 +1,6 @@
 import axios, { AxiosError } from 'axios';
 import * as Sentry from '@sentry/browser';
+import { getSeoLibName } from '@/utils';
 import {
   ERROR_CODE_NO_GITHUB_DATA,
   ERROR_CODE_FETCH_GITHUB_REPO_FAILED,
@@ -35,8 +36,10 @@ export interface NpmPackageT {
 
 export interface LibraryT {
   id: string;
-  npmPackage?: NpmPackageT;
+  npmPackage?: NpmPackageT | null;
+  isNpmAByProduct?: boolean | null;
   repo: RepoT;
+  alias: string;
 }
 
 function reportSentry(err: AxiosError, methodName: string): void {
@@ -52,15 +55,33 @@ function reportSentry(err: AxiosError, methodName: string): void {
 
 export function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
   return fetchNpmPackage(pkgName).then((npmPackage) => {
-    return fetchGithubRepo(npmPackage.repoId, pkgName).then((repo) => ({
+    return fetchGithubRepo(npmPackage.repoId).then((repo) => ({
       id: nanoid(),
-      npmPackage,
       repo,
+      npmPackage,
+      // TODO: calculate it properly
+      isNpmAByProduct: false,
+      alias: getSeoLibName(repo.repoId),
     }));
   });
 }
 
-function fetchGithubRepo(repoId: string, npmPackage?: string): Promise<RepoT> {
+export function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
+  // TODO: Check Catolog and try to find a repo and get a corresponding npm package
+  // TODO: Fetch the npm package
+  return Promise.all([fetchGithubRepo(repoId), Promise.resolve(null)]).then(
+    ([repo, npmPackage]) => ({
+      id: nanoid(),
+      repo,
+      npmPackage,
+      // TODO: calculate it properly
+      isNpmAByProduct: false,
+      alias: getSeoLibName(repo.repoId),
+    })
+  );
+}
+
+function fetchGithubRepo(repoId: string): Promise<RepoT> {
   const [owner, name] = repoId.split('/');
 
   if (githubCache.get(repoId)) {
@@ -68,13 +89,13 @@ function fetchGithubRepo(repoId: string, npmPackage?: string): Promise<RepoT> {
   }
 
   return axios
-    .get<RepoT>(`/api/gh?name=${name}&owner=${owner}&pkg=${npmPackage}`)
+    .get<RepoT>(`/api/gh?name=${name}&owner=${owner}`)
     .then(({ data }) => {
       githubCache.set(repoId, data);
       return data;
     })
     .catch((err) => {
-      reportSentry(err, `fetchGithubRepo ${repoId} (package: ${npmPackage})`);
+      reportSentry(err, `fetchGithubRepo ${repoId}`);
       return Promise.reject(ERROR_CODE_FETCH_GITHUB_REPO_FAILED);
     });
 }

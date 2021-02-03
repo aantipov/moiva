@@ -4,7 +4,6 @@ import 'chartjs-adapter-date-fns';
 import * as Sentry from '@sentry/browser';
 // import { Vue as VueIntegration } from '@sentry/integrations';
 import { Integrations } from '@sentry/tracing';
-import { setNoFollowTag } from './utils';
 import App from './App.vue';
 import Close from './components/icons/Close.vue';
 import ChartInfo from '@/components/ChartInfo.vue';
@@ -12,9 +11,6 @@ import ChartPresentation from '@/components/ChartPresentation.vue';
 import LoaderTailSpin from '@/components/LoaderTailSpin.vue';
 import Loader from '@/components/Loader.vue';
 import './assets/tailwind.css';
-
-// Do not allow Google index pages with >3 libraries in comparison
-setNoFollowTag();
 
 Chart.defaults.global.defaultFontSize = 14;
 Chart.defaults.global.defaultFontFamily =

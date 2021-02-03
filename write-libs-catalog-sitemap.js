@@ -45,16 +45,37 @@ const data = [
   require('../moiva-catalog/catalog/web-sockets'),
 ];
 
+/**
+ * Get Alias using the alias from the catalog or repository's name
+ *
+ */
+function getAliasFromRepoId(repoId) {
+  const [, repoName] = repoId.split('/');
+
+  // Capitalise normal names
+  if (
+    repoName.length > 2 &&
+    !repoName.includes('@') &&
+    !repoName.includes('/') &&
+    !repoName.includes('-')
+  ) {
+    return repoName.charAt(0).toUpperCase() + repoName.slice(1);
+  }
+
+  return repoName;
+}
+
 const categories = data.map((catObj) => ({
   categoryName: catObj.name,
   libs: catObj.items.map((pkg) => {
     const libCatalogData = Array.isArray(pkg) ? pkg : new Array(pkg);
+    const repoId = libCatalogData[1];
 
     return {
       npm: libCatalogData[0],
       category: catObj.name,
-      repoId: libCatalogData[1] || null,
-      seoAlias: libCatalogData[2] || null,
+      repoId,
+      alias: libCatalogData[2] || getAliasFromRepoId(repoId),
       framework: libCatalogData[3] || null,
     };
   }),
@@ -80,25 +101,27 @@ let str = '';
 categories.forEach((cat) => {
   str += `\n  // ${cat.categoryName}\n`;
   cat.libs.forEach((lib) => {
-    const seoAlias = lib.seoAlias && `'${lib.seoAlias}'`;
+    const alias = lib.alias && `'${lib.alias}'`;
     const framework = lib.framework && `'${lib.framework}'`;
-    str += `  ['${lib.npm}', '${lib.repoId}', '${lib.category}', ${seoAlias}, ${framework}],\n`;
+    str += `  ['${lib.npm}', '${lib.repoId}', '${lib.category}', ${alias}, ${framework}],\n`;
   });
 });
 
-const resStr = `const libraries: [string, string, string, string | null, string | null][] = [${str}];
+const resStr = `const libraries: [string, string, string, string, string | null][] = [${str}];
 
-interface CatalogLibraryT {
-  npm: string;
+export interface CatalogLibraryT {
   repoId: string;
   category: string;
-  seoAlias: string | null;
+  alias: string;
+  npm?: string | null;
+  // TODO: don't forget to handle it
+  isNpmAByProduct? : boolean | null;
   framework: string | null;
 }
 
 export const catalogRepoIdToLib = libraries.reduce(
-  (acc, [npm, repoId, category, seoAlias, framework]) => {
-    acc[repoId] = { npm, repoId, category, seoAlias, framework };
+  (acc, [npm, repoId, category, alias, framework]) => {
+    acc[repoId] = { npm, repoId, category, alias, framework };
     return acc;
   },
   {} as Record<string, CatalogLibraryT>
@@ -106,15 +129,15 @@ export const catalogRepoIdToLib = libraries.reduce(
 
 // For use by npm-package api to return the correct repo for the npm package
 export const catalogNpmToLib = libraries.reduce(
-  (acc, [npm, repoId, category, seoAlias, framework]) => {
-    acc[npm] = { npm, repoId, category, seoAlias, framework };
+  (acc, [npm, repoId, category, alias, framework]) => {
+    acc[npm] = { npm, repoId, category, alias, framework };
     return acc;
   },
   {} as Record<string, CatalogLibraryT>
 );
 
 export const catalogReposIdsByCategory = libraries.reduce(
-  (acc, [npm, repoId, category]) => {
+  (acc, [, repoId, category]) => {
     if (!acc[category]) {
       acc[category] = [];
     }
@@ -127,7 +150,7 @@ export const catalogReposIdsByCategory = libraries.reduce(
 );
 
 export const catalogNpmNamesByCategory = libraries.reduce(
-  (acc, [npm, repoId, category]) => {
+  (acc, [npm, , category]) => {
     if (!acc[category]) {
       acc[category] = [];
     }
@@ -226,20 +249,17 @@ fs.writeFile('public/sitemap.xml', content, (err) => {
 });
 
 function getDuplicates(categories) {
+  // TODO: improve this logic
   const libs = categories.map(({ libs }) => libs).flat();
   const libsNpmNames = libs.map(({ npm }) => npm);
   const libsReposIds = libs.map(({ repoId }) => repoId);
-  const libsAliases = libs
-    .map(({ seoAlias }) => seoAlias)
-    .filter((alias) => alias);
+  const libsAliases = libs.map(({ alias }) => alias);
   const duplicates = [];
 
   duplicates.push(
     ...getDuplicatesGeneric(libsNpmNames),
     ...getDuplicatesGeneric(libsReposIds),
-    ...getDuplicatesGeneric(libsAliases),
-    // Add conflicts between aliases and names
-    ...libsAliases.filter((alias) => libsNpmNames.includes(alias))
+    ...getDuplicatesGeneric(libsAliases)
   );
 
   return duplicates;

@@ -9,7 +9,12 @@
       <ThoughtworksIcon class="w-5 sm:w-6" />
     </a>
 
-    <a :href="bundlephobiaUrl" target="_blank" class="inline-block">
+    <a
+      v-if="hasNpm"
+      :href="bundlephobiaUrl"
+      target="_blank"
+      class="inline-block"
+    >
       <BundlephobiaIcon class="w-5 sm:w-6" />
     </a>
   </div>
@@ -32,25 +37,22 @@ export default defineComponent({
   },
 
   props: {
-    library: {
-      type: Object as () => LibraryT,
-      required: true,
-    },
+    library: { type: Object as () => LibraryT, required: true },
   },
 
   setup(props) {
     const { library } = toRefs(props);
-    const bundlephobiaUrl = computed(() =>
-      getBundlephobiaUrl((library.value.npmPackage as NpmPackageT).name)
-    );
-    const thoughtworksUrl = computed<string | null>(() => {
-      const tradarItem = repoToTechRadarMap[library.value.repo.repoId] || null;
-      return tradarItem && tradarItem.link;
-    });
 
     return {
-      bundlephobiaUrl,
-      thoughtworksUrl,
+      hasNpm: computed(() => !!library.value.npmPackage),
+      bundlephobiaUrl: computed(() =>
+        getBundlephobiaUrl((library.value.npmPackage as NpmPackageT).name)
+      ),
+      thoughtworksUrl: computed<string | null>(() => {
+        const tradarItem =
+          repoToTechRadarMap[library.value.repo.repoId] || null;
+        return tradarItem && tradarItem.link;
+      }),
     };
   },
 });

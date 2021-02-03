@@ -2,46 +2,81 @@ import {
   catalogRepoIdToLib,
   catalogNpmToLib,
   catalogNpmNamesByCategory,
+  catalogReposIdsByCategory,
+  CatalogLibraryT,
 } from './libraries-catalog';
-import { LibraryT, NpmPackageT } from '@/libraryApis';
+import { LibraryT } from '@/libraryApis';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import Swal from 'sweetalert2';
 
-const paramName = 'compare';
+const npmQueryParamName = 'compare';
+const githubQueryParamName = 'github';
 const delimiter = ' ';
 const encodedDelimiter = '+';
 
 // Update the URL whenever a user selects/deselects a library
-// TODO: do we need to update the document title?
-export function updateUrl(npmPackagesNames: string[]): void {
+export function updateUrl(libraries: LibraryT[]): void {
   const Url = new URL(window.location.href);
+  const originalHref = '/' + Url.search;
+  const npmPackagesNames = [] as string[];
+  const reposIds = [] as string[];
 
-  // Delete the parameter if no valid libs are provided via url
-  if (!npmPackagesNames.length) {
-    Url.searchParams.delete(paramName);
-    window.history.pushState(null, '', Url.href);
-    return;
+  libraries.forEach((library) => {
+    if (library.npmPackage) {
+      npmPackagesNames.push(library.npmPackage.name);
+    } else {
+      reposIds.push(library.repo.repoId);
+    }
+  });
+
+  const newHref = constructHref(npmPackagesNames, reposIds);
+
+  if (newHref !== originalHref) {
+    window.history.pushState(null, '', newHref);
   }
-
-  // Update the url with the npm packages names in the right order
-  window.history.pushState(null, '', constructHref(npmPackagesNames));
 }
 
 export function getNpmPackagesFromUrl(): string[] {
   const Url = new URL(window.location.href);
-  const defaultLibs = Url.searchParams.get(paramName)?.split(delimiter) || [];
+  const npmPackages =
+    Url.searchParams.get(npmQueryParamName)?.split(delimiter) || [];
 
-  return [...new Set(defaultLibs)];
+  return [...new Set(npmPackages)];
 }
 
-export function constructHref(npmPackagesNames: string[]): string {
-  if (!npmPackagesNames.length) {
+export function getReposIdsFromUrl(): string[] {
+  const Url = new URL(window.location.href);
+  const repos =
+    Url.searchParams.get(githubQueryParamName)?.split(delimiter) || [];
+
+  return [...new Set(repos)];
+}
+
+export function constructHref(
+  npmPackagesNames: string[],
+  reposIds: string[]
+): string {
+  if (!npmPackagesNames.length && !reposIds.length) {
     return '/';
   }
 
-  return `/?${paramName}=${[...npmPackagesNames]
-    .sort()
-    .join(encodedDelimiter)}`;
+  const params = [];
+
+  if (npmPackagesNames.length) {
+    params.push(
+      `${npmQueryParamName}=${[...npmPackagesNames]
+        .sort()
+        .join(encodedDelimiter)}`
+    );
+  }
+
+  if (reposIds.length) {
+    params.push(
+      `${githubQueryParamName}=${[...reposIds].sort().join(encodedDelimiter)}`
+    );
+  }
+
+  return `/?${params.join('&')}`;
 }
 
 export const numbersFormatter = new Intl.NumberFormat('en-US', {
@@ -51,8 +86,9 @@ export const numbersFormatter = new Intl.NumberFormat('en-US', {
 // Do not allow Google to index pages with >3 libraries in comparison
 // To avoid spamming Google and the user with useless links
 export function setNoFollowTag(): void {
+  // TODO: take into account Github projects
   const Url = new URL(window.location.href);
-  const libs = Url.searchParams.get(paramName)?.split(delimiter) || [];
+  const libs = Url.searchParams.get(npmQueryParamName)?.split(delimiter) || [];
   if (libs.length > 3) {
     const metaRobots = document.createElement('meta');
     metaRobots.name = 'robots';
@@ -61,9 +97,13 @@ export function setNoFollowTag(): void {
   }
 }
 
-function getSeoLibName(repoId: string): string {
-  if (catalogRepoIdToLib[repoId].seoAlias) {
-    return catalogRepoIdToLib[repoId].seoAlias as string;
+/**
+ * Get Alias using the alias from the catalog or repository's name
+ *
+ */
+export function getSeoLibName(repoId: string): string {
+  if (catalogRepoIdToLib[repoId]) {
+    return catalogRepoIdToLib[repoId].alias as string;
   }
 
   const [, repoName] = repoId.split('/');
@@ -81,84 +121,67 @@ function getSeoLibName(repoId: string): string {
   return repoName;
 }
 
-export function getTitle(reposIds: string[]): string {
-  if (!reposIds.length) {
-    return 'Moiva.io - Measure and Compare JavaScript libraries side by side';
+export function updateTitle(libraries: LibraryT[]): void {
+  let title =
+    'Moiva.io - Measure and Compare JavaScript libraries side by side';
+
+  if (libraries.length) {
+    const aliases = libraries.map(({ alias }) => alias).sort();
+    title = `${aliases[0]}: Stats and Trends from NPM, GitHub, Google Search - Moiva.io`;
+
+    if (aliases.length > 1) {
+      title = `${aliases.join(' vs ')}: Which One to Choose? - Moiva.io`;
+    }
   }
 
-  const seoNames = [...reposIds].sort().map(getSeoLibName);
-
-  if (seoNames.length === 1) {
-    return `${seoNames[0]}: Stats and Trends from NPM, GitHub, Google Search - Moiva.io`;
-  }
-
-  return `${seoNames.join(' vs ')}: Which One to Choose? - Moiva.io`;
+  window.document.title = title;
 }
 
 interface LibForDescriptionT {
-  npm: string;
-  repoId: string;
+  alias: string;
   description: string;
   starsCount: string;
   age: string;
-  dependenciesCount: number;
-  license: string;
 }
 
-export function getMetaDescription(libraries: LibraryT[]): string {
-  const libs = [...libraries].sort(sortLibsByNpmPackageName).map((lib) => {
-    const { name, dependencies, license } = lib.npmPackage as NpmPackageT;
-    const { description, stars, createdAt, repoId } = lib.repo;
+export function updateMetaDescription(libraries: LibraryT[]): void {
+  let descr = `Which JavaScript library to use? Need to find the best alternatives?
+    Compare Stats and Trends over time - Google Trends, Contributors, Releases, Commits, Developer usage, Npm Downloads, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
+
+  const libs = [...libraries].sort(sortLibsByAlias).map((lib) => {
+    const { description, stars, createdAt } = lib.repo;
 
     return {
-      npm: name,
-      repoId,
+      alias: lib.alias,
       description,
       starsCount: numbersFormatter.format(stars),
       age: formatDistanceToNowStrict(new Date(createdAt)),
-      dependenciesCount: dependencies.length,
-      license,
     };
   });
 
-  if (!libs.length) {
-    return `Which JavaScript library to use? Need to find the best alternatives?
-    Compare Stats and Trends over time - Npm Downloads, Google Trends, Contributors, Releases, Commits, Developer usage, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
-  }
-
   if (libs.length === 1) {
-    return getSingleLibDescription(libs[0]);
+    descr = getSingleLibDescription(libs[0]);
+  } else if (libs.length === 2) {
+    descr = getTwoLibsDescription(libs[0], libs[1]);
+  } else if (libs.length === 3) {
+    descr = getThreeLibsDescription(libs[0], libs[1], libs[2]);
+  } else if (libs.length > 3) {
+    const aliasesStr = libs.map(({ alias }) => alias).join(', ');
+    descr = `Compare ${aliasesStr}. Stats and Trends over time - Google Trends, Contributors, Releases, Commits, Developer usage, Npm Downloads, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
   }
 
-  if (libs.length === 2) {
-    return getTwoLibsDescription(libs[0], libs[1]);
-  }
-
-  if (libs.length === 3) {
-    return getThreeLibsDescription(libs[0], libs[1], libs[2]);
-  }
-
-  const seoNames = libs.map((lib) => getSeoLibName(lib.repoId));
-  const seoNamesStr = seoNames.join(', ');
-
-  return `Compare ${seoNamesStr}. Stats and Trends over time - Npm Downloads, Google Trends, Contributors, Releases, Commits, Developer usage, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
+  (document.querySelector(
+    'meta[name="Description"]'
+  ) as HTMLElement).setAttribute('content', descr);
 }
 
 function getSingleLibDescription(lib: LibForDescriptionT): string {
-  const {
-    repoId,
-    description,
-    starsCount,
-    age,
-    dependenciesCount,
-    license,
-  } = lib;
-  const seoName = getSeoLibName(repoId);
+  const { alias, description, starsCount, age } = lib;
   const seoDescrIntro = description
     .toLowerCase()
-    .startsWith(seoName.toLowerCase())
+    .startsWith(alias.toLowerCase())
     ? description
-    : `${seoName}. ${description}`;
+    : `${alias}. ${description}`;
 
   const words = seoDescrIntro.split(' ');
   let seoDescrIntroCut =
@@ -170,20 +193,17 @@ function getSingleLibDescription(lib: LibForDescriptionT): string {
   }
 
   return `${seoDescrIntroCut} 
-    &#9733;${starsCount} stars, ${age} old, ${dependenciesCount} dependencies, license: ${license}...
-    Find the best ${seoName} alternatives and compare them side by side`;
+    &#9733;${starsCount} stars, ${age} old...
+    Find the best ${alias} alternatives and compare them side by side`;
 }
 
 function getTwoLibsDescription(
   libA: LibForDescriptionT,
   libB: LibForDescriptionT
 ): string {
-  const seoNameA = getSeoLibName(libA.repoId);
-  const seoNameB = getSeoLibName(libB.repoId);
-
-  return `Which is better ${seoNameA} or ${seoNameB}? Compare Stats and Trends side by side.
-${seoNameA}: &#9733;${libA.starsCount} stars, ${libA.age} old, ${libA.dependenciesCount} dependencies, license: ${libA.license}...
-${seoNameB}: &#9733;${libB.starsCount} stars, ${libB.age} old, ${libB.dependenciesCount} dependencies, license: ${libB.license}...
+  return `Which is better ${libA.alias} or ${libB.alias}? Compare Stats and Trends side by side.
+${libA.alias}: &#9733;${libA.starsCount} stars, ${libA.age} old...
+${libB.alias}: &#9733;${libB.starsCount} stars, ${libB.age} old...
 `;
 }
 
@@ -192,43 +212,40 @@ function getThreeLibsDescription(
   libB: LibForDescriptionT,
   libC: LibForDescriptionT
 ): string {
-  const seoNameA = getSeoLibName(libA.repoId);
-  const seoNameB = getSeoLibName(libB.repoId);
-  const seoNameC = getSeoLibName(libC.repoId);
-
-  return `Which is better ${seoNameA}, ${seoNameB}, or ${seoNameC}? Compare Stats and Trends side by side.
-${seoNameA}: &#9733;${libA.starsCount} stars, ${libA.age} old, ${libA.dependenciesCount} dependencies, license: ${libA.license}...
-${seoNameB}: &#9733;${libB.starsCount} stars, ${libB.age} old, ${libB.dependenciesCount} dependencies, license: ${libB.license}...
-${seoNameC}: &#9733;${libC.starsCount} stars, ${libC.age} old, ${libC.dependenciesCount} dependencies, license: ${libC.license}...
+  return `Which is better ${libA.alias}, ${libB.alias}, or ${libC.alias}? Compare Stats and Trends side by side.
+${libA.alias}: &#9733;${libA.starsCount} stars, ${libA.age} old...
+${libB.alias}: &#9733;${libB.starsCount} stars, ${libB.age} old...
+${libC.alias}: &#9733;${libC.starsCount} stars, ${libC.age} old...
 `;
 }
 
 /**
- * Get NPM suggestions for the selected libs
+ * Get Library suggestions for the selected libs
  * based on the last selected lib
  *
  */
-export function getSuggestions(npmPackagesNames: string[]): string[] {
-  if (!npmPackagesNames.length) {
+export function getSuggestions(libraries: LibraryT[]): CatalogLibraryT[] {
+  if (!libraries.length) {
     return [];
   }
 
   // We should not display any suggestions if the number of selected libraries is >=5
   // So that Google Search doesn't discover long urls and display them in search results
-  if (npmPackagesNames.length >= 5) {
+  if (libraries.length >= 5) {
     return [];
   }
 
-  const lastSelectedLibData =
-    catalogNpmToLib[npmPackagesNames[npmPackagesNames.length - 1]];
+  const selectedReposIds = libraries.map((lib) => lib.repo.repoId);
+  const lastSelectedLibData = catalogRepoIdToLib[selectedReposIds.slice(-1)[0]];
 
   if (!lastSelectedLibData || lastSelectedLibData.category === 'misc') {
     return [];
   }
 
-  return catalogNpmNamesByCategory[lastSelectedLibData.category]
-    .filter((libName) => !npmPackagesNames.includes(libName))
-    .slice(0, 6);
+  return catalogReposIdsByCategory[lastSelectedLibData.category]
+    .filter((repoId) => !selectedReposIds.includes(repoId))
+    .slice(0, 6)
+    .map((repoId) => catalogRepoIdToLib[repoId]);
 }
 
 export function getBundlephobiaUrl(libName: string): string {
@@ -251,13 +268,13 @@ export function showErrorMsg(msg: string): void {
   });
 }
 
-function sortLibsByNpmPackageName(libA: LibraryT, libB: LibraryT) {
-  const nameA = (libA.npmPackage as NpmPackageT).name;
-  const nameB = (libB.npmPackage as NpmPackageT).name;
-  if (nameA < nameB) {
+function sortLibsByAlias(libA: LibraryT, libB: LibraryT) {
+  const aliasA = libA.alias;
+  const aliasB = libB.alias;
+  if (aliasA < aliasB) {
     return -1;
   }
-  if (nameA > nameB) {
+  if (aliasA > aliasB) {
     return 1;
   }
   return 0;

@@ -1,12 +1,12 @@
 <template>
   <div class="w-full px-3 mx-auto lg:w-9/12 xl:w-2/4">
     <a
-      v-for="suggestedNpmPackageName in suggestions"
-      :key="suggestedNpmPackageName"
+      v-for="suggestedLibrary in suggestions"
+      :key="suggestedLibrary.repoId"
       class="inline-block mt-2 mr-3 text-base text-gray-500 no-underline hover:text-gray-700"
-      :href="getHrefForAdditionalLib(suggestedNpmPackageName)"
-      @click.prevent="$emit('select', suggestedNpmPackageName, true)"
-      >+ {{ suggestedNpmPackageName }}</a
+      :href="getHrefForAdditionalLib(suggestedLibrary)"
+      @click.prevent="onSelect(suggestedLibrary)"
+      >+ {{ suggestedLibrary.alias }}</a
     >
   </div>
 </template>
@@ -14,20 +14,50 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import { getSuggestions, constructHref } from '@/utils';
-import { npmPackagesNames } from '@/store/libraries';
+import { CatalogLibraryT } from '@/libraries-catalog';
+import { libraries } from '@/store/libraries';
+import { LibraryT } from '@/libraryApis';
 
 export default defineComponent({
   name: 'Suggestions',
 
   emits: ['select'],
 
-  setup() {
+  setup(_props, { emit }) {
     return {
-      suggestions: computed<string[]>(() =>
-        getSuggestions(npmPackagesNames.value)
+      suggestions: computed<CatalogLibraryT[]>(() =>
+        getSuggestions(libraries as LibraryT[])
       ),
-      getHrefForAdditionalLib(npmPackageName: string): string {
-        return constructHref([...npmPackagesNames.value, npmPackageName]);
+      onSelect(catalogLibrary: CatalogLibraryT) {
+        if (catalogLibrary.npm) {
+          emit('select', catalogLibrary.npm, true);
+        } else {
+          emit('select', catalogLibrary.repoId, false);
+        }
+      },
+      getHrefForAdditionalLib(catalogLibrary: CatalogLibraryT): string {
+        const npmPackagesNames = [] as string[];
+        const reposIds = [] as string[];
+
+        libraries.forEach((library) => {
+          if (library.npmPackage) {
+            npmPackagesNames.push(library.npmPackage.name);
+          } else {
+            reposIds.push(library.repo.repoId);
+          }
+        });
+
+        if (catalogLibrary.npm) {
+          return constructHref(
+            [...npmPackagesNames, catalogLibrary.npm],
+            reposIds
+          );
+        }
+
+        return constructHref(npmPackagesNames, [
+          ...reposIds,
+          catalogLibrary.repoId,
+        ]);
       },
     };
   },

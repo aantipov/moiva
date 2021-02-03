@@ -57,19 +57,20 @@ import DevelopersUsage from './developer-usage/DevelopersUsage.vue';
 import Commits from './Commits.vue';
 import {
   updateUrl,
-  getTitle,
-  getMetaDescription,
+  updateTitle,
+  updateMetaDescription,
   getNpmPackagesFromUrl,
+  getReposIdsFromUrl,
+  setNoFollowTag,
   showErrorMsg,
 } from '@/utils';
 import { updateLibrariesColors } from '@/store/librariesColors';
 import {
-  reposIds,
   isLoading,
   libraries,
   librariesIds,
   addLibraryByNpmPackage,
-  npmPackagesNames,
+  addLibraryByRepo,
 } from '@/store/libraries';
 import { LibraryT } from '@/libraryApis';
 
@@ -94,37 +95,35 @@ export default defineComponent({
   },
 
   setup() {
+    // Do not allow Google index pages with >3 libraries in comparison
+    setNoFollowTag();
+
+    // Keep up-to-date the mapping Library <=> Color
     watchEffect(() => updateLibrariesColors(librariesIds.value));
 
     onMounted(() => {
+      // Load the libraries defined in the URL
       const npmPackagesNamesFromUrl = getNpmPackagesFromUrl();
+      const reposIdsFromUrl = getReposIdsFromUrl();
+      Promise.all([
+        ...npmPackagesNamesFromUrl.map(addLibraryByNpmPackage),
+        ...reposIdsFromUrl.map(addLibraryByRepo),
+      ]).catch(() => {
+        // Redirect a user to 404 if there was a wrong lib in the url
+        // This is needed for SEO - Google should not crawl "bad" pages
+        window.location.href = '/not-found';
+      });
 
-      Promise.all(npmPackagesNamesFromUrl.map(addLibraryByNpmPackage)).catch(
-        () => {
-          // Redirect a user to 404 if there was a wrong lib in the url
-          // This is needed for SEO - Google should not crawl "bad" pages
-          window.location.href = '/not-found';
-        }
-      );
-
+      // On every Library change (load, de-load) update url, title, description
       watchEffect(() => {
         if (isLoading.value) {
           return;
         }
 
-        // Update URL
-        updateUrl(npmPackagesNames.value);
-
-        // Update Document Title to make it SEO friendly
-        window.document.title = getTitle(reposIds.value);
-
-        // Update Meta Description
-        (document.querySelector(
-          'meta[name="Description"]'
-        ) as HTMLElement).setAttribute(
-          'content',
-          getMetaDescription(libraries as LibraryT[])
-        );
+        // Update URL, Title and Meta Description
+        updateUrl(libraries as LibraryT[]);
+        updateTitle(libraries as LibraryT[]);
+        updateMetaDescription(libraries as LibraryT[]);
       });
     });
 
@@ -135,12 +134,21 @@ export default defineComponent({
       });
     }
 
+    function selectRepo(repoId: string): void {
+      addLibraryByRepo(repoId).catch(() => {
+        showErrorMsg(`Sorry, we couldn't fetch data for ${repoId}`);
+        return Promise.reject();
+      });
+    }
+
     return {
       libraries,
       isLoading,
       select: (id: string, isNpm: boolean) => {
         if (isNpm) {
           selectNpmPackage(id);
+        } else {
+          selectRepo(id);
         }
       },
       selectMultiple(npmPackagesNames: string[]): void {
