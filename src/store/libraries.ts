@@ -62,7 +62,6 @@ export const npmPackageToLibraryIdMap = computed<Record<string, string>>(() => {
  * Add a library via a Github repository
  */
 export function addLibraryByRepo(repoId: string): Promise<void> {
-  console.log('addlib', repoId);
   // TODO: make sure there is only one pair (npmName, repoId)
   if (!repoId || reposLoading.includes(repoId)) {
     return Promise.resolve();

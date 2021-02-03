@@ -2,6 +2,8 @@ import {
   catalogRepoIdToLib,
   catalogNpmToLib,
   catalogNpmNamesByCategory,
+  catalogReposIdsByCategory,
+  CatalogLibraryT,
 } from './libraries-catalog';
 import { LibraryT } from '@/libraryApis';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
@@ -100,8 +102,8 @@ export function setNoFollowTag(): void {
  *
  */
 export function getSeoLibName(repoId: string): string {
-  if (catalogRepoIdToLib[repoId].seoAlias) {
-    return catalogRepoIdToLib[repoId].seoAlias as string;
+  if (catalogRepoIdToLib[repoId]) {
+    return catalogRepoIdToLib[repoId].alias as string;
   }
 
   const [, repoName] = repoId.split('/');
@@ -218,31 +220,32 @@ ${libC.alias}: &#9733;${libC.starsCount} stars, ${libC.age} old...
 }
 
 /**
- * Get NPM suggestions for the selected libs
+ * Get Library suggestions for the selected libs
  * based on the last selected lib
  *
  */
-export function getSuggestions(npmPackagesNames: string[]): string[] {
-  if (!npmPackagesNames.length) {
+export function getSuggestions(libraries: LibraryT[]): CatalogLibraryT[] {
+  if (!libraries.length) {
     return [];
   }
 
   // We should not display any suggestions if the number of selected libraries is >=5
   // So that Google Search doesn't discover long urls and display them in search results
-  if (npmPackagesNames.length >= 5) {
+  if (libraries.length >= 5) {
     return [];
   }
 
-  const lastSelectedLibData =
-    catalogNpmToLib[npmPackagesNames[npmPackagesNames.length - 1]];
+  const selectedReposIds = libraries.map((lib) => lib.repo.repoId);
+  const lastSelectedLibData = catalogRepoIdToLib[selectedReposIds.slice(-1)[0]];
 
   if (!lastSelectedLibData || lastSelectedLibData.category === 'misc') {
     return [];
   }
 
-  return catalogNpmNamesByCategory[lastSelectedLibData.category]
-    .filter((libName) => !npmPackagesNames.includes(libName))
-    .slice(0, 6);
+  return catalogReposIdsByCategory[lastSelectedLibData.category]
+    .filter((repoId) => !selectedReposIds.includes(repoId))
+    .slice(0, 6)
+    .map((repoId) => catalogRepoIdToLib[repoId]);
 }
 
 export function getBundlephobiaUrl(libName: string): string {
