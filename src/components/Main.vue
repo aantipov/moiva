@@ -9,7 +9,7 @@
 
       <div
         v-else
-        class="relative w-full mx-auto bg-yellow-600 lg:w-9/12 xl:w-2/4 bg-opacity-5"
+        class="relative w-full mx-auto bg-primary lg:w-9/12 xl:w-2/4 bg-opacity-5"
         style="min-height: 200px"
       >
         <m-loader />
@@ -19,7 +19,7 @@
     <!--  Selected Libraries and Charts    -->
     <div v-else>
       <SelectedLibs
-        class="relative w-full mx-auto mt-4 mb-2 lg:w-9/12 xl:w-2/4 divide-y divide-yellow-600 divide-opacity-40"
+        class="relative w-full mx-auto mt-4 mb-2 lg:w-9/12 xl:w-2/4 divide-y divide-primary divide-opacity-40"
       />
 
       <!-- Charts -->

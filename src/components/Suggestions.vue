@@ -3,7 +3,7 @@
     <a
       v-for="suggestedLibrary in suggestions"
       :key="suggestedLibrary.repoId"
-      class="inline-block mt-2 mr-3 text-base text-gray-500 no-underline hover:text-gray-700"
+      class="inline-block mt-2 mr-3 text-base"
       :href="getHrefForAdditionalLib(suggestedLibrary)"
       @click.prevent="onSelect(suggestedLibrary)"
       >+ {{ suggestedLibrary.alias }}</a

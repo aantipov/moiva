@@ -16,10 +16,10 @@
     @apply mt-0 mb-1 text-base font-light text-gray-800 leading-6;
   }
   a {
-    @apply font-normal text-blue-700 underline;
+    @apply font-normal text-primary;
   }
   a:hover {
-    @apply text-blue-900;
+    @apply text-blue-900 underline text-primary-dark;
   }
   .chart-error {
     @apply my-32 text-center text-red-700;

@@ -2,7 +2,7 @@
   <div>
     <span
       ref="triggerRef"
-      class="p-1 rounded-full cursor-pointer hover:bg-yellow-600 hover:bg-opacity-30"
+      class="p-1 rounded-full cursor-pointer hover:bg-primary hover:bg-opacity-30"
     >
       <template v-if="type === 'INFO'">&#9432;</template>
       <template v-else>&#9888;</template>
