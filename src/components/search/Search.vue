@@ -17,17 +17,17 @@
       <div class="relative flex flex-wrap items-stretch w-full">
         <input
           id="lib-search"
+          v-model="searchValue"
           type="text"
           placeholder="Add npm packages to comparison"
           autofocus
           autocomplete="off"
           class="myinput"
-          @input="onChange"
         />
         <span
           class="absolute right-0 z-10 flex items-center justify-end h-full py-3 pr-3 w-14"
         >
-          <NpmIcon v-if="isNpmSearchRef" class="w-14" />
+          <NpmIcon v-if="isNpmSearch" class="w-14" />
           <GithubIcon v-else class="w-8 h-8" />
         </span>
       </div>
@@ -40,7 +40,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue';
+import { defineComponent, onMounted, ref, computed } from 'vue';
 import autocomplete, { AutocompleteItem } from 'autocompleter';
 import 'autocompleter/autocomplete.css';
 import { fetchNpmSearch, fetchGithubSearch } from './search-api';
@@ -69,9 +69,10 @@ export default defineComponent({
   emits: ['select'],
 
   setup(_props, { emit }) {
+    const searchValue = ref('');
+    const isNpmSearch = computed(() => searchValue.value.startsWith('n:'));
     const isError = ref(false);
     const isLoading = ref(false);
-    const isNpmSearchRef = ref(true);
     let dataPromise: null | Promise<void> = null;
 
     onMounted(() => {
@@ -82,8 +83,7 @@ export default defineComponent({
         fetch: (text: string, update: (items: SearchItemT[]) => void) => {
           const trimmedText = text.trim();
           let localPromise: Promise<void>;
-          let isNpmSearch = !trimmedText.startsWith('g:');
-          let q = isNpmSearch ? trimmedText : trimmedText.slice(2).trim();
+          let q = isNpmSearch.value ? trimmedText.slice(2).trim() : trimmedText;
 
           if (q.length < 1) {
             return;
@@ -91,7 +91,7 @@ export default defineComponent({
 
           isLoading.value = true;
 
-          localPromise = dataPromise = isNpmSearch
+          localPromise = dataPromise = isNpmSearch.value
             ? // NPM SEARCH
               fetchNpmSearch(q).then((searchItems): void => {
                 isError.value = false;
@@ -129,8 +129,7 @@ export default defineComponent({
 
         onSelect: (item: SearchItemT) => {
           emit('select', item.name, item.isNpm);
-          (document.getElementById('lib-search') as HTMLInputElement).value =
-            '';
+          searchValue.value = '';
         },
 
         className: 'ac',
@@ -167,14 +166,10 @@ export default defineComponent({
     });
 
     return {
-      isNpmSearchRef,
+      searchValue,
+      isNpmSearch,
       isLoading,
       isError,
-      onChange(event: InputEvent) {
-        // @ts-ignore
-        const val = event.target.value as string;
-        isNpmSearchRef.value = !val.startsWith('g:');
-      },
     };
   },
 });
