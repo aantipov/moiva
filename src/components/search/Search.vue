@@ -25,7 +25,7 @@
           id="lib-search"
           v-model="searchValue"
           type="text"
-          placeholder="search for a GitHub repository"
+          placeholder="search for GitHub repositories"
           autofocus
           autocomplete="off"
           class="myinput"

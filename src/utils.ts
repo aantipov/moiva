@@ -1,7 +1,5 @@
 import {
   catalogRepoIdToLib,
-  catalogNpmToLib,
-  catalogNpmNamesByCategory,
   catalogReposIdsByCategory,
   CatalogLibraryT,
 } from './libraries-catalog';
@@ -122,12 +120,11 @@ export function getSeoLibName(repoId: string): string {
 }
 
 export function updateTitle(libraries: LibraryT[]): void {
-  let title =
-    'Moiva.io - Measure and Compare JavaScript libraries side by side';
+  let title = 'Moiva.io - Find and Compare GitHub and NPM packages';
 
   if (libraries.length) {
     const aliases = libraries.map(({ alias }) => alias).sort();
-    title = `${aliases[0]}: Stats and Trends from NPM, GitHub, Google Search - Moiva.io`;
+    title = `${aliases[0]}: Stats and Trends from GitHub, Google Trends... - Moiva.io`;
 
     if (aliases.length > 1) {
       title = `${aliases.join(' vs ')}: Which One to Choose? - Moiva.io`;
@@ -145,8 +142,8 @@ interface LibForDescriptionT {
 }
 
 export function updateMetaDescription(libraries: LibraryT[]): void {
-  let descr = `Which JavaScript library to use? Need to find the best alternatives?
-    Compare Stats and Trends over time - Google Trends, Contributors, Releases, Commits, Developer usage, Npm Downloads, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
+  let descr = `Which Library or Framework to use? Need to find the best alternatives?
+    Compare Stats and Trends - Google Trends, Contributors, Releases, Commits, Developer usage, Npm Downloads, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
 
   const libs = [...libraries].sort(sortLibsByAlias).map((lib) => {
     const { description, stars, createdAt } = lib.repo;
@@ -167,7 +164,7 @@ export function updateMetaDescription(libraries: LibraryT[]): void {
     descr = getThreeLibsDescription(libs[0], libs[1], libs[2]);
   } else if (libs.length > 3) {
     const aliasesStr = libs.map(({ alias }) => alias).join(', ');
-    descr = `Compare ${aliasesStr}. Stats and Trends over time - Google Trends, Contributors, Releases, Commits, Developer usage, Npm Downloads, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
+    descr = `Compare ${aliasesStr}. Stats and Trends - Google Trends, Contributors, Releases, Commits, Developer usage, Npm Downloads, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
   }
 
   (document.querySelector(
