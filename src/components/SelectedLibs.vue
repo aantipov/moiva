@@ -75,23 +75,19 @@
         <LibExternalLinks :library="lib" class="my-2 sm:hidden" />
 
         <div class="text-sm text-black text-opacity-70">
-          <div class="grid grid-cols-12">
-            <div class="col-span-6 sm:col-span-2">
-              <span>&#9733;</span>
-              <span>{{ getFormattedStars(lib.repo.stars) }}</span>
+          <div class="flex">
+            <span>&#9733;</span>
+            <span>{{ getFormattedStars(lib.repo.stars) }}</span>
+
+            <div class="ml-3">
+              {{ getAge(lib.repo.createdAt) }} old
+
+              <m-chart-info class="inline">
+                <p>Birthdate {{ getBirthdate(lib.repo.createdAt) }}</p>
+              </m-chart-info>
             </div>
 
-            <div class="col-span-6 sm:col-span-2">
-              <div>
-                {{ getAge(lib.repo.createdAt) }} old
-
-                <m-chart-info class="inline">
-                  <p>Birthdate {{ getBirthdate(lib.repo.createdAt) }}</p>
-                </m-chart-info>
-              </div>
-            </div>
-
-            <div v-if="lib.npmPackage" class="col-span-6 sm:col-span-4">
+            <div v-if="lib.npmPackage" class="ml-3">
               {{ lib.npmPackage.dependencies.length }} npm dependencies
             </div>
           </div>
