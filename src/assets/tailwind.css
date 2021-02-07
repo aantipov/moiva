@@ -21,6 +21,13 @@
   a:hover {
     @apply text-blue-900 underline text-primary-dark;
   }
+
+  a.primary-link {
+    @apply font-normal text-white;
+  }
+  a.primary-link:hover {
+    @apply font-normal text-white underline;
+  }
   .chart-error {
     @apply my-32 text-center text-red-700;
   }

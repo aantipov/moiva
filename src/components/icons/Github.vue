@@ -20,9 +20,9 @@ export default defineComponent({
 
 <style lang="postcss" scoped>
 .icon {
-  @apply fill-current text-gray-400;
+  @apply fill-current text-black text-opacity-60;
 }
 .root:hover .icon {
-  @apply fill-current text-gray-800;
+  @apply fill-current text-black;
 }
 </style>

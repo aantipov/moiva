@@ -14,7 +14,7 @@
         </div>
       </div>
 
-      <div class="relative flex flex-wrap items-stretch w-full mb-3">
+      <div class="relative flex flex-wrap items-stretch w-full">
         <input
           id="lib-search"
           type="text"
@@ -189,16 +189,16 @@ export default defineComponent({
 }
 .ac > .ac-option.selected,
 .ac > .ac-option:hover:not(.group) {
-  @apply bg-primary bg-opacity-20;
+  @apply bg-black bg-opacity-10;
 }
 .ac-option-title-wrapper {
   @apply flex justify-between mb-0.5 items-center;
 }
 .ac-option-title {
-  @apply text-gray-800 font-mono text-sm;
+  @apply text-black text-opacity-80 font-mono text-sm;
 }
 .ac-option-desc {
-  @apply text-gray-500 font-light text-sm;
+  @apply text-black text-opacity-70 font-light text-sm;
 }
 .ac-option-version {
   @apply text-gray-500 font-light text-sm;
