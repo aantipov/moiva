@@ -24,9 +24,9 @@ export default defineComponent({
 
 <style lang="postcss" scoped>
 .svg {
-  @apply fill-current text-gray-500;
+  @apply fill-current text-black text-opacity-60;
 }
 .root:hover .svg {
-  @apply fill-current text-gray-900;
+  @apply fill-current text-black;
 }
 </style>

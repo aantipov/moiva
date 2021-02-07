@@ -2,7 +2,7 @@
   <div>
     <span
       ref="triggerRef"
-      class="p-1 rounded-full cursor-pointer hover:bg-yellow-600 hover:bg-opacity-30"
+      class="p-1 rounded-full cursor-pointer hover:bg-black hover:bg-opacity-10"
     >
       <template v-if="type === 'INFO'">&#9432;</template>
       <template v-else>&#9888;</template>
@@ -58,15 +58,15 @@ export default defineComponent({
 
 <style lang="postcss">
 .tippy-box[data-theme~='moiva'] {
-  @apply bg-gray-800 bg-opacity-95 border border-gray-200 shadow text-base;
+  /* @apply bg-black bg-opacity-10 border border-gray-200 shadow text-base; */
 }
 .tippy-box[data-theme~='moiva'] > .tippy-arrow {
   @apply hidden;
 }
 .tippy-box[data-theme~='moiva'] p {
-  @apply text-gray-50;
+  @apply text-white;
 }
 .tippy-box[data-theme~='moiva'] a {
-  @apply text-blue-300;
+  @apply text-primary-light;
 }
 </style>

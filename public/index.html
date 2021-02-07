@@ -57,7 +57,7 @@
       .content {
         flex: 1 0 auto;
       }
-      .footer {
+      .footer-wrapper {
         flex-shrink: 0;
       }
     </style>
@@ -75,7 +75,7 @@
       src="https://plausible.io/js/plausible.js"
     ></script>
   </head>
-  <body class="bg-yellow-600 bg-opacity-5">
+  <body class="bg-gray-50">
     <noscript>
       <strong
         >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
@@ -89,7 +89,7 @@
       <div class="text-center">
         <a
           style="font-family: 'Oswald', sans-serif"
-          class="text-gray-800 no-underline text-7xl sm:text-9xl hover:text-gray-800"
+          class="text-black no-underline text-opacity-80 text-7xl sm:text-9xl hover:text-black hover:no-underline"
           href="/"
         >
           MOIVA
@@ -113,7 +113,7 @@
     </div>
 
     <!-- Footer -->
-    <div class="footer">
+    <div class="footer-wrapper">
       <div class="mt-8">
         <div class="px-3 mb-4 text-center">
           <p>
@@ -129,10 +129,11 @@
         </div>
 
         <div
-          class="flex items-center justify-center h-16 my-0 bg-yellow-600 bg-opacity-60 p"
+          class="flex items-center justify-center h-16 my-0 text-base text-white font-extralight bg-primary footer p"
         >
           Made with &#10084; by
           <a
+            class="primary-link"
             href="https://alexei.me"
             target="_blank"
             rel="noopener"

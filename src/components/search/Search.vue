@@ -7,21 +7,21 @@
       >
         <div
           v-if="isLoading"
-          class="absolute top-0 h-full bg-yellow-500 rounded-full progressbar"
+          class="absolute top-0 h-full rounded-full bg-primary progressbar"
           :style="{ width: `80%` }"
         >
           <span class="flex items-center h-full"><slot></slot></span>
         </div>
       </div>
 
-      <div class="relative flex flex-wrap items-stretch w-full mb-3">
+      <div class="relative flex flex-wrap items-stretch w-full">
         <input
           id="lib-search"
           type="text"
           placeholder="Add npm packages to comparison"
           autofocus
           autocomplete="off"
-          class="relative w-full py-3 pl-3 pr-16 text-xl font-light text-gray-700 rounded outline-none myinput md:text-2xl focus:bg-white focus:ring-0 focus:outline-none"
+          class="myinput"
           @input="onChange"
         />
         <span
@@ -182,29 +182,32 @@ export default defineComponent({
 
 <style lang="postcss">
 .ac {
-  @apply rounded rounded-t-none border border-t-0 border-yellow-600 border-opacity-60;
+  @apply rounded rounded-t-none border border-t-0 border-primary border-opacity-60;
 }
 .ac > .ac-option {
-  @apply h-auto px-5 py-1 sm:py-2 border-b border-yellow-600 border-opacity-20 bg-yellow-600 bg-opacity-5;
+  @apply h-auto px-5 py-1 sm:py-2 border-b border-primary border-opacity-20;
 }
 .ac > .ac-option.selected,
 .ac > .ac-option:hover:not(.group) {
-  @apply bg-yellow-600 bg-opacity-20;
+  @apply bg-black bg-opacity-10;
 }
 .ac-option-title-wrapper {
   @apply flex justify-between mb-0.5 items-center;
 }
 .ac-option-title {
-  @apply text-gray-800 font-mono text-sm;
+  @apply text-black text-opacity-80 font-mono text-sm;
 }
 .ac-option-desc {
-  @apply text-gray-500 font-light text-sm;
+  @apply text-black text-opacity-70 font-light text-sm;
 }
 .ac-option-version {
-  @apply text-gray-500 font-light text-sm;
+  @apply text-black text-opacity-70 font-light text-sm;
 }
 .myinput {
-  @apply bg-yellow-600 bg-opacity-5 placeholder-yellow-600 placeholder-opacity-60 border border-transparent border-4 focus:border-yellow-600 focus:border-opacity-60;
+  @apply bg-opacity-5 placeholder-opacity-60 ring-0 border border-primary border-opacity-40 relative w-full py-3 pl-3 pr-16 text-xl font-light text-gray-700 rounded outline-none md:text-2xl;
+}
+.myinput:focus {
+  @apply bg-white ring-0 outline-none border-primary border;
 }
 
 @keyframes progress-indeterminate {

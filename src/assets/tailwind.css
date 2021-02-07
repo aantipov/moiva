@@ -6,20 +6,27 @@
 
 @layer components {
   h1 {
-    @apply w-10/12 mx-auto mt-5 mb-2 text-2xl font-normal leading-normal text-center text-gray-800 sm:mt-8 sm:w-full sm:text-3xl;
+    @apply w-10/12 mx-auto mt-5 mb-2 text-2xl font-normal leading-normal text-center text-black text-opacity-80 sm:mt-8 sm:w-full sm:text-3xl;
   }
   h2 {
-    @apply mt-5 mb-2 text-xl font-normal leading-normal text-center text-gray-800 sm:mb-0;
+    @apply mt-5 mb-2 text-xl font-normal leading-normal text-center text-black text-opacity-80 sm:mb-0;
   }
   p,
   .p {
-    @apply mt-0 mb-1 text-base font-light text-gray-800 leading-6;
+    @apply mt-0 mb-1 text-base font-light text-black text-opacity-90 leading-6;
   }
   a {
-    @apply font-normal text-blue-700 underline;
+    @apply font-normal text-primary;
   }
   a:hover {
-    @apply text-blue-900;
+    @apply text-blue-900 underline text-primary-dark;
+  }
+
+  a.primary-link {
+    @apply font-normal text-white;
+  }
+  a.primary-link:hover {
+    @apply font-normal text-white underline;
   }
   .chart-error {
     @apply my-32 text-center text-red-700;
