@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-start sm:items-center">
     <h2 class="self-center mt-4 mb-2 sm:mt-8">
-      Popular comparisons by category
+      Popular UI libraries comparisons
     </h2>
 
     <div v-for="item in items" :key="item.name" class="mb-2">
