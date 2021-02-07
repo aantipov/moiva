@@ -1,5 +1,6 @@
 <template>
   <BundlephobiaChart
+    v-if="npmPackagesNames.length"
     :is-loading="isLoading"
     :is-error="isError"
     :packages-names="successItemsIds"
@@ -39,6 +40,7 @@ export default defineComponent({
     return {
       isLoading: computed(() => isLoadingLibraries.value || isLoading.value),
       isError,
+      npmPackagesNames, // all items
       items,
       failedItemsIds,
       successItemsIds,
