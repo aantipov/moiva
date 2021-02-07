@@ -21,33 +21,37 @@
               <a
                 :href="getNpmLink(lib.npmPackage.name)"
                 target="_blank"
-                class="inline-block pt-1 w-9"
-              >
-                <NpmIcon class="w-8" />
-              </a>
-
-              <a
-                :href="getNpmLink(lib.npmPackage.name)"
-                target="_blank"
-                class="ml-1 link"
+                class="link"
               >
                 <span>{{ lib.npmPackage.name }}</span>
                 <span class="text-black text-opacity-60"
                   >@{{ lib.npmPackage.version }}</span
                 >
               </a>
+
+              <a
+                :href="getNpmLink(lib.npmPackage.name)"
+                target="_blank"
+                class="inline-block ml-2 w-9"
+              >
+                <NpmIcon class="w-8" />
+              </a>
             </div>
 
             <div class="flex items-center">
-              <a :href="lib.repo" target="_blank" class="flex inline-block w-9">
-                <GithubIcon class="w-4 h-4" />
-              </a>
               <a
                 :href="getGithubLink(lib.repo.repoId)"
                 target="_blank"
-                class="ml-1 link"
+                class="link"
               >
                 {{ lib.repo.repoId }}
+              </a>
+              <a
+                :href="lib.repo"
+                target="_blank"
+                class="flex inline-block ml-2 w-9"
+              >
+                <GithubIcon class="w-4 h-4" />
               </a>
             </div>
           </div>
@@ -71,23 +75,19 @@
         <LibExternalLinks :library="lib" class="my-2 sm:hidden" />
 
         <div class="text-sm text-black text-opacity-70">
-          <div class="grid grid-cols-12">
-            <div class="col-span-6 sm:col-span-2">
-              <span>&#9733;</span>
-              <span>{{ getFormattedStars(lib.repo.stars) }}</span>
+          <div class="flex">
+            <span>&#9733;</span>
+            <span>{{ getFormattedStars(lib.repo.stars) }}</span>
+
+            <div class="ml-3">
+              {{ getAge(lib.repo.createdAt) }} old
+
+              <m-chart-info class="inline">
+                <p>Birthdate {{ getBirthdate(lib.repo.createdAt) }}</p>
+              </m-chart-info>
             </div>
 
-            <div class="col-span-6 sm:col-span-2">
-              <div>
-                {{ getAge(lib.repo.createdAt) }} old
-
-                <m-chart-info class="inline">
-                  <p>Birthdate {{ getBirthdate(lib.repo.createdAt) }}</p>
-                </m-chart-info>
-              </div>
-            </div>
-
-            <div v-if="lib.npmPackage" class="col-span-6 sm:col-span-4">
+            <div v-if="lib.npmPackage" class="ml-3">
               {{ lib.npmPackage.dependencies.length }} npm dependencies
             </div>
           </div>
@@ -178,6 +178,6 @@ export default defineComponent({
 
 <style lang="postcss" scoped>
 .link {
-  @apply font-mono text-sm sm:text-base text-primary no-underline hover:underline font-medium;
+  @apply font-mono text-sm sm:text-base font-medium;
 }
 </style>
