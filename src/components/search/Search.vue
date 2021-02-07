@@ -1,6 +1,12 @@
 <template>
   <div>
     <div>
+      <div class="text-sm text-black text-opacity-70">
+        <span class="underline">Hint</span>: start with "<span
+          class="text-black text-opacity-80"
+          >n:</span
+        >" to search for npm packages
+      </div>
       <!-- progressbar -->
       <div
         class="relative w-full h-1 overflow-hidden rounded-full indeterminate"
@@ -19,7 +25,7 @@
           id="lib-search"
           v-model="searchValue"
           type="text"
-          placeholder="Add npm packages to comparison"
+          placeholder="search for github repository"
           autofocus
           autocomplete="off"
           class="myinput"
