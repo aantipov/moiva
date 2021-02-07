@@ -48,6 +48,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref, computed } from 'vue';
 import autocomplete, { AutocompleteItem } from 'autocompleter';
+import { numbersFormatter } from '@/utils';
 import 'autocompleter/autocomplete.css';
 import { fetchNpmSearch, fetchGithubSearch } from './search-api';
 import NpmIcon from '@/components/icons/Npm.vue';
@@ -112,9 +113,10 @@ export default defineComponent({
               fetchGithubSearch(q).then((searchItems) => {
                 isError.value = false;
                 update(
-                  searchItems.map(({ repoId, description }) => ({
+                  searchItems.map(({ repoId, description, stars }) => ({
                     name: repoId,
                     description,
+                    stars,
                     isNpm: false,
                   }))
                 );
@@ -144,6 +146,14 @@ export default defineComponent({
           const divWrapper = document.createElement('div');
 
           divWrapper.className = 'ac-option';
+
+          const stars = item.isNpm
+            ? ''
+            : `
+              <span>&#9733;${numbersFormatter.format(
+                item.stars as number
+              )}</span>
+          `;
 
           const html = `
           <!-- GitHub Icon -->
@@ -183,11 +193,12 @@ export default defineComponent({
 
           <div>
             <!-- Title -->
-            <div class="text-black text-opacity-80 font-mono text-sm mb-0.5">
-              ${item.name}
-              <span class="text-sm font-light text-black text-opacity-50">${
+            <div class="text-black text-opacity-80 text-sm mb-0.5">
+              <span class="font-mono">${item.name}</span>
+              <span class="text-sm text-black text-opacity-60">${
                 item.version ? '@' + item.version : ''
               }</span>
+              <span class="ml-2 text-black text-opacity-60">${stars}</span>
             </div>
 
             <!-- Description -->
