@@ -201,7 +201,7 @@ export default defineComponent({
   @apply text-black text-opacity-70 font-light text-sm;
 }
 .ac-option-version {
-  @apply text-gray-500 font-light text-sm;
+  @apply text-black text-opacity-70 font-light text-sm;
 }
 .myinput {
   @apply bg-opacity-5 placeholder-opacity-60 ring-0 border border-primary border-opacity-40 relative w-full py-3 pl-3 pr-16 text-xl font-light text-gray-700 rounded outline-none md:text-2xl;

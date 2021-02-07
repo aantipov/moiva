@@ -32,7 +32,9 @@
                 class="ml-1 link"
               >
                 <span>{{ lib.npmPackage.name }}</span>
-                <span class="text-gray-500">@{{ lib.npmPackage.version }}</span>
+                <span class="text-black text-opacity-60"
+                  >@{{ lib.npmPackage.version }}</span
+                >
               </a>
             </div>
 

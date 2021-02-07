@@ -12,7 +12,9 @@
         >{{ item.name }}</a
       >:
       {{ ' ' }}
-      <span class="text-base text-gray-800 sm:text-lg">{{ item.libsStr }}</span>
+      <span class="text-base text-black text-opacity-80 sm:text-lg">{{
+        item.libsStr
+      }}</span>
     </div>
   </div>
 </template>
