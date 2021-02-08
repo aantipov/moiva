@@ -12,6 +12,7 @@ const npmQueryParamName = 'npm';
 const githubQueryParamName = 'github';
 const delimiter = ' ';
 const encodedDelimiter = '+';
+let hasCanonicalUrlCheckProcessed = false;
 
 // Update the URL whenever a user selects/deselects a library
 export function updateUrl(libraries: LibraryT[]): void {
@@ -29,6 +30,12 @@ export function updateUrl(libraries: LibraryT[]): void {
   });
 
   const newHref = constructHref(npmPackagesNames, reposIds);
+
+  if (newHref !== originalHref && !hasCanonicalUrlCheckProcessed) {
+    // Let GoogleBot know the canonical URL
+    setCanonicalUrl(newHref);
+    hasCanonicalUrlCheckProcessed = true;
+  }
 
   if (newHref !== originalHref) {
     window.history.pushState(null, '', newHref);
@@ -97,6 +104,15 @@ export function setNoFollowTag(): void {
     metaRobots.content = 'noindex';
     document.head.appendChild(metaRobots);
   }
+}
+
+// Let Google Bot know the canonical URL of the page
+function setCanonicalUrl(url: string): void {
+  const link = document.createElement('link');
+  link.setAttribute('rel', 'canonical');
+  link.setAttribute('href', 'https://moiva.io' + url);
+  console.log('canonical', 'https://moiva.io' + url);
+  document.head.appendChild(link);
 }
 
 /**
