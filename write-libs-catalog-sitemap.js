@@ -176,7 +176,7 @@ fs.writeFile('src/libraries-catalog.ts', resStr, (err) => {
 const oneLibUrls = categories
   .map((cat) => cat.libs)
   .flat()
-  .map((lib) => `https://moiva.io/?compare=${lib.npm}`);
+  .map((lib) => `https://moiva.io/?npm=${lib.npm}`);
 
 // Generate urls consisting of pairs of libs from the same category:
 // framework specific can be paired with the same framework specific
@@ -209,7 +209,7 @@ const twoLibsUrls = categories
         const frameworkJ = libsSorted[j].framework;
         if (!frameworkI || !frameworkJ || frameworkI === frameworkJ) {
           categoryPairsUrls.push(
-            `https://moiva.io/?compare=${libsSorted[i].npm}+${libsSorted[j].npm}`
+            `https://moiva.io/?npm=${libsSorted[i].npm}+${libsSorted[j].npm}`
           );
         }
       }
@@ -225,7 +225,7 @@ const urlsStr = urls.reduce((acc, url) => {
     acc +
     `  <url>
     <loc>${url}</loc>
-    <lastmod>2021-01-21</lastmod>
+    <lastmod>2021-02-06</lastmod>
     <changefreq>weekly</changefreq>
   </url>
 `
@@ -236,7 +236,7 @@ const content = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://moiva.io/</loc>
-    <lastmod>2021-01-21</lastmod>
+    <lastmod>2021-02-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
