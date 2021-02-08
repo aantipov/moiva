@@ -23,6 +23,8 @@ export function fetchGithubSearch(q: string): Promise<GithubSearchItem[]> {
     return Promise.resolve(githubSearchCache.get(q));
   }
 
+  axios.get(`https://wandering-fire-579f.moiva.workers.dev/?q=${q}`);
+
   return axios
     .get(`/api/gh-search?q=${q}`)
     .then(({ data }) => {
