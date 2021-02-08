@@ -7,10 +7,12 @@ import { LibraryT } from '@/libraryApis';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import Swal from 'sweetalert2';
 
-const npmQueryParamName = 'compare';
+const npmQueryParamNameLegacy = 'compare';
+const npmQueryParamName = 'npm';
 const githubQueryParamName = 'github';
 const delimiter = ' ';
 const encodedDelimiter = '+';
+let hasCanonicalUrlCheckProcessed = false;
 
 // Update the URL whenever a user selects/deselects a library
 export function updateUrl(libraries: LibraryT[]): void {
@@ -29,6 +31,12 @@ export function updateUrl(libraries: LibraryT[]): void {
 
   const newHref = constructHref(npmPackagesNames, reposIds);
 
+  if (newHref !== originalHref && !hasCanonicalUrlCheckProcessed) {
+    // Let GoogleBot know the canonical URL
+    setCanonicalUrl(newHref);
+    hasCanonicalUrlCheckProcessed = true;
+  }
+
   if (newHref !== originalHref) {
     window.history.pushState(null, '', newHref);
   }
@@ -36,10 +44,13 @@ export function updateUrl(libraries: LibraryT[]): void {
 
 export function getNpmPackagesFromUrl(): string[] {
   const Url = new URL(window.location.href);
+  const npmPackagesFromLegacyParameter =
+    Url.searchParams.get(npmQueryParamNameLegacy)?.split(delimiter) || [];
   const npmPackages =
     Url.searchParams.get(npmQueryParamName)?.split(delimiter) || [];
+  const allPackages = [...npmPackagesFromLegacyParameter, ...npmPackages];
 
-  return [...new Set(npmPackages)];
+  return [...new Set(allPackages)];
 }
 
 export function getReposIdsFromUrl(): string[] {
@@ -84,15 +95,24 @@ export const numbersFormatter = new Intl.NumberFormat('en-US', {
 // Do not allow Google to index pages with >3 libraries in comparison
 // To avoid spamming Google and the user with useless links
 export function setNoFollowTag(): void {
-  // TODO: take into account Github projects
-  const Url = new URL(window.location.href);
-  const libs = Url.searchParams.get(npmQueryParamName)?.split(delimiter) || [];
-  if (libs.length > 3) {
+  const npmPackagesFromUrl = getNpmPackagesFromUrl();
+  const reposIdsFromUrl = getReposIdsFromUrl();
+
+  if (npmPackagesFromUrl.length + reposIdsFromUrl.length > 3) {
     const metaRobots = document.createElement('meta');
     metaRobots.name = 'robots';
     metaRobots.content = 'noindex';
     document.head.appendChild(metaRobots);
   }
+}
+
+// Let Google Bot know the canonical URL of the page
+function setCanonicalUrl(url: string): void {
+  const link = document.createElement('link');
+  link.setAttribute('rel', 'canonical');
+  link.setAttribute('href', 'https://moiva.io' + url);
+  console.log('canonical', 'https://moiva.io' + url);
+  document.head.appendChild(link);
 }
 
 /**
