@@ -6,6 +6,7 @@ import {
   ERROR_CODE_FETCH_GITHUB_REPO_FAILED,
 } from '@/constants';
 import { nanoid } from 'nanoid';
+import { catalogRepoIdToLib, catalogNpmToLib } from '@/libraries-catalog';
 
 const npmPackageCache = new Map();
 const githubCache = new Map();
@@ -54,28 +55,34 @@ function reportSentry(err: AxiosError, methodName: string): void {
 }
 
 export function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
+  const library = catalogNpmToLib[pkgName] || null;
+  const isNpmAByProduct = (library && library.isNpmAByProduct) || false;
+
   return fetchNpmPackage(pkgName).then((npmPackage) => {
     return fetchGithubRepo(npmPackage.repoId).then((repo) => ({
       id: nanoid(),
       repo,
       npmPackage,
-      // TODO: calculate it properly
-      isNpmAByProduct: false,
+      isNpmAByProduct,
       alias: getSeoLibName(repo.repoId),
     }));
   });
 }
 
 export function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
-  // TODO: Check Catolog and try to find a repo and get a corresponding npm package
-  // TODO: Fetch the npm package
-  return Promise.all([fetchGithubRepo(repoId), Promise.resolve(null)]).then(
+  const library = catalogRepoIdToLib[repoId] || null;
+  const isNpmAByProduct = (library && library.isNpmAByProduct) || false;
+  const npmPackageName = (library && library.npm) || null;
+  const fetchNpmPromise = npmPackageName
+    ? fetchNpmPackage(npmPackageName)
+    : Promise.resolve(null);
+
+  return Promise.all([fetchGithubRepo(repoId), fetchNpmPromise]).then(
     ([repo, npmPackage]) => ({
       id: nanoid(),
       repo,
       npmPackage,
-      // TODO: calculate it properly
-      isNpmAByProduct: false,
+      isNpmAByProduct,
       alias: getSeoLibName(repo.repoId),
     })
   );
