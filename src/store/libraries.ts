@@ -58,11 +58,18 @@ export const npmPackageToLibraryIdMap = computed<Record<string, string>>(() => {
     }, {} as Record<string, string>);
 });
 
+function hasLibraryADuplicate(library: LibraryT): boolean {
+  return librariesR.some(
+    ({ repo, npmPackage }) =>
+      repo.repoId === library.repo.repoId &&
+      npmPackage?.name === library.npmPackage?.name
+  );
+}
+
 /**
  * Add a library via a Github repository
  */
 export function addLibraryByRepo(repoId: string): Promise<void> {
-  // TODO: make sure there is only one pair (npmName, repoId)
   if (!repoId || reposLoading.includes(repoId)) {
     return Promise.resolve();
   }
@@ -71,7 +78,9 @@ export function addLibraryByRepo(repoId: string): Promise<void> {
 
   return fetchLibraryByRepo(repoId)
     .then((lib) => {
-      librariesR.push(lib);
+      if (!hasLibraryADuplicate(lib)) {
+        librariesR.push(lib);
+      }
     })
     .finally(() => reposLoading.splice(reposLoading.indexOf(repoId), 1));
 }
@@ -80,7 +89,6 @@ export function addLibraryByRepo(repoId: string): Promise<void> {
  * Add a library via a Npm package
  */
 export function addLibraryByNpmPackage(pkgName: string): Promise<void> {
-  // TODO: make sure there is only one pair (npmName, repoId)
   if (
     !pkgName ||
     npmPackagesNames.value.includes(pkgName) ||
@@ -93,7 +101,9 @@ export function addLibraryByNpmPackage(pkgName: string): Promise<void> {
 
   return fetchLibraryByNpm(pkgName)
     .then((lib) => {
-      librariesR.push(lib);
+      if (!hasLibraryADuplicate(lib)) {
+        librariesR.push(lib);
+      }
     })
     .finally(() =>
       npmPackagesLoading.splice(npmPackagesLoading.indexOf(pkgName), 1)
