@@ -143,23 +143,8 @@ export default defineComponent({
         className: 'ac',
 
         render(item) {
-          const divWrapper = document.createElement('div');
-
-          divWrapper.className = 'ac-option';
-
-          const stars = item.isNpm
-            ? ''
-            : `
-              <span>&#9733;${numbersFormatter.format(
-                item.stars as number
-              )}</span>
-          `;
-
-          const html = `
-          <!-- GitHub Icon -->
-          <div class="ac-option-icon h-6 w-6 ${
-            item.isNpm ? 'hidden' : 'block'
-          }">
+          const githubIcon = `
+          <div class="flex-shrink-0 w-6 h-6 ac-option-icon">
             <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <title>GitHub icon</title>
               <path
@@ -168,9 +153,10 @@ export default defineComponent({
               />
             </svg>
           </div>
+          `;
 
-          <!-- Npm Icon -->
-          <div class="ac-option-icon w-8 ${item.isNpm ? 'block' : 'hidden'}">
+          const npmIcon = `
+          <div class="flex-shrink-0 w-8 ac-option-icon">
             <svg
               id="npm"
               class="icon"
@@ -190,7 +176,24 @@ export default defineComponent({
               />
             </svg>
           </div>
+          `;
 
+          // I removed the icon for a while. Let's see if we need it.
+          const icon = item.isNpm ? npmIcon : githubIcon;
+
+          const divWrapper = document.createElement('div');
+
+          divWrapper.className = 'ac-option';
+
+          const stars = item.isNpm
+            ? ''
+            : `
+              <span>&#9733;${numbersFormatter.format(
+                item.stars as number
+              )}</span>
+          `;
+
+          const html = `
           <div>
             <!-- Title -->
             <div class="text-black text-opacity-80 text-sm mb-0.5">
@@ -206,7 +209,7 @@ export default defineComponent({
               item.description ? item.description : ''
             }</div>           
           </div>
-`;
+          `;
 
           divWrapper.innerHTML = html;
 
@@ -238,7 +241,7 @@ export default defineComponent({
   @apply rounded rounded-t-none border border-t-0 border-primary border-opacity-60;
 }
 .ac > .ac-option {
-  @apply flex items-center h-auto pr-5 py-1 sm:py-2 border-b border-primary border-opacity-20;
+  @apply flex items-center h-auto px-5 py-1 sm:py-2 border-b border-primary border-opacity-20;
 }
 .ac-option-icon {
   @apply mx-3 fill-current text-black text-opacity-60;
