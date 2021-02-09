@@ -104,16 +104,23 @@
       />
 
       <h1>
-        <span class="font-extrabold">&#8901;</span>Evaluate <br />
-        <span class="font-extrabold">&#8901;</span>Find alternatives <br />
-        <span class="font-extrabold">&#8901;</span>Compare <br />
+        <div class="lg:mb-2">
+          <span class="font-extrabold">&#8901;</span>Evaluate
+        </div>
+        <div class="lg:mb-2">
+          <span class="font-extrabold">&#8901;</span>Find alternatives
+        </div>
+        <div class="lg:mb-2">
+          <span class="font-extrabold">&#8901;</span>Compare
+        </div>
         GitHub projects and NPM packages
       </h1>
     </div>
 
     <!-- Body -->
     <div class="container px-3 mt-4 antialiased content sm:mx-auto sm:mt-6">
-      <div id="app"></div>
+      <!--    Min-width is used to take into account Popular libraries height to avoid layout shifts    -->
+      <div id="app" style="min-height: 564px"></div>
     </div>
 
     <!-- Footer -->
