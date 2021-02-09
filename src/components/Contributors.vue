@@ -12,7 +12,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import ContributorsChart from './ContributorsChart.vue';
-import { fetchContributors, YearContributorsT } from '@/apis';
+import { fetchContributors, ContributorsT } from '@/apis';
 import useChartApi from '@/composables/useChartApi';
 import { libraryToColorMap } from '@/store/librariesColors';
 import {
@@ -33,7 +33,7 @@ export default defineComponent({
       items,
       successItemsIds,
       failedItemsIds,
-    } = useChartApi<YearContributorsT[]>(
+    } = useChartApi<ContributorsT[]>(
       reposIds,
       isLoadingLibraries,
       fetchContributors

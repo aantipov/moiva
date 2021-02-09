@@ -1,16 +1,13 @@
 <template>
   <m-chart
-    title="Contributors per year"
+    title="Contributors quaterly"
     :is-loading="isLoading"
     :is-error="isError"
     :libs-names="reposIds"
     :failed-libs-names="failedReposIds"
     :chart-config="chartConfig"
   >
-    <p>
-      This chart shows a number of developers contributed to the repository per
-      year.
-    </p>
+    <p>A number of developers contributed to the repository per quater.</p>
     <p>Moiva uses data from Github to build the chart.</p>
   </m-chart>
 </template>
@@ -18,7 +15,7 @@
 <script lang="ts">
 import { defineComponent, toRefs, computed } from 'vue';
 import { ChartDataSets, ChartConfiguration } from 'chart.js';
-import { YearContributorsT } from '@/apis';
+import { ContributorsT } from '@/apis';
 import { enUS } from 'date-fns/locale';
 
 export default defineComponent({
@@ -30,7 +27,7 @@ export default defineComponent({
     reposIds: { type: Array as () => string[], required: true },
     failedReposIds: { type: Array as () => string[], required: true },
     reposContributors: {
-      type: Array as () => YearContributorsT[][],
+      type: Array as () => ContributorsT[][],
       required: true,
     },
     repoToColorMap: {
@@ -47,9 +44,10 @@ export default defineComponent({
         const [, repoName] = repoId.split('/');
         return {
           label: repoName,
+          pointRadius: 1,
           data: reposContributors.value[repoIndex].map(
-            ({ year, contributors }) => ({
-              x: year.toString(),
+            ({ month, contributors }) => ({
+              x: month,
               y: contributors,
             })
           ),

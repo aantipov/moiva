@@ -8,18 +8,12 @@ initSentry();
 const token = process.env.GITHUB_MOIVA_REST;
 
 export interface GithubContributorsResponseItemT {
-  author: string;
-  commits: number;
-  years: {
-    year: number;
-    additions: number;
-    deletions: number;
-    commits: number;
-  }[];
+  month: string;
+  contributors: number;
 }
 
 // Response Item per Contributor
-export interface ResponseItemT {
+interface ResponseItemT {
   author: {
     login: string;
     type: string;
@@ -76,42 +70,66 @@ export default (req: NowRequest, res: NowResponse): void => {
         return;
       }
 
-      const aggregatedData: GithubContributorsResponseItemT[] = (contributors as ResponseItemT[]).map(
-        ({ author, total, weeks }) => {
-          const currentYear = new Date().getFullYear();
-          const yearsObj = {} as Record<
-            string,
-            { additions: number; deletions: number; commits: number }
-          >;
-          let year = 2017;
-          while (year <= currentYear) {
-            yearsObj[year] = { additions: 0, deletions: 0, commits: 0 };
-            year++;
+      const startDate = new Date('2016-10-01');
+
+      function getQuaterMonthFromWeek(week: number): string {
+        const monthToQuarter = {
+          '01': '03',
+          '02': '03',
+          '03': '03',
+          '04': '06',
+          '05': '06',
+          '06': '06',
+          '07': '09',
+          '08': '09',
+          '09': '09',
+          '10': '12',
+          '11': '12',
+          '12': '12',
+        } as Record<string, string>;
+        const month = new Date(week * 1000).toISOString().slice(0, 7);
+        const quaterMonthNumber = monthToQuarter[month.slice(-2)];
+        const quaterMonth = month.slice(0, -2) + quaterMonthNumber;
+        return quaterMonth;
+      }
+
+      const quaterMonthsToContributorsMap = {} as Record<string, Set<string>>;
+
+      (contributors as ResponseItemT[]).forEach(({ author, weeks }) => {
+        weeks.forEach(({ w, c }) => {
+          if (new Date(w * 1000) < startDate) {
+            return;
           }
-          weeks.forEach(({ w, a, d, c }) => {
-            const year = new Date(w * 1000).getFullYear();
-            if (yearsObj[year]) {
-              yearsObj[year].additions += a;
-              yearsObj[year].deletions += d;
-              yearsObj[year].commits += c;
-            }
-          });
+          const quaterMonth = getQuaterMonthFromWeek(w);
+          if (!c) {
+            return;
+          }
+          if (!quaterMonthsToContributorsMap[quaterMonth]) {
+            quaterMonthsToContributorsMap[quaterMonth] = new Set();
+          }
+          quaterMonthsToContributorsMap[quaterMonth].add(author.login);
+        });
+      });
 
-          return {
-            author: author.login,
-            commits: total,
-            years: Object.entries(yearsObj)
-              .map(([year, item]) => ({
-                year: Number(year),
-                ...item,
-              }))
-              .sort((c1, c2) => c1.year - c2.year),
-          };
-        }
-      );
+      const val = Object.entries(quaterMonthsToContributorsMap)
+        .map(([month, contributorsSet]) => ({
+          month,
+          contributors: contributorsSet.size,
+        }))
+        .sort((a, b) => {
+          if (a.month < b.month) {
+            return -1;
+          }
+          if (a.month > b.month) {
+            return 1;
+          }
+          return 0;
+        })
+        // Don't include last incomplete quater
+        .slice(0, -1);
 
-      res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
-      res.status(200).json(aggregatedData);
+      res.setHeader('Cache-Control', 'max-age=0, s-maxage=432000'); // 5 days - 3600*24*5
+      res.status(200).json(val);
     })
     .catch((e) => {
       console.error('API GITHUB CONTRIBUTORS: ', e);
