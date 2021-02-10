@@ -72,7 +72,7 @@ export default (req: NowRequest, res: NowResponse): void => {
 
       const startDate = new Date('2016-10-01');
 
-      function getQuaterMonthFromWeek(week: number): string {
+      function getQuarterMonthFromDate(date: number): string {
         const monthToQuarter = {
           '01': '03',
           '02': '03',
@@ -87,49 +87,58 @@ export default (req: NowRequest, res: NowResponse): void => {
           '11': '12',
           '12': '12',
         } as Record<string, string>;
-        const month = new Date(week * 1000).toISOString().slice(0, 7);
-        const quaterMonthNumber = monthToQuarter[month.slice(-2)];
-        const quaterMonth = month.slice(0, -2) + quaterMonthNumber;
-        return quaterMonth;
+        const month = new Date(date).toISOString().slice(0, 7);
+        const quarterMonthNumber = monthToQuarter[month.slice(-2)];
+        const quarterMonth = month.slice(0, -2) + quarterMonthNumber;
+        return quarterMonth;
       }
 
-      const quaterMonthsToContributorsMap = {} as Record<string, Set<string>>;
+      function generateQuartersList(): string[] {
+        const lastQuarter = getQuarterMonthFromDate(Date.now());
+        const hundredDaysInMs = 1000 * 3600 * 24 * 100;
+        const quarters = new Set() as Set<string>;
+        let timestamp = startDate.getTime();
+        let quarter = getQuarterMonthFromDate(timestamp);
+
+        while (quarter !== lastQuarter) {
+          quarters.add(quarter);
+          timestamp += hundredDaysInMs;
+          quarter = getQuarterMonthFromDate(timestamp);
+        }
+
+        return [...quarters];
+      }
+
+      const quarterMonthsToContributorsMap = {} as Record<string, Set<string>>;
 
       (contributors as ResponseItemT[]).forEach(({ author, weeks }) => {
         weeks.forEach(({ w, c }) => {
           if (new Date(w * 1000) < startDate) {
             return;
           }
-          const quaterMonth = getQuaterMonthFromWeek(w);
+          const quarterMonth = getQuarterMonthFromDate(w * 1000);
           if (!c) {
             return;
           }
-          if (!quaterMonthsToContributorsMap[quaterMonth]) {
-            quaterMonthsToContributorsMap[quaterMonth] = new Set();
+          if (!quarterMonthsToContributorsMap[quarterMonth]) {
+            quarterMonthsToContributorsMap[quarterMonth] = new Set();
           }
-          quaterMonthsToContributorsMap[quaterMonth].add(author.login);
+          quarterMonthsToContributorsMap[quarterMonth].add(author.login);
         });
       });
 
-      const val = Object.entries(quaterMonthsToContributorsMap)
-        .map(([month, contributorsSet]) => ({
-          month,
-          contributors: contributorsSet.size,
-        }))
-        .sort((a, b) => {
-          if (a.month < b.month) {
-            return -1;
-          }
-          if (a.month > b.month) {
-            return 1;
-          }
-          return 0;
-        })
-        // Don't include last incomplete quater
-        .slice(0, -1);
+      // Fill the gaps (young repos can miss data for first years)
+      const quartersList = generateQuartersList();
+      const quartersContributorsList = quartersList.map((quarter) => ({
+        month: quarter,
+        contributors:
+          (quarterMonthsToContributorsMap[quarter] &&
+            quarterMonthsToContributorsMap[quarter].size) ||
+          0,
+      }));
 
       res.setHeader('Cache-Control', 'max-age=0, s-maxage=432000'); // 5 days - 3600*24*5
-      res.status(200).json(val);
+      res.status(200).json(quartersContributorsList);
     })
     .catch((e) => {
       console.error('API GITHUB CONTRIBUTORS: ', e);
