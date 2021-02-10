@@ -193,7 +193,7 @@ export function updateMetaDescription(libraries: LibraryT[]): void {
 
 function getSingleLibDescription(lib: LibForDescriptionT): string {
   const { alias, description, starsCount, age } = lib;
-  const seoDescrIntro = description
+  const seoDescrIntro = (description || '')
     .toLowerCase()
     .startsWith(alias.toLowerCase())
     ? description
