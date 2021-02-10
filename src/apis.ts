@@ -17,6 +17,8 @@ const githubContributorsCache = new Map();
 const gTrendsCache = new Map();
 const bphobiaCache = new Map();
 
+export type ContributorsT = GithubContributorsResponseItemT;
+
 export interface NpmDownloadT {
   downloads: number;
   month: string;
@@ -128,14 +130,9 @@ export function fetchRepoCommits(
     });
 }
 
-export interface YearContributorsT {
-  year: number;
-  contributors: number;
-}
-
 export function fetchContributors(
   repoId: string
-): Promise<YearContributorsT[] | null> {
+): Promise<GithubContributorsResponseItemT[] | null> {
   const [owner, name] = repoId.split('/');
 
   if (githubContributorsCache.get(repoId)) {
@@ -146,36 +143,7 @@ export function fetchContributors(
     .get<GithubContributorsResponseItemT[]>(
       `/api/gh-contributors?name=${name}&owner=${owner}`
     )
-    .then(({ data: contributors }) => {
-      const yearToContributorsMap = {} as Record<string, number>;
-
-      // Fill yearToContributorsMap with data
-      (contributors as GithubContributorsResponseItemT[]).forEach(
-        ({ years }) => {
-          years.forEach(({ year, commits }) => {
-            if (!yearToContributorsMap[year]) {
-              yearToContributorsMap[year] = 0;
-            }
-
-            if (commits) {
-              yearToContributorsMap[year] += 1;
-            }
-          });
-        }
-      );
-
-      // Convert yearToContributorsMap into array sorted by year
-      const contributorsByYear = Object.entries(yearToContributorsMap)
-        .map(([year, contributors]) => ({
-          year: Number(year),
-          contributors,
-        }))
-        .sort((c1, c2) => c1.year - c2.year);
-
-      githubContributorsCache.set(repoId, contributorsByYear);
-
-      return contributorsByYear;
-    })
+    .then(({ data }) => data)
     .catch((err) => {
       const errorCode =
         err?.response?.data?.error?.code || err?.response?.status || undefined;

@@ -111,7 +111,6 @@ function setCanonicalUrl(url: string): void {
   const link = document.createElement('link');
   link.setAttribute('rel', 'canonical');
   link.setAttribute('href', 'https://moiva.io' + url);
-  console.log('canonical', 'https://moiva.io' + url);
   document.head.appendChild(link);
 }
 

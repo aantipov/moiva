@@ -8,18 +8,12 @@ initSentry();
 const token = process.env.GITHUB_MOIVA_REST;
 
 export interface GithubContributorsResponseItemT {
-  author: string;
-  commits: number;
-  years: {
-    year: number;
-    additions: number;
-    deletions: number;
-    commits: number;
-  }[];
+  month: string;
+  contributors: number;
 }
 
 // Response Item per Contributor
-export interface ResponseItemT {
+interface ResponseItemT {
   author: {
     login: string;
     type: string;
@@ -76,42 +70,75 @@ export default (req: NowRequest, res: NowResponse): void => {
         return;
       }
 
-      const aggregatedData: GithubContributorsResponseItemT[] = (contributors as ResponseItemT[]).map(
-        ({ author, total, weeks }) => {
-          const currentYear = new Date().getFullYear();
-          const yearsObj = {} as Record<
-            string,
-            { additions: number; deletions: number; commits: number }
-          >;
-          let year = 2017;
-          while (year <= currentYear) {
-            yearsObj[year] = { additions: 0, deletions: 0, commits: 0 };
-            year++;
-          }
-          weeks.forEach(({ w, a, d, c }) => {
-            const year = new Date(w * 1000).getFullYear();
-            if (yearsObj[year]) {
-              yearsObj[year].additions += a;
-              yearsObj[year].deletions += d;
-              yearsObj[year].commits += c;
-            }
-          });
+      const startDate = new Date('2016-10-01');
 
-          return {
-            author: author.login,
-            commits: total,
-            years: Object.entries(yearsObj)
-              .map(([year, item]) => ({
-                year: Number(year),
-                ...item,
-              }))
-              .sort((c1, c2) => c1.year - c2.year),
-          };
+      function getQuarterMonthFromDate(date: number): string {
+        const monthToQuarter = {
+          '01': '03',
+          '02': '03',
+          '03': '03',
+          '04': '06',
+          '05': '06',
+          '06': '06',
+          '07': '09',
+          '08': '09',
+          '09': '09',
+          '10': '12',
+          '11': '12',
+          '12': '12',
+        } as Record<string, string>;
+        const month = new Date(date).toISOString().slice(0, 7);
+        const quarterMonthNumber = monthToQuarter[month.slice(-2)];
+        const quarterMonth = month.slice(0, -2) + quarterMonthNumber;
+        return quarterMonth;
+      }
+
+      function generateQuartersList(): string[] {
+        const lastQuarter = getQuarterMonthFromDate(Date.now());
+        const hundredDaysInMs = 1000 * 3600 * 24 * 100;
+        const quarters = new Set() as Set<string>;
+        let timestamp = startDate.getTime();
+        let quarter = getQuarterMonthFromDate(timestamp);
+
+        while (quarter !== lastQuarter) {
+          quarters.add(quarter);
+          timestamp += hundredDaysInMs;
+          quarter = getQuarterMonthFromDate(timestamp);
         }
-      );
 
-      res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
-      res.status(200).json(aggregatedData);
+        return [...quarters];
+      }
+
+      const quarterMonthsToContributorsMap = {} as Record<string, Set<string>>;
+
+      (contributors as ResponseItemT[]).forEach(({ author, weeks }) => {
+        weeks.forEach(({ w, c }) => {
+          if (new Date(w * 1000) < startDate) {
+            return;
+          }
+          const quarterMonth = getQuarterMonthFromDate(w * 1000);
+          if (!c) {
+            return;
+          }
+          if (!quarterMonthsToContributorsMap[quarterMonth]) {
+            quarterMonthsToContributorsMap[quarterMonth] = new Set();
+          }
+          quarterMonthsToContributorsMap[quarterMonth].add(author.login);
+        });
+      });
+
+      // Fill the gaps (young repos can miss data for first years)
+      const quartersList = generateQuartersList();
+      const quartersContributorsList = quartersList.map((quarter) => ({
+        month: quarter,
+        contributors:
+          (quarterMonthsToContributorsMap[quarter] &&
+            quarterMonthsToContributorsMap[quarter].size) ||
+          0,
+      }));
+
+      res.setHeader('Cache-Control', 'max-age=0, s-maxage=432000'); // 5 days - 3600*24*5
+      res.status(200).json(quartersContributorsList);
     })
     .catch((e) => {
       console.error('API GITHUB CONTRIBUTORS: ', e);
