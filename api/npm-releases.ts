@@ -1,12 +1,18 @@
 import { NowRequest, NowResponse } from '@vercel/node';
 import axios from 'axios';
-import { logRequest, initSentry, reportError } from './utils';
+import {
+  logRequest,
+  initSentry,
+  reportError,
+  getQuarterMonthFromDate,
+  getQuartersList,
+} from './utils';
 
 initSentry();
 
-export interface NpmPackagedDetailsResponseT {
-  count: number;
-  versions: [string, string][];
+export interface NpmReleasesResponseItemT {
+  month: string;
+  releases: number;
 }
 
 export default (req: NowRequest, res: NowResponse): void => {
@@ -25,18 +31,27 @@ export default (req: NowRequest, res: NowResponse): void => {
     .get(`https://registry.npmjs.com/${encodeURIComponent(pkg)}`)
     .then(({ data }) => {
       const { time } = data;
+      const quarterToReleasesCountMap: Record<string, number> = {};
 
-      const versions: [string, string][] = Object.entries(time)
+      Object.entries(time)
+        // filter out beta and rc releases
         .filter((item) => /^([0-9]+)\.([0-9]+)\.([0-9]+)$/.test(item[0]))
-        .map((item) => [item[0], (item[1] as string).slice(0, 4)]);
+        .map(([, date]) => getQuarterMonthFromDate(date as string))
+        .forEach((quarter) => {
+          if (!quarterToReleasesCountMap[quarter]) {
+            quarterToReleasesCountMap[quarter] = 0;
+          }
+          quarterToReleasesCountMap[quarter]++;
+        });
 
-      const result: NpmPackagedDetailsResponseT = {
-        count: versions.length,
-        versions,
-      };
+      const quartersList = getQuartersList();
+      const quartersReleasesList = quartersList.map((quarter) => ({
+        month: quarter,
+        releases: quarterToReleasesCountMap[quarter] || 0,
+      }));
 
       res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
-      res.status(200).json(result);
+      res.status(200).json(quartersReleasesList);
     })
     .catch((e) => {
       console.error('API NPM PACKAGE DETAILED: ', e);

@@ -30,7 +30,13 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" scoped>
-.icon-path {
+/* lightGray and gray classes can be set by parent components like Search */
+.root.lightGray .icon-path,
+.root.lightGray:hover .icon-path {
+  @apply fill-current text-black text-opacity-40;
+}
+.icon-path,
+.root.gray:hover .icon-path {
   @apply fill-current text-black text-opacity-60;
 }
 .root:hover .icon-path {

@@ -34,7 +34,7 @@ export default defineComponent({
       items,
       successItemsIds,
       failedItemsIds,
-    } = useChartApi<NpmPackageReleasesT>(
+    } = useChartApi<NpmPackageReleasesT[]>(
       npmPackagesNames,
       isLoadingLibraries,
       fetchNpmPackageReleases

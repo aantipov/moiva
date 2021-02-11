@@ -1,6 +1,6 @@
 <template>
   <m-chart
-    title="Contributors quaterly"
+    title="Contributors quarterly"
     :is-loading="isLoading"
     :is-error="isError"
     :libs-names="reposIds"
@@ -44,7 +44,6 @@ export default defineComponent({
         const [, repoName] = repoId.split('/');
         return {
           label: repoName,
-          pointRadius: 1,
           data: reposContributors.value[repoIndex].map(
             ({ month, contributors }) => ({
               x: month,

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <div class="text-sm text-black text-opacity-70">
+      <div class="text-sm text-black text-opacity-60">
         <span class="underline">Hint</span>: start with "<span
           class="text-black text-opacity-80"
           >n:</span
@@ -29,12 +29,22 @@
           autofocus
           autocomplete="off"
           class="myinput"
+          @focus="isFocused = true"
+          @blur="isFocused = false"
         />
         <span
           class="absolute right-0 z-10 flex items-center justify-end h-full py-3 pr-3 w-14"
         >
-          <NpmIcon v-if="isNpmSearch" class="w-14" />
-          <GithubIcon v-else class="w-8 h-8" />
+          <NpmIcon
+            v-if="isNpmSearch"
+            class="w-14"
+            :class="{ gray: isFocused, lightGray: !isFocused }"
+          />
+          <GithubIcon
+            v-else
+            class="w-8 h-8"
+            :class="{ gray: isFocused, lightGray: !isFocused }"
+          />
         </span>
       </div>
     </div>
@@ -80,6 +90,7 @@ export default defineComponent({
     const isNpmSearch = computed(() => searchValue.value.startsWith('n:'));
     const isError = ref(false);
     const isLoading = ref(false);
+    const isFocused = ref(true);
     let dataPromise: null | Promise<void> = null;
 
     onMounted(() => {
@@ -231,6 +242,7 @@ export default defineComponent({
       isNpmSearch,
       isLoading,
       isError,
+      isFocused,
     };
   },
 });
