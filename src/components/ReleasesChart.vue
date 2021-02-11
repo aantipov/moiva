@@ -1,6 +1,6 @@
 <template>
   <m-chart
-    title="NPM Releases per year"
+    title="NPM Releases quarterly"
     :is-loading="isLoading"
     :is-error="isError"
     :libs-names="packagesNames"
@@ -28,7 +28,7 @@ export default defineComponent({
     packagesNames: { type: Array as () => string[], required: true },
     failedPackagesNames: { type: Array as () => string[], required: true },
     packagesReleases: {
-      type: Array as () => NpmPackageReleasesT[],
+      type: Array as () => NpmPackageReleasesT[][],
       required: true,
     },
     packageToColorMap: {
@@ -45,9 +45,9 @@ export default defineComponent({
     const datasets = computed<ChartDataSets[]>(() =>
       packagesNames.value.map((packageName, packageIndex) => ({
         label: packageName,
-        data: Object.entries(
-          packagesReleases.value[packageIndex]
-        ).map(([year, num]) => ({ x: year, y: num })),
+        data: packagesReleases.value[
+          packageIndex
+        ].map(({ month, releases }) => ({ x: month, y: releases })),
         backgroundColor: packageToColorMap.value[packageName],
         borderColor: packageToColorMap.value[packageName],
       }))

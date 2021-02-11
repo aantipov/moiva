@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
 import * as Sentry from '@sentry/browser';
-import { NpmPackagedDetailsResponseT } from '../api/npm-package-detailed';
+import { NpmReleasesResponseItemT } from '../api/npm-package-detailed';
 import {
   ERROR_CODE_GITHUB_CONTRIBUTORS_NEEDS_PROCESSING,
   ERROR_CODE_GITHUB_COMMITS_NEEDS_PROCESSING,
@@ -18,6 +18,7 @@ const gTrendsCache = new Map();
 const bphobiaCache = new Map();
 
 export type ContributorsT = GithubContributorsResponseItemT;
+export type NpmPackageReleasesT = NpmReleasesResponseItemT;
 
 export interface NpmDownloadT {
   downloads: number;
@@ -143,7 +144,10 @@ export function fetchContributors(
     .get<GithubContributorsResponseItemT[]>(
       `/api/gh-contributors?name=${name}&owner=${owner}`
     )
-    .then(({ data }) => data)
+    .then(({ data }) => {
+      githubContributorsCache.set(repoId, data);
+      return data;
+    })
     .catch((err) => {
       const errorCode =
         err?.response?.data?.error?.code || err?.response?.status || undefined;
@@ -206,40 +210,19 @@ export function fetchBundlephobiaData(
     });
 }
 
-export type NpmPackageReleasesT = Record<string, number>;
-
 export function fetchNpmPackageReleases(
   pkg: string
-): Promise<NpmPackageReleasesT | null> {
+): Promise<NpmPackageReleasesT[] | null> {
   if (npmPackageVersionsCache.get(pkg)) {
     return Promise.resolve(npmPackageVersionsCache.get(pkg));
   }
 
   return axios
     .get(`/api/npm-package-detailed?pkg=${pkg}`)
-    .then(({ data }: { data: NpmPackagedDetailsResponseT }) => {
-      // Calc release number per year
-      const aggregatedMap = data.versions.reduce((acc, [, year]) => {
-        if (acc[year]) {
-          acc[year]++;
-        } else {
-          acc[year] = 1;
-        }
-        return acc;
-      }, {} as NpmPackageReleasesT);
+    .then(({ data }) => {
+      npmPackageVersionsCache.set(pkg, data);
 
-      // Strip all data earlier 2017 and make sure every year is present
-      const res: Record<string, number> = {};
-      let year = 2017;
-      const currentYear = new Date().getFullYear();
-      while (year <= currentYear) {
-        res[year] = aggregatedMap[year] || 0;
-        year++;
-      }
-
-      npmPackageVersionsCache.set(pkg, res);
-
-      return res;
+      return data;
     })
     .catch((err) => {
       reportSentry(err, 'fetchNpmPackageReleases');

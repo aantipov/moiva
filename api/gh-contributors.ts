@@ -1,6 +1,12 @@
 import { NowRequest, NowResponse } from '@vercel/node';
 import axios from 'axios';
-import { logRequest, initSentry, reportError } from './utils';
+import {
+  logRequest,
+  initSentry,
+  reportError,
+  getQuartersList,
+  getQuarterMonthFromDate,
+} from './utils';
 import { ERROR_CODE_GITHUB_CONTRIBUTORS_NEEDS_PROCESSING } from '../src/constants';
 
 initSentry();
@@ -71,44 +77,6 @@ export default (req: NowRequest, res: NowResponse): void => {
       }
 
       const startDate = new Date('2016-10-01');
-
-      function getQuarterMonthFromDate(date: number): string {
-        const monthToQuarter = {
-          '01': '03',
-          '02': '03',
-          '03': '03',
-          '04': '06',
-          '05': '06',
-          '06': '06',
-          '07': '09',
-          '08': '09',
-          '09': '09',
-          '10': '12',
-          '11': '12',
-          '12': '12',
-        } as Record<string, string>;
-        const month = new Date(date).toISOString().slice(0, 7);
-        const quarterMonthNumber = monthToQuarter[month.slice(-2)];
-        const quarterMonth = month.slice(0, -2) + quarterMonthNumber;
-        return quarterMonth;
-      }
-
-      function generateQuartersList(): string[] {
-        const lastQuarter = getQuarterMonthFromDate(Date.now());
-        const hundredDaysInMs = 1000 * 3600 * 24 * 100;
-        const quarters = new Set() as Set<string>;
-        let timestamp = startDate.getTime();
-        let quarter = getQuarterMonthFromDate(timestamp);
-
-        while (quarter !== lastQuarter) {
-          quarters.add(quarter);
-          timestamp += hundredDaysInMs;
-          quarter = getQuarterMonthFromDate(timestamp);
-        }
-
-        return [...quarters];
-      }
-
       const quarterMonthsToContributorsMap = {} as Record<string, Set<string>>;
 
       (contributors as ResponseItemT[]).forEach(({ author, weeks }) => {
@@ -128,7 +96,7 @@ export default (req: NowRequest, res: NowResponse): void => {
       });
 
       // Fill the gaps (young repos can miss data for first years)
-      const quartersList = generateQuartersList();
+      const quartersList = getQuartersList();
       const quartersContributorsList = quartersList.map((quarter) => ({
         month: quarter,
         contributors:
