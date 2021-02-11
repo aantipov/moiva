@@ -45,7 +45,6 @@ export default (req: NowRequest, res: NowResponse): void => {
         });
 
       const quartersList = getQuartersList();
-      console.log('LIST', quartersList);
       const quartersReleasesList = quartersList.map((quarter) => ({
         month: quarter,
         releases: quarterToReleasesCountMap[quarter] || 0,
