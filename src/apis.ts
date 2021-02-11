@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
 import * as Sentry from '@sentry/browser';
-import { NpmReleasesResponseItemT } from '../api/npm-package-detailed';
+import { NpmReleasesResponseItemT } from '../api/npm-releases';
 import {
   ERROR_CODE_GITHUB_CONTRIBUTORS_NEEDS_PROCESSING,
   ERROR_CODE_GITHUB_COMMITS_NEEDS_PROCESSING,
@@ -10,7 +10,7 @@ import { CommitsResponseItemT } from '../api/gh-commits';
 import { GithubContributorsResponseItemT } from '../api/gh-contributors';
 
 const npmDownloadsCache = new Map();
-const npmPackageVersionsCache = new Map();
+const npmReleasesCache = new Map();
 const githubLanguagesCache = new Map();
 const githubCommitsCache = new Map();
 const githubContributorsCache = new Map();
@@ -213,14 +213,14 @@ export function fetchBundlephobiaData(
 export function fetchNpmPackageReleases(
   pkg: string
 ): Promise<NpmPackageReleasesT[] | null> {
-  if (npmPackageVersionsCache.get(pkg)) {
-    return Promise.resolve(npmPackageVersionsCache.get(pkg));
+  if (npmReleasesCache.get(pkg)) {
+    return Promise.resolve(npmReleasesCache.get(pkg));
   }
 
   return axios
-    .get(`/api/npm-package-detailed?pkg=${pkg}`)
+    .get(`/api/npm-releases?pkg=${pkg}`)
     .then(({ data }) => {
-      npmPackageVersionsCache.set(pkg, data);
+      npmReleasesCache.set(pkg, data);
 
       return data;
     })
