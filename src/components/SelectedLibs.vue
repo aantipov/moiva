@@ -47,7 +47,7 @@
                 {{ lib.repo.repoId }}
               </a>
               <a
-                :href="lib.repo"
+                :href="getGithubLink(lib.repo.repoId)"
                 target="_blank"
                 class="flex inline-block ml-2 w-9"
               >
