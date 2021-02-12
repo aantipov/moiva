@@ -17,6 +17,7 @@
         <div class="flex justify-between">
           <!-- Name -->
           <div class="mb-1">
+            <!-- NPM -->
             <div v-if="lib.npmPackage" class="flex items-center mb-1">
               <a
                 :href="getNpmLink(lib.npmPackage.name)"
@@ -38,6 +39,7 @@
               </a>
             </div>
 
+            <!-- GitHub -->
             <div class="flex items-center">
               <a
                 :href="getGithubLink(lib.repo.repoId)"
@@ -58,9 +60,6 @@
 
           <!--  Links  -->
           <div class="flex">
-            <!-- Desktop -->
-            <LibExternalLinks :library="lib" class="hidden sm:flex" />
-
             <a
               class="flex items-center ml-3"
               :href="getRemainedLibsLink(lib)"
@@ -71,8 +70,7 @@
           </div>
         </div>
 
-        <!-- Mobile -->
-        <LibExternalLinks :library="lib" class="my-2 sm:hidden" />
+        <LibExternalLinks :library="lib" class="my-1" />
 
         <div class="text-sm text-black text-opacity-70">
           <div class="flex">

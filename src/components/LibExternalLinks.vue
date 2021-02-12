@@ -1,5 +1,12 @@
 <template>
-  <div class="flex items-center space-x-3">
+  <div class="flex items-center h-5 space-x-3">
+    <object
+      v-if="hasNpm"
+      :id="'badge-' + npm"
+      :data="snykUrl"
+      type="image/svg+xml"
+    ></object>
+
     <a
       v-if="thoughtworksUrl"
       :href="thoughtworksUrl"
@@ -42,17 +49,25 @@ export default defineComponent({
 
   setup(props) {
     const { library } = toRefs(props);
+    const npm = computed(() => library.value.npmPackage?.name || '');
+    const snykUrl = computed(() =>
+      library.value.npmPackage
+        ? `https://snyk-widget.herokuapp.com/badge/npm/${encodeURIComponent(
+            npm.value
+          )}/badge.svg`
+        : ''
+    );
 
     return {
       hasNpm: computed(() => !!library.value.npmPackage),
-      bundlephobiaUrl: computed(() =>
-        getBundlephobiaUrl((library.value.npmPackage as NpmPackageT).name)
-      ),
+      bundlephobiaUrl: computed(() => getBundlephobiaUrl(npm.value)),
       thoughtworksUrl: computed<string | null>(() => {
         const tradarItem =
           repoToTechRadarMap[library.value.repo.repoId] || null;
         return tradarItem && tradarItem.link;
       }),
+      snykUrl,
+      npm,
     };
   },
 });
