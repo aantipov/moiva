@@ -9,7 +9,7 @@
 
       <div
         v-else
-        class="relative w-full mx-auto bg-primary lg:w-9/12 xl:w-2/4 bg-opacity-5"
+        class="relative w-full mx-auto lg:w-9/12 xl:w-2/4"
         style="min-height: 200px"
       >
         <m-loader />
