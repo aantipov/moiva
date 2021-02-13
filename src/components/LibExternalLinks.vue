@@ -5,6 +5,7 @@
       :id="'badge-' + npm"
       :data="snykUrl"
       type="image/svg+xml"
+      style="max-width: 131px; max-height: 20px"
     ></object>
 
     <img
@@ -17,7 +18,7 @@
     />
 
     <img
-      v-if="hasNpm && library.npmPackage.hasOtherTypes"
+      v-else-if="hasNpm && library.npmPackage.hasOtherTypes"
       src="/images/ts-dt.svg"
       height="20"
       width="20"
