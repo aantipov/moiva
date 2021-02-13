@@ -86,6 +86,12 @@ export default (req: NowRequest, res: NowResponse): void => {
       res.status(200).json(result);
     })
     .catch((e) => {
+      if (pkg.startsWith('@types') && e.response && e.response.status === 401) {
+        // It's normal to get 401 for non-existent types package
+        res.status(404).json({ error: 'Not Found' });
+        return;
+      }
+
       console.error('API NPM PACKAGE: ', e);
       reportError(e);
 

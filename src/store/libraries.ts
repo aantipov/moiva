@@ -127,7 +127,13 @@ export function setLibraryOtherTypesFlag(
   );
 
   if (library) {
-    (library.npmPackage as NpmPackageT).hasOtherTypes = true;
-    (library.npmPackage as NpmPackageT).otherTypesPackageName = npmTypesPackageName;
+    // For some reason setting hasOtherTypes and otherTypesPackageName props directly doesn't work,
+    // (works fine in development, but is not being rendered in production)
+    // so we are redefining the npmPackage
+    library.npmPackage = {
+      ...(library.npmPackage as NpmPackageT),
+      hasOtherTypes: true,
+      otherTypesPackageName: npmTypesPackageName,
+    };
   }
 }
