@@ -33,6 +33,7 @@ export interface NpmPackageT {
   repoName: string;
   version: string;
   dependencies: string[];
+  hasBuiltinTypes: boolean;
 }
 
 export interface LibraryT {
