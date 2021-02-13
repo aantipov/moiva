@@ -126,6 +126,10 @@ export function setLibraryOtherTypesFlag(
     (lib) => lib.npmPackage && lib.npmPackage.name === npmPackageName
   );
 
+  if (!library) {
+    console.log('Couldnt find the library for ', npmPackageName);
+  }
+
   if (library) {
     (library.npmPackage as NpmPackageT).hasOtherTypes = true;
     (library.npmPackage as NpmPackageT).otherTypesPackageName = npmTypesPackageName;
