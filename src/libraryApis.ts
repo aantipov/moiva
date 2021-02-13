@@ -124,7 +124,11 @@ function fetchNpmPackage(packageName: string): Promise<NpmPackageT> {
 
   return fetchPackageFunc(packageName)
     .then((data) => {
-      npmPackageCache.set(packageName, data);
+      npmPackageCache.set(packageName, {
+        ...data,
+        hasOtherTypes: false,
+        otherTypesPackageName: '',
+      });
 
       if (!data.hasBuiltinTypes) {
         const typesPackageName = getTypesPackageName(data.name);

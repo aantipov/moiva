@@ -122,18 +122,21 @@ export function setLibraryOtherTypesFlag(
   npmPackageName: string,
   npmTypesPackageName: string
 ): void {
-  const library = librariesR.find(
+  const libraryIndex = librariesR.findIndex(
     (lib) => lib.npmPackage && lib.npmPackage.name === npmPackageName
   );
 
-  if (library) {
+  if (libraryIndex !== -1) {
     // For some reason setting hasOtherTypes and otherTypesPackageName props directly doesn't work,
     // (works fine in development, but is not being rendered in production)
     // so we are redefining the npmPackage
-    library.npmPackage = {
-      ...(library.npmPackage as NpmPackageT),
-      hasOtherTypes: true,
-      otherTypesPackageName: npmTypesPackageName,
+    librariesR[libraryIndex] = {
+      ...librariesR[libraryIndex],
+      npmPackage: {
+        ...(librariesR[libraryIndex].npmPackage as NpmPackageT),
+        hasOtherTypes: true,
+        otherTypesPackageName: npmTypesPackageName,
+      },
     };
   }
 }
