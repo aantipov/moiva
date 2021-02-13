@@ -129,5 +129,6 @@ export function setLibraryOtherTypesFlag(
   if (library) {
     (library.npmPackage as NpmPackageT).hasOtherTypes = true;
     (library.npmPackage as NpmPackageT).otherTypesPackageName = npmTypesPackageName;
+    console.log('Library', library.npmPackage);
   }
 }
