@@ -127,7 +127,8 @@ export function setLibraryOtherTypesFlag(
   );
 
   if (!library) {
-    console.log('Couldnt find the library for ', npmPackageName);
+    console.log(`Couldnt find the library for "${npmPackageName}"`);
+    console.log('libraries', [...librariesR]);
   }
 
   if (library) {
