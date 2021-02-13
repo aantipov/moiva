@@ -5,6 +5,7 @@
       :id="'badge-' + npm"
       :data="snykUrl"
       type="image/svg+xml"
+      style="max-width: 131px; max-height: 20px"
     ></object>
 
     <img
@@ -14,6 +15,15 @@
       width="20"
       alt="TypeScript icon, indicating that this package has built-in type declarations"
       title="This package contains built-in TypeScript declarations"
+    />
+
+    <img
+      v-else-if="hasNpm && library.npmPackage.hasOtherTypes"
+      src="/images/ts-dt.svg"
+      height="20"
+      width="20"
+      :alt="`DefinitelyTyped icon, indicating that this package has TypeScript declarations provided by the separate ${library.npmPackage.otherTypesPackageName} package`"
+      :title="`This package has TypeScript declarations provided by ${library.npmPackage.otherTypesPackageName}`"
     />
 
     <a
