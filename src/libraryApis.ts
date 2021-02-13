@@ -7,6 +7,7 @@ import {
 } from '@/constants';
 import { nanoid } from 'nanoid';
 import { catalogRepoIdToLib, catalogNpmToLib } from '@/libraries-catalog';
+import { setLibraryOtherTypesFlag } from './store/libraries';
 
 const npmPackageCache = new Map();
 const githubCache = new Map();
@@ -34,6 +35,8 @@ export interface NpmPackageT {
   version: string;
   dependencies: string[];
   hasBuiltinTypes: boolean;
+  hasOtherTypes: boolean;
+  otherTypesPackageName?: string;
 }
 
 export interface LibraryT {
@@ -108,6 +111,10 @@ function fetchGithubRepo(repoId: string): Promise<RepoT> {
     });
 }
 
+function getTypesPackageName(npmPackageName: string): string {
+  return '@types/' + npmPackageName.replace('@', '').replace('/', '__');
+}
+
 function fetchNpmPackage(packageName: string): Promise<NpmPackageT> {
   const fetchPackageFunc = fetchNpmJSPackage; // Another alternative: fetchNpmsIOPackage;
 
@@ -117,7 +124,15 @@ function fetchNpmPackage(packageName: string): Promise<NpmPackageT> {
 
   return fetchPackageFunc(packageName)
     .then((data) => {
+      console.log('PACKAGE', data);
       npmPackageCache.set(packageName, data);
+
+      if (!data.hasBuiltinTypes) {
+        const typesPackageName = getTypesPackageName(data.name);
+        fetchPackageFunc(typesPackageName).then(() => {
+          setLibraryOtherTypesFlag(packageName, typesPackageName);
+        });
+      }
 
       return data;
     })

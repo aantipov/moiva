@@ -16,6 +16,15 @@
       title="This package contains built-in TypeScript declarations"
     />
 
+    <img
+      v-if="hasNpm && library.npmPackage.hasOtherTypes"
+      src="/images/ts-dt.svg"
+      height="20"
+      width="20"
+      :alt="`DefinitelyTyped icon, indicating that this package has TypeScript declarations provided by the separate ${library.npmPackage.otherTypesPackageName} package`"
+      :title="`This package has TypeScript declarations provided by ${library.npmPackage.otherTypesPackageName}`"
+    />
+
     <a
       v-if="thoughtworksUrl"
       :href="thoughtworksUrl"
