@@ -75,13 +75,11 @@ export function addLibraryByRepo(repoId: string): Promise<void> {
   }
 
   reposLoading.push(repoId);
-  console.log(`fetch repo "${repoId}"`);
 
   return fetchLibraryByRepo(repoId)
     .then((lib) => {
       if (!hasLibraryADuplicate(lib)) {
         librariesR.push(lib);
-        console.log(`add library repo "${repoId}"`, lib);
       }
     })
     .finally(() => reposLoading.splice(reposLoading.indexOf(repoId), 1));
@@ -100,13 +98,11 @@ export function addLibraryByNpmPackage(pkgName: string): Promise<void> {
   }
 
   npmPackagesLoading.push(pkgName);
-  console.log(`fetch npm "${pkgName}"`);
 
   return fetchLibraryByNpm(pkgName)
     .then((lib) => {
       if (!hasLibraryADuplicate(lib)) {
         librariesR.push(lib);
-        console.log(`add library npm "${pkgName}"`, lib);
       }
     })
     .finally(() =>
@@ -130,14 +126,8 @@ export function setLibraryOtherTypesFlag(
     (lib) => lib.npmPackage && lib.npmPackage.name === npmPackageName
   );
 
-  if (!library) {
-    console.log(`Couldnt find the library for "${npmPackageName}"`);
-    console.log('libraries', [...librariesR]);
-  }
-
   if (library) {
     (library.npmPackage as NpmPackageT).hasOtherTypes = true;
     (library.npmPackage as NpmPackageT).otherTypesPackageName = npmTypesPackageName;
-    console.log('Library', library.npmPackage);
   }
 }

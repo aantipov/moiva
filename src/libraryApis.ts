@@ -58,19 +58,35 @@ function reportSentry(err: AxiosError, methodName: string): void {
   });
 }
 
+function getTypesPackageName(npmPackageName: string): string {
+  return '@types/' + npmPackageName.replace('@', '').replace('/', '__');
+}
+
 export function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
   const library = catalogNpmToLib[pkgName] || null;
   const isNpmAByProduct = (library && library.isNpmAByProduct) || false;
 
-  return fetchNpmPackage(pkgName).then((npmPackage) => {
-    return fetchGithubRepo(npmPackage.repoId).then((repo) => ({
-      id: nanoid(),
-      repo,
-      npmPackage,
-      isNpmAByProduct,
-      alias: getSeoLibName(repo.repoId),
-    }));
-  });
+  return fetchNpmPackage(pkgName)
+    .then((npmPackage) => {
+      return fetchGithubRepo(npmPackage.repoId).then((repo) => ({
+        id: nanoid(),
+        repo,
+        npmPackage,
+        isNpmAByProduct,
+        alias: getSeoLibName(repo.repoId),
+      }));
+    })
+    .then((library) => {
+      // Handle fetching TypeScript support information
+      if (!library.npmPackage.hasBuiltinTypes) {
+        const typesPackageName = getTypesPackageName(pkgName);
+        fetchNpmPackage(typesPackageName).then(() => {
+          setLibraryOtherTypesFlag(pkgName, typesPackageName);
+        });
+      }
+
+      return library;
+    });
 }
 
 export function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
@@ -81,15 +97,25 @@ export function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
     ? fetchNpmPackage(npmPackageName)
     : Promise.resolve(null);
 
-  return Promise.all([fetchGithubRepo(repoId), fetchNpmPromise]).then(
-    ([repo, npmPackage]) => ({
+  return Promise.all([fetchGithubRepo(repoId), fetchNpmPromise])
+    .then(([repo, npmPackage]) => ({
       id: nanoid(),
       repo,
       npmPackage,
       isNpmAByProduct,
       alias: getSeoLibName(repo.repoId),
-    })
-  );
+    }))
+    .then((library) => {
+      // Handle fetching TypeScript support information
+      if (library.npmPackage && !library.npmPackage.hasBuiltinTypes) {
+        const typesPackageName = getTypesPackageName(npmPackageName as string);
+        fetchNpmPackage(typesPackageName).then(() => {
+          setLibraryOtherTypesFlag(npmPackageName as string, typesPackageName);
+        });
+      }
+
+      return library;
+    });
 }
 
 function fetchGithubRepo(repoId: string): Promise<RepoT> {
@@ -111,10 +137,6 @@ function fetchGithubRepo(repoId: string): Promise<RepoT> {
     });
 }
 
-function getTypesPackageName(npmPackageName: string): string {
-  return '@types/' + npmPackageName.replace('@', '').replace('/', '__');
-}
-
 function fetchNpmPackage(packageName: string): Promise<NpmPackageT> {
   const fetchPackageFunc = fetchNpmJSPackage; // Another alternative: fetchNpmsIOPackage;
 
@@ -129,13 +151,6 @@ function fetchNpmPackage(packageName: string): Promise<NpmPackageT> {
         hasOtherTypes: false,
         otherTypesPackageName: '',
       });
-
-      if (!data.hasBuiltinTypes) {
-        const typesPackageName = getTypesPackageName(data.name);
-        fetchPackageFunc(typesPackageName).then(() => {
-          setLibraryOtherTypesFlag(packageName, typesPackageName);
-        });
-      }
 
       return data;
     })
