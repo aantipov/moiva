@@ -19,7 +19,7 @@
     <!--  Selected Libraries and Charts    -->
     <div v-else>
       <SelectedLibs
-        class="relative w-full mx-auto mt-4 mb-2 lg:w-9/12 xl:w-2/4 divide-y divide-primary divide-opacity-40"
+        class="relative w-full mx-auto mt-4 mb-2 lg:w-9/12 xl:w-2/4"
       />
 
       <!-- Charts -->

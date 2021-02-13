@@ -113,3 +113,7 @@ export function addLibraryByNpmPackage(pkgName: string): Promise<void> {
 export function removeLibrary(libraryId: string): void {
   librariesR.splice(librariesIds.value.indexOf(libraryId), 1);
 }
+
+export function removeAllLibraries(): void {
+  librariesR.length = 0;
+}
