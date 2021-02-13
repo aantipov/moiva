@@ -7,6 +7,15 @@
       type="image/svg+xml"
     ></object>
 
+    <img
+      v-if="hasNpm && library.npmPackage.hasBuiltinTypes"
+      src="/images/ts.svg"
+      height="20"
+      width="20"
+      alt="TypeScript icon, indicating that this package has built-in type declarations"
+      title="This package contains built-in TypeScript declarations"
+    />
+
     <a
       v-if="thoughtworksUrl"
       :href="thoughtworksUrl"

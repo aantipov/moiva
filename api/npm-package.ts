@@ -29,6 +29,8 @@ export default (req: NowRequest, res: NowResponse): void => {
           license,
           version,
           repository,
+          typings,
+          types,
         },
       } = resp;
 
@@ -77,6 +79,7 @@ export default (req: NowRequest, res: NowResponse): void => {
         license,
         version,
         repo: repoUrl,
+        hasBuiltinTypes: !!typings || !!types,
       };
 
       res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
