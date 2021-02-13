@@ -31,7 +31,7 @@
 import { defineComponent, toRefs, computed } from 'vue';
 import BundlephobiaIcon from './icons/Bundlephobia.vue';
 import ThoughtworksIcon from './icons/Thoughtworks.vue';
-import { LibraryT, NpmPackageT } from '@/libraryApis';
+import { LibraryT } from '@/libraryApis';
 import { repoToTechRadarMap } from '../../techradar.config';
 import { getBundlephobiaUrl } from '@/utils';
 
