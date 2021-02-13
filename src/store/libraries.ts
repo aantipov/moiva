@@ -75,11 +75,13 @@ export function addLibraryByRepo(repoId: string): Promise<void> {
   }
 
   reposLoading.push(repoId);
+  console.log(`fetch repo "${repoId}"`);
 
   return fetchLibraryByRepo(repoId)
     .then((lib) => {
       if (!hasLibraryADuplicate(lib)) {
         librariesR.push(lib);
+        console.log(`add library repo "${repoId}"`, lib);
       }
     })
     .finally(() => reposLoading.splice(reposLoading.indexOf(repoId), 1));
@@ -98,11 +100,13 @@ export function addLibraryByNpmPackage(pkgName: string): Promise<void> {
   }
 
   npmPackagesLoading.push(pkgName);
+  console.log(`fetch npm "${pkgName}"`);
 
   return fetchLibraryByNpm(pkgName)
     .then((lib) => {
       if (!hasLibraryADuplicate(lib)) {
         librariesR.push(lib);
+        console.log(`add library npm "${pkgName}"`, lib);
       }
     })
     .finally(() =>
