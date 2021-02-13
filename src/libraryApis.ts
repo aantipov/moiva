@@ -36,7 +36,7 @@ export interface NpmPackageT {
   dependencies: string[];
   hasBuiltinTypes: boolean;
   hasOtherTypes: boolean;
-  otherTypesPackageName?: string;
+  otherTypesPackageName: string;
 }
 
 export interface LibraryT {
