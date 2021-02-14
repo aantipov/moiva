@@ -11,9 +11,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
+import { defineComponent, computed, watchEffect } from 'vue';
 import NpmDownloadsChart from './NpmDownloadsChart.vue';
 import { fetchNpmDownloads, NpmDownloadT } from '@/apis';
+import { chartsVisibility } from '@/store/chartsVisibility';
 import useChartApi from '@/composables/useChartApi';
 import { libraryToColorMap } from '@/store/librariesColors';
 import {
@@ -39,6 +40,10 @@ export default defineComponent({
       isLoadingLibraries,
       fetchNpmDownloads
     );
+
+    watchEffect(() => {
+      chartsVisibility.npmDownloads = npmPackagesNames.value.length > 0;
+    });
 
     return {
       isLoading: computed(() => isLoadingLibraries.value || isLoading.value),

@@ -9,7 +9,10 @@
     @apply w-10/12 mx-auto mt-5 mb-2 text-2xl font-normal leading-normal text-center text-black text-opacity-80 sm:mt-8 sm:w-full sm:text-3xl;
   }
   h2 {
-    @apply mt-5 mb-2 text-xl font-normal leading-normal text-center text-black text-opacity-80 sm:mb-0;
+    @apply mt-8 mb-2 text-2xl font-semibold leading-normal text-center text-black text-opacity-80 sm:mb-3;
+  }
+  h3 {
+    @apply text-xl font-normal text-black text-opacity-80;
   }
   p,
   .p {

@@ -23,17 +23,39 @@
       />
 
       <!-- Charts -->
-      <div class="grid grid-cols-12 gap-4">
-        <NpmDownloads class="col-span-12 xl:col-span-6" />
-        <GoogleTrends class="col-span-12 xl:col-span-6" />
-        <TechRadar class="col-span-12 md:col-span-6 xl:col-span-3" />
-        <Releases class="col-span-12 md:col-span-6 xl:col-span-3" />
-        <Contributors class="col-span-12 md:col-span-6 xl:col-span-3" />
-        <Commits class="col-span-12 md:col-span-6 xl:col-span-3" />
-        <DevelopersUsage class="col-span-12 md:col-span-6 xl:col-span-3" />
-        <Issues class="col-span-12 md:col-span-6 xl:col-span-3" />
-        <Bundlephobia class="col-span-12 md:col-span-6 xl:col-span-3" />
-        <Languages class="col-span-12 md:col-span-6 xl:col-span-3" />
+      <div
+        v-show="
+          chartsVisibility.npmDownloads ||
+          chartsVisibility.googleTrends ||
+          chartsVisibility.developerUsage
+        "
+        class="mb-12"
+      >
+        <h2>Popularity</h2>
+        <div class="grid grid-cols-12 gap-4">
+          <NpmDownloads class="col-span-12 xl:col-span-4" />
+          <GoogleTrends class="col-span-12 xl:col-span-4" />
+          <DevelopersUsage class="col-span-12 md:col-span-6 xl:col-span-4" />
+        </div>
+      </div>
+
+      <div class="mb-12">
+        <h2>Maintenance and Development Activity</h2>
+        <div class="grid grid-cols-12 gap-4">
+          <Releases class="col-span-12 md:col-span-6 xl:col-span-3" />
+          <Contributors class="col-span-12 md:col-span-6 xl:col-span-3" />
+          <Commits class="col-span-12 md:col-span-6 xl:col-span-3" />
+          <Issues class="col-span-12 md:col-span-6 xl:col-span-3" />
+        </div>
+      </div>
+
+      <div>
+        <h2>Miscellaneous</h2>
+        <div class="grid grid-cols-12 gap-4">
+          <TechRadar class="col-span-12 md:col-span-6 xl:col-span-4" />
+          <Bundlephobia class="col-span-12 md:col-span-6 xl:col-span-4" />
+          <Languages class="col-span-12 md:col-span-6 xl:col-span-4" />
+        </div>
       </div>
     </div>
   </div>
@@ -55,6 +77,7 @@ import Languages from './Languages.vue';
 import Contributors from './Contributors.vue';
 import DevelopersUsage from './developer-usage/DevelopersUsage.vue';
 import Commits from './Commits.vue';
+import { chartsVisibility } from '@/store/chartsVisibility';
 import {
   updateUrl,
   updateTitle,
@@ -144,6 +167,7 @@ export default defineComponent({
     return {
       libraries,
       isLoading,
+      chartsVisibility,
       select: (id: string, isNpm: boolean) => {
         if (isNpm) {
           selectNpmPackage(id);

@@ -1,6 +1,5 @@
 <template>
   <m-chart
-    v-if="libsKeywordsAliases.length"
     title="Google Trends - "
     subtitle="Interest Over Time"
     :is-loading="isLoading"
