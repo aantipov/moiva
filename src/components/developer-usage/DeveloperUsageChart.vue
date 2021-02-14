@@ -7,6 +7,7 @@
     :libs-names="libsNames"
     :failed-libs-names="[]"
     :chart-config="chartConfig"
+    :aria-label="''"
   >
     <p>Percentage of developers using the library.</p>
     <p>

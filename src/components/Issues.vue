@@ -6,6 +6,7 @@
     :libs-names="reposIds"
     :failed-libs-names="[]"
     :chart-config="chartConfig"
+    :aria-label="''"
   >
     <p>Amount of open/closed repository issues updated in the last 6 months</p>
   </m-chart>

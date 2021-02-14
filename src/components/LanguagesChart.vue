@@ -7,6 +7,7 @@
     :libs-names="reposIds"
     :failed-libs-names="failedReposIds"
     :chart-config="chartConfig"
+    :aria-label="''"
   >
     <p>
       This chart shows distribution of languages used in libraries' repostories.

@@ -7,6 +7,7 @@
     :libs-names="tradarItemsAliases"
     :failed-libs-names="[]"
     :chart-config="chartConfig"
+    :aria-label="''"
   >
     <p>
       We use

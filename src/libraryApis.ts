@@ -80,9 +80,14 @@ export function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
       // Handle fetching TypeScript support information
       if (!library.npmPackage.hasBuiltinTypes) {
         const typesPackageName = getTypesPackageName(pkgName);
-        fetchNpmPackage(typesPackageName).then(() => {
-          setLibraryOtherTypesFlag(pkgName, typesPackageName);
-        });
+        fetchNpmPackage(typesPackageName)
+          .then(() => {
+            setLibraryOtherTypesFlag(pkgName, typesPackageName);
+          })
+          // ignore errors
+          .catch(() => {
+            return;
+          });
       }
 
       return library;
@@ -109,9 +114,17 @@ export function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
       // Handle fetching TypeScript support information
       if (library.npmPackage && !library.npmPackage.hasBuiltinTypes) {
         const typesPackageName = getTypesPackageName(npmPackageName as string);
-        fetchNpmPackage(typesPackageName).then(() => {
-          setLibraryOtherTypesFlag(npmPackageName as string, typesPackageName);
-        });
+        fetchNpmPackage(typesPackageName)
+          .then(() => {
+            setLibraryOtherTypesFlag(
+              npmPackageName as string,
+              typesPackageName
+            );
+          })
+          // ignore errors
+          .catch(() => {
+            return;
+          });
       }
 
       return library;
