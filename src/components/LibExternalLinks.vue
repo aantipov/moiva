@@ -3,6 +3,7 @@
     <object
       v-if="hasNpm"
       :id="'badge-' + npm"
+      v-tooltip="'Snyk Security Score badge. \'A\' means no vulnerabilities.'"
       :data="snykUrl"
       type="image/svg+xml"
       style="max-width: 131px; max-height: 20px"
@@ -10,24 +11,27 @@
 
     <img
       v-if="hasNpm && library.npmPackage.hasBuiltinTypes"
+      v-tooltip="'This package contains built-in TypeScript declarations'"
       src="/images/ts.svg"
       height="20"
       width="20"
       alt="TypeScript icon, indicating that this package has built-in type declarations"
-      title="This package contains built-in TypeScript declarations"
     />
 
     <img
       v-else-if="hasNpm && library.npmPackage.hasOtherTypes"
+      v-tooltip="
+        `This package has TypeScript declarations provided by the separate ${library.npmPackage.otherTypesPackageName} package`
+      "
       src="/images/ts-dt.svg"
       height="20"
       width="20"
       :alt="`DefinitelyTyped icon, indicating that this package has TypeScript declarations provided by the separate ${library.npmPackage.otherTypesPackageName} package`"
-      :title="`This package has TypeScript declarations provided by ${library.npmPackage.otherTypesPackageName}`"
     />
 
     <a
       v-if="thoughtworksUrl"
+      v-tooltip="'ThoughtWorks Technology Radar page'"
       :href="thoughtworksUrl"
       target="_blank"
       class="inline-block"
@@ -37,6 +41,7 @@
 
     <a
       v-if="hasNpm"
+      v-tooltip="'Bundlephobia page'"
       :href="bundlephobiaUrl"
       target="_blank"
       class="inline-block"
