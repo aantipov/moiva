@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center h-5 space-x-3">
+  <div v-if="hasNpm || thoughtworksUrl" class="flex items-center h-5 space-x-3">
     <object
       v-if="hasNpm"
       :id="'badge-' + npm"
