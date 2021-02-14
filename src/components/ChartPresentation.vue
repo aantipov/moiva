@@ -32,7 +32,12 @@
         </div>
       </div>
 
-      <canvas v-show="!isError && libsNames.length" ref="chartEl"></canvas>
+      <canvas
+        v-show="!isError && libsNames.length"
+        ref="chartEl"
+        role="img"
+        :aria-label="ariaLabel"
+      ></canvas>
     </div>
   </div>
 </template>
@@ -53,6 +58,10 @@ export default defineComponent({
     failedLibsNames: { type: Array as () => string[], required: true },
     chartConfig: {
       type: Object as () => Chart.ChartConfiguration,
+      required: true,
+    },
+    ariaLabel: {
+      type: String,
       required: true,
     },
   },

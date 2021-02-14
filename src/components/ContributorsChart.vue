@@ -6,6 +6,7 @@
     :libs-names="reposIds"
     :failed-libs-names="failedReposIds"
     :chart-config="chartConfig"
+    :aria-label="''"
   >
     <p>A number of developers contributed to the repository per quater.</p>
     <p>Moiva uses data from Github to build the chart.</p>

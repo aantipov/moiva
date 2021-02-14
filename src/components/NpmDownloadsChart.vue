@@ -6,6 +6,7 @@
     :libs-names="packagesNames"
     :failed-libs-names="failedPackagesNames"
     :chart-config="chartConfig"
+    :aria-label="ariaLabel"
   >
   </m-chart>
 </template>
@@ -82,7 +83,18 @@ export default defineComponent({
       },
     }));
 
-    return { chartConfig };
+    return {
+      chartConfig,
+      ariaLabel: computed(() => {
+        const strings = datasets.value.map((dataset) => {
+          const downloads = numbersFormatter.format(
+            (dataset.data || [0]).slice(-1)[0] as number
+          );
+          return `${dataset.label}: ${downloads} downloads`;
+        });
+        return `NPM Monthly Downloads chart. ${strings.join(', ')}`;
+      }),
+    };
   },
 });
 </script>

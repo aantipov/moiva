@@ -6,6 +6,7 @@
     :libs-names="reposIds"
     :failed-libs-names="failedReposIds"
     :chart-config="chartConfig"
+    :aria-label="''"
   >
     <p>Moiva uses commits data from GitHub.</p>
     <p>The number of commits is aggregated by the 4 weeks interval.</p>

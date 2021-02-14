@@ -7,6 +7,7 @@
     :libs-names="libsKeywordsAliases"
     :failed-libs-names="[]"
     :chart-config="chartConfig"
+    :aria-label="''"
   >
     <p>
       Moiva uses data from

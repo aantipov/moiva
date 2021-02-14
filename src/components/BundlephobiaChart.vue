@@ -7,6 +7,7 @@
     :libs-names="packagesNames"
     :failed-libs-names="failedPackagesNames"
     :chart-config="chartConfig"
+    :aria-label="''"
   >
     <p>
       Moiva uses data from
