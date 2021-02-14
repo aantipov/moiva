@@ -8,7 +8,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
+import { defineComponent, computed, watchEffect } from 'vue';
+import { chartsVisibility } from '@/store/chartsVisibility';
 import { libraryToColorMap } from '@/store/librariesColors';
 import DeveloperUsageChart from './DeveloperUsageChart.vue';
 import { repoIdToDataMap } from './stateof-js-css-data';
@@ -26,6 +27,10 @@ export default defineComponent({
     const reposUsage = computed(() =>
       filteredReposIds.value.map((repoId) => repoIdToDataMap[repoId])
     );
+
+    watchEffect(() => {
+      chartsVisibility.developerUsage = filteredReposIds.value.length > 0;
+    });
 
     return {
       isLoading,

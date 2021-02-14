@@ -1,5 +1,6 @@
 <template>
   <GTrendsChart
+    v-if="gTrendsDefs.length"
     :is-loading="isLoading"
     :is-error="isError"
     :libs-trends="libsTrends"
@@ -9,8 +10,16 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, watch, computed } from 'vue';
+import {
+  defineComponent,
+  onMounted,
+  ref,
+  watch,
+  watchEffect,
+  computed,
+} from 'vue';
 import { repoToGTrendDefMap } from '../../google-trends.config';
+import { chartsVisibility } from '@/store/chartsVisibility';
 import GTrendsChart from './GTrendsChart.vue';
 import { fetchGTrendsData, GTrendPointT } from '@/apis';
 import { libraryToColorMap } from '@/store/librariesColors';
@@ -43,6 +52,10 @@ export default defineComponent({
     const gTrendsDefs = computed(() =>
       filteredReposIds.value.map((repoId) => repoToGTrendDefMap[repoId])
     );
+
+    watchEffect(() => {
+      chartsVisibility.googleTrends = gTrendsDefs.value.length > 0;
+    });
 
     function loadData(): void {
       isError.value = false;

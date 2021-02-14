@@ -1,11 +1,11 @@
 <template>
   <div>
     <!-- Header -->
-    <div class="flex items-center justify-center mt-5">
-      <h2 class="my-0">
+    <div class="flex items-center justify-center">
+      <h3 class="my-0">
         {{ title }}
         <span class="text-base">{{ subtitle }}</span>
-      </h2>
+      </h3>
 
       <m-chart-info v-if="hasInfo" class="ml-2"><slot /></m-chart-info>
 
