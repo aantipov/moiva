@@ -11,7 +11,7 @@
       <div
         v-for="lib in libraries"
         :key="lib.id"
-        class="flex items-center justify-between px-3 py-2 hover:bg-white"
+        class="flex items-center justify-between px-3 py-2 hover:bg-black hover:bg-opacity-5"
       >
         <div
           class="self-stretch flex-shrink-0 w-2 mr-2"
