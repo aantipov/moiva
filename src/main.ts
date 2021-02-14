@@ -1,4 +1,5 @@
 import { createApp } from 'vue';
+import tippy from 'tippy.js';
 import Chart from 'chart.js';
 import 'chartjs-adapter-date-fns';
 import * as Sentry from '@sentry/browser';
@@ -64,6 +65,12 @@ app.component('MChartInfo', ChartInfo);
 app.component('MLoaderTailSpin', LoaderTailSpin);
 app.component('MLoader', Loader);
 app.component('MChart', ChartPresentation);
+app.directive('tooltip', (el, binding) => {
+  tippy(el as HTMLElement, {
+    content: binding.value,
+    delay: 150,
+  });
+});
 
 app.mount('#app');
 

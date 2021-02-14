@@ -3,7 +3,9 @@
     <Loader v-if="isLoading" />
 
     <div class="flex justify-end pr-4">
-      <a href="/" @click.prevent="clearSelection">Clear</a>
+      <a v-tooltip="`Clear selection`" href="/" @click.prevent="clearSelection"
+        >Clear</a
+      >
     </div>
 
     <!--  Selected libraries list  -->
@@ -25,6 +27,7 @@
               <!-- NPM -->
               <div v-if="lib.npmPackage" class="flex items-center mb-1">
                 <a
+                  v-tooltip="`Npm package page`"
                   :href="getNpmLink(lib.npmPackage.name)"
                   target="_blank"
                   class="link"
@@ -36,6 +39,7 @@
                 </a>
 
                 <a
+                  v-tooltip="`Npm package page`"
                   :href="getNpmLink(lib.npmPackage.name)"
                   target="_blank"
                   class="inline-block ml-2 w-9"
@@ -47,6 +51,7 @@
               <!-- GitHub -->
               <div class="flex items-center">
                 <a
+                  v-tooltip="`GitHub repository`"
                   :href="getGithubLink(lib.repo.repoId)"
                   target="_blank"
                   class="link"
@@ -54,6 +59,7 @@
                   {{ lib.repo.repoId }}
                 </a>
                 <a
+                  v-tooltip="`GitHub repository`"
                   :href="getGithubLink(lib.repo.repoId)"
                   target="_blank"
                   class="flex inline-block ml-2 w-9"
@@ -63,9 +69,10 @@
               </div>
             </div>
 
-            <!--  Links  -->
+            <!--  Remove Button  -->
             <div class="flex">
               <a
+                v-tooltip="`Remove ${lib.repo.repoId}`"
                 class="flex items-center ml-3"
                 :href="getRemainedLibsLink(lib)"
                 @click.prevent="removeLibrary(lib.id)"
@@ -82,12 +89,12 @@
               <span>&#9733;</span>
               <span>{{ getFormattedStars(lib.repo.stars) }}</span>
 
-              <div class="ml-3">
+              <div
+                v-tooltip="`Birthdate ${getBirthdate(lib.repo.createdAt)}`"
+                style="cursor: default"
+                class="ml-3"
+              >
                 {{ getAge(lib.repo.createdAt) }} old
-
-                <m-chart-info class="inline">
-                  <p>Birthdate {{ getBirthdate(lib.repo.createdAt) }}</p>
-                </m-chart-info>
               </div>
 
               <div v-if="lib.npmPackage" class="ml-3">

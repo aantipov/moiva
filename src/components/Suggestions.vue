@@ -1,8 +1,8 @@
 <template>
   <div class="w-full px-3 mx-auto lg:w-9/12 xl:w-2/4">
     <a
-      v-for="suggestedLibrary in suggestions"
       :key="suggestedLibrary.repoId"
+      v-tooltip="`Add ${suggestedLibrary.alias}`"
       class="inline-block mt-2 mr-3 text-base"
       :href="getHrefForAdditionalLib(suggestedLibrary)"
       @click.prevent="onSelect(suggestedLibrary)"
