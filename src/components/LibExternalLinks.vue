@@ -58,7 +58,6 @@ import ThoughtworksIcon from './icons/Thoughtworks.vue';
 import { LibraryT } from '@/libraryApis';
 import { repoToTechRadarMap } from '../../techradar.config';
 import { getBundlephobiaUrl } from '@/utils';
-import tippy from 'tippy.js';
 
 export default defineComponent({
   name: 'LibExternalLinks',
@@ -82,10 +81,6 @@ export default defineComponent({
           )}/badge.svg`
         : ''
     );
-
-    tippy('.lll', {
-      content: 'My tooltip!',
-    });
 
     return {
       hasNpm: computed(() => !!library.value.npmPackage),
