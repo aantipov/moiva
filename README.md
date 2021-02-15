@@ -7,13 +7,13 @@ Currently supports Github and NPM. More to come.
 ![Screenshot of Moiva.io with charts](./readme-files/screenshot.png)
 
 ## Goals
-[Moiva.io](https://moiva.io/)'s ambitious goals:
+Moiva's ambitious goals:
 - become the best tool to <ins>*Evaluate*</ins> software
 - become the best tool to <ins>*Discover alternatives*</ins>
 - become the best tool to <ins>*Compare*</ins> software
 
 ## The Library concept
-A concept of a Library constitutes the core of Moiva.io's functionality, it's an entity Moiva operates with.
+A concept of a Library constitutes the core of Moiva's functionality, it's an entity Moiva operates with.
 
 It allows Moiva to be a *Universal* and *Agile* tool which provides search functionality, suggestions and statistical data for different kinds of software libraries. 
 
@@ -28,36 +28,37 @@ interface Library {
   npm?: string; // a reference to an Npm package
   isNpmCoreArtifact?: boolean; // indicates if the npm package is a core artifact of the GihHub repository
   category: string; // used in suggestions and SEO
+  framework?: string; // used in suggestions and SEO
   alias?: string; // used in suggestions and SEO
 }
 ```
 
 ### Characteristics
 The Library concept has the following important properties:
-- a library should have a reference to a GihHub repository with the source code for the library.
+- a library should have a reference to a GitHub repository with the source code for the library.
 - a library may have a reference to an Npm package.
 - multiple libraries can reference to the same GihHub repository (think of a monorepo with multiple npm packages as artifacts)
 - multiple libraries can NOT reference to the same Npm package. Only one library per Npm package is allowed.
 - a library with a reference to an Npm package should have a boolean `isNpmCoreArtifact` flag denoting if the npm package is the main artifact of the GitHub repository, or it's just one of its by-products. 
 - multiple libraries referencing to the same GitHub repository can not have the `isNpmCoreArtifact` flag set to `true` at same time. The idea is that a GitHub repository can have only one library as its main artifact, but multiple libraries as its "by-products".
 - a library referencing to a GitHub repository with an Npm package as its main artifact should have a reference to that package defined and `isNpmCoreArtifact` flag set to true.
-- a library should have a Category defined. A library can belong to only one category.
-- a library may have a Framework property defined. The idea is to help distinguish framework specific libraries. It's used in suggestions mechanism.
-- a library may have an Alias defined which is used to show up in suggestions and also serves for SEO purposes - shows up in Google Search results.
+- a library should have a `category` defined. A library can belong to only one category.
+- a library may have a `framework` property defined. The idea is to help distinguish framework specific libraries. It's used in suggestions mechanism.
+- a library may have an `alias` defined which is used to show up in suggestions and also serves for SEO purposes - shows up in Google Search results.
 
 ### Examples
-Bellow are examples illustrating the relationship between repostory, npm package and Moiva library.
-1. Repository doesn't have any related npm package
+Below are examples illustrating the relationship between Repostory, Npm package and Moiva Library.
+1. A Repository doesn't have any related Npm package
 ![image illustrating relationship between a repostory and Moiva library](./readme-files/no-npm.png)
 
-2. Repository have npm packages as artifacts, but no package as a core artifact.
+2. A Repository has Npm packages as artifacts, but no package as a core artifact.
 ![image illustrating relationship between a repostory and Moiva library](./readme-files/npm.png)
 
-3. Repository has npm packages. One of the packages is a repostory core artifact.
+3. A Repository has Npm packages. One of the packages is the Repostory's core artifact.
 ![image illustrating relationship between a repostory and Moiva library](./readme-files/npm-core-artifact.png)
 
-4. Repository can't have multiple core artifacts.
-![image illustrating relationship between a repostory and Moiva library](./readme-files/no-multiple-core-artifacts.png)
+4. A Repository can't have multiple core artifacts.
+![image illustrating relationship between a repostory and Moiva library](./readme-files/no-multi-core-artifacts.png)
 
 ### Identification
 The combination of `repo` and `npm` properties uniquely identifies a library.
