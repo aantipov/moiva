@@ -47,7 +47,7 @@ The Library concept has the following important properties:
 ### Identification
 The combination of `repo` and `npm` properties uniquely identifies a library.
 
-## URL Reference
+### URL Reference
 Every Library at [Moiva.io](https://moiva.io/) is uniquely referenced via URL.
 
 Libraries with the `npm` property defined should be referenced by the name of their Npm package in the `npm` query parameter, for example `?npm=vue`
