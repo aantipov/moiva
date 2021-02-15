@@ -36,7 +36,7 @@ The Library concept has the following important properties:
 - a library should have a reference to a GihHub repository with the source code for the library.
 - a library may have a reference to an Npm package.
 - multiple libraries can reference to the same GihHub repository (think of a monorepo with multiple npm packages as artifacts)
-- multiple libraries can NOT referents to the same NPM package. Only one library per Npm package is allowed.
+- multiple libraries can NOT reference to the same Npm package. Only one library per Npm package is allowed.
 - a library with a reference to an Npm package should have a boolean `isNpmCoreArtifact` flag denoting if the npm package is the main artifact of the GitHub repository, or it's just one of its by-products. 
 - multiple libraries referencing to the same GitHub repository can not have the `isNpmCoreArtifact` flag set to `true` at same time. The idea is that a GitHub repository can have only one library as its main artifact, but multiple libraries as its "by-products".
 - a library referencing to a GitHub repository with an Npm package as its main artifact should have a reference to that package defined and `isNpmCoreArtifact` flag set to true.
@@ -54,7 +54,7 @@ Libraries with the `npm` property defined should be referenced by the name of th
 
 Libraries without the `npm` property should be referenced using the repository owner and repository name in the `github` query parameter, foe example `?github=facebook/react`
 
-## Aliases
+### Aliases
 A Library can have an optional `alias` property defined.
 
 Aliases are used to better represent the Library name in the Suggestions list and also in the page's Title and Description.
@@ -63,8 +63,8 @@ If `alias` is not defined, then the repository's name is used.
 
 Repositories' names and aliases should be unique. If there are two repositories with the same name, at least one of them should have an `alias` defined.
 
-## Suggestions
+### Suggestions
 TODO
 
-## SEO
+### SEO
 TODO
