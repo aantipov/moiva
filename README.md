@@ -4,7 +4,7 @@ A universal tool to Evaluate, Discover alternatives and Compare Software project
 
 Currently supports Github and NPM. More to come.
 
-![Screenshot of Moiva.io with charts](./screenshot.png)
+![Screenshot of Moiva.io with charts](./readme-files/screenshot.png)
 
 ## Goals
 [Moiva.io](https://moiva.io/)'s ambitious goals:
