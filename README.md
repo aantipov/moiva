@@ -31,7 +31,7 @@ interface Library {
 }
 ```
 
-### The Library characteristics
+### Characteristics
 The Library concept has the following important properties:
 - a library should have a reference to a GihHub repository with the source code for the library.
 - a library may have a reference to an Npm package.
