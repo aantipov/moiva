@@ -1,56 +1,78 @@
-# Moiva.io
+# [Moiva.io](https://moiva.io/)
+
+A universal tool to Evaluate, Discover alternatives and Compare Software projects.
+
+Currently supports Github and NPM. More to come.
+
+![Screenshot of Moiva.io with charts](./readme-files/screenshot.png)
 
 ## Goals
-[Moiva.io](https://moiva.io/)'s goals:
-- become the best tool to <ins>*evaluate*</ins> Any software project
-- become the best tool to <ins>*find alternatives*</ins> to Any software project
-- become the best tool to <ins>*compare*</ins> software projects
+Moiva's ambitious goals:
+- become the best tool to <ins>*Evaluate*</ins> software
+- become the best tool to <ins>*Discover alternatives*</ins>
+- become the best tool to <ins>*Compare*</ins> software
 
 ## The Library concept
-For evaluation, comparison, discovery and reference [Moiva.io](https://moiva.io/) uses a concept of Library.
+A concept of a Library constitutes the core of Moiva's functionality, it's an entity Moiva operates with.
 
-I came up with that concept when I wanted to make Moiva.io useful for any GitHub project, not just Npm packages.
+It allows Moiva to be a *Universal* and *Agile* tool which provides search functionality, suggestions and statistical data for different kinds of software libraries. 
 
-My goal was to make it possible to compare Npm packages and Github repos interchangeably.
+Currently Moiva supports Github repositories and NPM packages. 
 
-It lead me to invention of a new abstraction level - Library.
+It's relatively easy to add support, for example, for [Maven](https://mvnrepository.com/) (Java projects), [Packagist](https://packagist.org/) (PHP) and [PIP](https://pypi.org/) (Python).
 
 The Library concept can be simplistically described as the following interface:
 ```ts
 interface Library {
   repo: string; // a reference to a GitHub repositry
   npm?: string; // a reference to an Npm package
-  isNpmAByProduct?: boolean;
+  isNpmCoreArtifact?: boolean; // indicates if the npm package is a core artifact of the GihHub repository
   category: string; // used in suggestions and SEO
+  framework?: string; // used in suggestions and SEO
   alias?: string; // used in suggestions and SEO
 }
 ```
 
+### Characteristics
 The Library concept has the following important properties:
-- every Library should have a reference to a GihHub repository.
-- a GihHub repository can have multiple Libraries referenced to it.
-- a Library can have additionally a reference to an Npm package.
-- an Npm package can have only one Library referenced to it.
-- a Library with a defined Npm package should have a boolean `isNpmAByProduct` flag, denoting if an npm package is the main "product" of the GitHub repository, or it's just one of its by-products. 
-A GitHub repository can have only one "main" npm package and multiple "by-products".
-- a Library should have a Category defined.
-- a Library optionally has an `Alias` prop defined which is used to show up in suggestions and also for SEO purposes.
+- a library should have a reference to a GitHub repository with the source code for the library.
+- a library may have a reference to an Npm package.
+- multiple libraries can reference to the same GihHub repository (think of a monorepo with multiple npm packages as artifacts)
+- multiple libraries can NOT reference to the same Npm package. Only one library per Npm package is allowed.
+- a library with a reference to an Npm package should have a boolean `isNpmCoreArtifact` flag denoting if the npm package is the main artifact of the GitHub repository, or it's just one of its by-products. 
+- multiple libraries referencing to the same GitHub repository can not have the `isNpmCoreArtifact` flag set to `true` at same time. The idea is that a GitHub repository can have only one library as its main artifact, but multiple libraries as its "by-products".
+- a library referencing to a GitHub repository with an Npm package as its main artifact should have a reference to that package defined and `isNpmCoreArtifact` flag set to true.
+- a library should have a `category` defined. A library can belong to only one category.
+- a library may have a `framework` property defined. The idea is to help distinguish framework specific libraries. It's used in suggestions mechanism.
+- a library may have an `alias` defined which is used to show up in suggestions and also serves for SEO purposes - shows up in Google Search results.
 
-## Identification
-The combination of `repo`, `npm` and `isNpmAByProduct` uniquely identifies a Library.
+### Examples
+Below are examples illustrating the relationship between Repostory, Npm package and Moiva Library.
+1. A Repository doesn't have any related Npm package
+![image illustrating relationship between a repostory and Moiva library](./readme-files/no-npm.png)
 
-If a repository has an Npm package as its main product, then it's required for the Library to have that Npm package specified as `npm` property and have `isNpmAByProduct` flag set to `true`.
+2. A Repository has Npm packages as artifacts, but no package as a core artifact.
+![image illustrating relationship between a repostory and Moiva library](./readme-files/npm.png)
 
-In other words, it's forbidden to have a Library with missing `npm` when the repository has a "main" npm package.
- 
-## URL Reference
+3. A Repository has Npm packages. One of the packages is the Repostory's core artifact.
+![image illustrating relationship between a repostory and Moiva library](./readme-files/npm-core-artifact.png)
+
+4. A Repository can't have multiple core artifacts.
+![image illustrating relationship between a repostory and Moiva library](./readme-files/no-multi-core-artifacts.png)
+
+### Identification
+The combination of `repo` and `npm` properties uniquely identifies a library.
+
+
+### URL Reference
 Every Library at [Moiva.io](https://moiva.io/) is uniquely referenced via URL.
 
-Libraries with `npm` property defined should be referenced using the name of their Npm package in the `npm` query parameter, for example `?npm=vue`
+Libraries with the `npm` property defined should be referenced by the name of their Npm package in the `npm` query parameter, for example, `?npm=vue`
 
-Libraries without `npm` property should be referenced via a repository owner and repository name in the `github` query parameter, foe example `?github=facebook/react`
+Libraries without the `npm` property should be referenced using the repository's owner and name in the `github` query parameter, for example, `?github=facebook/react`
 
-## Aliases
+
+### Aliases
 A Library can have an optional `alias` property defined.
 
 Aliases are used to better represent the Library name in the Suggestions list and also in the page's Title and Description.
@@ -59,8 +81,8 @@ If `alias` is not defined, then the repository's name is used.
 
 Repositories' names and aliases should be unique. If there are two repositories with the same name, at least one of them should have an `alias` defined.
 
-## Suggestions
-TODO
+## Contribution
+1. If you want a specific library (a GitHub repo or an Npm package) to appear in the suggestion list and also appear in Google Search results, it should be added to [Moiva Catalog](https://github.com/aantipov/moiva-catalog).
+Feel free to open a PR or issue there.
 
-## SEO
-TODO
+2. If you noticed an issue at Moiva.io or have a suggestion/idea how to make it better, please open an issue in this repository.
