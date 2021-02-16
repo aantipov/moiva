@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://moiva.io/blog/</loc>
+    <lastmod>2021-02-16</lastmod>
+  </url>
+
+  <url>
+    <loc>https://moiva.io/blog/version-3-universal-tool-to-evaluate-discover-compare-software/</loc>
+    <lastmod>2021-02-16</lastmod>
+  </url>
+
+  <url>
     <loc>https://moiva.io/</loc>
     <lastmod>2021-02-06</lastmod>
     <changefreq>weekly</changefreq>
