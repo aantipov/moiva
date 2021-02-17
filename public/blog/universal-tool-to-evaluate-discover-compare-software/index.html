@@ -88,16 +88,16 @@
   </div>
 
   <p>Hi, Alexey is here. I have some exciting news for you!</p>
-<p>I rewrote <a href="https://moiva.io/">Moiva.io</a> from scratch and made it a Universal and Flexible tool to suit every software developer&rsquo;s taste be it a JavaScript, Python or [put your favorite language here] developer.</p>
+<p>I rewrote <a href="https://moiva.io/">Moiva.io</a> from scratch and made it a Universal and Flexible tool to suit a taste of every software developer be they a JavaScript, Python or [put your favorite language here] developer.</p>
 <p>This article marks a third major release of Moiva.</p>
 <p><img src="/blog/images/universal-tool/full.png" alt="A screenshot of Moiva.io showing comparison of Vue and Svelte npm packages"></p>
 <h2 id="whats-new-in-short">What&rsquo;s new (in short)</h2>
 <ul>
-<li>ability to search for and get data for any GitHub repository (in addition to search and comparison of Npm packages).</li>
-<li>possibility to bring (relatively easy) Search, Suggestion, and Comparison capabilities to other languages package management systems like <a href="https://mvnrepository.com/">Maven</a> (Java), <a href="https://pypi.org/">PIP</a> (Python), or <a href="https://packagist.org/">Packagist</a> (PHP).</li>
+<li>ability to search for and get data for any GitHub repository in addition to search and comparison of NPM packages.</li>
+<li>possibility to bring (relatively easy) Search, Suggestion, and Comparison capabilities to other programming languages' package management systems like <a href="https://mvnrepository.com/">Maven</a> (Java), <a href="https://pypi.org/">PIP</a> (Python), or <a href="https://packagist.org/">Packagist</a> (PHP).</li>
 <li>last but not least, Moiva got <a href="https://github.com/aantipov/moiva">open-sourced</a>.</li>
 </ul>
-<h2 id="why-did-i-do-it">Why did I do it</h2>
+<h2 id="why-i-did-it">Why I did it</h2>
 <p>At first, I wanted to focus on JavaScript ecosystem, making npm packages first-class citizens in Moiva.io.</p>
 <p>The goal was to provide developers with a good tool to evaluate and compare npm packages in different dimensions - Popularity, Maintenance, Security, etc.</p>
 <p>But very soon I realized that there are many JavaScript-related projects which don&rsquo;t have any published npm packages.</p>
@@ -114,11 +114,11 @@
 <p>The same single search field can be used to search for both npm packages and GitHub repositories. It can be easily achieved via search modifiers (prefixes).</p>
 <p>The default search is for GitHub.</p>
 <p>The search prefixed with <code>n:</code> is for npm packages.</p>
-<p><img src="/blog/images/universal-tool/search.png" alt="An image of the Search field at Moiva.io"></p>
+<p><img src="/blog/images/universal-tool/search.gif" alt="A gif showing how Search field at Moiva.io works: search for NPM packages and GitHub repositories"></p>
 <p>What I like about that solution is that it can be easily extended in the future to search for other things as well.</p>
 <h3 id="show-only-relevant-charts">Show only relevant charts</h3>
 <p>If a user selects only GitHub repositories without related npm packages, then we can just hide npm-related charts. No reason to show them.</p>
-<p>It&rsquo;s similar to how ThoughtWorks TechRadar and Developer Usage charts work - they are shown only when there are data for the selected npm packages.</p>
+<p>It&rsquo;s similar to how ThoughtWorks TechRadar and Developer Usage charts work - they are shown only when there is data for the selected npm packages.</p>
 <p>At the same time, if the user selects a mix of npm and Github projects, we will show npm-related charts for the selected npm packages.</p>
 <h3 id="how-about-urls">How about URLs</h3>
 <p>Every comparison a user makes in Moiva should be easily reproducible via URL.</p>
@@ -132,13 +132,13 @@
 </ul>
 <p>It lead me to the conclusion that GitHub and npm should be referenced separately in the URL.</p>
 <p>So I just decided to have separate query parameters: <code>https://moiva.io/?npm=svelte+vue&amp;github=meteor/meteor</code>.</p>
-<h3 id="github-and-npm-reconciliation">GitHub and Npm reconciliation</h3>
+<h3 id="github-and-npm-reconciliation">GitHub and NPM reconciliation</h3>
 <p>Imagine two situations:</p>
 <ol>
 <li>a user selects Vue as an npm package.</li>
 <li>a user selects Vue as a GitHub repo.</li>
 </ol>
-<p>In the first, situation Moiva shows npm-related data and charts like npm Downloads. In the second situation, it doesn&rsquo;t.</p>
+<p>In the first situation Moiva shows npm-related data and charts like npm Downloads. In the second situation, it doesn&rsquo;t.</p>
 <p>But is it fair? Most probably a user would expect to see the same set of information in both cases, right?</p>
 <p>Could we still somehow derive information about the npm package from the GitHub repository? If yes, then we could show npm data for the selected GitHub repository.</p>
 <p>Turns out we can make use of <a href="https://github.com/aantipov/moiva-catalog">Moiva Catalog</a> which was built to implement the Suggestions mechanism.
@@ -155,12 +155,14 @@ For every listed GitHub repository we can add a name of the npm package if there
 <h2 id="whats-next">What&rsquo;s next</h2>
 <p>I clearly see a huge potential for <a href="https://moiva.io/">Moiva.io</a> to become a really useful tool to many developers.</p>
 <p>It can grow and become better in different directions.
-I will mention a few most evident to me and, probably, most important:</p>
+I will mention a few of them which look most important to me:</p>
 <ul>
 <li>enable search/suggestion/comparison for more languages' package systems (Maven, PIP, etc.).</li>
 <li>add more useful charts and data, both generic and language/package-system specific.</li>
 <li>improve significantly the alternatives suggestion system. Currently, it&rsquo;s based on <a href="https://github.com/aantipov/moiva-catalog">Moiva Catalog</a> and needs a lot of data to be put there. I see a way how the community could help and contribute there.</li>
 </ul>
+<hr>
+<p>I hope I didn&rsquo;t waste your time and you found the reading and the project itself interesting.</p>
 <p>Stay tuned and Subscribe to the newsletter. I want to publish more interesting content about Moiva development.</p>
 
 </div>
