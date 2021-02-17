@@ -34,8 +34,8 @@ export default defineComponent({
       items: [
         {
           name: 'Frontend frameworks',
-          libs: ['react', `@angular/core`, 'svelte', 'vue'],
-          libsStr: 'React, Svelte, Vue, Angular',
+          libs: ['react', 'svelte', 'vue'],
+          libsStr: 'React, Svelte, Vue',
         },
         {
           libs: ['bootstrap', 'tailwindcss', 'bulma'],
@@ -44,8 +44,8 @@ export default defineComponent({
         },
         {
           name: 'Date utilities',
-          libs: ['moment', 'dayjs', 'luxon', 'date-fns'],
-          libsStr: 'Moment.js, Day.js, Luxon, date-fns',
+          libs: ['moment', 'dayjs', 'date-fns'],
+          libsStr: 'Moment.js, Day.js, date-fns',
         },
         {
           name: 'Utilities',
@@ -69,13 +69,13 @@ export default defineComponent({
         },
         {
           name: 'Node.js logging',
-          libs: ['winston', 'morgan', 'log4js', 'pino'],
-          libsStr: 'winston, morgan, log4js-node, pino',
+          libs: ['winston', 'morgan', 'log4js'],
+          libsStr: 'winston, morgan, log4js-node',
         },
         {
           name: 'Templating engines',
-          libs: ['ejs', 'handlebars', 'mustache', 'pug'],
-          libsStr: 'EJS, Handlebars.js, Mustache.js, Pug',
+          libs: ['ejs', 'handlebars', 'mustache'],
+          libsStr: 'EJS, Handlebars.js, Mustache.js',
         },
         {
           name: 'Web sockets',
