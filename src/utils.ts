@@ -139,7 +139,7 @@ export function getSeoLibName(repoId: string): string {
 }
 
 export function updateTitle(libraries: LibraryT[]): void {
-  let title = 'Moiva.io - Find and Compare GitHub and NPM packages';
+  let title = 'Moiva.io - Discover and Compare GitHub and NPM packages';
 
   if (libraries.length) {
     const aliases = libraries.map(({ alias }) => alias).sort();
@@ -210,7 +210,7 @@ function getSingleLibDescription(lib: LibForDescriptionT): string {
 
   return `${seoDescrIntroCut} 
     &#9733;${starsCount} stars, ${age} old...
-    Find the best ${alias} alternatives and compare them side by side`;
+    Discover the best ${alias} alternatives and compare them side by side`;
 }
 
 function getTwoLibsDescription(
