@@ -181,15 +181,66 @@ function fetchNpmPackage(packageName: string): Promise<NpmPackageT> {
 }
 
 function fetchNpmJSPackage(packageName: string): Promise<NpmPackageT> {
-  return axios.get(`/api/npm-package?pkg=${packageName}`).then(({ data }) => {
-    const repoId = data.repo.slice(data.repo.indexOf('github.com') + 11);
+  return axios
+    .get(`https://npm-details.moiva.workers.dev/?pkg=${packageName}`)
+    .then(({ data }) => {
+      const repoData = getRepoData(packageName, data.repository);
 
-    return {
-      ...data,
-      repoId,
-      repoName: repoId.slice(repoId.indexOf('/') + 1),
-    };
-  });
+      if (!repoData) {
+        return Promise.reject('NO GITHUB DATA');
+      }
+
+      return {
+        ...data,
+        ...repoData,
+      };
+    });
+}
+
+interface RepT {
+  type: string;
+  url: string;
+}
+
+function getRepoData(
+  packageName: string,
+  repository: null | RepT
+): null | { repo: string; repoId: string; repoName: string } {
+  const lib = catalogNpmToLib[packageName];
+  const hasCatalogLibGithub = lib && lib.repoId;
+  const hasPackageGithub =
+    repository &&
+    repository.type === 'git' &&
+    repository.url.indexOf('github.com') !== -1;
+
+  if (!hasCatalogLibGithub && !hasPackageGithub) {
+    return null;
+  }
+
+  let repoUrl: string;
+  let repoId: string;
+
+  if (hasCatalogLibGithub) {
+    repoUrl = `https://github.com/${lib.repoId}`;
+    repoId = lib.repoId;
+  } else {
+    const endRepoUrlIndex =
+      (repository as RepT).url.slice(-4) === '.git' ? -4 : 400;
+
+    repoUrl =
+      'https://' +
+      (repository as RepT).url.slice(
+        (repository as RepT).url.indexOf('github.com'),
+        endRepoUrlIndex
+      );
+    repoId = repoUrl.slice(repoUrl.indexOf('github.com') + 11);
+  }
+
+  return {
+    repo: repoUrl,
+    repoId,
+    repoName: repoId.slice(repoId.indexOf('/') + 1),
+  };
 }
 
 // interface NpmsIOPackageResponseT {
