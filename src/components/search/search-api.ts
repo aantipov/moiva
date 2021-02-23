@@ -1,7 +1,7 @@
 import { reportSentry } from '@/apis';
 import axios from 'axios';
 
-const npmSuggestionsCache = new Map();
+const npmSearchCache = new Map();
 const githubSearchCache = new Map();
 
 export interface GithubSearchItem {
@@ -24,7 +24,7 @@ export function fetchGithubSearch(q: string): Promise<GithubSearchItem[]> {
   }
 
   return axios
-    .get(`/api/gh-search?q=${q}`)
+    .get(`https://github-search.moiva.workers.dev/?q=${q}`)
     .then(({ data }) => {
       githubSearchCache.set(q, data.items);
       return data.items;
@@ -36,22 +36,22 @@ export function fetchGithubSearch(q: string): Promise<GithubSearchItem[]> {
 }
 
 export function fetchNpmSearch(keyword: string): Promise<NpmSearchItemT[]> {
+  if (!keyword || keyword.length < 2) {
+    return Promise.resolve([]);
+  }
+
+  if (npmSearchCache.get(keyword)) {
+    return Promise.resolve(npmSearchCache.get(keyword));
+  }
+
   // eslint-disable-next-line
   const fetchSuggestionsFunc = true
     ? fetchNpmJSSuggestions
     : fetchNpmsIOSuggestions;
 
-  if (!keyword || keyword.length < 2) {
-    return Promise.resolve([]);
-  }
-
-  if (npmSuggestionsCache.get(keyword)) {
-    return Promise.resolve(npmSuggestionsCache.get(keyword));
-  }
-
   return fetchSuggestionsFunc(keyword)
     .then((data) => {
-      npmSuggestionsCache.set(keyword, data);
+      npmSearchCache.set(keyword, data);
 
       return data;
     })
@@ -63,8 +63,8 @@ export function fetchNpmSearch(keyword: string): Promise<NpmSearchItemT[]> {
 
 function fetchNpmJSSuggestions(keyword: string): Promise<NpmSearchItemT[]> {
   return axios
-    .get(`/api/npm-suggestions?q=${keyword}`)
-    .then(({ data }) => data);
+    .get(`https://npm-search.moiva.workers.dev/?q=${keyword}`)
+    .then(({ data }) => data.items);
 }
 
 interface NpmsIOSuggestionResponseT {

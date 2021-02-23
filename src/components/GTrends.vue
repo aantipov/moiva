@@ -87,9 +87,23 @@ export default defineComponent({
         }));
     }
 
-    onMounted(loadData);
+    onMounted(() => {
+      if (!isLoadingLibraries.value) {
+        // Google Trends api loads all the libs at once
+        // hence, we need to wait until we have all the libs at place
+        // otherwise Google bans the requests and fails them (thinks it's from a robot)
+        loadData();
+      }
+    });
 
-    watch(reposIds, loadData);
+    watch([reposIds, isLoadingLibraries], () => {
+      if (!isLoadingLibraries.value) {
+        // Google Trends api loads all the libs at once
+        // hence, we need to wait until we have all the libs at place
+        // otherwise Google bans the requests and fails them (thinks it's from a robot)
+        loadData();
+      }
+    });
 
     return {
       isLoading: computed(() => isLoadingLibraries.value || isLoading.value),
