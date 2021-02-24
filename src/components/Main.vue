@@ -34,7 +34,7 @@
         <h2>Popularity</h2>
         <div class="grid grid-cols-12 gap-4">
           <NpmDownloads class="col-span-12 xl:col-span-4" />
-          <GoogleTrends v-if="false" class="col-span-12 xl:col-span-4" />
+          <GoogleTrends class="col-span-12 xl:col-span-4" />
           <DevelopersUsage class="col-span-12 md:col-span-6 xl:col-span-4" />
         </div>
       </div>
