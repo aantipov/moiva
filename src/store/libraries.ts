@@ -117,17 +117,3 @@ export function removeLibrary(libraryId: string): void {
 export function removeAllLibraries(): void {
   librariesR.length = 0;
 }
-
-export function setLibraryOtherTypesFlag(
-  npmPackageName: string,
-  npmTypesPackageName: string
-): void {
-  const library = librariesR.find(
-    (lib) => lib.npmPackage && lib.npmPackage.name === npmPackageName
-  );
-
-  if (library) {
-    (library.npmPackage as NpmPackageT).hasOtherTypes = true;
-    (library.npmPackage as NpmPackageT).otherTypesPackageName = npmTypesPackageName;
-  }
-}
