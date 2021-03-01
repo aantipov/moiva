@@ -7,7 +7,6 @@ import {
 } from '@/constants';
 import { nanoid } from 'nanoid';
 import { catalogRepoIdToLib, catalogNpmToLib } from '@/libraries-catalog';
-import { setLibraryOtherTypesFlag } from './store/libraries';
 
 const npmPackageCache = new Map();
 const githubCache = new Map();
@@ -36,7 +35,7 @@ export interface NpmPackageT {
   dependencies: string[];
   hasBuiltinTypes: boolean;
   hasOtherTypes: boolean;
-  otherTypesPackageName: string;
+  typesPackageName: string;
 }
 
 export interface LibraryT {
@@ -66,32 +65,15 @@ export function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
   const library = catalogNpmToLib[pkgName] || null;
   const isNpmAByProduct = (library && library.isNpmAByProduct) || false;
 
-  return fetchNpmPackage(pkgName)
-    .then((npmPackage) => {
-      return fetchGithubRepo(npmPackage.repoId).then((repo) => ({
-        id: nanoid(),
-        repo,
-        npmPackage,
-        isNpmAByProduct,
-        alias: getSeoLibName(repo.repoId),
-      }));
-    })
-    .then((library) => {
-      // Handle fetching TypeScript support information
-      if (!library.npmPackage.hasBuiltinTypes) {
-        const typesPackageName = getTypesPackageName(pkgName);
-        fetchNpmPackage(typesPackageName)
-          .then(() => {
-            setLibraryOtherTypesFlag(pkgName, typesPackageName);
-          })
-          // ignore errors
-          .catch(() => {
-            return;
-          });
-      }
-
-      return library;
-    });
+  return fetchNpmPackage(pkgName).then((npmPackage) =>
+    fetchGithubRepo(npmPackage.repoId).then((repo) => ({
+      id: nanoid(),
+      repo,
+      npmPackage,
+      isNpmAByProduct,
+      alias: getSeoLibName(repo.repoId),
+    }))
+  );
 }
 
 export function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
@@ -102,33 +84,15 @@ export function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
     ? fetchNpmPackage(npmPackageName)
     : Promise.resolve(null);
 
-  return Promise.all([fetchGithubRepo(repoId), fetchNpmPromise])
-    .then(([repo, npmPackage]) => ({
+  return Promise.all([fetchGithubRepo(repoId), fetchNpmPromise]).then(
+    ([repo, npmPackage]) => ({
       id: nanoid(),
       repo,
       npmPackage,
       isNpmAByProduct,
       alias: getSeoLibName(repo.repoId),
-    }))
-    .then((library) => {
-      // Handle fetching TypeScript support information
-      if (library.npmPackage && !library.npmPackage.hasBuiltinTypes) {
-        const typesPackageName = getTypesPackageName(npmPackageName as string);
-        fetchNpmPackage(typesPackageName)
-          .then(() => {
-            setLibraryOtherTypesFlag(
-              npmPackageName as string,
-              typesPackageName
-            );
-          })
-          // ignore errors
-          .catch(() => {
-            return;
-          });
-      }
-
-      return library;
-    });
+    })
+  );
 }
 
 function fetchGithubRepo(repoId: string): Promise<RepoT> {
@@ -162,7 +126,7 @@ function fetchNpmPackage(packageName: string): Promise<NpmPackageT> {
       npmPackageCache.set(packageName, {
         ...data,
         hasOtherTypes: false,
-        otherTypesPackageName: '',
+        typesPackageName: '',
       });
 
       return data;

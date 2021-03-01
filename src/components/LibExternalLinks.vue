@@ -21,12 +21,12 @@
     <img
       v-else-if="hasNpm && library.npmPackage.hasOtherTypes"
       v-tooltip="
-        `This package has TypeScript declarations provided by the separate ${library.npmPackage.otherTypesPackageName} package`
+        `This package has TypeScript declarations provided by the separate ${library.npmPackage.typesPackageName} package`
       "
       src="/images/ts-dt.svg"
       height="20"
       width="20"
-      :alt="`DefinitelyTyped icon, indicating that this package has TypeScript declarations provided by the separate ${library.npmPackage.otherTypesPackageName} package`"
+      :alt="`DefinitelyTyped icon, indicating that this package has TypeScript declarations provided by the separate ${library.npmPackage.typesPackageName} package`"
     />
 
     <a
