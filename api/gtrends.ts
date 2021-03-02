@@ -58,8 +58,9 @@ export default (req: NowRequest, res: NowResponse): void => {
       console.error('API GOOGLE TRENDS: SOMETHING WENT WRONG', e);
       reportError(e);
 
-      res
-        .status((e.response && e.response.status) || 500)
-        .json({ error: 'Something went wrong' });
+      res.status((e.response && e.response.status) || 500).json({
+        error: 'Something went wrong',
+        msg: JSON.stringify(e.message),
+      });
     });
 };
