@@ -96,14 +96,12 @@ export function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
 }
 
 function fetchGithubRepo(repoId: string): Promise<RepoT> {
-  const [owner, name] = repoId.split('/');
-
   if (githubCache.get(repoId)) {
     return Promise.resolve(githubCache.get(repoId));
   }
 
   return axios
-    .get<RepoT>(`/api/gh?name=${name}&owner=${owner}`)
+    .get<RepoT>(`https://github.moiva.workers.dev/?repo=${repoId}`)
     .then(({ data }) => {
       githubCache.set(repoId, data);
       return data;
