@@ -31,10 +31,6 @@ export interface BundlephobiaT {
 }
 
 export interface GTrendPointT {
-  formattedAxisTime: string;
-  formattedTime: string;
-  formattedValue: string[];
-  hasData: boolean[];
   time: number;
   value: number[];
 }
@@ -162,7 +158,6 @@ export function fetchContributors(
 }
 
 export function fetchGTrendsData(libs: string[]): Promise<GTrendPointT[]> {
-  // TODO: implement a proper cache
   const libsStr = libs.join(',');
 
   if (gTrendsCache.get(libsStr)) {
@@ -172,8 +167,8 @@ export function fetchGTrendsData(libs: string[]): Promise<GTrendPointT[]> {
   return axios
     .get(`/api/gtrends?libs=${libsStr}`)
     .then(({ data }) => {
-      gTrendsCache.set(libsStr, data.default.timelineData);
-      return data.default.timelineData;
+      gTrendsCache.set(libsStr, data.timelineData);
+      return data.timelineData;
     })
     .catch((err) => {
       reportSentry(err, 'fetchGTrendsData');

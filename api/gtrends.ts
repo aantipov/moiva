@@ -52,7 +52,7 @@ export default (req: NowRequest, res: NowResponse): void => {
     })
     .then((results: string) => {
       res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
-      res.status(200).json(JSON.parse(results));
+      res.status(200).json(JSON.parse(results).default);
     })
     .catch((e) => {
       console.error('API GOOGLE TRENDS: SOMETHING WENT WRONG', e);
