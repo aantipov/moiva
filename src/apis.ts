@@ -165,7 +165,7 @@ export function fetchGTrendsData(libs: string[]): Promise<GTrendPointT[]> {
   }
 
   return axios
-    .get(`/api/gtrends?libs=${libsStr}`)
+    .get(`https://google-trends.moiva.workers.dev/?libs=${libsStr}`)
     .then(({ data }) => {
       gTrendsCache.set(libsStr, data.timelineData);
       return data.timelineData;

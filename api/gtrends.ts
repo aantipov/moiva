@@ -3,6 +3,8 @@ import { repoToGTrendDefMap } from '../google-trends.config';
 import googleTrends from 'google-trends-api';
 import { logRequest, initSentry, reportError } from './utils';
 
+const ttl = 3600 * 24 * 5; // 5 days in seconds
+
 initSentry();
 
 export default (req: NowRequest, res: NowResponse): void => {
@@ -51,7 +53,7 @@ export default (req: NowRequest, res: NowResponse): void => {
       category: 31, // Programming
     })
     .then((results: string) => {
-      res.setHeader('Cache-Control', 'max-age=0, s-maxage=86400');
+      res.setHeader('Cache-Control', `max-age=0, s-maxage=${ttl}`);
       res.status(200).json(JSON.parse(results).default);
     })
     .catch((e) => {
