@@ -57,10 +57,6 @@ function reportSentry(err: AxiosError, methodName: string): void {
   });
 }
 
-function getTypesPackageName(npmPackageName: string): string {
-  return '@types/' + npmPackageName.replace('@', '').replace('/', '__');
-}
-
 export function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
   const library = catalogNpmToLib[pkgName] || null;
   const isNpmAByProduct = (library && library.isNpmAByProduct) || false;
