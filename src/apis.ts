@@ -59,9 +59,9 @@ export function fetchNpmDownloads(
   }
 
   return axios
-    .get(`/api/npm-downloads?pkg=${libName}`)
+    .get(`https://npm-downloads.moiva.workers.dev/?pkg=${libName}`)
     .then(({ data }) => {
-      const dataWOLastMonth = data.slice(0, -1);
+      const dataWOLastMonth = data.items.slice(0, -1);
       npmDownloadsCache.set(libName, dataWOLastMonth);
       return dataWOLastMonth;
     })
