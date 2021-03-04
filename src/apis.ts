@@ -213,11 +213,11 @@ export function fetchNpmPackageReleases(
   }
 
   return axios
-    .get(`/api/npm-releases?pkg=${pkg}`)
+    .get(`https://npm-releases.moiva.workers.dev/?pkg=${pkg}`)
     .then(({ data }) => {
-      npmReleasesCache.set(pkg, data);
+      npmReleasesCache.set(pkg, data.items);
 
-      return data;
+      return data.items;
     })
     .catch((err) => {
       reportSentry(err, 'fetchNpmPackageReleases');
