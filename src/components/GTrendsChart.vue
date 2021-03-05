@@ -21,10 +21,7 @@
     <p>
       If you know a library for which it makes sense to include it in this chart
       - feel free to submit an
-      <a
-        href="https://github.com/aantipov/moiva-catalog"
-        target="_blank"
-        rel="noopener"
+      <a href="https://github.com/aantipov/moiva" target="_blank" rel="noopener"
         >issue</a
       >.
     </p>

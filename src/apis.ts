@@ -130,19 +130,17 @@ export function fetchRepoCommits(
 export function fetchContributors(
   repoId: string
 ): Promise<GithubContributorsResponseItemT[] | null> {
-  const [owner, name] = repoId.split('/');
-
   if (githubContributorsCache.get(repoId)) {
     return Promise.resolve(githubContributorsCache.get(repoId));
   }
 
   return axios
-    .get<GithubContributorsResponseItemT[]>(
-      `/api/gh-contributors?name=${name}&owner=${owner}`
+    .get<{ items: GithubContributorsResponseItemT[] }>(
+      `https://github-contributors.moiva.workers.dev/?repo=${repoId}`
     )
     .then(({ data }) => {
-      githubContributorsCache.set(repoId, data);
-      return data;
+      githubContributorsCache.set(repoId, data.items);
+      return data.items;
     })
     .catch((err) => {
       const errorCode =
@@ -213,11 +211,11 @@ export function fetchNpmPackageReleases(
   }
 
   return axios
-    .get(`/api/npm-releases?pkg=${pkg}`)
+    .get(`https://npm-releases.moiva.workers.dev/?pkg=${pkg}`)
     .then(({ data }) => {
-      npmReleasesCache.set(pkg, data);
+      npmReleasesCache.set(pkg, data.items);
 
-      return data;
+      return data.items;
     })
     .catch((err) => {
       reportSentry(err, 'fetchNpmPackageReleases');
