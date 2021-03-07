@@ -12,7 +12,6 @@ import { GithubContributorsResponseItemT } from '../api/gh-contributors';
 const npmDownloadsCache = new Map();
 const npmReleasesCache = new Map();
 const githubLanguagesCache = new Map();
-const githubCommitsCache = new Map();
 const githubContributorsCache = new Map();
 const gTrendsCache = new Map();
 const bphobiaCache = new Map();
@@ -99,20 +98,21 @@ export function fetchRepoLanguages(
     });
 }
 
+const githubCommitsCache = new Map();
 export function fetchRepoCommits(
   repoId: string
 ): Promise<CommitsResponseItemT[] | null> {
-  const [owner, name] = repoId.split('/');
-
   if (githubCommitsCache.get(repoId)) {
     return Promise.resolve(githubCommitsCache.get(repoId));
   }
 
   return axios
-    .get<CommitsResponseItemT[]>(`/api/gh-commits?name=${name}&owner=${owner}`)
+    .get<{ items: CommitsResponseItemT[] }>(
+      `https://github-commits.moiva.workers.dev/?repo=${repoId}`
+    )
     .then(({ data }) => {
-      githubCommitsCache.set(repoId, data);
-      return data;
+      githubCommitsCache.set(repoId, data.items);
+      return data.items;
     })
     .catch((err) => {
       const errorCode =
