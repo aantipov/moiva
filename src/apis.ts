@@ -180,20 +180,17 @@ export function fetchBundlephobiaData(
   }
 
   return axios
-    .get(`/api/bphobia?pkg=${libName}`)
+    .get(`https://bundle-size.moiva.workers.dev/?pkg=${libName}`)
     .then(({ data }) => {
       bphobiaCache.set(libName, data);
       return data;
     })
     .catch((err) => {
-      const { error } = err.response.data;
+      const errorCode =
+        err?.response?.data?.error?.code || err?.response?.status || undefined;
 
       // Report to Sentry unexpected errors only
-      if (
-        !error ||
-        (error.code !== 'BuildError' &&
-          error.code !== 'BlacklistedPackageError')
-      ) {
+      if (errorCode !== 404) {
         reportSentry(err, 'fetchBundlephobiaData');
       }
 
