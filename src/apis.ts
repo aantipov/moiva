@@ -11,7 +11,6 @@ import { GithubContributorsResponseItemT } from '../api/gh-contributors';
 
 const npmDownloadsCache = new Map();
 const npmReleasesCache = new Map();
-const githubLanguagesCache = new Map();
 const githubContributorsCache = new Map();
 const gTrendsCache = new Map();
 const bphobiaCache = new Map();
@@ -71,17 +70,16 @@ export function fetchNpmDownloads(
     });
 }
 
+const githubLanguagesCache = new Map();
 export function fetchRepoLanguages(
   repoId: string
 ): Promise<GithubLanguagesResponseT | null> {
-  const [owner, name] = repoId.split('/');
-
   if (githubLanguagesCache.get(repoId)) {
     return Promise.resolve(githubLanguagesCache.get(repoId));
   }
 
   return axios
-    .get(`/api/gh-languages?name=${name}&owner=${owner}`)
+    .get(`https://github-languages.moiva.workers.dev/?repo=${repoId}`)
     .then(({ data }) => {
       githubLanguagesCache.set(repoId, data);
       return data;
