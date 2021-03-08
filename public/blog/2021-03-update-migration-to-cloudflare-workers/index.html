@@ -90,9 +90,9 @@
 <p><a href="https://vercel.com/">Vercel</a> and its serverless functions allowed to quickly bootstrap and develop Moiva. And I&rsquo;m thankful to the developers at Vercel for that, they do really great job!</p>
 <p>Having said that, the more mature Moiva becomes, the more requirements it has and the more limitations of Vercel&rsquo;s platform it hits.</p>
 <p>One of the limitations was Moiva&rsquo;s requirements to serverless functions. It needed more visibility, more efficiency, more sophisticated debugging capabilities, more advanced features.</p>
-<p>One time I came across <a href="https://workers.cloudflare.com/">Cloudflare Workers</a> and it caught my attention, it looked pretty attractive and mature solution for serverless functions.</p>
+<p>One time I came across <a href="https://workers.cloudflare.com/">Cloudflare Workers</a> and it caught my attention, it looked pretty attractive and seemed a mature and sophisticated solution for serverless functions.</p>
 <p>After a bit of analysis, I quickly realized that it&rsquo;s the thing I needed.</p>
-<p>So I set up to migrate all the api endpoints to Cloudflare Workers. I also implemented more sophisticated cache management tailored to each api endpoint. It took several evenings and morning to finish it.</p>
+<p>So I set out to migrate all the api endpoints to Cloudflare Workers. I also implemented more sophisticated cache management tailored to each api endpoint. It took several evenings and mornings to finish it.</p>
 <p>I believe such changes should improve Moiva&rsquo;s efficiency and it will become more noticeable once more users start using it and the Cache starts working to the full.</p>
 <h2 id="google-trends-chart-fix">Google Trends Chart fix</h2>
 <p>When I was doing the major refactoring of Moiva in January-February, I accidentally changed the way Google Trends Chart works - it lost optimization tricks I implemented before. That led to more requests being issued to get data for the chart. As a result, Google blocked Moiva completely and the chart stopped working, most probably it was blocked by the IP address.</p>
