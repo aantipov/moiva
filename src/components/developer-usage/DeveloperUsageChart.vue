@@ -7,7 +7,7 @@
     :libs-names="libsNames"
     :failed-libs-names="[]"
     :chart-config="chartConfig"
-    :aria-label="''"
+    :aria-label="ariaLabel"
   >
     <p>Percentage of developers using the library.</p>
     <p>
@@ -85,6 +85,12 @@ export default defineComponent({
     return {
       chartConfig,
       libsNames: computed(() => reposUsage.value.map(({ name }) => name)),
+      ariaLabel: computed(() => {
+        const valuesStr = reposUsage.value
+          .map(({ name, usage }) => `${name}: ${usage.slice(-1)[0].value}%`)
+          .join(', ');
+        return `Developer Usage chart. A number of developers using the library - ${valuesStr}`;
+      }),
     };
   },
 });
