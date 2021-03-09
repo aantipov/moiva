@@ -82,7 +82,7 @@ export default defineComponent({
           )
           .join(', ');
 
-        return `Contributors chart. The number of contributors in the previous quarter - ${valuesStr}`;
+        return `Contributors chart. The number of contributors in the previous quarter - ${valuesStr} contributors`;
       }),
     };
   },

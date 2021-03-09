@@ -75,7 +75,7 @@ export default defineComponent({
               `${name}: ${packagesReleases.value[index].slice(-1)[0].releases}`
           )
           .join(', ');
-        return `NPM Releases chart. The number of releases in the previous quarter - ${valuesStr}`;
+        return `NPM Releases chart. The number of releases in the previous quarter - ${valuesStr} releases`;
       }),
     };
   },
