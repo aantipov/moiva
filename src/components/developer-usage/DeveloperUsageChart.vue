@@ -89,7 +89,7 @@ export default defineComponent({
         const valuesStr = reposUsage.value
           .map(({ name, usage }) => `${name}: ${usage.slice(-1)[0].value}%`)
           .join(', ');
-        return `Developer Usage chart. A number of developers using the library - ${valuesStr}`;
+        return `Developer Usage chart. The number of developers using the library - ${valuesStr}`;
       }),
     };
   },

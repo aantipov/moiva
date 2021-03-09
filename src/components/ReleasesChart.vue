@@ -6,9 +6,9 @@
     :libs-names="packagesNames"
     :failed-libs-names="failedPackagesNames"
     :chart-config="chartConfig"
-    :aria-label="''"
+    :aria-label="ariaLabel"
   >
-    <p>Moiva gets releases data from NPM.</p>
+    <p>Moiva gets releases data from NPM...</p>
     <p>Major, minor and bugfix releases count.</p>
     <p>Pre-releases are not included.</p>
   </m-chart>
@@ -66,7 +66,18 @@ export default defineComponent({
       },
     }));
 
-    return { chartConfig };
+    return {
+      chartConfig,
+      ariaLabel: computed(() => {
+        const valuesStr = packagesNames.value
+          .map(
+            (name, index) =>
+              `${name}: ${packagesReleases.value[index].slice(-1)[0].releases}`
+          )
+          .join(', ');
+        return `NPM Releases chart. The number of releases in the previous quarter - ${valuesStr} releases`;
+      }),
+    };
   },
 });
 </script>

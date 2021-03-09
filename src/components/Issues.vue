@@ -6,7 +6,7 @@
     :libs-names="reposIds"
     :failed-libs-names="[]"
     :chart-config="chartConfig"
-    :aria-label="''"
+    :aria-label="ariaLabel"
   >
     <p>Amount of open/closed repository issues updated in the last 6 months</p>
   </m-chart>
@@ -15,6 +15,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import { ChartDataSets, ChartConfiguration } from 'chart.js';
+import { getSeoLibName } from '@/utils';
 import { numbersFormatter } from '../utils';
 import { ISSUES_COLORS } from '@/colors';
 import { isLoading, reposIds, libraries } from '@/store/libraries';
@@ -23,7 +24,9 @@ export default defineComponent({
   name: 'Issues',
 
   setup() {
-    const datasets = computed<ChartDataSets[]>(
+    const datasets = computed<
+      [ChartDataSets, ChartDataSets, ChartDataSets, ChartDataSets]
+    >(
       () =>
         [
           {
@@ -58,7 +61,7 @@ export default defineComponent({
             backgroundColor: ISSUES_COLORS.CLOSED,
             borderWidth: 1,
           },
-        ] as ChartDataSets[]
+        ] as [ChartDataSets, ChartDataSets, ChartDataSets, ChartDataSets]
     );
 
     const chartConfig = computed<ChartConfiguration>(() => ({
@@ -89,6 +92,24 @@ export default defineComponent({
       chartConfig,
       isLoading,
       reposIds,
+      ariaLabel: computed(() => {
+        const valuesStr = reposIds.value
+          .map(
+            (repoId, index) =>
+              `${getSeoLibName(repoId)}: ${
+                (datasets.value[0].data as number[])[index]
+              } ${datasets.value[0].label}, ${
+                (datasets.value[1].data as number[])[index]
+              } ${datasets.value[1].label}, ${
+                (datasets.value[2].data as number[])[index]
+              } ${datasets.value[2].label}, ${
+                (datasets.value[3].data as number[])[index]
+              } ${datasets.value[3].label}.`
+          )
+          .join(' ');
+
+        return `Recently Updates Issues chart. The number of open/closed repository issues updated in the last 6 months. ${valuesStr}`;
+      }),
     };
   },
 });
