@@ -6,7 +6,7 @@
     :libs-names="reposIds"
     :failed-libs-names="failedReposIds"
     :chart-config="chartConfig"
-    :aria-label="''"
+    :aria-label="ariaLabel"
   >
     <p>Moiva uses commits data from GitHub.</p>
     <p>The number of commits is aggregated by the 4 weeks interval.</p>
@@ -20,6 +20,7 @@
 <script lang="ts">
 import { defineComponent, toRefs, computed } from 'vue';
 import { ChartDataSets, ChartConfiguration } from 'chart.js';
+import { getSeoLibName } from '@/utils';
 import { CommitsResponseItemT } from '../../api/gh-commits';
 import { enUS } from 'date-fns/locale';
 
@@ -71,7 +72,21 @@ export default defineComponent({
       },
     }));
 
-    return { chartConfig };
+    return {
+      chartConfig,
+      ariaLabel: computed(() => {
+        const valuesStr = reposIds.value
+          .map(
+            (repoId, index) =>
+              `${getSeoLibName(repoId)}: ${
+                reposCommits.value[index].slice(-1)[0].total
+              }`
+          )
+          .join(', ');
+
+        return `Commits chart. The number of repository commits in the last 4 weeks - ${valuesStr} commits`;
+      }),
+    };
   },
 });
 </script>
