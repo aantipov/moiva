@@ -12,7 +12,6 @@ import { GithubContributorsResponseItemT } from '../api/gh-contributors';
 const npmDownloadsCache = new Map();
 const npmReleasesCache = new Map();
 const githubContributorsCache = new Map();
-const gTrendsCache = new Map();
 const bphobiaCache = new Map();
 
 export type ContributorsT = GithubContributorsResponseItemT;
@@ -26,16 +25,6 @@ export interface NpmDownloadT {
 export interface BundlephobiaT {
   gzip: number;
   raw: number;
-}
-
-export interface GTrendPointT {
-  time: number;
-  value: number[];
-}
-
-export interface GTrendsT {
-  averages: number[];
-  timelineData: GTrendPointT[];
 }
 
 export function reportSentry(err: AxiosError, methodName: string): void {
@@ -150,25 +139,6 @@ export function fetchContributors(
       }
 
       return null;
-    });
-}
-
-export function fetchGTrendsData(libs: string[]): Promise<GTrendPointT[]> {
-  const libsStr = libs.join(',');
-
-  if (gTrendsCache.get(libsStr)) {
-    return Promise.resolve(gTrendsCache.get(libsStr));
-  }
-
-  return axios
-    .get(`https://google-trends.moiva.workers.dev/?libs=${libsStr}`)
-    .then(({ data }) => {
-      gTrendsCache.set(libsStr, data.timelineData);
-      return data.timelineData;
-    })
-    .catch((err) => {
-      reportSentry(err, 'fetchGTrendsData');
-      return Promise.reject(err);
     });
 }
 

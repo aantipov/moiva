@@ -18,10 +18,10 @@ import {
   watchEffect,
   computed,
 } from 'vue';
-import { repoToGTrendDefMap } from '../../google-trends.config';
+import { repoToGTrendDefMap } from '../../../google-trends.config';
 import { chartsVisibility } from '@/store/chartsVisibility';
 import GTrendsChart from './GTrendsChart.vue';
-import { fetchGTrendsData, GTrendPointT } from '@/apis';
+import { fetchGTrendsData, GTrendsResponseT } from './api';
 import { libraryToColorMap } from '@/store/librariesColors';
 import {
   reposIds,
@@ -35,7 +35,10 @@ export default defineComponent({
   components: { GTrendsChart },
 
   setup() {
-    const libsTrends = ref<GTrendPointT[]>([]);
+    const libsTrends = ref<GTrendsResponseT>({
+      averages: [],
+      timelineData: [],
+    });
     const isLoading = ref(true);
     const isError = ref(false);
     let lastFetchPromise: null | Promise<void> = null;

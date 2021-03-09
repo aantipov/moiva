@@ -68,7 +68,7 @@ import Releases from './Releases.vue';
 import Search from './search/Search.vue';
 import Suggestions from './Suggestions.vue';
 import TechRadar from './TechRadar.vue';
-import GoogleTrends from './GTrends.vue';
+import GoogleTrends from './google-trends/GTrends.vue';
 import Bundlephobia from './Bundlephobia.vue';
 import Issues from './Issues.vue';
 import Popular from './Popular.vue';

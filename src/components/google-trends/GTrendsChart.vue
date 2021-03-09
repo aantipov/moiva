@@ -7,7 +7,7 @@
     :libs-names="libsKeywordsAliases"
     :failed-libs-names="[]"
     :chart-config="chartConfig"
-    :aria-label="''"
+    :aria-label="ariaLabel"
   >
     <p>
       Moiva uses data from
@@ -32,9 +32,9 @@
 import { defineComponent, toRefs, computed } from 'vue';
 import { ChartDataSets, ChartConfiguration } from 'chart.js';
 import { format } from 'date-fns';
-import { GTrendDefT } from '../../google-trends.config';
+import { GTrendDefT } from '../../../google-trends.config';
 import { numbersFormatter } from '@/utils';
-import { GTrendPointT } from '@/apis';
+import { GTrendsResponseT } from './api';
 import { enUS } from 'date-fns/locale';
 
 export default defineComponent({
@@ -43,7 +43,10 @@ export default defineComponent({
   props: {
     isLoading: { type: Boolean, required: true },
     isError: { type: Boolean, required: true },
-    libsTrends: { type: Array as () => GTrendPointT[], required: true },
+    libsTrends: {
+      type: Object as () => GTrendsResponseT,
+      required: true,
+    },
     libsTrendsDefs: { type: Array as () => GTrendDefT[], required: true },
     repoToColorMap: {
       type: Object as () => Record<string, string>,
@@ -55,7 +58,7 @@ export default defineComponent({
     const { repoToColorMap, libsTrends, libsTrendsDefs } = toRefs(props);
 
     const dates = computed(() =>
-      libsTrends.value.map(({ time }) =>
+      libsTrends.value.timelineData.map(({ time }) =>
         new Date(time * 1000).toISOString().slice(0, 10)
       )
     );
@@ -63,7 +66,7 @@ export default defineComponent({
     const datasets = computed<ChartDataSets[]>(() =>
       libsTrendsDefs.value.map((gtrendDef, libIndex) => ({
         label: gtrendDef.alias,
-        data: libsTrends.value.map(({ value }) => value[libIndex]),
+        data: libsTrends.value.timelineData.map(({ value }) => value[libIndex]),
         backgroundColor: repoToColorMap.value[gtrendDef.repoId],
         borderColor: repoToColorMap.value[gtrendDef.repoId],
         pointRadius: 0,
@@ -106,6 +109,16 @@ export default defineComponent({
         const libsQueryParam = encodeURIComponent(keywords.join(','));
 
         return `https://trends.google.com/trends/explore?cat=31&date=${datesQueryParam}&q=${libsQueryParam}`;
+      }),
+      ariaLabel: computed(() => {
+        let avgStr = '';
+        if (libsTrends.value.averages.length) {
+          const averages = libsTrendsDefs.value.map(({ alias }, index) => {
+            return `${alias}: ${libsTrends.value.averages[index]}`;
+          });
+          avgStr = `Averages - ${averages.join(', ')}`;
+        }
+        return `Google Trends Chart - Interest over time. ${avgStr}`;
       }),
     };
   },
