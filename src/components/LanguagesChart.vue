@@ -7,7 +7,7 @@
     :libs-names="reposIds"
     :failed-libs-names="failedReposIds"
     :chart-config="chartConfig"
-    :aria-label="''"
+    :aria-label="ariaLabel"
   >
     <p>
       This chart shows distribution of languages used in libraries' repostories.
@@ -23,6 +23,7 @@
 import { defineComponent, toRefs, computed } from 'vue';
 import Chart, { ChartDataSets } from 'chart.js';
 import { getLangToColorMap } from '@/colors';
+import { getSeoLibName } from '@/utils';
 import { GithubLanguagesResponseT } from '../../api/gh-languages';
 
 export default defineComponent({
@@ -158,7 +159,21 @@ export default defineComponent({
       },
     }));
 
-    return { chartConfig };
+    return {
+      chartConfig,
+      ariaLabel: computed(() => {
+        const valuesStr = reposIds.value
+          .map(
+            (repoId, index) =>
+              `${getSeoLibName(repoId)}: ${Object.keys(
+                reposLanguages.value[index]
+              ).join(', ')}.`
+          )
+          .join(' ');
+
+        return `Languages chart. Programming languages used in the repository. ${valuesStr}`;
+      }),
+    };
   },
 });
 </script>

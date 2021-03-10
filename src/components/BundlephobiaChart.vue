@@ -7,7 +7,7 @@
     :libs-names="packagesNames"
     :failed-libs-names="failedPackagesNames"
     :chart-config="chartConfig"
-    :aria-label="''"
+    :aria-label="ariaLabel"
   >
     <p>
       Moiva uses data from
@@ -91,7 +91,18 @@ export default defineComponent({
       },
     }));
 
-    return { chartConfig };
+    return {
+      chartConfig,
+      ariaLabel: computed(() => {
+        const valuesStr = packagesNames.value
+          .map(
+            (name, index) =>
+              `${name}: ${roundBytesFn(packagesSizes.value[index].gzip)}Kb`
+          )
+          .join(', ');
+        return `Bundle Size chart. The size of libraries (minified and gzipped) - ${valuesStr}`;
+      }),
+    };
   },
 });
 </script>

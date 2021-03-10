@@ -7,7 +7,7 @@
     :libs-names="tradarItemsAliases"
     :failed-libs-names="[]"
     :chart-config="chartConfig"
-    :aria-label="''"
+    :aria-label="ariaLabel"
   >
     <p>
       We use
@@ -18,6 +18,21 @@
       >
       data to build the chart.
     </p>
+    <p>ThoughtWorks' levels definitions:</p>
+    <p>
+      <i>Adopt</i> - We feel strongly that the industry should be adopting these
+      items. We use them when appropriate on our projects.
+    </p>
+    <p>
+      <i>Trial</i> - Worth pursuing. It is important to understand how to build
+      up this capability. Enterprises should try this technology on a project
+      that can handle the risk.
+    </p>
+    <p>
+      <i>Assess</i> - Worth exploring with the goal of understanding how it will
+      affect your enterprise.
+    </p>
+    <p><i>Hold</i> - Proceed with caution.</p>
   </m-chart>
 </template>
 
@@ -115,6 +130,20 @@ export default defineComponent({
     return {
       tradarItemsAliases,
       chartConfig,
+      ariaLabel: computed(() => {
+        const valuesStr = tradarItems.value
+          .map(({ alias, data }) => {
+            const vals = Object.entries(data).sort(
+              (dataA, dataB) =>
+                new Date(dataA[0]).getTime() - new Date(dataB[0]).getTime()
+            );
+            return `${alias}: ${vals.slice(-1)[0][1]}`;
+          })
+          .join(', ');
+
+        return `ThoughtWorks TechRadar chart. ${valuesStr}`;
+      }),
+      tradarItems,
     };
   },
 });
