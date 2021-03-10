@@ -111,7 +111,7 @@ export default defineComponent({
           const reactSize = roundBytesFn(reactPkg.react.gzip);
           // @ts-ignore
           const reactDomSize = roundBytesFn(reactPkg.reactDom.gzip);
-          return `React size is comprised of 2 packages - react and react-dom. React: ${reactSize}kB (minified + gzipped). React-dom: ${reactDomSize}kB (minified + gzipped)`;
+          return `React's size is comprised of 2 packages - react and react-dom. React: ${reactSize}kB (minified + gzipped). React-dom: ${reactDomSize}kB (minified + gzipped)`;
         }
         return null;
       }),
