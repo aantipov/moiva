@@ -14,6 +14,7 @@
       <a href="https://bundlephobia.com/" target="_blank">Bundlephobia</a>
       to build this chart.
     </p>
+    <p v-if="moreInfo">{{ moreInfo }}</p>
   </m-chart>
 </template>
 
@@ -101,6 +102,18 @@ export default defineComponent({
           )
           .join(', ');
         return `Bundle Size chart. The size of libraries (minified and gzipped) - ${valuesStr}`;
+      }),
+      moreInfo: computed(() => {
+        const reactIndex = packagesNames.value.indexOf('react');
+        if (reactIndex !== -1) {
+          const reactPkg = packagesSizes.value[reactIndex];
+          // @ts-ignore
+          const reactSize = roundBytesFn(reactPkg.react.gzip);
+          // @ts-ignore
+          const reactDomSize = roundBytesFn(reactPkg.reactDom.gzip);
+          return `React size is comprised of 2 packages - react and react-dom. React: ${reactSize}kB (minified + gzipped). React-dom: ${reactDomSize}kB (minified + gzipped)`;
+        }
+        return null;
       }),
     };
   },
