@@ -22,11 +22,6 @@ export interface NpmDownloadT {
   month: string;
 }
 
-export interface BundlephobiaT {
-  gzip: number;
-  raw: number;
-}
-
 export function reportSentry(err: AxiosError, methodName: string): void {
   err.name = `UI API (${methodName})`;
 
@@ -142,17 +137,39 @@ export function fetchContributors(
     });
 }
 
+export interface BundlephobiaT {
+  gzip: number;
+  raw: number;
+}
+
 export function fetchBundlephobiaData(
-  libName: string
+  pkg: string
 ): Promise<BundlephobiaT | null> {
-  if (bphobiaCache.get(libName)) {
-    return Promise.resolve(bphobiaCache.get(libName));
+  if (bphobiaCache.get(pkg)) {
+    return Promise.resolve(bphobiaCache.get(pkg));
   }
 
-  return axios
-    .get(`https://bundle-size.moiva.workers.dev/?pkg=${libName}`)
-    .then(({ data }) => {
-      bphobiaCache.set(libName, data);
+  let request;
+
+  if (pkg === 'react') {
+    request = Promise.all([
+      axios.get(`https://bundle-size.moiva.workers.dev/?pkg=react`),
+      axios.get(`https://bundle-size.moiva.workers.dev/?pkg=react-dom`),
+    ]).then(([reactData, reactDomData]) => ({
+      gzip: reactData.data.gzip + reactDomData.data.gzip,
+      raw: reactData.data.raw + reactDomData.data.raw,
+      react: reactData.data,
+      reactDom: reactDomData.data,
+    }));
+  } else {
+    request = axios
+      .get(`https://bundle-size.moiva.workers.dev/?pkg=${pkg}`)
+      .then(({ data }) => data);
+  }
+
+  return request
+    .then((data) => {
+      bphobiaCache.set(pkg, data);
       return data;
     })
     .catch((err) => {
