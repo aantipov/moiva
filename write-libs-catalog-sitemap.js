@@ -79,7 +79,6 @@ const resStr = `export interface CatalogLibraryT {
 // prettier-ignore
 const libraries: CatalogLibraryT[] = [${str}];
 
-
 export const catalogRepoIdToLib = libraries.reduce((acc, lib) => {
   acc[lib.repoId] = lib;
   return acc;
@@ -120,7 +119,13 @@ fs.writeFile('src/libraries-catalog.ts', resStr, (err) => {
 const oneLibUrls = categories
   .map((cat) => cat.libs)
   .flat()
-  .map((lib) => `https://moiva.io/?npm=${lib.npm}`);
+  .map((lib) => {
+    if (lib.npm) {
+      return `https://moiva.io/?npm=${lib.npm}`;
+    }
+
+    return `https://moiva.io/?github=${lib.repoId}`;
+  });
 
 // Generate urls consisting of pairs of libs from the same category:
 // framework specific can be paired with the same framework specific
@@ -137,6 +142,7 @@ function sortLibsByNpmName(libA, libB) {
   return 0;
 }
 
+// TODO: Handle a use case when 1-2 libraries don't have npm
 const twoLibsUrls = categories
   .map((cat) => {
     // skip Misc category
