@@ -62,7 +62,8 @@ categories.forEach((cat) => {
   cat.libs.forEach((lib) => {
     const alias = lib.alias && `'${lib.alias}'`;
     const framework = lib.framework && `'${lib.framework}'`;
-    str += `  { category: '${lib.category}', repoId: '${lib.repoId}', npm: '${lib.npm}', isNpmAByProduct: ${lib.isNpmAByProduct}, alias: ${alias}, framework: ${framework} },\n`;
+    const npm = lib.npm && `'${lib.npm}'`;
+    str += `  { category: '${lib.category}', repoId: '${lib.repoId}', npm: ${npm}, isNpmAByProduct: ${lib.isNpmAByProduct}, alias: ${alias}, framework: ${framework} },\n`;
   });
 });
 
@@ -71,32 +72,25 @@ const resStr = `export interface CatalogLibraryT {
   category: string;
   alias: string;
   npm?: string | null;
-  isNpmAByProduct? : boolean | null;
+  isNpmAByProduct?: boolean | null;
   framework: string | null;
 }
 
 // prettier-ignore
 const libraries: CatalogLibraryT[] = [${str}];
 
-
-export const catalogRepoIdToLib = libraries.reduce(
-  (acc, lib) => {
-    acc[lib.repoId] = lib;
-    return acc;
-  },
-  {} as Record<string, CatalogLibraryT>
-);
+export const catalogRepoIdToLib = libraries.reduce((acc, lib) => {
+  acc[lib.repoId] = lib;
+  return acc;
+}, {} as Record<string, CatalogLibraryT>);
 
 // For use by npm-package api to return the correct repo for the npm package
-export const catalogNpmToLib = libraries.reduce(
-  (acc, lib) => {
-    if (lib.npm) {
-      acc[lib.npm] = lib;
-    }
-    return acc;
-  },
-  {} as Record<string, CatalogLibraryT>
-);
+export const catalogNpmToLib = libraries.reduce((acc, lib) => {
+  if (lib.npm) {
+    acc[lib.npm] = lib;
+  }
+  return acc;
+}, {} as Record<string, CatalogLibraryT>);
 
 export const catalogReposIdsByCategory = libraries.reduce(
   (acc, { repoId, category }) => {
@@ -125,7 +119,13 @@ fs.writeFile('src/libraries-catalog.ts', resStr, (err) => {
 const oneLibUrls = categories
   .map((cat) => cat.libs)
   .flat()
-  .map((lib) => `https://moiva.io/?npm=${lib.npm}`);
+  .map((lib) => {
+    if (lib.npm) {
+      return `https://moiva.io/?npm=${lib.npm}`;
+    }
+
+    return `https://moiva.io/?github=${lib.repoId}`;
+  });
 
 // Generate urls consisting of pairs of libs from the same category:
 // framework specific can be paired with the same framework specific
@@ -142,6 +142,7 @@ function sortLibsByNpmName(libA, libB) {
   return 0;
 }
 
+// TODO: Handle a use case when 1-2 libraries don't have npm
 const twoLibsUrls = categories
   .map((cat) => {
     // skip Misc category
@@ -174,7 +175,7 @@ const urlsStr = urls.reduce((acc, url) => {
     acc +
     `  <url>
     <loc>${url}</loc>
-    <lastmod>2021-02-06</lastmod>
+    <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
 `
@@ -200,7 +201,7 @@ const content = `<?xml version="1.0" encoding="UTF-8"?>
 
   <url>
     <loc>https://moiva.io/</loc>
-    <lastmod>2021-02-06</lastmod>
+    <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -215,7 +216,7 @@ fs.writeFile('public/sitemap.xml', content, (err) => {
 function getDuplicates(categories) {
   // TODO: improve this logic
   const libs = categories.map(({ libs }) => libs).flat();
-  const libsNpmNames = libs.map(({ npm }) => npm);
+  const libsNpmNames = libs.map(({ npm }) => npm).filter((npm) => !!npm);
   const libsReposIds = libs.map(({ repoId }) => repoId);
   const libsAliases = libs.map(({ alias }) => alias);
   const duplicates = [];
