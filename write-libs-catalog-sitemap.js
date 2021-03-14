@@ -1,49 +1,11 @@
 /* eslint-disable */
 fs = require('fs');
 
-const data = [
-  require('../moiva-catalog/catalog/3D'),
-  require('../moiva-catalog/catalog/api-mocks'),
-  require('../moiva-catalog/catalog/aws-lambda-frameworks'),
-  require('../moiva-catalog/catalog/build-tools'),
-  require('../moiva-catalog/catalog/charts'),
-  require('../moiva-catalog/catalog/css-frameworks'),
-  require('../moiva-catalog/catalog/css-in-js'),
-  require('../moiva-catalog/catalog/date-utilities'),
-  require('../moiva-catalog/catalog/e2e-testing'),
-  require('../moiva-catalog/catalog/frontend-frameworks'),
-  require('../moiva-catalog/catalog/graphql-clients'),
-  require('../moiva-catalog/catalog/html-templating-engines'),
-  require('../moiva-catalog/catalog/immutability'),
-  require('../moiva-catalog/catalog/lint-prettify'),
-  require('../moiva-catalog/catalog/maps'),
-  require('../moiva-catalog/catalog/misc'),
-  require('../moiva-catalog/catalog/node-frameworks'),
-  require('../moiva-catalog/catalog/node-logging'),
-  require('../moiva-catalog/catalog/node-monitoring'),
-  require('../moiva-catalog/catalog/node-runners'),
-  require('../moiva-catalog/catalog/object-schema-validation'),
-  require('../moiva-catalog/catalog/react-component-libraries'),
-  require('../moiva-catalog/catalog/react-dates'),
-  require('../moiva-catalog/catalog/react-document-head-tags'),
-  require('../moiva-catalog/catalog/react-forms'),
-  require('../moiva-catalog/catalog/react-fullstack-serverless'),
-  require('../moiva-catalog/catalog/react-native-android'),
-  require('../moiva-catalog/catalog/react-unit-testing'),
-  require('../moiva-catalog/catalog/runtime-types-checks'),
-  require('../moiva-catalog/catalog/select-autocomplete'),
-  require('../moiva-catalog/catalog/state'),
-  require('../moiva-catalog/catalog/static-site-generators'),
-  require('../moiva-catalog/catalog/static-types-checking'),
-  require('../moiva-catalog/catalog/testing-bdd'),
-  require('../moiva-catalog/catalog/ui-dev-env'),
-  require('../moiva-catalog/catalog/unit-tests-runner'),
-  require('../moiva-catalog/catalog/utilities'),
-  require('../moiva-catalog/catalog/visual-regression'),
-  require('../moiva-catalog/catalog/vue-component-libraries'),
-  require('../moiva-catalog/catalog/web-components'),
-  require('../moiva-catalog/catalog/web-sockets'),
-];
+const files = fs.readdirSync('../moiva-catalog/catalog');
+
+const categoriesRaw = files.map((file) =>
+  JSON.parse(fs.readFileSync('../moiva-catalog/catalog/' + file, 'utf8'))
+);
 
 /**
  * Get Alias using the alias from the catalog or repository's name
@@ -65,20 +27,17 @@ function getAliasFromRepoId(repoId) {
   return repoName;
 }
 
-const categories = data.map((catObj) => ({
-  categoryName: catObj.name,
-  libs: catObj.items.map((pkg) => {
-    const libCatalogData = Array.isArray(pkg) ? pkg : new Array(pkg);
-    const repoId = libCatalogData[1];
-
-    return {
-      npm: libCatalogData[0],
-      category: catObj.name,
-      repoId,
-      alias: libCatalogData[2] || getAliasFromRepoId(repoId),
-      framework: libCatalogData[3] || null,
-    };
-  }),
+const categories = categoriesRaw.map(({ name, items }) => ({
+  categoryName: name,
+  libs: items.map(({ repo, npm, isNpmCoreArtifact, framework, alias }) => ({
+    category: name,
+    alias: alias || getAliasFromRepoId(repo),
+    repoId: repo,
+    npm: npm ?? null,
+    isNpmAByProduct:
+      typeof isNpmCoreArtifact === 'boolean' ? !isNpmCoreArtifact : null,
+    framework: framework ?? null,
+  })),
 }));
 
 const duplicates = getDuplicates(categories);
@@ -103,25 +62,26 @@ categories.forEach((cat) => {
   cat.libs.forEach((lib) => {
     const alias = lib.alias && `'${lib.alias}'`;
     const framework = lib.framework && `'${lib.framework}'`;
-    str += `  ['${lib.npm}', '${lib.repoId}', '${lib.category}', ${alias}, ${framework}],\n`;
+    str += `  { category: '${lib.category}', repoId: '${lib.repoId}', npm: '${lib.npm}', isNpmAByProduct: ${lib.isNpmAByProduct}, alias: ${alias}, framework: ${framework} },\n`;
   });
 });
 
-const resStr = `const libraries: [string, string, string, string, string | null][] = [${str}];
-
-export interface CatalogLibraryT {
+const resStr = `export interface CatalogLibraryT {
   repoId: string;
   category: string;
   alias: string;
   npm?: string | null;
-  // TODO: don't forget to handle it
   isNpmAByProduct? : boolean | null;
   framework: string | null;
 }
 
+// prettier-ignore
+const libraries: CatalogLibraryT[] = [${str}];
+
+
 export const catalogRepoIdToLib = libraries.reduce(
-  (acc, [npm, repoId, category, alias, framework]) => {
-    acc[repoId] = { npm, repoId, category, alias, framework };
+  (acc, lib) => {
+    acc[lib.repoId] = lib;
     return acc;
   },
   {} as Record<string, CatalogLibraryT>
@@ -129,33 +89,22 @@ export const catalogRepoIdToLib = libraries.reduce(
 
 // For use by npm-package api to return the correct repo for the npm package
 export const catalogNpmToLib = libraries.reduce(
-  (acc, [npm, repoId, category, alias, framework]) => {
-    acc[npm] = { npm, repoId, category, alias, framework };
+  (acc, lib) => {
+    if (lib.npm) {
+      acc[lib.npm] = lib;
+    }
     return acc;
   },
   {} as Record<string, CatalogLibraryT>
 );
 
 export const catalogReposIdsByCategory = libraries.reduce(
-  (acc, [, repoId, category]) => {
+  (acc, { repoId, category }) => {
     if (!acc[category]) {
       acc[category] = [];
     }
 
     acc[category].push(repoId);
-
-    return acc;
-  },
-  {} as Record<string, string[]>
-);
-
-export const catalogNpmNamesByCategory = libraries.reduce(
-  (acc, [npm, , category]) => {
-    if (!acc[category]) {
-      acc[category] = [];
-    }
-
-    acc[category].push(npm);
 
     return acc;
   },
@@ -234,6 +183,21 @@ const urlsStr = urls.reduce((acc, url) => {
 
 const content = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://moiva.io/blog</loc>
+    <lastmod>2021-03-08</lastmod>
+  </url>
+
+  <url>
+    <loc>https://moiva.io/blog/2021-03-update-migration-to-cloudflare-workers</loc>
+    <lastmod>2021-03-08</lastmod>
+  </url>
+
+  <url>
+    <loc>https://moiva.io/blog/universal-tool-to-evaluate-discover-compare-software</loc>
+    <lastmod>2021-02-17</lastmod>
+  </url>
+
   <url>
     <loc>https://moiva.io/</loc>
     <lastmod>2021-02-06</lastmod>
