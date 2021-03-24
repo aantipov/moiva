@@ -90,6 +90,9 @@ h1, h2, h3, h4, h5, h6 {
 h1 {
   font-size: 2rem;
 }
+.posts h1 {
+  font-size: 1.5rem;
+}
 h2 {
   margin-top: 1rem;
   font-size: 1.5rem;
@@ -148,6 +151,16 @@ abbr[title] {
 }
 
 /* Code */
+.code-descr {
+  text-align: center;
+  color: gray;
+  font-style: italic;
+  font-size: 80%;
+  margin-bottom: 16px;
+}
+code[class*=language-], pre[class*=language-] {
+  line-height: 1.0 !important;
+}
 code,
 pre {
   font-family: Menlo, Monaco, "Courier New", monospace;
@@ -171,10 +184,11 @@ pre {
   word-break: break-all;
   word-wrap: break-word;
   background-color: #f9f9f9;
+  border-radius: 5px;
 }
 pre code {
   padding: 0;
-  font-size: 100%;
+  font-size: 70% !important;
   color: inherit;
   background-color: transparent;
 }
@@ -240,6 +254,7 @@ table {
   width: 100%;
   border: 1px solid #e5e5e5;
   border-collapse: collapse;
+  font-size: 90%;
 }
 td,
 th {
