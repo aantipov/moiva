@@ -217,7 +217,7 @@ It also provides a <a href="https://developers.cloudflare.com/workers/learning/p
 <h2 id="scheduled-invocations-cron">Scheduled Invocations (Cron)</h2>
 <p><strong>Cloudflare</strong> has <a href="https://developers.cloudflare.com/workers/platform/cron-triggers">built-in support</a> for scheduled invocations of Functions.</p>
 <p><strong>Vercel</strong> doesn&rsquo;t have built-in support for scheduled tasks and <a href="https://vercel.com/docs/solutions/cron-jobs">recommends</a> using third-party services.</p>
-<h2 id="logging-and-analytics-to-3rd-party-services">Logging and analytics to 3rd party services</h2>
+<h2 id="logging-to-3rd-party-services">Logging to 3rd party services</h2>
 <p>There is often a need to communicate to 3rd party services in a non-blocking way - you send a Response to the user and, in parallel, send data to some 3rd party services, for example, gather some statistical data.</p>
 <p>The problem with Serverless Functions is that their lifetime is very limited and it might happen that the runtime shuts down before it handles the communication.</p>
 <p><strong>Cloudflare</strong> provides a <a href="https://developers.cloudflare.com/workers/learning/fetch-event-lifecycle#waituntil"><code>waitUntil()</code></a> hook to notify the runtime to wait for tasks that run longer than the time it takes to send the response. It is used, for example, to write data to Cache.</p>
