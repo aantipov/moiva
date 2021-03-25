@@ -86,8 +86,8 @@
   </div>
 
   <h2 id="tldr">TLDR</h2>
-<p>Vercel Serverless Functions are extremely easy to create and they provide a very good starting point.
-Cloudflare Workers provide more functionality out-of-the-box (e.g. key-value data store, CRON) and look more mature and sophisticated.</p>
+<p>Vercel provides a good solid solution for Serverless Functions and makes the process of their creation seamless and hassle-free.
+Cloudflare Workers offer more functionality out-of-the-box (e.g. key-value data store, CRON) and look more mature and sophisticated.</p>
 <h2 id="before-we-proceed">Before we proceed</h2>
 <p>All my conclusions and findings are based on the official documentation provided by Vercel and Cloudflare and also based on my experience with both platforms.
 I reserve the right for mistakes. Please let me know if you find any.</p>
@@ -96,7 +96,7 @@ I reserve the right for mistakes. Please let me know if you find any.</p>
 <p><a href="https://vercel.com/">Vercel</a>, in the essence, is a solution for automatic deployments of static websites to a network of data-centers around the world. Vercel doesn&rsquo;t stop there and provides a solution for Serverless Functions which works really great and smooth.</p>
 <p>With further development of Moiva I accumulated a set of requirements for Serverless Functions which Vercel, unfortunately, didn&rsquo;t meet. Hence I looked around and found <a href="https://workers.cloudflare.com/">Cloudflare Workers</a>.
 I gave it a try and I liked it. Two weeks later all my Serverless Functions were migrated there.</p>
-<p><a href="https://workers.cloudflare.com/">Cloudflare Workers</a> is basically a platform for the deployment of Serverless Functions to a network of data-centers around the world. Their documentation <a href="https://developers.cloudflare.com/workers/platform/sites">says</a> that Workers can also be used to deploy static applications as well, but I haven&rsquo;t looked into it or evaluated it. I know that Cloudflare is also working on another solution for deployment/hosting of static applications - <a href="https://pages.cloudflare.com/">Cloudflare Pages</a>.</p>
+<p><a href="https://workers.cloudflare.com/">Cloudflare Workers</a> is basically a platform for deployment of Serverless Functions to a network of data-centers around the world. Their documentation <a href="https://developers.cloudflare.com/workers/platform/sites">says</a> that Workers can also be used to deploy static applications as well, but I haven&rsquo;t looked into it or evaluated it. I know that Cloudflare is also working on another solution for deployment/hosting of static applications - <a href="https://pages.cloudflare.com/">Cloudflare Pages</a>.</p>
 <p>I thought that my findings could be interested to others. Here we go!</p>
 <h2 id="serverless-functions-requests-handling">Serverless Functions requests handling</h2>
 <p>The high-level picture of how Serverless Functions requests are handled is different in Vercel and Cloudflare Workers. I think it makes sense to start the comparison with an explanation of how each platform works and highlighting the differences.</p>
@@ -147,7 +147,7 @@ We can imagine it affects Execution Time, but not significantly because Cloudfla
 <p>Cloud providers allow for a variety of different sized functions, but we have picked one that is aligned with making cold boot instantiation nearly instant for user-facing workloads (such as serving HTTP traffic)</p>
 </blockquote>
 <h2 id="dx-and-ease-of-developmentdeployment">DX and Ease of development/deployment</h2>
-<p>If you are using Vercel to deploy your website, then adding a new Serverless Function is as easy as adding a new NodeJS Express-like script (or written in other language script) under <code>/api</code> folder.
+<p>If you are using Vercel to deploy your website, then adding a new Serverless Function is as easy as adding a new NodeJS Express-like script (or written in a different language script) under <code>/api</code> folder.
 Vercel Serverless functions also work in the local dev environment out-of-the-box.
 Vercel achieves great Developer Experience (DX) here.</p>
 <p>If you use Vercel for website deployment, but want to use Cloudflare Workers for Serverless (like me), then you need to learn and deal with many more things:</p>
@@ -169,7 +169,7 @@ It also provides a <a href="https://developers.cloudflare.com/workers/learning/p
 <p>With every new deployment Vercel automatically invalidates the Cache. Hence, if there is a need to invalidate the cache, developers need to redeploy their application.</p>
 <p><strong>Cloudflare</strong> provides a much more flexible and granular cache configuration and has a different mental model about how caching should work.</p>
 <p>Most of the time Functions don&rsquo;t have heavy computations, they spend their time mostly awaiting the responses from subrequests.</p>
-<p>Recognizing that, Cloudflare runs Functions on every request and provides automatic caching for outbound Function subrequests. Developers can modify subrequests caching behaviour by providing <a href="https://developers.cloudflare.com/workers/runtime-apis/request#requestinitcfproperties">certain configuration</a>.</p>
+<p>Recognizing that, Cloudflare runs Functions on every request and provides automatic caching for outbound Function subrequests. Developers can modify subrequests caching behavior by providing <a href="https://developers.cloudflare.com/workers/runtime-apis/request#requestinitcfproperties">certain configuration</a>.</p>
 <p>I think that running a Function every time on every request is a very important feature that distinguishes Cloudflare Workers from Vercel. It allows you to log stuff to third-party services and have some analytics.</p>
 <p>Cloudflare covers also the case when a Function does have heavy computations. Developers have access to Cache API to store Function responses and use it in future requests. Developers are free to define how and when to cache, whet to use and when to delete the cached value, free to modify the cached value before sending the response. Cloudflare provides good documentation and <a href="https://developers.cloudflare.com/workers/examples">examples</a> to start from.</p>
 <pre><code class="language-javascript">async function handleRequest(event) {
@@ -242,12 +242,12 @@ It also provides a <a href="https://developers.cloudflare.com/workers/learning/p
 return response
 </code></pre>
 <div class="code-descr">Code snippet taken from <a href="https://developers.cloudflare.com/workers/examples/cache-api">https://developers.cloudflare.com/workers/examples/cache-api</a> </div>
-<p>In <strong>Vercel</strong>&rsquo;s Functions I tried to set up logging errors to Sentry and logging data to some database, but it worked unpredictably - sometimes it worked, sometimes it didn&rsquo;t. I also got strange errors in logs. It took me time to realize that the problem was that the runtime stops working onse the Response is sent.</p>
+<p>In <strong>Vercel</strong>&rsquo;s Functions, I tried to set up logging errors to Sentry and logging data to some database, but it worked unpredictably - sometimes it worked, sometimes it didn&rsquo;t. I also got strange errors in logs. It took me time to realize that the problem was that the runtime stops working once the Response is sent.</p>
 <blockquote>
 <p>It is important to note that Serverless Functions, even while the underlying container is hot, cannot leave tasks running. If a sub-process is running by the time the response is returned, the entire container is frozen. When a new invocation happens, if the container is re-used, it is unfrozen, which allows sub-processes to continue running.</p>
 </blockquote>
 <p>I couldn&rsquo;t find any workaround for such a problem.</p>
-<p>Another problem that I found with Vercel is that you can&rsquo;t really log all the requests to your Function and build analytics on top of it because Functions are not executed in case there is a cached response for the request. I couldn&rsquo;t find a solution for it. There is no such a problem with Cloudflare because its Functions get always executed on every request.</p>
+<p>Another problem that I found with Vercel is that you can&rsquo;t really log all the requests to your Function and build analytics on top of it because Functions are not executed in case there is a cached response for the request. I couldn&rsquo;t find a solution for it. There is no such problem with Cloudflare because its Functions get always executed on every request.</p>
 <h2 id="limits">Limits</h2>
 <table>
 <thead>
@@ -265,7 +265,7 @@ return response
 </tr>
 <tr>
 <td>Execution timeout</td>
-<td>No limit on the real runtime for a Function script. Instead, there is a limit on the CPU runtime: 10ms on the free plan and 50ms on the Bundled plan. The time to fulfill subreqeuests doesn&rsquo;t count if there is no processing and CPU is idling.</td>
+<td>No limit on the real runtime for a Function script. Instead, there is a limit on the CPU runtime: 10ms on the free plan and 50ms on the Bundled plan. The time to fulfill subrequests doesn&rsquo;t count if there is no processing and CPU is idling.</td>
 <td>10 sec for Hobby plan and 60 sec for Pro</td>
 </tr>
 <tr>
