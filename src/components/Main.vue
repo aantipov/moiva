@@ -66,6 +66,8 @@
             <Languages
               class="col-span-12 md:col-span-6 md:col-start-4 xl:col-span-4 xl:col-start-5"
             />
+            <TechRadar />
+            <Bundlephobia />
           </template>
           <template v-else-if="miscChartsNumber === 2">
             <Languages
@@ -75,9 +77,9 @@
             <Bundlephobia class="col-span-12 md:col-span-6 xl:col-span-4" />
           </template>
           <template v-else>
+            <Languages class="col-span-12 md:col-span-6 xl:col-span-4" />
             <TechRadar class="col-span-12 md:col-span-6 xl:col-span-4" />
             <Bundlephobia class="col-span-12 md:col-span-6 xl:col-span-4" />
-            <Languages class="col-span-12 md:col-span-6 xl:col-span-4" />
           </template>
         </div>
       </div>
