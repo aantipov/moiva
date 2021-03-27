@@ -1,6 +1,6 @@
 <template>
   <m-chart
-    title="NPM monthly downloads"
+    title="NPM Downloads monthly"
     :is-loading="isLoading"
     :is-error="isError"
     :libs-names="packagesNames"

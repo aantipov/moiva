@@ -37,7 +37,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
+import { defineComponent, computed, watchEffect } from 'vue';
 import { format } from 'date-fns';
 import { ChartConfiguration, ChartDataSets } from 'chart.js';
 import {
@@ -45,6 +45,7 @@ import {
   repoToTechRadarMap,
   TechRadarT,
 } from '../../techradar.config';
+import { chartsVisibility } from '@/store/chartsVisibility';
 import { libraryToColorMap } from '@/store/librariesColors';
 import { reposIds, repoToLibraryIdMap } from '@/store/libraries';
 
@@ -63,6 +64,10 @@ export default defineComponent({
         (tradarItem) => repoToTechRadarMap[tradarItem.alias]
       )
     );
+
+    watchEffect(() => {
+      chartsVisibility.techRadar = tradarItemsAliases.value.length > 0;
+    });
 
     const uniqDates = computed<string[]>(() => {
       const dates = tradarItems.value

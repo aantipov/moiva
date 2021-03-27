@@ -23,38 +23,62 @@
       />
 
       <!-- Charts -->
-      <div
-        v-show="
-          chartsVisibility.npmDownloads ||
-          chartsVisibility.googleTrends ||
-          chartsVisibility.developerUsage
-        "
-        class="mb-12"
-      >
+      <div class="mb-12">
         <h2>Popularity</h2>
         <div class="grid grid-cols-12 gap-4">
-          <NpmDownloads class="col-span-12 xl:col-span-4" />
-          <GoogleTrends class="col-span-12 xl:col-span-4" />
-          <DevelopersUsage class="col-span-12 md:col-span-6 xl:col-span-4" />
+          <template v-if="popularChartsNumber === 1">
+            <Stars
+              class="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4"
+            />
+            <NpmDownloads />
+            <GoogleTrends />
+            <Stars />
+          </template>
+          <template v-else-if="popularChartsNumber === 2">
+            <NpmDownloads class="col-span-12 md:col-span-6" />
+            <GoogleTrends class="col-span-12 md:col-span-6" />
+            <Stars class="col-span-12 md:col-span-6" />
+            <DevelopersUsage class="col-span-12 md:col-span-6" />
+          </template>
+          <template v-else>
+            <NpmDownloads class="col-span-12 md:col-span-6 xl:col-span-4" />
+            <GoogleTrends class="col-span-12 md:col-span-6 xl:col-span-4" />
+            <Stars class="col-span-12 md:col-span-6 xl:col-span-4" />
+            <DevelopersUsage class="col-span-12 md:col-span-6 xl:col-span-4" />
+          </template>
         </div>
       </div>
 
       <div class="mb-12">
         <h2>Maintenance and Development Activity</h2>
         <div class="grid grid-cols-12 gap-4">
-          <Releases class="col-span-12 md:col-span-6 xl:col-span-3" />
-          <Contributors class="col-span-12 md:col-span-6 xl:col-span-3" />
-          <Commits class="col-span-12 md:col-span-6 xl:col-span-3" />
-          <Issues class="col-span-12 md:col-span-6 xl:col-span-3" />
+          <Releases class="col-span-12 md:col-span-6 xl:col-span-4" />
+          <Contributors class="col-span-12 md:col-span-6 xl:col-span-4" />
+          <Commits class="col-span-12 md:col-span-6 xl:col-span-4" />
+          <Issues class="col-span-12 md:col-span-6 xl:col-span-4" />
         </div>
       </div>
 
       <div>
         <h2>Miscellaneous</h2>
         <div class="grid grid-cols-12 gap-4">
-          <TechRadar class="col-span-12 md:col-span-6 xl:col-span-4" />
-          <Bundlephobia class="col-span-12 md:col-span-6 xl:col-span-4" />
-          <Languages class="col-span-12 md:col-span-6 xl:col-span-4" />
+          <template v-if="miscChartsNumber === 1">
+            <Languages
+              class="col-span-12 md:col-span-6 md:col-start-4 xl:col-span-4 xl:col-start-5"
+            />
+          </template>
+          <template v-else-if="miscChartsNumber === 2">
+            <Languages
+              class="col-span-12 md:col-span-6 xl:col-span-4 xl:col-start-3"
+            />
+            <TechRadar class="col-span-12 md:col-span-6 xl:col-span-4" />
+            <Bundlephobia class="col-span-12 md:col-span-6 xl:col-span-4" />
+          </template>
+          <template v-else>
+            <TechRadar class="col-span-12 md:col-span-6 xl:col-span-4" />
+            <Bundlephobia class="col-span-12 md:col-span-6 xl:col-span-4" />
+            <Languages class="col-span-12 md:col-span-6 xl:col-span-4" />
+          </template>
         </div>
       </div>
     </div>
@@ -62,13 +86,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, watchEffect } from 'vue';
+import { defineComponent, onMounted, watchEffect, computed } from 'vue';
 import NpmDownloads from './NpmDownloads.vue';
 import Releases from './Releases.vue';
 import Search from './search/Search.vue';
 import Suggestions from './Suggestions.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './google-trends/GTrends.vue';
+import Stars from './github-stars/Stars.vue';
 import Bundlephobia from './Bundlephobia.vue';
 import Issues from './Issues.vue';
 import Popular from './Popular.vue';
@@ -105,6 +130,7 @@ export default defineComponent({
     Suggestions,
 
     Bundlephobia,
+    Stars,
     Commits,
     Contributors,
     DevelopersUsage,
@@ -178,6 +204,23 @@ export default defineComponent({
       selectMultiple(npmPackagesNames: string[]): void {
         npmPackagesNames.forEach(selectNpmPackage);
       },
+      popularChartsNumber: computed(
+        () =>
+          [
+            chartsVisibility.npmDownloads,
+            chartsVisibility.googleTrends,
+            chartsVisibility.developerUsage,
+            true,
+          ].filter(Boolean).length
+      ),
+      miscChartsNumber: computed(
+        () =>
+          [
+            chartsVisibility.techRadar,
+            chartsVisibility.bundlephobia,
+            true,
+          ].filter(Boolean).length
+      ),
     };
   },
 });
