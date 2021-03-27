@@ -260,7 +260,6 @@ export function getSuggestions(libraries: LibraryT[]): CatalogLibraryT[] {
 
   return catalogReposIdsByCategory[lastSelectedLibData.category]
     .filter((repoId) => !selectedReposIds.includes(repoId))
-    .slice(0, 6)
     .map((repoId) => catalogRepoIdToLib[repoId]);
 }
 
