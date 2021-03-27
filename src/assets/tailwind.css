@@ -18,10 +18,10 @@
   .p {
     @apply mt-0 mb-1 text-base font-light text-black text-opacity-90 leading-6;
   }
-  a {
-    @apply font-normal text-primary;
+  a, .link {
+    @apply font-normal cursor-pointer text-primary;
   }
-  a:hover {
+  a:hover, .link:hover {
     @apply text-blue-900 underline text-primary-dark;
   }
 

@@ -1,22 +1,33 @@
 <template>
-  <div class="w-full px-3 mx-auto lg:w-9/12 xl:w-2/4">
-    <a
-      v-for="suggestedLibrary in suggestions"
-      :key="suggestedLibrary.repoId"
-      class="inline-block mt-2 mr-3 text-base"
-      :href="getHrefForAdditionalLib(suggestedLibrary)"
-      @click.prevent="onSelect(suggestedLibrary)"
-      >+ {{ suggestedLibrary.alias }}</a
-    >
+  <div v-if="suggestions.length" class="w-full px-3 mx-auto lg:w-9/12 xl:w-2/4">
+    <div>
+      <a
+        v-for="suggestedLibrary in suggestions"
+        :key="suggestedLibrary.repoId"
+        class="inline-block mt-2 mr-3 text-base"
+        :href="getHrefForAdditionalLib(suggestedLibrary)"
+        @click.prevent="onSelect(suggestedLibrary)"
+        >+ {{ suggestedLibrary.alias }}</a
+      >
+    </div>
+
+    <div v-if="hasMore" class="flex justify-end mt-1">
+      <div class="link" @click="showAll = !showAll">
+        <template v-if="!showAll"> &darr; Show More </template>
+        <template v-else> &uarr; Show Less </template>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
+import { defineComponent, computed, ref } from 'vue';
 import { getSuggestions, constructHref } from '@/utils';
 import { CatalogLibraryT } from '@/libraries-catalog';
 import { libraries } from '@/store/libraries';
 import { LibraryT } from '@/libraryApis';
+
+const size = 5;
 
 export default defineComponent({
   name: 'Suggestions',
@@ -24,10 +35,19 @@ export default defineComponent({
   emits: ['select'],
 
   setup(_props, { emit }) {
+    const showAll = ref(false);
+    const allSuggestions = computed<CatalogLibraryT[]>(() =>
+      getSuggestions(libraries as LibraryT[])
+    );
+
     return {
-      suggestions: computed<CatalogLibraryT[]>(() =>
-        getSuggestions(libraries as LibraryT[])
-      ),
+      showAll,
+      hasMore: computed<boolean>(() => allSuggestions.value.length > size),
+      suggestions: computed<CatalogLibraryT[]>(() => {
+        return showAll.value
+          ? allSuggestions.value
+          : allSuggestions.value.slice(0, size);
+      }),
       onSelect(catalogLibrary: CatalogLibraryT) {
         if (catalogLibrary.npm) {
           emit('select', catalogLibrary.npm, true);

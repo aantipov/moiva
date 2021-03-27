@@ -72,7 +72,7 @@ export default defineComponent({
           yAxes: [
             {
               ticks: {
-                beginAtZero: true,
+                beginAtZero: false,
                 precision: 0,
                 callback: (val: number): string => val + '%',
               },
