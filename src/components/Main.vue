@@ -32,7 +32,7 @@
             />
             <NpmDownloads />
             <GoogleTrends />
-            <Stars />
+            <DevelopersUsage />
           </template>
           <template v-else-if="popularChartsNumber === 2">
             <NpmDownloads class="col-span-12 md:col-span-6" />

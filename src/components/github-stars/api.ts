@@ -6,10 +6,6 @@ export interface StarsT {
   stars: number;
 }
 
-interface ResponseT {
-  items: StarsT[];
-}
-
 const cache = new Map();
 
 export function fetchRepoStars(repoId: string): Promise<StarsT[] | null> {

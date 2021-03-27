@@ -1,7 +1,6 @@
 import { NowRequest, NowResponse } from '@vercel/node';
 import axios from 'axios';
 import { logRequest, initSentry, reportError } from './utils';
-import { SuggestionT } from '../src/apis';
 
 initSentry();
 
@@ -27,15 +26,15 @@ export default (req: NowRequest, res: NowResponse): void => {
   }
 
   axios
-    .get(`https://www.npmjs.com/search/suggestions?q=${q}`)
+    .get<ResponseItemT[]>(`https://www.npmjs.com/search/suggestions?q=${q}`)
     .then((resp) => {
-      const suggestions = resp.data as ResponseItemT[];
+      const suggestions = resp.data;
       return suggestions.map((packageObj) => {
         return {
           name: packageObj.name,
           description: packageObj.description,
           version: packageObj.version,
-        } as SuggestionT;
+        } as ResponseItemT;
       });
     })
     .then((data) => {
