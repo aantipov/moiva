@@ -43,11 +43,11 @@ export default defineComponent({
     return {
       showAll,
       hasMore: computed<boolean>(() => allSuggestions.value.length > size),
-      suggestions: computed<CatalogLibraryT[]>(() => {
-        return showAll.value
+      suggestions: computed<CatalogLibraryT[]>(() =>
+        showAll.value
           ? allSuggestions.value
-          : allSuggestions.value.slice(0, size);
-      }),
+          : allSuggestions.value.slice(0, size)
+      ),
       onSelect(catalogLibrary: CatalogLibraryT) {
         if (catalogLibrary.npm) {
           emit('select', catalogLibrary.npm, true);
