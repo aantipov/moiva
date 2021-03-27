@@ -10,9 +10,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
+import { defineComponent, computed, watchEffect } from 'vue';
 import BundlephobiaChart from './BundlephobiaChart.vue';
 import { fetchBundlephobiaData, BundlephobiaT } from '../apis';
+import { chartsVisibility } from '@/store/chartsVisibility';
 import useChartApi from '@/composables/useChartApi';
 import {
   isLoading as isLoadingLibraries,
@@ -36,6 +37,10 @@ export default defineComponent({
       isLoadingLibraries,
       fetchBundlephobiaData
     );
+
+    watchEffect(() => {
+      chartsVisibility.bundlephobia = npmPackagesNames.value.length > 0;
+    });
 
     return {
       isLoading: computed(() => isLoadingLibraries.value || isLoading.value),
