@@ -20,7 +20,7 @@
           <ChevronDownIcon
             class="absolute top-0 right-0 w-2 h-2 mx-3 my-4 text-white pointer-events-none"
           />
-          <select v-model="isNpmSearch" class="select">
+          <select v-model="isNpmSearch" class="select" @change="inputRef.focus">
             <option :value="false">GitHub</option>
             <option :value="true">NPM</option>
           </select>
@@ -43,6 +43,7 @@
         <div class="relative flex-grow">
           <input
             id="lib-search"
+            ref="inputRef"
             v-model="searchValue"
             type="text"
             :placeholder="
@@ -215,6 +216,7 @@ export default defineComponent({
     });
 
     return {
+      inputRef: ref(null),
       searchValue,
       isNpmSearch,
       isLoading,
