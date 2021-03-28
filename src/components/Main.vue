@@ -18,6 +18,8 @@
 
     <!--  Selected Libraries and Charts    -->
     <div v-else>
+      <h2 v-if="category">{{ category }}</h2>
+
       <SelectedLibs
         class="relative w-full mx-auto mt-4 mb-2 lg:w-9/12 xl:w-2/4"
       />
@@ -113,6 +115,7 @@ import {
   getReposIdsFromUrl,
   setNoFollowTag,
   showErrorMsg,
+  getSelectedLibsCategory,
 } from '@/utils';
 import { updateLibrariesColors } from '@/store/librariesColors';
 import {
@@ -222,6 +225,9 @@ export default defineComponent({
             chartsVisibility.bundlephobia,
             true,
           ].filter(Boolean).length
+      ),
+      category: computed(() =>
+        getSelectedLibsCategory(libraries as LibraryT[])
       ),
     };
   },

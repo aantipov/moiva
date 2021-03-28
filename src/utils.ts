@@ -235,6 +235,25 @@ ${libC.alias}: &#9733;${libC.starsCount} stars, ${libC.age} old...
 `;
 }
 
+export function getSelectedLibsCategory(libraries: LibraryT[]): string | null {
+  if (!libraries.length) {
+    return null;
+  }
+
+  const catalogLibraries = libraries
+    .map((lib) => catalogRepoIdToLib[lib.repo.repoId])
+    .filter((lib) => !!lib && lib.category !== 'misc')
+    .map((lib) => lib.category);
+
+  const uniqueLibraries = [...new Set(catalogLibraries)];
+
+  if (uniqueLibraries.length === 1) {
+    return uniqueLibraries[0];
+  }
+
+  return null;
+}
+
 /**
  * Get Library suggestions for the selected libs
  * based on the last selected lib
