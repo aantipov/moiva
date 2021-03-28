@@ -9,43 +9,43 @@ export interface CatalogLibraryT {
 
 // prettier-ignore
 const libraries: CatalogLibraryT[] = [
-  // 3D
-  { category: '3D', repoId: 'BabylonJS/Babylon.js', npm: 'babylonjs', isNpmAByProduct: false, alias: 'Babylon.js', framework: null },
-  { category: '3D', repoId: 'mrdoob/three.js', npm: 'three', isNpmAByProduct: false, alias: 'Three.js', framework: null },
+  // JavaScript 3D Libraries
+  { category: 'JavaScript 3D Libraries', repoId: 'BabylonJS/Babylon.js', npm: 'babylonjs', isNpmAByProduct: false, alias: 'Babylon.js', framework: null },
+  { category: 'JavaScript 3D Libraries', repoId: 'mrdoob/three.js', npm: 'three', isNpmAByProduct: false, alias: 'Three.js', framework: null },
 
-  // Api Mocks
-  { category: 'Api Mocks', repoId: 'mswjs/msw', npm: 'msw', isNpmAByProduct: false, alias: 'MSW', framework: null },
-  { category: 'Api Mocks', repoId: 'bbyars/mountebank', npm: 'mountebank', isNpmAByProduct: false, alias: 'Mountebank', framework: null },
-  { category: 'Api Mocks', repoId: 'typicode/json-server', npm: 'json-server', isNpmAByProduct: false, alias: 'JSON Server', framework: null },
-  { category: 'Api Mocks', repoId: 'Hagith/wiremock-standalone', npm: 'wiremock-standalone', isNpmAByProduct: false, alias: 'WireMock', framework: null },
-  { category: 'Api Mocks', repoId: 'miragejs/miragejs', npm: 'miragejs', isNpmAByProduct: false, alias: 'Mirage', framework: null },
+  // JavaScript Mocking Libraries, test servers
+  { category: 'JavaScript Mocking Libraries, test servers', repoId: 'mswjs/msw', npm: 'msw', isNpmAByProduct: false, alias: 'MSW', framework: null },
+  { category: 'JavaScript Mocking Libraries, test servers', repoId: 'bbyars/mountebank', npm: 'mountebank', isNpmAByProduct: false, alias: 'Mountebank', framework: null },
+  { category: 'JavaScript Mocking Libraries, test servers', repoId: 'typicode/json-server', npm: 'json-server', isNpmAByProduct: false, alias: 'JSON Server', framework: null },
+  { category: 'JavaScript Mocking Libraries, test servers', repoId: 'Hagith/wiremock-standalone', npm: 'wiremock-standalone', isNpmAByProduct: false, alias: 'WireMock', framework: null },
+  { category: 'JavaScript Mocking Libraries, test servers', repoId: 'miragejs/miragejs', npm: 'miragejs', isNpmAByProduct: false, alias: 'Mirage', framework: null },
 
-  // AWS Lambda frameworks
-  { category: 'AWS Lambda frameworks', repoId: 'middyjs/middy', npm: '@middy/core', isNpmAByProduct: false, alias: 'Middy', framework: null },
-  { category: 'AWS Lambda frameworks', repoId: 'laconiajs/laconia', npm: '@laconia/core', isNpmAByProduct: false, alias: 'Laconia', framework: null },
-  { category: 'AWS Lambda frameworks', repoId: 'vandium-io/vandium-node', npm: 'vandium', isNpmAByProduct: false, alias: 'vandium-node', framework: null },
+  // AWS Lambda Frameworks
+  { category: 'AWS Lambda Frameworks', repoId: 'middyjs/middy', npm: '@middy/core', isNpmAByProduct: false, alias: 'Middy', framework: null },
+  { category: 'AWS Lambda Frameworks', repoId: 'laconiajs/laconia', npm: '@laconia/core', isNpmAByProduct: false, alias: 'Laconia', framework: null },
+  { category: 'AWS Lambda Frameworks', repoId: 'vandium-io/vandium-node', npm: 'vandium', isNpmAByProduct: false, alias: 'vandium-node', framework: null },
 
-  // Build Tools
-  { category: 'Build Tools', repoId: 'webpack/webpack', npm: 'webpack', isNpmAByProduct: false, alias: 'Webpack', framework: null },
-  { category: 'Build Tools', repoId: 'rollup/rollup', npm: 'rollup', isNpmAByProduct: false, alias: 'Rollup', framework: null },
-  { category: 'Build Tools', repoId: 'parcel-bundler/parcel', npm: '@parcel/core', isNpmAByProduct: false, alias: 'Parcel', framework: null },
-  { category: 'Build Tools', repoId: 'snowpackjs/snowpack', npm: 'snowpack', isNpmAByProduct: false, alias: 'Snowpack', framework: null },
-  { category: 'Build Tools', repoId: 'evanw/esbuild', npm: 'esbuild', isNpmAByProduct: false, alias: 'Esbuild', framework: null },
+  // JavaScript Build Tools, Module Bundlers
+  { category: 'JavaScript Build Tools, Module Bundlers', repoId: 'webpack/webpack', npm: 'webpack', isNpmAByProduct: false, alias: 'Webpack', framework: null },
+  { category: 'JavaScript Build Tools, Module Bundlers', repoId: 'rollup/rollup', npm: 'rollup', isNpmAByProduct: false, alias: 'Rollup', framework: null },
+  { category: 'JavaScript Build Tools, Module Bundlers', repoId: 'parcel-bundler/parcel', npm: '@parcel/core', isNpmAByProduct: false, alias: 'Parcel', framework: null },
+  { category: 'JavaScript Build Tools, Module Bundlers', repoId: 'snowpackjs/snowpack', npm: 'snowpack', isNpmAByProduct: false, alias: 'Snowpack', framework: null },
+  { category: 'JavaScript Build Tools, Module Bundlers', repoId: 'evanw/esbuild', npm: 'esbuild', isNpmAByProduct: false, alias: 'Esbuild', framework: null },
 
-  // Charts
-  { category: 'Charts', repoId: 'chartjs/Chart.js', npm: 'chart.js', isNpmAByProduct: false, alias: 'Chart.js', framework: null },
-  { category: 'Charts', repoId: 'd3/d3', npm: 'd3', isNpmAByProduct: false, alias: 'd3', framework: null },
-  { category: 'Charts', repoId: 'plotly/plotly.js', npm: 'plotly.js', isNpmAByProduct: false, alias: 'Plotly.js', framework: null },
-  { category: 'Charts', repoId: 'highcharts/highcharts', npm: 'highcharts', isNpmAByProduct: false, alias: 'Highcharts', framework: null },
-  { category: 'Charts', repoId: 'recharts/recharts', npm: 'recharts', isNpmAByProduct: false, alias: 'Apache ECharts', framework: null },
-  { category: 'Charts', repoId: 'apache/echarts', npm: 'echarts', isNpmAByProduct: false, alias: 'Echarts', framework: null },
-  { category: 'Charts', repoId: 'amcharts/amcharts4', npm: '@amcharts/amcharts4', isNpmAByProduct: false, alias: 'amCharts 4', framework: null },
-  { category: 'Charts', repoId: 'apexcharts/apexcharts.js', npm: 'apexcharts', isNpmAByProduct: false, alias: 'Apexcharts.js', framework: null },
-  { category: 'Charts', repoId: 'gionkunz/chartist-js', npm: 'chartist', isNpmAByProduct: false, alias: 'Chartist.js', framework: null },
-  { category: 'Charts', repoId: 'almende/vis', npm: 'vis', isNpmAByProduct: false, alias: 'Vis.js', framework: null },
-  { category: 'Charts', repoId: 'novus/nvd3', npm: 'nvd3', isNpmAByProduct: false, alias: 'Nvd3', framework: null },
-  { category: 'Charts', repoId: 'amcharts/amcharts3', npm: 'amcharts3', isNpmAByProduct: false, alias: 'amCharts 3', framework: null },
-  { category: 'Charts', repoId: 'benpickles/peity', npm: 'peity', isNpmAByProduct: false, alias: 'Peity', framework: null },
+  // JavaScript Charting Libraries
+  { category: 'JavaScript Charting Libraries', repoId: 'chartjs/Chart.js', npm: 'chart.js', isNpmAByProduct: false, alias: 'Chart.js', framework: null },
+  { category: 'JavaScript Charting Libraries', repoId: 'd3/d3', npm: 'd3', isNpmAByProduct: false, alias: 'd3', framework: null },
+  { category: 'JavaScript Charting Libraries', repoId: 'plotly/plotly.js', npm: 'plotly.js', isNpmAByProduct: false, alias: 'Plotly.js', framework: null },
+  { category: 'JavaScript Charting Libraries', repoId: 'highcharts/highcharts', npm: 'highcharts', isNpmAByProduct: false, alias: 'Highcharts', framework: null },
+  { category: 'JavaScript Charting Libraries', repoId: 'recharts/recharts', npm: 'recharts', isNpmAByProduct: false, alias: 'Apache ECharts', framework: null },
+  { category: 'JavaScript Charting Libraries', repoId: 'apache/echarts', npm: 'echarts', isNpmAByProduct: false, alias: 'Echarts', framework: null },
+  { category: 'JavaScript Charting Libraries', repoId: 'amcharts/amcharts4', npm: '@amcharts/amcharts4', isNpmAByProduct: false, alias: 'amCharts 4', framework: null },
+  { category: 'JavaScript Charting Libraries', repoId: 'apexcharts/apexcharts.js', npm: 'apexcharts', isNpmAByProduct: false, alias: 'Apexcharts.js', framework: null },
+  { category: 'JavaScript Charting Libraries', repoId: 'gionkunz/chartist-js', npm: 'chartist', isNpmAByProduct: false, alias: 'Chartist.js', framework: null },
+  { category: 'JavaScript Charting Libraries', repoId: 'almende/vis', npm: 'vis', isNpmAByProduct: false, alias: 'Vis.js', framework: null },
+  { category: 'JavaScript Charting Libraries', repoId: 'novus/nvd3', npm: 'nvd3', isNpmAByProduct: false, alias: 'Nvd3', framework: null },
+  { category: 'JavaScript Charting Libraries', repoId: 'amcharts/amcharts3', npm: 'amcharts3', isNpmAByProduct: false, alias: 'amCharts 3', framework: null },
+  { category: 'JavaScript Charting Libraries', repoId: 'benpickles/peity', npm: 'peity', isNpmAByProduct: false, alias: 'Peity', framework: null },
 
   // CSS Frameworks
   { category: 'CSS Frameworks', repoId: 'twbs/bootstrap', npm: 'bootstrap', isNpmAByProduct: false, alias: 'Bootstrap', framework: null },
@@ -59,93 +59,93 @@ const libraries: CatalogLibraryT[] = [
   { category: 'CSS Frameworks', repoId: 'material-components/material-components-web', npm: 'material-components-web', isNpmAByProduct: false, alias: 'Material Components for the web', framework: null },
   { category: 'CSS Frameworks', repoId: 'picturepan2/spectre', npm: 'spectre.css', isNpmAByProduct: false, alias: 'Spectre.css', framework: null },
 
-  // CSS-IN-JS
-  { category: 'CSS-IN-JS', repoId: 'vercel/styled-jsx', npm: 'styled-jsx', isNpmAByProduct: false, alias: 'styled-jsx', framework: 'react' },
-  { category: 'CSS-IN-JS', repoId: 'styled-components/styled-components', npm: 'styled-components', isNpmAByProduct: false, alias: 'styled-components', framework: 'react' },
-  { category: 'CSS-IN-JS', repoId: 'formidablelabs/radium', npm: 'radium', isNpmAByProduct: false, alias: 'Radium', framework: 'react' },
-  { category: 'CSS-IN-JS', repoId: 'callstack/linaria', npm: '@linaria/core', isNpmAByProduct: false, alias: 'Linaria', framework: 'react' },
-  { category: 'CSS-IN-JS', repoId: 'cssinjs/jss', npm: 'jss', isNpmAByProduct: false, alias: 'JSS', framework: null },
-  { category: 'CSS-IN-JS', repoId: 'Khan/aphrodite', npm: 'aphrodite', isNpmAByProduct: false, alias: 'Aphrodite', framework: null },
-  { category: 'CSS-IN-JS', repoId: 'emotion-js/emotion', npm: '@emotion/css', isNpmAByProduct: false, alias: 'Emotion', framework: null },
+  // CSS-in-JS Libraries
+  { category: 'CSS-in-JS Libraries', repoId: 'vercel/styled-jsx', npm: 'styled-jsx', isNpmAByProduct: false, alias: 'styled-jsx', framework: 'react' },
+  { category: 'CSS-in-JS Libraries', repoId: 'styled-components/styled-components', npm: 'styled-components', isNpmAByProduct: false, alias: 'styled-components', framework: 'react' },
+  { category: 'CSS-in-JS Libraries', repoId: 'formidablelabs/radium', npm: 'radium', isNpmAByProduct: false, alias: 'Radium', framework: 'react' },
+  { category: 'CSS-in-JS Libraries', repoId: 'callstack/linaria', npm: '@linaria/core', isNpmAByProduct: false, alias: 'Linaria', framework: 'react' },
+  { category: 'CSS-in-JS Libraries', repoId: 'cssinjs/jss', npm: 'jss', isNpmAByProduct: false, alias: 'JSS', framework: null },
+  { category: 'CSS-in-JS Libraries', repoId: 'Khan/aphrodite', npm: 'aphrodite', isNpmAByProduct: false, alias: 'Aphrodite', framework: null },
+  { category: 'CSS-in-JS Libraries', repoId: 'emotion-js/emotion', npm: '@emotion/css', isNpmAByProduct: false, alias: 'Emotion', framework: null },
 
-  // Date Utilities
-  { category: 'Date Utilities', repoId: 'date-fns/date-fns', npm: 'date-fns', isNpmAByProduct: false, alias: 'date-fns', framework: null },
-  { category: 'Date Utilities', repoId: 'iamkun/dayjs', npm: 'dayjs', isNpmAByProduct: false, alias: 'Dayjs', framework: null },
-  { category: 'Date Utilities', repoId: 'moment/luxon', npm: 'luxon', isNpmAByProduct: false, alias: 'Luxon', framework: null },
-  { category: 'Date Utilities', repoId: 'moment/moment', npm: 'moment', isNpmAByProduct: false, alias: 'Moment', framework: null },
-  { category: 'Date Utilities', repoId: 'taylorhakes/fecha', npm: 'fecha', isNpmAByProduct: false, alias: 'Fecha', framework: null },
-  { category: 'Date Utilities', repoId: 'vercel/ms', npm: 'ms', isNpmAByProduct: false, alias: 'ms', framework: null },
-  { category: 'Date Utilities', repoId: 'hustcc/timeago.js', npm: 'timeago.js', isNpmAByProduct: false, alias: 'Timeago.js', framework: null },
-  { category: 'Date Utilities', repoId: 'MatthewMueller/date', npm: 'date.js', isNpmAByProduct: false, alias: 'Date', framework: null },
+  // JavaScript Date Utility Libraries
+  { category: 'JavaScript Date Utility Libraries', repoId: 'date-fns/date-fns', npm: 'date-fns', isNpmAByProduct: false, alias: 'date-fns', framework: null },
+  { category: 'JavaScript Date Utility Libraries', repoId: 'iamkun/dayjs', npm: 'dayjs', isNpmAByProduct: false, alias: 'Dayjs', framework: null },
+  { category: 'JavaScript Date Utility Libraries', repoId: 'moment/luxon', npm: 'luxon', isNpmAByProduct: false, alias: 'Luxon', framework: null },
+  { category: 'JavaScript Date Utility Libraries', repoId: 'moment/moment', npm: 'moment', isNpmAByProduct: false, alias: 'Moment', framework: null },
+  { category: 'JavaScript Date Utility Libraries', repoId: 'taylorhakes/fecha', npm: 'fecha', isNpmAByProduct: false, alias: 'Fecha', framework: null },
+  { category: 'JavaScript Date Utility Libraries', repoId: 'vercel/ms', npm: 'ms', isNpmAByProduct: false, alias: 'ms', framework: null },
+  { category: 'JavaScript Date Utility Libraries', repoId: 'hustcc/timeago.js', npm: 'timeago.js', isNpmAByProduct: false, alias: 'Timeago.js', framework: null },
+  { category: 'JavaScript Date Utility Libraries', repoId: 'MatthewMueller/date', npm: 'date.js', isNpmAByProduct: false, alias: 'Date', framework: null },
 
-  // e2e testing
-  { category: 'e2e testing', repoId: 'puppeteer/puppeteer', npm: 'puppeteer', isNpmAByProduct: false, alias: 'Puppeteer', framework: null },
-  { category: 'e2e testing', repoId: 'cypress-io/cypress', npm: 'cypress', isNpmAByProduct: false, alias: 'Cypress', framework: null },
-  { category: 'e2e testing', repoId: 'Microsoft/playwright', npm: 'playwright', isNpmAByProduct: false, alias: 'Playwright', framework: null },
-  { category: 'e2e testing', repoId: 'SeleniumHQ/selenium', npm: 'selenium-webdriver', isNpmAByProduct: false, alias: 'Selenium', framework: null },
-  { category: 'e2e testing', repoId: 'webdriverio/webdriverio', npm: 'webdriverio', isNpmAByProduct: false, alias: 'Webdriverio', framework: null },
-  { category: 'e2e testing', repoId: 'DevExpress/testcafe', npm: 'testcafe', isNpmAByProduct: false, alias: 'Testcafe', framework: null },
-  { category: 'e2e testing', repoId: 'nightwatchjs/nightwatch', npm: 'nightwatch', isNpmAByProduct: false, alias: 'Nightwatch', framework: null },
-  { category: 'e2e testing', repoId: 'getgauge/taiko', npm: 'taiko', isNpmAByProduct: false, alias: 'Taiko', framework: null },
-  { category: 'e2e testing', repoId: 'segmentio/nightmare', npm: 'nightmare', isNpmAByProduct: false, alias: 'Nightmare', framework: null },
-  { category: 'e2e testing', repoId: 'casperjs/casperjs', npm: 'casperjs', isNpmAByProduct: false, alias: 'Casperjs', framework: null },
-  { category: 'e2e testing', repoId: 'laurentj/slimerjs', npm: 'slimerjs', isNpmAByProduct: false, alias: 'Slimerjs', framework: null },
-  { category: 'e2e testing', repoId: 'assaf/zombie', npm: 'zombie', isNpmAByProduct: false, alias: 'Zombie', framework: null },
+  // JS End-to-End Testing and Browser Automation Libraries
+  { category: 'JS End-to-End Testing and Browser Automation Libraries', repoId: 'puppeteer/puppeteer', npm: 'puppeteer', isNpmAByProduct: false, alias: 'Puppeteer', framework: null },
+  { category: 'JS End-to-End Testing and Browser Automation Libraries', repoId: 'cypress-io/cypress', npm: 'cypress', isNpmAByProduct: false, alias: 'Cypress', framework: null },
+  { category: 'JS End-to-End Testing and Browser Automation Libraries', repoId: 'Microsoft/playwright', npm: 'playwright', isNpmAByProduct: false, alias: 'Playwright', framework: null },
+  { category: 'JS End-to-End Testing and Browser Automation Libraries', repoId: 'SeleniumHQ/selenium', npm: 'selenium-webdriver', isNpmAByProduct: false, alias: 'Selenium', framework: null },
+  { category: 'JS End-to-End Testing and Browser Automation Libraries', repoId: 'webdriverio/webdriverio', npm: 'webdriverio', isNpmAByProduct: false, alias: 'Webdriverio', framework: null },
+  { category: 'JS End-to-End Testing and Browser Automation Libraries', repoId: 'DevExpress/testcafe', npm: 'testcafe', isNpmAByProduct: false, alias: 'Testcafe', framework: null },
+  { category: 'JS End-to-End Testing and Browser Automation Libraries', repoId: 'nightwatchjs/nightwatch', npm: 'nightwatch', isNpmAByProduct: false, alias: 'Nightwatch', framework: null },
+  { category: 'JS End-to-End Testing and Browser Automation Libraries', repoId: 'getgauge/taiko', npm: 'taiko', isNpmAByProduct: false, alias: 'Taiko', framework: null },
+  { category: 'JS End-to-End Testing and Browser Automation Libraries', repoId: 'segmentio/nightmare', npm: 'nightmare', isNpmAByProduct: false, alias: 'Nightmare', framework: null },
+  { category: 'JS End-to-End Testing and Browser Automation Libraries', repoId: 'casperjs/casperjs', npm: 'casperjs', isNpmAByProduct: false, alias: 'Casperjs', framework: null },
+  { category: 'JS End-to-End Testing and Browser Automation Libraries', repoId: 'laurentj/slimerjs', npm: 'slimerjs', isNpmAByProduct: false, alias: 'Slimerjs', framework: null },
+  { category: 'JS End-to-End Testing and Browser Automation Libraries', repoId: 'assaf/zombie', npm: 'zombie', isNpmAByProduct: false, alias: 'Zombie', framework: null },
 
-  // Frontend Frameworks
-  { category: 'Frontend Frameworks', repoId: 'facebook/react', npm: 'react', isNpmAByProduct: false, alias: 'React', framework: null },
-  { category: 'Frontend Frameworks', repoId: 'vuejs/vue', npm: 'vue', isNpmAByProduct: false, alias: 'Vue', framework: null },
-  { category: 'Frontend Frameworks', repoId: 'angular/angular', npm: '@angular/core', isNpmAByProduct: false, alias: 'Angular', framework: null },
-  { category: 'Frontend Frameworks', repoId: 'sveltejs/svelte', npm: 'svelte', isNpmAByProduct: false, alias: 'Svelte', framework: null },
-  { category: 'Frontend Frameworks', repoId: 'emberjs/ember.js', npm: 'ember-source', isNpmAByProduct: false, alias: 'Ember', framework: null },
-  { category: 'Frontend Frameworks', repoId: 'alpinejs/alpine', npm: 'alpinejs', isNpmAByProduct: false, alias: 'Alpine.js', framework: null },
-  { category: 'Frontend Frameworks', repoId: 'infernojs/inferno', npm: 'inferno', isNpmAByProduct: false, alias: 'Inferno', framework: null },
-  { category: 'Frontend Frameworks', repoId: 'preactjs/preact', npm: 'preact', isNpmAByProduct: false, alias: 'Preact', framework: null },
-  { category: 'Frontend Frameworks', repoId: 'jorgebucaran/hyperapp', npm: 'hyperapp', isNpmAByProduct: false, alias: 'Hyperapp', framework: null },
-  { category: 'Frontend Frameworks', repoId: 'riot/riot', npm: 'riot', isNpmAByProduct: false, alias: 'Riot', framework: null },
-  { category: 'Frontend Frameworks', repoId: 'angular/angular.js', npm: 'angular', isNpmAByProduct: false, alias: 'AngularJS', framework: null },
-  { category: 'Frontend Frameworks', repoId: 'marionettejs/backbone.marionette', npm: 'backbone.marionette', isNpmAByProduct: false, alias: 'Backbone.marionette', framework: null },
-  { category: 'Frontend Frameworks', repoId: 'knockout/knockout', npm: 'knockout', isNpmAByProduct: false, alias: 'Knockout', framework: null },
-  { category: 'Frontend Frameworks', repoId: 'ryansolid/solid', npm: 'solid-js', isNpmAByProduct: false, alias: 'Solid', framework: null },
-  { category: 'Frontend Frameworks', repoId: 'MithrilJS/mithril.js', npm: 'mithril', isNpmAByProduct: false, alias: 'Mithril.js', framework: null },
-  { category: 'Frontend Frameworks', repoId: 'aurelia/framework', npm: 'aurelia-framework', isNpmAByProduct: false, alias: 'Aurelia', framework: null },
-  { category: 'Frontend Frameworks', repoId: 'hotwired/stimulus', npm: 'stimulus', isNpmAByProduct: false, alias: 'Stimulus', framework: null },
-  { category: 'Frontend Frameworks', repoId: 'marko-js/marko', npm: 'marko', isNpmAByProduct: false, alias: 'Marko', framework: null },
+  // JavaScript UI Frameworks and Libraries
+  { category: 'JavaScript UI Frameworks and Libraries', repoId: 'facebook/react', npm: 'react', isNpmAByProduct: false, alias: 'React', framework: null },
+  { category: 'JavaScript UI Frameworks and Libraries', repoId: 'vuejs/vue', npm: 'vue', isNpmAByProduct: false, alias: 'Vue', framework: null },
+  { category: 'JavaScript UI Frameworks and Libraries', repoId: 'angular/angular', npm: '@angular/core', isNpmAByProduct: false, alias: 'Angular', framework: null },
+  { category: 'JavaScript UI Frameworks and Libraries', repoId: 'sveltejs/svelte', npm: 'svelte', isNpmAByProduct: false, alias: 'Svelte', framework: null },
+  { category: 'JavaScript UI Frameworks and Libraries', repoId: 'emberjs/ember.js', npm: 'ember-source', isNpmAByProduct: false, alias: 'Ember', framework: null },
+  { category: 'JavaScript UI Frameworks and Libraries', repoId: 'alpinejs/alpine', npm: 'alpinejs', isNpmAByProduct: false, alias: 'Alpine.js', framework: null },
+  { category: 'JavaScript UI Frameworks and Libraries', repoId: 'infernojs/inferno', npm: 'inferno', isNpmAByProduct: false, alias: 'Inferno', framework: null },
+  { category: 'JavaScript UI Frameworks and Libraries', repoId: 'preactjs/preact', npm: 'preact', isNpmAByProduct: false, alias: 'Preact', framework: null },
+  { category: 'JavaScript UI Frameworks and Libraries', repoId: 'jorgebucaran/hyperapp', npm: 'hyperapp', isNpmAByProduct: false, alias: 'Hyperapp', framework: null },
+  { category: 'JavaScript UI Frameworks and Libraries', repoId: 'riot/riot', npm: 'riot', isNpmAByProduct: false, alias: 'Riot', framework: null },
+  { category: 'JavaScript UI Frameworks and Libraries', repoId: 'angular/angular.js', npm: 'angular', isNpmAByProduct: false, alias: 'AngularJS', framework: null },
+  { category: 'JavaScript UI Frameworks and Libraries', repoId: 'marionettejs/backbone.marionette', npm: 'backbone.marionette', isNpmAByProduct: false, alias: 'Backbone.marionette', framework: null },
+  { category: 'JavaScript UI Frameworks and Libraries', repoId: 'knockout/knockout', npm: 'knockout', isNpmAByProduct: false, alias: 'Knockout', framework: null },
+  { category: 'JavaScript UI Frameworks and Libraries', repoId: 'ryansolid/solid', npm: 'solid-js', isNpmAByProduct: false, alias: 'Solid', framework: null },
+  { category: 'JavaScript UI Frameworks and Libraries', repoId: 'MithrilJS/mithril.js', npm: 'mithril', isNpmAByProduct: false, alias: 'Mithril.js', framework: null },
+  { category: 'JavaScript UI Frameworks and Libraries', repoId: 'aurelia/framework', npm: 'aurelia-framework', isNpmAByProduct: false, alias: 'Aurelia', framework: null },
+  { category: 'JavaScript UI Frameworks and Libraries', repoId: 'hotwired/stimulus', npm: 'stimulus', isNpmAByProduct: false, alias: 'Stimulus', framework: null },
+  { category: 'JavaScript UI Frameworks and Libraries', repoId: 'marko-js/marko', npm: 'marko', isNpmAByProduct: false, alias: 'Marko', framework: null },
 
-  // GraphQL clients
-  { category: 'GraphQL clients', repoId: 'facebook/relay', npm: 'relay-runtime', isNpmAByProduct: false, alias: 'Relay', framework: 'react' },
-  { category: 'GraphQL clients', repoId: 'apollographql/apollo-client', npm: '@apollo/client', isNpmAByProduct: false, alias: 'Apollo Client', framework: 'react' },
-  { category: 'GraphQL clients', repoId: 'Akryum/vue-apollo', npm: 'vue-apollo', isNpmAByProduct: false, alias: 'Vue Apollo', framework: 'vue' },
-  { category: 'GraphQL clients', repoId: 'timhall/svelte-apollo', npm: 'svelte-apollo', isNpmAByProduct: false, alias: 'svelte-apollo', framework: 'svelte' },
-  { category: 'GraphQL clients', repoId: 'ember-graphql/ember-apollo-client', npm: 'ember-apollo-client', isNpmAByProduct: false, alias: 'ember-apollo-client', framework: 'ember' },
-  { category: 'GraphQL clients', repoId: 'kamilkisiela/apollo-angular', npm: 'apollo-angular', isNpmAByProduct: false, alias: 'Apollo Angular', framework: 'angular' },
+  // GraphQL Client Libraries
+  { category: 'GraphQL Client Libraries', repoId: 'facebook/relay', npm: 'relay-runtime', isNpmAByProduct: false, alias: 'Relay', framework: 'react' },
+  { category: 'GraphQL Client Libraries', repoId: 'apollographql/apollo-client', npm: '@apollo/client', isNpmAByProduct: false, alias: 'Apollo Client', framework: 'react' },
+  { category: 'GraphQL Client Libraries', repoId: 'Akryum/vue-apollo', npm: 'vue-apollo', isNpmAByProduct: false, alias: 'Vue Apollo', framework: 'vue' },
+  { category: 'GraphQL Client Libraries', repoId: 'timhall/svelte-apollo', npm: 'svelte-apollo', isNpmAByProduct: false, alias: 'svelte-apollo', framework: 'svelte' },
+  { category: 'GraphQL Client Libraries', repoId: 'ember-graphql/ember-apollo-client', npm: 'ember-apollo-client', isNpmAByProduct: false, alias: 'ember-apollo-client', framework: 'ember' },
+  { category: 'GraphQL Client Libraries', repoId: 'kamilkisiela/apollo-angular', npm: 'apollo-angular', isNpmAByProduct: false, alias: 'Apollo Angular', framework: 'angular' },
 
-  // HTML Templating Engines
-  { category: 'HTML Templating Engines', repoId: 'mde/ejs', npm: 'ejs', isNpmAByProduct: false, alias: 'Ejs', framework: null },
-  { category: 'HTML Templating Engines', repoId: 'handlebars-lang/handlebars.js', npm: 'handlebars', isNpmAByProduct: false, alias: 'Handlebars.js', framework: null },
-  { category: 'HTML Templating Engines', repoId: 'janl/mustache.js', npm: 'mustache', isNpmAByProduct: false, alias: 'Mustache.js', framework: null },
-  { category: 'HTML Templating Engines', repoId: 'pugjs/pug', npm: 'pug', isNpmAByProduct: false, alias: 'Pug', framework: null },
-  { category: 'HTML Templating Engines', repoId: 'mozilla/nunjucks', npm: 'nunjucks', isNpmAByProduct: false, alias: 'Nunjucks', framework: null },
-  { category: 'HTML Templating Engines', repoId: 'blueimp/JavaScript-Templates', npm: 'blueimp-tmpl', isNpmAByProduct: false, alias: 'blueimp/JavaScript-Templates', framework: null },
-  { category: 'HTML Templating Engines', repoId: 'olado/doT', npm: 'dot', isNpmAByProduct: false, alias: 'DoT', framework: null },
-  { category: 'HTML Templating Engines', repoId: 'xtemplate/xtemplate', npm: 'xtemplate', isNpmAByProduct: false, alias: 'Xtemplate', framework: null },
-  { category: 'HTML Templating Engines', repoId: 'linkedin/dustjs', npm: 'dustjs-linkedin', isNpmAByProduct: false, alias: 'Dust.js', framework: null },
-  { category: 'HTML Templating Engines', repoId: 'Guseyn/EHTML', npm: 'ehtml', isNpmAByProduct: false, alias: 'EHTML', framework: null },
+  // JavaScript Template Engines
+  { category: 'JavaScript Template Engines', repoId: 'mde/ejs', npm: 'ejs', isNpmAByProduct: false, alias: 'Ejs', framework: null },
+  { category: 'JavaScript Template Engines', repoId: 'handlebars-lang/handlebars.js', npm: 'handlebars', isNpmAByProduct: false, alias: 'Handlebars.js', framework: null },
+  { category: 'JavaScript Template Engines', repoId: 'janl/mustache.js', npm: 'mustache', isNpmAByProduct: false, alias: 'Mustache.js', framework: null },
+  { category: 'JavaScript Template Engines', repoId: 'pugjs/pug', npm: 'pug', isNpmAByProduct: false, alias: 'Pug', framework: null },
+  { category: 'JavaScript Template Engines', repoId: 'mozilla/nunjucks', npm: 'nunjucks', isNpmAByProduct: false, alias: 'Nunjucks', framework: null },
+  { category: 'JavaScript Template Engines', repoId: 'blueimp/JavaScript-Templates', npm: 'blueimp-tmpl', isNpmAByProduct: false, alias: 'blueimp/JavaScript-Templates', framework: null },
+  { category: 'JavaScript Template Engines', repoId: 'olado/doT', npm: 'dot', isNpmAByProduct: false, alias: 'DoT', framework: null },
+  { category: 'JavaScript Template Engines', repoId: 'xtemplate/xtemplate', npm: 'xtemplate', isNpmAByProduct: false, alias: 'Xtemplate', framework: null },
+  { category: 'JavaScript Template Engines', repoId: 'linkedin/dustjs', npm: 'dustjs-linkedin', isNpmAByProduct: false, alias: 'Dust.js', framework: null },
+  { category: 'JavaScript Template Engines', repoId: 'Guseyn/EHTML', npm: 'ehtml', isNpmAByProduct: false, alias: 'EHTML', framework: null },
 
-  // Immutability
-  { category: 'Immutability', repoId: 'immerjs/immer', npm: 'immer', isNpmAByProduct: false, alias: 'Immer', framework: null },
-  { category: 'Immutability', repoId: 'facebook/immutable-js', npm: 'immutable', isNpmAByProduct: false, alias: 'Immutable.js', framework: null },
+  // JavaScript Immutability Libraries
+  { category: 'JavaScript Immutability Libraries', repoId: 'immerjs/immer', npm: 'immer', isNpmAByProduct: false, alias: 'Immer', framework: null },
+  { category: 'JavaScript Immutability Libraries', repoId: 'facebook/immutable-js', npm: 'immutable', isNpmAByProduct: false, alias: 'Immutable.js', framework: null },
 
-  // Lint Prettify
-  { category: 'Lint Prettify', repoId: 'eslint/eslint', npm: 'eslint', isNpmAByProduct: false, alias: 'ESLint', framework: null },
-  { category: 'Lint Prettify', repoId: 'palantir/tslint', npm: 'tslint', isNpmAByProduct: false, alias: 'TSLint', framework: null },
-  { category: 'Lint Prettify', repoId: 'prettier/prettier', npm: 'prettier', isNpmAByProduct: false, alias: 'Prettier', framework: null },
-  { category: 'Lint Prettify', repoId: 'jshint/jshint', npm: 'jshint', isNpmAByProduct: false, alias: 'JSHint', framework: null },
-  { category: 'Lint Prettify', repoId: 'beautify-web/js-beautify', npm: 'js-beautify', isNpmAByProduct: false, alias: 'JS Beautifier', framework: null },
+  // JavaScript Linting and Formatting Tools
+  { category: 'JavaScript Linting and Formatting Tools', repoId: 'eslint/eslint', npm: 'eslint', isNpmAByProduct: false, alias: 'ESLint', framework: null },
+  { category: 'JavaScript Linting and Formatting Tools', repoId: 'palantir/tslint', npm: 'tslint', isNpmAByProduct: false, alias: 'TSLint', framework: null },
+  { category: 'JavaScript Linting and Formatting Tools', repoId: 'prettier/prettier', npm: 'prettier', isNpmAByProduct: false, alias: 'Prettier', framework: null },
+  { category: 'JavaScript Linting and Formatting Tools', repoId: 'jshint/jshint', npm: 'jshint', isNpmAByProduct: false, alias: 'JSHint', framework: null },
+  { category: 'JavaScript Linting and Formatting Tools', repoId: 'beautify-web/js-beautify', npm: 'js-beautify', isNpmAByProduct: false, alias: 'JS Beautifier', framework: null },
 
-  // Maps
-  { category: 'Maps', repoId: 'Leaflet/Leaflet', npm: 'leaflet', isNpmAByProduct: false, alias: 'Leaflet', framework: null },
-  { category: 'Maps', repoId: 'openlayers/openlayers', npm: 'ol', isNpmAByProduct: false, alias: 'OpenLayers', framework: null },
+  // JavaScript Maps Libraries
+  { category: 'JavaScript Maps Libraries', repoId: 'Leaflet/Leaflet', npm: 'leaflet', isNpmAByProduct: false, alias: 'Leaflet', framework: null },
+  { category: 'JavaScript Maps Libraries', repoId: 'openlayers/openlayers', npm: 'ol', isNpmAByProduct: false, alias: 'OpenLayers', framework: null },
 
   // misc
   { category: 'misc', repoId: 'plouc/nivo', npm: '@nivo/core', isNpmAByProduct: false, alias: 'Nivo', framework: null },
@@ -1467,29 +1467,29 @@ const libraries: CatalogLibraryT[] = [
   { category: 'NodeJS Frameworks', repoId: 'strongloop/loopback', npm: 'loopback', isNpmAByProduct: false, alias: 'LoopBack 3', framework: null },
   { category: 'NodeJS Frameworks', repoId: 'strongloop/loopback-next', npm: '@loopback/core', isNpmAByProduct: false, alias: 'LoopBack 4', framework: null },
 
-  // NodeJS Logging
-  { category: 'NodeJS Logging', repoId: 'log4js-node/log4js-node', npm: 'log4js', isNpmAByProduct: false, alias: 'log4js-node', framework: null },
-  { category: 'NodeJS Logging', repoId: 'pinojs/pino', npm: 'pino', isNpmAByProduct: false, alias: 'Pino', framework: null },
-  { category: 'NodeJS Logging', repoId: 'winstonjs/winston', npm: 'winston', isNpmAByProduct: false, alias: 'Winston', framework: null },
-  { category: 'NodeJS Logging', repoId: 'expressjs/morgan', npm: 'morgan', isNpmAByProduct: false, alias: 'Morgan', framework: null },
-  { category: 'NodeJS Logging', repoId: 'pimterry/loglevel', npm: 'loglevel', isNpmAByProduct: false, alias: 'Loglevel', framework: null },
-  { category: 'NodeJS Logging', repoId: 'trentm/node-bunyan', npm: 'bunyan', isNpmAByProduct: false, alias: 'Bunyan', framework: null },
+  // Node.js Logging libraries
+  { category: 'Node.js Logging libraries', repoId: 'log4js-node/log4js-node', npm: 'log4js', isNpmAByProduct: false, alias: 'log4js-node', framework: null },
+  { category: 'Node.js Logging libraries', repoId: 'pinojs/pino', npm: 'pino', isNpmAByProduct: false, alias: 'Pino', framework: null },
+  { category: 'Node.js Logging libraries', repoId: 'winstonjs/winston', npm: 'winston', isNpmAByProduct: false, alias: 'Winston', framework: null },
+  { category: 'Node.js Logging libraries', repoId: 'expressjs/morgan', npm: 'morgan', isNpmAByProduct: false, alias: 'Morgan', framework: null },
+  { category: 'Node.js Logging libraries', repoId: 'pimterry/loglevel', npm: 'loglevel', isNpmAByProduct: false, alias: 'Loglevel', framework: null },
+  { category: 'Node.js Logging libraries', repoId: 'trentm/node-bunyan', npm: 'bunyan', isNpmAByProduct: false, alias: 'Bunyan', framework: null },
 
-  // Node Monitoring
-  { category: 'Node Monitoring', repoId: 'siimon/prom-client', npm: 'prom-client', isNpmAByProduct: false, alias: 'Prometheus client', framework: null },
-  { category: 'Node Monitoring', repoId: 'RafalWilinski/express-status-monitor', npm: 'express-status-monitor', isNpmAByProduct: false, alias: 'express-status-monitor', framework: null },
-  { category: 'Node Monitoring', repoId: 'nearform/node-clinic', npm: 'clinic', isNpmAByProduct: false, alias: 'Clinic.js', framework: null },
-  { category: 'Node Monitoring', repoId: 'RuntimeTools/appmetrics-dash', npm: 'appmetrics-dash', isNpmAByProduct: false, alias: 'appmetrics-dash', framework: null },
+  // Node.js Monitoring tools and libraries
+  { category: 'Node.js Monitoring tools and libraries', repoId: 'siimon/prom-client', npm: 'prom-client', isNpmAByProduct: false, alias: 'Prometheus client', framework: null },
+  { category: 'Node.js Monitoring tools and libraries', repoId: 'RafalWilinski/express-status-monitor', npm: 'express-status-monitor', isNpmAByProduct: false, alias: 'express-status-monitor', framework: null },
+  { category: 'Node.js Monitoring tools and libraries', repoId: 'nearform/node-clinic', npm: 'clinic', isNpmAByProduct: false, alias: 'Clinic.js', framework: null },
+  { category: 'Node.js Monitoring tools and libraries', repoId: 'RuntimeTools/appmetrics-dash', npm: 'appmetrics-dash', isNpmAByProduct: false, alias: 'appmetrics-dash', framework: null },
 
-  // Node Runners
-  { category: 'Node Runners', repoId: 'foreverjs/forever', npm: 'forever', isNpmAByProduct: false, alias: 'Forever', framework: null },
-  { category: 'Node Runners', repoId: 'Unitech/pm2', npm: 'pm2', isNpmAByProduct: false, alias: 'Pm2', framework: null },
-  { category: 'Node Runners', repoId: 'remy/nodemon', npm: 'nodemon', isNpmAByProduct: false, alias: 'Nodemon', framework: null },
+  // Node.js Process Managers
+  { category: 'Node.js Process Managers', repoId: 'foreverjs/forever', npm: 'forever', isNpmAByProduct: false, alias: 'Forever', framework: null },
+  { category: 'Node.js Process Managers', repoId: 'Unitech/pm2', npm: 'pm2', isNpmAByProduct: false, alias: 'Pm2', framework: null },
+  { category: 'Node.js Process Managers', repoId: 'remy/nodemon', npm: 'nodemon', isNpmAByProduct: false, alias: 'Nodemon', framework: null },
 
-  // Object Schema Validation
-  { category: 'Object Schema Validation', repoId: 'sideway/joi', npm: 'joi', isNpmAByProduct: false, alias: 'Joi', framework: null },
-  { category: 'Object Schema Validation', repoId: 'ajv-validator/ajv', npm: 'ajv', isNpmAByProduct: false, alias: 'Ajv', framework: null },
-  { category: 'Object Schema Validation', repoId: 'jquense/yup', npm: 'yup', isNpmAByProduct: false, alias: 'Yup', framework: null },
+  // JavaScript Schema Validation Libraries
+  { category: 'JavaScript Schema Validation Libraries', repoId: 'sideway/joi', npm: 'joi', isNpmAByProduct: false, alias: 'Joi', framework: null },
+  { category: 'JavaScript Schema Validation Libraries', repoId: 'ajv-validator/ajv', npm: 'ajv', isNpmAByProduct: false, alias: 'Ajv', framework: null },
+  { category: 'JavaScript Schema Validation Libraries', repoId: 'jquense/yup', npm: 'yup', isNpmAByProduct: false, alias: 'Yup', framework: null },
 
   // React Component Libraries
   { category: 'React Component Libraries', repoId: 'mui-org/material-ui', npm: '@material-ui/core', isNpmAByProduct: false, alias: 'Material-UI', framework: null },
@@ -1500,56 +1500,56 @@ const libraries: CatalogLibraryT[] = [
   { category: 'React Component Libraries', repoId: 'reactstrap/reactstrap', npm: 'reactstrap', isNpmAByProduct: false, alias: 'Reactstrap', framework: null },
   { category: 'React Component Libraries', repoId: 'segmentio/evergreen', npm: 'evergreen-ui', isNpmAByProduct: false, alias: 'Evergreen', framework: null },
 
-  // React Dates
-  { category: 'React Dates', repoId: 'Hacker0x01/react-datepicker', npm: 'react-datepicker', isNpmAByProduct: false, alias: 'react-datepicker', framework: null },
-  { category: 'React Dates', repoId: 'wojtekmaj/react-date-picker', npm: 'react-date-picker', isNpmAByProduct: false, alias: 'react-date-picker', framework: null },
-  { category: 'React Dates', repoId: 'airbnb/react-dates', npm: 'react-dates', isNpmAByProduct: false, alias: 'react-dates', framework: null },
-  { category: 'React Dates', repoId: 'arqex/react-datetime', npm: 'react-datetime', isNpmAByProduct: false, alias: 'react-datetime', framework: null },
-  { category: 'React Dates', repoId: 'gpbl/react-day-picker', npm: 'react-day-picker', isNpmAByProduct: false, alias: 'react-day-picker', framework: null },
-  { category: 'React Dates', repoId: 'wojtekmaj/react-calendar', npm: 'react-calendar', isNpmAByProduct: false, alias: 'react-calendar', framework: null },
+  // ReactJS Datepickers
+  { category: 'ReactJS Datepickers', repoId: 'Hacker0x01/react-datepicker', npm: 'react-datepicker', isNpmAByProduct: false, alias: 'react-datepicker', framework: null },
+  { category: 'ReactJS Datepickers', repoId: 'wojtekmaj/react-date-picker', npm: 'react-date-picker', isNpmAByProduct: false, alias: 'react-date-picker', framework: null },
+  { category: 'ReactJS Datepickers', repoId: 'airbnb/react-dates', npm: 'react-dates', isNpmAByProduct: false, alias: 'react-dates', framework: null },
+  { category: 'ReactJS Datepickers', repoId: 'arqex/react-datetime', npm: 'react-datetime', isNpmAByProduct: false, alias: 'react-datetime', framework: null },
+  { category: 'ReactJS Datepickers', repoId: 'gpbl/react-day-picker', npm: 'react-day-picker', isNpmAByProduct: false, alias: 'react-day-picker', framework: null },
+  { category: 'ReactJS Datepickers', repoId: 'wojtekmaj/react-calendar', npm: 'react-calendar', isNpmAByProduct: false, alias: 'react-calendar', framework: null },
 
-  // React Document Head Tags
-  { category: 'React Document Head Tags', repoId: 'nfl/react-helmet', npm: 'react-helmet', isNpmAByProduct: false, alias: 'React Helmet', framework: null },
-  { category: 'React Document Head Tags', repoId: 'NYTimes/react-helmet-async', npm: 'react-helmet-async', isNpmAByProduct: false, alias: 'react-helmet-async', framework: null },
+  // ReactJS Document Head Managers
+  { category: 'ReactJS Document Head Managers', repoId: 'nfl/react-helmet', npm: 'react-helmet', isNpmAByProduct: false, alias: 'React Helmet', framework: null },
+  { category: 'ReactJS Document Head Managers', repoId: 'NYTimes/react-helmet-async', npm: 'react-helmet-async', isNpmAByProduct: false, alias: 'react-helmet-async', framework: null },
 
-  // React Forms
-  { category: 'React Forms', repoId: 'formium/formik', npm: 'formik', isNpmAByProduct: false, alias: 'Formik', framework: null },
-  { category: 'React Forms', repoId: 'react-hook-form/react-hook-form', npm: 'react-hook-form', isNpmAByProduct: false, alias: 'React Hook Form', framework: null },
-  { category: 'React Forms', repoId: 'redux-form/redux-form', npm: 'redux-form', isNpmAByProduct: false, alias: 'Redux Form', framework: null },
-  { category: 'React Forms', repoId: 'final-form/final-form', npm: 'final-form', isNpmAByProduct: false, alias: 'React Final Form', framework: null },
+  // ReactJS Form Libraries
+  { category: 'ReactJS Form Libraries', repoId: 'formium/formik', npm: 'formik', isNpmAByProduct: false, alias: 'Formik', framework: null },
+  { category: 'ReactJS Form Libraries', repoId: 'react-hook-form/react-hook-form', npm: 'react-hook-form', isNpmAByProduct: false, alias: 'React Hook Form', framework: null },
+  { category: 'ReactJS Form Libraries', repoId: 'redux-form/redux-form', npm: 'redux-form', isNpmAByProduct: false, alias: 'Redux Form', framework: null },
+  { category: 'ReactJS Form Libraries', repoId: 'final-form/final-form', npm: 'final-form', isNpmAByProduct: false, alias: 'React Final Form', framework: null },
 
-  // Fullstack Serverless React Frameworks
-  { category: 'Fullstack Serverless React Frameworks', repoId: 'blitz-js/blitz', npm: 'blitz', isNpmAByProduct: false, alias: 'Blitz', framework: 'react' },
-  { category: 'Fullstack Serverless React Frameworks', repoId: 'redwoodjs/redwood', npm: '@redwoodjs/core', isNpmAByProduct: false, alias: 'RedwoodJS', framework: 'react' },
+  // Fullstack Serverless ReactJS Frameworks
+  { category: 'Fullstack Serverless ReactJS Frameworks', repoId: 'blitz-js/blitz', npm: 'blitz', isNpmAByProduct: false, alias: 'Blitz', framework: 'react' },
+  { category: 'Fullstack Serverless ReactJS Frameworks', repoId: 'redwoodjs/redwood', npm: '@redwoodjs/core', isNpmAByProduct: false, alias: 'RedwoodJS', framework: 'react' },
 
-  // React Native Android
-  { category: 'React Native Android', repoId: 'facebook/hermes', npm: 'hermes-engine', isNpmAByProduct: false, alias: 'Hermes', framework: null },
-  { category: 'React Native Android', repoId: 'react-community/jsc-android-buildscripts', npm: 'jsc-android', isNpmAByProduct: false, alias: 'jsc-android-buildscripts', framework: null },
-  { category: 'React Native Android', repoId: 'Kudo/react-native-v8', npm: 'react-native-v8', isNpmAByProduct: false, alias: 'react-native-v8', framework: null },
+  // React Native Libraries for Android
+  { category: 'React Native Libraries for Android', repoId: 'facebook/hermes', npm: 'hermes-engine', isNpmAByProduct: false, alias: 'Hermes', framework: null },
+  { category: 'React Native Libraries for Android', repoId: 'react-community/jsc-android-buildscripts', npm: 'jsc-android', isNpmAByProduct: false, alias: 'jsc-android-buildscripts', framework: null },
+  { category: 'React Native Libraries for Android', repoId: 'Kudo/react-native-v8', npm: 'react-native-v8', isNpmAByProduct: false, alias: 'react-native-v8', framework: null },
 
-  // React Unit Testing
-  { category: 'React Unit Testing', repoId: 'enzymejs/enzyme', npm: 'enzyme', isNpmAByProduct: false, alias: 'Enzyme', framework: null },
-  { category: 'React Unit Testing', repoId: 'testing-library/react-testing-library', npm: '@testing-library/react', isNpmAByProduct: false, alias: 'React Testing Library', framework: null },
+  // ReactJS Unit-Testing Libraries
+  { category: 'ReactJS Unit-Testing Libraries', repoId: 'enzymejs/enzyme', npm: 'enzyme', isNpmAByProduct: false, alias: 'Enzyme', framework: null },
+  { category: 'ReactJS Unit-Testing Libraries', repoId: 'testing-library/react-testing-library', npm: '@testing-library/react', isNpmAByProduct: false, alias: 'React Testing Library', framework: null },
 
-  // Runtime Types Checks
-  { category: 'Runtime Types Checks', repoId: 'gcanti/io-ts', npm: 'io-ts', isNpmAByProduct: false, alias: 'io-ts', framework: null },
-  { category: 'Runtime Types Checks', repoId: 'pelotom/runtypes', npm: 'runtypes', isNpmAByProduct: false, alias: 'Runtypes', framework: null },
+  // Runtime Types Checking Libraries
+  { category: 'Runtime Types Checking Libraries', repoId: 'gcanti/io-ts', npm: 'io-ts', isNpmAByProduct: false, alias: 'io-ts', framework: null },
+  { category: 'Runtime Types Checking Libraries', repoId: 'pelotom/runtypes', npm: 'runtypes', isNpmAByProduct: false, alias: 'Runtypes', framework: null },
 
-  // Select Box
-  { category: 'Select Box', repoId: 'downshift-js/downshift', npm: 'downshift', isNpmAByProduct: false, alias: 'Downshift', framework: 'react' },
-  { category: 'Select Box', repoId: 'JedWatson/react-select', npm: 'react-select', isNpmAByProduct: false, alias: 'React Select', framework: 'react' },
-  { category: 'Select Box', repoId: 'select2/select2', npm: 'select2', isNpmAByProduct: false, alias: 'Select2', framework: null },
-  { category: 'Select Box', repoId: 'moroshko/react-autosuggest', npm: 'react-autosuggest', isNpmAByProduct: false, alias: 'React Autosuggest', framework: 'react' },
-  { category: 'Select Box', repoId: 'reactjs/react-autocomplete', npm: 'react-autocomplete', isNpmAByProduct: false, alias: 'React Autocomplete', framework: 'react' },
-  { category: 'Select Box', repoId: 'bvaughn/react-virtualized-select', npm: 'react-virtualized-select', isNpmAByProduct: false, alias: 'React Virtualized Select', framework: 'react' },
-  { category: 'Select Box', repoId: 'fraserxu/react-dropdown', npm: 'react-dropdown', isNpmAByProduct: false, alias: 'react-dropdown', framework: 'react' },
+  // ReactJS Select/Autocomplete Components
+  { category: 'ReactJS Select/Autocomplete Components', repoId: 'downshift-js/downshift', npm: 'downshift', isNpmAByProduct: false, alias: 'Downshift', framework: 'react' },
+  { category: 'ReactJS Select/Autocomplete Components', repoId: 'JedWatson/react-select', npm: 'react-select', isNpmAByProduct: false, alias: 'React Select', framework: 'react' },
+  { category: 'ReactJS Select/Autocomplete Components', repoId: 'select2/select2', npm: 'select2', isNpmAByProduct: false, alias: 'Select2', framework: null },
+  { category: 'ReactJS Select/Autocomplete Components', repoId: 'moroshko/react-autosuggest', npm: 'react-autosuggest', isNpmAByProduct: false, alias: 'React Autosuggest', framework: 'react' },
+  { category: 'ReactJS Select/Autocomplete Components', repoId: 'reactjs/react-autocomplete', npm: 'react-autocomplete', isNpmAByProduct: false, alias: 'React Autocomplete', framework: 'react' },
+  { category: 'ReactJS Select/Autocomplete Components', repoId: 'bvaughn/react-virtualized-select', npm: 'react-virtualized-select', isNpmAByProduct: false, alias: 'React Virtualized Select', framework: 'react' },
+  { category: 'ReactJS Select/Autocomplete Components', repoId: 'fraserxu/react-dropdown', npm: 'react-dropdown', isNpmAByProduct: false, alias: 'react-dropdown', framework: 'react' },
 
-  // State Management
-  { category: 'State Management', repoId: 'reduxjs/redux', npm: 'redux', isNpmAByProduct: false, alias: 'Redux', framework: null },
-  { category: 'State Management', repoId: 'mobxjs/mobx', npm: 'mobx', isNpmAByProduct: false, alias: 'MobX', framework: null },
-  { category: 'State Management', repoId: 'reactivex/rxjs', npm: 'rxjs', isNpmAByProduct: false, alias: 'RxJS', framework: null },
-  { category: 'State Management', repoId: 'facebookexperimental/recoil', npm: 'recoil', isNpmAByProduct: false, alias: 'Recoil', framework: null },
-  { category: 'State Management', repoId: 'vuejs/vuex', npm: 'vuex', isNpmAByProduct: false, alias: 'Vuex', framework: 'vue' },
+  // JavaScript State Management Libraries
+  { category: 'JavaScript State Management Libraries', repoId: 'reduxjs/redux', npm: 'redux', isNpmAByProduct: false, alias: 'Redux', framework: null },
+  { category: 'JavaScript State Management Libraries', repoId: 'mobxjs/mobx', npm: 'mobx', isNpmAByProduct: false, alias: 'MobX', framework: null },
+  { category: 'JavaScript State Management Libraries', repoId: 'reactivex/rxjs', npm: 'rxjs', isNpmAByProduct: false, alias: 'RxJS', framework: null },
+  { category: 'JavaScript State Management Libraries', repoId: 'facebookexperimental/recoil', npm: 'recoil', isNpmAByProduct: false, alias: 'Recoil', framework: null },
+  { category: 'JavaScript State Management Libraries', repoId: 'vuejs/vuex', npm: 'vuex', isNpmAByProduct: false, alias: 'Vuex', framework: 'vue' },
 
   // Static Site Generators / JAMStack
   { category: 'Static Site Generators / JAMStack', repoId: 'gatsbyjs/gatsby', npm: 'gatsby', isNpmAByProduct: false, alias: 'Gatsby', framework: 'react' },
@@ -1565,55 +1565,55 @@ const libraries: CatalogLibraryT[] = [
   { category: 'Static Site Generators / JAMStack', repoId: 'react-static/react-static', npm: 'react-static', isNpmAByProduct: false, alias: 'React Static', framework: 'react' },
   { category: 'Static Site Generators / JAMStack', repoId: 'gridsome/gridsome', npm: 'gridsome', isNpmAByProduct: false, alias: 'Gridsome', framework: 'vue' },
 
-  // Static Types Checking
-  { category: 'Static Types Checking', repoId: 'Microsoft/TypeScript', npm: 'typescript', isNpmAByProduct: false, alias: 'TypeScript', framework: null },
-  { category: 'Static Types Checking', repoId: 'facebook/flow', npm: 'flow-bin', isNpmAByProduct: false, alias: 'Flow', framework: null },
+  // JavaScript Static Types Checking Tools
+  { category: 'JavaScript Static Types Checking Tools', repoId: 'Microsoft/TypeScript', npm: 'typescript', isNpmAByProduct: false, alias: 'TypeScript', framework: null },
+  { category: 'JavaScript Static Types Checking Tools', repoId: 'facebook/flow', npm: 'flow-bin', isNpmAByProduct: false, alias: 'Flow', framework: null },
 
-  // Testing-BDD-BehaviourDrivenDevelopment
-  { category: 'Testing-BDD-BehaviourDrivenDevelopment', repoId: 'cucumber/cucumber-js', npm: '@cucumber/cucumber', isNpmAByProduct: false, alias: 'Cucumber.js', framework: null },
-  { category: 'Testing-BDD-BehaviourDrivenDevelopment', repoId: 'iensu/mocha-cakes-2', npm: 'mocha-cakes-2', isNpmAByProduct: false, alias: 'Mocha Cakes 2', framework: null },
-  { category: 'Testing-BDD-BehaviourDrivenDevelopment', repoId: 'dotnetprofessional/LiveDoc', npm: 'livedoc-mocha', isNpmAByProduct: false, alias: 'LiveDoc', framework: null },
+  // JavaScript BDD Testing tools
+  { category: 'JavaScript BDD Testing tools', repoId: 'cucumber/cucumber-js', npm: '@cucumber/cucumber', isNpmAByProduct: false, alias: 'Cucumber.js', framework: null },
+  { category: 'JavaScript BDD Testing tools', repoId: 'iensu/mocha-cakes-2', npm: 'mocha-cakes-2', isNpmAByProduct: false, alias: 'Mocha Cakes 2', framework: null },
+  { category: 'JavaScript BDD Testing tools', repoId: 'dotnetprofessional/LiveDoc', npm: 'livedoc-mocha', isNpmAByProduct: false, alias: 'LiveDoc', framework: null },
 
-  // ui dev environment
-  { category: 'ui dev environment', repoId: 'storybookjs/storybook', npm: '@storybook/core', isNpmAByProduct: false, alias: 'Storybook', framework: null },
-  { category: 'ui dev environment', repoId: 'styleguidist/react-styleguidist', npm: 'react-styleguidist', isNpmAByProduct: false, alias: 'React Styleguidist', framework: 'react' },
+  // JavaScript UI Component Development Tools
+  { category: 'JavaScript UI Component Development Tools', repoId: 'storybookjs/storybook', npm: '@storybook/core', isNpmAByProduct: false, alias: 'Storybook', framework: null },
+  { category: 'JavaScript UI Component Development Tools', repoId: 'styleguidist/react-styleguidist', npm: 'react-styleguidist', isNpmAByProduct: false, alias: 'React Styleguidist', framework: 'react' },
 
-  // Unit Tests Runner
-  { category: 'Unit Tests Runner', repoId: 'facebook/jest', npm: 'jest', isNpmAByProduct: false, alias: 'Jest', framework: null },
-  { category: 'Unit Tests Runner', repoId: 'avajs/ava', npm: 'ava', isNpmAByProduct: false, alias: 'Ava', framework: null },
+  // JavaScript Tests Runners
+  { category: 'JavaScript Tests Runners', repoId: 'facebook/jest', npm: 'jest', isNpmAByProduct: false, alias: 'Jest', framework: null },
+  { category: 'JavaScript Tests Runners', repoId: 'avajs/ava', npm: 'ava', isNpmAByProduct: false, alias: 'Ava', framework: null },
 
-  // Utilities
-  { category: 'Utilities', repoId: 'lodash/lodash', npm: 'lodash', isNpmAByProduct: false, alias: 'Lodash', framework: null },
-  { category: 'Utilities', repoId: 'ramda/ramda', npm: 'ramda', isNpmAByProduct: false, alias: 'Ramda', framework: null },
-  { category: 'Utilities', repoId: 'jashkenas/underscore', npm: 'underscore', isNpmAByProduct: false, alias: 'Underscore', framework: null },
-  { category: 'Utilities', repoId: 'selfrefactor/rambda', npm: 'rambda', isNpmAByProduct: false, alias: 'Rambda', framework: null },
-  { category: 'Utilities', repoId: 'mout/mout', npm: 'mout', isNpmAByProduct: false, alias: 'Mout', framework: null },
-  { category: 'Utilities', repoId: 'andrewplummer/Sugar', npm: 'sugar', isNpmAByProduct: false, alias: 'Sugar', framework: null },
-  { category: 'Utilities', repoId: 'dtao/lazy.js', npm: 'lazy.js', isNpmAByProduct: false, alias: 'Lazy.js', framework: null },
+  // JavaScript Utility Libraries
+  { category: 'JavaScript Utility Libraries', repoId: 'lodash/lodash', npm: 'lodash', isNpmAByProduct: false, alias: 'Lodash', framework: null },
+  { category: 'JavaScript Utility Libraries', repoId: 'ramda/ramda', npm: 'ramda', isNpmAByProduct: false, alias: 'Ramda', framework: null },
+  { category: 'JavaScript Utility Libraries', repoId: 'jashkenas/underscore', npm: 'underscore', isNpmAByProduct: false, alias: 'Underscore', framework: null },
+  { category: 'JavaScript Utility Libraries', repoId: 'selfrefactor/rambda', npm: 'rambda', isNpmAByProduct: false, alias: 'Rambda', framework: null },
+  { category: 'JavaScript Utility Libraries', repoId: 'mout/mout', npm: 'mout', isNpmAByProduct: false, alias: 'Mout', framework: null },
+  { category: 'JavaScript Utility Libraries', repoId: 'andrewplummer/Sugar', npm: 'sugar', isNpmAByProduct: false, alias: 'Sugar', framework: null },
+  { category: 'JavaScript Utility Libraries', repoId: 'dtao/lazy.js', npm: 'lazy.js', isNpmAByProduct: false, alias: 'Lazy.js', framework: null },
 
-  // Visual Regression
-  { category: 'Visual Regression', repoId: 'garris/backstopjs', npm: 'backstopjs', isNpmAByProduct: false, alias: 'BackstopJS', framework: null },
-  { category: 'Visual Regression', repoId: 'oblador/loki', npm: 'loki', isNpmAByProduct: false, alias: 'Loki', framework: null },
-  { category: 'Visual Regression', repoId: 'gemini-testing/gemini', npm: 'gemini', isNpmAByProduct: false, alias: 'Gemini', framework: null },
+  // JavaScript Visual Regression Testing Tools
+  { category: 'JavaScript Visual Regression Testing Tools', repoId: 'garris/backstopjs', npm: 'backstopjs', isNpmAByProduct: false, alias: 'BackstopJS', framework: null },
+  { category: 'JavaScript Visual Regression Testing Tools', repoId: 'oblador/loki', npm: 'loki', isNpmAByProduct: false, alias: 'Loki', framework: null },
+  { category: 'JavaScript Visual Regression Testing Tools', repoId: 'gemini-testing/gemini', npm: 'gemini', isNpmAByProduct: false, alias: 'Gemini', framework: null },
 
-  // Vue Component Libraries
-  { category: 'Vue Component Libraries', repoId: 'vuetifyjs/vuetify', npm: 'vuetify', isNpmAByProduct: false, alias: 'Vuetify', framework: null },
-  { category: 'Vue Component Libraries', repoId: 'quasarframework/quasar', npm: 'quasar', isNpmAByProduct: false, alias: 'Quasar', framework: null },
-  { category: 'Vue Component Libraries', repoId: 'bootstrap-vue/bootstrap-vue', npm: 'bootstrap-vue', isNpmAByProduct: false, alias: 'BootstrapVue', framework: null },
-  { category: 'Vue Component Libraries', repoId: 'primefaces/primevue', npm: 'primevue', isNpmAByProduct: false, alias: 'Primevue', framework: null },
-  { category: 'Vue Component Libraries', repoId: 'vuematerial/vue-material', npm: 'vue-material', isNpmAByProduct: false, alias: 'Vue Material', framework: null },
-  { category: 'Vue Component Libraries', repoId: 'ElemeFE/element', npm: 'element-ui', isNpmAByProduct: false, alias: 'Element UI', framework: null },
-  { category: 'Vue Component Libraries', repoId: 'element-plus/element-plus', npm: 'element-plus', isNpmAByProduct: false, alias: 'Element Plus', framework: null },
-  { category: 'Vue Component Libraries', repoId: 'iview/iview', npm: 'iview', isNpmAByProduct: false, alias: 'iView', framework: null },
-  { category: 'Vue Component Libraries', repoId: 'vueComponent/ant-design-vue', npm: 'ant-design-vue', isNpmAByProduct: false, alias: 'Ant Design Vue', framework: null },
+  // VueJS Component Libraries
+  { category: 'VueJS Component Libraries', repoId: 'vuetifyjs/vuetify', npm: 'vuetify', isNpmAByProduct: false, alias: 'Vuetify', framework: null },
+  { category: 'VueJS Component Libraries', repoId: 'quasarframework/quasar', npm: 'quasar', isNpmAByProduct: false, alias: 'Quasar', framework: null },
+  { category: 'VueJS Component Libraries', repoId: 'bootstrap-vue/bootstrap-vue', npm: 'bootstrap-vue', isNpmAByProduct: false, alias: 'BootstrapVue', framework: null },
+  { category: 'VueJS Component Libraries', repoId: 'primefaces/primevue', npm: 'primevue', isNpmAByProduct: false, alias: 'Primevue', framework: null },
+  { category: 'VueJS Component Libraries', repoId: 'vuematerial/vue-material', npm: 'vue-material', isNpmAByProduct: false, alias: 'Vue Material', framework: null },
+  { category: 'VueJS Component Libraries', repoId: 'ElemeFE/element', npm: 'element-ui', isNpmAByProduct: false, alias: 'Element UI', framework: null },
+  { category: 'VueJS Component Libraries', repoId: 'element-plus/element-plus', npm: 'element-plus', isNpmAByProduct: false, alias: 'Element Plus', framework: null },
+  { category: 'VueJS Component Libraries', repoId: 'iview/iview', npm: 'iview', isNpmAByProduct: false, alias: 'iView', framework: null },
+  { category: 'VueJS Component Libraries', repoId: 'vueComponent/ant-design-vue', npm: 'ant-design-vue', isNpmAByProduct: false, alias: 'Ant Design Vue', framework: null },
 
-  // Web Components
-  { category: 'Web Components', repoId: 'ionic-team/stencil', npm: '@stencil/core', isNpmAByProduct: false, alias: 'Stencil', framework: null },
-  { category: 'Web Components', repoId: 'Polymer/lit-element', npm: 'lit-element', isNpmAByProduct: false, alias: 'LitElement', framework: null },
+  // Web Components UI Libraries
+  { category: 'Web Components UI Libraries', repoId: 'ionic-team/stencil', npm: '@stencil/core', isNpmAByProduct: false, alias: 'Stencil', framework: null },
+  { category: 'Web Components UI Libraries', repoId: 'Polymer/lit-element', npm: 'lit-element', isNpmAByProduct: false, alias: 'LitElement', framework: null },
 
-  // Web Sockets
-  { category: 'Web Sockets', repoId: 'socketio/socket.io', npm: 'socket.io', isNpmAByProduct: false, alias: 'Socket.io', framework: null },
-  { category: 'Web Sockets', repoId: 'websockets/ws', npm: 'ws', isNpmAByProduct: false, alias: 'ws', framework: null },
+  // Web Sockets for JavaScript
+  { category: 'Web Sockets for JavaScript', repoId: 'socketio/socket.io', npm: 'socket.io', isNpmAByProduct: false, alias: 'Socket.io', framework: null },
+  { category: 'Web Sockets for JavaScript', repoId: 'websockets/ws', npm: 'ws', isNpmAByProduct: false, alias: 'ws', framework: null },
 ];
 
 export const catalogRepoIdToLib = libraries.reduce((acc, lib) => {
