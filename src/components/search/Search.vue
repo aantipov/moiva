@@ -243,7 +243,7 @@ export default defineComponent({
   @apply pl-3 pr-14 w-full text-lg rounded text-white focus:outline-none bg-primary appearance-none;
 }
 .select {
-  @apply sm:rounded-l sm:rounded-r-none  h-14;
+  @apply sm:rounded-l sm:rounded-r-none h-14 sm:pl-5;
 }
 .myinput {
   @apply bg-opacity-5 placeholder-opacity-60 ring-0 border border-primary border-opacity-40 relative w-full h-14 px-3 text-xl font-light text-gray-700 rounded outline-none md:text-2xl;
