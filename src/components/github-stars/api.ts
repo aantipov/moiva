@@ -29,6 +29,12 @@ export function fetchRepoStars(repoId: string): Promise<StarsT[] | null> {
 }
 
 function fillMissingData(items: StarsT[]): StarsT[] {
+  // exclude current (last) month with non complete data
+  const currentMonth = new Date().toISOString().slice(0, 7);
+  if (items.slice(-1)[0].month === currentMonth) {
+    items.pop();
+  }
+
   const firstMonth = '2020-01';
   if (items[0].month === firstMonth) {
     return items;
