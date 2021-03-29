@@ -126,6 +126,8 @@ I gave it a try and I liked it. Two weeks later all my Serverless Functions were
 <div class="code-descr">A screenshot from <a href="https://www.cloudflare.com/network/">Cloudflare website</a> with a world map showing locations of Cloudflare Network Datacenters</div>
 <p><strong>Vercel</strong>&rsquo;s Network is significantly less dense and spans <a href="https://vercel.com/docs/edge-network/regions">less than 20 locations</a>. It means that on average requests will spend more time traveling.
 Moreover, requests will end on the nearest server only in the happy case of a pre-existing cache. Other times, as we saw above, the request will be forwarded further to the data center which contains the Function. It diminishes all advantages of having a global network of data centers.</p>
+<p><img src="/blog/images/vercel-vs-cloudflare/vercel-network.png" alt="An image of Vercel Edge Network map"></p>
+<div class="code-descr">An image of Vercel Edge Network map (<a href="https://www.mapcustomizer.com/map/Vercel_regions">link</a>)</div>
 <h2 id="function-execution-time">Function Execution time</h2>
 <p>Request/Function Execution Time is another major constituent of Speed.
 It largely depends on if there is cached data already or not.</p>
@@ -294,6 +296,8 @@ return response
 <p>Enterprise plan enables multi-region Serverless Functions and &ldquo;Enterprise&rdquo; support.</p>
 <p>All plans are subject to Vercel&rsquo;s <a href="https://vercel.com/docs/platform/fair-use-policy">Fair Use Policy</a>.</p>
 <p>Check Vercel&rsquo;s <a href="https://vercel.com/pricing">pricing page</a> for more details.</p>
+<hr>
+<p><strong>Update 2021-03-29</strong>: added an image of Vercel Edge Network map. Kudos to <a href="https://twitter.com/magnemg">@magnemg</a> for creating it.</p>
 
 </div>
 
