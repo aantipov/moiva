@@ -16,9 +16,9 @@
     </div>
 
     <!-- Catalog Body -->
-    <div>
+    <div class="mt-8">
       <div v-for="catalogEntry in catalogEntries" :key="catalogEntry.category">
-        <h2 class="text-left">
+        <h2 class="mt-4 text-left">
           {{ catalogEntry.category }}
         </h2>
 
