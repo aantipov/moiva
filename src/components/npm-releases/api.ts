@@ -1,14 +1,13 @@
 import axios from 'axios';
 import { reportSentry } from '@/apis';
 
-export interface NpmReleasesResponseItemT {
+export interface NpmPackageReleasesT {
   month: string;
   releases: number;
 }
+
 const cache = new Map();
 export const creationDatesCache = new Map();
-
-export type NpmPackageReleasesT = NpmReleasesResponseItemT;
 
 export function fetchNpmPackageReleases(
   pkg: string
@@ -18,7 +17,7 @@ export function fetchNpmPackageReleases(
   }
 
   return axios
-    .get<{ items: NpmReleasesResponseItemT[]; created?: string }>(
+    .get<{ items: NpmPackageReleasesT[]; created?: string }>(
       `https://npm-releases.moiva.workers.dev/?pkg=${pkg}`
     )
     .then(({ data }) => {
