@@ -24,7 +24,7 @@ import { defineComponent, toRefs, computed } from 'vue';
 import Chart, { ChartDataSets } from 'chart.js';
 import { getLangToColorMap } from '@/colors';
 import { getSeoLibName } from '@/utils';
-import { GithubLanguagesResponseT } from '../../api/gh-languages';
+import { GithubLanguagesResponseT } from '@/apis';
 
 export default defineComponent({
   name: 'LanguagesChart',

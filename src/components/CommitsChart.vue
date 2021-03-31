@@ -21,7 +21,7 @@
 import { defineComponent, toRefs, computed } from 'vue';
 import { ChartDataSets, ChartConfiguration } from 'chart.js';
 import { getSeoLibName } from '@/utils';
-import { CommitsResponseItemT } from '../../api/gh-commits';
+import { CommitsResponseItemT } from '@/apis';
 import { enUS } from 'date-fns/locale';
 
 export default defineComponent({

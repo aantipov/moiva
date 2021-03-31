@@ -4,9 +4,16 @@ import {
   ERROR_CODE_GITHUB_CONTRIBUTORS_NEEDS_PROCESSING,
   ERROR_CODE_GITHUB_COMMITS_NEEDS_PROCESSING,
 } from '@/constants';
-import { GithubLanguagesResponseT } from '../api/gh-languages';
-import { CommitsResponseItemT } from '../api/gh-commits';
-import { GithubContributorsResponseItemT } from '../api/gh-contributors';
+
+export type GithubLanguagesResponseT = Record<string, number>;
+export interface CommitsResponseItemT {
+  total: number;
+  week: number;
+}
+export interface GithubContributorsResponseItemT {
+  month: string;
+  contributors: number;
+}
 
 const npmDownloadsCache = new Map();
 const githubContributorsCache = new Map();
