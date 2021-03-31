@@ -17,7 +17,7 @@
 <script lang="ts">
 import { defineComponent, toRefs, computed } from 'vue';
 import { ChartDataSets, ChartConfiguration } from 'chart.js';
-import { NpmPackageReleasesT } from '../apis';
+import { NpmPackageReleasesT } from './api';
 import { enUS } from 'date-fns/locale';
 
 export default defineComponent({

@@ -11,9 +11,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
+import { defineComponent, computed, watchEffect } from 'vue';
+import { npmCreationDatesMap } from '@/store/npmCreationDates';
 import ReleasesChart from './ReleasesChart.vue';
-import { fetchNpmPackageReleases, NpmPackageReleasesT } from '@/apis';
+import {
+  fetchNpmPackageReleases,
+  creationDatesCache,
+  NpmPackageReleasesT,
+} from './api';
 import useChartApi from '@/composables/useChartApi';
 import { libraryToColorMap } from '@/store/librariesColors';
 import {
@@ -39,6 +44,13 @@ export default defineComponent({
       isLoadingLibraries,
       fetchNpmPackageReleases
     );
+
+    // Add packages creation dates to global store
+    watchEffect(() => {
+      successItemsIds.value.forEach((pkg) =>
+        npmCreationDatesMap.set(pkg, creationDatesCache.get(pkg))
+      );
+    });
 
     return {
       isLoading: computed(() => isLoadingLibraries.value || isLoading.value),

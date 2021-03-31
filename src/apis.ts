@@ -1,6 +1,5 @@
 import axios, { AxiosError } from 'axios';
 import * as Sentry from '@sentry/browser';
-import { NpmReleasesResponseItemT } from '../api/npm-releases';
 import {
   ERROR_CODE_GITHUB_CONTRIBUTORS_NEEDS_PROCESSING,
   ERROR_CODE_GITHUB_COMMITS_NEEDS_PROCESSING,
@@ -10,12 +9,10 @@ import { CommitsResponseItemT } from '../api/gh-commits';
 import { GithubContributorsResponseItemT } from '../api/gh-contributors';
 
 const npmDownloadsCache = new Map();
-const npmReleasesCache = new Map();
 const githubContributorsCache = new Map();
 const bphobiaCache = new Map();
 
 export type ContributorsT = GithubContributorsResponseItemT;
-export type NpmPackageReleasesT = NpmReleasesResponseItemT;
 
 export interface NpmDownloadT {
   downloads: number;
@@ -180,27 +177,6 @@ export function fetchBundlephobiaData(
       if (errorCode !== 404) {
         reportSentry(err, 'fetchBundlephobiaData');
       }
-
-      return null;
-    });
-}
-
-export function fetchNpmPackageReleases(
-  pkg: string
-): Promise<NpmPackageReleasesT[] | null> {
-  if (npmReleasesCache.get(pkg)) {
-    return Promise.resolve(npmReleasesCache.get(pkg));
-  }
-
-  return axios
-    .get(`https://npm-releases.moiva.workers.dev/?pkg=${pkg}`)
-    .then(({ data }) => {
-      npmReleasesCache.set(pkg, data.items);
-
-      return data.items;
-    })
-    .catch((err) => {
-      reportSentry(err, 'fetchNpmPackageReleases');
 
       return null;
     });
