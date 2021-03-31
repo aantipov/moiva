@@ -12,8 +12,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import LanguagesChart from './LanguagesChart.vue';
-import { fetchRepoLanguages } from '@/apis';
-import { GithubLanguagesResponseT } from '../../api/gh-languages';
+import { fetchRepoLanguages, GithubLanguagesResponseT } from '@/apis';
 import useChartApi from '@/composables/useChartApi';
 import { libraryToColorMap } from '@/store/librariesColors';
 import {
