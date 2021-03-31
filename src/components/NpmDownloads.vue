@@ -46,7 +46,8 @@ export default defineComponent({
       chartsVisibility.npmDownloads = npmPackagesNames.value.length > 0;
     });
 
-    const startDate = computed(() => {
+    // Calculate startMonth based on packages creation date
+    const startMonth = computed(() => {
       const defaultValue = '2017-01';
       const validCreationDates = successItemsIds.value
         .map((pkg) => npmCreationDatesMap.get(pkg))
@@ -70,16 +71,18 @@ export default defineComponent({
           }
         })[0]
         .slice(0, 7);
+
       return defaultValue > earliestCreationDate
         ? defaultValue
         : earliestCreationDate;
     });
 
-    const filteredItems = computed(() => {
-      return items.value.map((pkgDownloads) =>
-        pkgDownloads.filter(({ month }) => month >= startDate.value)
-      );
-    });
+    // Filter out data earlier startMonth
+    const filteredItems = computed(() =>
+      items.value.map((pkgDownloads) =>
+        pkgDownloads.filter(({ month }) => month >= startMonth.value)
+      )
+    );
 
     return {
       isLoading: computed(() => isLoadingLibraries.value || isLoading.value),
