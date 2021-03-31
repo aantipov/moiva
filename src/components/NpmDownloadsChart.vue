@@ -60,6 +60,14 @@ export default defineComponent({
         : []
     );
 
+    const unit = computed(() => {
+      if (!packagesDownloads.value.length) {
+        return 'year';
+      }
+      const firstMonth = packagesDownloads.value[0][0].month;
+      return firstMonth > '2019-10' ? 'month' : 'year';
+    });
+
     const chartConfig = computed<ChartConfiguration>(() => ({
       type: 'line',
       data: {
@@ -77,7 +85,7 @@ export default defineComponent({
         },
         scales: {
           adapters: { date: { locale: enUS } },
-          xAxes: [{ type: 'time', time: { unit: 'year' } }],
+          xAxes: [{ type: 'time', time: { unit: unit.value } }],
           yAxes: [{ ticks: { callback: numbersFormatter.format } }],
         },
       },

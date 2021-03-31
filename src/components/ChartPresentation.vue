@@ -87,6 +87,7 @@ export default defineComponent({
         // @ts-ignore
         (mychart as Chart).data.yLabels = chartConfig.value.data?.yLabels;
         (mychart as Chart).data.datasets = chartConfig.value.data?.datasets;
+        (mychart as Chart).options = (chartConfig.value as Chart).options;
         (mychart as Chart).update();
       }
     });

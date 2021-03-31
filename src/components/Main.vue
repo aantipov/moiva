@@ -92,7 +92,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, watchEffect, computed } from 'vue';
 import NpmDownloads from './NpmDownloads.vue';
-import Releases from './Releases.vue';
+import Releases from './npm-releases/Releases.vue';
 import Search from './search/Search.vue';
 import Suggestions from './Suggestions.vue';
 import TechRadar from './TechRadar.vue';
