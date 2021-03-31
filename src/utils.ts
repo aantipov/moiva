@@ -88,6 +88,13 @@ export function constructHref(
   return `/?${params.join('&')}`;
 }
 
+export function getLibraryHref(library: CatalogLibraryT): string {
+  if (library.npm && !library.isNpmAByProduct) {
+    return `/?${npmQueryParamName}=${library.npm}`;
+  }
+  return `/?${githubQueryParamName}=${library.repoId}`;
+}
+
 export const numbersFormatter = new Intl.NumberFormat('en-US', {
   notation: 'compact',
 });

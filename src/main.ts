@@ -6,6 +6,7 @@ import * as Sentry from '@sentry/browser';
 // import { Vue as VueIntegration } from '@sentry/integrations';
 import { Integrations } from '@sentry/tracing';
 import App from './App.vue';
+import CatalogApp from './CatalogApp.vue';
 import Close from './components/icons/Close.vue';
 import ChartInfo from '@/components/ChartInfo.vue';
 import ChartPresentation from '@/components/ChartPresentation.vue';
@@ -72,7 +73,14 @@ app.directive('tooltip', (el, binding) => {
   });
 });
 
-app.mount('#app');
+const appCatalog = new URL(window.location.href).searchParams.get('appcatalog');
+
+if (appCatalog) {
+  const catalogApp = createApp(CatalogApp);
+  catalogApp.mount('#app');
+} else {
+  app.mount('#app');
+}
 
 if (process.env.NODE_ENV !== 'development') {
   Sentry.init({
