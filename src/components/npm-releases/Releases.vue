@@ -45,10 +45,6 @@ export default defineComponent({
       fetchNpmPackageReleases
     );
 
-    const creationDates = computed(() => {
-      return successItemsIds.value.map((pkg) => creationDatesCache.get(pkg));
-    });
-
     // Add packages creation dates to global store
     watchEffect(() => {
       successItemsIds.value.forEach((pkg) =>
@@ -58,7 +54,6 @@ export default defineComponent({
 
     return {
       isLoading: computed(() => isLoadingLibraries.value || isLoading.value),
-      creationDates,
       isError,
       npmPackagesNames, // all items
       items,
