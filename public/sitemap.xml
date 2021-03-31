@@ -3,6 +3,7 @@
   <url>
     <loc>https://moiva.io/blog</loc>
     <lastmod>2021-03-24</lastmod>
+    <changefreq>weekly</changefreq>
   </url>
 
   <url>
@@ -18,6 +19,12 @@
   <url>
     <loc>https://moiva.io/blog/universal-tool-to-evaluate-discover-compare-software</loc>
     <lastmod>2021-02-17</lastmod>
+  </url>
+
+  <url>
+    <loc>https://moiva.io/catalog</loc>
+    <lastmod>2021-03-31</lastmod>
+    <changefreq>weekly</changefreq>
   </url>
 
   <url>
