@@ -342,6 +342,6 @@ export function getQuarterMonthFromDate(date: string): string {
  */
 export function getPreviousQuater(quarter: string): string {
   const quarterDate = new Date(quarter);
-  quarterDate.setUTCMonth(quarterDate.getUTCMonth() - 3);
+  quarterDate.setUTCMonth(quarterDate.getUTCMonth() - 3, 1);
   return quarterDate.toISOString().slice(0, 7);
 }

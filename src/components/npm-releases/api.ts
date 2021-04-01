@@ -26,7 +26,7 @@ export function fetchNpmPackageReleases(
         ...item,
         month: (() => {
           const quarterDate = new Date(item.month);
-          quarterDate.setUTCMonth(quarterDate.getUTCMonth() + 1);
+          quarterDate.setUTCMonth(quarterDate.getUTCMonth() + 1, 1);
           return quarterDate.toISOString().slice(0, 7);
         })(),
       }));
