@@ -320,3 +320,28 @@ function sortLibsByAlias(libA: LibraryT, libB: LibraryT) {
   }
   return 0;
 }
+
+export function getQuarterMonthFromDate(date: string): string {
+  const dateObj = new Date(date);
+  const month = dateObj.getUTCMonth();
+  const year = dateObj.getUTCFullYear();
+  if (month <= 2) {
+    return `${year}-04`;
+  }
+  if (month <= 5) {
+    return `${year}-07`;
+  }
+  if (month <= 8) {
+    return `${year}-10`;
+  }
+  return `${year + 1}-01`;
+}
+
+/**
+ * date argument in the format '2020-06'
+ */
+export function getPreviousQuater(quarter: string): string {
+  const quarterDate = new Date(quarter);
+  quarterDate.setUTCMonth(quarterDate.getUTCMonth() - 3);
+  return quarterDate.toISOString().slice(0, 7);
+}
