@@ -52,6 +52,6 @@ function fillMissingData(items: StarsT[]): StarsT[] {
 
 function getNextMonth(month: string) {
   const date = month ? new Date(month) : new Date();
-  date.setUTCMonth(date.getUTCMonth() + 1);
+  date.setUTCMonth(date.getUTCMonth() + 1, 1);
   return date.toISOString().slice(0, 7);
 }
