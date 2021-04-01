@@ -94,7 +94,6 @@ export default defineComponent({
     );
 
     return {
-      startQuater,
       isLoading: computed(() => isLoadingLibraries.value || isLoading.value),
       isError,
       npmPackagesNames, // all items
