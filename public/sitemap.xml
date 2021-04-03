@@ -1059,6 +1059,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?github=apache/incubator-weex+flutter/flutter</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?github=apache/kafka</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -2569,11 +2574,6 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?github=ionic-team/ionic-framework</loc>
-    <lastmod>2021-03-13</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
     <loc>https://moiva.io/?github=iovisor/bcc</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -3304,6 +3304,36 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?github=neutralinojs/neutralinojs</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?github=neutralinojs/neutralinojs+nodegui/react-nodegui</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?github=neutralinojs/neutralinojs+nodegui/svelte-nodegui</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?github=neutralinojs/neutralinojs+nodegui/vue-nodegui</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?github=neutralinojs/neutralinojs+nwjs/nw.js</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?github=neutralinojs/neutralinojs+tauri-apps/tauri</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?github=nextcloud/server</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -3350,6 +3380,51 @@
   </url>
   <url>
     <loc>https://moiva.io/?github=nltk/nltk</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?github=nodegui/react-nodegui</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?github=nodegui/react-nodegui+nwjs/nw.js</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?github=nodegui/react-nodegui+tauri-apps/tauri</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?github=nodegui/svelte-nodegui</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?github=nodegui/svelte-nodegui+nwjs/nw.js</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?github=nodegui/svelte-nodegui+tauri-apps/tauri</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?github=nodegui/vue-nodegui</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?github=nodegui/vue-nodegui+nwjs/nw.js</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?github=nodegui/vue-nodegui+tauri-apps/tauri</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -3410,6 +3485,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?github=nwjs/nw.js</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?github=nwjs/nw.js+tauri-apps/tauri</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -4944,6 +5024,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=@apollo/client+@urql/core</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=@apollo/client+relay-runtime</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -4965,6 +5050,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=@blueprintjs/core</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@capacitor/core</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -4999,11 +5089,6 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?npm=@chakra-ui/react+semantic-ui</loc>
-    <lastmod>2021-03-13</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
     <loc>https://moiva.io/?npm=@cucumber/cucumber</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -5015,6 +5100,76 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=@cucumber/cucumber+mocha-cakes-2</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@datorama/akita</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@datorama/akita+@ngrx/store</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@datorama/akita+@ngxs/store</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@datorama/akita+effector</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@datorama/akita+mobx</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@datorama/akita+overmind</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@datorama/akita+react-query</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@datorama/akita+recoil</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@datorama/akita+redux</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@datorama/akita+rxjs</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@datorama/akita+swr</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@datorama/akita+vuex</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@datorama/akita+xstate</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@datorama/akita+zustand</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -5069,7 +5224,22 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=@emotion/css+@stitches/core</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=@emotion/css+aphrodite</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@emotion/css+astroturf</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@emotion/css+fela</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -5214,6 +5384,36 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=@ionic/core&amp;github=apache/incubator-weex</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@ionic/core&amp;github=flutter/flutter</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@ionic/core+@nativescript/core</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@ionic/core+framework7</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@ionic/core+onsenui</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@ionic/core+react-native</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=@laconia/core</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -5234,7 +5434,22 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=@linaria/core+@stitches/core</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=@linaria/core+aphrodite</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@linaria/core+astroturf</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@linaria/core+fela</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -5324,11 +5539,6 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?npm=@material-ui/core+semantic-ui</loc>
-    <lastmod>2021-03-13</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
     <loc>https://moiva.io/?npm=@mdx-js/mdx</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -5350,6 +5560,36 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=@mostly-adequate/support</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@nativescript/core</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@nativescript/core&amp;github=apache/incubator-weex</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@nativescript/core&amp;github=flutter/flutter</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@nativescript/core+framework7</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@nativescript/core+onsenui</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@nativescript/core+react-native</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -5389,7 +5629,132 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=@ngrx/store</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@ngrx/store+@ngxs/store</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@ngrx/store+effector</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@ngrx/store+mobx</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@ngrx/store+overmind</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@ngrx/store+recoil</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@ngrx/store+redux</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@ngrx/store+rxjs</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@ngrx/store+xstate</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@ngxs/store</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@ngxs/store+effector</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@ngxs/store+mobx</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@ngxs/store+overmind</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@ngxs/store+recoil</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@ngxs/store+redux</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@ngxs/store+rxjs</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@ngxs/store+xstate</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=@nivo/core</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@nodegui/nodegui</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@nodegui/nodegui&amp;github=neutralinojs/neutralinojs</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@nodegui/nodegui&amp;github=nodegui/react-nodegui</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@nodegui/nodegui&amp;github=nodegui/svelte-nodegui</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@nodegui/nodegui&amp;github=nodegui/vue-nodegui</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@nodegui/nodegui&amp;github=nwjs/nw.js</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@nodegui/nodegui&amp;github=tauri-apps/tauri</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@nodegui/nodegui+electron</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -5399,7 +5764,17 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=@parcel/core+browserify</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=@parcel/core+esbuild</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@parcel/core+microbundle</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -5410,6 +5785,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=@parcel/core+snowpack</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@parcel/core+vite</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -5430,6 +5810,76 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=@primer/css</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@primer/css&amp;github=dhg/Skeleton</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@primer/css+bootstrap</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@primer/css+bulma</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@primer/css+foundation-sites</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@primer/css+html5-boilerplate</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@primer/css+material-components-web</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@primer/css+material-design-lite</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@primer/css+materialize-css</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@primer/css+purecss</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@primer/css+semantic-ui</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@primer/css+spectre.css</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@primer/css+tachyons</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@primer/css+tailwindcss</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@primer/css+uikit</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -5455,6 +5905,46 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=@stencil/core+lit-element</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@stitches/core</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@stitches/core+aphrodite</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@stitches/core+astroturf</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@stitches/core+fela</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@stitches/core+jss</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@stitches/core+radium</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@stitches/core+styled-components</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@stitches/core+styled-jsx</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -5515,6 +6005,36 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=@uppy/core</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@urql/core</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@urql/core+apollo-angular</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@urql/core+ember-apollo-client</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@urql/core+relay-runtime</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@urql/core+svelte-apollo</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@urql/core+vue-apollo</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -5879,11 +6399,6 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?npm=antd+semantic-ui</loc>
-    <lastmod>2021-03-13</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
     <loc>https://moiva.io/?npm=aos</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -5949,6 +6464,16 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=aphrodite+astroturf</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=aphrodite+fela</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=aphrodite+jss</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -6010,6 +6535,36 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=ar.js</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=astroturf</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=astroturf+fela</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=astroturf+jss</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=astroturf+radium</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=astroturf+styled-components</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=astroturf+styled-jsx</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -6109,7 +6664,27 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=ava+jasmine</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=ava+jest</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=ava+mocha</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=ava+qunit</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=ava+tape</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -6304,6 +6879,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=bootstrap&amp;github=dhg/Skeleton</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=bootstrap+bulma</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -6334,6 +6914,16 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=bootstrap+purecss</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=bootstrap+semantic-ui</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=bootstrap+spectre.css</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -6345,6 +6935,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=bootstrap+tailwindcss</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=bootstrap+uikit</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -6429,6 +7024,36 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=browserify+esbuild</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=browserify+microbundle</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=browserify+rollup</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=browserify+snowpack</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=browserify+vite</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=browserify+webpack</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=buefy</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -6440,6 +7065,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=bulma</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=bulma&amp;github=dhg/Skeleton</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -6469,6 +7099,16 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=bulma+purecss</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=bulma+semantic-ui</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=bulma+spectre.css</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -6480,6 +7120,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=bulma+tailwindcss</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=bulma+uikit</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -7229,6 +7874,61 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=effector</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=effector+mobx</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=effector+overmind</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=effector+react-query</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=effector+recoil</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=effector+redux</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=effector+rxjs</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=effector+swr</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=effector+vuex</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=effector+xstate</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=effector+zustand</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=egg</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -7300,6 +8000,36 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=electron</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=electron&amp;github=neutralinojs/neutralinojs</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=electron&amp;github=nodegui/react-nodegui</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=electron&amp;github=nodegui/svelte-nodegui</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=electron&amp;github=nodegui/vue-nodegui</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=electron&amp;github=nwjs/nw.js</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=electron&amp;github=tauri-apps/tauri</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -7459,12 +8189,22 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=esbuild+microbundle</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=esbuild+rollup</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://moiva.io/?npm=esbuild+snowpack</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=esbuild+vite</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -7510,11 +8250,6 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=evergreen-ui+reactstrap</loc>
-    <lastmod>2021-03-13</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?npm=evergreen-ui+semantic-ui</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -7644,6 +8379,31 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=fela</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=fela+jss</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=fela+radium</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=fela+styled-components</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=fela+styled-jsx</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=file-saver</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -7739,6 +8499,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=foundation-sites&amp;github=dhg/Skeleton</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=foundation-sites+html5-boilerplate</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -7759,6 +8524,16 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=foundation-sites+purecss</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=foundation-sites+semantic-ui</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=foundation-sites+spectre.css</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -7774,6 +8549,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=foundation-sites+uikit</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=fp-ts</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -7785,6 +8565,26 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=framework7</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=framework7&amp;github=apache/incubator-weex</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=framework7&amp;github=flutter/flutter</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=framework7+onsenui</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=framework7+react-native</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -8064,6 +8864,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=html5-boilerplate&amp;github=dhg/Skeleton</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=html5-boilerplate+material-components-web</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -8079,6 +8884,16 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=html5-boilerplate+purecss</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=html5-boilerplate+semantic-ui</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=html5-boilerplate+spectre.css</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -8090,6 +8905,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=html5-boilerplate+tailwindcss</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=html5-boilerplate+uikit</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -8324,12 +9144,47 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?npm=jasmine-core</loc>
+    <loc>https://moiva.io/?npm=jasmine</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=jasmine+jest</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=jasmine+mocha</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=jasmine+qunit</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=jasmine+tape</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://moiva.io/?npm=jest</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=jest+mocha</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=jest+qunit</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=jest+tape</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -8874,12 +9729,27 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=material-components-web&amp;github=dhg/Skeleton</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=material-components-web+material-design-lite</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://moiva.io/?npm=material-components-web+materialize-css</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=material-components-web+purecss</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=material-components-web+semantic-ui</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -8899,6 +9769,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=material-components-web+uikit</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=material-design-icons</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -8909,7 +9784,22 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=material-design-lite&amp;github=dhg/Skeleton</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=material-design-lite+materialize-css</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=material-design-lite+purecss</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=material-design-lite+semantic-ui</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -8929,7 +9819,27 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=material-design-lite+uikit</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=materialize-css</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=materialize-css&amp;github=dhg/Skeleton</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=materialize-css+purecss</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=materialize-css+semantic-ui</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -8945,6 +9855,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=materialize-css+tailwindcss</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=materialize-css+uikit</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -8965,6 +9880,31 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=mermaid</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=microbundle</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=microbundle+rollup</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=microbundle+snowpack</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=microbundle+vite</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=microbundle+webpack</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -9054,6 +9994,16 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=mobx+overmind</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=mobx+react-query</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=mobx+recoil</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -9069,12 +10019,37 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=mobx+swr</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=mobx+vuex</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=mobx+xstate</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=mobx+zustand</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=mocha</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=mocha+qunit</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=mocha+tape</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -9245,11 +10220,6 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=nativefier</loc>
-    <lastmod>2021-03-13</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?npm=nativescript</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -9490,6 +10460,71 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=omi</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=onsenui</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=onsenui&amp;github=apache/incubator-weex</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=onsenui&amp;github=flutter/flutter</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=onsenui+react-native</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=overmind</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=overmind+react-query</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=overmind+recoil</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=overmind+redux</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=overmind+rxjs</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=overmind+swr</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=overmind+vuex</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=overmind+xstate</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=overmind+zustand</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -9829,6 +10864,36 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=purecss&amp;github=dhg/Skeleton</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=purecss+semantic-ui</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=purecss+spectre.css</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=purecss+tachyons</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=purecss+tailwindcss</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=purecss+uikit</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=purify-css</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -9855,6 +10920,16 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=quill</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=qunit</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=qunit+tape</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -10020,11 +11095,6 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=react-bootstrap+reactstrap</loc>
-    <lastmod>2021-03-13</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?npm=react-bootstrap+semantic-ui</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -10239,6 +11309,16 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=react-native&amp;github=apache/incubator-weex</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=react-native&amp;github=flutter/flutter</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=react-native-navigation</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -10265,6 +11345,36 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=react-query</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=react-query+recoil</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=react-query+redux</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=react-query+rxjs</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=react-query+swr</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=react-query+xstate</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=react-query+zustand</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -10369,11 +11479,6 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?npm=reactstrap+semantic-ui</loc>
-    <lastmod>2021-03-13</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
     <loc>https://moiva.io/?npm=recharts</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -10399,7 +11504,22 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=recoil+swr</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=recoil+vuex</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=recoil+xstate</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=recoil+zustand</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -10419,7 +11539,22 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=redux+swr</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=redux+vuex</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=redux+xstate</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=redux+zustand</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -10519,6 +11654,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=rollup+vite</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=rollup+webpack</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -10549,7 +11689,22 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=rxjs+swr</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=rxjs+vuex</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=rxjs+xstate</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=rxjs+zustand</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -10639,6 +11794,31 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=semantic-ui&amp;github=dhg/Skeleton</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=semantic-ui+spectre.css</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=semantic-ui+tachyons</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=semantic-ui+tailwindcss</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=semantic-ui+uikit</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=semantic-ui-react</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -10724,6 +11904,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=snowpack+vite</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=snowpack+webpack</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -10774,12 +11959,22 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=spectre.css&amp;github=dhg/Skeleton</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=spectre.css+tachyons</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://moiva.io/?npm=spectre.css+tailwindcss</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=spectre.css+uikit</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -10919,6 +12114,16 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=swr+xstate</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=swr+zustand</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=systemjs</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -10929,7 +12134,17 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=tachyons&amp;github=dhg/Skeleton</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=tachyons+tailwindcss</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=tachyons+uikit</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -10955,6 +12170,21 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=tailwindcss</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=tailwindcss&amp;github=dhg/Skeleton</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=tailwindcss+uikit</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=tape</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -11059,6 +12289,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=uikit&amp;github=dhg/Skeleton</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=umi</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -11139,6 +12374,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=vite+webpack</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=vivus</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -11200,6 +12440,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=vuex</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=vuex+xstate</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -11299,6 +12544,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=xstate+zustand</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=xtemplate</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -11325,6 +12575,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=zombie</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=zustand</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>

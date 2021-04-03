@@ -60,6 +60,9 @@ let str = '';
 categories.forEach((cat) => {
   str += `\n  // ${cat.categoryName}\n`;
   cat.libs.forEach((lib) => {
+    if (lib.category === 'misc' && lib.npm === null) {
+      return;
+    }
     const alias = lib.alias && `'${lib.alias}'`;
     const framework = lib.framework && `'${lib.framework}'`;
     const npm = lib.npm && `'${lib.npm}'`;
@@ -80,7 +83,7 @@ const resStr = `export interface CatalogLibraryT {
 const libraries: CatalogLibraryT[] = [${str}];
 
 export const catalogRepoIdToLib = libraries.reduce((acc, lib) => {
-  acc[lib.repoId] = lib;
+  acc[lib.repoId.toLowerCase()] = lib;
   return acc;
 }, {} as Record<string, CatalogLibraryT>);
 
@@ -98,7 +101,7 @@ export const catalogReposIdsByCategory = libraries.reduce(
       acc[category] = [];
     }
 
-    acc[category].push(repoId);
+    acc[category].push(repoId.toLowerCase());
 
     return acc;
   },
@@ -128,21 +131,42 @@ const oneLibUrls = categories
   });
 
 // Generate urls consisting of pairs of libs from the same category:
-// framework specific can be paired with the same framework specific
-// framework specific can be paired with framework agnostic
-// framework specific can not be paired with other framework specific
-// framework agnostic can be paired with anything
-function sortLibsByNpmName(libA, libB) {
-  if (libA.npm < libB.npm) {
+// - framework specific can be paired with the same framework specific
+// - framework specific can be paired with framework agnostic
+// - framework specific can not be paired with other framework specific
+// - framework agnostic can be paired with anything
+
+function sortLibsByNpmGithub(libA, libB) {
+  // both have npm
+  if (libA.npm && libB.npm) {
+    if (libA.npm < libB.npm) {
+      return -1;
+    }
+    if (libA.npm > libB.npm) {
+      return 1;
+    }
+    return 0;
+  }
+
+  // only one has npm
+  if (libA.npm && !libB.npm) {
     return -1;
   }
-  if (libA.npm > libB.npm) {
+
+  if (!libA.npm && libB.npm) {
+    return 1;
+  }
+
+  // both don't have npm
+  if (libA.repoId < libB.repoId) {
+    return -1;
+  }
+  if (libA.repoId > libB.repoId) {
     return 1;
   }
   return 0;
 }
 
-// TODO: Handle a use case when 1-2 libraries don't have npm
 const twoLibsUrls = categories
   .map((cat) => {
     // skip Misc category
@@ -150,7 +174,7 @@ const twoLibsUrls = categories
       return [];
     }
 
-    const libsSorted = cat.libs.sort(sortLibsByNpmName);
+    const libsSorted = cat.libs.sort(sortLibsByNpmGithub);
     const categoryPairsUrls = [];
 
     for (let i = 0; i < libsSorted.length - 1; i++) {
@@ -158,15 +182,26 @@ const twoLibsUrls = categories
       for (let j = i + 1; j < libsSorted.length; j++) {
         const frameworkJ = libsSorted[j].framework;
         if (!frameworkI || !frameworkJ || frameworkI === frameworkJ) {
-          categoryPairsUrls.push(
-            `https://moiva.io/?npm=${libsSorted[i].npm}+${libsSorted[j].npm}`
-          );
+          categoryPairsUrls.push(getLibsUrl(libsSorted[i], libsSorted[j]));
         }
       }
     }
     return categoryPairsUrls;
   })
   .flat();
+
+function getLibsUrl(libA, libB) {
+  if (libA.npm && libB.npm) {
+    return `https://moiva.io/?npm=${libA.npm}+${libB.npm}`;
+  }
+  if (libA.npm && !libB.npm) {
+    return `https://moiva.io/?npm=${libA.npm}&amp;github=${libB.repoId}`;
+  }
+  if (!libA.npm && libB.npm) {
+    return `https://moiva.io/?npm=${libB.npm}&amp;github=${libA.repoId}`;
+  }
+  return `https://moiva.io/?github=${libA.repoId}+${libB.repoId}`;
+}
 
 const urls = [...oneLibUrls, ...twoLibsUrls].sort();
 
@@ -186,7 +221,13 @@ const content = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://moiva.io/blog</loc>
-    <lastmod>2021-03-08</lastmod>
+    <lastmod>2021-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://moiva.io/blog/vercel-serverless-functions-vs-cloudflare-workers</loc>
+    <lastmod>2021-03-24</lastmod>
   </url>
 
   <url>
@@ -197,6 +238,12 @@ const content = `<?xml version="1.0" encoding="UTF-8"?>
   <url>
     <loc>https://moiva.io/blog/universal-tool-to-evaluate-discover-compare-software</loc>
     <lastmod>2021-02-17</lastmod>
+  </url>
+
+  <url>
+    <loc>https://moiva.io/catalog</loc>
+    <lastmod>2021-03-31</lastmod>
+    <changefreq>weekly</changefreq>
   </url>
 
   <url>
