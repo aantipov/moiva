@@ -126,8 +126,8 @@ function setCanonicalUrl(url: string): void {
  *
  */
 export function getSeoLibName(repoId: string): string {
-  if (catalogRepoIdToLib[repoId]) {
-    return catalogRepoIdToLib[repoId].alias as string;
+  if (catalogRepoIdToLib[repoId.toLowerCase()]) {
+    return catalogRepoIdToLib[repoId.toLowerCase()].alias as string;
   }
 
   const [, repoName] = repoId.split('/');
@@ -248,7 +248,7 @@ export function getSelectedLibsCategory(libraries: LibraryT[]): string | null {
   }
 
   const catalogLibraries = libraries
-    .map((lib) => catalogRepoIdToLib[lib.repo.repoId])
+    .map((lib) => catalogRepoIdToLib[lib.repo.repoId.toLowerCase()])
     .filter((lib) => !!lib && lib.category !== 'misc')
     .map((lib) => lib.category);
 
@@ -277,7 +277,9 @@ export function getSuggestions(libraries: LibraryT[]): CatalogLibraryT[] {
     return [];
   }
 
-  const selectedReposIds = libraries.map((lib) => lib.repo.repoId);
+  const selectedReposIds = libraries.map((lib) =>
+    lib.repo.repoId.toLowerCase()
+  );
   const lastSelectedLibData = catalogRepoIdToLib[selectedReposIds.slice(-1)[0]];
 
   if (!lastSelectedLibData || lastSelectedLibData.category === 'misc') {

@@ -73,7 +73,7 @@ export function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
 }
 
 export function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
-  const library = catalogRepoIdToLib[repoId] || null;
+  const library = catalogRepoIdToLib[repoId.toLowerCase()] || null;
   const isNpmAByProduct = (library && library.isNpmAByProduct) || false;
   const npmPackageName = (library && library.npm) || null;
   const fetchNpmPromise = npmPackageName
