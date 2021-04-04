@@ -21,7 +21,7 @@ export const librariesIds = computed<string[]>(() =>
   librariesR.map((lib) => lib.id)
 );
 const reposIdsWithDuplicates = computed<string[]>(() =>
-  libraries.map((lib) => lib.repo.repoId)
+  libraries.map((lib) => lib.repo.repoId.toLowerCase())
 );
 export const reposIds = computed<string[]>(() => [
   ...new Set(reposIdsWithDuplicates.value),
@@ -40,7 +40,7 @@ export const repoToLibraryIdMap = computed<Record<string, string>>(() => {
   return reposIds.value.reduce((acc, repoId) => {
     if (!acc[repoId]) {
       acc[repoId] = (librariesR.find(
-        (lib) => lib.repo.repoId === repoId
+        (lib) => lib.repo.repoId.toLowerCase() === repoId
       ) as LibraryT).id;
     }
 
@@ -70,6 +70,7 @@ function hasLibraryADuplicate(library: LibraryT): boolean {
  * Add a library via a Github repository
  */
 export function addLibraryByRepo(repoId: string): Promise<void> {
+  repoId = repoId.toLowerCase();
   if (!repoId || reposLoading.includes(repoId)) {
     return Promise.resolve();
   }
