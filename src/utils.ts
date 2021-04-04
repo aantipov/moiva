@@ -341,10 +341,16 @@ export function getQuarterMonthFromDate(date: string): string {
 /**
  * date argument in the format '2020-06'
  */
-export function getPreviousQuater(quarter: string): string {
+export function getPrevQuater(quarter: string): string {
   const quarterDate = new Date(quarter);
   quarterDate.setUTCMonth(quarterDate.getUTCMonth() - 3, 1);
   return quarterDate.toISOString().slice(0, 7);
+}
+
+export function getPrevMonth(month: string): string {
+  const monthDate = new Date(month);
+  monthDate.setUTCMonth(monthDate.getUTCMonth() - 1, 1);
+  return monthDate.toISOString().slice(0, 7);
 }
 
 /**
@@ -354,21 +360,44 @@ export function getPreviousQuater(quarter: string): string {
  */
 export function getEarliestMonth(dates: string[], limitMonth: string): string {
   limitMonth = limitMonth.slice(0, 7);
-  const dateOfDates = dates.sort((a, b) => {
-    if (a > b) {
-      return 1;
-    } else if (a < b) {
-      return -1;
-    } else {
-      return 0;
-    }
-  })[0];
+  const month = dates
+    .sort((a, b) => {
+      if (a > b) {
+        return 1;
+      } else if (a < b) {
+        return -1;
+      } else {
+        return 0;
+      }
+    })[0]
+    .slice(0, 7);
 
-  const dateOfDatesObj = new Date(dateOfDates);
+  return month > limitMonth ? month : limitMonth;
+}
 
-  // Set the month to previous month to have nicier charts
-  dateOfDatesObj.setUTCMonth(dateOfDatesObj.getUTCMonth() - 1, 1);
-  const prevMonth = dateOfDatesObj.toISOString().slice(0, 7);
+/**
+ * Get the earliest quarter month from the list of dates
+ * But not earlier than the provided limitDate
+ * Returns month in the ISO format, like 2020-04
+ */
+export function getEarliestQuarter(
+  dates: string[],
+  limitMonth: string
+): string {
+  limitMonth = limitMonth.slice(0, 7);
+  const month = dates
+    .sort((a, b) => {
+      if (a > b) {
+        return 1;
+      } else if (a < b) {
+        return -1;
+      } else {
+        return 0;
+      }
+    })[0]
+    .slice(0, 7);
 
-  return prevMonth > limitMonth ? prevMonth : limitMonth;
+  const quarterMonth = getQuarterMonthFromDate(month);
+
+  return quarterMonth > limitMonth ? quarterMonth : limitMonth;
 }

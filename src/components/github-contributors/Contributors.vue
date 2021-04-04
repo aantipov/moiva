@@ -14,7 +14,8 @@ import { defineComponent, computed } from 'vue';
 import {
   getEarliestMonth,
   getQuarterMonthFromDate,
-  getPreviousQuater,
+  getEarliestQuarter,
+  getPrevQuater,
 } from '@/utils';
 import ContributorsChart from './ContributorsChart.vue';
 import { fetchContributors, ContributorsT } from './api';
@@ -53,13 +54,11 @@ export default defineComponent({
         return defaultValue;
       }
 
-      const creationQuarters = successItemsIds.value.map((repoId) =>
-        getPreviousQuater(
-          getQuarterMonthFromDate(repoIdToRepoMap.value[repoId].createdAt)
-        )
+      const creationDates = successItemsIds.value.map(
+        (repoId) => repoIdToRepoMap.value[repoId].createdAt
       );
 
-      return getEarliestMonth(creationQuarters, defaultValue);
+      return getPrevQuater(getEarliestQuarter(creationDates, defaultValue));
     });
 
     // Filter out data earlier startQuater
