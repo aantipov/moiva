@@ -352,7 +352,7 @@ export function getPreviousQuater(quarter: string): string {
  * But not earlier than the provided limitDate
  * Returns month in the ISO format, like 2020-03
  */
-export function getEarliestMonth(dates: string[], limitMonth: string) {
+export function getEarliestMonth(dates: string[], limitMonth: string): string {
   limitMonth = limitMonth.slice(0, 7);
   const dateOfDates = dates.sort((a, b) => {
     if (a > b) {

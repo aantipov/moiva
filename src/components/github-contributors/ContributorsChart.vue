@@ -17,7 +17,7 @@
 import { defineComponent, toRefs, computed } from 'vue';
 import { ChartDataSets, ChartConfiguration } from 'chart.js';
 import { getSeoLibName } from '@/utils';
-import { ContributorsT } from '@/apis';
+import { ContributorsT } from './api';
 import { enUS } from 'date-fns/locale';
 
 export default defineComponent({

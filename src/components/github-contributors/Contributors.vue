@@ -17,7 +17,7 @@ import {
   getPreviousQuater,
 } from '@/utils';
 import ContributorsChart from './ContributorsChart.vue';
-import { fetchContributors, ContributorsT } from '@/apis';
+import { fetchContributors, ContributorsT } from './api';
 import useChartApi from '@/composables/useChartApi';
 import { libraryToColorMap } from '@/store/librariesColors';
 import {

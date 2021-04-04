@@ -1,25 +1,15 @@
 import axios, { AxiosError } from 'axios';
 import * as Sentry from '@sentry/browser';
-import {
-  ERROR_CODE_GITHUB_CONTRIBUTORS_NEEDS_PROCESSING,
-  ERROR_CODE_GITHUB_COMMITS_NEEDS_PROCESSING,
-} from '@/constants';
+import { ERROR_CODE_GITHUB_COMMITS_NEEDS_PROCESSING } from '@/constants';
 
 export type GithubLanguagesResponseT = Record<string, number>;
 export interface CommitsResponseItemT {
   total: number;
   week: number;
 }
-export interface GithubContributorsResponseItemT {
-  month: string;
-  contributors: number;
-}
 
 const npmDownloadsCache = new Map();
-const githubContributorsCache = new Map();
 const bphobiaCache = new Map();
-
-export type ContributorsT = GithubContributorsResponseItemT;
 
 export interface NpmDownloadT {
   downloads: number;
@@ -107,44 +97,6 @@ export function fetchRepoCommits(
       // Report to Sentry unexpected errors only
       if (errorCode !== ERROR_CODE_GITHUB_COMMITS_NEEDS_PROCESSING) {
         reportSentry(err, 'fetchGithubCommitsData');
-      }
-
-      return null;
-    });
-}
-
-export function fetchContributors(
-  repoId: string
-): Promise<GithubContributorsResponseItemT[] | null> {
-  if (githubContributorsCache.get(repoId)) {
-    return Promise.resolve(githubContributorsCache.get(repoId));
-  }
-
-  return axios
-    .get<{ items: GithubContributorsResponseItemT[] }>(
-      `https://github-contributors.moiva.workers.dev/?repo=${repoId}`
-    )
-    .then(({ data }) => {
-      // fix quarters and add 1 month to correspond to the values used by the chart library
-      const items = data.items.map((item) => ({
-        ...item,
-        month: (() => {
-          const quarterDate = new Date(item.month);
-          quarterDate.setUTCMonth(quarterDate.getUTCMonth() + 1, 1);
-          return quarterDate.toISOString().slice(0, 7);
-        })(),
-      }));
-
-      githubContributorsCache.set(repoId, items);
-      return items;
-    })
-    .catch((err) => {
-      const errorCode =
-        err?.response?.data?.error?.code || err?.response?.status || undefined;
-
-      // Report to Sentry unexpected errors only
-      if (errorCode !== ERROR_CODE_GITHUB_CONTRIBUTORS_NEEDS_PROCESSING) {
-        reportSentry(err, 'fetchContributorsData');
       }
 
       return null;
