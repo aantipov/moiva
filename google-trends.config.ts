@@ -21,6 +21,15 @@ const gtrendsDefs: [RepoIdT, KeywordT, KeywordAliasT?][] = [
   ['expressjs/express', '/m/0_v2szx', 'Express.js'],
   ['mde/ejs', 'ejs'],
   ['seleniumhq/selenium', '/m/0c828v', 'Selenium'],
+  ['webpack/webpack', '/g/11clg_kyfc', 'Webpack'],
+  ['eslint/eslint', '/g/11fm79ww5w', 'ESLint'],
+  ['microsoft/typescript', '/m/0n50hxv', 'TypeScript'],
+  ['facebook/jest', '/g/11h03gh9zq', 'Jest'],
+  ['vercel/next.js', 'next js', 'next js'],
+  ['flutter/flutter', '/g/11f03_rzbg', 'Flutter'],
+  ['facebook/react-native', '/g/11h03gfxy9', 'React Native'],
+  ['ionic-team/ionic-framework', '/g/1q6l_n0n0', 'Ionic'],
+  ['mui-org/material-ui', 'material ui', 'material ui'],
   ['websockets/ws', 'ws'],
 ];
 
