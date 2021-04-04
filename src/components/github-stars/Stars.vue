@@ -63,8 +63,6 @@ export default defineComponent({
     return {
       isLoading: computed(() => isLoadingLibraries.value || isLoading.value),
       isError,
-      startMonth,
-      libraries,
       items: filteredItems,
       failedItemsIds,
       successItemsIds,
