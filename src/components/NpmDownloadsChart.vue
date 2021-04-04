@@ -42,9 +42,12 @@ export default defineComponent({
       props
     );
 
+    const itemsNum = computed(() => packagesNames.value.length);
+
     const datasets = computed<ChartDataSets[]>(() =>
       packagesNames.value.map((packageName, packageIndex) => ({
         label: packageName,
+        fill: itemsNum.value === 1,
         data: packagesDownloads.value[packageIndex].map(
           ({ downloads }) => downloads
         ),

@@ -41,11 +41,14 @@ export default defineComponent({
   setup(props) {
     const { reposIds, repoToColorMap, reposContributors } = toRefs(props);
 
+    const itemsNum = computed(() => reposIds.value.length);
+
     const datasets = computed<ChartDataSets[]>(() =>
       reposIds.value.map((repoId, repoIndex) => {
         const [, repoName] = repoId.split('/');
         return {
           label: repoName,
+          fill: itemsNum.value === 1,
           data: reposContributors.value[repoIndex].map(
             ({ month, contributors }) => ({
               x: month,
