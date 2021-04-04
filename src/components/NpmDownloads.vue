@@ -17,7 +17,7 @@ import { fetchNpmDownloads, NpmDownloadT } from '@/apis';
 import { chartsVisibility } from '@/store/chartsVisibility';
 import { npmCreationDatesMap } from '@/store/npmCreationDates';
 import useChartApi from '@/composables/useChartApi';
-import { getEarliestMonth } from '@/utils';
+import { getEarliestMonth, getPrevMonth } from '@/utils';
 import { libraryToColorMap } from '@/store/librariesColors';
 import {
   isLoading as isLoadingLibraries,
@@ -61,7 +61,7 @@ export default defineComponent({
         return defaultValue;
       }
 
-      return getEarliestMonth(validCreationDates, defaultValue);
+      return getPrevMonth(getEarliestMonth(validCreationDates, defaultValue));
     });
 
     // Filter out data earlier startMonth

@@ -11,13 +11,15 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
+import { getEarliestQuarter, getPrevQuater } from '@/utils';
 import ContributorsChart from './ContributorsChart.vue';
-import { fetchContributors, ContributorsT } from '@/apis';
+import { fetchContributors, ContributorsT } from './api';
 import useChartApi from '@/composables/useChartApi';
 import { libraryToColorMap } from '@/store/librariesColors';
 import {
   isLoading as isLoadingLibraries,
   reposIds,
+  repoIdToRepoMap,
   repoToLibraryIdMap,
 } from '@/store/libraries';
 
@@ -39,10 +41,32 @@ export default defineComponent({
       fetchContributors
     );
 
+    // Calculate startQuater based on packages creation date
+    const startQuater = computed(() => {
+      const defaultValue = '2017-01';
+
+      if (!successItemsIds.value.length) {
+        return defaultValue;
+      }
+
+      const creationDates = successItemsIds.value.map(
+        (repoId) => repoIdToRepoMap.value[repoId].createdAt
+      );
+
+      return getPrevQuater(getEarliestQuarter(creationDates, defaultValue));
+    });
+
+    // Filter out data earlier startQuater
+    const filteredItems = computed(() =>
+      items.value.map((repoItems) =>
+        repoItems.filter(({ month }) => month >= startQuater.value)
+      )
+    );
+
     return {
       isLoading: computed(() => isLoadingLibraries.value || isLoading.value),
       isError,
-      items,
+      items: filteredItems,
       failedItemsIds,
       successItemsIds,
       repoToColorMap: computed(() =>

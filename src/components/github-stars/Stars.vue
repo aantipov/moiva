@@ -13,13 +13,12 @@
 import { defineComponent, computed } from 'vue';
 import StarsChart from './StarsChart.vue';
 import { fetchRepoStars, StarsT } from './api';
-import { getEarliestMonth } from '@/utils';
+import { getEarliestMonth, getPrevMonth } from '@/utils';
 import useChartApi from '@/composables/useChartApi';
 import { libraryToColorMap } from '@/store/librariesColors';
 import {
   isLoading as isLoadingLibraries,
   reposIds,
-  libraries,
   repoIdToRepoMap,
   repoToLibraryIdMap,
 } from '@/store/libraries';
@@ -50,7 +49,7 @@ export default defineComponent({
         (repoId) => repoIdToRepoMap.value[repoId].createdAt
       );
 
-      return getEarliestMonth(creationDates, defaultValue);
+      return getPrevMonth(getEarliestMonth(creationDates, defaultValue));
     });
 
     // Filter out data earlier startMonth
