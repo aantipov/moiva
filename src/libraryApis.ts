@@ -41,6 +41,7 @@ export interface NpmPackageT {
 export interface LibraryT {
   id: string;
   npmPackage?: NpmPackageT | null;
+  category?: string | null;
   isNpmAByProduct?: boolean | null;
   repo: RepoT;
   alias: string;
@@ -59,6 +60,7 @@ function reportSentry(err: AxiosError, methodName: string): void {
 
 export function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
   const library = catalogNpmToLib[pkgName] || null;
+  const category = (library && library.category) || null;
   const isNpmAByProduct = (library && library.isNpmAByProduct) || false;
 
   return fetchNpmPackage(pkgName).then((npmPackage) =>
@@ -67,6 +69,7 @@ export function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
       repo,
       npmPackage,
       isNpmAByProduct,
+      category,
       alias: getSeoLibName(repo.repoId),
     }))
   );
@@ -74,6 +77,7 @@ export function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
 
 export function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
   const library = catalogRepoIdToLib[repoId.toLowerCase()] || null;
+  const category = (library && library.category) || null;
   const isNpmAByProduct = (library && library.isNpmAByProduct) || false;
   const npmPackageName = (library && library.npm) || null;
   const fetchNpmPromise = npmPackageName
@@ -86,6 +90,7 @@ export function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
       repo,
       npmPackage,
       isNpmAByProduct,
+      category,
       alias: getSeoLibName(repo.repoId),
     })
   );

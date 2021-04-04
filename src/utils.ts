@@ -273,18 +273,17 @@ export function getSuggestions(libraries: LibraryT[]): CatalogLibraryT[] {
     return [];
   }
 
-  const selectedReposIds = libraries.map((lib) =>
-    lib.repo.repoId.toLowerCase()
-  );
-  const categories = [
-    ...new Set(
-      selectedReposIds.map((repoId) => catalogRepoIdToLib[repoId].category)
-    ),
-  ].filter((cat) => cat !== 'misc');
+  const categories = [...new Set(libraries.map((lib) => lib.category))].filter(
+    (cat) => cat && cat !== 'misc'
+  ) as string[];
 
   if (categories.length !== 1) {
     return [];
   }
+
+  const selectedReposIds = libraries.map((lib) =>
+    lib.repo.repoId.toLowerCase()
+  );
 
   return catalogReposIdsByCategory[categories[0]]
     .filter((repoId) => !selectedReposIds.includes(repoId))
