@@ -1,5 +1,6 @@
 import { reactive, computed, readonly } from 'vue';
 import {
+  RepoT,
   LibraryT,
   fetchLibraryByRepo,
   fetchLibraryByNpm,
@@ -31,6 +32,7 @@ export const npmPackagesNames = computed<string[]>(() =>
     .filter((lib) => !!lib.npmPackage)
     .map((lib) => (lib.npmPackage as NpmPackageT).name)
 );
+
 /**
  * There can be libraries with duplicate repos potentially,
  * e.g. two npm packages with the same repo.
@@ -46,6 +48,17 @@ export const repoToLibraryIdMap = computed<Record<string, string>>(() => {
 
     return acc;
   }, {} as Record<string, string>);
+});
+
+export const repoIdToRepoMap = computed<Record<string, RepoT>>(() => {
+  return librariesR.reduce((acc, library) => {
+    const repoId = library.repo.repoId.toLowerCase();
+    if (!acc[repoId]) {
+      acc[repoId] = library.repo;
+    }
+
+    return acc;
+  }, {} as Record<string, RepoT>);
 });
 
 export const npmPackageToLibraryIdMap = computed<Record<string, string>>(() => {

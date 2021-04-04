@@ -346,3 +346,29 @@ export function getPreviousQuater(quarter: string): string {
   quarterDate.setUTCMonth(quarterDate.getUTCMonth() - 3, 1);
   return quarterDate.toISOString().slice(0, 7);
 }
+
+/**
+ * Get the earliest date from the list of dates
+ * But not earlier than the provided limitDate
+ * Returns month in the ISO format, like 2020-03
+ */
+export function getEarliestMonth(dates: string[], limitMonth: string) {
+  limitMonth = limitMonth.slice(0, 7);
+  const dateOfDates = dates.sort((a, b) => {
+    if (a > b) {
+      return 1;
+    } else if (a < b) {
+      return -1;
+    } else {
+      return 0;
+    }
+  })[0];
+
+  const dateOfDatesObj = new Date(dateOfDates);
+
+  // Set the month to previous month to have nicier charts
+  dateOfDatesObj.setUTCMonth(dateOfDatesObj.getUTCMonth() - 1, 1);
+  const prevMonth = dateOfDatesObj.toISOString().slice(0, 7);
+
+  return prevMonth > limitMonth ? prevMonth : limitMonth;
+}
