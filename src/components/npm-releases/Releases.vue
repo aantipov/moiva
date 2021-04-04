@@ -82,7 +82,6 @@ export default defineComponent({
     return {
       isLoading: computed(() => isLoadingLibraries.value || isLoading.value),
       isError,
-      startQuater,
       npmPackagesNames, // all items
       items: filteredItems,
       failedItemsIds,
