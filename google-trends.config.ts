@@ -12,7 +12,7 @@ const gtrendsDefs: [RepoIdT, KeywordT, KeywordAliasT?][] = [
   ['moment/moment', 'moment js', 'Moment js'],
   ['lodash/lodash', 'lodash'],
   ['jashkenas/underscore', '/m/0ndwxg_', 'Underscore.js'],
-  ['chartjs/Chart.js', '/g/11fqctpc5j'],
+  ['chartjs/chart.js', '/g/11fqctpc5j'],
   ['d3/d3', '/m/0k2kwt4', 'D3.js'],
   ['highcharts/highcharts', '/g/11bv3xdz92'],
   ['puppeteer/puppeteer', 'puppeteer'],
@@ -20,7 +20,7 @@ const gtrendsDefs: [RepoIdT, KeywordT, KeywordAliasT?][] = [
   ['nestjs/nest', 'nestjs', 'nestjs'],
   ['expressjs/express', '/m/0_v2szx', 'Express.js'],
   ['mde/ejs', 'ejs'],
-  ['SeleniumHQ/selenium', '/m/0c828v', 'Selenium'],
+  ['seleniumhq/selenium', '/m/0c828v', 'Selenium'],
   ['websockets/ws', 'ws'],
 ];
 
