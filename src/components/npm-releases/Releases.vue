@@ -12,7 +12,11 @@
 
 <script lang="ts">
 import { defineComponent, computed, watchEffect } from 'vue';
-import { getQuarterMonthFromDate, getPreviousQuater } from '@/utils';
+import {
+  getEarliestMonth,
+  getQuarterMonthFromDate,
+  getPreviousQuater,
+} from '@/utils';
 import { npmCreationDatesMap } from '@/store/npmCreationDates';
 import ReleasesChart from './ReleasesChart.vue';
 import {
@@ -56,34 +60,21 @@ export default defineComponent({
     // Calculate startQuater based on packages creation date
     const startQuater = computed(() => {
       const defaultValue = '2017-01';
-      const validCreationDates = successItemsIds.value
+      const validCreationQuarters = successItemsIds.value
         .map((pkg) => npmCreationDatesMap.get(pkg))
-        .filter((creationDate) => !!creationDate);
+        .filter((creationDate) => !!creationDate)
+        .map((date) =>
+          getPreviousQuater(getQuarterMonthFromDate(date as string))
+        );
 
       if (
         !successItemsIds.value.length ||
-        validCreationDates.length < successItemsIds.value.length
+        validCreationQuarters.length < successItemsIds.value.length
       ) {
         return defaultValue;
       }
 
-      const earliestCreationDate = (validCreationDates as string[])
-        .sort((a, b) => {
-          if (a > b) {
-            return 1;
-          } else if (a < b) {
-            return -1;
-          } else {
-            return 0;
-          }
-        })[0]
-        .slice(0, 7);
-
-      const earliestQuater = getPreviousQuater(
-        getQuarterMonthFromDate(earliestCreationDate)
-      );
-
-      return defaultValue > earliestQuater ? defaultValue : earliestQuater;
+      return getEarliestMonth(validCreationQuarters, defaultValue);
     });
 
     // Filter out data earlier startQuater

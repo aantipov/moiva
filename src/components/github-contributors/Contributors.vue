@@ -57,7 +57,7 @@ export default defineComponent({
         getPreviousQuater(
           getQuarterMonthFromDate(repoIdToRepoMap.value[repoId].createdAt)
         )
-      ) as string[];
+      );
 
       return getEarliestMonth(creationQuarters, defaultValue);
     });
