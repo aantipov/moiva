@@ -58,13 +58,21 @@ export default defineComponent({
       })
     );
 
+    const unit = computed(() => {
+      if (!reposContributors.value.length) {
+        return 'year';
+      }
+      const firstMonth = reposContributors.value[0][0].month;
+      return firstMonth >= '2019-10' ? 'quarter' : 'year';
+    });
+
     const chartConfig = computed<ChartConfiguration>(() => ({
       type: 'line',
       data: { datasets: datasets.value },
       options: {
         scales: {
           adapters: { date: { locale: enUS } },
-          xAxes: [{ type: 'time', time: { unit: 'year' } }],
+          xAxes: [{ type: 'time', time: { unit: unit.value } }],
           yAxes: [{}],
         },
       },

@@ -19,7 +19,6 @@ import { libraryToColorMap } from '@/store/librariesColors';
 import {
   isLoading as isLoadingLibraries,
   reposIds,
-  libraries,
   repoIdToRepoMap,
   repoToLibraryIdMap,
 } from '@/store/libraries';

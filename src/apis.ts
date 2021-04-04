@@ -125,8 +125,18 @@ export function fetchContributors(
       `https://github-contributors.moiva.workers.dev/?repo=${repoId}`
     )
     .then(({ data }) => {
-      githubContributorsCache.set(repoId, data.items);
-      return data.items;
+      // fix quarters and add 1 month to correspond to the values used by the chart library
+      const items = data.items.map((item) => ({
+        ...item,
+        month: (() => {
+          const quarterDate = new Date(item.month);
+          quarterDate.setUTCMonth(quarterDate.getUTCMonth() + 1, 1);
+          return quarterDate.toISOString().slice(0, 7);
+        })(),
+      }));
+
+      githubContributorsCache.set(repoId, items);
+      return items;
     })
     .catch((err) => {
       const errorCode =
