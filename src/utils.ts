@@ -264,7 +264,7 @@ export function getSelectedLibsCategory(libraries: LibraryT[]): string | null {
 /**
  * Get Library suggestions for the selected libs
  * based on the category of the selected libs
- * - show nothing if there are more thann 2 categories involved
+ * - show nothing if there are more than 2 categories involved
  * - show the rest category libraries otherwise
  *
  */
