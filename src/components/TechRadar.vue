@@ -77,11 +77,14 @@ export default defineComponent({
       return [...new Set(dates)].sort();
     });
 
+    const itemsNum = computed(() => tradarItems.value.length);
+
     const datasets = computed<ChartDataSets[]>(() =>
       tradarItems.value.map(
         (tradarItem) =>
           ({
             label: tradarItem.alias,
+            fill: itemsNum.value === 1,
             data: uniqDates.value.map((date) => tradarItem.data[date]),
             backgroundColor:
               libraryToColorMap.value[
