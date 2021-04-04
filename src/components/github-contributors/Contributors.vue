@@ -11,12 +11,7 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
-import {
-  getEarliestMonth,
-  getQuarterMonthFromDate,
-  getEarliestQuarter,
-  getPrevQuater,
-} from '@/utils';
+import { getEarliestQuarter, getPrevQuater } from '@/utils';
 import ContributorsChart from './ContributorsChart.vue';
 import { fetchContributors, ContributorsT } from './api';
 import useChartApi from '@/composables/useChartApi';
