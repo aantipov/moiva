@@ -27,6 +27,7 @@ import { CatalogLibraryT } from '@/libraries-catalog';
 import { libraries } from '@/store/libraries';
 import { LibraryT } from '@/libraryApis';
 
+// The Number of Suggestions shown in the "SHOW LESS" mode
 const size = 5;
 
 export default defineComponent({

@@ -263,7 +263,9 @@ export function getSelectedLibsCategory(libraries: LibraryT[]): string | null {
 
 /**
  * Get Library suggestions for the selected libs
- * based on the last selected lib
+ * based on the category of the selected libs
+ * - show nothing if there are more thann 2 categories involved
+ * - show the rest category libraries otherwise
  *
  */
 export function getSuggestions(libraries: LibraryT[]): CatalogLibraryT[] {
@@ -271,22 +273,20 @@ export function getSuggestions(libraries: LibraryT[]): CatalogLibraryT[] {
     return [];
   }
 
-  // We should not display any suggestions if the number of selected libraries is >=5
-  // So that Google Search doesn't discover long urls and display them in search results
-  if (libraries.length >= 5) {
-    return [];
-  }
-
   const selectedReposIds = libraries.map((lib) =>
     lib.repo.repoId.toLowerCase()
   );
-  const lastSelectedLibData = catalogRepoIdToLib[selectedReposIds.slice(-1)[0]];
+  const categories = [
+    ...new Set(
+      selectedReposIds.map((repoId) => catalogRepoIdToLib[repoId].category)
+    ),
+  ].filter((cat) => cat !== 'misc');
 
-  if (!lastSelectedLibData || lastSelectedLibData.category === 'misc') {
+  if (categories.length !== 1) {
     return [];
   }
 
-  return catalogReposIdsByCategory[lastSelectedLibData.category]
+  return catalogReposIdsByCategory[categories[0]]
     .filter((repoId) => !selectedReposIds.includes(repoId))
     .map((repoId) => catalogRepoIdToLib[repoId]);
 }
