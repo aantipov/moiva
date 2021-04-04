@@ -42,7 +42,13 @@ export default defineComponent({
   setup(props) {
     const { reposUsage, repoToColorMap } = toRefs(props);
 
-    const years = [2016, 2017, 2018, 2019, 2020];
+    const years = computed(() => {
+      const firstYears = reposUsage.value.map(
+        (repoUsage) => repoUsage.usage[0].year
+      );
+      const firstYear = Math.max(2016, Math.min(...firstYears));
+      return [2016, 2017, 2018, 2019, 2020].filter((year) => year >= firstYear);
+    });
 
     const datasets = computed<ChartDataSets[]>(() =>
       reposUsage.value.map((libUsageItem) => {
@@ -53,7 +59,7 @@ export default defineComponent({
 
         return {
           label: libUsageItem.name,
-          data: years.map((year) => libUsage[year] || undefined),
+          data: years.value.map((year) => libUsage[year] || undefined),
           backgroundColor: repoToColorMap.value[libUsageItem.repoId],
           borderColor: repoToColorMap.value[libUsageItem.repoId],
         };
@@ -63,7 +69,7 @@ export default defineComponent({
     const chartConfig = computed<ChartConfiguration>(() => ({
       type: 'line',
       data: {
-        labels: years,
+        labels: years.value,
         datasets: datasets.value,
       },
       options: {
