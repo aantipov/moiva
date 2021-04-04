@@ -50,6 +50,8 @@ export default defineComponent({
       return [2016, 2017, 2018, 2019, 2020].filter((year) => year >= firstYear);
     });
 
+    const itemsNum = computed(() => reposUsage.value.length);
+
     const datasets = computed<ChartDataSets[]>(() =>
       reposUsage.value.map((libUsageItem) => {
         const libUsage = libUsageItem.usage.reduce((acc, item) => {
@@ -59,6 +61,7 @@ export default defineComponent({
 
         return {
           label: libUsageItem.name,
+          fill: itemsNum.value === 1,
           data: years.value.map((year) => libUsage[year] || undefined),
           backgroundColor: repoToColorMap.value[libUsageItem.repoId],
           borderColor: repoToColorMap.value[libUsageItem.repoId],
