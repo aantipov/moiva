@@ -13,11 +13,14 @@
 import { defineComponent, computed } from 'vue';
 import StarsChart from './StarsChart.vue';
 import { fetchRepoStars, StarsT } from './api';
+import { getEarliestMonth } from '@/utils';
 import useChartApi from '@/composables/useChartApi';
 import { libraryToColorMap } from '@/store/librariesColors';
 import {
   isLoading as isLoadingLibraries,
   reposIds,
+  libraries,
+  repoIdToRepoMap,
   repoToLibraryIdMap,
 } from '@/store/libraries';
 
@@ -35,10 +38,32 @@ export default defineComponent({
       failedItemsIds,
     } = useChartApi<StarsT[]>(reposIds, isLoadingLibraries, fetchRepoStars);
 
+    // Calculate startMonth based on repos creation date
+    const startMonth = computed(() => {
+      const defaultValue = '2020-01';
+
+      if (!successItemsIds.value.length) {
+        return defaultValue;
+      }
+
+      const creationDates = successItemsIds.value.map(
+        (repoId) => repoIdToRepoMap.value[repoId].createdAt
+      );
+
+      return getEarliestMonth(creationDates, defaultValue);
+    });
+
+    // Filter out data earlier startMonth
+    const filteredItems = computed(() =>
+      items.value.map((repoStars) =>
+        repoStars.filter(({ month }) => month >= startMonth.value)
+      )
+    );
+
     return {
       isLoading: computed(() => isLoadingLibraries.value || isLoading.value),
       isError,
-      items,
+      items: filteredItems,
       failedItemsIds,
       successItemsIds,
       repoToColorMap: computed(() =>
