@@ -22,7 +22,7 @@ export default (req: NowRequest, res: NowResponse): void => {
     return;
   }
 
-  const reposIds = repos.split(',');
+  const reposIds = repos.split(',').map((repoId) => repoId.toLowerCase());
 
   // Make sure we have a corresponding keyword value for each repoId
   if (reposIds.some((repoId) => !repoToGTrendDefMap[repoId])) {

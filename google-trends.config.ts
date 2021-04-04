@@ -20,6 +20,7 @@ const gtrendsDefs: [RepoIdT, KeywordT, KeywordAliasT?][] = [
   ['nestjs/nest', 'nestjs', 'nestjs'],
   ['expressjs/express', '/m/0_v2szx', 'Express.js'],
   ['mde/ejs', 'ejs'],
+  ['SeleniumHQ/selenium', '/m/0c828v', 'Selenium'],
   ['websockets/ws', 'ws'],
 ];
 
@@ -31,7 +32,7 @@ export interface GTrendDefT {
 
 export const repoToGTrendDefMap = gtrendsDefs.reduce(
   (accum, [repoId, keyword, keywordAlias]) => {
-    accum[repoId] = {
+    accum[repoId.toLowerCase()] = {
       repoId,
       keyword,
       alias: capitalise(keywordAlias || repoId.slice(repoId.indexOf('/') + 1)),
