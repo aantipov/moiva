@@ -42,6 +42,7 @@ const libraries: CatalogLibraryT[] = [
   { category: 'JavaScript Charting Libraries', repoId: 'highcharts/highcharts', npm: 'highcharts', isNpmAByProduct: false, alias: 'Highcharts', framework: null },
   { category: 'JavaScript Charting Libraries', repoId: 'recharts/recharts', npm: 'recharts', isNpmAByProduct: false, alias: 'Apache ECharts', framework: null },
   { category: 'JavaScript Charting Libraries', repoId: 'apache/echarts', npm: 'echarts', isNpmAByProduct: false, alias: 'Echarts', framework: null },
+  { category: 'JavaScript Charting Libraries', repoId: 'naver/billboard.js', npm: 'billboard.js', isNpmAByProduct: false, alias: 'Billboard.js', framework: null },
   { category: 'JavaScript Charting Libraries', repoId: 'amcharts/amcharts4', npm: '@amcharts/amcharts4', isNpmAByProduct: false, alias: 'amCharts 4', framework: null },
   { category: 'JavaScript Charting Libraries', repoId: 'apexcharts/apexcharts.js', npm: 'apexcharts', isNpmAByProduct: false, alias: 'Apexcharts.js', framework: null },
   { category: 'JavaScript Charting Libraries', repoId: 'gionkunz/chartist-js', npm: 'chartist', isNpmAByProduct: false, alias: 'Chartist.js', framework: null },
