@@ -4859,6 +4859,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=@amcharts/amcharts4+billboard.js</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=@amcharts/amcharts4+chart.js</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -6174,6 +6179,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=amcharts3+billboard.js</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=amcharts3+chart.js</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -6405,6 +6415,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=apexcharts</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=apexcharts+billboard.js</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -6790,6 +6805,61 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=backstopjs+loki</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=billboard.js</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=billboard.js+chart.js</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=billboard.js+chartist</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=billboard.js+d3</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=billboard.js+echarts</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=billboard.js+highcharts</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=billboard.js+nvd3</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=billboard.js+peity</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=billboard.js+plotly.js</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=billboard.js+recharts</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=billboard.js+vis</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
