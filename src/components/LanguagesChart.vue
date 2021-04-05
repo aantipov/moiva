@@ -9,13 +9,12 @@
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
   >
-    <p>
-      This chart shows distribution of languages used in libraries' repostories.
-    </p>
+    <p>Distribution of languages per repostory.</p>
     <p>
       Calculation is based on the number of bytes of code written in each
       language.
     </p>
+    <p>Data source: <a href="https://github.com/" target="_blank">GitHub</a></p>
   </m-chart>
 </template>
 

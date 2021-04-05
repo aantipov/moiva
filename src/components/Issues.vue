@@ -8,7 +8,8 @@
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
   >
-    <p>Amount of open/closed repository issues updated in the last 6 months</p>
+    <p>Amount of open/closed repository issues updated in the last 6 months.</p>
+    <p>Data source: <a href="https://github.com/" target="_blank">GitHub</a></p>
   </m-chart>
 </template>
 

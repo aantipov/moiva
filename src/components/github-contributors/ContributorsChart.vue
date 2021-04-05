@@ -8,8 +8,8 @@
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
   >
-    <p>A number of developers contributed to the repository per quater.</p>
-    <p>Moiva uses data from Github to build the chart.</p>
+    <p>Amount of developers contributed to a repository per quarter.</p>
+    <p>Data source: <a href="https://github.com/" target="_blank">GitHub</a></p>
   </m-chart>
 </template>
 
