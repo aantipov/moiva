@@ -609,6 +609,10 @@ const libraries: CatalogLibraryT[] = [
   { category: 'Runtime Types Checking Libraries', repoId: 'gcanti/io-ts', npm: 'io-ts', isNpmAByProduct: false, alias: 'io-ts', framework: null },
   { category: 'Runtime Types Checking Libraries', repoId: 'pelotom/runtypes', npm: 'runtypes', isNpmAByProduct: false, alias: 'Runtypes', framework: null },
 
+  // JavaScript runtimes
+  { category: 'JavaScript runtimes', repoId: 'denoland/deno', npm: null, isNpmAByProduct: null, alias: 'Deno', framework: null },
+  { category: 'JavaScript runtimes', repoId: 'nodejs/node', npm: null, isNpmAByProduct: null, alias: 'Node.js', framework: null },
+
   // ReactJS Select/Autocomplete Components
   { category: 'ReactJS Select/Autocomplete Components', repoId: 'downshift-js/downshift', npm: 'downshift', isNpmAByProduct: false, alias: 'Downshift', framework: 'react' },
   { category: 'ReactJS Select/Autocomplete Components', repoId: 'JedWatson/react-select', npm: 'react-select', isNpmAByProduct: false, alias: 'React Select', framework: 'react' },

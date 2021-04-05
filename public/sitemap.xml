@@ -1619,6 +1619,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?github=denoland/deno+nodejs/node</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?github=derailed/k9s</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
