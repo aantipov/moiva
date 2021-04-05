@@ -56,6 +56,26 @@
       .footer-wrapper {
         flex-shrink: 0;
       }
+      .goal-item:before {
+        content: '\A';
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: black;
+        display: inline-block;
+        margin: 0 6px 4px;
+      }
+      @media only screen and (min-width: 640px) {
+        .goal-item:before {
+          content: '\A';
+          width: 9px;
+          height: 9px;
+          border-radius: 50%;
+          background: black;
+          display: inline-block;
+          margin: 0 10px 5px;
+        }
+      }
     </style>
 
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -78,9 +98,9 @@
 
       <h1>
         <div class="sm:flex sm:justify-center sm:mb-2">
-          <div class="sm:mb-2"><span class="font-extrabold">&#8901;</span>Evaluate</div>
-          <div class="ml-4 sm:mb-2"><span class="font-extrabold">&#8901;</span>Discover alternatives</div>
-          <div class="ml-4 sm:mb-2"><span class="font-extrabold">&#8901;</span>Compare</div>
+          <div class="sm:mb-2 goal-item">Evaluate</div>
+          <div class="ml-4 sm:mb-2 goal-item">Discover alternatives</div>
+          <div class="ml-4 sm:mb-2 goal-item">Compare</div>
         </div>
         GitHub projects and NPM packages
       </h1>
@@ -106,7 +126,13 @@
           <div class="container px-10 antialiased sm:px-24 content sm:mx-auto">
             <div class="w-full mx-auto lg:w-9/12 xl:w-2/4">
               <div class="flex items-center justify-center mb-4">
-                Made with &#10084; by
+                <span>Made with</span>
+                <span style="margin: 0 4px">
+                  <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+                  </svg>
+                </span>
+                <span>by</span>
                 <a class="primary-link" href="https://alexei.me" target="_blank" style="margin-left: 4px">Alexey Antipov</a>
               </div>
 
