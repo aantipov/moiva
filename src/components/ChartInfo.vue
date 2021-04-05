@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div ref="triggerRef" class="mt-1 rounded-full cursor-pointer">
+    <div ref="triggerRef" class="mt-1 cursor-pointer">
       <InfoIcon v-if="type === 'INFO'" />
       <WarningIcon v-else />
     </div>
