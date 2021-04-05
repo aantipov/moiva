@@ -9,12 +9,12 @@
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
   >
-    <p>
-      Moiva uses data from
-      <a href="https://bundlephobia.com/" target="_blank">Bundlephobia</a>
-      to build this chart.
-    </p>
+    <p>Bundle size per NPM package.</p>
     <p v-if="moreInfo">{{ moreInfo }}</p>
+    <p>
+      Data source:
+      <a href="https://bundlephobia.com/" target="_blank">Bundlephobia</a>
+    </p>
   </m-chart>
 </template>
 

@@ -10,12 +10,12 @@
     :aria-label="ariaLabel"
   >
     <p>Percentage of developers using the library.</p>
+    <p>Data are provided for a limited number of libraries only.</p>
     <p>
-      Data are based on the
+      Data source:
       <a href="https://stateofjs.com/" target="_blank">StateOfJS</a> and
-      <a href="https://stateofcss.com/" target="_blank">StateOfCSS</a> surveys.
+      <a href="https://stateofcss.com/" target="_blank">StateOfCSS</a> surveys
     </p>
-    <p>The survey provides data only for a limited set of libraries.</p>
   </m-chart>
 </template>
 

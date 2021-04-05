@@ -9,15 +9,6 @@
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
   >
-    <p>
-      We use
-      <a
-        href="https://www.thoughtworks.com/radar/languages-and-frameworks"
-        target="_blank"
-        >ThoughtWorks</a
-      >
-      data to build the chart.
-    </p>
     <p>ThoughtWorks' levels definitions:</p>
     <p>
       <i>Adopt</i> - We feel strongly that the industry should be adopting these
@@ -33,6 +24,14 @@
       affect your enterprise.
     </p>
     <p><i>Hold</i> - Proceed with caution.</p>
+    <p>
+      Data source:
+      <a
+        href="https://www.thoughtworks.com/radar/languages-and-frameworks"
+        target="_blank"
+        >ThoughtWorks</a
+      >
+    </p>
   </m-chart>
 </template>
 

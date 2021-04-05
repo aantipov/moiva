@@ -8,6 +8,8 @@
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
   >
+    <p>NPM downloads monthly.</p>
+    <p>Data source: <a href="https://www.npmjs.com/" target="_blank">NPM</a></p>
   </m-chart>
 </template>
 

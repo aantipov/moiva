@@ -8,7 +8,8 @@
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
   >
-    <p>A number of new GitHub stars monthly.</p>
+    <p>New GitHub Stars monthly.</p>
+    <p>Data source: <a href="https://github.com/" target="_blank">GitHub</a></p>
   </m-chart>
 </template>
 

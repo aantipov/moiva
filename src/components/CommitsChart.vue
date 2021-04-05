@@ -8,12 +8,12 @@
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
   >
-    <p>Moiva uses commits data from GitHub.</p>
-    <p>The number of commits is aggregated by the 4 weeks interval.</p>
+    <p>Repository Commits number aggregated by 4 weeks interval.</p>
     <p>
       Only commits to the default repository branch are included. Merge commits
       are excluded.
     </p>
+    <p>Data source: <a href="https://github.com/" target="_blank">GitHub</a></p>
   </m-chart>
 </template>
 

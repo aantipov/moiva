@@ -9,22 +9,19 @@
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
   >
+    <p>Google Search Interest Over Time.</p>
     <p>
-      Moiva uses data from
-      <a :href="gTrendsLink" target="_blank">Google Trends</a>
-      to build this chart.
+      Data are provided for popular libraries only. The list is manually
+      curated.
     </p>
     <p>
-      Google Trends doesn't provide sensible data for most of the libraries. So
-      we exclude those libraries altogether.
-    </p>
-    <p>
-      If you know a library for which it makes sense to include it in this chart
-      - feel free to submit an
+      Feel free to submit a
       <a href="https://github.com/aantipov/moiva" target="_blank" rel="noopener"
-        >issue</a
-      >.
+        >request</a
+      >
+      to add a library.
     </p>
+    <p>Data source: <a :href="gTrendsLink" target="_blank">Google Trends</a></p>
   </m-chart>
 </template>
 

@@ -8,9 +8,10 @@
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
   >
-    <p>Moiva gets releases data from NPM...</p>
+    <p>New NPM Releases quarterly.</p>
     <p>Major, minor and bugfix releases count.</p>
     <p>Pre-releases are not included.</p>
+    <p>Data source: <a href="https://www.npmjs.com/" target="_blank">NPM</a></p>
   </m-chart>
 </template>
 
