@@ -1,12 +1,9 @@
 <template>
   <div>
-    <span
-      ref="triggerRef"
-      class="p-1 rounded-full cursor-pointer hover:bg-black hover:bg-opacity-10"
-    >
-      <template v-if="type === 'INFO'">&#9432;</template>
-      <template v-else>&#9888;</template>
-    </span>
+    <div ref="triggerRef" class="mt-1 rounded-full cursor-pointer">
+      <InfoIcon v-if="type === 'INFO'" />
+      <WarningIcon v-else />
+    </div>
     <div ref="contentRef">
       <slot></slot>
     </div>
@@ -15,6 +12,8 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue';
+import InfoIcon from '@/components/icons/Info.vue';
+import WarningIcon from '@/components/icons/Warning.vue';
 import tippy, { animateFill } from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/themes/light.css';
@@ -24,6 +23,11 @@ import 'tippy.js/animations/shift-away.css';
 
 export default defineComponent({
   name: 'ChartInfo',
+
+  components: {
+    InfoIcon,
+    WarningIcon,
+  },
 
   props: {
     type: {
