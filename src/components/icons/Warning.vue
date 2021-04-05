@@ -1,5 +1,5 @@
 <template>
-  <div class="root opacity-60 hover:opacity-95">
+  <div class="p-1 root opacity-60 hover:opacity-95">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class="w-5 h-5"
