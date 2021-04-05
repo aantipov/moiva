@@ -158,6 +158,9 @@ export function updateTitle(libraries: LibraryT[]): void {
   }
 
   window.document.title = title;
+  (document.querySelector(
+    'meta[name="twitter:title"]'
+  ) as HTMLElement).setAttribute('content', title);
 }
 
 interface LibForDescriptionT {
@@ -195,6 +198,9 @@ export function updateMetaDescription(libraries: LibraryT[]): void {
 
   (document.querySelector(
     'meta[name="Description"]'
+  ) as HTMLElement).setAttribute('content', descr);
+  (document.querySelector(
+    'meta[name="twitter:description"]'
   ) as HTMLElement).setAttribute('content', descr);
 }
 

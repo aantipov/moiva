@@ -96,7 +96,15 @@
     ]
   },
   "prettier": {
-    "singleQuote": true
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": "public/index.html",
+        "options": {
+          "printWidth": 200
+        }
+      }
+    ]
   },
   "browserslist": [
     "> 1%",
