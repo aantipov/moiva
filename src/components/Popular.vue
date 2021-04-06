@@ -16,6 +16,10 @@
         item.libsStr
       }}</span>
     </div>
+
+    <div class="mt-4 font-light">
+      Check out our <a href="/catalog">Catalog</a> for more inspiration.
+    </div>
   </div>
 </template>
 
@@ -68,19 +72,19 @@ export default defineComponent({
           libsStr: 'Koa, NestJS, Fastify',
         },
         {
-          name: 'Node.js logging',
-          libs: ['winston', 'morgan', 'log4js'],
-          libsStr: 'winston, morgan, log4js-node',
+          name: 'Build Tools and Module Bundlers',
+          libs: ['webpack', 'snowpack', 'vite'],
+          libsStr: 'Webpack, Snowpack, Vite',
         },
         {
-          name: 'Templating engines',
-          libs: ['ejs', 'handlebars', 'mustache'],
-          libsStr: 'EJS, Handlebars.js, Mustache.js',
+          name: 'Static Sites Generators',
+          libs: ['next', 'gatsby', 'nuxt'],
+          libsStr: 'Next.js, Gatsby, Nuxt.js',
         },
         {
-          name: 'Web sockets',
-          libs: ['socket.io', 'ws'],
-          libsStr: 'Socket.IO, ws',
+          name: 'Testing Frameworks',
+          libs: ['jest', 'ava', 'jasmine'],
+          libsStr: 'Jest, Ava, Jasmine',
         },
       ],
     };
