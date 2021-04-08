@@ -97,34 +97,34 @@ Who knows, maybe a popular in the past project was deprecated and in that case i
 <p>I looked around and found that GitHub GraphQL API provides the required data without such limits. It solved half of a problem - finding a data source. Then I had to come up with a clever plan on how to use that API in a way that I don&rsquo;t reach GitHub&rsquo;s rate limits and the data are served fast to users. Thanks to <a href="https://developers.cloudflare.com/workers/learning/how-kv-works">Cloudflare KV Data Store</a> I avoided the hassle of setting up a database and learning its APIs. Moiva fetches stars data in batches and uses KV as a storage.</p>
 <h2 id="catalog-page-was-added">&ldquo;Catalog&rdquo; page was added</h2>
 <p>If you already used Moiva then you know that when evaluating certain libraries you get a list of suggestions for comparison. Besides, Moiva shows a category of the selected libraries.</p>
-<p><img src="/blog/images/2021-04-update/suggestions-category.png" alt="a screenshot how suggestions work and look"></p>
+<p><img src="/blog/images/2021-04-update/suggestions-category.png" alt="a screenshot of Moiva&rsquo;s search input field with a list of suggested libraries beneath it"></p>
 <p>That information comes from Moiva&rsquo;s <a href="https://github.com/aantipov/moiva-catalog">Catalog</a>.</p>
 <p>My idea was that the Catalog might be useful to users on its own and it is worth exposing it.</p>
 <p>So I created a <a href="https://moiva.io/catalog">Catalog</a> page that lists all the libraries grouped into categories.</p>
 <p><img src="/blog/images/2021-04-update/catalog.png" alt="a screenshot of the new Moiva&rsquo;s Catalog page"></p>
 <h2 id="new-githubnpm-switch-control">New GitHub/NPM switch control</h2>
 <p>Back in February, when I announced the possibility of searching for, evaluating, and comparing any GitHub projects, I made GitHub a default Moiva search.</p>
-<p><img src="/blog/images/2021-04-update/npm-search-hint.png" alt="a screenshot of the new Moiva&rsquo;s Catalog page"></p>
-<p>Search for npm packages was preserved and users could activate it with a simple <code>:n</code> prefix. I added a hint above the search field to let users know about that possibility.</p>
-<p><img src="/blog/images/2021-04-update/npm-search-hint-results.png" alt="a screenshot of the new Moiva&rsquo;s Catalog page"></p>
+<p><img src="/blog/images/2021-04-update/npm-search-hint.png" alt="a screenshot of the Moiva&rsquo;s search input field with a placeholder saying &ldquo;search for GitHub repositories&rdquo;"></p>
+<p>Search for npm packages was preserved and users could activate it with a simple <code>n:</code> prefix. I added a hint above the search field to let users know about that possibility.</p>
+<p><img src="/blog/images/2021-04-update/npm-search-hint-results.png" alt="a screenshot of the Moiva&rsquo;s search input field with &ldquo;n:ramda&rdquo; text in it and a dropdown list of search results (npm packages)"></p>
 <p>Then I checked statistics and found that only 10% of searches are npm-searches. It looked strange to me, because I believe most of Moiva users at this stage come from JavaScript ecosystem and they should be interested more in searching for NPM packages rather than GitHub repositories. Search for NPM packages has one advantage - users can see NPM-related statistics like NPM Downloads and NPM releases.</p>
 <p>It seemed that users didn&rsquo;t pay attention to the tiny hint and they were not aware of the possibility to search for NPM packages.</p>
 <p>I decided to made the search type switch more prominent and &ldquo;user friendly&rdquo; - using a dropdown selector.</p>
-<p><img src="/blog/images/2021-04-update/search-type-switch.png" alt="a screenshot of the new Moiva&rsquo;s Catalog page"></p>
+<p><img src="/blog/images/2021-04-update/search-type-switch.png" alt="a screenshot of the new Moiva&rsquo;s select control to switch between GitHub and NPM search types"></p>
 <p>The statistics say that the implemented change works - 40-50% of search requests are NPM searches.</p>
 <h2 id="accessibility-for-all">Accessibility for all</h2>
 <p>I believe accessibility is important, especially for projects that rely heavily on a visual representation of data.</p>
 <p>Charts play a crucial role in Moiva and it was important to make them accessible. I added a special <code>aria-</code> attribute to every chart and provided an aggregated description based on the contents of each chart.</p>
 <p>For example, for the following chart</p>
-<p><img src="/blog/images/2021-04-update/accessibility-chart-example.png" alt="a screenshot of the new Moiva&rsquo;s Catalog page"></p>
+<p><img src="/blog/images/2021-04-update/accessibility-chart-example.png" alt="a screenshot of the new Moiva&rsquo;s &ldquo;New GitHub stars monthly&rdquo; chart showing stars distribution for Snowpack repository"></p>
 <p>Moiva provides the following description</p>
-<p><img src="/blog/images/2021-04-update/accessibility-aria-data.png" alt="a screenshot of the new Moiva&rsquo;s Catalog page"></p>
+<p><img src="/blog/images/2021-04-update/accessibility-aria-data.png" alt="a screenshot from Chrome Devtools showing a DOM node for the &ldquo;New GitHub stars monthly&rdquo; chart with a &ldquo;role&rdquo; and &ldquo;aria-label&rdquo; attributes"></p>
 <h2 id="my-article-featured-on-the-main-page-at-hacker-news">My article featured on the main page at Hacker News</h2>
 <p>Having migrated Moiva&rsquo;s apis to Cloudflare Workers, I decided to share my knowledge and wrote an article <a href="https://moiva.io/blog/vercel-serverless-functions-vs-cloudflare-workers">Vercel Serverless Functions vs Cloudflare Workers</a>.</p>
 <p>I was pleased to see a good reception of it at Hacker News - it got a bunch of comments and was even featured on the main page.</p>
 <h2 id="traffic">Traffic</h2>
 <p>In terms of traffic, March was the most successful month so far with 4252 visitors.</p>
-<p><img src="/blog/images/2021-04-update/traffic.png" alt="a screenshot of the new Moiva&rsquo;s Catalog page"></p>
+<p><img src="/blog/images/2021-04-update/traffic.png" alt="a screenshot of the Moiva traffic chart for the past 6 months"></p>
 <h2 id="last-but-not-least">Last but not least</h2>
 <p>Worth mentioning some of many other updates and changes:</p>
 <ul>
