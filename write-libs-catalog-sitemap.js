@@ -226,6 +226,11 @@ const content = `<?xml version="1.0" encoding="UTF-8"?>
   </url>
 
   <url>
+    <loc>https://moiva.io/blog/2021-04-update-github-stars-chart</loc>
+    <lastmod>2021-04-08</lastmod>
+  </url>
+
+  <url>
     <loc>https://moiva.io/blog/vercel-serverless-functions-vs-cloudflare-workers</loc>
     <lastmod>2021-03-24</lastmod>
   </url>
