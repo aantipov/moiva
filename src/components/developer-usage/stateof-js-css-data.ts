@@ -599,7 +599,7 @@ const items = [
     id: 'reason',
     name: 'Reason',
     category: 'libraries',
-    repoId: 'facebook/reason',
+    repoId: 'reasonml/reason',
     usage: [
       { year: 2017, value: 0.8 },
       { year: 2018, value: 6.4 },
@@ -708,7 +708,7 @@ const items = [
     id: 'stimulus',
     name: 'Stimulus',
     category: 'libraries',
-    repoId: 'stimulusjs/stimulus',
+    repoId: 'hotwired/stimulus',
     usage: [{ year: 2020, value: 1.3 }],
   },
   {
