@@ -103,6 +103,12 @@
         "options": {
           "printWidth": 200
         }
+      },
+      {
+        "files": "*.json",
+        "options": {
+          "printWidth": 200
+        }
       }
     ]
   },

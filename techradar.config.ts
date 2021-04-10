@@ -105,7 +105,7 @@ const libs: [RepoNameT, AliasT, LinkT, DataT][] = [
     { '2019-04': ASSESS, '2019-11': TRIAL, '2020-05': ADOPT },
   ],
   [
-    'airbnb/enzyme',
+    'enzymejs/enzyme',
     'Enzyme',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/enzyme',
     {
@@ -141,7 +141,7 @@ const libs: [RepoNameT, AliasT, LinkT, DataT][] = [
     { '2019-04': ASSESS, '2020-10': TRIAL },
   ],
   [
-    'facebook/immutable-js',
+    'immutable-js/immutable-js',
     'Immutable.js',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/immutable-js',
     { '2016-04': ASSESS, '2016-11': TRIAL },
@@ -153,7 +153,7 @@ const libs: [RepoNameT, AliasT, LinkT, DataT][] = [
     { '2017-11': ASSESS, '2020-10': TRIAL },
   ],
   [
-    'Microsoft/TypeScript',
+    'microsoft/typescript',
     'TypeScript',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/typescript',
     {
@@ -164,7 +164,7 @@ const libs: [RepoNameT, AliasT, LinkT, DataT][] = [
     },
   ],
   [
-    'BabylonJS/Babylon.js',
+    'babylonjs/babylon.js',
     'Babylon.js',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/babylon-js',
     { '2020-10': ASSESS },
@@ -182,7 +182,7 @@ const libs: [RepoNameT, AliasT, LinkT, DataT][] = [
     { '2020-10': ASSESS },
   ],
   [
-    'Polymer/lit-element',
+    'polymer/lit-element',
     'LitElement',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/litelement',
     { '2020-10': ASSESS },
@@ -235,7 +235,7 @@ const libs: [RepoNameT, AliasT, LinkT, DataT][] = [
     { '2020-05': ASSESS },
   ],
   [
-    'DevExpress/testcafe',
+    'devexpress/testcafe',
     'TestCafe',
     'https://www.thoughtworks.com/radar/tools/testcafe',
     { '2018-11': ASSESS, '2019-04': TRIAL },
@@ -289,7 +289,7 @@ const libs: [RepoNameT, AliasT, LinkT, DataT][] = [
     { '2020-10': ASSESS },
   ],
   [
-    'Microsoft/playwright',
+    'microsoft/playwright',
     'Playwright',
     'https://www.thoughtworks.com/radar/tools/playwright',
     { '2020-10': ASSESS },
@@ -313,7 +313,7 @@ const libs: [RepoNameT, AliasT, LinkT, DataT][] = [
     { '2018-11': TRIAL },
   ],
   [
-    'Netflix/pollyjs',
+    'netflix/pollyjs',
     'Polly.js',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/polly-js',
     { '2018-11': ASSESS },
@@ -345,7 +345,7 @@ const libs: [RepoNameT, AliasT, LinkT, DataT][] = [
     { '2020-05': ASSESS },
   ],
   [
-    'knsv/mermaid',
+    'mermaid-js/mermaid',
     'Mermaid',
     'https://www.thoughtworks.com/radar/tools/mermaid',
     { '2018-11': TRIAL },
