@@ -1083,7 +1083,7 @@
     "id": "reason",
     "name": "Reason",
     "category": "libraries",
-    "repoId": "facebook/reason",
+    "repoId": "reasonml/reason",
     "usage": [
       {
         "year": 2017,
@@ -1287,7 +1287,7 @@
     "id": "stimulus",
     "name": "Stimulus",
     "category": "libraries",
-    "repoId": "stimulusjs/stimulus",
+    "repoId": "hotwired/stimulus",
     "usage": [
       {
         "year": 2020,
