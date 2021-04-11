@@ -922,5 +922,5 @@
 
   "devUsage": { "reduxjs/redux": 66.8, "mobxjs/mobx": 13.2, "davidkpiano/xstate": 4.9, "vuejs/vuex": 30.1 },
 
-  "googleTrends": {}
+  "googleTrends": { "reduxjs/redux": 36, "mobxjs/mobx": 4, "reactivex/rxjs": 13, "vuejs/vuex": 9 }
 }

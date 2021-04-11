@@ -1,10 +1,7 @@
 /* eslint-disable */
 const fs = require('fs');
 
-const content = fs.readFileSync(
-  '../reports/frameworks-2021-q1-raw.json',
-  'utf8'
-);
+const content = fs.readFileSync('../reports/state-2021-q1-raw.json', 'utf8');
 const data = JSON.parse(content);
 const libs = [
   ['reduxjs/redux', 'redux'],
@@ -145,13 +142,9 @@ const result = libs.map(([repo], i) => {
   };
 });
 
-fs.writeFile(
-  '../reports/frameworks-2021-q1.json',
-  JSON.stringify(result),
-  (err) => {
-    if (err) return console.log(err);
-    console.log('Data generated successfully');
-  }
-);
+fs.writeFile('../reports/state-2021-q1.json', JSON.stringify(result), (err) => {
+  if (err) return console.log(err);
+  console.log('Data generated successfully');
+});
 
 console.log(result);

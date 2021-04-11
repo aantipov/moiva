@@ -294,7 +294,7 @@ async function fetchGoogleTrends(repos) {
   const filteredRepos = getGTrendsRepos(repos).slice(0, 5);
   const reposStr = filteredRepos.join(',');
   const response = await fetch(
-    `https://google-trends.moiva.workers.dev/?libs=${reposStr}`,
+    `https://google-trends.moiva.workers.dev/?libs=${reposStr}&start=2020-10-01`,
     { headers: { 'Content-Type': 'application/json' } }
   );
 
@@ -304,7 +304,7 @@ async function fetchGoogleTrends(repos) {
 
   const trends = await response.json();
 
-  return filteredRepos.map((repo, i) => ({ repo, trend: trends.average }));
+  return filteredRepos.map((repo, i) => ({ repo, trend: trends.averages[i] }));
 }
 
 // USE REAL TOKEN
