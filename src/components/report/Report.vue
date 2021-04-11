@@ -23,174 +23,10 @@
         </thead>
         <tbody>
           <!-- Stars -->
-          <tr class="row">
-            <th><MetricHeader type="starsTotal" /></th>
+          <tr v-for="metric in metrics" :key="metric" class="row">
+            <th><MetricHeader :type="metric" /></th>
             <td v-for="item in frameworks" :key="item.repo">
-              {{ item.starsTotal }}
-            </td>
-          </tr>
-
-          <tr class="row">
-            <th>
-              <div class="flex items-center"><StarIcon /> New Stars</div>
-            </th>
-            <td v-for="item in frameworks" :key="item.repo">
-              {{ item.starsPlus }}
-            </td>
-          </tr>
-
-          <tr class="row">
-            <th>
-              <div class="flex items-center"><StarIcon /> New Stars, %</div>
-            </th>
-            <td v-for="item in frameworks" :key="item.repo">
-              {{ item.starsPlusPercentage }}
-            </td>
-          </tr>
-
-          <tr class="row">
-            <th>
-              <div class="flex items-center">
-                <DownloadIcon />
-                <div>monthly</div>
-              </div>
-            </th>
-            <td v-for="item in frameworks" :key="item.repo">
-              {{ item.dwnlMonthly }}
-            </td>
-          </tr>
-
-          <tr class="row">
-            <th>
-              <div class="flex items-center">
-                <DownloadIcon />
-                <div>monthly % (incr.)</div>
-              </div>
-            </th>
-            <td v-for="item in frameworks" :key="item.repo">
-              {{ item.dwnlMonthlyIncreasePercentage }}
-            </td>
-          </tr>
-
-          <tr class="row">
-            <th>
-              <div class="flex items-center">
-                <div>Search Interest, %</div>
-              </div>
-            </th>
-            <td v-for="item in frameworks" :key="item.repo">
-              {{ item.googleTrends || '-' }}
-            </td>
-          </tr>
-
-          <tr class="row">
-            <th>
-              <div class="flex items-center">
-                <div>Developer Usage, %</div>
-              </div>
-            </th>
-            <td v-for="item in frameworks" :key="item.repo">
-              {{ item.devUsage }}
-            </td>
-          </tr>
-
-          <tr class="row">
-            <th>
-              <div class="flex items-center">
-                <div>Tech Radar</div>
-              </div>
-            </th>
-            <td v-for="item in frameworks" :key="item.repo">
-              {{ (item.techRadar && item.techRadar.level) || '-' }}
-            </td>
-          </tr>
-
-          <tr class="row">
-            <th>
-              <div class="flex items-center">
-                <TagIcon />
-                <div>Releases</div>
-              </div>
-            </th>
-            <td v-for="item in frameworks" :key="item.repo">
-              {{ item.npmReleases }}
-            </td>
-          </tr>
-
-          <tr class="row">
-            <th>
-              <div class="flex items-center">
-                <div>Commits</div>
-              </div>
-            </th>
-            <td v-for="item in frameworks" :key="item.repo">
-              {{ item.commits }}
-            </td>
-          </tr>
-
-          <tr class="row">
-            <th>
-              <div class="flex items-center">
-                <div>Contributors</div>
-              </div>
-            </th>
-            <td v-for="item in frameworks" :key="item.repo">
-              {{ item.contributors }}
-            </td>
-          </tr>
-
-          <tr class="row">
-            <th>
-              <div class="flex items-center">
-                <div>Dependencies</div>
-              </div>
-            </th>
-            <td v-for="item in frameworks" :key="item.repo">
-              {{ item.dependencies }}
-            </td>
-          </tr>
-
-          <tr class="row">
-            <th>
-              <div class="flex items-center">
-                <div>TypeScript</div>
-              </div>
-            </th>
-            <td v-for="item in frameworks" :key="item.repo">
-              {{ item.tsSupport }}
-            </td>
-          </tr>
-
-          <tr class="row">
-            <th>
-              <div class="flex items-center">
-                <div>Bundle Size</div>
-              </div>
-            </th>
-            <td v-for="item in frameworks" :key="item.repo">
-              {{ item.bundleSize && item.bundleSize.gzip }}
-            </td>
-          </tr>
-
-          <tr class="row">
-            <th>
-              <div class="flex items-center">
-                <div>Age</div>
-              </div>
-            </th>
-            <td v-for="item in frameworks" :key="item.repo">
-              {{ getAge(item.createdAt) }}
-            </td>
-          </tr>
-
-          <tr class="row">
-            <th>
-              <div class="flex items-center">
-                <div>License</div>
-              </div>
-            </th>
-            <td v-for="item in frameworks" :key="item.repo">
-              {{ item.license }}
+              <MetricValue :type="metric" :lib="item" />
             </td>
           </tr>
         </tbody>
@@ -200,18 +36,24 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, h } from 'vue';
+import { defineComponent } from 'vue';
 // import { constructHref } from '@/utils';
 import frameworks from './frameworks-2021-q1.json';
 import { catalogRepoIdToLib } from '@/libraries-catalog';
-import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
-// import GithubIcon from './icons/Github.vue';
-import StarIcon from '@/components/icons/Star.vue';
-import DownloadIcon from '@/components/icons/Download.vue';
-import TagIcon from '@/components/icons/Tag.vue';
 import MetricHeader from './MetricHeader.vue';
+import MetricValue from './MetricValue.vue';
 
-interface LibT {
+type TechRadarT = null | {
+  url: string;
+  level: string;
+};
+
+type BundleSizeT = null | {
+  gzip: string;
+  raw: string;
+};
+
+export interface LibT {
   repo: string;
   starsPlus: number;
   starsPlusPercentage: number;
@@ -226,16 +68,10 @@ interface LibT {
   npmReleases: number;
   dwnlMonthly: number;
   dwnlMonthlyIncreasePercentage: number;
-  techRadar: null | {
-    url: string;
-    level: string;
-  };
-  bundleSize: null | {
-    gzip: number;
-    raw: number;
-    devUsage: number;
-    googleTrends: number;
-  };
+  techRadar: TechRadarT;
+  bundleSize: BundleSizeT;
+  devUsage: null | number;
+  googleTrends: null | number;
 }
 
 export type MetricT =
@@ -256,16 +92,30 @@ export type MetricT =
   | 'age'
   | 'license';
 
-// const metrics = ['starsTotal', 'starsPlus', 'starsPlusPercentage', 'downloads', 'downloadsIncrease', ] as MetricT[]
+const metrics = [
+  'starsTotal',
+  'starsPlus',
+  'starsPlusPercentage',
+  'downloads',
+  'downloadsIncrease',
+  'searchInterest',
+  'devusage',
+  'tradar',
+  'releases',
+  'commits',
+  'contributors',
+  'dependencies',
+  'ts',
+  'bundlesize',
+  'age',
+  'license',
+] as MetricT[];
 
 export default defineComponent({
   name: 'Report',
   components: {
-    // GithubIcon,
-    StarIcon,
-    DownloadIcon,
-    TagIcon,
     MetricHeader,
+    MetricValue,
   },
 
   setup() {
@@ -274,11 +124,9 @@ export default defineComponent({
       //   return constructHref(libs, []);
       // },
       frameworks: frameworks as LibT[],
+      metrics,
       getAlias(repoId: string): string {
         return catalogRepoIdToLib[repoId.toLowerCase()].alias;
-      },
-      getAge(createdAt: string): string {
-        return formatDistanceToNowStrict(new Date(createdAt));
       },
     };
   },

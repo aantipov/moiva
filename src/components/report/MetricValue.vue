@@ -1,97 +1,94 @@
 <template>
   <div class="flex items-center">
-    <template v-if="type === 'starsTotal'"><StarIcon /> Stars </template>
+    <template v-if="type === 'starsTotal'">{{ lib.starsTotal }}</template>
 
     <template v-else-if="type === 'starsPlus'">
-      <StarIcon /> New Stars
+      {{ lib.starsPlus }}
     </template>
 
     <template v-else-if="type === 'starsPlusPercentage'">
-      <StarIcon /> New Stars, %
+      {{ lib.starsPlusPercentage }}
     </template>
 
     <template v-else-if="type === 'downloads'">
-      <DownloadIcon />
-      <div>monthly</div>
+      {{ lib.dwnlMonthly }}
     </template>
 
     <template v-else-if="type === 'downloadsIncrease'">
-      <DownloadIcon />
-      <div>monthly % (incr.)</div>
+      {{ lib.dwnlMonthlyIncreasePercentage }}
     </template>
 
     <template v-else-if="type === 'searchInterest'">
-      <div>Search Interest, %</div>
+      {{ lib.googleTrends || '-' }}
     </template>
 
     <template v-else-if="type === 'devusage'">
-      <div>Developer Usage, %</div>
+      {{ lib.devUsage }}
     </template>
 
     <template v-else-if="type === 'tradar'">
-      <div>Tech Radar</div>
+      {{ (lib.techRadar && lib.techRadar.level) || '-' }}
     </template>
 
     <template v-else-if="type === 'releases'">
-      <TagIcon />
-      <div>Releases</div>
+      {{ lib.npmReleases }}
     </template>
 
     <template v-else-if="type === 'commits'">
-      <div>Commits</div>
+      {{ lib.commits }}
     </template>
 
     <template v-else-if="type === 'contributors'">
-      <div>Contributors</div>
+      {{ lib.contributors }}
     </template>
 
     <template v-else-if="type === 'dependencies'">
-      <div>Dependencies</div>
+      {{ lib.dependencies }}
     </template>
 
     <template v-else-if="type === 'ts'">
-      <div>TypeScript</div>
+      {{ lib.tsSupport }}
     </template>
 
     <template v-else-if="type === 'bundlesize'">
-      <div>Bundle Size</div>
+      {{ lib.bundleSize && lib.bundleSize.gzip }}
     </template>
 
     <template v-else-if="type === 'age'">
-      <div>Age</div>
+      {{ getAge(lib.createdAt) }}
     </template>
 
     <template v-else-if="type === 'license'">
-      <div>License</div>
+      {{ lib.license }}
     </template>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import StarIcon from '@/components/icons/Star.vue';
-import DownloadIcon from '@/components/icons/Download.vue';
-import TagIcon from '@/components/icons/Tag.vue';
-import { MetricT } from './Report.vue';
+import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
+import { MetricT, LibT } from './Report.vue';
 
 export default defineComponent({
-  name: 'ReportMetricHeader',
-
-  components: {
-    StarIcon,
-    DownloadIcon,
-    TagIcon,
-  },
+  name: 'ReportMetricValue',
 
   props: {
     type: {
       type: String as () => MetricT,
       required: true,
     },
+    lib: {
+      type: Object as () => LibT,
+      required: true,
+    },
   },
 
   setup() {
-    return {};
+    return {
+      getAge(createdAt: string): string {
+        return formatDistanceToNowStrict(new Date(createdAt));
+      },
+    };
   },
 });
 </script>
