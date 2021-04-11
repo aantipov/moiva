@@ -4,13 +4,37 @@ import googleTrends from 'google-trends-api';
 import { logRequest, initSentry, reportError } from './utils';
 
 const ttl = 3600 * 24 * 5; // 5 days in seconds
+const defaultStartDateStr = '2017-01-01';
 
 initSentry();
 
 export default (req: NowRequest, res: NowResponse): void => {
-  const { libs: repos } = req.query;
+  const defaultStartDate = new Date(defaultStartDateStr);
+  const today = new Date();
+  let startDate = defaultStartDate;
+  const { libs: repos, start } = req.query;
 
   logRequest('googleTrends', req.query);
+
+  // Validate start parameter
+  if (start) {
+    const customStartDdate = new Date(start as string);
+
+    if (
+      isNaN(customStartDdate.getTime()) ||
+      customStartDdate < defaultStartDate ||
+      customStartDdate >= today
+    ) {
+      console.error('API GOOGLE TRENDS 1-0: Wrong start parameter', repos);
+      reportError(new Error('API GOOGLE TRENDS 1-0: Wrong start parameter'));
+      res
+        .status(400)
+        .json({ error: 'Wrong start parameter', code: 'GOOGLE_TENDS_API_1-0' });
+      return;
+    }
+
+    startDate = customStartDdate;
+  }
 
   // Make sure the parameter is there
   if (!repos || typeof repos !== 'string') {
@@ -49,7 +73,7 @@ export default (req: NowRequest, res: NowResponse): void => {
   googleTrends
     .interestOverTime({
       keyword: keywords,
-      startTime: new Date('2017-01-01'),
+      startTime: startDate,
       category: 31, // Programming
     })
     .then((results: string) => {
