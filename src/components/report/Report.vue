@@ -24,9 +24,7 @@
         <tbody>
           <!-- Stars -->
           <tr class="row">
-            <th>
-              <div class="flex items-center"><StarIcon /> Stars</div>
-            </th>
+            <th><MetricHeader type="starsTotal" /></th>
             <td v-for="item in frameworks" :key="item.repo">
               {{ item.starsTotal }}
             </td>
@@ -77,23 +75,45 @@
           <tr class="row">
             <th>
               <div class="flex items-center">
-                <TagIcon />
-                <div>Releases</div>
+                <div>Search Interest, %</div>
               </div>
             </th>
             <td v-for="item in frameworks" :key="item.repo">
-              {{ item.npmReleases }}
+              {{ item.googleTrends || '-' }}
             </td>
           </tr>
 
           <tr class="row">
             <th>
               <div class="flex items-center">
-                <div>Age</div>
+                <div>Developer Usage, %</div>
               </div>
             </th>
             <td v-for="item in frameworks" :key="item.repo">
-              {{ getAge(item.createdAt) }}
+              {{ item.devUsage }}
+            </td>
+          </tr>
+
+          <tr class="row">
+            <th>
+              <div class="flex items-center">
+                <div>Tech Radar</div>
+              </div>
+            </th>
+            <td v-for="item in frameworks" :key="item.repo">
+              {{ (item.techRadar && item.techRadar.level) || '-' }}
+            </td>
+          </tr>
+
+          <tr class="row">
+            <th>
+              <div class="flex items-center">
+                <TagIcon />
+                <div>Releases</div>
+              </div>
+            </th>
+            <td v-for="item in frameworks" :key="item.repo">
+              {{ item.npmReleases }}
             </td>
           </tr>
 
@@ -122,17 +142,6 @@
           <tr class="row">
             <th>
               <div class="flex items-center">
-                <div>License</div>
-              </div>
-            </th>
-            <td v-for="item in frameworks" :key="item.repo">
-              {{ item.license }}
-            </td>
-          </tr>
-
-          <tr class="row">
-            <th>
-              <div class="flex items-center">
                 <div>Dependencies</div>
               </div>
             </th>
@@ -155,17 +164,6 @@
           <tr class="row">
             <th>
               <div class="flex items-center">
-                <div>Tech Radar</div>
-              </div>
-            </th>
-            <td v-for="item in frameworks" :key="item.repo">
-              {{ (item.techRadar && item.techRadar.level) || '-' }}
-            </td>
-          </tr>
-
-          <tr class="row">
-            <th>
-              <div class="flex items-center">
                 <div>Bundle Size</div>
               </div>
             </th>
@@ -177,22 +175,22 @@
           <tr class="row">
             <th>
               <div class="flex items-center">
-                <div>Developer Usage</div>
+                <div>Age</div>
               </div>
             </th>
             <td v-for="item in frameworks" :key="item.repo">
-              {{ item.devUsage }}
+              {{ getAge(item.createdAt) }}
             </td>
           </tr>
 
           <tr class="row">
             <th>
               <div class="flex items-center">
-                <div>Google Trends</div>
+                <div>License</div>
               </div>
             </th>
             <td v-for="item in frameworks" :key="item.repo">
-              {{ item.googleTrends || '-' }}
+              {{ item.license }}
             </td>
           </tr>
         </tbody>
@@ -211,6 +209,7 @@ import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import StarIcon from '@/components/icons/Star.vue';
 import DownloadIcon from '@/components/icons/Download.vue';
 import TagIcon from '@/components/icons/Tag.vue';
+import MetricHeader from './MetricHeader.vue';
 
 interface LibT {
   repo: string;
@@ -239,6 +238,26 @@ interface LibT {
   };
 }
 
+export type MetricT =
+  | 'starsTotal'
+  | 'starsPlus'
+  | 'starsPlusPercentage'
+  | 'downloads'
+  | 'downloadsIncrease'
+  | 'searchInterest'
+  | 'devusage'
+  | 'tradar'
+  | 'releases'
+  | 'commits'
+  | 'contributors'
+  | 'dependencies'
+  | 'ts'
+  | 'bundlesize'
+  | 'age'
+  | 'license';
+
+// const metrics = ['starsTotal', 'starsPlus', 'starsPlusPercentage', 'downloads', 'downloadsIncrease', ] as MetricT[]
+
 export default defineComponent({
   name: 'Report',
   components: {
@@ -246,6 +265,7 @@ export default defineComponent({
     StarIcon,
     DownloadIcon,
     TagIcon,
+    MetricHeader,
   },
 
   setup() {
