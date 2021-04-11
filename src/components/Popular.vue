@@ -18,7 +18,7 @@
     </div>
 
     <div class="mt-4 font-light">
-      Check out our <a href="/catalog">Catalog</a> for more inspiration.
+      Check out our <a href="/catalog">Catalog</a> for inspiration.
     </div>
   </div>
 </template>
@@ -40,6 +40,11 @@ export default defineComponent({
           name: 'Frontend frameworks',
           libs: ['react', 'svelte', 'vue'],
           libsStr: 'React, Svelte, Vue',
+        },
+        {
+          name: 'State Management',
+          libs: ['redux', 'mobx', 'xstate'],
+          libsStr: 'Redux, MobX, Xstate',
         },
         {
           libs: ['bootstrap', 'tailwindcss', 'bulma'],

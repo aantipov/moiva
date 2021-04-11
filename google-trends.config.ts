@@ -31,6 +31,9 @@ const gtrendsDefs: [RepoIdT, KeywordT, KeywordAliasT?][] = [
   ['ionic-team/ionic-framework', '/g/1q6l_n0n0', 'Ionic'],
   ['mui-org/material-ui', 'material ui', 'material ui'],
   ['websockets/ws', 'ws'],
+  ['reactivex/rxjs', 'rxjs'],
+  ['vuejs/vuex', 'vuex'],
+  ['mobxjs/mobx', 'mobx'],
 ];
 
 export interface GTrendDefT {
