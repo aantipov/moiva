@@ -1,27 +1,29 @@
 /* eslint-disable */
 const fs = require('fs');
+const rawFile = '../reports/frameworks-2021-q1-raw.json';
+const file = '../reports/frameworks-2021-q1.json';
 
-const content = fs.readFileSync('../reports/state-2021-q1-raw.json', 'utf8');
+const content = fs.readFileSync(rawFile, 'utf8');
 const data = JSON.parse(content);
 const libs = [
-  ['reduxjs/redux', 'redux'],
-  ['mobxjs/mobx', 'mobx'],
-  ['reactivex/rxjs', 'rxjs'],
-  ['facebookexperimental/recoil', 'recoil'],
-  ['davidkpiano/xstate', 'xstate'],
-  ['vuejs/vuex', 'vuex'],
-  ['ngrx/platform', '@ngrx/store'],
-  ['tannerlinsley/react-query', 'react-query'],
-  ['pmndrs/zustand', 'zustand'],
-  ['datorama/akita', '@datorama/akita'],
-  ['ngxs/store', '@ngxs/store'],
-  ['mobxjs/mobx-state-tree', 'mobx-state-tree'],
-  ['ctrlplusb/easy-peasy', 'easy-peasy'],
-  ['effector/effector', 'effector'],
-  ['storeon/storeon', 'storeon'],
-  ['diegohaz/constate', 'constate'],
-  ['vercel/swr', 'swr'],
-  ['cerebral/overmind', 'overmind'],
+  ['facebook/react', 'react'],
+  ['vuejs/vue', 'vue'],
+  ['angular/angular', '@angular/core'],
+  ['sveltejs/svelte', 'svelte'],
+  ['emberjs/ember.js', 'ember-source'],
+  ['alpinejs/alpine', 'alpinejs'],
+  ['infernojs/inferno', 'inferno'],
+  ['preactjs/preact', 'preact'],
+  ['jorgebucaran/hyperapp', 'hyperapp'],
+  ['riot/riot', 'riot'],
+  ['angular/angular.js', 'angular'],
+  ['marionettejs/backbone.marionette', 'backbone.marionette'],
+  ['knockout/knockout', 'knockout'],
+  ['ryansolid/solid', 'solid-js'],
+  ['MithrilJS/mithril.js', 'mithril'],
+  ['aurelia/framework', 'aurelia-framework'],
+  ['hotwired/stimulus', 'stimulus'],
+  ['marko-js/marko', 'marko'],
 ];
 
 const result = libs.map(([repo], i) => {
@@ -142,7 +144,7 @@ const result = libs.map(([repo], i) => {
   };
 });
 
-fs.writeFile('../reports/state-2021-q1.json', JSON.stringify(result), (err) => {
+fs.writeFile(file, JSON.stringify(result), (err) => {
   if (err) return console.log(err);
   console.log('Data generated successfully');
 });

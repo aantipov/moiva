@@ -985,5 +985,5 @@
     "hotwired/stimulus": 1.3
   },
 
-  "googleTrends": { "facebook/react": 76, "vuejs/vue": 31, "angular/angular": 68 }
+  "googleTrends": { "facebook/react": 63, "vuejs/vue": 25, "angular/angular": 41 }
 }

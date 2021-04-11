@@ -17,7 +17,7 @@
     "techRadar": { "url": "https://www.thoughtworks.com/radar/languages-and-frameworks/react-js", "level": "ADOPT" },
     "bundleSize": { "gzip": 2909, "raw": 7128 },
     "devUsage": 80,
-    "googleTrends": 76
+    "googleTrends": 63
   },
   {
     "repo": "vuejs/vue",
@@ -37,7 +37,7 @@
     "techRadar": { "url": "https://www.thoughtworks.com/radar/languages-and-frameworks/vue-js", "level": "ADOPT" },
     "bundleSize": { "gzip": 23462, "raw": 65245 },
     "devUsage": 49,
-    "googleTrends": 31
+    "googleTrends": 25
   },
   {
     "repo": "angular/angular",
@@ -57,7 +57,7 @@
     "techRadar": { "url": "https://www.thoughtworks.com/radar/languages-and-frameworks/angular", "level": "TRIAL" },
     "bundleSize": { "gzip": 91562, "raw": 299285 },
     "devUsage": 55.8,
-    "googleTrends": 68
+    "googleTrends": 41
   },
   {
     "repo": "sveltejs/svelte",
