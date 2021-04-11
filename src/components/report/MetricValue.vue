@@ -63,7 +63,7 @@
   </div>
 
   <div v-else-if="type === 'ts'" class="flex items-center justify-center">
-    {{ lib.tsSupport }}
+    {{ lib.tsSupport || '-' }}
   </div>
 
   <div v-else-if="type === 'bundlesize'" class="flex items-center justify-end">

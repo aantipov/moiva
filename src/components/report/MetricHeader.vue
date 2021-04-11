@@ -1,27 +1,33 @@
 <template>
   <div class="flex items-center">
-    <template v-if="type === 'starsTotal'"><StarIcon /> Stars </template>
+    <template v-if="type === 'starsTotal'">
+      <StarIcon />
+      <div class="ml-1">Stars</div>
+    </template>
 
     <template v-else-if="type === 'starsPlus'">
-      <StarIcon /> New Stars
+      <StarIcon />
+      <div class="ml-1">New Stars</div>
     </template>
 
     <template v-else-if="type === 'starsPlusPercentage'">
-      <StarIcon /> New Stars, %
+      <StarIcon />
+      <div class="ml-1">New Stars, %</div>
     </template>
 
     <template v-else-if="type === 'downloads'">
       <DownloadIcon />
-      <div>monthly</div>
+      <div class="ml-1">monthly</div>
     </template>
 
     <template v-else-if="type === 'downloadsIncrease'">
       <DownloadIcon />
-      <div>monthly % (incr.)</div>
+      <div class="ml-1">monthly % (incr.)</div>
     </template>
 
     <template v-else-if="type === 'searchInterest'">
-      <div>Search Interest, %</div>
+      <SearchIcon />
+      <div class="ml-1">Search Interest, %</div>
     </template>
 
     <template v-else-if="type === 'devusage'">
@@ -34,7 +40,7 @@
 
     <template v-else-if="type === 'releases'">
       <TagIcon />
-      <div>Releases</div>
+      <div class="ml-1">Releases</div>
     </template>
 
     <template v-else-if="type === 'commits'">
@@ -72,6 +78,7 @@ import { defineComponent } from 'vue';
 import StarIcon from '@/components/icons/Star.vue';
 import DownloadIcon from '@/components/icons/Download.vue';
 import TagIcon from '@/components/icons/Tag.vue';
+import SearchIcon from '@/components/icons/Search.vue';
 import { MetricT } from './Report.vue';
 
 export default defineComponent({
@@ -79,6 +86,7 @@ export default defineComponent({
 
   components: {
     StarIcon,
+    SearchIcon,
     DownloadIcon,
     TagIcon,
   },
