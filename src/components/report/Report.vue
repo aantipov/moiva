@@ -24,8 +24,8 @@
         <tbody>
           <!-- Stars -->
           <tr v-for="metric in metrics" :key="metric" class="row">
-            <th><MetricHeader :type="metric" /></th>
-            <td v-for="item in frameworks" :key="item.repo">
+            <th><MetricHeader :type="metric" class="border-r" /></th>
+            <td v-for="item in frameworks" :key="item.repo" class="border-r">
               <MetricValue :type="metric" :lib="item" />
             </td>
           </tr>

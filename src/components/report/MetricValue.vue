@@ -1,66 +1,81 @@
 <template>
-  <div class="flex items-center">
-    <template v-if="type === 'starsTotal'">{{ lib.starsTotal }}</template>
+  <div v-if="type === 'starsTotal'" class="flex justify-end">
+    {{ formatNumber(lib.starsTotal) }}
+  </div>
 
-    <template v-else-if="type === 'starsPlus'">
-      {{ lib.starsPlus }}
-    </template>
+  <div v-else-if="type === 'starsPlus'" class="flex items-center justify-end">
+    {{ formatNumber(lib.starsPlus) }}
+  </div>
 
-    <template v-else-if="type === 'starsPlusPercentage'">
-      {{ lib.starsPlusPercentage }}
-    </template>
+  <div
+    v-else-if="type === 'starsPlusPercentage'"
+    class="flex items-center justify-end"
+  >
+    {{ lib.starsPlusPercentage }}%
+  </div>
 
-    <template v-else-if="type === 'downloads'">
-      {{ lib.dwnlMonthly }}
-    </template>
+  <div v-else-if="type === 'downloads'" class="flex items-center justify-end">
+    {{ formatNumber(lib.dwnlMonthly) }}
+  </div>
 
-    <template v-else-if="type === 'downloadsIncrease'">
-      {{ lib.dwnlMonthlyIncreasePercentage }}
-    </template>
+  <div
+    v-else-if="type === 'downloadsIncrease'"
+    class="flex items-center justify-end"
+  >
+    {{ lib.dwnlMonthlyIncreasePercentage }}%
+  </div>
 
-    <template v-else-if="type === 'searchInterest'">
-      {{ lib.googleTrends || '-' }}
-    </template>
+  <div
+    v-else-if="type === 'searchInterest'"
+    class="flex items-center justify-end"
+  >
+    {{ (lib.googleTrends && lib.googleTrends + '%') || '-' }}
+  </div>
 
-    <template v-else-if="type === 'devusage'">
-      {{ lib.devUsage }}
-    </template>
+  <div v-else-if="type === 'devusage'" class="flex items-center justify-end">
+    {{ (lib.devUsage && lib.devUsage + '%') || '-' }}
+  </div>
 
-    <template v-else-if="type === 'tradar'">
-      {{ (lib.techRadar && lib.techRadar.level) || '-' }}
-    </template>
+  <div v-else-if="type === 'tradar'" class="flex items-center justify-center">
+    {{ (lib.techRadar && lib.techRadar.level) || '-' }}
+  </div>
 
-    <template v-else-if="type === 'releases'">
-      {{ lib.npmReleases }}
-    </template>
+  <div v-else-if="type === 'releases'" class="flex items-center justify-end">
+    {{ lib.npmReleases }}
+  </div>
 
-    <template v-else-if="type === 'commits'">
-      {{ lib.commits }}
-    </template>
+  <div v-else-if="type === 'commits'" class="flex items-center justify-end">
+    {{ lib.commits }}
+  </div>
 
-    <template v-else-if="type === 'contributors'">
-      {{ lib.contributors }}
-    </template>
+  <div
+    v-else-if="type === 'contributors'"
+    class="flex items-center justify-end"
+  >
+    {{ lib.contributors }}
+  </div>
 
-    <template v-else-if="type === 'dependencies'">
-      {{ lib.dependencies }}
-    </template>
+  <div
+    v-else-if="type === 'dependencies'"
+    class="flex items-center justify-end"
+  >
+    {{ lib.dependencies }}
+  </div>
 
-    <template v-else-if="type === 'ts'">
-      {{ lib.tsSupport }}
-    </template>
+  <div v-else-if="type === 'ts'" class="flex items-center justify-center">
+    {{ lib.tsSupport }}
+  </div>
 
-    <template v-else-if="type === 'bundlesize'">
-      {{ lib.bundleSize && lib.bundleSize.gzip }}
-    </template>
+  <div v-else-if="type === 'bundlesize'" class="flex items-center justify-end">
+    {{ lib.bundleSize && getKB(lib.bundleSize.gzip) + 'kB' }}
+  </div>
 
-    <template v-else-if="type === 'age'">
-      {{ getAge(lib.createdAt) }}
-    </template>
+  <div v-else-if="type === 'age'" class="flex items-center justify-center">
+    {{ getAge(lib.createdAt) }}
+  </div>
 
-    <template v-else-if="type === 'license'">
-      {{ lib.license }}
-    </template>
+  <div v-else-if="type === 'license'" class="flex items-center justify-center">
+    {{ lib.license }}
   </div>
 </template>
 
@@ -68,6 +83,7 @@
 import { defineComponent } from 'vue';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import { MetricT, LibT } from './Report.vue';
+import { numbersFormatter } from '@/utils';
 
 export default defineComponent({
   name: 'ReportMetricValue',
@@ -87,6 +103,12 @@ export default defineComponent({
     return {
       getAge(createdAt: string): string {
         return formatDistanceToNowStrict(new Date(createdAt));
+      },
+      formatNumber(stars: number): string {
+        return numbersFormatter.format(stars);
+      },
+      getKB(bytes: number): number {
+        return Math.round(bytes / 102.4) / 10;
       },
     };
   },
