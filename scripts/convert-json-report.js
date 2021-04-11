@@ -129,6 +129,11 @@ const result = libs.map(([repo], i) => {
     return { devUsage: val || null };
   })();
 
+  const googleTrends = (() => {
+    const val = data.googleTrends[repo.toLowerCase()];
+    return { googleTrends: val || null };
+  })();
+
   return {
     ...repoStars,
     ...ghData,
@@ -136,6 +141,7 @@ const result = libs.map(([repo], i) => {
     ...radarData,
     ...bundleSizeData,
     ...devUsage,
+    ...googleTrends,
   };
 });
 

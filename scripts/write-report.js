@@ -38,8 +38,18 @@ const libs = [
 //     console.log(err);
 //   });
 
+// fetchGoogleTrends(libs.map(([repo]) => repo))
+//   .then((data) => {
+//     const val = data.reduce((acc, { repo, trend }) => {
+//       acc[repo] = trend;
+//       return acc;
+//     }, {});
+//     console.log('TRENDS', JSON.stringify(val));
+//   })
+//   .catch((err) => console.log(err));
+
 // Check repos for new names
-// Promise.all(catalogItems.map(({ repoId }) => fetchRepoRealName(repoId)))
+// Promise.all(getGTrendsDefs().map((repoId) => fetchRepoRealName(repoId)))
 //   .then((data) => {
 //     console.log(
 //       data.filter((item) => item.old.toLowerCase() !== item.new.toLowerCase())
@@ -269,6 +279,23 @@ async function fetchBundleSize(repo, pkg) {
   const bundleSize = await response.json();
 
   return { repo, bundleSize };
+}
+
+async function fetchGoogleTrends(repos) {
+  const filteredRepos = getGTrendsRepos(repos).slice(0, 5);
+  const reposStr = filteredRepos.join(',');
+  const response = await fetch(
+    `https://google-trends.moiva.workers.dev/?libs=${reposStr}`,
+    { headers: { 'Content-Type': 'application/json' } }
+  );
+
+  if (!response.ok) {
+    throw response;
+  }
+
+  const trends = await response.json();
+
+  return filteredRepos.map((repo, i) => ({ repo, trend: trends.averages[i] }));
 }
 
 // USE REAL TOKEN
@@ -570,4 +597,43 @@ function getTechradarLibs() {
     ],
     ['avajs/ava', 'https://www.thoughtworks.com/radar/tools/ava', 'TRIAL'],
   ];
+}
+
+function getGTrendsRepos(repos) {
+  const gtrendsDefs = [
+    ['vuejs/vue', '/g/11c0vmgx5d', 'Vue.js'], // Vue.js; type: Topic
+    ['facebook/react', '/m/012l1vxv'], // Vue.js; type: Topic
+    ['angular/angular', '/g/11c6w0ddw9'], // Angular; type: Web framework
+    ['reduxjs/redux', '/g/11dxf0gf92'], // Redux; type: JavaScript library
+    ['vuetifyjs/vuetify', 'vuetify'],
+    ['twbs/bootstrap', '/m/0j671ln'],
+    ['moment/moment', 'moment js', 'Moment js'],
+    ['lodash/lodash', 'lodash'],
+    ['jashkenas/underscore', '/m/0ndwxg_', 'Underscore.js'],
+    ['chartjs/chart.js', '/g/11fqctpc5j'],
+    ['d3/d3', '/m/0k2kwt4', 'D3.js'],
+    ['highcharts/highcharts', '/g/11bv3xdz92'],
+    ['puppeteer/puppeteer', 'puppeteer'],
+    ['cypress-io/cypress', 'cypress'],
+    ['nestjs/nest', 'nestjs', 'nestjs'],
+    ['expressjs/express', '/m/0_v2szx', 'Express.js'],
+    ['mde/ejs', 'ejs'],
+    ['seleniumhq/selenium', '/m/0c828v', 'Selenium'],
+    ['webpack/webpack', '/g/11clg_kyfc', 'Webpack'],
+    ['eslint/eslint', '/g/11fm79ww5w', 'ESLint'],
+    ['microsoft/typescript', '/m/0n50hxv', 'TypeScript'],
+    ['facebook/jest', '/g/11h03gh9zq', 'Jest'],
+    ['vercel/next.js', 'next js', 'next js'],
+    ['flutter/flutter', '/g/11f03_rzbg', 'Flutter'],
+    ['facebook/react-native', '/g/11h03gfxy9', 'React Native'],
+    ['ionic-team/ionic-framework', '/g/1q6l_n0n0', 'Ionic'],
+    ['mui-org/material-ui', 'material ui', 'material ui'],
+    ['websockets/ws', 'ws'],
+  ];
+
+  return repos.filter((repo) =>
+    gtrendsDefs.find(
+      ([gTrendRepo]) => gTrendRepo.toLowerCase() === repo.toLowerCase()
+    )
+  );
 }
