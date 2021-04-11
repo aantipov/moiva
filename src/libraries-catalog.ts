@@ -634,7 +634,11 @@ const libraries: CatalogLibraryT[] = [
   { category: 'JavaScript State Management Libraries', repoId: 'pmndrs/zustand', npm: 'zustand', isNpmAByProduct: false, alias: 'Zustand', framework: 'react' },
   { category: 'JavaScript State Management Libraries', repoId: 'datorama/akita', npm: '@datorama/akita', isNpmAByProduct: false, alias: 'Akita', framework: null },
   { category: 'JavaScript State Management Libraries', repoId: 'ngxs/store', npm: '@ngxs/store', isNpmAByProduct: false, alias: 'NGXS', framework: 'angular' },
+  { category: 'JavaScript State Management Libraries', repoId: 'mobxjs/mobx-state-tree', npm: 'mobx-state-tree', isNpmAByProduct: false, alias: 'mobx-state-tree', framework: null },
+  { category: 'JavaScript State Management Libraries', repoId: 'ctrlplusb/easy-peasy', npm: 'easy-peasy', isNpmAByProduct: false, alias: 'Easy Peasy', framework: 'react' },
   { category: 'JavaScript State Management Libraries', repoId: 'effector/effector', npm: 'effector', isNpmAByProduct: false, alias: 'Effector', framework: null },
+  { category: 'JavaScript State Management Libraries', repoId: 'storeon/storeon', npm: 'storeon', isNpmAByProduct: false, alias: 'Storeon', framework: null },
+  { category: 'JavaScript State Management Libraries', repoId: 'diegohaz/constate', npm: 'constate', isNpmAByProduct: false, alias: 'Constate', framework: 'react' },
   { category: 'JavaScript State Management Libraries', repoId: 'vercel/swr', npm: 'swr', isNpmAByProduct: false, alias: 'SWR', framework: 'react' },
   { category: 'JavaScript State Management Libraries', repoId: 'cerebral/overmind', npm: 'overmind', isNpmAByProduct: false, alias: 'Overmind', framework: null },
 
