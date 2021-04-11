@@ -9,25 +9,31 @@ const catalog = fs.readFileSync(
 const catalogItems = JSON.parse(catalog);
 
 const libs = [
-  ['facebook/react', 'react'],
-  ['vuejs/vue', 'vue'],
-  ['angular/angular', '@angular/core'],
-  ['sveltejs/svelte', 'svelte'],
-  ['emberjs/ember.js', 'ember-source'],
-  ['alpinejs/alpine', 'alpinejs'],
-  ['infernojs/inferno', 'inferno'],
-  ['preactjs/preact', 'preact'],
-  ['jorgebucaran/hyperapp', 'hyperapp'],
-  ['riot/riot', 'riot'],
-  ['angular/angular.js', 'angular'],
-  ['marionettejs/backbone.marionette', 'backbone.marionette'],
-  ['knockout/knockout', 'knockout'],
-  ['ryansolid/solid', 'solid-js'],
-  ['MithrilJS/mithril.js', 'mithril'],
-  ['aurelia/framework', 'aurelia-framework'],
-  ['hotwired/stimulus', 'stimulus'],
-  ['marko-js/marko', 'marko'],
+  ['reduxjs/redux', 'redux'],
+  ['mobxjs/mobx', 'mobx'],
+  ['reactivex/rxjs', 'rxjs'],
+  ['facebookexperimental/recoil', 'recoil'],
+  ['davidkpiano/xstate', 'xstate'],
+  ['vuejs/vuex', 'vuex'],
+  ['ngrx/platform', '@ngrx/store'],
+  ['tannerlinsley/react-query', 'react-query'],
+  ['pmndrs/zustand', 'zustand'],
+  ['datorama/akita', '@datorama/akita'],
+  ['ngxs/store', '@ngxs/store'],
+  ['mobxjs/mobx-state-tree', 'mobx-state-tree'],
+  ['ctrlplusb/easy-peasy', 'easy-peasy'],
+  ['effector/effector', 'effector'],
+  ['storeon/storeon', 'storeon'],
+  ['diegohaz/constate', 'constate'],
+  ['vercel/swr', 'swr'],
+  ['cerebral/overmind', 'overmind'],
 ];
+
+// fetchLastMonthStars
+// fetchLastQuarterStars
+// fetchGithubOther
+// fetchNpmOther
+// fetchBundleSize
 
 // Promise.all(libs.map(([repo, pkg]) => fetchBundleSize(repo, pkg)))
 //   .then((data) => {
@@ -38,26 +44,20 @@ const libs = [
 //     console.log(err);
 //   });
 
-// fetchGoogleTrends(libs.map(([repo]) => repo))
-//   .then((data) => {
-//     const val = data.reduce((acc, { repo, trend }) => {
-//       acc[repo] = trend;
+// Show Tech Radar Data
+// (() => {
+//   const techRadarLibs = getTechradarLibs();
+//   const data = libs
+//     .map(([repo]) =>
+//       techRadarLibs.find(([radarRepo]) => repo.toLowerCase() === radarRepo)
+//     )
+//     .filter(Boolean)
+//     .reduce((acc, [repo, url, level]) => {
+//       acc[repo] = { url, level };
 //       return acc;
 //     }, {});
-//     console.log('TRENDS', JSON.stringify(val));
-//   })
-//   .catch((err) => console.log(err));
-
-// Check repos for new names
-// Promise.all(getGTrendsDefs().map((repoId) => fetchRepoRealName(repoId)))
-//   .then((data) => {
-//     console.log(
-//       data.filter((item) => item.old.toLowerCase() !== item.new.toLowerCase())
-//     );
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
+//   console.log(JSON.stringify(data));
+// })();
 
 // Show DevUsage Data
 // (() => {
@@ -77,20 +77,26 @@ const libs = [
 //   console.log(JSON.stringify(data));
 // })();
 
-// Show Tech Radar Data
-// (() => {
-//   const techRadarLibs = getTechradarLibs();
-//   const data = libs
-//     .map(([repo]) =>
-//       techRadarLibs.find(([radarRepo]) => repo.toLowerCase() === radarRepo)
-//     )
-//     .filter(Boolean)
-//     .reduce((acc, [repo, url, level]) => {
-//       acc[repo] = { url, level };
-//       return acc;
-//     }, {});
-//   console.log(JSON.stringify(data));
-// })();
+fetchGoogleTrends(libs.map(([repo]) => repo))
+  .then((data) => {
+    const val = data.reduce((acc, { repo, trend }) => {
+      acc[repo] = trend;
+      return acc;
+    }, {});
+    console.log('TRENDS', JSON.stringify(val));
+  })
+  .catch((err) => console.log(err));
+
+// Check repos for new names
+// Promise.all(libs.map(([repoId]) => fetchRepoRealName(repoId)))
+//   .then((data) => {
+//     console.log(
+//       data.filter((item) => item.old.toLowerCase() !== item.new.toLowerCase())
+//     );
+//   })
+//   .catch((err) => {
+//     console.log(err);
+//   });
 
 async function fetchLastMonthStars(repo) {
   // github stars new
@@ -141,7 +147,7 @@ async function fetchGithubOther(repo) {
   return { repo, github, contributors, commits };
 }
 
-async function fetchNpmOther(repo, pkg) {
+async function fetchNpmAll(repo, pkg) {
   const [npmDetails, npmReleases, npmDownloads] = await Promise.all([
     fetchNpmDetails(pkg),
     fetchNpmReleases(pkg),
@@ -152,9 +158,12 @@ async function fetchNpmOther(repo, pkg) {
 }
 
 async function fetchIssues(repo) {
-  const response = await fetch(`http://127.0.0.1:8787/?repo=${repo}`, {
-    headers: { 'Content-Type': 'application/json' },
-  });
+  const response = await fetch(
+    `https://github.moiva.workers.dev/?repo=${repo}`,
+    {
+      headers: { 'Content-Type': 'application/json' },
+    }
+  );
 
   if (!response.ok) {
     throw response;
@@ -295,7 +304,7 @@ async function fetchGoogleTrends(repos) {
 
   const trends = await response.json();
 
-  return filteredRepos.map((repo, i) => ({ repo, trend: trends.averages[i] }));
+  return filteredRepos.map((repo, i) => ({ repo, trend: trends.average }));
 }
 
 // USE REAL TOKEN
@@ -629,6 +638,9 @@ function getGTrendsRepos(repos) {
     ['ionic-team/ionic-framework', '/g/1q6l_n0n0', 'Ionic'],
     ['mui-org/material-ui', 'material ui', 'material ui'],
     ['websockets/ws', 'ws'],
+    ['reactivex/rxjs', 'rxjs'],
+    ['vuejs/vuex', 'vuex'],
+    ['mobxjs/mobx', 'mobx'],
   ];
 
   return repos.filter((repo) =>

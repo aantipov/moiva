@@ -1,0 +1,926 @@
+{
+  "stars": [
+    { "repo": "reduxjs/redux", "march": 258, "april": 101, "totalCount": 55681 },
+    { "repo": "mobxjs/mobx", "march": 194, "april": 76, "totalCount": 23518 },
+    { "repo": "reactivex/rxjs", "march": 286, "april": 72, "totalCount": 24533 },
+    { "repo": "facebookexperimental/recoil", "march": 383, "april": 168, "totalCount": 12467 },
+    { "repo": "davidkpiano/xstate", "march": 433, "april": 122, "totalCount": 15526 },
+    { "repo": "vuejs/vuex", "march": 191, "april": 74, "totalCount": 26031 },
+    { "repo": "ngrx/platform", "march": 54, "april": 24, "totalCount": 6740 },
+    { "repo": "tannerlinsley/react-query", "march": 824, "april": 265, "totalCount": 19084 },
+    { "repo": "pmndrs/zustand", "march": 771, "april": 196, "totalCount": 7644 },
+    { "repo": "datorama/akita", "march": 82, "april": 20, "totalCount": 3006 },
+    { "repo": "ngxs/store", "march": 30, "april": 8, "totalCount": 3037 },
+    { "repo": "mobxjs/mobx-state-tree", "march": 43, "april": 18, "totalCount": 5987 },
+    { "repo": "ctrlplusb/easy-peasy", "march": 70, "april": 25, "totalCount": 4169 },
+    { "repo": "effector/effector", "march": 83, "april": 16, "totalCount": 3109 },
+    { "repo": "storeon/storeon", "march": 26, "april": 7, "totalCount": 1656 },
+    { "repo": "diegohaz/constate", "march": 57, "april": 10, "totalCount": 3198 },
+    { "repo": "vercel/swr", "march": 589, "april": 167, "totalCount": 16572 },
+    { "repo": "cerebral/overmind", "march": 17, "april": 13, "totalCount": 1284 }
+  ],
+
+  "starsMonthly": [
+    {
+      "repo": "reduxjs/redux",
+      "items": [
+        { "month": "2021-01", "stars": 300 },
+        { "month": "2021-02", "stars": 259 },
+        { "month": "2021-03", "stars": 258 }
+      ]
+    },
+    {
+      "repo": "mobxjs/mobx",
+      "items": [
+        { "month": "2021-01", "stars": 184 },
+        { "month": "2021-02", "stars": 164 },
+        { "month": "2021-03", "stars": 194 }
+      ]
+    },
+    {
+      "repo": "reactivex/rxjs",
+      "items": [
+        { "month": "2021-01", "stars": 303 },
+        { "month": "2021-02", "stars": 241 },
+        { "month": "2021-03", "stars": 287 }
+      ]
+    },
+    {
+      "repo": "facebookexperimental/recoil",
+      "items": [
+        { "month": "2021-01", "stars": 525 },
+        { "month": "2021-02", "stars": 357 },
+        { "month": "2021-03", "stars": 384 }
+      ]
+    },
+    {
+      "repo": "davidkpiano/xstate",
+      "items": [
+        { "month": "2021-01", "stars": 480 },
+        { "month": "2021-02", "stars": 410 },
+        { "month": "2021-03", "stars": 434 }
+      ]
+    },
+    {
+      "repo": "vuejs/vuex",
+      "items": [
+        { "month": "2021-01", "stars": 198 },
+        { "month": "2021-02", "stars": 222 },
+        { "month": "2021-03", "stars": 192 }
+      ]
+    },
+    {
+      "repo": "ngrx/platform",
+      "items": [
+        { "month": "2021-01", "stars": 63 },
+        { "month": "2021-02", "stars": 71 },
+        { "month": "2021-03", "stars": 54 }
+      ]
+    },
+    {
+      "repo": "tannerlinsley/react-query",
+      "items": [
+        { "month": "2021-01", "stars": 1141 },
+        { "month": "2021-02", "stars": 762 },
+        { "month": "2021-03", "stars": 825 }
+      ]
+    },
+    {
+      "repo": "pmndrs/zustand",
+      "items": [
+        { "month": "2021-01", "stars": 484 },
+        { "month": "2021-02", "stars": 423 },
+        { "month": "2021-03", "stars": 772 }
+      ]
+    },
+    {
+      "repo": "datorama/akita",
+      "items": [
+        { "month": "2021-01", "stars": 57 },
+        { "month": "2021-02", "stars": 70 },
+        { "month": "2021-03", "stars": 83 }
+      ]
+    },
+    {
+      "repo": "ngxs/store",
+      "items": [
+        { "month": "2021-01", "stars": 32 },
+        { "month": "2021-02", "stars": 25 },
+        { "month": "2021-03", "stars": 30 }
+      ]
+    },
+    {
+      "repo": "mobxjs/mobx-state-tree",
+      "items": [
+        { "month": "2021-01", "stars": 57 },
+        { "month": "2021-02", "stars": 56 },
+        { "month": "2021-03", "stars": 43 }
+      ]
+    },
+    {
+      "repo": "ctrlplusb/easy-peasy",
+      "items": [
+        { "month": "2021-01", "stars": 50 },
+        { "month": "2021-02", "stars": 49 },
+        { "month": "2021-03", "stars": 70 }
+      ]
+    },
+    {
+      "repo": "effector/effector",
+      "items": [
+        { "month": "2021-01", "stars": 41 },
+        { "month": "2021-02", "stars": 51 },
+        { "month": "2021-03", "stars": 83 }
+      ]
+    },
+    {
+      "repo": "storeon/storeon",
+      "items": [
+        { "month": "2021-01", "stars": 25 },
+        { "month": "2021-02", "stars": 18 },
+        { "month": "2021-03", "stars": 26 }
+      ]
+    },
+    {
+      "repo": "diegohaz/constate",
+      "items": [
+        { "month": "2021-01", "stars": 79 },
+        { "month": "2021-02", "stars": 68 },
+        { "month": "2021-03", "stars": 57 }
+      ]
+    },
+    {
+      "repo": "vercel/swr",
+      "items": [
+        { "month": "2021-01", "stars": 523 },
+        { "month": "2021-02", "stars": 464 },
+        { "month": "2021-03", "stars": 589 }
+      ]
+    },
+    {
+      "repo": "cerebral/overmind",
+      "items": [
+        { "month": "2021-01", "stars": 17 },
+        { "month": "2021-02", "stars": 19 },
+        { "month": "2021-03", "stars": 17 }
+      ]
+    }
+  ],
+
+  "other": [
+    {
+      "repo": "reduxjs/redux",
+      "github": {
+        "description": "Predictable state container for JavaScript apps",
+        "stars": 55681,
+        "createdAt": "2015-05-29T23:53:15Z",
+        "openIssues": 16,
+        "openBugIssues": 0,
+        "closedIssues": 74,
+        "closedBugIssues": 0,
+        "repoId": "reduxjs/redux",
+        "repoName": "redux"
+      },
+      "contributors": { "month": "2021-03", "contributors": 7 },
+      "commits": 54
+    },
+    {
+      "repo": "mobxjs/mobx",
+      "github": {
+        "description": "Simple, scalable state management.",
+        "stars": 23518,
+        "createdAt": "2015-03-14T14:31:38Z",
+        "openIssues": 7,
+        "openBugIssues": 3,
+        "closedIssues": 133,
+        "closedBugIssues": 54,
+        "repoId": "mobxjs/mobx",
+        "repoName": "mobx"
+      },
+      "contributors": { "month": "2021-03", "contributors": 16 },
+      "commits": 52
+    },
+    {
+      "repo": "reactivex/rxjs",
+      "github": {
+        "description": "A reactive programming library for JavaScript",
+        "stars": 24533,
+        "createdAt": "2015-03-15T06:17:10Z",
+        "openIssues": 65,
+        "openBugIssues": 2,
+        "closedIssues": 179,
+        "closedBugIssues": 20,
+        "repoId": "reactivex/rxjs",
+        "repoName": "rxjs"
+      },
+      "contributors": { "month": "2021-03", "contributors": 11 },
+      "commits": 157
+    },
+    {
+      "repo": "facebookexperimental/recoil",
+      "github": {
+        "description": "Recoil is an experimental state management library for React apps. It provides several capabilities that are difficult to achieve with React alone, while being compatible with the newest features of React.",
+        "stars": 12467,
+        "createdAt": "2020-05-04T19:44:15Z",
+        "openIssues": 97,
+        "openBugIssues": 11,
+        "closedIssues": 191,
+        "closedBugIssues": 7,
+        "repoId": "facebookexperimental/recoil",
+        "repoName": "recoil"
+      },
+      "contributors": { "month": "2021-03", "contributors": 16 },
+      "commits": 67
+    },
+    {
+      "repo": "davidkpiano/xstate",
+      "github": {
+        "description": "State machines and statecharts for the modern web.",
+        "stars": 15526,
+        "createdAt": "2015-09-14T15:04:15Z",
+        "openIssues": 49,
+        "openBugIssues": 12,
+        "closedIssues": 83,
+        "closedBugIssues": 16,
+        "repoId": "davidkpiano/xstate",
+        "repoName": "xstate"
+      },
+      "contributors": { "month": "2021-03", "contributors": 17 },
+      "commits": 187
+    },
+    {
+      "repo": "vuejs/vuex",
+      "github": {
+        "description": "🗃️ Centralized State Management for Vue.js.",
+        "stars": 26031,
+        "createdAt": "2015-07-16T04:21:26Z",
+        "openIssues": 31,
+        "openBugIssues": 1,
+        "closedIssues": 78,
+        "closedBugIssues": 4,
+        "repoId": "vuejs/vuex",
+        "repoName": "vuex"
+      },
+      "contributors": { "month": "2021-03", "contributors": 4 },
+      "commits": 12
+    },
+    {
+      "repo": "ngrx/platform",
+      "github": {
+        "description": "Reactive libraries for Angular",
+        "stars": 6740,
+        "createdAt": "2017-03-02T19:34:15Z",
+        "openIssues": 62,
+        "openBugIssues": 6,
+        "closedIssues": 150,
+        "closedBugIssues": 8,
+        "repoId": "ngrx/platform",
+        "repoName": "platform"
+      },
+      "contributors": { "month": "2021-03", "contributors": 12 },
+      "commits": 63
+    },
+    {
+      "repo": "tannerlinsley/react-query",
+      "github": {
+        "description": "⚛️ Hooks for fetching, caching and updating asynchronous data in React",
+        "stars": 19084,
+        "createdAt": "2019-09-10T19:23:58Z",
+        "openIssues": 24,
+        "openBugIssues": 3,
+        "closedIssues": 242,
+        "closedBugIssues": 9,
+        "repoId": "tannerlinsley/react-query",
+        "repoName": "react-query"
+      },
+      "contributors": { "month": "2021-03", "contributors": 40 },
+      "commits": 119
+    },
+    {
+      "repo": "pmndrs/zustand",
+      "github": {
+        "description": "🐻 Bear necessities for state management in React",
+        "stars": 7644,
+        "createdAt": "2019-04-09T09:10:06Z",
+        "openIssues": 22,
+        "openBugIssues": 0,
+        "closedIssues": 65,
+        "closedBugIssues": 0,
+        "repoId": "pmndrs/zustand",
+        "repoName": "zustand"
+      },
+      "contributors": { "month": "2021-03", "contributors": 12 },
+      "commits": 30
+    },
+    {
+      "repo": "datorama/akita",
+      "github": {
+        "description": "🚀 State Management Tailored-Made for JS Applications",
+        "stars": 3006,
+        "createdAt": "2018-06-11T09:03:03Z",
+        "openIssues": 10,
+        "openBugIssues": 0,
+        "closedIssues": 63,
+        "closedBugIssues": 1,
+        "repoId": "datorama/akita",
+        "repoName": "akita"
+      },
+      "contributors": { "month": "2021-03", "contributors": 13 },
+      "commits": 30
+    },
+    {
+      "repo": "ngxs/store",
+      "github": {
+        "description": "🚀 NGXS - State Management for Angular",
+        "stars": 3037,
+        "createdAt": "2018-02-13T18:55:44Z",
+        "openIssues": 26,
+        "openBugIssues": 1,
+        "closedIssues": 30,
+        "closedBugIssues": 7,
+        "repoId": "ngxs/store",
+        "repoName": "store"
+      },
+      "contributors": { "month": "2021-03", "contributors": 1 },
+      "commits": 3
+    },
+    {
+      "repo": "mobxjs/mobx-state-tree",
+      "github": {
+        "description": "Full-featured reactive state management without the boilerplate",
+        "stars": 5987,
+        "createdAt": "2016-09-04T18:28:25Z",
+        "openIssues": 38,
+        "openBugIssues": 1,
+        "closedIssues": 40,
+        "closedBugIssues": 2,
+        "repoId": "mobxjs/mobx-state-tree",
+        "repoName": "mobx-state-tree"
+      },
+      "contributors": { "month": "2021-03", "contributors": 12 },
+      "commits": 31
+    },
+    {
+      "repo": "ctrlplusb/easy-peasy",
+      "github": {
+        "description": "Vegetarian friendly state for React",
+        "stars": 4169,
+        "createdAt": "2018-10-21T20:52:18Z",
+        "openIssues": 32,
+        "openBugIssues": 2,
+        "closedIssues": 50,
+        "closedBugIssues": 8,
+        "repoId": "ctrlplusb/easy-peasy",
+        "repoName": "easy-peasy"
+      },
+      "contributors": { "month": "2021-03", "contributors": 1 },
+      "commits": 8
+    },
+    {
+      "repo": "effector/effector",
+      "github": {
+        "description": "The state manager ☄️",
+        "stars": 3110,
+        "createdAt": "2018-02-27T22:38:40Z",
+        "openIssues": 12,
+        "openBugIssues": 2,
+        "closedIssues": 22,
+        "closedBugIssues": 7,
+        "repoId": "effector/effector",
+        "repoName": "effector"
+      },
+      "contributors": { "month": "2021-03", "contributors": 13 },
+      "commits": 237
+    },
+    {
+      "repo": "storeon/storeon",
+      "github": {
+        "description": "🌩 A tiny (185 bytes) event-based Redux-like state manager for React, Preact, Angular, Vue, and Svelte",
+        "stars": 1656,
+        "createdAt": "2019-03-16T04:52:02Z",
+        "openIssues": 1,
+        "openBugIssues": 0,
+        "closedIssues": 8,
+        "closedBugIssues": 0,
+        "repoId": "storeon/storeon",
+        "repoName": "storeon"
+      },
+      "contributors": { "month": "2021-03", "contributors": 1 },
+      "commits": 2
+    },
+    {
+      "repo": "diegohaz/constate",
+      "github": {
+        "description": "React Context + State",
+        "stars": 3198,
+        "createdAt": "2018-03-30T18:40:18Z",
+        "openIssues": 0,
+        "openBugIssues": 0,
+        "closedIssues": 7,
+        "closedBugIssues": 0,
+        "repoId": "diegohaz/constate",
+        "repoName": "constate"
+      },
+      "contributors": { "month": "2021-03", "contributors": 2 },
+      "commits": 3
+    },
+    {
+      "repo": "vercel/swr",
+      "github": {
+        "description": "React Hooks library for remote data fetching",
+        "stars": 16572,
+        "createdAt": "2019-10-28T18:16:01Z",
+        "openIssues": 44,
+        "openBugIssues": 4,
+        "closedIssues": 98,
+        "closedBugIssues": 15,
+        "repoId": "vercel/swr",
+        "repoName": "swr"
+      },
+      "contributors": { "month": "2021-03", "contributors": 13 },
+      "commits": 84
+    },
+    {
+      "repo": "cerebral/overmind",
+      "github": {
+        "description": "Overmind - Frictionless state management",
+        "stars": 1284,
+        "createdAt": "2018-06-18T20:18:48Z",
+        "openIssues": 17,
+        "openBugIssues": 9,
+        "closedIssues": 54,
+        "closedBugIssues": 38,
+        "repoId": "cerebral/overmind",
+        "repoName": "overmind"
+      },
+      "contributors": { "month": "2021-03", "contributors": 4 },
+      "commits": 68
+    }
+  ],
+
+  "npm": [
+    {
+      "repo": "reduxjs/redux",
+      "pkg": "redux",
+      "npmDetails": {
+        "name": "redux",
+        "description": "Predictable state container for JavaScript apps",
+        "dependencies": ["loose-envify", "symbol-observable"],
+        "license": "MIT",
+        "version": "4.0.5",
+        "repository": { "type": "git", "url": "git+https://github.com/reduxjs/redux.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/redux"
+      },
+      "npmReleases": 0,
+      "npmDownloads": [
+        { "downloads": 21175444, "month": "2020-10" },
+        { "downloads": 19932702, "month": "2020-11" },
+        { "downloads": 18506321, "month": "2020-12" },
+        { "downloads": 19260891, "month": "2021-01" },
+        { "downloads": 21045803, "month": "2021-02" },
+        { "downloads": 25158370, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "mobxjs/mobx",
+      "pkg": "mobx",
+      "npmDetails": {
+        "name": "mobx",
+        "description": "Simple, scalable state management.",
+        "dependencies": [],
+        "license": "MIT",
+        "version": "6.2.0",
+        "repository": { "type": "git", "url": "git+https://github.com/mobxjs/mobx.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/mobx"
+      },
+      "npmReleases": 10,
+      "npmDownloads": [
+        { "downloads": 2236154, "month": "2020-10" },
+        { "downloads": 2212360, "month": "2020-11" },
+        { "downloads": 2104257, "month": "2020-12" },
+        { "downloads": 2292967, "month": "2021-01" },
+        { "downloads": 2502562, "month": "2021-02" },
+        { "downloads": 2943487, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "reactivex/rxjs",
+      "pkg": "rxjs",
+      "npmDetails": {
+        "name": "rxjs",
+        "description": "Reactive Extensions for modern JavaScript",
+        "dependencies": ["tslib"],
+        "license": "Apache-2.0",
+        "version": "6.6.7",
+        "repository": { "type": "git", "url": "git+https://github.com/reactivex/rxjs.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/rxjs"
+      },
+      "npmReleases": 3,
+      "npmDownloads": [
+        { "downloads": 99324241, "month": "2020-10" },
+        { "downloads": 93499907, "month": "2020-11" },
+        { "downloads": 84662439, "month": "2020-12" },
+        { "downloads": 86236924, "month": "2021-01" },
+        { "downloads": 91871203, "month": "2021-02" },
+        { "downloads": 113861559, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "facebookexperimental/recoil",
+      "pkg": "recoil",
+      "npmDetails": {
+        "name": "recoil",
+        "description": "Recoil - A state management library for React",
+        "dependencies": ["hamt_plus"],
+        "license": "MIT",
+        "version": "0.2.0",
+        "repository": { "type": "git", "url": "https://github.com/facebookexperimental/recoil.git" },
+        "hasBuiltinTypes": false,
+        "hasOtherTypes": true,
+        "typesPackageName": "@types/recoil"
+      },
+      "npmReleases": 2,
+      "npmDownloads": [
+        { "downloads": 163052, "month": "2020-10" },
+        { "downloads": 180827, "month": "2020-11" },
+        { "downloads": 190697, "month": "2020-12" },
+        { "downloads": 219286, "month": "2021-01" },
+        { "downloads": 243671, "month": "2021-02" },
+        { "downloads": 332604, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "davidkpiano/xstate",
+      "pkg": "xstate",
+      "npmDetails": {
+        "name": "xstate",
+        "description": "Finite State Machines and Statecharts for the Modern Web.",
+        "dependencies": [],
+        "license": "MIT",
+        "version": "4.17.1",
+        "repository": { "type": "git", "url": "git+https://github.com/davidkpiano/xstate.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/xstate"
+      },
+      "npmReleases": 6,
+      "npmDownloads": [
+        { "downloads": 2740433, "month": "2020-10" },
+        { "downloads": 2692987, "month": "2020-11" },
+        { "downloads": 2774753, "month": "2020-12" },
+        { "downloads": 3027118, "month": "2021-01" },
+        { "downloads": 3293637, "month": "2021-02" },
+        { "downloads": 3756799, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "vuejs/vuex",
+      "pkg": "vuex",
+      "npmDetails": {
+        "name": "vuex",
+        "description": "state management for Vue.js",
+        "dependencies": [],
+        "license": "MIT",
+        "version": "3.6.2",
+        "repository": { "type": "git", "url": "git+https://github.com/vuejs/vuex.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/vuex"
+      },
+      "npmReleases": 3,
+      "npmDownloads": [
+        { "downloads": 5722323, "month": "2020-10" },
+        { "downloads": 5597493, "month": "2020-11" },
+        { "downloads": 5554142, "month": "2020-12" },
+        { "downloads": 5674882, "month": "2021-01" },
+        { "downloads": 5926268, "month": "2021-02" },
+        { "downloads": 7166526, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "ngrx/platform",
+      "pkg": "@ngrx/store",
+      "npmDetails": {
+        "name": "@ngrx/store",
+        "description": "RxJS powered Redux for Angular apps",
+        "dependencies": ["tslib"],
+        "license": "MIT",
+        "version": "11.1.0",
+        "repository": { "type": "git", "url": "git+https://github.com/ngrx/platform.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/ngrx__store"
+      },
+      "npmReleases": 3,
+      "npmDownloads": [
+        { "downloads": 1387187, "month": "2020-10" },
+        { "downloads": 1386829, "month": "2020-11" },
+        { "downloads": 1263565, "month": "2020-12" },
+        { "downloads": 1349130, "month": "2021-01" },
+        { "downloads": 1523529, "month": "2021-02" },
+        { "downloads": 1791318, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "tannerlinsley/react-query",
+      "pkg": "react-query",
+      "npmDetails": {
+        "name": "react-query",
+        "description": "Hooks for managing, caching and syncing asynchronous and remote data in React",
+        "dependencies": ["@babel/runtime", "broadcast-channel", "match-sorter"],
+        "license": "MIT",
+        "version": "3.13.6",
+        "repository": { "type": "git", "url": "git+https://github.com/tannerlinsley/react-query.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/react-query"
+      },
+      "npmReleases": 38,
+      "npmDownloads": [
+        { "downloads": 611666, "month": "2020-10" },
+        { "downloads": 713175, "month": "2020-11" },
+        { "downloads": 718285, "month": "2020-12" },
+        { "downloads": 870502, "month": "2021-01" },
+        { "downloads": 1095562, "month": "2021-02" },
+        { "downloads": 1530002, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "pmndrs/zustand",
+      "pkg": "zustand",
+      "npmDetails": {
+        "name": "zustand",
+        "description": "🐻 Bear necessities for state management in React",
+        "dependencies": [],
+        "license": "MIT",
+        "version": "3.4.1",
+        "repository": { "type": "git", "url": "git+https://github.com/react-spring/zustand.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/zustand"
+      },
+      "npmReleases": 4,
+      "npmDownloads": [
+        { "downloads": 111020, "month": "2020-10" },
+        { "downloads": 122371, "month": "2020-11" },
+        { "downloads": 112073, "month": "2020-12" },
+        { "downloads": 142913, "month": "2021-01" },
+        { "downloads": 197135, "month": "2021-02" },
+        { "downloads": 273415, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "datorama/akita",
+      "pkg": "@datorama/akita",
+      "npmDetails": {
+        "name": "@datorama/akita",
+        "description": "A Reactive State Management Tailored-Made for JS Applications",
+        "dependencies": ["schematics-utilities"],
+        "license": "Apache-2.0",
+        "version": "6.1.3",
+        "repository": { "type": "git", "url": "git+https://github.com/datorama/akita.git", "directory": "libs/akita" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/datorama__akita"
+      },
+      "npmReleases": 6,
+      "npmDownloads": [
+        { "downloads": 144078, "month": "2020-10" },
+        { "downloads": 133796, "month": "2020-11" },
+        { "downloads": 126646, "month": "2020-12" },
+        { "downloads": 136635, "month": "2021-01" },
+        { "downloads": 146662, "month": "2021-02" },
+        { "downloads": 168215, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "ngxs/store",
+      "pkg": "@ngxs/store",
+      "npmDetails": {
+        "name": "@ngxs/store",
+        "dependencies": ["tslib"],
+        "license": "MIT",
+        "version": "3.7.1",
+        "repository": { "type": "git", "url": "git+https://github.com/ngxs/store.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/ngxs__store"
+      },
+      "npmReleases": 0,
+      "npmDownloads": [
+        { "downloads": 206589, "month": "2020-10" },
+        { "downloads": 198788, "month": "2020-11" },
+        { "downloads": 188112, "month": "2020-12" },
+        { "downloads": 199780, "month": "2021-01" },
+        { "downloads": 210454, "month": "2021-02" },
+        { "downloads": 256669, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "mobxjs/mobx-state-tree",
+      "pkg": "mobx-state-tree",
+      "npmDetails": {
+        "name": "mobx-state-tree",
+        "description": "Opinionated, transactional, MobX powered state container",
+        "dependencies": [],
+        "license": "MIT",
+        "version": "5.0.1",
+        "repository": { "type": "git", "url": "git+https://github.com/mobxjs/mobx-state-tree.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/mobx-state-tree"
+      },
+      "npmReleases": 3,
+      "npmDownloads": [
+        { "downloads": 189695, "month": "2020-10" },
+        { "downloads": 185242, "month": "2020-11" },
+        { "downloads": 172147, "month": "2020-12" },
+        { "downloads": 172960, "month": "2021-01" },
+        { "downloads": 190784, "month": "2021-02" },
+        { "downloads": 229192, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "ctrlplusb/easy-peasy",
+      "pkg": "easy-peasy",
+      "npmDetails": {
+        "name": "easy-peasy",
+        "description": "Vegetarian friendly state for React",
+        "dependencies": ["@babel/runtime", "immer", "redux", "redux-thunk", "ts-toolbelt"],
+        "license": "MIT",
+        "version": "5.0.3",
+        "repository": { "type": "git", "url": "git+https://github.com/ctrlplusb/easy-peasy.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/easy-peasy"
+      },
+      "npmReleases": 4,
+      "npmDownloads": [
+        { "downloads": 118187, "month": "2020-10" },
+        { "downloads": 105975, "month": "2020-11" },
+        { "downloads": 89820, "month": "2020-12" },
+        { "downloads": 112577, "month": "2021-01" },
+        { "downloads": 129463, "month": "2021-02" },
+        { "downloads": 151833, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "effector/effector",
+      "pkg": "effector",
+      "npmDetails": {
+        "name": "effector",
+        "description": "The state manager",
+        "dependencies": [],
+        "license": "MIT",
+        "version": "21.8.11",
+        "repository": { "type": "git", "url": "git+https://github.com/effector/effector.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/effector"
+      },
+      "npmReleases": 12,
+      "npmDownloads": [
+        { "downloads": 39517, "month": "2020-10" },
+        { "downloads": 34039, "month": "2020-11" },
+        { "downloads": 36704, "month": "2020-12" },
+        { "downloads": 30227, "month": "2021-01" },
+        { "downloads": 36234, "month": "2021-02" },
+        { "downloads": 63515, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "storeon/storeon",
+      "pkg": "storeon",
+      "npmDetails": {
+        "name": "storeon",
+        "description": "Tiny (180 bytes) event-based Redux-like state manager for React and Preact",
+        "dependencies": [],
+        "license": "MIT",
+        "version": "3.1.4",
+        "repository": { "type": "git", "url": "git+https://github.com/storeon/storeon.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/storeon"
+      },
+      "npmReleases": 2,
+      "npmDownloads": [
+        { "downloads": 49063, "month": "2020-10" },
+        { "downloads": 46574, "month": "2020-11" },
+        { "downloads": 61815, "month": "2020-12" },
+        { "downloads": 63688, "month": "2021-01" },
+        { "downloads": 75273, "month": "2021-02" },
+        { "downloads": 74905, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "diegohaz/constate",
+      "pkg": "constate",
+      "npmDetails": {
+        "name": "constate",
+        "description": "Yet another React state management library that lets you work with local state and scale up to global state with ease",
+        "dependencies": [],
+        "license": "MIT",
+        "version": "3.2.0",
+        "repository": { "type": "git", "url": "git+https://github.com/diegohaz/constate.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/constate"
+      },
+      "npmReleases": 1,
+      "npmDownloads": [
+        { "downloads": 152920, "month": "2020-10" },
+        { "downloads": 147832, "month": "2020-11" },
+        { "downloads": 155157, "month": "2020-12" },
+        { "downloads": 179578, "month": "2021-01" },
+        { "downloads": 223081, "month": "2021-02" },
+        { "downloads": 247352, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "vercel/swr",
+      "pkg": "swr",
+      "npmDetails": {
+        "name": "swr",
+        "description": "React Hooks library for remote data fetching",
+        "dependencies": ["dequal"],
+        "license": "MIT",
+        "version": "0.5.5",
+        "repository": { "type": "git", "url": "git+https://github.com/vercel/swr.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/swr"
+      },
+      "npmReleases": 9,
+      "npmDownloads": [
+        { "downloads": 830572, "month": "2020-10" },
+        { "downloads": 815522, "month": "2020-11" },
+        { "downloads": 781223, "month": "2020-12" },
+        { "downloads": 913491, "month": "2021-01" },
+        { "downloads": 1067508, "month": "2021-02" },
+        { "downloads": 1337760, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "cerebral/overmind",
+      "pkg": "overmind",
+      "npmDetails": {
+        "name": "overmind",
+        "description": "Frictionless state management",
+        "dependencies": ["is-plain-obj", "betsy", "non-blocking-json", "tslib", "proxy-state-tree"],
+        "license": "MIT",
+        "version": "27.0.0",
+        "repository": { "type": "git", "url": "git+https://github.com/cerebral/overmind.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/overmind"
+      },
+      "npmReleases": 1,
+      "npmDownloads": [
+        { "downloads": 38552, "month": "2020-10" },
+        { "downloads": 28451, "month": "2020-11" },
+        { "downloads": 22835, "month": "2020-12" },
+        { "downloads": 32834, "month": "2021-01" },
+        { "downloads": 43461, "month": "2021-02" },
+        { "downloads": 46135, "month": "2021-03" }
+      ]
+    }
+  ],
+
+  "radar": {
+    "reduxjs/redux": { "url": "https://www.thoughtworks.com/radar/languages-and-frameworks/redux", "level": "TRIAL" },
+    "facebookexperimental/recoil": { "url": "https://www.thoughtworks.com/radar/languages-and-frameworks/recoil", "level": "ASSESS" },
+    "davidkpiano/xstate": { "url": "https://www.thoughtworks.com/radar/languages-and-frameworks/xstate", "level": "TRIAL" },
+    "vercel/swr": { "url": "https://www.thoughtworks.com/radar/languages-and-frameworks/swr", "level": "ASSESS" }
+  },
+
+  "bundleSize": [
+    { "repo": "reduxjs/redux", "bundleSize": { "gzip": 2691, "raw": 7463 } },
+    { "repo": "mobxjs/mobx", "bundleSize": { "gzip": 16411, "raw": 58357 } },
+    { "repo": "reactivex/rxjs", "bundleSize": { "gzip": 11340, "raw": 48144 } },
+    { "repo": "facebookexperimental/recoil", "bundleSize": { "gzip": 19785, "raw": 67253 } },
+    { "repo": "davidkpiano/xstate", "bundleSize": { "gzip": 17163, "raw": 62958 } },
+    { "repo": "vuejs/vuex", "bundleSize": { "gzip": 4013, "raw": 13033 } },
+    { "repo": "ngrx/platform", "bundleSize": { "gzip": 5191, "raw": 17533 } },
+    { "repo": "tannerlinsley/react-query", "bundleSize": { "gzip": 11748, "raw": 50323 } },
+    { "repo": "pmndrs/zustand", "bundleSize": { "gzip": 820, "raw": 1665 } },
+    { "repo": "datorama/akita", "bundleSize": { "gzip": 15359, "raw": 61156 } },
+    { "repo": "ngxs/store", "bundleSize": { "gzip": 9468, "raw": 34765 } },
+    { "repo": "mobxjs/mobx-state-tree", "bundleSize": { "gzip": 22224, "raw": 108741 } },
+    { "repo": "ctrlplusb/easy-peasy", "bundleSize": { "gzip": 10437, "raw": 32825 } },
+    { "repo": "effector/effector", "bundleSize": { "gzip": 10610, "raw": 26806 } },
+    { "repo": "storeon/storeon", "bundleSize": { "gzip": 370, "raw": 601 } },
+    { "repo": "diegohaz/constate", "bundleSize": { "gzip": 508, "raw": 898 } },
+    { "repo": "vercel/swr", "bundleSize": { "gzip": 5225, "raw": 16046 } },
+    { "repo": "cerebral/overmind", "bundleSize": { "gzip": 10624, "raw": 36516 } }
+  ],
+
+  "devUsage": { "reduxjs/redux": 66.8, "mobxjs/mobx": 13.2, "davidkpiano/xstate": 4.9, "vuejs/vuex": 30.1 },
+
+  "googleTrends": {}
+}
