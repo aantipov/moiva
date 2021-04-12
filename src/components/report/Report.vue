@@ -83,6 +83,30 @@
       title="NPM Downloads monthly increase, %"
       style="width: 700px"
     />
+
+    <Chart
+      class="mt-10"
+      :libs="frameworks"
+      field="commits"
+      title="Number of Commits in Q1 2021"
+      style="width: 700px"
+    />
+
+    <Chart
+      class="mt-10"
+      :libs="frameworks"
+      field="contributors"
+      title="Number of Contributors in Q1 2021"
+      style="width: 700px"
+    />
+
+    <Chart
+      class="mt-10"
+      :libs="frameworks"
+      field="npmReleases"
+      title="Number of NPM Releases in Q1 2021"
+      style="width: 700px"
+    />
   </div>
 </template>
 
