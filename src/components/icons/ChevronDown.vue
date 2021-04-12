@@ -20,7 +20,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'ChevronDown',
+  name: 'ChevronDownIcon',
 });
 </script>
 

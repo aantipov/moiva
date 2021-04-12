@@ -7,7 +7,7 @@
         <thead class="text-white bg-primary">
           <tr>
             <th scope="col" class="bg-primary">
-              <div class="w-48">Criteria</div>
+              <div class="w-52">Criteria</div>
             </th>
             <th
               v-for="item in frameworks"
