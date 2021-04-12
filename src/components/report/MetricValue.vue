@@ -67,7 +67,7 @@
   </div>
 
   <div v-else-if="type === 'bundlesize'" class="flex items-center justify-end">
-    {{ lib.bundleSize && getKB(lib.bundleSize.gzip) + 'kB' }}
+    {{ lib.bundleSize && getKB(lib.bundleSize.gzip) + ' kB' }}
   </div>
 
   <div v-else-if="type === 'age'" class="flex items-center justify-center">

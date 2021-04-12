@@ -13,7 +13,7 @@
               v-for="item in frameworks"
               :key="item.repo"
               scope="col"
-              class="align-bottom h-60"
+              class="h-40 align-bottom"
             >
               <div class="w-20 pl-12 transform -rotate-90">
                 {{ getAlias(item.repo) }}
@@ -39,16 +39,61 @@
         </tbody>
       </table>
     </div>
+
+    <Chart
+      class="mt-10"
+      :libs="frameworks"
+      field="starsTotal"
+      title="GitHub Stars"
+      style="width: 700px"
+    />
+
+    <Chart
+      class="mt-10"
+      :libs="frameworks"
+      field="starsPlus"
+      title="New GitHub Stars"
+      style="width: 700px"
+    />
+
+    <Chart
+      class="mt-10"
+      :libs="frameworks"
+      field="starsPlusPercentage"
+      title="New GitHub Stars, %"
+      style="width: 700px"
+    />
+
+    <Chart
+      class="mt-10"
+      :libs="frameworks"
+      field="dwnlMonthly"
+      title="NPM Downloads monthly"
+      style="width: 700px"
+    />
+
+    <Chart
+      class="mt-10"
+      :libs="frameworks"
+      field="dwnlMonthlyIncreasePercentage"
+      title="NPM Downloads monthly increase, %"
+      style="width: 700px"
+    />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 // import { constructHref } from '@/utils';
-import frameworks from './frameworks-2021-q1.json';
+import frameworksAll from './frameworks-2021-q1.json';
 import { catalogRepoIdToLib } from '@/libraries-catalog';
 import MetricHeader from './MetricHeader.vue';
 import MetricValue from './MetricValue.vue';
+import Chart from './Chart.vue';
+
+const frameworks = frameworksAll.filter(
+  (item) => item.repo !== 'marionettejs/backbone.marionette'
+);
 
 type TechRadarT = null | {
   url: string;
@@ -123,6 +168,7 @@ export default defineComponent({
   components: {
     MetricHeader,
     MetricValue,
+    Chart,
   },
 
   setup() {
