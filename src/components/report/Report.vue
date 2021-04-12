@@ -16,7 +16,7 @@
               class="h-40 align-bottom"
             >
               <div class="flex w-20 pl-12 transform -rotate-90">
-                <a :href="getHref(item)" target="_blank" class="primary-link">{{
+                <a :href="getHref(item.repo)" class="primary-link">{{
                   getAlias(item.repo)
                 }}</a>
 
@@ -195,8 +195,12 @@ export default defineComponent({
       getGithubLink(repoId: string): string {
         return `https://github.com/${repoId}`;
       },
-      getHref(lib: LibT): string {
-        return '/';
+      getHref(repoId: string): string {
+        const npm = catalogRepoIdToLib[repoId.toLowerCase()].npm as string;
+        if (!npm) {
+          throw new Error('no npm package');
+        }
+        return constructHref([npm], []);
       },
     };
   },
