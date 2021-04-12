@@ -2,20 +2,15 @@
   <div class="flex flex-col items-start sm:items-center">
     <h2 class="self-center mt-4 mb-2 sm:mt-8">Report</h2>
 
-    <div style="max-width: 1000px; overflow: scroll">
-      <table class="table-fixed">
+    <div class="wrapper-2021q1">
+      <table>
         <thead class="text-white bg-primary">
           <tr>
-            <th scope="col" class="bg-primary">
+            <th scope="col">
               <div class="w-52">Criteria</div>
             </th>
-            <th
-              v-for="item in frameworks"
-              :key="item.repo"
-              scope="col"
-              class="h-40 align-bottom"
-            >
-              <div class="flex w-20 pl-12 transform -rotate-90">
+            <th v-for="item in frameworks" :key="item.repo" scope="col">
+              <div>
                 <a :href="getHref(item.repo)" class="primary-link">{{
                   getAlias(item.repo)
                 }}</a>
@@ -184,9 +179,6 @@ export default defineComponent({
 
   setup() {
     return {
-      // makeHref(libs: string[]): string {
-      //   return constructHref(libs, []);
-      // },
       frameworks: frameworks as LibT[],
       metrics,
       getAlias(repoId: string): string {
@@ -207,28 +199,34 @@ export default defineComponent({
 });
 </script>
 
-<style lang="postcss" scoped>
+<style lang="postcss">
+.wrapper-2021q1 {
+  @apply border border-primary rounded;
+  width: 100%;
+  max-width: 1000px;
+  overflow: scroll;
+}
 .row {
   @apply h-10;
 }
 table {
-  @apply border;
+  @apply table-fixed;
 }
-td {
-  @apply px-2;
-}
-table thead th {
-  /* padding: 3px; */
-  /* position: sticky; */
-  /* top: 0; */
-  z-index: 1;
-  /* width: 25vw; */
-  /* background: white; */
+table thead th div {
+  @apply flex px-4;
 }
 table thead th:first-child {
+  @apply h-10 bg-primary;
   position: sticky;
   left: 0;
   z-index: 2;
+}
+
+table td {
+  @apply px-2;
+}
+table thead th {
+  z-index: 1;
 }
 table tbody th {
   position: sticky;
