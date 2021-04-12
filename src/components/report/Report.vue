@@ -15,8 +15,17 @@
               scope="col"
               class="h-40 align-bottom"
             >
-              <div class="w-20 pl-12 transform -rotate-90">
-                {{ getAlias(item.repo) }}
+              <div class="flex w-20 pl-12 transform -rotate-90">
+                <a :href="getHref(item)" target="_blank" class="primary-link">{{
+                  getAlias(item.repo)
+                }}</a>
+
+                <a
+                  :href="getGithubLink(item.repo)"
+                  target="_blank"
+                  class="ml-2 primary-link"
+                  ><LinkIcon
+                /></a>
               </div>
             </th>
           </tr>
@@ -84,11 +93,12 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-// import { constructHref } from '@/utils';
+import { constructHref } from '@/utils';
 import frameworksAll from './frameworks-2021-q1.json';
 import { catalogRepoIdToLib } from '@/libraries-catalog';
 import MetricHeader from './MetricHeader.vue';
 import MetricValue from './MetricValue.vue';
+import LinkIcon from '@/components/icons/Link.vue';
 import Chart from './Chart.vue';
 
 const frameworks = frameworksAll.filter(
@@ -169,6 +179,7 @@ export default defineComponent({
     MetricHeader,
     MetricValue,
     Chart,
+    LinkIcon,
   },
 
   setup() {
@@ -180,6 +191,12 @@ export default defineComponent({
       metrics,
       getAlias(repoId: string): string {
         return catalogRepoIdToLib[repoId.toLowerCase()].alias;
+      },
+      getGithubLink(repoId: string): string {
+        return `https://github.com/${repoId}`;
+      },
+      getHref(lib: LibT): string {
+        return '/';
       },
     };
   },
