@@ -1,10 +1,8 @@
 <template>
   <div class="root">
     <svg
-      width="100%"
-      height="100%"
+      class="w-5 h-5 svg"
       viewBox="0 0 195 179"
-      class="svg"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
