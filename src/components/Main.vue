@@ -3,8 +3,6 @@
     <Search class="w-full mx-auto lg:w-9/12 xl:w-2/4" @select="select" />
     <Suggestions @select="select" />
 
-    <Report />
-
     <!--  Popular Comparisons    -->
     <div v-if="!libraries.length">
       <Popular v-if="!isLoading" @select="selectMultiple" />
@@ -108,7 +106,6 @@ import Languages from './Languages.vue';
 import Contributors from './github-contributors/Contributors.vue';
 import DevelopersUsage from './developer-usage/DevelopersUsage.vue';
 import Commits from './Commits.vue';
-import Report from './report/Report.vue';
 
 import { chartsVisibility } from '@/store/chartsVisibility';
 import {
@@ -137,7 +134,6 @@ export default defineComponent({
     Popular,
     Search,
     Suggestions,
-    Report,
 
     Bundlephobia,
     Stars,
