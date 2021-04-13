@@ -56,7 +56,7 @@
       class="mt-10"
       :libs="frameworks"
       field="starsPlus"
-      title="New GitHub Stars"
+      title="New GitHub Stars in Q1 2021"
       style="width: 700px"
     />
 
@@ -64,7 +64,7 @@
       class="mt-10"
       :libs="frameworks"
       field="starsPlusPercentage"
-      title="New GitHub Stars, %"
+      title="New GitHub Stars in Q1 2021, %"
       style="width: 700px"
     />
 
@@ -72,7 +72,7 @@
       class="mt-10"
       :libs="frameworks"
       field="dwnlMonthly"
-      title="NPM Downloads monthly"
+      title="NPM Downloads monthly in Q1 2021"
       style="width: 700px"
     />
 
@@ -80,7 +80,7 @@
       class="mt-10"
       :libs="frameworks"
       field="dwnlMonthlyIncreasePercentage"
-      title="NPM Downloads monthly increase, %"
+      title="NPM Downloads monthly increase in Q1 2021, %"
       style="width: 700px"
     />
 

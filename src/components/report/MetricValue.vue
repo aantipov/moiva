@@ -67,7 +67,7 @@
   </div>
 
   <div v-else-if="type === 'bundlesize'" class="flex items-center justify-end">
-    {{ lib.bundleSize && getKB(lib.bundleSize.gzip) + ' kB' }}
+    {{ getBundleSize(lib) }}
   </div>
 
   <div v-else-if="type === 'age'" class="flex items-center justify-center">
@@ -107,8 +107,15 @@ export default defineComponent({
       formatNumber(stars: number): string {
         return numbersFormatter.format(stars);
       },
-      getKB(bytes: number): number {
-        return Math.round(bytes / 102.4) / 10;
+      getBundleSize(lib: LibT): string {
+        if (!lib.bundleSize) {
+          return '';
+        }
+        if (lib.repo === 'facebook/react') {
+          return '42.3 kB *';
+        }
+        // @ts-ignore
+        return `${Math.round(lib.bundleSize.gzip / 102.4) / 10} kB`;
       },
     };
   },
