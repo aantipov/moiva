@@ -114,6 +114,7 @@
 import { defineComponent } from 'vue';
 import { constructHref } from '@/utils';
 import frameworksAll from './frameworks-2021-q1.json';
+import stateLibsAll from './state-2021-q1.json';
 import { catalogRepoIdToLib } from '@/libraries-catalog';
 import MetricHeader from './MetricHeader.vue';
 import MetricValue from './MetricValue.vue';
@@ -130,8 +131,8 @@ type TechRadarT = null | {
 };
 
 type BundleSizeT = null | {
-  gzip: string;
-  raw: string;
+  gzip: number;
+  raw: number;
 };
 
 export interface LibT {
@@ -203,7 +204,7 @@ export default defineComponent({
 
   setup() {
     return {
-      frameworks: frameworks as LibT[],
+      frameworks: stateLibsAll as LibT[],
       metrics,
       getAlias(repoId: string): string {
         return catalogRepoIdToLib[repoId.toLowerCase()].alias;
