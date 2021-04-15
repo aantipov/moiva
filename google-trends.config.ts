@@ -34,6 +34,10 @@ const gtrendsDefs: [RepoIdT, KeywordT, KeywordAliasT?][] = [
   ['reactivex/rxjs', 'rxjs'],
   ['vuejs/vuex', 'vuex'],
   ['mobxjs/mobx', 'mobx'],
+  ['cucumber/cucumber-js', '/m/0c4z18h'],
+  ['mochajs/mocha', 'Mocha'],
+  ['jasmine/jasmine', 'jasmine'],
+  ['sinonjs/sinon', 'sinon'],
 ];
 
 export interface GTrendDefT {
