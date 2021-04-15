@@ -1,29 +1,26 @@
 /* eslint-disable */
 const fs = require('fs');
-const rawFile = '../reports/frameworks-2021-q1-raw.json';
-const file = '../reports/frameworks-2021-q1.json';
+const rawFile = '../reports/testing-2021-q1-raw.json';
+const file = '../reports/testing-2021-q1.json';
+const includeBundleSize = false;
 
 const content = fs.readFileSync(rawFile, 'utf8');
 const data = JSON.parse(content);
 const libs = [
-  ['facebook/react', 'react'],
-  ['vuejs/vue', 'vue'],
-  ['angular/angular', '@angular/core'],
-  ['sveltejs/svelte', 'svelte'],
-  ['emberjs/ember.js', 'ember-source'],
-  ['alpinejs/alpine', 'alpinejs'],
-  ['infernojs/inferno', 'inferno'],
-  ['preactjs/preact', 'preact'],
-  ['jorgebucaran/hyperapp', 'hyperapp'],
-  ['riot/riot', 'riot'],
-  ['angular/angular.js', 'angular'],
-  ['marionettejs/backbone.marionette', 'backbone.marionette'],
-  ['knockout/knockout', 'knockout'],
-  ['ryansolid/solid', 'solid-js'],
-  ['MithrilJS/mithril.js', 'mithril'],
-  ['aurelia/framework', 'aurelia-framework'],
-  ['hotwired/stimulus', 'stimulus'],
-  ['marko-js/marko', 'marko'],
+  ['facebook/jest', 'jest'],
+  ['avajs/ava', 'ava'],
+  ['mochajs/mocha', 'mocha'],
+  ['jasmine/jasmine', 'jasmine-core'],
+  ['substack/tape', 'tape'],
+  ['qunitjs/qunit', 'qunit'],
+  ['chaijs/chai', 'chai'],
+  ['sinonjs/sinon', 'sinon'],
+  ['karma-runner/karma', 'karma'],
+  ['testing-library/dom-testing-library', '@testing-library/dom'],
+  ['testing-library/jest-dom', '@testing-library/jest-dom'],
+  ['cucumber/cucumber-js', '@cucumber/cucumber'],
+  ['enzymejs/enzyme', 'enzyme'],
+  ['testing-library/react-testing-library', '@testing-library/react'],
 ];
 
 const result = libs.map(([repo], i) => {
@@ -113,15 +110,19 @@ const result = libs.map(([repo], i) => {
     return { techRadar: val || null };
   })();
 
-  const bundleSizeData = (() => {
-    const { bundleSize, ...rest } = data.bundleSize[i];
+  let bundleSizeData = {};
 
-    if (rest.repo !== repo) {
-      throw new Error('invalid repo');
-    }
+  if (includeBundleSize) {
+    bundleSizeData = (() => {
+      const { bundleSize, ...rest } = data.bundleSize[i];
 
-    return { bundleSize: bundleSize || null };
-  })();
+      if (rest.repo !== repo) {
+        throw new Error('invalid repo');
+      }
+
+      return { bundleSize: bundleSize || null };
+    })();
+  }
 
   const devUsage = (() => {
     const val = data.devUsage[repo.toLowerCase()];

@@ -113,17 +113,12 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { constructHref } from '@/utils';
-import frameworksAll from './frameworks-2021-q1.json';
-import stateLibsAll from './state-2021-q1.json';
+import libsData from './testing-2021-q1.json';
 import { catalogRepoIdToLib } from '@/libraries-catalog';
 import MetricHeader from './MetricHeader.vue';
 import MetricValue from './MetricValue.vue';
 import LinkIcon from '@/components/icons/Link.vue';
 import Chart from './Chart.vue';
-
-const frameworks = frameworksAll.filter(
-  (item) => item.repo !== 'marionettejs/backbone.marionette'
-);
 
 type TechRadarT = null | {
   url: string;
@@ -188,7 +183,7 @@ const metrics = [
   'contributors',
   'dependencies',
   'ts',
-  'bundlesize',
+  // 'bundlesize',
   'age',
   'license',
 ] as MetricT[];
@@ -204,7 +199,7 @@ export default defineComponent({
 
   setup() {
     return {
-      frameworks: stateLibsAll as LibT[],
+      frameworks: libsData as LibT[],
       metrics,
       getAlias(repoId: string): string {
         return catalogRepoIdToLib[repoId.toLowerCase()].alias;

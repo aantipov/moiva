@@ -27,8 +27,9 @@ function getAliasFromRepoId(repoId) {
   return repoName;
 }
 
-const categories = categoriesRaw.map(({ name, items }) => ({
+const categories = categoriesRaw.map(({ name, skipSitemap, items }) => ({
   categoryName: name,
+  skipSitemap,
   libs: items.map(({ repo, npm, isNpmCoreArtifact, framework, alias }) => ({
     category: name,
     alias: alias || getAliasFromRepoId(repo),
@@ -136,41 +137,10 @@ const oneLibUrls = categories
 // - framework specific can not be paired with other framework specific
 // - framework agnostic can be paired with anything
 
-function sortLibsByNpmGithub(libA, libB) {
-  // both have npm
-  if (libA.npm && libB.npm) {
-    if (libA.npm < libB.npm) {
-      return -1;
-    }
-    if (libA.npm > libB.npm) {
-      return 1;
-    }
-    return 0;
-  }
-
-  // only one has npm
-  if (libA.npm && !libB.npm) {
-    return -1;
-  }
-
-  if (!libA.npm && libB.npm) {
-    return 1;
-  }
-
-  // both don't have npm
-  if (libA.repoId < libB.repoId) {
-    return -1;
-  }
-  if (libA.repoId > libB.repoId) {
-    return 1;
-  }
-  return 0;
-}
-
 const twoLibsUrls = categories
   .map((cat) => {
     // skip Misc category
-    if (cat.categoryName === 'misc') {
+    if (cat.categoryName === 'misc' || cat.skipSitemap) {
       return [];
     }
 
@@ -189,19 +159,6 @@ const twoLibsUrls = categories
     return categoryPairsUrls;
   })
   .flat();
-
-function getLibsUrl(libA, libB) {
-  if (libA.npm && libB.npm) {
-    return `https://moiva.io/?npm=${libA.npm}+${libB.npm}`;
-  }
-  if (libA.npm && !libB.npm) {
-    return `https://moiva.io/?npm=${libA.npm}&amp;github=${libB.repoId}`;
-  }
-  if (!libA.npm && libB.npm) {
-    return `https://moiva.io/?npm=${libB.npm}&amp;github=${libA.repoId}`;
-  }
-  return `https://moiva.io/?github=${libA.repoId}+${libB.repoId}`;
-}
 
 const urls = [...oneLibUrls, ...twoLibsUrls].sort();
 
@@ -326,4 +283,48 @@ function getWrongFrameworks(categories) {
   return frameworks.filter(
     (framework) => !allowedFrameworks.includes(framework)
   );
+}
+
+function sortLibsByNpmGithub(libA, libB) {
+  // both have npm
+  if (libA.npm && libB.npm) {
+    if (libA.npm < libB.npm) {
+      return -1;
+    }
+    if (libA.npm > libB.npm) {
+      return 1;
+    }
+    return 0;
+  }
+
+  // only one has npm
+  if (libA.npm && !libB.npm) {
+    return -1;
+  }
+
+  if (!libA.npm && libB.npm) {
+    return 1;
+  }
+
+  // both don't have npm
+  if (libA.repoId < libB.repoId) {
+    return -1;
+  }
+  if (libA.repoId > libB.repoId) {
+    return 1;
+  }
+  return 0;
+}
+
+function getLibsUrl(libA, libB) {
+  if (libA.npm && libB.npm) {
+    return `https://moiva.io/?npm=${libA.npm}+${libB.npm}`;
+  }
+  if (libA.npm && !libB.npm) {
+    return `https://moiva.io/?npm=${libA.npm}&amp;github=${libB.repoId}`;
+  }
+  if (!libA.npm && libB.npm) {
+    return `https://moiva.io/?npm=${libB.npm}&amp;github=${libA.repoId}`;
+  }
+  return `https://moiva.io/?github=${libA.repoId}+${libB.repoId}`;
 }

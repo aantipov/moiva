@@ -1,0 +1,895 @@
+{
+  "stars": [
+    { "repo": "facebook/jest", "march": 408, "april": 161, "totalCount": 34843 },
+    { "repo": "avajs/ava", "march": 88, "april": 54, "totalCount": 18876 },
+    { "repo": "mochajs/mocha", "march": 123, "april": 50, "totalCount": 20436 },
+    { "repo": "jasmine/jasmine", "march": 45, "april": 25, "totalCount": 15080 },
+    { "repo": "substack/tape", "march": 15, "april": 8, "totalCount": 5453 },
+    { "repo": "qunitjs/qunit", "march": 6, "april": 5, "totalCount": 3873 },
+    { "repo": "chaijs/chai", "march": 32, "april": 14, "totalCount": 7210 },
+    { "repo": "sinonjs/sinon", "march": 64, "april": 34, "totalCount": 8500 },
+    { "repo": "karma-runner/karma", "march": 28, "april": 16, "totalCount": 11481 },
+    { "repo": "testing-library/dom-testing-library", "march": 42, "april": 28, "totalCount": 2538 },
+    { "repo": "testing-library/jest-dom", "march": 84, "april": 35, "totalCount": 2357 },
+    { "repo": "cucumber/cucumber-js", "march": 36, "april": 26, "totalCount": 4220 },
+    { "repo": "enzymejs/enzyme", "march": 74, "april": 32, "totalCount": 19491 },
+    { "repo": "testing-library/react-testing-library", "march": 234, "april": 108, "totalCount": 14284 }
+  ],
+
+  "starsMonthly": [
+    {
+      "repo": "facebook/jest",
+      "items": [
+        { "month": "2021-01", "stars": 391 },
+        { "month": "2021-02", "stars": 362 },
+        { "month": "2021-03", "stars": 411 }
+      ]
+    },
+    {
+      "repo": "avajs/ava",
+      "items": [
+        { "month": "2021-01", "stars": 134 },
+        { "month": "2021-02", "stars": 91 },
+        { "month": "2021-03", "stars": 88 }
+      ]
+    },
+    {
+      "repo": "mochajs/mocha",
+      "items": [
+        { "month": "2021-01", "stars": 110 },
+        { "month": "2021-02", "stars": 118 },
+        { "month": "2021-03", "stars": 123 }
+      ]
+    },
+    {
+      "repo": "jasmine/jasmine",
+      "items": [
+        { "month": "2021-01", "stars": 32 },
+        { "month": "2021-02", "stars": 33 },
+        { "month": "2021-03", "stars": 45 }
+      ]
+    },
+    {
+      "repo": "substack/tape",
+      "items": [
+        { "month": "2021-01", "stars": 12 },
+        { "month": "2021-02", "stars": 15 },
+        { "month": "2021-03", "stars": 15 }
+      ]
+    },
+    {
+      "repo": "qunitjs/qunit",
+      "items": [
+        { "month": "2021-01", "stars": 9 },
+        { "month": "2021-02", "stars": 7 },
+        { "month": "2021-03", "stars": 6 }
+      ]
+    },
+    {
+      "repo": "chaijs/chai",
+      "items": [
+        { "month": "2021-01", "stars": 45 },
+        { "month": "2021-02", "stars": 38 },
+        { "month": "2021-03", "stars": 32 }
+      ]
+    },
+    {
+      "repo": "sinonjs/sinon",
+      "items": [
+        { "month": "2021-01", "stars": 48 },
+        { "month": "2021-02", "stars": 55 },
+        { "month": "2021-03", "stars": 64 }
+      ]
+    },
+    {
+      "repo": "karma-runner/karma",
+      "items": [
+        { "month": "2021-01", "stars": 33 },
+        { "month": "2021-02", "stars": 47 },
+        { "month": "2021-03", "stars": 28 }
+      ]
+    },
+    {
+      "repo": "testing-library/dom-testing-library",
+      "items": [
+        { "month": "2021-01", "stars": 39 },
+        { "month": "2021-02", "stars": 26 },
+        { "month": "2021-03", "stars": 42 }
+      ]
+    },
+    {
+      "repo": "testing-library/jest-dom",
+      "items": [
+        { "month": "2021-01", "stars": 64 },
+        { "month": "2021-02", "stars": 66 },
+        { "month": "2021-03", "stars": 84 }
+      ]
+    },
+    {
+      "repo": "cucumber/cucumber-js",
+      "items": [
+        { "month": "2021-01", "stars": 42 },
+        { "month": "2021-02", "stars": 24 },
+        { "month": "2021-03", "stars": 37 }
+      ]
+    },
+    {
+      "repo": "enzymejs/enzyme",
+      "items": [
+        { "month": "2021-01", "stars": 80 },
+        { "month": "2021-02", "stars": 79 },
+        { "month": "2021-03", "stars": 74 }
+      ]
+    },
+    {
+      "repo": "testing-library/react-testing-library",
+      "items": [
+        { "month": "2021-01", "stars": 311 },
+        { "month": "2021-02", "stars": 221 },
+        { "month": "2021-03", "stars": 234 }
+      ]
+    }
+  ],
+
+  "other": [
+    {
+      "repo": "facebook/jest",
+      "github": {
+        "description": "Delightful JavaScript Testing.",
+        "stars": 34835,
+        "createdAt": "2013-12-10T00:18:04Z",
+        "openIssues": 393,
+        "openBugIssues": 0,
+        "closedIssues": 383,
+        "closedBugIssues": 0,
+        "repoId": "facebook/jest",
+        "repoName": "jest"
+      },
+      "contributors": { "month": "2021-03", "contributors": 8 },
+      "commits": 76
+    },
+    {
+      "repo": "avajs/ava",
+      "github": {
+        "description": "Node.js test runner that lets you develop with confidence 🚀",
+        "stars": 18876,
+        "createdAt": "2014-11-18T17:20:26Z",
+        "openIssues": 29,
+        "openBugIssues": 4,
+        "closedIssues": 67,
+        "closedBugIssues": 6,
+        "repoId": "avajs/ava",
+        "repoName": "ava"
+      },
+      "contributors": { "month": "2021-03", "contributors": 11 },
+      "commits": 39
+    },
+    {
+      "repo": "mochajs/mocha",
+      "github": {
+        "description": "☕️ simple, flexible, fun javascript test framework for node.js & the browser",
+        "stars": 20436,
+        "createdAt": "2011-03-07T18:44:25Z",
+        "openIssues": 47,
+        "openBugIssues": 0,
+        "closedIssues": 125,
+        "closedBugIssues": 0,
+        "repoId": "mochajs/mocha",
+        "repoName": "mocha"
+      },
+      "contributors": { "month": "2021-03", "contributors": 7 },
+      "commits": 31
+    },
+    {
+      "repo": "jasmine/jasmine",
+      "github": {
+        "description": "Simple JavaScript testing framework for browsers and node.js",
+        "stars": 15080,
+        "createdAt": "2008-12-02T23:46:37Z",
+        "openIssues": 23,
+        "openBugIssues": 0,
+        "closedIssues": 36,
+        "closedBugIssues": 1,
+        "repoId": "jasmine/jasmine",
+        "repoName": "jasmine"
+      },
+      "contributors": { "month": "2021-03", "contributors": 3 },
+      "commits": 17
+    },
+    {
+      "repo": "substack/tape",
+      "github": {
+        "description": "tap-producing test harness for node and browsers",
+        "stars": 5453,
+        "createdAt": "2012-11-25T17:08:02Z",
+        "openIssues": 5,
+        "openBugIssues": 1,
+        "closedIssues": 11,
+        "closedBugIssues": 1,
+        "repoId": "substack/tape",
+        "repoName": "tape"
+      },
+      "contributors": { "month": "2021-03", "contributors": 2 },
+      "commits": 22
+    },
+    {
+      "repo": "qunitjs/qunit",
+      "github": {
+        "description": "🔮 An easy-to-use JavaScript unit testing framework.",
+        "stars": 3873,
+        "createdAt": "2009-07-24T16:26:23Z",
+        "openIssues": 34,
+        "openBugIssues": 0,
+        "closedIssues": 31,
+        "closedBugIssues": 0,
+        "repoId": "qunitjs/qunit",
+        "repoName": "qunit"
+      },
+      "contributors": { "month": "2021-03", "contributors": 5 },
+      "commits": 26
+    },
+    {
+      "repo": "chaijs/chai",
+      "github": {
+        "description": "BDD / TDD assertion framework for node.js and the browser that can be paired with any testing framework.",
+        "stars": 7210,
+        "createdAt": "2011-12-07T08:06:35Z",
+        "openIssues": 10,
+        "openBugIssues": 0,
+        "closedIssues": 22,
+        "closedBugIssues": 1,
+        "repoId": "chaijs/chai",
+        "repoName": "chai"
+      },
+      "contributors": { "month": "2021-03", "contributors": 12 },
+      "commits": 23
+    },
+    {
+      "repo": "sinonjs/sinon",
+      "github": {
+        "description": "Test spies, stubs and mocks for JavaScript.",
+        "stars": 8500,
+        "createdAt": "2010-06-29T21:15:32Z",
+        "openIssues": 14,
+        "openBugIssues": 5,
+        "closedIssues": 24,
+        "closedBugIssues": 3,
+        "repoId": "sinonjs/sinon",
+        "repoName": "sinon"
+      },
+      "contributors": { "month": "2021-03", "contributors": 3 },
+      "commits": 58
+    },
+    {
+      "repo": "karma-runner/karma",
+      "github": {
+        "description": "Spectacular Test Runner for JavaScript",
+        "stars": 11481,
+        "createdAt": "2011-10-12T07:55:46Z",
+        "openIssues": 24,
+        "openBugIssues": 0,
+        "closedIssues": 78,
+        "closedBugIssues": 3,
+        "repoId": "karma-runner/karma",
+        "repoName": "karma"
+      },
+      "contributors": { "month": "2021-03", "contributors": 11 },
+      "commits": 41
+    },
+    {
+      "repo": "testing-library/dom-testing-library",
+      "github": {
+        "description": "🐙 Simple and complete DOM testing utilities that encourage good testing practices.",
+        "stars": 2538,
+        "createdAt": "2018-04-06T13:08:11Z",
+        "openIssues": 46,
+        "openBugIssues": 2,
+        "closedIssues": 56,
+        "closedBugIssues": 10,
+        "repoId": "testing-library/dom-testing-library",
+        "repoName": "dom-testing-library"
+      },
+      "contributors": { "month": "2021-03", "contributors": 10 },
+      "commits": 22
+    },
+    {
+      "repo": "testing-library/jest-dom",
+      "github": {
+        "description": ":owl: Custom jest matchers to test the state of the DOM",
+        "stars": 2357,
+        "createdAt": "2018-04-09T13:45:07Z",
+        "openIssues": 16,
+        "openBugIssues": 2,
+        "closedIssues": 18,
+        "closedBugIssues": 3,
+        "repoId": "testing-library/jest-dom",
+        "repoName": "jest-dom"
+      },
+      "contributors": { "month": "2021-03", "contributors": 6 },
+      "commits": 11
+    },
+    {
+      "repo": "cucumber/cucumber-js",
+      "github": {
+        "description": "Cucumber for JavaScript",
+        "stars": 4220,
+        "createdAt": "2011-05-27T21:27:17Z",
+        "openIssues": 45,
+        "openBugIssues": 0,
+        "closedIssues": 85,
+        "closedBugIssues": 0,
+        "repoId": "cucumber/cucumber-js",
+        "repoName": "cucumber-js"
+      },
+      "contributors": { "month": "2021-03", "contributors": 9 },
+      "commits": 58
+    },
+    {
+      "repo": "enzymejs/enzyme",
+      "github": {
+        "description": "JavaScript Testing utilities for React",
+        "stars": 19491,
+        "createdAt": "2015-11-10T21:45:38Z",
+        "openIssues": 44,
+        "openBugIssues": 5,
+        "closedIssues": 62,
+        "closedBugIssues": 4,
+        "repoId": "enzymejs/enzyme",
+        "repoName": "enzyme"
+      },
+      "contributors": { "month": "2021-03", "contributors": 4 },
+      "commits": 31
+    },
+    {
+      "repo": "testing-library/react-testing-library",
+      "github": {
+        "description": "🐐 Simple and complete React DOM testing utilities that encourage good testing practices.",
+        "stars": 14284,
+        "createdAt": "2018-03-19T13:39:49Z",
+        "openIssues": 16,
+        "openBugIssues": 0,
+        "closedIssues": 95,
+        "closedBugIssues": 3,
+        "repoId": "testing-library/react-testing-library",
+        "repoName": "react-testing-library"
+      },
+      "contributors": { "month": "2021-03", "contributors": 6 },
+      "commits": 10
+    }
+  ],
+
+  "npm": [
+    {
+      "repo": "facebook/jest",
+      "pkg": "jest",
+      "npmDetails": {
+        "name": "jest",
+        "description": "Delightful JavaScript Testing.",
+        "dependencies": ["@jest/core", "import-local", "jest-cli"],
+        "license": "MIT",
+        "version": "26.6.3",
+        "repository": { "type": "git", "url": "git+https://github.com/facebook/jest.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/jest"
+      },
+      "npmReleases": 0,
+      "npmDownloads": [
+        { "downloads": 41128520, "month": "2020-10" },
+        { "downloads": 40286038, "month": "2020-11" },
+        { "downloads": 37354259, "month": "2020-12" },
+        { "downloads": 39455159, "month": "2021-01" },
+        { "downloads": 43182627, "month": "2021-02" },
+        { "downloads": 52026652, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "avajs/ava",
+      "pkg": "ava",
+      "npmDetails": {
+        "name": "ava",
+        "description": "Node.js test runner that lets you develop with confidence.",
+        "dependencies": [
+          "@concordance/react",
+          "acorn",
+          "acorn-walk",
+          "ansi-styles",
+          "arrgv",
+          "arrify",
+          "callsites",
+          "chalk",
+          "chokidar",
+          "chunkd",
+          "ci-info",
+          "ci-parallel-vars",
+          "clean-yaml-object",
+          "cli-cursor",
+          "cli-truncate",
+          "code-excerpt",
+          "common-path-prefix",
+          "concordance",
+          "convert-source-map",
+          "currently-unhandled",
+          "debug",
+          "del",
+          "emittery",
+          "equal-length",
+          "figures",
+          "globby",
+          "ignore-by-default",
+          "import-local",
+          "indent-string",
+          "is-error",
+          "is-plain-object",
+          "is-promise",
+          "lodash",
+          "matcher",
+          "md5-hex",
+          "mem",
+          "ms",
+          "ora",
+          "p-event",
+          "p-map",
+          "picomatch",
+          "pkg-conf",
+          "plur",
+          "pretty-ms",
+          "read-pkg",
+          "resolve-cwd",
+          "slash",
+          "source-map-support",
+          "stack-utils",
+          "strip-ansi",
+          "supertap",
+          "temp-dir",
+          "trim-off-newlines",
+          "update-notifier",
+          "write-file-atomic",
+          "yargs"
+        ],
+        "license": "MIT",
+        "version": "3.15.0",
+        "repository": { "type": "git", "url": "git+https://github.com/avajs/ava.git" },
+        "hasBuiltinTypes": false,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/ava"
+      },
+      "npmReleases": 1,
+      "npmDownloads": [
+        { "downloads": 818318, "month": "2020-10" },
+        { "downloads": 781710, "month": "2020-11" },
+        { "downloads": 820794, "month": "2020-12" },
+        { "downloads": 839474, "month": "2021-01" },
+        { "downloads": 854922, "month": "2021-02" },
+        { "downloads": 1020531, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "mochajs/mocha",
+      "pkg": "mocha",
+      "npmDetails": {
+        "name": "mocha",
+        "description": "simple, flexible, fun test framework",
+        "dependencies": [
+          "@ungap/promise-all-settled",
+          "ansi-colors",
+          "browser-stdout",
+          "chokidar",
+          "debug",
+          "diff",
+          "escape-string-regexp",
+          "find-up",
+          "glob",
+          "growl",
+          "he",
+          "js-yaml",
+          "log-symbols",
+          "minimatch",
+          "ms",
+          "nanoid",
+          "serialize-javascript",
+          "strip-json-comments",
+          "supports-color",
+          "which",
+          "wide-align",
+          "workerpool",
+          "yargs",
+          "yargs-parser",
+          "yargs-unparser"
+        ],
+        "license": "MIT",
+        "version": "8.3.2",
+        "repository": { "type": "git", "url": "git+https://github.com/mochajs/mocha.git" },
+        "hasBuiltinTypes": false,
+        "hasOtherTypes": true,
+        "typesPackageName": "@types/mocha"
+      },
+      "npmReleases": 3,
+      "npmDownloads": [
+        { "downloads": 20533557, "month": "2020-10" },
+        { "downloads": 19597772, "month": "2020-11" },
+        { "downloads": 19198496, "month": "2020-12" },
+        { "downloads": 19564365, "month": "2021-01" },
+        { "downloads": 20720808, "month": "2021-02" },
+        { "downloads": 24119809, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "jasmine/jasmine",
+      "pkg": "jasmine-core",
+      "npmDetails": {
+        "name": "jasmine-core",
+        "description": "Official packaging of Jasmine's core files for use by Node.js projects.",
+        "dependencies": [],
+        "license": "MIT",
+        "version": "3.7.1",
+        "repository": { "type": "git", "url": "git+https://github.com/jasmine/jasmine.git" },
+        "hasBuiltinTypes": false,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/jasmine-core"
+      },
+      "npmReleases": 2,
+      "npmDownloads": [
+        { "downloads": 14861513, "month": "2020-10" },
+        { "downloads": 14278340, "month": "2020-11" },
+        { "downloads": 13564058, "month": "2020-12" },
+        { "downloads": 13855983, "month": "2021-01" },
+        { "downloads": 14853432, "month": "2021-02" },
+        { "downloads": 17774916, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "substack/tape",
+      "pkg": "tape",
+      "npmDetails": {
+        "name": "tape",
+        "description": "tap-producing test harness for node and browsers",
+        "dependencies": [
+          "call-bind",
+          "deep-equal",
+          "defined",
+          "dotignore",
+          "for-each",
+          "glob",
+          "has",
+          "inherits",
+          "is-regex",
+          "minimist",
+          "object-inspect",
+          "object-is",
+          "object.assign",
+          "resolve",
+          "resumer",
+          "string.prototype.trim",
+          "through"
+        ],
+        "license": "MIT",
+        "version": "5.2.2",
+        "repository": { "type": "git", "url": "git://github.com/substack/tape.git" },
+        "hasBuiltinTypes": false,
+        "hasOtherTypes": true,
+        "typesPackageName": "@types/tape"
+      },
+      "npmReleases": 4,
+      "npmDownloads": [
+        { "downloads": 2471078, "month": "2020-10" },
+        { "downloads": 2507429, "month": "2020-11" },
+        { "downloads": 2365601, "month": "2020-12" },
+        { "downloads": 2446793, "month": "2021-01" },
+        { "downloads": 2480401, "month": "2021-02" },
+        { "downloads": 2923788, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "qunitjs/qunit",
+      "pkg": "qunit",
+      "npmDetails": {
+        "name": "qunit",
+        "description": "The powerful, easy-to-use testing framework.",
+        "dependencies": ["commander", "js-reporters", "node-watch", "tiny-glob"],
+        "license": "MIT",
+        "version": "2.15.0",
+        "repository": { "type": "git", "url": "git://github.com/qunitjs/qunit.git" },
+        "hasBuiltinTypes": false,
+        "hasOtherTypes": true,
+        "typesPackageName": "@types/qunit"
+      },
+      "npmReleases": 2,
+      "npmDownloads": [
+        { "downloads": 657120, "month": "2020-10" },
+        { "downloads": 597820, "month": "2020-11" },
+        { "downloads": 575398, "month": "2020-12" },
+        { "downloads": 617701, "month": "2021-01" },
+        { "downloads": 828453, "month": "2021-02" },
+        { "downloads": 973011, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "chaijs/chai",
+      "pkg": "chai",
+      "npmDetails": {
+        "name": "chai",
+        "description": "BDD/TDD assertion library for node.js and the browser. Test framework agnostic.",
+        "dependencies": ["assertion-error", "check-error", "deep-eql", "get-func-name", "pathval", "type-detect"],
+        "license": "MIT",
+        "version": "4.3.4",
+        "repository": { "type": "git", "url": "git+https://github.com/chaijs/chai.git" },
+        "hasBuiltinTypes": false,
+        "hasOtherTypes": true,
+        "typesPackageName": "@types/chai"
+      },
+      "npmReleases": 5,
+      "npmDownloads": [
+        { "downloads": 16609412, "month": "2020-10" },
+        { "downloads": 15563433, "month": "2020-11" },
+        { "downloads": 15411094, "month": "2020-12" },
+        { "downloads": 15716268, "month": "2021-01" },
+        { "downloads": 16659380, "month": "2021-02" },
+        { "downloads": 19566420, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "sinonjs/sinon",
+      "pkg": "sinon",
+      "npmDetails": {
+        "name": "sinon",
+        "description": "JavaScript test spies, stubs and mocks.",
+        "dependencies": ["@sinonjs/commons", "@sinonjs/fake-timers", "@sinonjs/samsam", "diff", "nise", "supports-color"],
+        "license": "BSD-3-Clause",
+        "version": "10.0.0",
+        "repository": { "type": "git", "url": "git+ssh://git@github.com/sinonjs/sinon.git" },
+        "hasBuiltinTypes": false,
+        "hasOtherTypes": true,
+        "typesPackageName": "@types/sinon"
+      },
+      "npmReleases": 3,
+      "npmDownloads": [
+        { "downloads": 12701993, "month": "2020-10" },
+        { "downloads": 11952266, "month": "2020-11" },
+        { "downloads": 11962289, "month": "2020-12" },
+        { "downloads": 12736078, "month": "2021-01" },
+        { "downloads": 13616741, "month": "2021-02" },
+        { "downloads": 16330800, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "karma-runner/karma",
+      "pkg": "karma",
+      "npmDetails": {
+        "name": "karma",
+        "description": "Spectacular Test Runner for JavaScript.",
+        "dependencies": [
+          "body-parser",
+          "braces",
+          "chokidar",
+          "colors",
+          "connect",
+          "di",
+          "dom-serialize",
+          "glob",
+          "graceful-fs",
+          "http-proxy",
+          "isbinaryfile",
+          "lodash",
+          "log4js",
+          "mime",
+          "minimatch",
+          "qjobs",
+          "range-parser",
+          "rimraf",
+          "socket.io",
+          "source-map",
+          "tmp",
+          "ua-parser-js",
+          "yargs"
+        ],
+        "license": "MIT",
+        "version": "6.3.2",
+        "repository": { "type": "git", "url": "git://github.com/karma-runner/karma.git" },
+        "hasBuiltinTypes": false,
+        "hasOtherTypes": true,
+        "typesPackageName": "@types/karma"
+      },
+      "npmReleases": 12,
+      "npmDownloads": [
+        { "downloads": 8323417, "month": "2020-10" },
+        { "downloads": 7926183, "month": "2020-11" },
+        { "downloads": 7485072, "month": "2020-12" },
+        { "downloads": 7782173, "month": "2021-01" },
+        { "downloads": 8447485, "month": "2021-02" },
+        { "downloads": 9924762, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "testing-library/dom-testing-library",
+      "pkg": "@testing-library/dom",
+      "npmDetails": {
+        "name": "@testing-library/dom",
+        "description": "Simple and complete DOM testing utilities that encourage good testing practices.",
+        "dependencies": ["@babel/code-frame", "@babel/runtime", "@types/aria-query", "aria-query", "chalk", "dom-accessibility-api", "lz-string", "pretty-format"],
+        "license": "MIT",
+        "version": "7.30.3",
+        "repository": { "type": "git", "url": "git+https://github.com/testing-library/dom-testing-library.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/testing-library__dom"
+      },
+      "npmReleases": 10,
+      "npmDownloads": [
+        { "downloads": 15429599, "month": "2020-10" },
+        { "downloads": 15295688, "month": "2020-11" },
+        { "downloads": 14443126, "month": "2020-12" },
+        { "downloads": 16033749, "month": "2021-01" },
+        { "downloads": 17339843, "month": "2021-02" },
+        { "downloads": 20976189, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "testing-library/jest-dom",
+      "pkg": "@testing-library/jest-dom",
+      "npmDetails": {
+        "name": "@testing-library/jest-dom",
+        "description": "Custom jest matchers to test the state of the DOM",
+        "dependencies": ["@babel/runtime", "@types/testing-library__jest-dom", "aria-query", "chalk", "css", "css.escape", "lodash", "redent"],
+        "license": "MIT",
+        "version": "5.11.10",
+        "repository": { "type": "git", "url": "git+https://github.com/testing-library/jest-dom.git" },
+        "hasBuiltinTypes": false,
+        "hasOtherTypes": true,
+        "typesPackageName": "@types/testing-library__jest-dom"
+      },
+      "npmReleases": 2,
+      "npmDownloads": [
+        { "downloads": 9757424, "month": "2020-10" },
+        { "downloads": 10001686, "month": "2020-11" },
+        { "downloads": 9514968, "month": "2020-12" },
+        { "downloads": 10815329, "month": "2021-01" },
+        { "downloads": 11872251, "month": "2021-02" },
+        { "downloads": 14673303, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "cucumber/cucumber-js",
+      "pkg": "@cucumber/cucumber",
+      "npmDetails": {
+        "name": "@cucumber/cucumber",
+        "description": "The official JavaScript implementation of Cucumber.",
+        "dependencies": [
+          "@cucumber/create-meta",
+          "@cucumber/cucumber-expressions",
+          "@cucumber/gherkin",
+          "@cucumber/gherkin-streams",
+          "@cucumber/html-formatter",
+          "@cucumber/messages",
+          "@cucumber/query",
+          "@cucumber/tag-expressions",
+          "assertion-error-formatter",
+          "bluebird",
+          "capital-case",
+          "cli-table3",
+          "colors",
+          "commander",
+          "create-require",
+          "duration",
+          "durations",
+          "figures",
+          "glob",
+          "indent-string",
+          "is-generator",
+          "is-stream",
+          "knuth-shuffle-seeded",
+          "lodash",
+          "mz",
+          "progress",
+          "resolve",
+          "resolve-pkg",
+          "stack-chain",
+          "stacktrace-js",
+          "string-argv",
+          "tmp",
+          "util-arity",
+          "verror"
+        ],
+        "license": "MIT",
+        "version": "7.1.0",
+        "repository": { "type": "git", "url": "git://github.com/cucumber/cucumber-js.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/cucumber__cucumber"
+      },
+      "npmReleases": 0,
+      "npmDownloads": [
+        { "downloads": 50730, "month": "2020-10" },
+        { "downloads": 67378, "month": "2020-11" },
+        { "downloads": 74896, "month": "2020-12" },
+        { "downloads": 90811, "month": "2021-01" },
+        { "downloads": 138022, "month": "2021-02" },
+        { "downloads": 233951, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "enzymejs/enzyme",
+      "pkg": "enzyme",
+      "npmDetails": {
+        "name": "enzyme",
+        "description": "JavaScript Testing utilities for React",
+        "dependencies": [
+          "array.prototype.flat",
+          "cheerio",
+          "enzyme-shallow-equal",
+          "function.prototype.name",
+          "has",
+          "html-element-map",
+          "is-boolean-object",
+          "is-callable",
+          "is-number-object",
+          "is-regex",
+          "is-string",
+          "is-subset",
+          "lodash.escape",
+          "lodash.isequal",
+          "object-inspect",
+          "object-is",
+          "object.assign",
+          "object.entries",
+          "object.values",
+          "raf",
+          "rst-selector-parser",
+          "string.prototype.trim"
+        ],
+        "license": "MIT",
+        "version": "3.11.0",
+        "repository": { "type": "git", "url": "git+https://github.com/airbnb/enzyme.git", "directory": "packages/enzyme" },
+        "hasBuiltinTypes": false,
+        "hasOtherTypes": true,
+        "typesPackageName": "@types/enzyme"
+      },
+      "npmReleases": 0,
+      "npmDownloads": [
+        { "downloads": 10026966, "month": "2020-10" },
+        { "downloads": 9363958, "month": "2020-11" },
+        { "downloads": 8584211, "month": "2020-12" },
+        { "downloads": 9138006, "month": "2021-01" },
+        { "downloads": 9668666, "month": "2021-02" },
+        { "downloads": 11179182, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "testing-library/react-testing-library",
+      "pkg": "@testing-library/react",
+      "npmDetails": {
+        "name": "@testing-library/react",
+        "description": "Simple and complete React DOM testing utilities that encourage good testing practices.",
+        "dependencies": ["@babel/runtime", "@testing-library/dom"],
+        "license": "MIT",
+        "version": "11.2.6",
+        "repository": { "type": "git", "url": "git+https://github.com/testing-library/react-testing-library.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/testing-library__react"
+      },
+      "npmReleases": 4,
+      "npmDownloads": [
+        { "downloads": 11275369, "month": "2020-10" },
+        { "downloads": 11550348, "month": "2020-11" },
+        { "downloads": 10722475, "month": "2020-12" },
+        { "downloads": 12009581, "month": "2021-01" },
+        { "downloads": 13766487, "month": "2021-02" },
+        { "downloads": 16835554, "month": "2021-03" }
+      ]
+    }
+  ],
+
+  "radar": {
+    "facebook/jest": { "url": "https://www.thoughtworks.com/radar/languages-and-frameworks/jest", "level": "TRIAL" },
+    "avajs/ava": { "url": "https://www.thoughtworks.com/radar/tools/ava", "level": "TRIAL" },
+    "enzymejs/enzyme": { "url": "https://www.thoughtworks.com/radar/languages-and-frameworks/enzyme", "level": "HOLD" },
+    "testing-library/react-testing-library": { "url": "https://www.thoughtworks.com/radar/languages-and-frameworks/react-testing-library", "level": "ADOPT" }
+  },
+
+  "bundleSize": [],
+
+  "devUsage": { "facebook/jest": 68.3, "avajs/ava": 7.8, "mochajs/mocha": 52.7, "jasmine/jasmine": 42, "testing-library/react-testing-library": 26.4 },
+
+  "googleTrends": { "facebook/jest": 30, "mochajs/mocha": 5, "jasmine/jasmine": 9, "sinonjs/sinon": 3, "cucumber/cucumber-js": 19 }
+}

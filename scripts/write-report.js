@@ -9,33 +9,29 @@ const catalog = fs.readFileSync(
 const catalogItems = JSON.parse(catalog);
 
 const libs = [
-  ['facebook/react', 'react'],
-  ['vuejs/vue', 'vue'],
-  ['angular/angular', '@angular/core'],
-  ['sveltejs/svelte', 'svelte'],
-  ['emberjs/ember.js', 'ember-source'],
-  ['alpinejs/alpine', 'alpinejs'],
-  ['infernojs/inferno', 'inferno'],
-  ['preactjs/preact', 'preact'],
-  ['jorgebucaran/hyperapp', 'hyperapp'],
-  ['riot/riot', 'riot'],
-  ['angular/angular.js', 'angular'],
-  ['marionettejs/backbone.marionette', 'backbone.marionette'],
-  ['knockout/knockout', 'knockout'],
-  ['ryansolid/solid', 'solid-js'],
-  ['MithrilJS/mithril.js', 'mithril'],
-  ['aurelia/framework', 'aurelia-framework'],
-  ['hotwired/stimulus', 'stimulus'],
-  ['marko-js/marko', 'marko'],
+  ['facebook/jest', 'jest'],
+  ['avajs/ava', 'ava'],
+  ['mochajs/mocha', 'mocha'],
+  ['jasmine/jasmine', 'jasmine-core'],
+  ['substack/tape', 'tape'],
+  ['qunitjs/qunit', 'qunit'],
+  ['chaijs/chai', 'chai'],
+  ['sinonjs/sinon', 'sinon'],
+  ['karma-runner/karma', 'karma'],
+  ['testing-library/dom-testing-library', '@testing-library/dom'],
+  ['testing-library/jest-dom', '@testing-library/jest-dom'],
+  ['cucumber/cucumber-js', '@cucumber/cucumber'],
+  ['enzymejs/enzyme', 'enzyme'],
+  ['testing-library/react-testing-library', '@testing-library/react'],
 ];
 
 // fetchLastMonthStars
 // fetchLastQuarterStars
 // fetchGithubOther
-// fetchNpmOther
+// fetchNpmAll
 // fetchBundleSize
 
-// Promise.all(libs.map(([repo, pkg]) => fetchBundleSize(repo, pkg)))
+// Promise.all(libs.map(([repo, pkg]) => fetchNpmAll(repo, pkg)))
 //   .then((data) => {
 //     console.log(JSON.stringify(data));
 //     // console.log(data);
@@ -70,7 +66,9 @@ const libs = [
 //     .filter(Boolean)
 //     .reduce((acc, { repoId, usage }) => {
 //       const usage2020 = usage.slice(-1)[0].year === 2020 ? usage.pop() : null;
-//       acc[repoId.toLowerCase()] = usage2020.value;
+//       if (usage2020) {
+//         acc[repoId.toLowerCase()] = usage2020.value;
+//       }
 //       return acc;
 //     }, {});
 //
@@ -641,6 +639,10 @@ function getGTrendsRepos(repos) {
     ['reactivex/rxjs', 'rxjs'],
     ['vuejs/vuex', 'vuex'],
     ['mobxjs/mobx', 'mobx'],
+    ['cucumber/cucumber-js', '/m/0c4z18h'],
+    ['mochajs/mocha', 'Mocha'],
+    ['jasmine/jasmine', 'jasmine'],
+    ['sinonjs/sinon', 'sinon'],
   ];
 
   return repos.filter((repo) =>

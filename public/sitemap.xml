@@ -6044,12 +6044,42 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=@testing-library/angular</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@testing-library/dom</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@testing-library/jest-dom</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=@testing-library/react</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://moiva.io/?npm=@testing-library/react+enzyme</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@testing-library/svelte</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@testing-library/vue</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@testing-library/vue+@vue/test-utils</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -6105,6 +6135,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=@vue/cli</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@vue/test-utils</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -6739,7 +6774,7 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?npm=ava+jasmine</loc>
+    <loc>https://moiva.io/?npm=ava+jasmine-core</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -9419,27 +9454,27 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?npm=jasmine</loc>
+    <loc>https://moiva.io/?npm=jasmine-core</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?npm=jasmine+jest</loc>
+    <loc>https://moiva.io/?npm=jasmine-core+jest</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?npm=jasmine+mocha</loc>
+    <loc>https://moiva.io/?npm=jasmine-core+mocha</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?npm=jasmine+qunit</loc>
+    <loc>https://moiva.io/?npm=jasmine-core+qunit</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?npm=jasmine+tape</loc>
+    <loc>https://moiva.io/?npm=jasmine-core+tape</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -12210,6 +12245,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=showdown</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=sinon</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
