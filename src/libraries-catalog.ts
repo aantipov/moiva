@@ -177,7 +177,6 @@ const libraries: CatalogLibraryT[] = [
   { category: 'misc', repoId: 'axios/axios', npm: 'axios', isNpmAByProduct: false, alias: 'Axios', framework: null },
   { category: 'misc', repoId: 'petkaantonov/bluebird', npm: 'bluebird', isNpmAByProduct: false, alias: 'Bluebird', framework: null },
   { category: 'misc', repoId: 'buefy/buefy', npm: 'buefy', isNpmAByProduct: false, alias: 'Buefy', framework: null },
-  { category: 'misc', repoId: 'chaijs/chai', npm: 'chai', isNpmAByProduct: false, alias: 'Chai', framework: null },
   { category: 'misc', repoId: 'tj/commander.js', npm: 'commander', isNpmAByProduct: false, alias: 'Commander.js', framework: null },
   { category: 'misc', repoId: 'commitizen/cz-cli', npm: 'commitizen', isNpmAByProduct: false, alias: 'Commitizen', framework: null },
   { category: 'misc', repoId: 'JedWatson/classnames', npm: 'classnames', isNpmAByProduct: false, alias: 'Classnames', framework: null },
@@ -189,7 +188,6 @@ const libraries: CatalogLibraryT[] = [
   { category: 'misc', repoId: 'gulpjs/gulp', npm: 'gulp', isNpmAByProduct: false, alias: 'Gulp', framework: null },
   { category: 'misc', repoId: 'SBoudrias/Inquirer.js', npm: 'inquirer', isNpmAByProduct: false, alias: 'Inquirer.js', framework: null },
   { category: 'misc', repoId: 'jquery/jquery', npm: 'jquery', isNpmAByProduct: false, alias: 'Jquery', framework: null },
-  { category: 'misc', repoId: 'karma-runner/karma', npm: 'karma', isNpmAByProduct: false, alias: 'Karma', framework: null },
   { category: 'misc', repoId: 'less/less.js', npm: 'less', isNpmAByProduct: false, alias: 'Less.js', framework: null },
   { category: 'misc', repoId: 'isaacs/node-mkdirp', npm: 'mkdirp', isNpmAByProduct: false, alias: 'node-mkdirp', framework: null },
   { category: 'misc', repoId: 'bitinn/node-fetch', npm: 'node-fetch', isNpmAByProduct: false, alias: 'node-fetch', framework: null },
@@ -669,7 +667,7 @@ const libraries: CatalogLibraryT[] = [
   { category: 'JavaScript Testing Frameworks', repoId: 'facebook/jest', npm: 'jest', isNpmAByProduct: false, alias: 'Jest', framework: null },
   { category: 'JavaScript Testing Frameworks', repoId: 'avajs/ava', npm: 'ava', isNpmAByProduct: false, alias: 'Ava', framework: null },
   { category: 'JavaScript Testing Frameworks', repoId: 'mochajs/mocha', npm: 'mocha', isNpmAByProduct: false, alias: 'Mocha', framework: null },
-  { category: 'JavaScript Testing Frameworks', repoId: 'jasmine/jasmine', npm: 'jasmine', isNpmAByProduct: false, alias: 'Jasmine', framework: null },
+  { category: 'JavaScript Testing Frameworks', repoId: 'jasmine/jasmine', npm: 'jasmine-core', isNpmAByProduct: false, alias: 'Jasmine', framework: null },
   { category: 'JavaScript Testing Frameworks', repoId: 'substack/tape', npm: 'tape', isNpmAByProduct: false, alias: 'Tape', framework: null },
   { category: 'JavaScript Testing Frameworks', repoId: 'qunitjs/qunit', npm: 'qunit', isNpmAByProduct: false, alias: 'Qunit', framework: null },
 
@@ -685,6 +683,15 @@ const libraries: CatalogLibraryT[] = [
   { category: 'UI Frameworks for building Mobile Apps (Desktop and Web)', repoId: 'framework7io/framework7', npm: 'framework7', isNpmAByProduct: false, alias: 'Framework7', framework: null },
   { category: 'UI Frameworks for building Mobile Apps (Desktop and Web)', repoId: 'OnsenUI/OnsenUI', npm: 'onsenui', isNpmAByProduct: false, alias: 'OnsenUI', framework: null },
   { category: 'UI Frameworks for building Mobile Apps (Desktop and Web)', repoId: 'apache/incubator-weex', npm: null, isNpmAByProduct: null, alias: 'incubator-weex', framework: null },
+
+  // Unit-Testing Libraries
+  { category: 'Unit-Testing Libraries', repoId: 'testing-library/dom-testing-library', npm: '@testing-library/dom', isNpmAByProduct: false, alias: 'DOM Testing Library', framework: null },
+  { category: 'Unit-Testing Libraries', repoId: 'testing-library/jest-dom', npm: '@testing-library/jest-dom', isNpmAByProduct: false, alias: 'jest-dom', framework: null },
+  { category: 'Unit-Testing Libraries', repoId: 'testing-library/svelte-testing-library', npm: '@testing-library/svelte', isNpmAByProduct: false, alias: 'Svelte Testing Library', framework: null },
+  { category: 'Unit-Testing Libraries', repoId: 'testing-library/angular-testing-library', npm: '@testing-library/angular', isNpmAByProduct: false, alias: 'Angular Testing Library', framework: null },
+  { category: 'Unit-Testing Libraries', repoId: 'chaijs/chai', npm: 'chai', isNpmAByProduct: false, alias: 'Chai', framework: null },
+  { category: 'Unit-Testing Libraries', repoId: 'sinonjs/sinon', npm: 'sinon', isNpmAByProduct: false, alias: 'Sinon.js', framework: null },
+  { category: 'Unit-Testing Libraries', repoId: 'karma-runner/karma', npm: 'karma', isNpmAByProduct: false, alias: 'Karma', framework: null },
 
   // JavaScript Utility Libraries
   { category: 'JavaScript Utility Libraries', repoId: 'lodash/lodash', npm: 'lodash', isNpmAByProduct: false, alias: 'Lodash', framework: null },
@@ -710,6 +717,10 @@ const libraries: CatalogLibraryT[] = [
   { category: 'VueJS Component Libraries', repoId: 'element-plus/element-plus', npm: 'element-plus', isNpmAByProduct: false, alias: 'Element Plus', framework: null },
   { category: 'VueJS Component Libraries', repoId: 'iview/iview', npm: 'iview', isNpmAByProduct: false, alias: 'iView', framework: null },
   { category: 'VueJS Component Libraries', repoId: 'vueComponent/ant-design-vue', npm: 'ant-design-vue', isNpmAByProduct: false, alias: 'Ant Design Vue', framework: null },
+
+  // VueJS Unit-Testing Libraries
+  { category: 'VueJS Unit-Testing Libraries', repoId: 'vuejs/vue-test-utils', npm: '@vue/test-utils', isNpmAByProduct: false, alias: 'Vue Test Utils', framework: null },
+  { category: 'VueJS Unit-Testing Libraries', repoId: 'testing-library/vue-testing-library', npm: '@testing-library/vue', isNpmAByProduct: false, alias: 'Vue Testing Library', framework: null },
 
   // Web Components UI Libraries
   { category: 'Web Components UI Libraries', repoId: 'ionic-team/stencil', npm: '@stencil/core', isNpmAByProduct: false, alias: 'Stencil', framework: null },
