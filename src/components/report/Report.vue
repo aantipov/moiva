@@ -208,10 +208,6 @@ export default defineComponent({
         return `https://github.com/${repoId}`;
       },
       getHref(repoId: string): string {
-        if (!catalogRepoIdToLib[repoId.toLowerCase()]) {
-          console.log('ALARM', repoId);
-          return '';
-        }
         const npm = catalogRepoIdToLib[repoId.toLowerCase()].npm as string;
         if (!npm) {
           throw new Error('no npm package');
