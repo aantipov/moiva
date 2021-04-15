@@ -69,19 +69,25 @@
               class="col-span-12 md:col-span-6 md:col-start-4 xl:col-span-4 xl:col-start-5"
             />
             <TechRadar />
-            <Bundlephobia />
+            <Bundlephobia :category="category" />
           </template>
           <template v-else-if="miscChartsNumber === 2">
             <Languages
               class="col-span-12 md:col-span-6 xl:col-span-4 xl:col-start-3"
             />
             <TechRadar class="col-span-12 md:col-span-6 xl:col-span-4" />
-            <Bundlephobia class="col-span-12 md:col-span-6 xl:col-span-4" />
+            <Bundlephobia
+              :category="category"
+              class="col-span-12 md:col-span-6 xl:col-span-4"
+            />
           </template>
           <template v-else>
             <Languages class="col-span-12 md:col-span-6 xl:col-span-4" />
             <TechRadar class="col-span-12 md:col-span-6 xl:col-span-4" />
-            <Bundlephobia class="col-span-12 md:col-span-6 xl:col-span-4" />
+            <Bundlephobia
+              :category="category"
+              class="col-span-12 md:col-span-6 xl:col-span-4"
+            />
           </template>
         </div>
       </div>
@@ -98,7 +104,7 @@ import Suggestions from './Suggestions.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './google-trends/GTrends.vue';
 import Stars from './github-stars/Stars.vue';
-import Bundlephobia from './Bundlephobia.vue';
+import Bundlephobia from './bundle-size/Bundlephobia.vue';
 import Issues from './Issues.vue';
 import Popular from './Popular.vue';
 import SelectedLibs from './SelectedLibs.vue';

@@ -1,6 +1,6 @@
 <template>
   <BundlephobiaChart
-    v-if="npmPackagesNames.length"
+    v-if="isChartDisplayed"
     :is-loading="isLoading"
     :is-error="isError"
     :packages-names="successItemsIds"
@@ -10,10 +10,11 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, watchEffect } from 'vue';
+import { defineComponent, computed, watchEffect, toRefs } from 'vue';
 import BundlephobiaChart from './BundlephobiaChart.vue';
-import { fetchBundlephobiaData, BundlephobiaT } from '../apis';
+import { fetchBundlephobiaData, BundlephobiaT } from '../../apis';
 import { chartsVisibility } from '@/store/chartsVisibility';
+import whitelistedCategories from './whitelist.json';
 import useChartApi from '@/composables/useChartApi';
 import {
   isLoading as isLoadingLibraries,
@@ -25,7 +26,20 @@ export default defineComponent({
 
   components: { BundlephobiaChart },
 
-  setup() {
+  props: {
+    category: {
+      type: String as () => string,
+      required: true,
+    },
+  },
+
+  setup(props) {
+    const { category } = toRefs(props);
+    const isChartDisplayed = computed(
+      () =>
+        npmPackagesNames.value.length > 0 &&
+        (!category.value || whitelistedCategories.includes(category.value))
+    );
     const {
       isLoading,
       isError,
@@ -34,21 +48,21 @@ export default defineComponent({
       failedItemsIds,
     } = useChartApi<BundlephobiaT>(
       npmPackagesNames,
-      isLoadingLibraries,
+      computed(() => isLoadingLibraries.value || !isChartDisplayed.value),
       fetchBundlephobiaData
     );
 
     watchEffect(() => {
-      chartsVisibility.bundlephobia = npmPackagesNames.value.length > 0;
+      chartsVisibility.bundlephobia = isChartDisplayed.value;
     });
 
     return {
       isLoading: computed(() => isLoadingLibraries.value || isLoading.value),
       isError,
-      npmPackagesNames, // all items
       items,
       failedItemsIds,
       successItemsIds,
+      isChartDisplayed,
     };
   },
 });
