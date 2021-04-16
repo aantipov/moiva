@@ -2,12 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://moiva.io/blog</loc>
-    <lastmod>2021-04-14</lastmod>
+    <lastmod>2021-04-16</lastmod>
     <changefreq>weekly</changefreq>
   </url>
 
   <url>
-    <loc>https://moiva.io/blog/2021-q1-report-state-management/</loc>
+    <loc>https://moiva.io/blog/2021-q1-report-js-testing-libraries</loc>
+    <lastmod>2021-04-16</lastmod>
+  </url>
+
+  <url>
+    <loc>https://moiva.io/blog/2021-q1-report-state-management</loc>
     <lastmod>2021-04-14</lastmod>
   </url>
 
