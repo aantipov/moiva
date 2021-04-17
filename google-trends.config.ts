@@ -38,6 +38,8 @@ const gtrendsDefs: [RepoIdT, KeywordT, KeywordAliasT?][] = [
   ['mochajs/mocha', 'Mocha'],
   ['jasmine/jasmine', 'jasmine'],
   ['sinonjs/sinon', 'sinon'],
+  ['gatsbyjs/gatsby', 'gatsby'],
+  ['nuxt/nuxt.js', '/g/11g0wgnhgc', 'Nuxt.js'],
 ];
 
 export interface GTrendDefT {
