@@ -1,21 +1,24 @@
 /* eslint-disable */
 const fs = require('fs');
-const rawFile = '../reports/buildtools-2021-q1-raw.json';
-const file = '../reports/buildtools-2021-q1.json';
+const rawFile = '../reports/e2e-2021-q1-raw.json';
+const file = '../reports/e2e-2021-q1.json';
 const includeBundleSize = true;
 
 const content = fs.readFileSync(rawFile, 'utf8');
 const data = JSON.parse(content);
 const libs = [
-  ['webpack/webpack', 'webpack'],
-  ['rollup/rollup', 'rollup'],
-  ['parcel-bundler/parcel', '@parcel/core'],
-  ['snowpackjs/snowpack', 'snowpack'],
-  ['vitejs/vite', 'vite'],
-  ['evanw/esbuild', 'esbuild'],
-  ['preactjs/wmr', 'wmr'],
-  ['browserify/browserify', 'browserify'],
-  ['developit/microbundle', 'microbundle'],
+  ['puppeteer/puppeteer', 'puppeteer'],
+  ['cypress-io/cypress', 'cypress'],
+  ['Microsoft/playwright', 'playwright'],
+  ['SeleniumHQ/selenium', 'selenium-webdriver'],
+  ['webdriverio/webdriverio', 'webdriverio'],
+  ['DevExpress/testcafe', 'testcafe'],
+  ['nightwatchjs/nightwatch', 'nightwatch'],
+  ['getgauge/taiko', 'taiko'],
+  ['segmentio/nightmare', 'nightmare'],
+  ['casperjs/casperjs', 'casperjs'],
+  ['laurentj/slimerjs', 'slimerjs'],
+  ['assaf/zombie', 'zombie'],
 ];
 
 const result = libs.map(([repo], i) => {

@@ -9,15 +9,18 @@ const catalog = fs.readFileSync(
 const catalogItems = JSON.parse(catalog);
 
 const libs = [
-  ['webpack/webpack', 'webpack'],
-  ['rollup/rollup', 'rollup'],
-  ['parcel-bundler/parcel', '@parcel/core'],
-  ['snowpackjs/snowpack', 'snowpack'],
-  ['vitejs/vite', 'vite'],
-  ['evanw/esbuild', 'esbuild'],
-  ['preactjs/wmr', 'wmr'],
-  ['browserify/browserify', 'browserify'],
-  ['developit/microbundle', 'microbundle'],
+  ['puppeteer/puppeteer', 'puppeteer'],
+  ['cypress-io/cypress', 'cypress'],
+  ['Microsoft/playwright', 'playwright'],
+  ['SeleniumHQ/selenium', 'selenium-webdriver'],
+  ['webdriverio/webdriverio', 'webdriverio'],
+  ['DevExpress/testcafe', 'testcafe'],
+  ['nightwatchjs/nightwatch', 'nightwatch'],
+  ['getgauge/taiko', 'taiko'],
+  ['segmentio/nightmare', 'nightmare'],
+  ['casperjs/casperjs', 'casperjs'],
+  ['laurentj/slimerjs', 'slimerjs'],
+  ['assaf/zombie', 'zombie'],
 ];
 
 // fetchLastMonthStars
@@ -26,7 +29,7 @@ const libs = [
 // fetchNpmAll
 // fetchBundleSize
 
-Promise.all(libs.map(([repo, pkg]) => fetchLastMonthStars(repo, pkg)))
+Promise.all(libs.map(([repo, pkg]) => fetchNpmAll(repo, pkg)))
   .then((data) => {
     console.log(JSON.stringify(data));
     // console.log(data);
@@ -76,7 +79,7 @@ Promise.all(libs.map(([repo, pkg]) => fetchLastMonthStars(repo, pkg)))
 //       acc[repo] = trend;
 //       return acc;
 //     }, {});
-//     console.log('TRENDS', JSON.stringify(val));
+//     console.log(JSON.stringify(val));
 //   })
 //   .catch((err) => console.log(err));
 
