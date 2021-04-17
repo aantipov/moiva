@@ -7,12 +7,30 @@ type TRadarLevelT = typeof HOLD | typeof ADOPT | typeof TRIAL | typeof ASSESS;
 
 export const TRADAR_LEVELS: TRadarLevelT[] = [HOLD, ASSESS, TRIAL, ADOPT];
 
+export type DateT =
+  | '2014-01'
+  | '2014-07'
+  | '2015-01'
+  | '2015-05'
+  | '2015-11'
+  | '2016-04'
+  | '2016-11'
+  | '2017-03'
+  | '2017-11'
+  | '2018-05'
+  | '2018-03'
+  | '2018-11'
+  | '2019-04'
+  | '2019-11'
+  | '2020-05'
+  | '2020-10'
+  | '2021-04';
+
 type RepoNameT = string;
 type AliasT = string;
 type LinkT = string;
-interface DataT {
-  [key: string]: TRadarLevelT;
-}
+type DataT = Partial<{ [key in DateT]: TRadarLevelT }>;
+
 export interface TechRadarT {
   repo: RepoNameT;
   alias: AliasT;
@@ -427,6 +445,60 @@ const libs: [RepoNameT, AliasT, LinkT, DataT][] = [
     'Next.js',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/next-js',
     { '2019-04': ASSESS },
+  ],
+  [
+    'backstage/backstage',
+    'Backstage',
+    'https://www.thoughtworks.com/radar/platforms/backstage',
+    { '2020-10': ASSESS, '2021-04': TRIAL },
+  ],
+  [
+    'MaterializeInc/materialize',
+    'Materialize',
+    'https://www.thoughtworks.com/radar/platforms/materialize',
+    { '2020-10': ASSESS, '2021-04': TRIAL },
+  ],
+  [
+    'apache/incubator-pinot',
+    'Apache Pinot',
+    'https://www.thoughtworks.com/radar/platforms/apache-pinot',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'teambit/bit',
+    'Bit.dev',
+    'https://www.thoughtworks.com/radar/platforms/bit-dev',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'linkedin/datahub',
+    'DataHub',
+    'https://www.thoughtworks.com/radar/platforms/datahub',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'juicedata/juicefs',
+    'JuiceFS',
+    'https://www.thoughtworks.com/radar/platforms/juicefs',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'opstrace/opstrace',
+    'Opstrace',
+    'https://www.thoughtworks.com/radar/platforms/opstrace',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'pulumi/pulumi',
+    'Pulumi',
+    'https://www.thoughtworks.com/radar/platforms/pulumi',
+    { '2018-11': ASSESS, '2020-10': ASSESS, '2021-04': ASSESS },
+  ],
+  [
+    'vectorizedio/redpanda',
+    'Redpanda',
+    'https://www.thoughtworks.com/radar/platforms/redpanda',
+    { '2021-04': ASSESS },
   ],
 ];
 
