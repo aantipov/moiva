@@ -9,18 +9,18 @@ const catalog = fs.readFileSync(
 const catalogItems = JSON.parse(catalog);
 
 const libs = [
-  ['puppeteer/puppeteer', 'puppeteer'],
-  ['cypress-io/cypress', 'cypress'],
-  ['Microsoft/playwright', 'playwright'],
-  ['SeleniumHQ/selenium', 'selenium-webdriver'],
-  ['webdriverio/webdriverio', 'webdriverio'],
-  ['DevExpress/testcafe', 'testcafe'],
-  ['nightwatchjs/nightwatch', 'nightwatch'],
-  ['getgauge/taiko', 'taiko'],
-  ['segmentio/nightmare', 'nightmare'],
-  ['casperjs/casperjs', 'casperjs'],
-  ['laurentj/slimerjs', 'slimerjs'],
-  ['assaf/zombie', 'zombie'],
+  ['gatsbyjs/gatsby', 'gatsby'],
+  ['vercel/next.js', 'next'],
+  ['nuxt/nuxt.js', 'nuxt'],
+  ['sveltejs/sapper', 'sapper'],
+  ['11ty/eleventy', '@11ty/eleventy'],
+  ['hexojs/hexo', 'hexo'],
+  ['facebook/docusaurus', '@docusaurus/core'],
+  ['vuejs/vuepress', 'vuepress'],
+  ['docsifyjs/docsify', 'docsify'],
+  ['umijs/umi', 'umi'],
+  ['react-static/react-static', 'react-static'],
+  ['gridsome/gridsome', 'gridsome'],
 ];
 
 // fetchLastMonthStars
@@ -29,7 +29,7 @@ const libs = [
 // fetchNpmAll
 // fetchBundleSize
 
-Promise.all(libs.map(([repo, pkg]) => fetchNpmAll(repo, pkg)))
+Promise.all(libs.map(([repo, pkg]) => fetchLastMonthStars(repo, pkg)))
   .then((data) => {
     console.log(JSON.stringify(data));
     // console.log(data);
@@ -38,7 +38,7 @@ Promise.all(libs.map(([repo, pkg]) => fetchNpmAll(repo, pkg)))
     console.log(err);
   });
 
-// Show Tech Radar Data
+// Show ThoughtWorks Tech Radar Data
 // (() => {
 //   const techRadarLibs = getTechradarLibs();
 //   const data = libs
@@ -69,7 +69,6 @@ Promise.all(libs.map(([repo, pkg]) => fetchNpmAll(repo, pkg)))
 //       }
 //       return acc;
 //     }, {});
-//
 //   console.log(JSON.stringify(data));
 // })();
 
@@ -601,6 +600,11 @@ function getTechradarLibs() {
       'ADOPT',
     ],
     ['avajs/ava', 'https://www.thoughtworks.com/radar/tools/ava', 'TRIAL'],
+    [
+      'vercel/next.js',
+      'https://www.thoughtworks.com/radar/languages-and-frameworks/next-js',
+      'ASSESS',
+    ],
   ];
 }
 
@@ -641,6 +645,8 @@ function getGTrendsRepos(repos) {
     ['mochajs/mocha', 'Mocha'],
     ['jasmine/jasmine', 'jasmine'],
     ['sinonjs/sinon', 'sinon'],
+    ['gatsbyjs/gatsby', 'gatsby'],
+    ['nuxt/nuxt.js', '/g/11g0wgnhgc', 'Nuxt.js'],
   ];
 
   return repos.filter((repo) =>

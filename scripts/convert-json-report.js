@@ -1,24 +1,24 @@
 /* eslint-disable */
 const fs = require('fs');
-const rawFile = '../reports/e2e-2021-q1-raw.json';
-const file = '../reports/e2e-2021-q1.json';
+const rawFile = '../reports/jam-2021-q1-raw.json';
+const file = '../reports/jam-2021-q1.json';
 const includeBundleSize = true;
 
 const content = fs.readFileSync(rawFile, 'utf8');
 const data = JSON.parse(content);
 const libs = [
-  ['puppeteer/puppeteer', 'puppeteer'],
-  ['cypress-io/cypress', 'cypress'],
-  ['Microsoft/playwright', 'playwright'],
-  ['SeleniumHQ/selenium', 'selenium-webdriver'],
-  ['webdriverio/webdriverio', 'webdriverio'],
-  ['DevExpress/testcafe', 'testcafe'],
-  ['nightwatchjs/nightwatch', 'nightwatch'],
-  ['getgauge/taiko', 'taiko'],
-  ['segmentio/nightmare', 'nightmare'],
-  ['casperjs/casperjs', 'casperjs'],
-  ['laurentj/slimerjs', 'slimerjs'],
-  ['assaf/zombie', 'zombie'],
+  ['gatsbyjs/gatsby', 'gatsby'],
+  ['vercel/next.js', 'next'],
+  ['nuxt/nuxt.js', 'nuxt'],
+  ['sveltejs/sapper', 'sapper'],
+  ['11ty/eleventy', '@11ty/eleventy'],
+  ['hexojs/hexo', 'hexo'],
+  ['facebook/docusaurus', '@docusaurus/core'],
+  ['vuejs/vuepress', 'vuepress'],
+  ['docsifyjs/docsify', 'docsify'],
+  ['umijs/umi', 'umi'],
+  ['react-static/react-static', 'react-static'],
+  ['gridsome/gridsome', 'gridsome'],
 ];
 
 const result = libs.map(([repo], i) => {

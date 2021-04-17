@@ -422,6 +422,12 @@ const libs: [RepoNameT, AliasT, LinkT, DataT][] = [
     'https://www.thoughtworks.com/radar/tools/ava',
     { '2019-04': TRIAL },
   ],
+  [
+    'vercel/next.js',
+    'Next.js',
+    'https://www.thoughtworks.com/radar/languages-and-frameworks/next-js',
+    { '2019-04': ASSESS },
+  ],
 ];
 
 export const repoToTechRadarMap = libs.reduce(
