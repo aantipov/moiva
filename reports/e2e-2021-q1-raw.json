@@ -1,0 +1,800 @@
+{
+  "stars": [
+    { "repo": "puppeteer/puppeteer", "march": 716, "april": 348, "totalCount": 69905 },
+    { "repo": "cypress-io/cypress", "march": 926, "april": 1079, "totalCount": 30013 },
+    { "repo": "Microsoft/playwright", "march": 935, "april": 407, "totalCount": 23346 },
+    { "repo": "SeleniumHQ/selenium", "march": 526, "april": 149, "totalCount": 20581 },
+    { "repo": "webdriverio/webdriverio", "march": 126, "april": 76, "totalCount": 6592 },
+    { "repo": "DevExpress/testcafe", "march": 66, "april": 40, "totalCount": 8875 },
+    { "repo": "nightwatchjs/nightwatch", "march": 50, "april": 20, "totalCount": 10670 },
+    { "repo": "getgauge/taiko", "march": 26, "april": 21, "totalCount": 2728 },
+    { "repo": "segmentio/nightmare", "march": 39, "april": 24, "totalCount": 18850 },
+    { "repo": "casperjs/casperjs", "march": 4, "april": 1, "totalCount": 7307 },
+    { "repo": "laurentj/slimerjs", "march": 5, "april": 6, "totalCount": 2971 },
+    { "repo": "assaf/zombie", "march": 18, "april": 1, "totalCount": 5536 }
+  ],
+
+  "starsMonthly": [
+    {
+      "repo": "puppeteer/puppeteer",
+      "items": [
+        { "month": "2021-01", "stars": 773 },
+        { "month": "2021-02", "stars": 588 },
+        { "month": "2021-03", "stars": 720 }
+      ]
+    },
+    {
+      "repo": "cypress-io/cypress",
+      "items": [
+        { "month": "2021-01", "stars": 1217 },
+        { "month": "2021-02", "stars": 778 },
+        { "month": "2021-03", "stars": 940 }
+      ]
+    },
+    {
+      "repo": "Microsoft/playwright",
+      "items": [
+        { "month": "2021-01", "stars": 1250 },
+        { "month": "2021-02", "stars": 998 },
+        { "month": "2021-03", "stars": 938 }
+      ]
+    },
+    {
+      "repo": "SeleniumHQ/selenium",
+      "items": [
+        { "month": "2021-01", "stars": 270 },
+        { "month": "2021-02", "stars": 288 },
+        { "month": "2021-03", "stars": 528 }
+      ]
+    },
+    {
+      "repo": "webdriverio/webdriverio",
+      "items": [
+        { "month": "2021-01", "stars": 69 },
+        { "month": "2021-02", "stars": 155 },
+        { "month": "2021-03", "stars": 127 }
+      ]
+    },
+    {
+      "repo": "DevExpress/testcafe",
+      "items": [
+        { "month": "2021-01", "stars": 61 },
+        { "month": "2021-02", "stars": 58 },
+        { "month": "2021-03", "stars": 67 }
+      ]
+    },
+    {
+      "repo": "nightwatchjs/nightwatch",
+      "items": [
+        { "month": "2021-01", "stars": 56 },
+        { "month": "2021-02", "stars": 45 },
+        { "month": "2021-03", "stars": 50 }
+      ]
+    },
+    {
+      "repo": "getgauge/taiko",
+      "items": [
+        { "month": "2021-01", "stars": 26 },
+        { "month": "2021-02", "stars": 24 },
+        { "month": "2021-03", "stars": 26 }
+      ]
+    },
+    {
+      "repo": "segmentio/nightmare",
+      "items": [
+        { "month": "2021-01", "stars": 54 },
+        { "month": "2021-02", "stars": 45 },
+        { "month": "2021-03", "stars": 40 }
+      ]
+    },
+    {
+      "repo": "casperjs/casperjs",
+      "items": [
+        { "month": "2021-01", "stars": 0 },
+        { "month": "2021-02", "stars": 2 },
+        { "month": "2021-03", "stars": 4 }
+      ]
+    },
+    {
+      "repo": "laurentj/slimerjs",
+      "items": [
+        { "month": "2021-01", "stars": 3 },
+        { "month": "2021-02", "stars": 5 },
+        { "month": "2021-03", "stars": 5 }
+      ]
+    },
+    {
+      "repo": "assaf/zombie",
+      "items": [
+        { "month": "2021-01", "stars": 8 },
+        { "month": "2021-02", "stars": 17 },
+        { "month": "2021-03", "stars": 18 }
+      ]
+    }
+  ],
+
+  "other": [
+    {
+      "repo": "puppeteer/puppeteer",
+      "github": {
+        "description": "Headless Chrome Node.js API",
+        "stars": 69905,
+        "createdAt": "2017-05-09T22:16:13Z",
+        "openIssues": 531,
+        "openBugIssues": 12,
+        "closedIssues": 293,
+        "closedBugIssues": 12,
+        "repoId": "puppeteer/puppeteer",
+        "repoName": "puppeteer"
+      },
+      "contributors": { "month": "2021-03", "contributors": 25 },
+      "commits": 86
+    },
+    {
+      "repo": "cypress-io/cypress",
+      "github": {
+        "description": "Fast, easy and reliable testing for anything that runs in a browser.",
+        "stars": 30013,
+        "createdAt": "2015-03-04T00:46:28Z",
+        "openIssues": 923,
+        "openBugIssues": 142,
+        "closedIssues": 1538,
+        "closedBugIssues": 171,
+        "repoId": "cypress-io/cypress",
+        "repoName": "cypress"
+      },
+      "contributors": { "month": "2021-03", "contributors": 32 },
+      "commits": 457
+    },
+    {
+      "repo": "Microsoft/playwright",
+      "github": {
+        "description": "Node.js library to automate Chromium, Firefox and WebKit with a single API",
+        "stars": 23346,
+        "createdAt": "2019-11-15T18:32:42Z",
+        "openIssues": 192,
+        "openBugIssues": 37,
+        "closedIssues": 700,
+        "closedBugIssues": 60,
+        "repoId": "Microsoft/playwright",
+        "repoName": "playwright"
+      },
+      "contributors": { "month": "2021-03", "contributors": 24 },
+      "commits": 702
+    },
+    {
+      "repo": "SeleniumHQ/selenium",
+      "github": {
+        "description": "A browser automation framework and ecosystem.",
+        "stars": 20581,
+        "createdAt": "2013-01-14T21:40:56Z",
+        "openIssues": 68,
+        "openBugIssues": 0,
+        "closedIssues": 547,
+        "closedBugIssues": 0,
+        "repoId": "SeleniumHQ/selenium",
+        "repoName": "selenium"
+      },
+      "contributors": { "month": "2021-03", "contributors": 12 },
+      "commits": 591
+    },
+    {
+      "repo": "webdriverio/webdriverio",
+      "github": {
+        "description": "Next-gen browser and mobile automation test framework for Node.js",
+        "stars": 6592,
+        "createdAt": "2011-08-30T19:02:35Z",
+        "openIssues": 87,
+        "openBugIssues": 0,
+        "closedIssues": 311,
+        "closedBugIssues": 0,
+        "repoId": "webdriverio/webdriverio",
+        "repoName": "webdriverio"
+      },
+      "contributors": { "month": "2021-03", "contributors": 28 },
+      "commits": 270
+    },
+    {
+      "repo": "DevExpress/testcafe",
+      "github": {
+        "description": "A Node.js tool to automate end-to-end web testing.",
+        "stars": 8875,
+        "createdAt": "2015-04-20T13:43:28Z",
+        "openIssues": 276,
+        "openBugIssues": 107,
+        "closedIssues": 483,
+        "closedBugIssues": 66,
+        "repoId": "DevExpress/testcafe",
+        "repoName": "testcafe"
+      },
+      "contributors": { "month": "2021-03", "contributors": 15 },
+      "commits": 102
+    },
+    {
+      "repo": "nightwatchjs/nightwatch",
+      "github": {
+        "description": "End-to-end testing framework written in Node.js and using the Webdriver API",
+        "stars": 10670,
+        "createdAt": "2012-03-17T21:28:18Z",
+        "openIssues": 51,
+        "openBugIssues": 8,
+        "closedIssues": 131,
+        "closedBugIssues": 14,
+        "repoId": "nightwatchjs/nightwatch",
+        "repoName": "nightwatch"
+      },
+      "contributors": { "month": "2021-03", "contributors": 4 },
+      "commits": 21
+    },
+    {
+      "repo": "getgauge/taiko",
+      "github": {
+        "description": "A node.js library for testing modern web applications",
+        "stars": 2728,
+        "createdAt": "2017-10-27T05:25:27Z",
+        "openIssues": 17,
+        "openBugIssues": 1,
+        "closedIssues": 64,
+        "closedBugIssues": 12,
+        "repoId": "getgauge/taiko",
+        "repoName": "taiko"
+      },
+      "contributors": { "month": "2021-03", "contributors": 8 },
+      "commits": 94
+    },
+    {
+      "repo": "segmentio/nightmare",
+      "github": {
+        "description": "A high-level browser automation library.",
+        "stars": 18850,
+        "createdAt": "2014-04-05T22:19:51Z",
+        "openIssues": 15,
+        "openBugIssues": 0,
+        "closedIssues": 8,
+        "closedBugIssues": 0,
+        "repoId": "segmentio/nightmare",
+        "repoName": "nightmare"
+      },
+      "contributors": { "month": "2021-03", "contributors": 0 },
+      "commits": 0
+    },
+    {
+      "repo": "casperjs/casperjs",
+      "github": {
+        "description": "CasperJS is no longer actively maintained. Navigation scripting and testing utility for PhantomJS and SlimerJS",
+        "stars": 7307,
+        "createdAt": "2011-09-05T14:01:40Z",
+        "openIssues": 0,
+        "openBugIssues": 0,
+        "closedIssues": 0,
+        "closedBugIssues": 0,
+        "repoId": "casperjs/casperjs",
+        "repoName": "casperjs"
+      },
+      "contributors": { "month": "2021-03", "contributors": 0 },
+      "commits": 0
+    },
+    {
+      "repo": "laurentj/slimerjs",
+      "github": {
+        "description": "A scriptable browser like PhantomJS, based on Firefox",
+        "stars": 2971,
+        "createdAt": "2012-12-12T19:29:21Z",
+        "openIssues": 3,
+        "openBugIssues": 0,
+        "closedIssues": 0,
+        "closedBugIssues": 0,
+        "repoId": "laurentj/slimerjs",
+        "repoName": "slimerjs"
+      },
+      "contributors": { "month": "2021-03", "contributors": 0 },
+      "commits": 0
+    },
+    {
+      "repo": "assaf/zombie",
+      "github": {
+        "description": "Insanely fast, full-stack, headless browser testing using node.js",
+        "stars": 5536,
+        "createdAt": "2010-12-05T23:17:43Z",
+        "openIssues": 3,
+        "openBugIssues": 0,
+        "closedIssues": 0,
+        "closedBugIssues": 0,
+        "repoId": "assaf/zombie",
+        "repoName": "zombie"
+      },
+      "contributors": { "month": "2021-03", "contributors": 0 },
+      "commits": 0
+    }
+  ],
+
+  "npm": [
+    {
+      "repo": "puppeteer/puppeteer",
+      "pkg": "puppeteer",
+      "npmDetails": {
+        "name": "puppeteer",
+        "description": "A high-level API to control headless Chrome over the DevTools Protocol",
+        "dependencies": ["debug", "devtools-protocol", "extract-zip", "https-proxy-agent", "node-fetch", "pkg-dir", "progress", "proxy-from-env", "rimraf", "tar-fs", "unbzip2-stream", "ws"],
+        "license": "Apache-2.0",
+        "version": "8.0.0",
+        "repository": { "type": "git", "url": "git+https://github.com/puppeteer/puppeteer.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/puppeteer"
+      },
+      "npmReleases": 8,
+      "npmDownloads": [
+        { "downloads": 7497566, "month": "2020-10" },
+        { "downloads": 7472548, "month": "2020-11" },
+        { "downloads": 7113611, "month": "2020-12" },
+        { "downloads": 7592502, "month": "2021-01" },
+        { "downloads": 8592594, "month": "2021-02" },
+        { "downloads": 10510072, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "cypress-io/cypress",
+      "pkg": "cypress",
+      "npmDetails": {
+        "name": "cypress",
+        "description": "Cypress.io end to end testing tool",
+        "dependencies": [
+          "@cypress/listr-verbose-renderer",
+          "@cypress/request",
+          "@cypress/xvfb",
+          "@types/node",
+          "@types/sinonjs__fake-timers",
+          "@types/sizzle",
+          "arch",
+          "blob-util",
+          "bluebird",
+          "cachedir",
+          "chalk",
+          "check-more-types",
+          "cli-table3",
+          "commander",
+          "common-tags",
+          "dayjs",
+          "debug",
+          "eventemitter2",
+          "execa",
+          "executable",
+          "extract-zip",
+          "fs-extra",
+          "getos",
+          "is-ci",
+          "is-installed-globally",
+          "lazy-ass",
+          "listr",
+          "lodash",
+          "log-symbols",
+          "minimist",
+          "ospath",
+          "pretty-bytes",
+          "ramda",
+          "request-progress",
+          "supports-color",
+          "tmp",
+          "untildify",
+          "url",
+          "yauzl"
+        ],
+        "license": "MIT",
+        "version": "7.1.0",
+        "repository": { "type": "git", "url": "git+https://github.com/cypress-io/cypress.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/cypress"
+      },
+      "npmReleases": 8,
+      "npmDownloads": [
+        { "downloads": 7115609, "month": "2020-10" },
+        { "downloads": 6910620, "month": "2020-11" },
+        { "downloads": 6569255, "month": "2020-12" },
+        { "downloads": 7185820, "month": "2021-01" },
+        { "downloads": 8101475, "month": "2021-02" },
+        { "downloads": 10018214, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "Microsoft/playwright",
+      "pkg": "playwright",
+      "npmDetails": {
+        "name": "playwright",
+        "description": "A high-level API to automate web browsers",
+        "dependencies": ["commander", "debug", "extract-zip", "https-proxy-agent", "jpeg-js", "mime", "pngjs", "progress", "proper-lockfile", "proxy-from-env", "rimraf", "stack-utils", "ws"],
+        "license": "Apache-2.0",
+        "version": "1.10.0",
+        "repository": { "type": "git", "url": "git+https://github.com/Microsoft/playwright.git" },
+        "hasBuiltinTypes": false,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/playwright"
+      },
+      "npmReleases": 6,
+      "npmDownloads": [
+        { "downloads": 465978, "month": "2020-10" },
+        { "downloads": 536752, "month": "2020-11" },
+        { "downloads": 545184, "month": "2020-12" },
+        { "downloads": 635814, "month": "2021-01" },
+        { "downloads": 749170, "month": "2021-02" },
+        { "downloads": 1032834, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "SeleniumHQ/selenium",
+      "pkg": "selenium-webdriver",
+      "npmDetails": {
+        "name": "selenium-webdriver",
+        "description": "The official WebDriver JavaScript bindings from the Selenium project",
+        "dependencies": ["jszip", "rimraf", "tmp", "ws"],
+        "license": "Apache-2.0",
+        "version": "4.0.0-beta.3",
+        "repository": { "type": "git", "url": "git+https://github.com/SeleniumHQ/selenium.git" },
+        "hasBuiltinTypes": false,
+        "hasOtherTypes": true,
+        "typesPackageName": "@types/selenium-webdriver"
+      },
+      "npmReleases": 0,
+      "npmDownloads": [
+        { "downloads": 7706967, "month": "2020-10" },
+        { "downloads": 7437524, "month": "2020-11" },
+        { "downloads": 7050241, "month": "2020-12" },
+        { "downloads": 7344377, "month": "2021-01" },
+        { "downloads": 7634023, "month": "2021-02" },
+        { "downloads": 8879553, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "webdriverio/webdriverio",
+      "pkg": "webdriverio",
+      "npmDetails": {
+        "name": "webdriverio",
+        "description": "Next-gen browser and mobile automation test framework for Node.js",
+        "dependencies": [
+          "@types/aria-query",
+          "@wdio/config",
+          "@wdio/logger",
+          "@wdio/protocols",
+          "@wdio/repl",
+          "@wdio/types",
+          "@wdio/utils",
+          "archiver",
+          "aria-query",
+          "atob",
+          "css-shorthand-properties",
+          "css-value",
+          "devtools",
+          "devtools-protocol",
+          "fs-extra",
+          "get-port",
+          "grapheme-splitter",
+          "lodash.clonedeep",
+          "lodash.isobject",
+          "lodash.isplainobject",
+          "lodash.zip",
+          "minimatch",
+          "puppeteer-core",
+          "resq",
+          "rgb2hex",
+          "serialize-error",
+          "webdriver"
+        ],
+        "license": "MIT",
+        "version": "7.4.6",
+        "repository": { "type": "git", "url": "git://github.com/webdriverio/webdriverio.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/webdriverio"
+      },
+      "npmReleases": 20,
+      "npmDownloads": [
+        { "downloads": 3431270, "month": "2020-10" },
+        { "downloads": 3223688, "month": "2020-11" },
+        { "downloads": 3047687, "month": "2020-12" },
+        { "downloads": 3122417, "month": "2021-01" },
+        { "downloads": 3328066, "month": "2021-02" },
+        { "downloads": 3887537, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "DevExpress/testcafe",
+      "pkg": "testcafe",
+      "npmDetails": {
+        "name": "testcafe",
+        "description": "Automated browser testing for the modern web development stack.",
+        "dependencies": [
+          "@babel/core",
+          "@babel/plugin-proposal-async-generator-functions",
+          "@babel/plugin-proposal-class-properties",
+          "@babel/plugin-proposal-decorators",
+          "@babel/plugin-proposal-object-rest-spread",
+          "@babel/plugin-syntax-dynamic-import",
+          "@babel/plugin-syntax-import-meta",
+          "@babel/plugin-transform-async-to-generator",
+          "@babel/plugin-transform-exponentiation-operator",
+          "@babel/plugin-transform-for-of",
+          "@babel/plugin-transform-runtime",
+          "@babel/preset-env",
+          "@babel/preset-flow",
+          "@babel/preset-react",
+          "@babel/runtime",
+          "@types/node",
+          "async-exit-hook",
+          "babel-plugin-module-resolver",
+          "babel-plugin-syntax-trailing-function-commas",
+          "bin-v8-flags-filter",
+          "bowser",
+          "callsite",
+          "callsite-record",
+          "chai",
+          "chalk",
+          "chrome-remote-interface",
+          "coffeescript",
+          "commander",
+          "debug",
+          "dedent",
+          "del",
+          "device-specs",
+          "diff",
+          "elegant-spinner",
+          "emittery",
+          "endpoint-utils",
+          "error-stack-parser",
+          "execa",
+          "globby",
+          "graceful-fs",
+          "graphlib",
+          "humanize-duration",
+          "import-lazy",
+          "indent-string",
+          "is-ci",
+          "is-docker",
+          "is-glob",
+          "is-stream",
+          "json5",
+          "lodash",
+          "log-update-async-hook",
+          "make-dir",
+          "mime-db",
+          "moment",
+          "moment-duration-format-commonjs",
+          "mustache",
+          "nanoid",
+          "node-version",
+          "os-family",
+          "parse5",
+          "pify",
+          "pinkie",
+          "pngjs",
+          "pretty-hrtime",
+          "promisify-event",
+          "qrcode-terminal",
+          "read-file-relative",
+          "replicator",
+          "resolve-cwd",
+          "resolve-from",
+          "sanitize-filename",
+          "semver",
+          "source-map-support",
+          "strip-bom",
+          "testcafe-browser-tools",
+          "testcafe-hammerhead",
+          "testcafe-legacy-api",
+          "testcafe-reporter-json",
+          "testcafe-reporter-list",
+          "testcafe-reporter-minimal",
+          "testcafe-reporter-spec",
+          "testcafe-reporter-xunit",
+          "time-limit-promise",
+          "tmp",
+          "tree-kill",
+          "typescript",
+          "unquote"
+        ],
+        "license": "MIT",
+        "version": "1.14.0",
+        "repository": { "type": "git", "url": "git+https://github.com/DevExpress/testcafe.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/testcafe"
+      },
+      "npmReleases": 3,
+      "npmDownloads": [
+        { "downloads": 1000756, "month": "2020-10" },
+        { "downloads": 929270, "month": "2020-11" },
+        { "downloads": 875238, "month": "2020-12" },
+        { "downloads": 889023, "month": "2021-01" },
+        { "downloads": 925543, "month": "2021-02" },
+        { "downloads": 1076123, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "nightwatchjs/nightwatch",
+      "pkg": "nightwatch",
+      "npmDetails": {
+        "name": "nightwatch",
+        "description": "Easy to use Node.js based End-to-End testing solution for browser based apps and websites, using the W3C WebDriver API.",
+        "dependencies": [
+          "assertion-error",
+          "chai-nightwatch",
+          "ci-info",
+          "dotenv",
+          "ejs",
+          "envinfo",
+          "lodash.clone",
+          "lodash.defaultsdeep",
+          "lodash.merge",
+          "minimatch",
+          "minimist",
+          "mkpath",
+          "mocha",
+          "ora",
+          "proxy-agent",
+          "request",
+          "request-promise",
+          "semver",
+          "strip-ansi"
+        ],
+        "license": "MIT",
+        "version": "1.6.3",
+        "repository": { "type": "git", "url": "git+ssh://git@github.com/nightwatchjs/nightwatch.git" },
+        "hasBuiltinTypes": false,
+        "hasOtherTypes": true,
+        "typesPackageName": "@types/nightwatch"
+      },
+      "npmReleases": 2,
+      "npmDownloads": [
+        { "downloads": 800409, "month": "2020-10" },
+        { "downloads": 793813, "month": "2020-11" },
+        { "downloads": 804510, "month": "2020-12" },
+        { "downloads": 794243, "month": "2021-01" },
+        { "downloads": 768121, "month": "2021-02" },
+        { "downloads": 936331, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "getgauge/taiko",
+      "pkg": "taiko",
+      "npmDetails": {
+        "name": "taiko",
+        "description": "Taiko is a Node.js library for automating Chromium based browsers",
+        "dependencies": [
+          "@babel/parser",
+          "chrome-remote-interface",
+          "commander",
+          "debug",
+          "documentation",
+          "extract-zip",
+          "fs-extra",
+          "https-proxy-agent",
+          "is-reachable",
+          "progress",
+          "proxy-from-env",
+          "recast"
+        ],
+        "license": "MIT",
+        "version": "1.2.3",
+        "repository": { "type": "git", "url": "git+https://github.com/getgauge/taiko.git" },
+        "hasBuiltinTypes": true,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/taiko"
+      },
+      "npmReleases": 7,
+      "npmDownloads": [
+        { "downloads": 21882, "month": "2020-10" },
+        { "downloads": 33925, "month": "2020-11" },
+        { "downloads": 28992, "month": "2020-12" },
+        { "downloads": 31602, "month": "2021-01" },
+        { "downloads": 45897, "month": "2021-02" },
+        { "downloads": 39952, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "segmentio/nightmare",
+      "pkg": "nightmare",
+      "npmDetails": {
+        "name": "nightmare",
+        "description": "A high-level browser automation library.",
+        "dependencies": ["debug", "deep-defaults", "defaults", "electron", "enqueue", "function-source", "jsesc", "minstache", "mkdirp", "multiline", "once", "rimraf", "sliced", "split2"],
+        "license": "MIT",
+        "version": "3.0.2",
+        "repository": { "type": "git", "url": "git+https://github.com/segmentio/nightmare.git" },
+        "hasBuiltinTypes": false,
+        "hasOtherTypes": true,
+        "typesPackageName": "@types/nightmare"
+      },
+      "npmReleases": 0,
+      "npmDownloads": [
+        { "downloads": 58046, "month": "2020-10" },
+        { "downloads": 52956, "month": "2020-11" },
+        { "downloads": 49878, "month": "2020-12" },
+        { "downloads": 46119, "month": "2021-01" },
+        { "downloads": 47752, "month": "2021-02" },
+        { "downloads": 56144, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "casperjs/casperjs",
+      "pkg": "casperjs",
+      "npmDetails": {
+        "name": "casperjs",
+        "description": "A navigation scripting & testing utility for PhantomJS and SlimerJS",
+        "dependencies": [],
+        "version": "1.1.4",
+        "repository": { "type": "git", "url": "git://github.com/casperjs/casperjs.git" },
+        "hasBuiltinTypes": false,
+        "hasOtherTypes": true,
+        "typesPackageName": "@types/casperjs"
+      },
+      "npmReleases": 0,
+      "npmDownloads": [
+        { "downloads": 37280, "month": "2020-10" },
+        { "downloads": 32006, "month": "2020-11" },
+        { "downloads": 50135, "month": "2020-12" },
+        { "downloads": 49663, "month": "2021-01" },
+        { "downloads": 47918, "month": "2021-02" },
+        { "downloads": 59058, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "laurentj/slimerjs",
+      "pkg": "slimerjs",
+      "npmDetails": {
+        "name": "slimerjs",
+        "description": "A scriptable browser like PhantomJS, based on Firefox",
+        "dependencies": [],
+        "license": "MPL-2.0",
+        "version": "1.0.0",
+        "repository": { "type": "git", "url": "git+https://github.com/laurentj/slimerjs.git" },
+        "hasBuiltinTypes": false,
+        "hasOtherTypes": true,
+        "typesPackageName": "@types/slimerjs"
+      },
+      "npmReleases": 0,
+      "npmDownloads": [
+        { "downloads": 7862, "month": "2020-10" },
+        { "downloads": 7325, "month": "2020-11" },
+        { "downloads": 6762, "month": "2020-12" },
+        { "downloads": 6350, "month": "2021-01" },
+        { "downloads": 8732, "month": "2021-02" },
+        { "downloads": 6828, "month": "2021-03" }
+      ]
+    },
+    {
+      "repo": "assaf/zombie",
+      "pkg": "zombie",
+      "npmDetails": {
+        "name": "zombie",
+        "description": "Insanely fast, full-stack, headless browser testing using Node.js",
+        "dependencies": ["babel-runtime", "bluebird", "debug", "eventsource", "iconv-lite", "jsdom", "lodash", "mime", "ms", "request", "tough-cookie", "ws"],
+        "license": "MIT",
+        "version": "6.1.4",
+        "repository": { "type": "git", "url": "git+ssh://git@github.com/assaf/zombie.git" },
+        "hasBuiltinTypes": false,
+        "hasOtherTypes": false,
+        "typesPackageName": "@types/zombie"
+      },
+      "npmReleases": 0,
+      "npmDownloads": [
+        { "downloads": 43994, "month": "2020-10" },
+        { "downloads": 38246, "month": "2020-11" },
+        { "downloads": 36255, "month": "2020-12" },
+        { "downloads": 45292, "month": "2021-01" },
+        { "downloads": 46475, "month": "2021-02" },
+        { "downloads": 53472, "month": "2021-03" }
+      ]
+    }
+  ],
+
+  "radar": {
+    "puppeteer/puppeteer": { "url": "https://www.thoughtworks.com/radar/languages-and-frameworks/puppeteer", "level": "TRIAL" },
+    "cypress-io/cypress": { "url": "https://www.thoughtworks.com/radar/tools/cypress", "level": "ADOPT" }
+  },
+
+  "bundleSize": [],
+
+  "devUsage": { "puppeteer/puppeteer": 33.5, "cypress-io/cypress": 35.1, "microsoft/playwright": 3.3, "webdriverio/webdriverio": 9.9 },
+
+  "googleTrends": { "puppeteer/puppeteer": 2, "cypress-io/cypress": 5, "SeleniumHQ/selenium": 48 }
+}
