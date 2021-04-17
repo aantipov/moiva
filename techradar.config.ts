@@ -7,12 +7,30 @@ type TRadarLevelT = typeof HOLD | typeof ADOPT | typeof TRIAL | typeof ASSESS;
 
 export const TRADAR_LEVELS: TRadarLevelT[] = [HOLD, ASSESS, TRIAL, ADOPT];
 
+export type DateT =
+  | '2014-01'
+  | '2014-07'
+  | '2015-01'
+  | '2015-05'
+  | '2015-11'
+  | '2016-04'
+  | '2016-11'
+  | '2017-03'
+  | '2017-11'
+  | '2018-05'
+  | '2018-03'
+  | '2018-11'
+  | '2019-04'
+  | '2019-11'
+  | '2020-05'
+  | '2020-10'
+  | '2021-04';
+
 type RepoNameT = string;
 type AliasT = string;
 type LinkT = string;
-interface DataT {
-  [key: string]: TRadarLevelT;
-}
+type DataT = Partial<{ [key in DateT]: TRadarLevelT }>;
+
 export interface TechRadarT {
   repo: RepoNameT;
   alias: AliasT;
@@ -179,13 +197,13 @@ const libs: [RepoNameT, AliasT, LinkT, DataT][] = [
     'gcanti/io-ts',
     'io-ts',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/io-ts',
-    { '2020-10': ASSESS },
+    { '2020-10': ASSESS, '2021-04': TRIAL },
   ],
   [
     'polymer/lit-element',
     'LitElement',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/litelement',
-    { '2020-10': ASSESS },
+    { '2020-10': ASSESS, '2021-04': TRIAL },
   ],
   [
     'mswjs/msw',
@@ -197,7 +215,7 @@ const libs: [RepoNameT, AliasT, LinkT, DataT][] = [
     'vercel/swr',
     'SWR',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/swr',
-    { '2020-10': ASSESS },
+    { '2020-10': ASSESS, '2021-04': TRIAL },
   ],
   [
     'yarnpkg/yarn',
@@ -262,7 +280,7 @@ const libs: [RepoNameT, AliasT, LinkT, DataT][] = [
     'getsentry/sentry',
     'Sentry',
     'https://www.thoughtworks.com/radar/tools/sentry',
-    { '2018-05': ASSESS, '2020-10': TRIAL },
+    { '2018-05': ASSESS, '2020-10': TRIAL, '2021-04': ADOPT },
   ],
   [
     'styled-components/styled-components',
@@ -292,7 +310,7 @@ const libs: [RepoNameT, AliasT, LinkT, DataT][] = [
     'microsoft/playwright',
     'Playwright',
     'https://www.thoughtworks.com/radar/tools/playwright',
-    { '2020-10': ASSESS },
+    { '2020-10': ASSESS, '2021-04': TRIAL },
   ],
   [
     'parcel-bundler/parcel',
@@ -426,7 +444,247 @@ const libs: [RepoNameT, AliasT, LinkT, DataT][] = [
     'vercel/next.js',
     'Next.js',
     'https://www.thoughtworks.com/radar/languages-and-frameworks/next-js',
-    { '2019-04': ASSESS },
+    { '2019-04': ASSESS, '2021-04': TRIAL },
+  ],
+  [
+    'backstage/backstage',
+    'Backstage',
+    'https://www.thoughtworks.com/radar/platforms/backstage',
+    { '2020-10': ASSESS, '2021-04': TRIAL },
+  ],
+  [
+    'MaterializeInc/materialize',
+    'Materialize',
+    'https://www.thoughtworks.com/radar/platforms/materialize',
+    { '2020-10': ASSESS, '2021-04': TRIAL },
+  ],
+  [
+    'apache/incubator-pinot',
+    'Apache Pinot',
+    'https://www.thoughtworks.com/radar/platforms/apache-pinot',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'teambit/bit',
+    'Bit.dev',
+    'https://www.thoughtworks.com/radar/platforms/bit-dev',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'linkedin/datahub',
+    'DataHub',
+    'https://www.thoughtworks.com/radar/platforms/datahub',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'juicedata/juicefs',
+    'JuiceFS',
+    'https://www.thoughtworks.com/radar/platforms/juicefs',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'opstrace/opstrace',
+    'Opstrace',
+    'https://www.thoughtworks.com/radar/platforms/opstrace',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'pulumi/pulumi',
+    'Pulumi',
+    'https://www.thoughtworks.com/radar/platforms/pulumi',
+    { '2018-11': ASSESS, '2020-10': ASSESS, '2021-04': ASSESS },
+  ],
+  [
+    'vectorizedio/redpanda',
+    'Redpanda',
+    'https://www.thoughtworks.com/radar/platforms/redpanda',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'dequelabs/axe-core',
+    'axe-core',
+    'https://www.thoughtworks.com/radar/tools/axe-core',
+    { '2021-04': TRIAL },
+  ],
+  [
+    'evanw/esbuild',
+    'esbuild',
+    'https://www.thoughtworks.com/radar/tools/esbuild',
+    { '2021-04': TRIAL },
+  ],
+  [
+    'facebook/flipper',
+    'Flipper',
+    'https://www.thoughtworks.com/radar/tools/flipper',
+    { '2021-04': TRIAL },
+  ],
+  [
+    'k6io/k6',
+    'k6',
+    'https://www.thoughtworks.com/radar/tools/k6',
+    { '2020-10': ASSESS, '2021-04': TRIAL },
+  ],
+  [
+    'mlflow/mlflow',
+    'MLflow',
+    'https://www.thoughtworks.com/radar/tools/mlflow',
+    { '2020-10': TRIAL, '2021-04': TRIAL },
+  ],
+  [
+    'google/or-tools',
+    'OR-Tools',
+    'https://www.thoughtworks.com/radar/tools/or-tools',
+    { '2021-04': TRIAL },
+  ],
+  [
+    'toniblyx/prowler',
+    'Prowler',
+    'https://www.thoughtworks.com/radar/tools/prowler',
+    { '2021-04': TRIAL },
+  ],
+  [
+    'Microsoft/pyright',
+    'Pyright',
+    'https://www.thoughtworks.com/radar/tools/pyright',
+    { '2021-04': TRIAL },
+  ],
+  [
+    'getredash/redash',
+    'Redash',
+    'https://www.thoughtworks.com/radar/tools/redash',
+    { '2021-04': TRIAL },
+  ],
+  [
+    'gruntwork-io/terratest',
+    'Terratest',
+    'https://www.thoughtworks.com/radar/tools/terratest',
+    { '2019-11': ASSESS, '2021-04': TRIAL },
+  ],
+  [
+    'welldone-software/why-did-you-render',
+    'Why Did You Render',
+    'https://www.thoughtworks.com/radar/tools/why-did-you-render',
+    { '2021-04': TRIAL },
+  ],
+  [
+    'oracle/graal',
+    'Graal Native Image',
+    'https://www.thoughtworks.com/radar/tools/graal-native-image',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'hashicorp/boundary',
+    'HashiCorp Boundary',
+    'https://www.thoughtworks.com/radar/tools/hashicorp-boundary',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'imgcook/imgcook',
+    'imgcook',
+    'https://www.thoughtworks.com/radar/tools/imgcook',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'longhorn/longhorn',
+    'Longhorn',
+    'https://www.thoughtworks.com/radar/tools/longhorn',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'stoplightio/spectral',
+    'Spectral',
+    'https://www.thoughtworks.com/radar/tools/spectral',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'Yelp/detect-secrets',
+    'Yelp detect-secrets',
+    'https://www.thoughtworks.com/radar/tools/yelp-detect-secrets',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'zalando/zally',
+    'Zally',
+    'https://www.thoughtworks.com/radar/tools/zally',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'square/leakcanary',
+    'LeakCanary',
+    'https://www.thoughtworks.com/radar/languages-and-frameworks/leakcanary',
+    { '2017-11': ASSESS, '2021-04': ADOPT },
+  ],
+  [
+    'testing-library/angular-testing-library',
+    'Angular Testing Library',
+    'https://www.thoughtworks.com/radar/languages-and-frameworks/angular-testing-library',
+    { '2021-04': TRIAL },
+  ],
+  [
+    'awslabs/aws-data-wrangler',
+    'AWS Data Wrangler',
+    'https://www.thoughtworks.com/radar/languages-and-frameworks/aws-data-wrangler',
+    { '2021-04': TRIAL },
+  ],
+  [
+    'tiangolo/fastapi',
+    'FastAPI',
+    'https://www.thoughtworks.com/radar/languages-and-frameworks/fastapi',
+    { '2021-04': TRIAL },
+  ],
+  [
+    'streamlit/streamlit',
+    'Streamlit',
+    'https://www.thoughtworks.com/radar/languages-and-frameworks/streamlit',
+    { '2021-04': TRIAL },
+  ],
+  [
+    'egil/bUnit',
+    'bUnit',
+    'https://www.thoughtworks.com/radar/languages-and-frameworks/bunit',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'dagster-io/dagster',
+    'Dagster',
+    'https://www.thoughtworks.com/radar/languages-and-frameworks/dagster',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'flutter/flutter',
+    'Flutter',
+    'https://www.thoughtworks.com/radar/languages-and-frameworks/flutter',
+    { '2018-05': ASSESS, '2018-11': ASSESS, '2019-11': TRIAL },
+  ],
+  [
+    'pmndrs/jotai',
+    'Jotai',
+    'https://www.thoughtworks.com/radar/languages-and-frameworks/jotai-and-zustand',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'pmndrs/zustand',
+    'Zustand',
+    'https://www.thoughtworks.com/radar/languages-and-frameworks/jotai-and-zustand',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'lvgl/lvgl',
+    'LVGL',
+    'https://www.thoughtworks.com/radar/languages-and-frameworks/lvgl',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'react-hook-form/react-hook-form',
+    'React Hook Form',
+    'https://www.thoughtworks.com/radar/languages-and-frameworks/react-hook-form',
+    { '2021-04': ASSESS },
+  ],
+  [
+    'online-ml/river',
+    'River',
+    'https://www.thoughtworks.com/radar/languages-and-frameworks/river',
+    { '2021-04': ASSESS },
   ],
 ];
 

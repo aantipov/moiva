@@ -43,6 +43,7 @@ import {
   TRADAR_LEVELS,
   repoToTechRadarMap,
   TechRadarT,
+  DateT,
 } from '../../techradar.config';
 import { chartsVisibility } from '@/store/chartsVisibility';
 import { libraryToColorMap } from '@/store/librariesColors';
@@ -68,12 +69,12 @@ export default defineComponent({
       chartsVisibility.techRadar = tradarItemsAliases.value.length > 0;
     });
 
-    const uniqDates = computed<string[]>(() => {
+    const uniqDates = computed<DateT[]>(() => {
       const dates = tradarItems.value
         .map((tradarItem) => Object.keys(tradarItem.data))
         .flat();
 
-      return [...new Set(dates)].sort();
+      return [...new Set(dates)].sort() as DateT[];
     });
 
     const itemsNum = computed(() => tradarItems.value.length);
