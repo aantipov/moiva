@@ -5869,6 +5869,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=@parcel/core+wmr</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=@polymer/polymer</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -7224,6 +7229,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=browserify+wmr</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=buefy</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -8525,6 +8535,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=esbuild+webpack</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=esbuild+wmr</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -10220,6 +10235,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=microbundle+webpack</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=microbundle+wmr</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -12064,6 +12084,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=rollup+wmr</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=roughjs</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -12320,6 +12345,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=snowpack+webpack</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=snowpack+wmr</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -12814,6 +12844,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=vite+wmr</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=vivus</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -12909,6 +12944,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=webpack+wmr</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=webpack-dashboard</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -12945,6 +12985,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=wiremock-standalone</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=wmr</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>

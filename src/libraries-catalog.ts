@@ -32,6 +32,7 @@ const libraries: CatalogLibraryT[] = [
   { category: 'JavaScript Build Tools, Module Bundlers', repoId: 'snowpackjs/snowpack', npm: 'snowpack', isNpmAByProduct: false, alias: 'Snowpack', framework: null },
   { category: 'JavaScript Build Tools, Module Bundlers', repoId: 'vitejs/vite', npm: 'vite', isNpmAByProduct: false, alias: 'Vite', framework: null },
   { category: 'JavaScript Build Tools, Module Bundlers', repoId: 'evanw/esbuild', npm: 'esbuild', isNpmAByProduct: false, alias: 'Esbuild', framework: null },
+  { category: 'JavaScript Build Tools, Module Bundlers', repoId: 'preactjs/wmr', npm: 'wmr', isNpmAByProduct: false, alias: 'Wmr', framework: null },
   { category: 'JavaScript Build Tools, Module Bundlers', repoId: 'browserify/browserify', npm: 'browserify', isNpmAByProduct: false, alias: 'Browserify', framework: null },
   { category: 'JavaScript Build Tools, Module Bundlers', repoId: 'developit/microbundle', npm: 'microbundle', isNpmAByProduct: false, alias: 'Microbundle', framework: null },
 
