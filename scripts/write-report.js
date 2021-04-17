@@ -9,20 +9,15 @@ const catalog = fs.readFileSync(
 const catalogItems = JSON.parse(catalog);
 
 const libs = [
-  ['facebook/jest', 'jest'],
-  ['avajs/ava', 'ava'],
-  ['mochajs/mocha', 'mocha'],
-  ['jasmine/jasmine', 'jasmine-core'],
-  ['substack/tape', 'tape'],
-  ['qunitjs/qunit', 'qunit'],
-  ['chaijs/chai', 'chai'],
-  ['sinonjs/sinon', 'sinon'],
-  ['karma-runner/karma', 'karma'],
-  ['testing-library/dom-testing-library', '@testing-library/dom'],
-  ['testing-library/jest-dom', '@testing-library/jest-dom'],
-  ['cucumber/cucumber-js', '@cucumber/cucumber'],
-  ['enzymejs/enzyme', 'enzyme'],
-  ['testing-library/react-testing-library', '@testing-library/react'],
+  ['webpack/webpack', 'webpack'],
+  ['rollup/rollup', 'rollup'],
+  ['parcel-bundler/parcel', '@parcel/core'],
+  ['snowpackjs/snowpack', 'snowpack'],
+  ['vitejs/vite', 'vite'],
+  ['evanw/esbuild', 'esbuild'],
+  ['preactjs/wmr', 'wmr'],
+  ['browserify/browserify', 'browserify'],
+  ['developit/microbundle', 'microbundle'],
 ];
 
 // fetchLastMonthStars
@@ -31,14 +26,14 @@ const libs = [
 // fetchNpmAll
 // fetchBundleSize
 
-// Promise.all(libs.map(([repo, pkg]) => fetchNpmAll(repo, pkg)))
-//   .then((data) => {
-//     console.log(JSON.stringify(data));
-//     // console.log(data);
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
+Promise.all(libs.map(([repo, pkg]) => fetchLastMonthStars(repo, pkg)))
+  .then((data) => {
+    console.log(JSON.stringify(data));
+    // console.log(data);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // Show Tech Radar Data
 // (() => {
@@ -75,15 +70,15 @@ const libs = [
 //   console.log(JSON.stringify(data));
 // })();
 
-fetchGoogleTrends(libs.map(([repo]) => repo))
-  .then((data) => {
-    const val = data.reduce((acc, { repo, trend }) => {
-      acc[repo] = trend;
-      return acc;
-    }, {});
-    console.log('TRENDS', JSON.stringify(val));
-  })
-  .catch((err) => console.log(err));
+// fetchGoogleTrends(libs.map(([repo]) => repo))
+//   .then((data) => {
+//     const val = data.reduce((acc, { repo, trend }) => {
+//       acc[repo] = trend;
+//       return acc;
+//     }, {});
+//     console.log('TRENDS', JSON.stringify(val));
+//   })
+//   .catch((err) => console.log(err));
 
 // Check repos for new names
 // Promise.all(libs.map(([repoId]) => fetchRepoRealName(repoId)))

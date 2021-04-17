@@ -1,26 +1,21 @@
 /* eslint-disable */
 const fs = require('fs');
-const rawFile = '../reports/testing-2021-q1-raw.json';
-const file = '../reports/testing-2021-q1.json';
-const includeBundleSize = false;
+const rawFile = '../reports/buildtools-2021-q1-raw.json';
+const file = '../reports/buildtools-2021-q1.json';
+const includeBundleSize = true;
 
 const content = fs.readFileSync(rawFile, 'utf8');
 const data = JSON.parse(content);
 const libs = [
-  ['facebook/jest', 'jest'],
-  ['avajs/ava', 'ava'],
-  ['mochajs/mocha', 'mocha'],
-  ['jasmine/jasmine', 'jasmine-core'],
-  ['substack/tape', 'tape'],
-  ['qunitjs/qunit', 'qunit'],
-  ['chaijs/chai', 'chai'],
-  ['sinonjs/sinon', 'sinon'],
-  ['karma-runner/karma', 'karma'],
-  ['testing-library/dom-testing-library', '@testing-library/dom'],
-  ['testing-library/jest-dom', '@testing-library/jest-dom'],
-  ['cucumber/cucumber-js', '@cucumber/cucumber'],
-  ['enzymejs/enzyme', 'enzyme'],
-  ['testing-library/react-testing-library', '@testing-library/react'],
+  ['webpack/webpack', 'webpack'],
+  ['rollup/rollup', 'rollup'],
+  ['parcel-bundler/parcel', '@parcel/core'],
+  ['snowpackjs/snowpack', 'snowpack'],
+  ['vitejs/vite', 'vite'],
+  ['evanw/esbuild', 'esbuild'],
+  ['preactjs/wmr', 'wmr'],
+  ['browserify/browserify', 'browserify'],
+  ['developit/microbundle', 'microbundle'],
 ];
 
 const result = libs.map(([repo], i) => {
