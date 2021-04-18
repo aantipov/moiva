@@ -113,7 +113,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { constructHref } from '@/utils';
-import libsData from './testing-2021-q1.json';
+import libsData from './jam-2021-q1.json';
 import { catalogRepoIdToLib } from '@/libraries-catalog';
 import MetricHeader from './MetricHeader.vue';
 import MetricValue from './MetricValue.vue';
@@ -146,7 +146,8 @@ export interface LibT {
   dwnlMonthly: number;
   dwnlMonthlyIncreasePercentage: number;
   techRadar: TechRadarT;
-  bundleSize: BundleSizeT;
+  security?: 'A' | 'B' | 'C' | 'D' | 'E' | 'F';
+  bundleSize?: BundleSizeT;
   devUsage: null | number;
   googleTrends: null | number;
 }
@@ -166,6 +167,7 @@ export type MetricT =
   | 'dependencies'
   | 'ts'
   | 'bundlesize'
+  | 'security'
   | 'age'
   | 'license';
 
@@ -183,6 +185,7 @@ const metrics = [
   'contributors',
   'dependencies',
   'ts',
+  'security',
   // 'bundlesize',
   'age',
   'license',

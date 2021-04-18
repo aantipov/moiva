@@ -70,6 +70,12 @@
     {{ getBundleSize(lib) }}
   </div>
 
+  <div v-else-if="type === 'security'" class="flex items-center justify-center">
+    <div class="sec" :class="'sec-' + lib.security">
+      {{ lib.security || '-' }}
+    </div>
+  </div>
+
   <div v-else-if="type === 'age'" class="flex items-center justify-center">
     {{ getAge(lib.createdAt) }}
   </div>
@@ -122,4 +128,18 @@ export default defineComponent({
 });
 </script>
 
-<style lang="postcss" scoped></style>
+<style lang="postcss" scoped>
+.sec {
+  @apply flex items-center justify-center w-6 h-5 text-white rounded font-mono text-sm;
+}
+.sec-A {
+  background-color: #4c1;
+}
+.sec-C {
+  background-color: #fe7d37;
+}
+.sec-E,
+.sec-F {
+  background-color: #e05d44;
+}
+</style>

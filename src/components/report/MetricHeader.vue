@@ -72,6 +72,11 @@
       <div class="ml-2">Bundle Size</div>
     </template>
 
+    <template v-else-if="type === 'security'">
+      <ShieldIcon />
+      <div class="ml-2">Security</div>
+    </template>
+
     <template v-else-if="type === 'age'">
       <OldIcon />
       <div class="ml-2">Age</div>
@@ -99,6 +104,7 @@ import CommitsIcon from '@/components/icons/Commits.vue';
 import TWIcon from '@/components/icons/Thoughtworks.vue';
 import CubeIcon from '@/components/icons/Cube.vue';
 import DependencyIcon from '@/components/icons/Dependency.vue';
+import ShieldIcon from '@/components/icons/Shield.vue';
 import { MetricT } from './Report.vue';
 
 export default defineComponent({
@@ -116,6 +122,7 @@ export default defineComponent({
     DependencyIcon,
     CubeIcon,
     OldIcon,
+    ShieldIcon,
     TWIcon,
     TSIcon,
   },
