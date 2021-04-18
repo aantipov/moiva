@@ -37,7 +37,11 @@
               class="border-r border-gray-300"
               :class="{ 'bg-gray-200': index % 2 }"
             >
-              <MetricValue :type="metric" :lib="item" />
+              <MetricValue
+                :type="metric"
+                :lib="item"
+                :npm="getNpm(item.repo)"
+              />
             </td>
           </tr>
         </tbody>
@@ -216,6 +220,13 @@ export default defineComponent({
           throw new Error('no npm package');
         }
         return constructHref([npm], []);
+      },
+      getNpm(repoId: string): string {
+        const npm = catalogRepoIdToLib[repoId.toLowerCase()].npm as string;
+        if (!npm) {
+          throw new Error('no npm package');
+        }
+        return npm;
       },
     };
   },
