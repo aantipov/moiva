@@ -70,6 +70,16 @@
     {{ getBundleSize(lib) }}
   </div>
 
+  <div v-else-if="type === 'security'" class="flex items-center justify-center">
+    <a
+      class="sec"
+      :class="'sec-' + lib.security"
+      :href="snykHref"
+      target="_blank"
+      >{{ lib.security || '-' }}</a
+    >
+  </div>
+
   <div v-else-if="type === 'age'" class="flex items-center justify-center">
     {{ getAge(lib.createdAt) }}
   </div>
@@ -80,7 +90,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, computed, toRefs } from 'vue';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import { MetricT, LibT } from './Report.vue';
 import { numbersFormatter } from '@/utils';
@@ -97,9 +107,15 @@ export default defineComponent({
       type: Object as () => LibT,
       required: true,
     },
+    npm: {
+      type: String,
+      required: true,
+    },
   },
 
-  setup() {
+  setup(props) {
+    const { npm } = toRefs(props);
+
     return {
       getAge(createdAt: string): string {
         return formatDistanceToNowStrict(new Date(createdAt));
@@ -117,9 +133,26 @@ export default defineComponent({
         // @ts-ignore
         return `${Math.round(lib.bundleSize.gzip / 102.4) / 10} kB`;
       },
+      snykHref: computed(() => {
+        return `https://snyk.io/advisor/npm-package/${npm.value}`;
+      }),
     };
   },
 });
 </script>
 
-<style lang="postcss" scoped></style>
+<style lang="postcss" scoped>
+.sec {
+  @apply flex items-center justify-center w-6 h-5 text-white rounded font-mono text-sm no-underline;
+}
+.sec-A {
+  background-color: #4c1;
+}
+.sec-C {
+  background-color: #fe7d37;
+}
+.sec-E,
+.sec-F {
+  background-color: #e05d44;
+}
+</style>

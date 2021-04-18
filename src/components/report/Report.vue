@@ -37,7 +37,11 @@
               class="border-r border-gray-300"
               :class="{ 'bg-gray-200': index % 2 }"
             >
-              <MetricValue :type="metric" :lib="item" />
+              <MetricValue
+                :type="metric"
+                :lib="item"
+                :npm="getNpm(item.repo)"
+              />
             </td>
           </tr>
         </tbody>
@@ -113,7 +117,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { constructHref } from '@/utils';
-import libsData from './testing-2021-q1.json';
+import libsData from './jam-2021-q1.json';
 import { catalogRepoIdToLib } from '@/libraries-catalog';
 import MetricHeader from './MetricHeader.vue';
 import MetricValue from './MetricValue.vue';
@@ -146,7 +150,8 @@ export interface LibT {
   dwnlMonthly: number;
   dwnlMonthlyIncreasePercentage: number;
   techRadar: TechRadarT;
-  bundleSize: BundleSizeT;
+  security?: 'A' | 'B' | 'C' | 'D' | 'E' | 'F';
+  bundleSize?: BundleSizeT;
   devUsage: null | number;
   googleTrends: null | number;
 }
@@ -166,6 +171,7 @@ export type MetricT =
   | 'dependencies'
   | 'ts'
   | 'bundlesize'
+  | 'security'
   | 'age'
   | 'license';
 
@@ -183,6 +189,7 @@ const metrics = [
   'contributors',
   'dependencies',
   'ts',
+  'security',
   // 'bundlesize',
   'age',
   'license',
@@ -213,6 +220,13 @@ export default defineComponent({
           throw new Error('no npm package');
         }
         return constructHref([npm], []);
+      },
+      getNpm(repoId: string): string {
+        const npm = catalogRepoIdToLib[repoId.toLowerCase()].npm as string;
+        if (!npm) {
+          throw new Error('no npm package');
+        }
+        return npm;
       },
     };
   },
