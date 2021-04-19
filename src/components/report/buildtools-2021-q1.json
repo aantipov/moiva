@@ -16,6 +16,7 @@
     "dwnlMonthlyIncreasePercentage": 14,
     "techRadar": { "url": "https://www.thoughtworks.com/radar/tools/webpack", "level": "TRIAL" },
     "devUsage": 88.7,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -35,6 +36,7 @@
     "dwnlMonthlyIncreasePercentage": 38,
     "techRadar": null,
     "devUsage": 30.1,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -54,6 +56,7 @@
     "dwnlMonthlyIncreasePercentage": 18,
     "techRadar": { "url": "https://www.thoughtworks.com/radar/tools/parcel", "level": "ASSESS" },
     "devUsage": 27.4,
+    "security": "F",
     "googleTrends": null
   },
   {
@@ -73,6 +76,7 @@
     "dwnlMonthlyIncreasePercentage": 101,
     "techRadar": { "url": "https://www.thoughtworks.com/radar/tools/snowpack", "level": "ASSESS" },
     "devUsage": 5.4,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -92,6 +96,7 @@
     "dwnlMonthlyIncreasePercentage": 260,
     "techRadar": null,
     "devUsage": null,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -111,6 +116,7 @@
     "dwnlMonthlyIncreasePercentage": 189,
     "techRadar": null,
     "devUsage": 5.5,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -130,6 +136,7 @@
     "dwnlMonthlyIncreasePercentage": 25,
     "techRadar": null,
     "devUsage": null,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -149,6 +156,7 @@
     "dwnlMonthlyIncreasePercentage": 11,
     "techRadar": null,
     "devUsage": 34.9,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -168,6 +176,7 @@
     "dwnlMonthlyIncreasePercentage": 14,
     "techRadar": null,
     "devUsage": null,
+    "security": "F",
     "googleTrends": null
   }
 ]
