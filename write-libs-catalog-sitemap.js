@@ -177,9 +177,27 @@ const urlsStr = urls.reduce((acc, url) => {
 const content = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://moiva.io/blog</loc>
-    <lastmod>2021-04-16</lastmod>
+    <loc>https://moiva.io</loc>
+    <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://moiva.io/catalog</loc>
+    <lastmod>2021-03-31</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://moiva.io/blog</loc>
+    <lastmod>2021-04-19</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://moiva.io/blog/2021-q1-report-js-build-tools-bundlers</loc>
+    <lastmod>2021-04-19</lastmod>
   </url>
 
   <url>
@@ -193,7 +211,7 @@ const content = `<?xml version="1.0" encoding="UTF-8"?>
   </url>
 
   <url>
-    <loc>https://moiva.io/blog/2021-q1-state-of-js-frameworks/</loc>
+    <loc>https://moiva.io/blog/2021-q1-state-of-js-frameworks</loc>
     <lastmod>2021-04-13</lastmod>
   </url>
 
@@ -217,18 +235,6 @@ const content = `<?xml version="1.0" encoding="UTF-8"?>
     <lastmod>2021-02-17</lastmod>
   </url>
 
-  <url>
-    <loc>https://moiva.io/catalog</loc>
-    <lastmod>2021-03-31</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-
-  <url>
-    <loc>https://moiva.io/</loc>
-    <lastmod>2021-03-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
 ${urlsStr}</urlset>
 `;
 
