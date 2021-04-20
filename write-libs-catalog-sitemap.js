@@ -185,14 +185,24 @@ const content = `<?xml version="1.0" encoding="UTF-8"?>
 
   <url>
     <loc>https://moiva.io/catalog</loc>
-    <lastmod>2021-03-31</lastmod>
+    <lastmod>2021-04-20</lastmod>
     <changefreq>weekly</changefreq>
   </url>
 
   <url>
     <loc>https://moiva.io/blog</loc>
-    <lastmod>2021-04-19</lastmod>
+    <lastmod>2021-04-20</lastmod>
     <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://moiva.io/blog/2021-q1-report-end-to-end-testing-frameworks/</loc>
+    <lastmod>2021-04-20</lastmod>
+  </url>
+
+  <url>
+    <loc>https://moiva.io/blog/2021-q1-report-js-jamstack/</loc>
+    <lastmod>2021-04-20</lastmod>
   </url>
 
   <url>
