@@ -117,7 +117,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { constructHref } from '@/utils';
-import libsData from './jam-2021-q1.json';
+import libsData from './data-testing-2021-q1.json';
 import { catalogRepoIdToLib } from '@/libraries-catalog';
 import MetricHeader from './MetricHeader.vue';
 import MetricValue from './MetricValue.vue';
