@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-start sm:items-center">
+  <div class="flex flex-col items-start mx-2 sm:items-center">
     <h2 class="self-center mt-4 mb-2 sm:mt-8">
       Popular UI libraries comparisons
     </h2>

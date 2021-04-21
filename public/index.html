@@ -63,7 +63,7 @@
         border-radius: 50%;
         background: black;
         display: inline-block;
-        margin: 0 6px 4px;
+        margin: 0 6px 3px;
       }
       @media only screen and (min-width: 640px) {
         .goal-item:before {
@@ -73,7 +73,7 @@
           border-radius: 50%;
           background: black;
           display: inline-block;
-          margin: 0 10px 5px;
+          margin: 0 10px 4px;
         }
       }
     </style>
@@ -96,18 +96,52 @@
 
       <img class="mx-auto h-7 sm:h-14" src="moiva.svg" width="290" height="48" alt="Logo - an image of capelin fish" />
 
-      <h1>
+      <div class="mx-auto mt-5 text-xl text-center sm:text-2xl sm:mt-8">
         <div class="sm:flex sm:justify-center sm:mb-2">
           <div class="sm:mb-2 goal-item">Evaluate</div>
           <div class="ml-4 sm:mb-2 goal-item">Discover alternatives</div>
           <div class="ml-4 sm:mb-2 goal-item">Compare</div>
         </div>
         GitHub projects and NPM packages
-      </h1>
+      </div>
+    </div>
+
+    <div class="container px-3 mx-auto mt-5">
+      <div class="mx-4 text-base italic text-center text-black sm:text-lg sm:mx-0 text-opacity-80">We aggregate data from multiple sources to do better Software Evaluation and Comparison.</div>
+
+      <div class="flex flex-wrap items-center justify-center mt-2 overflow-hidden space-x-4">
+        <div class="pt-2">
+          <img src="/images/google-logo.png" alt="Google logo" class="max-h-8" style="max-width: 200px" />
+        </div>
+
+        <div class="pt-2">
+          <img src="/images/npm-logo.png" alt="npm logo" class="max-h-7" style="max-width: 200px" />
+        </div>
+
+        <div>
+          <img src="/images/github-logo.png" alt="GitHub logo" class="max-h-6" style="max-width: 200px" />
+        </div>
+
+        <div class="pt-2">
+          <img src="/images/thoughtworks-logo.png" alt="ThoughtWorks logo" class="max-h-6" style="max-width: 200px" />
+        </div>
+
+        <div>
+          <img src="/images/stateofjs-logo.png" alt="StateOfJS survey logo" class="max-h-16" style="max-width: 200px" />
+        </div>
+
+        <div class="pt-1">
+          <img src="/images/snyk-logo.png" alt="Snyk logo" class="max-h-14" style="max-width: 200px" />
+        </div>
+
+        <div class="pt-1">
+          <img src="/images/bundlephobia-logo.png?v1" alt="Bundlephobia logo" class="max-h-16" style="max-width: 200px" />
+        </div>
+      </div>
     </div>
 
     <!-- Body -->
-    <div class="container px-3 mt-4 antialiased content sm:mx-auto sm:mt-6">
+    <div class="container px-3 mt-8 antialiased content sm:mx-auto">
       <!--    Min-width is used to take into account Popular libraries height to avoid layout shifts    -->
       <div id="app" style="min-height: 564px"></div>
     </div>

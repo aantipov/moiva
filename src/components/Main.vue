@@ -1,7 +1,5 @@
 <template>
   <div>
-    <FrontDescription class="w-full mx-auto mt-5 mb-16" />
-
     <Search class="w-full mx-auto lg:w-9/12 xl:w-2/4" @select="select" />
     <Suggestions @select="select" />
 
@@ -99,7 +97,6 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, watchEffect, computed } from 'vue';
-import FrontDescription from './FrontDescription.vue';
 import NpmDownloads from './NpmDownloads.vue';
 import Releases from './npm-releases/Releases.vue';
 import Search from './search/Search.vue';
@@ -140,7 +137,6 @@ import { LibraryT } from '@/libraryApis';
 export default defineComponent({
   name: 'Main',
   components: {
-    FrontDescription,
     Popular,
     Search,
     Suggestions,
