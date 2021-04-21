@@ -10,7 +10,11 @@
     >
       <img src="/images/google-logo.png?v1" alt="" class="mt-2 max-h-10" />
       <img src="/images/npm-logo.png?v1" alt="" class="mt-2 ml-4 max-h-10" />
-      <img src="/images/github-logo.png?v1" alt="" class="ml-4 max-h-9" />
+      <img
+        src="/images/github-logo.png?v1"
+        alt=""
+        class="mt-3 ml-4 sm:mt-0 max-h-9"
+      />
       <img
         src="/images/thoughtworks-logo.png?v2"
         alt=""
