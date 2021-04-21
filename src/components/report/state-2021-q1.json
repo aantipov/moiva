@@ -17,6 +17,7 @@
     "techRadar": { "url": "https://www.thoughtworks.com/radar/languages-and-frameworks/redux", "level": "TRIAL" },
     "bundleSize": { "gzip": 2691, "raw": 7463 },
     "devUsage": 66.8,
+    "security": "A",
     "googleTrends": 36
   },
   {
@@ -37,6 +38,7 @@
     "techRadar": null,
     "bundleSize": { "gzip": 16411, "raw": 58357 },
     "devUsage": 13.2,
+    "security": "A",
     "googleTrends": 4
   },
   {
@@ -57,6 +59,7 @@
     "techRadar": null,
     "bundleSize": { "gzip": 11340, "raw": 48144 },
     "devUsage": null,
+    "security": "A",
     "googleTrends": 13
   },
   {
@@ -77,6 +80,7 @@
     "techRadar": { "url": "https://www.thoughtworks.com/radar/languages-and-frameworks/recoil", "level": "ASSESS" },
     "bundleSize": { "gzip": 19785, "raw": 67253 },
     "devUsage": null,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -97,6 +101,7 @@
     "techRadar": { "url": "https://www.thoughtworks.com/radar/languages-and-frameworks/xstate", "level": "TRIAL" },
     "bundleSize": { "gzip": 17163, "raw": 62958 },
     "devUsage": 4.9,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -117,6 +122,7 @@
     "techRadar": null,
     "bundleSize": { "gzip": 4013, "raw": 13033 },
     "devUsage": 30.1,
+    "security": "A",
     "googleTrends": 9
   },
   {
@@ -137,6 +143,7 @@
     "techRadar": null,
     "bundleSize": { "gzip": 5191, "raw": 17533 },
     "devUsage": null,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -157,6 +164,7 @@
     "techRadar": null,
     "bundleSize": { "gzip": 11748, "raw": 50323 },
     "devUsage": null,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -177,6 +185,7 @@
     "techRadar": null,
     "bundleSize": { "gzip": 820, "raw": 1665 },
     "devUsage": null,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -197,6 +206,7 @@
     "techRadar": null,
     "bundleSize": { "gzip": 15359, "raw": 61156 },
     "devUsage": null,
+    "security": "F",
     "googleTrends": null
   },
   {
@@ -217,6 +227,7 @@
     "techRadar": null,
     "bundleSize": { "gzip": 9468, "raw": 34765 },
     "devUsage": null,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -237,6 +248,7 @@
     "techRadar": null,
     "bundleSize": { "gzip": 22224, "raw": 108741 },
     "devUsage": null,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -257,6 +269,7 @@
     "techRadar": null,
     "bundleSize": { "gzip": 10437, "raw": 32825 },
     "devUsage": null,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -277,6 +290,7 @@
     "techRadar": null,
     "bundleSize": { "gzip": 10610, "raw": 26806 },
     "devUsage": null,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -297,6 +311,7 @@
     "techRadar": null,
     "bundleSize": { "gzip": 370, "raw": 601 },
     "devUsage": null,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -317,6 +332,7 @@
     "techRadar": null,
     "bundleSize": { "gzip": 508, "raw": 898 },
     "devUsage": null,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -337,6 +353,7 @@
     "techRadar": { "url": "https://www.thoughtworks.com/radar/languages-and-frameworks/swr", "level": "ASSESS" },
     "bundleSize": { "gzip": 5225, "raw": 16046 },
     "devUsage": null,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -357,6 +374,7 @@
     "techRadar": null,
     "bundleSize": { "gzip": 10624, "raw": 36516 },
     "devUsage": null,
+    "security": "A",
     "googleTrends": null
   }
 ]

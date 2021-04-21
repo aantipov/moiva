@@ -16,6 +16,7 @@
     "dwnlMonthlyIncreasePercentage": 13,
     "techRadar": { "url": "https://www.thoughtworks.com/radar/languages-and-frameworks/jest", "level": "TRIAL" },
     "devUsage": 68.3,
+    "security": "A",
     "googleTrends": 30
   },
   {
@@ -35,6 +36,7 @@
     "dwnlMonthlyIncreasePercentage": 12,
     "techRadar": { "url": "https://www.thoughtworks.com/radar/tools/ava", "level": "TRIAL" },
     "devUsage": 7.8,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -54,6 +56,7 @@
     "dwnlMonthlyIncreasePercentage": 9,
     "techRadar": null,
     "devUsage": 52.7,
+    "security": "A",
     "googleTrends": 5
   },
   {
@@ -73,6 +76,7 @@
     "dwnlMonthlyIncreasePercentage": 9,
     "techRadar": null,
     "devUsage": 42,
+    "security": "A",
     "googleTrends": 9
   },
   {
@@ -92,6 +96,7 @@
     "dwnlMonthlyIncreasePercentage": 7,
     "techRadar": null,
     "devUsage": null,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -111,6 +116,7 @@
     "dwnlMonthlyIncreasePercentage": 32,
     "techRadar": null,
     "devUsage": null,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -130,6 +136,7 @@
     "dwnlMonthlyIncreasePercentage": 9,
     "techRadar": null,
     "devUsage": null,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -149,6 +156,7 @@
     "dwnlMonthlyIncreasePercentage": 17,
     "techRadar": null,
     "devUsage": null,
+    "security": "A",
     "googleTrends": 3
   },
   {
@@ -168,6 +176,7 @@
     "dwnlMonthlyIncreasePercentage": 10,
     "techRadar": null,
     "devUsage": null,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -187,6 +196,7 @@
     "dwnlMonthlyIncreasePercentage": 20,
     "techRadar": null,
     "devUsage": null,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -206,6 +216,7 @@
     "dwnlMonthlyIncreasePercentage": 28,
     "techRadar": null,
     "devUsage": null,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -225,6 +236,7 @@
     "dwnlMonthlyIncreasePercentage": 140,
     "techRadar": null,
     "devUsage": null,
+    "security": "A",
     "googleTrends": 19
   },
   {
@@ -244,6 +256,7 @@
     "dwnlMonthlyIncreasePercentage": 7,
     "techRadar": { "url": "https://www.thoughtworks.com/radar/languages-and-frameworks/enzyme", "level": "HOLD" },
     "devUsage": null,
+    "security": "A",
     "googleTrends": null
   },
   {
@@ -263,6 +276,7 @@
     "dwnlMonthlyIncreasePercentage": 27,
     "techRadar": { "url": "https://www.thoughtworks.com/radar/languages-and-frameworks/react-testing-library", "level": "ADOPT" },
     "devUsage": 26.4,
+    "security": "A",
     "googleTrends": null
   }
 ]
