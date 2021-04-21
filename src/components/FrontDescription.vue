@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="flex justify-center mx-4 italic sm:mx-0">
-      We aggregate data from different sources to do better Software Evaluations
-      and Comparisons.
+      We aggregate data from different sources to do better Software Evaluation
+      and Comparison.
     </div>
 
     <div
@@ -16,9 +16,21 @@
         alt=""
         class="mt-2 ml-4 max-h-9"
       />
-      <img src="/images/stateofjs-logo.png?v1" alt="" class="ml-4 max-h-20" />
-      <img src="/images/snyk-logo.png?v1" alt="" class="ml-5 max-h-20" />
-      <img src="/images/bundlephobia-logo.png?v1" alt="" class="max-h-20" />
+      <img
+        src="/images/stateofjs-logo.png?v1"
+        alt=""
+        class="mt-1 ml-4 sm:mt-0 max-h-20"
+      />
+      <img
+        src="/images/snyk-logo.png?v1"
+        alt=""
+        class="mt-1 ml-4 ml-5 max-h-20"
+      />
+      <img
+        src="/images/bundlephobia-logo.png?v1"
+        alt=""
+        class="mt-1 ml-4 max-h-20"
+      />
     </div>
   </div>
 </template>
