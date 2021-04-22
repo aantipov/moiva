@@ -6,8 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint && prettier --check .",
-    "format": "prettier --write .",
+    "lint": "vue-cli-service lint && prettier --check src/.",
+    "format": "prettier --write src/.",
     "update": "npx npm-upgrade check"
   },
   "dependencies": {
