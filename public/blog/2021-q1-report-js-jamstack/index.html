@@ -24,11 +24,6 @@
       min-height: 640px;
     }
 
-    body {
-      display: flex;
-      flex-direction: column;
-    }
-
     .content {
       flex: 1 0 auto;
     }
@@ -369,12 +364,27 @@
   </div>
 </div>
 
-<div style="height:100px; margin-top: 50px; background-color:#ac4142">
+<div style="margin-top: 50px; padding: 20px 0 28px; background-color:#ac4142; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif; font-weight: 200; font-size: 16px;-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;">
+  <div class="container" style="color: white; display:flex; justify-content: center; margin-bottom: 16px;">
+    <span>Made with</span>
+    <span style="margin: 0 4px">
+      <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+      </svg>
+    </span>
+    <span>by</span>
+    <a href="https://alexei.me" target="_blank" style="margin-left: 4px; color: white; font-weight: 400;">Alexey Antipov</a>
+  </div>
   <div class="container"
-    style="height:100%; display:flex;align-items:center;color: white;justify-content:space-between;font-family: 'PT Sans', Helvetica, Arial, sans-serif;">
-    <a href="https://moiva.io" style="color: white">Moiva.io</a>
-    <a href="/" target="_blank" style="color: white">GitHub</a>
-    <a href="https://twitter.com/_aantipov" target="_blank" style="color: white">Twitter</a>
+    style="height:100%; display:flex;align-items:center;color: white;justify-content:space-between;">
+    <a href="https://moiva.io" style="color: white; font-size: 20px; font-weight: 400">Moiva.io</a>
+    <a href="/catalog" style="color: white; font-size: 20px; font-weight: 400">Catalog</a>
+    <a href="/blog" style="color: white; font-size: 20px; font-weight: 400">Blog</a>
+  </div>
+  <div class="container"
+    style="height:100%; display:flex;align-items:center;color: white;justify-content:space-around; margin-top:24px">
+    <a href="https://github.com/aantipov/moiva" target="_blank" style="color: white; font-size: 20px; font-weight: 400">GitHub</a>
+    <a href="https://twitter.com/_aantipov" target="_blank" style="color: white; font-size: 20px; font-weight: 400">Twitter</a>
   </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
