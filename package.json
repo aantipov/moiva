@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build-next": "vue-tsc --noEmit && vite build",
     "serve": "vite preview",
     "lint": "eslint --ext .ts,.js,.vue src/ && prettier --check src/.",
     "format": "prettier --write src/.",
@@ -33,6 +34,7 @@
     "@typescript-eslint/parser": "^4.22.0",
     "@vercel/node": "^1.10.0",
     "@vitejs/plugin-vue": "^1.2.1",
+    "@vue/compiler-sfc": "^3.0.5",
     "@vue/eslint-config-typescript": "^7.0.0",
     "autoprefixer": "^10.2.5",
     "eslint": "^7.24.0",
@@ -43,7 +45,8 @@
     "tailwindcss": "^2.1.1",
     "typescript": "~4.2.4",
     "vite": "^2.2.1",
-    "vue-eslint-parser": "^7.6.0"
+    "vue-eslint-parser": "^7.6.0",
+    "vue-tsc": "^0.0.25"
   },
   "eslintConfig": {
     "root": true,
