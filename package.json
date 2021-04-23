@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "vite build",
     "build-next": "vue-tsc --noEmit && vite build",
-    "serve": "vite preview",
+    "preview": "vite preview",
     "lint": "eslint --ext .ts,.js,.vue src/ && prettier --check src/.",
     "format": "prettier --write src/.",
     "update": "npx npm-upgrade check"
