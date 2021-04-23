@@ -68,7 +68,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="scss">
+<style lang="postcss">
 .chart {
   height: 350px;
 }

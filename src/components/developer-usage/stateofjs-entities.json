@@ -1115,7 +1115,7 @@
     "npm": "tailwindcss",
     "github": {
       "url": "https://github.com/tailwindlabs/tailwindcss"
-    } 
+    }
   },
   {
     "name": "PureCSS",
