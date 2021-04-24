@@ -17,8 +17,9 @@
 
 <script lang="ts">
 import { defineComponent, toRefs, computed } from 'vue';
-import { ChartDataSets, ChartConfiguration } from 'chart.js';
+import { ChartDataset, ChartConfiguration } from 'chart.js';
 import { NpmPackageReleasesT } from './api';
+import { format } from 'date-fns';
 import { enUS } from 'date-fns/locale';
 
 export default defineComponent({
@@ -46,13 +47,16 @@ export default defineComponent({
 
     const itemsNum = computed(() => packagesNames.value.length);
 
-    const datasets = computed<ChartDataSets[]>(() =>
+    const datasets = computed<ChartDataset<'line'>[]>(() =>
       packagesNames.value.map((packageName, packageIndex) => ({
         label: packageName,
         fill: itemsNum.value === 1,
-        data: packagesReleases.value[
-          packageIndex
-        ].map(({ month, releases }) => ({ x: month, y: releases })),
+        data: packagesReleases.value[packageIndex].map(
+          ({ month, releases }) => ({
+            x: (month as unknown) as number,
+            y: releases,
+          })
+        ),
         backgroundColor: packageToColorMap.value[packageName],
         borderColor: packageToColorMap.value[packageName],
       }))
@@ -71,9 +75,22 @@ export default defineComponent({
       data: { datasets: datasets.value },
       options: {
         scales: {
-          adapters: { date: { locale: enUS } },
-          xAxes: [{ type: 'time', time: { unit: unit.value } }],
-          yAxes: [{}],
+          x: {
+            type: 'time',
+            time: { unit: unit.value },
+            adapters: { date: { locale: enUS } },
+          },
+          y: {},
+        },
+        plugins: {
+          tooltip: {
+            callbacks: {
+              title: (tooltipItems): string => {
+                const time = tooltipItems[0].parsed.x;
+                return format(new Date(time), 'MMM, yyyy');
+              },
+            },
+          },
         },
       },
     }));
