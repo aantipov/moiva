@@ -73,36 +73,33 @@ export default defineComponent({
       return firstMonth > '2019-10' ? 'month' : 'year';
     });
 
-    const chartConfig = computed<ChartConfiguration>(
-      () =>
-        ({
-          type: 'line',
-          data: {
-            labels: filteredCategories.value,
-            datasets: datasets.value,
+    const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
+      type: 'line',
+      data: {
+        labels: filteredCategories.value,
+        datasets: datasets.value,
+      },
+      options: {
+        scales: {
+          x: {
+            type: 'time',
+            time: { unit: unit.value },
+            adapters: { date: { locale: enUS } },
           },
-          options: {
-            scales: {
-              x: {
-                type: 'time',
-                time: { unit: unit.value },
-                adapters: { date: { locale: enUS } },
-              },
-              y: { ticks: { callback: numbersFormatter.format } },
-            },
-            plugins: {
-              tooltip: {
-                callbacks: {
-                  title: (tooltipItems): string => {
-                    const time = tooltipItems[0].parsed.x;
-                    return format(new Date(time), 'MMM, yyyy');
-                  },
-                },
+          y: { ticks: { callback: numbersFormatter.format as () => string } },
+        },
+        plugins: {
+          tooltip: {
+            callbacks: {
+              title: (tooltipItems): string => {
+                const time = tooltipItems[0].parsed.x;
+                return format(new Date(time), 'MMM, yyyy');
               },
             },
           },
-        } as ChartConfiguration<'line'>)
-    );
+        },
+      },
+    }));
 
     return {
       chartConfig,
