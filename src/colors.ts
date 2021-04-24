@@ -1,6 +1,8 @@
 // https://material.io/design/color/the-color-system.html#tools-for-picking-colors
 export const COLOR_GREEN = '#10B981'; // Emerald 500
-export const COLOR_GRAY = '#A1A1AA'; // Gray 400
+export const COLOR_GREEN_DARK = '#059669'; // Emerald 600
+export const COLOR_GRAY = '#9CA3AF'; // Gray 400
+export const COLOR_GRAY_DARK = '#6B7280'; // Gray 500
 
 export const COLORS = [
   '#DC2626', // Red 600

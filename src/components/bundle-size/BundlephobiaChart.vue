@@ -20,10 +20,15 @@
 
 <script lang="ts">
 import { defineComponent, toRefs, computed } from 'vue';
-import { ChartDataSets, ChartConfiguration } from 'chart.js';
+import { ChartDataset, ChartConfiguration } from 'chart.js';
 import { BundlephobiaT } from '@/apis';
 import { numbersFormatter } from '@/utils';
-import { COLOR_GREEN, COLOR_GRAY } from '@/colors';
+import {
+  COLOR_GREEN,
+  COLOR_GRAY,
+  COLOR_GRAY_DARK,
+  COLOR_GREEN_DARK,
+} from '@/colors';
 
 const roundBytesFn = (bytes: number): number => Math.round(bytes / 102.4) / 10;
 
@@ -44,13 +49,14 @@ export default defineComponent({
   setup(props) {
     const { packagesNames, packagesSizes } = toRefs(props);
 
-    const datasets = computed<ChartDataSets[]>(() => [
+    const datasets = computed<ChartDataset<'bar'>[]>(() => [
       {
         label: 'minified + gzipped',
         data: packagesSizes.value.map((packageSize) =>
           roundBytesFn(packageSize.gzip)
         ),
         backgroundColor: COLOR_GREEN,
+        borderColor: COLOR_GREEN_DARK,
         borderWidth: 1,
       },
       {
@@ -59,6 +65,7 @@ export default defineComponent({
           roundBytesFn(packageSize.raw)
         ),
         backgroundColor: COLOR_GRAY,
+        borderColor: COLOR_GRAY_DARK,
         borderWidth: 1,
       },
     ]);
@@ -66,28 +73,31 @@ export default defineComponent({
     const bytesFormatter = (val: number) =>
       numbersFormatter.format(val) + ' kB';
 
-    const chartConfig = computed<ChartConfiguration>(() => ({
+    const chartConfig = computed<ChartConfiguration<'bar'>>(() => ({
       type: 'bar',
       data: {
         labels: packagesNames.value,
         datasets: datasets.value,
       },
       options: {
-        tooltips: {
-          callbacks: {
-            label: (tooltipItem, data): string => {
-              const label = (data.datasets as ChartDataSets[])[
-                tooltipItem.datasetIndex as number
-              ].label;
-
-              return ` ${label}: ${Number(
-                tooltipItem.yLabel
-              ).toLocaleString()}kB`;
+        scales: {
+          y: {
+            ticks: {
+              beginAtZero: true,
+              callback: bytesFormatter as () => string,
             },
           },
         },
-        scales: {
-          yAxes: [{ ticks: { beginAtZero: true, callback: bytesFormatter } }],
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: (ctx) => {
+                return ` ${ctx.dataset.label}: ${Number(
+                  ctx.raw
+                ).toLocaleString()} kB`;
+              },
+            },
+          },
         },
       },
     }));
