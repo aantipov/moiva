@@ -33,18 +33,18 @@
               class="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4"
             />
             <NpmDownloads />
-            <!-- <GoogleTrends /> -->
+            <GoogleTrends />
             <DevelopersUsage />
           </template>
           <template v-else-if="popularChartsNumber === 2">
             <NpmDownloads class="col-span-12 md:col-span-6" />
-            <!-- <GoogleTrends class="col&#45;span&#45;12 md:col&#45;span&#45;6" /> -->
+            <GoogleTrends class="col-span-12 md:col-span-6" />
             <Stars class="col-span-12 md:col-span-6" />
             <DevelopersUsage class="col-span-12 md:col-span-6" />
           </template>
           <template v-else>
             <NpmDownloads class="col-span-12 md:col-span-6 xl:col-span-4" />
-            <!-- <GoogleTrends class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4" /> -->
+            <GoogleTrends class="col-span-12 md:col-span-6 xl:col-span-4" />
             <Stars class="col-span-12 md:col-span-6 xl:col-span-4" />
             <DevelopersUsage class="col-span-12 md:col-span-6 xl:col-span-4" />
           </template>
@@ -105,7 +105,7 @@ import SelectedLibs from './SelectedLibs.vue';
 
 import Releases from './npm-releases/Releases.vue';
 // import TechRadar from './TechRadar.vue';
-// import GoogleTrends from './google-trends/GTrends.vue';
+import GoogleTrends from './google-trends/GTrends.vue';
 import Stars from './github-stars/Stars.vue';
 // import Bundlephobia from './bundle-size/Bundlephobia.vue';
 // import Issues from './Issues.vue';
@@ -148,7 +148,7 @@ export default defineComponent({
     // Commits,
     // Contributors,
     DevelopersUsage,
-    // GoogleTrends,
+    GoogleTrends,
     // Issues,
     // Languages,
     NpmDownloads,

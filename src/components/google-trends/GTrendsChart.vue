@@ -27,7 +27,7 @@
 
 <script lang="ts">
 import { defineComponent, toRefs, computed } from 'vue';
-import { ChartDataSets, ChartConfiguration } from 'chart.js';
+import { ChartDataset, ChartConfiguration } from 'chart.js';
 import { format } from 'date-fns';
 import { GTrendDefT } from '../../../google-trends.config';
 import { numbersFormatter } from '@/utils';
@@ -62,7 +62,7 @@ export default defineComponent({
 
     const itemsNum = computed(() => libsTrendsDefs.value.length);
 
-    const datasets = computed<ChartDataSets[]>(() =>
+    const datasets = computed<ChartDataset<'line'>[]>(() =>
       libsTrendsDefs.value.map((gtrendDef, libIndex) => ({
         label: gtrendDef.alias,
         fill: itemsNum.value === 1,
@@ -80,18 +80,23 @@ export default defineComponent({
         datasets: datasets.value,
       },
       options: {
-        tooltips: {
-          callbacks: {
-            title: (tooltipItems): string => {
-              const month = tooltipItems[0].xLabel as string;
-              return format(new Date(month), 'MMM, yyyy');
+        scales: {
+          x: {
+            type: 'time',
+            time: { unit: 'year' },
+            adapters: { date: { locale: enUS } },
+          },
+          y: { ticks: { callback: numbersFormatter.format as () => string } },
+        },
+        plugins: {
+          tooltip: {
+            callbacks: {
+              title: (tooltipItems): string => {
+                const time = tooltipItems[0].parsed.x;
+                return format(new Date(time), 'MMM, yyyy');
+              },
             },
           },
-        },
-        scales: {
-          adapters: { date: { locale: enUS } },
-          xAxes: [{ type: 'time', time: { unit: 'year' } }],
-          yAxes: [{ ticks: { callback: numbersFormatter.format } }],
         },
       },
     }));
