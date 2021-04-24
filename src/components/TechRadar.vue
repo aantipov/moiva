@@ -125,7 +125,9 @@ export default defineComponent({
                 return formatDate(month);
               },
               label: (context): string => {
-                return ` ${context.dataset.label}: ${context.formattedValue}`;
+                return ` ${
+                  context.dataset.label
+                }: ${context.formattedValue.toUpperCase()}`;
               },
             },
           },
