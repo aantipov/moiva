@@ -33,20 +33,20 @@
               class="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4"
             />
             <NpmDownloads />
-            <GoogleTrends />
-            <DevelopersUsage />
+            <!-- <GoogleTrends /> -->
+            <!-- <DevelopersUsage /> -->
           </template>
           <template v-else-if="popularChartsNumber === 2">
             <NpmDownloads class="col-span-12 md:col-span-6" />
-            <GoogleTrends class="col-span-12 md:col-span-6" />
+            <!-- <GoogleTrends class="col&#45;span&#45;12 md:col&#45;span&#45;6" /> -->
             <Stars class="col-span-12 md:col-span-6" />
-            <DevelopersUsage class="col-span-12 md:col-span-6" />
+            <!-- <DevelopersUsage class="col&#45;span&#45;12 md:col&#45;span&#45;6" /> -->
           </template>
           <template v-else>
             <NpmDownloads class="col-span-12 md:col-span-6 xl:col-span-4" />
-            <GoogleTrends class="col-span-12 md:col-span-6 xl:col-span-4" />
+            <!-- <GoogleTrends class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4" /> -->
             <Stars class="col-span-12 md:col-span-6 xl:col-span-4" />
-            <DevelopersUsage class="col-span-12 md:col-span-6 xl:col-span-4" />
+            <!-- <DevelopersUsage class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4" /> -->
           </template>
         </div>
       </div>
@@ -55,42 +55,42 @@
         <h2>Maintenance and Development Activity</h2>
         <div class="grid grid-cols-12 gap-4">
           <Releases class="col-span-12 md:col-span-6 xl:col-span-4" />
-          <Contributors class="col-span-12 md:col-span-6 xl:col-span-4" />
-          <Commits class="col-span-12 md:col-span-6 xl:col-span-4" />
-          <Issues class="col-span-12 md:col-span-6 xl:col-span-4" />
+          <!-- <Contributors class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4" /> -->
+          <!-- <Commits class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4" /> -->
+          <!-- <Issues class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4" /> -->
         </div>
       </div>
 
-      <div>
-        <h2>Miscellaneous</h2>
-        <div class="grid grid-cols-12 gap-4">
-          <template v-if="miscChartsNumber === 1">
-            <Languages
-              class="col-span-12 md:col-span-6 md:col-start-4 xl:col-span-4 xl:col-start-5"
-            />
-            <TechRadar />
-            <Bundlephobia :category="category" />
-          </template>
-          <template v-else-if="miscChartsNumber === 2">
-            <Languages
-              class="col-span-12 md:col-span-6 xl:col-span-4 xl:col-start-3"
-            />
-            <TechRadar class="col-span-12 md:col-span-6 xl:col-span-4" />
-            <Bundlephobia
-              :category="category"
-              class="col-span-12 md:col-span-6 xl:col-span-4"
-            />
-          </template>
-          <template v-else>
-            <Languages class="col-span-12 md:col-span-6 xl:col-span-4" />
-            <TechRadar class="col-span-12 md:col-span-6 xl:col-span-4" />
-            <Bundlephobia
-              :category="category"
-              class="col-span-12 md:col-span-6 xl:col-span-4"
-            />
-          </template>
-        </div>
-      </div>
+      <!-- <div v&#45;if="false"> -->
+      <!--   <h2>Miscellaneous</h2> -->
+      <!--   <div class="grid grid&#45;cols&#45;12 gap&#45;4"> -->
+      <!--     <template v&#45;if="miscChartsNumber === 1"> -->
+      <!--       <Languages -->
+      <!--         class="col&#45;span&#45;12 md:col&#45;span&#45;6 md:col&#45;start&#45;4 xl:col&#45;span&#45;4 xl:col&#45;start&#45;5" -->
+      <!--       /> -->
+      <!--       <TechRadar /> -->
+      <!--       <Bundlephobia :category="category" /> -->
+      <!--     </template> -->
+      <!--     <template v&#45;else&#45;if="miscChartsNumber === 2"> -->
+      <!--       <Languages -->
+      <!--         class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4 xl:col&#45;start&#45;3" -->
+      <!--       /> -->
+      <!--       <TechRadar class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4" /> -->
+      <!--       <Bundlephobia -->
+      <!--         :category="category" -->
+      <!--         class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4" -->
+      <!--       /> -->
+      <!--     </template> -->
+      <!--     <template v&#45;else> -->
+      <!--       <Languages class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4" /> -->
+      <!--       <TechRadar class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4" /> -->
+      <!--       <Bundlephobia -->
+      <!--         :category="category" -->
+      <!--         class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4" -->
+      <!--       /> -->
+      <!--     </template> -->
+      <!--   </div> -->
+      <!-- </div> -->
     </div>
   </div>
 </template>
@@ -98,20 +98,21 @@
 <script lang="ts">
 import { defineComponent, onMounted, watchEffect, computed } from 'vue';
 import NpmDownloads from './NpmDownloads.vue';
-import Releases from './npm-releases/Releases.vue';
 import Search from './search/Search.vue';
 import Suggestions from './Suggestions.vue';
-import TechRadar from './TechRadar.vue';
-import GoogleTrends from './google-trends/GTrends.vue';
-import Stars from './github-stars/Stars.vue';
-import Bundlephobia from './bundle-size/Bundlephobia.vue';
-import Issues from './Issues.vue';
 import Popular from './Popular.vue';
 import SelectedLibs from './SelectedLibs.vue';
-import Languages from './Languages.vue';
-import Contributors from './github-contributors/Contributors.vue';
-import DevelopersUsage from './developer-usage/DevelopersUsage.vue';
-import Commits from './Commits.vue';
+
+import Releases from './npm-releases/Releases.vue';
+// import TechRadar from './TechRadar.vue';
+// import GoogleTrends from './google-trends/GTrends.vue';
+import Stars from './github-stars/Stars.vue';
+// import Bundlephobia from './bundle-size/Bundlephobia.vue';
+// import Issues from './Issues.vue';
+// import Languages from './Languages.vue';
+// import Contributors from './github-contributors/Contributors.vue';
+// import DevelopersUsage from './developer-usage/DevelopersUsage.vue';
+// import Commits from './Commits.vue';
 
 import { chartsVisibility } from '@/store/chartsVisibility';
 import {
@@ -140,19 +141,19 @@ export default defineComponent({
     Popular,
     Search,
     Suggestions,
+    SelectedLibs,
 
-    Bundlephobia,
+    // Bundlephobia,
     Stars,
-    Commits,
-    Contributors,
-    DevelopersUsage,
-    GoogleTrends,
-    Issues,
-    Languages,
+    // Commits,
+    // Contributors,
+    // DevelopersUsage,
+    // GoogleTrends,
+    // Issues,
+    // Languages,
     NpmDownloads,
     Releases,
-    SelectedLibs,
-    TechRadar,
+    // TechRadar,
   },
 
   setup() {
