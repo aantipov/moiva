@@ -15,8 +15,7 @@
 
 <script lang="ts">
 import { defineComponent, toRefs, computed } from 'vue';
-import { ChartDataSets, ChartConfiguration } from 'chart.js';
-import { format } from 'date-fns';
+import { ChartDataset, ChartConfiguration } from 'chart.js';
 import { NpmDownloadT } from '@/apis';
 import { numbersFormatter } from '@/utils';
 import { enUS } from 'date-fns/locale';
@@ -46,7 +45,7 @@ export default defineComponent({
 
     const itemsNum = computed(() => packagesNames.value.length);
 
-    const datasets = computed<ChartDataSets[]>(() =>
+    const datasets = computed<ChartDataset<'line'>[]>(() =>
       packagesNames.value.map((packageName, packageIndex) => ({
         label: packageName,
         fill: itemsNum.value === 1,
@@ -73,25 +72,21 @@ export default defineComponent({
       return firstMonth > '2019-10' ? 'month' : 'year';
     });
 
-    const chartConfig = computed<ChartConfiguration>(() => ({
+    const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
       type: 'line',
       data: {
         labels: filteredCategories.value,
         datasets: datasets.value,
       },
       options: {
-        tooltips: {
-          callbacks: {
-            title: (tooltipItems): string => {
-              const month = tooltipItems[0].xLabel as string;
-              return format(new Date(month), 'MMM, yyyy');
-            },
-          },
-        },
+        elements: { line: { tension: 0.1 } },
         scales: {
-          adapters: { date: { locale: enUS } },
-          xAxes: [{ type: 'time', time: { unit: unit.value } }],
-          yAxes: [{ ticks: { callback: numbersFormatter.format } }],
+          x: {
+            type: 'time',
+            time: { unit: unit.value, tooltipFormat: 'MMM, yyyy' },
+            adapters: { date: { locale: enUS } },
+          },
+          y: { ticks: { callback: numbersFormatter.format as () => string } },
         },
       },
     }));

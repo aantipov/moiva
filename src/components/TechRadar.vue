@@ -38,7 +38,7 @@
 <script lang="ts">
 import { defineComponent, computed, watchEffect } from 'vue';
 import { format } from 'date-fns';
-import { ChartConfiguration, ChartDataSets } from 'chart.js';
+import { ChartConfiguration, ChartDataset } from 'chart.js';
 import {
   TRADAR_LEVELS,
   repoToTechRadarMap,
@@ -59,9 +59,9 @@ export default defineComponent({
         .filter((item) => !!item)
     );
 
-    const tradarItemsAliases = computed<TechRadarT[]>(() =>
+    const tradarItemsAliases = computed<string[]>(() =>
       tradarItems.value.map(
-        (tradarItem) => repoToTechRadarMap[tradarItem.alias]
+        (tradarItem) => repoToTechRadarMap[tradarItem.repo].alias as string
       )
     );
 
@@ -79,58 +79,58 @@ export default defineComponent({
 
     const itemsNum = computed(() => tradarItems.value.length);
 
-    const datasets = computed<ChartDataSets[]>(() =>
-      tradarItems.value.map(
-        (tradarItem) =>
-          ({
-            label: tradarItem.alias,
-            fill: itemsNum.value === 1,
-            data: uniqDates.value.map((date) => tradarItem.data[date]),
-            backgroundColor:
-              libraryToColorMap.value[
-                repoToLibraryIdMap.value[tradarItem.repo]
-              ],
-            borderColor:
-              libraryToColorMap.value[
-                repoToLibraryIdMap.value[tradarItem.repo]
-              ],
-            spanGaps: true,
-            lineTension: 0,
-          } as ChartDataSets)
-      )
+    const datasets = computed<ChartDataset<'line'>[]>(() =>
+      tradarItems.value.map((tradarItem) => ({
+        label: tradarItem.alias,
+        fill: itemsNum.value === 1,
+        data: (uniqDates.value.map(
+          (date) => tradarItem.data[date]
+        ) as unknown) as number[],
+        backgroundColor:
+          libraryToColorMap.value[repoToLibraryIdMap.value[tradarItem.repo]],
+        borderColor:
+          libraryToColorMap.value[repoToLibraryIdMap.value[tradarItem.repo]],
+        spanGaps: true,
+        lineTension: 0,
+      }))
     );
 
-    function formatDate(dateStr: string): string {
-      return format(new Date(dateStr), 'MMM yyyy');
+    function formatDate(i: number): string {
+      return format(new Date(uniqDates.value[i]), 'MMM yyyy');
     }
 
-    const chartConfig = computed<ChartConfiguration>(() => ({
+    const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
       type: 'line',
       data: {
         labels: uniqDates.value,
-        xLabels: uniqDates.value,
-        yLabels: [...TRADAR_LEVELS, ''],
+        yLabels: [...TRADAR_LEVELS].reverse(),
         datasets: datasets.value,
       },
       options: {
-        tooltips: {
-          callbacks: {
-            title: (tooltipItems): string => {
-              const month = tooltipItems[0].xLabel as string;
-              return formatDate(month);
-            },
-            label: (tooltipItem, data): string => {
-              const label = (data.datasets as ChartDataSets[])[
-                tooltipItem.datasetIndex as number
-              ].label;
-
-              return ` ${label}: ${tooltipItem.yLabel}`;
-            },
+        scales: {
+          x: {
+            ticks: { callback: formatDate as () => string },
+          },
+          y: {
+            type: 'category',
+            offset: true,
           },
         },
-        scales: {
-          xAxes: [{ ticks: { callback: formatDate } }],
-          yAxes: [{ type: 'category', ticks: { reverse: true } }],
+
+        plugins: {
+          tooltip: {
+            callbacks: {
+              title: (tooltipItems): string => {
+                const month = tooltipItems[0].parsed.x;
+                return formatDate(month);
+              },
+              label: (context): string => {
+                return ` ${
+                  context.dataset.label
+                }: ${context.formattedValue.toUpperCase()}`;
+              },
+            },
+          },
         },
       },
     }));

@@ -15,10 +15,9 @@
 
 <script lang="ts">
 import { defineComponent, toRefs, computed } from 'vue';
-import { ChartDataSets, ChartConfiguration } from 'chart.js';
+import { ChartDataset, ChartConfiguration } from 'chart.js';
 import { getSeoLibName } from '@/utils';
 import { StarsT } from './api';
-import { format } from 'date-fns';
 import { enUS } from 'date-fns/locale';
 
 export default defineComponent({
@@ -44,14 +43,14 @@ export default defineComponent({
 
     const itemsNum = computed(() => reposIds.value.length);
 
-    const datasets = computed<ChartDataSets[]>(() =>
+    const datasets = computed<ChartDataset<'line'>[]>(() =>
       reposIds.value.map((repoId, repoIndex) => {
         const [, repoName] = repoId.split('/');
         return {
           label: repoName,
           fill: itemsNum.value === 1,
           data: reposStars.value[repoIndex].map(({ month, stars }) => ({
-            x: month,
+            x: (month as unknown) as number,
             y: stars,
           })),
           backgroundColor: repoToColorMap.value[repoId],
@@ -64,18 +63,12 @@ export default defineComponent({
       type: 'line',
       data: { datasets: datasets.value },
       options: {
-        tooltips: {
-          callbacks: {
-            title: (tooltipItems): string => {
-              const month = tooltipItems[0].xLabel as string;
-              return format(new Date(month), 'MMM, yyyy');
-            },
-          },
-        },
         scales: {
-          adapters: { date: { locale: enUS } },
-          xAxes: [{ type: 'time', time: { unit: 'month' } }],
-          yAxes: [],
+          x: {
+            type: 'time',
+            time: { unit: 'month', tooltipFormat: 'MMM, yyyy' },
+            adapters: { date: { locale: enUS } },
+          },
         },
       },
     }));

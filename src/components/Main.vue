@@ -98,16 +98,17 @@
 <script lang="ts">
 import { defineComponent, onMounted, watchEffect, computed } from 'vue';
 import NpmDownloads from './NpmDownloads.vue';
-import Releases from './npm-releases/Releases.vue';
 import Search from './search/Search.vue';
 import Suggestions from './Suggestions.vue';
+import Popular from './Popular.vue';
+import SelectedLibs from './SelectedLibs.vue';
+
+import Releases from './npm-releases/Releases.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './google-trends/GTrends.vue';
 import Stars from './github-stars/Stars.vue';
 import Bundlephobia from './bundle-size/Bundlephobia.vue';
 import Issues from './Issues.vue';
-import Popular from './Popular.vue';
-import SelectedLibs from './SelectedLibs.vue';
 import Languages from './Languages.vue';
 import Contributors from './github-contributors/Contributors.vue';
 import DevelopersUsage from './developer-usage/DevelopersUsage.vue';
@@ -140,6 +141,7 @@ export default defineComponent({
     Popular,
     Search,
     Suggestions,
+    SelectedLibs,
 
     Bundlephobia,
     Stars,
@@ -151,7 +153,6 @@ export default defineComponent({
     Languages,
     NpmDownloads,
     Releases,
-    SelectedLibs,
     TechRadar,
   },
 

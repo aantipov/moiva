@@ -21,7 +21,7 @@
 
 <script lang="ts">
 import { defineComponent, toRefs, computed } from 'vue';
-import { ChartDataSets, ChartConfiguration } from 'chart.js';
+import { ChartDataset, ChartConfiguration } from 'chart.js';
 import { StateOfJSItemT } from './stateof-js-css-data';
 
 export default defineComponent({
@@ -52,7 +52,7 @@ export default defineComponent({
 
     const itemsNum = computed(() => reposUsage.value.length);
 
-    const datasets = computed<ChartDataSets[]>(() =>
+    const datasets = computed<ChartDataset<'line'>[]>(() =>
       reposUsage.value.map((libUsageItem) => {
         const libUsage = libUsageItem.usage.reduce((acc, item) => {
           acc[item.year] = item.value;
@@ -62,7 +62,8 @@ export default defineComponent({
         return {
           label: libUsageItem.name,
           fill: itemsNum.value === 1,
-          data: years.value.map((year) => libUsage[year] || undefined),
+          spanGaps: true,
+          data: years.value.map((year) => libUsage[year] || null),
           backgroundColor: repoToColorMap.value[libUsageItem.repoId],
           borderColor: repoToColorMap.value[libUsageItem.repoId],
         };
@@ -76,17 +77,23 @@ export default defineComponent({
         datasets: datasets.value,
       },
       options: {
-        spanGaps: true,
         scales: {
-          yAxes: [
-            {
-              ticks: {
-                beginAtZero: false,
-                precision: 0,
-                callback: (val: number): string => val + '%',
+          y: {
+            ticks: {
+              beginAtZero: false,
+              precision: 0,
+              callback: (val): string => val + '%',
+            },
+          },
+        },
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: (context): string => {
+                return ` ${context.dataset.label}: ${context.formattedValue}%`;
               },
             },
-          ],
+          },
         },
       },
     }));

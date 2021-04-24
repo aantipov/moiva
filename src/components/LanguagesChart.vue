@@ -20,7 +20,7 @@
 
 <script lang="ts">
 import { defineComponent, toRefs, computed } from 'vue';
-import Chart, { ChartDataSets } from 'chart.js';
+import { ChartDataset, ChartConfiguration } from 'chart.js';
 import { getLangToColorMap } from '@/colors';
 import { getSeoLibName } from '@/utils';
 import { GithubLanguagesResponseT } from '@/apis';
@@ -118,21 +118,20 @@ export default defineComponent({
       getLangToColorMap(languagesNames.value || [])
     );
 
-    const datasets = computed<ChartDataSets[]>(
-      () =>
-        (languagesNames.value || []).map((langName) => ({
-          label: langName,
-          data: (reposLanguages.value || []).map(
-            (_, repoIndex) =>
-              (libsLanguagesShares.value || [])[repoIndex][langName] || 0
-          ),
-          backgroundColor: langToColorMap.value[langName],
-          borderColor: langToColorMap.value[langName],
-          borderWidth: 1,
-        })) as ChartDataSets[]
+    const datasets = computed<ChartDataset<'bar'>[]>(() =>
+      (languagesNames.value || []).map((langName) => ({
+        label: langName,
+        data: (reposLanguages.value || []).map(
+          (_, repoIndex) =>
+            (libsLanguagesShares.value || [])[repoIndex][langName] || 0
+        ),
+        backgroundColor: langToColorMap.value[langName],
+        borderColor: langToColorMap.value[langName],
+        borderWidth: 1,
+      }))
     );
 
-    const chartConfig = computed<Chart.ChartConfiguration>(() => ({
+    const chartConfig = computed<ChartConfiguration<'bar'>>(() => ({
       type: 'bar',
       data: {
         labels: reposIds.value.map((repoId) => {
@@ -141,19 +140,29 @@ export default defineComponent({
         }),
         datasets: datasets.value,
       },
+
       options: {
         scales: {
-          xAxes: [{ stacked: true }],
-          yAxes: [
-            {
-              stacked: true,
-              ticks: {
-                beginAtZero: true,
-                precision: 0,
-                callback: (val: number): string => val + '%',
+          x: { stacked: true },
+          y: {
+            max: 100,
+            stacked: true,
+            ticks: {
+              beginAtZero: true,
+              precision: 0,
+              callback: (val) => val + '%',
+            },
+          },
+        },
+
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: (context): string => {
+                return ` ${context.dataset.label}: ${context.formattedValue}%`;
               },
             },
-          ],
+          },
         },
       },
     }));

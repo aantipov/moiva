@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
-import { ChartDataSets, ChartConfiguration } from 'chart.js';
+import { ChartDataset, ChartConfiguration } from 'chart.js';
 import { getSeoLibName } from '@/utils';
 import { numbersFormatter } from '../utils';
 import { ISSUES_COLORS } from '@/colors';
@@ -26,46 +26,50 @@ export default defineComponent({
 
   setup() {
     const datasets = computed<
-      [ChartDataSets, ChartDataSets, ChartDataSets, ChartDataSets]
-    >(
-      () =>
-        [
-          {
-            label: 'open bugs',
-            stack: '1',
-            data: libraries.map(({ repo }) => repo.openBugIssues),
-            backgroundColor: ISSUES_COLORS.OPEN_BUGS,
-            borderWidth: 1,
-          },
-          {
-            label: 'open others',
-            stack: '1',
-            data: libraries.map(
-              ({ repo }) => repo.openIssues - repo.openBugIssues
-            ),
-            backgroundColor: ISSUES_COLORS.OPEN,
-            borderWidth: 1,
-          },
-          {
-            label: 'closed bugs',
-            stack: '2',
-            data: libraries.map(({ repo }) => repo.closedBugIssues),
-            backgroundColor: ISSUES_COLORS.CLOSED_BUGS,
-            borderWidth: 1,
-          },
-          {
-            label: 'closed others',
-            stack: '2',
-            data: libraries.map(
-              ({ repo }) => repo.closedIssues - repo.closedBugIssues
-            ),
-            backgroundColor: ISSUES_COLORS.CLOSED,
-            borderWidth: 1,
-          },
-        ] as [ChartDataSets, ChartDataSets, ChartDataSets, ChartDataSets]
-    );
+      [
+        ChartDataset<'bar'>,
+        ChartDataset<'bar'>,
+        ChartDataset<'bar'>,
+        ChartDataset<'bar'>
+      ]
+    >(() => [
+      {
+        label: 'open bugs',
+        stack: '1',
+        data: libraries.map(({ repo }) => repo.openBugIssues),
+        backgroundColor: ISSUES_COLORS.OPEN_BUGS,
+        borderColor: ISSUES_COLORS.OPEN_BUGS_DARK,
+        borderWidth: 1,
+      },
+      {
+        label: 'open others',
+        stack: '1',
+        data: libraries.map(({ repo }) => repo.openIssues - repo.openBugIssues),
+        backgroundColor: ISSUES_COLORS.OPEN,
+        borderColor: ISSUES_COLORS.OPEN_DARK,
+        borderWidth: 1,
+      },
+      {
+        label: 'closed bugs',
+        stack: '2',
+        data: libraries.map(({ repo }) => repo.closedBugIssues),
+        backgroundColor: ISSUES_COLORS.CLOSED_BUGS,
+        borderColor: ISSUES_COLORS.CLOSED_BUGS_DARK,
+        borderWidth: 1,
+      },
+      {
+        label: 'closed others',
+        stack: '2',
+        data: libraries.map(
+          ({ repo }) => repo.closedIssues - repo.closedBugIssues
+        ),
+        backgroundColor: ISSUES_COLORS.CLOSED,
+        borderColor: ISSUES_COLORS.CLOSED_DARK,
+        borderWidth: 1,
+      },
+    ]);
 
-    const chartConfig = computed<ChartConfiguration>(() => ({
+    const chartConfig = computed<ChartConfiguration<'bar'>>(() => ({
       type: 'bar',
       data: {
         labels: libraries.map(({ repo }) => repo.repoName),
@@ -74,17 +78,15 @@ export default defineComponent({
       options: {
         title: { display: false, text: 'Open issues, count' },
         scales: {
-          xAxes: [{ stacked: true }],
-          yAxes: [
-            {
-              stacked: true,
-              ticks: {
-                beginAtZero: true,
-                precision: 0,
-                callback: (val: number): string => numbersFormatter.format(val),
-              },
+          x: { stacked: true },
+          y: {
+            stacked: true,
+            ticks: {
+              beginAtZero: true,
+              precision: 0,
+              callback: (val) => numbersFormatter.format(val as number),
             },
-          ],
+          },
         },
       },
     }));

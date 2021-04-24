@@ -15,9 +15,10 @@
 
 <script lang="ts">
 import { defineComponent, toRefs, computed } from 'vue';
-import { ChartDataSets, ChartConfiguration } from 'chart.js';
+import { ChartDataset, ChartConfiguration } from 'chart.js';
 import { getSeoLibName } from '@/utils';
 import { ContributorsT } from './api';
+import { format } from 'date-fns';
 import { enUS } from 'date-fns/locale';
 
 export default defineComponent({
@@ -43,7 +44,7 @@ export default defineComponent({
 
     const itemsNum = computed(() => reposIds.value.length);
 
-    const datasets = computed<ChartDataSets[]>(() =>
+    const datasets = computed<ChartDataset<'line'>[]>(() =>
       reposIds.value.map((repoId, repoIndex) => {
         const [, repoName] = repoId.split('/');
         return {
@@ -51,7 +52,7 @@ export default defineComponent({
           fill: itemsNum.value === 1,
           data: reposContributors.value[repoIndex].map(
             ({ month, contributors }) => ({
-              x: month,
+              x: (month as unknown) as number,
               y: contributors,
             })
           ),
@@ -69,14 +70,26 @@ export default defineComponent({
       return firstMonth >= '2019-10' ? 'quarter' : 'year';
     });
 
-    const chartConfig = computed<ChartConfiguration>(() => ({
+    const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
       type: 'line',
       data: { datasets: datasets.value },
       options: {
         scales: {
-          adapters: { date: { locale: enUS } },
-          xAxes: [{ type: 'time', time: { unit: unit.value } }],
-          yAxes: [{}],
+          x: {
+            type: 'time',
+            time: { unit: unit.value },
+            adapters: { date: { locale: enUS } },
+          },
+        },
+        plugins: {
+          tooltip: {
+            callbacks: {
+              title: (tooltipItems): string => {
+                const time = tooltipItems[0].parsed.x;
+                return format(new Date(time - 1000000000), 'QQQ yyyy');
+              },
+            },
+          },
         },
       },
     }));
