@@ -49,10 +49,14 @@ const LANGUAGE_COLORS = [
 ];
 
 export const ISSUES_COLORS = {
-  OPEN: '#71717A', // Gray 500
+  OPEN: '#6B7280', // Gray 500
+  OPEN_DARK: '#4B5563', // Gray 600
   OPEN_BUGS: '#EF4444', // Red 500
-  CLOSED: '#D4D4D8', // Gray 300
+  OPEN_BUGS_DARK: '#DC2626', // Red 600
+  CLOSED: '#D1D5DB', // Gray 300
+  CLOSED_DARK: '#9CA3AF', // Gray 400
   CLOSED_BUGS: '#FCA5A5', // Red 300
+  CLOSED_BUGS_DARK: '#F87171', // Red 400
 };
 
 const langToColorMap = new Map<string, string>();
