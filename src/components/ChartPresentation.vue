@@ -44,7 +44,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, toRefs, onMounted, watch } from 'vue';
-import Chart from 'chart.js';
+import { Chart, ChartConfiguration } from 'chart.js';
 
 export default defineComponent({
   name: 'ChartPresentation',
@@ -57,7 +57,7 @@ export default defineComponent({
     libsNames: { type: Array as () => string[], required: true },
     failedLibsNames: { type: Array as () => string[], required: true },
     chartConfig: {
-      type: Object as () => Chart.ChartConfiguration,
+      type: Object as () => ChartConfiguration,
       required: true,
     },
     ariaLabel: {
@@ -70,7 +70,7 @@ export default defineComponent({
     const { isLoading, chartConfig, isError } = toRefs(props);
     const chartEl = ref<null | HTMLCanvasElement>(null);
     const hasInfo = ref(!!slots.default);
-    let mychart: Chart | undefined;
+    let mychart: Chart;
 
     function initChart(): void {
       const ctx = chartEl.value as HTMLCanvasElement;
@@ -81,13 +81,14 @@ export default defineComponent({
 
     watch([chartConfig, isLoading, isError], () => {
       if (!isLoading.value && !isError.value) {
-        (mychart as Chart).data.labels = chartConfig.value.data?.labels;
-        // @ts-ignore
-        (mychart as Chart).data.xLabels = chartConfig.value.data?.xLabels;
+        mychart.data.labels = chartConfig.value.data?.labels;
         // @ts-ignore
         (mychart as Chart).data.yLabels = chartConfig.value.data?.yLabels;
+        // @ts-ignore
+        (mychart as Chart).data.xLabels = chartConfig.value.data?.xLabels;
         (mychart as Chart).data.datasets = chartConfig.value.data?.datasets;
-        (mychart as Chart).options = (chartConfig.value as Chart).options;
+        // @ts-ignore
+        (mychart as Chart).options = chartConfig.value.options;
         (mychart as Chart).update();
       }
     });

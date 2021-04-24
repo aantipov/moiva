@@ -61,36 +61,36 @@
         </div>
       </div>
 
-      <!-- <div v&#45;if="false"> -->
-      <!--   <h2>Miscellaneous</h2> -->
-      <!--   <div class="grid grid&#45;cols&#45;12 gap&#45;4"> -->
-      <!--     <template v&#45;if="miscChartsNumber === 1"> -->
-      <!--       <Languages -->
-      <!--         class="col&#45;span&#45;12 md:col&#45;span&#45;6 md:col&#45;start&#45;4 xl:col&#45;span&#45;4 xl:col&#45;start&#45;5" -->
-      <!--       /> -->
-      <!--       <TechRadar /> -->
-      <!--       <Bundlephobia :category="category" /> -->
-      <!--     </template> -->
-      <!--     <template v&#45;else&#45;if="miscChartsNumber === 2"> -->
-      <!--       <Languages -->
-      <!--         class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4 xl:col&#45;start&#45;3" -->
-      <!--       /> -->
-      <!--       <TechRadar class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4" /> -->
-      <!--       <Bundlephobia -->
-      <!--         :category="category" -->
-      <!--         class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4" -->
-      <!--       /> -->
-      <!--     </template> -->
-      <!--     <template v&#45;else> -->
-      <!--       <Languages class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4" /> -->
-      <!--       <TechRadar class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4" /> -->
-      <!--       <Bundlephobia -->
-      <!--         :category="category" -->
-      <!--         class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4" -->
-      <!--       /> -->
-      <!--     </template> -->
-      <!--   </div> -->
-      <!-- </div> -->
+      <div>
+        <h2>Miscellaneous</h2>
+        <div class="grid grid-cols-12 gap-4">
+          <template v-if="miscChartsNumber === 1">
+            <!-- <Languages -->
+            <!--   class="col&#45;span&#45;12 md:col&#45;span&#45;6 md:col&#45;start&#45;4 xl:col&#45;span&#45;4 xl:col&#45;start&#45;5" -->
+            <!-- /> -->
+            <TechRadar />
+            <!-- <Bundlephobia :category="category" /> -->
+          </template>
+          <template v-else-if="miscChartsNumber === 2">
+            <!-- <Languages -->
+            <!--   class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4 xl:col&#45;start&#45;3" -->
+            <!-- /> -->
+            <TechRadar class="col-span-12 md:col-span-6 xl:col-span-4" />
+            <!-- <Bundlephobia -->
+            <!--   :category="category" -->
+            <!--   class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4" -->
+            <!-- /> -->
+          </template>
+          <template v-else>
+            <!-- <Languages class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4" /> -->
+            <TechRadar class="col-span-12 md:col-span-6 xl:col-span-4" />
+            <!-- <Bundlephobia -->
+            <!--   :category="category" -->
+            <!--   class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4" -->
+            <!-- /> -->
+          </template>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -104,7 +104,7 @@ import Popular from './Popular.vue';
 import SelectedLibs from './SelectedLibs.vue';
 
 import Releases from './npm-releases/Releases.vue';
-// import TechRadar from './TechRadar.vue';
+import TechRadar from './TechRadar.vue';
 import GoogleTrends from './google-trends/GTrends.vue';
 import Stars from './github-stars/Stars.vue';
 // import Bundlephobia from './bundle-size/Bundlephobia.vue';
@@ -153,7 +153,7 @@ export default defineComponent({
     // Languages,
     NpmDownloads,
     Releases,
-    // TechRadar,
+    TechRadar,
   },
 
   setup() {
