@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { defineComponent, toRefs, computed } from 'vue';
-import { ChartDataSets, ChartConfiguration } from 'chart.js';
+import { ChartDataset, ChartConfiguration } from 'chart.js';
 import { getSeoLibName } from '@/utils';
 import { CommitsResponseItemT } from '@/apis';
 import { enUS } from 'date-fns/locale';
@@ -47,7 +47,7 @@ export default defineComponent({
 
     const itemsNum = computed(() => reposIds.value.length);
 
-    const datasets = computed<ChartDataSets[]>(() =>
+    const datasets = computed<ChartDataset<'line'>[]>(() =>
       reposIds.value.map((repoId, repoIndex) => {
         const [, repoName] = repoId.split('/');
         return {
@@ -63,14 +63,16 @@ export default defineComponent({
       })
     );
 
-    const chartConfig = computed<ChartConfiguration>(() => ({
+    const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
       type: 'line',
       data: { datasets: datasets.value },
       options: {
         scales: {
-          adapters: { date: { locale: enUS } },
-          xAxes: [{ type: 'time', time: { tooltipFormat: 'PP' } }],
-          yAxes: [{}],
+          x: {
+            type: 'time',
+            time: { tooltipFormat: 'PP' },
+            adapters: { date: { locale: enUS } },
+          },
         },
       },
     }));

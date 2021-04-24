@@ -56,7 +56,7 @@
         <div class="grid grid-cols-12 gap-4">
           <Releases class="col-span-12 md:col-span-6 xl:col-span-4" />
           <Contributors class="col-span-12 md:col-span-6 xl:col-span-4" />
-          <!-- <Commits class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4" /> -->
+          <Commits class="col-span-12 md:col-span-6 xl:col-span-4" />
           <!-- <Issues class="col&#45;span&#45;12 md:col&#45;span&#45;6 xl:col&#45;span&#45;4" /> -->
         </div>
       </div>
@@ -112,7 +112,7 @@ import Stars from './github-stars/Stars.vue';
 // import Languages from './Languages.vue';
 import Contributors from './github-contributors/Contributors.vue';
 import DevelopersUsage from './developer-usage/DevelopersUsage.vue';
-// import Commits from './Commits.vue';
+import Commits from './Commits.vue';
 
 import { chartsVisibility } from '@/store/chartsVisibility';
 import {
@@ -145,7 +145,7 @@ export default defineComponent({
 
     // Bundlephobia,
     Stars,
-    // Commits,
+    Commits,
     Contributors,
     DevelopersUsage,
     GoogleTrends,
