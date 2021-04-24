@@ -16,7 +16,6 @@
 <script lang="ts">
 import { defineComponent, toRefs, computed } from 'vue';
 import { ChartDataset, ChartConfiguration } from 'chart.js';
-import { format } from 'date-fns';
 import { NpmDownloadT } from '@/apis';
 import { numbersFormatter } from '@/utils';
 import { enUS } from 'date-fns/locale';

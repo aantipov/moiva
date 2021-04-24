@@ -18,7 +18,6 @@ import { defineComponent, toRefs, computed } from 'vue';
 import { ChartDataset, ChartConfiguration } from 'chart.js';
 import { getSeoLibName } from '@/utils';
 import { StarsT } from './api';
-import { format } from 'date-fns';
 import { enUS } from 'date-fns/locale';
 
 export default defineComponent({
