@@ -80,6 +80,7 @@ export default defineComponent({
         datasets: datasets.value,
       },
       options: {
+        elements: { line: { tension: 0.1 } },
         scales: {
           x: {
             type: 'time',
