@@ -37,7 +37,10 @@
   </div>
 
   <div v-else-if="type === 'tradar'" class="flex items-center justify-center">
-    {{ (lib.techRadar && lib.techRadar.level) || '-' }}
+    <a v-if="lib.techRadar" :href="thoughtworksUrl" target="_blank">{{
+      lib.techRadar.level
+    }}</a>
+    <template v-else> - </template>
   </div>
 
   <div v-else-if="type === 'releases'" class="flex items-center justify-end">
@@ -94,6 +97,7 @@ import { defineComponent, computed, toRefs } from 'vue';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import { MetricT, LibT } from './Report.vue';
 import { numbersFormatter } from '@/utils';
+import { repoToTechRadarMap } from '../../../techradar.config';
 
 export default defineComponent({
   name: 'ReportMetricValue',
@@ -114,7 +118,7 @@ export default defineComponent({
   },
 
   setup(props) {
-    const { npm } = toRefs(props);
+    const { npm, lib } = toRefs(props);
 
     return {
       getAge(createdAt: string): string {
@@ -136,12 +140,16 @@ export default defineComponent({
       snykHref: computed(() => {
         return `https://snyk.io/advisor/npm-package/${npm.value}`;
       }),
+      thoughtworksUrl: computed<string | null>(() => {
+        const tradarItem = repoToTechRadarMap[lib.value.repo] || null;
+        return tradarItem && tradarItem.link;
+      }),
     };
   },
 });
 </script>
 
-<style lang="postcss" scoped>
+<style lang="postcss">
 .sec {
   @apply flex items-center justify-center w-6 h-5 text-white rounded font-mono text-sm no-underline;
 }
