@@ -1,7 +1,45 @@
-import { Chart, registerables } from 'chart.js';
+import {
+  Chart,
+  // ArcElement,
+  LineElement,
+  BarElement,
+  PointElement,
+  BarController,
+  // BubbleController,
+  // DoughnutController,
+  LineController,
+  // PieController,
+  // PolarAreaController,
+  // RadarController,
+  // ScatterController,
+  CategoryScale,
+  LinearScale,
+  // LogarithmicScale,
+  // RadialLinearScale,
+  TimeScale,
+  // TimeSeriesScale,
+  // Decimation,
+  // Filler,
+  Legend,
+  Title,
+  Tooltip,
+  // registerables,
+} from 'chart.js';
 import 'chartjs-adapter-date-fns';
 
-Chart.register(...registerables);
+Chart.register(
+  LineElement,
+  BarElement,
+  PointElement,
+  BarController,
+  LineController,
+  CategoryScale,
+  LinearScale,
+  TimeScale,
+  Legend,
+  Title,
+  Tooltip
+);
 
 Chart.defaults.font.size = 14;
 Chart.defaults.font.family =
