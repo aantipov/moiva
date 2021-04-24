@@ -84,20 +84,10 @@ export default defineComponent({
         scales: {
           x: {
             type: 'time',
-            time: { unit: unit.value },
+            time: { unit: unit.value, tooltipFormat: 'MMM, yyyy' },
             adapters: { date: { locale: enUS } },
           },
           y: { ticks: { callback: numbersFormatter.format as () => string } },
-        },
-        plugins: {
-          tooltip: {
-            callbacks: {
-              title: (tooltipItems): string => {
-                const time = tooltipItems[0].parsed.x;
-                return format(new Date(time), 'MMM, yyyy');
-              },
-            },
-          },
         },
       },
     }));

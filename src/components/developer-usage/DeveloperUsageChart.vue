@@ -86,6 +86,15 @@ export default defineComponent({
             },
           },
         },
+        plugins: {
+          tooltip: {
+            callbacks: {
+              label: (context): string => {
+                return ` ${context.dataset.label}: ${context.formattedValue}%`;
+              },
+            },
+          },
+        },
       },
     }));
 

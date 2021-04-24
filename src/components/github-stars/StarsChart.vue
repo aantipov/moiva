@@ -67,18 +67,8 @@ export default defineComponent({
         scales: {
           x: {
             type: 'time',
-            time: { unit: 'month' },
+            time: { unit: 'month', tooltipFormat: 'MMM, yyyy' },
             adapters: { date: { locale: enUS } },
-          },
-        },
-        plugins: {
-          tooltip: {
-            callbacks: {
-              title: (tooltipItems): string => {
-                const time = tooltipItems[0].parsed.x;
-                return format(new Date(time), 'MMM, yyyy');
-              },
-            },
           },
         },
       },

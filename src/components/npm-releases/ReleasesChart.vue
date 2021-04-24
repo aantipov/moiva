@@ -70,7 +70,7 @@ export default defineComponent({
       return firstMonth >= '2019-10' ? 'quarter' : 'year';
     });
 
-    const chartConfig = computed<ChartConfiguration>(() => ({
+    const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
       type: 'line',
       data: { datasets: datasets.value },
       options: {
@@ -80,14 +80,13 @@ export default defineComponent({
             time: { unit: unit.value },
             adapters: { date: { locale: enUS } },
           },
-          y: {},
         },
         plugins: {
           tooltip: {
             callbacks: {
-              title: (tooltipItems): string => {
+              title: (tooltipItems) => {
                 const time = tooltipItems[0].parsed.x;
-                return format(new Date(time), 'MMM, yyyy');
+                return format(new Date(time - 1000000000), 'QQQ yyyy');
               },
             },
           },

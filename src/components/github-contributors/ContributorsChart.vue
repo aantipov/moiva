@@ -18,6 +18,7 @@ import { defineComponent, toRefs, computed } from 'vue';
 import { ChartDataset, ChartConfiguration } from 'chart.js';
 import { getSeoLibName } from '@/utils';
 import { ContributorsT } from './api';
+import { format } from 'date-fns';
 import { enUS } from 'date-fns/locale';
 
 export default defineComponent({
@@ -78,6 +79,16 @@ export default defineComponent({
             type: 'time',
             time: { unit: unit.value },
             adapters: { date: { locale: enUS } },
+          },
+        },
+        plugins: {
+          tooltip: {
+            callbacks: {
+              title: (tooltipItems): string => {
+                const time = tooltipItems[0].parsed.x;
+                return format(new Date(time - 1000000000), 'QQQ yyyy');
+              },
+            },
           },
         },
       },
