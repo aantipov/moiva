@@ -41,14 +41,11 @@ export default defineComponent({
   setup(props) {
     const { reposIds, repoToColorMap, reposStars } = toRefs(props);
 
-    const itemsNum = computed(() => reposIds.value.length);
-
     const datasets = computed<ChartDataset<'line'>[]>(() =>
       reposIds.value.map((repoId, repoIndex) => {
         const [, repoName] = repoId.split('/');
         return {
           label: repoName,
-          fill: itemsNum.value === 1,
           data: reposStars.value[repoIndex].map(({ month, stars }) => ({
             x: (month as unknown) as number,
             y: stars,
@@ -59,7 +56,7 @@ export default defineComponent({
       })
     );
 
-    const chartConfig = computed<ChartConfiguration>(() => ({
+    const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
       type: 'line',
       data: { datasets: datasets.value },
       options: {

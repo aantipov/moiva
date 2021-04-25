@@ -19,7 +19,7 @@ import {
   TimeScale,
   // TimeSeriesScale,
   // Decimation,
-  // Filler,
+  Filler,
   Legend,
   Title,
   Tooltip,
@@ -36,6 +36,7 @@ Chart.register(
   CategoryScale,
   LinearScale,
   TimeScale,
+  Filler,
   Legend,
   Title,
   Tooltip
