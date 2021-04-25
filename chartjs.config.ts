@@ -19,7 +19,7 @@ import {
   TimeScale,
   // TimeSeriesScale,
   // Decimation,
-  // Filler,
+  Filler,
   Legend,
   Title,
   Tooltip,
@@ -36,6 +36,7 @@ Chart.register(
   CategoryScale,
   LinearScale,
   TimeScale,
+  Filler,
   Legend,
   Title,
   Tooltip
@@ -54,6 +55,7 @@ Chart.defaults.maintainAspectRatio = false;
 // @ts-ignore
 Chart.defaults.elements.line.borderWidth = 4;
 // @ts-ignore
+// Chart.defaults.elements.line.fill = 'origin';
 Chart.defaults.elements.line.fill = false;
 // @ts-ignore
 Chart.defaults.elements.line.tension = 0;

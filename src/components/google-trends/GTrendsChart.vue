@@ -59,12 +59,9 @@ export default defineComponent({
       )
     );
 
-    const itemsNum = computed(() => libsTrendsDefs.value.length);
-
     const datasets = computed<ChartDataset<'line'>[]>(() =>
       libsTrendsDefs.value.map((gtrendDef, libIndex) => ({
         label: gtrendDef.alias,
-        fill: itemsNum.value === 1,
         data: libsTrends.value.timelineData.map(({ value }) => value[libIndex]),
         backgroundColor: repoToColorMap.value[gtrendDef.repoId],
         borderColor: repoToColorMap.value[gtrendDef.repoId],

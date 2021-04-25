@@ -44,7 +44,13 @@
 
 <script lang="ts">
 import { defineComponent, ref, toRefs, onMounted, watch } from 'vue';
-import { Chart, ChartConfiguration } from 'chart.js';
+import {
+  Chart,
+  ChartData,
+  ChartDataset,
+  ChartConfiguration,
+  ChartOptions,
+} from 'chart.js';
 
 export default defineComponent({
   name: 'ChartPresentation',
@@ -67,29 +73,27 @@ export default defineComponent({
   },
 
   setup(props, { slots }) {
-    const { isLoading, chartConfig, isError } = toRefs(props);
+    const { isLoading, chartConfig, isError, title } = toRefs(props);
     const chartEl = ref<null | HTMLCanvasElement>(null);
     const hasInfo = ref(!!slots.default);
     let mychart: Chart;
 
     function initChart(): void {
       const ctx = chartEl.value as HTMLCanvasElement;
-      mychart = new Chart(ctx, chartConfig.value);
+      mychart = new Chart(ctx, chartConfig.value as ChartConfiguration);
+      fillOneLineCharts(mychart, chartConfig.value.type) && mychart.update();
     }
 
     onMounted(initChart);
 
     watch([chartConfig, isLoading, isError], () => {
+      const { data, options, type } = chartConfig.value;
+
       if (!isLoading.value && !isError.value) {
-        mychart.data.labels = chartConfig.value.data?.labels;
-        // @ts-ignore
-        (mychart as Chart).data.yLabels = chartConfig.value.data?.yLabels;
-        // @ts-ignore
-        (mychart as Chart).data.xLabels = chartConfig.value.data?.xLabels;
-        (mychart as Chart).data.datasets = chartConfig.value.data?.datasets;
-        // @ts-ignore
-        (mychart as Chart).options = chartConfig.value.options;
-        (mychart as Chart).update();
+        mychart.data = data as ChartData;
+        mychart.options = options as ChartOptions;
+        fillOneLineCharts(mychart, type);
+        mychart.update();
       }
     });
 
@@ -99,4 +103,19 @@ export default defineComponent({
     };
   },
 });
+
+/**
+ * Make sure one line charts are always filled.
+ * Returns true if changes were made.
+ * Otherwise returns false.
+ */
+function fillOneLineCharts(chart: Chart, type: string): boolean {
+  const { datasets } = chart.data;
+  if (type === 'line' && datasets.length) {
+    (datasets[0] as ChartDataset<'line'>).fill =
+      datasets.length > 1 ? false : 'origin';
+    return true;
+  }
+  return false;
+}
 </script>

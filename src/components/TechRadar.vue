@@ -77,12 +77,9 @@ export default defineComponent({
       return [...new Set(dates)].sort() as DateT[];
     });
 
-    const itemsNum = computed(() => tradarItems.value.length);
-
     const datasets = computed<ChartDataset<'line'>[]>(() =>
       tradarItems.value.map((tradarItem) => ({
         label: tradarItem.alias,
-        fill: itemsNum.value === 1,
         data: (uniqDates.value.map(
           (date) => tradarItem.data[date]
         ) as unknown) as number[],
