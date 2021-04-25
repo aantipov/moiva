@@ -28,7 +28,7 @@ export default defineComponent({
 
   props: {
     category: {
-      type: String as () => string,
+      type: String as () => string | null,
       required: true,
     },
   },
