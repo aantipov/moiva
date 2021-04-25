@@ -73,7 +73,7 @@ export default defineComponent({
   },
 
   setup(props, { slots }) {
-    const { isLoading, chartConfig, isError, title } = toRefs(props);
+    const { isLoading, chartConfig, isError } = toRefs(props);
     const chartEl = ref<null | HTMLCanvasElement>(null);
     const hasInfo = ref(!!slots.default);
     let mychart: Chart;
