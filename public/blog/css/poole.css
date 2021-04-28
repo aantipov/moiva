@@ -150,6 +150,23 @@ abbr[title] {
   border-bottom: 1px dotted #e5e5e5;
 }
 
+.twitter-tweet {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+figure img {
+  margin-bottom: 10px;
+}
+
+figcaption {
+  text-align: center;
+  color: gray;
+  font-style: italic;
+  font-size: 80%;
+  margin-bottom: 16px;
+}
+
 /* Code */
 .code-descr {
   text-align: center;
