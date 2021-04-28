@@ -155,6 +155,16 @@ abbr[title] {
   margin-right: auto;
 }
 
+figure {
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  figure {
+    margin: 0 32px;
+  }
+}
+
 figure img {
   margin-bottom: 10px;
 }
