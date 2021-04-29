@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "private": true,
   "scripts": {
-    "start": "vite",
+    "dev": "vite",
     "build": "vite build",
     "build-next": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
