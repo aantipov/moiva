@@ -20,9 +20,13 @@
           <ChevronDownIcon
             class="absolute top-0 right-0 w-2 h-2 mx-3 my-4 text-white pointer-events-none"
           />
-          <select v-model="isNpmSearch" class="select" @change="inputRef.focus">
-            <option :value="false">GitHub</option>
-            <option :value="true">NPM</option>
+          <select
+            v-model="searchType"
+            class="select"
+            @change="() => inputRef.focus()"
+          >
+            <option value="GITHUB">GitHub</option>
+            <option value="NPM">NPM</option>
           </select>
         </div>
 
@@ -75,7 +79,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue';
+import { defineComponent, onMounted, ref, computed } from 'vue';
 import autocomplete, { AutocompleteItem } from 'autocompleter';
 import { numbersFormatter } from '@/utils';
 import 'autocompleter/autocomplete.css';
@@ -104,7 +108,8 @@ export default defineComponent({
 
   setup(_props, { emit }) {
     const searchValue = ref('');
-    const isNpmSearch = ref(false);
+    const searchType = ref<'GITHUB' | 'NPM'>('GITHUB');
+    const isNpmSearch = computed(() => searchType.value === 'NPM');
     const isError = ref(false);
     const isLoading = ref(false);
     const isFocused = ref(true);
@@ -216,7 +221,8 @@ export default defineComponent({
     });
 
     return {
-      inputRef: ref(null),
+      inputRef: ref<HTMLInputElement>((null as unknown) as HTMLInputElement),
+      searchType,
       searchValue,
       isNpmSearch,
       isLoading,
