@@ -39,9 +39,9 @@ export default defineComponent({
       fetchRepoCommits
     );
 
-    const aggregatedNormalisedCommits = computed(() => {
-      return getAggregatedCommits(getNormalisedData(items.value));
-    });
+    const aggregatedNormalisedCommits = computed(() =>
+      getAggregatedCommits(getNormalisedData(items.value))
+    );
 
     return {
       isLoading: computed(() => isLoadingLibraries.value || isLoading.value),
@@ -66,27 +66,18 @@ export default defineComponent({
  * and end with the same week
  */
 function getNormalisedData(
-  libsCommits: (CommitsResponseItemT[] | null)[]
-): (CommitsResponseItemT[] | null)[] {
-  if (!libsCommits.filter((libsCommits) => !!libsCommits).length) {
-    return libsCommits;
-  }
+  libsCommits: CommitsResponseItemT[][]
+): CommitsResponseItemT[][] {
   // Find the latest start
-  const startWeeks = libsCommits
-    .filter((libCommits) => !!libCommits)
-    .map((libCommits) => (libCommits as CommitsResponseItemT[])[0].week);
-  const endWeeks = libsCommits
-    .filter((libCommits) => !!libCommits)
-    .map(
-      (libCommits) => (libCommits as CommitsResponseItemT[]).slice(-1)[0].week
-    );
+  const startWeeks = libsCommits.map((libCommits) => libCommits[0].week);
+  const endWeeks = libsCommits.map(
+    (libCommits) => libCommits.slice(-1)[0].week
+  );
   const maxStartWeek = Math.max(...startWeeks);
   const minEndWeek = Math.min(...endWeeks);
-  const normalisedCommits = libsCommits.map((libCommits) => {
-    if (!libCommits) {
-      return null;
-    }
 
+  // Return Normalised commits
+  return libsCommits.map((libCommits) => {
     const startIndex = libCommits.findIndex(
       (commit) => commit.week === maxStartWeek
     );
@@ -95,18 +86,13 @@ function getNormalisedData(
     );
     return libCommits.slice(startIndex, endIndex);
   });
-
-  return normalisedCommits;
 }
 
 /**
  * Aggregate libs commits by 4 weeks
  */
-function getAggregatedCommits(libsCommits: (CommitsResponseItemT[] | null)[]) {
-  const aggregatedCommits = libsCommits.map((libCommits) => {
-    if (!libCommits) {
-      return null;
-    }
+function getAggregatedCommits(libsCommits: CommitsResponseItemT[][]) {
+  return libsCommits.map((libCommits) => {
     return libCommits
       .map((item) => ({
         ...item,
@@ -123,7 +109,5 @@ function getAggregatedCommits(libsCommits: (CommitsResponseItemT[] | null)[]) {
         return acc;
       }, [] as CommitsResponseItemT[]);
   });
-
-  return aggregatedCommits;
 }
 </script>
