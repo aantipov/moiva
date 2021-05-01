@@ -9,12 +9,12 @@
     </div>
 
     <div class="flex justify-center mb-24">
-      <div class="overflow-scroll border rounded border-primary">
+      <div class="overflow-scroll border rounded border-primary bg-primary">
         <table>
           <thead class="text-white bg-primary">
             <tr>
-              <th scope="col">
-                <div class="py-2 w-52">Criteria</div>
+              <th scope="col border-separate">
+                <div class="py-2">Criteria</div>
               </th>
               <th v-for="lib in libraries" :key="lib.repo" scope="col">
                 <div class="relative flex items-center justify-center px-8">
@@ -37,7 +37,7 @@
               <td
                 v-for="lib in libraries"
                 :key="lib.id"
-                class="p-2 border-r border-gray-300"
+                class="p-2 bg-white border-r border-gray-300"
                 :class="{ 'bg-gray-200': index % 2 }"
               >
                 <MetricValue :type="metric" :lib="lib" />
@@ -117,5 +117,22 @@ export default defineComponent({
 <style lang="postcss" scoped>
 .link {
   @apply font-mono text-sm sm:text-base font-medium;
+}
+table {
+  @apply table-fixed;
+}
+table thead th:first-child {
+  @apply bg-primary;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+}
+table thead th {
+  z-index: 1;
+}
+table tbody th {
+  position: sticky;
+  left: 0;
+  z-index: 1;
 }
 </style>
