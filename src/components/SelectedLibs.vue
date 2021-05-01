@@ -120,7 +120,7 @@
 import { defineComponent } from 'vue';
 import Loader from './Loader.vue';
 import LibExternalLinks from './LibExternalLinks.vue';
-import { LibraryT } from '@/libraryApis';
+import { ReadonlyLibraryT } from '@/libraryApis';
 import NpmIcon from './icons/Npm.vue';
 import GithubIcon from './icons/Github.vue';
 import { constructHref, numbersFormatter } from '@/utils';
@@ -164,7 +164,7 @@ export default defineComponent({
       getBirthdate(createdAt: string): string {
         return format(new Date(createdAt), 'yyyy-MM-dd');
       },
-      getRemainedLibsLink(deletedLib: LibraryT): string {
+      getRemainedLibsLink(deletedLib: ReadonlyLibraryT): string {
         const npmPackagesNames = [] as string[];
         const reposIds = [] as string[];
 

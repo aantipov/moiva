@@ -7,6 +7,7 @@ import {
 } from '@/constants';
 import { nanoid } from 'nanoid';
 import { catalogRepoIdToLib, catalogNpmToLib } from '@/libraries-catalog';
+import { DeepReadonly } from 'ts-essentials';
 
 const npmPackageCache = new Map();
 const githubCache = new Map();
@@ -46,6 +47,8 @@ export interface LibraryT {
   repo: RepoT;
   alias: string;
 }
+
+export type ReadonlyLibraryT = DeepReadonly<LibraryT>;
 
 function reportSentry(err: AxiosError, methodName: string): void {
   err.name = `UI API (${methodName})`;

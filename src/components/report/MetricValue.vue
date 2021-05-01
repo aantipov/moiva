@@ -37,7 +37,7 @@
   </div>
 
   <div v-else-if="type === 'tradar'" class="flex items-center justify-center">
-    <a v-if="lib.techRadar" :href="thoughtworksUrl" target="_blank">{{
+    <a v-if="lib.techRadar" :href="lib.techRadar.url" target="_blank">{{
       lib.techRadar.level
     }}</a>
     <template v-else> - </template>
