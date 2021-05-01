@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import { defineComponent, toRefs, computed } from 'vue';
-import { ChartDataSets, ChartConfiguration } from 'chart.js';
+import { ChartDataset, ChartConfiguration } from 'chart.js';
 import { numbersFormatter } from '@/utils';
 import { catalogRepoIdToLib } from '@/libraries-catalog';
 import { LibT } from './Report.vue';
@@ -22,7 +22,18 @@ export default defineComponent({
   name: 'Chart',
 
   props: {
-    field: { type: String as () => 'starsTotal', required: true },
+    field: {
+      type: String as () =>
+        | 'starsTotal'
+        | 'npmReleases'
+        | 'contributors'
+        | 'commits'
+        | 'dwnlMonthlyIncreasePercentage'
+        | 'dwnlMonthly'
+        | 'starsPlusPercentage'
+        | 'starsPlus',
+      required: true,
+    },
     libs: {
       type: Array as () => LibT[],
       required: true,
@@ -44,7 +55,7 @@ export default defineComponent({
       )
     );
 
-    const datasets = computed<ChartDataSets[]>(() => [
+    const datasets = computed<ChartDataset<'bar'>[]>(() => [
       {
         data: sortedLibs.value.map((lib) => lib[field.value]),
         backgroundColor: '#CA8A04',
@@ -52,10 +63,10 @@ export default defineComponent({
       },
     ]);
 
-    const chartConfig = computed<ChartConfiguration>(() => ({
+    const chartConfig = computed<ChartConfiguration<'bar'>>(() => ({
       type: 'bar',
       data: {
-        labels: libsNames.value,
+        labels: libsNames.value as string[],
         datasets: datasets.value,
       },
       options: {
@@ -63,14 +74,13 @@ export default defineComponent({
           display: false,
         },
         scales: {
-          yAxes: [
-            { ticks: { beginAtZero: true, callback: numbersFormatter.format } },
-          ],
-          xAxes: [
-            {
-              gridLines: { display: false },
+          y: {
+            ticks: {
+              beginAtZero: true,
+              callback: numbersFormatter.format as () => string,
             },
-          ],
+          },
+          x: { grid: { display: false } },
         },
       },
     }));

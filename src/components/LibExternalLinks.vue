@@ -10,7 +10,7 @@
     ></object>
 
     <img
-      v-if="hasNpm && library.npmPackage.hasBuiltinTypes"
+      v-if="library.npmPackage?.hasBuiltinTypes"
       v-tooltip="'This package contains built-in TypeScript declarations'"
       src="/images/ts.svg"
       height="20"
@@ -19,7 +19,7 @@
     />
 
     <img
-      v-else-if="hasNpm && library.npmPackage.hasOtherTypes"
+      v-else-if="library.npmPackage?.hasOtherTypes"
       v-tooltip="
         `This package has TypeScript declarations provided by the separate ${library.npmPackage.typesPackageName} package`
       "
@@ -55,7 +55,7 @@
 import { defineComponent, toRefs, computed } from 'vue';
 import BundlephobiaIcon from './icons/Bundlephobia.vue';
 import ThoughtworksIcon from './icons/Thoughtworks.vue';
-import { LibraryT } from '@/libraryApis';
+import { ReadonlyLibraryT } from '@/libraryApis';
 import { repoToTechRadarMap } from '../../techradar.config';
 import { getBundlephobiaUrl } from '@/utils';
 
@@ -68,7 +68,7 @@ export default defineComponent({
   },
 
   props: {
-    library: { type: Object as () => LibraryT, required: true },
+    library: { type: Object as () => ReadonlyLibraryT, required: true },
   },
 
   setup(props) {
