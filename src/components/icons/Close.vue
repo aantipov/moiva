@@ -1,21 +1,18 @@
 <template>
-  <div class="root">
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="100%"
-      height="100%"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      stroke-width="2"
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="w-6 h-6"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
       stroke-linecap="round"
       stroke-linejoin="round"
-      class="text-black rounded-full cursor-pointer text-opacity-60 feather feather-x hover:text-black"
-    >
-      <line x1="18" y1="6" x2="6" y2="18"></line>
-      <line x1="6" y1="6" x2="18" y2="18"></line>
-    </svg>
-  </div>
+      stroke-width="2"
+      d="M6 18L18 6M6 6l12 12"
+    />
+  </svg>
 </template>
 
 <script lang="ts">
@@ -26,9 +23,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="postcss" scoped>
-.root {
-  width: 24px;
-  height: 24px;
-}
-</style>
+<style lang="postcss" scoped></style>

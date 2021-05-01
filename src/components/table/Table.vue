@@ -10,14 +10,20 @@
 
     <div class="flex justify-center mb-24">
       <div class="overflow-scroll border rounded border-primary">
-        <table class="">
+        <table>
           <thead class="text-white bg-primary">
             <tr>
               <th scope="col">
                 <div class="py-2 w-52">Criteria</div>
               </th>
               <th v-for="lib in libraries" :key="lib.repo" scope="col">
-                <div class="px-4">{{ lib.alias }}</div>
+                <div class="flex justify-center px-4">
+                  {{ lib.alias }}
+                  <m-close
+                    class="ml-2 cursor-pointer"
+                    @click="() => removeLibrary(lib.id)"
+                  />
+                </div>
               </th>
             </tr>
           </thead>
@@ -49,8 +55,7 @@ import { defineComponent } from 'vue';
 import Loader from '../Loader.vue';
 import MetricHeader from './MetricHeader.vue';
 import MetricValue from './MetricValue.vue';
-import { ReadonlyLibraryT } from '@/libraryApis';
-import { constructHref } from '@/utils';
+// import { ReadonlyLibraryT } from '@/libraryApis';
 import { libraryToColorMap } from '@/store/librariesColors';
 import {
   libraries,
@@ -98,28 +103,6 @@ export default defineComponent({
       isLoading,
       removeLibrary,
       metrics: METRICS,
-      getRemainedLibsLink(deletedLib: ReadonlyLibraryT): string {
-        const npmPackagesNames = [] as string[];
-        const reposIds = [] as string[];
-
-        libraries.forEach((library) => {
-          if (library.npmPackage) {
-            npmPackagesNames.push(library.npmPackage.name);
-          } else {
-            reposIds.push(library.repo.repoId);
-          }
-        });
-
-        if (deletedLib.npmPackage) {
-          const index = npmPackagesNames.indexOf(deletedLib.npmPackage.name);
-          npmPackagesNames.splice(index, 1);
-        } else {
-          const index = reposIds.indexOf(deletedLib.repo.repoId);
-          reposIds.splice(index, 1);
-        }
-
-        return constructHref(npmPackagesNames, reposIds);
-      },
       getLibColor(libraryId: string): string {
         return libraryToColorMap.value[libraryId];
       },
