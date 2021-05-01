@@ -26,7 +26,6 @@
           </tr>
         </thead>
         <tbody>
-          <!-- Stars -->
           <tr v-for="(metric, index) in metrics" :key="metric" class="row">
             <th class="border-r border-gray-300">
               <MetricHeader :type="metric" class="border-r" />

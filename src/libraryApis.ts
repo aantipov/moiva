@@ -18,7 +18,6 @@ export interface RepoT {
   description: string;
   stars: number;
   createdAt: string;
-  vulnerabilitiesCount: number;
   closedIssues: number;
   closedBugIssues: number;
   openIssues: number;
