@@ -14,6 +14,11 @@ module.exports = {
       },
     },
   },
-  variants: {},
+  variants: {
+    extend: {
+      width: ['hover'],
+      height: ['hover'],
+    },
+  },
   plugins: [],
 };

@@ -17,10 +17,10 @@
                 <div class="py-2 w-52">Criteria</div>
               </th>
               <th v-for="lib in libraries" :key="lib.repo" scope="col">
-                <div class="flex justify-center px-4">
+                <div class="relative flex items-center justify-center px-8">
                   {{ lib.alias }}
                   <m-close
-                    class="ml-2 cursor-pointer"
+                    class="absolute w-5 h-5 ml-2 cursor-pointer right-2"
                     @click="() => removeLibrary(lib.id)"
                   />
                 </div>
