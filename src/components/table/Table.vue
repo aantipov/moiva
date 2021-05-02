@@ -7,26 +7,31 @@
         <table>
           <thead class="text-white bg-primary">
             <tr>
-              <th scope="col border-separate">
-                <div class="px-1 py-2">Criteria</div>
-              </th>
-              <th v-for="lib in libraries" :key="lib.id" scope="col">
-                <div class="relative flex items-center justify-center px-8">
-                  <div v-tooltip="lib.repo.description">
-                    {{ lib.alias }}
-                  </div>
-                  <m-close
-                    class="absolute w-5 h-5 ml-2 cursor-pointer right-2"
-                    @click="() => removeLibrary(lib.id)"
-                  />
+              <td class="flex justify-center px-1 py-2 font-bold">Criteria</td>
+
+              <th
+                v-for="lib in libraries"
+                :key="lib.id"
+                scope="col"
+                class="relative px-8"
+              >
+                <div v-tooltip="lib.repo.description">
+                  {{ lib.alias }}
                 </div>
+                <m-close
+                  class="absolute top-0 right-0 w-8 h-full px-2 cursor-pointer"
+                  @click="() => removeLibrary(lib.id)"
+                />
               </th>
             </tr>
           </thead>
 
           <tbody>
             <tr v-for="(metric, index) in metrics" :key="metric">
-              <th class="px-2 bg-gray-200 border-r border-gray-300">
+              <th
+                scope="row"
+                class="px-2 bg-gray-200 border-r border-separate border-gray-300"
+              >
                 <MetricHeader :type="metric" />
               </th>
 
