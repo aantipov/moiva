@@ -2,6 +2,8 @@
   <svg
     xmlns="http://www.w3.org/2000/svg"
     class="w-4 h-4"
+    role="img"
+    :aria-label="label"
     preserveAspectRatio="xMidYMid meet"
     viewBox="0 0 24 24"
   >
@@ -17,6 +19,13 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'TSIcon',
+
+  props: {
+    label: {
+      type: String,
+      required: true,
+    },
+  },
 });
 </script>
 
