@@ -66,7 +66,7 @@
             class="absolute top-0 right-0 z-10 flex items-center justify-end h-full py-3 pr-3 w-14 focus:outline-none"
             @click="searchValue = ''"
           >
-            <m-close />
+            <m-close class="w-6 h-6 opacity-80" />
           </button>
         </div>
       </div>
