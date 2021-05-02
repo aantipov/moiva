@@ -124,7 +124,7 @@
 <script lang="ts">
 import { defineComponent, toRefs, computed } from 'vue';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
-import { LibraryT } from '@/libraryApis';
+import { ReadonlyLibraryT } from '@/libraryApis';
 import { numbersFormatter } from '@/utils';
 import TsBundledIcon from '@/icons/TsBundled.vue';
 import TsDtIcon from '@/icons/TsDt.vue';
@@ -145,13 +145,16 @@ export default defineComponent({
       required: true,
     },
     lib: {
-      type: Object as () => LibraryT,
+      type: Object as () => ReadonlyLibraryT,
       required: true,
     },
   },
 
   setup(props) {
     const { lib } = toRefs(props);
+    const npmNameEncoded = computed(() =>
+      encodeURIComponent(lib.value.npmPackage?.name ?? '')
+    );
 
     return {
       getAge(createdAt: string): string {
@@ -162,15 +165,10 @@ export default defineComponent({
       },
       snykUrl: computed(
         () =>
-          `https://snyk-widget.herokuapp.com/badge/npm/${encodeURIComponent(
-            lib.value.npmPackage.name
-          )}/badge.svg`
+          `https://snyk-widget.herokuapp.com/badge/npm/${npmNameEncoded.value}/badge.svg`
       ),
       npmUrl: computed(
-        () =>
-          `https://www.npmjs.com/package/${encodeURIComponent(
-            lib.value.npmPackage.name
-          )}`
+        () => `https://www.npmjs.com/package/${npmNameEncoded.value}`
       ),
       githubUrl: computed(() => `https://github.com/${lib.value.repo.repoId}`),
 

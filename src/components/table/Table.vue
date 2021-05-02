@@ -10,7 +10,7 @@
               <th scope="col border-separate">
                 <div class="px-1 py-2">Criteria</div>
               </th>
-              <th v-for="lib in libraries" :key="lib.repo" scope="col">
+              <th v-for="lib in libraries" :key="lib.id" scope="col">
                 <div class="relative flex items-center justify-center px-8">
                   <div v-tooltip="lib.repo.description">
                     {{ lib.alias }}
