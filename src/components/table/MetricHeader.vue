@@ -5,6 +5,7 @@
     </template>
 
     <template v-if="type === 'repo'">
+      <GitHubIcon />
       <div class="ml-2">GitHub</div>
     </template>
 
@@ -99,6 +100,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import GitHubIcon from '@/components/icons/Github.vue';
 import StarIcon from '@/components/icons/Star.vue';
 import DownloadIcon from '@/components/icons/Download.vue';
 import TagIcon from '@/components/icons/Tag.vue';
@@ -119,6 +121,7 @@ export default defineComponent({
   name: 'ReportMetricHeader',
 
   components: {
+    GitHubIcon,
     StarIcon,
     SearchIcon,
     WorkerIcon,
