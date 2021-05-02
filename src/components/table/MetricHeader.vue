@@ -2,17 +2,17 @@
   <div class="flex items-center">
     <template v-if="type === 'npm'">
       <NpmIcon />
-      <div class="ml-2">Npm</div>
+      <div class="ml-1">Npm</div>
     </template>
 
     <template v-if="type === 'repo'">
-      <GitHubIcon />
-      <div class="ml-2">GitHub</div>
+      <GitHubIcon class="w-8" />
+      <div class="ml-1">GitHub</div>
     </template>
 
     <template v-if="type === 'stars'">
-      <StarIcon />
-      <div class="ml-2">Stars</div>
+      <StarIcon class="w-8" />
+      <div class="ml-1">Stars</div>
     </template>
 
     <!-- <template v&#45;else&#45;if="type === 'starsPlus'"> -->
@@ -66,15 +66,15 @@
     <!-- </template> -->
 
     <template v-else-if="type === 'dependencies'">
-      <DependencyIcon />
-      <div class="ml-2">Dependencies</div>
+      <DependencyIcon class="w-8" />
+      <div class="ml-1">Dependencies</div>
     </template>
 
     <template v-else-if="type === 'ts'">
-      <div class="flex justify-center w-5">
+      <div class="flex justify-center w-8">
         <TSIcon />
       </div>
-      <div class="ml-2">Types</div>
+      <div class="ml-1">Types</div>
     </template>
 
     <!-- <template v&#45;else&#45;if="type === 'bundlesize'"> -->
@@ -83,18 +83,18 @@
     <!-- </template> -->
 
     <template v-else-if="type === 'security'">
-      <ShieldIcon />
-      <div class="ml-2">Security</div>
+      <ShieldIcon class="w-8" />
+      <div class="ml-1">Security</div>
     </template>
 
     <template v-else-if="type === 'age'">
-      <OldIcon />
-      <div class="ml-2">Age</div>
+      <OldIcon class="w-8" />
+      <div class="ml-1">Age</div>
     </template>
 
     <template v-else-if="type === 'license'">
-      <DocumentIcon />
-      <div class="ml-2">License</div>
+      <DocumentIcon class="w-8" />
+      <div class="ml-1">License</div>
     </template>
   </div>
 </template>
