@@ -5,12 +5,20 @@
     </template>
 
     <template v-if="type === 'repo'">
-      <GitHubIcon v-tooltip="'GitHub repository'" class="w-8" />
+      <GitHubIcon
+        v-tooltip="'GitHub repository'"
+        class="w-8"
+        label="GitHub repository"
+      />
       <div class="label">GitHub</div>
     </template>
 
     <template v-if="type === 'stars'">
-      <StarIcon v-tooltip="'A total number of GitHub stars'" class="w-8" />
+      <StarIcon
+        v-tooltip="'A total number of GitHub stars'"
+        class="w-8"
+        label="A total number of GitHub stars"
+      />
       <div class="label">Stars</div>
     </template>
 
@@ -65,13 +73,17 @@
     <!-- </template> -->
 
     <template v-else-if="type === 'dependencies'">
-      <DependencyIcon v-tooltip="'A number of Npm dependencies'" class="w-8" />
+      <DependencyIcon
+        v-tooltip="'A number of Npm dependencies'"
+        class="w-8"
+        label="A number of Npm dependencies"
+      />
       <div class="label">Dependencies</div>
     </template>
 
     <template v-else-if="type === 'ts'">
       <div class="flex justify-center w-8">
-        <TSIcon v-tooltip="tsTooltip" />
+        <TSIcon v-tooltip="tsTooltip" label="TypeScript support" />
       </div>
       <div class="label">Types</div>
     </template>
@@ -82,17 +94,17 @@
     <!-- </template> -->
 
     <template v-else-if="type === 'security'">
-      <ShieldIcon v-tooltip="snykTooltip" class="w-8" />
+      <ShieldIcon v-tooltip="snykTooltip" class="w-8" label="Security" />
       <div class="label">Security</div>
     </template>
 
     <template v-else-if="type === 'age'">
-      <OldIcon v-tooltip="'Age'" class="w-8" />
+      <OldIcon v-tooltip="'Age'" class="w-8" label="Age" />
       <div class="label">Age</div>
     </template>
 
     <template v-else-if="type === 'license'">
-      <DocumentIcon v-tooltip="'License'" class="w-8" />
+      <DocumentIcon v-tooltip="'License'" class="w-8" label="License" />
       <div class="label">License</div>
     </template>
   </div>
@@ -101,7 +113,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import GitHubIcon from '@/components/icons/Github.vue';
-import NpmIcon from '@/components/icons/Npm.vue';
 import StarIcon from '@/components/icons/Star.vue';
 // import DownloadIcon from '@/components/icons/Download.vue';
 // import TagIcon from '@/components/icons/Tag.vue';
@@ -123,7 +134,6 @@ export default defineComponent({
 
   components: {
     GitHubIcon,
-    NpmIcon,
     StarIcon,
     // SearchIcon,
     // WorkerIcon,
