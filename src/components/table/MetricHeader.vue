@@ -1,18 +1,18 @@
 <template>
-  <div class="flex items-center">
+  <div class="flex items-center justify-center sm:justify-start">
     <template v-if="type === 'npm'">
-      <NpmIcon />
-      <div class="ml-1">Npm</div>
+      <NpmIcon v-tooltip="'Npm package'" />
+      <div class="label">Npm</div>
     </template>
 
     <template v-if="type === 'repo'">
-      <GitHubIcon class="w-8" />
-      <div class="ml-1">GitHub</div>
+      <GitHubIcon v-tooltip="'GitHub repository'" class="w-8" />
+      <div class="label">GitHub</div>
     </template>
 
     <template v-if="type === 'stars'">
-      <StarIcon class="w-8" />
-      <div class="ml-1">Stars</div>
+      <StarIcon v-tooltip="'A total number of GitHub stars'" class="w-8" />
+      <div class="label">Stars</div>
     </template>
 
     <!-- <template v&#45;else&#45;if="type === 'starsPlus'"> -->
@@ -66,15 +66,15 @@
     <!-- </template> -->
 
     <template v-else-if="type === 'dependencies'">
-      <DependencyIcon class="w-8" />
-      <div class="ml-1">Dependencies</div>
+      <DependencyIcon v-tooltip="'A number of Npm dependencies'" class="w-8" />
+      <div class="label">Dependencies</div>
     </template>
 
     <template v-else-if="type === 'ts'">
       <div class="flex justify-center w-8">
-        <TSIcon />
+        <TSIcon v-tooltip="tsTooltip" />
       </div>
-      <div class="ml-1">Types</div>
+      <div class="label">Types</div>
     </template>
 
     <!-- <template v&#45;else&#45;if="type === 'bundlesize'"> -->
@@ -83,18 +83,18 @@
     <!-- </template> -->
 
     <template v-else-if="type === 'security'">
-      <ShieldIcon class="w-8" />
-      <div class="ml-1">Security</div>
+      <ShieldIcon v-tooltip="snykTooltip" class="w-8" />
+      <div class="label">Security</div>
     </template>
 
     <template v-else-if="type === 'age'">
-      <OldIcon class="w-8" />
-      <div class="ml-1">Age</div>
+      <OldIcon v-tooltip="'Age'" class="w-8" />
+      <div class="label">Age</div>
     </template>
 
     <template v-else-if="type === 'license'">
-      <DocumentIcon class="w-8" />
-      <div class="ml-1">License</div>
+      <DocumentIcon v-tooltip="'License'" class="w-8" />
+      <div class="label">License</div>
     </template>
   </div>
 </template>
@@ -104,17 +104,17 @@ import { defineComponent } from 'vue';
 import GitHubIcon from '@/components/icons/Github.vue';
 import NpmIcon from '@/components/icons/Npm.vue';
 import StarIcon from '@/components/icons/Star.vue';
-import DownloadIcon from '@/components/icons/Download.vue';
-import TagIcon from '@/components/icons/Tag.vue';
-import SearchIcon from '@/components/icons/Search.vue';
-import WorkerIcon from '@/components/icons/Worker.vue';
+// import DownloadIcon from '@/components/icons/Download.vue';
+// import TagIcon from '@/components/icons/Tag.vue';
+// import SearchIcon from '@/components/icons/Search.vue';
+// import WorkerIcon from '@/components/icons/Worker.vue';
 import OldIcon from '@/components/icons/Old.vue';
 import DocumentIcon from '@/components/icons/Document.vue';
 import TSIcon from '@/components/icons/TS.vue';
-import UserGroupIcon from '@/components/icons/UserGroup.vue';
-import CommitsIcon from '@/components/icons/Commits.vue';
-import TWIcon from '@/components/icons/Thoughtworks.vue';
-import CubeIcon from '@/components/icons/Cube.vue';
+// import UserGroupIcon from '@/components/icons/UserGroup.vue';
+// import CommitsIcon from '@/components/icons/Commits.vue';
+// import TWIcon from '@/components/icons/Thoughtworks.vue';
+// import CubeIcon from '@/components/icons/Cube.vue';
 import DependencyIcon from '@/components/icons/Dependency.vue';
 import ShieldIcon from '@/components/icons/Shield.vue';
 import { MetricT } from './Table.vue';
@@ -126,18 +126,18 @@ export default defineComponent({
     GitHubIcon,
     NpmIcon,
     StarIcon,
-    SearchIcon,
-    WorkerIcon,
-    DownloadIcon,
-    TagIcon,
-    UserGroupIcon,
-    CommitsIcon,
+    // SearchIcon,
+    // WorkerIcon,
+    // DownloadIcon,
+    // TagIcon,
+    // UserGroupIcon,
+    // CommitsIcon,
     DocumentIcon,
     DependencyIcon,
-    CubeIcon,
+    // CubeIcon,
     OldIcon,
     ShieldIcon,
-    TWIcon,
+    // TWIcon,
     TSIcon,
   },
 
@@ -149,9 +149,18 @@ export default defineComponent({
   },
 
   setup() {
-    return {};
+    return {
+      tsTooltip:
+        'TypeScript support. "Bundled" - typings are bundled together with the package. "Separate" - typings are published to the @types organization on Npm',
+      snykTooltip:
+        'A calculated by Snyk level of security (from A to F) of Npm packages based on the number of vulnerabilities and their severity. "A" - no vulnerabilities, "F" - the least secure level.',
+    };
   },
 });
 </script>
 
-<style lang="postcss" scoped></style>
+<style lang="postcss" scoped>
+.label {
+  @apply hidden sm:block sm:ml-1;
+}
+</style>

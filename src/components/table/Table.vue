@@ -14,7 +14,7 @@
           <thead class="text-white bg-primary">
             <tr>
               <th scope="col border-separate">
-                <div class="py-2">Criteria</div>
+                <div class="px-1 py-2">Criteria</div>
               </th>
               <th v-for="lib in libraries" :key="lib.repo" scope="col">
                 <div class="relative flex items-center justify-center px-8">
@@ -29,9 +29,9 @@
           </thead>
 
           <tbody>
-            <tr v-for="(metric, index) in metrics" :key="metric" class="row">
+            <tr v-for="(metric, index) in metrics" :key="metric">
               <th class="px-2 bg-gray-200 border-r border-gray-300">
-                <MetricHeader :type="metric" class="border-r" />
+                <MetricHeader :type="metric" />
               </th>
 
               <td
