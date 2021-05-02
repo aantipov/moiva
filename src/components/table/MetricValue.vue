@@ -1,7 +1,10 @@
 <template>
   <div v-if="type === 'npm'" class="flex flex-col items-center">
-    <a :href="npmUrl" target="_blank">{{ lib.npmPackage.name }}</a>
-    <div>v{{ lib.npmPackage.version }}</div>
+    <template v-if="lib.npmPackage">
+      <a :href="npmUrl" target="_blank">{{ lib.npmPackage.name }}</a>
+      <div>v{{ lib.npmPackage.version }}</div>
+    </template>
+    <template v-else>-</template>
   </div>
 
   <div v-else-if="type === 'repo'" class="flex justify-center">
@@ -69,15 +72,22 @@
 
   <div
     v-else-if="type === 'dependencies'"
-    class="flex items-center justify-end"
+    class="flex items-center"
+    :class="{
+      'justify-end': !!lib.npmPackage,
+      'justify-center': !lib.npmPackage,
+    }"
   >
-    {{ lib.npmPackage.dependencies.length }}
+    {{ lib.npmPackage?.dependencies.length ?? '-' }}
   </div>
 
   <div v-else-if="type === 'ts'" class="flex items-center justify-center">
-    <TsBundledIcon v-if="lib.npmPackage.hasBuiltinTypes" />
-    <TsDtIcon v-else-if="lib.npmPackage.hasOtherTypes" />
-    <template v-else>{{ '-' }}</template>
+    <template v-if="lib.npmPackage">
+      <TsBundledIcon v-if="lib.npmPackage.hasBuiltinTypes" />
+      <TsDtIcon v-else-if="lib.npmPackage.hasOtherTypes" />
+      <template v-else>-</template>
+    </template>
+    <template v-else>-</template>
   </div>
 
   <!-- <div v&#45;else&#45;if="type === 'bundlesize'" class="flex items&#45;center justify&#45;end"> -->
@@ -86,12 +96,14 @@
 
   <div v-else-if="type === 'security'" class="flex items-center justify-center">
     <object
+      v-if="lib.npmPackage"
       :id="'badge-' + lib.npmPackage.name"
       v-tooltip="'Snyk Security Score badge. \'A\' means no vulnerabilities.'"
       :data="snykUrl"
       type="image/svg+xml"
       style="max-width: 131px; max-height: 20px"
     ></object>
+    <template v-else>-</template>
   </div>
 
   <div v-else-if="type === 'age'" class="flex items-center justify-center">
@@ -99,7 +111,7 @@
   </div>
 
   <div v-else-if="type === 'license'" class="flex items-center justify-center">
-    {{ lib.npmPackage.license }}
+    {{ lib.npmPackage?.license ?? '-' }}
   </div>
 </template>
 
