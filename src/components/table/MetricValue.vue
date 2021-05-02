@@ -194,18 +194,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="postcss">
-.sec {
-  @apply flex items-center justify-center w-6 h-5 text-white rounded font-mono text-sm no-underline;
-}
-.sec-A {
-  background-color: #4c1;
-}
-.sec-C {
-  background-color: #fe7d37;
-}
-.sec-E,
-.sec-F {
-  background-color: #e05d44;
-}
-</style>
+<style lang="postcss"></style>
