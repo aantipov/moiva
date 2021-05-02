@@ -1,14 +1,14 @@
 <template>
   <div v-if="type === 'npm'" class="flex flex-col items-center">
-    <a :href="npmLink" target="_blank">{{ lib.npmPackage.name }}</a>
+    <a :href="npmUrl" target="_blank">{{ lib.npmPackage.name }}</a>
     <div>v{{ lib.npmPackage.version }}</div>
   </div>
 
-  <div v-if="type === 'repo'" class="flex justify-end">
-    {{ lib.repo.repoId }}
+  <div v-else-if="type === 'repo'" class="flex justify-center">
+    <a :href="githubUrl" target="_blank">{{ lib.repo.repoId }}</a>
   </div>
 
-  <div v-if="type === 'stars'" class="flex justify-end">
+  <div v-else-if="type === 'stars'" class="flex justify-end">
     {{ formatNumber(lib.repo.stars) }}
   </div>
 
@@ -154,6 +154,8 @@ export default defineComponent({
             lib.value.npmPackage.name
           )}`
       ),
+      githubUrl: computed(() => `https://github.com/${lib.value.repo.repoId}`),
+
       // getBundleSize(lib: LibT): string {
       //   if (!lib.bundleSize) {
       //     return '';
