@@ -110,7 +110,6 @@ import NpmDownloads from './NpmDownloads.vue';
 import Search from './search/Search.vue';
 import Suggestions from './Suggestions.vue';
 import Popular from './Popular.vue';
-import SelectedLibs from './SelectedLibs.vue';
 import Table from './table/Table.vue';
 
 import Releases from './npm-releases/Releases.vue';
@@ -152,7 +151,6 @@ export default defineComponent({
     Popular,
     Search,
     Suggestions,
-    SelectedLibs,
     Table,
 
     Bundlephobia,
