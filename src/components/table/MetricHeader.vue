@@ -1,8 +1,7 @@
 <template>
   <div class="flex items-center justify-center sm:justify-start">
     <template v-if="type === 'npm'">
-      <NpmIcon v-tooltip="'Npm package'" />
-      <div class="label">Npm</div>
+      <div class="sm:ml-9">Npm</div>
     </template>
 
     <template v-if="type === 'repo'">
