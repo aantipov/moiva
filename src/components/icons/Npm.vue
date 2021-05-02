@@ -1,24 +1,15 @@
 <template>
-  <div class="root">
-    <svg
-      id="npm"
-      class="icon"
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
-      x="0px"
-      y="0px"
-      viewBox="0 0 780 250"
-      style="enable-background: new 0 0 780 250"
-      xml:space="preserve"
-    >
-      <path
-        class="icon-path"
-        d="M240,250h100v-50h100V0H240V250z M340,50h50v100h-50V50z M480,0v200h100V50h50v150h50V50h50v150h50V0H480z
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="w-8 mt-1"
+    viewBox="0 0 780 250"
+    fill="currentColor"
+  >
+    <path
+      d="M240,250h100v-50h100V0H240V250z M340,50h50v100h-50V50z M480,0v200h100V50h50v150h50V50h50v150h50V0H480z
 	 M0,200h100V50h50v150h50V0H0V200z"
-      />
-    </svg>
-  </div>
+    />
+  </svg>
 </template>
 
 <script lang="ts">
@@ -29,17 +20,4 @@ export default defineComponent({
 });
 </script>
 
-<style lang="postcss" scoped>
-/* lightGray and gray classes can be set by parent components like Search */
-.root.lightGray .icon-path,
-.root.lightGray:hover .icon-path {
-  @apply fill-current text-black text-opacity-40;
-}
-.icon-path,
-.root.gray:hover .icon-path {
-  @apply fill-current text-black text-opacity-60;
-}
-.root:hover .icon-path {
-  @apply fill-current text-black;
-}
-</style>
+<style lang="postcss" scoped></style>

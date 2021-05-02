@@ -1,6 +1,7 @@
 <template>
   <div class="flex items-center">
     <template v-if="type === 'npm'">
+      <NpmIcon />
       <div class="ml-2">Npm</div>
     </template>
 
@@ -101,6 +102,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import GitHubIcon from '@/components/icons/Github.vue';
+import NpmIcon from '@/components/icons/Npm.vue';
 import StarIcon from '@/components/icons/Star.vue';
 import DownloadIcon from '@/components/icons/Download.vue';
 import TagIcon from '@/components/icons/Tag.vue';
@@ -122,6 +124,7 @@ export default defineComponent({
 
   components: {
     GitHubIcon,
+    NpmIcon,
     StarIcon,
     SearchIcon,
     WorkerIcon,
