@@ -2,7 +2,7 @@
   <div>
     <Loader v-if="isLoading" class="z-10" />
 
-    <div class="flex justify-center mb-24">
+    <div class="flex justify-center">
       <div class="overflow-scroll border rounded border-primary bg-primary">
         <table>
           <thead class="text-white bg-primary">

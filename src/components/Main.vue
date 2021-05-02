@@ -18,22 +18,20 @@
 
     <!--  Selected Libraries and Charts    -->
     <div v-else>
-      <h2 v-if="category" class="mb-0">{{ category }}</h2>
+      <div class="mt-4">
+        <h2 v-if="category" class="m-0">{{ category }}</h2>
 
-      <div class="flex justify-center">
-        <a
-          v-tooltip="`Clear selection`"
-          href="/"
-          @click.prevent="clearSelection"
-          >[Clear selection]</a
-        >
+        <div class="flex justify-center">
+          <a
+            v-tooltip="`Clear selection`"
+            href="/"
+            @click.prevent="clearSelection"
+            >[Clear selection]</a
+          >
+        </div>
       </div>
 
-      <Table class="relative w-full mx-auto mt-4 mb-2 lg:w-3/4" />
-
-      <SelectedLibs
-        class="relative w-full mx-auto mt-4 mb-2 lg:w-9/12 xl:w-2/4"
-      />
+      <Table class="w-full mx-auto mt-4 mb-2 lg:w-3/4" />
 
       <!-- Charts -->
       <div class="mb-12">
