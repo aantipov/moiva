@@ -27,7 +27,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
 .root.dark .icon-path {
   @apply text-opacity-100;
 }
