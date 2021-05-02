@@ -83,8 +83,14 @@
 
   <div v-else-if="type === 'ts'" class="flex items-center justify-center">
     <template v-if="lib.npmPackage">
-      <TsBundledIcon v-if="lib.npmPackage.hasBuiltinTypes" />
-      <TsDtIcon v-else-if="lib.npmPackage.hasOtherTypes" />
+      <template v-if="lib.npmPackage.hasBuiltinTypes">
+        <TsBundledIcon class="mr-2" />
+        Bundled
+      </template>
+      <template v-else-if="lib.npmPackage.hasOtherTypes">
+        <TsDtIcon class="mr-2" />
+        Separate
+      </template>
       <template v-else>-</template>
     </template>
     <template v-else>-</template>

@@ -12,7 +12,9 @@
               </th>
               <th v-for="lib in libraries" :key="lib.repo" scope="col">
                 <div class="relative flex items-center justify-center px-8">
-                  {{ lib.alias }}
+                  <div v-tooltip="lib.repo.description">
+                    {{ lib.alias }}
+                  </div>
                   <m-close
                     class="absolute w-5 h-5 ml-2 cursor-pointer right-2"
                     @click="() => removeLibrary(lib.id)"
