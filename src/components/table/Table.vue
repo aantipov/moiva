@@ -1,12 +1,6 @@
 <template>
   <div>
-    <Loader v-if="isLoading" />
-
-    <div class="flex justify-end">
-      <a v-tooltip="`Clear selection`" href="/" @click.prevent="clearSelection"
-        >Clear</a
-      >
-    </div>
+    <Loader v-if="isLoading" class="z-10" />
 
     <div class="flex justify-center mb-24">
       <div class="overflow-scroll border rounded border-primary bg-primary">

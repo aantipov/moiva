@@ -18,7 +18,18 @@
 
     <!--  Selected Libraries and Charts    -->
     <div v-else>
-      <h2 v-if="category">{{ category }}</h2>
+      <h2 v-if="category" class="mb-0">{{ category }}</h2>
+
+      <div class="flex justify-center">
+        <a
+          v-tooltip="`Clear selection`"
+          href="/"
+          @click.prevent="clearSelection"
+          >[Clear selection]</a
+        >
+      </div>
+
+      <Table class="relative w-full mx-auto mt-4 mb-2 lg:w-3/4" />
 
       <SelectedLibs
         class="relative w-full mx-auto mt-4 mb-2 lg:w-9/12 xl:w-2/4"
@@ -102,6 +113,7 @@ import Search from './search/Search.vue';
 import Suggestions from './Suggestions.vue';
 import Popular from './Popular.vue';
 import SelectedLibs from './SelectedLibs.vue';
+import Table from './table/Table.vue';
 
 import Releases from './npm-releases/Releases.vue';
 import TechRadar from './TechRadar.vue';
@@ -132,6 +144,7 @@ import {
   librariesIds,
   addLibraryByNpmPackage,
   addLibraryByRepo,
+  removeAllLibraries,
 } from '@/store/libraries';
 import { LibraryT } from '@/libraryApis';
 
@@ -142,6 +155,7 @@ export default defineComponent({
     Search,
     Suggestions,
     SelectedLibs,
+    Table,
 
     Bundlephobia,
     Stars,
@@ -237,6 +251,9 @@ export default defineComponent({
       category: computed(() =>
         getSelectedLibsCategory(libraries as LibraryT[])
       ),
+      clearSelection() {
+        removeAllLibraries();
+      },
     };
   },
 });
