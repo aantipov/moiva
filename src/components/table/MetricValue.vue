@@ -1,6 +1,7 @@
 <template>
-  <div v-if="type === 'npm'" class="flex justify-end">
-    {{ lib.npmPackage.name }}
+  <div v-if="type === 'npm'" class="flex flex-col items-center">
+    <a :href="npmLink" target="_blank">{{ lib.npmPackage.name }}</a>
+    <div>v{{ lib.npmPackage.version }}</div>
   </div>
 
   <div v-if="type === 'repo'" class="flex justify-end">
@@ -141,12 +142,17 @@ export default defineComponent({
       formatNumber(stars: number): string {
         return numbersFormatter.format(stars);
       },
-      snykUrl: computed(() =>
-        lib.value.npmPackage
-          ? `https://snyk-widget.herokuapp.com/badge/npm/${encodeURIComponent(
-              lib.value.npmPackage.name
-            )}/badge.svg`
-          : ''
+      snykUrl: computed(
+        () =>
+          `https://snyk-widget.herokuapp.com/badge/npm/${encodeURIComponent(
+            lib.value.npmPackage.name
+          )}/badge.svg`
+      ),
+      npmUrl: computed(
+        () =>
+          `https://www.npmjs.com/package/${encodeURIComponent(
+            lib.value.npmPackage.name
+          )}`
       ),
       // getBundleSize(lib: LibT): string {
       //   if (!lib.bundleSize) {

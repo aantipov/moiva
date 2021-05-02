@@ -2,7 +2,7 @@
   <div>
     <Loader v-if="isLoading" />
 
-    <div class="flex justify-end pr-4">
+    <div class="flex justify-end">
       <a v-tooltip="`Clear selection`" href="/" @click.prevent="clearSelection"
         >Clear</a
       >
