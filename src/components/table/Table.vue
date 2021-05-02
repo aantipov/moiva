@@ -122,7 +122,7 @@ export default defineComponent({
 table {
   @apply table-fixed;
 }
-table thead th:first-child {
+table thead td:first-child {
   @apply bg-primary;
   position: sticky;
   left: 0;
