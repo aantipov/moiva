@@ -51,12 +51,18 @@
     <!--   <UserGroupIcon /> -->
     <!--   <div class="ml&#45;2">Developer Usage, %</div> -->
     <!-- </template> -->
-    <!--  -->
-    <!-- <template v&#45;else&#45;if="type === 'tradar'"> -->
-    <!--   <TWIcon class="w&#45;5 dark" /> -->
-    <!--   <div class="ml&#45;2">Tech Radar</div> -->
-    <!-- </template> -->
-    <!--  -->
+
+    <template v-else-if="type === 'tradar'">
+      <TWIcon
+        v-tooltip="
+          'A ThoughtWorks tech radar “ring” assigned to a library. Four possible rings - “Adopt”, “Trial”, “Assess”, and “Hold”.'
+        "
+        class="w-8 h-3"
+        label="A ThoughtWorks tech radar “ring” assigned to a library"
+      />
+      <div class="label">Tech Radar</div>
+    </template>
+
     <!-- <template v&#45;else&#45;if="type === 'releases'"> -->
     <!--   <TagIcon /> -->
     <!--   <div class="ml&#45;2">Releases</div> -->
@@ -123,7 +129,7 @@ import DocumentIcon from '@/components/icons/Document.vue';
 import TSIcon from '@/components/icons/TS.vue';
 // import UserGroupIcon from '@/components/icons/UserGroup.vue';
 // import CommitsIcon from '@/components/icons/Commits.vue';
-// import TWIcon from '@/components/icons/Thoughtworks.vue';
+import TWIcon from '@/components/icons/Thoughtworks.vue';
 // import CubeIcon from '@/components/icons/Cube.vue';
 import DependencyIcon from '@/components/icons/Dependency.vue';
 import ShieldIcon from '@/components/icons/Shield.vue';
@@ -146,7 +152,7 @@ export default defineComponent({
     // CubeIcon,
     OldIcon,
     ShieldIcon,
-    // TWIcon,
+    TWIcon,
     TSIcon,
   },
 

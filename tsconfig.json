@@ -19,5 +19,5 @@
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "exclude": ["node_modules", "src/components/report/*", "src/components/SelectedLibs.vue"]
+  "exclude": ["node_modules", "src/components/report/*", "src/components/SelectedLibs.vue", "src/components/LibExternalLinks.vue"]
 }

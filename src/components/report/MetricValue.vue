@@ -97,7 +97,7 @@ import { defineComponent, computed, toRefs } from 'vue';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import { MetricT, LibT } from './Report.vue';
 import { numbersFormatter } from '@/utils';
-import { repoToTechRadarMap } from '../../../techradar.config';
+import { repoToTechRadarMap } from '@/techradar.config';
 
 export default defineComponent({
   name: 'ReportMetricValue',

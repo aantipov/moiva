@@ -44,7 +44,7 @@ import {
   repoToTechRadarMap,
   TechRadarT,
   DateT,
-} from '../../techradar.config';
+} from '@/techradar.config';
 import { chartsVisibility } from '@/store/chartsVisibility';
 import { libraryToColorMap } from '@/store/librariesColors';
 import { reposIds, repoToLibraryIdMap } from '@/store/libraries';
@@ -71,7 +71,7 @@ export default defineComponent({
 
     const uniqDates = computed<DateT[]>(() => {
       const dates = tradarItems.value
-        .map((tradarItem) => Object.keys(tradarItem.data))
+        .map((tradarItem) => tradarItem.entries.map((entry) => entry.month))
         .flat();
 
       return [...new Set(dates)].sort() as DateT[];
@@ -81,7 +81,8 @@ export default defineComponent({
       tradarItems.value.map((tradarItem) => ({
         label: tradarItem.alias,
         data: (uniqDates.value.map(
-          (date) => tradarItem.data[date]
+          (date) =>
+            tradarItem.entries.find((entry) => entry.month === date)?.level
         ) as unknown) as number[],
         backgroundColor:
           libraryToColorMap.value[repoToLibraryIdMap.value[tradarItem.repo]],
@@ -137,13 +138,9 @@ export default defineComponent({
       chartConfig,
       ariaLabel: computed(() => {
         const valuesStr = tradarItems.value
-          .map(({ alias, data }) => {
-            const vals = Object.entries(data).sort(
-              (dataA, dataB) =>
-                new Date(dataA[0]).getTime() - new Date(dataB[0]).getTime()
-            );
-            return `${alias}: ${vals.slice(-1)[0][1]}`;
-          })
+          .map(
+            ({ alias, entries }) => `${alias}: ${entries.slice(-1)[0].level}`
+          )
           .join(', ');
 
         return `ThoughtWorks TechRadar chart. ${valuesStr}`;
