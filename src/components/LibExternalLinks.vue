@@ -56,7 +56,7 @@ import { defineComponent, toRefs, computed } from 'vue';
 import BundlephobiaIcon from './icons/Bundlephobia.vue';
 import ThoughtworksIcon from './icons/Thoughtworks.vue';
 import { ReadonlyLibraryT } from '@/libraryApis';
-import { repoToTechRadarMap } from '../../techradar.config';
+import { repoToTechRadarMap } from '@/techradar.config';
 import { getBundlephobiaUrl } from '@/utils';
 
 export default defineComponent({

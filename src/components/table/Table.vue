@@ -75,7 +75,7 @@ const METRICS = [
   // 'downloadsIncrease',
   // 'searchInterest',
   // 'devusage',
-  // 'tradar',
+  'tradar',
   // 'releases',
   // 'commits',
   // 'contributors',

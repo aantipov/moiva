@@ -2,7 +2,7 @@
   <div v-if="type === 'npm'" class="flex flex-col items-center">
     <template v-if="lib.npmPackage">
       <a :href="npmUrl" target="_blank">{{ lib.npmPackage.name }}</a>
-      <div>v{{ lib.npmPackage.version }}</div>
+      <div class="text-sm opacity-80">v{{ lib.npmPackage.version }}</div>
     </template>
     <template v-else>-</template>
   </div>
@@ -47,14 +47,18 @@
   <!-- <div v&#45;else&#45;if="type === 'devusage'" class="flex items&#45;center justify&#45;end"> -->
   <!--   {{ (lib.devUsage &#38;&#38; lib.devUsage + '%') || '&#45;' }} -->
   <!-- </div> -->
-  <!--  -->
-  <!-- <div v&#45;else&#45;if="type === 'tradar'" class="flex items&#45;center justify&#45;center"> -->
-  <!--   <a v&#45;if="lib.techRadar" :href="lib.techRadar.url" target="_blank">{{ -->
-  <!--     lib.techRadar.level -->
-  <!--   }}</a> -->
-  <!--   <template v&#45;else> &#45; </template> -->
-  <!-- </div> -->
-  <!--  -->
+
+  <div
+    v-else-if="type === 'tradar'"
+    class="flex flex-col items-center justify-center"
+  >
+    <template v-if="tradar">
+      <a :href="tradar.url" target="_blank">{{ tradar.level }}</a>
+      <div class="text-sm opacity-80">{{ tradar.month }}</div>
+    </template>
+    <template v-else> - </template>
+  </div>
+
   <!-- <div v&#45;else&#45;if="type === 'releases'" class="flex items&#45;center justify&#45;end"> -->
   <!--   {{ lib.npmReleases }} -->
   <!-- </div> -->
@@ -128,7 +132,7 @@ import { ReadonlyLibraryT } from '@/libraryApis';
 import { numbersFormatter } from '@/utils';
 import TsBundledIcon from '@/icons/TsBundled.vue';
 import TsDtIcon from '@/icons/TsDt.vue';
-// import { repoToTechRadarMap } from '../../../techradar.config';
+// import { repoToTechRadarMap } from '@/techradar.config';
 import { MetricT } from './Table.vue';
 
 export default defineComponent({
@@ -171,6 +175,17 @@ export default defineComponent({
         () => `https://www.npmjs.com/package/${npmNameEncoded.value}`
       ),
       githubUrl: computed(() => `https://github.com/${lib.value.repo.repoId}`),
+
+      tradar: computed(() => {
+        if (!lib.value.tradar) {
+          return null;
+        }
+
+        return {
+          ...lib.value.tradar.entries.slice(-1)[0],
+          url: lib.value.tradar.link,
+        };
+      }),
 
       // getBundleSize(lib: LibT): string {
       //   if (!lib.bundleSize) {
