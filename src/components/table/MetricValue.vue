@@ -132,7 +132,6 @@ import { ReadonlyLibraryT } from '@/libraryApis';
 import { numbersFormatter } from '@/utils';
 import TsBundledIcon from '@/icons/TsBundled.vue';
 import TsDtIcon from '@/icons/TsDt.vue';
-// import { repoToTechRadarMap } from '@/techradar.config';
 import { MetricT } from './Table.vue';
 
 export default defineComponent({
