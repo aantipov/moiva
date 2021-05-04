@@ -79,11 +79,9 @@
         class="flex-shrink-0 w-8"
         :label="contributorsTooltip"
       />
-      <div class="text-left label">
+      <div class="label whitespace-nowrap">
         Contributors
-        <span class="text-sm font-normal text-opacity-80 whitespace-nowrap"
-          >in {{ quarter }}</span
-        >
+        <span class="text-sm font-normal opacity-80">in {{ quarter }}</span>
       </div>
     </template>
 
