@@ -69,11 +69,10 @@
 
   <div
     v-else-if="type === 'contributors'"
-    class="flex items-center justify-end"
+    class="flex items-center"
+    :class="{ 'justify-end': !!contributors, 'justify-center': !contributors }"
   >
-    <template v-if="contributors && !contributors.isError">
-      {{ contributors.contributors }}
-    </template>
+    {{ contributors?.contributors ?? '-' }}
   </div>
 
   <div
@@ -189,11 +188,8 @@ export default defineComponent({
       }),
 
       contributors: computed(() => {
-        if (lib.value.contributors === undefined) {
+        if (!lib.value.contributors) {
           return null;
-        }
-        if (lib.value.contributors === null) {
-          return { isError: true };
         }
         return lib.value.contributors.slice(-1)[0];
       }),

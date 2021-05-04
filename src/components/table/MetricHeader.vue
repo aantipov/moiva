@@ -76,12 +76,12 @@
     <template v-else-if="type === 'contributors'">
       <WorkerIcon
         v-tooltip="contributorsTooltip"
-        class="w-8"
+        class="flex-shrink-0 w-8"
         :label="contributorsTooltip"
       />
-      <div class="label">
+      <div class="text-left label">
         Contributors
-        <span class="text-sm font-normal whitespace-nowrap"
+        <span class="text-sm font-normal text-opacity-80 whitespace-nowrap"
           >in {{ quarter }}</span
         >
       </div>
