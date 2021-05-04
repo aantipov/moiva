@@ -76,7 +76,7 @@ const METRICS = [
   // 'searchInterest',
   // 'devusage',
   'tradar',
-  // 'releases',
+  'releases',
   // 'commits',
   'contributors',
   'dependencies',
