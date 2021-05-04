@@ -73,10 +73,15 @@
     <!--   <div class="ml&#45;2">Commits</div> -->
     <!-- </template> -->
     <!--  -->
-    <!-- <template v&#45;else&#45;if="type === 'contributors'"> -->
-    <!--   <WorkerIcon /> -->
-    <!--   <div class="ml&#45;2">Contributors</div> -->
-    <!-- </template> -->
+    <template v-else-if="type === 'contributors'">
+      <WorkerIcon class="w-8" />
+      <div class="label">
+        Contributors
+        <span class="text-sm font-normal whitespace-nowrap"
+          >in {{ quarter }}</span
+        >
+      </div>
+    </template>
 
     <template v-else-if="type === 'dependencies'">
       <DependencyIcon
@@ -123,7 +128,7 @@ import StarIcon from '@/components/icons/Star.vue';
 // import DownloadIcon from '@/components/icons/Download.vue';
 // import TagIcon from '@/components/icons/Tag.vue';
 // import SearchIcon from '@/components/icons/Search.vue';
-// import WorkerIcon from '@/components/icons/Worker.vue';
+import WorkerIcon from '@/components/icons/Worker.vue';
 import OldIcon from '@/components/icons/Old.vue';
 import DocumentIcon from '@/components/icons/Document.vue';
 import TSIcon from '@/components/icons/TS.vue';
@@ -134,6 +139,7 @@ import TWIcon from '@/components/icons/Thoughtworks.vue';
 import DependencyIcon from '@/components/icons/Dependency.vue';
 import ShieldIcon from '@/components/icons/Shield.vue';
 import { MetricT } from './Table.vue';
+import { subQuarters, format } from 'date-fns';
 
 export default defineComponent({
   name: 'ReportMetricHeader',
@@ -142,7 +148,7 @@ export default defineComponent({
     GitHubIcon,
     StarIcon,
     // SearchIcon,
-    // WorkerIcon,
+    WorkerIcon,
     // DownloadIcon,
     // TagIcon,
     // UserGroupIcon,
@@ -165,6 +171,7 @@ export default defineComponent({
 
   setup() {
     return {
+      quarter: format(subQuarters(new Date(), 1), 'yyyy-QQQ'),
       tsTooltip:
         'TypeScript support. "Bundled" - typings are bundled together with the package. "Separate" - typings are published to the @types organization on Npm',
       snykTooltip:

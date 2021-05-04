@@ -9,6 +9,7 @@ import { nanoid } from 'nanoid';
 import { catalogRepoIdToLib, catalogNpmToLib } from '@/libraries-catalog';
 import { DeepReadonly } from 'ts-essentials';
 import { TechRadarT, repoToTechRadarMap } from '@/techradar.config';
+import { ContributorsT } from '@/components/github-contributors/api';
 
 const npmPackageCache = new Map();
 const githubCache = new Map();
@@ -47,6 +48,7 @@ export interface LibraryT {
   repo: RepoT;
   alias: string;
   tradar: TechRadarT | null;
+  contributors: ContributorsT[] | null | undefined; // null for errors, undefined for not loaded yet
 }
 
 export type ReadonlyLibraryT = DeepReadonly<LibraryT>;
@@ -76,6 +78,7 @@ export function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
       category,
       alias: getSeoLibName(repo.repoId),
       tradar: repoToTechRadarMap[repo.repoId] || null,
+      contributors: undefined,
     }))
   );
 }
@@ -98,6 +101,7 @@ export function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
       category,
       alias: getSeoLibName(repo.repoId),
       tradar: repoToTechRadarMap[repoId] || null,
+      contributors: undefined,
     })
   );
 }

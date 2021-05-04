@@ -78,7 +78,7 @@ const METRICS = [
   'tradar',
   // 'releases',
   // 'commits',
-  // 'contributors',
+  'contributors',
   'dependencies',
   'ts',
   'security',

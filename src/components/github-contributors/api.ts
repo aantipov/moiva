@@ -1,19 +1,20 @@
 import axios from 'axios';
 import { reportSentry } from '@/apis';
 import { ERROR_CODE_GITHUB_CONTRIBUTORS_NEEDS_PROCESSING } from '@/constants';
-
-const cache = new Map();
+import { reactive } from 'vue';
 
 export interface ContributorsT {
   month: string;
   contributors: number;
 }
 
+export const cacheR = reactive(new Map<string, ContributorsT[] | null>());
+
 export function fetchContributors(
   repoId: string
 ): Promise<ContributorsT[] | null> {
-  if (cache.get(repoId)) {
-    return Promise.resolve(cache.get(repoId));
+  if (cacheR.get(repoId)) {
+    return Promise.resolve(cacheR.get(repoId) as ContributorsT[]);
   }
 
   return axios
@@ -31,7 +32,7 @@ export function fetchContributors(
         })(),
       }));
 
-      cache.set(repoId, items);
+      cacheR.set(repoId, items);
       return items;
     })
     .catch((err) => {
@@ -43,6 +44,7 @@ export function fetchContributors(
         reportSentry(err, 'fetchContributorsData');
       }
 
+      cacheR.set(repoId, null);
       return null;
     });
 }

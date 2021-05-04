@@ -67,12 +67,14 @@
   <!--   {{ lib.commits }} -->
   <!-- </div> -->
   <!--  -->
-  <!-- <div -->
-  <!--   v&#45;else&#45;if="type === 'contributors'" -->
-  <!--   class="flex items&#45;center justify&#45;end" -->
-  <!-- > -->
-  <!--   {{ lib.contributors }} -->
-  <!-- </div> -->
+  <div
+    v-else-if="type === 'contributors'"
+    class="flex items-center justify-end"
+  >
+    <template v-if="contributors && !contributors.isError">
+      {{ contributors.contributors }}
+    </template>
+  </div>
 
   <div
     v-else-if="type === 'dependencies'"
@@ -184,6 +186,16 @@ export default defineComponent({
           ...lib.value.tradar.entries.slice(-1)[0],
           url: lib.value.tradar.link,
         };
+      }),
+
+      contributors: computed(() => {
+        if (lib.value.contributors === undefined) {
+          return null;
+        }
+        if (lib.value.contributors === null) {
+          return { isError: true };
+        }
+        return lib.value.contributors.slice(-1)[0];
       }),
 
       // getBundleSize(lib: LibT): string {
