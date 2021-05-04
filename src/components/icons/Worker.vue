@@ -2,6 +2,8 @@
   <svg
     xmlns="http://www.w3.org/2000/svg"
     class="w-5 h-5"
+    role="img"
+    :aria-label="label"
     preserveAspectRatio="xMidYMid meet"
     viewBox="0 0 64 64"
   >
@@ -41,6 +43,13 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'WorkerIcon',
+
+  props: {
+    label: {
+      type: String,
+      required: true,
+    },
+  },
 });
 </script>
 
