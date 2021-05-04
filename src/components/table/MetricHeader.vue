@@ -63,10 +63,17 @@
       <div class="label">Tech Radar</div>
     </template>
 
-    <!-- <template v&#45;else&#45;if="type === 'releases'"> -->
-    <!--   <TagIcon /> -->
-    <!--   <div class="ml&#45;2">Releases</div> -->
-    <!-- </template> -->
+    <template v-else-if="type === 'releases'">
+      <TagIcon
+        v-tooltip="npmReleasesTooltip"
+        class="w-8"
+        :label="npmReleasesTooltip"
+      />
+      <div class="label whitespace-nowrap">
+        Npm releases
+        <span class="text-sm font-normal opacity-80">in {{ quarter }}</span>
+      </div>
+    </template>
 
     <!-- <template v&#45;else&#45;if="type === 'commits'"> -->
     <!--   <CommitsIcon /> -->
@@ -128,7 +135,7 @@ import { defineComponent } from 'vue';
 import GitHubIcon from '@/components/icons/Github.vue';
 import StarIcon from '@/components/icons/Star.vue';
 // import DownloadIcon from '@/components/icons/Download.vue';
-// import TagIcon from '@/components/icons/Tag.vue';
+import TagIcon from '@/components/icons/Tag.vue';
 // import SearchIcon from '@/components/icons/Search.vue';
 import WorkerIcon from '@/components/icons/Worker.vue';
 import OldIcon from '@/components/icons/Old.vue';
@@ -154,7 +161,7 @@ export default defineComponent({
     // SearchIcon,
     WorkerIcon,
     // DownloadIcon,
-    // TagIcon,
+    TagIcon,
     // UserGroupIcon,
     // CommitsIcon,
     DocumentIcon,
@@ -180,7 +187,8 @@ export default defineComponent({
         'TypeScript support. "Bundled" - typings are bundled together with the package. "Separate" - typings are published to the @types organization on Npm',
       snykTooltip:
         'A calculated by Snyk level of security (from A to F) of Npm packages based on the number of vulnerabilities and their severity. "A" - no vulnerabilities, "F" - the least secure level.',
-      contributorsTooltip: `A number of contributors in ${prevQuarter}`,
+      contributorsTooltip: `Contributors number in ${prevQuarter}`,
+      npmReleasesTooltip: `Npm releases number in ${prevQuarter}`,
     };
   },
 });

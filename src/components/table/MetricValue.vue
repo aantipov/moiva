@@ -59,9 +59,13 @@
     <template v-else> - </template>
   </div>
 
-  <!-- <div v&#45;else&#45;if="type === 'releases'" class="flex items&#45;center justify&#45;end"> -->
-  <!--   {{ lib.npmReleases }} -->
-  <!-- </div> -->
+  <div
+    v-else-if="type === 'releases'"
+    class="flex items-center"
+    :class="{ 'justify-end': !!npmReleases, 'justify-center': !npmReleases }"
+  >
+    {{ npmReleases?.releases ?? '-' }}
+  </div>
 
   <!-- <div v&#45;else&#45;if="type === 'commits'" class="flex items&#45;center justify&#45;end"> -->
   <!--   {{ lib.commits }} -->
@@ -192,6 +196,13 @@ export default defineComponent({
           return null;
         }
         return lib.value.contributors.slice(-1)[0];
+      }),
+
+      npmReleases: computed(() => {
+        if (!lib.value.npmReleases) {
+          return null;
+        }
+        return lib.value.npmReleases.slice(-1)[0];
       }),
 
       // getBundleSize(lib: LibT): string {

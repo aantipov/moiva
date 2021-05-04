@@ -1,19 +1,20 @@
 import axios from 'axios';
 import { reportSentry } from '@/apis';
+import { reactive } from 'vue';
 
 export interface NpmPackageReleasesT {
   month: string;
   releases: number;
 }
 
-const cache = new Map();
+export const cacheR = reactive(new Map<string, NpmPackageReleasesT[] | null>());
 export const creationDatesCache = new Map();
 
 export function fetchNpmPackageReleases(
   pkg: string
 ): Promise<NpmPackageReleasesT[] | null> {
-  if (cache.get(pkg)) {
-    return Promise.resolve(cache.get(pkg));
+  if (cacheR.get(pkg)) {
+    return Promise.resolve(cacheR.get(pkg) as NpmPackageReleasesT[]);
   }
 
   return axios
@@ -31,7 +32,7 @@ export function fetchNpmPackageReleases(
         })(),
       }));
 
-      cache.set(pkg, items);
+      cacheR.set(pkg, items);
 
       if (data.created) {
         creationDatesCache.set(pkg, data.created);

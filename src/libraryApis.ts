@@ -14,6 +14,10 @@ import {
   ContributorsT,
   cacheR as contributorsMapR,
 } from '@/components/github-contributors/api';
+import {
+  NpmPackageReleasesT,
+  cacheR as npmReleasesMapR,
+} from '@/components/npm-releases/api';
 
 const npmPackageCache = new Map();
 const githubCache = new Map();
@@ -53,6 +57,7 @@ export interface LibraryT {
   alias: string;
   tradar: TechRadarT | null;
   contributors: ContributorsT[] | null | undefined; // null for errors, undefined for not loaded yet
+  npmReleases: NpmPackageReleasesT[] | null | undefined;
 }
 
 export type ReadonlyLibraryT = DeepReadonly<LibraryT>;
@@ -86,6 +91,9 @@ export function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
       contributors: (computed(() =>
         contributorsMapR.get(repo.repoId)
       ) as unknown) as ContributorsT[] | null | undefined,
+      npmReleases: (computed(() =>
+        npmReleasesMapR.get(npmPackage.name)
+      ) as unknown) as NpmPackageReleasesT[] | null | undefined,
     }))
   );
 }
@@ -112,6 +120,9 @@ export function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
       contributors: (computed(() =>
         contributorsMapR.get(repoId)
       ) as unknown) as ContributorsT[] | null | undefined,
+      npmReleases: (computed(() =>
+        npmPackage ? npmReleasesMapR.get(npmPackage.name) : null
+      ) as unknown) as NpmPackageReleasesT[] | null | undefined,
     })
   );
 }
