@@ -1,4 +1,5 @@
 import axios, { AxiosError } from 'axios';
+import { computed } from 'vue';
 import * as Sentry from '@sentry/browser';
 import { getSeoLibName } from '@/utils';
 import {
@@ -9,7 +10,10 @@ import { nanoid } from 'nanoid';
 import { catalogRepoIdToLib, catalogNpmToLib } from '@/libraries-catalog';
 import { DeepReadonly } from 'ts-essentials';
 import { TechRadarT, repoToTechRadarMap } from '@/techradar.config';
-import { ContributorsT } from '@/components/github-contributors/api';
+import {
+  ContributorsT,
+  cacheR as contributorsMapR,
+} from '@/components/github-contributors/api';
 
 const npmPackageCache = new Map();
 const githubCache = new Map();
@@ -78,7 +82,10 @@ export function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
       category,
       alias: getSeoLibName(repo.repoId),
       tradar: repoToTechRadarMap[repo.repoId] || null,
-      contributors: undefined,
+      // We do type conversion because the Ref will eventually become Reactive and then Typescript will start arguing
+      contributors: (computed(() =>
+        contributorsMapR.get(repo.repoId)
+      ) as unknown) as ContributorsT[] | null | undefined,
     }))
   );
 }
@@ -101,7 +108,10 @@ export function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
       category,
       alias: getSeoLibName(repo.repoId),
       tradar: repoToTechRadarMap[repoId] || null,
-      contributors: undefined,
+      // We do type conversion because the Ref will eventually become Reactive and then Typescript will start arguing
+      contributors: (computed(() =>
+        contributorsMapR.get(repoId)
+      ) as unknown) as ContributorsT[] | null | undefined,
     })
   );
 }

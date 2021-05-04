@@ -1,4 +1,4 @@
-import { reactive, computed, readonly, watch } from 'vue';
+import { reactive, computed, readonly } from 'vue';
 import {
   RepoT,
   LibraryT,
@@ -6,7 +6,6 @@ import {
   fetchLibraryByNpm,
   NpmPackageT,
 } from '@/libraryApis';
-import { cacheR as contributorsMapR } from '@/components/github-contributors/api';
 
 // ====== STATE ======
 const librariesR = reactive<LibraryT[]>([]);
@@ -132,14 +131,3 @@ export function removeLibrary(libraryId: string): void {
 export function removeAllLibraries(): void {
   librariesR.length = 0;
 }
-
-// Watch additional data and enhance libraries
-watch(
-  () => contributorsMapR,
-  () => {
-    librariesR.forEach((libR) => {
-      libR.contributors = contributorsMapR.get(libR.repo.repoId);
-    });
-  },
-  { deep: true }
-);
