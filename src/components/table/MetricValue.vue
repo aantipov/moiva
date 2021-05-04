@@ -18,32 +18,32 @@
   <!-- <div v&#45;else&#45;if="type === 'starsPlus'" class="flex items&#45;center justify&#45;end"> -->
   <!--   {{ formatNumber(lib.starsPlus) }} -->
   <!-- </div> -->
-  <!--  -->
+
   <!-- <div -->
   <!--   v&#45;else&#45;if="type === 'starsPlusPercentage'" -->
   <!--   class="flex items&#45;center justify&#45;end" -->
   <!-- > -->
   <!--   {{ lib.starsPlusPercentage }}% -->
   <!-- </div> -->
-  <!--  -->
+
   <!-- <div v&#45;else&#45;if="type === 'downloads'" class="flex items&#45;center justify&#45;end"> -->
   <!--   {{ formatNumber(lib.dwnlMonthly) }} -->
   <!-- </div> -->
-  <!--  -->
+
   <!-- <div -->
   <!--   v&#45;else&#45;if="type === 'downloadsIncrease'" -->
   <!--   class="flex items&#45;center justify&#45;end" -->
   <!-- > -->
   <!--   {{ lib.dwnlMonthlyIncreasePercentage }}% -->
   <!-- </div> -->
-  <!--  -->
+
   <!-- <div -->
   <!--   v&#45;else&#45;if="type === 'searchInterest'" -->
   <!--   class="flex items&#45;center justify&#45;end" -->
   <!-- > -->
   <!--   {{ (lib.googleTrends &#38;&#38; lib.googleTrends + '%') || '&#45;' }} -->
   <!-- </div> -->
-  <!--  -->
+
   <!-- <div v&#45;else&#45;if="type === 'devusage'" class="flex items&#45;center justify&#45;end"> -->
   <!--   {{ (lib.devUsage &#38;&#38; lib.devUsage + '%') || '&#45;' }} -->
   <!-- </div> -->
@@ -62,17 +62,18 @@
   <!-- <div v&#45;else&#45;if="type === 'releases'" class="flex items&#45;center justify&#45;end"> -->
   <!--   {{ lib.npmReleases }} -->
   <!-- </div> -->
-  <!--  -->
+
   <!-- <div v&#45;else&#45;if="type === 'commits'" class="flex items&#45;center justify&#45;end"> -->
   <!--   {{ lib.commits }} -->
   <!-- </div> -->
-  <!--  -->
-  <!-- <div -->
-  <!--   v&#45;else&#45;if="type === 'contributors'" -->
-  <!--   class="flex items&#45;center justify&#45;end" -->
-  <!-- > -->
-  <!--   {{ lib.contributors }} -->
-  <!-- </div> -->
+
+  <div
+    v-else-if="type === 'contributors'"
+    class="flex items-center"
+    :class="{ 'justify-end': !!contributors, 'justify-center': !contributors }"
+  >
+    {{ contributors?.contributors ?? '-' }}
+  </div>
 
   <div
     v-else-if="type === 'dependencies'"
@@ -184,6 +185,13 @@ export default defineComponent({
           ...lib.value.tradar.entries.slice(-1)[0],
           url: lib.value.tradar.link,
         };
+      }),
+
+      contributors: computed(() => {
+        if (!lib.value.contributors) {
+          return null;
+        }
+        return lib.value.contributors.slice(-1)[0];
       }),
 
       // getBundleSize(lib: LibT): string {

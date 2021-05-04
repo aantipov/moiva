@@ -26,22 +26,22 @@
     <!--   <StarIcon /> -->
     <!--   <div class="ml&#45;2">New Stars</div> -->
     <!-- </template> -->
-    <!--  -->
+
     <!-- <template v&#45;else&#45;if="type === 'starsPlusPercentage'"> -->
     <!--   <StarIcon /> -->
     <!--   <div class="ml&#45;2">New Stars, %</div> -->
     <!-- </template> -->
-    <!--  -->
+
     <!-- <template v&#45;else&#45;if="type === 'downloads'"> -->
     <!--   <DownloadIcon /> -->
     <!--   <div class="ml&#45;2">Monthly</div> -->
     <!-- </template> -->
-    <!--  -->
+
     <!-- <template v&#45;else&#45;if="type === 'downloadsIncrease'"> -->
     <!--   <DownloadIcon /> -->
     <!--   <div class="ml&#45;2">Monthly % (incr.)</div> -->
     <!-- </template> -->
-    <!--  -->
+
     <!-- <template v&#45;else&#45;if="type === 'searchInterest'"> -->
     <!--   <SearchIcon /> -->
     <!--   <div class="ml&#45;2">Search Interest, %</div> -->
@@ -72,11 +72,18 @@
     <!--   <CommitsIcon /> -->
     <!--   <div class="ml&#45;2">Commits</div> -->
     <!-- </template> -->
-    <!--  -->
-    <!-- <template v&#45;else&#45;if="type === 'contributors'"> -->
-    <!--   <WorkerIcon /> -->
-    <!--   <div class="ml&#45;2">Contributors</div> -->
-    <!-- </template> -->
+
+    <template v-else-if="type === 'contributors'">
+      <WorkerIcon
+        v-tooltip="contributorsTooltip"
+        class="flex-shrink-0 w-8"
+        :label="contributorsTooltip"
+      />
+      <div class="label whitespace-nowrap">
+        Contributors
+        <span class="text-sm font-normal opacity-80">in {{ quarter }}</span>
+      </div>
+    </template>
 
     <template v-else-if="type === 'dependencies'">
       <DependencyIcon
@@ -123,7 +130,7 @@ import StarIcon from '@/components/icons/Star.vue';
 // import DownloadIcon from '@/components/icons/Download.vue';
 // import TagIcon from '@/components/icons/Tag.vue';
 // import SearchIcon from '@/components/icons/Search.vue';
-// import WorkerIcon from '@/components/icons/Worker.vue';
+import WorkerIcon from '@/components/icons/Worker.vue';
 import OldIcon from '@/components/icons/Old.vue';
 import DocumentIcon from '@/components/icons/Document.vue';
 import TSIcon from '@/components/icons/TS.vue';
@@ -134,6 +141,9 @@ import TWIcon from '@/components/icons/Thoughtworks.vue';
 import DependencyIcon from '@/components/icons/Dependency.vue';
 import ShieldIcon from '@/components/icons/Shield.vue';
 import { MetricT } from './Table.vue';
+import { subQuarters, format } from 'date-fns';
+
+const prevQuarter = format(subQuarters(new Date(), 1), 'yyyy-QQQ');
 
 export default defineComponent({
   name: 'ReportMetricHeader',
@@ -142,7 +152,7 @@ export default defineComponent({
     GitHubIcon,
     StarIcon,
     // SearchIcon,
-    // WorkerIcon,
+    WorkerIcon,
     // DownloadIcon,
     // TagIcon,
     // UserGroupIcon,
@@ -165,10 +175,12 @@ export default defineComponent({
 
   setup() {
     return {
+      quarter: prevQuarter,
       tsTooltip:
         'TypeScript support. "Bundled" - typings are bundled together with the package. "Separate" - typings are published to the @types organization on Npm',
       snykTooltip:
         'A calculated by Snyk level of security (from A to F) of Npm packages based on the number of vulnerabilities and their severity. "A" - no vulnerabilities, "F" - the least secure level.',
+      contributorsTooltip: `A number of contributors in ${prevQuarter}`,
     };
   },
 });
