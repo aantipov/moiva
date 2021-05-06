@@ -8,7 +8,13 @@
   </div>
 
   <div v-else-if="type === 'repo'" class="flex justify-center">
-    <a :href="githubUrl" target="_blank">{{ lib.repo.repoId }}</a>
+    <a
+      v-tooltip="lib.repo.repoId"
+      :href="githubUrl"
+      class="truncate maxWidthCol"
+      target="_blank"
+      >{{ lib.repo.repoId }}</a
+    >
   </div>
 
   <div v-else-if="type === 'stars'" class="flex justify-end">
@@ -241,4 +247,8 @@ export default defineComponent({
 });
 </script>
 
-<style lang="postcss"></style>
+<style lang="postcss">
+.maxWidthCol {
+  max-width: 140px;
+}
+</style>
