@@ -12,7 +12,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import CommitsChart from './CommitsChart.vue';
-import { fetchRepoCommits, CommitsResponseItemT } from '@/apis';
+import { fetchRepoCommits, CommitsResponseItemT } from './api';
 import useChartApi from '@/composables/useChartApi';
 import { libraryToColorMap } from '@/store/librariesColors';
 import {
