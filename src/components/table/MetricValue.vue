@@ -67,9 +67,9 @@
     {{ npmReleases?.releases ?? '-' }}
   </div>
 
-  <!-- <div v&#45;else&#45;if="type === 'commits'" class="flex items&#45;center justify&#45;end"> -->
-  <!--   {{ lib.commits }} -->
-  <!-- </div> -->
+  <div v-else-if="type === 'commits'" class="flex items-center justify-end">
+    {{ commits }}
+  </div>
 
   <div
     v-else-if="type === 'contributors'"
@@ -138,6 +138,8 @@ import { numbersFormatter } from '@/utils';
 import TsBundledIcon from '@/icons/TsBundled.vue';
 import TsDtIcon from '@/icons/TsDt.vue';
 import { MetricT } from './Table.vue';
+import { subQuarters, isSameQuarter } from 'date-fns';
+const prevQuarterDate = subQuarters(new Date(), 1);
 
 export default defineComponent({
   name: 'ReportMetricValue',
@@ -203,6 +205,18 @@ export default defineComponent({
           return null;
         }
         return lib.value.npmReleases.slice(-1)[0];
+      }),
+
+      commits: computed(() => {
+        if (!lib.value.commits) {
+          return null;
+        }
+
+        // Get the numer of commits in the last quarter
+        // Filter by the quarter and summarize
+        return lib.value.commits
+          .filter(({ week }) => isSameQuarter(week * 1000, prevQuarterDate))
+          .reduce((acc, { total }) => acc + total, 0);
       }),
 
       // getBundleSize(lib: LibT): string {

@@ -2,6 +2,8 @@
   <svg
     xmlns="http://www.w3.org/2000/svg"
     class="w-5 h-5"
+    role="img"
+    :aria-label="label"
     viewBox="0 0 20 20"
     fill="currentColor"
   >
@@ -16,6 +18,13 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'CommitsIcon',
+
+  props: {
+    label: {
+      type: String,
+      required: true,
+    },
+  },
 });
 </script>
 

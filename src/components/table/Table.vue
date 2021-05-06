@@ -77,7 +77,7 @@ const METRICS = [
   // 'devusage',
   'tradar',
   'releases',
-  // 'commits',
+  'commits',
   'contributors',
   'dependencies',
   'ts',
