@@ -106,7 +106,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, watchEffect, computed } from 'vue';
-import NpmDownloads from './NpmDownloads.vue';
+import NpmDownloads from './downloads/NpmDownloads.vue';
 import Search from './search/Search.vue';
 import Suggestions from './Suggestions.vue';
 import Popular from './Popular.vue';
