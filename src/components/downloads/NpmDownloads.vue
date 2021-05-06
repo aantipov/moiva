@@ -13,7 +13,7 @@
 <script lang="ts">
 import { defineComponent, computed, watchEffect } from 'vue';
 import NpmDownloadsChart from './NpmDownloadsChart.vue';
-import { fetchNpmDownloads, NpmDownloadT } from '@/apis';
+import { fetchNpmDownloads, NpmDownloadT } from './api';
 import { chartsVisibility } from '@/store/chartsVisibility';
 import { npmCreationDatesMap } from '@/store/npmCreationDates';
 import useChartApi from '@/composables/useChartApi';
