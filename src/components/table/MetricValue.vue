@@ -68,7 +68,7 @@
   </div>
 
   <div v-else-if="type === 'commits'" class="flex items-center justify-end">
-    {{ commits }}
+    {{ commits ?? '-' }}
   </div>
 
   <div
