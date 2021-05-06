@@ -75,10 +75,17 @@
       </div>
     </template>
 
-    <!-- <template v&#45;else&#45;if="type === 'commits'"> -->
-    <!--   <CommitsIcon /> -->
-    <!--   <div class="ml&#45;2">Commits</div> -->
-    <!-- </template> -->
+    <template v-else-if="type === 'commits'">
+      <CommitsIcon
+        v-tooltip="commitsTooltip"
+        class="flex-shrink-0 w-8"
+        :label="commitsTooltip"
+      />
+      <div class="label">
+        Commits
+        <span class="text-sm font-normal opacity-80">in {{ quarter }}</span>
+      </div>
+    </template>
 
     <template v-else-if="type === 'contributors'">
       <WorkerIcon
@@ -142,7 +149,7 @@ import OldIcon from '@/components/icons/Old.vue';
 import DocumentIcon from '@/components/icons/Document.vue';
 import TSIcon from '@/components/icons/TS.vue';
 // import UserGroupIcon from '@/components/icons/UserGroup.vue';
-// import CommitsIcon from '@/components/icons/Commits.vue';
+import CommitsIcon from '@/components/icons/Commits.vue';
 import TWIcon from '@/components/icons/Thoughtworks.vue';
 // import CubeIcon from '@/components/icons/Cube.vue';
 import DependencyIcon from '@/components/icons/Dependency.vue';
@@ -163,7 +170,7 @@ export default defineComponent({
     // DownloadIcon,
     TagIcon,
     // UserGroupIcon,
-    // CommitsIcon,
+    CommitsIcon,
     DocumentIcon,
     DependencyIcon,
     // CubeIcon,
@@ -189,6 +196,7 @@ export default defineComponent({
         'A calculated by Snyk level of security (from A to F) of Npm packages based on the number of vulnerabilities and their severity. "A" - no vulnerabilities, "F" - the least secure level.',
       contributorsTooltip: `Contributors number in ${prevQuarter}`,
       npmReleasesTooltip: `Npm releases number in ${prevQuarter}`,
+      commitsTooltip: `Repository commits number in ${prevQuarter}`,
     };
   },
 });

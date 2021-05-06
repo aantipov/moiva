@@ -1,12 +1,7 @@
 import axios, { AxiosError } from 'axios';
 import * as Sentry from '@sentry/browser';
-import { ERROR_CODE_GITHUB_COMMITS_NEEDS_PROCESSING } from '@/constants';
 
 export type GithubLanguagesResponseT = Record<string, number>;
-export interface CommitsResponseItemT {
-  total: number;
-  week: number;
-}
 
 const npmDownloadsCache = new Map();
 const bphobiaCache = new Map();
@@ -68,35 +63,6 @@ export function fetchRepoLanguages(
 
       if (errorCode !== 404) {
         reportSentry(err, 'fetchGithubLanguagesData');
-      }
-
-      return null;
-    });
-}
-
-const githubCommitsCache = new Map();
-export function fetchRepoCommits(
-  repoId: string
-): Promise<CommitsResponseItemT[] | null> {
-  if (githubCommitsCache.get(repoId)) {
-    return Promise.resolve(githubCommitsCache.get(repoId));
-  }
-
-  return axios
-    .get<{ items: CommitsResponseItemT[] }>(
-      `https://github-commits.moiva.workers.dev/?repo=${repoId}`
-    )
-    .then(({ data }) => {
-      githubCommitsCache.set(repoId, data.items);
-      return data.items;
-    })
-    .catch((err) => {
-      const errorCode =
-        err?.response?.data?.error?.code || err?.response?.status || undefined;
-
-      // Report to Sentry unexpected errors only
-      if (errorCode !== ERROR_CODE_GITHUB_COMMITS_NEEDS_PROCESSING) {
-        reportSentry(err, 'fetchGithubCommitsData');
       }
 
       return null;

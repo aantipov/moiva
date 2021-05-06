@@ -18,6 +18,10 @@ import {
   NpmPackageReleasesT,
   cacheR as npmReleasesMapR,
 } from '@/components/npm-releases/api';
+import {
+  CommitsResponseItemT,
+  cacheR as commitsMapR,
+} from '@/components/commits/api';
 
 const npmPackageCache = new Map();
 const githubCache = new Map();
@@ -48,6 +52,8 @@ export interface NpmPackageT {
   typesPackageName: string;
 }
 
+type LibCommitsT = CommitsResponseItemT[] | null | undefined;
+
 export interface LibraryT {
   id: string;
   npmPackage?: NpmPackageT | null;
@@ -58,6 +64,7 @@ export interface LibraryT {
   tradar: TechRadarT | null;
   contributors: ContributorsT[] | null | undefined; // null for errors, undefined for not loaded yet
   npmReleases: NpmPackageReleasesT[] | null | undefined;
+  commits: LibCommitsT;
 }
 
 export type ReadonlyLibraryT = DeepReadonly<LibraryT>;
@@ -94,6 +101,9 @@ export function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
       npmReleases: (computed(() =>
         npmReleasesMapR.get(npmPackage.name)
       ) as unknown) as NpmPackageReleasesT[] | null | undefined,
+      commits: (computed(() =>
+        commitsMapR.get(repo.repoId)
+      ) as unknown) as LibCommitsT,
     }))
   );
 }
@@ -123,6 +133,9 @@ export function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
       npmReleases: (computed(() =>
         npmPackage ? npmReleasesMapR.get(npmPackage.name) : null
       ) as unknown) as NpmPackageReleasesT[] | null | undefined,
+      commits: (computed(() =>
+        commitsMapR.get(repo.repoId)
+      ) as unknown) as LibCommitsT,
     })
   );
 }
