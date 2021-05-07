@@ -22,6 +22,10 @@ import {
   CommitsResponseItemT,
   cacheR as commitsMapR,
 } from '@/components/commits/api';
+import {
+  NpmDownloadT,
+  cacheR as npmDownloadsMapR,
+} from '@/components/downloads/api';
 
 const npmPackageCache = new Map();
 const githubCache = new Map();
@@ -53,6 +57,7 @@ export interface NpmPackageT {
 }
 
 type LibCommitsT = CommitsResponseItemT[] | null | undefined;
+type LibNpmDownloadsT = NpmDownloadT[] | null | undefined;
 
 export interface LibraryT {
   id: string;
@@ -64,6 +69,7 @@ export interface LibraryT {
   tradar: TechRadarT | null;
   contributors: ContributorsT[] | null | undefined; // null for errors, undefined for not loaded yet
   npmReleases: NpmPackageReleasesT[] | null | undefined;
+  npmDownloads: LibNpmDownloadsT;
   commits: LibCommitsT;
 }
 
@@ -101,6 +107,9 @@ export function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
       npmReleases: (computed(() =>
         npmReleasesMapR.get(npmPackage.name)
       ) as unknown) as NpmPackageReleasesT[] | null | undefined,
+      npmDownloads: (computed(() =>
+        npmDownloadsMapR.get(npmPackage.name)
+      ) as unknown) as LibNpmDownloadsT,
       commits: (computed(() =>
         commitsMapR.get(repo.repoId)
       ) as unknown) as LibCommitsT,
@@ -133,6 +142,9 @@ export function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
       npmReleases: (computed(() =>
         npmPackage ? npmReleasesMapR.get(npmPackage.name) : null
       ) as unknown) as NpmPackageReleasesT[] | null | undefined,
+      npmDownloads: (computed(() =>
+        npmPackage ? npmDownloadsMapR.get(npmPackage.name) : null
+      ) as unknown) as LibNpmDownloadsT,
       commits: (computed(() =>
         commitsMapR.get(repo.repoId)
       ) as unknown) as LibCommitsT,

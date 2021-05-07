@@ -32,9 +32,13 @@
   <!--   {{ lib.starsPlusPercentage }}% -->
   <!-- </div> -->
 
-  <!-- <div v&#45;else&#45;if="type === 'downloads'" class="flex items&#45;center justify&#45;end"> -->
-  <!--   {{ formatNumber(lib.dwnlMonthly) }} -->
-  <!-- </div> -->
+  <div
+    v-else-if="type === 'downloads'"
+    class="flex items-center"
+    :class="{ 'justify-end': !!npmDownloads, 'justify-center': !npmDownloads }"
+  >
+    {{ npmDownloads ?? '-' }}
+  </div>
 
   <!-- <div -->
   <!--   v&#45;else&#45;if="type === 'downloadsIncrease'" -->
@@ -211,6 +215,15 @@ export default defineComponent({
           return null;
         }
         return lib.value.npmReleases.slice(-1)[0];
+      }),
+
+      npmDownloads: computed<string | null>(() => {
+        if (!lib.value.npmDownloads) {
+          return null;
+        }
+        return numbersFormatter.format(
+          lib.value.npmDownloads.slice(-1)[0].downloads
+        );
       }),
 
       commits: computed(() => {
