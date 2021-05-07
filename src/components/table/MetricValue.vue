@@ -8,7 +8,13 @@
   </div>
 
   <div v-else-if="type === 'repo'" class="flex justify-center">
-    <a :href="githubUrl" target="_blank">{{ lib.repo.repoId }}</a>
+    <a
+      v-tooltip="lib.repo.repoId"
+      :href="githubUrl"
+      class="truncate maxWidthCol"
+      target="_blank"
+      >{{ lib.repo.repoId }}</a
+    >
   </div>
 
   <div v-else-if="type === 'stars'" class="flex justify-end">
@@ -26,9 +32,13 @@
   <!--   {{ lib.starsPlusPercentage }}% -->
   <!-- </div> -->
 
-  <!-- <div v&#45;else&#45;if="type === 'downloads'" class="flex items&#45;center justify&#45;end"> -->
-  <!--   {{ formatNumber(lib.dwnlMonthly) }} -->
-  <!-- </div> -->
+  <div
+    v-else-if="type === 'downloads'"
+    class="flex items-center"
+    :class="{ 'justify-end': !!npmDownloads, 'justify-center': !npmDownloads }"
+  >
+    {{ npmDownloads ?? '-' }}
+  </div>
 
   <!-- <div -->
   <!--   v&#45;else&#45;if="type === 'downloadsIncrease'" -->
@@ -207,6 +217,18 @@ export default defineComponent({
         return lib.value.npmReleases.slice(-1)[0];
       }),
 
+      npmDownloads: computed<string | null>(() => {
+        if (!lib.value.npmDownloads) {
+          return null;
+        }
+        const qDownloads = lib.value.npmDownloads
+          .slice(-3)
+          .map(({ downloads }) => downloads);
+        const sum = qDownloads.reduce((sum, val) => sum + val, 0);
+
+        return numbersFormatter.format(sum / qDownloads.length);
+      }),
+
       commits: computed(() => {
         if (!lib.value.commits) {
           return null;
@@ -241,4 +263,8 @@ export default defineComponent({
 });
 </script>
 
-<style lang="postcss"></style>
+<style lang="postcss">
+.maxWidthCol {
+  max-width: 140px;
+}
+</style>

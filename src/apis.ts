@@ -3,14 +3,6 @@ import * as Sentry from '@sentry/browser';
 
 export type GithubLanguagesResponseT = Record<string, number>;
 
-const npmDownloadsCache = new Map();
-const bphobiaCache = new Map();
-
-export interface NpmDownloadT {
-  downloads: number;
-  month: string;
-}
-
 export function reportSentry(err: AxiosError, methodName: string): void {
   err.name = `UI API (${methodName})`;
 
@@ -20,27 +12,6 @@ export function reportSentry(err: AxiosError, methodName: string): void {
       apiRequestUrl: err.config?.url || '',
     },
   });
-}
-
-export function fetchNpmDownloads(
-  libName: string
-): Promise<NpmDownloadT[] | null> {
-  if (npmDownloadsCache.get(libName)) {
-    return Promise.resolve(npmDownloadsCache.get(libName));
-  }
-
-  return axios
-    .get(`https://npm-downloads.moiva.workers.dev/?pkg=${libName}`)
-    .then(({ data }) => {
-      const dataWOLastMonth = data.items.slice(0, -1);
-      npmDownloadsCache.set(libName, dataWOLastMonth);
-      return dataWOLastMonth;
-    })
-    .catch((err) => {
-      reportSentry(err, 'fetchNpmDownloads');
-
-      return null;
-    });
 }
 
 const githubLanguagesCache = new Map();
@@ -73,6 +44,8 @@ export interface BundlephobiaT {
   gzip: number;
   raw: number;
 }
+
+const bphobiaCache = new Map();
 
 export function fetchBundlephobiaData(
   pkg: string

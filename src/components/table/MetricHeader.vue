@@ -10,7 +10,7 @@
         class="w-8"
         label="GitHub repository"
       />
-      <div class="label">GitHub</div>
+      <div v-tooltip="'GitHub repository'" class="label">GitHub</div>
     </template>
 
     <template v-if="type === 'stars'">
@@ -19,7 +19,9 @@
         class="w-8"
         label="A total number of GitHub stars"
       />
-      <div class="label">Stars</div>
+      <div v-tooltip="'A total number of GitHub stars'" class="label">
+        Stars
+      </div>
     </template>
 
     <!-- <template v&#45;else&#45;if="type === 'starsPlus'"> -->
@@ -32,10 +34,16 @@
     <!--   <div class="ml&#45;2">New Stars, %</div> -->
     <!-- </template> -->
 
-    <!-- <template v&#45;else&#45;if="type === 'downloads'"> -->
-    <!--   <DownloadIcon /> -->
-    <!--   <div class="ml&#45;2">Monthly</div> -->
-    <!-- </template> -->
+    <template v-else-if="type === 'downloads'">
+      <DownloadIcon
+        v-tooltip="'Monthly downloads of the npm package'"
+        class="w-8"
+        label="Monthly downloads of the npm package"
+      />
+      <div v-tooltip="'Monthly downloads of the npm package'" class="label">
+        Monthly
+      </div>
+    </template>
 
     <!-- <template v&#45;else&#45;if="type === 'downloadsIncrease'"> -->
     <!--   <DownloadIcon /> -->
@@ -54,13 +62,11 @@
 
     <template v-else-if="type === 'tradar'">
       <TWIcon
-        v-tooltip="
-          'A ThoughtWorks tech radar “ring” assigned to a library. Four possible rings - “Adopt”, “Trial”, “Assess”, and “Hold”.'
-        "
+        v-tooltip="tradarTooltip"
         class="w-8 h-3"
-        label="A ThoughtWorks tech radar “ring” assigned to a library"
+        :label="tradarTooltip"
       />
-      <div class="label">Tech Radar</div>
+      <div v-tooltip="tradarTooltip" class="label">Tech Radar</div>
     </template>
 
     <template v-else-if="type === 'releases'">
@@ -69,7 +75,7 @@
         class="w-8"
         :label="npmReleasesTooltip"
       />
-      <div class="label whitespace-nowrap">
+      <div v-tooltip="npmReleasesTooltip" class="label whitespace-nowrap">
         Npm releases
         <span class="text-sm font-normal opacity-80">in {{ quarter }}</span>
       </div>
@@ -81,7 +87,7 @@
         class="flex-shrink-0 w-8"
         :label="commitsTooltip"
       />
-      <div class="label">
+      <div v-tooltip="commitsTooltip" class="label">
         Commits
         <span class="text-sm font-normal opacity-80">in {{ quarter }}</span>
       </div>
@@ -93,7 +99,7 @@
         class="flex-shrink-0 w-8"
         :label="contributorsTooltip"
       />
-      <div class="label whitespace-nowrap">
+      <div v-tooltip="contributorsTooltip" class="label whitespace-nowrap">
         Contributors
         <span class="text-sm font-normal opacity-80">in {{ quarter }}</span>
       </div>
@@ -101,18 +107,20 @@
 
     <template v-else-if="type === 'dependencies'">
       <DependencyIcon
-        v-tooltip="'A number of Npm dependencies'"
+        v-tooltip="'Npm dependencies number'"
         class="w-8"
-        label="A number of Npm dependencies"
+        label="Npm dependencies number"
       />
-      <div class="label">Dependencies</div>
+      <div v-tooltip="'Npm dependencies number'" class="label">
+        Dependencies
+      </div>
     </template>
 
     <template v-else-if="type === 'ts'">
       <div class="flex justify-center w-8">
         <TSIcon v-tooltip="tsTooltip" label="TypeScript support" />
       </div>
-      <div class="label">Types</div>
+      <div v-tooltip="tsTooltip" class="label">Types</div>
     </template>
 
     <!-- <template v&#45;else&#45;if="type === 'bundlesize'"> -->
@@ -122,17 +130,17 @@
 
     <template v-else-if="type === 'security'">
       <ShieldIcon v-tooltip="snykTooltip" class="w-8" label="Security" />
-      <div class="label">Security</div>
+      <div v-tooltip="snykTooltip" class="label">Security</div>
     </template>
 
     <template v-else-if="type === 'age'">
       <OldIcon v-tooltip="'Age'" class="w-8" label="Age" />
-      <div class="label">Age</div>
+      <div v-tooltip="'Age'" class="label">Age</div>
     </template>
 
     <template v-else-if="type === 'license'">
       <DocumentIcon v-tooltip="'License'" class="w-8" label="License" />
-      <div class="label">License</div>
+      <div v-tooltip="'License'" class="label">License</div>
     </template>
   </div>
 </template>
@@ -141,7 +149,7 @@
 import { defineComponent } from 'vue';
 import GitHubIcon from '@/components/icons/Github.vue';
 import StarIcon from '@/components/icons/Star.vue';
-// import DownloadIcon from '@/components/icons/Download.vue';
+import DownloadIcon from '@/components/icons/Download.vue';
 import TagIcon from '@/components/icons/Tag.vue';
 // import SearchIcon from '@/components/icons/Search.vue';
 import WorkerIcon from '@/components/icons/Worker.vue';
@@ -167,7 +175,7 @@ export default defineComponent({
     StarIcon,
     // SearchIcon,
     WorkerIcon,
-    // DownloadIcon,
+    DownloadIcon,
     TagIcon,
     // UserGroupIcon,
     CommitsIcon,
@@ -197,6 +205,8 @@ export default defineComponent({
       contributorsTooltip: `Contributors number in ${prevQuarter}`,
       npmReleasesTooltip: `Npm releases number in ${prevQuarter}`,
       commitsTooltip: `Repository commits number in ${prevQuarter}`,
+      tradarTooltip:
+        'A ThoughtWorks tech radar “ring” assigned to the library. Four possible rings - “Adopt”, “Trial”, “Assess”, and “Hold”.',
     };
   },
 });
