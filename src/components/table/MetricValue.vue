@@ -221,9 +221,12 @@ export default defineComponent({
         if (!lib.value.npmDownloads) {
           return null;
         }
-        return numbersFormatter.format(
-          lib.value.npmDownloads.slice(-1)[0].downloads
-        );
+        const qDownloads = lib.value.npmDownloads
+          .slice(-3)
+          .map(({ downloads }) => downloads);
+        const sum = qDownloads.reduce((sum, val) => sum + val, 0);
+
+        return numbersFormatter.format(sum / qDownloads.length);
       }),
 
       commits: computed(() => {

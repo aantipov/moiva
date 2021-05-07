@@ -36,14 +36,11 @@
 
     <template v-else-if="type === 'downloads'">
       <DownloadIcon
-        v-tooltip="'An average downloads number of the npm package'"
+        v-tooltip="'Monthly downloads of the npm package'"
         class="w-8"
-        label="An average downloads number of the npm package"
+        label="Monthly downloads of the npm package"
       />
-      <div
-        v-tooltip="'An average downloads number of the npm package'"
-        class="label"
-      >
+      <div v-tooltip="'Monthly downloads of the npm package'" class="label">
         Monthly
       </div>
     </template>
