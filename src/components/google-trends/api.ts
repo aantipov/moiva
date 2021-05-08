@@ -22,14 +22,27 @@ export interface LibGTrendsT {
 
 export const cacheR = reactive(new Map<string, LibGTrendsT>());
 
-const gTrendsCache = new Map();
+const gTrendsCache = new Map<string, GTrendsResponseT>();
+
 export function fetchGTrendsData(
   reposIds: string[]
 ): Promise<GTrendsResponseT> {
   const libsStr = reposIds.join(',');
 
   if (gTrendsCache.get(libsStr)) {
-    return Promise.resolve(gTrendsCache.get(libsStr));
+    const data = gTrendsCache.get(libsStr) as GTrendsResponseT;
+    // Populate the reactive cache
+    cacheR.clear();
+    reposIds.forEach((repoId, index) => {
+      const average = data.averages[index];
+      const timeline = data.timelineData.map(({ time, value }) => ({
+        time,
+        value: value[index],
+      }));
+      cacheR.set(repoId, { average, timeline });
+    });
+
+    return Promise.resolve(data);
   }
 
   return axios

@@ -51,11 +51,11 @@
     v-else-if="type === 'searchInterest'"
     class="flex items-center"
     :class="{
-      'justify-end': !!lib.googleTrends,
-      'justify-center': !lib.googleTrends,
+      'justify-end': searchInterest !== '-',
+      'justify-center': searchInterest === '-',
     }"
   >
-    {{ (lib.googleTrends && lib.googleTrends.average + '%') || '-' }}
+    {{ searchInterest }}
   </div>
 
   <div
@@ -255,6 +255,13 @@ export default defineComponent({
         }
 
         return lib.value.devUsage.usage.slice(-1)[0].value;
+      }),
+
+      searchInterest: computed<string>(() => {
+        if (!lib.value.googleTrends || !lib.value.googleTrends.average) {
+          return '-';
+        }
+        return lib.value.googleTrends.average + '%';
       }),
 
       // getBundleSize(lib: LibT): string {
