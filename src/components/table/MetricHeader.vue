@@ -214,7 +214,7 @@ export default defineComponent({
       searchInfo:
         'An average Google search interest in relation to other libraries.',
       devUsageInfo:
-        'Percentage of developers using the library according to the latest StateOfJS 2019 survey',
+        'Percentage of developers using the library according to the latest StateOfJS 2020 survey',
       bundlesize:
         'Bundle size minified+gzipped of the npm package. Data source: Bundlephobia.com.',
     };
