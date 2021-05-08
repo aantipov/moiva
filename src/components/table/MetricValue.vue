@@ -58,9 +58,13 @@
     {{ (lib.googleTrends && lib.googleTrends.average + '%') || '-' }}
   </div>
 
-  <!-- <div v&#45;else&#45;if="type === 'devusage'" class="flex items&#45;center justify&#45;end"> -->
-  <!--   {{ (lib.devUsage &#38;&#38; lib.devUsage + '%') || '&#45;' }} -->
-  <!-- </div> -->
+  <div
+    v-else-if="type === 'devusage'"
+    class="flex items-center"
+    :class="{ 'justify-end': !!devUsage, 'justify-center': !devUsage }"
+  >
+    {{ (devUsage && devUsage + '%') || '-' }}
+  </div>
 
   <div
     v-else-if="type === 'tradar'"
@@ -243,6 +247,14 @@ export default defineComponent({
         return lib.value.commits
           .filter(({ week }) => isSameQuarter(week * 1000, prevQuarterDate))
           .reduce((acc, { total }) => acc + total, 0);
+      }),
+
+      devUsage: computed(() => {
+        if (!lib.value.devUsage) {
+          return null;
+        }
+
+        return lib.value.devUsage.usage.slice(-1)[0].value;
       }),
 
       // getBundleSize(lib: LibT): string {

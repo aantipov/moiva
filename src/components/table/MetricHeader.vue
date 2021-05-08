@@ -55,10 +55,14 @@
       <div v-tooltip="searchInfo" class="label">Search Interest, %</div>
     </template>
 
-    <!-- <template v&#45;else&#45;if="type === 'devusage'"> -->
-    <!--   <UserGroupIcon /> -->
-    <!--   <div class="ml&#45;2">Developer Usage, %</div> -->
-    <!-- </template> -->
+    <template v-else-if="type === 'devusage'">
+      <UserGroupIcon
+        v-tooltip="devUsageInfo"
+        class="w-8"
+        :label="devUsageInfo"
+      />
+      <div v-tooltip="devUsageInfo" class="label">Developer Usage, %</div>
+    </template>
 
     <template v-else-if="type === 'tradar'">
       <TWIcon
@@ -156,7 +160,7 @@ import WorkerIcon from '@/components/icons/Worker.vue';
 import OldIcon from '@/components/icons/Old.vue';
 import DocumentIcon from '@/components/icons/Document.vue';
 import TSIcon from '@/components/icons/TS.vue';
-// import UserGroupIcon from '@/components/icons/UserGroup.vue';
+import UserGroupIcon from '@/components/icons/UserGroup.vue';
 import CommitsIcon from '@/components/icons/Commits.vue';
 import TWIcon from '@/components/icons/Thoughtworks.vue';
 // import CubeIcon from '@/components/icons/Cube.vue';
@@ -177,7 +181,7 @@ export default defineComponent({
     WorkerIcon,
     DownloadIcon,
     TagIcon,
-    // UserGroupIcon,
+    UserGroupIcon,
     CommitsIcon,
     DocumentIcon,
     DependencyIcon,
@@ -209,6 +213,8 @@ export default defineComponent({
         'A ThoughtWorks tech radar “ring” assigned to the library. Four possible rings - “Adopt”, “Trial”, “Assess”, and “Hold”.',
       searchInfo:
         'An average Google search interest in relation to other libraries.',
+      devUsageInfo:
+        'Percentage of developers using the library according to the latest StateOfJS 2020 survey',
     };
   },
 });

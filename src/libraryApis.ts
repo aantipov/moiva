@@ -30,6 +30,10 @@ import {
   LibGTrendsT,
   cacheR as googleTrendsMapR,
 } from '@/components/google-trends/api';
+import {
+  repoIdToDataMap as repoIdToDevUsageDataMap,
+  StateOfJSItemT,
+} from '@/components/developer-usage/stateof-js-css-data';
 
 const npmPackageCache = new Map();
 const githubCache = new Map();
@@ -76,6 +80,7 @@ export interface LibraryT {
   npmDownloads: LibNpmDownloadsT;
   commits: LibCommitsT;
   googleTrends: LibGTrendsT | undefined;
+  devUsage: StateOfJSItemT | undefined;
 }
 
 export type ReadonlyLibraryT = DeepReadonly<LibraryT>;
@@ -121,6 +126,7 @@ export function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
       googleTrends: (computed(() =>
         googleTrendsMapR.get(repo.repoId)
       ) as unknown) as LibGTrendsT,
+      devUsage: repoIdToDevUsageDataMap[repo.repoId],
     }))
   );
 }
@@ -159,6 +165,7 @@ export function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
       googleTrends: (computed(() =>
         googleTrendsMapR.get(repo.repoId)
       ) as unknown) as LibGTrendsT,
+      devUsage: repoIdToDevUsageDataMap[repo.repoId],
     })
   );
 }
