@@ -47,12 +47,16 @@
   <!--   {{ lib.dwnlMonthlyIncreasePercentage }}% -->
   <!-- </div> -->
 
-  <!-- <div -->
-  <!--   v&#45;else&#45;if="type === 'searchInterest'" -->
-  <!--   class="flex items&#45;center justify&#45;end" -->
-  <!-- > -->
-  <!--   {{ (lib.googleTrends &#38;&#38; lib.googleTrends + '%') || '&#45;' }} -->
-  <!-- </div> -->
+  <div
+    v-else-if="type === 'searchInterest'"
+    class="flex items-center"
+    :class="{
+      'justify-end': !!lib.googleTrends,
+      'justify-center': !lib.googleTrends,
+    }"
+  >
+    {{ (lib.googleTrends && lib.googleTrends.average + '%') || '-' }}
+  </div>
 
   <!-- <div v&#45;else&#45;if="type === 'devusage'" class="flex items&#45;center justify&#45;end"> -->
   <!--   {{ (lib.devUsage &#38;&#38; lib.devUsage + '%') || '&#45;' }} -->
