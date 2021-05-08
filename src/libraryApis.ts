@@ -34,6 +34,10 @@ import {
   repoIdToDataMap as repoIdToDevUsageDataMap,
   StateOfJSItemT,
 } from '@/components/developer-usage/stateof-js-css-data';
+import {
+  BundlephobiaT,
+  cacheR as bundlesizeMapR,
+} from '@/components/bundle-size/api';
 
 const npmPackageCache = new Map();
 const githubCache = new Map();
@@ -66,6 +70,7 @@ export interface NpmPackageT {
 
 type LibCommitsT = CommitsResponseItemT[] | null | undefined;
 type LibNpmDownloadsT = NpmDownloadT[] | null | undefined;
+type LibBundleSizeT = BundlephobiaT | null | undefined;
 
 export interface LibraryT {
   id: string;
@@ -81,6 +86,7 @@ export interface LibraryT {
   commits: LibCommitsT;
   googleTrends: LibGTrendsT | undefined;
   devUsage: StateOfJSItemT | undefined;
+  bundlesize: LibBundleSizeT;
 }
 
 export type ReadonlyLibraryT = DeepReadonly<LibraryT>;
@@ -127,6 +133,9 @@ export function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
         googleTrendsMapR.get(repo.repoId)
       ) as unknown) as LibGTrendsT,
       devUsage: repoIdToDevUsageDataMap[repo.repoId],
+      bundlesize: (computed(() =>
+        bundlesizeMapR.get(npmPackage.name)
+      ) as unknown) as LibBundleSizeT,
     }))
   );
 }
@@ -166,6 +175,9 @@ export function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
         googleTrendsMapR.get(repo.repoId)
       ) as unknown) as LibGTrendsT,
       devUsage: repoIdToDevUsageDataMap[repo.repoId],
+      bundlesize: (computed(() =>
+        npmPackage ? bundlesizeMapR.get(npmPackage.name) : null
+      ) as unknown) as LibBundleSizeT,
     })
   );
 }
