@@ -73,7 +73,7 @@ const METRICS = [
   // 'starsPlusPercentage',
   'downloads',
   // 'downloadsIncrease',
-  // 'searchInterest',
+  'searchInterest',
   // 'devusage',
   'tradar',
   'releases',

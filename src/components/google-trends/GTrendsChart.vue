@@ -55,7 +55,7 @@ export default defineComponent({
 
     const dates = computed(() =>
       libsTrends.value.timelineData.map(({ time }) =>
-        new Date(time * 1000).toISOString().slice(0, 10)
+        new Date(Number(time) * 1000).toISOString().slice(0, 10)
       )
     );
 

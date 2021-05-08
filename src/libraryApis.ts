@@ -26,6 +26,10 @@ import {
   NpmDownloadT,
   cacheR as npmDownloadsMapR,
 } from '@/components/downloads/api';
+import {
+  LibGTrendsT,
+  cacheR as googleTrendsMapR,
+} from '@/components/google-trends/api';
 
 const npmPackageCache = new Map();
 const githubCache = new Map();
@@ -71,6 +75,7 @@ export interface LibraryT {
   npmReleases: NpmPackageReleasesT[] | null | undefined;
   npmDownloads: LibNpmDownloadsT;
   commits: LibCommitsT;
+  googleTrends: LibGTrendsT | undefined;
 }
 
 export type ReadonlyLibraryT = DeepReadonly<LibraryT>;
@@ -113,6 +118,9 @@ export function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
       commits: (computed(() =>
         commitsMapR.get(repo.repoId)
       ) as unknown) as LibCommitsT,
+      googleTrends: (computed(() =>
+        googleTrendsMapR.get(repo.repoId)
+      ) as unknown) as LibGTrendsT,
     }))
   );
 }
@@ -148,6 +156,9 @@ export function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
       commits: (computed(() =>
         commitsMapR.get(repo.repoId)
       ) as unknown) as LibCommitsT,
+      googleTrends: (computed(() =>
+        googleTrendsMapR.get(repo.repoId)
+      ) as unknown) as LibGTrendsT,
     })
   );
 }

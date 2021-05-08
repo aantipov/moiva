@@ -50,10 +50,10 @@
     <!--   <div class="ml&#45;2">Monthly % (incr.)</div> -->
     <!-- </template> -->
 
-    <!-- <template v&#45;else&#45;if="type === 'searchInterest'"> -->
-    <!--   <SearchIcon /> -->
-    <!--   <div class="ml&#45;2">Search Interest, %</div> -->
-    <!-- </template> -->
+    <template v-else-if="type === 'searchInterest'">
+      <SearchIcon v-tooltip="searchInfo" class="w-8" :label="searchInfo" />
+      <div v-tooltip="searchInfo" class="label">Search Interest, %</div>
+    </template>
 
     <!-- <template v&#45;else&#45;if="type === 'devusage'"> -->
     <!--   <UserGroupIcon /> -->
@@ -151,7 +151,7 @@ import GitHubIcon from '@/components/icons/Github.vue';
 import StarIcon from '@/components/icons/Star.vue';
 import DownloadIcon from '@/components/icons/Download.vue';
 import TagIcon from '@/components/icons/Tag.vue';
-// import SearchIcon from '@/components/icons/Search.vue';
+import SearchIcon from '@/components/icons/Search.vue';
 import WorkerIcon from '@/components/icons/Worker.vue';
 import OldIcon from '@/components/icons/Old.vue';
 import DocumentIcon from '@/components/icons/Document.vue';
@@ -173,7 +173,7 @@ export default defineComponent({
   components: {
     GitHubIcon,
     StarIcon,
-    // SearchIcon,
+    SearchIcon,
     WorkerIcon,
     DownloadIcon,
     TagIcon,
@@ -207,6 +207,8 @@ export default defineComponent({
       commitsTooltip: `Repository commits number in ${prevQuarter}`,
       tradarTooltip:
         'A ThoughtWorks tech radar “ring” assigned to the library. Four possible rings - “Adopt”, “Trial”, “Assess”, and “Hold”.',
+      searchInfo:
+        'An average Google search interest in relation to other libraries.',
     };
   },
 });
