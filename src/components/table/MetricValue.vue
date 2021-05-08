@@ -123,9 +123,22 @@
     <template v-else>-</template>
   </div>
 
-  <!-- <div v&#45;else&#45;if="type === 'bundlesize'" class="flex items&#45;center justify&#45;end"> -->
-  <!--   {{ getBundleSize(lib) }} -->
-  <!-- </div> -->
+  <div
+    v-else-if="type === 'bundlesize'"
+    class="flex items-center"
+    :class="{
+      'justify-end': bundlesize !== '-',
+      'justify-center': bundlesize === '-',
+    }"
+  >
+    {{ bundlesize }}
+    <span
+      v-if="lib.npmPackage && lib.npmPackage.name === 'react'"
+      v-tooltip="'React’s bundle size includes react-dom package'"
+      class="cursor-default"
+      >*</span
+    >
+  </div>
 
   <div v-else-if="type === 'security'" class="flex items-center justify-center">
     <object
@@ -157,7 +170,9 @@ import TsBundledIcon from '@/icons/TsBundled.vue';
 import TsDtIcon from '@/icons/TsDt.vue';
 import { MetricT } from './Table.vue';
 import { subQuarters, isSameQuarter } from 'date-fns';
+
 const prevQuarterDate = subQuarters(new Date(), 1);
+const roundBytesFn = (bytes: number): number => Math.round(bytes / 102.4) / 10;
 
 export default defineComponent({
   name: 'ReportMetricValue',
@@ -262,6 +277,14 @@ export default defineComponent({
           return '-';
         }
         return lib.value.googleTrends.average + '%';
+      }),
+
+      bundlesize: computed<string>(() => {
+        if (!lib.value.bundlesize) {
+          return '-';
+        }
+
+        return roundBytesFn(lib.value.bundlesize.gzip) + ' kB';
       }),
 
       // getBundleSize(lib: LibT): string {

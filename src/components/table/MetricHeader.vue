@@ -127,10 +127,10 @@
       <div v-tooltip="tsTooltip" class="label">Types</div>
     </template>
 
-    <!-- <template v&#45;else&#45;if="type === 'bundlesize'"> -->
-    <!--   <CubeIcon /> -->
-    <!--   <div class="ml&#45;2">Bundle Size</div> -->
-    <!-- </template> -->
+    <template v-else-if="type === 'bundlesize'">
+      <CubeIcon v-tooltip="bundlesize" class="w-8" label="bundlesize" />
+      <div v-tooltip="bundlesize" class="label">Bundle Size</div>
+    </template>
 
     <template v-else-if="type === 'security'">
       <ShieldIcon v-tooltip="snykTooltip" class="w-8" label="Security" />
@@ -163,7 +163,7 @@ import TSIcon from '@/components/icons/TS.vue';
 import UserGroupIcon from '@/components/icons/UserGroup.vue';
 import CommitsIcon from '@/components/icons/Commits.vue';
 import TWIcon from '@/components/icons/Thoughtworks.vue';
-// import CubeIcon from '@/components/icons/Cube.vue';
+import CubeIcon from '@/components/icons/Cube.vue';
 import DependencyIcon from '@/components/icons/Dependency.vue';
 import ShieldIcon from '@/components/icons/Shield.vue';
 import { MetricT } from './Table.vue';
@@ -185,7 +185,7 @@ export default defineComponent({
     CommitsIcon,
     DocumentIcon,
     DependencyIcon,
-    // CubeIcon,
+    CubeIcon,
     OldIcon,
     ShieldIcon,
     TWIcon,
@@ -214,7 +214,9 @@ export default defineComponent({
       searchInfo:
         'An average Google search interest in relation to other libraries.',
       devUsageInfo:
-        'Percentage of developers using the library according to the latest StateOfJS 2020 survey',
+        'Percentage of developers using the library according to the latest StateOfJS 2019 survey',
+      bundlesize:
+        'Bundle size minified+gzipped of the npm package. Data source: Bundlephobia.com.',
     };
   },
 });

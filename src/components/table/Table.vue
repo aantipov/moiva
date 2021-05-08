@@ -82,7 +82,7 @@ const METRICS = [
   'dependencies',
   'ts',
   'security',
-  // 'bundlesize',
+  'bundlesize',
   'age',
   'license',
 ] as const;

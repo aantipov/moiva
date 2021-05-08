@@ -12,7 +12,7 @@
 <script lang="ts">
 import { defineComponent, computed, watchEffect, toRefs } from 'vue';
 import BundlephobiaChart from './BundlephobiaChart.vue';
-import { fetchBundlephobiaData, BundlephobiaT } from '../../apis';
+import { fetchBundlephobiaData, BundlephobiaT } from './api';
 import { chartsVisibility } from '@/store/chartsVisibility';
 import whitelistedCategories from './whitelist.json';
 import useChartApi from '@/composables/useChartApi';
