@@ -41,14 +41,17 @@
         label="Monthly downloads of the npm package"
       />
       <div v-tooltip="'Monthly downloads of the npm package'" class="label">
-        Monthly
+        Downloads
       </div>
     </template>
 
-    <!-- <template v&#45;else&#45;if="type === 'downloadsIncrease'"> -->
-    <!--   <DownloadIcon /> -->
-    <!--   <div class="ml&#45;2">Monthly % (incr.)</div> -->
-    <!-- </template> -->
+    <template v-else-if="type === 'downloadsIncrease'">
+      <span v-tooltip="npmDownloadsInc" class="flex">
+        <DownloadIcon class="w-5 sm:w-8" :label="npmDownloadsInc" />
+        <TrendIcon class="w-5 sm:hidden" :label="npmDownloadsInc" />
+      </span>
+      <div v-tooltip="npmDownloadsInc" class="label">Downloads growth</div>
+    </template>
 
     <template v-else-if="type === 'searchInterest'">
       <SearchIcon v-tooltip="searchInfo" class="w-8" :label="searchInfo" />
@@ -156,6 +159,7 @@ import StarIcon from '@/components/icons/Star.vue';
 import DownloadIcon from '@/components/icons/Download.vue';
 import TagIcon from '@/components/icons/Tag.vue';
 import SearchIcon from '@/components/icons/Search.vue';
+import TrendIcon from '@/components/icons/Trend.vue';
 import WorkerIcon from '@/components/icons/Worker.vue';
 import OldIcon from '@/components/icons/Old.vue';
 import DocumentIcon from '@/components/icons/Document.vue';
@@ -178,6 +182,7 @@ export default defineComponent({
     GitHubIcon,
     StarIcon,
     SearchIcon,
+    TrendIcon,
     WorkerIcon,
     DownloadIcon,
     TagIcon,
@@ -208,6 +213,7 @@ export default defineComponent({
         'A calculated by Snyk level of security (from A to F) of Npm packages based on the number of vulnerabilities and their severity. "A" - no vulnerabilities, "F" - the least secure level.',
       contributorsTooltip: `Contributors number in ${prevQuarter}`,
       npmReleasesTooltip: `Npm releases number in ${prevQuarter}`,
+      npmDownloadsInc: 'Npm package downloads growth in the last 3 months',
       commitsTooltip: `Repository commits number in ${prevQuarter}`,
       tradarTooltip:
         'A ThoughtWorks tech radar “ring” assigned to the library. Four possible rings - “Adopt”, “Trial”, “Assess”, and “Hold”.',
