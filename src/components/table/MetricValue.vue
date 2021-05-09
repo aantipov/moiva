@@ -40,12 +40,16 @@
     {{ npmDownloads ?? '-' }}
   </div>
 
-  <!-- <div -->
-  <!--   v&#45;else&#45;if="type === 'downloadsIncrease'" -->
-  <!--   class="flex items&#45;center justify&#45;end" -->
-  <!-- > -->
-  <!--   {{ lib.dwnlMonthlyIncreasePercentage }}% -->
-  <!-- </div> -->
+  <div
+    v-else-if="type === 'downloadsIncrease'"
+    class="flex items-center"
+    :class="{
+      'justify-end': npmDownloadsGrowth !== '-',
+      'justify-center': npmDownloadsGrowth === '-',
+    }"
+  >
+    {{ npmDownloadsGrowth }}
+  </div>
 
   <div
     v-else-if="type === 'searchInterest'"
@@ -250,6 +254,25 @@ export default defineComponent({
         const sum = qDownloads.reduce((sum, val) => sum + val, 0);
 
         return numbersFormatter.format(sum / qDownloads.length);
+      }),
+
+      npmDownloadsGrowth: computed<string>(() => {
+        if (!lib.value.npmDownloads) {
+          return '-';
+        }
+        const downloads = lib.value.npmDownloads.map(
+          ({ downloads }) => downloads
+        );
+        const firstAvg = downloads
+          .slice(-6, -3)
+          .reduce((acc, val) => acc + val, 0);
+        const secondAvg = downloads
+          .slice(-3)
+          .reduce((acc, val) => acc + val, 0);
+        return (
+          numbersFormatter.format((100 * (secondAvg - firstAvg)) / firstAvg) +
+          '%'
+        );
       }),
 
       commits: computed(() => {
