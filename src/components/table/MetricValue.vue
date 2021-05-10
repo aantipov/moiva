@@ -269,6 +269,11 @@ export default defineComponent({
         const secondAvg = downloads
           .slice(-3)
           .reduce((acc, val) => acc + val, 0);
+
+        if (!firstAvg) {
+          return '-';
+        }
+
         return (
           numbersFormatter.format((100 * (secondAvg - firstAvg)) / firstAvg) +
           '%'
@@ -310,16 +315,6 @@ export default defineComponent({
         return roundBytesFn(lib.value.bundlesize.gzip) + ' kB';
       }),
 
-      // getBundleSize(lib: LibT): string {
-      //   if (!lib.bundleSize) {
-      //     return '';
-      //   }
-      //   if (lib.repo === 'facebook/react') {
-      //     return '42.3 kB *';
-      //   }
-      //   // @ts-ignore
-      //   return `${Math.round(lib.bundleSize.gzip / 102.4) / 10} kB`;
-      // },
       // snykHref: computed(() => {
       //   return `https://snyk.io/advisor/npm-package/${npm.value}`;
       // }),
