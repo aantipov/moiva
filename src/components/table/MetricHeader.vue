@@ -230,7 +230,7 @@ export default defineComponent({
       bundlesize:
         'Bundle size minified+gzipped of the npm package. Data source: Bundlephobia.com.',
       newStars:
-        'The average number of new stars monthly over the last 3 months',
+        'The average number of new Github stars monthly over the last 3 months',
     };
   },
 });
