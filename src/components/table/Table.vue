@@ -69,7 +69,7 @@ const METRICS = [
   'npm',
   'repo',
   'stars',
-  // 'starsPlus',
+  'starsPlus',
   // 'starsPlusPercentage',
   'downloads',
   'downloadsIncrease',

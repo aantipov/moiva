@@ -24,10 +24,13 @@
       </div>
     </template>
 
-    <!-- <template v&#45;else&#45;if="type === 'starsPlus'"> -->
-    <!--   <StarIcon /> -->
-    <!--   <div class="ml&#45;2">New Stars</div> -->
-    <!-- </template> -->
+    <template v-else-if="type === 'starsPlus'">
+      <span v-tooltip="newStars" class="flex">
+        <StarIcon class="w-5 sm:w-8" :label="newStars" />
+        <TrendIcon class="w-5 sm:hidden" :label="newStars" />
+      </span>
+      <div v-tooltip="newStars" class="label">New Stars</div>
+    </template>
 
     <!-- <template v&#45;else&#45;if="type === 'starsPlusPercentage'"> -->
     <!--   <StarIcon /> -->
@@ -223,6 +226,8 @@ export default defineComponent({
         'Percentage of developers using the library according to the latest StateOfJS 2020 survey',
       bundlesize:
         'Bundle size minified+gzipped of the npm package. Data source: Bundlephobia.com.',
+      newStars:
+        'The average number of new stars monthly over the last 3 months',
     };
   },
 });

@@ -21,9 +21,9 @@
     {{ formatNumber(lib.repo.stars) }}
   </div>
 
-  <!-- <div v&#45;else&#45;if="type === 'starsPlus'" class="flex items&#45;center justify&#45;end"> -->
-  <!--   {{ formatNumber(lib.starsPlus) }} -->
-  <!-- </div> -->
+  <div v-else-if="type === 'starsPlus'" class="flex items-center justify-end">
+    {{ starsGrowth }}
+  </div>
 
   <!-- <div -->
   <!--   v&#45;else&#45;if="type === 'starsPlusPercentage'" -->
@@ -204,6 +204,20 @@ export default defineComponent({
     );
 
     return {
+      starsGrowth: computed<string>(() => {
+        // avg number of new stars monthly (in the last 3 months)
+        if (!lib.value.stars) {
+          return '-';
+        }
+
+        const avg =
+          lib.value.stars
+            .slice(-3)
+            .map((val) => val.stars)
+            .reduce((acc, val) => acc + val, 0) / 3;
+
+        return '+' + numbersFormatter.format(avg);
+      }),
       getAge(createdAt: string): string {
         return formatDistanceToNowStrict(new Date(createdAt));
       },
