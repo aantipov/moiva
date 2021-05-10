@@ -29,7 +29,10 @@
         <StarIcon class="w-5 sm:w-8" :label="newStars" />
         <TrendIcon class="w-5 sm:hidden" :label="newStars" />
       </span>
-      <div v-tooltip="newStars" class="label">New Stars</div>
+      <div v-tooltip="newStars" class="label">
+        New Stars
+        <span class="text-sm font-normal opacity-80">monthly</span>
+      </div>
     </template>
 
     <!-- <template v&#45;else&#45;if="type === 'starsPlusPercentage'"> -->
