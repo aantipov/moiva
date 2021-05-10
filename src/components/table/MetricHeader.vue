@@ -35,11 +35,6 @@
       </div>
     </template>
 
-    <!-- <template v&#45;else&#45;if="type === 'starsPlusPercentage'"> -->
-    <!--   <StarIcon /> -->
-    <!--   <div class="ml&#45;2">New Stars, %</div> -->
-    <!-- </template> -->
-
     <template v-else-if="type === 'downloads'">
       <DownloadIcon
         v-tooltip="'Monthly downloads of the npm package'"

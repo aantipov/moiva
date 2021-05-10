@@ -70,7 +70,6 @@ const METRICS = [
   'repo',
   'stars',
   'starsPlus',
-  // 'starsPlusPercentage',
   'downloads',
   'downloadsIncrease',
   'searchInterest',

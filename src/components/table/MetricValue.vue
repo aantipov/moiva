@@ -33,13 +33,6 @@
     <span class="ml-1 text-sm opacity-80">({{ starsGrowthPercentage }})</span>
   </div>
 
-  <!-- <div -->
-  <!--   v&#45;else&#45;if="type === 'starsPlusPercentage'" -->
-  <!--   class="flex items&#45;center justify&#45;end" -->
-  <!-- > -->
-  <!--   {{ lib.starsPlusPercentage }}% -->
-  <!-- </div> -->
-
   <div
     v-else-if="type === 'downloads'"
     class="flex items-center"
@@ -100,9 +93,12 @@
   <div
     v-else-if="type === 'commits'"
     class="flex items-center"
-    :class="{ 'justify-end': !!commits, 'justify-center': !commits }"
+    :class="{
+      'justify-end': commits !== '-',
+      'justify-center': commits === '-',
+    }"
   >
-    {{ commits ?? '-' }}
+    {{ commits }}
   </div>
 
   <div
@@ -320,9 +316,9 @@ export default defineComponent({
         return `+${numbersFormatter.format(perc)}%`;
       }),
 
-      commits: computed(() => {
+      commits: computed<string | number>(() => {
         if (!lib.value.commits) {
-          return null;
+          return '-';
         }
 
         // Get the numer of commits in the last quarter
