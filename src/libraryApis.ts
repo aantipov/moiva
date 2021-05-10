@@ -140,7 +140,7 @@ export function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
         bundlesizeMapR.get(npmPackage.name)
       ) as unknown) as LibBundleSizeT,
       stars: (computed(() =>
-        starsMapR.get(repo.repoId)
+        starsMapR.get(repo.repoId.toLowerCase())
       ) as unknown) as LibStarsT,
     }))
   );
@@ -184,7 +184,9 @@ export function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
       bundlesize: (computed(() =>
         npmPackage ? bundlesizeMapR.get(npmPackage.name) : null
       ) as unknown) as LibBundleSizeT,
-      stars: (computed(() => starsMapR.get(repoId)) as unknown) as LibStarsT,
+      stars: (computed(() =>
+        starsMapR.get(repoId.toLowerCase())
+      ) as unknown) as LibStarsT,
     })
   );
 }

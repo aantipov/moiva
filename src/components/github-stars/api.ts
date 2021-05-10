@@ -10,7 +10,7 @@ export interface StarsT {
 export const cacheR = reactive(new Map<string, StarsT[] | null>());
 
 export function fetchRepoStars(repoId: string): Promise<StarsT[] | null> {
-  if (cacheR.get(repoId)) {
+  if (cacheR.get(repoId.toLowerCase())) {
     return Promise.resolve(cacheR.get(repoId) as StarsT[]);
   }
 
@@ -20,12 +20,12 @@ export function fetchRepoStars(repoId: string): Promise<StarsT[] | null> {
     )
     .then(({ data }) => {
       const items = fillMissingData(data.items);
-      cacheR.set(repoId, items);
+      cacheR.set(repoId.toLowerCase(), items);
       return items;
     })
     .catch((err) => {
       reportSentry(err, 'fetchGithubStars');
-      cacheR.set(repoId, null);
+      cacheR.set(repoId.toLowerCase(), null);
       return null;
     });
 }
