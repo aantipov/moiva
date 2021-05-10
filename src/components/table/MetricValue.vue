@@ -212,11 +212,11 @@ export default defineComponent({
 
     return {
       starsGrowth: computed<string>(() => {
-        // avg number of new stars monthly (in the last 3 months)
         if (!lib.value.stars) {
           return '-';
         }
 
+        // avg number of new stars monthly (in the last 3 months)
         const avg =
           lib.value.stars
             .slice(-3)

@@ -72,6 +72,7 @@ export interface NpmPackageT {
 type LibCommitsT = CommitsResponseItemT[] | null | undefined;
 type LibNpmDownloadsT = NpmDownloadT[] | null | undefined;
 type LibBundleSizeT = BundlephobiaT | null | undefined;
+type LibStarsT = StarsT[] | null | undefined;
 
 export interface LibraryT {
   id: string;
@@ -88,7 +89,7 @@ export interface LibraryT {
   googleTrends: LibGTrendsT | undefined;
   devUsage: StateOfJSItemT | undefined;
   bundlesize: LibBundleSizeT;
-  stars: StarsT[] | undefined;
+  stars: LibStarsT;
 }
 
 export type ReadonlyLibraryT = DeepReadonly<LibraryT>;
@@ -140,7 +141,7 @@ export function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
       ) as unknown) as LibBundleSizeT,
       stars: (computed(() =>
         starsMapR.get(repo.repoId)
-      ) as unknown) as StarsT[],
+      ) as unknown) as LibStarsT,
     }))
   );
 }
@@ -183,7 +184,7 @@ export function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
       bundlesize: (computed(() =>
         npmPackage ? bundlesizeMapR.get(npmPackage.name) : null
       ) as unknown) as LibBundleSizeT,
-      stars: (computed(() => starsMapR.get(repoId)) as unknown) as StarsT[],
+      stars: (computed(() => starsMapR.get(repoId)) as unknown) as LibStarsT,
     })
   );
 }
