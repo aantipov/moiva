@@ -21,7 +21,14 @@
     {{ formatNumber(lib.repo.stars) }}
   </div>
 
-  <div v-else-if="type === 'starsPlus'" class="flex items-center justify-end">
+  <div
+    v-else-if="type === 'starsPlus'"
+    class="flex items-center"
+    :class="{
+      'justify-end': starsGrowth !== '-',
+      'justify-center': starsGrowth === '-',
+    }"
+  >
     {{ starsGrowth }}
   </div>
 
