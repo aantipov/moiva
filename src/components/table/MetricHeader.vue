@@ -56,7 +56,10 @@
         <DownloadIcon class="w-5 sm:w-8" :label="npmDownloadsInc" />
         <TrendIcon class="w-5 sm:hidden" :label="npmDownloadsInc" />
       </span>
-      <div v-tooltip="npmDownloadsInc" class="label">Downloads growth</div>
+      <div v-tooltip="npmDownloadsInc" class="label whitespace-nowrap">
+        Dwnl. growth
+        <span class="text-sm font-normal opacity-80">monthly</span>
+      </div>
     </template>
 
     <template v-else-if="type === 'searchInterest'">
@@ -219,7 +222,8 @@ export default defineComponent({
         'A calculated by Snyk level of security (from A to F) of Npm packages based on the number of vulnerabilities and their severity. "A" - no vulnerabilities, "F" - the least secure level.',
       contributorsTooltip: `Contributors number in ${prevQuarter}`,
       npmReleasesTooltip: `Npm releases number in ${prevQuarter}`,
-      npmDownloadsInc: 'Npm package downloads growth in the last 3 months',
+      npmDownloadsInc:
+        'The average monthly downloads growth of the npm package in the last 6 months',
       commitsTooltip: `Repository commits number in ${prevQuarter}`,
       tradarTooltip:
         'A ThoughtWorks tech radar “ring” assigned to the library. Four possible rings - “Adopt”, “Trial”, “Assess”, and “Hold”.',
@@ -229,8 +233,7 @@ export default defineComponent({
         'Percentage of developers using the library according to the latest StateOfJS 2020 survey',
       bundlesize:
         'Bundle size minified+gzipped of the npm package. Data source: Bundlephobia.com.',
-      newStars:
-        'The average number of new Github stars monthly in the last 3 months',
+      newStars: 'The average monthly new Github stars in the last 3 months',
     };
   },
 });

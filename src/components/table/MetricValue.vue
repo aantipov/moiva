@@ -307,25 +307,17 @@ export default defineComponent({
         if (!lib.value.npmDownloads) {
           return '-';
         }
-        const downloads = lib.value.npmDownloads.map(
-          ({ downloads }) => downloads
-        );
-        const firstAvg = downloads
-          .slice(-6, -3)
-          .reduce((acc, val) => acc + val, 0);
-        const secondAvg = downloads
-          .slice(-3)
-          .reduce((acc, val) => acc + val, 0);
+        const downloads = lib.value.npmDownloads.map((val) => val.downloads);
+        const last = downloads.slice(-1)[0];
+        const first = downloads.slice(-6, -5)[0];
 
-        if (!firstAvg) {
+        if (!first || !last) {
           return '-';
         }
 
-        return (
-          '+' +
-          numbersFormatter.format((100 * (secondAvg - firstAvg)) / firstAvg) +
-          '%'
-        );
+        const perc = 100 * (Math.pow(last / first, 1 / 6) - 1);
+
+        return `+${numbersFormatter.format(perc)}%`;
       }),
 
       commits: computed(() => {
