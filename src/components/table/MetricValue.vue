@@ -30,14 +30,8 @@
     }"
   >
     {{ starsGrowth }}
+    <span class="ml-1 text-sm opacity-80">({{ starsGrowthPercentage }})</span>
   </div>
-
-  <!-- <div -->
-  <!--   v&#45;else&#45;if="type === 'starsPlusPercentage'" -->
-  <!--   class="flex items&#45;center justify&#45;end" -->
-  <!-- > -->
-  <!--   {{ lib.starsPlusPercentage }}% -->
-  <!-- </div> -->
 
   <div
     v-else-if="type === 'downloads'"
@@ -96,8 +90,15 @@
     {{ npmReleases?.releases ?? '-' }}
   </div>
 
-  <div v-else-if="type === 'commits'" class="flex items-center justify-end">
-    {{ commits ?? '-' }}
+  <div
+    v-else-if="type === 'commits'"
+    class="flex items-center"
+    :class="{
+      'justify-end': commits !== '-',
+      'justify-center': commits === '-',
+    }"
+  >
+    {{ commits }}
   </div>
 
   <div
@@ -210,20 +211,41 @@ export default defineComponent({
       encodeURIComponent(lib.value.npmPackage?.name ?? '')
     );
 
+    // avg number of new stars monthly (in the last 3 months)
+    const newStarsAvg = computed<number>(() => {
+      if (!lib.value.stars) {
+        return 0;
+      }
+
+      return (
+        lib.value.stars
+          .slice(-3)
+          .map((val) => val.stars)
+          .reduce((acc, val) => acc + val, 0) / 3
+      );
+    });
+
     return {
       starsGrowth: computed<string>(() => {
         if (!lib.value.stars) {
           return '-';
         }
+        if (newStarsAvg.value > 1) {
+          return `+${numbersFormatter.format(newStarsAvg.value)}`;
+        }
 
-        // avg number of new stars monthly (in the last 3 months)
-        const avg =
-          lib.value.stars
-            .slice(-3)
-            .map((val) => val.stars)
-            .reduce((acc, val) => acc + val, 0) / 3;
+        return '<1';
+      }),
+      starsGrowthPercentage: computed<string>(() => {
+        if (!lib.value.stars || !lib.value.repo.stars) {
+          return '-';
+        }
 
-        return '+' + numbersFormatter.format(avg);
+        const total = lib.value.repo.stars - newStarsAvg.value;
+        const percentage = (100 * newStarsAvg.value) / total;
+        const percentageFormatted = numbersFormatter.format(percentage);
+
+        return `+${percentageFormatted}%`;
       }),
       getAge(createdAt: string): string {
         return formatDistanceToNowStrict(new Date(createdAt));
@@ -281,29 +303,22 @@ export default defineComponent({
         if (!lib.value.npmDownloads) {
           return '-';
         }
-        const downloads = lib.value.npmDownloads.map(
-          ({ downloads }) => downloads
-        );
-        const firstAvg = downloads
-          .slice(-6, -3)
-          .reduce((acc, val) => acc + val, 0);
-        const secondAvg = downloads
-          .slice(-3)
-          .reduce((acc, val) => acc + val, 0);
+        const downloads = lib.value.npmDownloads.map((val) => val.downloads);
+        const last = downloads.slice(-1)[0];
+        const first = downloads.slice(-6, -5)[0];
 
-        if (!firstAvg) {
+        if (!first || !last) {
           return '-';
         }
 
-        return (
-          numbersFormatter.format((100 * (secondAvg - firstAvg)) / firstAvg) +
-          '%'
-        );
+        const perc = 100 * (Math.pow(last / first, 1 / 6) - 1);
+
+        return `+${numbersFormatter.format(perc)}%`;
       }),
 
-      commits: computed(() => {
+      commits: computed<string | number>(() => {
         if (!lib.value.commits) {
-          return null;
+          return '-';
         }
 
         // Get the numer of commits in the last quarter
