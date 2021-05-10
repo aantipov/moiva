@@ -38,6 +38,7 @@ import {
   BundlephobiaT,
   cacheR as bundlesizeMapR,
 } from '@/components/bundle-size/api';
+import { StarsT, cacheR as starsMapR } from '@/components/github-stars/api';
 
 const npmPackageCache = new Map();
 const githubCache = new Map();
@@ -71,6 +72,7 @@ export interface NpmPackageT {
 type LibCommitsT = CommitsResponseItemT[] | null | undefined;
 type LibNpmDownloadsT = NpmDownloadT[] | null | undefined;
 type LibBundleSizeT = BundlephobiaT | null | undefined;
+type LibStarsT = StarsT[] | null | undefined;
 
 export interface LibraryT {
   id: string;
@@ -87,6 +89,7 @@ export interface LibraryT {
   googleTrends: LibGTrendsT | undefined;
   devUsage: StateOfJSItemT | undefined;
   bundlesize: LibBundleSizeT;
+  stars: LibStarsT;
 }
 
 export type ReadonlyLibraryT = DeepReadonly<LibraryT>;
@@ -136,6 +139,9 @@ export function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
       bundlesize: (computed(() =>
         bundlesizeMapR.get(npmPackage.name)
       ) as unknown) as LibBundleSizeT,
+      stars: (computed(() =>
+        starsMapR.get(repo.repoId.toLowerCase())
+      ) as unknown) as LibStarsT,
     }))
   );
 }
@@ -169,15 +175,18 @@ export function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
         npmPackage ? npmDownloadsMapR.get(npmPackage.name) : null
       ) as unknown) as LibNpmDownloadsT,
       commits: (computed(() =>
-        commitsMapR.get(repo.repoId)
+        commitsMapR.get(repoId)
       ) as unknown) as LibCommitsT,
       googleTrends: (computed(() =>
-        googleTrendsMapR.get(repo.repoId)
+        googleTrendsMapR.get(repoId)
       ) as unknown) as LibGTrendsT,
-      devUsage: repoIdToDevUsageDataMap[repo.repoId],
+      devUsage: repoIdToDevUsageDataMap[repoId],
       bundlesize: (computed(() =>
         npmPackage ? bundlesizeMapR.get(npmPackage.name) : null
       ) as unknown) as LibBundleSizeT,
+      stars: (computed(() =>
+        starsMapR.get(repoId.toLowerCase())
+      ) as unknown) as LibStarsT,
     })
   );
 }

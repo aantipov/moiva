@@ -1,16 +1,17 @@
 import axios from 'axios';
 import { reportSentry } from '@/apis';
+import { reactive } from 'vue';
 
 export interface StarsT {
   month: string;
   stars: number;
 }
 
-const cache = new Map();
+export const cacheR = reactive(new Map<string, StarsT[] | null>());
 
 export function fetchRepoStars(repoId: string): Promise<StarsT[] | null> {
-  if (cache.get(repoId)) {
-    return Promise.resolve(cache.get(repoId));
+  if (cacheR.get(repoId.toLowerCase())) {
+    return Promise.resolve(cacheR.get(repoId) as StarsT[]);
   }
 
   return axios
@@ -19,11 +20,12 @@ export function fetchRepoStars(repoId: string): Promise<StarsT[] | null> {
     )
     .then(({ data }) => {
       const items = fillMissingData(data.items);
-      cache.set(repoId, items);
+      cacheR.set(repoId.toLowerCase(), items);
       return items;
     })
     .catch((err) => {
       reportSentry(err, 'fetchGithubStars');
+      cacheR.set(repoId.toLowerCase(), null);
       return null;
     });
 }
