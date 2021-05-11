@@ -80,7 +80,13 @@
     <a href="https://twitter.com/_aantipov" target="_blank">Alexey Antipov</a>
   </div>
 
-  <h2 id="tldr">TLDR</h2>
+  <div class="message">
+<p><strong>Update 2021-05-11</strong>: Cloudflare released <a href="https://blog.cloudflare.com/workers-unbound-ga/">Workers Unboud</a> - a solution for serverless functions that need long excecution times. It extends the existing 50ms CPU limit to 30sec and changes their billing scheme.</p>
+</div>
+<div class="message">
+<p><strong>Update 2021-03-29</strong>: added an image of Vercel Edge Network map. Kudos to <a href="https://twitter.com/magnemg">@magnemg</a> for creating it.</p>
+</div>
+<h2 id="tldr">TLDR</h2>
 <p>Vercel provides a good solid solution for Serverless Functions and makes the process of their creation seamless and hassle-free.
 Cloudflare Workers offer more functionality out-of-the-box (e.g. key-value data store, CRON) and look more mature and sophisticated.</p>
 <h2 id="before-we-proceed">Before we proceed</h2>
@@ -246,6 +252,9 @@ return response
 <p>I couldn&rsquo;t find any workaround for such a problem.</p>
 <p>Another problem that I found with Vercel is that you can&rsquo;t really log all the requests to your Function and build analytics on top of it because Functions are not executed in case there is a cached response for the request. I couldn&rsquo;t find a solution for it. There is no such problem with Cloudflare because its Functions get always executed on every request.</p>
 <h2 id="limits">Limits</h2>
+<div class="message">
+<p><strong>Update 2021-05-11</strong>: The recently released Cloudflare&rsquo;s <a href="https://blog.cloudflare.com/workers-unbound-ga/">Workers Unboud</a> solution extends the 50ms CPU limit to 30sec. You can find more information on the Cloudflare <a href="https://developers.cloudflare.com/workers/platform/limits#worker-limits">Limits</a> page.</p>
+</div>
 <table>
 <thead>
 <tr>
@@ -283,6 +292,9 @@ return response
 </tbody>
 </table>
 <h2 id="pricing">Pricing</h2>
+<div class="message">
+<p><strong>Update 2021-05-11</strong>: With the introduction of <a href="https://blog.cloudflare.com/workers-unbound-ga/">Workers Unboud</a> solution Cloudflare changed their pricing model - the pricing now is based on the usage model of a particular worker. You can find more information on the Cloudflare <a href="https://developers.cloudflare.com/workers/platform/pricing#usage-models">Pricing</a> page.</p>
+</div>
 <p><strong>Cloudflare Workers</strong> are free to all, but subject to some limits, mainly reads/writes to Key-Value (KV) storage, limited KV storage (1 GB) and also CPU runtime limited to 10 ms.</p>
 <p>Bundled plan for a minimum charge of $5/month includes everything that is in Free, plus increased CPU runtime (50 ms) and access to increased KV storage and reads/writes. The final price is defined by the real usage.</p>
 <p>Check Cloudflare Workers' <a href="https://developers.cloudflare.com/workers/platform/pricing">pricing page</a> for more details.</p>
@@ -292,7 +304,6 @@ return response
 <p>All plans are subject to Vercel&rsquo;s <a href="https://vercel.com/docs/platform/fair-use-policy">Fair Use Policy</a>.</p>
 <p>Check Vercel&rsquo;s <a href="https://vercel.com/pricing">pricing page</a> for more details.</p>
 <hr>
-<p><strong>Update 2021-03-29</strong>: added an image of Vercel Edge Network map. Kudos to <a href="https://twitter.com/magnemg">@magnemg</a> for creating it.</p>
 
 </div>
 
