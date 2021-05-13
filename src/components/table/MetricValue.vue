@@ -168,8 +168,12 @@
     v-else-if="type === 'vulnerability'"
     class="flex items-center justify-center"
   >
-    <a :href="snykVulnUrl" target="_blank">
-      <img :src="snykVulnUrl + '/badge.svg'" alt="Known Vulnerabilities" />
+    <a v-tooltip="vulnTooltip" :href="snykVulnUrl" target="_blank">
+      <img
+        :src="snykVulnUrl + 'badge.svg'"
+        :alt="'Known ' + lib.alias + ' Vulnerabilities'"
+        style="max-width: 131px; max-height: 20px"
+      />
     </a>
   </div>
 
@@ -268,6 +272,10 @@ export default defineComponent({
       ),
       snykVulnUrl: computed(
         () => `https://snyk.io/test/github/${lib.value.repo.repoId}/`
+      ),
+      vulnTooltip: computed(
+        () =>
+          `Vulnerabilities found in the ${lib.value.repo.repoId} repository. Data source: Snyk.io`
       ),
       npmUrl: computed(
         () => `https://www.npmjs.com/package/${npmNameEncoded.value}`
