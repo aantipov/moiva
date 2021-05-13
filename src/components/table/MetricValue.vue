@@ -164,6 +164,15 @@
     <template v-else>-</template>
   </div>
 
+  <div
+    v-else-if="type === 'vulnerability'"
+    class="flex items-center justify-center"
+  >
+    <a :href="snykVulnUrl" target="_blank">
+      <img :src="snykVulnUrl + '/badge.svg'" alt="Known Vulnerabilities" />
+    </a>
+  </div>
+
   <div v-else-if="type === 'age'" class="flex items-center justify-center">
     {{ getAge(lib.repo.createdAt) }}
   </div>
@@ -256,6 +265,9 @@ export default defineComponent({
       snykUrl: computed(
         () =>
           `https://snyk-widget.herokuapp.com/badge/npm/${npmNameEncoded.value}/badge.svg`
+      ),
+      snykVulnUrl: computed(
+        () => `https://snyk.io/test/github/${lib.value.repo.repoId}/`
       ),
       npmUrl: computed(
         () => `https://www.npmjs.com/package/${npmNameEncoded.value}`
@@ -350,14 +362,6 @@ export default defineComponent({
 
         return roundBytesFn(lib.value.bundlesize.gzip) + ' kB';
       }),
-
-      // snykHref: computed(() => {
-      //   return `https://snyk.io/advisor/npm-package/${npm.value}`;
-      // }),
-      // thoughtworksUrl: computed<string | null>(() => {
-      //   const tradarItem = repoToTechRadarMap[lib.value.repo] || null;
-      //   return tradarItem && tradarItem.link;
-      // }),
     };
   },
 });

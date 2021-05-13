@@ -141,7 +141,12 @@
 
     <template v-else-if="type === 'security'">
       <ShieldIcon v-tooltip="snykTooltip" class="w-8" label="Security" />
-      <div v-tooltip="snykTooltip" class="label">Security</div>
+      <div v-tooltip="snykTooltip" class="label">Security score</div>
+    </template>
+
+    <template v-else-if="type === 'vulnerability'">
+      <BugIcon v-tooltip="vulnTooltip" class="w-8" label="Vulnerabilities" />
+      <div v-tooltip="vulnTooltip" class="label">Vulnerabilities</div>
     </template>
 
     <template v-else-if="type === 'age'">
@@ -174,6 +179,7 @@ import TWIcon from '@/components/icons/Thoughtworks.vue';
 import CubeIcon from '@/components/icons/Cube.vue';
 import DependencyIcon from '@/components/icons/Dependency.vue';
 import ShieldIcon from '@/components/icons/Shield.vue';
+import BugIcon from '@/components/icons/Bug.vue';
 import { MetricT } from './Table.vue';
 import { subQuarters, format } from 'date-fns';
 
@@ -197,6 +203,7 @@ export default defineComponent({
     CubeIcon,
     OldIcon,
     ShieldIcon,
+    BugIcon,
     TWIcon,
     TSIcon,
   },
@@ -214,7 +221,9 @@ export default defineComponent({
       tsTooltip:
         'TypeScript support. "Bundled" - typings are bundled together with the package. "Separate" - typings are published to the @types organization on Npm',
       snykTooltip:
-        'A calculated by Snyk level of security (from A to F) of Npm packages based on the number of vulnerabilities and their severity. "A" - no vulnerabilities, "F" - the least secure level.',
+        'Security score of the Npm package. Snyk.io calculates it based on the number of vulnerabilities and their severity. "A" - no vulnerabilities, "F" - the least secure level.',
+      vulnTooltip:
+        'Vulnerabilities found in the repository according to Snyk.io',
       contributorsTooltip: `Contributors number in ${prevQuarter}`,
       npmReleasesTooltip: `Npm releases number in ${prevQuarter}`,
       npmDownloadsInc:
