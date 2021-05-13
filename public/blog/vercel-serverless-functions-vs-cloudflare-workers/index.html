@@ -118,7 +118,13 @@ I gave it a try and I liked it. Two weeks later all my Serverless Functions were
 <p>The high-level picture of how Serverless Functions requests are handled is different in Vercel and Cloudflare Workers. I think it makes sense to start the comparison with an explanation of how each platform works and highlighting the differences.</p>
 <p>First of all, both platforms use a so-called Edge Network of thousands of servers distributed across the globe.</p>
 <p>In <strong>Cloudflare Workers</strong> every Function during deployment gets replicated in every data center. Every request is load-balanced and routed to the nearest data center, which executes the Function and sends the response back to the user.</p>
-<p><img src="/blog/images/vercel-vs-cloudflare/cloudflare.png" alt="A drawing of Cloudflare Edge Network showing how a user serverless function request is propagated"></p>
+<figure>
+    <img src="/blog/images/vercel-vs-cloudflare/cloudflare.png"
+         alt="An illustration of how a serverless function request is propagated within Cloudflare Edge Network"/> <figcaption>
+            <p>An illustration of how a serverless function request is propagated within Cloudflare Edge Network</p>
+        </figcaption>
+</figure>
+
 <p>It&rsquo;s important to note here that Functions are executed on <strong>every</strong> request, even if the response has been cached. The cache works on a deeper more granular level:</p>
 <ul>
 <li>Function&rsquo;s outgoing sub-requests are cached automatically.</li>
@@ -128,22 +134,44 @@ I gave it a try and I liked it. Two weeks later all my Serverless Functions were
 <p>Similar to Cloudflare, every request is being routed to the nearest data center. Here similarities end and the following steps are being processed:</p>
 <ol>
 <li>If the data center has a cache for the request, then the cached response is sent back to the user immediately. The Function is not executed. The request processing is finished.
-<img src="/blog/images/vercel-vs-cloudflare/vercel-cached.png" alt="A drawing of Vercel Edge Network showing how a user serverless function request is propagated"></li>
+<figure>
+    <img src="/blog/images/vercel-vs-cloudflare/vercel-cached.png"
+         alt="An illustration of how a serverless function request is propagated within Vercel Edge Network if the Edge has cached data"/> <figcaption>
+            <p>An illustration of how a serverless function request is propagated within Vercel Edge Network if the Edge has cached data</p>
+        </figcaption>
+</figure>
+</li>
 <li>If the data center doesn&rsquo;t have the Function aboard, then it finds the nearest data center which has it and forwards the request there.</li>
 <li>The Function is executed and the response is sent back to the original server.</li>
 <li>The original server caches the response (according to headers specified by the developer) and sends the response back to the user.
-<img src="/blog/images/vercel-vs-cloudflare/vercel.png" alt="A drawing of Vercel Edge Network showing how a user serverless function request is propagated"></li>
+<figure>
+    <img src="/blog/images/vercel-vs-cloudflare/vercel.png"
+         alt="An illustration of how a serverless function request is propagated within Vercel Edge Network if the Edge&#39;s cache doesn&#39;t have the requested data"/> <figcaption>
+            <p>An illustration of how a serverless function request is propagated within Vercel Edge Network if the Edge&rsquo;s cache doesn&rsquo;t have the requested data</p>
+        </figcaption>
+</figure>
+</li>
 </ol>
 <h2 id="requests-travel-time">Requests Travel Time</h2>
 <p>Speed is an important characteristic of Serverless Functions. It is measured by the time it takes to deliver the response to the user.</p>
 <p>One of its constituents is Travel Time. The less time the request spends traveling the better.</p>
 <p><strong>Cloudflare Workers</strong>, as we saw above, route every request to the nearest data center which processes it and sends the response back. Cloudflare <a href="https://www.cloudflare.com/network/">says</a> its Network spans over 200 cities in more than 100 countries. That guarantees the least Travel Time.</p>
-<p><img src="/blog/images/vercel-vs-cloudflare/cloudflare-network.png" alt="A screenshot from Cloudflare website with a world map showing locations of Cloudflare Network"></p>
-<div class="code-descr">A screenshot from <a href="https://www.cloudflare.com/network/">Cloudflare website</a> with a world map showing locations of Cloudflare Network Datacenters</div>
+<figure>
+    <img src="/blog/images/vercel-vs-cloudflare/cloudflare-network.png"
+         alt="A screenshot from Cloudflare website with a world map showing locations of Cloudflare Network Datacenters"/> <figcaption>
+            <p>A screenshot from <a href="https://www.cloudflare.com/network/">Cloudflare website</a> with a world map showing locations of Cloudflare Network Datacenters</p>
+        </figcaption>
+</figure>
+
 <p><strong>Vercel</strong>&rsquo;s Network is significantly less dense and spans <a href="https://vercel.com/docs/edge-network/regions">less than 20 locations</a>. It means that on average requests will spend more time traveling.
 Moreover, requests will end on the nearest server only in the happy case of a pre-existing cache. Other times, as we saw above, the request will be forwarded further to the data center which contains the Function. It diminishes all advantages of having a global network of data centers.</p>
-<p><img src="/blog/images/vercel-vs-cloudflare/vercel-network.png" alt="An image of Vercel Edge Network map"></p>
-<div class="code-descr">An image of Vercel Edge Network map (<a href="https://www.mapcustomizer.com/map/Vercel_regions">link</a>)</div>
+<figure>
+    <img src="/blog/images/vercel-vs-cloudflare/vercel-network.png"
+         alt="An image of Vercel Edge Network map"/> <figcaption>
+            <p>An image of Vercel Edge Network map (<a href="https://www.mapcustomizer.com/map/Vercel_regions">link</a>)</p>
+        </figcaption>
+</figure>
+
 <h2 id="function-execution-time">Function Execution time</h2>
 <p>Request/Function Execution Time is another major constituent of Speed.
 It largely depends on if there is cached data already or not.</p>
@@ -178,8 +206,13 @@ Vercel achieves great Developer Experience (DX) here.</p>
 </ul>
 <p>Cloudflare provides really great documentation with many easy-to-follow examples and &ldquo;Starters&rdquo; (GitHub repositories) for different use cases.
 It also provides a <a href="https://developers.cloudflare.com/workers/learning/playground">Playground</a> to preview, debug and develop your functions. I find it very helpful and use it frequently.</p>
-<p><img src="/blog/images/vercel-vs-cloudflare/cf-playground.png" alt="A screenshot from the Cloudflare Workers playground"></p>
-<div class="code-descr">A screenshot from the Cloudflare Workers playground</div>
+<figure>
+    <img src="/blog/images/vercel-vs-cloudflare/cf-playground.png"
+         alt="A screenshot from the Cloudflare Workers playground"/> <figcaption>
+            <p>A screenshot from the Cloudflare Workers playground</p>
+        </figcaption>
+</figure>
+
 <h2 id="cache-management">Cache management</h2>
 <p>Cache in Vercel and Cloudflare Workers is always local to the Region (Data Center).</p>
 <p><strong>Vercel&rsquo;s</strong> cache configuration is limited to setting a <code>Cache-Control</code> header on the response of the Function. Vercel recommends here not to use Browser caching, but rely on Vercel&rsquo;s Network cache. Hence configuration comes down mostly to setting the cache time. Moreover, there is a bunch of restrictions regarding when the cache can be used (e.g. response status codes and request methods, request headers).</p>
