@@ -135,18 +135,18 @@
     </template>
 
     <template v-else-if="type === 'bundlesize'">
-      <CubeIcon v-tooltip="bundlesize" class="w-8" label="bundlesize" />
+      <CubeIcon v-tooltip="bundlesize" class="w-8" :label="bundlesize" />
       <div v-tooltip="bundlesize" class="label">Bundle Size</div>
     </template>
 
     <template v-else-if="type === 'security'">
-      <ShieldIcon v-tooltip="snykTooltip" class="w-8" label="Security" />
-      <div v-tooltip="snykTooltip" class="label">Security score</div>
+      <ShieldIcon v-tooltip="secScore" class="w-8" :label="secScore" />
+      <div v-tooltip="secScore" class="label">Security score</div>
     </template>
 
     <template v-else-if="type === 'vulnerability'">
-      <BugIcon v-tooltip="vulnTooltip" class="w-8" label="Vulnerabilities" />
-      <div v-tooltip="vulnTooltip" class="label">Vulnerabilities</div>
+      <BugIcon v-tooltip="vulnInfo" class="w-8" :label="vulnInfo" />
+      <div v-tooltip="vulnInfo" class="label">Vulnerabilities</div>
     </template>
 
     <template v-else-if="type === 'age'">
@@ -220,10 +220,9 @@ export default defineComponent({
       quarter: prevQuarter,
       tsTooltip:
         'TypeScript support. "Bundled" - typings are bundled together with the package. "Separate" - typings are published to the @types organization on Npm',
-      snykTooltip:
+      secScore:
         'Security score of the Npm package. Snyk.io calculates it based on the number of vulnerabilities and their severity. "A" - no vulnerabilities, "F" - the least secure level.',
-      vulnTooltip:
-        'Vulnerabilities found in the repository according to Snyk.io',
+      vulnInfo: 'Vulnerabilities found in the repository. Data source: Snyk.io',
       contributorsTooltip: `Contributors number in ${prevQuarter}`,
       npmReleasesTooltip: `Npm releases number in ${prevQuarter}`,
       npmDownloadsInc:
@@ -236,7 +235,7 @@ export default defineComponent({
       devUsageInfo:
         'Percentage of developers using the library according to the latest StateOfJS 2020 survey',
       bundlesize:
-        'Bundle size minified+gzipped of the npm package. Data source: Bundlephobia.com.',
+        'Bundle size of the npm package minified+gzipped. Data source: Bundlephobia.com',
       newStars: 'The average monthly new Github stars in the last 3 months',
     };
   },
