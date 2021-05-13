@@ -191,8 +191,13 @@ const content = `<?xml version="1.0" encoding="UTF-8"?>
 
   <url>
     <loc>https://moiva.io/blog</loc>
-    <lastmod>2021-04-28</lastmod>
+    <lastmod>2021-05-13</lastmod>
     <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://moiva.io/blog/2021-05-update</loc>
+    <lastmod>2021-05-13</lastmod>
   </url>
 
   <url>
