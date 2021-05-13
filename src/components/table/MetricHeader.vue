@@ -135,13 +135,18 @@
     </template>
 
     <template v-else-if="type === 'bundlesize'">
-      <CubeIcon v-tooltip="bundlesize" class="w-8" label="bundlesize" />
+      <CubeIcon v-tooltip="bundlesize" class="w-8" :label="bundlesize" />
       <div v-tooltip="bundlesize" class="label">Bundle Size</div>
     </template>
 
     <template v-else-if="type === 'security'">
-      <ShieldIcon v-tooltip="snykTooltip" class="w-8" label="Security" />
-      <div v-tooltip="snykTooltip" class="label">Security</div>
+      <ShieldIcon v-tooltip="secScore" class="w-8" :label="secScore" />
+      <div v-tooltip="secScore" class="label">Security score</div>
+    </template>
+
+    <template v-else-if="type === 'vulnerability'">
+      <BugIcon v-tooltip="vulnInfo" class="w-8" :label="vulnInfo" />
+      <div v-tooltip="vulnInfo" class="label">Vulnerabilities</div>
     </template>
 
     <template v-else-if="type === 'age'">
@@ -174,6 +179,7 @@ import TWIcon from '@/components/icons/Thoughtworks.vue';
 import CubeIcon from '@/components/icons/Cube.vue';
 import DependencyIcon from '@/components/icons/Dependency.vue';
 import ShieldIcon from '@/components/icons/Shield.vue';
+import BugIcon from '@/components/icons/Bug.vue';
 import { MetricT } from './Table.vue';
 import { subQuarters, format } from 'date-fns';
 
@@ -197,6 +203,7 @@ export default defineComponent({
     CubeIcon,
     OldIcon,
     ShieldIcon,
+    BugIcon,
     TWIcon,
     TSIcon,
   },
@@ -213,8 +220,9 @@ export default defineComponent({
       quarter: prevQuarter,
       tsTooltip:
         'TypeScript support. "Bundled" - typings are bundled together with the package. "Separate" - typings are published to the @types organization on Npm',
-      snykTooltip:
-        'A calculated by Snyk level of security (from A to F) of Npm packages based on the number of vulnerabilities and their severity. "A" - no vulnerabilities, "F" - the least secure level.',
+      secScore:
+        'Security score of the Npm package. Snyk.io calculates it based on the number of vulnerabilities and their severity. "A" - no vulnerabilities, "F" - the least secure level.',
+      vulnInfo: 'Vulnerabilities found in the repository. Data source: Snyk.io',
       contributorsTooltip: `Contributors number in ${prevQuarter}`,
       npmReleasesTooltip: `Npm releases number in ${prevQuarter}`,
       npmDownloadsInc:
@@ -227,7 +235,7 @@ export default defineComponent({
       devUsageInfo:
         'Percentage of developers using the library according to the latest StateOfJS 2020 survey',
       bundlesize:
-        'Bundle size minified+gzipped of the npm package. Data source: Bundlephobia.com.',
+        'Bundle size of the npm package minified+gzipped. Data source: Bundlephobia.com',
       newStars: 'The average monthly new Github stars in the last 3 months',
     };
   },
