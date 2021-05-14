@@ -161,7 +161,10 @@ figure {
 
 @media (min-width: 768px) {
   figure {
-    margin: 0 32px;
+    margin: 0 -32px;
+  }
+  li figure {
+    margin: 0
   }
 }
 
