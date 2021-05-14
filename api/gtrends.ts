@@ -1,7 +1,8 @@
 import { Handler } from '@netlify/functions';
 import { repoToGTrendDefMap } from '../google-trends.config';
+// @ts-ignore
 import googleTrends from 'google-trends-api';
-import { initSentry, reportError } from './utils';
+import { initSentry, reportError } from '../api-utils';
 
 const defaultStartDateStr = '2017-01-01';
 
