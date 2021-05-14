@@ -1,7 +1,0 @@
-[[redirects]]
-  from = "/"
-  to = "/?npm=:compare"
-  status = 301
-  force = true
-  query = {compare = ":compare"} #  apply this rule for /old-path?path=example
-  conditions = {Language = ["en","es"], Country = ["US"]}
