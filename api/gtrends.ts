@@ -1,4 +1,3 @@
-// import { NowRequest, NowResponse } from '@vercel/node';
 import { Handler } from '@netlify/functions';
 import { repoToGTrendDefMap } from '../google-trends.config';
 import googleTrends from 'google-trends-api';
