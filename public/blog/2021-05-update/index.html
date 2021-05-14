@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
   <meta property="og:title" content="May 2021 update: A series of JS libraries reports, migration to Vite" />
-<meta property="og:description" content="In the previous month I implemented my idea to aggregate historical data and prepare a series of Q1 2021 reports." />
+<meta property="og:description" content="I carried out my plan to compile historical data and publish a series of Q1 2021 reports for different categories of JavaScript libraries." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://moiva.io/blog/2021-05-update/" />
 <meta property="og:image" content="https://moiva.io/blog/images/moiva-head.jpg"/>
@@ -18,7 +18,7 @@
 <meta name="twitter:image" content="https://moiva.io/blog/images/moiva-head.jpg"/>
 
 <meta name="twitter:title" content="May 2021 update: A series of JS libraries reports, migration to Vite"/>
-<meta name="twitter:description" content="In the previous month I implemented my idea to aggregate historical data and prepare a series of Q1 2021 reports."/>
+<meta name="twitter:description" content="I carried out my plan to compile historical data and publish a series of Q1 2021 reports for different categories of JavaScript libraries."/>
 
 
   <title>
@@ -95,12 +95,11 @@
     <a href="https://twitter.com/_aantipov" target="_blank">Alexey Antipov</a>
   </div>
 
-  <p>This is a monthly update on Moiva.io&rsquo;s development progress and other things I&rsquo;ve been busy with.</p>
+  <p>This is a May report on the progress of Moiva.io and other things I’ve been working on.</p>
 <h2 id="q1-2021-reports-were-published">Q1 2021 reports were published</h2>
-<p>Moiva provides a lot of historical data for different metrics.
-While April was nearing, I came up with an idea - why not aggregate such data and prepare a report revealing the performance of different libraries and frameworks in Q1 2021.</p>
-<p>The idea was interesting to me also for another reason - I considered it as a test drive for Moiva, I wanted to see what kind of valuable information can be extracted from Moiva.io and what kind of reports one can prepare.</p>
-<p>As an outcome, I published 6 reports for different categories of JavaScript libraries:</p>
+<p>Moiva provides a wealth of historical data for a variety of metrics. At the end of March, I had an idea: why not compile the data and make a report revealing the performance of different libraries and frameworks in Q1 2021.</p>
+<p>The idea appealed to me also for another reason - I saw it as a test drive for Moiva, and I wanted to see what kind of valuable knowledge could be obtained from Moiva.io and what kinds of reports could be produced.</p>
+<p>As a result, I published six reports for different categories of JavaScript libraries:</p>
 <ul>
 <li><a href="/blog/2021-q1-state-of-js-frameworks/">Q1 2021 State of JS Frameworks</a></li>
 <li><a href="/blog/2021-q1-report-state-management/">Q1 2021 JavaScript State Management Libraries report</a></li>
@@ -112,27 +111,26 @@ While April was nearing, I came up with an idea - why not aggregate such data an
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">&quot;Q1 2021 State Of JavaScript Libraries and Tools: Frameworks&quot; report is out 🎉🎉🎉<a href="https://t.co/wZ9wokcFL0">https://t.co/wZ9wokcFL0</a><br>Best Q1 2021 Top Performers:<a href="https://twitter.com/reactjs?ref_src=twsrc%5Etfw">@reactjs</a> <a href="https://twitter.com/Alpine_JS?ref_src=twsrc%5Etfw">@Alpine_JS</a> <a href="https://twitter.com/solid_js?ref_src=twsrc%5Etfw">@solid_js</a> <a href="https://twitter.com/angular?ref_src=twsrc%5Etfw">@angular</a> <br>Marko (<a href="https://twitter.com/MarkoDevTeam?ref_src=twsrc%5Etfw">@MarkoDevTeam</a>)<a href="https://twitter.com/hashtag/js?src=hash&amp;ref_src=twsrc%5Etfw">#js</a> <a href="https://twitter.com/hashtag/moiva?src=hash&amp;ref_src=twsrc%5Etfw">#moiva</a> <a href="https://twitter.com/hashtag/report?src=hash&amp;ref_src=twsrc%5Etfw">#report</a> <a href="https://t.co/cQvaMW5CZN">pic.twitter.com/cQvaMW5CZN</a></p>&mdash; Alexey Antipov 📊Moiva.io📈 (@_aantipov) <a href="https://twitter.com/_aantipov/status/1381917386312462339?ref_src=twsrc%5Etfw">April 13, 2021</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-<p>The result surpised me. I realized how much information was hidden from Moiva&rsquo;s users and how much data can be extracted and nicely presented.
-It also taught me that being able to see graphs with historical data is nice but might not be enough. Sometimes it can be more suiteable to see raw figures reflecting the current state and compare such figures side-by-side.</p>
-<p>I realized that tabular data can be a valuable complement to the charts.</p>
+<p>The outcome surprised me. I discovered how much new and valuable information could be extracted and nicely presented. It also taught me that although seeing graphs with historical data is helpful, it isn’t always sufficient. Sometimes seeing raw numbers that reflect the current state and comparing them side by side is more beneficial.</p>
+<p>I realized that tabular data can be an excellent supplement to charts.</p>
 <h2 id="a-guide-to-migrating-from-vuecli-to-vite">A guide to migrating from VueCLI to Vite</h2>
-<p>Having migrated Moiva from VueCLI to Vite I found out there is a lack of articles describing the process.</p>
-<p><a href="https://vitejs.dev/">Vite</a> is a new and very trendy tool these days and such a guide could bring much value to Vue users I thought.</p>
+<p>While migrating Moiva from VueCLI to Vite, I found a lack of articles explaining how to do it.</p>
+<p><a href="https://vitejs.dev/">Vite</a> is a new and trendy tool these days, and I figured such a guide could be really useful for Vue users.</p>
 <p>Hence I wrote <a href="/blog/the-missing-migration-guide-from-vue-cli-to-vite/">my own guide</a>.</p>
 <h2 id="moivaio-updates">Moiva.io updates</h2>
 <p><strong>Migration to Vite</strong>.
-Vite had been on my radar for a while, but I didn&rsquo;t have any concrete plans to migrate to it. It didn&rsquo;t look mature enough to replace huge chunks of development setup - Webpack, Babel, etc.</p>
-<p>The idea of migration came out of the problem I met. I wanted to update project dependencies and run into a conflict between a set of dependencies. I have to deal with similar conflicts quite often at my daily job and didn&rsquo;t want it to be part of my hobby project. So I thought why not give Vite a try.</p>
-<p>The migration process, surprisingly, was almost seamless and the result was amazing - the startup time is next to zero, updates are reflecting instantly in the browser and I ditched <strong>a lot</strong> of my existing dependencies.</p>
+<a href="https://vitejs.dev/">Vite</a> had been on my radar for a while, but I had no plans to migrate to it. It didn’t look mature enough to replace huge chunks of development setup - Webpack, Babel, and so on.</p>
+<p>The idea of migration came out of the problem I met. I was trying to update project dependencies when I run into a conflict between a set of dependencies. I struggle with similar conflicts on a regular basis at work, and I didn’t want that to be a part of my hobby project. So I decided to give Vite a chance.</p>
+<p>Surprisingly, the migration went almost seamlessly and the result was fantastic - the startup time is next to zero, updates are reflected instantly in the browser and I ditched a lot of my previous dependencies.</p>
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">Wanted to update dependencies, but got conflicts somewhere in the vue-cli+webpack+loaders+babel chain.<br>Didn&#39;t have a desire to deal with it.<br>So I just removed all that *** and install <a href="https://twitter.com/vite_js?ref_src=twsrc%5Etfw">@vite_js</a><br>And it just works. Works fast 🚀<br>Deploy to Prod got 2 times faster<a href="https://twitter.com/hashtag/javascript?src=hash&amp;ref_src=twsrc%5Etfw">#javascript</a> <a href="https://twitter.com/hashtag/moiva?src=hash&amp;ref_src=twsrc%5Etfw">#moiva</a> <a href="https://t.co/rCV4Qtj6kW">pic.twitter.com/rCV4Qtj6kW</a></p>&mdash; Alexey Antipov 📊Moiva.io📈 (@_aantipov) <a href="https://twitter.com/_aantipov/status/1385326827120599041?ref_src=twsrc%5Etfw">April 22, 2021</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 <p><strong>Tabular data representation</strong>. As I described above, the published series of reports taught me two things:</p>
 <ul>
-<li>the data that Moiva has at its disposal allow extracting much more valuable information than is currently shown.</li>
-<li>tabular data representation can be a great complement to graphs.</li>
+<li>Moiva’s data allows it to extract much more useful information than is currently shown.</li>
+<li>tabular data representation can be an excellent supplement to graphs.</li>
 </ul>
-<p>I liked a lot the table view I used in the reports, so I implemented a similar view in Moiva.io and it replaced the old list view.</p>
+<p>I liked the table view in the reports so much that I replaced the old list view with it in Moiva.io.</p>
 <figure>
     <img src="/blog/images/2021-05-update/list-view.png"
          alt="a screenshot of Moiva.io&#39;s old list view with data for Webpack, Vite and Snowpack."/> <figcaption>
@@ -147,7 +145,7 @@ Vite had been on my radar for a while, but I didn&rsquo;t have any concrete plan
         </figcaption>
 </figure>
 
-<p>The table view is much more in line with the goal of the project - make it easier to compare software.</p>
+<p>The new table view is much more in line with the project’s goal of making software comparison simpler.</p>
 <h2 id="seo">SEO</h2>
 <p>It was a disastrous month for Moiva in terms of Google Search performance. The coverage dropped from 1.5K to 50 pages.</p>
 <p><figure>
@@ -157,19 +155,19 @@ Vite had been on my radar for a while, but I didn&rsquo;t have any concrete plan
         </figcaption>
 </figure>
 
-As a result, Google doesn&rsquo;t suggest Moiva.io in search results when people look for software comparison.</p>
-<p>Google seems introduced some changes in their engine and started to treat most of Moiva&rsquo;s pages as duplicates. I think Moiva&rsquo;s focus on graphical data representation (versus textual) was the reason for it. Google apparently is not good at parsing graphical data, even though all the Moiva&rsquo;s charts are accompanied by accessibility information. As a consequence, all the pages look the same to Google.</p>
-<p>I hope the introduction of the table view will change the situation.</p>
-<p>Another thing that could potentially contribute to the problem is the change of the structure of Moiva&rsquo;s URLs which I made at the beginning of the year: <code>compare</code> parameter was replaced by a combination of <code>npm</code> and <code>github</code> parameters. In order for Google to not treat the new and old URLs as duplicates, I could do 2 things:</p>
+As a consequence, Google doesn’t suggest Moiva.io in search results when people look for software comparison.</p>
+<p>Google seems to have made some changes to their engine, and the majority of Moiva’s pages are now being treated as duplicates. I believe it was due to Moiva’s emphasis on graphical data representation (rather than textual). Despite the fact that all of Moiva’s charts are accompanied by accessibility information, Google appears to have difficulty parsing and understanding graphical data. As a consequence, all the pages look the same to Google.</p>
+<p>I hope the introduction of the table view will improve the situation.</p>
+<p>Another factor that may have contributed to the issue is the change of the structure of Moiva’s URLs which I made at the start of the year: the <code>compare</code> parameter was replaced with a combination of <code>npm</code> and <code>github</code> parameters. I had two options to avoid penalties from Google:</p>
 <ul>
 <li>implement 301 redirect</li>
 <li>provide <a href="https://developers.google.com/search/docs/advanced/crawling/consolidate-duplicate-urls#rel-canonical-link-method"><code>rel=&quot;canonical&quot; link tag</code></a> for the pages with old URLs</li>
 </ul>
-<p>The first option was not practically possible because Vercel doesn&rsquo;t provide an option to use URL&rsquo;s query parameters in their <a href="https://vercel.com/docs/configuration#project/redirects">redirect logic</a>. So I went for the second option - during the page load Moiva calculates the canonical URL and adds the required <code>link</code> tag in the <code>head</code> section of a page. But Google seems is not good yet at parsing that canonical link tag if it is added by javascript - many pages are marked as &ldquo;<em>Duplicate without user-selected canonical</em>&rdquo;.</p>
-<p>I have an idea of migrating from <a href="http://vercel.com/">Vercel</a> to <a href="https://www.netlify.com/">Netlify</a> to overcome that problem using 301 redirects and solve some other limitations of Vercel. It seems to me that Netlify is a more mature solution in many aspects.</p>
+<p>The first option was impractical because Vercel does not allow the use of URL query parameters in their <a href="https://vercel.com/docs/configuration#project/redirects">redirect logic</a>. So I went for the second option: Moiva computes the canonical URL and inserts the required <code>link</code> tag in the page’s <code>head</code> section during page load. However, it appears that Google is still not very good at parsing that link tag when added by javascript  - many pages are marked as &ldquo;<em>Duplicate without user-selected canonical</em>&rdquo;.</p>
+<p>I’m considering switching from <a href="http://vercel.com/">Vercel</a> to <a href="https://www.netlify.com/">Netlify</a> to overcome the issue using 301 redirects and to address some of Vercel’s other limitations. Netlify seems to be a more mature solution in several aspects.</p>
 <hr>
 <p>Have any feedback or ideas about the project? I&rsquo;m keen to know!</p>
-<p>If you find the project interesting, stay tuned and Subscribe to the Moiva&rsquo;s monthly newsletter.</p>
+<p>If you find the project interesting, stay tuned and Subscribe to Moiva&rsquo;s monthly newsletter.</p>
 
 </div>
 
