@@ -47,6 +47,10 @@
     "vue-eslint-parser": "^7.6.0",
     "vue-tsc": "^0.0.25"
   },
+  "engineStrict": true,
+  "engines": {
+    "node": ">=16"
+  },
   "eslintConfig": {
     "root": true,
     "env": {
