@@ -13,3 +13,4 @@
   from = "/*/index.html"
   to = "/:splat"
   status = 301
+  force = true
