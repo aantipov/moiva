@@ -18,7 +18,7 @@
     </div>
 
     <div class="mt-4 font-light">
-      Check out our <a href="/catalog">Catalog</a> for inspiration.
+      Check out our <a href="/catalog/">Catalog</a> for inspiration.
     </div>
   </div>
 </template>
