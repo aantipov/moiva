@@ -9,10 +9,6 @@ export interface ErrorT {
   errors?: unknown[];
 }
 
-export function logRequest(type: string, urlQuery: unknown): void {
-  return;
-}
-
 export function initSentry(): void {
   Sentry.init({
     dsn:
