@@ -31,7 +31,7 @@ export function updateUrl(libraries: LibraryT[]): void {
 
   const newHref = constructHref(npmPackagesNames, reposIds);
 
-  if (newHref !== originalHref && !hasCanonicalUrlCheckProcessed) {
+  if (!hasCanonicalUrlCheckProcessed) {
     // Let GoogleBot know the canonical URL
     setCanonicalUrl(newHref);
     hasCanonicalUrlCheckProcessed = true;
