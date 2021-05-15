@@ -11,6 +11,6 @@
 
 [[redirects]]
   from = "/*/index.html"
-  to = "/:splat"
+  to = "/:splat/"
   status = 301
   force = true
