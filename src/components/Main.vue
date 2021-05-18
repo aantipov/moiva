@@ -19,7 +19,7 @@
     <!--  Selected Libraries and Charts    -->
     <div v-else>
       <div class="mt-4">
-        <h2 v-if="category" class="m-0">{{ category }}</h2>
+        <Title />
 
         <div class="flex justify-center">
           <a
@@ -107,6 +107,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, watchEffect, computed } from 'vue';
 import NpmDownloads from './downloads/NpmDownloads.vue';
+import Title from './Title.vue';
 import Search from './search/Search.vue';
 import Suggestions from './Suggestions.vue';
 import Popular from './Popular.vue';
@@ -148,6 +149,7 @@ import { LibraryT } from '@/libraryApis';
 export default defineComponent({
   name: 'Main',
   components: {
+    Title,
     Popular,
     Search,
     Suggestions,

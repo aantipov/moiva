@@ -6,6 +6,7 @@ import {
   fetchLibraryByNpm,
   NpmPackageT,
 } from '@/libraryApis';
+import { catalogRepoIdToLib } from '@/libraries-catalog';
 
 // ====== STATE ======
 const librariesR = reactive<LibraryT[]>([]);
@@ -14,7 +15,9 @@ const npmPackagesLoading = reactive<string[]>([]);
 const reposLoading = reactive<string[]>([]);
 
 // ====== COMPUTED ======
+// deprecated in favor of librariesRR to make the value clear - reactive readonly
 export const libraries = readonly(librariesR);
+export const librariesRR = libraries;
 export const isLoading = computed(
   () => !!npmPackagesLoading.length || !!reposLoading.length
 );
@@ -32,6 +35,27 @@ export const npmPackagesNames = computed<string[]>(() =>
     .filter((lib) => !!lib.npmPackage)
     .map((lib) => (lib.npmPackage as NpmPackageT).name)
 );
+
+/**
+ * Selected libs category
+ */
+export const categoryRef = computed<string | null>(() => {
+  if (!librariesR.length) {
+    return null;
+  }
+
+  const categories = librariesR
+    .map((lib) => catalogRepoIdToLib[lib.repo.repoId.toLowerCase()])
+    .map((catalogLib) => (catalogLib ? catalogLib.category : null));
+
+  const category = categories[0];
+
+  if (category && categories.every((cat) => cat === category)) {
+    return category;
+  }
+
+  return null;
+});
 
 /**
  * There can be libraries with duplicate repos potentially,
