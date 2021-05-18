@@ -9,13 +9,19 @@
         @click.prevent="onSelect(suggestedLibrary)"
         >+ {{ suggestedLibrary.alias }}</a
       >
-    </div>
-
-    <div v-if="hasMore" class="flex justify-end mt-1">
-      <div class="link" @click="showAll = !showAll">
-        <template v-if="!showAll"> &darr; Show More </template>
-        <template v-else> &uarr; Show Less </template>
-      </div>
+      <span
+        v-if="hasMore"
+        class="inline-block px-1 mt-2 border rounded link border-primary"
+        @click="showAll = !showAll"
+      >
+        <template v-if="!showAll"
+          ><ChevronDownIcon class="inline-block w-6 h-6 align-bottom" /> Show
+          More
+        </template>
+        <template v-else>
+          <ChevronUpIcon class="inline-block w-6 h-6 align-top" /> Show Less
+        </template>
+      </span>
     </div>
   </div>
 </template>
@@ -26,12 +32,19 @@ import { getSuggestions, constructHref } from '@/utils';
 import { CatalogLibraryT } from '@/libraries-catalog';
 import { libraries } from '@/store/libraries';
 import { LibraryT } from '@/libraryApis';
+import ChevronDownIcon from '@/components/icons/ChevronDown.vue';
+import ChevronUpIcon from '@/components/icons/ChevronUp.vue';
 
 // The Number of Suggestions shown in the "SHOW LESS" mode
 const size = 5;
 
 export default defineComponent({
   name: 'Suggestions',
+
+  components: {
+    ChevronDownIcon,
+    ChevronUpIcon,
+  },
 
   emits: ['select'],
 

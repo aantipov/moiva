@@ -21,7 +21,7 @@
         <!--   GitHub/NPM switch       -->
         <div class="relative inline-flex w-full mb-2 sm:w-auto sm:mb-0">
           <ChevronDownIcon
-            class="absolute top-0 right-0 w-2 h-2 mx-3 my-4 text-white pointer-events-none"
+            class="absolute top-0 right-0 w-6 h-6 mx-3 my-4 text-white pointer-events-none"
           />
           <select
             v-model="searchType"
