@@ -18,17 +18,15 @@
 
     <!--  Selected Libraries and Charts    -->
     <div v-else>
-      <div class="mt-4">
-        <h2 v-if="category" class="m-0">{{ category }}</h2>
+      <div class="mx-auto mt-4 text-center lg:w-9/12 xl:w-2/4">
+        <Title />
 
-        <div class="flex justify-center">
-          <a
-            v-tooltip="`Clear selection`"
-            href="/"
-            @click.prevent="clearSelection"
-            >[Clear selection]</a
-          >
-        </div>
+        <a
+          v-tooltip="`Clear selection`"
+          href="/"
+          @click.prevent="clearSelection"
+          >[Clear selection]</a
+        >
       </div>
 
       <Table class="w-full mx-auto mt-4 mb-2 lg:w-3/4" />
@@ -107,6 +105,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, watchEffect, computed } from 'vue';
 import NpmDownloads from './downloads/NpmDownloads.vue';
+import Title from './Title.vue';
 import Search from './search/Search.vue';
 import Suggestions from './Suggestions.vue';
 import Popular from './Popular.vue';
@@ -148,6 +147,7 @@ import { LibraryT } from '@/libraryApis';
 export default defineComponent({
   name: 'Main',
   components: {
+    Title,
     Popular,
     Search,
     Suggestions,

@@ -7,7 +7,7 @@
         <table>
           <thead class="text-white bg-primary">
             <tr>
-              <td class="flex justify-center px-1 py-2 font-bold">Criteria</td>
+              <td class="flex justify-center px-1 py-2 font-bold">Metric</td>
 
               <th
                 v-for="lib in libraries"
