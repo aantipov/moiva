@@ -1,7 +1,7 @@
 <template>
   <div v-if="data">
-    <h1>{{ data.title }}</h1>
-    <div v-if="data.desc" class="text-lg">{{ data.desc }}</div>
+    <h1 class="mb-1">{{ data.title }}</h1>
+    <div v-if="data.desc" class="text-lg opacity-80">{{ data.desc }}</div>
   </div>
 </template>
 
