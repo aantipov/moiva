@@ -1,7 +1,7 @@
 <template>
   <div v-if="data">
     <h1>{{ data.title }}</h1>
-    <div v-if="data.desc">{{ data.desc }}</div>
+    <div v-if="data.desc" class="text-lg">{{ data.desc }}</div>
   </div>
 </template>
 
