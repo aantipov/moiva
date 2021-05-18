@@ -1,5 +1,5 @@
 <template>
-  <div v-if="data" class="mx-auto text-center lg:w-9/12 xl:w-2/4">
+  <div v-if="data">
     <h1>{{ data.title }}</h1>
     <div v-if="data.desc" class="text-center">
       {{ data.desc }}
