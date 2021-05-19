@@ -29,10 +29,13 @@ export default defineComponent({
             desc: categoryRef.value,
           };
         }
-        if (!categoryRef.value) {
-          return null;
+        if (categoryRef.value) {
+          return { title: categoryRef.value, desc: null };
         }
-        return { title: categoryRef.value, desc: null };
+        return {
+          title: 'Compare selected libraries',
+          desc: null,
+        };
       }),
     };
   },
