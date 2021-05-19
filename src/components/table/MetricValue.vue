@@ -17,39 +17,41 @@
     >
   </div>
 
-  <div v-else-if="type === 'stars'" class="flex justify-end">
-    {{ formatNumber(lib.repo.stars) }}
+  <div v-else-if="type === 'stars'">
+    <div class="flex justify-end">
+      {{ formatNumber(lib.repo.stars) }}
+    </div>
+
+    <div
+      class="flex text-sm opacity-80"
+      :class="{
+        'justify-end': starsGrowth !== '-',
+        'justify-center': starsGrowth === '-',
+      }"
+    >
+      {{ starsGrowth }}
+    </div>
   </div>
 
-  <div
-    v-else-if="type === 'starsPlus'"
-    class="flex items-center"
-    :class="{
-      'justify-end': starsGrowth !== '-',
-      'justify-center': starsGrowth === '-',
-    }"
-  >
-    {{ starsGrowth }}
-    <span class="ml-1 text-sm opacity-80">({{ starsGrowthPercentage }})</span>
-  </div>
-
-  <div
-    v-else-if="type === 'downloads'"
-    class="flex items-center"
-    :class="{ 'justify-end': !!npmDownloads, 'justify-center': !npmDownloads }"
-  >
-    {{ npmDownloads ?? '-' }}
-  </div>
-
-  <div
-    v-else-if="type === 'downloadsIncrease'"
-    class="flex items-center"
-    :class="{
-      'justify-end': npmDownloadsGrowth !== '-',
-      'justify-center': npmDownloadsGrowth === '-',
-    }"
-  >
-    {{ npmDownloadsGrowth }}
+  <div v-else-if="type === 'downloads'">
+    <div
+      class="flex"
+      :class="{
+        'justify-end': !!npmDownloads,
+        'justify-center': !npmDownloads,
+      }"
+    >
+      {{ npmDownloads ?? '-' }}
+    </div>
+    <div
+      class="text-sm opacity-80"
+      :class="{
+        'text-right': npmDownloadsGrowth !== '-',
+        'text-center': npmDownloadsGrowth === '-',
+      }"
+    >
+      {{ npmDownloadsGrowth }}
+    </div>
   </div>
 
   <div
@@ -240,26 +242,52 @@ export default defineComponent({
 
     return {
       starsGrowth: computed<string>(() => {
-        if (!lib.value.stars) {
-          return '-';
-        }
-        if (newStarsAvg.value > 1) {
-          return `+${numbersFormatter.format(newStarsAvg.value)}`;
-        }
-
-        return '<1';
-      }),
-      starsGrowthPercentage: computed<string>(() => {
         if (!lib.value.stars || !lib.value.repo.stars) {
           return '-';
         }
 
+        if (newStarsAvg.value < 1) {
+          return '0';
+        }
+
+        const newStarsFormatted = numbersFormatter.format(newStarsAvg.value);
         const total = lib.value.repo.stars - newStarsAvg.value;
         const percentage = (100 * newStarsAvg.value) / total;
         const percentageFormatted = numbersFormatter.format(percentage);
 
-        return `+${percentageFormatted}%`;
+        return `+${newStarsFormatted} = +${percentageFormatted}%`;
       }),
+
+      npmDownloads: computed<string | null>(() => {
+        if (!lib.value.npmDownloads) {
+          return null;
+        }
+        const qDownloads = lib.value.npmDownloads
+          .slice(-3)
+          .map(({ downloads }) => downloads);
+        const sum = qDownloads.reduce((sum, val) => sum + val, 0);
+
+        return numbersFormatter.format(sum / qDownloads.length);
+      }),
+
+      npmDownloadsGrowth: computed<string>(() => {
+        if (!lib.value.npmDownloads) {
+          return '-';
+        }
+        const downloads = lib.value.npmDownloads.map((val) => val.downloads);
+        const last = downloads.slice(-1)[0];
+        const first = downloads.slice(-6, -5)[0];
+
+        if (!first || !last) {
+          return '-';
+        }
+
+        const perc = 100 * (Math.pow(last / first, 1 / 6) - 1);
+        const sign = perc >= 0 ? '+' : '';
+
+        return `${sign}${numbersFormatter.format(perc)}%`;
+      }),
+
       getAge(createdAt: string): string {
         return formatDistanceToNowStrict(new Date(createdAt));
       },
@@ -305,35 +333,6 @@ export default defineComponent({
           return null;
         }
         return lib.value.npmReleases.slice(-1)[0];
-      }),
-
-      npmDownloads: computed<string | null>(() => {
-        if (!lib.value.npmDownloads) {
-          return null;
-        }
-        const qDownloads = lib.value.npmDownloads
-          .slice(-3)
-          .map(({ downloads }) => downloads);
-        const sum = qDownloads.reduce((sum, val) => sum + val, 0);
-
-        return numbersFormatter.format(sum / qDownloads.length);
-      }),
-
-      npmDownloadsGrowth: computed<string>(() => {
-        if (!lib.value.npmDownloads) {
-          return '-';
-        }
-        const downloads = lib.value.npmDownloads.map((val) => val.downloads);
-        const last = downloads.slice(-1)[0];
-        const first = downloads.slice(-6, -5)[0];
-
-        if (!first || !last) {
-          return '-';
-        }
-
-        const perc = 100 * (Math.pow(last / first, 1 / 6) - 1);
-
-        return `+${numbersFormatter.format(perc)}%`;
       }),
 
       commits: computed<string | number>(() => {

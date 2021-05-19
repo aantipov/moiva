@@ -14,46 +14,31 @@
     </template>
 
     <template v-if="type === 'stars'">
-      <StarIcon
-        v-tooltip="'A total number of GitHub stars'"
-        class="w-8"
-        label="A total number of GitHub stars"
-      />
-      <div v-tooltip="'A total number of GitHub stars'" class="label">
-        Stars
-      </div>
-    </template>
-
-    <template v-else-if="type === 'starsPlus'">
-      <span v-tooltip="newStars" class="flex">
-        <StarIcon class="w-5 sm:w-8" :label="newStars" />
-        <TrendIcon class="w-5 sm:hidden" :label="newStars" />
-      </span>
-      <div v-tooltip="newStars" class="label">
-        New Stars
-        <span class="text-sm font-normal opacity-80">monthly</span>
+      <StarIcon v-tooltip="stars" class="w-8" :label="stars" />
+      <div v-tooltip="stars" class="text-left label">
+        <div>
+          Stars
+          <span class="text-sm font-normal opacity-80">in total</span>
+        </div>
+        <div>
+          New Stars
+          <span class="text-sm font-normal opacity-80">monthly</span>
+        </div>
       </div>
     </template>
 
     <template v-else-if="type === 'downloads'">
       <DownloadIcon
-        v-tooltip="'Monthly downloads of the npm package'"
+        v-tooltip="npmDownloads"
         class="w-8"
-        label="Monthly downloads of the npm package"
+        :label="npmDownloads"
       />
-      <div v-tooltip="'Monthly downloads of the npm package'" class="label">
-        Downloads
-      </div>
-    </template>
-
-    <template v-else-if="type === 'downloadsIncrease'">
-      <span v-tooltip="npmDownloadsInc" class="flex">
-        <DownloadIcon class="w-5 sm:w-8" :label="npmDownloadsInc" />
-        <TrendIcon class="w-5 sm:hidden" :label="npmDownloadsInc" />
-      </span>
-      <div v-tooltip="npmDownloadsInc" class="label whitespace-nowrap">
-        Dwnl. growth
-        <span class="text-sm font-normal opacity-80">monthly</span>
+      <div v-tooltip="npmDownloads" class="text-left label">
+        <div>
+          Npm Downloads
+          <span class="text-sm font-normal opacity-80">monthly</span>
+        </div>
+        <div class="text-sm font-normal opacity-80">and monthly growth</div>
       </div>
     </template>
 
@@ -218,6 +203,10 @@ export default defineComponent({
   setup() {
     return {
       quarter: prevQuarter,
+      stars:
+        'The total number of GitHub stars and the average number of new stars per month over the last 3 months',
+      npmDownloads:
+        'The average number of Npm downloads per month over the last 3 months. The average monthly Npm downloads growth over the last 6 months',
       tsTooltip:
         'TypeScript support. "Bundled" - typings are bundled together with the package. "Separate" - typings are published to the @types organization on Npm',
       secScore:
@@ -225,8 +214,6 @@ export default defineComponent({
       vulnInfo: 'Vulnerabilities found in the repository. Data source: Snyk.io',
       contributorsTooltip: `Contributors number in ${prevQuarter}`,
       npmReleasesTooltip: `Npm releases number in ${prevQuarter}`,
-      npmDownloadsInc:
-        'The average monthly downloads growth of the npm package in the last 6 months',
       commitsTooltip: `Repository commits number in ${prevQuarter}`,
       tradarTooltip:
         'A ThoughtWorks tech radar “ring” assigned to the library. Four possible rings - “Adopt”, “Trial”, “Assess”, and “Hold”.',
@@ -236,7 +223,6 @@ export default defineComponent({
         'Percentage of developers using the library according to the latest StateOfJS 2020 survey',
       bundlesize:
         'Bundle size of the npm package minified+gzipped. Data source: Bundlephobia.com',
-      newStars: 'The average monthly new Github stars in the last 3 months',
     };
   },
 });
