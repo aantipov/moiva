@@ -1,5 +1,7 @@
 <template>
-  <div class="flex items-center justify-center sm:justify-start">
+  <div
+    class="flex items-center justify-center sm:justify-start whitespace-nowrap"
+  >
     <template v-if="type === 'npm'">
       <div class="sm:ml-9">Npm</div>
     </template>
