@@ -99,7 +99,7 @@ export const numbersFormatter = new Intl.NumberFormat('en-US', {
   notation: 'compact',
 });
 
-// Do not allow Google to index pages with >3 libraries in comparison
+// Do not allow Google to index pages with >=3 libraries
 // To avoid spamming Google and the user with useless and duplicated links
 export function setNoFollowTag(): void {
   const npmPackagesFromUrl = getNpmPackagesFromUrl();
