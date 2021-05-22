@@ -99,13 +99,13 @@ export const numbersFormatter = new Intl.NumberFormat('en-US', {
   notation: 'compact',
 });
 
-// Do not allow Google to index pages with >3 libraries in comparison
-// To avoid spamming Google and the user with useless links
+// Do not allow Google to index pages with >=3 libraries
+// To avoid spamming Google and the user with useless and duplicated links
 export function setNoFollowTag(): void {
   const npmPackagesFromUrl = getNpmPackagesFromUrl();
   const reposIdsFromUrl = getReposIdsFromUrl();
 
-  if (npmPackagesFromUrl.length + reposIdsFromUrl.length > 3) {
+  if (npmPackagesFromUrl.length + reposIdsFromUrl.length >= 3) {
     const metaRobots = document.createElement('meta');
     metaRobots.name = 'robots';
     metaRobots.content = 'noindex';

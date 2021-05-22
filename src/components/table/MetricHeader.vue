@@ -155,7 +155,6 @@ import StarIcon from '@/components/icons/Star.vue';
 import DownloadIcon from '@/components/icons/Download.vue';
 import TagIcon from '@/components/icons/Tag.vue';
 import SearchIcon from '@/components/icons/Search.vue';
-import TrendIcon from '@/components/icons/Trend.vue';
 import WorkerIcon from '@/components/icons/Worker.vue';
 import OldIcon from '@/components/icons/Old.vue';
 import DocumentIcon from '@/components/icons/Document.vue';
@@ -179,7 +178,6 @@ export default defineComponent({
     GitHubIcon,
     StarIcon,
     SearchIcon,
-    TrendIcon,
     WorkerIcon,
     DownloadIcon,
     TagIcon,

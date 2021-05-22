@@ -37,7 +37,10 @@
         ref="chartEl"
         role="img"
         :aria-label="ariaLabel"
-      ></canvas>
+        ><div>
+          {{ ariaLabel }}
+        </div></canvas
+      >
     </div>
   </div>
 </template>

@@ -98,11 +98,11 @@ const METRICS = [
   'commits',
   'contributors',
   'dependencies',
-  'tradar',
+  'bundlesize',
   'ts',
+  'tradar',
   'security',
   'vulnerability',
-  'bundlesize',
   'age',
   'license',
 ] as const;

@@ -32,8 +32,11 @@
       <Table class="w-full mx-auto mt-4 mb-2 lg:w-3/4" />
 
       <!-- Charts -->
-      <div class="mb-12">
-        <h2>Popularity</h2>
+      <section class="mb-12">
+        <h2>
+          Popularity
+          <span class="text-lg font-normal">over time</span>
+        </h2>
         <div class="grid grid-cols-12 gap-4">
           <template v-if="popularChartsNumber === 1">
             <Stars
@@ -56,19 +59,22 @@
             <DevelopersUsage class="col-span-12 md:col-span-6 xl:col-span-4" />
           </template>
         </div>
-      </div>
+      </section>
 
-      <div class="mb-12">
-        <h2>Maintenance and Development Activity</h2>
+      <section class="mb-12">
+        <h2>
+          Maintenance and Development Activity
+          <span class="text-lg font-normal">over time</span>
+        </h2>
         <div class="grid grid-cols-12 gap-4">
           <Releases class="col-span-12 md:col-span-6 xl:col-span-4" />
           <Contributors class="col-span-12 md:col-span-6 xl:col-span-4" />
           <Commits class="col-span-12 md:col-span-6 xl:col-span-4" />
           <Issues class="col-span-12 md:col-span-6 xl:col-span-4" />
         </div>
-      </div>
+      </section>
 
-      <div>
+      <section>
         <h2>Miscellaneous</h2>
         <div class="grid grid-cols-12 gap-4">
           <template v-if="miscChartsNumber === 1">
@@ -97,7 +103,7 @@
             />
           </template>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </template>
@@ -167,7 +173,7 @@ export default defineComponent({
   },
 
   setup() {
-    // Do not allow Google index pages with >3 libraries in comparison
+    // Do not allow Google index pages with >=3 libraries
     setNoFollowTag();
 
     // Keep up-to-date the mapping Library <=> Color
