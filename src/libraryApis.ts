@@ -7,7 +7,11 @@ import {
   ERROR_CODE_FETCH_GITHUB_REPO_FAILED,
 } from '@/constants';
 import { nanoid } from 'nanoid';
-import { catalogRepoIdToLib, catalogNpmToLib } from '@/libraries-catalog';
+import {
+  catalogRepoIdToLib,
+  catalogNpmToLib,
+  CatalogLibraryT,
+} from '@/libraries-catalog';
 import { DeepReadonly } from 'ts-essentials';
 import { TechRadarT, repoToTechRadarMap } from '@/techradar.config';
 import {
@@ -85,6 +89,7 @@ export interface LibraryT {
   contributors: ContributorsT[] | null | undefined; // null for errors, undefined for not loaded yet
   npmReleases: NpmPackageReleasesT[] | null | undefined;
   npmDownloads: LibNpmDownloadsT;
+  npmDownloadsGrowth: number | null | undefined;
   commits: LibCommitsT;
   googleTrends: LibGTrendsT | undefined;
   devUsage: StateOfJSItemT | undefined;
@@ -94,101 +99,90 @@ export interface LibraryT {
 
 export type ReadonlyLibraryT = DeepReadonly<LibraryT>;
 
-function reportSentry(err: AxiosError, methodName: string): void {
-  err.name = `UI API (${methodName})`;
-
-  Sentry.captureException(err, {
-    tags: {
-      apiResponseMessage: err.response?.data?.error || '',
-      apiRequestUrl: err.config?.url || '',
-    },
-  });
-}
-
-export function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
+export async function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
   const library = catalogNpmToLib[pkgName] || null;
-  const category = (library && library.category) || null;
-  const isNpmAByProduct = (library && library.isNpmAByProduct) || false;
+  const npmPackage = await fetchNpmPackage(pkgName);
+  const repo = await fetchGithubRepo(npmPackage.repoId);
 
-  return fetchNpmPackage(pkgName).then((npmPackage) =>
-    fetchGithubRepo(npmPackage.repoId).then((repo) => ({
-      id: nanoid(),
-      repo,
-      npmPackage,
-      isNpmAByProduct,
-      category,
-      alias: getSeoLibName(repo.repoId),
-      tradar: repoToTechRadarMap[repo.repoId] || null,
-      // We do type conversion because the Ref will eventually become Reactive and then Typescript will start arguing
-      contributors: (computed(() =>
-        contributorsMapR.get(repo.repoId)
-      ) as unknown) as ContributorsT[] | null | undefined,
-      npmReleases: (computed(() =>
-        npmReleasesMapR.get(npmPackage.name)
-      ) as unknown) as NpmPackageReleasesT[] | null | undefined,
-      npmDownloads: (computed(() =>
-        npmDownloadsMapR.get(npmPackage.name)
-      ) as unknown) as LibNpmDownloadsT,
-      commits: (computed(() =>
-        commitsMapR.get(repo.repoId)
-      ) as unknown) as LibCommitsT,
-      googleTrends: (computed(() =>
-        googleTrendsMapR.get(repo.repoId)
-      ) as unknown) as LibGTrendsT,
-      devUsage: repoIdToDevUsageDataMap[repo.repoId],
-      bundlesize: (computed(() =>
-        bundlesizeMapR.get(npmPackage.name)
-      ) as unknown) as LibBundleSizeT,
-      stars: (computed(() =>
-        starsMapR.get(repo.repoId.toLowerCase())
-      ) as unknown) as LibStarsT,
-    }))
-  );
+  return getLibrary(repo, npmPackage, library);
 }
 
-export function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
+export async function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
   const library = catalogRepoIdToLib[repoId.toLowerCase()] || null;
-  const category = (library && library.category) || null;
-  const isNpmAByProduct = (library && library.isNpmAByProduct) || false;
   const npmPackageName = (library && library.npm) || null;
   const fetchNpmPromise = npmPackageName
     ? fetchNpmPackage(npmPackageName)
     : Promise.resolve(null);
 
-  return Promise.all([fetchGithubRepo(repoId), fetchNpmPromise]).then(
-    ([repo, npmPackage]) => ({
-      id: nanoid(),
-      repo,
-      npmPackage,
-      isNpmAByProduct,
-      category,
-      alias: getSeoLibName(repo.repoId),
-      tradar: repoToTechRadarMap[repoId] || null,
-      // We do type conversion because the Ref will eventually become Reactive and then Typescript will start arguing
-      contributors: (computed(() =>
-        contributorsMapR.get(repoId)
-      ) as unknown) as ContributorsT[] | null | undefined,
-      npmReleases: (computed(() =>
-        npmPackage ? npmReleasesMapR.get(npmPackage.name) : null
-      ) as unknown) as NpmPackageReleasesT[] | null | undefined,
-      npmDownloads: (computed(() =>
-        npmPackage ? npmDownloadsMapR.get(npmPackage.name) : null
-      ) as unknown) as LibNpmDownloadsT,
-      commits: (computed(() =>
-        commitsMapR.get(repoId)
-      ) as unknown) as LibCommitsT,
-      googleTrends: (computed(() =>
-        googleTrendsMapR.get(repoId)
-      ) as unknown) as LibGTrendsT,
-      devUsage: repoIdToDevUsageDataMap[repoId],
-      bundlesize: (computed(() =>
-        npmPackage ? bundlesizeMapR.get(npmPackage.name) : null
-      ) as unknown) as LibBundleSizeT,
-      stars: (computed(() =>
-        starsMapR.get(repoId.toLowerCase())
-      ) as unknown) as LibStarsT,
-    })
-  );
+  const [repo, npmPackage] = await Promise.all([
+    fetchGithubRepo(repoId),
+    fetchNpmPromise,
+  ]);
+
+  return getLibrary(repo, npmPackage, library);
+}
+
+function getLibrary(
+  repo: RepoT,
+  npmPackage: NpmPackageT | null,
+  library: CatalogLibraryT
+): LibraryT {
+  const isNpmAByProduct = (library && library.isNpmAByProduct) || false;
+  const category = (library && library.category) || null;
+
+  return {
+    id: nanoid(),
+    repo,
+    npmPackage,
+    category,
+    isNpmAByProduct,
+    alias: getSeoLibName(repo.repoId),
+    tradar: repoToTechRadarMap[repo.repoId] || null,
+    // We do type conversion because the Ref will eventually become Reactive and then Typescript will start arguing
+    contributors: (computed(() =>
+      contributorsMapR.get(repo.repoId)
+    ) as unknown) as ContributorsT[] | null | undefined,
+    npmReleases: (computed(() =>
+      npmPackage ? npmReleasesMapR.get(npmPackage.name) : null
+    ) as unknown) as NpmPackageReleasesT[] | null | undefined,
+    npmDownloads: (computed(() =>
+      npmPackage ? npmDownloadsMapR.get(npmPackage.name) : null
+    ) as unknown) as LibNpmDownloadsT,
+    npmDownloadsGrowth: (computed(() => {
+      if (!npmPackage) {
+        return null;
+      }
+      const npmDownloads = npmDownloadsMapR.get(npmPackage.name);
+      if (!npmDownloads) {
+        return undefined;
+      }
+
+      const downloads = npmDownloads.map((val) => val.downloads);
+      const last = downloads.slice(-1)[0];
+      const first = downloads.slice(-6, -5)[0];
+
+      if (!first || !last) {
+        return '-';
+      }
+
+      const perc = 100 * (Math.pow(last / first, 1 / 6) - 1);
+
+      return perc;
+    }) as unknown) as number | undefined | null,
+    stars: (computed(() =>
+      starsMapR.get(repo.repoId.toLowerCase())
+    ) as unknown) as LibStarsT,
+    bundlesize: (computed(() =>
+      npmPackage ? bundlesizeMapR.get(npmPackage.name) : null
+    ) as unknown) as LibBundleSizeT,
+    devUsage: repoIdToDevUsageDataMap[repo.repoId],
+    googleTrends: (computed(() =>
+      googleTrendsMapR.get(repo.repoId)
+    ) as unknown) as LibGTrendsT,
+    commits: (computed(() =>
+      commitsMapR.get(repo.repoId)
+    ) as unknown) as LibCommitsT,
+  };
 }
 
 function fetchGithubRepo(repoId: string): Promise<RepoT> {
@@ -343,3 +337,14 @@ function getRepoData(
 //       };
 //     });
 // }
+
+function reportSentry(err: AxiosError, methodName: string): void {
+  err.name = `UI API (${methodName})`;
+
+  Sentry.captureException(err, {
+    tags: {
+      apiResponseMessage: err.response?.data?.error || '',
+      apiRequestUrl: err.config?.url || '',
+    },
+  });
+}
