@@ -138,16 +138,17 @@ function getLibrary(
     isNpmAByProduct,
     alias: getSeoLibName(repo.repoId),
     tradar: repoToTechRadarMap[repo.repoId] || null,
-    // We do type conversion because the Ref will eventually become Reactive and then Typescript will start arguing
-    contributors: (computed(() =>
-      contributorsMapR.get(repo.repoId)
-    ) as unknown) as ContributorsT[] | null | undefined,
-    npmReleases: (computed(() =>
+    // Use @ts-ignore because the Computed Ref will eventually become Reactive and then Typescript will start arguing
+    // @ts-ignore
+    contributors: computed(() => contributorsMapR.get(repo.repoId)),
+    // @ts-ignore
+    npmReleases: computed(() =>
       npmPackage ? npmReleasesMapR.get(npmPackage.name) : null
-    ) as unknown) as NpmPackageReleasesT[] | null | undefined,
-    npmDownloads: (computed(() =>
+    ),
+    // @ts-ignore
+    npmDownloads: computed(() =>
       npmPackage ? npmDownloadsMapR.get(npmPackage.name) : null
-    ) as unknown) as LibNpmDownloadsT,
+    ),
     npmDownloadsGrowth: (computed(() => {
       if (!npmPackage) {
         return null;
@@ -169,19 +170,17 @@ function getLibrary(
 
       return perc;
     }) as unknown) as number | undefined | null,
-    stars: (computed(() =>
-      starsMapR.get(repo.repoId.toLowerCase())
-    ) as unknown) as LibStarsT,
-    bundlesize: (computed(() =>
+    // @ts-ignore
+    stars: computed(() => starsMapR.get(repo.repoId.toLowerCase())),
+    // @ts-ignore
+    bundlesize: computed(() =>
       npmPackage ? bundlesizeMapR.get(npmPackage.name) : null
-    ) as unknown) as LibBundleSizeT,
+    ),
     devUsage: repoIdToDevUsageDataMap[repo.repoId],
-    googleTrends: (computed(() =>
-      googleTrendsMapR.get(repo.repoId)
-    ) as unknown) as LibGTrendsT,
-    commits: (computed(() =>
-      commitsMapR.get(repo.repoId)
-    ) as unknown) as LibCommitsT,
+    // @ts-ignore
+    googleTrends: computed(() => googleTrendsMapR.get(repo.repoId)),
+    // @ts-ignore
+    commits: computed(() => commitsMapR.get(repo.repoId)),
   };
 }
 
