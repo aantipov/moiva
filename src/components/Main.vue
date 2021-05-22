@@ -32,7 +32,7 @@
       <Table class="w-full mx-auto mt-4 mb-2 lg:w-3/4" />
 
       <!-- Charts -->
-      <div class="mb-12">
+      <section class="mb-12">
         <h2>
           Popularity
           <span class="text-lg font-normal">over time</span>
@@ -59,9 +59,9 @@
             <DevelopersUsage class="col-span-12 md:col-span-6 xl:col-span-4" />
           </template>
         </div>
-      </div>
+      </section>
 
-      <div class="mb-12">
+      <section class="mb-12">
         <h2>
           Maintenance and Development Activity
           <span class="text-lg font-normal">over time</span>
@@ -72,9 +72,9 @@
           <Commits class="col-span-12 md:col-span-6 xl:col-span-4" />
           <Issues class="col-span-12 md:col-span-6 xl:col-span-4" />
         </div>
-      </div>
+      </section>
 
-      <div>
+      <section>
         <h2>Miscellaneous</h2>
         <div class="grid grid-cols-12 gap-4">
           <template v-if="miscChartsNumber === 1">
@@ -103,7 +103,7 @@
             />
           </template>
         </div>
-      </div>
+      </section>
     </div>
   </div>
 </template>
