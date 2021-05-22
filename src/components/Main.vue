@@ -33,7 +33,10 @@
 
       <!-- Charts -->
       <div class="mb-12">
-        <h2>Popularity</h2>
+        <h2>
+          Popularity
+          <span class="text-lg font-normal">over time</span>
+        </h2>
         <div class="grid grid-cols-12 gap-4">
           <template v-if="popularChartsNumber === 1">
             <Stars
@@ -59,7 +62,10 @@
       </div>
 
       <div class="mb-12">
-        <h2>Maintenance and Development Activity</h2>
+        <h2>
+          Maintenance and Development Activity
+          <span class="text-lg font-normal">over time</span>
+        </h2>
         <div class="grid grid-cols-12 gap-4">
           <Releases class="col-span-12 md:col-span-6 xl:col-span-4" />
           <Contributors class="col-span-12 md:col-span-6 xl:col-span-4" />
