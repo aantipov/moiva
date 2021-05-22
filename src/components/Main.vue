@@ -167,7 +167,7 @@ export default defineComponent({
   },
 
   setup() {
-    // Do not allow Google index pages with >3 libraries in comparison
+    // Do not allow Google index pages with >3 libraries
     setNoFollowTag();
 
     // Keep up-to-date the mapping Library <=> Color
