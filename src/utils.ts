@@ -100,18 +100,12 @@ export const numbersFormatter = new Intl.NumberFormat('en-US', {
 });
 
 // Do not allow Google to index pages with >3 libraries in comparison
-// Do not allow Google to index pages with legacy query params
 // To avoid spamming Google and the user with useless and duplicated links
 export function setNoFollowTag(): void {
-  const Url = new URL(window.location.href);
-  const hasLegacyQueryParam = !!Url.searchParams.get(npmQueryParamNameLegacy);
   const npmPackagesFromUrl = getNpmPackagesFromUrl();
   const reposIdsFromUrl = getReposIdsFromUrl();
 
-  if (
-    hasLegacyQueryParam ||
-    npmPackagesFromUrl.length + reposIdsFromUrl.length >= 3
-  ) {
+  if (npmPackagesFromUrl.length + reposIdsFromUrl.length >= 3) {
     const metaRobots = document.createElement('meta');
     metaRobots.name = 'robots';
     metaRobots.content = 'noindex';
