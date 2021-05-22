@@ -105,7 +105,7 @@ export function setNoFollowTag(): void {
   const npmPackagesFromUrl = getNpmPackagesFromUrl();
   const reposIdsFromUrl = getReposIdsFromUrl();
 
-  if (npmPackagesFromUrl.length + reposIdsFromUrl.length > 3) {
+  if (npmPackagesFromUrl.length + reposIdsFromUrl.length >= 3) {
     const metaRobots = document.createElement('meta');
     metaRobots.name = 'robots';
     metaRobots.content = 'noindex';
