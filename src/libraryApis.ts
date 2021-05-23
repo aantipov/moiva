@@ -163,12 +163,10 @@ function getLibrary(
       const first = downloads.slice(-6, -5)[0];
 
       if (!first || !last) {
-        return '-';
+        return null;
       }
 
-      const perc = 100 * (Math.pow(last / first, 1 / 6) - 1);
-
-      return perc;
+      return 100 * (Math.pow(last / first, 1 / 6) - 1);
     }) as unknown) as number | undefined | null,
     // @ts-ignore
     stars: computed(() => starsMapR.get(repo.repoId.toLowerCase())),
