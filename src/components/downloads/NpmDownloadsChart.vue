@@ -88,16 +88,31 @@ export default defineComponent({
       },
     }));
 
+    const npmPackagesStr = computed<string>(() => {
+      const items = [...packagesNames.value];
+      if (!items.length) {
+        return '';
+      }
+      if (items.length === 1) {
+        return items[0];
+      }
+      if (items.length === 2) {
+        return items.join(' and ');
+      }
+      const last = items.pop();
+      return items.join(', ') + ', and ' + last;
+    });
+
     return {
       chartConfig,
-      ariaLabel: computed(() => {
-        const strings = datasets.value.map((dataset) => {
-          const downloads = numbersFormatter.format(
-            (dataset.data || [0]).slice(-1)[0] as number
-          );
-          return `${dataset.label}: ${downloads} downloads`;
-        });
-        return `NPM Monthly Downloads chart. ${strings.join(', ')}`;
+      ariaLabel: computed<string>(() => {
+        // const strings = datasets.value.map((dataset) => {
+        //   const downloads = numbersFormatter.format(
+        //     (dataset.data || [0]).slice(-1)[0] as number
+        //   );
+        //   return `${dataset.label}: ${downloads} downloads`;
+        // });
+        return `Npm Downloads statistics for ${npmPackagesStr.value}.`;
       }),
     };
   },

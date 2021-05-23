@@ -21,6 +21,7 @@ import {
 import {
   NpmPackageReleasesT,
   cacheR as npmReleasesMapR,
+  creationDatesCacheR as npmCreationDatesMapR,
 } from '@/components/npm-releases/api';
 import {
   CommitsResponseItemT,
@@ -43,6 +44,7 @@ import {
   cacheR as bundlesizeMapR,
 } from '@/components/bundle-size/api';
 import { StarsT, cacheR as starsMapR } from '@/components/github-stars/api';
+import { libraryToColorMapR } from '@/store/librariesColors';
 
 const npmPackageCache = new Map();
 const githubCache = new Map();
@@ -80,6 +82,7 @@ type LibStarsT = StarsT[] | null | undefined;
 
 export interface LibraryT {
   id: string;
+  color: string;
   npmPackage?: NpmPackageT | null;
   category?: string | null;
   isNpmAByProduct?: boolean | null;
@@ -87,6 +90,7 @@ export interface LibraryT {
   alias: string;
   tradar: TechRadarT | null;
   contributors: ContributorsT[] | null | undefined; // null for errors, undefined for not loaded yet
+  npmCreationDate: string | null | undefined;
   npmReleases: NpmPackageReleasesT[] | null | undefined;
   npmDownloads: LibNpmDownloadsT;
   npmDownloadsGrowth: number | null | undefined;
@@ -129,9 +133,10 @@ function getLibrary(
 ): LibraryT {
   const isNpmAByProduct = (library && library.isNpmAByProduct) || false;
   const category = (library && library.category) || null;
+  const id = nanoid();
 
   return {
-    id: nanoid(),
+    id,
     repo,
     npmPackage,
     category,
@@ -140,7 +145,13 @@ function getLibrary(
     tradar: repoToTechRadarMap[repo.repoId] || null,
     // Use @ts-ignore because the Computed Ref will eventually become Reactive and then Typescript will start arguing
     // @ts-ignore
+    color: computed(() => libraryToColorMapR.get(id) || '#000000'),
+    // @ts-ignore
     contributors: computed(() => contributorsMapR.get(repo.repoId)),
+    // @ts-ignore
+    npmCreationDate: computed(() =>
+      npmPackage ? npmCreationDatesMapR.get(npmPackage.name) : null
+    ),
     // @ts-ignore
     npmReleases: computed(() =>
       npmPackage ? npmReleasesMapR.get(npmPackage.name) : null

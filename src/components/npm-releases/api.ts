@@ -8,7 +8,7 @@ export interface NpmPackageReleasesT {
 }
 
 export const cacheR = reactive(new Map<string, NpmPackageReleasesT[] | null>());
-export const creationDatesCache = new Map();
+export const creationDatesCacheR = reactive(new Map<string, string | null>());
 
 export function fetchNpmPackageReleases(
   pkg: string
@@ -33,16 +33,15 @@ export function fetchNpmPackageReleases(
       }));
 
       cacheR.set(pkg, items);
-
-      if (data.created) {
-        creationDatesCache.set(pkg, data.created);
-      }
+      creationDatesCacheR.set(pkg, data.created || null);
 
       return items;
     })
     .catch((err) => {
       reportSentry(err, 'fetchNpmPackageReleases');
 
+      cacheR.set(pkg, null);
+      creationDatesCacheR.set(pkg, null);
       return null;
     });
 }

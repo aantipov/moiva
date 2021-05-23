@@ -3,8 +3,8 @@
     v-if="npmPackagesNames.length"
     :is-loading="isLoading"
     :is-error="isError"
-    :packages-names="successItemsIds"
-    :failed-packages-names="failedItemsIds"
+    :packages-names="successPackagesNames"
+    :failed-packages-names="failedPackagesNames"
     :packages-downloads="items"
     :package-to-color-map="npmPackageToColorMap"
   />
@@ -15,14 +15,13 @@ import { defineComponent, computed, watchEffect } from 'vue';
 import NpmDownloadsChart from './NpmDownloadsChart.vue';
 import { fetchNpmDownloads, NpmDownloadT } from './api';
 import { chartsVisibility } from '@/store/chartsVisibility';
-import { npmCreationDatesMap } from '@/store/npmCreationDates';
 import useChartApi from '@/composables/useChartApi';
 import { getEarliestMonth, getPrevMonth } from '@/utils';
-import { libraryToColorMap } from '@/store/librariesColors';
+import { NpmPackageT } from '@/libraryApis';
 import {
+  librariesRR,
   isLoading as isLoadingLibraries,
   npmPackagesNames,
-  npmPackageToLibraryIdMap,
 } from '@/store/libraries';
 
 export default defineComponent({
@@ -31,13 +30,7 @@ export default defineComponent({
   components: { NpmDownloadsChart },
 
   setup() {
-    const {
-      isLoading,
-      isError,
-      items,
-      successItemsIds,
-      failedItemsIds,
-    } = useChartApi<NpmDownloadT[]>(
+    useChartApi<NpmDownloadT[]>(
       npmPackagesNames,
       isLoadingLibraries,
       fetchNpmDownloads
@@ -47,16 +40,20 @@ export default defineComponent({
       chartsVisibility.npmDownloads = npmPackagesNames.value.length > 0;
     });
 
+    const filteredLibsR = computed(() =>
+      librariesRR.filter((lib) => !!lib.npmDownloads)
+    );
+
     // Calculate startMonth based on packages creation date
     const startMonth = computed(() => {
       const defaultValue = '2017-01';
-      const validCreationDates = successItemsIds.value
-        .map((pkg) => npmCreationDatesMap.get(pkg))
-        .filter((creationDate) => !!creationDate) as string[];
+      const validCreationDates = filteredLibsR.value
+        .map((lib) => lib.npmCreationDate)
+        .filter((date) => !!date) as string[];
 
       if (
-        !successItemsIds.value.length ||
-        validCreationDates.length < successItemsIds.value.length
+        !filteredLibsR.value.length ||
+        validCreationDates.length < filteredLibsR.value.length
       ) {
         return defaultValue;
       }
@@ -64,26 +61,40 @@ export default defineComponent({
       return getPrevMonth(getEarliestMonth(validCreationDates, defaultValue));
     });
 
-    // Filter out data earlier startMonth
-    const filteredItems = computed(() =>
-      items.value.map((pkgDownloads) =>
-        pkgDownloads.filter(({ month }) => month >= startMonth.value)
-      )
+    const isLoadingRef = computed(
+      () =>
+        isLoadingLibraries.value ||
+        librariesRR.filter((lib) => lib.npmDownloads === undefined).length > 0
     );
 
     return {
-      isLoading: computed(() => isLoadingLibraries.value || isLoading.value),
-      isError,
+      isLoading: isLoadingRef,
+      isError: computed(() => filteredLibsR.value.length === 0),
       npmPackagesNames, // all items
-      items: filteredItems,
-      failedItemsIds,
-      successItemsIds,
+      successPackagesNames: computed(() =>
+        filteredLibsR.value.map((lib) => (lib.npmPackage as NpmPackageT).name)
+      ),
+      items: computed(() =>
+        filteredLibsR.value.map((lib) =>
+          (lib.npmDownloads as NpmDownloadT[]).filter(
+            // Filter out data earlier startMonth
+            ({ month }) => month >= startMonth.value
+          )
+        )
+      ),
+      filteredLibsR,
+      failedPackagesNames: computed<string[]>(() => {
+        if (isLoadingRef.value) {
+          return [];
+        }
+        return librariesRR
+          .filter((lib) => !!lib.npmPackage && !lib.npmDownloads)
+          .map((lib) => (lib.npmPackage as NpmPackageT).name);
+      }),
       npmPackageToColorMap: computed(() =>
-        successItemsIds.value.reduce((acc, npmPackageName) => {
-          acc[npmPackageName] =
-            libraryToColorMap.value[
-              npmPackageToLibraryIdMap.value[npmPackageName]
-            ];
+        filteredLibsR.value.reduce((acc, lib) => {
+          const pkgName = (lib.npmPackage as NpmPackageT).name;
+          acc[pkgName] = lib.color;
           return acc;
         }, {} as Record<string, string>)
       ),

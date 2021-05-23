@@ -17,7 +17,7 @@ import { npmCreationDatesMap } from '@/store/npmCreationDates';
 import ReleasesChart from './ReleasesChart.vue';
 import {
   fetchNpmPackageReleases,
-  creationDatesCache,
+  creationDatesCacheR,
   NpmPackageReleasesT,
 } from './api';
 import useChartApi from '@/composables/useChartApi';
@@ -49,7 +49,7 @@ export default defineComponent({
     // Add packages creation dates to global store
     watchEffect(() => {
       successItemsIds.value.forEach((pkg) =>
-        npmCreationDatesMap.set(pkg, creationDatesCache.get(pkg))
+        npmCreationDatesMap.set(pkg, creationDatesCacheR.get(pkg) as string)
       );
     });
 
