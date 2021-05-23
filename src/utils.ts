@@ -334,6 +334,21 @@ function sortLibsByAlias(libA: LibraryT, libB: LibraryT) {
   return 0;
 }
 
+export function getNamesStr(names: string[]): string {
+  const items = [...names];
+  if (!items.length) {
+    return '';
+  }
+  if (items.length === 1) {
+    return items[0];
+  }
+  if (items.length === 2) {
+    return items.join(' and ');
+  }
+  const last = items.pop();
+  return items.join(', ') + ', and ' + last;
+}
+
 export function getQuarterMonthFromDate(date: string): string {
   const dateObj = new Date(date);
   const month = dateObj.getUTCMonth();
