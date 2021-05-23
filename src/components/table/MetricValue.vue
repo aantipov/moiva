@@ -192,7 +192,7 @@
 import { defineComponent, toRefs, computed } from 'vue';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import { ReadonlyLibraryT } from '@/libraryApis';
-import { numbersFormatter } from '@/utils';
+import { numbersFormatter, formatPercent } from '@/utils';
 import TsBundledIcon from '@/icons/TsBundled.vue';
 import TsDtIcon from '@/icons/TsDt.vue';
 import { MetricT } from './Table.vue';
@@ -271,21 +271,9 @@ export default defineComponent({
       }),
 
       npmDownloadsGrowth: computed<string>(() => {
-        if (!lib.value.npmDownloads) {
-          return '-';
-        }
-        const downloads = lib.value.npmDownloads.map((val) => val.downloads);
-        const last = downloads.slice(-1)[0];
-        const first = downloads.slice(-6, -5)[0];
-
-        if (!first || !last) {
-          return '-';
-        }
-
-        const perc = 100 * (Math.pow(last / first, 1 / 6) - 1);
-        const sign = perc >= 0 ? '+' : '';
-
-        return `${sign}${numbersFormatter.format(perc)}%`;
+        return lib.value.npmDownloadsGrowth
+          ? formatPercent(lib.value.npmDownloadsGrowth, true)
+          : '-';
       }),
 
       getAge(createdAt: string): string {

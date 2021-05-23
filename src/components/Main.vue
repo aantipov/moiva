@@ -110,7 +110,7 @@
 
 <script lang="ts">
 import { defineComponent, onMounted, watchEffect, computed } from 'vue';
-import NpmDownloads from './downloads/NpmDownloads.vue';
+import NpmDownloads from './downloads/NpmDownloadsChart.vue';
 import Title from './Title.vue';
 import Search from './search/Search.vue';
 import Suggestions from './Suggestions.vue';
@@ -147,8 +147,11 @@ import {
   addLibraryByNpmPackage,
   addLibraryByRepo,
   removeAllLibraries,
+  npmPackagesNames,
 } from '@/store/libraries';
 import { LibraryT } from '@/libraryApis';
+import { fetchNpmDownloads } from '@/components/downloads/api';
+import useChartApi from '@/composables/useChartApi';
 
 export default defineComponent({
   name: 'Main',
@@ -203,6 +206,8 @@ export default defineComponent({
         updateTitle(libraries as LibraryT[]);
         updateMetaDescription(libraries as LibraryT[]);
       });
+
+      useChartApi(npmPackagesNames, isLoading, fetchNpmDownloads);
     });
 
     function selectNpmPackage(npmPackageName: string): void {

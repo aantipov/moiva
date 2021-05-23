@@ -99,6 +99,12 @@ export const numbersFormatter = new Intl.NumberFormat('en-US', {
   notation: 'compact',
 });
 
+export function formatPercent(value: number, withSign = false): string {
+  const sign = withSign && value >= 0 ? '+' : '';
+
+  return `${sign}${numbersFormatter.format(value)}%`;
+}
+
 // Do not allow Google to index pages with >=3 libraries
 // To avoid spamming Google and the user with useless and duplicated links
 export function setNoFollowTag(): void {
@@ -366,6 +372,9 @@ export function getPrevMonth(month: string): string {
  */
 export function getEarliestMonth(dates: string[], limitMonth: string): string {
   limitMonth = limitMonth.slice(0, 7);
+  if (!dates.length) {
+    return limitMonth;
+  }
   const month = dates
     .sort((a, b) => {
       if (a > b) {
