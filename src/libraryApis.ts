@@ -99,6 +99,7 @@ export interface LibraryT {
   devUsage: StateOfJSItemT | undefined;
   bundlesize: LibBundleSizeT;
   stars: LibStarsT;
+  starsNewAvg: number | null | undefined;
 }
 
 export type ReadonlyLibraryT = DeepReadonly<LibraryT>;
@@ -145,7 +146,7 @@ function getLibrary(
     tradar: repoToTechRadarMap[repo.repoId] || null,
     // Use @ts-ignore because the Computed Ref will eventually become Reactive and then Typescript will start arguing
     // @ts-ignore
-    color: computed(() => libraryToColorMapR.get(id) || '#000000'),
+    color: computed(() => libraryToColorMapR.get(id) || '#ffffff'),
     // @ts-ignore
     contributors: computed(() => contributorsMapR.get(repo.repoId)),
     // @ts-ignore
@@ -181,6 +182,20 @@ function getLibrary(
     }) as unknown) as number | undefined | null,
     // @ts-ignore
     stars: computed(() => starsMapR.get(repo.repoId.toLowerCase())),
+    // @ts-ignore
+    starsNewAvg: computed(() => {
+      // Get avg number of new stars monthly (in the last 3 months)
+      const stars = starsMapR.get(repo.repoId.toLowerCase());
+      if (!stars) {
+        return stars; // null or undefined
+      }
+      const lastStars = stars.slice(-3);
+
+      return (
+        lastStars.map((val) => val.stars).reduce((acc, val) => acc + val, 0) /
+        lastStars.length
+      );
+    }),
     // @ts-ignore
     bundlesize: computed(() =>
       npmPackage ? bundlesizeMapR.get(npmPackage.name) : null

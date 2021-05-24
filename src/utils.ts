@@ -104,6 +104,11 @@ export function formatPercent(value: number, withSign = false): string {
 
   return `${sign}${numbersFormatter.format(value)}%`;
 }
+export function formatNumber(value: number, withSign = false): string {
+  const sign = withSign && value >= 0 ? '+' : '';
+
+  return `${sign}${numbersFormatter.format(value)}`;
+}
 
 // Do not allow Google to index pages with >=3 libraries
 // To avoid spamming Google and the user with useless and duplicated links

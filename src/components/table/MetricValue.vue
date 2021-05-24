@@ -192,7 +192,7 @@
 import { defineComponent, toRefs, computed } from 'vue';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import { ReadonlyLibraryT } from '@/libraryApis';
-import { numbersFormatter, formatPercent } from '@/utils';
+import { numbersFormatter, formatPercent, formatNumber } from '@/utils';
 import TsBundledIcon from '@/icons/TsBundled.vue';
 import TsDtIcon from '@/icons/TsDt.vue';
 import { MetricT } from './Table.vue';
@@ -226,36 +226,23 @@ export default defineComponent({
       encodeURIComponent(lib.value.npmPackage?.name ?? '')
     );
 
-    // avg number of new stars monthly (in the last 3 months)
-    const newStarsAvg = computed<number>(() => {
-      if (!lib.value.stars) {
-        return 0;
-      }
-
-      return (
-        lib.value.stars
-          .slice(-3)
-          .map((val) => val.stars)
-          .reduce((acc, val) => acc + val, 0) / 3
-      );
-    });
-
     return {
       starsGrowth: computed<string>(() => {
         if (!lib.value.stars || !lib.value.repo.stars) {
           return '-';
         }
 
-        if (newStarsAvg.value < 1) {
+        const newStarsAvg = lib.value.starsNewAvg as number;
+
+        if (newStarsAvg < 1) {
           return '0';
         }
 
-        const newStarsFormatted = numbersFormatter.format(newStarsAvg.value);
-        const total = lib.value.repo.stars - newStarsAvg.value;
-        const percentage = (100 * newStarsAvg.value) / total;
+        const total = lib.value.repo.stars - newStarsAvg;
+        const percentage = (100 * newStarsAvg) / total;
         const percentageFormatted = numbersFormatter.format(percentage);
 
-        return `+${newStarsFormatted} = +${percentageFormatted}%`;
+        return `${formatNumber(newStarsAvg, true)} = +${percentageFormatted}%`;
       }),
 
       npmDownloads: computed<string | null>(() => {

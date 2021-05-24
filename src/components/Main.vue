@@ -120,7 +120,7 @@ import Table from './table/Table.vue';
 import Releases from './npm-releases/Releases.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './google-trends/GTrends.vue';
-import Stars from './github-stars/Stars.vue';
+import Stars from './github-stars/StarsChart.vue';
 import Bundlephobia from './bundle-size/Bundlephobia.vue';
 import Issues from './Issues.vue';
 import Languages from './Languages.vue';
@@ -147,11 +147,9 @@ import {
   addLibraryByNpmPackage,
   addLibraryByRepo,
   removeAllLibraries,
-  npmPackagesNames,
 } from '@/store/libraries';
 import { LibraryT } from '@/libraryApis';
-import { fetchNpmDownloads } from '@/components/downloads/api';
-import useChartApi from '@/composables/useChartApi';
+import useExtraDataApi from '@/composables/useExtraDataApi';
 
 export default defineComponent({
   name: 'Main',
@@ -207,7 +205,8 @@ export default defineComponent({
         updateMetaDescription(libraries as LibraryT[]);
       });
 
-      useChartApi(npmPackagesNames, isLoading, fetchNpmDownloads);
+      // Load libraries extra data
+      useExtraDataApi();
     });
 
     function selectNpmPackage(npmPackageName: string): void {

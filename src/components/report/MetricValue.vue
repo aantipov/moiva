@@ -7,13 +7,6 @@
     {{ formatNumber(lib.starsPlus) }}
   </div>
 
-  <div
-    v-else-if="type === 'starsPlusPercentage'"
-    class="flex items-center justify-end"
-  >
-    {{ lib.starsPlusPercentage }}%
-  </div>
-
   <div v-else-if="type === 'downloads'" class="flex items-center justify-end">
     {{ formatNumber(lib.dwnlMonthly) }}
   </div>
