@@ -1,3 +1,4 @@
+import { DeepReadonly } from 'vue';
 import axios, { AxiosError } from 'axios';
 import * as Sentry from '@sentry/browser';
 import {
@@ -5,7 +6,6 @@ import {
   ERROR_CODE_FETCH_GITHUB_REPO_FAILED,
 } from '@/constants';
 import { catalogRepoIdToLib, catalogNpmToLib } from '@/libraries-catalog';
-import { DeepReadonly } from 'ts-essentials';
 import { getLibrary, LibraryT } from '@/getLibrary';
 
 const npmPackageCache = new Map();
@@ -38,6 +38,7 @@ export interface NpmPackageT {
 }
 
 export type LibraryReadonlyT = DeepReadonly<LibraryT>;
+export type LibrariesReadonlyT = DeepReadonly<LibraryT[]>;
 
 export async function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
   const library = catalogNpmToLib[pkgName] || null;
