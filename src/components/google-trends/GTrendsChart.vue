@@ -1,7 +1,6 @@
 <template>
   <m-chart
-    title="Google Trends - "
-    subtitle="Interest Over Time"
+    title="Google Search Interest"
     :is-loading="isLoading"
     :is-error="isError"
     :libs-names="libsKeywordsAliases"
