@@ -15,16 +15,17 @@ export const cacheR = reactive(
 export function fetchRepoCommits(
   repoId: string
 ): Promise<CommitsResponseItemT[] | null> {
-  if (cacheR.get(repoId)) {
-    return Promise.resolve(cacheR.get(repoId) as CommitsResponseItemT[]);
+  const repoIdLc = repoId.toLowerCase();
+  if (cacheR.get(repoIdLc)) {
+    return Promise.resolve(cacheR.get(repoIdLc) as CommitsResponseItemT[]);
   }
 
   return axios
     .get<{ items: CommitsResponseItemT[] }>(
-      `https://github-commits.moiva.workers.dev/?repo=${repoId}`
+      `https://github-commits.moiva.workers.dev/?repo=${repoIdLc}`
     )
     .then(({ data }) => {
-      cacheR.set(repoId, data.items);
+      cacheR.set(repoIdLc, data.items);
       return data.items;
     })
     .catch((err) => {
@@ -36,7 +37,7 @@ export function fetchRepoCommits(
         reportSentry(err, 'fetchGithubCommitsData');
       }
 
-      cacheR.set(repoId, null);
+      cacheR.set(repoIdLc, null);
       return null;
     });
 }

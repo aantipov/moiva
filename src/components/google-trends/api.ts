@@ -39,7 +39,7 @@ export function fetchGTrendsData(
         time,
         value: value[index],
       }));
-      cacheR.set(repoId, { average, timeline });
+      cacheR.set(repoId.toLowerCase(), { average, timeline });
     });
 
     return Promise.resolve(data);
@@ -58,7 +58,7 @@ export function fetchGTrendsData(
           time,
           value: value[index],
         }));
-        cacheR.set(repoId, { average, timeline });
+        cacheR.set(repoId.toLowerCase(), { average, timeline });
       });
       return data;
     })

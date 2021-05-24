@@ -780,7 +780,7 @@ const libs: [RepoNameT, AliasT, LinkT, EntryT[]][] = [
 
 export const repoToTechRadarMap = libs.reduce(
   (accum, [repo, alias, link, entries]) => {
-    accum[repo] = { repo, alias, link, entries };
+    accum[repo.toLowerCase()] = { repo, alias, link, entries };
     return accum;
   },
   {} as Record<string, TechRadarT>

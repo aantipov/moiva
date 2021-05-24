@@ -13,13 +13,14 @@ export const cacheR = reactive(new Map<string, ContributorsT[] | null>());
 export function fetchContributors(
   repoId: string
 ): Promise<ContributorsT[] | null> {
-  if (cacheR.get(repoId)) {
-    return Promise.resolve(cacheR.get(repoId) as ContributorsT[]);
+  const repoIdLc = repoId.toLowerCase();
+  if (cacheR.get(repoIdLc)) {
+    return Promise.resolve(cacheR.get(repoIdLc) as ContributorsT[]);
   }
 
   return axios
     .get<{ items: ContributorsT[] }>(
-      `https://github-contributors.moiva.workers.dev/?repo=${repoId}`
+      `https://github-contributors.moiva.workers.dev/?repo=${repoIdLc}`
     )
     .then(({ data }) => {
       // fix quarters and add 1 month to correspond to the values used by the chart library
@@ -32,7 +33,7 @@ export function fetchContributors(
         })(),
       }));
 
-      cacheR.set(repoId, items);
+      cacheR.set(repoIdLc, items);
       return items;
     })
     .catch((err) => {
@@ -44,7 +45,7 @@ export function fetchContributors(
         reportSentry(err, 'fetchContributorsData');
       }
 
-      cacheR.set(repoId, null);
+      cacheR.set(repoIdLc, null);
       return null;
     });
 }

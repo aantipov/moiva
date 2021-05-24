@@ -1,5 +1,5 @@
 import { Handler } from '@netlify/functions';
-import { repoToGTrendDefMap } from '../google-trends.config';
+import { repoToGTrendDefMap } from '../src/google-trends.config';
 // @ts-ignore
 import googleTrends from 'google-trends-api';
 import { initSentry, reportError } from '../api-utils';
