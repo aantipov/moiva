@@ -148,7 +148,7 @@ import {
   addLibraryByRepo,
   removeAllLibraries,
 } from '@/store/libraries';
-import { LibraryT } from '@/libraryApis';
+import { LibraryReadonlyT } from '@/libraryApis';
 import useExtraDataApi from '@/composables/useExtraDataApi';
 
 export default defineComponent({
@@ -200,9 +200,9 @@ export default defineComponent({
         }
 
         // Update URL, Title and Meta Description
-        updateUrl(libraries as LibraryT[]);
-        updateTitle(libraries as LibraryT[]);
-        updateMetaDescription(libraries as LibraryT[]);
+        updateUrl(libraries as LibraryReadonlyT[]);
+        updateTitle(libraries as LibraryReadonlyT[]);
+        updateMetaDescription(libraries as LibraryReadonlyT[]);
       });
 
       // Load libraries extra data
@@ -255,7 +255,7 @@ export default defineComponent({
           ].filter(Boolean).length
       ),
       category: computed(() =>
-        getSelectedLibsCategory(libraries as LibraryT[])
+        getSelectedLibsCategory(libraries as LibraryReadonlyT[])
       ),
       clearSelection() {
         removeAllLibraries();

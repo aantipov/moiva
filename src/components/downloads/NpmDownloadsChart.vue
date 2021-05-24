@@ -26,7 +26,7 @@ import {
   formatPercent,
 } from '@/utils';
 import { enUS } from 'date-fns/locale';
-import { NpmPackageT, ReadonlyLibraryT } from '@/libraryApis';
+import { NpmPackageT, LibraryReadonlyT } from '@/libraryApis';
 import { chartsVisibility } from '@/store/chartsVisibility';
 import { npmPackagesNames } from '@/store/libraries';
 import {
@@ -34,7 +34,7 @@ import {
   isLoading as isLoadingLibraries,
 } from '@/store/libraries';
 
-interface FilteredLibT extends ReadonlyLibraryT {
+interface FilteredLibT extends LibraryReadonlyT {
   npmPackage: NpmPackageT;
   npmDownloads: NpmDownloadT[];
   npmDownloadsGrowth: number;
