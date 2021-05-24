@@ -16,7 +16,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import { ChartConfiguration } from 'chart.js';
-import { getEarliestMonth, getPrevMonth } from '@/utils';
+import { getEarliestMonth, getPrevMonth, formatNumber } from '@/utils';
 import { StarsT } from './api';
 import { enUS } from 'date-fns/locale';
 import { ReadonlyLibraryT } from '@/libraryApis';
@@ -27,6 +27,7 @@ import {
 
 interface FilteredLibT extends ReadonlyLibraryT {
   stars: StarsT[];
+  starsNewAvg: number;
 }
 
 export default defineComponent({
@@ -72,11 +73,6 @@ export default defineComponent({
       },
     }));
 
-    function getAverage(items: StarsT[]): number {
-      const sum = items.reduce((a, b) => a + b.stars, 0);
-      return Math.round(sum / items.length);
-    }
-
     const isLoadingRef = computed(
       () =>
         isLoadingLibraries.value ||
@@ -89,10 +85,17 @@ export default defineComponent({
       chartConfig,
       ariaLabel: computed(() => {
         const valuesStr = filteredLibsRef.value
-          .map((lib) => `${lib.alias}: ${getAverage(lib.stars.slice(-3))}`)
-          .join(', ');
+          .map(
+            (lib) =>
+              `${
+                lib.alias
+              } stars number increase, on average, by ${formatNumber(
+                lib.starsNewAvg
+              )} new stars each month.`
+          )
+          .join(' ');
 
-        return `New GitHub Stars chart. An average number of new stars repostories get monthly - ${valuesStr} stars`;
+        return `GitHub Stars statistics. ${valuesStr}`;
       }),
       reposIds: computed(() =>
         filteredLibsRef.value.map((lib) => lib.repo.repoId)
