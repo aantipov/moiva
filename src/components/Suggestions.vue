@@ -31,7 +31,6 @@ import { defineComponent, computed, ref } from 'vue';
 import { getSuggestions, constructHref } from '@/utils';
 import { CatalogLibraryT } from '@/libraries-catalog';
 import { libraries } from '@/store/libraries';
-import { LibraryT } from '@/libraryApis';
 import ChevronDownIcon from '@/components/icons/ChevronDown.vue';
 import ChevronUpIcon from '@/components/icons/ChevronUp.vue';
 
@@ -51,7 +50,7 @@ export default defineComponent({
   setup(_props, { emit }) {
     const showAll = ref(false);
     const allSuggestions = computed<CatalogLibraryT[]>(() =>
-      getSuggestions(libraries as LibraryT[])
+      getSuggestions(libraries)
     );
 
     return {

@@ -19,13 +19,13 @@ import { ChartConfiguration } from 'chart.js';
 import { getEarliestMonth, getPrevMonth, formatNumber } from '@/utils';
 import { StarsT } from './api';
 import { enUS } from 'date-fns/locale';
-import { ReadonlyLibraryT } from '@/libraryApis';
+import { LibraryReadonlyT } from '@/libraryApis';
 import {
   librariesRR,
   isLoading as isLoadingLibraries,
 } from '@/store/libraries';
 
-interface FilteredLibT extends ReadonlyLibraryT {
+interface FilteredLibT extends LibraryReadonlyT {
   stars: StarsT[];
   starsNewAvg: number;
 }

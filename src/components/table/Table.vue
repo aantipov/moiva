@@ -78,7 +78,6 @@ import { defineComponent } from 'vue';
 import Loader from '../Loader.vue';
 import MetricHeader from './MetricHeader.vue';
 import MetricValue from './MetricValue.vue';
-// import { ReadonlyLibraryT } from '@/libraryApis';
 import { libraryToColorMap } from '@/store/librariesColors';
 import {
   libraries,

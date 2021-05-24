@@ -55,7 +55,7 @@
 import { defineComponent, toRefs, computed } from 'vue';
 import BundlephobiaIcon from './icons/Bundlephobia.vue';
 import ThoughtworksIcon from './icons/Thoughtworks.vue';
-import { ReadonlyLibraryT } from '@/libraryApis';
+import { LibraryReadonlyT } from '@/libraryApis';
 import { repoToTechRadarMap } from '@/techradar.config';
 import { getBundlephobiaUrl } from '@/utils';
 
@@ -68,7 +68,7 @@ export default defineComponent({
   },
 
   props: {
-    library: { type: Object as () => ReadonlyLibraryT, required: true },
+    library: { type: Object as () => LibraryReadonlyT, required: true },
   },
 
   setup(props) {

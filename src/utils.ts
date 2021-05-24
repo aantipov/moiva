@@ -3,7 +3,7 @@ import {
   catalogReposIdsByCategory,
   CatalogLibraryT,
 } from './libraries-catalog';
-import { LibraryT } from '@/libraryApis';
+import { LibraryReadonlyT, LibrariesReadonlyT } from '@/libraryApis';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import Swal from 'sweetalert2';
 
@@ -15,7 +15,7 @@ const encodedDelimiter = '+';
 let hasCanonicalUrlCheckProcessed = false;
 
 // Update the URL whenever a user selects/deselects a library
-export function updateUrl(libraries: LibraryT[]): void {
+export function updateUrl(libraries: LibrariesReadonlyT): void {
   const Url = new URL(window.location.href);
   const originalHref = '/' + Url.search;
   const npmPackagesNames = [] as string[];
@@ -156,7 +156,7 @@ export function getSeoLibName(repoId: string): string {
   return repoName;
 }
 
-export function updateTitle(libraries: LibraryT[]): void {
+export function updateTitle(libraries: LibrariesReadonlyT): void {
   let title = 'Moiva.io - Discover and Compare GitHub and NPM packages';
 
   if (libraries.length) {
@@ -181,7 +181,7 @@ interface LibForDescriptionT {
   age: string;
 }
 
-export function updateMetaDescription(libraries: LibraryT[]): void {
+export function updateMetaDescription(libraries: LibrariesReadonlyT): void {
   let descr = `Which Library or Framework to use? Need to find the best alternatives?
     Compare Stats and Trends - Google Trends, Contributors, Releases, Commits, Developer usage, Npm Downloads, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
 
@@ -259,7 +259,9 @@ ${libC.alias}: &#9733;${libC.starsCount} stars, ${libC.age} old...
 `;
 }
 
-export function getSelectedLibsCategory(libraries: LibraryT[]): string | null {
+export function getSelectedLibsCategory(
+  libraries: LibrariesReadonlyT
+): string | null {
   if (!libraries.length) {
     return null;
   }
@@ -285,7 +287,9 @@ export function getSelectedLibsCategory(libraries: LibraryT[]): string | null {
  * - show the rest category libraries otherwise
  *
  */
-export function getSuggestions(libraries: LibraryT[]): CatalogLibraryT[] {
+export function getSuggestions(
+  libraries: LibrariesReadonlyT
+): CatalogLibraryT[] {
   if (!libraries.length) {
     return [];
   }
@@ -327,7 +331,7 @@ export function showErrorMsg(msg: string): void {
   });
 }
 
-function sortLibsByAlias(libA: LibraryT, libB: LibraryT) {
+function sortLibsByAlias(libA: LibraryReadonlyT, libB: LibraryReadonlyT) {
   const aliasA = libA.alias;
   const aliasB = libB.alias;
   if (aliasA < aliasB) {

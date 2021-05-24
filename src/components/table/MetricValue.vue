@@ -191,7 +191,7 @@
 <script lang="ts">
 import { defineComponent, toRefs, computed } from 'vue';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
-import { ReadonlyLibraryT } from '@/libraryApis';
+import { LibraryReadonlyT } from '@/libraryApis';
 import { numbersFormatter, formatPercent, formatNumber } from '@/utils';
 import TsBundledIcon from '@/icons/TsBundled.vue';
 import TsDtIcon from '@/icons/TsDt.vue';
@@ -215,7 +215,7 @@ export default defineComponent({
       required: true,
     },
     lib: {
-      type: Object as () => ReadonlyLibraryT,
+      type: Object as () => LibraryReadonlyT,
       required: true,
     },
   },

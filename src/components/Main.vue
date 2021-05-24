@@ -142,13 +142,12 @@ import {
 import { updateLibrariesColors } from '@/store/librariesColors';
 import {
   isLoading,
-  libraries,
+  librariesRR,
   librariesIds,
   addLibraryByNpmPackage,
   addLibraryByRepo,
   removeAllLibraries,
 } from '@/store/libraries';
-import { LibraryT } from '@/libraryApis';
 import useExtraDataApi from '@/composables/useExtraDataApi';
 
 export default defineComponent({
@@ -200,9 +199,9 @@ export default defineComponent({
         }
 
         // Update URL, Title and Meta Description
-        updateUrl(libraries as LibraryT[]);
-        updateTitle(libraries as LibraryT[]);
-        updateMetaDescription(libraries as LibraryT[]);
+        updateUrl(librariesRR);
+        updateTitle(librariesRR);
+        updateMetaDescription(librariesRR);
       });
 
       // Load libraries extra data
@@ -224,7 +223,7 @@ export default defineComponent({
     }
 
     return {
-      libraries,
+      libraries: librariesRR,
       isLoading,
       chartsVisibility,
       select: (id: string, isNpm: boolean) => {
@@ -254,9 +253,7 @@ export default defineComponent({
             true,
           ].filter(Boolean).length
       ),
-      category: computed(() =>
-        getSelectedLibsCategory(libraries as LibraryT[])
-      ),
+      category: computed(() => getSelectedLibsCategory(librariesRR)),
       clearSelection() {
         removeAllLibraries();
       },

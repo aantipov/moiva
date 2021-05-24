@@ -41,7 +41,6 @@
     "fibers": "^5.0.0",
     "prettier": "^2.2.1",
     "tailwindcss": "^2.1.1",
-    "ts-essentials": "^7.0.1",
     "typescript": "~4.2.4",
     "vite": "^2.2.1",
     "vue-eslint-parser": "^7.6.0",

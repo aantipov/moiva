@@ -1,11 +1,11 @@
 import { reactive, computed, readonly } from 'vue';
 import {
   RepoT,
-  LibraryT,
   fetchLibraryByRepo,
   fetchLibraryByNpm,
   NpmPackageT,
 } from '@/libraryApis';
+import { LibraryT } from '@/getLibrary';
 import { catalogRepoIdToLib } from '@/libraries-catalog';
 
 // ====== STATE ======
