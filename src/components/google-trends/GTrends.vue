@@ -18,7 +18,7 @@ import {
   watchEffect,
   computed,
 } from 'vue';
-import { repoToGTrendDefMap } from '../../../google-trends.config';
+import { repoToGTrendDefMap } from '@/google-trends.config';
 import { chartsVisibility } from '@/store/chartsVisibility';
 import GTrendsChart from './GTrendsChart.vue';
 import { fetchGTrendsData, GTrendsResponseT } from './api';

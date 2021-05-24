@@ -27,7 +27,7 @@
 <script lang="ts">
 import { defineComponent, toRefs, computed } from 'vue';
 import { ChartDataset, ChartConfiguration } from 'chart.js';
-import { GTrendDefT } from '../../../google-trends.config';
+import { GTrendDefT } from '@/google-trends.config';
 import { numbersFormatter } from '@/utils';
 import { GTrendsResponseT } from './api';
 import { enUS } from 'date-fns/locale';

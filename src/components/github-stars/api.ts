@@ -10,22 +10,23 @@ export interface StarsT {
 export const cacheR = reactive(new Map<string, StarsT[] | null>());
 
 export function fetchRepoStars(repoId: string): Promise<StarsT[] | null> {
-  if (cacheR.get(repoId.toLowerCase())) {
-    return Promise.resolve(cacheR.get(repoId) as StarsT[]);
+  const repoIdLC = repoId.toLowerCase();
+  if (cacheR.get(repoIdLC)) {
+    return Promise.resolve(cacheR.get(repoIdLC) as StarsT[]);
   }
 
   return axios
     .get<{ items: StarsT[] }>(
-      `https://github-stars.moiva.workers.dev/?repo=${repoId}`
+      `https://github-stars.moiva.workers.dev/?repo=${repoIdLC}`
     )
     .then(({ data }) => {
       const items = fillMissingData(data.items);
-      cacheR.set(repoId.toLowerCase(), items);
+      cacheR.set(repoIdLC, items);
       return items;
     })
     .catch((err) => {
       reportSentry(err, 'fetchGithubStars');
-      cacheR.set(repoId.toLowerCase(), null);
+      cacheR.set(repoIdLC, null);
       return null;
     });
 }

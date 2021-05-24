@@ -896,6 +896,6 @@ const items = [
 ];
 
 export const repoIdToDataMap = items.reduce((acc, item) => {
-  acc[item.repoId] = item;
+  acc[item.repoId.toLowerCase()] = item;
   return acc;
 }, {} as Record<string, StateOfJSItemT>);

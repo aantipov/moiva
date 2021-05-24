@@ -24,6 +24,7 @@ import {
   LibGTrendsT,
   cacheR as googleTrendsMapR,
 } from '@/components/google-trends/api';
+import { GTrendDefT, repoToGTrendDefMap } from '@/google-trends.config';
 import {
   repoIdToDataMap as repoIdToDevUsageDataMap,
   StateOfJSItemT,
@@ -56,6 +57,7 @@ export interface LibraryT {
   npmDownloads: LibNpmDownloadsT;
   npmDownloadsGrowth: number | null | undefined;
   commits: LibCommitsT;
+  googleTrendsDef: GTrendDefT | null;
   googleTrends: LibGTrendsT | undefined;
   devUsage: StateOfJSItemT | undefined;
   bundlesize: LibBundleSizeT;
@@ -71,6 +73,7 @@ export function getLibrary(
   const isNpmAByProduct = (library && library.isNpmAByProduct) || false;
   const category = (library && library.category) || null;
   const id = nanoid();
+  const repoIdLC = repo.repoId.toLowerCase();
 
   return {
     id,
@@ -78,13 +81,13 @@ export function getLibrary(
     npmPackage,
     category,
     isNpmAByProduct,
-    alias: getSeoLibName(repo.repoId),
-    tradar: repoToTechRadarMap[repo.repoId] || null,
+    alias: getSeoLibName(repoIdLC),
+    tradar: repoToTechRadarMap[repoIdLC] || null,
     // Use @ts-ignore because the Computed Ref will eventually become Reactive and then Typescript will start arguing
     // @ts-ignore
     color: computed(() => libraryToColorMapR.get(id) || '#ffffff'),
     // @ts-ignore
-    contributors: computed(() => contributorsMapR.get(repo.repoId)),
+    contributors: computed(() => contributorsMapR.get(repoIdLC)),
     // @ts-ignore
     npmCreationDate: computed(() =>
       npmPackage ? npmCreationDatesMapR.get(npmPackage.name) : null
@@ -117,11 +120,11 @@ export function getLibrary(
       return 100 * (Math.pow(last / first, 1 / 6) - 1);
     }) as unknown) as number | undefined | null,
     // @ts-ignore
-    stars: computed(() => starsMapR.get(repo.repoId.toLowerCase())),
+    stars: computed(() => starsMapR.get(repoIdLC)),
     // @ts-ignore
     starsNewAvg: computed(() => {
       // Get avg number of new stars monthly (in the last 3 months)
-      const stars = starsMapR.get(repo.repoId.toLowerCase());
+      const stars = starsMapR.get(repoIdLC);
       if (!stars) {
         return stars; // null or undefined
       }
@@ -136,10 +139,11 @@ export function getLibrary(
     bundlesize: computed(() =>
       npmPackage ? bundlesizeMapR.get(npmPackage.name) : null
     ),
-    devUsage: repoIdToDevUsageDataMap[repo.repoId],
+    devUsage: repoIdToDevUsageDataMap[repoIdLC],
+    googleTrendsDef: repoToGTrendDefMap[repoIdLC] || null,
     // @ts-ignore
-    googleTrends: computed(() => googleTrendsMapR.get(repo.repoId)),
+    googleTrends: computed(() => googleTrendsMapR.get(repoIdLC)),
     // @ts-ignore
-    commits: computed(() => commitsMapR.get(repo.repoId)),
+    commits: computed(() => commitsMapR.get(repoIdLC)),
   };
 }
