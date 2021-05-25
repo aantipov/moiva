@@ -1,6 +1,7 @@
 import { ref, onMounted, watch, Ref, computed } from 'vue';
 import { librariesRR, isLoading } from '@/store/libraries';
 import { fetchGTrendsData } from '@/components/google-trends/api';
+import { LIBS_LIMIT } from '@/google-trends.config';
 import * as Sentry from '@sentry/browser';
 
 export function useChartApi<T>(
@@ -75,7 +76,7 @@ export function useGoogleTrendsApi(): void {
   const filteredReposIds = computed<string[]>(() =>
     librariesRR
       .filter((lib) => !!lib.googleTrendsDef)
-      .slice(0, 5)
+      .slice(0, LIBS_LIMIT)
       .map((lib) => lib.repo.repoId)
   );
 

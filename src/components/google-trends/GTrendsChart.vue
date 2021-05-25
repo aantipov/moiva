@@ -28,7 +28,7 @@
 <script lang="ts">
 import { defineComponent, computed, watchEffect } from 'vue';
 import { ChartConfiguration } from 'chart.js';
-import { GTrendDefT } from '@/google-trends.config';
+import { GTrendDefT, LIBS_LIMIT } from '@/google-trends.config';
 import { numbersFormatter } from '@/utils';
 import { LibGTrendsT } from './api';
 import { enUS } from 'date-fns/locale';
@@ -89,10 +89,12 @@ export default defineComponent({
     const isLoadingRef = computed(
       () =>
         isLoadingLibraries.value ||
-        librariesRR.filter(
+        (librariesRR.filter(
           (lib) => !!lib.googleTrendsDef && lib.googleTrends === undefined
-        ).length > 0
+        ).length > 0 &&
+          librariesRR.filter((lib) => !!lib.googleTrends).length < LIBS_LIMIT)
     );
+
     return {
       isDisplayed: computed(() => chartsVisibility.googleTrends),
       isLoading: isLoadingRef,
