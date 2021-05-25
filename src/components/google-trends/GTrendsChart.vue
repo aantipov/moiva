@@ -114,14 +114,17 @@ export default defineComponent({
         return `https://trends.google.com/trends/explore?cat=31&date=${datesQueryParam}&q=${libsQueryParam}`;
       }),
       ariaLabel: computed(() => {
-        let avgStr = '';
-        if (filteredLibsRef.value.length > 1) {
-          const averages = filteredLibsRef.value.map((lib) => {
-            return `${lib.googleTrendsDef.alias}: ${lib.googleTrends.average}`;
-          });
-          avgStr = `Averages - ${averages.join(', ')}`;
+        if (filteredLibsRef.value.length === 1) {
+          return `Google Search Interest statistics for ${filteredLibsRef.value[0].alias}`;
         }
-        return `Google Trends Chart - Interest over time. ${avgStr}`;
+        if (filteredLibsRef.value.length > 1) {
+          const prefix = `Google Search Interest statistics. The average relative values - `;
+          const averages = filteredLibsRef.value.map((lib) => {
+            return `${lib.googleTrendsDef.alias}: ${lib.googleTrends.average}%`;
+          });
+          return `${prefix}${averages.join(', ')}`;
+        }
+        return '';
       }),
     };
   },
