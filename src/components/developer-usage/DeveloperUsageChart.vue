@@ -1,5 +1,6 @@
 <template>
   <m-chart
+    v-if="isDisplayed"
     title="Developer Usage,"
     subtitle="%"
     :is-loading="isLoading"
@@ -20,61 +21,51 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, computed } from 'vue';
-import { ChartDataset, ChartConfiguration } from 'chart.js';
+import { defineComponent, computed, watchEffect } from 'vue';
+import { ChartConfiguration } from 'chart.js';
 import { StateOfJSItemT } from './stateof-js-css-data';
+import { LibraryReadonlyT } from '@/libraryApis';
+import { librariesRR, isLoading } from '@/store/libraries';
+import { chartsVisibility } from '@/store/chartsVisibility';
+
+interface FilteredLibT extends LibraryReadonlyT {
+  devUsage: StateOfJSItemT;
+}
 
 export default defineComponent({
   name: 'DevelopersUsageChart',
 
-  props: {
-    isLoading: { type: Boolean, required: true },
-    reposUsage: {
-      type: Array as () => StateOfJSItemT[],
-      required: true,
-    },
-    repoToColorMap: {
-      type: Object as () => Record<string, string>,
-      required: true,
-    },
-  },
-
-  setup(props) {
-    const { reposUsage, repoToColorMap } = toRefs(props);
-
-    const years = computed(() => {
-      const firstYears = reposUsage.value.map(
-        (repoUsage) => repoUsage.usage[0].year
-      );
-      const firstYear = Math.max(2016, Math.min(...firstYears));
-      return [2016, 2017, 2018, 2019, 2020].filter((year) => year >= firstYear);
-    });
-
-    const datasets = computed<ChartDataset<'line'>[]>(() =>
-      reposUsage.value.map((libUsageItem) => {
-        const libUsage = libUsageItem.usage.reduce((acc, item) => {
-          acc[item.year] = item.value;
-          return acc;
-        }, {} as Record<number, number>);
-
-        return {
-          label: libUsageItem.name,
-          spanGaps: true,
-          data: years.value.map((year) => libUsage[year] || null),
-          backgroundColor: repoToColorMap.value[libUsageItem.repoId],
-          borderColor: repoToColorMap.value[libUsageItem.repoId],
-        };
-      })
+  setup() {
+    const filteredLibsRef = computed(
+      () => librariesRR.filter((lib) => !!lib.devUsage) as FilteredLibT[]
     );
+
+    watchEffect(() => {
+      chartsVisibility.developerUsage = filteredLibsRef.value.length > 0;
+    });
 
     const chartConfig = computed<ChartConfiguration>(() => ({
       type: 'line',
       data: {
-        labels: years.value,
-        datasets: datasets.value,
+        datasets: filteredLibsRef.value.map((lib) => ({
+          label: lib.devUsage.name,
+          data: lib.devUsage.usage.map((usageItem) => ({
+            x: (usageItem.year.toString() as unknown) as number,
+            y: usageItem.value,
+          })),
+          spanGaps: true,
+          backgroundColor: lib.color,
+          borderColor: lib.color,
+        })),
       },
+
       options: {
+        normalized: true,
         scales: {
+          x: {
+            type: 'time',
+            time: { unit: 'year' },
+          },
           y: {
             ticks: {
               beginAtZero: false,
@@ -96,13 +87,22 @@ export default defineComponent({
     }));
 
     return {
+      isDisplayed: computed(() => chartsVisibility.developerUsage),
+      isLoading,
       chartConfig,
-      libsNames: computed(() => reposUsage.value.map(({ name }) => name)),
+      libsNames: computed(() =>
+        filteredLibsRef.value.map((lib) => lib.devUsage.name)
+      ),
       ariaLabel: computed(() => {
-        const valuesStr = reposUsage.value
-          .map(({ name, usage }) => `${name}: ${usage.slice(-1)[0].value}%`)
-          .join(', ');
-        return `Developer Usage chart. The number of developers using the library - ${valuesStr}`;
+        const str = filteredLibsRef.value
+          .map(
+            (lib) =>
+              `${lib.alias} is used by ${
+                lib.devUsage.usage.slice(-1)[0].value
+              }% of developers.`
+          )
+          .join(' ');
+        return `Developer Usage statistics according to StateOfJS survey. ${str}`;
       }),
     };
   },
