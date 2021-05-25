@@ -57,8 +57,8 @@ export interface LibraryT {
   npmDownloads: LibNpmDownloadsT;
   npmDownloadsGrowth: number | null | undefined;
   commits: LibCommitsT;
-  googleTrendsDef: GTrendDefT | null;
-  googleTrends: LibGTrendsT | undefined;
+  googleTrendsDef: GTrendDefT | null; // null if no config
+  googleTrends: LibGTrendsT | undefined | null; // null for errors, undefined for not loaded yet
   devUsage: StateOfJSItemT | undefined;
   bundlesize: LibBundleSizeT;
   stars: LibStarsT;

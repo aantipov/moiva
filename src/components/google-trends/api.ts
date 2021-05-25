@@ -13,14 +13,14 @@ export interface GTrendsResponseT {
 }
 
 export interface LibGTrendsT {
-  average: number;
+  average: number | null; // null in case of a single library
   timeline: {
     time: string;
     value: number;
   }[];
 }
 
-export const cacheR = reactive(new Map<string, LibGTrendsT>());
+export const cacheR = reactive(new Map<string, LibGTrendsT | null>()); // null for errors
 
 const gTrendsCache = new Map<string, GTrendsResponseT>();
 
@@ -45,6 +45,8 @@ export function fetchGTrendsData(
     return Promise.resolve(data);
   }
 
+  cacheR.clear();
+
   return axios
     .get<GTrendsResponseT>(
       `https://google-trends.moiva.workers.dev/?libs=${libsStr}`
@@ -64,6 +66,9 @@ export function fetchGTrendsData(
     })
     .catch((err) => {
       reportSentry(err, 'fetchGTrendsData');
+      reposIds.forEach((repoId) => {
+        cacheR.set(repoId.toLowerCase(), null);
+      });
       return Promise.reject(err);
     });
 }
