@@ -41,7 +41,12 @@ export default defineComponent({
     );
 
     watchEffect(() => {
-      chartsVisibility.developerUsage = filteredLibsRef.value.length > 0;
+      chartsVisibility.developerUsage =
+        filteredLibsRef.value.length > 0 &&
+        !(
+          filteredLibsRef.value.length === 1 &&
+          filteredLibsRef.value[0].devUsage.usage.length === 1
+        );
     });
 
     const chartConfig = computed<ChartConfiguration>(() => ({
