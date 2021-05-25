@@ -15,7 +15,7 @@ import BundlephobiaChart from './BundlephobiaChart.vue';
 import { fetchBundlephobiaData, BundlephobiaT } from './api';
 import { chartsVisibility } from '@/store/chartsVisibility';
 import whitelistedCategories from './whitelist.json';
-import useChartApi from '@/composables/useChartApi';
+import { useChartApi } from '@/composables/useChartApi';
 import {
   isLoading as isLoadingLibraries,
   npmPackagesNames,
