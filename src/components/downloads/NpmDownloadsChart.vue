@@ -113,7 +113,7 @@ export default defineComponent({
     );
 
     return {
-      isDisplayed: chartsVisibility.npmDownloads,
+      isDisplayed: computed(() => chartsVisibility.npmDownloads),
       isLoading: isLoadingRef,
       packagesNames,
       chartConfig,

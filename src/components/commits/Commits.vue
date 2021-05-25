@@ -13,7 +13,7 @@
 import { defineComponent, computed } from 'vue';
 import CommitsChart from './CommitsChart.vue';
 import { fetchRepoCommits, CommitsResponseItemT } from './api';
-import useChartApi from '@/composables/useChartApi';
+import { useChartApi } from '@/composables/useChartApi';
 import { libraryToColorMap } from '@/store/librariesColors';
 import {
   isLoading as isLoadingLibraries,

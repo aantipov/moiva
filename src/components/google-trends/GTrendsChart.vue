@@ -1,5 +1,6 @@
 <template>
   <m-chart
+    v-if="isDisplayed"
     title="Google Search Interest"
     :is-loading="isLoading"
     :is-error="isError"
@@ -25,54 +26,52 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, computed } from 'vue';
-import { ChartDataset, ChartConfiguration } from 'chart.js';
-import { GTrendDefT } from '@/google-trends.config';
+import { defineComponent, computed, watchEffect } from 'vue';
+import { ChartConfiguration } from 'chart.js';
+import { GTrendDefT, LIBS_LIMIT } from '@/google-trends.config';
 import { numbersFormatter } from '@/utils';
-import { GTrendsResponseT } from './api';
+import { LibGTrendsT } from './api';
 import { enUS } from 'date-fns/locale';
+import { LibraryReadonlyT } from '@/libraryApis';
+import {
+  librariesRR,
+  isLoading as isLoadingLibraries,
+} from '@/store/libraries';
+import { chartsVisibility } from '@/store/chartsVisibility';
+
+interface FilteredLibT extends LibraryReadonlyT {
+  googleTrendsDef: GTrendDefT;
+  googleTrends: LibGTrendsT;
+}
 
 export default defineComponent({
   name: 'GTrendsChart',
 
-  props: {
-    isLoading: { type: Boolean, required: true },
-    isError: { type: Boolean, required: true },
-    libsTrends: {
-      type: Object as () => GTrendsResponseT,
-      required: true,
-    },
-    libsTrendsDefs: { type: Array as () => GTrendDefT[], required: true },
-    repoToColorMap: {
-      type: Object as () => Record<string, string>,
-      required: true,
-    },
-  },
+  setup() {
+    watchEffect(() => {
+      chartsVisibility.googleTrends =
+        librariesRR.filter((lib) => !!lib.googleTrendsDef).length > 0;
+    });
 
-  setup(props) {
-    const { repoToColorMap, libsTrends, libsTrendsDefs } = toRefs(props);
-
-    const dates = computed(() =>
-      libsTrends.value.timelineData.map(({ time }) =>
-        new Date(Number(time) * 1000).toISOString().slice(0, 10)
-      )
-    );
-
-    const datasets = computed<ChartDataset<'line'>[]>(() =>
-      libsTrendsDefs.value.map((gtrendDef, libIndex) => ({
-        label: gtrendDef.alias,
-        data: libsTrends.value.timelineData.map(({ value }) => value[libIndex]),
-        backgroundColor: repoToColorMap.value[gtrendDef.repoId],
-        borderColor: repoToColorMap.value[gtrendDef.repoId],
-        pointRadius: 0,
-      }))
+    const filteredLibsRef = computed(
+      () => librariesRR.filter((lib) => !!lib.googleTrends) as FilteredLibT[]
     );
 
     const chartConfig = computed<ChartConfiguration>(() => ({
       type: 'line',
       data: {
-        labels: dates.value,
-        datasets: datasets.value,
+        labels: filteredLibsRef.value.length
+          ? filteredLibsRef.value[0].googleTrends.timeline.map(
+              (tl) => Number(tl.time) * 1000
+            )
+          : [],
+        datasets: filteredLibsRef.value.map((lib) => ({
+          label: lib.googleTrendsDef.alias,
+          data: lib.googleTrends.timeline.map((tl) => tl.value),
+          backgroundColor: lib.color,
+          borderColor: lib.color,
+          pointRadius: 0,
+        })),
       },
       options: {
         elements: { line: { tension: 0.1 } },
@@ -87,14 +86,27 @@ export default defineComponent({
       },
     }));
 
+    const isLoadingRef = computed(
+      () =>
+        isLoadingLibraries.value ||
+        (librariesRR.filter(
+          (lib) => !!lib.googleTrendsDef && lib.googleTrends === undefined
+        ).length > 0 &&
+          librariesRR.filter((lib) => !!lib.googleTrends).length < LIBS_LIMIT)
+    );
+
     return {
+      isDisplayed: computed(() => chartsVisibility.googleTrends),
+      isLoading: isLoadingRef,
+      isError: computed(() => filteredLibsRef.value.length === 0),
+      filteredLibsRef,
       chartConfig,
       libsKeywordsAliases: computed<string[]>(() =>
-        libsTrendsDefs.value.map((libGTrendDef) => libGTrendDef.alias)
+        filteredLibsRef.value.map((lib) => lib.googleTrendsDef.alias)
       ),
       gTrendsLink: computed<string>(() => {
-        const keywords = libsTrendsDefs.value.map(
-          (gtrendDef) => gtrendDef.keyword
+        const keywords = filteredLibsRef.value.map(
+          (lib) => lib.googleTrendsDef.keyword
         );
         const datesQueryParam = encodeURIComponent('2017-01-01 2021-01-11');
         const libsQueryParam = encodeURIComponent(keywords.join(','));
@@ -102,14 +114,17 @@ export default defineComponent({
         return `https://trends.google.com/trends/explore?cat=31&date=${datesQueryParam}&q=${libsQueryParam}`;
       }),
       ariaLabel: computed(() => {
-        let avgStr = '';
-        if (libsTrends.value.averages.length) {
-          const averages = libsTrendsDefs.value.map(({ alias }, index) => {
-            return `${alias}: ${libsTrends.value.averages[index]}`;
-          });
-          avgStr = `Averages - ${averages.join(', ')}`;
+        if (filteredLibsRef.value.length === 1) {
+          return `Google Search Interest statistics for ${filteredLibsRef.value[0].alias}`;
         }
-        return `Google Trends Chart - Interest over time. ${avgStr}`;
+        if (filteredLibsRef.value.length > 1) {
+          const prefix = `Google Search Interest statistics. The average relative values - `;
+          const averages = filteredLibsRef.value.map((lib) => {
+            return `${lib.googleTrendsDef.alias}: ${lib.googleTrends.average}%`;
+          });
+          return `${prefix}${averages.join(', ')}`;
+        }
+        return '';
       }),
     };
   },

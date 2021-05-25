@@ -119,7 +119,7 @@ import Table from './table/Table.vue';
 
 import Releases from './npm-releases/Releases.vue';
 import TechRadar from './TechRadar.vue';
-import GoogleTrends from './google-trends/GTrends.vue';
+import GoogleTrends from './google-trends/GTrendsChart.vue';
 import Stars from './github-stars/StarsChart.vue';
 import Bundlephobia from './bundle-size/Bundlephobia.vue';
 import Issues from './Issues.vue';

@@ -63,3 +63,5 @@ export const repoToGTrendDefMap = gtrendsDefs.reduce(
 function capitalise(str: string): string {
   return str[0].toUpperCase() + str.slice(1);
 }
+
+export const LIBS_LIMIT = 5;
