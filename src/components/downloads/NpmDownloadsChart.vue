@@ -28,7 +28,6 @@ import {
 import { enUS } from 'date-fns/locale';
 import { NpmPackageT, LibraryReadonlyT } from '@/libraryApis';
 import { chartsVisibility } from '@/store/chartsVisibility';
-import { npmPackagesNames } from '@/store/libraries';
 import {
   librariesRR,
   isLoading as isLoadingLibraries,
@@ -44,13 +43,13 @@ export default defineComponent({
   name: 'NpmDownloadsChart',
 
   setup() {
-    watchEffect(() => {
-      chartsVisibility.npmDownloads = npmPackagesNames.value.length > 0;
-    });
-
     const filteredLibsRef = computed(
       () => librariesRR.filter((lib) => !!lib.npmDownloads) as FilteredLibT[]
     );
+
+    watchEffect(() => {
+      chartsVisibility.npmDownloads = filteredLibsRef.value.length > 0;
+    });
 
     // Calculate startMonth based on packages creation date
     const startMonthRef = computed(() => {

@@ -1,5 +1,6 @@
 <template>
   <m-chart
+    v-if="isDisplayed"
     title="NPM Releases quarterly"
     :is-loading="isLoading"
     :is-error="isError"
@@ -16,66 +17,75 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, computed } from 'vue';
-import { ChartDataset, ChartConfiguration } from 'chart.js';
+import { defineComponent, watchEffect, computed } from 'vue';
+import { ChartConfiguration } from 'chart.js';
 import { NpmPackageReleasesT } from './api';
 import { format } from 'date-fns';
 import { enUS } from 'date-fns/locale';
+import { getEarliestQuarter, getPrevQuater } from '@/utils';
+import { NpmPackageT, LibraryReadonlyT } from '@/libraryApis';
+import { chartsVisibility } from '@/store/chartsVisibility';
+import {
+  librariesRR,
+  isLoading as isLoadingLibraries,
+} from '@/store/libraries';
+
+interface FilteredLibT extends LibraryReadonlyT {
+  npmPackage: NpmPackageT;
+  npmReleases: NpmPackageReleasesT[];
+}
 
 export default defineComponent({
   name: 'NpmReleasesChart',
 
-  props: {
-    isLoading: { type: Boolean, required: true },
-    isError: { type: Boolean, required: true },
-    packagesNames: { type: Array as () => string[], required: true },
-    failedPackagesNames: { type: Array as () => string[], required: true },
-    packagesReleases: {
-      type: Array as () => NpmPackageReleasesT[][],
-      required: true,
-    },
-    packageToColorMap: {
-      type: Object as () => Record<string, string>,
-      required: true,
-    },
-  },
-
-  setup(props) {
-    const { packagesNames, packageToColorMap, packagesReleases } = toRefs(
-      props
+  setup() {
+    const filteredLibsRef = computed(
+      () => librariesRR.filter((lib) => !!lib.npmReleases) as FilteredLibT[]
     );
 
-    const datasets = computed<ChartDataset<'line'>[]>(() =>
-      packagesNames.value.map((packageName, packageIndex) => ({
-        label: packageName,
-        data: packagesReleases.value[packageIndex].map(
-          ({ month, releases }) => ({
-            x: (month as unknown) as number,
-            y: releases,
-          })
-        ),
-        backgroundColor: packageToColorMap.value[packageName],
-        borderColor: packageToColorMap.value[packageName],
-      }))
-    );
+    watchEffect(() => {
+      chartsVisibility.npmReleases = filteredLibsRef.value.length > 0;
+    });
+
+    // Calculate startQuater based on packages creation date
+    const startQuarterRef = computed(() => {
+      const validCreationDates = filteredLibsRef.value
+        .map((lib) => lib.npmCreationDate)
+        .filter((date) => !!date) as string[];
+
+      return getPrevQuater(getEarliestQuarter(validCreationDates, '2017-01'));
+    });
 
     const unit = computed(() => {
-      if (!packagesReleases.value.length) {
+      if (!filteredLibsRef.value.length) {
         return 'year';
       }
-      const firstMonth = packagesReleases.value[0][0].month;
+      const firstMonth = filteredLibsRef.value[0].npmReleases[0].month;
       return firstMonth >= '2019-10' ? 'quarter' : 'year';
     });
 
     const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
       type: 'line',
-      data: { datasets: datasets.value },
+      data: {
+        datasets: filteredLibsRef.value.map((lib) => ({
+          label: lib.npmPackage.name,
+          data: lib.npmReleases.map((npmRelease) => ({
+            x: (npmRelease.month as unknown) as number,
+            y: npmRelease.releases,
+          })),
+          backgroundColor: lib.color,
+          borderColor: lib.color,
+        })),
+      },
+
       options: {
+        normalized: true,
         scales: {
           x: {
             type: 'time',
             time: { unit: unit.value },
             adapters: { date: { locale: enUS } },
+            min: (startQuarterRef.value as unknown) as number,
           },
         },
         plugins: {
@@ -91,16 +101,38 @@ export default defineComponent({
       },
     }));
 
+    const isLoadingRef = computed(
+      () =>
+        isLoadingLibraries.value ||
+        librariesRR.filter((lib) => lib.npmReleases === undefined).length > 0
+    );
+
     return {
+      isDisplayed: computed(() => chartsVisibility.npmReleases),
+      isLoading: isLoadingRef,
       chartConfig,
+      packagesNames: computed(() =>
+        filteredLibsRef.value.map((lib) => lib.npmPackage.name)
+      ),
+      isError: computed(() => filteredLibsRef.value.length === 0),
+      failedPackagesNames: computed<string[]>(() => {
+        if (isLoadingRef.value) {
+          return [];
+        }
+        return librariesRR
+          .filter((lib) => !!lib.npmPackage && !lib.npmReleases)
+          .map((lib) => (lib.npmPackage as NpmPackageT).name);
+      }),
       ariaLabel: computed(() => {
-        const valuesStr = packagesNames.value
+        const str = filteredLibsRef.value
           .map(
-            (name, index) =>
-              `${name}: ${packagesReleases.value[index].slice(-1)[0].releases}`
+            (lib) =>
+              `${lib.alias} had ${
+                lib.npmReleases.slice(-1)[0].releases
+              } npm releases in the previous quarter.`
           )
-          .join(', ');
-        return `NPM Releases chart. The number of releases in the previous quarter - ${valuesStr} releases`;
+          .join(' ');
+        return `NPM Releases statistics. ${str}`;
       }),
     };
   },
