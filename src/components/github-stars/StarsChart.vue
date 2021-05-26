@@ -101,12 +101,11 @@ export default defineComponent({
         filteredLibsRef.value.map((lib) => lib.repo.repoId)
       ),
       failedReposIds: computed<string[]>(() => {
-        if (isLoadingRef.value) {
-          return [];
-        }
-        return librariesRR
-          .filter((lib) => !lib.stars)
-          .map((lib) => lib.repo.repoId);
+        return isLoadingRef.value
+          ? []
+          : librariesRR
+              .filter((lib) => !lib.stars)
+              .map((lib) => lib.repo.repoId);
       }),
     };
   },

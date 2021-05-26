@@ -424,6 +424,9 @@ export function getEarliestQuarter(
   limitMonth: string
 ): string {
   limitMonth = limitMonth.slice(0, 7);
+  if (!dates.length) {
+    return limitMonth;
+  }
   const month = dates
     .sort((a, b) => {
       if (a > b) {
