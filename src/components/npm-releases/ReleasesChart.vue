@@ -53,15 +53,7 @@ export default defineComponent({
         .map((lib) => lib.npmCreationDate)
         .filter((date) => !!date) as string[];
 
-      return getPrevQuater(getEarliestQuarter(validCreationDates, '2017-01'));
-    });
-
-    const unit = computed(() => {
-      if (!filteredLibsRef.value.length) {
-        return 'year';
-      }
-      const firstMonth = filteredLibsRef.value[0].npmReleases[0].month;
-      return firstMonth >= '2019-10' ? 'quarter' : 'year';
+      return getPrevQuater(getEarliestQuarter(validCreationDates, '2017-04'));
     });
 
     const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
@@ -83,7 +75,13 @@ export default defineComponent({
         scales: {
           x: {
             type: 'time',
-            time: { unit: unit.value },
+            time: {
+              unit:
+                filteredLibsRef.value.length &&
+                startQuarterRef.value >= '2019-10'
+                  ? 'quarter'
+                  : 'year',
+            },
             adapters: { date: { locale: enUS } },
             min: (startQuarterRef.value as unknown) as number,
           },
