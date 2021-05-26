@@ -14,70 +14,68 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, computed } from 'vue';
-import { ChartDataset, ChartConfiguration } from 'chart.js';
-import { getSeoLibName } from '@/utils';
+import { defineComponent, computed } from 'vue';
+import { ChartConfiguration } from 'chart.js';
 import { ContributorsT } from './api';
 import { format } from 'date-fns';
 import { enUS } from 'date-fns/locale';
+import { getEarliestQuarter, getPrevQuater } from '@/utils';
+import { LibraryReadonlyT } from '@/libraryApis';
+import {
+  librariesRR,
+  isLoading as isLoadingLibraries,
+} from '@/store/libraries';
+
+interface FilteredLibT extends LibraryReadonlyT {
+  contributors: ContributorsT[];
+}
 
 export default defineComponent({
   name: 'ContributorsChart',
 
-  props: {
-    isLoading: { type: Boolean, required: true },
-    isError: { type: Boolean, required: true },
-    reposIds: { type: Array as () => string[], required: true },
-    failedReposIds: { type: Array as () => string[], required: true },
-    reposContributors: {
-      type: Array as () => ContributorsT[][],
-      required: true,
-    },
-    repoToColorMap: {
-      type: Object as () => Record<string, string>,
-      required: true,
-    },
-  },
-
-  setup(props) {
-    const { reposIds, repoToColorMap, reposContributors } = toRefs(props);
-
-    const datasets = computed<ChartDataset<'line'>[]>(() =>
-      reposIds.value.map((repoId, repoIndex) => {
-        const [, repoName] = repoId.split('/');
-        return {
-          label: repoName,
-          data: reposContributors.value[repoIndex].map(
-            ({ month, contributors }) => ({
-              x: (month as unknown) as number,
-              y: contributors,
-            })
-          ),
-          backgroundColor: repoToColorMap.value[repoId],
-          borderColor: repoToColorMap.value[repoId],
-        };
-      })
+  setup() {
+    const filteredLibsRef = computed(
+      () => librariesRR.filter((lib) => !!lib.contributors) as FilteredLibT[]
     );
 
-    const unit = computed(() => {
-      if (!reposContributors.value.length) {
-        return 'year';
-      }
-      const firstMonth = reposContributors.value[0][0].month;
-      return firstMonth >= '2019-10' ? 'quarter' : 'year';
+    const startQuarterRef = computed(() => {
+      const creationDates = filteredLibsRef.value.map(
+        (lib) => lib.repo.createdAt
+      );
+
+      return getPrevQuater(getEarliestQuarter(creationDates, '2017-04'));
     });
 
     const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
       type: 'line',
-      data: { datasets: datasets.value },
+      data: {
+        datasets: filteredLibsRef.value.map((lib) => ({
+          label: lib.repo.repoName,
+          data: lib.contributors.map((item) => ({
+            x: (item.month as unknown) as number,
+            y: item.contributors,
+          })),
+          backgroundColor: lib.color,
+          borderColor: lib.color,
+        })),
+      },
+
       options: {
         scales: {
           x: {
             type: 'time',
-            time: { unit: unit.value },
+            time: {
+              unit:
+                filteredLibsRef.value.length &&
+                startQuarterRef.value >= '2019-10'
+                  ? 'quarter'
+                  : 'year',
+            },
+            min: (startQuarterRef.value as unknown) as number,
             adapters: { date: { locale: enUS } },
           },
         },
+
         plugins: {
           tooltip: {
             callbacks: {
@@ -91,19 +89,39 @@ export default defineComponent({
       },
     }));
 
+    const isLoadingRef = computed(
+      () =>
+        isLoadingLibraries.value ||
+        librariesRR.filter((lib) => lib.npmReleases === undefined).length > 0
+    );
+
     return {
       chartConfig,
+      isLoading: isLoadingRef,
+      isError: computed(() => filteredLibsRef.value.length === 0),
+      reposIds: computed(() =>
+        filteredLibsRef.value.map((lib) => lib.repo.repoId)
+      ),
+      failedReposIds: computed<string[]>(() => {
+        return isLoadingRef.value
+          ? []
+          : librariesRR
+              .filter((lib) => !lib.contributors)
+              .map((lib) => lib.repo.repoId);
+      }),
       ariaLabel: computed(() => {
-        const valuesStr = reposIds.value
+        const str = filteredLibsRef.value
           .map(
-            (repoId, index) =>
-              `${getSeoLibName(repoId)}: ${
-                reposContributors.value[index].slice(-1)[0].contributors
-              }`
+            (lib) =>
+              `${
+                lib.contributors.slice(-1)[0].contributors
+              } developer(s) contributed to ${
+                lib.alias
+              } in the previous quarter.`
           )
-          .join(', ');
+          .join(' ');
 
-        return `Contributors chart. The number of contributors in the previous quarter - ${valuesStr} contributors`;
+        return `Contributors statistics. ${str}`;
       }),
     };
   },
