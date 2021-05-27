@@ -29,8 +29,8 @@ export const COLORS = [
 
 // Colors list for Languages Chart
 const LANGUAGE_COLORS = [
-  '#FBBF24', // Amber 400
-  '#22D3EE', // Cyan 400
+  // '#FBBF24', // Amber 400
+  // '#22D3EE', // Cyan 400
   '#818CF8', // Indigo 400
   '#F87171', // Red 400
   '#4ADE80', // Green 400
@@ -63,9 +63,9 @@ const langToColorMap = new Map<string, string>();
 
 export function getLangToColorMap(langs: string[]): Record<string, string> {
   // Others "lang" should always be Gray
-  if (langs.includes('Others')) {
-    langToColorMap.set('Others', COLOR_GRAY);
-  }
+  langToColorMap.set('Others', COLOR_GRAY);
+  langToColorMap.set('JavaScript', '#FBBF24');
+  langToColorMap.set('TypeScript', '#22D3EE');
 
   // Clean up the lang colors Map - filter out unused langs
   [...langToColorMap.keys()].forEach((lang) => {

@@ -19,75 +19,68 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, computed } from 'vue';
-import { ChartDataset, ChartConfiguration } from 'chart.js';
+import { defineComponent, computed } from 'vue';
+import { ChartConfiguration } from 'chart.js';
 import { getLangToColorMap } from '@/colors';
-import { getSeoLibName } from '@/utils';
 import { LanguagesT } from './api';
+import { LibraryReadonlyT } from '@/libraryApis';
+import {
+  librariesRR,
+  isLoading as isLoadingLibraries,
+} from '@/store/libraries';
+
+interface FilteredLibT extends LibraryReadonlyT {
+  languages: LanguagesT;
+}
+interface FilteredExtLibT extends LibraryReadonlyT {
+  languages: LanguagesT;
+  languagesShares: Record<string, number>;
+}
 
 export default defineComponent({
   name: 'LanguagesChart',
 
-  props: {
-    isLoading: { type: Boolean, required: true },
-    isError: { type: Boolean, required: true },
-    reposIds: { type: Array as () => string[], required: true },
-    failedReposIds: { type: Array as () => string[], required: true },
-    reposLanguages: {
-      type: Array as () => LanguagesT[],
-      required: true,
-    },
-  },
-
-  setup(props) {
-    const { reposIds, reposLanguages } = toRefs(props);
-
-    // Compute languages shares, counting only those which has >=10% share
-    const libsLanguagesShares = computed<null | Record<string, number>[]>(
-      () => {
-        return reposLanguages.value.map((repoLanguages) => {
-          const libBytesTotal = Object.values(repoLanguages).reduce(
-            (a, b) => a + b,
-            0
-          );
-
-          const libLanguagesSharesWithoutOthers = Object.entries(repoLanguages)
-            .map(([lang, langBytes]) => ({
-              lang,
-              langShare: (100 * langBytes) / libBytesTotal,
-            }))
-            .filter(({ langShare }) => langShare >= 10)
-            .reduce((acc, { lang, langShare }) => {
-              acc[lang] = Number.parseFloat(Number(langShare).toFixed(1));
-              return acc;
-            }, {} as Record<string, number>);
-
-          const othersShare =
-            100 -
-            Object.values(libLanguagesSharesWithoutOthers).reduce(
-              (a, b) => a + b,
-              0
-            );
-
-          const libLanguagesShares = {
-            ...libLanguagesSharesWithoutOthers,
-            Others: Number.parseFloat(Number(othersShare).toFixed(1)),
-          };
-
-          return (libLanguagesShares as unknown) as Record<string, number>;
-        });
-      }
+  setup() {
+    const filteredLibsRef = computed(
+      () => librariesRR.filter((lib) => !!lib.languages) as FilteredLibT[]
     );
 
-    // Compute langauges names that has share >=10%
-    // and sort them
-    const languagesNames = computed<null | string[]>(() => {
-      if (!libsLanguagesShares.value) {
-        return null;
-      }
+    // Compute languages shares, counting only those which has >=10% share
+    const filteredExtLibsRef = computed(() =>
+      filteredLibsRef.value.map((lib) => {
+        const bytesTotal = Object.values(lib.languages).reduce(
+          (a, b) => a + b,
+          0
+        );
 
-      const languagesNamesWithDupes = libsLanguagesShares.value
-        .map((libLangsShares) => Object.keys(libLangsShares))
+        const mainLanguagesShares = Object.entries(lib.languages)
+          .map(([lang, langBytes]) => ({
+            lang,
+            langShare: (100 * langBytes) / bytesTotal,
+          }))
+          .filter(({ langShare }) => langShare >= 10)
+          .reduce((acc, { lang, langShare }) => {
+            acc[lang] = Number.parseFloat(Number(langShare).toFixed(1));
+            return acc;
+          }, {} as Record<string, number>);
+
+        const othersShare =
+          100 - Object.values(mainLanguagesShares).reduce((a, b) => a + b, 0);
+
+        const languagesShares = {
+          ...mainLanguagesShares,
+          Others: Number.parseFloat(Number(othersShare).toFixed(1)),
+        };
+
+        return { ...lib, languagesShares } as FilteredExtLibT;
+      })
+    );
+
+    // Compute languages names that has share >=10%
+    // and sort them
+    const languagesNames = computed<string[]>(() => {
+      const languagesNamesWithDupes = filteredExtLibsRef.value
+        .map((lib) => Object.keys(lib.languagesShares))
         .flat();
 
       // Deduplicate languages
@@ -115,30 +108,22 @@ export default defineComponent({
     });
 
     const langToColorMap = computed<Record<string, string>>(() =>
-      getLangToColorMap(languagesNames.value || [])
-    );
-
-    const datasets = computed<ChartDataset<'bar'>[]>(() =>
-      (languagesNames.value || []).map((langName) => ({
-        label: langName,
-        data: (reposLanguages.value || []).map(
-          (_, repoIndex) =>
-            (libsLanguagesShares.value || [])[repoIndex][langName] || 0
-        ),
-        backgroundColor: langToColorMap.value[langName],
-        borderColor: langToColorMap.value[langName],
-        borderWidth: 1,
-      }))
+      getLangToColorMap(languagesNames.value)
     );
 
     const chartConfig = computed<ChartConfiguration<'bar'>>(() => ({
       type: 'bar',
       data: {
-        labels: reposIds.value.map((repoId) => {
-          const [, name] = repoId.split('/');
-          return name;
-        }),
-        datasets: datasets.value,
+        labels: filteredLibsRef.value.map((lib) => lib.repo.repoName),
+        datasets: (languagesNames.value || []).map((langName) => ({
+          label: langName,
+          data: filteredExtLibsRef.value.map(
+            (lib) => lib.languagesShares[langName] || 0
+          ),
+          backgroundColor: langToColorMap.value[langName],
+          borderColor: langToColorMap.value[langName],
+          borderWidth: 1,
+        })),
       },
 
       options: {
@@ -167,19 +152,39 @@ export default defineComponent({
       },
     }));
 
+    const isLoadingRef = computed(
+      () =>
+        isLoadingLibraries.value ||
+        librariesRR.filter((lib) => lib.languages === undefined).length > 0
+    );
+
     return {
+      isError: computed(() => filteredLibsRef.value.length === 0),
+      isLoading: isLoadingRef,
+      reposIds: computed(() =>
+        filteredLibsRef.value.map((lib) => lib.repo.repoId)
+      ),
+      failedReposIds: computed<string[]>(() => {
+        return isLoadingRef.value
+          ? []
+          : librariesRR
+              .filter((lib) => !lib.languages)
+              .map((lib) => lib.repo.repoId);
+      }),
       chartConfig,
       ariaLabel: computed(() => {
-        const valuesStr = reposIds.value
+        const str = filteredExtLibsRef.value
           .map(
-            (repoId, index) =>
-              `${getSeoLibName(repoId)}: ${Object.keys(
-                reposLanguages.value[index]
-              ).join(', ')}.`
+            (lib) =>
+              `The following programming languages are used in ${
+                lib.alias
+              } repository: ${Object.entries(lib.languagesShares)
+                .map(([lang, share]) => `${lang} ${share}%`)
+                .join(', ')}.`
           )
           .join(' ');
 
-        return `Languages chart. Programming languages used in the repository. ${valuesStr}`;
+        return `Repository Languages statistics. ${str}`;
       }),
     };
   },
