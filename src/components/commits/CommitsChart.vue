@@ -111,7 +111,7 @@ export default defineComponent({
             (lib) =>
               `${lib.alias} got ${
                 lib.aggrCommits.slice(-1)[0].total
-              } commits in the last 4 weeks.`
+              } commit(s) in the last 4 weeks.`
           )
           .join(' ');
 
