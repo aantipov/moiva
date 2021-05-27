@@ -32,7 +32,7 @@
       <Table class="w-full mx-auto mt-4 mb-2 lg:w-3/4" />
 
       <!-- Charts -->
-      <section v-if="false" class="mb-12">
+      <section class="mb-12">
         <h2>
           Popularity
           <span class="text-lg font-normal">over time</span>
