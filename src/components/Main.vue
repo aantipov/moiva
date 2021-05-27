@@ -32,7 +32,7 @@
       <Table class="w-full mx-auto mt-4 mb-2 lg:w-3/4" />
 
       <!-- Charts -->
-      <section class="mb-12">
+      <section v-if="false" class="mb-12">
         <h2>
           Popularity
           <span class="text-lg font-normal">over time</span>
@@ -126,7 +126,7 @@ import Issues from './Issues.vue';
 import Languages from './Languages.vue';
 import Contributors from './github-contributors/ContributorsChart.vue';
 import DevelopersUsage from './developer-usage/DeveloperUsageChart.vue';
-import Commits from './commits/Commits.vue';
+import Commits from './commits/CommitsChart.vue';
 
 import { chartsVisibility } from '@/store/chartsVisibility';
 import {
