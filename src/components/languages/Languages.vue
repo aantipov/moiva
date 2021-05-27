@@ -12,7 +12,7 @@
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
 import LanguagesChart from './LanguagesChart.vue';
-import { fetchRepoLanguages, GithubLanguagesResponseT } from '@/apis';
+import { fetchRepoLanguages, LanguagesT } from './api';
 import { useChartApi } from '@/composables/useChartApi';
 import { libraryToColorMap } from '@/store/librariesColors';
 import {
@@ -33,7 +33,7 @@ export default defineComponent({
       items,
       successItemsIds,
       failedItemsIds,
-    } = useChartApi<GithubLanguagesResponseT>(
+    } = useChartApi<LanguagesT>(
       reposIds,
       isLoadingLibraries,
       fetchRepoLanguages

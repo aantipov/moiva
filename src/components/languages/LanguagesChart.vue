@@ -23,7 +23,7 @@ import { defineComponent, toRefs, computed } from 'vue';
 import { ChartDataset, ChartConfiguration } from 'chart.js';
 import { getLangToColorMap } from '@/colors';
 import { getSeoLibName } from '@/utils';
-import { GithubLanguagesResponseT } from '@/apis';
+import { LanguagesT } from './api';
 
 export default defineComponent({
   name: 'LanguagesChart',
@@ -34,7 +34,7 @@ export default defineComponent({
     reposIds: { type: Array as () => string[], required: true },
     failedReposIds: { type: Array as () => string[], required: true },
     reposLanguages: {
-      type: Array as () => GithubLanguagesResponseT[],
+      type: Array as () => LanguagesT[],
       required: true,
     },
   },
