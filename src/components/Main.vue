@@ -123,7 +123,7 @@ import GoogleTrends from './google-trends/GTrendsChart.vue';
 import Stars from './github-stars/StarsChart.vue';
 import Bundlephobia from './bundle-size/Bundlephobia.vue';
 import Issues from './Issues.vue';
-import Languages from './Languages.vue';
+import Languages from './languages/Languages.vue';
 import Contributors from './github-contributors/ContributorsChart.vue';
 import DevelopersUsage from './developer-usage/DeveloperUsageChart.vue';
 import Commits from './commits/CommitsChart.vue';

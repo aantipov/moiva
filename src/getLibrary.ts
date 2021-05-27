@@ -33,6 +33,10 @@ import {
   BundlephobiaT,
   cacheR as bundlesizeMapR,
 } from '@/components/bundle-size/api';
+import {
+  LanguagesT,
+  cacheR as languagesMapR,
+} from '@/components/languages/api';
 import { StarsT, cacheR as starsMapR } from '@/components/github-stars/api';
 import { libraryToColorMapR } from '@/store/librariesColors';
 import { RepoT, NpmPackageT } from '@/libraryApis';
@@ -57,6 +61,7 @@ export interface LibraryT {
   npmDownloads: LibNpmDownloadsT;
   npmDownloadsGrowth: number | null | undefined;
   commits: LibCommitsT;
+  languages: LanguagesT | null | undefined;
   googleTrendsDef: GTrendDefT | null; // null if no config
   googleTrends: LibGTrendsT | undefined | null; // null for errors, undefined for not loaded yet
   devUsage: StateOfJSItemT | undefined;
@@ -145,5 +150,7 @@ export function getLibrary(
     googleTrends: computed(() => googleTrendsMapR.get(repoIdLC)),
     // @ts-ignore
     commits: computed(() => commitsMapR.get(repoIdLC)),
+    // @ts-ignore
+    languages: computed(() => languagesMapR.get(repoIdLC)),
   };
 }
