@@ -126,7 +126,7 @@ import Issues from './Issues.vue';
 import Languages from './Languages.vue';
 import Contributors from './github-contributors/ContributorsChart.vue';
 import DevelopersUsage from './developer-usage/DeveloperUsageChart.vue';
-import Commits from './commits/Commits.vue';
+import Commits from './commits/CommitsChart.vue';
 
 import { chartsVisibility } from '@/store/chartsVisibility';
 import {

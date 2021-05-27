@@ -18,51 +18,62 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, computed } from 'vue';
-import { ChartDataset, ChartConfiguration } from 'chart.js';
-import { getSeoLibName } from '@/utils';
-import { CommitsResponseItemT } from './api';
+import { defineComponent, computed } from 'vue';
+import { ChartConfiguration } from 'chart.js';
+import {
+  CommitsResponseItemT,
+  getNormalisedData,
+  getAggregatedCommits,
+} from './api';
 import { enUS } from 'date-fns/locale';
+import { LibraryReadonlyT } from '@/libraryApis';
+import {
+  librariesRR,
+  isLoading as isLoadingLibraries,
+} from '@/store/libraries';
+
+interface FilteredLibT extends LibraryReadonlyT {
+  commits: CommitsResponseItemT[];
+}
+interface FilteredExtLibT extends LibraryReadonlyT {
+  commits: CommitsResponseItemT[];
+  aggrCommits: CommitsResponseItemT[];
+}
 
 export default defineComponent({
   name: 'CommitsChart',
 
-  props: {
-    isLoading: { type: Boolean, required: true },
-    isError: { type: Boolean, required: true },
-    reposIds: { type: Array as () => string[], required: true },
-    failedReposIds: { type: Array as () => string[], required: true },
-    reposCommits: {
-      type: Array as () => CommitsResponseItemT[][],
-      required: true,
-    },
-    repoToColorMap: {
-      type: Object as () => Record<string, string>,
-      required: true,
-    },
-  },
+  setup() {
+    const filteredLibsRef = computed(
+      () => librariesRR.filter((lib) => !!lib.commits) as FilteredLibT[]
+    );
 
-  setup(props) {
-    const { reposIds, repoToColorMap, reposCommits } = toRefs(props);
+    const aggregatedNormalisedCommitsRef = computed(() =>
+      getAggregatedCommits(
+        getNormalisedData(filteredLibsRef.value.map((lib) => lib.commits))
+      )
+    );
 
-    const datasets = computed<ChartDataset<'line'>[]>(() =>
-      reposIds.value.map((repoId, repoIndex) => {
-        const [, repoName] = repoId.split('/');
-        return {
-          label: repoName,
-          data: reposCommits.value[repoIndex].map(({ total, week }) => ({
-            x: week,
-            y: total,
-          })),
-          backgroundColor: repoToColorMap.value[repoId],
-          borderColor: repoToColorMap.value[repoId],
-        };
-      })
+    const filteredExtLibsRef = computed<FilteredExtLibT[]>(() =>
+      filteredLibsRef.value.map((lib, libIndex) => ({
+        ...lib,
+        aggrCommits: aggregatedNormalisedCommitsRef.value[libIndex],
+      }))
     );
 
     const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
       type: 'line',
-      data: { datasets: datasets.value },
+      data: {
+        datasets: filteredExtLibsRef.value.map((lib) => ({
+          label: lib.repo.repoName,
+          data: lib.aggrCommits.map(({ total, week }) => ({
+            x: week,
+            y: total,
+          })),
+          backgroundColor: lib.color,
+          borderColor: lib.color,
+        })),
+      },
       options: {
         scales: {
           x: {
@@ -74,19 +85,37 @@ export default defineComponent({
       },
     }));
 
-    return {
-      chartConfig,
-      ariaLabel: computed(() => {
-        const valuesStr = reposIds.value
-          .map(
-            (repoId, index) =>
-              `${getSeoLibName(repoId)}: ${
-                reposCommits.value[index].slice(-1)[0].total
-              }`
-          )
-          .join(', ');
+    const isLoadingRef = computed(
+      () =>
+        isLoadingLibraries.value ||
+        librariesRR.filter((lib) => lib.commits === undefined).length > 0
+    );
 
-        return `Commits chart. The number of repository commits in the last 4 weeks - ${valuesStr} commits`;
+    return {
+      reposIds: computed(() =>
+        filteredExtLibsRef.value.map((lib) => lib.repo.repoId)
+      ),
+      failedReposIds: computed<string[]>(() => {
+        return isLoadingRef.value
+          ? []
+          : librariesRR
+              .filter((lib) => !lib.commits)
+              .map((lib) => lib.repo.repoId);
+      }),
+      chartConfig,
+      isError: computed(() => filteredLibsRef.value.length === 0),
+      isLoading: isLoadingRef,
+      ariaLabel: computed(() => {
+        const str = filteredExtLibsRef.value
+          .map(
+            (lib) =>
+              `${lib.alias} got ${
+                lib.aggrCommits.slice(-1)[0].total
+              } commit(s) in the last 4 weeks.`
+          )
+          .join(' ');
+
+        return `Commits statistics. ${str}`;
       }),
     };
   },
