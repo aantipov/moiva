@@ -121,7 +121,7 @@ import Releases from './npm-releases/ReleasesChart.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './google-trends/GTrendsChart.vue';
 import Stars from './github-stars/StarsChart.vue';
-import Bundlephobia from './bundle-size/Bundlephobia.vue';
+import Bundlephobia from './bundle-size/BundlephobiaChart.vue';
 import Issues from './Issues.vue';
 import Languages from './languages/LanguagesChart.vue';
 import Contributors from './github-contributors/ContributorsChart.vue';
