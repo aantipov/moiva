@@ -32,7 +32,7 @@ import {
 
 interface FilteredLibT extends LibraryReadonlyT {
   npmPackage: NpmPackageT;
-  bundlesize: NpmPackageReleasesT[];
+  npmReleases: NpmPackageReleasesT[];
 }
 
 export default defineComponent({
