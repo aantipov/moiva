@@ -43,7 +43,6 @@ import { RepoT, NpmPackageT } from '@/libraryApis';
 
 type LibCommitsT = CommitsResponseItemT[] | null | undefined;
 type LibNpmDownloadsT = NpmDownloadT[] | null | undefined;
-type LibBundleSizeT = BundlephobiaT | null | undefined;
 type LibStarsT = StarsT[] | null | undefined;
 
 export interface LibraryT {
@@ -65,7 +64,7 @@ export interface LibraryT {
   googleTrendsDef: GTrendDefT | null; // null if no config
   googleTrends: LibGTrendsT | undefined | null; // null for errors, undefined for not loaded yet
   devUsage: StateOfJSItemT | undefined;
-  bundlesize: LibBundleSizeT;
+  bundlesize: BundlephobiaT | null | undefined;
   stars: LibStarsT;
   starsNewAvg: number | null | undefined;
 }
