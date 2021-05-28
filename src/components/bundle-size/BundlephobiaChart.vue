@@ -75,9 +75,6 @@ export default defineComponent({
         (!category.value || whitelistedCategories.includes(category.value));
     });
 
-    const bytesFormatter = (val: number) =>
-      numbersFormatter.format(val) + ' kB';
-
     const chartConfig = computed<ChartConfiguration<'bar'>>(() => ({
       type: 'bar',
       data: {
@@ -109,10 +106,11 @@ export default defineComponent({
           y: {
             ticks: {
               beginAtZero: true,
-              callback: bytesFormatter as () => string,
+              callback: (val) => numbersFormatter.format(val as number) + ' kB',
             },
           },
         },
+
         plugins: {
           tooltip: {
             callbacks: {
