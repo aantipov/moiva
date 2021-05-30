@@ -1,10 +1,10 @@
 <template>
   <m-chart
-    v-if="tradarItemsAliases.length"
+    v-if="isDisplayed"
     title="ThoughtWorks TechRadar"
-    :is-loading="false"
+    :is-loading="isLoading"
     :is-error="false"
-    :libs-names="tradarItemsAliases"
+    :libs-names="tradarAliases"
     :failed-libs-names="[]"
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
@@ -38,81 +38,58 @@
 <script lang="ts">
 import { defineComponent, computed, watchEffect } from 'vue';
 import { format } from 'date-fns';
-import { ChartConfiguration, ChartDataset } from 'chart.js';
-import {
-  TRADAR_LEVELS,
-  repoToTechRadarMap,
-  TechRadarT,
-  DateT,
-} from '@/techradar.config';
+import { ChartConfiguration } from 'chart.js';
+import { TRADAR_LEVELS, TechRadarT, DateT } from '@/techradar.config';
 import { chartsVisibility } from '@/store/chartsVisibility';
-import { libraryToColorMap } from '@/store/librariesColors';
-import { reposIds, repoToLibraryIdMap } from '@/store/libraries';
+import { LibraryReadonlyT } from '@/libraryApis';
+import { librariesRR, isLoading } from '@/store/libraries';
+
+interface FilteredLibT extends LibraryReadonlyT {
+  tradar: TechRadarT;
+}
 
 export default defineComponent({
-  name: 'TechRadar',
+  name: 'TechRadarChart',
 
   setup() {
-    const tradarItems = computed<TechRadarT[]>(() =>
-      reposIds.value
-        .map((repoId) => repoToTechRadarMap[repoId])
-        .filter((item) => !!item)
-    );
-
-    const tradarItemsAliases = computed<string[]>(() =>
-      tradarItems.value.map(
-        (tradarItem) => repoToTechRadarMap[tradarItem.repo].alias as string
-      )
+    const filteredLibsRef = computed(
+      () => librariesRR.filter((lib) => !!lib.tradar) as FilteredLibT[]
     );
 
     watchEffect(() => {
-      chartsVisibility.techRadar = tradarItemsAliases.value.length > 0;
+      chartsVisibility.techRadar = filteredLibsRef.value.length > 0;
     });
 
     const uniqDates = computed<DateT[]>(() => {
-      const dates = tradarItems.value
-        .map((tradarItem) => tradarItem.entries.map((entry) => entry.month))
+      const dates = filteredLibsRef.value
+        .map((lib) => lib.tradar.entries.map((entry) => entry.month))
         .flat();
 
       return [...new Set(dates)].sort() as DateT[];
     });
-
-    const datasets = computed<ChartDataset<'line'>[]>(() =>
-      tradarItems.value.map((tradarItem) => ({
-        label: tradarItem.alias,
-        data: (uniqDates.value.map(
-          (date) =>
-            tradarItem.entries.find((entry) => entry.month === date)?.level
-        ) as unknown) as number[],
-        backgroundColor:
-          libraryToColorMap.value[repoToLibraryIdMap.value[tradarItem.repo]],
-        borderColor:
-          libraryToColorMap.value[repoToLibraryIdMap.value[tradarItem.repo]],
-        spanGaps: true,
-        lineTension: 0,
-      }))
-    );
-
-    function formatDate(i: number): string {
-      return format(new Date(uniqDates.value[i]), 'MMM yyyy');
-    }
 
     const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
       type: 'line',
       data: {
         labels: uniqDates.value,
         yLabels: [...TRADAR_LEVELS].reverse(),
-        datasets: datasets.value,
+        datasets: filteredLibsRef.value.map((lib) => ({
+          label: lib.tradar.alias,
+          data: (uniqDates.value.map(
+            (date) =>
+              lib.tradar.entries.find((entry) => entry.month === date)?.level
+          ) as unknown) as number[],
+          backgroundColor: lib.color,
+          borderColor: lib.color,
+          spanGaps: true,
+          lineTension: 0,
+        })),
       },
+
       options: {
         scales: {
-          x: {
-            ticks: { callback: formatDate as () => string },
-          },
-          y: {
-            type: 'category',
-            offset: true,
-          },
+          x: { ticks: { callback: formatDate as () => string } },
+          y: { type: 'category', offset: true },
         },
 
         plugins: {
@@ -133,19 +110,33 @@ export default defineComponent({
       },
     }));
 
+    function formatDate(i: number): string {
+      return format(new Date(uniqDates.value[i]), 'MMM yyyy');
+    }
+
+    function formatDate2(month: string): string {
+      return format(new Date(month), 'MMMM yyyy');
+    }
+
     return {
-      tradarItemsAliases,
+      tradarAliases: computed<string[]>(() =>
+        filteredLibsRef.value.map((lib) => lib.tradar.alias)
+      ),
+      isLoading,
+      isDisplayed: computed(() => chartsVisibility.techRadar),
       chartConfig,
       ariaLabel: computed(() => {
-        const valuesStr = tradarItems.value
+        const str = filteredLibsRef.value
           .map(
-            ({ alias, entries }) => `${alias}: ${entries.slice(-1)[0].level}`
+            ({ tradar }) =>
+              `${tradar.alias} is in the ${
+                tradar.entries.slice(-1)[0].level
+              } ring since ${formatDate2(tradar.entries.slice(-1)[0].month)}.`
           )
-          .join(', ');
+          .join(' ');
 
-        return `ThoughtWorks TechRadar chart. ${valuesStr}`;
+        return `ThoughtWorks TechRadar data. ${str}`;
       }),
-      tradarItems,
     };
   },
 });
