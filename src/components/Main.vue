@@ -70,7 +70,6 @@
           <Releases class="col-span-12 md:col-span-6 xl:col-span-4" />
           <Contributors class="col-span-12 md:col-span-6 xl:col-span-4" />
           <Commits class="col-span-12 md:col-span-6 xl:col-span-4" />
-          <Issues class="col-span-12 md:col-span-6 xl:col-span-4" />
         </div>
       </section>
 
@@ -122,7 +121,6 @@ import TechRadar from './TechRadar.vue';
 import GoogleTrends from './google-trends/GTrendsChart.vue';
 import Stars from './github-stars/StarsChart.vue';
 import Bundlephobia from './bundle-size/BundlephobiaChart.vue';
-import Issues from './Issues.vue';
 import Languages from './languages/LanguagesChart.vue';
 import Contributors from './github-contributors/ContributorsChart.vue';
 import DevelopersUsage from './developer-usage/DeveloperUsageChart.vue';
@@ -165,7 +163,6 @@ export default defineComponent({
     Contributors,
     DevelopersUsage,
     GoogleTrends,
-    Issues,
     Languages,
     NpmDownloads,
     Releases,
