@@ -21,6 +21,11 @@ export interface RepoT {
   closedBugIssues: number;
   openIssues: number;
   openBugIssues: number;
+  licenseInfo: {
+    key: string;
+    name: string;
+    url: string;
+  } | null;
 }
 
 export interface NpmPackageT {
