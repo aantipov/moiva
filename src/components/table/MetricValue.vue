@@ -184,7 +184,9 @@
   </div>
 
   <div v-else-if="type === 'license'" class="flex items-center justify-center">
-    {{ lib.npmPackage?.license ?? '-' }}
+    {{
+      lib.npmPackage?.license || lib.repo.licenseInfo?.key.toUpperCase() || '-'
+    }}
   </div>
 </template>
 
