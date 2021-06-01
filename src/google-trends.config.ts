@@ -40,6 +40,9 @@ const gtrendsDefs: [RepoIdT, KeywordT, KeywordAliasT?][] = [
   ['sinonjs/sinon', 'sinon'],
   ['gatsbyjs/gatsby', 'gatsby'],
   ['nuxt/nuxt.js', '/g/11g0wgnhgc', 'Nuxt.js'],
+  ['laravel/laravel', '/m/0jwy148', 'Laravel'],
+  ['django/django', '/m/06y_qx', 'Django'],
+  ['axios/axios', 'axios', 'axios'],
 ];
 
 export interface GTrendDefT {
