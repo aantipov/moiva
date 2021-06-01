@@ -29,6 +29,7 @@
 
           <tbody>
             <tr v-for="(row, index) in rows" :key="row.metric">
+              <!--  Category header (e.g. Popularity, Maintenance, Misc.)  -->
               <th
                 v-if="index === 0 || row.cat !== rows[index - 1].cat"
                 :rowspan="catsSpanMap[row.cat]"
@@ -42,6 +43,8 @@
                   </div>
                 </div>
               </th>
+
+              <!-- Metric header -->
               <th
                 scope="row"
                 class="px-2 bg-gray-200 border-r border-separate border-gray-300 second-header"
@@ -54,6 +57,7 @@
                 <MetricHeader :type="row.metric" />
               </th>
 
+              <!-- Libs values -->
               <td
                 v-for="lib in libraries"
                 :key="lib.id"
