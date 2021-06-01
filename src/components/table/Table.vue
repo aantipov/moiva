@@ -37,7 +37,7 @@
                 :class="{ 'border-b': row.cat !== rows[rows.length - 1].cat }"
                 scope="row"
               >
-                <div class="w-6 mt-20">
+                <div class="w-6" :style="getCatMargin(row.cat)">
                   <div class="text-center transform -rotate-90">
                     {{ row.cat }}
                   </div>
@@ -107,6 +107,17 @@ const METRICS = [
   'license',
 ] as const;
 
+const NPM_METRICS = [
+  'npm',
+  'downloads',
+  'releases',
+  'dependencies',
+  'bundlesize',
+  'ts',
+  'security',
+  'license',
+];
+
 export type MetricT = typeof METRICS[number];
 type CategoryT = '' | 'Popularity' | 'Maintenance' | 'Miscellaneous';
 
@@ -141,7 +152,11 @@ export default defineComponent({
 
   setup() {
     const rowsRef = computed(() => {
-      return ROWS;
+      const hasNpm = libraries.some((lib) => !!lib.npmPackage);
+      if (hasNpm) {
+        return ROWS;
+      }
+      return ROWS.filter((row) => !NPM_METRICS.includes(row.metric));
     });
 
     const catsSpanMapRef = computed(() => {
@@ -159,13 +174,24 @@ export default defineComponent({
       isLoading,
       removeLibrary,
       rows: rowsRef,
-      metrics: METRICS,
       catsSpanMap: catsSpanMapRef,
       getLibColor(libraryId: string): string {
         return libraryToColorMap.value[libraryId];
       },
       clearSelection() {
         removeAllLibraries();
+      },
+      getCatMargin(cat: CategoryT): { marginTop?: string } {
+        if (cat === 'Popularity') {
+          return { marginTop: '60px' };
+        }
+        if (cat === 'Maintenance') {
+          return { marginTop: '77px' };
+        }
+        if (cat === 'Miscellaneous') {
+          return { marginTop: '87px' };
+        }
+        return {};
       },
     };
   },
