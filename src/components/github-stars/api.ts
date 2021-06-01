@@ -32,6 +32,9 @@ export function fetchRepoStars(repoId: string): Promise<StarsT[] | null> {
 }
 
 function fillMissingData(items: StarsT[]): StarsT[] {
+  if (!items.length) {
+    return items;
+  }
   // exclude current (last) month with non complete data
   const currentMonth = new Date().toISOString().slice(0, 7);
   if (items.slice(-1)[0].month === currentMonth) {

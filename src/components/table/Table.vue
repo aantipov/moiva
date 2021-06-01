@@ -28,42 +28,43 @@
           </thead>
 
           <tbody>
-            <tr v-for="(metric, index) in metrics" :key="metric">
+            <tr v-for="(row, index) in rows" :key="row.metric">
+              <!--  Category header (e.g. Popularity, Maintenance, Misc.)  -->
               <th
-                v-if="isMetricStartsNewCategory(index)"
-                :rowspan="getMetricSpan(index)"
+                v-if="index === 0 || row.cat !== rows[index - 1].cat"
+                :rowspan="catsSpanMap[row.cat]"
                 class="text-white border-r border-gray-300 bg-primary first-header"
-                :class="{
-                  'border-b': [0, 2, 6].includes(index),
-                }"
+                :class="{ 'border-b': row.cat !== rows[rows.length - 1].cat }"
                 scope="row"
               >
                 <div class="w-6 mt-20">
                   <div class="text-center transform -rotate-90">
-                    {{ getMetricCategory(index) }}
+                    {{ row.cat }}
                   </div>
                 </div>
               </th>
+
+              <!-- Metric header -->
               <th
                 scope="row"
                 class="px-2 bg-gray-200 border-r border-separate border-gray-300 second-header"
                 :class="{
-                  'border-b': shouldShowBottomBorder(index),
-                  'bg-green-100': [2, 3, 4, 5].includes(index),
-                  'bg-yellow-100': [6, 7, 8].includes(index),
-                  'bg-purple-100': index > 8,
+                  'border-b':
+                    index < rows.length - 1 && row.cat !== rows[index + 1].cat,
+                  [row.classVal]: true,
                 }"
               >
-                <MetricHeader :type="metric" />
+                <MetricHeader :type="row.metric" />
               </th>
 
+              <!-- Libs values -->
               <td
                 v-for="lib in libraries"
                 :key="lib.id"
                 class="p-2 bg-white border-r border-gray-300"
                 :class="{ 'bg-gray-200': index % 2 }"
               >
-                <MetricValue :type="metric" :lib="lib" />
+                <MetricValue :type="row.metric" :lib="lib" />
               </td>
             </tr>
           </tbody>
@@ -74,7 +75,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, computed } from 'vue';
 import Loader from '../Loader.vue';
 import MetricHeader from './MetricHeader.vue';
 import MetricValue from './MetricValue.vue';
@@ -106,23 +107,28 @@ const METRICS = [
   'license',
 ] as const;
 
-const METRICS_CATS = METRICS.map((metric) => {
-  let cat;
-  if (['npm', 'repo'].includes(metric)) {
-    cat = '';
-  } else if (
-    ['stars', 'downloads', 'searchInterest', 'devusage'].includes(metric)
-  ) {
-    cat = 'Popularity';
-  } else if (['releases', 'commits', 'contributors'].includes(metric)) {
-    cat = 'Maintenance';
-  } else {
-    cat = 'Miscellaneous';
-  }
-  return { metric, cat };
-});
-
 export type MetricT = typeof METRICS[number];
+type CategoryT = '' | 'Popularity' | 'Maintenance' | 'Miscellaneous';
+
+const ROWS: { metric: MetricT; cat: CategoryT; classVal: string }[] = [
+  { metric: 'npm', cat: '', classVal: '' },
+  { metric: 'repo', cat: '', classVal: '' },
+  { metric: 'stars', cat: 'Popularity', classVal: 'bg-green-100' },
+  { metric: 'downloads', cat: 'Popularity', classVal: 'bg-green-100' },
+  { metric: 'searchInterest', cat: 'Popularity', classVal: 'bg-green-100' },
+  { metric: 'devusage', cat: 'Popularity', classVal: 'bg-green-100' },
+  { metric: 'releases', cat: 'Maintenance', classVal: 'bg-yellow-100' },
+  { metric: 'commits', cat: 'Maintenance', classVal: 'bg-yellow-100' },
+  { metric: 'contributors', cat: 'Maintenance', classVal: 'bg-yellow-100' },
+  { metric: 'dependencies', cat: 'Miscellaneous', classVal: 'bg-purple-100' },
+  { metric: 'bundlesize', cat: 'Miscellaneous', classVal: 'bg-purple-100' },
+  { metric: 'ts', cat: 'Miscellaneous', classVal: 'bg-purple-100' },
+  { metric: 'tradar', cat: 'Miscellaneous', classVal: 'bg-purple-100' },
+  { metric: 'security', cat: 'Miscellaneous', classVal: 'bg-purple-100' },
+  { metric: 'vulnerability', cat: 'Miscellaneous', classVal: 'bg-purple-100' },
+  { metric: 'age', cat: 'Miscellaneous', classVal: 'bg-purple-100' },
+  { metric: 'license', cat: 'Miscellaneous', classVal: 'bg-purple-100' },
+];
 
 export default defineComponent({
   name: 'Table',
@@ -134,31 +140,32 @@ export default defineComponent({
   },
 
   setup() {
+    const rowsRef = computed(() => {
+      return ROWS;
+    });
+
+    const catsSpanMapRef = computed(() => {
+      return rowsRef.value.reduce((acc, row) => {
+        if (!acc[row.cat]) {
+          acc[row.cat] = 0;
+        }
+        acc[row.cat]++;
+        return acc;
+      }, {} as Record<CategoryT, number>);
+    });
+
     return {
       libraries,
       isLoading,
       removeLibrary,
+      rows: rowsRef,
       metrics: METRICS,
+      catsSpanMap: catsSpanMapRef,
       getLibColor(libraryId: string): string {
         return libraryToColorMap.value[libraryId];
       },
       clearSelection() {
         removeAllLibraries();
-      },
-      isMetricStartsNewCategory(i: number): boolean {
-        if (i === 0) {
-          return true;
-        }
-        return METRICS_CATS[i].cat !== METRICS_CATS[i - 1].cat;
-      },
-      getMetricCategory(i: number): string {
-        return METRICS_CATS[i].cat;
-      },
-      getMetricSpan(i: number): number {
-        return [2, 2, 4, 4, 4, 4, 3, 3, 3, 8, 8, 8, 8, 8, 8, 8, 8][i];
-      },
-      shouldShowBottomBorder(i: number): boolean {
-        return [1, 5, 8].includes(i);
       },
     };
   },
