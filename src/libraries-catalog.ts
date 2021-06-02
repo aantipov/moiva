@@ -17,7 +17,7 @@ const libraries: CatalogLibraryT[] = [
   { category: 'JavaScript Mocking Libraries, test servers', repoId: 'mswjs/msw', npm: 'msw', isNpmAByProduct: false, alias: 'MSW', framework: null },
   { category: 'JavaScript Mocking Libraries, test servers', repoId: 'bbyars/mountebank', npm: 'mountebank', isNpmAByProduct: false, alias: 'Mountebank', framework: null },
   { category: 'JavaScript Mocking Libraries, test servers', repoId: 'typicode/json-server', npm: 'json-server', isNpmAByProduct: false, alias: 'JSON Server', framework: null },
-  { category: 'JavaScript Mocking Libraries, test servers', repoId: 'Hagith/wiremock-standalone', npm: 'wiremock-standalone', isNpmAByProduct: false, alias: 'WireMock', framework: null },
+  { category: 'JavaScript Mocking Libraries, test servers', repoId: 'modernweb-pl/wiremock-standalone', npm: 'wiremock-standalone', isNpmAByProduct: false, alias: 'WireMock', framework: null },
   { category: 'JavaScript Mocking Libraries, test servers', repoId: 'miragejs/miragejs', npm: 'miragejs', isNpmAByProduct: false, alias: 'Mirage', framework: null },
 
   // AWS Lambda Frameworks
@@ -72,7 +72,7 @@ const libraries: CatalogLibraryT[] = [
   // CSS-in-JS Libraries
   { category: 'CSS-in-JS Libraries', repoId: 'vercel/styled-jsx', npm: 'styled-jsx', isNpmAByProduct: false, alias: 'styled-jsx', framework: 'react' },
   { category: 'CSS-in-JS Libraries', repoId: 'styled-components/styled-components', npm: 'styled-components', isNpmAByProduct: false, alias: 'styled-components', framework: 'react' },
-  { category: 'CSS-in-JS Libraries', repoId: 'formidablelabs/radium', npm: 'radium', isNpmAByProduct: false, alias: 'Radium', framework: 'react' },
+  { category: 'CSS-in-JS Libraries', repoId: 'FormidableLabs/radium', npm: 'radium', isNpmAByProduct: false, alias: 'Radium', framework: 'react' },
   { category: 'CSS-in-JS Libraries', repoId: 'callstack/linaria', npm: '@linaria/core', isNpmAByProduct: false, alias: 'Linaria', framework: 'react' },
   { category: 'CSS-in-JS Libraries', repoId: 'cssinjs/jss', npm: 'jss', isNpmAByProduct: false, alias: 'JSS', framework: null },
   { category: 'CSS-in-JS Libraries', repoId: 'emotion-js/emotion', npm: '@emotion/css', isNpmAByProduct: false, alias: 'Emotion', framework: null },
@@ -89,7 +89,7 @@ const libraries: CatalogLibraryT[] = [
   { category: 'JavaScript Date Utility Libraries', repoId: 'taylorhakes/fecha', npm: 'fecha', isNpmAByProduct: false, alias: 'Fecha', framework: null },
   { category: 'JavaScript Date Utility Libraries', repoId: 'vercel/ms', npm: 'ms', isNpmAByProduct: false, alias: 'ms', framework: null },
   { category: 'JavaScript Date Utility Libraries', repoId: 'hustcc/timeago.js', npm: 'timeago.js', isNpmAByProduct: false, alias: 'Timeago.js', framework: null },
-  { category: 'JavaScript Date Utility Libraries', repoId: 'MatthewMueller/date', npm: 'date.js', isNpmAByProduct: false, alias: 'Date', framework: null },
+  { category: 'JavaScript Date Utility Libraries', repoId: 'matthewmueller/date', npm: 'date.js', isNpmAByProduct: false, alias: 'Date', framework: null },
 
   // JavaScript frameworks for Desktop Applications
   { category: 'JavaScript frameworks for Desktop Applications', repoId: 'electron/electron', npm: 'electron', isNpmAByProduct: false, alias: 'Electron', framework: null },
@@ -104,7 +104,7 @@ const libraries: CatalogLibraryT[] = [
   // JS End-to-End Testing and Browser Automation Libraries
   { category: 'JS End-to-End Testing and Browser Automation Libraries', repoId: 'puppeteer/puppeteer', npm: 'puppeteer', isNpmAByProduct: false, alias: 'Puppeteer', framework: null },
   { category: 'JS End-to-End Testing and Browser Automation Libraries', repoId: 'cypress-io/cypress', npm: 'cypress', isNpmAByProduct: false, alias: 'Cypress', framework: null },
-  { category: 'JS End-to-End Testing and Browser Automation Libraries', repoId: 'Microsoft/playwright', npm: 'playwright', isNpmAByProduct: false, alias: 'Playwright', framework: null },
+  { category: 'JS End-to-End Testing and Browser Automation Libraries', repoId: 'microsoft/playwright', npm: 'playwright', isNpmAByProduct: false, alias: 'Playwright', framework: null },
   { category: 'JS End-to-End Testing and Browser Automation Libraries', repoId: 'SeleniumHQ/selenium', npm: 'selenium-webdriver', isNpmAByProduct: false, alias: 'Selenium', framework: null },
   { category: 'JS End-to-End Testing and Browser Automation Libraries', repoId: 'webdriverio/webdriverio', npm: 'webdriverio', isNpmAByProduct: false, alias: 'Webdriverio', framework: null },
   { category: 'JS End-to-End Testing and Browser Automation Libraries', repoId: 'DevExpress/testcafe', npm: 'testcafe', isNpmAByProduct: false, alias: 'Testcafe', framework: null },
@@ -129,7 +129,7 @@ const libraries: CatalogLibraryT[] = [
   { category: 'JavaScript UI Frameworks and Libraries', repoId: 'angular/angular.js', npm: 'angular', isNpmAByProduct: false, alias: 'AngularJS', framework: null },
   { category: 'JavaScript UI Frameworks and Libraries', repoId: 'marionettejs/backbone.marionette', npm: 'backbone.marionette', isNpmAByProduct: false, alias: 'Backbone.marionette', framework: null },
   { category: 'JavaScript UI Frameworks and Libraries', repoId: 'knockout/knockout', npm: 'knockout', isNpmAByProduct: false, alias: 'Knockout', framework: null },
-  { category: 'JavaScript UI Frameworks and Libraries', repoId: 'ryansolid/solid', npm: 'solid-js', isNpmAByProduct: false, alias: 'Solid', framework: null },
+  { category: 'JavaScript UI Frameworks and Libraries', repoId: 'solidjs/solid', npm: 'solid-js', isNpmAByProduct: false, alias: 'Solid', framework: null },
   { category: 'JavaScript UI Frameworks and Libraries', repoId: 'MithrilJS/mithril.js', npm: 'mithril', isNpmAByProduct: false, alias: 'Mithril.js', framework: null },
   { category: 'JavaScript UI Frameworks and Libraries', repoId: 'aurelia/framework', npm: 'aurelia-framework', isNpmAByProduct: false, alias: 'Aurelia', framework: null },
   { category: 'JavaScript UI Frameworks and Libraries', repoId: 'hotwired/stimulus', npm: 'stimulus', isNpmAByProduct: false, alias: 'Stimulus', framework: null },
@@ -138,7 +138,7 @@ const libraries: CatalogLibraryT[] = [
   // GraphQL Client Libraries
   { category: 'GraphQL Client Libraries', repoId: 'facebook/relay', npm: 'relay-runtime', isNpmAByProduct: false, alias: 'Relay', framework: 'react' },
   { category: 'GraphQL Client Libraries', repoId: 'apollographql/apollo-client', npm: '@apollo/client', isNpmAByProduct: false, alias: 'Apollo Client', framework: 'react' },
-  { category: 'GraphQL Client Libraries', repoId: 'Akryum/vue-apollo', npm: 'vue-apollo', isNpmAByProduct: false, alias: 'Vue Apollo', framework: 'vue' },
+  { category: 'GraphQL Client Libraries', repoId: 'vuejs/vue-apollo', npm: 'vue-apollo', isNpmAByProduct: false, alias: 'Vue Apollo', framework: 'vue' },
   { category: 'GraphQL Client Libraries', repoId: 'timhall/svelte-apollo', npm: 'svelte-apollo', isNpmAByProduct: false, alias: 'svelte-apollo', framework: 'svelte' },
   { category: 'GraphQL Client Libraries', repoId: 'ember-graphql/ember-apollo-client', npm: 'ember-apollo-client', isNpmAByProduct: false, alias: 'ember-apollo-client', framework: 'ember' },
   { category: 'GraphQL Client Libraries', repoId: 'kamilkisiela/apollo-angular', npm: 'apollo-angular', isNpmAByProduct: false, alias: 'Apollo Angular', framework: 'angular' },
@@ -158,7 +158,7 @@ const libraries: CatalogLibraryT[] = [
 
   // JavaScript Immutability Libraries
   { category: 'JavaScript Immutability Libraries', repoId: 'immerjs/immer', npm: 'immer', isNpmAByProduct: false, alias: 'Immer', framework: null },
-  { category: 'JavaScript Immutability Libraries', repoId: 'facebook/immutable-js', npm: 'immutable', isNpmAByProduct: false, alias: 'Immutable.js', framework: null },
+  { category: 'JavaScript Immutability Libraries', repoId: 'immutable-js/immutable-js', npm: 'immutable', isNpmAByProduct: false, alias: 'Immutable.js', framework: null },
 
   // JavaScript Linting and Formatting Tools
   { category: 'JavaScript Linting and Formatting Tools', repoId: 'eslint/eslint', npm: 'eslint', isNpmAByProduct: false, alias: 'ESLint', framework: null },
@@ -173,7 +173,7 @@ const libraries: CatalogLibraryT[] = [
 
   // misc
   { category: 'misc', repoId: 'plouc/nivo', npm: '@nivo/core', isNpmAByProduct: false, alias: 'Nivo', framework: null },
-  { category: 'misc', repoId: 'skellock/apisauce', npm: 'apisauce', isNpmAByProduct: false, alias: 'Apisauce', framework: null },
+  { category: 'misc', repoId: 'infinitered/apisauce', npm: 'apisauce', isNpmAByProduct: false, alias: 'Apisauce', framework: null },
   { category: 'misc', repoId: 'caolan/async', npm: 'async', isNpmAByProduct: false, alias: 'Async', framework: null },
   { category: 'misc', repoId: 'axios/axios', npm: 'axios', isNpmAByProduct: false, alias: 'Axios', framework: null },
   { category: 'misc', repoId: 'petkaantonov/bluebird', npm: 'bluebird', isNpmAByProduct: false, alias: 'Bluebird', framework: null },
@@ -191,19 +191,19 @@ const libraries: CatalogLibraryT[] = [
   { category: 'misc', repoId: 'jquery/jquery', npm: 'jquery', isNpmAByProduct: false, alias: 'Jquery', framework: null },
   { category: 'misc', repoId: 'less/less.js', npm: 'less', isNpmAByProduct: false, alias: 'Less.js', framework: null },
   { category: 'misc', repoId: 'isaacs/node-mkdirp', npm: 'mkdirp', isNpmAByProduct: false, alias: 'node-mkdirp', framework: null },
-  { category: 'misc', repoId: 'bitinn/node-fetch', npm: 'node-fetch', isNpmAByProduct: false, alias: 'node-fetch', framework: null },
+  { category: 'misc', repoId: 'node-fetch/node-fetch', npm: 'node-fetch', isNpmAByProduct: false, alias: 'node-fetch', framework: null },
   { category: 'misc', repoId: 'jaredhanson/passport', npm: 'passport', isNpmAByProduct: false, alias: 'Passport', framework: null },
   { category: 'misc', repoId: 'facebook/prop-types', npm: 'prop-types', isNpmAByProduct: false, alias: 'prop-types', framework: null },
   { category: 'misc', repoId: 'angular/protractor', npm: 'protractor', isNpmAByProduct: false, alias: 'Protractor', framework: null },
   { category: 'misc', repoId: 'reactchartjs/react-chartjs-2', npm: 'react-chartjs-2', isNpmAByProduct: false, alias: 'react-chartjs-2', framework: null },
   { category: 'misc', repoId: 'ReactTraining/react-router', npm: 'react-router', isNpmAByProduct: false, alias: 'react-router', framework: null },
-  { category: 'misc', repoId: 'uber-common/react-vis', npm: 'react-vis', isNpmAByProduct: false, alias: 'react-vis', framework: null },
+  { category: 'misc', repoId: 'uber/react-vis', npm: 'react-vis', isNpmAByProduct: false, alias: 'react-vis', framework: null },
   { category: 'misc', repoId: 'sanctuary-js/sanctuary', npm: 'sanctuary', isNpmAByProduct: false, alias: 'Sanctuary', framework: null },
   { category: 'misc', repoId: 'sass/dart-sass', npm: 'sass', isNpmAByProduct: false, alias: 'dart-sass', framework: null },
   { category: 'misc', repoId: 'visionmedia/superagent', npm: 'superagent', isNpmAByProduct: false, alias: 'Superagent', framework: null },
   { category: 'misc', repoId: 'kriasoft/universal-router', npm: 'universal-router', isNpmAByProduct: false, alias: 'universal-router', framework: null },
   { category: 'misc', repoId: 'uuidjs/uuid', npm: 'uuid', isNpmAByProduct: false, alias: 'Uuid', framework: null },
-  { category: 'misc', repoId: 'formidablelabs/victory', npm: 'victory', isNpmAByProduct: false, alias: 'Victory', framework: null },
+  { category: 'misc', repoId: 'FormidableLabs/victory', npm: 'victory', isNpmAByProduct: false, alias: 'Victory', framework: null },
   { category: 'misc', repoId: 'yargs/yargs', npm: 'yargs', isNpmAByProduct: false, alias: 'Yargs', framework: null },
   { category: 'misc', repoId: 'postcss/postcss', npm: 'postcss', isNpmAByProduct: false, alias: 'Postcss', framework: null },
   { category: 'misc', repoId: 'facebook/create-react-app', npm: 'create-react-app', isNpmAByProduct: false, alias: 'Create React App', framework: null },
@@ -218,21 +218,21 @@ const libraries: CatalogLibraryT[] = [
   { category: 'misc', repoId: 'juliangarnier/anime', npm: 'animejs', isNpmAByProduct: false, alias: 'Anime', framework: null },
   { category: 'misc', repoId: 'impress/impress.js', npm: 'impress.js', isNpmAByProduct: false, alias: 'Impress.js', framework: null },
   { category: 'misc', repoId: 'TryGhost/Ghost', npm: 'ghost', isNpmAByProduct: false, alias: 'Ghost', framework: null },
-  { category: 'misc', repoId: 'knsv/mermaid', npm: 'mermaid', isNpmAByProduct: false, alias: 'Mermaid', framework: null },
+  { category: 'misc', repoId: 'mermaid-js/mermaid', npm: 'mermaid', isNpmAByProduct: false, alias: 'Mermaid', framework: null },
   { category: 'misc', repoId: 'strapi/strapi', npm: 'strapi', isNpmAByProduct: false, alias: 'Strapi', framework: null },
-  { category: 'misc', repoId: 'pixijs/pixi.js', npm: 'pixi.js', isNpmAByProduct: false, alias: 'PixiJS', framework: null },
+  { category: 'misc', repoId: 'pixijs/pixijs', npm: 'pixi.js', isNpmAByProduct: false, alias: 'PixiJS', framework: null },
   { category: 'misc', repoId: 'alvarotrigo/fullPage.js', npm: 'fullpage.js', isNpmAByProduct: false, alias: 'fullPage.js', framework: null },
   { category: 'misc', repoId: 'sahat/hackathon-starter', npm: '@atomist/hackathon-starter', isNpmAByProduct: false, alias: 'Hackathon Starter', framework: null },
   { category: 'misc', repoId: 'videojs/video.js', npm: 'video.js', isNpmAByProduct: false, alias: 'Video.js', framework: null },
   { category: 'misc', repoId: 'zenorocha/clipboard.js', npm: 'clipboard', isNpmAByProduct: false, alias: 'clipboard.js', framework: null },
-  { category: 'misc', repoId: 'Marak/Faker.js', npm: 'faker', isNpmAByProduct: false, alias: 'Faker.js', framework: null },
+  { category: 'misc', repoId: 'Marak/faker.js', npm: 'faker', isNpmAByProduct: false, alias: 'Faker.js', framework: null },
   { category: 'misc', repoId: 'photonstorm/phaser', npm: 'phaser', isNpmAByProduct: false, alias: 'Phaser', framework: null },
   { category: 'misc', repoId: 'quilljs/quill', npm: 'quill', isNpmAByProduct: false, alias: 'Quill', framework: null },
   { category: 'misc', repoId: 'ant-design/ant-design-pro', npm: 'ant-design-pro', isNpmAByProduct: false, alias: 'Ant Design Pro', framework: null },
   { category: 'misc', repoId: 'vuejs/vue-cli', npm: '@vue/cli', isNpmAByProduct: false, alias: 'Vue CLI', framework: 'vue' },
   { category: 'misc', repoId: 'kenwheeler/slick', npm: 'slick-carousel', isNpmAByProduct: false, alias: 'Slick', framework: null },
   { category: 'misc', repoId: 'lerna/lerna', npm: 'lerna', isNpmAByProduct: false, alias: 'Lerna', framework: null },
-  { category: 'misc', repoId: 'nolimits4web/Swiper', npm: 'swiper', isNpmAByProduct: false, alias: 'Swiper', framework: null },
+  { category: 'misc', repoId: 'nolimits4web/swiper', npm: 'swiper', isNpmAByProduct: false, alias: 'Swiper', framework: null },
   { category: 'misc', repoId: 'request/request', npm: 'request', isNpmAByProduct: false, alias: 'Request', framework: null },
   { category: 'misc', repoId: 'standard/standard', npm: 'standard', isNpmAByProduct: false, alias: 'JavaScript Standard Style', framework: null },
   { category: 'misc', repoId: 'Modernizr/Modernizr', npm: 'modernizr', isNpmAByProduct: false, alias: 'Modernizr', framework: null },
@@ -245,7 +245,7 @@ const libraries: CatalogLibraryT[] = [
   { category: 'misc', repoId: 'webtorrent/webtorrent', npm: 'webtorrent', isNpmAByProduct: false, alias: 'WebTorrent', framework: null },
   { category: 'misc', repoId: 'webtorrent/webtorrent-cli', npm: 'webtorrent-cli', isNpmAByProduct: false, alias: 'webtorrent-cli', framework: null },
   { category: 'misc', repoId: 'airbnb/lottie-web', npm: 'lottie-web', isNpmAByProduct: false, alias: 'Lottie for Web', framework: null },
-  { category: 'misc', repoId: 'Microsoft/monaco-editor', npm: 'monaco-editor', isNpmAByProduct: false, alias: 'Monaco Editor', framework: null },
+  { category: 'misc', repoId: 'microsoft/monaco-editor', npm: 'monaco-editor', isNpmAByProduct: false, alias: 'Monaco Editor', framework: null },
   { category: 'misc', repoId: 'naptha/tesseract.js', npm: 'tesseract.js', isNpmAByProduct: false, alias: 'Tesseract.js', framework: null },
   { category: 'misc', repoId: 'typeorm/typeorm', npm: 'typeorm', isNpmAByProduct: false, alias: 'TypeORM', framework: null },
   { category: 'misc', repoId: 'tabler/tabler', npm: '@tabler/core', isNpmAByProduct: false, alias: 'Tabler', framework: null },
@@ -272,9 +272,9 @@ const libraries: CatalogLibraryT[] = [
   { category: 'misc', repoId: 'jlmakes/scrollreveal', npm: 'scrollreveal', isNpmAByProduct: false, alias: 'Scrollreveal', framework: null },
   { category: 'misc', repoId: 'chenglou/react-motion', npm: 'react-motion', isNpmAByProduct: false, alias: 'react-motion', framework: null },
   { category: 'misc', repoId: 'MostlyAdequate/mostly-adequate-guide', npm: '@mostly-adequate/support', isNpmAByProduct: false, alias: 'Guide to FP', framework: null },
-  { category: 'misc', repoId: 'drcmda/react-spring', npm: 'react-spring', isNpmAByProduct: false, alias: 'react-spring', framework: null },
+  { category: 'misc', repoId: 'pmndrs/react-spring', npm: 'react-spring', isNpmAByProduct: false, alias: 'react-spring', framework: null },
   { category: 'misc', repoId: 'postcss/autoprefixer', npm: 'autoprefixer', isNpmAByProduct: false, alias: 'Autoprefixer', framework: null },
-  { category: 'misc', repoId: 'Bilibili/flv.js', npm: 'flv.js', isNpmAByProduct: false, alias: 'Flv.js', framework: null },
+  { category: 'misc', repoId: 'bilibili/flv.js', npm: 'flv.js', isNpmAByProduct: false, alias: 'Flv.js', framework: null },
   { category: 'misc', repoId: 'sampotts/plyr', npm: 'plyr', isNpmAByProduct: false, alias: 'Plyr', framework: null },
   { category: 'misc', repoId: 'lovell/sharp', npm: 'sharp', isNpmAByProduct: false, alias: 'Sharp', framework: null },
   { category: 'misc', repoId: 'localForage/localForage', npm: 'localforage', isNpmAByProduct: false, alias: 'localForage', framework: null },
@@ -335,10 +335,10 @@ const libraries: CatalogLibraryT[] = [
   { category: 'misc', repoId: 'tj/n', npm: 'n', isNpmAByProduct: false, alias: 'n', framework: null },
   { category: 'misc', repoId: 'yaronn/blessed-contrib', npm: 'blessed-contrib', isNpmAByProduct: false, alias: 'blessed-contrib', framework: null },
   { category: 'misc', repoId: 'chjj/blessed', npm: 'blessed', isNpmAByProduct: false, alias: 'Blessed', framework: null },
-  { category: 'misc', repoId: 'weexteam/weex-vue-render', npm: 'weex-vue-render', isNpmAByProduct: false, alias: 'weex-vue-render', framework: null },
+  { category: 'misc', repoId: 'weexteam/vue-render-for-apache-weex', npm: 'weex-vue-render', isNpmAByProduct: false, alias: 'vue-render-for-apache-weex', framework: null },
   { category: 'misc', repoId: 'pouchdb/pouchdb', npm: 'pouchdb', isNpmAByProduct: false, alias: 'PouchDB', framework: null },
   { category: 'misc', repoId: 'eclipse-theia/theia', npm: '@theia/core', isNpmAByProduct: false, alias: 'Eclipse Theia', framework: null },
-  { category: 'misc', repoId: 'chmln/flatpickr', npm: 'flatpickr', isNpmAByProduct: false, alias: 'Flatpickr', framework: null },
+  { category: 'misc', repoId: 'flatpickr/flatpickr', npm: 'flatpickr', isNpmAByProduct: false, alias: 'Flatpickr', framework: null },
   { category: 'misc', repoId: 'frappe/charts', npm: 'frappe-charts', isNpmAByProduct: false, alias: 'Frappe Charts', framework: null },
   { category: 'misc', repoId: 'knex/knex', npm: 'knex', isNpmAByProduct: false, alias: 'knex.js', framework: null },
   { category: 'misc', repoId: 'auth0/node-jsonwebtoken', npm: 'jsonwebtoken', isNpmAByProduct: false, alias: 'node-jsonwebtoken', framework: null },
@@ -366,7 +366,7 @@ const libraries: CatalogLibraryT[] = [
   { category: 'misc', repoId: 'aframevr/aframe', npm: 'aframe', isNpmAByProduct: false, alias: 'A-Frame', framework: null },
   { category: 'misc', repoId: 'nhn/tui.editor', npm: '@toast-ui/editor', isNpmAByProduct: false, alias: 'TOAST UI Editor', framework: null },
   { category: 'misc', repoId: 'formatjs/formatjs', npm: 'react-intl', isNpmAByProduct: false, alias: 'React Intl', framework: null },
-  { category: 'misc', repoId: 'hshoff/vx', npm: '@vx/vx', isNpmAByProduct: false, alias: 'visx', framework: null },
+  { category: 'misc', repoId: 'airbnb/visx', npm: '@vx/vx', isNpmAByProduct: false, alias: 'visx', framework: null },
   { category: 'misc', repoId: 'paperjs/paper.js', npm: 'paper', isNpmAByProduct: false, alias: 'Paper.js', framework: null },
   { category: 'misc', repoId: 'kamranahmedse/driver.js', npm: 'driver.js', isNpmAByProduct: false, alias: 'Driver.js', framework: null },
   { category: 'misc', repoId: 'twitter/twemoji', npm: 'twemoji', isNpmAByProduct: false, alias: 'Twemoji', framework: null },
@@ -378,9 +378,9 @@ const libraries: CatalogLibraryT[] = [
   { category: 'misc', repoId: 'greensock/GSAP', npm: 'gsap', isNpmAByProduct: false, alias: 'GSAP', framework: null },
   { category: 'misc', repoId: 'krisk/Fuse', npm: 'fuse.js', isNpmAByProduct: false, alias: 'Fuse', framework: null },
   { category: 'misc', repoId: 'VerbalExpressions/JSVerbalExpressions', npm: 'verbal-expressions', isNpmAByProduct: false, alias: 'JSVerbalExpressions', framework: null },
-  { category: 'misc', repoId: 'brainjs/brain.js', npm: 'brain.js', isNpmAByProduct: false, alias: 'Brain.js', framework: null },
+  { category: 'misc', repoId: 'BrainJS/brain.js', npm: 'brain.js', isNpmAByProduct: false, alias: 'Brain.js', framework: null },
   { category: 'misc', repoId: 'Tencent/omi', npm: 'omi', isNpmAByProduct: false, alias: 'Omi', framework: null },
-  { category: 'misc', repoId: 'drcmda/react-three-fiber', npm: 'react-three-fiber', isNpmAByProduct: false, alias: 'react-three-fiber', framework: null },
+  { category: 'misc', repoId: 'pmndrs/react-three-fiber', npm: 'react-three-fiber', isNpmAByProduct: false, alias: 'react-three-fiber', framework: null },
   { category: 'misc', repoId: 'shelljs/shelljs', npm: 'shelljs', isNpmAByProduct: false, alias: 'ShellJS', framework: null },
   { category: 'misc', repoId: 'jwagner/smartcrop.js', npm: 'smartcrop', isNpmAByProduct: false, alias: 'smartcrop.js', framework: null },
   { category: 'misc', repoId: 'mjmlio/mjml', npm: 'mjml', isNpmAByProduct: false, alias: 'MJML', framework: null },
@@ -411,8 +411,8 @@ const libraries: CatalogLibraryT[] = [
   { category: 'misc', repoId: 'stylus/stylus', npm: 'stylus', isNpmAByProduct: false, alias: 'Stylus', framework: null },
   { category: 'misc', repoId: 'brix/crypto-js', npm: 'crypto-js', isNpmAByProduct: false, alias: 'crypto-js', framework: null },
   { category: 'misc', repoId: 'ccampbell/mousetrap', npm: 'mousetrap', isNpmAByProduct: false, alias: 'Mousetrap', framework: null },
-  { category: 'misc', repoId: 'antvis/g2', npm: '@antv/g2', isNpmAByProduct: false, alias: 'G2', framework: null },
-  { category: 'misc', repoId: 'antvis/g2plot', npm: '@antv/g2plot', isNpmAByProduct: false, alias: 'G2Plot', framework: null },
+  { category: 'misc', repoId: 'antvis/G2', npm: '@antv/g2', isNpmAByProduct: false, alias: 'G2', framework: null },
+  { category: 'misc', repoId: 'antvis/G2Plot', npm: '@antv/g2plot', isNpmAByProduct: false, alias: 'G2Plot', framework: null },
   { category: 'misc', repoId: 'swc-project/swc', npm: '@swc/core', isNpmAByProduct: false, alias: 'swc', framework: null },
   { category: 'misc', repoId: 'pqina/filepond', npm: 'filepond', isNpmAByProduct: false, alias: 'Filepond', framework: null },
   { category: 'misc', repoId: 'danilowoz/react-content-loader', npm: 'react-content-loader', isNpmAByProduct: false, alias: 'react-content-loader', framework: 'react' },
@@ -523,7 +523,7 @@ const libraries: CatalogLibraryT[] = [
   { category: 'misc', repoId: 'casesandberg/react-color', npm: 'react-color', isNpmAByProduct: false, alias: 'react-color', framework: null },
   { category: 'misc', repoId: 'seajs/seajs', npm: 'seajs', isNpmAByProduct: false, alias: 'Seajs', framework: null },
   { category: 'misc', repoId: 'gabrielbull/react-desktop', npm: 'react-desktop', isNpmAByProduct: false, alias: 'react-desktop', framework: null },
-  { category: 'misc', repoId: 'googlechromelabs/ndb', npm: 'ndb', isNpmAByProduct: false, alias: 'Ndb', framework: null },
+  { category: 'misc', repoId: 'GoogleChromeLabs/ndb', npm: 'ndb', isNpmAByProduct: false, alias: 'Ndb', framework: null },
   { category: 'misc', repoId: 'kristoferjoseph/flexboxgrid', npm: 'flexboxgrid', isNpmAByProduct: false, alias: 'Flexboxgrid', framework: null },
   { category: 'misc', repoId: 'arasatasaygin/is.js', npm: 'is_js', isNpmAByProduct: false, alias: 'Is.js', framework: null },
   { category: 'misc', repoId: 'localtunnel/localtunnel', npm: 'localtunnel', isNpmAByProduct: false, alias: 'Localtunnel', framework: null },
@@ -539,6 +539,7 @@ const libraries: CatalogLibraryT[] = [
   { category: 'NodeJS Frameworks', repoId: 'koajs/koa', npm: 'koa', isNpmAByProduct: false, alias: 'Koa', framework: null },
   { category: 'NodeJS Frameworks', repoId: 'fastify/fastify', npm: 'fastify', isNpmAByProduct: false, alias: 'Fastify', framework: null },
   { category: 'NodeJS Frameworks', repoId: 'hapijs/hapi', npm: '@hapi/hapi', isNpmAByProduct: false, alias: 'Hapi', framework: null },
+  { category: 'NodeJS Frameworks', repoId: 'adonisjs/core', npm: '@adonisjs/core', isNpmAByProduct: false, alias: 'AdonisJS', framework: null },
   { category: 'NodeJS Frameworks', repoId: 'balderdashy/sails', npm: 'sails', isNpmAByProduct: false, alias: 'Sails', framework: null },
   { category: 'NodeJS Frameworks', repoId: 'restify/node-restify', npm: 'restify', isNpmAByProduct: false, alias: 'Restify', framework: null },
   { category: 'NodeJS Frameworks', repoId: 'feathersjs/feathers', npm: '@feathersjs/feathers', isNpmAByProduct: false, alias: 'Feathers', framework: null },
@@ -556,11 +557,11 @@ const libraries: CatalogLibraryT[] = [
   // Node.js Monitoring tools and libraries
   { category: 'Node.js Monitoring tools and libraries', repoId: 'siimon/prom-client', npm: 'prom-client', isNpmAByProduct: false, alias: 'Prometheus client', framework: null },
   { category: 'Node.js Monitoring tools and libraries', repoId: 'RafalWilinski/express-status-monitor', npm: 'express-status-monitor', isNpmAByProduct: false, alias: 'express-status-monitor', framework: null },
-  { category: 'Node.js Monitoring tools and libraries', repoId: 'nearform/node-clinic', npm: 'clinic', isNpmAByProduct: false, alias: 'Clinic.js', framework: null },
+  { category: 'Node.js Monitoring tools and libraries', repoId: 'clinicjs/node-clinic', npm: 'clinic', isNpmAByProduct: false, alias: 'Clinic.js', framework: null },
   { category: 'Node.js Monitoring tools and libraries', repoId: 'RuntimeTools/appmetrics-dash', npm: 'appmetrics-dash', isNpmAByProduct: false, alias: 'appmetrics-dash', framework: null },
 
   // Node.js Process Managers
-  { category: 'Node.js Process Managers', repoId: 'foreverjs/forever', npm: 'forever', isNpmAByProduct: false, alias: 'Forever', framework: null },
+  { category: 'Node.js Process Managers', repoId: 'foreversd/forever', npm: 'forever', isNpmAByProduct: false, alias: 'Forever', framework: null },
   { category: 'Node.js Process Managers', repoId: 'Unitech/pm2', npm: 'pm2', isNpmAByProduct: false, alias: 'Pm2', framework: null },
   { category: 'Node.js Process Managers', repoId: 'remy/nodemon', npm: 'nodemon', isNpmAByProduct: false, alias: 'Nodemon', framework: null },
 
@@ -587,7 +588,7 @@ const libraries: CatalogLibraryT[] = [
 
   // ReactJS Document Head Managers
   { category: 'ReactJS Document Head Managers', repoId: 'nfl/react-helmet', npm: 'react-helmet', isNpmAByProduct: false, alias: 'React Helmet', framework: null },
-  { category: 'ReactJS Document Head Managers', repoId: 'NYTimes/react-helmet-async', npm: 'react-helmet-async', isNpmAByProduct: false, alias: 'react-helmet-async', framework: null },
+  { category: 'ReactJS Document Head Managers', repoId: 'staylor/react-helmet-async', npm: 'react-helmet-async', isNpmAByProduct: false, alias: 'react-helmet-async', framework: null },
 
   // ReactJS Form Libraries
   { category: 'ReactJS Form Libraries', repoId: 'formium/formik', npm: 'formik', isNpmAByProduct: false, alias: 'Formik', framework: null },
@@ -601,7 +602,7 @@ const libraries: CatalogLibraryT[] = [
 
   // React Native Libraries for Android
   { category: 'React Native Libraries for Android', repoId: 'facebook/hermes', npm: 'hermes-engine', isNpmAByProduct: false, alias: 'Hermes', framework: null },
-  { category: 'React Native Libraries for Android', repoId: 'react-community/jsc-android-buildscripts', npm: 'jsc-android', isNpmAByProduct: false, alias: 'jsc-android-buildscripts', framework: null },
+  { category: 'React Native Libraries for Android', repoId: 'react-native-community/jsc-android-buildscripts', npm: 'jsc-android', isNpmAByProduct: false, alias: 'jsc-android-buildscripts', framework: null },
   { category: 'React Native Libraries for Android', repoId: 'Kudo/react-native-v8', npm: 'react-native-v8', isNpmAByProduct: false, alias: 'react-native-v8', framework: null },
 
   // ReactJS Unit-Testing Libraries
@@ -628,8 +629,8 @@ const libraries: CatalogLibraryT[] = [
   // JavaScript State Management Libraries
   { category: 'JavaScript State Management Libraries', repoId: 'reduxjs/redux', npm: 'redux', isNpmAByProduct: false, alias: 'Redux', framework: null },
   { category: 'JavaScript State Management Libraries', repoId: 'mobxjs/mobx', npm: 'mobx', isNpmAByProduct: false, alias: 'MobX', framework: null },
-  { category: 'JavaScript State Management Libraries', repoId: 'reactivex/rxjs', npm: 'rxjs', isNpmAByProduct: false, alias: 'RxJS', framework: null },
-  { category: 'JavaScript State Management Libraries', repoId: 'facebookexperimental/recoil', npm: 'recoil', isNpmAByProduct: false, alias: 'Recoil', framework: null },
+  { category: 'JavaScript State Management Libraries', repoId: 'ReactiveX/rxjs', npm: 'rxjs', isNpmAByProduct: false, alias: 'RxJS', framework: null },
+  { category: 'JavaScript State Management Libraries', repoId: 'facebookexperimental/Recoil', npm: 'recoil', isNpmAByProduct: false, alias: 'Recoil', framework: null },
   { category: 'JavaScript State Management Libraries', repoId: 'davidkpiano/xstate', npm: 'xstate', isNpmAByProduct: false, alias: 'Xstate', framework: null },
   { category: 'JavaScript State Management Libraries', repoId: 'vuejs/vuex', npm: 'vuex', isNpmAByProduct: false, alias: 'Vuex', framework: 'vue' },
   { category: 'JavaScript State Management Libraries', repoId: 'ngrx/platform', npm: '@ngrx/store', isNpmAByProduct: false, alias: 'NgRx', framework: 'angular' },
@@ -661,7 +662,7 @@ const libraries: CatalogLibraryT[] = [
   { category: 'Static Site Generators / JAMStack', repoId: 'gridsome/gridsome', npm: 'gridsome', isNpmAByProduct: false, alias: 'Gridsome', framework: 'vue' },
 
   // JavaScript Static Types Checking Tools
-  { category: 'JavaScript Static Types Checking Tools', repoId: 'Microsoft/TypeScript', npm: 'typescript', isNpmAByProduct: false, alias: 'TypeScript', framework: null },
+  { category: 'JavaScript Static Types Checking Tools', repoId: 'microsoft/TypeScript', npm: 'typescript', isNpmAByProduct: false, alias: 'TypeScript', framework: null },
   { category: 'JavaScript Static Types Checking Tools', repoId: 'facebook/flow', npm: 'flow-bin', isNpmAByProduct: false, alias: 'Flow', framework: null },
 
   // JavaScript BDD Testing tools
@@ -709,7 +710,7 @@ const libraries: CatalogLibraryT[] = [
   { category: 'JavaScript Utility Libraries', repoId: 'dtao/lazy.js', npm: 'lazy.js', isNpmAByProduct: false, alias: 'Lazy.js', framework: null },
 
   // JavaScript Visual Regression Testing Tools
-  { category: 'JavaScript Visual Regression Testing Tools', repoId: 'garris/backstopjs', npm: 'backstopjs', isNpmAByProduct: false, alias: 'BackstopJS', framework: null },
+  { category: 'JavaScript Visual Regression Testing Tools', repoId: 'garris/BackstopJS', npm: 'backstopjs', isNpmAByProduct: false, alias: 'BackstopJS', framework: null },
   { category: 'JavaScript Visual Regression Testing Tools', repoId: 'oblador/loki', npm: 'loki', isNpmAByProduct: false, alias: 'Loki', framework: null },
   { category: 'JavaScript Visual Regression Testing Tools', repoId: 'gemini-testing/gemini', npm: 'gemini', isNpmAByProduct: false, alias: 'Gemini', framework: null },
 
@@ -730,7 +731,7 @@ const libraries: CatalogLibraryT[] = [
 
   // Web Components UI Libraries
   { category: 'Web Components UI Libraries', repoId: 'ionic-team/stencil', npm: '@stencil/core', isNpmAByProduct: false, alias: 'Stencil', framework: null },
-  { category: 'Web Components UI Libraries', repoId: 'Polymer/lit-element', npm: 'lit-element', isNpmAByProduct: false, alias: 'LitElement', framework: null },
+  { category: 'Web Components UI Libraries', repoId: 'lit/lit-element', npm: 'lit-element', isNpmAByProduct: false, alias: 'LitElement', framework: null },
 
   // Web Sockets for JavaScript
   { category: 'Web Sockets for JavaScript', repoId: 'socketio/socket.io', npm: 'socket.io', isNpmAByProduct: false, alias: 'Socket.io', framework: null },

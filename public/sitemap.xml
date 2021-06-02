@@ -480,6 +480,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?github=MaterializeInc/materialize</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?github=Meituan-Dianping/mpvue</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -491,11 +496,6 @@
   </url>
   <url>
     <loc>https://moiva.io/?github=MichMich/MagicMirror</loc>
-    <lastmod>2021-03-13</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?github=Microsoft/pyright</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -1085,11 +1085,6 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?github=apache/attic-predictionio</loc>
-    <lastmod>2021-03-13</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
     <loc>https://moiva.io/?github=apache/dubbo</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -1126,6 +1121,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?github=apache/kafka</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?github=apache/predictionio</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -1590,7 +1590,7 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?github=cyrildiagne/ar-cutpaste,</loc>
+    <loc>https://moiva.io/?github=cyrildiagne/ar-cutpaste</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -1676,11 +1676,6 @@
   </url>
   <url>
     <loc>https://moiva.io/?github=deepfakes/faceswap</loc>
-    <lastmod>2021-03-13</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?github=deeppomf/DeepCreamPy</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -1815,11 +1810,6 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?github=doczjs/docz</loc>
-    <lastmod>2021-03-13</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
     <loc>https://moiva.io/?github=dokku/dokku</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -1836,6 +1826,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?github=dotnet/roslyn</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?github=dromara/hutool</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -3110,11 +3105,6 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?github=looly/hutool</loc>
-    <lastmod>2021-03-13</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
     <loc>https://moiva.io/?github=lra/mackup</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -3186,11 +3176,6 @@
   </url>
   <url>
     <loc>https://moiva.io/?github=material-components/material-components-android</loc>
-    <lastmod>2021-03-13</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?github=materializeinc/materialize</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -3286,6 +3271,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?github=microsoft/dotnet</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?github=microsoft/pyright</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -3785,6 +3775,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?github=pedronauck/docz</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?github=perwendel/spark</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
@@ -3886,6 +3881,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?github=prisma/prisma</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?github=projectlombok/lombok</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -4121,11 +4121,6 @@
   </url>
   <url>
     <loc>https://moiva.io/?github=ryanoasis/nerd-fonts</loc>
-    <lastmod>2021-03-13</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?github=rzwitserloot/lombok</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -4996,6 +4991,61 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=@11ty/eleventy+vuepress</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@adonisjs/core</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@adonisjs/core+@feathersjs/feathers</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@adonisjs/core+@hapi/hapi</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@adonisjs/core+@loopback/core</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@adonisjs/core+@nestjs/core</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@adonisjs/core+express</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@adonisjs/core+fastify</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@adonisjs/core+koa</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@adonisjs/core+loopback</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@adonisjs/core+restify</loc>
+    <lastmod>2021-03-13</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@adonisjs/core+sails</loc>
     <lastmod>2021-03-13</lastmod>
     <changefreq>weekly</changefreq>
   </url>
