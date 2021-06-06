@@ -1,6 +1,6 @@
 /**
  * Fetch stars for all the repos from the catalog
- * Use it as: deno run --allow-net --allow-read fetch-repo-stars.ts <batch>
+ * Use it as: deno run --allow-net --allow-read scripts/fetch-repo-stars.ts <batch-index>
  */
 
 export {};

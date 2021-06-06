@@ -30,15 +30,17 @@ function getAliasFromRepoId(repoId) {
 const categories = categoriesRaw.map(({ name, skipSitemap, items }) => ({
   categoryName: name,
   skipSitemap,
-  libs: items.map(({ repo, npm, isNpmCoreArtifact, framework, alias }) => ({
-    category: name,
-    alias: alias || getAliasFromRepoId(repo),
-    repoId: repo,
-    npm: npm ?? null,
-    isNpmAByProduct:
-      typeof isNpmCoreArtifact === 'boolean' ? !isNpmCoreArtifact : null,
-    framework: framework ?? null,
-  })),
+  libs: items
+    .filter((item) => !item.exclude)
+    .map(({ repo, npm, isNpmCoreArtifact, framework, alias }) => ({
+      category: name,
+      alias: alias || getAliasFromRepoId(repo),
+      repoId: repo,
+      npm: npm ?? null,
+      isNpmAByProduct:
+        typeof isNpmCoreArtifact === 'boolean' ? !isNpmCoreArtifact : null,
+      framework: framework ?? null,
+    })),
 }));
 
 const duplicates = getDuplicates(categories);

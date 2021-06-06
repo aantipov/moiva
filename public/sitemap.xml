@@ -95,11 +95,6 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?github=30-seconds/30-seconds-of-code</loc>
-    <lastmod>2021-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
     <loc>https://moiva.io/?github=3b1b/manim</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -5280,11 +5275,6 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?npm=@chakra-ui/react+antd</loc>
-    <lastmod>2021-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
     <loc>https://moiva.io/?npm=@chakra-ui/react+evergreen-ui</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -5751,11 +5741,6 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=@material-ui/core</loc>
-    <lastmod>2021-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?npm=@material-ui/core+antd</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -6691,26 +6676,6 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=ant-design-vue+vuetify</loc>
-    <lastmod>2021-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?npm=antd</loc>
-    <lastmod>2021-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?npm=antd+evergreen-ui</loc>
-    <lastmod>2021-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?npm=antd+react-bootstrap</loc>
-    <lastmod>2021-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?npm=antd+reactstrap</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
   </url>
