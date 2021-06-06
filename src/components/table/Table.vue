@@ -115,7 +115,6 @@ const NPM_METRICS = [
   'bundlesize',
   'ts',
   'security',
-  'license',
 ];
 
 export type MetricT = typeof METRICS[number];

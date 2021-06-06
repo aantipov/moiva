@@ -572,7 +572,6 @@ const libraries: CatalogLibraryT[] = [
 
   // React Component Libraries
   { category: 'React Component Libraries', repoId: 'mui-org/material-ui', npm: '@material-ui/core', isNpmAByProduct: false, alias: 'Material-UI', framework: null },
-  { category: 'React Component Libraries', repoId: 'ant-design/ant-design', npm: 'antd', isNpmAByProduct: false, alias: 'Ant Design', framework: null },
   { category: 'React Component Libraries', repoId: 'react-bootstrap/react-bootstrap', npm: 'react-bootstrap', isNpmAByProduct: false, alias: 'React Bootstrap', framework: null },
   { category: 'React Component Libraries', repoId: 'chakra-ui/chakra-ui', npm: '@chakra-ui/react', isNpmAByProduct: false, alias: 'Chakra UI', framework: null },
   { category: 'React Component Libraries', repoId: 'reactstrap/reactstrap', npm: 'reactstrap', isNpmAByProduct: false, alias: 'Reactstrap', framework: null },

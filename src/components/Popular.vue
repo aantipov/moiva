@@ -58,8 +58,8 @@ export default defineComponent({
         },
         {
           name: 'Utilities',
-          libs: ['lodash', 'ramda', 'underscore'],
-          libsStr: 'Lodash, Ramda, Underscore.js',
+          libs: ['lodash', 'ramda'],
+          libsStr: 'Lodash, Ramda',
         },
         {
           name: 'Charts',
