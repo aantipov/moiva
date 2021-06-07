@@ -109,7 +109,7 @@ export function getLibrary(
     npmReleases: computed(() =>
       npmPackage ? npmReleasesMapR.get(npmPackage.name) : null
     ),
-    // @ts-ignore sss
+    // @ts-ignore
     npmDownloads: computed(() =>
       npmPackage ? npmDownloadsMapR.get(npmPackage.name) : null
     ),
