@@ -2,7 +2,7 @@
   {
     "url": "https://javascript.plainenglish.io/javascript-frameworks-performance-comparison-2020-cd881ac21fce",
     "title": "JavaScript Frameworks, Performance Comparison 2020",
-    "npms": ["vue", "svelte", "react"],
+    "npms": ["vue", "svelte", "react", "@angular/core", "ember-source", "alpinejs", "inferno", "preact", "hyperapp", "riot", "knockout", "solid-js", "mithril", "marko"],
     "repos": []
   }
 ]
