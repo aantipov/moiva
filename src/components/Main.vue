@@ -17,7 +17,7 @@
     </div>
 
     <!--  Selected Libraries and Charts    -->
-    <div v-else>
+    <section v-else>
       <div class="mx-auto mt-4 text-center lg:w-9/12 xl:w-2/4">
         <Title />
 
@@ -29,7 +29,9 @@
         >
       </div>
 
-      <Table class="w-full mx-auto mt-4 mb-2 lg:w-3/4" />
+      <Table class="w-full mx-auto mt-4 mb-12 lg:w-3/4" />
+
+      <Readings class="mb-12" />
 
       <!-- Charts -->
       <section class="mb-12">
@@ -103,7 +105,7 @@
           </template>
         </div>
       </section>
-    </div>
+    </section>
   </div>
 </template>
 
@@ -115,6 +117,7 @@ import Search from './search/Search.vue';
 import Suggestions from './Suggestions.vue';
 import Popular from './Popular.vue';
 import Table from './table/Table.vue';
+import Readings from './Readings.vue';
 
 import Releases from './npm-releases/ReleasesChart.vue';
 import TechRadar from './TechRadar.vue';
@@ -156,6 +159,7 @@ export default defineComponent({
     Search,
     Suggestions,
     Table,
+    Readings,
 
     Bundlephobia,
     Stars,
