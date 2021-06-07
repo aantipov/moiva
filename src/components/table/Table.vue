@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <section>
     <Loader v-if="isLoading" class="z-10" />
 
     <div class="flex justify-center">
@@ -71,7 +71,7 @@
         </table>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script lang="ts">

@@ -40,10 +40,18 @@ import {
 import { StarsT, cacheR as starsMapR } from '@/components/github-stars/api';
 import { libraryToColorMapR } from '@/store/librariesColors';
 import { RepoT, NpmPackageT } from '@/libraryApis';
+import readings from '@/data/readings.json';
 
 type LibCommitsT = CommitsResponseItemT[] | null | undefined;
 type LibNpmDownloadsT = NpmDownloadT[] | null | undefined;
 type LibStarsT = StarsT[] | null | undefined;
+
+export interface ReadingT {
+  url: string;
+  title: string;
+  npms: string[];
+  repos: string[];
+}
 
 export interface LibraryT {
   id: string;
@@ -67,6 +75,7 @@ export interface LibraryT {
   bundlesize: BundlephobiaT | null | undefined;
   stars: LibStarsT;
   starsNewAvg: number | null | undefined;
+  readings: ReadingT[];
 }
 
 export function getLibrary(
@@ -151,5 +160,16 @@ export function getLibrary(
     commits: computed(() => commitsMapR.get(repoIdLC)),
     // @ts-ignore
     languages: computed(() => languagesMapR.get(repoIdLC)),
+    // @ts-ignore
+    readings: computed(() => {
+      if (npmPackage) {
+        return (readings as ReadingT[]).filter((item) =>
+          item.npms.includes(npmPackage.name)
+        );
+      }
+      return (readings as ReadingT[]).filter((item) =>
+        item.repos.includes(repoIdLC)
+      );
+    }),
   };
 }
