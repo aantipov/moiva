@@ -193,8 +193,13 @@ const content = `<?xml version="1.0" encoding="UTF-8"?>
 
   <url>
     <loc>https://moiva.io/blog/</loc>
-    <lastmod>2021-06-04</lastmod>
+    <lastmod>2021-06-10</lastmod>
     <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://moiva.io/blog/2021-06-update-improved-table-view-seo-fixes/</loc>
+    <lastmod>2021-06-10</lastmod>
   </url>
 
   <url>
