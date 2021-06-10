@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <meta property="og:title" content="June 2021 update: improved Table view, SEO fixes" />
+<meta property="og:description" content="Improved Table view, new section &ldquo;Recommended reading&rdquo;, removal of Issues chart, SEO fixes, scripts in Deno, migration to Netlify." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://moiva.io/blog/2021-06-update-improved-table-view-seo-fixes/" />
+<meta property="og:image" content="https://moiva.io/blog/images/moiva-head.jpg"/>
+<meta property="article:published_time" content="2021-06-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-10T00:00:00+00:00" /><meta property="og:site_name" content="Moiva.io Blog" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:image" content="https://moiva.io/blog/images/moiva-head.jpg"/>
+
+<meta name="twitter:title" content="June 2021 update: improved Table view, SEO fixes"/>
+<meta name="twitter:description" content="Improved Table view, new section &ldquo;Recommended reading&rdquo;, removal of Issues chart, SEO fixes, scripts in Deno, migration to Netlify."/>
+
+
+  <title>
+    
+    June 2021 update: improved Table view, SEO fixes &middot; Moiva.io Blog
+    
+  </title>
+
+  <link rel="canonical" href="https://moiva.io/blog/2021-06-update-improved-table-view-seo-fixes/" />
+
+  
+  <link rel="stylesheet" href="/blog/css/poole.css">
+  <link rel="stylesheet" href="/blog/css/syntax.css">
+  <link rel="stylesheet" href="/blog/css/lanyon.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|PT+Sans:400">
+  <style type="text/css" media="screen">
+    html,
+    body {
+      height: 100%;
+      min-height: 640px;
+    }
+
+    .content {
+      flex: 1 0 auto;
+    }
+
+    .footer {
+      flex-shrink: 0;
+    }
+
+    .masthead {
+      margin-bottom: 2rem;
+    }
+  </style>
+
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/blog/favicon/apple-touch-icon.png?v=lkvYMB9erB" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/blog/favicon/favicon-32x32.png?v=lkvYMB9erB" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/blog/favicon/favicon-16x16.png?v=lkvYMB9erB" />
+  <link rel="manifest" href="/blog/favicon/site.webmanifest?v=lkvYMB9erB" />
+  <link rel="mask-icon" href="/blog/favicon/safari-pinned-tab.svg?v=lkvYMB9erB" color="#404040" />
+  <link rel="shortcut icon" href="/blog/favicon/favicon.ico?v=lkvYMB9erB" />
+  <meta name="msapplication-TileColor" content="#ffffff" />
+  <meta name="msapplication-config" content="/blog/favicon/browserconfig.xml?v=lkvYMB9erB" />
+  <meta name="theme-color" content="#ffffff" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism-tomorrow.min.css" integrity="sha512-vswe+cgvic/XBoF1OcM/TeJ2FW0OofqAVdCZiEYkd6dwGXthvkSFWOoGGJgS2CW70VK5dQM5Oh+7ne47s74VTg==" crossorigin="anonymous" />
+
+  <script async defer data-domain="moiva.io" src="https://plausible.io/js/plausible.js"></script>
+</head>
+
+
+<body class="theme-base-08">
+  <div class="masthead" style="border: none">
+    <div class="container">
+      <div style="display:flex; align-items: center;">
+        <img src="/blog/images/moiva-head.jpg" alt="Moiva.io logo" width="100" height="100"
+          style="margin:0 20px 0 0;" />
+        <h1 class="masthead-title">
+          <a href="/" title="Home">Moiva.io</a>
+          Blog
+        </h1>
+      </div>
+    </div>
+  </div>
+
+  <div class="container content">
+
+
+<h2><a href="/blog" title="Home">&larr; all posts</a></h2>
+
+<div class="post">
+  <h1 class="post-title">June 2021 update: improved Table view, SEO fixes</h1>
+  <div class="post-date">
+    <span>Jun 10 2021</span>
+    <span>&#183; written by</span>
+    <a href="https://twitter.com/_aantipov" target="_blank">Alexey Antipov</a>
+  </div>
+
+  <p>This is a June report on the progress of <a href="http://moiva.io">Moiva.io</a> and other things I’ve been working on.</p>
+<h2 id="improved-table-view">Improved table view</h2>
+<p>About a month ago I introduced a table view for presenting data. I found out that it brings a lot of value and I gave it a central place. The Charts are mainly used to present historical data and are helpful in seeing trends. The Table is kind of snapshot of the current state that displays raw data. Hence, the Table and Charts perfectly complement each other.</p>
+<p>Moiva evaluates Npm packages and GitHub repositories using roughly 20 metrics. And the number keeps growing. To help users navigate through those metrics, I grouped them into three categories: &ldquo;Popularity&rdquo;, &ldquo;Maintenance&rdquo; and &ldquo;Miscellaneous&rdquo;. Each category got highlighted with a different background color.</p>
+<figure>
+    <img src="/blog/images/2021-06-update/tabular-view-old.png"
+         alt="a screenshot of Moiva.io&#39;s old table view with data for Webpack, Vite and Snowpack"/> <figcaption>
+            <p>The old table view</p>
+        </figcaption>
+</figure>
+
+<figure>
+    <img src="/blog/images/2021-06-update/tabular-view.png"
+         alt="a screenshot of Moiva.io&#39;s new table view with data for Webpack, Vite and Snowpack"/> <figcaption>
+            <p>The updated table view</p>
+        </figcaption>
+</figure>
+
+<p>&ldquo;Stars&rdquo; and &ldquo;New Stars&rdquo; metrics were combined into a single row. The same was done for &ldquo;Downloads&rdquo; and &ldquo;Downloads Growth&rdquo;.</p>
+<p>I also added a new metric called &ldquo;Vulnerabilities&rdquo;. It shows a number of vulnerabilities in the repository. Thank you to <a href="https://snyk.io/">Snyk.io</a> for providing the data.</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Very cool ✨<br><br>All the credit to creating that badge goes to <a href="https://twitter.com/BrianVerm?ref_src=twsrc%5Etfw">@BrianVerm</a> 👏</p>&mdash; Liran Tal | Making Security Accessible To All ❤️ (@liran_tal) <a href="https://twitter.com/liran_tal/status/1392947957964623874?ref_src=twsrc%5Etfw">May 13, 2021</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<h2 id="issues-chart-removal">&ldquo;Issues&rdquo; chart removal</h2>
+<p>The &ldquo;Recently updated issues&rdquo; chart was available on Moiva.</p>
+<figure>
+    <img src="/blog/images/2021-06-update/issues-chart.png"
+         alt="a screenshot of Moiva.io&#39;s Issues chart with data for Moment, DayJS and date-fns libraries"/> <figcaption>
+            <p>Issues Chart</p>
+        </figcaption>
+</figure>
+
+<p>My idea was to show the number of bugs reports and other types of issues being opened and closed. It should have indicated how quickly the issues are being resolved, as well as a proportion of bugs to the remainder of the issues.</p>
+<p>At the time I implemented the chart I was struggling to find proper data. I chose an API that provided a list of repository issues sorted by last update date. The combination of that data with the issues statuses and labels should have yielded a good approximation of how many issues are being opened/closed.</p>
+<p>Later on, I discovered I was wrong. I examined data from a number of well-known repositories and noticed that many old closed issues were constantly being updated, primarily due to new comments. It made the issues appear in Moiva as &ldquo;recently closed&rdquo;, undermining the chart&rsquo;s main purpose.</p>
+<p>I decided to remove the chart and come up with more meaningful issues metrics later.</p>
+<h2 id="migration-to-netlify">Migration to Netlify</h2>
+<p>Moiva was migrated from Vercel to Netlify.</p>
+<p>I was hoping that migration would help me fix some of Moiva&rsquo;s SEO issues. I found out I was too optimistic; their redirection logic constraints don&rsquo;t make my situation any better.</p>
+<p>Nevertheless, I think I&rsquo;ve discovered a solution. Netlify is implementing a new feature called <a href="https://docs.netlify.com/routing/edge-handlers/">Edge Handlers</a>. It will allow intercepting and modifying requests and responses on-the-fly, which should be enough for me to implement the required redirection logic and add the necessary headers to responses.</p>
+<h2 id="seo-fixes">SEO fixes</h2>
+<p>Moiva is a single-page application (SPA) without server-side rendering (SSR). Because Google has historically favoured server-rendered web pages, such architecture comes with a set of SEO issues.</p>
+<p>Moreover, Moiva had content-related SEO issues: Google considered Moiva&rsquo;s pages to be of low value because of their emphasis on graphical representation of data. The charts use <code>&lt;canvas /&gt;</code> elements, which Google cannot read, and I made the mistake of not giving it a textual fallback. Charts accessibility attributes like <code>aria-label</code> were apparently of no help there.</p>
+<p>As a result, Google flagged Moiva&rsquo;s pages as duplicates, and they were removed from the Index.</p>
+<figure>
+    <img src="/blog/images/2021-06-update/google-coverage.png"
+         alt="A screenshot from Google Search Console showing the drop of Moiva.io&#39;s page coverage from 1.5k to 23 pages"/> <figcaption>
+            <p>A screenshot from Google Search Console</p>
+        </figcaption>
+</figure>
+
+<p>I took a number of steps to resolve the problem.</p>
+<ul>
+<li>dived into SEO topic to figure out what and how I can improve.</li>
+<li>made sure Google understands the Table view by properly labeling the headers and providing the <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Advanced#the_scope_attribute"><code>scope</code></a> attribute.</li>
+<li>all charts received fallback textual information.</li>
+<li>improved the page&rsquo;s internal structure by careful use of headers and sections.</li>
+</ul>
+<div class="message">
+<p>Along the way, I refactored the code and extended the usage of <a href="https://v3.vuejs.org/api/basic-reactivity.html">Vue&rsquo;s Reactivity APIs</a>. I love it! It greatly simplified the logic, eliminated a number of pain points, and made it possible to build more advanced functionality in the future.</p>
+</div>
+<p>It is still too early to say if my tweaks helped in any way in improving the SEO. Keeping my fingers crossed 🤞</p>
+<h2 id="recommended-reading-section">&ldquo;Recommended reading&rdquo; section</h2>
+<p>Moiva aims to evaluate libraries as comprehensively as possible, using different sources and types of data, as well as different data representations and perspectives (snapshots, changes over time). It should allow developers to form their own opinions regarding libraries and how they compare to one another.</p>
+<p>Having said that, there are still areas unreachable for Moiva and there is sometimes a need for expert judgement and a walk-through in-depth analysis. To address these gaps I added a new section called &ldquo;Recommended reading&rdquo;, which will suggest links to high-quality content relevant to the selected libraries.</p>
+<p>At the moment there is only a link to a nice article <a href="https://javascript.plainenglish.io/javascript-frameworks-performance-comparison-2020-cd881ac21fce">JavaScript Frameworks, Performance Comparison 2020</a> by <a href="https://twitter.com/RyanCarniato">@RyanCarniato</a>. More links will be added in the future. Any suggestions here are very welcome.</p>
+<h2 id="repositories-names-update">Repositories names update</h2>
+<p>Names of repositories are often modified. The most frequent changes:</p>
+<ul>
+<li>moving a repository under a different organization account</li>
+<li>changing letters case</li>
+</ul>
+<p>For Moiva, such changes are an issue.
+Moiva uses its <a href="https://moiva.io/catalog/">Catalog</a> to categorize popular libraries, provide suggestions to users, and establish connection between repositories and npm packages.
+Whenever a repository from the Catalog is renamed, Moiva is unable to locate it there and, as a result, cannot provide suggestions and load npm package data.
+The user experience suffers, and SEO might also be affected.</p>
+<p>Therefore it is important to maintain the names of repositories in the Catalog up-to-date.</p>
+<h2 id="utility-scripts-in-deno">Utility scripts in Deno</h2>
+<p>I normally write NodeJS scripts for things like updating repositories names. One of my pain points was the lack of TypeScript support. I realized that I became a TypeScript addict and desperately need it everywhere.</p>
+<p>I decided to give <a href="https://deno.land/">Deno</a> a try, and it did not dissapoint. TypeScript support out of the box and built-in <code>fetch</code> change the game.</p>
+<h2 id="kudos">Kudos</h2>
+<p>Moiva is young and has little exposure; its current audience is small. Every user and supporter is extremely important. I&rsquo;m grateful to everyone who helps spread the word and makes Moiva better by providing valuable feedback and pointing out issues.</p>
+<p>I&rsquo;d like to highlight the following wonderful people:</p>
+<ul>
+<li><a href="https://twitter.com/magnemg">@magnemg</a> and <a href="https://twitter.com/dcorbacho">@dcorbacho</a> for the continous help with spreading the word about Moiva.</li>
+<li><a href="https://twitter.com/muratsutunc">@muratsutunc</a> for the feedback and pointing out the problem with legacy libraries.</li>
+<li><a href="https://twitter.com/devtheory_">@devtheory_</a> for publishing a youtube video with Moiva (starts at 8:35)
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/4AxQ8Ft7VzU?start=517s" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+</li>
+</ul>
+<hr>
+<p>Have any feedback or ideas about the project? I&rsquo;m keen to know!</p>
+<p>If you find the project interesting, stay tuned and Subscribe to Moiva&rsquo;s monthly newsletter.</p>
+
+</div>
+
+<h2 style="margin-top:-40px"><a href="/blog" title="Home">&larr; all posts</a></h2>
+
+</div>
+
+<style type="text/css" media="screen">
+   
+  .revue-form-field {
+    border-color: rgb(227, 227, 227);
+    border-radius: 4px;
+    color: inherit;
+    font-weight: 400;
+    width: 100%;
+    background: #fff;
+    font-size: 20px;
+    padding: 12px;
+    border: 1px solid #e3e3e3;
+    flex: 1 0 auto;
+    line-height: 1.4;
+    margin: 0;
+  }
+  .revue-form-field:focus {
+    outline: #ac4142 auto 1px; 
+  }
+
+  #member_submit {
+    background-color: #ac4142;
+    font-size: 20px;
+    font-weight: 500;
+    width: 180px;
+    height: 50px;
+    border: 0;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    text-align: center;
+    margin: 8px 0 0;
+    padding: 8px;
+    overflow: hidden;
+    vertical-align: middle;
+    outline: none;
+  }
+  .revue-form-footer {
+    font-size:16px;
+    margin-bottom: 8px;
+  }
+</style>
+
+<div class="container" style="margin-top: 24px; width: 100%;">
+  <h2>Subscribe to the monthly newsletter</h2>
+  <div id="revue-embed">
+    <div class="revue-form-footer">By subscribing, you agree with Revue’s <a target="_blank"
+        href="https://www.getrevue.co/terms">Terms</a> and <a target="_blank"
+        href="https://www.getrevue.co/privacy">Privacy Policy</a>.
+    </div>
+    <form action="https://www.getrevue.co/profile/moiva/add_subscriber" method="post" id="revue-form" name="revue-form"
+      target="_blank">
+      <div class="revue-form-group">
+        <label for="member_email" style="display:none">Email address</label>
+        <input class="revue-form-field" placeholder="Your email address..." type="email" name="member[email]"
+          id="member_email">
+      </div>
+      <div class="revue-form-actions">
+        <input type="submit" value="Subscribe" name="member[subscribe]" id="member_submit">
+      </div>
+    </form>
+  </div>
+</div>
+
+<div style="margin-top: 50px; padding: 20px 0 28px; background-color:#ac4142; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif; font-weight: 200; font-size: 16px;-webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;">
+  <div class="container" style="color: white; display:flex; justify-content: center; margin-bottom: 16px;">
+    <span>Made with</span>
+    <span style="margin: 0 4px">
+      <svg xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path>
+      </svg>
+    </span>
+    <span>by</span>
+    <a href="https://alexei.me" target="_blank" style="margin-left: 4px; color: white; font-weight: 400;">Alexey Antipov</a>
+  </div>
+  <div class="container"
+    style="height:100%; display:flex;align-items:center;color: white;justify-content:space-between;">
+    <a href="/" style="color: white; font-size: 20px; font-weight: 400">Moiva.io</a>
+    <a href="/catalog/" style="color: white; font-size: 20px; font-weight: 400">Catalog</a>
+    <a href="/blog/" style="color: white; font-size: 20px; font-weight: 400">Blog</a>
+  </div>
+  <div class="container"
+    style="height:100%; display:flex;align-items:center;color: white;justify-content:space-around; margin-top:24px">
+    <a href="https://github.com/aantipov/moiva" target="_blank" style="color: white; font-size: 20px; font-weight: 400">GitHub</a>
+    <a href="https://twitter.com/_aantipov" target="_blank" style="color: white; font-size: 20px; font-weight: 400">Twitter</a>
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/components/prism-core.min.js" integrity="sha512-xR+IAyN+t9EBIOOJw5m83FTVMDsPd63IhJ3ElP4gmfUFnQlX9+eWGLp3P4t3gIjpo2Z1JzqtW/5cjgn+oru3yQ==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js" integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A==" crossorigin="anonymous"></script>
+</body>
+
+</html>
+
