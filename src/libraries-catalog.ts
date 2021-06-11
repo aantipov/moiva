@@ -645,6 +645,7 @@ const libraries: CatalogLibraryT[] = [
   { category: 'JavaScript State Management Libraries', repoId: 'diegohaz/constate', npm: 'constate', isNpmAByProduct: false, alias: 'Constate', framework: 'react' },
   { category: 'JavaScript State Management Libraries', repoId: 'vercel/swr', npm: 'swr', isNpmAByProduct: false, alias: 'SWR', framework: 'react' },
   { category: 'JavaScript State Management Libraries', repoId: 'cerebral/overmind', npm: 'overmind', isNpmAByProduct: false, alias: 'Overmind', framework: null },
+  { category: 'JavaScript State Management Libraries', repoId: 'ai/nanostores', npm: 'nanostores', isNpmAByProduct: false, alias: 'Nano Stores', framework: null },
 
   // Static Site Generators / JAMStack
   { category: 'Static Site Generators / JAMStack', repoId: 'gatsbyjs/gatsby', npm: 'gatsby', isNpmAByProduct: false, alias: 'Gatsby', framework: 'react' },
