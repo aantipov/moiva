@@ -17,6 +17,10 @@
     >
   </div>
 
+  <div v-else-if="type === 'status'" class="flex justify-center capitalize">
+    {{ lib.status.toLowerCase() }}
+  </div>
+
   <div v-else-if="type === 'stars'">
     <div class="flex justify-end">
       {{ formatNumber(lib.repo.stars) }}

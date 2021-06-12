@@ -90,6 +90,7 @@ import {
 const METRICS = [
   'npm',
   'repo',
+  'status',
   'stars',
   'downloads',
   'searchInterest',
@@ -123,6 +124,7 @@ type CategoryT = '' | 'Popularity' | 'Maintenance' | 'Miscellaneous';
 const ROWS: { metric: MetricT; cat: CategoryT; classVal: string }[] = [
   { metric: 'npm', cat: '', classVal: '' },
   { metric: 'repo', cat: '', classVal: '' },
+  { metric: 'status', cat: '', classVal: '' },
   { metric: 'stars', cat: 'Popularity', classVal: 'bg-green-100' },
   { metric: 'downloads', cat: 'Popularity', classVal: 'bg-green-100' },
   { metric: 'searchInterest', cat: 'Popularity', classVal: 'bg-green-100' },

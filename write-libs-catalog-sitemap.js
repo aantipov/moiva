@@ -32,7 +32,7 @@ const categories = categoriesRaw.map(({ name, skipSitemap, items }) => ({
   skipSitemap,
   libs: items
     .filter((item) => !item.exclude)
-    .map(({ repo, npm, isNpmCoreArtifact, framework, alias }) => ({
+    .map(({ repo, npm, isNpmCoreArtifact, framework, alias, isLegacy }) => ({
       category: name,
       alias: alias || getAliasFromRepoId(repo),
       repoId: repo,
@@ -40,6 +40,7 @@ const categories = categoriesRaw.map(({ name, skipSitemap, items }) => ({
       isNpmAByProduct:
         typeof isNpmCoreArtifact === 'boolean' ? !isNpmCoreArtifact : null,
       framework: framework ?? null,
+      isLegacy: !!isLegacy,
     })),
 }));
 
@@ -69,7 +70,7 @@ categories.forEach((cat) => {
     const alias = lib.alias && `'${lib.alias}'`;
     const framework = lib.framework && `'${lib.framework}'`;
     const npm = lib.npm && `'${lib.npm}'`;
-    str += `  { category: '${lib.category}', repoId: '${lib.repoId}', npm: ${npm}, isNpmAByProduct: ${lib.isNpmAByProduct}, alias: ${alias}, framework: ${framework} },\n`;
+    str += `  { category: '${lib.category}', repoId: '${lib.repoId}', npm: ${npm}, isNpmAByProduct: ${lib.isNpmAByProduct}, alias: ${alias}, framework: ${framework}, isLegacy: ${lib.isLegacy} },\n`;
   });
 });
 
