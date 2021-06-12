@@ -15,6 +15,11 @@
       <div v-tooltip="'GitHub repository'" class="label">GitHub</div>
     </template>
 
+    <template v-if="type === 'status'">
+      <HeartBeatIcon v-tooltip="isActive" class="w-8" label="is active?" />
+      <div v-tooltip="isActive" class="label">Status</div>
+    </template>
+
     <template v-if="type === 'stars'">
       <StarIcon v-tooltip="stars" class="w-8" :label="stars" />
       <div v-tooltip="stars" class="text-left label">
@@ -166,6 +171,7 @@ import CubeIcon from '@/components/icons/Cube.vue';
 import DependencyIcon from '@/components/icons/Dependency.vue';
 import ShieldIcon from '@/components/icons/Shield.vue';
 import BugIcon from '@/components/icons/Bug.vue';
+import HeartBeatIcon from '@/icons/Heart.vue';
 import { MetricT } from './Table.vue';
 import { subQuarters, format } from 'date-fns';
 
@@ -185,6 +191,7 @@ export default defineComponent({
     CommitsIcon,
     DocumentIcon,
     DependencyIcon,
+    HeartBeatIcon,
     CubeIcon,
     OldIcon,
     ShieldIcon,
@@ -203,6 +210,8 @@ export default defineComponent({
   setup() {
     return {
       quarter: prevQuarter,
+      isActive:
+        'The status of the library. Possible values: "Active",  "Inactive" if no commits in the last 6 months, "Legacy" if library authors called it so, "Archived" if the repository is archived',
       stars:
         'The total number of GitHub stars and the average number of new stars per month over the last 3 months',
       npmDownloads:

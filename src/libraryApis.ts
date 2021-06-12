@@ -15,6 +15,7 @@ export interface RepoT {
   repoId: string;
   repoName: string;
   description: string;
+  isArchived?: boolean; // optional for transitional period (api cache expiration)
   stars: number;
   createdAt: string;
   closedIssues: number;

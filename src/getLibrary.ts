@@ -59,6 +59,7 @@ export interface LibraryT {
   npmPackage?: NpmPackageT | null;
   category?: string | null;
   isNpmAByProduct?: boolean | null;
+  status: 'ACTIVE' | 'INACTIVE' | 'LEGACY' | 'ARCHIVED';
   repo: RepoT;
   alias: string;
   tradar: TechRadarT | null;
@@ -81,7 +82,7 @@ export interface LibraryT {
 export function getLibrary(
   repo: RepoT,
   npmPackage: NpmPackageT | null,
-  library: CatalogLibraryT
+  library: CatalogLibraryT | null
 ): LibraryT {
   const isNpmAByProduct = (library && library.isNpmAByProduct) || false;
   const category = (library && library.category) || null;
@@ -95,8 +96,28 @@ export function getLibrary(
     category,
     isNpmAByProduct,
     alias: getSeoLibName(repoIdLC),
-    tradar: repoToTechRadarMap[repoIdLC] || null,
     // Use @ts-ignore because the Computed Ref will eventually become Reactive and then Typescript will start arguing
+    // @ts-ignore
+    status: computed(() => {
+      if (repo.isArchived) {
+        return 'ARCHIVED';
+      }
+      if (library?.isLegacy) {
+        return 'LEGACY';
+      }
+      const commits = commitsMapR.get(repoIdLC);
+      if (commits) {
+        const lastSixMonthCommits = commits.slice(-26);
+        const hasNoCommits = lastSixMonthCommits.every(
+          (item) => item.total === 0
+        );
+        if (hasNoCommits) {
+          return 'INACTIVE';
+        }
+      }
+      return 'ACTIVE';
+    }),
+    tradar: repoToTechRadarMap[repoIdLC] || null,
     // @ts-ignore
     color: computed(() => libraryToColorMapR.get(id) || '#ffffff'),
     // @ts-ignore
