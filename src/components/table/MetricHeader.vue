@@ -16,8 +16,8 @@
     </template>
 
     <template v-if="type === 'status'">
-      <HeartBeatIcon v-tooltip="isActive" class="w-8" label="is active?" />
-      <div v-tooltip="isActive" class="label">Status</div>
+      <HeartBeatIcon v-tooltip="status" class="w-8" label="status" />
+      <div v-tooltip="status" class="label">Status</div>
     </template>
 
     <template v-if="type === 'stars'">
@@ -210,7 +210,7 @@ export default defineComponent({
   setup() {
     return {
       quarter: prevQuarter,
-      isActive:
+      status:
         'The status of the library. Possible values: "Active",  "Inactive" if no commits in the last 6 months, "Legacy" if library authors called it so, "Archived" if the repository is archived',
       stars:
         'The total number of GitHub stars and the average number of new stars per month over the last 3 months',
