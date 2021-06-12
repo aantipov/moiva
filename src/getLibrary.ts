@@ -53,13 +53,15 @@ export interface ReadingT {
   repos: string[];
 }
 
+export type StatusT = 'ACTIVE' | 'INACTIVE' | 'LEGACY' | 'ARCHIVED';
+
 export interface LibraryT {
   id: string;
   color: string;
   npmPackage?: NpmPackageT | null;
   category?: string | null;
   isNpmAByProduct?: boolean | null;
-  status: 'ACTIVE' | 'INACTIVE' | 'LEGACY' | 'ARCHIVED';
+  status: StatusT;
   repo: RepoT;
   alias: string;
   tradar: TechRadarT | null;

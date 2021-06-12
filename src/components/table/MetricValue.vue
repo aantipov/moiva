@@ -17,8 +17,8 @@
     >
   </div>
 
-  <div v-else-if="type === 'status'" class="flex justify-center capitalize">
-    {{ lib.status.toLowerCase() }}
+  <div v-else-if="type === 'status'" class="flex justify-center">
+    <StatusBadge :value="lib.status" />
   </div>
 
   <div v-else-if="type === 'stars'">
@@ -203,6 +203,7 @@ import TsBundledIcon from '@/icons/TsBundled.vue';
 import TsDtIcon from '@/icons/TsDt.vue';
 import { MetricT } from './Table.vue';
 import { subQuarters, isSameQuarter } from 'date-fns';
+import StatusBadge from '@/components/StatusBadge.vue';
 
 const prevQuarterDate = subQuarters(new Date(), 1);
 const roundBytesFn = (bytes: number): number => Math.round(bytes / 102.4) / 10;
@@ -213,6 +214,7 @@ export default defineComponent({
   components: {
     TsBundledIcon,
     TsDtIcon,
+    StatusBadge,
   },
 
   props: {
