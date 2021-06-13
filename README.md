@@ -28,7 +28,7 @@ The Library concept can be simplistically described as the following interface:
 
 ```ts
 interface Library {
-  repo: string; // a reference to a GitHub repositry
+  repo: string; // a reference to a GitHub repository
   npm?: string; // a reference to an Npm package
   isNpmCoreArtifact?: boolean; // indicates if the npm package is a core artifact of the GihHub repository
   category: string; // used in suggestions and SEO
