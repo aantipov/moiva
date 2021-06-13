@@ -38,8 +38,7 @@ if (appCatalog) {
 
 if (process.env.NODE_ENV !== 'development') {
   Sentry.init({
-    dsn:
-      'https://185bd9a836b146318babbd956881e8a0@o477177.ingest.sentry.io/5517696',
+    dsn: 'https://185bd9a836b146318babbd956881e8a0@o477177.ingest.sentry.io/5517696',
     integrations: [
       // new VueIntegration({
       //   app,

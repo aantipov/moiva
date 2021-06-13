@@ -1,6 +1,14 @@
 <template>
   <div
-    class="absolute flex items-center justify-center w-full h-full bg-white bg-opacity-40"
+    class="
+      absolute
+      flex
+      items-center
+      justify-center
+      w-full
+      h-full
+      bg-white bg-opacity-40
+    "
   >
     <div class="lds-grid">
       <div></div>

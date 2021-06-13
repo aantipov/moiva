@@ -62,7 +62,7 @@ export default defineComponent({
         datasets: filteredLibsRef.value.map((lib) => ({
           label: lib.npmPackage.name,
           data: lib.npmReleases.map((npmRelease) => ({
-            x: (npmRelease.month as unknown) as number,
+            x: npmRelease.month as unknown as number,
             y: npmRelease.releases,
           })),
           backgroundColor: lib.color,
@@ -83,7 +83,7 @@ export default defineComponent({
                   : 'year',
             },
             adapters: { date: { locale: enUS } },
-            min: (startQuarterRef.value as unknown) as number,
+            min: startQuarterRef.value as unknown as number,
           },
         },
         plugins: {

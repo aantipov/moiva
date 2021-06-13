@@ -136,7 +136,7 @@ export function getLibrary(
     npmDownloads: computed(() =>
       npmPackage ? npmDownloadsMapR.get(npmPackage.name) : null
     ),
-    npmDownloadsGrowth: (computed(() => {
+    npmDownloadsGrowth: computed(() => {
       if (!npmPackage) {
         return null;
       }
@@ -154,7 +154,7 @@ export function getLibrary(
       }
 
       return 100 * (Math.pow(last / first, 1 / 6) - 1);
-    }) as unknown) as number | undefined | null,
+    }) as unknown as number | undefined | null,
     // @ts-ignore
     stars: computed(() => starsMapR.get(repoIdLC)),
     // @ts-ignore

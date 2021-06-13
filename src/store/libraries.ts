@@ -65,9 +65,11 @@ export const categoryRef = computed<string | null>(() => {
 export const repoToLibraryIdMap = computed<Record<string, string>>(() => {
   return reposIds.value.reduce((acc, repoId) => {
     if (!acc[repoId]) {
-      acc[repoId] = (librariesR.find(
-        (lib) => lib.repo.repoId.toLowerCase() === repoId
-      ) as LibraryT).id;
+      acc[repoId] = (
+        librariesR.find(
+          (lib) => lib.repo.repoId.toLowerCase() === repoId
+        ) as LibraryT
+      ).id;
     }
 
     return acc;

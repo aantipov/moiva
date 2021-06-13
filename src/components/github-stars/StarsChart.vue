@@ -55,7 +55,7 @@ export default defineComponent({
           data: lib.stars
             .filter((item) => item.month >= startMonthRef.value)
             .map(({ month, stars }) => ({
-              x: (month as unknown) as number,
+              x: month as unknown as number,
               y: stars,
             })),
           backgroundColor: lib.color,

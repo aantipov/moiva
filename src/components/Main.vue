@@ -42,7 +42,11 @@
         <div class="grid grid-cols-12 gap-4">
           <template v-if="popularChartsNumber === 1">
             <Stars
-              class="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4"
+              class="
+                col-span-12
+                md:col-span-8 md:col-start-3
+                lg:col-span-6 lg:col-start-4
+              "
             />
             <NpmDownloads />
             <GoogleTrends />
@@ -80,7 +84,11 @@
         <div class="grid grid-cols-12 gap-4">
           <template v-if="miscChartsNumber === 1">
             <Languages
-              class="col-span-12 md:col-span-6 md:col-start-4 xl:col-span-4 xl:col-start-5"
+              class="
+                col-span-12
+                md:col-span-6 md:col-start-4
+                xl:col-span-4 xl:col-start-5
+              "
             />
             <TechRadar />
             <Bundlephobia :category="category" />

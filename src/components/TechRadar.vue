@@ -75,10 +75,10 @@ export default defineComponent({
         yLabels: [...TRADAR_LEVELS].reverse(),
         datasets: filteredLibsRef.value.map((lib) => ({
           label: lib.tradar.alias,
-          data: (uniqDates.value.map(
+          data: uniqDates.value.map(
             (date) =>
               lib.tradar.entries.find((entry) => entry.month === date)?.level
-          ) as unknown) as number[],
+          ) as unknown as number[],
           backgroundColor: lib.color,
           borderColor: lib.color,
           spanGaps: true,

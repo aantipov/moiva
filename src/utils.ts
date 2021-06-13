@@ -170,9 +170,9 @@ export function updateTitle(libraries: LibrariesReadonlyT): void {
   }
 
   window.document.title = title;
-  (document.querySelector(
-    'meta[name="twitter:title"]'
-  ) as HTMLElement).setAttribute('content', title);
+  (
+    document.querySelector('meta[name="twitter:title"]') as HTMLElement
+  ).setAttribute('content', title);
 }
 
 interface LibForDescriptionT {
@@ -208,12 +208,12 @@ export function updateMetaDescription(libraries: LibrariesReadonlyT): void {
     descr = `Compare ${aliasesStr}. Stats and Trends - Google Trends, Contributors, Releases, Commits, Developer usage, Npm Downloads, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
   }
 
-  (document.querySelector(
-    'meta[name="Description"]'
-  ) as HTMLElement).setAttribute('content', descr);
-  (document.querySelector(
-    'meta[name="twitter:description"]'
-  ) as HTMLElement).setAttribute('content', descr);
+  (
+    document.querySelector('meta[name="Description"]') as HTMLElement
+  ).setAttribute('content', descr);
+  (
+    document.querySelector('meta[name="twitter:description"]') as HTMLElement
+  ).setAttribute('content', descr);
 }
 
 function getSingleLibDescription(lib: LibForDescriptionT): string {
