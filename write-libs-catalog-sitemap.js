@@ -31,7 +31,7 @@ const categories = categoriesRaw.map(({ name, skipSitemap, items }) => ({
   categoryName: name,
   skipSitemap,
   libs: items
-    .filter((item) => !!item.npm && !item.exclude)
+    .filter((item) => !item.exclude)
     .map(({ repo, npm, isNpmCoreArtifact, framework, alias, isLegacy }) => ({
       category: name,
       alias: alias || getAliasFromRepoId(repo),
@@ -124,7 +124,13 @@ fs.writeFile('src/libraries-catalog.ts', resStr, (err) => {
  * GENERATE SITEMAP.XML
  */
 
-const oneLibUrls = categories
+// Temporarily filter out non-npm libs because we don't have enough data for SEO there
+const npmCategories = categories.map((cat) => ({
+  ...cat,
+  libs: cat.libs.filter((lib) => !!lib.npm),
+}));
+
+const oneLibUrls = npmCategories
   .map((cat) => cat.libs)
   .flat()
   .map((lib) => {
@@ -141,7 +147,7 @@ const oneLibUrls = categories
 // - framework specific can not be paired with other framework specific
 // - framework agnostic can be paired with anything
 
-const twoLibsUrls = categories
+const twoLibsUrls = npmCategories
   .map((cat) => {
     // skip Misc category
     if (cat.categoryName === 'misc' || cat.skipSitemap) {
