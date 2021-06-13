@@ -61,61 +61,40 @@ if (wrongFrameworks.length) {
  */
 let str = '';
 
-categories.forEach((cat) => {
-  str += `\n  // ${cat.categoryName}\n`;
-  cat.libs.forEach((lib) => {
+categories.forEach((cat, catIndex) => {
+  cat.libs.forEach((lib, libIndex) => {
     if (lib.category === 'misc' && lib.npm === null) {
       return;
     }
-    const alias = lib.alias && `'${lib.alias}'`;
-    const framework = lib.framework && `'${lib.framework}'`;
-    const npm = lib.npm && `'${lib.npm}'`;
-    str += `  { category: '${lib.category}', repoId: '${lib.repoId}', npm: ${npm}, isNpmAByProduct: ${lib.isNpmAByProduct}, alias: ${alias}, framework: ${framework}, isLegacy: ${lib.isLegacy} },\n`;
+    const alias = lib.alias && `"${lib.alias}"`;
+    const framework = lib.framework && `"${lib.framework}"`;
+    const npm = lib.npm && `"${lib.npm}"`;
+    str += `  {
+    "category": "${lib.category}",
+    "repoId": "${lib.repoId}",
+    "npm": ${npm},
+    "isNpmAByProduct": ${lib.isNpmAByProduct},
+    "alias": ${alias},
+    "framework": ${framework},
+    "isLegacy": ${lib.isLegacy}
+  }`;
+
+    if (
+      catIndex !== categories.length - 1 ||
+      libIndex !== cat.libs.length - 1
+    ) {
+      str += `,\n`;
+    }
   });
 });
 
-const resStr = `export interface CatalogLibraryT {
-  repoId: string;
-  category: string;
-  alias: string;
-  npm?: string | null;
-  isNpmAByProduct?: boolean | null;
-  framework: string | null;
-  isLegacy: boolean;
-}
-
-// prettier-ignore
-const libraries: CatalogLibraryT[] = [${str}];
-
-export const catalogRepoIdToLib = libraries.reduce((acc, lib) => {
-  acc[lib.repoId.toLowerCase()] = lib;
-  return acc;
-}, {} as Record<string, CatalogLibraryT>);
-
-// For use by npm-package api to return the correct repo for the npm package
-export const catalogNpmToLib = libraries.reduce((acc, lib) => {
-  if (lib.npm) {
-    acc[lib.npm] = lib;
-  }
-  return acc;
-}, {} as Record<string, CatalogLibraryT>);
-
-export const catalogReposIdsByCategory = libraries.reduce(
-  (acc, { repoId, category }) => {
-    if (!acc[category]) {
-      acc[category] = [];
-    }
-
-    acc[category].push(repoId.toLowerCase());
-
-    return acc;
-  },
-  {} as Record<string, string[]>
-);
+const resStr = `[
+${str}
+]
 `;
 
 // Write Libraries catalog file
-fs.writeFile('src/libraries-catalog.ts', resStr, (err) => {
+fs.writeFile('src/data/libraries.json', resStr, (err) => {
   if (err) return console.log(err);
   console.log('Libraries catalog generated successfully');
 });
