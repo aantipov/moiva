@@ -29,7 +29,7 @@
 <script lang="ts">
 import { defineComponent, computed, ref } from 'vue';
 import { getSuggestions, constructHref } from '@/utils';
-import { CatalogLibraryT } from '@/libraries-catalog';
+import { CatalogLibraryT } from '@/data/index';
 import { libraries } from '@/store/libraries';
 import ChevronDownIcon from '@/components/icons/ChevronDown.vue';
 import ChevronUpIcon from '@/components/icons/ChevronUp.vue';

@@ -56,7 +56,7 @@ import { defineComponent, toRefs, computed } from 'vue';
 import BundlephobiaIcon from './icons/Bundlephobia.vue';
 import ThoughtworksIcon from './icons/Thoughtworks.vue';
 import { LibraryReadonlyT } from '@/libraryApis';
-import { repoToTechRadarMap } from '@/techradar.config';
+import { repoIdToTechRadarMap } from '@/data/index';
 import { getBundlephobiaUrl } from '@/utils';
 
 export default defineComponent({
@@ -87,7 +87,7 @@ export default defineComponent({
       bundlephobiaUrl: computed(() => getBundlephobiaUrl(npm.value)),
       thoughtworksUrl: computed<string | null>(() => {
         const tradarItem =
-          repoToTechRadarMap[library.value.repo.repoId] || null;
+          repoIdToTechRadarMap[library.value.repo.repoId] || null;
         return tradarItem && tradarItem.link;
       }),
       snykUrl,

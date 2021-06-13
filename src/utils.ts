@@ -2,7 +2,7 @@ import {
   catalogRepoIdToLib,
   catalogReposIdsByCategory,
   CatalogLibraryT,
-} from './libraries-catalog';
+} from '@/data/index';
 import { LibraryReadonlyT, LibrariesReadonlyT } from '@/libraryApis';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import Swal from 'sweetalert2';

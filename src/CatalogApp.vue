@@ -47,10 +47,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { getSeoLibName, getLibraryHref } from '@/utils';
-import {
-  catalogReposIdsByCategory,
-  catalogRepoIdToLib,
-} from './libraries-catalog';
+import { catalogReposIdsByCategory, catalogRepoIdToLib } from '@/data/index';
 
 const catalogEntries = Object.entries(catalogReposIdsByCategory)
   .map(([category, repoIds]) => ({
