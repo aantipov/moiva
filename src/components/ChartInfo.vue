@@ -42,8 +42,8 @@ export default defineComponent({
     const triggerRef = ref(null);
 
     onMounted(() => {
-      tippy((triggerRef.value as unknown) as HTMLElement, {
-        content: (contentRef.value as unknown) as HTMLElement,
+      tippy(triggerRef.value as unknown as HTMLElement, {
+        content: contentRef.value as unknown as HTMLElement,
         // trigger: 'click',
         animateFill: true,
         plugins: [animateFill],

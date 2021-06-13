@@ -52,7 +52,7 @@ export default defineComponent({
         datasets: filteredLibsRef.value.map((lib) => ({
           label: lib.repo.repoName,
           data: lib.contributors.map((item) => ({
-            x: (item.month as unknown) as number,
+            x: item.month as unknown as number,
             y: item.contributors,
           })),
           backgroundColor: lib.color,
@@ -71,7 +71,7 @@ export default defineComponent({
                   ? 'quarter'
                   : 'year',
             },
-            min: (startQuarterRef.value as unknown) as number,
+            min: startQuarterRef.value as unknown as number,
             adapters: { date: { locale: enUS } },
           },
         },

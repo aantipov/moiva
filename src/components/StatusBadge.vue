@@ -1,6 +1,17 @@
 <template>
   <span
-    class="inline-block px-2 py-1 mr-1 text-xs font-semibold text-white uppercase rounded-full last:mr-0"
+    class="
+      inline-block
+      px-2
+      py-1
+      mr-1
+      text-xs
+      font-semibold
+      text-white
+      uppercase
+      rounded-full
+      last:mr-0
+    "
     :class="[value.toLowerCase()]"
   >
     {{ value }}

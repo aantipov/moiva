@@ -55,7 +55,7 @@ export default defineComponent({
         datasets: filteredLibsRef.value.map((lib) => ({
           label: lib.devUsage.name,
           data: lib.devUsage.usage.map((usageItem) => ({
-            x: (usageItem.year.toString() as unknown) as number,
+            x: usageItem.year.toString() as unknown as number,
             y: usageItem.value,
           })),
           spanGaps: true,
