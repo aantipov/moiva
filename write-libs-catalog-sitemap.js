@@ -81,6 +81,7 @@ const resStr = `export interface CatalogLibraryT {
   npm?: string | null;
   isNpmAByProduct?: boolean | null;
   framework: string | null;
+  isLegacy: boolean;
 }
 
 // prettier-ignore
