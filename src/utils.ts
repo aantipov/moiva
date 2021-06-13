@@ -110,13 +110,14 @@ export function formatNumber(value: number, withSign = false): string {
   return `${sign}${numbersFormatter.format(value)}`;
 }
 
+// Do not allow Google index pages with GitHub (we don't have enough data for SEO there)
 // Do not allow Google to index pages with >=3 libraries
 // To avoid spamming Google and the user with useless and duplicated links
 export function setNoFollowTag(): void {
   const npmPackagesFromUrl = getNpmPackagesFromUrl();
   const reposIdsFromUrl = getReposIdsFromUrl();
 
-  if (npmPackagesFromUrl.length + reposIdsFromUrl.length >= 3) {
+  if (reposIdsFromUrl.length > 0 || npmPackagesFromUrl.length >= 3) {
     const metaRobots = document.createElement('meta');
     metaRobots.name = 'robots';
     metaRobots.content = 'noindex';
