@@ -1,8 +1,6 @@
 import { computed } from 'vue';
 import { getSeoLibName } from '@/utils';
 import { nanoid } from 'nanoid';
-import { CatalogLibraryT } from '@/libraries-catalog';
-import { TechRadarT, repoToTechRadarMap } from '@/techradar.config';
 import {
   ContributorsT,
   cacheR as contributorsMapR,
@@ -24,11 +22,15 @@ import {
   LibGTrendsT,
   cacheR as googleTrendsMapR,
 } from '@/components/google-trends/api';
-import { GTrendDefT, repoToGTrendDefMap } from '@/google-trends.config';
 import {
-  repoIdToDataMap as repoIdToDevUsageDataMap,
+  repoIdToDevUsageDataMap,
+  repoIdToTechRadarMap,
+  repoToGTrendDefMap,
   StateOfJSItemT,
-} from '@/components/developer-usage/stateof-js-css-data';
+  TechRadarT,
+  CatalogLibraryT,
+  GTrendDefT,
+} from '@/data/index';
 import {
   BundlephobiaT,
   cacheR as bundlesizeMapR,
@@ -119,7 +121,7 @@ export function getLibrary(
       }
       return 'ACTIVE';
     }),
-    tradar: repoToTechRadarMap[repoIdLC] || null,
+    tradar: repoIdToTechRadarMap[repoIdLC] || null,
     // @ts-ignore
     color: computed(() => libraryToColorMapR.get(id) || '#ffffff'),
     // @ts-ignore

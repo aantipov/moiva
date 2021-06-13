@@ -23,7 +23,7 @@
 <script lang="ts">
 import { defineComponent, computed, watchEffect } from 'vue';
 import { ChartConfiguration } from 'chart.js';
-import { StateOfJSItemT } from './stateof-js-css-data';
+import { StateOfJSItemT } from '@/data/index';
 import { LibraryReadonlyT } from '@/libraryApis';
 import { librariesRR, isLoading } from '@/store/libraries';
 import { chartsVisibility } from '@/store/chartsVisibility';

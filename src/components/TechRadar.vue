@@ -39,7 +39,7 @@
 import { defineComponent, computed, watchEffect } from 'vue';
 import { format } from 'date-fns';
 import { ChartConfiguration } from 'chart.js';
-import { TRADAR_LEVELS, TechRadarT, DateT } from '@/techradar.config';
+import { TRADAR_LEVELS, TechRadarT, DateT } from '@/data/index';
 import { chartsVisibility } from '@/store/chartsVisibility';
 import { LibraryReadonlyT } from '@/libraryApis';
 import { librariesRR, isLoading } from '@/store/libraries';

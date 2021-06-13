@@ -6,7 +6,7 @@ import {
   NpmPackageT,
 } from '@/libraryApis';
 import { LibraryT } from '@/getLibrary';
-import { catalogRepoIdToLib } from '@/libraries-catalog';
+import { catalogRepoIdToLib } from '@/data/index';
 
 // ====== STATE ======
 const librariesR = reactive<LibraryT[]>([]);

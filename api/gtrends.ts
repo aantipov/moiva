@@ -1,5 +1,5 @@
 import { Handler } from '@netlify/functions';
-import { repoToGTrendDefMap } from '../src/google-trends.config';
+import { repoToGTrendDefMap } from '../src/data/index';
 // @ts-ignore
 import googleTrends from 'google-trends-api';
 import { initSentry, reportError } from '../api-utils';
@@ -17,10 +17,8 @@ const handler: Handler = async (event) => {
   const defaultStartDate = new Date(defaultStartDateStr);
   const today = new Date();
   let startDate = defaultStartDate;
-  const {
-    libs: repos,
-    start,
-  } = (event.queryStringParameters as unknown) as QueryParamsT;
+  const { libs: repos, start } =
+    event.queryStringParameters as unknown as QueryParamsT;
 
   // Validate "start" parameter
   if (start) {

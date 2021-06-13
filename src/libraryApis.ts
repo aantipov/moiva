@@ -5,7 +5,7 @@ import {
   ERROR_CODE_NO_GITHUB_DATA,
   ERROR_CODE_FETCH_GITHUB_REPO_FAILED,
 } from '@/constants';
-import { catalogRepoIdToLib, catalogNpmToLib } from '@/libraries-catalog';
+import { catalogRepoIdToLib, catalogNpmToLib } from '@/data/index';
 import { getLibrary, LibraryT } from '@/getLibrary';
 
 const npmPackageCache = new Map();
