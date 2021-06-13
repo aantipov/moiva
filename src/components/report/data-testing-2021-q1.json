@@ -274,7 +274,10 @@
     "npmReleases": 4,
     "dwnlMonthly": 14203874,
     "dwnlMonthlyIncreasePercentage": 27,
-    "techRadar": { "url": "https://www.thoughtworks.com/radar/languages-and-frameworks/react-testing-library", "level": "ADOPT" },
+    "techRadar": {
+      "url": "https://www.thoughtworks.com/radar/languages-and-frameworks/react-testing-library",
+      "level": "ADOPT"
+    },
     "devUsage": 26.4,
     "security": "A",
     "googleTrends": null
