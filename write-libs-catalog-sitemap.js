@@ -31,7 +31,7 @@ const categories = categoriesRaw.map(({ name, skipSitemap, items }) => ({
   categoryName: name,
   skipSitemap,
   libs: items
-    .filter((item) => !item.exclude)
+    .filter((item) => !!item.npm && !item.exclude)
     .map(({ repo, npm, isNpmCoreArtifact, framework, alias, isLegacy }) => ({
       category: name,
       alias: alias || getAliasFromRepoId(repo),

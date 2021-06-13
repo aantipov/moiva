@@ -5,7 +5,6 @@ export interface CatalogLibraryT {
   npm?: string | null;
   isNpmAByProduct?: boolean | null;
   framework: string | null;
-  isLegacy: boolean;
 }
 
 // prettier-ignore
@@ -59,7 +58,6 @@ const libraries: CatalogLibraryT[] = [
   { category: 'CSS Frameworks', repoId: 'tailwindlabs/tailwindcss', npm: 'tailwindcss', isNpmAByProduct: false, alias: 'Tailwind CSS', framework: null, isLegacy: false },
   { category: 'CSS Frameworks', repoId: 'pure-css/pure', npm: 'purecss', isNpmAByProduct: false, alias: 'Pure.css', framework: null, isLegacy: false },
   { category: 'CSS Frameworks', repoId: 'tachyons-css/tachyons', npm: 'tachyons', isNpmAByProduct: false, alias: 'Tachyons', framework: null, isLegacy: false },
-  { category: 'CSS Frameworks', repoId: 'dhg/Skeleton', npm: null, isNpmAByProduct: null, alias: 'Skeleton', framework: null, isLegacy: false },
   { category: 'CSS Frameworks', repoId: 'Dogfalo/materialize', npm: 'materialize-css', isNpmAByProduct: false, alias: 'MaterializeCSS', framework: null, isLegacy: false },
   { category: 'CSS Frameworks', repoId: 'h5bp/html5-boilerplate', npm: 'html5-boilerplate', isNpmAByProduct: false, alias: 'HTML5 Boilerplate', framework: null, isLegacy: false },
   { category: 'CSS Frameworks', repoId: 'foundation/foundation-sites', npm: 'foundation-sites', isNpmAByProduct: false, alias: 'Foundation', framework: null, isLegacy: false },
@@ -94,13 +92,7 @@ const libraries: CatalogLibraryT[] = [
 
   // JavaScript frameworks for Desktop Applications
   { category: 'JavaScript frameworks for Desktop Applications', repoId: 'electron/electron', npm: 'electron', isNpmAByProduct: false, alias: 'Electron', framework: null, isLegacy: false },
-  { category: 'JavaScript frameworks for Desktop Applications', repoId: 'tauri-apps/tauri', npm: null, isNpmAByProduct: null, alias: 'Tauri', framework: null, isLegacy: false },
-  { category: 'JavaScript frameworks for Desktop Applications', repoId: 'neutralinojs/neutralinojs', npm: null, isNpmAByProduct: null, alias: 'Neutralinojs', framework: null, isLegacy: false },
-  { category: 'JavaScript frameworks for Desktop Applications', repoId: 'nwjs/nw.js', npm: null, isNpmAByProduct: null, alias: 'Nw.js', framework: null, isLegacy: false },
   { category: 'JavaScript frameworks for Desktop Applications', repoId: 'nodegui/nodegui', npm: '@nodegui/nodegui', isNpmAByProduct: false, alias: 'Nodegui', framework: null, isLegacy: false },
-  { category: 'JavaScript frameworks for Desktop Applications', repoId: 'nodegui/vue-nodegui', npm: null, isNpmAByProduct: null, alias: 'vue-nodegui', framework: 'vue', isLegacy: false },
-  { category: 'JavaScript frameworks for Desktop Applications', repoId: 'nodegui/react-nodegui', npm: null, isNpmAByProduct: null, alias: 'react-nodegui', framework: 'react', isLegacy: false },
-  { category: 'JavaScript frameworks for Desktop Applications', repoId: 'nodegui/svelte-nodegui', npm: null, isNpmAByProduct: null, alias: 'svelte-nodegui', framework: 'svelte', isLegacy: false },
 
   // JS End-to-End Testing and Browser Automation Libraries
   { category: 'JS End-to-End Testing and Browser Automation Libraries', repoId: 'puppeteer/puppeteer', npm: 'puppeteer', isNpmAByProduct: false, alias: 'Puppeteer', framework: null, isLegacy: false },
@@ -614,8 +606,6 @@ const libraries: CatalogLibraryT[] = [
   { category: 'Runtime Types Checking Libraries', repoId: 'pelotom/runtypes', npm: 'runtypes', isNpmAByProduct: false, alias: 'Runtypes', framework: null, isLegacy: false },
 
   // JavaScript runtimes
-  { category: 'JavaScript runtimes', repoId: 'denoland/deno', npm: null, isNpmAByProduct: null, alias: 'Deno', framework: null, isLegacy: false },
-  { category: 'JavaScript runtimes', repoId: 'nodejs/node', npm: null, isNpmAByProduct: null, alias: 'Node.js', framework: null, isLegacy: false },
 
   // ReactJS Select/Autocomplete Components
   { category: 'ReactJS Select/Autocomplete Components', repoId: 'downshift-js/downshift', npm: 'downshift', isNpmAByProduct: false, alias: 'Downshift', framework: 'react', isLegacy: false },
@@ -685,12 +675,10 @@ const libraries: CatalogLibraryT[] = [
 
   // UI Frameworks for building Mobile Apps (Desktop and Web)
   { category: 'UI Frameworks for building Mobile Apps (Desktop and Web)', repoId: 'ionic-team/ionic-framework', npm: '@ionic/core', isNpmAByProduct: false, alias: 'Ionic Framework', framework: null, isLegacy: false },
-  { category: 'UI Frameworks for building Mobile Apps (Desktop and Web)', repoId: 'flutter/flutter', npm: null, isNpmAByProduct: null, alias: 'Flutter', framework: null, isLegacy: false },
   { category: 'UI Frameworks for building Mobile Apps (Desktop and Web)', repoId: 'facebook/react-native', npm: 'react-native', isNpmAByProduct: false, alias: 'react-native', framework: 'react', isLegacy: false },
   { category: 'UI Frameworks for building Mobile Apps (Desktop and Web)', repoId: 'NativeScript/NativeScript', npm: '@nativescript/core', isNpmAByProduct: false, alias: 'NativeScript', framework: null, isLegacy: false },
   { category: 'UI Frameworks for building Mobile Apps (Desktop and Web)', repoId: 'framework7io/framework7', npm: 'framework7', isNpmAByProduct: false, alias: 'Framework7', framework: null, isLegacy: false },
   { category: 'UI Frameworks for building Mobile Apps (Desktop and Web)', repoId: 'OnsenUI/OnsenUI', npm: 'onsenui', isNpmAByProduct: false, alias: 'OnsenUI', framework: null, isLegacy: false },
-  { category: 'UI Frameworks for building Mobile Apps (Desktop and Web)', repoId: 'apache/incubator-weex', npm: null, isNpmAByProduct: null, alias: 'incubator-weex', framework: null, isLegacy: false },
 
   // Unit-Testing Libraries
   { category: 'Unit-Testing Libraries', repoId: 'testing-library/dom-testing-library', npm: '@testing-library/dom', isNpmAByProduct: false, alias: 'DOM Testing Library', framework: null, isLegacy: false },

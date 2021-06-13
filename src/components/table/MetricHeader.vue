@@ -211,7 +211,7 @@ export default defineComponent({
     return {
       quarter: prevQuarter,
       status:
-        'The status of the library. Possible values: "Active",  "Inactive" if no commits in the last 6 months, "Legacy" if library authors called it so, "Archived" if the repository is archived',
+        'Library status. Possible values: "Active",  "Inactive" if no commits in the last 6 months, "Legacy" if library authors called it so, "Archived" if the repository is archived',
       stars:
         'The total number of GitHub stars and the average number of new stars per month over the last 3 months',
       npmDownloads:
