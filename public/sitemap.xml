@@ -1810,6 +1810,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=antd</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=aos</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -7465,6 +7470,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=rome</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=roughjs</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -7871,6 +7881,16 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=styled-jsx</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=styled-system</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=styletron-react</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
   </url>

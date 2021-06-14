@@ -1423,6 +1423,15 @@
   },
   {
     "category": "misc",
+    "repoId": "sass/node-sass",
+    "npm": null,
+    "isNpmAByProduct": null,
+    "alias": "node-sass",
+    "framework": null,
+    "isLegacy": true
+  },
+  {
+    "category": "misc",
     "repoId": "visionmedia/superagent",
     "npm": "superagent",
     "isNpmAByProduct": false,
@@ -13010,6 +13019,69 @@
     "npm": null,
     "isNpmAByProduct": null,
     "alias": "BUnit",
+    "framework": null,
+    "isLegacy": false
+  },
+  {
+    "category": "misc",
+    "repoId": "ant-design/ant-design",
+    "npm": "antd",
+    "isNpmAByProduct": false,
+    "alias": "Ant Design",
+    "framework": null,
+    "isLegacy": false
+  },
+  {
+    "category": "misc",
+    "repoId": "elm/compiler",
+    "npm": null,
+    "isNpmAByProduct": null,
+    "alias": "Elm",
+    "framework": null,
+    "isLegacy": false
+  },
+  {
+    "category": "misc",
+    "repoId": "purescript/purescript",
+    "npm": null,
+    "isNpmAByProduct": null,
+    "alias": "PureScript",
+    "framework": null,
+    "isLegacy": false
+  },
+  {
+    "category": "misc",
+    "repoId": "reasonml/reason",
+    "npm": null,
+    "isNpmAByProduct": null,
+    "alias": "Reason",
+    "framework": null,
+    "isLegacy": false
+  },
+  {
+    "category": "misc",
+    "repoId": "rome/tools",
+    "npm": "rome",
+    "isNpmAByProduct": false,
+    "alias": "Rome",
+    "framework": null,
+    "isLegacy": false
+  },
+  {
+    "category": "misc",
+    "repoId": "styled-system/styled-system",
+    "npm": "styled-system",
+    "isNpmAByProduct": false,
+    "alias": "Styled System",
+    "framework": null,
+    "isLegacy": false
+  },
+  {
+    "category": "misc",
+    "repoId": "styletron/styletron",
+    "npm": "styletron-react",
+    "isNpmAByProduct": true,
+    "alias": "Styletron",
     "framework": null,
     "isLegacy": false
   },

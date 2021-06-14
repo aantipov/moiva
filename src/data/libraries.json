@@ -4473,6 +4473,42 @@
     "isLegacy": false
   },
   {
+    "category": "misc",
+    "repoId": "ant-design/ant-design",
+    "npm": "antd",
+    "isNpmAByProduct": false,
+    "alias": "Ant Design",
+    "framework": null,
+    "isLegacy": false
+  },
+  {
+    "category": "misc",
+    "repoId": "rome/tools",
+    "npm": "rome",
+    "isNpmAByProduct": false,
+    "alias": "Rome",
+    "framework": null,
+    "isLegacy": false
+  },
+  {
+    "category": "misc",
+    "repoId": "styled-system/styled-system",
+    "npm": "styled-system",
+    "isNpmAByProduct": false,
+    "alias": "Styled System",
+    "framework": null,
+    "isLegacy": false
+  },
+  {
+    "category": "misc",
+    "repoId": "styletron/styletron",
+    "npm": "styletron-react",
+    "isNpmAByProduct": true,
+    "alias": "Styletron",
+    "framework": null,
+    "isLegacy": false
+  },
+  {
     "category": "NodeJS Frameworks",
     "repoId": "expressjs/express",
     "npm": "express",
