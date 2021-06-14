@@ -1,6 +1,7 @@
 // @ts-ignore
 const techRadarItems = require('./techradar.json');
 const googleTrendsItems = require('./google-trends.json');
+const readingsItems = require('./readings.json');
 const libs = require('./_libraries-full.json');
 const libsReposIds = libs.map((lib) => lib.repoId);
 
@@ -18,6 +19,18 @@ describe('Google Trends', () => {
     // @ts-ignore
     googleTrendsItems.forEach((item) => {
       expect(libsReposIds).toContain(item[0]);
+    });
+  });
+});
+
+describe('Readings', () => {
+  it('repos names match Catalog', () => {
+    // @ts-ignore
+    readingsItems.forEach((item) => {
+      // @ts-ignore
+      item.repos.forEach((repoId) => {
+        expect(libsReposIds).toContain(repoId);
+      });
     });
   });
 });
