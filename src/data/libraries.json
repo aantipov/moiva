@@ -3484,6 +3484,15 @@
   },
   {
     "category": "misc",
+    "repoId": "getsentry/sentry-javascript",
+    "npm": "@sentry/browser",
+    "isNpmAByProduct": null,
+    "alias": "Sentry JS",
+    "framework": null,
+    "isLegacy": false
+  },
+  {
+    "category": "misc",
     "repoId": "sentsin/layui",
     "npm": "layui-src",
     "isNpmAByProduct": false,
@@ -4407,6 +4416,60 @@
     "isNpmAByProduct": false,
     "alias": "Why Did You Render",
     "framework": "react",
+    "isLegacy": false
+  },
+  {
+    "category": "misc",
+    "repoId": "timkindberg/jest-when",
+    "npm": "jest-when",
+    "isNpmAByProduct": false,
+    "alias": "jest-when",
+    "framework": null,
+    "isLegacy": false
+  },
+  {
+    "category": "misc",
+    "repoId": "single-spa/single-spa",
+    "npm": "single-spa",
+    "isNpmAByProduct": false,
+    "alias": "single-spa",
+    "framework": null,
+    "isLegacy": false
+  },
+  {
+    "category": "misc",
+    "repoId": "npm/cli",
+    "npm": "npm",
+    "isNpmAByProduct": false,
+    "alias": "npm",
+    "framework": null,
+    "isLegacy": false
+  },
+  {
+    "category": "misc",
+    "repoId": "netflix/pollyjs",
+    "npm": "@pollyjs/core",
+    "isNpmAByProduct": false,
+    "alias": "Polly.JS",
+    "framework": null,
+    "isLegacy": false
+  },
+  {
+    "category": "misc",
+    "repoId": "facebook/jscodeshift",
+    "npm": "jscodeshift",
+    "isNpmAByProduct": false,
+    "alias": "jscodeshift",
+    "framework": null,
+    "isLegacy": false
+  },
+  {
+    "category": "misc",
+    "repoId": "clinicjs/node-clinic-bubbleprof",
+    "npm": "@nearform/bubbleprof",
+    "isNpmAByProduct": true,
+    "alias": "node-clinic-bubbleprof",
+    "framework": null,
     "isLegacy": false
   },
   {
