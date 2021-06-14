@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "jest && vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "vue-tsc --noEmit && eslint --ext .ts,.js,.vue src/ && prettier --check src/.",
     "format": "prettier --write src/.",
