@@ -189,7 +189,7 @@
     ]
   ],
   [
-    "polymer/lit-element",
+    "lit/lit-element",
     "LitElement",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/litelement",
     [
@@ -277,6 +277,16 @@
   ],
   [
     "getsentry/sentry",
+    "Sentry",
+    "https://www.thoughtworks.com/radar/tools/sentry",
+    [
+      { "month": "2018-05", "level": "Assess" },
+      { "month": "2020-10", "level": "Trial" },
+      { "month": "2021-04", "level": "Adopt" }
+    ]
+  ],
+  [
+    "getsentry/sentry-javascript",
     "Sentry",
     "https://www.thoughtworks.com/radar/tools/sentry",
     [
@@ -409,7 +419,7 @@
     [{ "month": "2019-04", "level": "Trial" }]
   ],
   [
-    "flowtype/flow-bin",
+    "facebook/flow",
     "Flow",
     "https://www.thoughtworks.com/radar/tools/flow",
     [
@@ -430,7 +440,7 @@
     [{ "month": "2019-11", "level": "Adopt" }]
   ],
   [
-    "clinicjs/node-clinic-bubbleprof-examples",
+    "clinicjs/node-clinic-bubbleprof",
     "Clinic.js Bubbleprof",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/clinic-js-bubbleprof",
     [{ "month": "2020-05", "level": "Assess" }]
@@ -461,7 +471,7 @@
     ]
   ],
   [
-    "MaterializeInc/materialize",
+    "materializeinc/materialize",
     "Materialize",
     "https://www.thoughtworks.com/radar/platforms/materialize",
     [
@@ -564,7 +574,7 @@
     [{ "month": "2021-04", "level": "Trial" }]
   ],
   [
-    "Microsoft/pyright",
+    "microsoft/pyright",
     "Pyright",
     "https://www.thoughtworks.com/radar/tools/pyright",
     [{ "month": "2021-04", "level": "Trial" }]
@@ -621,7 +631,7 @@
     [{ "month": "2021-04", "level": "Assess" }]
   ],
   [
-    "Yelp/detect-secrets",
+    "yelp/detect-secrets",
     "Yelp detect-secrets",
     "https://www.thoughtworks.com/radar/tools/yelp-detect-secrets",
     [{ "month": "2021-04", "level": "Assess" }]
@@ -666,7 +676,7 @@
     [{ "month": "2021-04", "level": "Trial" }]
   ],
   [
-    "egil/bUnit",
+    "bunit-dev/bunit",
     "bUnit",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/bunit",
     [{ "month": "2021-04", "level": "Assess" }]

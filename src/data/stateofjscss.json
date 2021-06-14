@@ -87,7 +87,7 @@
     "id": "astroturf",
     "name": "Astroturf",
     "category": "libraries",
-    "repoId": "4Catalyzer/astroturf",
+    "repoId": "4catalyzer/astroturf",
     "usage": [
       {
         "year": 2020,
@@ -216,22 +216,6 @@
       {
         "year": 2020,
         "value": 3
-      }
-    ]
-  },
-  {
-    "id": "css_modules",
-    "name": "CSS Modules",
-    "category": "libraries",
-    "repoId": "css-modules/css-modules",
-    "usage": [
-      {
-        "year": 2019,
-        "value": 24.9
-      },
-      {
-        "year": 2020,
-        "value": 36.2
       }
     ]
   },
@@ -731,7 +715,7 @@
     "id": "litelement",
     "name": "LitElement",
     "category": "libraries",
-    "repoId": "Polymer/lit-element",
+    "repoId": "lit/lit-element",
     "usage": [
       {
         "year": 2020,
@@ -743,7 +727,7 @@
     "id": "materialize_css",
     "name": "Materialize CSS",
     "category": "libraries",
-    "repoId": "Dogfalo/materialize",
+    "repoId": "dogfalo/materialize",
     "usage": [
       {
         "year": 2019,
@@ -1039,7 +1023,7 @@
     "id": "radium",
     "name": "Radium",
     "category": "libraries",
-    "repoId": "FormidableLabs/radium",
+    "repoId": "formidablelabs/radium",
     "usage": [
       {
         "year": 2019,
@@ -1211,6 +1195,30 @@
     "id": "sass",
     "name": "Sass",
     "category": "libraries",
+    "repoId": "sass/dart-sass",
+    "usage": [
+      {
+        "year": 2016,
+        "value": 79.4
+      },
+      {
+        "year": 2017,
+        "value": 82.8
+      },
+      {
+        "year": 2019,
+        "value": 86.1
+      },
+      {
+        "year": 2020,
+        "value": 89.1
+      }
+    ]
+  },
+  {
+    "id": "sass",
+    "name": "Sass",
+    "category": "libraries",
     "repoId": "sass/node-sass",
     "usage": [
       {
@@ -1235,7 +1243,7 @@
     "id": "semantic_ui",
     "name": "Semantic UI",
     "category": "libraries",
-    "repoId": "Semantic-Org/Semantic-UI",
+    "repoId": "semantic-org/semantic-ui",
     "usage": [
       {
         "year": 2019,
@@ -1251,7 +1259,7 @@
     "id": "skeleton",
     "name": "Skeleton",
     "category": "libraries",
-    "repoId": "dhg/Skeleton",
+    "repoId": "dhg/skeleton",
     "usage": [
       {
         "year": 2020,
@@ -1491,7 +1499,7 @@
     "id": "typescript",
     "name": "TypeScript",
     "category": "libraries",
-    "repoId": "microsoft/TypeScript",
+    "repoId": "microsoft/typescript",
     "usage": [
       {
         "year": 2016,

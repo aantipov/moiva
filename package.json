@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "jest && vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "vue-tsc --noEmit && eslint --ext .ts,.js,.vue src/ && prettier --check src/.",
     "format": "prettier --write src/.",
+    "test": "jest",
     "update": "npx npm-upgrade check"
   },
   "dependencies": {
@@ -39,6 +40,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-vue": "^7.11.1",
     "fibers": "^5.0.0",
+    "jest": "^27.0.4",
     "prettier": "^2.3.1",
     "tailwindcss": "^2.1.4",
     "typescript": "~4.3.2",
@@ -81,6 +83,8 @@
       {
         "files": [
           "**/__tests__/*.{j,t}s?(x)",
+          "**/*.spec.{j,t}s?(x)",
+          "src/main.spec.ts",
           "**/tests/unit/**/*.spec.{j,t}s?(x)"
         ],
         "env": {
@@ -100,6 +104,12 @@
       },
       {
         "files": "*.json",
+        "options": {
+          "printWidth": 120
+        }
+      },
+      {
+        "files": "src/data/readings.json",
         "options": {
           "printWidth": 200
         }

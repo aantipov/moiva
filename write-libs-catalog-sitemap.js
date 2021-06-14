@@ -59,19 +59,20 @@ if (wrongFrameworks.length) {
 /**
  * GENERATE LIBRARIES CATALOG
  */
-let str = '';
+function generateCatalogStr(full = false) {
+  let str = '';
 
-categories.forEach((cat, catIndex) => {
-  cat.libs.forEach((lib, libIndex) => {
-    if (lib.category === 'misc' && lib.npm === null) {
-      return;
-    }
-    const alias = lib.alias && `"${lib.alias}"`;
-    const framework = lib.framework && `"${lib.framework}"`;
-    const npm = lib.npm && `"${lib.npm}"`;
-    str += `  {
+  categories.forEach((cat, catIndex) => {
+    cat.libs.forEach((lib, libIndex) => {
+      if (!full && lib.category === 'misc' && lib.npm === null) {
+        return;
+      }
+      const alias = lib.alias && `"${lib.alias}"`;
+      const framework = lib.framework && `"${lib.framework}"`;
+      const npm = lib.npm && `"${lib.npm}"`;
+      str += `  {
     "category": "${lib.category}",
-    "repoId": "${lib.repoId}",
+    "repoId": "${lib.repoId.toLowerCase()}",
     "npm": ${npm},
     "isNpmAByProduct": ${lib.isNpmAByProduct},
     "alias": ${alias},
@@ -79,25 +80,35 @@ categories.forEach((cat, catIndex) => {
     "isLegacy": ${lib.isLegacy}
   }`;
 
-    if (
-      catIndex !== categories.length - 1 ||
-      libIndex !== cat.libs.length - 1
-    ) {
-      str += `,\n`;
-    }
+      if (
+        catIndex !== categories.length - 1 ||
+        libIndex !== cat.libs.length - 1
+      ) {
+        str += `,\n`;
+      }
+    });
   });
-});
 
-const resStr = `[
+  return `[
 ${str}
 ]
 `;
+}
 
 // Write Libraries catalog file
-fs.writeFile('src/data/libraries.json', resStr, (err) => {
+fs.writeFile('src/data/libraries.json', generateCatalogStr(), (err) => {
   if (err) return console.log(err);
   console.log('Libraries catalog generated successfully');
 });
+
+fs.writeFile(
+  'src/data/_libraries-full.json',
+  generateCatalogStr(true),
+  (err) => {
+    if (err) return console.log(err);
+    console.log('Libraries catalog generated successfully');
+  }
+);
 
 /**
  * GENERATE SITEMAP.XML
