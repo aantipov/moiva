@@ -4,6 +4,7 @@ const googleTrendsItems = require('./google-trends.json');
 const readingsItems = require('./readings.json');
 const stateofjsItems = require('./stateofjscss.json');
 const libs = require('./_libraries-full.json');
+// @ts-ignore
 const libsReposIds = libs.map((lib) => lib.repoId);
 
 describe('ThoughtWorks Radar', () => {
