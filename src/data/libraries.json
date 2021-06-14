@@ -1,7 +1,7 @@
 [
   {
     "category": "JavaScript 3D Libraries",
-    "repoId": "BabylonJS/Babylon.js",
+    "repoId": "babylonjs/babylon.js",
     "npm": "babylonjs",
     "isNpmAByProduct": false,
     "alias": "Babylon.js",
@@ -172,7 +172,7 @@
   },
   {
     "category": "JavaScript Charting Libraries",
-    "repoId": "chartjs/Chart.js",
+    "repoId": "chartjs/chart.js",
     "npm": "chart.js",
     "isNpmAByProduct": false,
     "alias": "Chart.js",
@@ -343,7 +343,7 @@
   },
   {
     "category": "CSS Frameworks",
-    "repoId": "dhg/Skeleton",
+    "repoId": "dhg/skeleton",
     "npm": null,
     "isNpmAByProduct": null,
     "alias": "Skeleton",
@@ -352,7 +352,7 @@
   },
   {
     "category": "CSS Frameworks",
-    "repoId": "Dogfalo/materialize",
+    "repoId": "dogfalo/materialize",
     "npm": "materialize-css",
     "isNpmAByProduct": false,
     "alias": "MaterializeCSS",
@@ -397,7 +397,7 @@
   },
   {
     "category": "CSS Frameworks",
-    "repoId": "Semantic-Org/Semantic-UI",
+    "repoId": "semantic-org/semantic-ui",
     "npm": "semantic-ui",
     "isNpmAByProduct": false,
     "alias": "Semantic UI",
@@ -451,7 +451,7 @@
   },
   {
     "category": "CSS-in-JS Libraries",
-    "repoId": "FormidableLabs/radium",
+    "repoId": "formidablelabs/radium",
     "npm": "radium",
     "isNpmAByProduct": false,
     "alias": "Radium",
@@ -487,7 +487,7 @@
   },
   {
     "category": "CSS-in-JS Libraries",
-    "repoId": "Khan/aphrodite",
+    "repoId": "khan/aphrodite",
     "npm": "aphrodite",
     "isNpmAByProduct": false,
     "alias": "Aphrodite",
@@ -505,7 +505,7 @@
   },
   {
     "category": "CSS-in-JS Libraries",
-    "repoId": "4Catalyzer/astroturf",
+    "repoId": "4catalyzer/astroturf",
     "npm": "astroturf",
     "isNpmAByProduct": false,
     "alias": "Astroturf",
@@ -694,7 +694,7 @@
   },
   {
     "category": "JS End-to-End Testing and Browser Automation Libraries",
-    "repoId": "SeleniumHQ/selenium",
+    "repoId": "seleniumhq/selenium",
     "npm": "selenium-webdriver",
     "isNpmAByProduct": false,
     "alias": "Selenium",
@@ -712,7 +712,7 @@
   },
   {
     "category": "JS End-to-End Testing and Browser Automation Libraries",
-    "repoId": "DevExpress/testcafe",
+    "repoId": "devexpress/testcafe",
     "npm": "testcafe",
     "isNpmAByProduct": false,
     "alias": "Testcafe",
@@ -901,7 +901,7 @@
   },
   {
     "category": "JavaScript UI Frameworks and Libraries",
-    "repoId": "MithrilJS/mithril.js",
+    "repoId": "mithriljs/mithril.js",
     "npm": "mithril",
     "isNpmAByProduct": false,
     "alias": "Mithril.js",
@@ -991,7 +991,7 @@
   },
   {
     "category": "GraphQL Client Libraries",
-    "repoId": "FormidableLabs/urql",
+    "repoId": "formidablelabs/urql",
     "npm": "@urql/core",
     "isNpmAByProduct": false,
     "alias": "urql",
@@ -1045,7 +1045,7 @@
   },
   {
     "category": "JavaScript Template Engines",
-    "repoId": "blueimp/JavaScript-Templates",
+    "repoId": "blueimp/javascript-templates",
     "npm": "blueimp-tmpl",
     "isNpmAByProduct": false,
     "alias": "blueimp/JavaScript-Templates",
@@ -1054,7 +1054,7 @@
   },
   {
     "category": "JavaScript Template Engines",
-    "repoId": "olado/doT",
+    "repoId": "olado/dot",
     "npm": "dot",
     "isNpmAByProduct": false,
     "alias": "DoT",
@@ -1081,7 +1081,7 @@
   },
   {
     "category": "JavaScript Template Engines",
-    "repoId": "Guseyn/EHTML",
+    "repoId": "guseyn/ehtml",
     "npm": "ehtml",
     "isNpmAByProduct": false,
     "alias": "EHTML",
@@ -1153,7 +1153,7 @@
   },
   {
     "category": "JavaScript Maps Libraries",
-    "repoId": "Leaflet/Leaflet",
+    "repoId": "leaflet/leaflet",
     "npm": "leaflet",
     "isNpmAByProduct": false,
     "alias": "Leaflet",
@@ -1243,7 +1243,7 @@
   },
   {
     "category": "misc",
-    "repoId": "JedWatson/classnames",
+    "repoId": "jedwatson/classnames",
     "npm": "classnames",
     "isNpmAByProduct": false,
     "alias": "Classnames",
@@ -1306,7 +1306,7 @@
   },
   {
     "category": "misc",
-    "repoId": "SBoudrias/Inquirer.js",
+    "repoId": "sboudrias/inquirer.js",
     "npm": "inquirer",
     "isNpmAByProduct": false,
     "alias": "Inquirer.js",
@@ -1387,7 +1387,7 @@
   },
   {
     "category": "misc",
-    "repoId": "ReactTraining/react-router",
+    "repoId": "reacttraining/react-router",
     "npm": "react-router",
     "isNpmAByProduct": false,
     "alias": "react-router",
@@ -1450,7 +1450,7 @@
   },
   {
     "category": "misc",
-    "repoId": "FormidableLabs/victory",
+    "repoId": "formidablelabs/victory",
     "npm": "victory",
     "isNpmAByProduct": false,
     "alias": "Victory",
@@ -1495,7 +1495,7 @@
   },
   {
     "category": "misc",
-    "repoId": "FortAwesome/Font-Awesome",
+    "repoId": "fortawesome/font-awesome",
     "npm": "@fortawesome/fontawesome-free",
     "isNpmAByProduct": false,
     "alias": "Font Awesome",
@@ -1576,7 +1576,7 @@
   },
   {
     "category": "misc",
-    "repoId": "TryGhost/Ghost",
+    "repoId": "tryghost/ghost",
     "npm": "ghost",
     "isNpmAByProduct": false,
     "alias": "Ghost",
@@ -1612,7 +1612,7 @@
   },
   {
     "category": "misc",
-    "repoId": "alvarotrigo/fullPage.js",
+    "repoId": "alvarotrigo/fullpage.js",
     "npm": "fullpage.js",
     "isNpmAByProduct": false,
     "alias": "fullPage.js",
@@ -1648,7 +1648,7 @@
   },
   {
     "category": "misc",
-    "repoId": "Marak/faker.js",
+    "repoId": "marak/faker.js",
     "npm": "faker",
     "isNpmAByProduct": false,
     "alias": "Faker.js",
@@ -1738,7 +1738,7 @@
   },
   {
     "category": "misc",
-    "repoId": "Modernizr/Modernizr",
+    "repoId": "modernizr/modernizr",
     "npm": "modernizr",
     "isNpmAByProduct": false,
     "alias": "Modernizr",
@@ -1756,7 +1756,7 @@
   },
   {
     "category": "misc",
-    "repoId": "SheetJS/sheetjs",
+    "repoId": "sheetjs/sheetjs",
     "npm": "xlsx",
     "isNpmAByProduct": false,
     "alias": "SheetJS js-xlsx",
@@ -1873,7 +1873,7 @@
   },
   {
     "category": "misc",
-    "repoId": "Automattic/mongoose",
+    "repoId": "automattic/mongoose",
     "npm": "mongoose",
     "isNpmAByProduct": false,
     "alias": "Mongoose",
@@ -1891,7 +1891,7 @@
   },
   {
     "category": "misc",
-    "repoId": "codemirror/CodeMirror",
+    "repoId": "codemirror/codemirror",
     "npm": "codemirror",
     "isNpmAByProduct": false,
     "alias": "CodeMirror",
@@ -1900,7 +1900,7 @@
   },
   {
     "category": "misc",
-    "repoId": "SortableJS/Sortable",
+    "repoId": "sortablejs/sortable",
     "npm": "sortablejs",
     "isNpmAByProduct": false,
     "alias": "Sortable",
@@ -1909,7 +1909,7 @@
   },
   {
     "category": "misc",
-    "repoId": "GoogleChrome/lighthouse",
+    "repoId": "googlechrome/lighthouse",
     "npm": "lighthouse",
     "isNpmAByProduct": false,
     "alias": "Lighthouse",
@@ -1918,7 +1918,7 @@
   },
   {
     "category": "misc",
-    "repoId": "Polymer/polymer",
+    "repoId": "polymer/polymer",
     "npm": "@polymer/polymer",
     "isNpmAByProduct": false,
     "alias": "Polymer",
@@ -1927,7 +1927,7 @@
   },
   {
     "category": "misc",
-    "repoId": "Polymer/tools",
+    "repoId": "polymer/tools",
     "npm": "polymer-cli",
     "isNpmAByProduct": false,
     "alias": "Tools",
@@ -1954,7 +1954,7 @@
   },
   {
     "category": "misc",
-    "repoId": "MrRio/jsPDF",
+    "repoId": "mrrio/jspdf",
     "npm": "jspdf",
     "isNpmAByProduct": false,
     "alias": "jsPDF",
@@ -2062,7 +2062,7 @@
   },
   {
     "category": "misc",
-    "repoId": "MostlyAdequate/mostly-adequate-guide",
+    "repoId": "mostlyadequate/mostly-adequate-guide",
     "npm": "@mostly-adequate/support",
     "isNpmAByProduct": false,
     "alias": "Guide to FP",
@@ -2116,7 +2116,7 @@
   },
   {
     "category": "misc",
-    "repoId": "localForage/localForage",
+    "repoId": "localforage/localforage",
     "npm": "localforage",
     "isNpmAByProduct": false,
     "alias": "localForage",
@@ -2134,7 +2134,7 @@
   },
   {
     "category": "misc",
-    "repoId": "Popmotion/popmotion",
+    "repoId": "popmotion/popmotion",
     "npm": "popmotion",
     "isNpmAByProduct": false,
     "alias": "Popmotion",
@@ -2314,7 +2314,7 @@
   },
   {
     "category": "misc",
-    "repoId": "ElemeFE/mint-ui",
+    "repoId": "elemefe/mint-ui",
     "npm": "mint-ui",
     "isNpmAByProduct": false,
     "alias": "Mint UI",
@@ -2323,7 +2323,7 @@
   },
   {
     "category": "misc",
-    "repoId": "eligrey/FileSaver.js",
+    "repoId": "eligrey/filesaver.js",
     "npm": "file-saver",
     "isNpmAByProduct": false,
     "alias": "FileSaver.js",
@@ -2332,7 +2332,7 @@
   },
   {
     "category": "misc",
-    "repoId": "jimmywarting/StreamSaver.js",
+    "repoId": "jimmywarting/streamsaver.js",
     "npm": "streamsaver",
     "isNpmAByProduct": false,
     "alias": "StreamSaver.js",
@@ -2431,7 +2431,7 @@
   },
   {
     "category": "misc",
-    "repoId": "jeromeetienne/AR.js",
+    "repoId": "jeromeetienne/ar.js",
     "npm": "ar.js",
     "isNpmAByProduct": false,
     "alias": "AR.js",
@@ -2521,7 +2521,7 @@
   },
   {
     "category": "misc",
-    "repoId": "Shopify/draggable",
+    "repoId": "shopify/draggable",
     "npm": "@shopify/draggable",
     "isNpmAByProduct": false,
     "alias": "Draggable",
@@ -2539,7 +2539,7 @@
   },
   {
     "category": "misc",
-    "repoId": "aFarkas/lazysizes",
+    "repoId": "afarkas/lazysizes",
     "npm": "lazysizes",
     "isNpmAByProduct": false,
     "alias": "Lazysizes",
@@ -2575,7 +2575,7 @@
   },
   {
     "category": "misc",
-    "repoId": "GeekyAnts/NativeBase",
+    "repoId": "geekyants/nativebase",
     "npm": "native-base",
     "isNpmAByProduct": false,
     "alias": "NativeBase",
@@ -2755,7 +2755,7 @@
   },
   {
     "category": "misc",
-    "repoId": "KaTeX/KaTeX",
+    "repoId": "katex/katex",
     "npm": "katex",
     "isNpmAByProduct": false,
     "alias": "KaTeX",
@@ -2764,7 +2764,7 @@
   },
   {
     "category": "misc",
-    "repoId": "adobe-webplatform/Snap.svg",
+    "repoId": "adobe-webplatform/snap.svg",
     "npm": "snapsvg",
     "isNpmAByProduct": false,
     "alias": "Snap.svg",
@@ -2863,7 +2863,7 @@
   },
   {
     "category": "misc",
-    "repoId": "edent/SuperTinyIcons",
+    "repoId": "edent/supertinyicons",
     "npm": "super-tiny-icons",
     "isNpmAByProduct": false,
     "alias": "Super Tiny Icons",
@@ -2998,7 +2998,7 @@
   },
   {
     "category": "misc",
-    "repoId": "greensock/GSAP",
+    "repoId": "greensock/gsap",
     "npm": "gsap",
     "isNpmAByProduct": false,
     "alias": "GSAP",
@@ -3007,7 +3007,7 @@
   },
   {
     "category": "misc",
-    "repoId": "krisk/Fuse",
+    "repoId": "krisk/fuse",
     "npm": "fuse.js",
     "isNpmAByProduct": false,
     "alias": "Fuse",
@@ -3016,7 +3016,7 @@
   },
   {
     "category": "misc",
-    "repoId": "VerbalExpressions/JSVerbalExpressions",
+    "repoId": "verbalexpressions/jsverbalexpressions",
     "npm": "verbal-expressions",
     "isNpmAByProduct": false,
     "alias": "JSVerbalExpressions",
@@ -3025,7 +3025,7 @@
   },
   {
     "category": "misc",
-    "repoId": "BrainJS/brain.js",
+    "repoId": "brainjs/brain.js",
     "npm": "brain.js",
     "isNpmAByProduct": false,
     "alias": "Brain.js",
@@ -3034,7 +3034,7 @@
   },
   {
     "category": "misc",
-    "repoId": "Tencent/omi",
+    "repoId": "tencent/omi",
     "npm": "omi",
     "isNpmAByProduct": false,
     "alias": "Omi",
@@ -3115,7 +3115,7 @@
   },
   {
     "category": "misc",
-    "repoId": "BrowserSync/browser-sync",
+    "repoId": "browsersync/browser-sync",
     "npm": "browser-sync",
     "isNpmAByProduct": false,
     "alias": "Browsersync",
@@ -3133,7 +3133,7 @@
   },
   {
     "category": "misc",
-    "repoId": "NetEase/pomelo",
+    "repoId": "netease/pomelo",
     "npm": "pomelo",
     "isNpmAByProduct": false,
     "alias": "Pomelo",
@@ -3169,7 +3169,7 @@
   },
   {
     "category": "misc",
-    "repoId": "Matt-Esch/virtual-dom",
+    "repoId": "matt-esch/virtual-dom",
     "npm": "virtual-dom",
     "isNpmAByProduct": false,
     "alias": "virtual-dom",
@@ -3196,7 +3196,7 @@
   },
   {
     "category": "misc",
-    "repoId": "AssemblyScript/assemblyscript",
+    "repoId": "assemblyscript/assemblyscript",
     "npm": "@assemblyscript/loader",
     "isNpmAByProduct": false,
     "alias": "AssemblyScript",
@@ -3223,7 +3223,7 @@
   },
   {
     "category": "misc",
-    "repoId": "DmitryBaranovskiy/raphael",
+    "repoId": "dmitrybaranovskiy/raphael",
     "npm": "raphael",
     "isNpmAByProduct": false,
     "alias": "Raphael",
@@ -3259,7 +3259,7 @@
   },
   {
     "category": "misc",
-    "repoId": "WickyNilliams/headroom.js",
+    "repoId": "wickynilliams/headroom.js",
     "npm": "headroom.js",
     "isNpmAByProduct": false,
     "alias": "Headroom.js",
@@ -3277,7 +3277,7 @@
   },
   {
     "category": "misc",
-    "repoId": "DIYgod/DPlayer",
+    "repoId": "diygod/dplayer",
     "npm": "dplayer",
     "isNpmAByProduct": false,
     "alias": "DPlayer",
@@ -3286,7 +3286,7 @@
   },
   {
     "category": "misc",
-    "repoId": "Tonejs/Tone.js",
+    "repoId": "tonejs/tone.js",
     "npm": "tone",
     "isNpmAByProduct": false,
     "alias": "Tone.js",
@@ -3322,7 +3322,7 @@
   },
   {
     "category": "misc",
-    "repoId": "antvis/G2",
+    "repoId": "antvis/g2",
     "npm": "@antv/g2",
     "isNpmAByProduct": false,
     "alias": "G2",
@@ -3331,7 +3331,7 @@
   },
   {
     "category": "misc",
-    "repoId": "antvis/G2Plot",
+    "repoId": "antvis/g2plot",
     "npm": "@antv/g2plot",
     "isNpmAByProduct": false,
     "alias": "G2Plot",
@@ -3439,7 +3439,7 @@
   },
   {
     "category": "misc",
-    "repoId": "OptimalBits/bull",
+    "repoId": "optimalbits/bull",
     "npm": "bull",
     "isNpmAByProduct": false,
     "alias": "Bull",
@@ -3448,7 +3448,7 @@
   },
   {
     "category": "misc",
-    "repoId": "GoogleChrome/web-vitals",
+    "repoId": "googlechrome/web-vitals",
     "npm": "web-vitals",
     "isNpmAByProduct": false,
     "alias": "web-vitals",
@@ -3466,7 +3466,7 @@
   },
   {
     "category": "misc",
-    "repoId": "blueimp/jQuery-File-Upload",
+    "repoId": "blueimp/jquery-file-upload",
     "npm": "blueimp-file-upload",
     "isNpmAByProduct": false,
     "alias": "jQuery-File-Upload",
@@ -3475,7 +3475,7 @@
   },
   {
     "category": "misc",
-    "repoId": "ColorlibHQ/AdminLTE",
+    "repoId": "colorlibhq/adminlte",
     "npm": "admin-lte",
     "isNpmAByProduct": false,
     "alias": "AdminLTE",
@@ -3502,7 +3502,7 @@
   },
   {
     "category": "misc",
-    "repoId": "IanLunn/Hover",
+    "repoId": "ianlunn/hover",
     "npm": "hover.css",
     "isNpmAByProduct": false,
     "alias": "Hover",
@@ -3520,7 +3520,7 @@
   },
   {
     "category": "misc",
-    "repoId": "VincentGarreau/particles.js",
+    "repoId": "vincentgarreau/particles.js",
     "npm": "particles.js",
     "isNpmAByProduct": false,
     "alias": "Particles.js",
@@ -3565,7 +3565,7 @@
   },
   {
     "category": "misc",
-    "repoId": "Reactive-Extensions/RxJS",
+    "repoId": "reactive-extensions/rxjs",
     "npm": "rx",
     "isNpmAByProduct": false,
     "alias": "RxJS (legacy)",
@@ -3583,7 +3583,7 @@
   },
   {
     "category": "misc",
-    "repoId": "dimsemenov/PhotoSwipe",
+    "repoId": "dimsemenov/photoswipe",
     "npm": "photoswipe",
     "isNpmAByProduct": false,
     "alias": "PhotoSwipe",
@@ -3610,7 +3610,7 @@
   },
   {
     "category": "misc",
-    "repoId": "Prinzhorn/skrollr",
+    "repoId": "prinzhorn/skrollr",
     "npm": "skrollr",
     "isNpmAByProduct": false,
     "alias": "Skrollr",
@@ -3628,7 +3628,7 @@
   },
   {
     "category": "misc",
-    "repoId": "tobiasahlin/SpinKit",
+    "repoId": "tobiasahlin/spinkit",
     "npm": "spinkit",
     "isNpmAByProduct": false,
     "alias": "SpinKit",
@@ -3664,7 +3664,7 @@
   },
   {
     "category": "misc",
-    "repoId": "nuysoft/Mock",
+    "repoId": "nuysoft/mock",
     "npm": "mockjs",
     "isNpmAByProduct": false,
     "alias": "Mock",
@@ -3700,7 +3700,7 @@
   },
   {
     "category": "misc",
-    "repoId": "Tencent/weui",
+    "repoId": "tencent/weui",
     "npm": "weui",
     "isNpmAByProduct": false,
     "alias": "Weui",
@@ -3709,7 +3709,7 @@
   },
   {
     "category": "misc",
-    "repoId": "ColorlibHQ/gentelella",
+    "repoId": "colorlibhq/gentelella",
     "npm": "gentelella",
     "isNpmAByProduct": false,
     "alias": "Gentelella",
@@ -3727,7 +3727,7 @@
   },
   {
     "category": "misc",
-    "repoId": "CodeByZach/pace",
+    "repoId": "codebyzach/pace",
     "npm": "pace-js",
     "isNpmAByProduct": false,
     "alias": "Pace",
@@ -3772,7 +3772,7 @@
   },
   {
     "category": "misc",
-    "repoId": "SortableJS/Vue.Draggable",
+    "repoId": "sortablejs/vue.draggable",
     "npm": "vuedraggable",
     "isNpmAByProduct": false,
     "alias": "Vue.Draggable",
@@ -3781,7 +3781,7 @@
   },
   {
     "category": "misc",
-    "repoId": "FormidableLabs/webpack-dashboard",
+    "repoId": "formidablelabs/webpack-dashboard",
     "npm": "webpack-dashboard",
     "isNpmAByProduct": false,
     "alias": "webpack-dashboard",
@@ -3799,7 +3799,7 @@
   },
   {
     "category": "misc",
-    "repoId": "janpaepke/ScrollMagic",
+    "repoId": "janpaepke/scrollmagic",
     "npm": "scrollmagic",
     "isNpmAByProduct": false,
     "alias": "ScrollMagic",
@@ -3844,7 +3844,7 @@
   },
   {
     "category": "misc",
-    "repoId": "Flipboard/react-canvas",
+    "repoId": "flipboard/react-canvas",
     "npm": "react-canvas",
     "isNpmAByProduct": false,
     "alias": "react-canvas",
@@ -3880,7 +3880,7 @@
   },
   {
     "category": "misc",
-    "repoId": "dimsemenov/Magnific-Popup",
+    "repoId": "dimsemenov/magnific-popup",
     "npm": "magnific-popup",
     "isNpmAByProduct": false,
     "alias": "Magnific-Popup",
@@ -3889,7 +3889,7 @@
   },
   {
     "category": "misc",
-    "repoId": "Semantic-Org/Semantic-UI-React",
+    "repoId": "semantic-org/semantic-ui-react",
     "npm": "semantic-ui-react",
     "isNpmAByProduct": false,
     "alias": "Semantic-UI-React",
@@ -3943,7 +3943,7 @@
   },
   {
     "category": "misc",
-    "repoId": "mishoo/UglifyJS",
+    "repoId": "mishoo/uglifyjs",
     "npm": "uglify-js",
     "isNpmAByProduct": false,
     "alias": "UglifyJS",
@@ -3988,7 +3988,7 @@
   },
   {
     "category": "misc",
-    "repoId": "CodeSeven/toastr",
+    "repoId": "codeseven/toastr",
     "npm": "toastr",
     "isNpmAByProduct": false,
     "alias": "Toastr",
@@ -4006,7 +4006,7 @@
   },
   {
     "category": "misc",
-    "repoId": "aFarkas/html5shiv",
+    "repoId": "afarkas/html5shiv",
     "npm": "html5shiv",
     "isNpmAByProduct": false,
     "alias": "Html5shiv",
@@ -4078,7 +4078,7 @@
   },
   {
     "category": "misc",
-    "repoId": "RelaxedJS/ReLaXed",
+    "repoId": "relaxedjs/relaxed",
     "npm": "relaxedjs",
     "isNpmAByProduct": false,
     "alias": "ReLaXed",
@@ -4105,7 +4105,7 @@
   },
   {
     "category": "misc",
-    "repoId": "nostalgic-css/NES.css",
+    "repoId": "nostalgic-css/nes.css",
     "npm": "nes.css",
     "isNpmAByProduct": false,
     "alias": "NES.css",
@@ -4150,7 +4150,7 @@
   },
   {
     "category": "misc",
-    "repoId": "ConnorAtherton/loaders.css",
+    "repoId": "connoratherton/loaders.css",
     "npm": "loaders.css",
     "isNpmAByProduct": false,
     "alias": "Loaders.css",
@@ -4168,7 +4168,7 @@
   },
   {
     "category": "misc",
-    "repoId": "FredrikNoren/ungit",
+    "repoId": "fredriknoren/ungit",
     "npm": "ungit",
     "isNpmAByProduct": false,
     "alias": "Ungit",
@@ -4204,7 +4204,7 @@
   },
   {
     "category": "misc",
-    "repoId": "matthieua/WOW",
+    "repoId": "matthieua/wow",
     "npm": "wowjs",
     "isNpmAByProduct": false,
     "alias": "WOW",
@@ -4276,7 +4276,7 @@
   },
   {
     "category": "misc",
-    "repoId": "NaturalNode/natural",
+    "repoId": "naturalnode/natural",
     "npm": "natural",
     "isNpmAByProduct": false,
     "alias": "Natural",
@@ -4330,7 +4330,7 @@
   },
   {
     "category": "misc",
-    "repoId": "GoogleChromeLabs/ndb",
+    "repoId": "googlechromelabs/ndb",
     "npm": "ndb",
     "isNpmAByProduct": false,
     "alias": "Ndb",
@@ -4573,7 +4573,7 @@
   },
   {
     "category": "Node.js Monitoring tools and libraries",
-    "repoId": "RafalWilinski/express-status-monitor",
+    "repoId": "rafalwilinski/express-status-monitor",
     "npm": "express-status-monitor",
     "isNpmAByProduct": false,
     "alias": "express-status-monitor",
@@ -4591,7 +4591,7 @@
   },
   {
     "category": "Node.js Monitoring tools and libraries",
-    "repoId": "RuntimeTools/appmetrics-dash",
+    "repoId": "runtimetools/appmetrics-dash",
     "npm": "appmetrics-dash",
     "isNpmAByProduct": false,
     "alias": "appmetrics-dash",
@@ -4609,7 +4609,7 @@
   },
   {
     "category": "Node.js Process Managers",
-    "repoId": "Unitech/pm2",
+    "repoId": "unitech/pm2",
     "npm": "pm2",
     "isNpmAByProduct": false,
     "alias": "Pm2",
@@ -4699,7 +4699,7 @@
   },
   {
     "category": "ReactJS Datepickers",
-    "repoId": "Hacker0x01/react-datepicker",
+    "repoId": "hacker0x01/react-datepicker",
     "npm": "react-datepicker",
     "isNpmAByProduct": false,
     "alias": "react-datepicker",
@@ -4843,7 +4843,7 @@
   },
   {
     "category": "React Native Libraries for Android",
-    "repoId": "Kudo/react-native-v8",
+    "repoId": "kudo/react-native-v8",
     "npm": "react-native-v8",
     "isNpmAByProduct": false,
     "alias": "react-native-v8",
@@ -4915,7 +4915,7 @@
   },
   {
     "category": "ReactJS Select/Autocomplete Components",
-    "repoId": "JedWatson/react-select",
+    "repoId": "jedwatson/react-select",
     "npm": "react-select",
     "isNpmAByProduct": false,
     "alias": "React Select",
@@ -4987,7 +4987,7 @@
   },
   {
     "category": "JavaScript State Management Libraries",
-    "repoId": "ReactiveX/rxjs",
+    "repoId": "reactivex/rxjs",
     "npm": "rxjs",
     "isNpmAByProduct": false,
     "alias": "RxJS",
@@ -4996,7 +4996,7 @@
   },
   {
     "category": "JavaScript State Management Libraries",
-    "repoId": "facebookexperimental/Recoil",
+    "repoId": "facebookexperimental/recoil",
     "npm": "recoil",
     "isNpmAByProduct": false,
     "alias": "Recoil",
@@ -5257,7 +5257,7 @@
   },
   {
     "category": "JavaScript Static Types Checking Tools",
-    "repoId": "microsoft/TypeScript",
+    "repoId": "microsoft/typescript",
     "npm": "typescript",
     "isNpmAByProduct": false,
     "alias": "TypeScript",
@@ -5293,7 +5293,7 @@
   },
   {
     "category": "JavaScript BDD Testing tools",
-    "repoId": "dotnetprofessional/LiveDoc",
+    "repoId": "dotnetprofessional/livedoc",
     "npm": "livedoc-mocha",
     "isNpmAByProduct": false,
     "alias": "LiveDoc",
@@ -5401,7 +5401,7 @@
   },
   {
     "category": "UI Frameworks for building Mobile Apps (Desktop and Web)",
-    "repoId": "NativeScript/NativeScript",
+    "repoId": "nativescript/nativescript",
     "npm": "@nativescript/core",
     "isNpmAByProduct": false,
     "alias": "NativeScript",
@@ -5419,7 +5419,7 @@
   },
   {
     "category": "UI Frameworks for building Mobile Apps (Desktop and Web)",
-    "repoId": "OnsenUI/OnsenUI",
+    "repoId": "onsenui/onsenui",
     "npm": "onsenui",
     "isNpmAByProduct": false,
     "alias": "OnsenUI",
@@ -5545,7 +5545,7 @@
   },
   {
     "category": "JavaScript Utility Libraries",
-    "repoId": "andrewplummer/Sugar",
+    "repoId": "andrewplummer/sugar",
     "npm": "sugar",
     "isNpmAByProduct": false,
     "alias": "Sugar",
@@ -5563,7 +5563,7 @@
   },
   {
     "category": "JavaScript Visual Regression Testing Tools",
-    "repoId": "garris/BackstopJS",
+    "repoId": "garris/backstopjs",
     "npm": "backstopjs",
     "isNpmAByProduct": false,
     "alias": "BackstopJS",
@@ -5635,7 +5635,7 @@
   },
   {
     "category": "VueJS Component Libraries",
-    "repoId": "ElemeFE/element",
+    "repoId": "elemefe/element",
     "npm": "element-ui",
     "isNpmAByProduct": false,
     "alias": "Element UI",
@@ -5662,7 +5662,7 @@
   },
   {
     "category": "VueJS Component Libraries",
-    "repoId": "vueComponent/ant-design-vue",
+    "repoId": "vuecomponent/ant-design-vue",
     "npm": "ant-design-vue",
     "isNpmAByProduct": false,
     "alias": "Ant Design Vue",

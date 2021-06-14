@@ -71,7 +71,7 @@ categories.forEach((cat, catIndex) => {
     const npm = lib.npm && `"${lib.npm}"`;
     str += `  {
     "category": "${lib.category}",
-    "repoId": "${lib.repoId}",
+    "repoId": "${lib.repoId.toLowerCase()}",
     "npm": ${npm},
     "isNpmAByProduct": ${lib.isNpmAByProduct},
     "alias": ${alias},
