@@ -1,20 +1,24 @@
 <template>
   <div v-if="type === 'npm'" class="flex flex-col items-center">
     <template v-if="lib.npmPackage">
-      <a :href="npmUrl" target="_blank">{{ lib.npmPackage.name }}</a>
+      <m-ext-link
+        v-tooltip="lib.npmPackage.name"
+        :href="npmUrl"
+        :txt="lib.npmPackage.name"
+        truncate
+      />
       <div class="text-sm opacity-80">v{{ lib.npmPackage.version }}</div>
     </template>
     <template v-else>-</template>
   </div>
 
   <div v-else-if="type === 'repo'" class="flex justify-center">
-    <a
+    <m-ext-link
       v-tooltip="lib.repo.repoId"
       :href="githubUrl"
-      class="truncate maxWidthCol"
-      target="_blank"
-      >{{ lib.repo.repoId }}</a
-    >
+      :txt="lib.repo.repoId"
+      truncate
+    />
   </div>
 
   <div v-else-if="type === 'status'" class="flex justify-center">
@@ -83,9 +87,7 @@
   >
     <template v-if="tradar">
       <t-radar-badge :value="tradar.level" />
-      <a :href="tradar.url" target="_blank" class="mt-1 text-sm">{{
-        tradar.month
-      }}</a>
+      <m-ext-link :href="tradar.url" :txt="tradar.month" class="mt-1 text-sm" />
     </template>
     <template v-else> - </template>
   </div>
