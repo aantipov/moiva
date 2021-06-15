@@ -20,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, computed, watchEffect } from 'vue';
+import { defineComponent, toRefs, computed, watchEffect, PropType } from 'vue';
 import { ChartConfiguration } from 'chart.js';
 import { BundlephobiaT } from './api';
 import { numbersFormatter } from '@/utils';
@@ -50,7 +50,8 @@ export default defineComponent({
 
   props: {
     category: {
-      type: String as () => string | null,
+      type: null as unknown as PropType<string | null>,
+      validator: (v: any) => typeof v === 'string' || v === null,
       required: true,
     },
   },
