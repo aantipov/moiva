@@ -83,7 +83,7 @@
   >
     <template v-if="tradar">
       <t-radar-badge :value="tradar.level" />
-      <a :href="tradar.url" target="_blank" class="text-sm mt-1">{{
+      <a :href="tradar.url" target="_blank" class="mt-1 text-sm">{{
         tradar.month
       }}</a>
     </template>
@@ -130,14 +130,8 @@
 
   <div v-else-if="type === 'ts'" class="flex items-center justify-center">
     <template v-if="lib.npmPackage">
-      <template v-if="lib.npmPackage.hasBuiltinTypes">
-        <TsBundledIcon class="mr-2" />
-        Bundled
-      </template>
-      <template v-else-if="lib.npmPackage.hasOtherTypes">
-        <TsDtIcon class="mr-2" />
-        Separate
-      </template>
+      <type-badge v-if="lib.npmPackage.hasBuiltinTypes" value="bundled" />
+      <type-badge v-else-if="lib.npmPackage.hasOtherTypes" value="separate" />
       <template v-else>-</template>
     </template>
     <template v-else>-</template>
@@ -201,12 +195,11 @@ import { defineComponent, toRefs, computed } from 'vue';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import { LibraryReadonlyT } from '@/libraryApis';
 import { numbersFormatter, formatPercent, formatNumber } from '@/utils';
-import TsBundledIcon from '@/icons/TsBundled.vue';
-import TsDtIcon from '@/icons/TsDt.vue';
 import { MetricT } from './Table.vue';
 import { subQuarters, isSameQuarter } from 'date-fns';
 import StatusBadge from '@/components/StatusBadge.vue';
 import TRadarBadge from '@/components/TRadarBadge.vue';
+import TypeBadge from '@/components/TypeBadge.vue';
 
 const prevQuarterDate = subQuarters(new Date(), 1);
 const roundBytesFn = (bytes: number): number => Math.round(bytes / 102.4) / 10;
@@ -215,10 +208,9 @@ export default defineComponent({
   name: 'ReportMetricValue',
 
   components: {
-    TsBundledIcon,
-    TsDtIcon,
     StatusBadge,
     TRadarBadge,
+    TypeBadge,
   },
 
   props: {

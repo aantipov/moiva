@@ -20,14 +20,15 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { TRadarLevelT } from '@/data/index';
+
+type TypeT = 'bundled' | 'separate';
 
 export default defineComponent({
-  name: 'TRadarBadge',
+  name: 'TypeBadge',
 
   props: {
     value: {
-      type: String as PropType<TRadarLevelT>,
+      type: String as PropType<TypeT>,
       required: true,
     },
   },
@@ -39,16 +40,10 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" scoped>
-.adopt {
+.bundled {
   background-color: #449824;
 }
-.trial {
+.separate {
   background-color: #988f27;
-}
-.assess {
-  background-color: #988f27;
-}
-.hold {
-  background-color: #b91c1c;
 }
 </style>
