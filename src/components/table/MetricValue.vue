@@ -56,6 +56,7 @@
       :class="{
         'text-right': npmDownloadsGrowth !== '-',
         'text-center': npmDownloadsGrowth === '-',
+        'text-red-700': lib.npmDownloadsGrowth && lib.npmDownloadsGrowth < 0,
       }"
     >
       {{ npmDownloadsGrowth }}

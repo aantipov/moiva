@@ -27,10 +27,7 @@
           Stars
           <span class="text-sm font-normal opacity-80">in total</span>
         </div>
-        <div>
-          New Stars
-          <span class="text-sm font-normal opacity-80">monthly</span>
-        </div>
+        <div class="text-sm font-normal opacity-80">and monthly growth</div>
       </div>
     </template>
 
