@@ -1,7 +1,7 @@
 <template>
-  <a :href="href" class="flex items-center whitespace-nowrap" target="_blank">
+  <a :href="href" class="flex items-center" target="_blank">
     <span :class="{ trunc: truncate }">{{ txt }}</span>
-    <icon class="ml-1" />
+    <icon class="flex-shrink-0 ml-1" />
   </a>
 </template>
 
