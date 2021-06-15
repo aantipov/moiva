@@ -82,8 +82,10 @@
     class="flex flex-col items-center justify-center"
   >
     <template v-if="tradar">
-      <a :href="tradar.url" target="_blank">{{ tradar.level }}</a>
-      <div class="text-sm opacity-80">{{ tradar.month }}</div>
+      <t-radar-badge :value="tradar.level" />
+      <a :href="tradar.url" target="_blank" class="text-sm mt-1">{{
+        tradar.month
+      }}</a>
     </template>
     <template v-else> - </template>
   </div>
@@ -204,6 +206,7 @@ import TsDtIcon from '@/icons/TsDt.vue';
 import { MetricT } from './Table.vue';
 import { subQuarters, isSameQuarter } from 'date-fns';
 import StatusBadge from '@/components/StatusBadge.vue';
+import TRadarBadge from '@/components/TRadarBadge.vue';
 
 const prevQuarterDate = subQuarters(new Date(), 1);
 const roundBytesFn = (bytes: number): number => Math.round(bytes / 102.4) / 10;
@@ -215,6 +218,7 @@ export default defineComponent({
     TsBundledIcon,
     TsDtIcon,
     StatusBadge,
+    TRadarBadge,
   },
 
   props: {
