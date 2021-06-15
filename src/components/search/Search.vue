@@ -151,7 +151,7 @@ export default defineComponent({
 
   setup(_props, { emit }) {
     const searchValue = ref('');
-    const searchType = ref<'GITHUB' | 'NPM'>('GITHUB');
+    const searchType = ref<'GITHUB' | 'NPM'>('NPM');
     const isNpmSearch = computed(() => searchType.value === 'NPM');
     const isError = ref(false);
     const isLoading = ref(false);

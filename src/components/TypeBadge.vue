@@ -20,14 +20,15 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue';
-import { StatusT } from '@/getLibrary';
+
+type TypeT = 'bundled' | 'separate';
 
 export default defineComponent({
-  name: 'StatusBadge',
+  name: 'TypeBadge',
 
   props: {
     value: {
-      type: String as PropType<StatusT>,
+      type: String as PropType<TypeT>,
       required: true,
     },
   },
@@ -39,16 +40,10 @@ export default defineComponent({
 </script>
 
 <style lang="postcss" scoped>
-.active {
+.bundled {
   background-color: #449824;
 }
-.inactive {
-  @apply bg-gray-500;
-}
-.archived {
-  background-color: #b91c1c;
-}
-.legacy {
-  background-color: #e77131;
+.separate {
+  background-color: #988f27;
 }
 </style>

@@ -32,7 +32,11 @@ const ADOPT = 'Adopt';
 const TRIAL = 'Trial';
 const ASSESS = 'Assess';
 
-type TRadarLevelT = typeof HOLD | typeof ADOPT | typeof TRIAL | typeof ASSESS;
+export type TRadarLevelT =
+  | typeof HOLD
+  | typeof ADOPT
+  | typeof TRIAL
+  | typeof ASSESS;
 
 export const TRADAR_LEVELS: TRadarLevelT[] = [HOLD, ASSESS, TRIAL, ADOPT];
 
