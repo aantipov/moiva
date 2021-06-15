@@ -12,9 +12,7 @@ import Icon from '@/components/icons/Link.vue';
 export default defineComponent({
   name: 'ExternalLink',
 
-  components: {
-    Icon,
-  },
+  components: { Icon },
 
   props: {
     href: {
@@ -26,9 +24,6 @@ export default defineComponent({
       required: true,
     },
     truncate: Boolean,
-  },
-  setup() {
-    return {};
   },
 });
 </script>
