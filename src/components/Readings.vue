@@ -2,9 +2,9 @@
   <section v-if="readings.length > 0" class="px-3 mx-auto root">
     <h2>Recommended reading</h2>
     <div>
-      <div v-for="(reading, index) in readings" :key="reading.url" class="mb-1">
+      <div v-for="(reading, index) in readings" :key="reading.url" class="mb-1 flex">
         <span class="mr-1">{{ index + 1 }}.</span>
-        <a :href="reading.url" target="_blank">{{ reading.title }}</a>
+        <m-ext-link :href="reading.url" :txt="reading.title" />
       </div>
     </div>
   </section>
