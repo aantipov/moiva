@@ -3412,15 +3412,6 @@
   },
   {
     "category": "misc",
-    "repoId": "microsoft/fluentui",
-    "npm": "@fluentui/react",
-    "isNpmAByProduct": false,
-    "alias": "Fluent UI Web/React",
-    "framework": null,
-    "isLegacy": false
-  },
-  {
-    "category": "misc",
     "repoId": "nock/nock",
     "npm": "nock",
     "isNpmAByProduct": false,
@@ -9154,15 +9145,6 @@
   },
   {
     "category": "misc",
-    "repoId": "semantic-org/semantic-ui-react",
-    "npm": "semantic-ui-react",
-    "isNpmAByProduct": false,
-    "alias": "Semantic-UI-React",
-    "framework": null,
-    "isLegacy": false
-  },
-  {
-    "category": "misc",
     "repoId": "ramotion/folding-cell",
     "npm": null,
     "isNpmAByProduct": null,
@@ -13086,6 +13068,15 @@
     "isLegacy": false
   },
   {
+    "category": "misc",
+    "repoId": "microsoft/fluentui",
+    "npm": "@fluentui/react-northstar",
+    "isNpmAByProduct": true,
+    "alias": "Fluent UI React Northstar",
+    "framework": null,
+    "isLegacy": false
+  },
+  {
     "category": "NodeJS Frameworks",
     "repoId": "expressjs/express",
     "npm": "express",
@@ -13361,6 +13352,42 @@
     "npm": "reactstrap",
     "isNpmAByProduct": false,
     "alias": "Reactstrap",
+    "framework": null,
+    "isLegacy": false
+  },
+  {
+    "category": "React Component Libraries",
+    "repoId": "rebassjs/rebass",
+    "npm": "rebass",
+    "isNpmAByProduct": false,
+    "alias": "Rebass",
+    "framework": null,
+    "isLegacy": false
+  },
+  {
+    "category": "React Component Libraries",
+    "repoId": "semantic-org/semantic-ui-react",
+    "npm": "semantic-ui-react",
+    "isNpmAByProduct": false,
+    "alias": "Semantic UI React",
+    "framework": null,
+    "isLegacy": false
+  },
+  {
+    "category": "React Component Libraries",
+    "repoId": "grommet/grommet",
+    "npm": "grommet",
+    "isNpmAByProduct": false,
+    "alias": "Grommet",
+    "framework": null,
+    "isLegacy": false
+  },
+  {
+    "category": "React Component Libraries",
+    "repoId": "microsoft/fluentui",
+    "npm": "@fluentui/react",
+    "isNpmAByProduct": true,
+    "alias": "Fluent UI React",
     "framework": null,
     "isLegacy": false
   },

@@ -425,6 +425,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=@chakra-ui/react+@fluentui/react</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=@chakra-ui/react+@material-ui/core</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -435,12 +440,27 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=@chakra-ui/react+grommet</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=@chakra-ui/react+react-bootstrap</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://moiva.io/?npm=@chakra-ui/react+reactstrap</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@chakra-ui/react+rebass</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@chakra-ui/react+semantic-ui-react</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -710,6 +730,46 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=@fluentui/react+@material-ui/core</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@fluentui/react+evergreen-ui</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@fluentui/react+grommet</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@fluentui/react+react-bootstrap</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@fluentui/react+reactstrap</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@fluentui/react+rebass</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@fluentui/react+semantic-ui-react</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@fluentui/react-northstar</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=@fortawesome/fontawesome-free</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -900,12 +960,27 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=@material-ui/core+grommet</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=@material-ui/core+react-bootstrap</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://moiva.io/?npm=@material-ui/core+reactstrap</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@material-ui/core+rebass</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@material-ui/core+semantic-ui-react</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -3870,12 +3945,27 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=evergreen-ui+grommet</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=evergreen-ui+react-bootstrap</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://moiva.io/?npm=evergreen-ui+reactstrap</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=evergreen-ui+rebass</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=evergreen-ui+semantic-ui-react</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -4296,6 +4386,31 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=gridsome+vuepress</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=grommet</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=grommet+react-bootstrap</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=grommet+reactstrap</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=grommet+rebass</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=grommet+semantic-ui-react</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -6895,6 +7010,16 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=react-bootstrap+rebass</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=react-bootstrap+semantic-ui-react</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=react-calendar</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -7266,6 +7391,26 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=reactstrap</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=reactstrap+rebass</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=reactstrap+semantic-ui-react</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=rebass</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=rebass+semantic-ui-react</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
   </url>
