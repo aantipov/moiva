@@ -4491,6 +4491,15 @@
     "isLegacy": false
   },
   {
+    "category": "misc",
+    "repoId": "microsoft/fluentui",
+    "npm": "@fluentui/react-northstar",
+    "isNpmAByProduct": true,
+    "alias": "Fluent UI React Northstar",
+    "framework": null,
+    "isLegacy": false
+  },
+  {
     "category": "NodeJS Frameworks",
     "repoId": "expressjs/express",
     "npm": "express",
@@ -4802,15 +4811,6 @@
     "npm": "@fluentui/react",
     "isNpmAByProduct": true,
     "alias": "Fluent UI React",
-    "framework": null,
-    "isLegacy": false
-  },
-  {
-    "category": "React Component Libraries",
-    "repoId": "microsoft/fluentui",
-    "npm": "@fluentui/react-northstar",
-    "isNpmAByProduct": true,
-    "alias": "Fluent UI React Northstar",
     "framework": null,
     "isLegacy": false
   },

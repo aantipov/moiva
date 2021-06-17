@@ -430,11 +430,6 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?npm=@chakra-ui/react+@fluentui/react-northstar</loc>
-    <lastmod>2021-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
     <loc>https://moiva.io/?npm=@chakra-ui/react+@material-ui/core</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -735,11 +730,6 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://moiva.io/?npm=@fluentui/react+@fluentui/react-northstar</loc>
-    <lastmod>2021-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
     <loc>https://moiva.io/?npm=@fluentui/react+@material-ui/core</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -776,41 +766,6 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=@fluentui/react-northstar</loc>
-    <lastmod>2021-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?npm=@fluentui/react-northstar+@material-ui/core</loc>
-    <lastmod>2021-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?npm=@fluentui/react-northstar+evergreen-ui</loc>
-    <lastmod>2021-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?npm=@fluentui/react-northstar+grommet</loc>
-    <lastmod>2021-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?npm=@fluentui/react-northstar+react-bootstrap</loc>
-    <lastmod>2021-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?npm=@fluentui/react-northstar+reactstrap</loc>
-    <lastmod>2021-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?npm=@fluentui/react-northstar+rebass</loc>
-    <lastmod>2021-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-  </url>
-  <url>
-    <loc>https://moiva.io/?npm=@fluentui/react-northstar+semantic-ui-react</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
   </url>
