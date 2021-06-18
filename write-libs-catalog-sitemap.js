@@ -32,16 +32,24 @@ const categories = categoriesRaw.map(({ name, skipSitemap, items }) => ({
   skipSitemap,
   libs: items
     .filter((item) => !item.exclude)
-    .map(({ repo, npm, isNpmCoreArtifact, framework, alias, isLegacy }) => ({
-      category: name,
-      alias: alias || getAliasFromRepoId(repo),
-      repoId: repo,
-      npm: npm ?? null,
-      isNpmAByProduct:
-        typeof isNpmCoreArtifact === 'boolean' ? !isNpmCoreArtifact : null,
-      framework: framework ?? null,
-      isLegacy: !!isLegacy,
-    })),
+    .map(
+      ({
+        repo,
+        npm,
+        isNpmCoreArtifact = true,
+        framework,
+        alias,
+        isLegacy,
+      }) => ({
+        category: name,
+        alias: alias || getAliasFromRepoId(repo),
+        repoId: repo,
+        npm: npm ?? null,
+        isNpmCoreArtifact: npm ? isNpmCoreArtifact : null,
+        framework: framework ?? null,
+        isLegacy: !!isLegacy,
+      })
+    ),
 }));
 
 const duplicates = getDuplicates(categories);
@@ -74,7 +82,7 @@ function generateCatalogStr(full = false) {
     "category": "${lib.category}",
     "repoId": "${lib.repoId.toLowerCase()}",
     "npm": ${npm},
-    "isNpmAByProduct": ${lib.isNpmAByProduct},
+    "isNpmCoreArtifact": ${lib.isNpmCoreArtifact},
     "alias": ${alias},
     "framework": ${framework},
     "isLegacy": ${lib.isLegacy}
