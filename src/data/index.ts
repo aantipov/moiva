@@ -87,8 +87,8 @@ export interface CatalogLibraryT {
   repoId: string;
   category: string;
   alias: string;
-  npm?: string | null;
-  isNpmAByProduct?: boolean | null;
+  npm: string | null;
+  isNpmCoreArtifact: boolean | null;
   framework: string | null;
   isLegacy: boolean;
 }

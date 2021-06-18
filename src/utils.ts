@@ -89,7 +89,7 @@ export function constructHref(
 }
 
 export function getLibraryHref(library: CatalogLibraryT): string {
-  if (library.npm && !library.isNpmAByProduct) {
+  if (library.npm && library.isNpmCoreArtifact) {
     return `/?${npmQueryParamName}=${library.npm}`;
   }
   return `/?${githubQueryParamName}=${library.repoId}`;

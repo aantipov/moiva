@@ -60,24 +60,24 @@ export type StatusT = 'ACTIVE' | 'INACTIVE' | 'LEGACY' | 'ARCHIVED';
 export interface LibraryT {
   id: string;
   color: string;
-  npmPackage: NpmPackageT | null;
   category: string | null;
-  isNpmAByProduct: boolean | null;
   status: StatusT;
   repo: RepoT;
   alias: string;
   tradar: TechRadarT | null;
-  contributors: ContributorsT[] | null | undefined; // null for errors, undefined for not loaded yet
+  isNpmCoreArtifact: boolean | null;
+  npmPackage: NpmPackageT | null;
   npmCreationDate: string | null | undefined;
   npmReleases: NpmPackageReleasesT[] | null | undefined;
   npmDownloads: LibNpmDownloadsT;
   npmDownloadsGrowth: number | null | undefined;
+  bundlesize: BundlephobiaT | null | undefined;
+  contributors: ContributorsT[] | null | undefined; // null for errors, undefined for not loaded yet
   commits: LibCommitsT;
   languages: LanguagesT | null | undefined;
   googleTrendsDef: GTrendDefT | null; // null if no config
   googleTrends: LibGTrendsT | undefined | null; // null for errors, undefined for not loaded yet
   devUsage: StateOfJSItemT | undefined;
-  bundlesize: BundlephobiaT | null | undefined;
   stars: LibStarsT;
   starsNewAvg: number | null | undefined;
   readings: ReadingT[];
@@ -88,7 +88,7 @@ export function getLibrary(
   npmPackage: NpmPackageT | null,
   library: CatalogLibraryT | null
 ): LibraryT {
-  const isNpmAByProduct = (library && library.isNpmAByProduct) || false;
+  const isNpmCoreArtifact = library?.isNpmCoreArtifact ?? null;
   const category = (library && library.category) || null;
   const id = nanoid();
   const repoIdLC = repo.repoId.toLowerCase();
@@ -98,7 +98,7 @@ export function getLibrary(
     repo,
     npmPackage,
     category,
-    isNpmAByProduct,
+    isNpmCoreArtifact,
     alias: getSeoLibName(repoIdLC),
     // Use @ts-ignore because the Computed Ref will eventually become Reactive and then Typescript will start arguing
     // @ts-ignore
