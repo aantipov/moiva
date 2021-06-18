@@ -73,7 +73,9 @@ export function getNormalisedData(
 /**
  * Aggregate libs commits by 4 weeks
  */
-export function getAggregatedCommits(libsCommits: CommitsResponseItemT[][]) {
+export function getAggregatedCommits(
+  libsCommits: CommitsResponseItemT[][]
+): CommitsResponseItemT[][] {
   return libsCommits.map((libCommits) => {
     return libCommits
       .map((item) => ({

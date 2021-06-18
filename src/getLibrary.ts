@@ -60,9 +60,9 @@ export type StatusT = 'ACTIVE' | 'INACTIVE' | 'LEGACY' | 'ARCHIVED';
 export interface LibraryT {
   id: string;
   color: string;
-  npmPackage?: NpmPackageT | null;
-  category?: string | null;
-  isNpmAByProduct?: boolean | null;
+  npmPackage: NpmPackageT | null;
+  category: string | null;
+  isNpmAByProduct: boolean | null;
   status: StatusT;
   repo: RepoT;
   alias: string;
