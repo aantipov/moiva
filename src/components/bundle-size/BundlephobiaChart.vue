@@ -51,7 +51,7 @@ export default defineComponent({
   props: {
     category: {
       type: null as unknown as PropType<string | null>,
-      validator: (v: any) => typeof v === 'string' || v === null,
+      validator: (v: unknown) => typeof v === 'string' || v === null,
       required: true,
     },
   },

@@ -1,9 +1,8 @@
-// @ts-ignore
-const techRadarItems = require('./techradar.json');
-const googleTrendsItems = require('./google-trends.json');
-const readingsItems = require('./readings.json');
-const stateofjsItems = require('./stateofjscss.json');
-const libs = require('./_libraries-full.json');
+const techRadarItems = require('./techradar.json'); // eslint-disable-line
+const googleTrendsItems = require('./google-trends.json'); // eslint-disable-line
+const readingsItems = require('./readings.json'); // eslint-disable-line
+const stateofjsItems = require('./stateofjscss.json'); // eslint-disable-line
+const libs = require('./_libraries-full.json'); // eslint-disable-line
 // @ts-ignore
 const libsReposIds = libs.map((lib) => lib.repoId);
 
