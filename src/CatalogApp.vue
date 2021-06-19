@@ -46,17 +46,17 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { getSeoLibName, getLibraryHref } from '@/utils';
-import { catalogReposIdsByCategory, catalogRepoIdToLib } from '@/data/index';
+import { getLibraryHref } from '@/utils';
+import { catalogCategories } from '@/data/index';
 
-const catalogEntries = Object.entries(catalogReposIdsByCategory)
-  .map(([category, repoIds]) => ({
-    category,
-    libraries: repoIds
-      .map((repoId) => ({
-        repoId,
-        alias: getSeoLibName(repoId),
-        href: getLibraryHref(catalogRepoIdToLib[repoId]),
+const catalogEntries = catalogCategories
+  .map((category) => ({
+    category: category.name,
+    libraries: category.libraries
+      .map((lib) => ({
+        repoId: lib.repoId,
+        alias: lib.alias,
+        href: getLibraryHref(lib),
       }))
       .sort((a, b) => {
         // @ts-ignore

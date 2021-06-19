@@ -1,8 +1,4 @@
-import {
-  catalogRepoIdToLib,
-  catalogReposIdsByCategory,
-  CatalogLibraryT,
-} from '@/data/index';
+import { getCatalogLibrariesByCategory, CatalogLibraryT } from '@/data/index';
 import { LibraryReadonlyT, LibrariesReadonlyT } from '@/libraryApis';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import Swal from 'sweetalert2';
@@ -138,10 +134,6 @@ function setCanonicalUrl(url: string): void {
  *
  */
 export function getSeoLibName(repoId: string): string {
-  if (catalogRepoIdToLib[repoId.toLowerCase()]) {
-    return catalogRepoIdToLib[repoId.toLowerCase()].alias as string;
-  }
-
   const [, repoName] = repoId.split('/');
 
   // Capitalise normal names
@@ -260,27 +252,6 @@ ${libC.alias}: &#9733;${libC.starsCount} stars, ${libC.age} old...
 `;
 }
 
-export function getSelectedLibsCategory(
-  libraries: LibrariesReadonlyT
-): string | null {
-  if (!libraries.length) {
-    return null;
-  }
-
-  const catalogLibraries = libraries
-    .map((lib) => catalogRepoIdToLib[lib.repo.repoId.toLowerCase()])
-    .filter((lib) => !!lib && lib.category !== 'misc')
-    .map((lib) => lib.category);
-
-  const uniqueLibraries = [...new Set(catalogLibraries)];
-
-  if (uniqueLibraries.length === 1) {
-    return uniqueLibraries[0];
-  }
-
-  return null;
-}
-
 /**
  * Get Library suggestions for the selected libs
  * based on the category of the selected libs
@@ -303,13 +274,20 @@ export function getSuggestions(
     return [];
   }
 
-  const selectedReposIds = libraries.map((lib) =>
-    lib.repo.repoId.toLowerCase()
-  );
+  const selectedNpmNames = libraries
+    .map((lib) => lib.npmPackage?.name)
+    .filter((npmName) => !!npmName);
 
-  return catalogReposIdsByCategory[categories[0]]
-    .filter((repoId) => !selectedReposIds.includes(repoId))
-    .map((repoId) => catalogRepoIdToLib[repoId]);
+  const selectedReposIds = libraries
+    .filter((lib) => !lib.npmPackage)
+    .map((lib) => lib.repo.repoId.toLowerCase());
+
+  return getCatalogLibrariesByCategory(categories[0]).filter((catalogLib) => {
+    if (catalogLib.npm) {
+      return !selectedNpmNames.includes(catalogLib.npm);
+    }
+    return !selectedReposIds.includes(catalogLib.repoId);
+  });
 }
 
 export function getBundlephobiaUrl(libName: string): string {

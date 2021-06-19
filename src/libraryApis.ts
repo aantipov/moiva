@@ -5,7 +5,11 @@ import {
   ERROR_CODE_NO_GITHUB_DATA,
   ERROR_CODE_FETCH_GITHUB_REPO_FAILED,
 } from '@/constants';
-import { catalogRepoIdToLib, catalogNpmToLib } from '@/data/index';
+import {
+  getRepoCoreNpmArtifact,
+  getGithubLibraryByRepo,
+  getNpmLibraryByNpm,
+} from '@/data/index';
 import { getLibrary, LibraryT } from '@/getLibrary';
 
 const npmPackageCache = new Map();
@@ -33,9 +37,7 @@ export interface NpmPackageT {
   name: string;
   description: string;
   license: string;
-  repo: string;
   repoId: string;
-  repoName: string;
   version: string;
   dependencies: string[];
   hasBuiltinTypes: boolean;
@@ -47,19 +49,30 @@ export type LibraryReadonlyT = DeepReadonly<LibraryT>;
 export type LibrariesReadonlyT = DeepReadonly<LibraryT[]>;
 
 export async function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
-  const library = catalogNpmToLib[pkgName] || null;
+  const library = getNpmLibraryByNpm(pkgName) || null;
   const npmPackage = await fetchNpmPackage(pkgName);
-  const repo = await fetchGithubRepo(npmPackage.repoId);
+  const repo = await fetchGithubRepo(library?.repoId || npmPackage.repoId);
 
   return getLibrary(repo, npmPackage, library);
 }
 
+/**
+ * When fetching data by repo,
+ * check in the catalog if the repo has an npm package as its Core artifact
+ * otherwise try find an entry without npm
+ */
 export async function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
-  const library = catalogRepoIdToLib[repoId.toLowerCase()] || null;
-  const npmPackageName = (library && library.npm) || null;
-  const fetchNpmPromise = npmPackageName
-    ? fetchNpmPackage(npmPackageName)
-    : Promise.resolve(null);
+  const coreNpmLibrary = getRepoCoreNpmArtifact(repoId);
+  let library;
+  let fetchNpmPromise;
+
+  if (coreNpmLibrary) {
+    library = coreNpmLibrary;
+    fetchNpmPromise = fetchNpmPackage(coreNpmLibrary.npm);
+  } else {
+    library = getGithubLibraryByRepo(repoId) || null;
+    fetchNpmPromise = Promise.resolve(null);
+  }
 
   const [repo, npmPackage] = await Promise.all([
     fetchGithubRepo(repoId),
@@ -120,16 +133,13 @@ function fetchNpmJSPackage(packageName: string): Promise<NpmPackageT> {
   return axios
     .get(`https://npm-details.moiva.workers.dev/?pkg=${packageName}`)
     .then(({ data }) => {
-      const repoData = getRepoData(packageName, data.repository);
+      const repoId = getRepoId(data.repository);
 
-      if (!repoData) {
+      if (!repoId) {
         return Promise.reject('NO GITHUB DATA');
       }
 
-      return {
-        ...data,
-        ...repoData,
-      };
+      return { ...data, repoId };
     });
 }
 
@@ -138,45 +148,25 @@ interface RepT {
   url: string;
 }
 
-function getRepoData(
-  packageName: string,
-  repository: null | RepT
-): null | { repo: string; repoId: string; repoName: string } {
-  const lib = catalogNpmToLib[packageName];
-  const hasCatalogLibGithub = lib && lib.repoId;
+function getRepoId(repository: RepT | null): string | null {
   const hasPackageGithub =
     repository &&
     repository.type === 'git' &&
     repository.url.indexOf('github.com') !== -1;
 
-  if (!hasCatalogLibGithub && !hasPackageGithub) {
+  if (!hasPackageGithub) {
     return null;
   }
 
-  let repoUrl: string;
-  let repoId: string;
+  const endRepoUrlIndex =
+    (repository as RepT).url.slice(-4) === '.git' ? -4 : 400;
 
-  if (hasCatalogLibGithub) {
-    repoUrl = `https://github.com/${lib.repoId}`;
-    repoId = lib.repoId;
-  } else {
-    const endRepoUrlIndex =
-      (repository as RepT).url.slice(-4) === '.git' ? -4 : 400;
+  const repoId = (repository as RepT).url.slice(
+    (repository as RepT).url.indexOf('github.com') + 11,
+    endRepoUrlIndex
+  );
 
-    repoUrl =
-      'https://' +
-      (repository as RepT).url.slice(
-        (repository as RepT).url.indexOf('github.com'),
-        endRepoUrlIndex
-      );
-    repoId = repoUrl.slice(repoUrl.indexOf('github.com') + 11);
-  }
-
-  return {
-    repo: repoUrl,
-    repoId,
-    repoName: repoId.slice(repoId.indexOf('/') + 1),
-  };
+  return repoId;
 }
 
 // interface NpmsIOPackageResponseT {

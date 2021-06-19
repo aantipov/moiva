@@ -83,15 +83,25 @@ export const repoIdToTechRadarMap = (
 }, {} as Record<string, TechRadarT>);
 
 /** ========= LIBRARIES CATALOG ========= **/
-export interface CatalogLibraryT {
-  repoId: string;
+interface CatalogLibraryNpmT {
+  npm: string; // unique
+  isNpmCoreArtifact: boolean;
+  repoId: string; // not unique (e.g. several npm packages from the same repo)
   category: string;
   alias: string;
-  npm: string | null;
-  isNpmCoreArtifact: boolean | null;
   framework: string | null;
   isLegacy: boolean;
 }
+interface CatalogLibraryGithubT {
+  npm: null;
+  isNpmCoreArtifact: null;
+  repoId: string; // unique
+  category: string;
+  alias: string;
+  framework: string | null;
+  isLegacy: boolean;
+}
+export type CatalogLibraryT = CatalogLibraryNpmT | CatalogLibraryGithubT;
 
 const libraries = rawLibraries as CatalogLibraryT[];
 
@@ -100,25 +110,66 @@ export const catalogRepoIdToLib = libraries.reduce((acc, lib) => {
   return acc;
 }, {} as Record<string, CatalogLibraryT>);
 
-// For use by npm-package api to return the correct repo for the npm package
-export const catalogNpmToLib = libraries.reduce((acc, lib) => {
-  if (lib.npm) {
-    acc[lib.npm] = lib;
-  }
-  return acc;
-}, {} as Record<string, CatalogLibraryT>);
+/**
+ * Find a Catalog entry with Core npm artifact
+ */
+export function getRepoCoreNpmArtifact(
+  repoId: string
+): CatalogLibraryNpmT | undefined {
+  const repoIdLC = repoId.toLowerCase();
+  return libraries.find(
+    (lib) => lib.repoId === repoIdLC && lib.isNpmCoreArtifact && lib.npm
+  ) as CatalogLibraryNpmT | undefined;
+}
 
-export const catalogReposIdsByCategory = libraries.reduce(
-  (acc, { repoId, category }) => {
-    if (!acc[category]) {
-      acc[category] = [];
+/**
+ * Get "pure" GitHub Catalog Library (without npm)
+ */
+export function getGithubLibraryByRepo(
+  repoId: string
+): CatalogLibraryGithubT | undefined {
+  const repoIdLC = repoId.toLowerCase();
+  return libraries.find((lib) => lib.repoId === repoIdLC && !lib.npm) as
+    | CatalogLibraryGithubT
+    | undefined;
+}
+
+/**
+ * Get a Npm Catalog Library by npm name
+ * For use by npm-package api to return the correct repo for the npm package
+ */
+export function getNpmLibraryByNpm(
+  npm: string
+): CatalogLibraryNpmT | undefined {
+  return libraries.find((lib) => lib.npm === npm) as
+    | CatalogLibraryNpmT
+    | undefined;
+}
+
+export function getCatalogLibrariesByCategory(
+  category: string
+): CatalogLibraryT[] {
+  return libraries.filter((lib) => lib.category === category);
+}
+
+interface CatalogCategoryT {
+  name: string;
+  libraries: CatalogLibraryT[];
+}
+
+export const catalogCategories: CatalogCategoryT[] = libraries.reduce(
+  (acc, lib) => {
+    let category = acc.find((cat) => cat.name === lib.category);
+    if (!category) {
+      category = { name: lib.category, libraries: [] };
+      acc.push(category);
     }
 
-    acc[category].push(repoId.toLowerCase());
+    category.libraries.push(lib);
 
     return acc;
   },
-  {} as Record<string, string[]>
+  [] as CatalogCategoryT[]
 );
 
 /** ========= GOOGLE TRENDS ========= **/
