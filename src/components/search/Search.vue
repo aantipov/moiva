@@ -47,8 +47,8 @@
             class="select"
             @change="() => inputRef.focus()"
           >
-            <option value="GITHUB">GitHub</option>
             <option value="NPM">NPM</option>
+            <option value="GITHUB">GitHub</option>
           </select>
         </div>
 

@@ -46,45 +46,49 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { getSeoLibName, getLibraryHref } from '@/utils';
-import { catalogReposIdsByCategory, catalogRepoIdToLib } from '@/data/index';
+import { getLibraryHref } from '@/utils';
+import { catalogLibraries } from '@/data/index';
+import { sortBy, prop } from 'ramda';
 
-const catalogEntries = Object.entries(catalogReposIdsByCategory)
-  .map(([category, repoIds]) => ({
-    category,
-    libraries: repoIds
-      .map((repoId) => ({
-        repoId,
-        alias: getSeoLibName(repoId),
-        href: getLibraryHref(catalogRepoIdToLib[repoId]),
-      }))
-      .sort((a, b) => {
-        // @ts-ignore
-        if (a.alias > b.alias) {
-          return 1;
-        } else if (a.alias < b.alias) {
-          return -1;
-        } else {
-          return 0;
-        }
-      }),
-  }))
-  .filter((entry) => entry.category !== 'misc')
-  .sort((a, b) => {
-    if (a.category > b.category) {
-      return 1;
-    } else if (a.category < b.category) {
-      return -1;
-    } else {
-      return 0;
+interface CatalogCategoryT {
+  category: string;
+  libraries: {
+    repoId: string;
+    alias: string;
+    href: string;
+  }[];
+}
+
+const catalogEntries = catalogLibraries
+  // group by category
+  .reduce((acc, lib) => {
+    let entry = acc.find((item) => item.category === lib.category);
+
+    if (!entry) {
+      entry = { category: lib.category, libraries: [] };
+      acc.push(entry);
     }
-  });
+
+    entry.libraries.push({
+      repoId: lib.repoId,
+      alias: lib.alias,
+      href: getLibraryHref(lib),
+    });
+
+    return acc;
+  }, [] as CatalogCategoryT[])
+  .filter((entry) => entry.category !== 'misc')
+  // sort libraries withing each category
+  .map(({ category, libraries }) => ({
+    category,
+    libraries: sortBy(prop('alias'), libraries),
+  }));
 
 export default defineComponent({
   name: 'CatalogApp',
   setup() {
     return {
-      catalogEntries,
+      catalogEntries: sortBy(prop('category'), catalogEntries),
     };
   },
 });

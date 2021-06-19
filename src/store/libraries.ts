@@ -6,7 +6,6 @@ import {
   NpmPackageT,
 } from '@/libraryApis';
 import { LibraryT } from '@/getLibrary';
-import { catalogRepoIdToLib } from '@/data/index';
 
 // ====== STATE ======
 const librariesR = reactive<LibraryT[]>([]);
@@ -45,13 +44,13 @@ export const categoryRef = computed<string | null>(() => {
   }
 
   const categories = librariesR
-    .map((lib) => catalogRepoIdToLib[lib.repo.repoId.toLowerCase()])
-    .map((catalogLib) => (catalogLib ? catalogLib.category : null));
+    .filter((lib) => !!lib.category && lib.category !== 'misc')
+    .map((lib) => lib.category);
 
-  const category = categories[0];
+  const uniqueCategories = [...new Set(categories)];
 
-  if (category && categories.every((cat) => cat === category)) {
-    return category;
+  if (uniqueCategories.length === 1) {
+    return uniqueCategories[0];
   }
 
   return null;

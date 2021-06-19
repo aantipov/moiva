@@ -99,7 +99,7 @@ export function getLibrary(
     npmPackage,
     category,
     isNpmCoreArtifact,
-    alias: getSeoLibName(repoIdLC),
+    alias: library?.alias || getSeoLibName(repoIdLC),
     // Use @ts-ignore because the Computed Ref will eventually become Reactive and then Typescript will start arguing
     // @ts-ignore
     status: computed(() => {

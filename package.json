@@ -23,6 +23,7 @@
     "date-fns": "^2.22.1",
     "google-trends-api": "^4.9.2",
     "nanoid": "^3.1.23",
+    "ramda": "^0.27.1",
     "sweetalert2": "^11.0.17",
     "tippy.js": "^6.3.1",
     "vue": "^3.1.1"
@@ -30,6 +31,7 @@
   "devDependencies": {
     "@netlify/functions": "^0.7.2",
     "@types/jest": "^26.0.23",
+    "@types/ramda": "^0.27.40",
     "@typescript-eslint/eslint-plugin": "^4.26.1",
     "@typescript-eslint/parser": "^4.26.1",
     "@vitejs/plugin-vue": "^1.2.3",

@@ -146,13 +146,13 @@ import {
   getReposIdsFromUrl,
   setNoFollowTag,
   showErrorMsg,
-  getSelectedLibsCategory,
 } from '@/utils';
 import { updateLibrariesColors } from '@/store/librariesColors';
 import {
   isLoading,
   librariesRR,
   librariesIds,
+  categoryRef,
   addLibraryByNpmPackage,
   addLibraryByRepo,
   removeAllLibraries,
@@ -262,7 +262,7 @@ export default defineComponent({
             true,
           ].filter(Boolean).length
       ),
-      category: computed(() => getSelectedLibsCategory(librariesRR)),
+      category: categoryRef,
       clearSelection() {
         removeAllLibraries();
       },
