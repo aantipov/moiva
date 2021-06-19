@@ -24,7 +24,7 @@ Moiva currently supports Github repositories and NPM packages.
 
 It's relatively easy to add support, for example, for [Maven](https://mvnrepository.com/) (Java projects), [Packagist](https://packagist.org/) (PHP) and [PIP](https://pypi.org/) (Python).
 
-The Library concept can be simplistically described as a combinations of two interfaces:
+The Library concept can be simplistically described as a combination of two interfaces:
 
 ```ts
 interface LibraryNpm {
