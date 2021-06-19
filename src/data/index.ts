@@ -103,12 +103,7 @@ interface CatalogLibraryGithubT {
 }
 export type CatalogLibraryT = CatalogLibraryNpmT | CatalogLibraryGithubT;
 
-const libraries = rawLibraries as CatalogLibraryT[];
-
-export const catalogRepoIdToLib = libraries.reduce((acc, lib) => {
-  acc[lib.repoId.toLowerCase()] = lib;
-  return acc;
-}, {} as Record<string, CatalogLibraryT>);
+export const catalogLibraries = rawLibraries as CatalogLibraryT[];
 
 /**
  * Find a Catalog entry with Core npm artifact
@@ -117,7 +112,7 @@ export function getRepoCoreNpmArtifact(
   repoId: string
 ): CatalogLibraryNpmT | undefined {
   const repoIdLC = repoId.toLowerCase();
-  return libraries.find(
+  return catalogLibraries.find(
     (lib) => lib.repoId === repoIdLC && lib.isNpmCoreArtifact && lib.npm
   ) as CatalogLibraryNpmT | undefined;
 }
@@ -129,7 +124,7 @@ export function getGithubLibraryByRepo(
   repoId: string
 ): CatalogLibraryGithubT | undefined {
   const repoIdLC = repoId.toLowerCase();
-  return libraries.find((lib) => lib.repoId === repoIdLC && !lib.npm) as
+  return catalogLibraries.find((lib) => lib.repoId === repoIdLC && !lib.npm) as
     | CatalogLibraryGithubT
     | undefined;
 }
@@ -141,36 +136,10 @@ export function getGithubLibraryByRepo(
 export function getNpmLibraryByNpm(
   npm: string
 ): CatalogLibraryNpmT | undefined {
-  return libraries.find((lib) => lib.npm === npm) as
+  return catalogLibraries.find((lib) => lib.npm === npm) as
     | CatalogLibraryNpmT
     | undefined;
 }
-
-export function getCatalogLibrariesByCategory(
-  category: string
-): CatalogLibraryT[] {
-  return libraries.filter((lib) => lib.category === category);
-}
-
-interface CatalogCategoryT {
-  name: string;
-  libraries: CatalogLibraryT[];
-}
-
-export const catalogCategories: CatalogCategoryT[] = libraries.reduce(
-  (acc, lib) => {
-    let category = acc.find((cat) => cat.name === lib.category);
-    if (!category) {
-      category = { name: lib.category, libraries: [] };
-      acc.push(category);
-    }
-
-    category.libraries.push(lib);
-
-    return acc;
-  },
-  [] as CatalogCategoryT[]
-);
 
 /** ========= GOOGLE TRENDS ========= **/
 

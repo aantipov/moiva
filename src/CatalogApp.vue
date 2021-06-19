@@ -47,29 +47,50 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { getLibraryHref } from '@/utils';
-import { catalogCategories } from '@/data/index';
+import { catalogLibraries, CatalogLibraryT } from '@/data/index';
 
-const catalogEntries = catalogCategories
-  .map((category) => ({
-    category: category.name,
-    libraries: category.libraries
-      .map((lib) => ({
-        repoId: lib.repoId,
-        alias: lib.alias,
-        href: getLibraryHref(lib),
-      }))
-      .sort((a, b) => {
-        // @ts-ignore
-        if (a.alias > b.alias) {
-          return 1;
-        } else if (a.alias < b.alias) {
-          return -1;
-        } else {
-          return 0;
-        }
-      }),
-  }))
+interface CatalogCategoryT {
+  category: string;
+  libraries: {
+    repoId: string;
+    alias: string;
+    href: string;
+  }[];
+}
+
+export const catalogEntries = catalogLibraries
+  // group by category
+  .reduce((acc, lib) => {
+    let entry = acc.find((item) => item.category === lib.category);
+
+    if (!entry) {
+      entry = { category: lib.category, libraries: [] };
+      acc.push(entry);
+    }
+
+    entry.libraries.push({
+      repoId: lib.repoId,
+      alias: lib.alias,
+      href: getLibraryHref(lib),
+    });
+
+    return acc;
+  }, [] as CatalogCategoryT[])
   .filter((entry) => entry.category !== 'misc')
+  // sort libraries withing each category
+  .map(({ category, libraries }) => ({
+    category,
+    libraries: libraries.sort((a, b) => {
+      if (a.alias > b.alias) {
+        return 1;
+      } else if (a.alias < b.alias) {
+        return -1;
+      } else {
+        return 0;
+      }
+    }),
+  }))
+  // sort categories
   .sort((a, b) => {
     if (a.category > b.category) {
       return 1;

@@ -1,4 +1,4 @@
-import { getCatalogLibrariesByCategory, CatalogLibraryT } from '@/data/index';
+import { catalogLibraries, CatalogLibraryT } from '@/data/index';
 import { LibraryReadonlyT, LibrariesReadonlyT } from '@/libraryApis';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import Swal from 'sweetalert2';
@@ -274,6 +274,8 @@ export function getSuggestions(
     return [];
   }
 
+  const category = categories[0];
+
   const selectedNpmNames = libraries
     .map((lib) => lib.npmPackage?.name)
     .filter((npmName) => !!npmName);
@@ -282,12 +284,14 @@ export function getSuggestions(
     .filter((lib) => !lib.npmPackage)
     .map((lib) => lib.repo.repoId.toLowerCase());
 
-  return getCatalogLibrariesByCategory(categories[0]).filter((catalogLib) => {
-    if (catalogLib.npm) {
-      return !selectedNpmNames.includes(catalogLib.npm);
-    }
-    return !selectedReposIds.includes(catalogLib.repoId);
-  });
+  return catalogLibraries
+    .filter((lib) => lib.category === category)
+    .filter((catalogLib) => {
+      if (catalogLib.npm) {
+        return !selectedNpmNames.includes(catalogLib.npm);
+      }
+      return !selectedReposIds.includes(catalogLib.repoId);
+    });
 }
 
 export function getBundlephobiaUrl(libName: string): string {
