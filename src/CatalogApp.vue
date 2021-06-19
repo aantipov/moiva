@@ -48,6 +48,7 @@
 import { defineComponent } from 'vue';
 import { getLibraryHref } from '@/utils';
 import { catalogLibraries, CatalogLibraryT } from '@/data/index';
+import { sortBy, prop } from 'ramda';
 
 interface CatalogCategoryT {
   category: string;
@@ -58,7 +59,7 @@ interface CatalogCategoryT {
   }[];
 }
 
-export const catalogEntries = catalogLibraries
+const catalogEntries = catalogLibraries
   // group by category
   .reduce((acc, lib) => {
     let entry = acc.find((item) => item.category === lib.category);
@@ -80,32 +81,14 @@ export const catalogEntries = catalogLibraries
   // sort libraries withing each category
   .map(({ category, libraries }) => ({
     category,
-    libraries: libraries.sort((a, b) => {
-      if (a.alias > b.alias) {
-        return 1;
-      } else if (a.alias < b.alias) {
-        return -1;
-      } else {
-        return 0;
-      }
-    }),
-  }))
-  // sort categories
-  .sort((a, b) => {
-    if (a.category > b.category) {
-      return 1;
-    } else if (a.category < b.category) {
-      return -1;
-    } else {
-      return 0;
-    }
-  });
+    libraries: sortBy(prop('alias'), libraries),
+  }));
 
 export default defineComponent({
   name: 'CatalogApp',
   setup() {
     return {
-      catalogEntries,
+      catalogEntries: sortBy(prop('category'), catalogEntries),
     };
   },
 });
