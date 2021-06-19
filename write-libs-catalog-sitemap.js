@@ -280,7 +280,9 @@ function getDuplicates(categories) {
   // TODO: improve this logic
   const libs = categories.map(({ libs }) => libs).flat();
   const libsNpmNames = libs.map(({ npm }) => npm).filter((npm) => !!npm);
-  const libsReposIds = libs.map(({ repoId }) => repoId);
+  const libsReposIds = libs
+    .filter(({ npm }) => !npm)
+    .map(({ repoId }) => repoId);
   const libsAliases = libs.map(({ alias }) => alias);
   const duplicates = [];
 
