@@ -47,7 +47,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { getLibraryHref } from '@/utils';
-import { catalogLibraries, CatalogLibraryT } from '@/data/index';
+import { catalogLibraries } from '@/data/index';
 import { sortBy, prop } from 'ramda';
 
 interface CatalogCategoryT {
