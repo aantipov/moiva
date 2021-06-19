@@ -8,7 +8,7 @@ Currently supports Github and NPM. More to come.
 
 ## Goals
 
-Moiva's ambitious goals:
+Moiva's ambitious 😎 goals:
 
 - become the best tool to <ins>_Evaluate_</ins> software
 - become the best tool to <ins>_Discover alternatives_</ins>
@@ -16,25 +16,31 @@ Moiva's ambitious goals:
 
 ## The Library concept
 
-A concept of a Library constitutes the core of Moiva's functionality, it's an entity Moiva operates with.
+The Library concept is central to Moiva's architecture.
 
-It allows Moiva to be a _Universal_ and _Agile_ tool which provides search functionality, suggestions and statistical data for different kinds of software libraries.
+It allows Moiva to be a _Universal_ and _Agile_, and defines how libraries are differentiated and categorized, how they should be referenced. 
 
-Currently Moiva supports Github repositories and NPM packages.
+Moiva currently supports Github repositories and NPM packages.
 
 It's relatively easy to add support, for example, for [Maven](https://mvnrepository.com/) (Java projects), [Packagist](https://packagist.org/) (PHP) and [PIP](https://pypi.org/) (Python).
 
-The Library concept can be simplistically described as the following interface:
+The Library concept can be simplistically described as a combinations of two interfaces:
 
 ```ts
-interface Library {
-  repo: string; // a reference to a GitHub repository
-  npm?: string; // a reference to an Npm package
-  isNpmCoreArtifact?: boolean; // indicates if the npm package is a core artifact of the GihHub repository
-  category: string; // used in suggestions and SEO
-  framework?: string; // used in suggestions and SEO
-  alias?: string; // used in suggestions and SEO
+interface LibraryNpm {
+  npm: string;
+  isNpmCoreArtifact: boolean;
+  repoId: string;
+  category: string;
+  alias: string;
 }
+interface LibraryGithub {
+  repoId: string;
+  category: string;
+  alias: string;
+}
+
+type Library = LibraryNpm | LibraryGithub;
 ```
 
 ### Characteristics
@@ -49,7 +55,6 @@ The Library concept has the following important properties:
 - multiple libraries referencing to the same GitHub repository can not have the `isNpmCoreArtifact` flag set to `true` at same time. The idea is that a GitHub repository can have only one library as its main artifact, but multiple libraries as its "by-products".
 - a library referencing to a GitHub repository with an Npm package as its main artifact should have a reference to that package defined and `isNpmCoreArtifact` flag set to true.
 - a library should have a `category` defined. A library can belong to only one category.
-- a library may have a `framework` property defined. The idea is to help distinguish framework specific libraries. It's used in suggestions mechanism.
 - a library may have an `alias` defined which is used to show up in suggestions and also serves for SEO purposes - shows up in Google Search results.
 
 ### Examples
