@@ -1,5 +1,6 @@
 <template>
   <span
+    v-tooltip="tooltip"
     class="
       inline-block
       px-2
@@ -19,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, PropType, toRefs, computed } from 'vue';
 import { StatusT } from '@/getLibrary';
 
 export default defineComponent({
@@ -32,8 +33,24 @@ export default defineComponent({
     },
   },
 
-  setup() {
-    return {};
+  setup(props) {
+    const { value } = toRefs(props);
+
+    return {
+      tooltip: computed(() => {
+        if (value.value === 'ACTIVE') {
+          return `There have been commits in the past 6 months and the repository is not tagged as Legacy or Archived`;
+        } else if (value.value === 'INACTIVE') {
+          return `There have been no commits in the past 6 months and the repository is not tagged as Legacy or Archived`;
+        } else if (value.value === 'LEGACY') {
+          return `The project is marked as Legacy. It is no longer under active development. Use of alternative solutions is recommended`;
+        } else if (value.value === 'ARCHIVED') {
+          return `The repository was Archived. It is not recommended to use it. Look for alternatives.`;
+        }
+
+        return '';
+      }),
+    };
   },
 });
 </script>
