@@ -5,8 +5,7 @@
     "npm": "babylonjs",
     "isNpmCoreArtifact": true,
     "alias": "Babylon.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript 3D Libraries",
@@ -14,8 +13,7 @@
     "npm": "three",
     "isNpmCoreArtifact": true,
     "alias": "Three.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Mocking Libraries, test servers",
@@ -23,8 +21,7 @@
     "npm": "msw",
     "isNpmCoreArtifact": true,
     "alias": "MSW",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Mocking Libraries, test servers",
@@ -32,8 +29,7 @@
     "npm": "mountebank",
     "isNpmCoreArtifact": true,
     "alias": "Mountebank",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Mocking Libraries, test servers",
@@ -41,8 +37,7 @@
     "npm": "json-server",
     "isNpmCoreArtifact": true,
     "alias": "JSON Server",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Mocking Libraries, test servers",
@@ -50,8 +45,7 @@
     "npm": "wiremock-standalone",
     "isNpmCoreArtifact": true,
     "alias": "WireMock",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Mocking Libraries, test servers",
@@ -59,8 +53,7 @@
     "npm": "miragejs",
     "isNpmCoreArtifact": true,
     "alias": "Mirage",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "AWS Lambda Frameworks",
@@ -68,8 +61,7 @@
     "npm": "@middy/core",
     "isNpmCoreArtifact": true,
     "alias": "Middy",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "AWS Lambda Frameworks",
@@ -77,8 +69,7 @@
     "npm": "@laconia/core",
     "isNpmCoreArtifact": true,
     "alias": "Laconia",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "AWS Lambda Frameworks",
@@ -86,8 +77,7 @@
     "npm": "vandium",
     "isNpmCoreArtifact": true,
     "alias": "vandium-node",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Build Tools, Module Bundlers",
@@ -95,8 +85,7 @@
     "npm": "webpack",
     "isNpmCoreArtifact": true,
     "alias": "Webpack",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Build Tools, Module Bundlers",
@@ -104,8 +93,7 @@
     "npm": "rollup",
     "isNpmCoreArtifact": true,
     "alias": "Rollup",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Build Tools, Module Bundlers",
@@ -113,8 +101,7 @@
     "npm": "@parcel/core",
     "isNpmCoreArtifact": true,
     "alias": "Parcel",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Build Tools, Module Bundlers",
@@ -122,8 +109,7 @@
     "npm": "snowpack",
     "isNpmCoreArtifact": true,
     "alias": "Snowpack",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Build Tools, Module Bundlers",
@@ -131,8 +117,7 @@
     "npm": "vite",
     "isNpmCoreArtifact": true,
     "alias": "Vite",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Build Tools, Module Bundlers",
@@ -140,8 +125,7 @@
     "npm": "esbuild",
     "isNpmCoreArtifact": true,
     "alias": "Esbuild",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Build Tools, Module Bundlers",
@@ -149,8 +133,7 @@
     "npm": "wmr",
     "isNpmCoreArtifact": true,
     "alias": "Wmr",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Build Tools, Module Bundlers",
@@ -158,8 +141,7 @@
     "npm": "browserify",
     "isNpmCoreArtifact": true,
     "alias": "Browserify",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Build Tools, Module Bundlers",
@@ -167,8 +149,7 @@
     "npm": "microbundle",
     "isNpmCoreArtifact": true,
     "alias": "Microbundle",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Charting Libraries",
@@ -176,8 +157,7 @@
     "npm": "chart.js",
     "isNpmCoreArtifact": true,
     "alias": "Chart.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Charting Libraries",
@@ -185,8 +165,7 @@
     "npm": "d3",
     "isNpmCoreArtifact": true,
     "alias": "d3",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Charting Libraries",
@@ -194,8 +173,7 @@
     "npm": "plotly.js",
     "isNpmCoreArtifact": true,
     "alias": "Plotly.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Charting Libraries",
@@ -203,8 +181,7 @@
     "npm": "highcharts",
     "isNpmCoreArtifact": true,
     "alias": "Highcharts",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Charting Libraries",
@@ -212,8 +189,7 @@
     "npm": "recharts",
     "isNpmCoreArtifact": true,
     "alias": "Apache ECharts",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Charting Libraries",
@@ -221,8 +197,7 @@
     "npm": "echarts",
     "isNpmCoreArtifact": true,
     "alias": "Echarts",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Charting Libraries",
@@ -230,8 +205,7 @@
     "npm": "billboard.js",
     "isNpmCoreArtifact": true,
     "alias": "Billboard.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Charting Libraries",
@@ -239,8 +213,7 @@
     "npm": "@amcharts/amcharts4",
     "isNpmCoreArtifact": true,
     "alias": "amCharts 4",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Charting Libraries",
@@ -248,8 +221,7 @@
     "npm": "apexcharts",
     "isNpmCoreArtifact": true,
     "alias": "Apexcharts.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Charting Libraries",
@@ -257,8 +229,7 @@
     "npm": "chartist",
     "isNpmCoreArtifact": true,
     "alias": "Chartist.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Charting Libraries",
@@ -266,8 +237,7 @@
     "npm": "vis",
     "isNpmCoreArtifact": true,
     "alias": "Vis.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Charting Libraries",
@@ -275,8 +245,7 @@
     "npm": "nvd3",
     "isNpmCoreArtifact": true,
     "alias": "Nvd3",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Charting Libraries",
@@ -284,8 +253,7 @@
     "npm": "amcharts3",
     "isNpmCoreArtifact": true,
     "alias": "amCharts 3",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Charting Libraries",
@@ -293,8 +261,7 @@
     "npm": "peity",
     "isNpmCoreArtifact": true,
     "alias": "Peity",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "CSS Frameworks",
@@ -302,8 +269,7 @@
     "npm": "bootstrap",
     "isNpmCoreArtifact": true,
     "alias": "Bootstrap",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "CSS Frameworks",
@@ -311,8 +277,7 @@
     "npm": "bulma",
     "isNpmCoreArtifact": true,
     "alias": "Bulma",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "CSS Frameworks",
@@ -320,8 +285,7 @@
     "npm": "tailwindcss",
     "isNpmCoreArtifact": true,
     "alias": "Tailwind CSS",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "CSS Frameworks",
@@ -329,8 +293,7 @@
     "npm": "purecss",
     "isNpmCoreArtifact": true,
     "alias": "Pure.css",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "CSS Frameworks",
@@ -338,8 +301,7 @@
     "npm": "tachyons",
     "isNpmCoreArtifact": true,
     "alias": "Tachyons",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "CSS Frameworks",
@@ -347,8 +309,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": "Skeleton",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "CSS Frameworks",
@@ -356,8 +317,7 @@
     "npm": "materialize-css",
     "isNpmCoreArtifact": true,
     "alias": "MaterializeCSS",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "CSS Frameworks",
@@ -365,8 +325,7 @@
     "npm": "html5-boilerplate",
     "isNpmCoreArtifact": true,
     "alias": "HTML5 Boilerplate",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "CSS Frameworks",
@@ -374,8 +333,7 @@
     "npm": "foundation-sites",
     "isNpmCoreArtifact": true,
     "alias": "Foundation",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "CSS Frameworks",
@@ -383,8 +341,7 @@
     "npm": "material-design-lite",
     "isNpmCoreArtifact": true,
     "alias": "Material Design Lite",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "CSS Frameworks",
@@ -392,8 +349,7 @@
     "npm": "@primer/css",
     "isNpmCoreArtifact": true,
     "alias": "Primer CSS",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "CSS Frameworks",
@@ -401,8 +357,7 @@
     "npm": "semantic-ui",
     "isNpmCoreArtifact": true,
     "alias": "Semantic UI",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "CSS Frameworks",
@@ -410,8 +365,7 @@
     "npm": "uikit",
     "isNpmCoreArtifact": true,
     "alias": "UIkit",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "CSS Frameworks",
@@ -419,8 +373,7 @@
     "npm": "material-components-web",
     "isNpmCoreArtifact": true,
     "alias": "Material Components for the web",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "CSS Frameworks",
@@ -428,8 +381,7 @@
     "npm": "spectre.css",
     "isNpmCoreArtifact": true,
     "alias": "Spectre.css",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "CSS-in-JS Libraries",
@@ -437,8 +389,7 @@
     "npm": "styled-jsx",
     "isNpmCoreArtifact": true,
     "alias": "styled-jsx",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "CSS-in-JS Libraries",
@@ -446,8 +397,7 @@
     "npm": "styled-components",
     "isNpmCoreArtifact": true,
     "alias": "styled-components",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "CSS-in-JS Libraries",
@@ -455,8 +405,7 @@
     "npm": "radium",
     "isNpmCoreArtifact": true,
     "alias": "Radium",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "CSS-in-JS Libraries",
@@ -464,8 +413,7 @@
     "npm": "@linaria/core",
     "isNpmCoreArtifact": true,
     "alias": "Linaria",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "CSS-in-JS Libraries",
@@ -473,8 +421,7 @@
     "npm": "jss",
     "isNpmCoreArtifact": true,
     "alias": "JSS",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "CSS-in-JS Libraries",
@@ -482,8 +429,7 @@
     "npm": "@emotion/css",
     "isNpmCoreArtifact": true,
     "alias": "Emotion",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "CSS-in-JS Libraries",
@@ -491,8 +437,7 @@
     "npm": "aphrodite",
     "isNpmCoreArtifact": true,
     "alias": "Aphrodite",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "CSS-in-JS Libraries",
@@ -500,8 +445,7 @@
     "npm": "@stitches/core",
     "isNpmCoreArtifact": true,
     "alias": "Stitches",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "CSS-in-JS Libraries",
@@ -509,8 +453,7 @@
     "npm": "astroturf",
     "isNpmCoreArtifact": true,
     "alias": "Astroturf",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "CSS-in-JS Libraries",
@@ -518,8 +461,7 @@
     "npm": "fela",
     "isNpmCoreArtifact": true,
     "alias": "Fela",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Date Utility Libraries",
@@ -527,8 +469,7 @@
     "npm": "date-fns",
     "isNpmCoreArtifact": true,
     "alias": "date-fns",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Date Utility Libraries",
@@ -536,8 +477,7 @@
     "npm": "dayjs",
     "isNpmCoreArtifact": true,
     "alias": "Dayjs",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Date Utility Libraries",
@@ -545,8 +485,7 @@
     "npm": "luxon",
     "isNpmCoreArtifact": true,
     "alias": "Luxon",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Date Utility Libraries",
@@ -554,8 +493,7 @@
     "npm": "moment",
     "isNpmCoreArtifact": true,
     "alias": "Moment",
-    "framework": null,
-    "isLegacy": true
+    "framework": null
   },
   {
     "category": "JavaScript Date Utility Libraries",
@@ -563,8 +501,7 @@
     "npm": "fecha",
     "isNpmCoreArtifact": true,
     "alias": "Fecha",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Date Utility Libraries",
@@ -572,8 +509,7 @@
     "npm": "ms",
     "isNpmCoreArtifact": true,
     "alias": "ms",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Date Utility Libraries",
@@ -581,8 +517,7 @@
     "npm": "timeago.js",
     "isNpmCoreArtifact": true,
     "alias": "Timeago.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Date Utility Libraries",
@@ -590,8 +525,7 @@
     "npm": "date.js",
     "isNpmCoreArtifact": true,
     "alias": "Date",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript frameworks for Desktop Applications",
@@ -599,8 +533,7 @@
     "npm": "electron",
     "isNpmCoreArtifact": true,
     "alias": "Electron",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript frameworks for Desktop Applications",
@@ -608,8 +541,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": "Tauri",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript frameworks for Desktop Applications",
@@ -617,8 +549,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": "Neutralinojs",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript frameworks for Desktop Applications",
@@ -626,8 +557,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": "Nw.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript frameworks for Desktop Applications",
@@ -635,8 +565,7 @@
     "npm": "@nodegui/nodegui",
     "isNpmCoreArtifact": true,
     "alias": "Nodegui",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript frameworks for Desktop Applications",
@@ -644,8 +573,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": "vue-nodegui",
-    "framework": "vue",
-    "isLegacy": false
+    "framework": "vue"
   },
   {
     "category": "JavaScript frameworks for Desktop Applications",
@@ -653,8 +581,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": "react-nodegui",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "JavaScript frameworks for Desktop Applications",
@@ -662,8 +589,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": "svelte-nodegui",
-    "framework": "svelte",
-    "isLegacy": false
+    "framework": "svelte"
   },
   {
     "category": "JS End-to-End Testing and Browser Automation Libraries",
@@ -671,8 +597,7 @@
     "npm": "puppeteer",
     "isNpmCoreArtifact": true,
     "alias": "Puppeteer",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JS End-to-End Testing and Browser Automation Libraries",
@@ -680,8 +605,7 @@
     "npm": "cypress",
     "isNpmCoreArtifact": true,
     "alias": "Cypress",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JS End-to-End Testing and Browser Automation Libraries",
@@ -689,8 +613,7 @@
     "npm": "playwright",
     "isNpmCoreArtifact": true,
     "alias": "Playwright",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JS End-to-End Testing and Browser Automation Libraries",
@@ -698,8 +621,7 @@
     "npm": "selenium-webdriver",
     "isNpmCoreArtifact": true,
     "alias": "Selenium",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JS End-to-End Testing and Browser Automation Libraries",
@@ -707,8 +629,7 @@
     "npm": "webdriverio",
     "isNpmCoreArtifact": true,
     "alias": "Webdriverio",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JS End-to-End Testing and Browser Automation Libraries",
@@ -716,8 +637,7 @@
     "npm": "testcafe",
     "isNpmCoreArtifact": true,
     "alias": "Testcafe",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JS End-to-End Testing and Browser Automation Libraries",
@@ -725,8 +645,7 @@
     "npm": "nightwatch",
     "isNpmCoreArtifact": true,
     "alias": "Nightwatch",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JS End-to-End Testing and Browser Automation Libraries",
@@ -734,8 +653,7 @@
     "npm": "taiko",
     "isNpmCoreArtifact": true,
     "alias": "Taiko",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JS End-to-End Testing and Browser Automation Libraries",
@@ -743,8 +661,7 @@
     "npm": "nightmare",
     "isNpmCoreArtifact": true,
     "alias": "Nightmare",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JS End-to-End Testing and Browser Automation Libraries",
@@ -752,8 +669,7 @@
     "npm": "casperjs",
     "isNpmCoreArtifact": true,
     "alias": "Casperjs",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JS End-to-End Testing and Browser Automation Libraries",
@@ -761,8 +677,7 @@
     "npm": "slimerjs",
     "isNpmCoreArtifact": true,
     "alias": "Slimerjs",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JS End-to-End Testing and Browser Automation Libraries",
@@ -770,8 +685,7 @@
     "npm": "zombie",
     "isNpmCoreArtifact": true,
     "alias": "Zombie",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript UI Frameworks and Libraries",
@@ -779,8 +693,7 @@
     "npm": "react",
     "isNpmCoreArtifact": true,
     "alias": "React",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript UI Frameworks and Libraries",
@@ -788,8 +701,7 @@
     "npm": "vue",
     "isNpmCoreArtifact": true,
     "alias": "Vue",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript UI Frameworks and Libraries",
@@ -797,8 +709,7 @@
     "npm": "@angular/core",
     "isNpmCoreArtifact": true,
     "alias": "Angular",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript UI Frameworks and Libraries",
@@ -806,8 +717,7 @@
     "npm": "svelte",
     "isNpmCoreArtifact": true,
     "alias": "Svelte",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript UI Frameworks and Libraries",
@@ -815,8 +725,7 @@
     "npm": "ember-source",
     "isNpmCoreArtifact": true,
     "alias": "Ember",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript UI Frameworks and Libraries",
@@ -824,8 +733,7 @@
     "npm": "alpinejs",
     "isNpmCoreArtifact": true,
     "alias": "Alpine.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript UI Frameworks and Libraries",
@@ -833,8 +741,7 @@
     "npm": "inferno",
     "isNpmCoreArtifact": true,
     "alias": "Inferno",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript UI Frameworks and Libraries",
@@ -842,8 +749,7 @@
     "npm": "preact",
     "isNpmCoreArtifact": true,
     "alias": "Preact",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript UI Frameworks and Libraries",
@@ -851,8 +757,7 @@
     "npm": "hyperapp",
     "isNpmCoreArtifact": true,
     "alias": "Hyperapp",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript UI Frameworks and Libraries",
@@ -860,8 +765,7 @@
     "npm": "riot",
     "isNpmCoreArtifact": true,
     "alias": "Riot",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript UI Frameworks and Libraries",
@@ -869,8 +773,7 @@
     "npm": "angular",
     "isNpmCoreArtifact": true,
     "alias": "AngularJS",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript UI Frameworks and Libraries",
@@ -878,8 +781,7 @@
     "npm": "backbone.marionette",
     "isNpmCoreArtifact": true,
     "alias": "Backbone.marionette",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript UI Frameworks and Libraries",
@@ -887,8 +789,7 @@
     "npm": "knockout",
     "isNpmCoreArtifact": true,
     "alias": "Knockout",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript UI Frameworks and Libraries",
@@ -896,8 +797,7 @@
     "npm": "solid-js",
     "isNpmCoreArtifact": true,
     "alias": "Solid",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript UI Frameworks and Libraries",
@@ -905,8 +805,7 @@
     "npm": "mithril",
     "isNpmCoreArtifact": true,
     "alias": "Mithril.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript UI Frameworks and Libraries",
@@ -914,8 +813,7 @@
     "npm": "aurelia-framework",
     "isNpmCoreArtifact": true,
     "alias": "Aurelia",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript UI Frameworks and Libraries",
@@ -923,8 +821,7 @@
     "npm": "stimulus",
     "isNpmCoreArtifact": true,
     "alias": "Stimulus",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript UI Frameworks and Libraries",
@@ -932,8 +829,7 @@
     "npm": "marko",
     "isNpmCoreArtifact": true,
     "alias": "Marko",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "GraphQL Client Libraries",
@@ -941,8 +837,7 @@
     "npm": "relay-runtime",
     "isNpmCoreArtifact": true,
     "alias": "Relay",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "GraphQL Client Libraries",
@@ -950,8 +845,7 @@
     "npm": "@apollo/client",
     "isNpmCoreArtifact": true,
     "alias": "Apollo Client",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "GraphQL Client Libraries",
@@ -959,8 +853,7 @@
     "npm": "vue-apollo",
     "isNpmCoreArtifact": true,
     "alias": "Vue Apollo",
-    "framework": "vue",
-    "isLegacy": false
+    "framework": "vue"
   },
   {
     "category": "GraphQL Client Libraries",
@@ -968,8 +861,7 @@
     "npm": "svelte-apollo",
     "isNpmCoreArtifact": true,
     "alias": "svelte-apollo",
-    "framework": "svelte",
-    "isLegacy": false
+    "framework": "svelte"
   },
   {
     "category": "GraphQL Client Libraries",
@@ -977,8 +869,7 @@
     "npm": "ember-apollo-client",
     "isNpmCoreArtifact": true,
     "alias": "ember-apollo-client",
-    "framework": "ember",
-    "isLegacy": false
+    "framework": "ember"
   },
   {
     "category": "GraphQL Client Libraries",
@@ -986,8 +877,7 @@
     "npm": "apollo-angular",
     "isNpmCoreArtifact": true,
     "alias": "Apollo Angular",
-    "framework": "angular",
-    "isLegacy": false
+    "framework": "angular"
   },
   {
     "category": "GraphQL Client Libraries",
@@ -995,8 +885,7 @@
     "npm": "@urql/core",
     "isNpmCoreArtifact": true,
     "alias": "urql",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Template Engines",
@@ -1004,8 +893,7 @@
     "npm": "ejs",
     "isNpmCoreArtifact": true,
     "alias": "Ejs",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Template Engines",
@@ -1013,8 +901,7 @@
     "npm": "handlebars",
     "isNpmCoreArtifact": true,
     "alias": "Handlebars.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Template Engines",
@@ -1022,8 +909,7 @@
     "npm": "mustache",
     "isNpmCoreArtifact": true,
     "alias": "Mustache.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Template Engines",
@@ -1031,8 +917,7 @@
     "npm": "pug",
     "isNpmCoreArtifact": true,
     "alias": "Pug",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Template Engines",
@@ -1040,8 +925,7 @@
     "npm": "nunjucks",
     "isNpmCoreArtifact": true,
     "alias": "Nunjucks",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Template Engines",
@@ -1049,8 +933,7 @@
     "npm": "blueimp-tmpl",
     "isNpmCoreArtifact": true,
     "alias": "blueimp/JavaScript-Templates",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Template Engines",
@@ -1058,8 +941,7 @@
     "npm": "dot",
     "isNpmCoreArtifact": true,
     "alias": "DoT",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Template Engines",
@@ -1067,8 +949,7 @@
     "npm": "xtemplate",
     "isNpmCoreArtifact": true,
     "alias": "Xtemplate",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Template Engines",
@@ -1076,8 +957,7 @@
     "npm": "dustjs-linkedin",
     "isNpmCoreArtifact": true,
     "alias": "Dust.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Template Engines",
@@ -1085,8 +965,7 @@
     "npm": "ehtml",
     "isNpmCoreArtifact": true,
     "alias": "EHTML",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Immutability Libraries",
@@ -1094,8 +973,7 @@
     "npm": "immer",
     "isNpmCoreArtifact": true,
     "alias": "Immer",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Immutability Libraries",
@@ -1103,8 +981,7 @@
     "npm": "immutable",
     "isNpmCoreArtifact": true,
     "alias": "Immutable.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Linting and Formatting Tools",
@@ -1112,8 +989,7 @@
     "npm": "eslint",
     "isNpmCoreArtifact": true,
     "alias": "ESLint",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Linting and Formatting Tools",
@@ -1121,8 +997,7 @@
     "npm": "tslint",
     "isNpmCoreArtifact": true,
     "alias": "TSLint",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Linting and Formatting Tools",
@@ -1130,8 +1005,7 @@
     "npm": "prettier",
     "isNpmCoreArtifact": true,
     "alias": "Prettier",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Linting and Formatting Tools",
@@ -1139,8 +1013,7 @@
     "npm": "jshint",
     "isNpmCoreArtifact": true,
     "alias": "JSHint",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Linting and Formatting Tools",
@@ -1148,8 +1021,7 @@
     "npm": "js-beautify",
     "isNpmCoreArtifact": true,
     "alias": "JS Beautifier",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Maps Libraries",
@@ -1157,8 +1029,7 @@
     "npm": "leaflet",
     "isNpmCoreArtifact": true,
     "alias": "Leaflet",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Maps Libraries",
@@ -1166,8 +1037,7 @@
     "npm": "ol",
     "isNpmCoreArtifact": true,
     "alias": "OpenLayers",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1175,8 +1045,7 @@
     "npm": "@nivo/core",
     "isNpmCoreArtifact": true,
     "alias": "Nivo",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1184,8 +1053,7 @@
     "npm": "apisauce",
     "isNpmCoreArtifact": true,
     "alias": "Apisauce",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1193,8 +1061,7 @@
     "npm": "async",
     "isNpmCoreArtifact": true,
     "alias": "Async",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1202,8 +1069,7 @@
     "npm": "axios",
     "isNpmCoreArtifact": true,
     "alias": "Axios",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1211,8 +1077,7 @@
     "npm": "bluebird",
     "isNpmCoreArtifact": true,
     "alias": "Bluebird",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1220,8 +1085,7 @@
     "npm": "buefy",
     "isNpmCoreArtifact": true,
     "alias": "Buefy",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1229,8 +1093,7 @@
     "npm": "commander",
     "isNpmCoreArtifact": true,
     "alias": "Commander.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1238,8 +1101,7 @@
     "npm": "commitizen",
     "isNpmCoreArtifact": true,
     "alias": "Commitizen",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1247,8 +1109,7 @@
     "npm": "classnames",
     "isNpmCoreArtifact": true,
     "alias": "Classnames",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1256,8 +1117,7 @@
     "npm": "cheerio",
     "isNpmCoreArtifact": true,
     "alias": "Cheerio",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1265,8 +1125,7 @@
     "npm": "core-js",
     "isNpmCoreArtifact": true,
     "alias": "core-js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1274,8 +1133,7 @@
     "npm": "debug",
     "isNpmCoreArtifact": true,
     "alias": "Debug",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1283,8 +1141,7 @@
     "npm": "fp-ts",
     "isNpmCoreArtifact": true,
     "alias": "fp-ts",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1292,8 +1149,7 @@
     "npm": "grunt",
     "isNpmCoreArtifact": true,
     "alias": "Grunt",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1301,8 +1157,7 @@
     "npm": "gulp",
     "isNpmCoreArtifact": true,
     "alias": "Gulp",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1310,8 +1165,7 @@
     "npm": "inquirer",
     "isNpmCoreArtifact": true,
     "alias": "Inquirer.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1319,8 +1173,7 @@
     "npm": "jquery",
     "isNpmCoreArtifact": true,
     "alias": "Jquery",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1328,8 +1181,7 @@
     "npm": "less",
     "isNpmCoreArtifact": true,
     "alias": "Less.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1337,8 +1189,7 @@
     "npm": "mkdirp",
     "isNpmCoreArtifact": true,
     "alias": "node-mkdirp",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1346,8 +1197,7 @@
     "npm": "node-fetch",
     "isNpmCoreArtifact": true,
     "alias": "node-fetch",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1355,8 +1205,7 @@
     "npm": "passport",
     "isNpmCoreArtifact": true,
     "alias": "Passport",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1364,8 +1213,7 @@
     "npm": "prop-types",
     "isNpmCoreArtifact": true,
     "alias": "prop-types",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1373,8 +1221,7 @@
     "npm": "protractor",
     "isNpmCoreArtifact": true,
     "alias": "Protractor",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1382,8 +1229,7 @@
     "npm": "react-chartjs-2",
     "isNpmCoreArtifact": true,
     "alias": "react-chartjs-2",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1391,8 +1237,7 @@
     "npm": "react-router",
     "isNpmCoreArtifact": true,
     "alias": "react-router",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1400,8 +1245,7 @@
     "npm": "react-vis",
     "isNpmCoreArtifact": true,
     "alias": "react-vis",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1409,8 +1253,7 @@
     "npm": "sanctuary",
     "isNpmCoreArtifact": true,
     "alias": "Sanctuary",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1418,8 +1261,7 @@
     "npm": "sass",
     "isNpmCoreArtifact": true,
     "alias": "dart-sass",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1427,8 +1269,7 @@
     "npm": "superagent",
     "isNpmCoreArtifact": true,
     "alias": "Superagent",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1436,8 +1277,7 @@
     "npm": "universal-router",
     "isNpmCoreArtifact": true,
     "alias": "universal-router",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1445,8 +1285,7 @@
     "npm": "uuid",
     "isNpmCoreArtifact": true,
     "alias": "Uuid",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1454,8 +1293,7 @@
     "npm": "victory",
     "isNpmCoreArtifact": true,
     "alias": "Victory",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1463,8 +1301,7 @@
     "npm": "yargs",
     "isNpmCoreArtifact": true,
     "alias": "Yargs",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1472,8 +1309,7 @@
     "npm": "postcss",
     "isNpmCoreArtifact": true,
     "alias": "Postcss",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1481,8 +1317,7 @@
     "npm": "create-react-app",
     "isNpmCoreArtifact": true,
     "alias": "Create React App",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1490,8 +1325,7 @@
     "npm": "animate.css",
     "isNpmCoreArtifact": true,
     "alias": "Animate.css",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1499,8 +1333,7 @@
     "npm": "@fortawesome/fontawesome-free",
     "isNpmCoreArtifact": true,
     "alias": "Font Awesome",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1508,8 +1341,7 @@
     "npm": "reveal.js",
     "isNpmCoreArtifact": true,
     "alias": "Reveal.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1517,8 +1349,7 @@
     "npm": "normalize.css",
     "isNpmCoreArtifact": true,
     "alias": "Normalize.css",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1526,8 +1357,7 @@
     "npm": "material-design-icons",
     "isNpmCoreArtifact": true,
     "alias": "Material Icons",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1535,8 +1365,7 @@
     "npm": "yarn",
     "isNpmCoreArtifact": true,
     "alias": "Yarn",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1544,8 +1373,7 @@
     "npm": "serverless",
     "isNpmCoreArtifact": true,
     "alias": "Serverless Framework",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1553,8 +1381,7 @@
     "npm": "@babel/core",
     "isNpmCoreArtifact": true,
     "alias": "Babel",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1562,8 +1389,7 @@
     "npm": "animejs",
     "isNpmCoreArtifact": true,
     "alias": "Anime",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1571,8 +1397,7 @@
     "npm": "impress.js",
     "isNpmCoreArtifact": true,
     "alias": "Impress.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1580,8 +1405,7 @@
     "npm": "ghost",
     "isNpmCoreArtifact": true,
     "alias": "Ghost",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1589,8 +1413,7 @@
     "npm": "mermaid",
     "isNpmCoreArtifact": true,
     "alias": "Mermaid",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1598,8 +1421,7 @@
     "npm": "strapi",
     "isNpmCoreArtifact": true,
     "alias": "Strapi",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1607,8 +1429,7 @@
     "npm": "pixi.js",
     "isNpmCoreArtifact": true,
     "alias": "PixiJS",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1616,8 +1437,7 @@
     "npm": "fullpage.js",
     "isNpmCoreArtifact": true,
     "alias": "fullPage.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1625,8 +1445,7 @@
     "npm": "@atomist/hackathon-starter",
     "isNpmCoreArtifact": true,
     "alias": "Hackathon Starter",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1634,8 +1453,7 @@
     "npm": "video.js",
     "isNpmCoreArtifact": true,
     "alias": "Video.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1643,8 +1461,7 @@
     "npm": "clipboard",
     "isNpmCoreArtifact": true,
     "alias": "clipboard.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1652,8 +1469,7 @@
     "npm": "faker",
     "isNpmCoreArtifact": true,
     "alias": "Faker.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1661,8 +1477,7 @@
     "npm": "phaser",
     "isNpmCoreArtifact": true,
     "alias": "Phaser",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1670,8 +1485,7 @@
     "npm": "quill",
     "isNpmCoreArtifact": true,
     "alias": "Quill",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1679,8 +1493,7 @@
     "npm": "ant-design-pro",
     "isNpmCoreArtifact": true,
     "alias": "Ant Design Pro",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1688,8 +1501,7 @@
     "npm": "@vue/cli",
     "isNpmCoreArtifact": true,
     "alias": "Vue CLI",
-    "framework": "vue",
-    "isLegacy": false
+    "framework": "vue"
   },
   {
     "category": "misc",
@@ -1697,8 +1509,7 @@
     "npm": "slick-carousel",
     "isNpmCoreArtifact": true,
     "alias": "Slick",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1706,8 +1517,7 @@
     "npm": "lerna",
     "isNpmCoreArtifact": true,
     "alias": "Lerna",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1715,8 +1525,7 @@
     "npm": "swiper",
     "isNpmCoreArtifact": true,
     "alias": "Swiper",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1724,8 +1533,7 @@
     "npm": "request",
     "isNpmCoreArtifact": true,
     "alias": "Request",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1733,8 +1541,7 @@
     "npm": "standard",
     "isNpmCoreArtifact": true,
     "alias": "JavaScript Standard Style",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1742,8 +1549,7 @@
     "npm": "modernizr",
     "isNpmCoreArtifact": true,
     "alias": "Modernizr",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1751,8 +1557,7 @@
     "npm": "whatwg-fetch",
     "isNpmCoreArtifact": true,
     "alias": "Fetch",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1760,8 +1565,7 @@
     "npm": "xlsx",
     "isNpmCoreArtifact": true,
     "alias": "SheetJS js-xlsx",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1769,8 +1573,7 @@
     "npm": "marked",
     "isNpmCoreArtifact": true,
     "alias": "Marked",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1778,8 +1581,7 @@
     "npm": "@angular/cli",
     "isNpmCoreArtifact": true,
     "alias": "Angular CLI",
-    "framework": "angular",
-    "isLegacy": false
+    "framework": "angular"
   },
   {
     "category": "misc",
@@ -1787,8 +1589,7 @@
     "npm": "@uppy/core",
     "isNpmCoreArtifact": true,
     "alias": "Uppy",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1796,8 +1597,7 @@
     "npm": "sequelize",
     "isNpmCoreArtifact": true,
     "alias": "Sequelize",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1805,8 +1605,7 @@
     "npm": "webtorrent",
     "isNpmCoreArtifact": true,
     "alias": "WebTorrent",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1814,8 +1613,7 @@
     "npm": "webtorrent-cli",
     "isNpmCoreArtifact": true,
     "alias": "webtorrent-cli",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1823,8 +1621,7 @@
     "npm": "lottie-web",
     "isNpmCoreArtifact": true,
     "alias": "Lottie for Web",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1832,8 +1629,7 @@
     "npm": "monaco-editor",
     "isNpmCoreArtifact": true,
     "alias": "Monaco Editor",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1841,8 +1637,7 @@
     "npm": "tesseract.js",
     "isNpmCoreArtifact": true,
     "alias": "Tesseract.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1850,8 +1645,7 @@
     "npm": "typeorm",
     "isNpmCoreArtifact": true,
     "alias": "TypeORM",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1859,8 +1653,7 @@
     "npm": "@tabler/core",
     "isNpmCoreArtifact": true,
     "alias": "Tabler",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1868,8 +1661,7 @@
     "npm": "react-beautiful-dnd",
     "isNpmCoreArtifact": true,
     "alias": "react-beautiful-dnd",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1877,8 +1669,7 @@
     "npm": "mongoose",
     "isNpmCoreArtifact": true,
     "alias": "Mongoose",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1886,8 +1677,7 @@
     "npm": "hammerjs",
     "isNpmCoreArtifact": true,
     "alias": "hammer.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1895,8 +1685,7 @@
     "npm": "codemirror",
     "isNpmCoreArtifact": true,
     "alias": "CodeMirror",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1904,8 +1693,7 @@
     "npm": "sortablejs",
     "isNpmCoreArtifact": true,
     "alias": "Sortable",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1913,8 +1701,7 @@
     "npm": "lighthouse",
     "isNpmCoreArtifact": true,
     "alias": "Lighthouse",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1922,8 +1709,7 @@
     "npm": "@polymer/polymer",
     "isNpmCoreArtifact": true,
     "alias": "Polymer",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1931,8 +1717,7 @@
     "npm": "polymer-cli",
     "isNpmCoreArtifact": true,
     "alias": "Tools",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1940,8 +1725,7 @@
     "npm": "husky",
     "isNpmCoreArtifact": true,
     "alias": "Husky",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1949,8 +1733,7 @@
     "npm": "redux-saga",
     "isNpmCoreArtifact": true,
     "alias": "redux-saga",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1958,8 +1741,7 @@
     "npm": "jspdf",
     "isNpmCoreArtifact": true,
     "alias": "jsPDF",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1967,8 +1749,7 @@
     "npm": "@angular/material",
     "isNpmCoreArtifact": true,
     "alias": "Material for Angular",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1976,8 +1757,7 @@
     "npm": "react-virtualized",
     "isNpmCoreArtifact": true,
     "alias": "react-virtualized",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1985,8 +1765,7 @@
     "npm": "react-window",
     "isNpmCoreArtifact": true,
     "alias": "react-window",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -1994,8 +1773,7 @@
     "npm": "dragula",
     "isNpmCoreArtifact": true,
     "alias": "Dragula",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2003,8 +1781,7 @@
     "npm": "intro.js",
     "isNpmCoreArtifact": true,
     "alias": "Intro.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2012,8 +1789,7 @@
     "npm": "normalizr",
     "isNpmCoreArtifact": true,
     "alias": "Normalizr",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2021,8 +1797,7 @@
     "npm": "draft-js",
     "isNpmCoreArtifact": true,
     "alias": "Draft.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2030,8 +1805,7 @@
     "npm": "feather-icons",
     "isNpmCoreArtifact": true,
     "alias": "Feather",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2039,8 +1813,7 @@
     "npm": "slate",
     "isNpmCoreArtifact": true,
     "alias": "Slate (text editors framework)",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2048,8 +1821,7 @@
     "npm": "scrollreveal",
     "isNpmCoreArtifact": true,
     "alias": "Scrollreveal",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2057,8 +1829,7 @@
     "npm": "react-motion",
     "isNpmCoreArtifact": true,
     "alias": "react-motion",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2066,8 +1837,7 @@
     "npm": "@mostly-adequate/support",
     "isNpmCoreArtifact": true,
     "alias": "Guide to FP",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2075,8 +1845,7 @@
     "npm": "react-spring",
     "isNpmCoreArtifact": true,
     "alias": "react-spring",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2084,8 +1853,7 @@
     "npm": "autoprefixer",
     "isNpmCoreArtifact": true,
     "alias": "Autoprefixer",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2093,8 +1861,7 @@
     "npm": "flv.js",
     "isNpmCoreArtifact": true,
     "alias": "Flv.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2102,8 +1869,7 @@
     "npm": "plyr",
     "isNpmCoreArtifact": true,
     "alias": "Plyr",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2111,8 +1877,7 @@
     "npm": "sharp",
     "isNpmCoreArtifact": true,
     "alias": "Sharp",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2120,8 +1885,7 @@
     "npm": "localforage",
     "isNpmCoreArtifact": true,
     "alias": "localForage",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2129,8 +1893,7 @@
     "npm": "react-use",
     "isNpmCoreArtifact": true,
     "alias": "react-use",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2138,8 +1901,7 @@
     "npm": "popmotion",
     "isNpmCoreArtifact": true,
     "alias": "Popmotion",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2147,8 +1909,7 @@
     "npm": "react-native-web",
     "isNpmCoreArtifact": true,
     "alias": "React Native for Web",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2156,8 +1917,7 @@
     "npm": "fabric",
     "isNpmCoreArtifact": true,
     "alias": "Fabric.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2165,8 +1925,7 @@
     "npm": "highlight.js",
     "isNpmCoreArtifact": true,
     "alias": "Highlight.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2174,8 +1933,7 @@
     "npm": "howler",
     "isNpmCoreArtifact": true,
     "alias": "Howler.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2183,8 +1941,7 @@
     "npm": "vue-router",
     "isNpmCoreArtifact": true,
     "alias": "Vue Router",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2192,8 +1949,7 @@
     "npm": "reselect",
     "isNpmCoreArtifact": true,
     "alias": "Reselect",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2201,8 +1957,7 @@
     "npm": "vux",
     "isNpmCoreArtifact": true,
     "alias": "Vux",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2210,8 +1965,7 @@
     "npm": "@blueprintjs/core",
     "isNpmCoreArtifact": true,
     "alias": "Blueprint",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "misc",
@@ -2219,8 +1973,7 @@
     "npm": "validator",
     "isNpmCoreArtifact": true,
     "alias": "validator.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2228,8 +1981,7 @@
     "npm": "flux",
     "isNpmCoreArtifact": true,
     "alias": "Flux",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2237,8 +1989,7 @@
     "npm": "js-cookie",
     "isNpmCoreArtifact": true,
     "alias": "JavaScript Cookie",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2246,8 +1997,7 @@
     "npm": "ccxt",
     "isNpmCoreArtifact": true,
     "alias": "Ccxt",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2255,8 +2005,7 @@
     "npm": "velocity-animate",
     "isNpmCoreArtifact": true,
     "alias": "Velocity",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2264,8 +2013,7 @@
     "npm": "angular-material",
     "isNpmCoreArtifact": true,
     "alias": "Material for AngularJS",
-    "framework": "angularjs",
-    "isLegacy": false
+    "framework": "angularjs"
   },
   {
     "category": "misc",
@@ -2273,8 +2021,7 @@
     "npm": "egg",
     "isNpmCoreArtifact": true,
     "alias": "Egg",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2282,8 +2029,7 @@
     "npm": "@popperjs/core",
     "isNpmCoreArtifact": true,
     "alias": "Popper",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2291,8 +2037,7 @@
     "npm": "vant",
     "isNpmCoreArtifact": true,
     "alias": "Vant",
-    "framework": "vue",
-    "isLegacy": false
+    "framework": "vue"
   },
   {
     "category": "misc",
@@ -2300,8 +2045,7 @@
     "npm": "@mojs/core",
     "isNpmCoreArtifact": true,
     "alias": "mojs",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2309,8 +2053,7 @@
     "npm": "cleave.js",
     "isNpmCoreArtifact": true,
     "alias": "Cleave.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2318,8 +2061,7 @@
     "npm": "mint-ui",
     "isNpmCoreArtifact": true,
     "alias": "Mint UI",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2327,8 +2069,7 @@
     "npm": "file-saver",
     "isNpmCoreArtifact": true,
     "alias": "FileSaver.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2336,8 +2077,7 @@
     "npm": "streamsaver",
     "isNpmCoreArtifact": true,
     "alias": "StreamSaver.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2345,8 +2085,7 @@
     "npm": "trix",
     "isNpmCoreArtifact": true,
     "alias": "Trix",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2354,8 +2093,7 @@
     "npm": "chalk",
     "isNpmCoreArtifact": true,
     "alias": "Chalk",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2363,8 +2101,7 @@
     "npm": "react-admin",
     "isNpmCoreArtifact": true,
     "alias": "react-admin",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "misc",
@@ -2372,8 +2109,7 @@
     "npm": "coffeescript",
     "isNpmCoreArtifact": true,
     "alias": "CoffeeScript",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2381,8 +2117,7 @@
     "npm": "react-loadable",
     "isNpmCoreArtifact": true,
     "alias": "react-loadable",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2390,8 +2125,7 @@
     "npm": "ink",
     "isNpmCoreArtifact": true,
     "alias": "Ink",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2399,8 +2133,7 @@
     "npm": "dva",
     "isNpmCoreArtifact": true,
     "alias": "DvaJS",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2408,8 +2141,7 @@
     "npm": "svgo",
     "isNpmCoreArtifact": true,
     "alias": "Svgo",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2417,8 +2149,7 @@
     "npm": "jsdom",
     "isNpmCoreArtifact": true,
     "alias": "Jsdom",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2426,8 +2157,7 @@
     "npm": "aos",
     "isNpmCoreArtifact": true,
     "alias": "Aos",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2435,8 +2165,7 @@
     "npm": "ar.js",
     "isNpmCoreArtifact": true,
     "alias": "AR.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2444,8 +2173,7 @@
     "npm": "masonry-layout",
     "isNpmCoreArtifact": true,
     "alias": "Masonry",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2453,8 +2181,7 @@
     "npm": "react-dnd",
     "isNpmCoreArtifact": true,
     "alias": "React DnD",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2462,8 +2189,7 @@
     "npm": "@capacitor/core",
     "isNpmCoreArtifact": true,
     "alias": "Capacitor",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2471,8 +2197,7 @@
     "npm": "ionicons",
     "isNpmCoreArtifact": true,
     "alias": "Ionicons",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2480,8 +2205,7 @@
     "npm": "rxdb",
     "isNpmCoreArtifact": true,
     "alias": "RxDB",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2489,8 +2213,7 @@
     "npm": "roughjs",
     "isNpmCoreArtifact": true,
     "alias": "Rough.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2498,8 +2221,7 @@
     "npm": "medium-editor",
     "isNpmCoreArtifact": true,
     "alias": "MediumEditor",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2507,8 +2229,7 @@
     "npm": "q",
     "isNpmCoreArtifact": true,
     "alias": "q",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2516,8 +2237,7 @@
     "npm": "zepto",
     "isNpmCoreArtifact": true,
     "alias": "Zepto.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2525,8 +2245,7 @@
     "npm": "@shopify/draggable",
     "isNpmCoreArtifact": true,
     "alias": "Draggable",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2534,8 +2253,7 @@
     "npm": "p5",
     "isNpmCoreArtifact": true,
     "alias": "P5.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2543,8 +2261,7 @@
     "npm": "lazysizes",
     "isNpmCoreArtifact": true,
     "alias": "Lazysizes",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2552,8 +2269,7 @@
     "npm": "handsontable",
     "isNpmCoreArtifact": true,
     "alias": "Handsontable",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2561,8 +2277,7 @@
     "npm": "recompose",
     "isNpmCoreArtifact": true,
     "alias": "Recompose",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "misc",
@@ -2570,8 +2285,7 @@
     "npm": "lowdb",
     "isNpmCoreArtifact": true,
     "alias": "Lowdb",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2579,8 +2293,7 @@
     "npm": "native-base",
     "isNpmCoreArtifact": true,
     "alias": "NativeBase",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2588,8 +2301,7 @@
     "npm": "@tensorflow/tfjs",
     "isNpmCoreArtifact": true,
     "alias": "TensorFlow.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2597,8 +2309,7 @@
     "npm": "@editorjs/editorjs",
     "isNpmCoreArtifact": true,
     "alias": "Editor.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2606,8 +2317,7 @@
     "npm": "prepack",
     "isNpmCoreArtifact": true,
     "alias": "Prepack",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2615,8 +2325,7 @@
     "npm": "n",
     "isNpmCoreArtifact": true,
     "alias": "n",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2624,8 +2333,7 @@
     "npm": "blessed-contrib",
     "isNpmCoreArtifact": true,
     "alias": "blessed-contrib",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2633,8 +2341,7 @@
     "npm": "blessed",
     "isNpmCoreArtifact": true,
     "alias": "Blessed",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2642,8 +2349,7 @@
     "npm": "weex-vue-render",
     "isNpmCoreArtifact": true,
     "alias": "vue-render-for-apache-weex",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2651,8 +2357,7 @@
     "npm": "pouchdb",
     "isNpmCoreArtifact": true,
     "alias": "PouchDB",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2660,8 +2365,7 @@
     "npm": "@theia/core",
     "isNpmCoreArtifact": true,
     "alias": "Eclipse Theia",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2669,8 +2373,7 @@
     "npm": "flatpickr",
     "isNpmCoreArtifact": true,
     "alias": "Flatpickr",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2678,8 +2381,7 @@
     "npm": "frappe-charts",
     "isNpmCoreArtifact": true,
     "alias": "Frappe Charts",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2687,8 +2389,7 @@
     "npm": "knex",
     "isNpmCoreArtifact": true,
     "alias": "knex.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2696,8 +2397,7 @@
     "npm": "jsonwebtoken",
     "isNpmCoreArtifact": true,
     "alias": "node-jsonwebtoken",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2705,8 +2405,7 @@
     "npm": "vivus",
     "isNpmCoreArtifact": true,
     "alias": "vivus.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2714,8 +2413,7 @@
     "npm": "@fullcalendar/core",
     "isNpmCoreArtifact": true,
     "alias": "FullCalendar",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2723,8 +2421,7 @@
     "npm": "nodemailer",
     "isNpmCoreArtifact": true,
     "alias": "Nodemailer",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2732,8 +2429,7 @@
     "npm": "react-table",
     "isNpmCoreArtifact": true,
     "alias": "React Table",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "misc",
@@ -2741,8 +2437,7 @@
     "npm": "store",
     "isNpmCoreArtifact": true,
     "alias": "Store.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2750,8 +2445,7 @@
     "npm": "netlify-cms-app",
     "isNpmCoreArtifact": true,
     "alias": "Netlify CMS",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2759,8 +2453,7 @@
     "npm": "katex",
     "isNpmCoreArtifact": true,
     "alias": "KaTeX",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2768,8 +2461,7 @@
     "npm": "snapsvg",
     "isNpmCoreArtifact": true,
     "alias": "Snap.svg",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2777,8 +2469,7 @@
     "npm": "dotenv",
     "isNpmCoreArtifact": true,
     "alias": "Dotenv",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2786,8 +2477,7 @@
     "npm": "bit-bin",
     "isNpmCoreArtifact": true,
     "alias": "Bit",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2795,8 +2485,7 @@
     "npm": "expo-cli",
     "isNpmCoreArtifact": true,
     "alias": "expo-cli",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2804,8 +2493,7 @@
     "npm": "expo",
     "isNpmCoreArtifact": true,
     "alias": "Expo",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2813,8 +2501,7 @@
     "npm": "react-grid-layout",
     "isNpmCoreArtifact": true,
     "alias": "React-Grid-Layout",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "misc",
@@ -2822,8 +2509,7 @@
     "npm": "headless-recorder",
     "isNpmCoreArtifact": true,
     "alias": "Headless Recorder",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2831,8 +2517,7 @@
     "npm": "bootswatch",
     "isNpmCoreArtifact": true,
     "alias": "Bootswatch",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2840,8 +2525,7 @@
     "npm": "selectize",
     "isNpmCoreArtifact": true,
     "alias": "selectize.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2849,8 +2533,7 @@
     "npm": "turbolinks",
     "isNpmCoreArtifact": true,
     "alias": "Turbolinks",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2858,8 +2541,7 @@
     "npm": "gun",
     "isNpmCoreArtifact": true,
     "alias": "Gun",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2867,8 +2549,7 @@
     "npm": "super-tiny-icons",
     "isNpmCoreArtifact": true,
     "alias": "Super Tiny Icons",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2876,8 +2557,7 @@
     "npm": "grapesjs",
     "isNpmCoreArtifact": true,
     "alias": "GrapesJS",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2885,8 +2565,7 @@
     "npm": "sweetalert2",
     "isNpmCoreArtifact": true,
     "alias": "Sweetalert2",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2894,8 +2573,7 @@
     "npm": "aframe",
     "isNpmCoreArtifact": true,
     "alias": "A-Frame",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2903,8 +2581,7 @@
     "npm": "@toast-ui/editor",
     "isNpmCoreArtifact": true,
     "alias": "TOAST UI Editor",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2912,8 +2589,7 @@
     "npm": "react-intl",
     "isNpmCoreArtifact": true,
     "alias": "React Intl",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2921,8 +2597,7 @@
     "npm": "@vx/vx",
     "isNpmCoreArtifact": true,
     "alias": "visx",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2930,8 +2605,7 @@
     "npm": "paper",
     "isNpmCoreArtifact": true,
     "alias": "Paper.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2939,8 +2613,7 @@
     "npm": "driver.js",
     "isNpmCoreArtifact": true,
     "alias": "Driver.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2948,8 +2621,7 @@
     "npm": "twemoji",
     "isNpmCoreArtifact": true,
     "alias": "Twemoji",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2957,8 +2629,7 @@
     "npm": "n8n",
     "isNpmCoreArtifact": true,
     "alias": "N8n",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2966,8 +2637,7 @@
     "npm": "johnny-five",
     "isNpmCoreArtifact": true,
     "alias": "johnny-five",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2975,8 +2645,7 @@
     "npm": "gpu.js",
     "isNpmCoreArtifact": true,
     "alias": "GPU.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2984,8 +2653,7 @@
     "npm": "react-native-navigation",
     "isNpmCoreArtifact": true,
     "alias": "React Native Navigation",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -2993,8 +2661,7 @@
     "npm": "react-hot-loader",
     "isNpmCoreArtifact": true,
     "alias": "React Hot Loader",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3002,8 +2669,7 @@
     "npm": "gsap",
     "isNpmCoreArtifact": true,
     "alias": "GSAP",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3011,8 +2677,7 @@
     "npm": "fuse.js",
     "isNpmCoreArtifact": true,
     "alias": "Fuse",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3020,8 +2685,7 @@
     "npm": "verbal-expressions",
     "isNpmCoreArtifact": true,
     "alias": "JSVerbalExpressions",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3029,8 +2693,7 @@
     "npm": "brain.js",
     "isNpmCoreArtifact": true,
     "alias": "Brain.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3038,8 +2701,7 @@
     "npm": "omi",
     "isNpmCoreArtifact": true,
     "alias": "Omi",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3047,8 +2709,7 @@
     "npm": "react-three-fiber",
     "isNpmCoreArtifact": true,
     "alias": "react-three-fiber",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3056,8 +2717,7 @@
     "npm": "shelljs",
     "isNpmCoreArtifact": true,
     "alias": "ShellJS",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3065,8 +2725,7 @@
     "npm": "smartcrop",
     "isNpmCoreArtifact": true,
     "alias": "smartcrop.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3074,8 +2733,7 @@
     "npm": "mjml",
     "isNpmCoreArtifact": true,
     "alias": "MJML",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3083,8 +2741,7 @@
     "npm": "pell",
     "isNpmCoreArtifact": true,
     "alias": "Pell",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3092,8 +2749,7 @@
     "npm": "node-red",
     "isNpmCoreArtifact": true,
     "alias": "Node-RED",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3101,8 +2757,7 @@
     "npm": "co",
     "isNpmCoreArtifact": true,
     "alias": "co",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3110,8 +2765,7 @@
     "npm": "nanoid",
     "isNpmCoreArtifact": true,
     "alias": "Nano ID",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3119,8 +2773,7 @@
     "npm": "browser-sync",
     "isNpmCoreArtifact": true,
     "alias": "Browsersync",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3128,8 +2781,7 @@
     "npm": "systemjs",
     "isNpmCoreArtifact": true,
     "alias": "SystemJS",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3137,8 +2789,7 @@
     "npm": "pomelo",
     "isNpmCoreArtifact": true,
     "alias": "Pomelo",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3146,8 +2797,7 @@
     "npm": "verdaccio",
     "isNpmCoreArtifact": true,
     "alias": "Verdaccio",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3155,8 +2805,7 @@
     "npm": "matter-js",
     "isNpmCoreArtifact": true,
     "alias": "Matter.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3164,8 +2813,7 @@
     "npm": "redux-persist",
     "isNpmCoreArtifact": true,
     "alias": "Redux Persist",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3173,8 +2821,7 @@
     "npm": "virtual-dom",
     "isNpmCoreArtifact": true,
     "alias": "virtual-dom",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3182,8 +2829,7 @@
     "npm": "markdown-it",
     "isNpmCoreArtifact": true,
     "alias": "markdown-it",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3191,8 +2837,7 @@
     "npm": "apollo-server",
     "isNpmCoreArtifact": true,
     "alias": "Apollo Server",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3200,8 +2845,7 @@
     "npm": "@assemblyscript/loader",
     "isNpmCoreArtifact": true,
     "alias": "AssemblyScript",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3209,8 +2853,7 @@
     "npm": "jimp",
     "isNpmCoreArtifact": true,
     "alias": "Jimp",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3218,8 +2861,7 @@
     "npm": "jquery-ui",
     "isNpmCoreArtifact": true,
     "alias": "jQuery UI",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3227,8 +2869,7 @@
     "npm": "raphael",
     "isNpmCoreArtifact": true,
     "alias": "Raphael",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3236,8 +2877,7 @@
     "npm": "supertest",
     "isNpmCoreArtifact": true,
     "alias": "SuperTest",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3245,8 +2885,7 @@
     "npm": "x-data-spreadsheet",
     "isNpmCoreArtifact": true,
     "alias": "x-spreadsheet",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3254,8 +2893,7 @@
     "npm": "mathjs",
     "isNpmCoreArtifact": true,
     "alias": "Math.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3263,8 +2901,7 @@
     "npm": "headroom.js",
     "isNpmCoreArtifact": true,
     "alias": "Headroom.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3272,8 +2909,7 @@
     "npm": "proton-native",
     "isNpmCoreArtifact": true,
     "alias": "proton-native",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3281,8 +2917,7 @@
     "npm": "dplayer",
     "isNpmCoreArtifact": true,
     "alias": "DPlayer",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3290,8 +2925,7 @@
     "npm": "tone",
     "isNpmCoreArtifact": true,
     "alias": "Tone.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3299,8 +2933,7 @@
     "npm": "stylus",
     "isNpmCoreArtifact": true,
     "alias": "Stylus",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3308,8 +2941,7 @@
     "npm": "crypto-js",
     "isNpmCoreArtifact": true,
     "alias": "crypto-js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3317,8 +2949,7 @@
     "npm": "mousetrap",
     "isNpmCoreArtifact": true,
     "alias": "Mousetrap",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3326,8 +2957,7 @@
     "npm": "@antv/g2",
     "isNpmCoreArtifact": true,
     "alias": "G2",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3335,8 +2965,7 @@
     "npm": "@antv/g2plot",
     "isNpmCoreArtifact": true,
     "alias": "G2Plot",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3344,8 +2973,7 @@
     "npm": "@swc/core",
     "isNpmCoreArtifact": true,
     "alias": "swc",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3353,8 +2981,7 @@
     "npm": "filepond",
     "isNpmCoreArtifact": true,
     "alias": "Filepond",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3362,8 +2989,7 @@
     "npm": "react-content-loader",
     "isNpmCoreArtifact": true,
     "alias": "react-content-loader",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "misc",
@@ -3371,8 +2997,7 @@
     "npm": "list.js",
     "isNpmCoreArtifact": true,
     "alias": "List.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3380,8 +3005,7 @@
     "npm": "@mdx-js/mdx",
     "isNpmCoreArtifact": true,
     "alias": "MDX",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3389,8 +3013,7 @@
     "npm": "fx",
     "isNpmCoreArtifact": true,
     "alias": "fx",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3398,8 +3021,7 @@
     "npm": "nock",
     "isNpmCoreArtifact": true,
     "alias": "Nock",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3407,8 +3029,7 @@
     "npm": "botkit",
     "isNpmCoreArtifact": true,
     "alias": "Botkit",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3416,8 +3037,7 @@
     "npm": "electron-builder",
     "isNpmCoreArtifact": true,
     "alias": "electron-builder",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3425,8 +3045,7 @@
     "npm": "vue-resource",
     "isNpmCoreArtifact": true,
     "alias": "vue-resource",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3434,8 +3053,7 @@
     "npm": "bull",
     "isNpmCoreArtifact": true,
     "alias": "Bull",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3443,8 +3061,7 @@
     "npm": "web-vitals",
     "isNpmCoreArtifact": true,
     "alias": "web-vitals",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3452,8 +3069,7 @@
     "npm": "@vueuse/core",
     "isNpmCoreArtifact": true,
     "alias": "VueUse",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3461,8 +3077,7 @@
     "npm": "blueimp-file-upload",
     "isNpmCoreArtifact": true,
     "alias": "jQuery-File-Upload",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3470,8 +3085,7 @@
     "npm": "admin-lte",
     "isNpmCoreArtifact": true,
     "alias": "AdminLTE",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3479,8 +3093,7 @@
     "npm": "@sentry/browser",
     "isNpmCoreArtifact": true,
     "alias": "Sentry JS",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3488,8 +3101,7 @@
     "npm": "layui-src",
     "isNpmCoreArtifact": true,
     "alias": "Layui",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3497,8 +3109,7 @@
     "npm": "nativefier",
     "isNpmCoreArtifact": true,
     "alias": "Nativefier",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3506,8 +3117,7 @@
     "npm": "hover.css",
     "isNpmCoreArtifact": true,
     "alias": "Hover",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3515,8 +3125,7 @@
     "npm": "chosen",
     "isNpmCoreArtifact": true,
     "alias": "Chosen",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3524,8 +3133,7 @@
     "npm": "particles.js",
     "isNpmCoreArtifact": true,
     "alias": "Particles.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3533,8 +3141,7 @@
     "npm": "nprogress",
     "isNpmCoreArtifact": true,
     "alias": "Nprogress",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3542,8 +3149,7 @@
     "npm": "html2canvas",
     "isNpmCoreArtifact": true,
     "alias": "Html2canvas",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3551,8 +3157,7 @@
     "npm": "sweetalert",
     "isNpmCoreArtifact": true,
     "alias": "Sweetalert",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3560,8 +3165,7 @@
     "npm": "lottie-ios",
     "isNpmCoreArtifact": true,
     "alias": "lottie-ios",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3569,8 +3173,7 @@
     "npm": "rx",
     "isNpmCoreArtifact": true,
     "alias": "RxJS (legacy)",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3578,8 +3181,7 @@
     "npm": "wtfjs",
     "isNpmCoreArtifact": true,
     "alias": "Wtfjs",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3587,8 +3189,7 @@
     "npm": "photoswipe",
     "isNpmCoreArtifact": true,
     "alias": "PhotoSwipe",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3596,8 +3197,7 @@
     "npm": "fastclick",
     "isNpmCoreArtifact": true,
     "alias": "Fastclick",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3605,8 +3205,7 @@
     "npm": "generator-jhipster",
     "isNpmCoreArtifact": true,
     "alias": "generator-jhipster",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3614,8 +3213,7 @@
     "npm": "skrollr",
     "isNpmCoreArtifact": true,
     "alias": "Skrollr",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3623,8 +3221,7 @@
     "npm": "jquery-pjax",
     "isNpmCoreArtifact": true,
     "alias": "jquery-pjax",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3632,8 +3229,7 @@
     "npm": "spinkit",
     "isNpmCoreArtifact": true,
     "alias": "SpinKit",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3641,8 +3237,7 @@
     "npm": "swagger-ui",
     "isNpmCoreArtifact": true,
     "alias": "swagger-ui",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3650,8 +3245,7 @@
     "npm": "backbone",
     "isNpmCoreArtifact": true,
     "alias": "Backbone",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3659,8 +3253,7 @@
     "npm": "typeahead.js",
     "isNpmCoreArtifact": true,
     "alias": "Typeahead.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3668,8 +3261,7 @@
     "npm": "mockjs",
     "isNpmCoreArtifact": true,
     "alias": "Mock",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3677,8 +3269,7 @@
     "npm": "react-boilerplate",
     "isNpmCoreArtifact": true,
     "alias": "react-boilerplate",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3686,8 +3277,7 @@
     "npm": "angular-ui-bootstrap",
     "isNpmCoreArtifact": true,
     "alias": "AngularJS UI Bootstrap",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3695,8 +3285,7 @@
     "npm": "dropzone",
     "isNpmCoreArtifact": true,
     "alias": "Dropzone",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3704,8 +3293,7 @@
     "npm": "weui",
     "isNpmCoreArtifact": true,
     "alias": "Weui",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3713,8 +3301,7 @@
     "npm": "gentelella",
     "isNpmCoreArtifact": true,
     "alias": "Gentelella",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3722,8 +3309,7 @@
     "npm": "iview-admin",
     "isNpmCoreArtifact": true,
     "alias": "iview-admin",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3731,8 +3317,7 @@
     "npm": "pace-js",
     "isNpmCoreArtifact": true,
     "alias": "Pace",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3740,8 +3325,7 @@
     "npm": "pkg",
     "isNpmCoreArtifact": true,
     "alias": "Pkg",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3749,8 +3333,7 @@
     "npm": "parallax-js",
     "isNpmCoreArtifact": true,
     "alias": "Parallax",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3758,8 +3341,7 @@
     "npm": "@uirouter/angularjs",
     "isNpmCoreArtifact": true,
     "alias": "ui-router",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3767,8 +3349,7 @@
     "npm": "react-native-vector-icons",
     "isNpmCoreArtifact": true,
     "alias": "react-native-vector-icons",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3776,8 +3357,7 @@
     "npm": "vuedraggable",
     "isNpmCoreArtifact": true,
     "alias": "Vue.Draggable",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3785,8 +3365,7 @@
     "npm": "webpack-dashboard",
     "isNpmCoreArtifact": true,
     "alias": "webpack-dashboard",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3794,8 +3373,7 @@
     "npm": "appium",
     "isNpmCoreArtifact": true,
     "alias": "Appium",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3803,8 +3381,7 @@
     "npm": "scrollmagic",
     "isNpmCoreArtifact": true,
     "alias": "ScrollMagic",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3812,8 +3389,7 @@
     "npm": "parse-server",
     "isNpmCoreArtifact": true,
     "alias": "parse-server",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3821,8 +3397,7 @@
     "npm": "hubot",
     "isNpmCoreArtifact": true,
     "alias": "Hubot",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3830,8 +3405,7 @@
     "npm": "ignite-cli",
     "isNpmCoreArtifact": true,
     "alias": "Ignite",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3839,8 +3413,7 @@
     "npm": "chromeless",
     "isNpmCoreArtifact": true,
     "alias": "Chromeless",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3848,8 +3421,7 @@
     "npm": "react-canvas",
     "isNpmCoreArtifact": true,
     "alias": "react-canvas",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3857,8 +3429,7 @@
     "npm": "iscroll",
     "isNpmCoreArtifact": true,
     "alias": "Iscroll",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3866,8 +3437,7 @@
     "npm": "diff-so-fancy",
     "isNpmCoreArtifact": true,
     "alias": "diff-so-fancy",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3875,8 +3445,7 @@
     "npm": "spaceship-prompt",
     "isNpmCoreArtifact": true,
     "alias": "spaceship-prompt",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3884,8 +3453,7 @@
     "npm": "magnific-popup",
     "isNpmCoreArtifact": true,
     "alias": "Magnific-Popup",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3893,8 +3461,7 @@
     "npm": "semantic-release",
     "isNpmCoreArtifact": true,
     "alias": "semantic-release",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3902,8 +3469,7 @@
     "npm": "bootstrap-table",
     "isNpmCoreArtifact": true,
     "alias": "bootstrap-table",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3911,8 +3477,7 @@
     "npm": "card",
     "isNpmCoreArtifact": true,
     "alias": "Card",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3920,8 +3485,7 @@
     "npm": "face-api.js",
     "isNpmCoreArtifact": true,
     "alias": "face-api.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3929,8 +3493,7 @@
     "npm": "amfe-flexible",
     "isNpmCoreArtifact": true,
     "alias": "lib-flexible",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3938,8 +3501,7 @@
     "npm": "uglify-js",
     "isNpmCoreArtifact": true,
     "alias": "UglifyJS",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3947,8 +3509,7 @@
     "npm": "vue-awesome-swiper",
     "isNpmCoreArtifact": true,
     "alias": "vue-awesome-swiper",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3956,8 +3517,7 @@
     "npm": "remark",
     "isNpmCoreArtifact": true,
     "alias": "Remark",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3965,8 +3525,7 @@
     "npm": "editor.md",
     "isNpmCoreArtifact": true,
     "alias": "Editor.md",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3974,8 +3533,7 @@
     "npm": "reaction-api",
     "isNpmCoreArtifact": true,
     "alias": "Reaction",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3983,8 +3541,7 @@
     "npm": "toastr",
     "isNpmCoreArtifact": true,
     "alias": "Toastr",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -3992,8 +3549,7 @@
     "npm": "volkswagen",
     "isNpmCoreArtifact": true,
     "alias": "Volkswagen",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4001,8 +3557,7 @@
     "npm": "html5shiv",
     "isNpmCoreArtifact": true,
     "alias": "Html5shiv",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4010,8 +3565,7 @@
     "npm": "zxcvbn",
     "isNpmCoreArtifact": true,
     "alias": "Zxcvbn",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4019,8 +3573,7 @@
     "npm": "picturefill",
     "isNpmCoreArtifact": true,
     "alias": "Picturefill",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4028,8 +3581,7 @@
     "npm": "bootstrap-sass",
     "isNpmCoreArtifact": true,
     "alias": "bootstrap-sass",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4037,8 +3589,7 @@
     "npm": "typed.js",
     "isNpmCoreArtifact": true,
     "alias": "Typed.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4046,8 +3597,7 @@
     "npm": "@fingerprintjs/fingerprintjs",
     "isNpmCoreArtifact": true,
     "alias": "Fingerprintjs",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4055,8 +3605,7 @@
     "npm": "pure-prompt",
     "isNpmCoreArtifact": true,
     "alias": "Pure",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4064,8 +3613,7 @@
     "npm": "node-inspector",
     "isNpmCoreArtifact": true,
     "alias": "node-inspector",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4073,8 +3621,7 @@
     "npm": "relaxedjs",
     "isNpmCoreArtifact": true,
     "alias": "ReLaXed",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4082,8 +3629,7 @@
     "npm": "http-proxy",
     "isNpmCoreArtifact": true,
     "alias": "node-http-proxy",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4091,8 +3637,7 @@
     "npm": "react-redux",
     "isNpmCoreArtifact": true,
     "alias": "react-redux",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4100,8 +3645,7 @@
     "npm": "nes.css",
     "isNpmCoreArtifact": true,
     "alias": "NES.css",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4109,8 +3653,7 @@
     "npm": "bourbon",
     "isNpmCoreArtifact": true,
     "alias": "Bourbon",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4118,8 +3661,7 @@
     "npm": "robotjs",
     "isNpmCoreArtifact": true,
     "alias": "Robotjs",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4127,8 +3669,7 @@
     "npm": "purify-css",
     "isNpmCoreArtifact": true,
     "alias": "Purifycss",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4136,8 +3677,7 @@
     "npm": "terminalizer",
     "isNpmCoreArtifact": true,
     "alias": "Terminalizer",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4145,8 +3685,7 @@
     "npm": "loaders.css",
     "isNpmCoreArtifact": true,
     "alias": "Loaders.css",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4154,8 +3693,7 @@
     "npm": "mysql",
     "isNpmCoreArtifact": true,
     "alias": "mysql (Node.js JavaScript Client)",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4163,8 +3701,7 @@
     "npm": "ungit",
     "isNpmCoreArtifact": true,
     "alias": "Ungit",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4172,8 +3709,7 @@
     "npm": "showdown",
     "isNpmCoreArtifact": true,
     "alias": "Showdown",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4181,8 +3717,7 @@
     "npm": "milligram",
     "isNpmCoreArtifact": true,
     "alias": "Milligram",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4190,8 +3725,7 @@
     "npm": "eruda",
     "isNpmCoreArtifact": true,
     "alias": "Eruda",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4199,8 +3733,7 @@
     "npm": "wowjs",
     "isNpmCoreArtifact": true,
     "alias": "WOW",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4208,8 +3741,7 @@
     "npm": "@tabler/icons",
     "isNpmCoreArtifact": true,
     "alias": "tabler-icons",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4217,8 +3749,7 @@
     "npm": "react-native-swiper",
     "isNpmCoreArtifact": true,
     "alias": "react-native-swiper",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4226,8 +3757,7 @@
     "npm": "jquery.cookie",
     "isNpmCoreArtifact": true,
     "alias": "jquery-cookie",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4235,8 +3765,7 @@
     "npm": "spin.js",
     "isNpmCoreArtifact": true,
     "alias": "Spin.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4244,8 +3773,7 @@
     "npm": "hotel",
     "isNpmCoreArtifact": true,
     "alias": "Hotel",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4253,8 +3781,7 @@
     "npm": "trianglify",
     "isNpmCoreArtifact": true,
     "alias": "Trianglify",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4262,8 +3789,7 @@
     "npm": "framer-motion",
     "isNpmCoreArtifact": true,
     "alias": "Motion",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4271,8 +3797,7 @@
     "npm": "natural",
     "isNpmCoreArtifact": true,
     "alias": "Natural",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4280,8 +3805,7 @@
     "npm": "pageres",
     "isNpmCoreArtifact": true,
     "alias": "Pageres",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4289,8 +3813,7 @@
     "npm": "react-slick",
     "isNpmCoreArtifact": true,
     "alias": "react-slick",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4298,8 +3821,7 @@
     "npm": "react-color",
     "isNpmCoreArtifact": true,
     "alias": "react-color",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4307,8 +3829,7 @@
     "npm": "seajs",
     "isNpmCoreArtifact": true,
     "alias": "Seajs",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4316,8 +3837,7 @@
     "npm": "react-desktop",
     "isNpmCoreArtifact": true,
     "alias": "react-desktop",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4325,8 +3845,7 @@
     "npm": "ndb",
     "isNpmCoreArtifact": true,
     "alias": "Ndb",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4334,8 +3853,7 @@
     "npm": "flexboxgrid",
     "isNpmCoreArtifact": true,
     "alias": "Flexboxgrid",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4343,8 +3861,7 @@
     "npm": "is_js",
     "isNpmCoreArtifact": true,
     "alias": "Is.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4352,8 +3869,7 @@
     "npm": "localtunnel",
     "isNpmCoreArtifact": true,
     "alias": "Localtunnel",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4361,8 +3877,7 @@
     "npm": "automerge",
     "isNpmCoreArtifact": true,
     "alias": "Automerge",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4370,8 +3885,7 @@
     "npm": "@pulumi/pulumi",
     "isNpmCoreArtifact": false,
     "alias": "Pulumi",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4379,8 +3893,7 @@
     "npm": "axe-core",
     "isNpmCoreArtifact": true,
     "alias": "axe-core",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4388,8 +3901,7 @@
     "npm": "@stoplight/spectral",
     "isNpmCoreArtifact": true,
     "alias": "Spectral",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4397,8 +3909,7 @@
     "npm": "@welldone-software/why-did-you-render",
     "isNpmCoreArtifact": true,
     "alias": "Why Did You Render",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "misc",
@@ -4406,8 +3917,7 @@
     "npm": "jest-when",
     "isNpmCoreArtifact": true,
     "alias": "jest-when",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4415,8 +3925,7 @@
     "npm": "single-spa",
     "isNpmCoreArtifact": true,
     "alias": "single-spa",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4424,8 +3933,7 @@
     "npm": "npm",
     "isNpmCoreArtifact": true,
     "alias": "npm",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4433,8 +3941,7 @@
     "npm": "@pollyjs/core",
     "isNpmCoreArtifact": true,
     "alias": "Polly.JS",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4442,8 +3949,7 @@
     "npm": "jscodeshift",
     "isNpmCoreArtifact": true,
     "alias": "jscodeshift",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4451,8 +3957,7 @@
     "npm": "@nearform/bubbleprof",
     "isNpmCoreArtifact": false,
     "alias": "node-clinic-bubbleprof",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4460,8 +3965,7 @@
     "npm": "antd",
     "isNpmCoreArtifact": true,
     "alias": "Ant Design",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4469,8 +3973,7 @@
     "npm": "rome",
     "isNpmCoreArtifact": true,
     "alias": "Rome",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4478,8 +3981,7 @@
     "npm": "styled-system",
     "isNpmCoreArtifact": true,
     "alias": "Styled System",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4487,8 +3989,7 @@
     "npm": "styletron-react",
     "isNpmCoreArtifact": false,
     "alias": "Styletron",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "misc",
@@ -4496,8 +3997,7 @@
     "npm": "@fluentui/react-northstar",
     "isNpmCoreArtifact": false,
     "alias": "Fluent UI React Northstar",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "NodeJS Frameworks",
@@ -4505,8 +4005,7 @@
     "npm": "express",
     "isNpmCoreArtifact": true,
     "alias": "Express",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "NodeJS Frameworks",
@@ -4514,8 +4013,7 @@
     "npm": "@nestjs/core",
     "isNpmCoreArtifact": true,
     "alias": "NestJS",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "NodeJS Frameworks",
@@ -4523,8 +4021,7 @@
     "npm": "koa",
     "isNpmCoreArtifact": true,
     "alias": "Koa",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "NodeJS Frameworks",
@@ -4532,8 +4029,7 @@
     "npm": "fastify",
     "isNpmCoreArtifact": true,
     "alias": "Fastify",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "NodeJS Frameworks",
@@ -4541,8 +4037,7 @@
     "npm": "@hapi/hapi",
     "isNpmCoreArtifact": true,
     "alias": "Hapi",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "NodeJS Frameworks",
@@ -4550,8 +4045,7 @@
     "npm": "@adonisjs/core",
     "isNpmCoreArtifact": true,
     "alias": "AdonisJS",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "NodeJS Frameworks",
@@ -4559,8 +4053,7 @@
     "npm": "sails",
     "isNpmCoreArtifact": true,
     "alias": "Sails",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "NodeJS Frameworks",
@@ -4568,8 +4061,7 @@
     "npm": "restify",
     "isNpmCoreArtifact": true,
     "alias": "Restify",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "NodeJS Frameworks",
@@ -4577,8 +4069,7 @@
     "npm": "@feathersjs/feathers",
     "isNpmCoreArtifact": true,
     "alias": "Feathers",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "NodeJS Frameworks",
@@ -4586,8 +4077,7 @@
     "npm": "loopback",
     "isNpmCoreArtifact": true,
     "alias": "LoopBack 3",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "NodeJS Frameworks",
@@ -4595,8 +4085,7 @@
     "npm": "@loopback/core",
     "isNpmCoreArtifact": true,
     "alias": "LoopBack 4",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Node.js Logging libraries",
@@ -4604,8 +4093,7 @@
     "npm": "log4js",
     "isNpmCoreArtifact": true,
     "alias": "log4js-node",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Node.js Logging libraries",
@@ -4613,8 +4101,7 @@
     "npm": "pino",
     "isNpmCoreArtifact": true,
     "alias": "Pino",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Node.js Logging libraries",
@@ -4622,8 +4109,7 @@
     "npm": "winston",
     "isNpmCoreArtifact": true,
     "alias": "Winston",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Node.js Logging libraries",
@@ -4631,8 +4117,7 @@
     "npm": "morgan",
     "isNpmCoreArtifact": true,
     "alias": "Morgan",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Node.js Logging libraries",
@@ -4640,8 +4125,7 @@
     "npm": "loglevel",
     "isNpmCoreArtifact": true,
     "alias": "Loglevel",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Node.js Logging libraries",
@@ -4649,8 +4133,7 @@
     "npm": "bunyan",
     "isNpmCoreArtifact": true,
     "alias": "Bunyan",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Node.js Monitoring tools and libraries",
@@ -4658,8 +4141,7 @@
     "npm": "prom-client",
     "isNpmCoreArtifact": true,
     "alias": "Prometheus client",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Node.js Monitoring tools and libraries",
@@ -4667,8 +4149,7 @@
     "npm": "express-status-monitor",
     "isNpmCoreArtifact": true,
     "alias": "express-status-monitor",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Node.js Monitoring tools and libraries",
@@ -4676,8 +4157,7 @@
     "npm": "clinic",
     "isNpmCoreArtifact": true,
     "alias": "Clinic.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Node.js Monitoring tools and libraries",
@@ -4685,8 +4165,7 @@
     "npm": "appmetrics-dash",
     "isNpmCoreArtifact": true,
     "alias": "appmetrics-dash",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Node.js Process Managers",
@@ -4694,8 +4173,7 @@
     "npm": "forever",
     "isNpmCoreArtifact": true,
     "alias": "Forever",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Node.js Process Managers",
@@ -4703,8 +4181,7 @@
     "npm": "pm2",
     "isNpmCoreArtifact": true,
     "alias": "Pm2",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Node.js Process Managers",
@@ -4712,8 +4189,7 @@
     "npm": "nodemon",
     "isNpmCoreArtifact": true,
     "alias": "Nodemon",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Schema Validation Libraries",
@@ -4721,8 +4197,7 @@
     "npm": "joi",
     "isNpmCoreArtifact": true,
     "alias": "Joi",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Schema Validation Libraries",
@@ -4730,8 +4205,7 @@
     "npm": "ajv",
     "isNpmCoreArtifact": true,
     "alias": "Ajv",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Schema Validation Libraries",
@@ -4739,8 +4213,7 @@
     "npm": "yup",
     "isNpmCoreArtifact": true,
     "alias": "Yup",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "React Component Libraries",
@@ -4748,8 +4221,7 @@
     "npm": "@material-ui/core",
     "isNpmCoreArtifact": true,
     "alias": "Material-UI",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "React Component Libraries",
@@ -4757,8 +4229,7 @@
     "npm": "react-bootstrap",
     "isNpmCoreArtifact": true,
     "alias": "React Bootstrap",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "React Component Libraries",
@@ -4766,8 +4237,7 @@
     "npm": "@chakra-ui/react",
     "isNpmCoreArtifact": true,
     "alias": "Chakra UI",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "React Component Libraries",
@@ -4775,8 +4245,7 @@
     "npm": "reactstrap",
     "isNpmCoreArtifact": true,
     "alias": "Reactstrap",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "React Component Libraries",
@@ -4784,8 +4253,7 @@
     "npm": "rebass",
     "isNpmCoreArtifact": true,
     "alias": "Rebass",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "React Component Libraries",
@@ -4793,8 +4261,7 @@
     "npm": "semantic-ui-react",
     "isNpmCoreArtifact": true,
     "alias": "Semantic UI React",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "React Component Libraries",
@@ -4802,8 +4269,7 @@
     "npm": "grommet",
     "isNpmCoreArtifact": true,
     "alias": "Grommet",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "React Component Libraries",
@@ -4811,8 +4277,7 @@
     "npm": "@fluentui/react",
     "isNpmCoreArtifact": false,
     "alias": "Fluent UI React",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "React Component Libraries",
@@ -4820,8 +4285,7 @@
     "npm": "evergreen-ui",
     "isNpmCoreArtifact": true,
     "alias": "Evergreen",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "ReactJS Datepickers",
@@ -4829,8 +4293,7 @@
     "npm": "react-datepicker",
     "isNpmCoreArtifact": true,
     "alias": "react-datepicker",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "ReactJS Datepickers",
@@ -4838,8 +4301,7 @@
     "npm": "react-date-picker",
     "isNpmCoreArtifact": true,
     "alias": "react-date-picker",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "ReactJS Datepickers",
@@ -4847,8 +4309,7 @@
     "npm": "react-dates",
     "isNpmCoreArtifact": true,
     "alias": "react-dates",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "ReactJS Datepickers",
@@ -4856,8 +4317,7 @@
     "npm": "react-datetime",
     "isNpmCoreArtifact": true,
     "alias": "react-datetime",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "ReactJS Datepickers",
@@ -4865,8 +4325,7 @@
     "npm": "react-day-picker",
     "isNpmCoreArtifact": true,
     "alias": "react-day-picker",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "ReactJS Datepickers",
@@ -4874,8 +4333,7 @@
     "npm": "react-calendar",
     "isNpmCoreArtifact": true,
     "alias": "react-calendar",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "ReactJS Document Head Managers",
@@ -4883,8 +4341,7 @@
     "npm": "react-helmet",
     "isNpmCoreArtifact": true,
     "alias": "React Helmet",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "ReactJS Document Head Managers",
@@ -4892,8 +4349,7 @@
     "npm": "react-helmet-async",
     "isNpmCoreArtifact": true,
     "alias": "react-helmet-async",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "ReactJS Form Libraries",
@@ -4901,8 +4357,7 @@
     "npm": "formik",
     "isNpmCoreArtifact": true,
     "alias": "Formik",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "ReactJS Form Libraries",
@@ -4910,8 +4365,7 @@
     "npm": "react-hook-form",
     "isNpmCoreArtifact": true,
     "alias": "React Hook Form",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "ReactJS Form Libraries",
@@ -4919,8 +4373,7 @@
     "npm": "redux-form",
     "isNpmCoreArtifact": true,
     "alias": "Redux Form",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "ReactJS Form Libraries",
@@ -4928,8 +4381,7 @@
     "npm": "final-form",
     "isNpmCoreArtifact": true,
     "alias": "React Final Form",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Fullstack Serverless ReactJS Frameworks",
@@ -4937,8 +4389,7 @@
     "npm": "blitz",
     "isNpmCoreArtifact": true,
     "alias": "Blitz",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "Fullstack Serverless ReactJS Frameworks",
@@ -4946,8 +4397,7 @@
     "npm": "@redwoodjs/core",
     "isNpmCoreArtifact": true,
     "alias": "RedwoodJS",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "React Native Libraries for Android",
@@ -4955,8 +4405,7 @@
     "npm": "hermes-engine",
     "isNpmCoreArtifact": true,
     "alias": "Hermes",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "React Native Libraries for Android",
@@ -4964,8 +4413,7 @@
     "npm": "jsc-android",
     "isNpmCoreArtifact": true,
     "alias": "jsc-android-buildscripts",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "React Native Libraries for Android",
@@ -4973,8 +4421,7 @@
     "npm": "react-native-v8",
     "isNpmCoreArtifact": true,
     "alias": "react-native-v8",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "ReactJS Unit-Testing Libraries",
@@ -4982,8 +4429,7 @@
     "npm": "enzyme",
     "isNpmCoreArtifact": true,
     "alias": "Enzyme",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "ReactJS Unit-Testing Libraries",
@@ -4991,8 +4437,7 @@
     "npm": "@testing-library/react",
     "isNpmCoreArtifact": true,
     "alias": "React Testing Library",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Runtime Types Checking Libraries",
@@ -5000,8 +4445,7 @@
     "npm": "io-ts",
     "isNpmCoreArtifact": true,
     "alias": "io-ts",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Runtime Types Checking Libraries",
@@ -5009,8 +4453,7 @@
     "npm": "runtypes",
     "isNpmCoreArtifact": true,
     "alias": "Runtypes",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript runtimes",
@@ -5018,8 +4461,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": "Deno",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript runtimes",
@@ -5027,8 +4469,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": "Node.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "ReactJS Select/Autocomplete Components",
@@ -5036,8 +4477,7 @@
     "npm": "downshift",
     "isNpmCoreArtifact": true,
     "alias": "Downshift",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "ReactJS Select/Autocomplete Components",
@@ -5045,8 +4485,7 @@
     "npm": "react-select",
     "isNpmCoreArtifact": true,
     "alias": "React Select",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "ReactJS Select/Autocomplete Components",
@@ -5054,8 +4493,7 @@
     "npm": "select2",
     "isNpmCoreArtifact": true,
     "alias": "Select2",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "ReactJS Select/Autocomplete Components",
@@ -5063,8 +4501,7 @@
     "npm": "react-autosuggest",
     "isNpmCoreArtifact": true,
     "alias": "React Autosuggest",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "ReactJS Select/Autocomplete Components",
@@ -5072,8 +4509,7 @@
     "npm": "react-autocomplete",
     "isNpmCoreArtifact": true,
     "alias": "React Autocomplete",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "ReactJS Select/Autocomplete Components",
@@ -5081,8 +4517,7 @@
     "npm": "react-virtualized-select",
     "isNpmCoreArtifact": true,
     "alias": "React Virtualized Select",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "ReactJS Select/Autocomplete Components",
@@ -5090,8 +4525,7 @@
     "npm": "react-dropdown",
     "isNpmCoreArtifact": true,
     "alias": "react-dropdown",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "JavaScript State Management Libraries",
@@ -5099,8 +4533,7 @@
     "npm": "redux",
     "isNpmCoreArtifact": true,
     "alias": "Redux",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript State Management Libraries",
@@ -5108,8 +4541,7 @@
     "npm": "mobx",
     "isNpmCoreArtifact": true,
     "alias": "MobX",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript State Management Libraries",
@@ -5117,8 +4549,7 @@
     "npm": "rxjs",
     "isNpmCoreArtifact": true,
     "alias": "RxJS",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript State Management Libraries",
@@ -5126,8 +4557,7 @@
     "npm": "recoil",
     "isNpmCoreArtifact": true,
     "alias": "Recoil",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript State Management Libraries",
@@ -5135,8 +4565,7 @@
     "npm": "xstate",
     "isNpmCoreArtifact": true,
     "alias": "Xstate",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript State Management Libraries",
@@ -5144,8 +4573,7 @@
     "npm": "vuex",
     "isNpmCoreArtifact": true,
     "alias": "Vuex",
-    "framework": "vue",
-    "isLegacy": false
+    "framework": "vue"
   },
   {
     "category": "JavaScript State Management Libraries",
@@ -5153,8 +4581,7 @@
     "npm": "@ngrx/store",
     "isNpmCoreArtifact": true,
     "alias": "NgRx",
-    "framework": "angular",
-    "isLegacy": false
+    "framework": "angular"
   },
   {
     "category": "JavaScript State Management Libraries",
@@ -5162,8 +4589,7 @@
     "npm": "react-query",
     "isNpmCoreArtifact": true,
     "alias": "React Query",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "JavaScript State Management Libraries",
@@ -5171,8 +4597,7 @@
     "npm": "zustand",
     "isNpmCoreArtifact": true,
     "alias": "Zustand",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "JavaScript State Management Libraries",
@@ -5180,8 +4605,7 @@
     "npm": "jotai",
     "isNpmCoreArtifact": true,
     "alias": "Jotai",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "JavaScript State Management Libraries",
@@ -5189,8 +4613,7 @@
     "npm": "@datorama/akita",
     "isNpmCoreArtifact": true,
     "alias": "Akita",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript State Management Libraries",
@@ -5198,8 +4621,7 @@
     "npm": "@ngxs/store",
     "isNpmCoreArtifact": true,
     "alias": "NGXS",
-    "framework": "angular",
-    "isLegacy": false
+    "framework": "angular"
   },
   {
     "category": "JavaScript State Management Libraries",
@@ -5207,8 +4629,7 @@
     "npm": "mobx-state-tree",
     "isNpmCoreArtifact": true,
     "alias": "mobx-state-tree",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript State Management Libraries",
@@ -5216,8 +4637,7 @@
     "npm": "easy-peasy",
     "isNpmCoreArtifact": true,
     "alias": "Easy Peasy",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "JavaScript State Management Libraries",
@@ -5225,8 +4645,7 @@
     "npm": "effector",
     "isNpmCoreArtifact": true,
     "alias": "Effector",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript State Management Libraries",
@@ -5234,8 +4653,7 @@
     "npm": "storeon",
     "isNpmCoreArtifact": true,
     "alias": "Storeon",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript State Management Libraries",
@@ -5243,8 +4661,7 @@
     "npm": "constate",
     "isNpmCoreArtifact": true,
     "alias": "Constate",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "JavaScript State Management Libraries",
@@ -5252,8 +4669,7 @@
     "npm": "swr",
     "isNpmCoreArtifact": true,
     "alias": "SWR",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "JavaScript State Management Libraries",
@@ -5261,8 +4677,7 @@
     "npm": "overmind",
     "isNpmCoreArtifact": true,
     "alias": "Overmind",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript State Management Libraries",
@@ -5270,8 +4685,7 @@
     "npm": "nanostores",
     "isNpmCoreArtifact": true,
     "alias": "Nano Stores",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -5279,8 +4693,7 @@
     "npm": "gatsby",
     "isNpmCoreArtifact": true,
     "alias": "Gatsby",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -5288,8 +4701,7 @@
     "npm": "next",
     "isNpmCoreArtifact": true,
     "alias": "Next.js",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -5297,8 +4709,7 @@
     "npm": "nuxt",
     "isNpmCoreArtifact": true,
     "alias": "Nuxt.js",
-    "framework": "vue",
-    "isLegacy": false
+    "framework": "vue"
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -5306,8 +4717,7 @@
     "npm": "sapper",
     "isNpmCoreArtifact": true,
     "alias": "Sapper",
-    "framework": "svelte",
-    "isLegacy": false
+    "framework": "svelte"
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -5315,8 +4725,7 @@
     "npm": "@11ty/eleventy",
     "isNpmCoreArtifact": true,
     "alias": "11ty",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -5324,8 +4733,7 @@
     "npm": "hexo",
     "isNpmCoreArtifact": true,
     "alias": "Hexo",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -5333,8 +4741,7 @@
     "npm": "@docusaurus/core",
     "isNpmCoreArtifact": true,
     "alias": "Docusaurus",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -5342,8 +4749,7 @@
     "npm": "vuepress",
     "isNpmCoreArtifact": true,
     "alias": "VuePress",
-    "framework": "vue",
-    "isLegacy": false
+    "framework": "vue"
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -5351,8 +4757,7 @@
     "npm": "docsify",
     "isNpmCoreArtifact": true,
     "alias": "Docsify",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -5360,8 +4765,7 @@
     "npm": "umi",
     "isNpmCoreArtifact": true,
     "alias": "UmiJS",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -5369,8 +4773,7 @@
     "npm": "react-static",
     "isNpmCoreArtifact": true,
     "alias": "React Static",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -5378,8 +4781,7 @@
     "npm": "gridsome",
     "isNpmCoreArtifact": true,
     "alias": "Gridsome",
-    "framework": "vue",
-    "isLegacy": false
+    "framework": "vue"
   },
   {
     "category": "JavaScript Static Types Checking Tools",
@@ -5387,8 +4789,7 @@
     "npm": "typescript",
     "isNpmCoreArtifact": true,
     "alias": "TypeScript",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Static Types Checking Tools",
@@ -5396,8 +4797,7 @@
     "npm": "flow-bin",
     "isNpmCoreArtifact": true,
     "alias": "Flow",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript BDD Testing tools",
@@ -5405,8 +4805,7 @@
     "npm": "@cucumber/cucumber",
     "isNpmCoreArtifact": true,
     "alias": "Cucumber.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript BDD Testing tools",
@@ -5414,8 +4813,7 @@
     "npm": "mocha-cakes-2",
     "isNpmCoreArtifact": true,
     "alias": "Mocha Cakes 2",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript BDD Testing tools",
@@ -5423,8 +4821,7 @@
     "npm": "livedoc-mocha",
     "isNpmCoreArtifact": true,
     "alias": "LiveDoc",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Testing Frameworks",
@@ -5432,8 +4829,7 @@
     "npm": "jest",
     "isNpmCoreArtifact": true,
     "alias": "Jest",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Testing Frameworks",
@@ -5441,8 +4837,7 @@
     "npm": "ava",
     "isNpmCoreArtifact": true,
     "alias": "Ava",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Testing Frameworks",
@@ -5450,8 +4845,7 @@
     "npm": "mocha",
     "isNpmCoreArtifact": true,
     "alias": "Mocha",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Testing Frameworks",
@@ -5459,8 +4853,7 @@
     "npm": "jasmine-core",
     "isNpmCoreArtifact": true,
     "alias": "Jasmine",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Testing Frameworks",
@@ -5468,8 +4861,7 @@
     "npm": "tape",
     "isNpmCoreArtifact": true,
     "alias": "Tape",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Testing Frameworks",
@@ -5477,8 +4869,7 @@
     "npm": "qunit",
     "isNpmCoreArtifact": true,
     "alias": "Qunit",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript UI Component Development Tools",
@@ -5486,8 +4877,7 @@
     "npm": "@storybook/core",
     "isNpmCoreArtifact": true,
     "alias": "Storybook",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript UI Component Development Tools",
@@ -5495,8 +4885,7 @@
     "npm": "react-styleguidist",
     "isNpmCoreArtifact": true,
     "alias": "React Styleguidist",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "UI Frameworks for building Mobile Apps (Desktop and Web)",
@@ -5504,8 +4893,7 @@
     "npm": "@ionic/core",
     "isNpmCoreArtifact": true,
     "alias": "Ionic Framework",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "UI Frameworks for building Mobile Apps (Desktop and Web)",
@@ -5513,8 +4901,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": "Flutter",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "UI Frameworks for building Mobile Apps (Desktop and Web)",
@@ -5522,8 +4909,7 @@
     "npm": "react-native",
     "isNpmCoreArtifact": true,
     "alias": "react-native",
-    "framework": "react",
-    "isLegacy": false
+    "framework": "react"
   },
   {
     "category": "UI Frameworks for building Mobile Apps (Desktop and Web)",
@@ -5531,8 +4917,7 @@
     "npm": "@nativescript/core",
     "isNpmCoreArtifact": true,
     "alias": "NativeScript",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "UI Frameworks for building Mobile Apps (Desktop and Web)",
@@ -5540,8 +4925,7 @@
     "npm": "framework7",
     "isNpmCoreArtifact": true,
     "alias": "Framework7",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "UI Frameworks for building Mobile Apps (Desktop and Web)",
@@ -5549,8 +4933,7 @@
     "npm": "onsenui",
     "isNpmCoreArtifact": true,
     "alias": "OnsenUI",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "UI Frameworks for building Mobile Apps (Desktop and Web)",
@@ -5558,8 +4941,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": "incubator-weex",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Unit-Testing Libraries",
@@ -5567,8 +4949,7 @@
     "npm": "@testing-library/dom",
     "isNpmCoreArtifact": true,
     "alias": "DOM Testing Library",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Unit-Testing Libraries",
@@ -5576,8 +4957,7 @@
     "npm": "@testing-library/jest-dom",
     "isNpmCoreArtifact": true,
     "alias": "jest-dom",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Unit-Testing Libraries",
@@ -5585,8 +4965,7 @@
     "npm": "@testing-library/svelte",
     "isNpmCoreArtifact": true,
     "alias": "Svelte Testing Library",
-    "framework": "svelte",
-    "isLegacy": false
+    "framework": "svelte"
   },
   {
     "category": "Unit-Testing Libraries",
@@ -5594,8 +4973,7 @@
     "npm": "@testing-library/angular",
     "isNpmCoreArtifact": true,
     "alias": "Angular Testing Library",
-    "framework": "angular",
-    "isLegacy": false
+    "framework": "angular"
   },
   {
     "category": "Unit-Testing Libraries",
@@ -5603,8 +4981,7 @@
     "npm": "chai",
     "isNpmCoreArtifact": true,
     "alias": "Chai",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Unit-Testing Libraries",
@@ -5612,8 +4989,7 @@
     "npm": "sinon",
     "isNpmCoreArtifact": true,
     "alias": "Sinon.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Unit-Testing Libraries",
@@ -5621,8 +4997,7 @@
     "npm": "karma",
     "isNpmCoreArtifact": true,
     "alias": "Karma",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Utility Libraries",
@@ -5630,8 +5005,7 @@
     "npm": "lodash",
     "isNpmCoreArtifact": true,
     "alias": "Lodash",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Utility Libraries",
@@ -5639,8 +5013,7 @@
     "npm": "ramda",
     "isNpmCoreArtifact": true,
     "alias": "Ramda",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Utility Libraries",
@@ -5648,8 +5021,7 @@
     "npm": "underscore",
     "isNpmCoreArtifact": true,
     "alias": "Underscore",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Utility Libraries",
@@ -5657,8 +5029,7 @@
     "npm": "rambda",
     "isNpmCoreArtifact": true,
     "alias": "Rambda",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Utility Libraries",
@@ -5666,8 +5037,7 @@
     "npm": "mout",
     "isNpmCoreArtifact": true,
     "alias": "Mout",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Utility Libraries",
@@ -5675,8 +5045,7 @@
     "npm": "sugar",
     "isNpmCoreArtifact": true,
     "alias": "Sugar",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Utility Libraries",
@@ -5684,8 +5053,7 @@
     "npm": "lazy.js",
     "isNpmCoreArtifact": true,
     "alias": "Lazy.js",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Visual Regression Testing Tools",
@@ -5693,8 +5061,7 @@
     "npm": "backstopjs",
     "isNpmCoreArtifact": true,
     "alias": "BackstopJS",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Visual Regression Testing Tools",
@@ -5702,8 +5069,7 @@
     "npm": "loki",
     "isNpmCoreArtifact": true,
     "alias": "Loki",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "JavaScript Visual Regression Testing Tools",
@@ -5711,8 +5077,7 @@
     "npm": "gemini",
     "isNpmCoreArtifact": true,
     "alias": "Gemini",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "VueJS Component Libraries",
@@ -5720,8 +5085,7 @@
     "npm": "vuetify",
     "isNpmCoreArtifact": true,
     "alias": "Vuetify",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "VueJS Component Libraries",
@@ -5729,8 +5093,7 @@
     "npm": "quasar",
     "isNpmCoreArtifact": true,
     "alias": "Quasar",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "VueJS Component Libraries",
@@ -5738,8 +5101,7 @@
     "npm": "bootstrap-vue",
     "isNpmCoreArtifact": true,
     "alias": "BootstrapVue",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "VueJS Component Libraries",
@@ -5747,8 +5109,7 @@
     "npm": "primevue",
     "isNpmCoreArtifact": true,
     "alias": "Primevue",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "VueJS Component Libraries",
@@ -5756,8 +5117,7 @@
     "npm": "vue-material",
     "isNpmCoreArtifact": true,
     "alias": "Vue Material",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "VueJS Component Libraries",
@@ -5765,8 +5125,7 @@
     "npm": "element-ui",
     "isNpmCoreArtifact": true,
     "alias": "Element UI",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "VueJS Component Libraries",
@@ -5774,8 +5133,7 @@
     "npm": "element-plus",
     "isNpmCoreArtifact": true,
     "alias": "Element Plus",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "VueJS Component Libraries",
@@ -5783,8 +5141,7 @@
     "npm": "iview",
     "isNpmCoreArtifact": true,
     "alias": "iView",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "VueJS Component Libraries",
@@ -5792,8 +5149,7 @@
     "npm": "ant-design-vue",
     "isNpmCoreArtifact": true,
     "alias": "Ant Design Vue",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "VueJS Unit-Testing Libraries",
@@ -5801,8 +5157,7 @@
     "npm": "@vue/test-utils",
     "isNpmCoreArtifact": true,
     "alias": "Vue Test Utils",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "VueJS Unit-Testing Libraries",
@@ -5810,8 +5165,7 @@
     "npm": "@testing-library/vue",
     "isNpmCoreArtifact": true,
     "alias": "Vue Testing Library",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Web Components UI Libraries",
@@ -5819,8 +5173,7 @@
     "npm": "@stencil/core",
     "isNpmCoreArtifact": true,
     "alias": "Stencil",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Web Components UI Libraries",
@@ -5828,8 +5181,7 @@
     "npm": "lit-element",
     "isNpmCoreArtifact": true,
     "alias": "LitElement",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Web Sockets for JavaScript",
@@ -5837,8 +5189,7 @@
     "npm": "socket.io",
     "isNpmCoreArtifact": true,
     "alias": "Socket.io",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   },
   {
     "category": "Web Sockets for JavaScript",
@@ -5846,7 +5197,6 @@
     "npm": "ws",
     "isNpmCoreArtifact": true,
     "alias": "ws",
-    "framework": null,
-    "isLegacy": false
+    "framework": null
   }
 ]

@@ -26,6 +26,7 @@ import {
   repoIdToDevUsageDataMap,
   repoIdToTechRadarMap,
   repoToGTrendDefMap,
+  legacyLibraries,
   StateOfJSItemT,
   TechRadarT,
   CatalogLibraryT,
@@ -106,7 +107,7 @@ export function getLibrary(
       if (repo.isArchived) {
         return 'ARCHIVED';
       }
-      if (library?.isLegacy) {
+      if (legacyLibraries.find((lib) => lib.repo === repo.repoId)) {
         return 'LEGACY';
       }
       const commits = commitsMapR.get(repoIdLC);

@@ -2,6 +2,7 @@ import rawStateOfJsItems from '@/data/stateofjscss.json';
 import rawTechRadarItems from '@/data/techradar.json';
 import rawLibraries from '@/data/libraries.json';
 import rawGoogleTrendsItems from '@/data/google-trends.json';
+import legacyItems from '@/data/legacy.json';
 
 /** ========= STATE OF JS CSS ========= **/
 /**
@@ -90,7 +91,6 @@ interface CatalogLibraryNpmT {
   category: string;
   alias: string;
   framework: string | null;
-  isLegacy: boolean;
 }
 interface CatalogLibraryGithubT {
   npm: null;
@@ -99,7 +99,6 @@ interface CatalogLibraryGithubT {
   category: string;
   alias: string;
   framework: string | null;
-  isLegacy: boolean;
 }
 export type CatalogLibraryT = CatalogLibraryNpmT | CatalogLibraryGithubT;
 
@@ -176,3 +175,6 @@ function capitalise(str: string): string {
 }
 
 export const GOOGLE_TRENDS_LIBS_LIMIT = 5;
+
+/** =========== LEGACY ============== **/
+export const legacyLibraries: { repo: string }[] = legacyItems;
