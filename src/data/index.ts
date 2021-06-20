@@ -177,4 +177,4 @@ function capitalise(str: string): string {
 export const GOOGLE_TRENDS_LIBS_LIMIT = 5;
 
 /** =========== LEGACY ============== **/
-export const legacyLibraries: { repo: string }[] = legacyItems;
+export const legacyLibraries: { repoId: string }[] = legacyItems;
