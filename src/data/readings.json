@@ -10,5 +10,10 @@
     "url": "https://momentjs.com/docs/#/-project-status/",
     "npms": ["moment"],
     "repos": []
+  },
+  {
+    "title": "AngularJS Long Term Support ends on December 31, 2021",
+    "url": "https://blog.angular.io/stable-angularjs-and-long-term-support-7e077635ee9c",
+    "npms": ["angular"]
   }
 ]

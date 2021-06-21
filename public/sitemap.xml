@@ -95,6 +95,11 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=@11ty/eleventy+astro</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=@11ty/eleventy+docsify</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -581,6 +586,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=@docusaurus/core</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@docusaurus/core+astro</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -2031,6 +2041,61 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=ar.js</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=astro</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=astro+docsify</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=astro+gatsby</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=astro+gridsome</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=astro+hexo</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=astro+next</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=astro+nuxt</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=astro+react-static</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=astro+sapper</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=astro+umi</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=astro+vuepress</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
   </url>
