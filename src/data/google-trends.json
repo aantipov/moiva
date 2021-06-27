@@ -38,5 +38,21 @@
   ["nuxt/nuxt.js", "/g/11g0wgnhgc", "Nuxt.js"],
   ["laravel/laravel", "/m/0jwy148", "Laravel"],
   ["django/django", "/m/06y_qx", "Django"],
-  ["axios/axios", "axios", "axios"]
+  ["axios/axios", "axios", "axios"],
+  ["jquery/jquery", "/m/0268gyp", "jQuery"],
+  ["mrdoob/three.js", "/m/0h640bd", "Three.js"],
+  ["jgthms/bulma", "/g/11hbv9rw00", "Bulma"],
+  ["electron/electron", "/g/11bw_559wr", "Electron"],
+  ["handlebars-lang/handlebars.js", "/g/11bc5lbc7h", "Handlebars"],
+  ["prettier", "prettier", "Prettier"],
+  ["leaflet/leaflet", "/m/0w532pk", "Leaflet"],
+  ["openlayers/openlayers", "/m/026mggv", "OpenLayers"],
+  ["gulpjs/gulp", "/g/11byyl8mbg", "gulp.js"],
+  ["reacttraining/react-router", "react router", "react router"],
+  ["babel/babel", "/g/11ghnfnyfx", "Babel"],
+  ["unitech/pm2", "/g/11c0q_hyv5", "PM2"],
+  ["remy/nodemon", "nodemon", "nodemon"],
+  ["formium/formik", "formik", "formik"],
+  ["enzymejs/enzyme", "/m/02jgw", "Enzyme"],
+  ["avajs/ava", "ava", "ava"]
 ]
