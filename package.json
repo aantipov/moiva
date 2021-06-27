@@ -6,9 +6,8 @@
     "dev": "vite",
     "build": "jest && vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "lint": "vue-tsc --noEmit && eslint --ext .ts,.js,.vue src/ && prettier --check src/.",
+    "test": "jest && vue-tsc --noEmit && eslint --ext .ts,.js,.vue src/ && prettier --check src/.",
     "format": "prettier --write src/.",
-    "test": "jest",
     "update": "npx npm-upgrade check"
   },
   "dependencies": {
