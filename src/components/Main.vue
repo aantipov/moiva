@@ -52,17 +52,11 @@
             <GoogleTrends />
             <DevelopersUsage />
           </template>
-          <template v-else-if="popularChartsNumber === 2">
+          <template v-else>
             <NpmDownloads class="col-span-12 md:col-span-6" />
             <GoogleTrends class="col-span-12 md:col-span-6" />
             <Stars class="col-span-12 md:col-span-6" />
             <DevelopersUsage class="col-span-12 md:col-span-6" />
-          </template>
-          <template v-else>
-            <NpmDownloads class="col-span-12 md:col-span-6 xl:col-span-4" />
-            <GoogleTrends class="col-span-12 md:col-span-6 xl:col-span-4" />
-            <Stars class="col-span-12 md:col-span-6 xl:col-span-4" />
-            <DevelopersUsage class="col-span-12 md:col-span-6 xl:col-span-4" />
           </template>
         </div>
       </section>
