@@ -44,7 +44,7 @@
   ["jgthms/bulma", "/g/11hbv9rw00", "Bulma"],
   ["electron/electron", "/g/11bw_559wr", "Electron"],
   ["handlebars-lang/handlebars.js", "/g/11bc5lbc7h", "Handlebars"],
-  ["prettier", "prettier", "Prettier"],
+  ["prettier/prettier", "prettier", "Prettier"],
   ["leaflet/leaflet", "/m/0w532pk", "Leaflet"],
   ["openlayers/openlayers", "/m/026mggv", "OpenLayers"],
   ["gulpjs/gulp", "/g/11byyl8mbg", "gulp.js"],
