@@ -1,18 +1,7 @@
 <template>
   <span
-    v-tooltip="tooltip"
-    class="
-      inline-block
-      px-2
-      py-1
-      mr-1
-      text-xs
-      font-semibold
-      text-white
-      uppercase
-      rounded-full
-      last:mr-0
-    "
+    v-tooltip.html="tooltip"
+    class="inline-block px-2 py-1 mr-1 text-xs font-semibold text-white uppercase rounded-full last:mr-0"
     :class="[value.toLowerCase()]"
   >
     {{ value }}
@@ -39,13 +28,13 @@ export default defineComponent({
     return {
       tooltip: computed(() => {
         if (value.value === 'ACTIVE') {
-          return `There have been commits in the past 6 months and the repository is not tagged as Legacy or Archived`;
+          return `- there have been commits in the last 6 months <br> - the repository is not tagged as Legacy or Archived`;
         } else if (value.value === 'INACTIVE') {
-          return `There have been no commits in the past 6 months and the repository is not tagged as Legacy or Archived`;
+          return `- no commits in the last 6 months <br> - the repository is not tagged as Legacy or Archived.`;
         } else if (value.value === 'LEGACY') {
-          return `The project is marked as Legacy. It is no longer under active development. Use of alternative solutions is recommended`;
+          return `The project is marked as Legacy. <br> It is no longer under active development. <br> Better use alternative solutions.`;
         } else if (value.value === 'ARCHIVED') {
-          return `The repository was Archived. It is not recommended to use it. Look for alternatives.`;
+          return `The repository is Archived and is not recommended for usage. <br>Look for alternatives.`;
         }
 
         return '';

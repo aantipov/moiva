@@ -39,7 +39,7 @@
           Popularity
           <span class="text-lg font-normal">over time</span>
         </h2>
-        <div class="grid grid-cols-12 gap-4">
+        <div class="grid grid-cols-12 gap-8">
           <template v-if="popularChartsNumber === 1">
             <Stars
               class="
@@ -66,7 +66,7 @@
           Maintenance and Development Activity
           <span class="text-lg font-normal">over time</span>
         </h2>
-        <div class="grid grid-cols-12 gap-4">
+        <div class="grid grid-cols-12 gap-8">
           <Releases class="col-span-12 md:col-span-6 xl:col-span-4" />
           <Contributors class="col-span-12 md:col-span-6 xl:col-span-4" />
           <Commits class="col-span-12 md:col-span-6 xl:col-span-4" />
@@ -75,7 +75,8 @@
 
       <section>
         <h2>Miscellaneous</h2>
-        <div class="grid grid-cols-12 gap-4">
+
+        <div class="grid grid-cols-12 gap-8">
           <template v-if="miscChartsNumber === 1">
             <Languages
               class="

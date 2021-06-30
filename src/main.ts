@@ -26,6 +26,7 @@ app.directive('tooltip', (el, binding) => {
   tippy(el as HTMLElement, {
     content: binding.value,
     delay: 150,
+    allowHTML: binding.modifiers.html
   });
 });
 
