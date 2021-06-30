@@ -1,5 +1,6 @@
 <template>
   <span
+    v-tooltip="tooltip"
     class="
       inline-block
       px-2
@@ -19,7 +20,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue';
+import { defineComponent, PropType, computed, toRefs } from 'vue';
 
 type TypeT = 'bundled' | 'separate';
 
@@ -31,10 +32,25 @@ export default defineComponent({
       type: String as PropType<TypeT>,
       required: true,
     },
+    typesPackage: {
+      type: String,
+      required: false,
+      default: null,
+    },
   },
 
-  setup() {
-    return {};
+  setup(props) {
+    const { value, typesPackage } = toRefs(props);
+
+    return {
+      tooltip: computed(() => {
+        if (value.value === 'bundled') {
+          return 'Types definitions are bundled with the npm package';
+        } else if (value.value === 'separate') {
+          return `Types definitions are provided via a separate npm package: ${typesPackage.value}`;
+        }
+      }),
+    };
   },
 });
 </script>

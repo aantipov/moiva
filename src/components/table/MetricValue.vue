@@ -134,7 +134,11 @@
   <div v-else-if="type === 'ts'" class="flex items-center justify-center">
     <template v-if="lib.npmPackage">
       <type-badge v-if="lib.npmPackage.hasBuiltinTypes" value="bundled" />
-      <type-badge v-else-if="lib.npmPackage.hasOtherTypes" value="separate" />
+      <type-badge
+        v-else-if="lib.npmPackage.hasOtherTypes"
+        value="separate"
+        :types-package="lib.npmPackage.typesPackageName"
+      />
       <template v-else>-</template>
     </template>
     <template v-else>-</template>
