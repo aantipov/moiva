@@ -191,9 +191,7 @@
   </div>
 
   <div v-else-if="type === 'license'" class="flex items-center justify-center">
-    <template v-if="lib.license">
-      <LicenseBadge :value="lib.license" />
-    </template>
+    <LicenseBadge v-if="lib.license" :value="lib.license" />
     <template v-else> - </template>
   </div>
 </template>
