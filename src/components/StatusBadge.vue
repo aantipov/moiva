@@ -38,17 +38,18 @@ export default defineComponent({
 
     return {
       tooltip: computed(() => {
+        let txt;
         if (value.value === 'ACTIVE') {
-          return `- there have been commits in the last 6 months <br> - the repository is not tagged as Legacy or Archived`;
+          txt = `<p>- there have been commits in the last 6 months <br> - the repository is not tagged as Legacy or Archived</p>`;
         } else if (value.value === 'INACTIVE') {
-          return `- no commits in the last 6 months <br> - the repository is not tagged as Legacy or Archived.`;
+          txt = `<p>- no commits in the last 6 months <br> - the repository is not tagged as Legacy or Archived.</p>`;
         } else if (value.value === 'LEGACY') {
-          return `The project is marked as Legacy. <br> It is no longer under active development. <br> Better use alternative solutions.`;
+          txt = `<p>The project is marked as Legacy.</p> <p>It is no longer under active development.</p> <p>Better use alternative solutions.</p>`;
         } else if (value.value === 'ARCHIVED') {
-          return `The repository is Archived and is not recommended for usage. <br>Look for alternatives.`;
+          txt = `<p>The repository is Archived and is not recommended for usage.</p><p>Look for alternatives.</p>`;
         }
 
-        return '';
+        return `<div class="badge-wrapper">${txt}</div>`;
       }),
     };
   },
