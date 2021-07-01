@@ -32,13 +32,13 @@ export default defineComponent({
 
   setup(props) {
     const { value } = toRefs(props);
-    const license = value.value;
 
     return {
       classname: computed(() => {
-        if (license.key === 'mit') {
+        const licenseKey = value.value.key;
+        if (licenseKey === 'mit') {
           return 'permissive';
-        } else if (license.key === 'apache-2.0') {
+        } else if (licenseKey === 'apache-2.0') {
           return 'warning';
         } else {
           return 'unknown';
