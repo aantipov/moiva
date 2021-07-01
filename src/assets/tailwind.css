@@ -49,4 +49,10 @@
   .toast-error-close-btn {
     @apply text-white static text-2xl font-semibold leading-none mr-1 outline-none focus:outline-none focus:shadow-none !important;
   }
+  .badge-wrapper p {
+    @apply text-sm leading-tight text-white;
+  }
+  .badge-wrapper a {
+    @apply text-sm;
+  }
 }

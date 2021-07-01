@@ -1,6 +1,6 @@
 <template>
   <span
-    v-tooltip="tooltip"
+    v-tooltip.html="tooltip"
     class="
       inline-block
       px-2
@@ -45,9 +45,9 @@ export default defineComponent({
     return {
       tooltip: computed(() => {
         if (value.value === 'bundled') {
-          return 'Types definitions are bundled with the npm package';
+          return '<div class="badge-wrapper"><p>Types definitions are bundled with the npm package</p></div>';
         } else if (value.value === 'separate') {
-          return `Types definitions are provided via a separate npm package: ${typesPackage.value}`;
+          return `<div class="badge-wrapper"><p>Types definitions are provided via a separate npm package: ${typesPackage.value}</p></div>`;
         }
       }),
     };
