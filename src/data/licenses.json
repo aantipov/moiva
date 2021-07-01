@@ -1,0 +1,12 @@
+[
+  {
+    "key": "mit",
+    "description": "One of the most permissive free software licenses.<br> A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.",
+    "url": "https://choosealicense.com/licenses/mit/"
+  },
+  {
+    "key": "apache-2.0",
+    "description": "A permissive license whose main conditions require preservation of copyright and license notices. Contributors provide an express grant of patent rights. Licensed works, modifications, and larger works may be distributed under different terms and without source code.<br>More restrictive than MIT license.",
+    "url": "http://choosealicense.com/licenses/apache-2.0/"
+  }
+]

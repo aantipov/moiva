@@ -191,9 +191,8 @@
   </div>
 
   <div v-else-if="type === 'license'" class="flex items-center justify-center">
-    {{
-      lib.npmPackage?.license || lib.repo.licenseInfo?.key.toUpperCase() || '-'
-    }}
+    <LicenseBadge v-if="lib.license" :value="lib.license" />
+    <template v-else> - </template>
   </div>
 </template>
 
@@ -207,6 +206,7 @@ import { subQuarters, isSameQuarter } from 'date-fns';
 import StatusBadge from '@/components/StatusBadge.vue';
 import TRadarBadge from '@/components/TRadarBadge.vue';
 import TypeBadge from '@/components/TypeBadge.vue';
+import LicenseBadge from '@/components/LicenseBadge.vue';
 
 const prevQuarterDate = subQuarters(new Date(), 1);
 const roundBytesFn = (bytes: number): number => Math.round(bytes / 102.4) / 10;
@@ -218,6 +218,7 @@ export default defineComponent({
     StatusBadge,
     TRadarBadge,
     TypeBadge,
+    LicenseBadge,
   },
 
   props: {

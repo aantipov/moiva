@@ -44,6 +44,7 @@ import { StarsT, cacheR as starsMapR } from '@/components/github-stars/api';
 import { libraryToColorMapR } from '@/store/librariesColors';
 import { RepoT, NpmPackageT } from '@/libraryApis';
 import readings from '@/data/readings.json';
+import licenses from '@/data/licenses.json';
 
 type LibCommitsT = CommitsResponseItemT[] | null | undefined;
 type LibNpmDownloadsT = NpmDownloadT[] | null | undefined;
@@ -54,6 +55,12 @@ export interface ReadingT {
   title: string;
   npms: string[];
   repos: string[];
+}
+
+export interface LicenseT {
+  key: string;
+  description: string;
+  url: string;
 }
 
 export type StatusT = 'ACTIVE' | 'INACTIVE' | 'LEGACY' | 'ARCHIVED';
@@ -76,6 +83,7 @@ export interface LibraryT {
   contributors: ContributorsT[] | null | undefined; // null for errors, undefined for not loaded yet
   commits: LibCommitsT;
   languages: LanguagesT | null | undefined;
+  license: LicenseT | null | undefined;
   googleTrendsDef: GTrendDefT | null; // null if no config
   googleTrends: LibGTrendsT | undefined | null; // null for errors, undefined for not loaded yet
   devUsage: StateOfJSItemT | undefined;
@@ -123,6 +131,16 @@ export function getLibrary(
       return 'ACTIVE';
     }),
     tradar: repoIdToTechRadarMap[repoIdLC] || null,
+    // @ts-ignore
+    license: computed(() => {
+      const licenseKey =
+        npmPackage?.license?.toLowerCase() ||
+        repo.licenseInfo?.key?.toLowerCase();
+
+      return licenseKey
+        ? licenses.find((item) => item.key === licenseKey)
+        : null;
+    }),
     // @ts-ignore
     color: computed(() => libraryToColorMapR.get(id) || '#ffffff'),
     // @ts-ignore
