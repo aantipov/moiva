@@ -1,7 +1,18 @@
 <template>
   <span
     v-tooltip.html="tooltip"
-    class="inline-block px-2 py-1 mr-1 text-xs font-semibold text-white uppercase rounded-full  last:mr-0"
+    class="
+      inline-block
+      px-2
+      py-1
+      mr-1
+      text-xs
+      font-semibold
+      text-white
+      uppercase
+      rounded-full
+      last:mr-0
+    "
     :class="[value.toLowerCase()]"
   >
     {{ value }}
@@ -34,7 +45,7 @@ export default defineComponent({
         } else if (value.value === 'Assess') {
           return '<div class="badge-wrapper"><p>Worth looking at it closely, but not necessarily trial yet - unless you think it would be a particularly good fit for you.</p><p><a href="https://www.thoughtworks.com/radar/faq" target="_blank">More</a></p></div>';
         } else if (value.value === 'Hold') {
-        return '<div class="badge-wrapper"><p>It is accepted in the industry, but you may run into trouble with it.</p><p>Recommendation: avoid using it.</p><p><a href="https://www.thoughtworks.com/radar/faq" target="_blank">More</a></p></div>';
+          return '<div class="badge-wrapper"><p>It is accepted in the industry, but you may run into trouble with it.</p><p>Recommendation: avoid using it.</p><p><a href="https://www.thoughtworks.com/radar/faq" target="_blank">More</a></p></div>';
         }
       }),
     };
