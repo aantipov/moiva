@@ -38,15 +38,20 @@ export default defineComponent({
 
     return {
       tooltip: computed(() => {
+        let txt;
         if (value.value === 'Adopt') {
-          return '<div class="badge-wrapper"><p>Proven and mature for use. Consider using it.</p><p><a href="https://www.thoughtworks.com/radar/faq" target="_blank">More</a></p></div>';
+          txt = '<p>Proven and mature for use. Consider using it.</p>';
         } else if (value.value === 'Trial') {
-          return '<div class="badge-wrapper"><p>Ready for use, but not as completely proven as libraries in "ADOPT" ring.</p><p>Use it on a trial basis to decide whether it should be part of your tech stack.</p><p><a href="https://www.thoughtworks.com/radar/faq" target="_blank">More</a></p></div>';
+          txt =
+            '<p>Ready for use, but not as completely proven as libraries in "ADOPT" ring.</p><p>Use it on a trial basis to decide whether it should be part of your tech stack.</p>';
         } else if (value.value === 'Assess') {
-          return '<div class="badge-wrapper"><p>Worth looking at it closely, but not necessarily trial yet - unless you think it would be a particularly good fit for you.</p><p><a href="https://www.thoughtworks.com/radar/faq" target="_blank">More</a></p></div>';
+          txt =
+            '<p>Worth looking at it closely, but not necessarily trial yet - unless you think it would be a particularly good fit for you.</p>';
         } else if (value.value === 'Hold') {
-          return '<div class="badge-wrapper"><p>It is accepted in the industry, but you may run into trouble with it.</p><p>Recommendation: avoid using it.</p><p><a href="https://www.thoughtworks.com/radar/faq" target="_blank">More</a></p></div>';
+          txt =
+            '<p>It is accepted in the industry, but you may run into trouble with it.</p><p>Recommendation: avoid using it.</p>';
         }
+        return `<div class="badge-wrapper">${txt}<p><a href="https://www.thoughtworks.com/radar/faq" target="_blank">More</a></p></div>`;
       }),
     };
   },
