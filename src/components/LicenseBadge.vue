@@ -35,9 +35,6 @@ export default defineComponent({
     const license = value.value;
 
     return {
-      // tooltip: computed(() => {
-      //   return licensesMap[val]?.description || value.value;
-      // }),
       classname: computed(() => {
         if (license.key === 'mit') {
           return 'permissive';
