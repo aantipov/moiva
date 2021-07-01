@@ -1,18 +1,7 @@
 <template>
   <span
     v-tooltip.html="tooltip"
-    class="
-      inline-block
-      px-2
-      py-1
-      mr-1
-      text-xs
-      font-semibold
-      text-white
-      uppercase
-      rounded-full
-      last:mr-0
-    "
+    class="inline-block px-2 py-1 mr-1 text-xs font-semibold text-white uppercase rounded-full  last:mr-0"
     :class="[value.toLowerCase()]"
   >
     {{ value }}
@@ -39,13 +28,13 @@ export default defineComponent({
     return {
       tooltip: computed(() => {
         if (value.value === 'Adopt') {
-          return 'Proven and mature for use. Consider using it.';
+          return '<div class="badge-wrapper"><p>Proven and mature for use. Consider using it.</p><p><a href="https://www.thoughtworks.com/radar/faq" target="_blank">More</a></p></div>';
         } else if (value.value === 'Trial') {
-          return 'Ready for use, but not as completely proven as libraries in "ADOPT" ring.<br> Use it on a trial basis to decide whether it should be part of your tech stack.';
+          return '<div class="badge-wrapper"><p>Ready for use, but not as completely proven as libraries in "ADOPT" ring.</p><p>Use it on a trial basis to decide whether it should be part of your tech stack.</p><p><a href="https://www.thoughtworks.com/radar/faq" target="_blank">More</a></p></div>';
         } else if (value.value === 'Assess') {
-          return 'Worth looking at it closely, but not necessarily trial yet - unless you think it would be a particularly good fit for you.';
+          return '<div class="badge-wrapper"><p>Worth looking at it closely, but not necessarily trial yet - unless you think it would be a particularly good fit for you.</p><p><a href="https://www.thoughtworks.com/radar/faq" target="_blank">More</a></p></div>';
         } else if (value.value === 'Hold') {
-          return 'It is accepted in the industry, but you may run into trouble with it.<br> Recommendation: avoid using it.';
+        return '<div class="badge-wrapper"><p>It is accepted in the industry, but you may run into trouble with it.</p><p>Recommendation: avoid using it.</p><p><a href="https://www.thoughtworks.com/radar/faq" target="_blank">More</a></p></div>';
         }
       }),
     };
