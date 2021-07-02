@@ -45,7 +45,8 @@ export default defineComponent({
     return {
       tooltip: computed(() => {
         if (value.value === 'bundled') {
-          return 'Types definitions are bundled with the npm package';
+          // we need tippy-content here for Tailwind to recognize the class
+          return '<div class="tippy-content">Types definitions are bundled with the npm package</div>';
         } else if (value.value === 'separate') {
           return `Types definitions are provided via a separate npm package: ${typesPackage.value}`;
         }
