@@ -8,16 +8,20 @@
 
     <template v-if="type === 'repo'">
       <GitHubIcon
-        v-tooltip="'GitHub repository'"
+        v-tooltip.html="github"
         class="w-8"
         label="GitHub repository"
       />
-      <div v-tooltip="'GitHub repository'" class="label">GitHub</div>
+      <div v-tooltip.html="github" class="label">GitHub</div>
     </template>
 
     <template v-if="type === 'status'">
-      <HeartBeatIcon v-tooltip="status" class="w-8" label="status" />
-      <div v-tooltip="status" class="label">Status</div>
+      <HeartBeatIcon
+        v-tooltip.html="status"
+        class="w-8"
+        label="An icon denoting a status of a library"
+      />
+      <div v-tooltip.html="status" class="label">Status</div>
     </template>
 
     <template v-if="type === 'stars'">
@@ -53,20 +57,20 @@
 
     <template v-else-if="type === 'devusage'">
       <UserGroupIcon
-        v-tooltip="devUsageInfo"
+        v-tooltip.html="devUsageInfo"
         class="w-8"
-        :label="devUsageInfo"
+        label="An icon denoting percentage of developers using a library"
       />
-      <div v-tooltip="devUsageInfo" class="label">Developer Usage, %</div>
+      <div v-tooltip.html="devUsageInfo" class="label">Developer Usage, %</div>
     </template>
 
     <template v-else-if="type === 'tradar'">
       <TWIcon
-        v-tooltip="tradarTooltip"
+        v-tooltip.html="tradarTooltip"
         class="w-8 h-3"
-        :label="tradarTooltip"
+        label="An icon denoting Thoughtworks techradar ring assigned to a library"
       />
-      <div v-tooltip="tradarTooltip" class="label">Tech Radar</div>
+      <div v-tooltip.html="tradarTooltip" class="label">Tech Radar</div>
     </template>
 
     <template v-else-if="type === 'releases'">
@@ -118,24 +122,39 @@
 
     <template v-else-if="type === 'ts'">
       <div class="flex justify-center w-8">
-        <TSIcon v-tooltip="tsTooltip" label="TypeScript support" />
+        <TSIcon
+          v-tooltip.html="tsTooltip"
+          label="An icon denoting TypeScript support"
+        />
       </div>
-      <div v-tooltip="tsTooltip" class="label">Types</div>
+      <div v-tooltip.html="tsTooltip" class="label">Types</div>
     </template>
 
     <template v-else-if="type === 'bundlesize'">
-      <CubeIcon v-tooltip="bundlesize" class="w-8" :label="bundlesize" />
-      <div v-tooltip="bundlesize" class="label">Bundle Size</div>
+      <CubeIcon
+        v-tooltip.html="bundlesize"
+        class="w-8"
+        label="An icon denoting bundle size of an npm package"
+      />
+      <div v-tooltip.html="bundlesize" class="label">Bundle Size</div>
     </template>
 
     <template v-else-if="type === 'security'">
-      <ShieldIcon v-tooltip="secScore" class="w-8" :label="secScore" />
-      <div v-tooltip="secScore" class="label">Security score</div>
+      <ShieldIcon
+        v-tooltip.html="secScore"
+        class="w-8"
+        label="An icon denoting Security Score of an Npm package"
+      />
+      <div v-tooltip.html="secScore" class="label">Security score</div>
     </template>
 
     <template v-else-if="type === 'vulnerability'">
-      <BugIcon v-tooltip="vulnInfo" class="w-8" :label="vulnInfo" />
-      <div v-tooltip="vulnInfo" class="label">Vulnerabilities</div>
+      <BugIcon
+        v-tooltip.html="vulnInfo"
+        class="w-8"
+        label="An icon denoting vulnerabilities number of an Npm package"
+      />
+      <div v-tooltip.html="vulnInfo" class="label">Vulnerabilities</div>
     </template>
 
     <template v-else-if="type === 'age'">
@@ -207,28 +226,30 @@ export default defineComponent({
   setup() {
     return {
       quarter: prevQuarter,
+      github: 'GitHub repository',
       status:
-        'Library status. Possible values: "Active",  "Inactive" if no commits in the last 6 months, "Legacy" if library authors called it so, "Archived" if the repository is archived',
+        '<p>Library status. Possible values:</p><p>- "Active"<br> - "Inactive" if no commits in the last 6 months<br> - "Legacy" if library authors called it so<br> - "Archived" if the repository is archived</p>',
       stars:
         'The total number of GitHub stars and the average number of new stars per month over the last 3 months',
       npmDownloads:
         'The average number of Npm downloads per month over the last 3 months. The average monthly Npm downloads growth over the last 6 months',
       tsTooltip:
-        'TypeScript support. "Bundled" - typings are bundled together with the package. "Separate" - typings are published to the @types organization on Npm',
+        '<p>TypeScript support.</p> <p>"BUNDLED" - typings are bundled together with the package.</p> <p>"SEPARATE" - typings are published to the @types organization on Npm</p>',
       secScore:
-        'Security score of the Npm package. Snyk.io calculates it based on the number of vulnerabilities and their severity. "A" - no vulnerabilities, "F" - the least secure level.',
-      vulnInfo: 'Vulnerabilities found in the repository. Data source: Snyk.io',
+        '<p>Security score of the Npm package.</p> <p><a href="https://snyk.io/" target="_blank">Snyk.io</a> calculates it based on the number of vulnerabilities and their severity.</p> "A" - no vulnerabilities, "F" - the least secure level.',
+      vulnInfo:
+        '<p>Vulnerabilities found in the repository.</p> <p>Data source: <a href="https://snyk.io/" target="_blank">Snyk.io</a></p>',
       contributorsTooltip: `Contributors number in ${prevQuarter}`,
       npmReleasesTooltip: `Npm releases number in ${prevQuarter}`,
       commitsTooltip: `Repository commits number in ${prevQuarter}`,
       tradarTooltip:
-        'A ThoughtWorks tech radar “ring” assigned to the library. Four possible rings - “Adopt”, “Trial”, “Assess”, and “Hold”.',
+        '<p>A ThoughtWorks tech radar “ring” assigned to the library.</p> <p>Four possible rings - “Adopt”, “Trial”, “Assess”, and “Hold”.</p>',
       searchInfo:
         'An average Google search interest in relation to other libraries.',
       devUsageInfo:
-        'Percentage of developers using the library according to the latest StateOfJS 2020 survey',
+        'Percentage of developers using the library according to the latest <a href="https://stateofjs.com/" target="_blank">StateOfJS 2020</a> survey',
       bundlesize:
-        'Bundle size of the npm package minified+gzipped. Data source: Bundlephobia.com',
+        'Bundle size of the npm package minified+gzipped. Data source: <a href="https://bundlephobia.com/" target="_blank">Bundlephobia.com</a>',
     };
   },
 });
