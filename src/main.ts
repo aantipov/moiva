@@ -28,6 +28,7 @@ app.directive('tooltip', (el, binding) => {
     delay: 150,
     interactive: true,
     allowHTML: binding.modifiers.html,
+    appendTo: document.body,
   });
 });
 

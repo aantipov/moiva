@@ -51,7 +51,7 @@ export default defineComponent({
           txt =
             '<p>It is accepted in the industry, but you may run into trouble with it.</p><p>Recommendation: avoid using it.</p>';
         }
-        return `<div class="badge-wrapper">${txt}<p><a href="https://www.thoughtworks.com/radar/faq" target="_blank">More</a></p></div>`;
+        return `${txt}<p><a href="https://www.thoughtworks.com/radar/faq" target="_blank">Read more</a></p>`;
       }),
     };
   },
