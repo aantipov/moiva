@@ -45,9 +45,9 @@ export default defineComponent({
     return {
       tooltip: computed(() => {
         if (value.value === 'bundled') {
-          return '<div class="badge-wrapper"><p>Types definitions are bundled with the npm package</p></div>';
+          return 'Types definitions are bundled with the npm package';
         } else if (value.value === 'separate') {
-          return `<div class="badge-wrapper"><p>Types definitions are provided via a separate npm package: ${typesPackage.value}</p></div>`;
+          return `Types definitions are provided via a separate npm package: ${typesPackage.value}`;
         }
       }),
     };
