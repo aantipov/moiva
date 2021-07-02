@@ -49,7 +49,7 @@ export default defineComponent({
           txt = `<p>The repository is Archived and is not recommended for usage.</p><p>Look for alternatives.</p>`;
         }
 
-        return `<div class="badge-wrapper">${txt}</div>`;
+        return `${txt}`;
       }),
     };
   },
