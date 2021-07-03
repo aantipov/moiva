@@ -24,7 +24,7 @@
   }
   a:hover,
   .link:hover {
-    @apply text-blue-900 underline text-primary-dark;
+    @apply underline text-primary-dark;
   }
 
   a.primary-link {
@@ -54,6 +54,6 @@
     @apply font-sans text-sm font-light leading-snug text-white;
   }
   .tippy-content a {
-    @apply font-medium text-white;
+    @apply font-medium text-white underline;
   }
 }
