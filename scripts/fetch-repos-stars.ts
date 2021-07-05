@@ -9,22 +9,25 @@ interface CategoryT {
   name: string;
   items: {
     repo: string;
+    npm: string | null;
+    exclude: boolean;
   }[];
 }
 
-const decoder = new TextDecoder("utf-8");
-const files = [...Deno.readDirSync("../../moiva-catalog/catalog")];
+const decoder = new TextDecoder('utf-8');
+const files = [...Deno.readDirSync('../moiva-catalog/catalog')];
 const reposIds = files
   .map(
     (file) =>
       JSON.parse(
         decoder.decode(
-          Deno.readFileSync("../../moiva-catalog/catalog/" + file.name),
-        ),
-      ) as CategoryT,
+          Deno.readFileSync('../moiva-catalog/catalog/' + file.name)
+        )
+      ) as CategoryT
   )
   .map((cat) => cat.items)
   .flat()
+  .filter((item) => !item.exclude && !!item.npm)
   .map((item) => item.repo);
 
 const limit = 100;
@@ -35,16 +38,16 @@ const end = start + limit; // not included
 try {
   const res = await fetchReposStarsBatch();
   console.log(`Handled ${start}-${end} out of ${reposIds.length}`);
-  console.log("[");
+  console.log('[');
   res.nonCompleteRepos.forEach((repoId) => console.log(`"${repoId}",`));
-  console.log("]");
-  console.log("ERRORS");
-  console.log("[");
+  console.log(']');
+  console.log('ERRORS');
+  console.log('[');
   res.errors.forEach((repoId) => console.log(repoId));
-  console.log("]");
+  console.log(']');
 } catch (e) {
   /* handle error */
-  console.log("ERR3", e.status);
+  console.log('ERR3', e.status);
 }
 
 async function fetchReposStarsBatch() {
@@ -80,10 +83,10 @@ interface RespT {
 async function fetchRepoStars(repoId: string) {
   const response = await fetch(
     `https://github-stars.moiva.workers.dev/?repo=${repoId}`,
-    { headers: { "Content-Type": "application/json" } },
+    { headers: { 'Content-Type': 'application/json' } }
   );
   if (!response.ok) {
-    console.error("ERR1", repoId, response.status);
+    console.error('ERR1', repoId, response.status);
     return false;
   }
 
