@@ -193,6 +193,11 @@ const content = `<?xml version="1.0" encoding="UTF-8"?>
   </url>
 
   <url>
+    <loc>https://moiva.io/blog/2021-07-update-new-metric-status/</loc>
+    <lastmod>2021-07-06</lastmod>
+  </url>
+
+  <url>
     <loc>https://moiva.io/blog/2021-06-update-improved-table-view-seo-fixes/</loc>
     <lastmod>2021-06-10</lastmod>
   </url>
