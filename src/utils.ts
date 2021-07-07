@@ -429,15 +429,11 @@ export function getEarliestQuarter(
 }
 
 export function getDateRanges(since: string): string[] {
-  const dates = [];
+  const dates = [since];
   const cYear = getYear(new Date());
   const cMonth = getMonth(new Date());
   const maxYear = cMonth < 5 ? cYear - 1 : cYear;
-  let nextYear = getYear(new Date(since));
-
-  if (since.slice(-3) !== '-01') {
-    dates.push(since);
-  }
+  let nextYear = getYear(new Date(since)) + 1;
 
   while (nextYear <= maxYear) {
     dates.push(nextYear.toString());
