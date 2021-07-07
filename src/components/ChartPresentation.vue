@@ -21,6 +21,18 @@
       </m-chart-info>
     </div>
 
+    <div v-if="since" class="flex justify-center">
+      <select
+        v-model="dateRangeSince"
+        name="date-range"
+        @change="onDateRangeChange"
+      >
+        <option v-for="val in sinceValues" :key="val" :value="val">
+          since {{ val }}
+        </option>
+      </select>
+    </div>
+
     <!-- Chart -->
     <div class="relative" style="height: 350px">
       <m-loader v-if="isLoading" />
@@ -46,7 +58,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, toRefs, onMounted, watch } from 'vue';
+import { defineComponent, ref, toRefs, onMounted, watch, PropType } from 'vue';
 import {
   Chart,
   ChartData,
@@ -73,12 +85,25 @@ export default defineComponent({
       type: String,
       required: true,
     },
+    since: {
+      type: String,
+      required: false,
+      default: null,
+    },
+    sinceValues: {
+      type: Array as PropType<string[]>,
+      required: false,
+      default: () => [],
+    },
   },
 
-  setup(props, { slots }) {
-    const { isLoading, chartConfig, isError } = toRefs(props);
+  emits: ['sinceChange'],
+
+  setup(props, ctx) {
+    const { isLoading, chartConfig, isError, since, sinceValues } =
+      toRefs(props);
     const chartEl = ref<null | HTMLCanvasElement>(null);
-    const hasInfo = ref(!!slots.default);
+    const hasInfo = ref(!!ctx.slots.default);
     let mychart: Chart;
 
     function initChart(): void {
@@ -100,9 +125,21 @@ export default defineComponent({
       }
     });
 
+    const dateRangeSince = ref(since.value);
+
+    watch(sinceValues, () => {
+      // sinceValues list changes on adding/removing a library.
+      // reset the since value
+      dateRangeSince.value = sinceValues.value[0];
+    });
+
     return {
       chartEl,
       hasInfo,
+      dateRangeSince,
+      onDateRangeChange(): void {
+        ctx.emit('sinceChange', dateRangeSince.value);
+      },
     };
   },
 });

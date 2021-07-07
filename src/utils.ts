@@ -1,5 +1,6 @@
 import { catalogLibraries, CatalogLibraryT } from '@/data/index';
 import { LibraryReadonlyT, LibrariesReadonlyT } from '@/libraryApis';
+import { getYear, getMonth } from 'date-fns';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import Swal from 'sweetalert2';
 
@@ -425,4 +426,22 @@ export function getEarliestQuarter(
   const quarterMonth = getQuarterMonthFromDate(month);
 
   return quarterMonth > limitMonth ? quarterMonth : limitMonth;
+}
+
+export function getDateRanges(since: string): string[] {
+  const dates = [];
+  const cYear = getYear(new Date());
+  const cMonth = getMonth(new Date());
+  const maxYear = cMonth < 5 ? cYear - 1 : cYear;
+  let nextYear = getYear(new Date(since));
+
+  if (since.slice(-3) !== '-01') {
+    dates.push(since);
+  }
+
+  while (nextYear <= maxYear) {
+    dates.push(nextYear.toString());
+    nextYear++;
+  }
+  return dates;
 }
