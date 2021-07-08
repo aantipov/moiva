@@ -138,8 +138,9 @@ export default defineComponent({
         const keywords = filteredLibsRef.value.map(
           (lib) => lib.googleTrendsDef.keyword
         );
-        // TODO: fix
-        const datesQueryParam = encodeURIComponent('2017-01-01 2021-01-11');
+        const datesQueryParam = encodeURIComponent(
+          '2017-01-01 ' + format(new Date(), 'yyyy-MM-dd')
+        );
         const libsQueryParam = encodeURIComponent(keywords.join(','));
 
         return `https://trends.google.com/trends/explore?cat=31&date=${datesQueryParam}&q=${libsQueryParam}`;
