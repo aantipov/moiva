@@ -1,6 +1,6 @@
 <template>
-  <section>
-    <Loader v-if="isLoading" class="z-10" />
+  <section class="relative">
+    <m-loader-new v-if="isLoading" class="z-10 pb-40" />
 
     <div class="flex justify-center">
       <div class="overflow-scroll border rounded border-primary bg-primary">
@@ -86,7 +86,6 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue';
-import Loader from '../Loader.vue';
 import MetricHeader from './MetricHeader.vue';
 import MetricValue from './MetricValue.vue';
 import { libraryToColorMap } from '@/store/librariesColors';
@@ -156,7 +155,6 @@ export default defineComponent({
   name: 'Table',
 
   components: {
-    Loader,
     MetricHeader,
     MetricValue,
   },

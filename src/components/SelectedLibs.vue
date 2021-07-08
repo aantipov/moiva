@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Loader v-if="isLoading" />
+    <m-loader-new />
 
     <div class="flex justify-end pr-4">
       <a v-tooltip="`Clear selection`" href="/" @click.prevent="clearSelection"
@@ -125,7 +125,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Loader from './Loader.vue';
+import Loader from './LoaderNew.vue';
 import LibExternalLinks from './LibExternalLinks.vue';
 import { LibraryReadonlyT } from '@/libraryApis';
 import NpmIcon from './icons/Npm.vue';

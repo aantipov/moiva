@@ -12,7 +12,7 @@
         class="relative w-full mx-auto lg:w-9/12 xl:w-2/4"
         style="min-height: 200px"
       >
-        <m-loader />
+        <m-loader-new />
       </div>
     </div>
 
