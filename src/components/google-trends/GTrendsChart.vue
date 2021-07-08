@@ -30,7 +30,7 @@
 
 <script lang="ts">
 import { defineComponent, computed, watchEffect, ref } from 'vue';
-import { ChartConfiguration } from 'chart.js';
+import { ChartConfiguration, ChartDataset } from 'chart.js';
 import { GTrendDefT, GOOGLE_TRENDS_LIBS_LIMIT } from '@/data/index';
 import { numbersFormatter, getDateRanges } from '@/utils';
 import { LibGTrendsT } from './api';
@@ -77,6 +77,7 @@ export default defineComponent({
       () => selectedSinceRef.value || minMonthRef.value
     );
 
+    // Have "datasets" separate for better animation when changing "since" date
     const datasets = computed<ChartDataset<'line'>[]>(() =>
       filteredLibsRef.value.map((lib) => ({
         label: lib.googleTrendsDef.alias,
