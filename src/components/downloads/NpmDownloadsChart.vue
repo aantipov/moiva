@@ -9,7 +9,7 @@
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
     :since="since"
-    :since-values="dateRanges"
+    :since-values="sinceValues"
     @sinceChange="onSinceChange"
   >
     <p>NPM downloads monthly.</p>
@@ -70,6 +70,7 @@ export default defineComponent({
       () => selectedSinceRef.value || minMonthRef.value
     );
 
+    // Have "datasets" separate for better animation when changing "since" date
     const datasets = computed<ChartDataset<'line'>[]>(() =>
       filteredLibsRef.value.map((lib) => ({
         label: lib.npmPackage.name,
@@ -147,11 +148,11 @@ export default defineComponent({
           .filter((lib) => !!lib.npmPackage && !lib.npmDownloads)
           .map((lib) => (lib.npmPackage as NpmPackageT).name);
       }),
+      since: sinceRef,
+      sinceValues: computed<string[]>(() => getDateRanges(minMonthRef.value)),
       onSinceChange(since: string) {
         selectedSinceRef.value = since;
       },
-      dateRanges: computed<string[]>(() => getDateRanges(minMonthRef.value)),
-      since: sinceRef,
     };
   },
 });

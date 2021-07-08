@@ -8,6 +8,9 @@
     :failed-libs-names="[]"
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
+    :since="since"
+    :since-values="sinceValues"
+    @sinceChange="onSinceChange"
   >
     <p>Google Search Interest Over Time.</p>
     <p>
@@ -26,12 +29,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, watchEffect } from 'vue';
+import { defineComponent, computed, watchEffect, ref } from 'vue';
 import { ChartConfiguration } from 'chart.js';
 import { GTrendDefT, GOOGLE_TRENDS_LIBS_LIMIT } from '@/data/index';
-import { numbersFormatter } from '@/utils';
+import { numbersFormatter, getDateRanges } from '@/utils';
 import { LibGTrendsT } from './api';
 import { enUS } from 'date-fns/locale';
+import { format } from 'date-fns';
 import { LibraryReadonlyT } from '@/libraryApis';
 import {
   librariesRR,
@@ -57,6 +61,32 @@ export default defineComponent({
       () => librariesRR.filter((lib) => !!lib.googleTrends) as FilteredLibT[]
     );
 
+    // Calculate startMonth based on packages creation date
+    const minMonthRef = computed(() => {
+      if (filteredLibsRef.value.length) {
+        const date = new Date(
+          1000 * Number(filteredLibsRef.value[0].googleTrends.timeline[0].time)
+        );
+        return format(date, 'yyyy-MM');
+      }
+
+      return '2017-01';
+    });
+    const selectedSinceRef = ref<string | null>(null);
+    const sinceRef = computed<string>(
+      () => selectedSinceRef.value || minMonthRef.value
+    );
+
+    const datasets = computed<ChartDataset<'line'>[]>(() =>
+      filteredLibsRef.value.map((lib) => ({
+        label: lib.googleTrendsDef.alias,
+        data: lib.googleTrends.timeline.map((tl) => tl.value),
+        backgroundColor: lib.color,
+        borderColor: lib.color,
+        pointRadius: 0,
+      }))
+    );
+
     const chartConfig = computed<ChartConfiguration>(() => ({
       type: 'line',
       data: {
@@ -65,20 +95,18 @@ export default defineComponent({
               (tl) => Number(tl.time) * 1000
             )
           : [],
-        datasets: filteredLibsRef.value.map((lib) => ({
-          label: lib.googleTrendsDef.alias,
-          data: lib.googleTrends.timeline.map((tl) => tl.value),
-          backgroundColor: lib.color,
-          borderColor: lib.color,
-          pointRadius: 0,
-        })),
+        datasets: datasets.value,
       },
       options: {
         elements: { line: { tension: 0.1 } },
         scales: {
           x: {
             type: 'time',
-            time: { unit: 'year', tooltipFormat: 'MMM, yyyy' },
+            time: {
+              unit: sinceRef.value > '2019-10' ? 'month' : 'year',
+              tooltipFormat: 'MMM, yyyy',
+            },
+            min: sinceRef.value as unknown as number,
             adapters: { date: { locale: enUS } },
           },
           y: { ticks: { callback: numbersFormatter.format as () => string } },
@@ -109,6 +137,7 @@ export default defineComponent({
         const keywords = filteredLibsRef.value.map(
           (lib) => lib.googleTrendsDef.keyword
         );
+        // TODO: fix
         const datesQueryParam = encodeURIComponent('2017-01-01 2021-01-11');
         const libsQueryParam = encodeURIComponent(keywords.join(','));
 
@@ -127,6 +156,11 @@ export default defineComponent({
         }
         return '';
       }),
+      since: sinceRef,
+      sinceValues: computed<string[]>(() => getDateRanges(minMonthRef.value)),
+      onSinceChange(since: string) {
+        selectedSinceRef.value = since;
+      },
     };
   },
 });
