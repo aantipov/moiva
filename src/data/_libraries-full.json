@@ -1601,14 +1601,6 @@
   },
   {
     "category": "misc",
-    "repoId": "sequelize/sequelize",
-    "npm": "sequelize",
-    "isNpmCoreArtifact": true,
-    "alias": "Sequelize",
-    "framework": null
-  },
-  {
-    "category": "misc",
     "repoId": "webtorrent/webtorrent",
     "npm": "webtorrent",
     "isNpmCoreArtifact": true,
@@ -1649,14 +1641,6 @@
   },
   {
     "category": "misc",
-    "repoId": "typeorm/typeorm",
-    "npm": "typeorm",
-    "isNpmCoreArtifact": true,
-    "alias": "TypeORM",
-    "framework": null
-  },
-  {
-    "category": "misc",
     "repoId": "tabler/tabler",
     "npm": "@tabler/core",
     "isNpmCoreArtifact": true,
@@ -1677,14 +1661,6 @@
     "npm": "react-beautiful-dnd",
     "isNpmCoreArtifact": true,
     "alias": "react-beautiful-dnd",
-    "framework": null
-  },
-  {
-    "category": "misc",
-    "repoId": "automattic/mongoose",
-    "npm": "mongoose",
-    "isNpmCoreArtifact": true,
-    "alias": "Mongoose",
     "framework": null
   },
   {
@@ -2397,14 +2373,6 @@
     "npm": "frappe-charts",
     "isNpmCoreArtifact": true,
     "alias": "Frappe Charts",
-    "framework": null
-  },
-  {
-    "category": "misc",
-    "repoId": "knex/knex",
-    "npm": "knex",
-    "isNpmCoreArtifact": true,
-    "alias": "knex.js",
     "framework": null
   },
   {
@@ -7177,14 +7145,6 @@
   },
   {
     "category": "misc",
-    "repoId": "prisma/prisma",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": "Prisma",
-    "framework": null
-  },
-  {
-    "category": "misc",
     "repoId": "iamadamdev/bypass-paywalls-chrome",
     "npm": null,
     "isNpmCoreArtifact": null,
@@ -11837,6 +11797,86 @@
     "npm": "yup",
     "isNpmCoreArtifact": true,
     "alias": "Yup",
+    "framework": null
+  },
+  {
+    "category": "JavaScript/Node.js ORMs",
+    "repoId": "knex/knex",
+    "npm": "knex",
+    "isNpmCoreArtifact": true,
+    "alias": "knex.js",
+    "framework": null
+  },
+  {
+    "category": "JavaScript/Node.js ORMs",
+    "repoId": "sequelize/sequelize",
+    "npm": "sequelize",
+    "isNpmCoreArtifact": true,
+    "alias": "Sequelize",
+    "framework": null
+  },
+  {
+    "category": "JavaScript/Node.js ORMs",
+    "repoId": "bookshelf/bookshelf",
+    "npm": "bookshelf",
+    "isNpmCoreArtifact": true,
+    "alias": "bookshelf.js",
+    "framework": null
+  },
+  {
+    "category": "JavaScript/Node.js ORMs",
+    "repoId": "balderdashy/waterline",
+    "npm": "waterline",
+    "isNpmCoreArtifact": true,
+    "alias": "Waterline",
+    "framework": null
+  },
+  {
+    "category": "JavaScript/Node.js ORMs",
+    "repoId": "vincit/objection.js",
+    "npm": "objection",
+    "isNpmCoreArtifact": true,
+    "alias": "Objection.js",
+    "framework": null
+  },
+  {
+    "category": "JavaScript/Node.js ORMs",
+    "repoId": "automattic/mongoose",
+    "npm": "mongoose",
+    "isNpmCoreArtifact": true,
+    "alias": "Mongoose",
+    "framework": null
+  },
+  {
+    "category": "JavaScript/Node.js ORMs",
+    "repoId": "typegoose/typegoose",
+    "npm": "@typegoose/typegoose",
+    "isNpmCoreArtifact": true,
+    "alias": "Typegoose",
+    "framework": null
+  },
+  {
+    "category": "JavaScript/Node.js ORMs",
+    "repoId": "typeorm/typeorm",
+    "npm": "typeorm",
+    "isNpmCoreArtifact": true,
+    "alias": "TypeORM",
+    "framework": null
+  },
+  {
+    "category": "JavaScript/Node.js ORMs",
+    "repoId": "mikro-orm/mikro-orm",
+    "npm": "@mikro-orm/core",
+    "isNpmCoreArtifact": true,
+    "alias": "MikroORM",
+    "framework": null
+  },
+  {
+    "category": "JavaScript/Node.js ORMs",
+    "repoId": "prisma/prisma",
+    "npm": "@prisma/client",
+    "isNpmCoreArtifact": true,
+    "alias": "Prisma",
     "framework": null
   },
   {
