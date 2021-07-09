@@ -53,6 +53,9 @@
   .tippy-content p {
     @apply font-sans text-sm font-light leading-snug text-white;
   }
+  .tippy-content p.f-mono {
+    @apply font-mono;
+  }
   .tippy-content a {
     @apply font-medium text-white underline;
   }
