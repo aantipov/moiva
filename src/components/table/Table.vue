@@ -16,9 +16,7 @@
                 scope="col"
                 class="relative px-8"
               >
-                <div v-tooltip="lib.repo.description">
-                  {{ lib.alias }}
-                </div>
+                <div>{{ lib.alias }}</div>
                 <m-close
                   class="absolute top-0 right-0 w-8 h-full px-2 cursor-pointer"
                   @click="() => removeLibrary(lib.id)"

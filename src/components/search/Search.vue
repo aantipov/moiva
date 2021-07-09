@@ -124,7 +124,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref, computed } from 'vue';
 import autocomplete, { AutocompleteItem } from 'autocompleter';
-import { numbersFormatter } from '@/utils';
+import { numbersFormatter, sanitizeHTML } from '@/utils';
 import 'autocompleter/autocomplete.css';
 import { fetchNpmSearch, fetchGithubSearch } from './search-api';
 import ChevronDownIcon from '@/components/icons/ChevronDown.vue';
@@ -140,12 +140,6 @@ interface SearchItemT {
 }
 
 type OptionT = SearchItemT & AutocompleteItem;
-
-function sanitizeHTML(text: string) {
-  var element = document.createElement('div');
-  element.innerText = text;
-  return element.innerHTML;
-}
 
 export default defineComponent({
   name: 'Search',

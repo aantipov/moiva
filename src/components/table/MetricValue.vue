@@ -2,7 +2,7 @@
   <div v-if="type === 'npm'" class="flex flex-col items-center">
     <template v-if="lib.npmPackage">
       <m-ext-link
-        v-tooltip="lib.npmPackage.name"
+        v-tooltip.html.ni="npmTooltip"
         :href="npmUrl"
         :txt="lib.npmPackage.name"
         truncate
@@ -14,7 +14,7 @@
 
   <div v-else-if="type === 'repo'" class="flex justify-center">
     <m-ext-link
-      v-tooltip="lib.repo.repoId"
+      v-tooltip.html.ni="githubTooltip"
       :href="githubUrl"
       :txt="lib.repo.repoId"
       truncate
@@ -200,7 +200,12 @@
 import { defineComponent, toRefs, computed } from 'vue';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import { LibraryReadonlyT } from '@/libraryApis';
-import { numbersFormatter, formatPercent, formatNumber } from '@/utils';
+import {
+  numbersFormatter,
+  formatPercent,
+  formatNumber,
+  sanitizeHTML,
+} from '@/utils';
 import { MetricT } from './Table.vue';
 import { subQuarters, isSameQuarter } from 'date-fns';
 import StatusBadge from '@/components/StatusBadge.vue';
@@ -239,6 +244,16 @@ export default defineComponent({
     );
 
     return {
+      npmTooltip: computed<string>(() => {
+        return `<p class="f-mono">${
+          lib.value.npmPackage?.name ?? ''
+        }</p><p>${sanitizeHTML(lib.value.npmPackage?.description ?? '')}</p>`;
+      }),
+      githubTooltip: computed<string>(() => {
+        return `<p class="f-mono">${lib.value.repo.repoId}</p><p>${sanitizeHTML(
+          lib.value.repo.description
+        )}</p>`;
+      }),
       starsGrowth: computed<string>(() => {
         if (!lib.value.stars || !lib.value.repo.stars) {
           return '-';
