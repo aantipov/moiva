@@ -141,6 +141,12 @@ interface SearchItemT {
 
 type OptionT = SearchItemT & AutocompleteItem;
 
+function sanitizeHTML(text) {
+  var element = document.createElement('div');
+  element.innerText = text;
+  return element.innerHTML;
+}
+
 export default defineComponent({
   name: 'Search',
 
@@ -243,7 +249,7 @@ export default defineComponent({
 
             <!-- Description -->
             <div class="text-sm font-light text-black text-opacity-70">${
-              item.description ? item.description : ''
+              item.description ? sanitizeHTML(item.description) : ''
             }</div>           
           </div>
           `;
