@@ -141,7 +141,7 @@ interface SearchItemT {
 
 type OptionT = SearchItemT & AutocompleteItem;
 
-function sanitizeHTML(text) {
+function sanitizeHTML(text: string) {
   var element = document.createElement('div');
   element.innerText = text;
   return element.innerHTML;
