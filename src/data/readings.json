@@ -16,5 +16,11 @@
     "url": "https://blog.angular.io/stable-angularjs-and-long-term-support-7e077635ee9c",
     "npms": ["angular"],
     "repos": []
+  },
+  {
+    "title": "9 Best JavaScript and TypeScript ORMs for 2021",
+    "url": "https://www.sitepoint.com/javascript-typescript-orms/",
+    "npms": ["@prisma/client", "@mikro-orm/core", "@typegoose/typegoose", "bookshelf", "knex", "mongoose", "objection", "sequelize", "typeorm", "waterline"],
+    "repos": []
   }
 ]
