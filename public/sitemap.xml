@@ -1325,6 +1325,46 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=@popperjs/core+@tippyjs/react</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@popperjs/core+balloon-css</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@popperjs/core+hint.css</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@popperjs/core+rc-tooltip</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@popperjs/core+react-popper</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@popperjs/core+react-tooltip</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@popperjs/core+tippy.js</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@popperjs/core+tooltipster</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=@primer/css</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -1591,6 +1631,46 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=@theia/core</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@tippyjs/react</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@tippyjs/react+balloon-css</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@tippyjs/react+hint.css</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@tippyjs/react+rc-tooltip</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@tippyjs/react+react-popper</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@tippyjs/react+react-tooltip</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@tippyjs/react+tippy.js</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@tippyjs/react+tooltipster</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -2496,6 +2576,41 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=backstopjs+loki</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=balloon-css</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=balloon-css+hint.css</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=balloon-css+rc-tooltip</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=balloon-css+react-popper</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=balloon-css+react-tooltip</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=balloon-css+tippy.js</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=balloon-css+tooltipster</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -4801,6 +4916,36 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=highlight.js</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=hint.css</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=hint.css+rc-tooltip</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=hint.css+react-popper</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=hint.css+react-tooltip</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=hint.css+tippy.js</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=hint.css+tooltipster</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -7205,6 +7350,31 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=rc-tooltip</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=rc-tooltip+react-popper</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=rc-tooltip+react-tooltip</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=rc-tooltip+tippy.js</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=rc-tooltip+tooltipster</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=react</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -7560,6 +7730,26 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=react-popper</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=react-popper+react-tooltip</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=react-popper+tippy.js</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=react-popper+tooltipster</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=react-query</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -7656,6 +7846,21 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=react-three-fiber</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=react-tooltip</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=react-tooltip+tippy.js</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=react-tooltip+tooltipster</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -8530,12 +8735,27 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=tippy.js</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=tippy.js+tooltipster</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=toastr</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://moiva.io/?npm=tone</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=tooltipster</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
   </url>

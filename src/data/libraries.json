@@ -2001,14 +2001,6 @@
   },
   {
     "category": "misc",
-    "repoId": "popperjs/popper-core",
-    "npm": "@popperjs/core",
-    "isNpmCoreArtifact": true,
-    "alias": "Popper",
-    "framework": null
-  },
-  {
-    "category": "misc",
     "repoId": "youzan/vant",
     "npm": "vant",
     "isNpmCoreArtifact": true,
@@ -4261,6 +4253,78 @@
     "npm": "@prisma/client",
     "isNpmCoreArtifact": true,
     "alias": "Prisma",
+    "framework": null
+  },
+  {
+    "category": "Tooltips, Popovers, Modals",
+    "repoId": "popperjs/popper-core",
+    "npm": "@popperjs/core",
+    "isNpmCoreArtifact": true,
+    "alias": "Popper",
+    "framework": null
+  },
+  {
+    "category": "Tooltips, Popovers, Modals",
+    "repoId": "chinchang/hint.css",
+    "npm": "hint.css",
+    "isNpmCoreArtifact": true,
+    "alias": "Hint.css",
+    "framework": null
+  },
+  {
+    "category": "Tooltips, Popovers, Modals",
+    "repoId": "kazzkiq/balloon.css",
+    "npm": "balloon-css",
+    "isNpmCoreArtifact": true,
+    "alias": "Balloon.css",
+    "framework": null
+  },
+  {
+    "category": "Tooltips, Popovers, Modals",
+    "repoId": "calebjacob/tooltipster",
+    "npm": "tooltipster",
+    "isNpmCoreArtifact": true,
+    "alias": "Tooltipster",
+    "framework": null
+  },
+  {
+    "category": "Tooltips, Popovers, Modals",
+    "repoId": "react-component/tooltip",
+    "npm": "rc-tooltip",
+    "isNpmCoreArtifact": true,
+    "alias": "rc-tooltip",
+    "framework": "react"
+  },
+  {
+    "category": "Tooltips, Popovers, Modals",
+    "repoId": "wwayne/react-tooltip",
+    "npm": "react-tooltip",
+    "isNpmCoreArtifact": true,
+    "alias": "react-tooltip",
+    "framework": "react"
+  },
+  {
+    "category": "Tooltips, Popovers, Modals",
+    "repoId": "popperjs/react-popper",
+    "npm": "react-popper",
+    "isNpmCoreArtifact": true,
+    "alias": "React Popper",
+    "framework": "react"
+  },
+  {
+    "category": "Tooltips, Popovers, Modals",
+    "repoId": "atomiks/tippyjs-react",
+    "npm": "@tippyjs/react",
+    "isNpmCoreArtifact": true,
+    "alias": "Tippy.js for React",
+    "framework": "react"
+  },
+  {
+    "category": "Tooltips, Popovers, Modals",
+    "repoId": "atomiks/tippyjs",
+    "npm": "tippy.js",
+    "isNpmCoreArtifact": true,
+    "alias": "Tippy.js",
     "framework": null
   },
   {
