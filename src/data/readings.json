@@ -22,5 +22,11 @@
     "url": "https://www.sitepoint.com/javascript-typescript-orms/",
     "npms": ["@prisma/client", "@mikro-orm/core", "@typegoose/typegoose", "bookshelf", "knex", "mongoose", "objection", "sequelize", "typeorm", "waterline"],
     "repos": []
+  },
+  {
+    "title": "10 static site generators to watch in 2021",
+    "url": "https://www.netlify.com/blog/2021/06/02/10-static-site-generators-to-watch-in-2021/",
+    "npms": ["gatsby", "next", "nuxt", "gridsome", "@docusaurus/core", "@11ty/eleventy"],
+    "repos": []
   }
 ]
