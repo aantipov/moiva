@@ -1,6 +1,6 @@
 <template>
   <section class="relative">
-    <m-loader-new v-if="isLoading" class="z-10 pb-40" />
+    <m-loader-new v-if="isLoading" class="z-10 pt-40" />
 
     <div class="flex justify-center">
       <div class="overflow-scroll border rounded border-primary bg-primary">
