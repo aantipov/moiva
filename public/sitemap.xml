@@ -1325,6 +1325,16 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://moiva.io/?npm=@popperjs/core+hint.css</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=@popperjs/core+tippy.js</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>https://moiva.io/?npm=@primer/css</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
@@ -4801,6 +4811,16 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=highlight.js</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=hint.css</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=hint.css+tippy.js</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
   </url>
@@ -8526,6 +8546,11 @@
   </url>
   <url>
     <loc>https://moiva.io/?npm=timeago.js</loc>
+    <lastmod>2021-06-04</lastmod>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://moiva.io/?npm=tippy.js</loc>
     <lastmod>2021-06-04</lastmod>
     <changefreq>weekly</changefreq>
   </url>
