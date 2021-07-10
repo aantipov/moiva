@@ -9,22 +9,25 @@ interface CategoryT {
   name: string;
   items: {
     repo: string;
+    npm: string | null;
+    exclude: boolean;
   }[];
 }
 
-const decoder = new TextDecoder("utf-8");
-const files = [...Deno.readDirSync("../../moiva-catalog/catalog")];
+const decoder = new TextDecoder('utf-8');
+const files = [...Deno.readDirSync('../moiva-catalog/catalog')];
 const reposIds = files
   .map(
     (file) =>
       JSON.parse(
         decoder.decode(
-          Deno.readFileSync("../../moiva-catalog/catalog/" + file.name),
-        ),
-      ) as CategoryT,
+          Deno.readFileSync('../moiva-catalog/catalog/' + file.name)
+        )
+      ) as CategoryT
   )
   .map((cat) => cat.items)
   .flat()
+  .filter((item) => !item.exclude && !!item.npm)
   .map((item) => item.repo);
 
 const renamings: { old: string; new: string }[] = [];
@@ -36,11 +39,11 @@ const end = start + limit; // not included
 
 try {
   await fetchReposRealNamesBatch();
-  console.log("Renames HITs", renamings);
+  console.log('Renames HITs', renamings);
   console.log(`Handled ${start}-${end} out of ${reposIds.length}`);
 } catch (e) {
   /* handle error */
-  console.log("ERR", e.status);
+  console.log('ERR', e.status);
 }
 
 // function writeToFile(newItems) {
@@ -60,13 +63,13 @@ async function fetchReposRealNamesBatch() {
 async function fetchRepoRealName(oldRepoId: string) {
   const response = await fetch(`http://api.github.com/repos/${oldRepoId}`, {
     headers: {
-      "Content-Type": "application/json",
-      Accept: "application/vnd.github.v3+json",
+      'Content-Type': 'application/json',
+      Accept: 'application/vnd.github.v3+json',
       Authorization: `token ${token}`,
     },
   });
   if (!response.ok) {
-    console.error("ERR", oldRepoId, response.status);
+    console.error('ERR', oldRepoId, response.status);
     if (response.status === 404 || response.status === 451) {
       return false;
     }

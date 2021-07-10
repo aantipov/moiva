@@ -78,7 +78,7 @@
     [{ "month": "2020-10", "level": "Assess" }]
   ],
   [
-    "davidkpiano/xstate",
+    "statelyai/xstate",
     "XState",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/xstate",
     [
