@@ -6,6 +6,7 @@ import '../chartjs.config';
 import { Integrations } from '@sentry/tracing';
 import App from './App.vue';
 import CatalogApp from './CatalogApp.vue';
+import AboutApp from './AboutApp.vue';
 import Close from './components/icons/Close.vue';
 import ChartInfo from '@/components/ChartInfo.vue';
 import ChartPresentation from '@/components/ChartPresentation.vue';
@@ -35,10 +36,12 @@ app.directive('tooltip', (el, binding) => {
 });
 
 const appCatalog = new URL(window.location.href).searchParams.get('appcatalog');
+const appAbout = new URL(window.location.href).searchParams.get('appabout');
 
 if (appCatalog) {
-  const catalogApp = createApp(CatalogApp);
-  catalogApp.mount('#app');
+  createApp(CatalogApp).mount('#app');
+} else if (appAbout) {
+  createApp(AboutApp).mount('#app');
 } else {
   app.mount('#app');
 }

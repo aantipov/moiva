@@ -15,6 +15,7 @@
     "@sentry/integrations": "^6.6.0",
     "@sentry/node": "^6.6.0",
     "@sentry/tracing": "^6.6.0",
+    "@tailwindcss/typography": "^0.4.1",
     "autocompleter": "^6.1.0",
     "axios": "^0.21.1",
     "chart.js": "^3.3.2",
