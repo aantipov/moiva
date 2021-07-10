@@ -1,6 +1,6 @@
 <template>
   <div>
-    <m-loader-new />
+    <m-loader-new class="items-center" />
 
     <div class="flex justify-end pr-4">
       <a v-tooltip="`Clear selection`" href="/" @click.prevent="clearSelection"
