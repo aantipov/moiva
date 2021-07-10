@@ -2313,10 +2313,10 @@
   },
   {
     "category": "misc",
-    "repoId": "weexteam/vue-render-for-apache-weex",
+    "repoId": "weexteam/weex-vue-render",
     "npm": "weex-vue-render",
     "isNpmCoreArtifact": true,
-    "alias": "vue-render-for-apache-weex",
+    "alias": "weex-vue-render",
     "framework": null
   },
   {
@@ -3401,7 +3401,7 @@
   },
   {
     "category": "misc",
-    "repoId": "denysdovhan/spaceship-prompt",
+    "repoId": "spaceship-prompt/spaceship-prompt",
     "npm": "spaceship-prompt",
     "isNpmCoreArtifact": true,
     "alias": "spaceship-prompt",
@@ -4673,7 +4673,7 @@
   },
   {
     "category": "JavaScript State Management Libraries",
-    "repoId": "davidkpiano/xstate",
+    "repoId": "statelyai/xstate",
     "npm": "xstate",
     "isNpmCoreArtifact": true,
     "alias": "Xstate",
@@ -4793,7 +4793,7 @@
   },
   {
     "category": "JavaScript State Management Libraries",
-    "repoId": "ai/nanostores",
+    "repoId": "nanostores/nanostores",
     "npm": "nanostores",
     "isNpmCoreArtifact": true,
     "alias": "Nano Stores",
