@@ -1615,7 +1615,7 @@
     "id": "xstate",
     "name": "XState",
     "category": "libraries",
-    "repoId": "davidkpiano/xstate",
+    "repoId": "statelyai/xstate",
     "usage": [
       {
         "year": 2020,
