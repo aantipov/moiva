@@ -64,7 +64,7 @@ export default defineComponent({
 
 <style lang="postcss">
 .tippy-box[data-theme~='chart-menu'] {
-  @apply bg-gray-200 border border-gray-200 shadow text-base text-gray-800;
+  @apply bg-gray-200 border border-gray-300 shadow text-base text-gray-800;
 }
 .tippy-box[data-theme~='chart-menu'] > .tippy-arrow {
   @apply hidden;
