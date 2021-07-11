@@ -114,7 +114,6 @@ export default defineComponent({
       const ctx = chartEl.value as HTMLCanvasElement;
       mychart = new Chart(ctx, chartConfig.value as ChartConfiguration);
       fillOneLineCharts(mychart, chartConfig.value.type) && mychart.update();
-      // console.log(mychart.toBase64Image());
     }
 
     onMounted(initChart);
