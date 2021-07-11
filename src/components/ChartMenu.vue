@@ -8,7 +8,10 @@
       class="cursor-pointer text-gray-800 font-normal"
       @click="hide"
     >
-      <div class="whitespace-nowrap" @click="$emit('copy')">
+      <div
+        class="whitespace-nowrap text-xl sm:text-base"
+        @click="$emit('copy')"
+      >
         Copy to clipboard
       </div>
     </div>
