@@ -21,7 +21,12 @@
           </div>
         </m-chart-info>
 
-        <m-chart-menu v-if="canCopy" class="absolute right-2" @copy="copy" />
+        <m-chart-menu
+          v-if="canCopy"
+          class="absolute right-2"
+          @copy="copy"
+          @copyShare="copyShare"
+        />
       </div>
 
       <div v-if="since" class="flex justify-center z-50">
@@ -70,6 +75,7 @@ import {
   ChartConfiguration,
   ChartOptions,
 } from 'chart.js';
+import { librariesRR } from '@/store/libraries';
 
 export default defineComponent({
   name: 'ChartPresentation',
@@ -153,6 +159,26 @@ export default defineComponent({
             // @ts-ignore
             new ClipboardItem({ 'image/png': blob }), // eslint-disable-line
           ]);
+        });
+      },
+      copyShare(): void {
+        chartEl.value?.toBlob(async (blob) => {
+          // @ts-ignore
+          await navigator.clipboard.write([
+            // @ts-ignore
+            new ClipboardItem({ 'image/png': blob }), // eslint-disable-line
+          ]);
+
+          const title = encodeURIComponent(props.title.replace(',', ''));
+          const libsAliases = encodeURIComponent(
+            librariesRR.map((lib) => lib.alias).join(' vs ')
+          );
+          const url = encodeURIComponent(window.location.href);
+
+          window.open(
+            `https://twitter.com/intent/tweet?text=${title}: ${libsAliases}&url=${url}`,
+            '_blank'
+          );
         });
       },
     };
