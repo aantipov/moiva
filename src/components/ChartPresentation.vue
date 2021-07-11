@@ -147,8 +147,10 @@ export default defineComponent({
       copy(): void {
         chartEl.value?.toBlob(
           async (blob) =>
+            // @ts-ignore
             await navigator.clipboard.write([
-              new ClipboardItem({ 'image/png': blob }),
+              // @ts-ignore
+              new ClipboardItem({ 'image/png': blob }), // eslint-disable-line
             ])
         );
       },
