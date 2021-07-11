@@ -39,7 +39,7 @@ export default defineComponent({
         interactive: true,
         allowHTML: true,
         theme: 'chart-menu',
-        hideOnClick: 'toggle',
+        hideOnClick: true,
       });
     });
 
