@@ -18,7 +18,7 @@
     "@tailwindcss/typography": "^0.4.1",
     "autocompleter": "^6.1.0",
     "axios": "^0.21.1",
-    "chart.js": "^3.3.2",
+    "chart.js": "^3.4.1",
     "chartjs-adapter-date-fns": "^2.0.0",
     "date-fns": "^2.22.1",
     "google-trends-api": "^4.9.2",

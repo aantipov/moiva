@@ -8,7 +8,9 @@ import App from './App.vue';
 import CatalogApp from './CatalogApp.vue';
 import AboutApp from './AboutApp.vue';
 import Close from './components/icons/Close.vue';
+import DotsIcon from '@/icons/Dots.vue';
 import ChartInfo from '@/components/ChartInfo.vue';
+import ChartMenu from '@/components/ChartMenu.vue';
 import ChartPresentation from '@/components/ChartPresentation.vue';
 import LoaderTailSpin from '@/components/LoaderTailSpin.vue';
 import ExternalLink from '@/components/ExternalLink.vue';
@@ -19,12 +21,14 @@ import './assets/tailwind.css';
 const app = createApp(App);
 
 app.component('MClose', Close);
+app.component('MDotsIcon', DotsIcon);
 app.component('MChartInfo', ChartInfo);
 app.component('MLoaderTailSpin', LoaderTailSpin);
 app.component('MLoader', Loader);
 app.component('MLoaderNew', LoaderNew);
 app.component('MExtLink', ExternalLink);
 app.component('MChart', ChartPresentation);
+app.component('MChartMenu', ChartMenu);
 app.directive('tooltip', (el, binding) => {
   tippy(el as HTMLElement, {
     content: binding.value,
