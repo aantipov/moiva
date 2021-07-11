@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div ref="triggerRef" class="mt-1 cursor-pointer">
+  <div ref="triggerRef">
+    <div class="cursor-default">
       <InfoIcon v-if="type === 'INFO'" />
       <WarningIcon v-else />
     </div>

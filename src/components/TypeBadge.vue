@@ -50,6 +50,7 @@ export default defineComponent({
         } else if (value.value === 'separate') {
           return `Types definitions are provided via a separate npm package: ${typesPackage.value}`;
         }
+        return '';
       }),
     };
   },

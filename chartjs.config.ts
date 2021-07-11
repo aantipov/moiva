@@ -1,5 +1,6 @@
 import {
   Chart,
+  ChartComponentLike,
   // ArcElement,
   LineElement,
   BarElement,
@@ -39,9 +40,22 @@ Chart.register(
   Filler,
   Legend,
   Title,
-  Tooltip
+  Tooltip,
+  {
+    id: 'custom_canvas_background_color',
+    // @ts-ignore
+    beforeDraw: (chart) => {
+      const ctx = chart.canvas.getContext('2d');
+      ctx.save();
+      ctx.globalCompositeOperation = 'destination-over';
+      ctx.fillStyle = 'rgba(249, 250, 251)';
+      ctx.fillRect(0, 0, chart.width, chart.height);
+      ctx.restore();
+    },
+  } as ChartComponentLike
 );
 
+Chart.defaults.layout.padding = 24;
 Chart.defaults.font.size = 14;
 Chart.defaults.font.family =
   'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';

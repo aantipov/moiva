@@ -1,40 +1,44 @@
 <template>
   <div>
-    <!-- Header -->
-    <div class="flex items-center justify-center">
-      <h3 class="my-0">
-        {{ title }}
-        <span class="text-base">{{ subtitle }}</span>
-      </h3>
+    <div class="relative z-10">
+      <!-- Header -->
+      <div class="flex items-center justify-center relative">
+        <h3 class="my-0">
+          {{ title }}
+          <span class="text-base">{{ subtitle }}</span>
+        </h3>
 
-      <m-chart-info v-if="hasInfo" class="ml-2"><slot /></m-chart-info>
+        <m-chart-info v-if="hasInfo" class="ml-2"><slot /></m-chart-info>
 
-      <m-chart-info v-if="failedLibsNames.length" class="ml-2" type="WARNING">
-        <div>
-          Sorry, we couldn't fetch data for the following packages:
-          <div v-for="libName in failedLibsNames" :key="libName">
-            - {{ libName }}
+        <m-chart-info v-if="failedLibsNames.length" class="ml-2" type="WARNING">
+          <div>
+            Sorry, we couldn't fetch data for the following packages:
+            <div v-for="libName in failedLibsNames" :key="libName">
+              - {{ libName }}
+            </div>
+
+            Try reload the page or check later.
           </div>
+        </m-chart-info>
 
-          Try reload the page or check later.
-        </div>
-      </m-chart-info>
-    </div>
+        <m-chart-menu v-if="canCopy" class="absolute right-2" @copy="copy" />
+      </div>
 
-    <div v-if="since" class="flex justify-center">
-      <select
-        v-model="dateRangeSince"
-        name="date-range"
-        @change="onDateRangeChange"
-      >
-        <option v-for="val in sinceValues" :key="val" :value="val">
-          since {{ val }}
-        </option>
-      </select>
+      <div v-if="since" class="flex justify-center z-50">
+        <select
+          v-model="dateRangeSince"
+          name="date-range"
+          @change="onDateRangeChange"
+        >
+          <option v-for="val in sinceValues" :key="val" :value="val">
+            since {{ val }}
+          </option>
+        </select>
+      </div>
     </div>
 
     <!-- Chart -->
-    <div class="relative" style="height: 350px">
+    <div class="relative -mt-5" style="height: 350px">
       <m-loader v-if="isLoading" />
 
       <div v-else-if="isError || !libsNames.length" class="chart-error-new">
@@ -139,6 +143,17 @@ export default defineComponent({
       dateRangeSince,
       onDateRangeChange(): void {
         ctx.emit('sinceChange', dateRangeSince.value);
+      },
+      // @ts-ignore
+      canCopy: !!window.chrome,
+      copy(): void {
+        chartEl.value?.toBlob(async (blob) => {
+          // @ts-ignore
+          await navigator.clipboard.write([
+            // @ts-ignore
+            new ClipboardItem({ 'image/png': blob }), // eslint-disable-line
+          ]);
+        });
       },
     };
   },

@@ -125,7 +125,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Loader from './LoaderNew.vue';
 import LibExternalLinks from './LibExternalLinks.vue';
 import { LibraryReadonlyT } from '@/libraryApis';
 import NpmIcon from './icons/Npm.vue';
@@ -146,7 +145,6 @@ export default defineComponent({
 
   components: {
     LibExternalLinks,
-    Loader,
     NpmIcon,
     GithubIcon,
   },
