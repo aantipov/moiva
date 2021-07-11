@@ -34,7 +34,8 @@ export default defineComponent({
     onMounted(() => {
       t = tippy(triggerRef.value as unknown as HTMLElement, {
         content: contentRef.value as unknown as HTMLElement,
-        delay: [100, 150],
+        trigger: 'click',
+        delay: [0, 150],
         interactive: true,
         allowHTML: true,
         theme: 'chart-menu',

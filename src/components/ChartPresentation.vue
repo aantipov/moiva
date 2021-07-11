@@ -21,7 +21,7 @@
           </div>
         </m-chart-info>
 
-        <m-chart-menu class="absolute right-2" @copy="copy" />
+        <m-chart-menu v-if="canCopy" class="absolute right-2" @copy="copy" />
       </div>
 
       <div v-if="since" class="flex justify-center z-50">
@@ -144,15 +144,16 @@ export default defineComponent({
       onDateRangeChange(): void {
         ctx.emit('sinceChange', dateRangeSince.value);
       },
+      // @ts-ignore
+      canCopy: !!window.chrome,
       copy(): void {
-        chartEl.value?.toBlob(
-          async (blob) =>
+        chartEl.value?.toBlob(async (blob) => {
+          // @ts-ignore
+          await navigator.clipboard.write([
             // @ts-ignore
-            await navigator.clipboard.write([
-              // @ts-ignore
-              new ClipboardItem({ 'image/png': blob }), // eslint-disable-line
-            ])
-        );
+            new ClipboardItem({ 'image/png': blob }), // eslint-disable-line
+          ]);
+        });
       },
     };
   },
