@@ -3,17 +3,22 @@
     <div ref="triggerRef" class="px-1 cursor-pointer">
       <m-dots-icon class="text-gray-500" />
     </div>
+
     <div
       ref="contentRef"
-      class="cursor-pointer text-gray-800 font-normal"
+      class="
+        cursor-pointer
+        text-gray-800
+        font-normal
+        -mx-2
+        divide-gray-300 divide-y
+      "
       @click="hide"
     >
-      <div
-        class="whitespace-nowrap text-xl sm:text-base"
-        @click="$emit('copy')"
-      >
-        Copy to clipboard
+      <div class="menu-item" @click="$emit('copyShare')">
+        Copy and Share (Twitter)
       </div>
+      <div class="menu-item" @click="$emit('copy')">Copy to clipboard</div>
     </div>
   </div>
 </template>
@@ -27,7 +32,7 @@ import 'tippy.js/dist/backdrop.css';
 export default defineComponent({
   name: 'ChartMenu',
 
-  emits: ['copy'],
+  emits: ['copy', 'copyShare'],
 
   setup() {
     const contentRef = ref(null);
@@ -63,5 +68,8 @@ export default defineComponent({
 }
 .tippy-box[data-theme~='chart-menu'] > .tippy-arrow {
   @apply hidden;
+}
+.tippy-box[data-theme~='chart-menu'] .menu-item {
+  @apply whitespace-nowrap text-xl sm:text-base py-2 px-2 hover:bg-gray-600 hover:text-white;
 }
 </style>
