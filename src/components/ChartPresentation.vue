@@ -88,7 +88,7 @@ export default defineComponent({
     libsNames: { type: Array as () => string[], required: true },
     failedLibsNames: { type: Array as () => string[], required: true },
     chartConfig: {
-      type: Object as () => ChartConfiguration,
+      type: Object as PropType<ChartConfiguration>,
       required: true,
     },
     ariaLabel: {
