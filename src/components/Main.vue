@@ -218,7 +218,9 @@ export default defineComponent({
         showErrorMsg(
           `Sorry, we couldn't fetch data for <span class="font-mono">${npmPackageName}</span>`
         );
-        Sentry.captureException(new Error('SELECT NPM PACKAGE'), {
+        const err = new Error(`npmPackage: ${npmPackageName}`);
+        err.name = 'UI: Select Npm Package Error';
+        Sentry.captureException(err, {
           tags: { npmPackage: npmPackageName },
         });
         return null;
