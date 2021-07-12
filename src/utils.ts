@@ -3,6 +3,7 @@ import { LibraryReadonlyT, LibrariesReadonlyT } from '@/libraryApis';
 import { getYear, getMonth } from 'date-fns';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import Swal from 'sweetalert2';
+import 'sweetalert2/dist/sweetalert2.css';
 
 const npmQueryParamNameLegacy = 'compare';
 const npmQueryParamName = 'npm';
@@ -304,7 +305,7 @@ export function showErrorMsg(msg: string): void {
     title: msg,
     toast: true,
     showConfirmButton: false,
-    position: 'top-end',
+    position: 'top-right',
     showCloseButton: true,
     closeButtonHtml: '<span>×</span>',
     customClass: {

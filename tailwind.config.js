@@ -1,6 +1,11 @@
 module.exports = {
   purge: {
     content: ['./index.html', './src/**/*.vue'],
+    safelist: [
+      'toast-error-popup',
+      'toast-error-title',
+      'toast-error-close-btn',
+    ],
   },
   theme: {
     extend: {

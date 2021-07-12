@@ -153,6 +153,7 @@ import {
   removeAllLibraries,
 } from '@/store/libraries';
 import useExtraDataApi from '@/composables/useExtraDataApi';
+import * as Sentry from '@sentry/browser';
 
 export default defineComponent({
   name: 'Main',
@@ -214,8 +215,15 @@ export default defineComponent({
 
     function selectNpmPackage(npmPackageName: string): void {
       addLibraryByNpmPackage(npmPackageName).catch(() => {
-        showErrorMsg(`Sorry, we couldn't fetch data for ${npmPackageName}`);
-        return Promise.reject();
+        showErrorMsg(
+          `Sorry, we couldn't fetch data for <span class="font-mono">${npmPackageName}</span>`
+        );
+        const err = new Error(`npmPackage: ${npmPackageName}`);
+        err.name = 'UI: Select Npm Package Error';
+        Sentry.captureException(err, {
+          tags: { npmPackage: npmPackageName },
+        });
+        return null;
       });
     }
 
