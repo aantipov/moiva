@@ -13,7 +13,8 @@ import { Integrations } from '@sentry/tracing';
 import App from './App.vue';
 import CatalogApp from './CatalogApp.vue';
 import AboutApp from './AboutApp.vue';
-import Close from './components/icons/Close.vue';
+import Close from '@/components/icons/Close.vue';
+import StarIcon from '@/components/icons/Star.vue';
 import DotsIcon from '@/icons/Dots.vue';
 import ChartInfo from '@/components/ChartInfo.vue';
 import ChartMenu from '@/components/ChartMenu.vue';
@@ -28,6 +29,7 @@ const app = createApp(App);
 
 app.component('MClose', Close);
 app.component('MDotsIcon', DotsIcon);
+app.component('MStarIcon', StarIcon);
 app.component('MChartInfo', ChartInfo);
 app.component('MLoaderTailSpin', LoaderTailSpin);
 app.component('MLoader', Loader);

@@ -25,7 +25,7 @@
     </template>
 
     <template v-if="type === 'stars'">
-      <StarIcon v-tooltip="stars" class="w-8" :label="stars" />
+      <m-star-icon v-tooltip="stars" class="w-8" :label="stars" />
       <div v-tooltip="stars" class="text-left label">
         <div>
           Stars
@@ -172,7 +172,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import GitHubIcon from '@/components/icons/Github.vue';
-import StarIcon from '@/components/icons/Star.vue';
 import DownloadIcon from '@/components/icons/Download.vue';
 import TagIcon from '@/components/icons/Tag.vue';
 import SearchIcon from '@/components/icons/Search.vue';
@@ -198,7 +197,6 @@ export default defineComponent({
 
   components: {
     GitHubIcon,
-    StarIcon,
     SearchIcon,
     WorkerIcon,
     DownloadIcon,
