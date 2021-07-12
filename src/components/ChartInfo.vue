@@ -15,11 +15,6 @@ import { defineComponent, onMounted, ref } from 'vue';
 import InfoIcon from '@/components/icons/Info.vue';
 import WarningIcon from '@/components/icons/Warning.vue';
 import tippy, { animateFill } from 'tippy.js';
-import 'tippy.js/dist/tippy.css';
-import 'tippy.js/themes/light.css';
-import 'tippy.js/themes/light-border.css';
-import 'tippy.js/dist/backdrop.css';
-import 'tippy.js/animations/shift-away.css';
 
 export default defineComponent({
   name: 'ChartInfo',

@@ -7,7 +7,7 @@
       @click.prevent="$emit('select', catalogLibrary)"
       >+ {{ catalogLibrary.alias }}</a
     >
-    <div ref="contentRef" class="">
+    <div ref="contentRef">
       <div v-if="isLoading">Loading...</div>
       <div v-else>
         {{ lib?.npmPackage?.description || lib?.repo.description }}
@@ -22,9 +22,7 @@ import { constructHref } from '@/utils';
 import { CatalogLibraryT } from '@/data/index';
 import { libraries } from '@/store/libraries';
 import { fetchLibraryByNpm, fetchLibraryByRepo } from '@/libraryApis';
-import tippy from 'tippy.js';
-import 'tippy.js/dist/tippy.css';
-import 'tippy.js/dist/backdrop.css';
+import tippy, { roundArrow } from 'tippy.js';
 import { LibraryT } from '@/getLibrary';
 
 export default defineComponent({
@@ -59,9 +57,12 @@ export default defineComponent({
     onMounted(() => {
       tippy(triggerRef.value as unknown as HTMLElement, {
         content: contentRef.value as unknown as HTMLElement,
+        // concatenates the two SVG strings together to style Arrow border
+        arrow: roundArrow + roundArrow,
         delay: [400, 50],
         interactive: true,
         allowHTML: true,
+        theme: 'suggestion-tp',
         hideOnClick: true,
         onShow() {
           if (!lib.value && !isLoading.value) {
@@ -105,4 +106,22 @@ export default defineComponent({
 });
 </script>
 
-<style lang="postcss"></style>
+<style lang="postcss">
+.tippy-box[data-theme~='suggestion-tp'] {
+  @apply bg-gray-200 border border-gray-300 shadow;
+}
+.tippy-box[data-theme~='suggestion-tp'] .tippy-content {
+  @apply text-base text-gray-800;
+}
+.tippy-box[data-theme~='suggestion-tp'] .menu-item {
+  @apply whitespace-nowrap text-xl sm:text-base py-2 px-2 hover:bg-gray-600 hover:text-white;
+}
+/* Arrow border */
+.tippy-box[data-theme~='suggestion-tp'] > .tippy-svg-arrow > svg:first-child {
+  fill: black;
+}
+/* Arrow fill */
+.tippy-box[data-theme~='suggestion-tp'] > .tippy-svg-arrow > svg:last-child {
+  @apply fill-current text-gray-200;
+}
+</style>

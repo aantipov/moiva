@@ -1,5 +1,11 @@
 import { createApp } from 'vue';
 import tippy from 'tippy.js';
+import 'tippy.js/dist/tippy.css';
+import 'tippy.js/dist/backdrop.css';
+import 'tippy.js/dist/svg-arrow.css';
+import 'tippy.js/themes/light.css';
+import 'tippy.js/themes/light-border.css';
+import 'tippy.js/animations/shift-away.css';
 import * as Sentry from '@sentry/browser';
 import '../chartjs.config';
 // import { Vue as VueIntegration } from '@sentry/integrations';
