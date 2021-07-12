@@ -214,8 +214,10 @@ export default defineComponent({
 
     function selectNpmPackage(npmPackageName: string): void {
       addLibraryByNpmPackage(npmPackageName).catch(() => {
-        showErrorMsg(`Sorry, we couldn't fetch data for ${npmPackageName}`);
-        return Promise.reject();
+        showErrorMsg(
+          `Sorry, we couldn't fetch data for <span class="font-mono">${npmPackageName}</span>`
+        );
+        return null;
       });
     }
 
