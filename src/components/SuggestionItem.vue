@@ -22,7 +22,7 @@ import { constructHref } from '@/utils';
 import { CatalogLibraryT } from '@/data/index';
 import { libraries } from '@/store/libraries';
 import { fetchLibraryByNpm, fetchLibraryByRepo } from '@/libraryApis';
-import tippy, { roundArrow, animateFill } from 'tippy.js';
+import tippy, { roundArrow } from 'tippy.js';
 import { LibraryT } from '@/getLibrary';
 
 export default defineComponent({
