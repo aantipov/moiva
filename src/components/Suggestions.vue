@@ -4,7 +4,7 @@
       <SuggestionItem
         v-for="suggestedLibrary in suggestions"
         :key="suggestedLibrary.repoId"
-        :suggested-library="suggestedLibrary"
+        :catalog-library="suggestedLibrary"
         @select="onSelect"
       />
       <span
