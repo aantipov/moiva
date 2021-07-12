@@ -9,16 +9,29 @@
     >
     <div ref="contentRef">
       <div v-if="isLoading">Loading...</div>
-      <div v-else>
-        {{ lib?.npmPackage?.description || lib?.repo.description }}
-      </div>
+      <template v-else>
+        <div>
+          {{ lib?.npmPackage?.description || lib?.repo.description }}
+        </div>
+        <div class="flex items-center font-normal">
+          <m-star-icon />
+          {{ stars }}
+        </div>
+      </template>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, PropType, ref, toRefs } from 'vue';
-import { constructHref } from '@/utils';
+import {
+  computed,
+  defineComponent,
+  onMounted,
+  PropType,
+  ref,
+  toRefs,
+} from 'vue';
+import { constructHref, numbersFormatter } from '@/utils';
 import { CatalogLibraryT } from '@/data/index';
 import { libraries } from '@/store/libraries';
 import { fetchLibraryByNpm, fetchLibraryByRepo } from '@/libraryApis';
@@ -60,7 +73,7 @@ export default defineComponent({
         // concatenates the two SVG strings together to style Arrow border
         arrow: roundArrow + roundArrow,
         delay: [400, 50],
-        interactive: true,
+        interactive: false,
         allowHTML: true,
         theme: 'suggestion-tp',
         hideOnClick: true,
@@ -77,6 +90,10 @@ export default defineComponent({
       isLoading,
       triggerRef,
       contentRef,
+      stars: computed(() =>
+        numbersFormatter.format(lib.value?.repo.stars as number)
+      ),
+
       getHrefForAdditionalLib(catalogLibrary: CatalogLibraryT): string {
         const npmPackagesNames = [] as string[];
         const reposIds = [] as string[];
