@@ -26,8 +26,6 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref } from 'vue';
 import tippy, { Instance } from 'tippy.js';
-import 'tippy.js/dist/tippy.css';
-import 'tippy.js/dist/backdrop.css';
 
 export default defineComponent({
   name: 'ChartMenu',
