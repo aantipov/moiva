@@ -3,9 +3,9 @@
     <a
       ref="triggerRef"
       class="inline-block mt-2 mr-3 text-base"
-      :href="getHrefForAdditionalLib(suggestedLibrary)"
-      @click.prevent="$emit('select', suggestedLibrary)"
-      >+ {{ suggestedLibrary.alias }}</a
+      :href="getHrefForAdditionalLib(catalogLibrary)"
+      @click.prevent="$emit('select', catalogLibrary)"
+      >+ {{ catalogLibrary.alias }}</a
     >
     <div ref="contentRef" class="">
       <div v-if="isLoading">Loading...</div>
@@ -17,19 +17,12 @@
 </template>
 
 <script lang="ts">
-import {
-  computed,
-  defineComponent,
-  onMounted,
-  PropType,
-  ref,
-  toRefs,
-} from 'vue';
+import { defineComponent, onMounted, PropType, ref, toRefs } from 'vue';
 import { constructHref } from '@/utils';
 import { CatalogLibraryT } from '@/data/index';
 import { libraries } from '@/store/libraries';
 import { fetchLibraryByNpm, fetchLibraryByRepo } from '@/libraryApis';
-import tippy, { Instance } from 'tippy.js';
+import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/dist/backdrop.css';
 import { LibraryT } from '@/getLibrary';
@@ -38,7 +31,7 @@ export default defineComponent({
   name: 'SuggestionItem',
 
   props: {
-    suggestedLibrary: {
+    catalogLibrary: {
       type: Object as PropType<CatalogLibraryT>,
       required: true,
     },
@@ -47,14 +40,20 @@ export default defineComponent({
   emits: ['select'],
 
   setup(props) {
-    const { suggestedLibrary } = toRefs(props);
+    const { catalogLibrary } = toRefs(props);
     const contentRef = ref(null);
     const triggerRef = ref(null);
+    const isLoading = ref(false);
     let lib = ref<LibraryT | null>(null);
-    let t: Instance;
 
     async function fetchData() {
-      lib.value = await fetchLibraryByNpm(suggestedLibrary.value.npm as string);
+      isLoading.value = true;
+      if (catalogLibrary.value.npm) {
+        lib.value = await fetchLibraryByNpm(catalogLibrary.value.npm);
+      } else {
+        lib.value = await fetchLibraryByRepo(catalogLibrary.value.repoId);
+      }
+      isLoading.value = false;
     }
 
     onMounted(() => {
@@ -63,10 +62,9 @@ export default defineComponent({
         delay: [400, 50],
         interactive: true,
         allowHTML: true,
-        // theme: 'chart-menu',
         hideOnClick: true,
         onShow() {
-          if (!lib.value) {
+          if (!lib.value && !isLoading.value) {
             fetchData();
           }
         },
@@ -75,7 +73,7 @@ export default defineComponent({
 
     return {
       lib,
-      isLoading: computed(() => !lib.value),
+      isLoading,
       triggerRef,
       contentRef,
       getHrefForAdditionalLib(catalogLibrary: CatalogLibraryT): string {
