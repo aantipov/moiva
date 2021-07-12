@@ -1,14 +1,12 @@
 <template>
   <div v-if="suggestions.length" class="w-full px-3 mx-auto lg:w-9/12 xl:w-2/4">
     <div>
-      <a
+      <SuggestionItem
         v-for="suggestedLibrary in suggestions"
         :key="suggestedLibrary.repoId"
-        class="inline-block mt-2 mr-3 text-base"
-        :href="getHrefForAdditionalLib(suggestedLibrary)"
-        @click.prevent="onSelect(suggestedLibrary)"
-        >+ {{ suggestedLibrary.alias }}</a
-      >
+        :suggested-library="suggestedLibrary"
+        @select="onSelect"
+      />
       <span
         v-if="hasMore"
         class="inline-block px-1 mt-2 border rounded link border-primary"
@@ -28,9 +26,10 @@
 
 <script lang="ts">
 import { defineComponent, computed, ref } from 'vue';
-import { getSuggestions, constructHref } from '@/utils';
+import { getSuggestions } from '@/utils';
 import { CatalogLibraryT } from '@/data/index';
 import { libraries } from '@/store/libraries';
+import SuggestionItem from './SuggestionItem.vue';
 import ChevronDownIcon from '@/components/icons/ChevronDown.vue';
 import ChevronUpIcon from '@/components/icons/ChevronUp.vue';
 
@@ -41,6 +40,7 @@ export default defineComponent({
   name: 'Suggestions',
 
   components: {
+    SuggestionItem,
     ChevronDownIcon,
     ChevronUpIcon,
   },
@@ -67,30 +67,6 @@ export default defineComponent({
         } else {
           emit('select', catalogLibrary.repoId, false);
         }
-      },
-      getHrefForAdditionalLib(catalogLibrary: CatalogLibraryT): string {
-        const npmPackagesNames = [] as string[];
-        const reposIds = [] as string[];
-
-        libraries.forEach((library) => {
-          if (library.npmPackage) {
-            npmPackagesNames.push(library.npmPackage.name);
-          } else {
-            reposIds.push(library.repo.repoId);
-          }
-        });
-
-        if (catalogLibrary.npm) {
-          return constructHref(
-            [...npmPackagesNames, catalogLibrary.npm],
-            reposIds
-          );
-        }
-
-        return constructHref(npmPackagesNames, [
-          ...reposIds,
-          catalogLibrary.repoId,
-        ]);
       },
     };
   },
