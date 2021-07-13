@@ -102,9 +102,32 @@ interface CatalogLibraryGithubT {
 }
 export type CatalogLibraryT = CatalogLibraryNpmT | CatalogLibraryGithubT;
 
-export const catalogLibraries = rawLibraries.filter(
-  (lib) => lib.category !== 'misc' || lib.npm !== null
-) as CatalogLibraryT[];
+/**
+ * Get Alias using the alias from the catalog or repository's name
+ *
+ */
+function getAliasFromRepoId(repoId: string): string {
+  const [, repoName] = repoId.split('/');
+
+  // Capitalise normal names
+  if (
+    repoName.length > 2 &&
+    !repoName.includes('@') &&
+    !repoName.includes('/') &&
+    !repoName.includes('-')
+  ) {
+    return repoName.charAt(0).toUpperCase() + repoName.slice(1);
+  }
+
+  return repoName;
+}
+
+export const catalogLibraries = rawLibraries
+  .filter((lib) => lib.category !== 'misc' || lib.npm !== null)
+  .map((lib) => ({
+    ...lib,
+    alias: lib.alias || getAliasFromRepoId(lib.repoId),
+  })) as CatalogLibraryT[];
 
 /**
  * Find a Catalog entry with Core npm artifact
