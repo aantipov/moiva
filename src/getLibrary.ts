@@ -221,7 +221,7 @@ export function getLibrary(
     devUsage: repoIdToDevUsageDataMap[repoIdLC],
     googleTrendsDef: repoToGTrendDefMap[repoIdLC] || null,
     // @ts-ignore
-    lastStars: computed(() => googleTrendsMapR.get(repoIdLC)),
+    googleTrends: computed(() => googleTrendsMapR.get(repoIdLC)),
     // @ts-ignore
     commits: computed(() => commitsMapR.get(repoIdLC)),
     // @ts-ignore
