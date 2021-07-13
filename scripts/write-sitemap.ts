@@ -1,87 +1,49 @@
-/* eslint-disable */
-fs = require('fs');
+/** WRITE SITEMAP.XML */
 
-const files = fs.readdirSync('../moiva-catalog/catalog');
+export {};
 
-const categoriesRaw = files.map((file) =>
-  JSON.parse(fs.readFileSync('../moiva-catalog/catalog/' + file, 'utf8'))
-);
-
-const categories = categoriesRaw.map(({ name, skipSitemap, items }) => ({
-  categoryName: name,
-  skipSitemap,
-  libs: items
-    .filter((item) => !item.exclude)
-    .map(({ repo, npm, isNpmCoreArtifact = true, framework, alias }) => ({
-      category: name,
-      alias: alias || null,
-      repoId: repo,
-      npm: npm ?? null,
-      isNpmCoreArtifact: npm ? isNpmCoreArtifact : null,
-      framework: framework ?? null,
-    })),
-}));
-
-/**
- * GENERATE LIBRARIES CATALOG
- */
-function generateCatalogStr() {
-  let str = '';
-
-  categories.forEach((cat, catIndex) => {
-    cat.libs.forEach((lib, libIndex) => {
-      const alias = lib.alias && `"${lib.alias}"`;
-      const framework = lib.framework && `"${lib.framework}"`;
-      const npm = lib.npm && `"${lib.npm}"`;
-      str += `  {
-    "category": "${lib.category}",
-    "repoId": "${lib.repoId.toLowerCase()}",
-    "npm": ${npm},
-    "isNpmCoreArtifact": ${lib.isNpmCoreArtifact},
-    "alias": ${alias},
-    "framework": ${framework}
-  }`;
-
-      if (
-        catIndex !== categories.length - 1 ||
-        libIndex !== cat.libs.length - 1
-      ) {
-        str += `,\n`;
-      }
-    });
-  });
-
-  return `[
-${str}
-]
-`;
+interface LibT {
+  category: string;
+  repoId: string;
+  npm: string | null;
+  isNpmCoreArtifact: boolean | null;
+  alias: string | null;
+  framework: string | null;
 }
 
-fs.writeFile('src/data/libraries.json', generateCatalogStr(), (err) => {
-  if (err) return console.log(err);
-  console.log('Libraries catalog generated successfully');
+interface CatT {
+  categoryName: string;
+  skipSitemap?: boolean;
+  libs: LibT[];
+}
+
+const decoder = new TextDecoder('utf-8');
+const libraries = JSON.parse(
+  decoder.decode(Deno.readFileSync('./src/data/libraries.json'))
+) as LibT[];
+// Temporarily filter out non-npm libs because we don't have enough data for SEO there
+const npmLibraries = libraries.filter((lib) => !!lib.npm);
+
+const oneLibUrls = npmLibraries.map((lib) => {
+  if (lib.npm) {
+    return `https://moiva.io/?npm=${lib.npm}`;
+  }
+
+  return `https://moiva.io/?github=${lib.repoId}`;
 });
 
-/**
- * GENERATE SITEMAP.XML
- */
-
-// Temporarily filter out non-npm libs because we don't have enough data for SEO there
-const npmCategories = categories.map((cat) => ({
-  ...cat,
-  libs: cat.libs.filter((lib) => !!lib.npm),
-}));
-
-const oneLibUrls = npmCategories
-  .map((cat) => cat.libs)
-  .flat()
-  .map((lib) => {
-    if (lib.npm) {
-      return `https://moiva.io/?npm=${lib.npm}`;
+const npmCategoriesObj = npmLibraries.reduce((acc, lib) => {
+  if (!acc[lib.category]) {
+    acc[lib.category] = { categoryName: lib.category, libs: [] };
+    if (lib.category === 'Unit-Testing Libraries') {
+      acc[lib.category].skipSitemap = true;
     }
+  }
+  acc[lib.category].libs.push(lib);
 
-    return `https://moiva.io/?github=${lib.repoId}`;
-  });
+  return acc;
+}, {} as Record<string, CatT>);
+const npmCategories = Object.values(npmCategoriesObj);
 
 // Generate urls consisting of pairs of libs from the same category:
 // - framework specific can be paired with the same framework specific
@@ -220,12 +182,14 @@ const content = `<?xml version="1.0" encoding="UTF-8"?>
 ${urlsStr}</urlset>
 `;
 
-fs.writeFile('public/sitemap.xml', content, (err) => {
-  if (err) return console.log(err);
+try {
+  Deno.writeTextFileSync('public/sitemap.xml', content);
   console.log('Sitemap generated successfully');
-});
+} catch (err) {
+  console.log(err);
+}
 
-function sortLibsByNpmGithub(libA, libB) {
+function sortLibsByNpmGithub(libA: LibT, libB: LibT) {
   // both have npm
   if (libA.npm && libB.npm) {
     if (libA.npm < libB.npm) {
@@ -256,7 +220,7 @@ function sortLibsByNpmGithub(libA, libB) {
   return 0;
 }
 
-function getLibsUrl(libA, libB) {
+function getLibsUrl(libA: LibT, libB: LibT) {
   if (libA.npm && libB.npm) {
     return `https://moiva.io/?npm=${libA.npm}+${libB.npm}`;
   }
