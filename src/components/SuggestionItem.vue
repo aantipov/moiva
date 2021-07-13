@@ -19,9 +19,12 @@
             <m-star-icon />
             {{ stars }}
           </div>
-          <div v-if="downloads" class="flex items-center font-normal ml-3">
+          <div
+            v-if="lib?.npmDownloadsAvg"
+            class="flex items-center font-normal ml-3"
+          >
             <m-download-icon />
-            {{ downloads }}/mos
+            {{ downloads }}/mo
           </div>
         </div>
       </template>
@@ -104,10 +107,8 @@ export default defineComponent({
       stars: computed(() =>
         numbersFormatter.format(lib.value?.repo.stars as number)
       ),
-      downloads: computed(
-        () =>
-          !lib.value?.npmDownloadsAvg ||
-          numbersFormatter.format(lib.value.npmDownloadsAvg as number)
+      downloads: computed(() =>
+        numbersFormatter.format(lib.value?.npmDownloadsAvg as number)
       ),
 
       getHrefForAdditionalLib(catalogLibrary: CatalogLibraryT): string {
