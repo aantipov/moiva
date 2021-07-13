@@ -7,26 +7,6 @@ const categoriesRaw = files.map((file) =>
   JSON.parse(fs.readFileSync('../moiva-catalog/catalog/' + file, 'utf8'))
 );
 
-/**
- * Get Alias using the alias from the catalog or repository's name
- *
- */
-function getAliasFromRepoId(repoId) {
-  const [, repoName] = repoId.split('/');
-
-  // Capitalise normal names
-  if (
-    repoName.length > 2 &&
-    !repoName.includes('@') &&
-    !repoName.includes('/') &&
-    !repoName.includes('-')
-  ) {
-    return repoName.charAt(0).toUpperCase() + repoName.slice(1);
-  }
-
-  return repoName;
-}
-
 const categories = categoriesRaw.map(({ name, skipSitemap, items }) => ({
   categoryName: name,
   skipSitemap,
@@ -34,7 +14,7 @@ const categories = categoriesRaw.map(({ name, skipSitemap, items }) => ({
     .filter((item) => !item.exclude)
     .map(({ repo, npm, isNpmCoreArtifact = true, framework, alias }) => ({
       category: name,
-      alias: alias || getAliasFromRepoId(repo),
+      alias: alias || null,
       repoId: repo,
       npm: npm ?? null,
       isNpmCoreArtifact: npm ? isNpmCoreArtifact : null,
@@ -42,22 +22,10 @@ const categories = categoriesRaw.map(({ name, skipSitemap, items }) => ({
     })),
 }));
 
-const duplicates = getDuplicates(categories);
-if (duplicates.length) {
-  console.error(`Duplicate libraries names: ${duplicates.join('; ')}`);
-  return;
-}
-
-const wrongFrameworks = getWrongFrameworks(categories);
-if (wrongFrameworks.length) {
-  console.error(`Wrong frameworks found: ${wrongFrameworks.join('; ')}`);
-  return;
-}
-
 /**
  * GENERATE LIBRARIES CATALOG
  */
-function generateCatalogStr(full = false) {
+function generateCatalogStr() {
   let str = '';
 
   categories.forEach((cat, catIndex) => {
@@ -256,61 +224,6 @@ fs.writeFile('public/sitemap.xml', content, (err) => {
   if (err) return console.log(err);
   console.log('Sitemap generated successfully');
 });
-
-function getDuplicates(categories) {
-  // TODO: improve this logic
-  const libs = categories.map(({ libs }) => libs).flat();
-  const libsNpmNames = libs.map(({ npm }) => npm).filter((npm) => !!npm);
-  const libsReposIds = libs
-    .filter(({ npm }) => !npm)
-    .map(({ repoId }) => repoId);
-  const libsAliases = libs.map(({ alias }) => alias);
-  const duplicates = [];
-
-  duplicates.push(
-    ...getDuplicatesGeneric(libsNpmNames),
-    ...getDuplicatesGeneric(libsReposIds),
-    ...getDuplicatesGeneric(libsAliases)
-  );
-
-  return duplicates;
-}
-
-function getDuplicatesGeneric(items) {
-  const duplicates = [];
-
-  if (new Set(items).size < items.length) {
-    const itemsMap = {};
-
-    items.forEach((item) => {
-      if (itemsMap[item]) {
-        duplicates.push(item);
-        return;
-      }
-      itemsMap[item] = true;
-    });
-  }
-
-  return duplicates;
-}
-
-function getWrongFrameworks(categories) {
-  const libs = categories.map(({ libs }) => libs).flat();
-  const frameworks = libs.map(({ framework }) => framework);
-  const allowedFrameworks = [
-    null,
-    'react',
-    'vue',
-    'svelte',
-    'ember',
-    'angular',
-    'angularjs',
-  ];
-
-  return frameworks.filter(
-    (framework) => !allowedFrameworks.includes(framework)
-  );
-}
 
 function sortLibsByNpmGithub(libA, libB) {
   // both have npm
