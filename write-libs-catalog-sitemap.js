@@ -62,9 +62,6 @@ function generateCatalogStr(full = false) {
 
   categories.forEach((cat, catIndex) => {
     cat.libs.forEach((lib, libIndex) => {
-      if (!full && lib.category === 'misc' && lib.npm === null) {
-        return;
-      }
       const alias = lib.alias && `"${lib.alias}"`;
       const framework = lib.framework && `"${lib.framework}"`;
       const npm = lib.npm && `"${lib.npm}"`;
@@ -92,20 +89,10 @@ ${str}
 `;
 }
 
-// Write Libraries catalog file
 fs.writeFile('src/data/libraries.json', generateCatalogStr(), (err) => {
   if (err) return console.log(err);
   console.log('Libraries catalog generated successfully');
 });
-
-fs.writeFile(
-  'src/data/_libraries-full.json',
-  generateCatalogStr(true),
-  (err) => {
-    if (err) return console.log(err);
-    console.log('Libraries catalog generated successfully');
-  }
-);
 
 /**
  * GENERATE SITEMAP.XML
