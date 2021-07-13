@@ -78,6 +78,7 @@ export interface LibraryT {
   npmCreationDate: string | null | undefined;
   npmReleases: NpmPackageReleasesT[] | null | undefined;
   npmDownloads: LibNpmDownloadsT;
+  npmDownloadsAvg: number | null | undefined;
   npmDownloadsGrowth: number | null | undefined;
   bundlesize: BundlephobiaT | null | undefined;
   contributors: ContributorsT[] | null | undefined; // null for errors, undefined for not loaded yet
@@ -157,6 +158,27 @@ export function getLibrary(
     npmDownloads: computed(() =>
       npmPackage ? npmDownloadsMapR.get(npmPackage.name) : null
     ),
+
+    // @ts-ignore
+    npmDownloadsAvg: computed(() => {
+      if (!npmPackage) {
+        return null;
+      }
+
+      const npmDownloads = npmDownloadsMapR.get(npmPackage.name);
+
+      if (!npmDownloads) {
+        return undefined;
+      }
+
+      const qDownloads = npmDownloads
+        .slice(-3)
+        .map(({ downloads }) => downloads);
+      const sum = qDownloads.reduce((sum, val) => sum + val, 0);
+
+      return sum / qDownloads.length;
+    }),
+
     npmDownloadsGrowth: computed(() => {
       if (!npmPackage) {
         return null;
@@ -199,7 +221,7 @@ export function getLibrary(
     devUsage: repoIdToDevUsageDataMap[repoIdLC],
     googleTrendsDef: repoToGTrendDefMap[repoIdLC] || null,
     // @ts-ignore
-    googleTrends: computed(() => googleTrendsMapR.get(repoIdLC)),
+    lastStars: computed(() => googleTrendsMapR.get(repoIdLC)),
     // @ts-ignore
     commits: computed(() => commitsMapR.get(repoIdLC)),
     // @ts-ignore

@@ -36,7 +36,7 @@
     </template>
 
     <template v-else-if="type === 'downloads'">
-      <DownloadIcon
+      <m-download-icon
         v-tooltip="npmDownloads"
         class="w-8"
         :label="npmDownloads"
@@ -172,7 +172,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import GitHubIcon from '@/components/icons/Github.vue';
-import DownloadIcon from '@/components/icons/Download.vue';
 import TagIcon from '@/components/icons/Tag.vue';
 import SearchIcon from '@/components/icons/Search.vue';
 import WorkerIcon from '@/components/icons/Worker.vue';
@@ -199,7 +198,6 @@ export default defineComponent({
     GitHubIcon,
     SearchIcon,
     WorkerIcon,
-    DownloadIcon,
     TagIcon,
     UserGroupIcon,
     CommitsIcon,

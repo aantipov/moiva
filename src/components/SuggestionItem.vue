@@ -13,9 +13,16 @@
         <div>
           {{ lib?.npmPackage?.description || lib?.repo.description }}
         </div>
-        <div class="flex items-center font-normal">
-          <m-star-icon />
-          {{ stars }}
+
+        <div class="flex">
+          <div class="flex items-center font-normal">
+            <m-star-icon />
+            {{ stars }}
+          </div>
+          <div v-if="downloads" class="flex items-center font-normal ml-3">
+            <m-download-icon />
+            {{ downloads }}/mos
+          </div>
         </div>
       </template>
     </div>
@@ -35,6 +42,7 @@ import { constructHref, numbersFormatter } from '@/utils';
 import { CatalogLibraryT } from '@/data/index';
 import { libraries } from '@/store/libraries';
 import { fetchLibraryByNpm, fetchLibraryByRepo } from '@/libraryApis';
+import { fetchNpmDownloads } from '@/components/downloads/api';
 import tippy, { roundArrow } from 'tippy.js';
 import { LibraryT } from '@/getLibrary';
 
@@ -80,6 +88,9 @@ export default defineComponent({
         onShow() {
           if (!lib.value && !isLoading.value) {
             fetchData();
+            if (catalogLibrary.value.npm) {
+              fetchNpmDownloads(catalogLibrary.value.npm);
+            }
           }
         },
       });
@@ -92,6 +103,11 @@ export default defineComponent({
       contentRef,
       stars: computed(() =>
         numbersFormatter.format(lib.value?.repo.stars as number)
+      ),
+      downloads: computed(
+        () =>
+          !lib.value?.npmDownloadsAvg ||
+          numbersFormatter.format(lib.value.npmDownloadsAvg as number)
       ),
 
       getHrefForAdditionalLib(catalogLibrary: CatalogLibraryT): string {
@@ -125,7 +141,7 @@ export default defineComponent({
 
 <style lang="postcss">
 .tippy-box[data-theme~='suggestion-tp'] {
-  @apply bg-gray-200 border border-gray-300 shadow;
+  @apply bg-gray-200 border border-gray-300 shadow-md;
 }
 .tippy-box[data-theme~='suggestion-tp'] .tippy-content {
   @apply text-base text-gray-800;

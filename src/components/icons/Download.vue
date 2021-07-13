@@ -24,7 +24,8 @@ export default defineComponent({
   props: {
     label: {
       type: String,
-      required: true,
+      required: false,
+      default: 'Download icon',
     },
   },
 });
