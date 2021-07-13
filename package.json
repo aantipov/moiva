@@ -6,7 +6,7 @@
     "dev": "vite",
     "build": "jest && vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "test": "jest && vue-tsc --noEmit && eslint --ext .ts,.js,.vue src/ && prettier --check src/.",
+    "test": "vite-jest && vue-tsc --noEmit && eslint --ext .ts,.js,.vue src/ && prettier --check src/.",
     "format": "prettier --write src/.",
     "update": "npx npm-upgrade check"
   },
@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@netlify/functions": "^0.7.2",
-    "@types/jest": "^26.0.23",
+    "@types/jest": "^26.0.24",
     "@types/ramda": "^0.27.40",
     "@typescript-eslint/eslint-plugin": "^4.26.1",
     "@typescript-eslint/parser": "^4.26.1",
@@ -42,11 +42,12 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-vue": "^7.11.1",
     "fibers": "^5.0.0",
-    "jest": "^27.0.4",
+    "jest": "^27.0.6",
     "prettier": "^2.3.1",
     "tailwindcss": "^2.2.4",
     "typescript": "~4.3.2",
     "vite": "^2.3.7",
+    "vite-jest": "^0.0.3",
     "vue-eslint-parser": "^7.6.0",
     "vue-tsc": "^0.1.7"
   },
