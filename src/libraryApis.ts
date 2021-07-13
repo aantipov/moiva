@@ -49,11 +49,11 @@ export type LibraryReadonlyT = DeepReadonly<LibraryT>;
 export type LibrariesReadonlyT = DeepReadonly<LibraryT[]>;
 
 export async function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
-  const library = getNpmLibraryByNpm(pkgName) || null;
+  const catalogLibrary = getNpmLibraryByNpm(pkgName) || null;
   const npmPackage = await fetchNpmPackage(pkgName);
-  const repo = await fetchGithubRepo(library?.repoId || npmPackage.repoId);
+  const repo = await fetchGithubRepo(npmPackage.repoId);
 
-  return getLibrary(repo, npmPackage, library);
+  return getLibrary(repo, npmPackage, catalogLibrary);
 }
 
 /**
@@ -133,7 +133,10 @@ function fetchNpmJSPackage(packageName: string): Promise<NpmPackageT> {
   return axios
     .get(`https://npm-details.moiva.workers.dev/?pkg=${packageName}`)
     .then(({ data }) => {
-      const repoId = getRepoId(data.repository);
+      const catalogLibrary = getNpmLibraryByNpm(packageName);
+      const repoId = catalogLibrary
+        ? catalogLibrary.repoId
+        : getRepoId(data.repository);
 
       if (!repoId) {
         return Promise.reject('NO GITHUB DATA');

@@ -273,15 +273,11 @@ export default defineComponent({
       }),
 
       npmDownloads: computed<string | null>(() => {
-        if (!lib.value.npmDownloads) {
+        if (!lib.value.npmDownloadsAvg) {
           return null;
         }
-        const qDownloads = lib.value.npmDownloads
-          .slice(-3)
-          .map(({ downloads }) => downloads);
-        const sum = qDownloads.reduce((sum, val) => sum + val, 0);
 
-        return numbersFormatter.format(sum / qDownloads.length);
+        return numbersFormatter.format(lib.value.npmDownloadsAvg);
       }),
 
       npmDownloadsGrowth: computed<string>(() => {
