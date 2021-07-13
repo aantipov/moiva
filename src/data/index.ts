@@ -102,9 +102,12 @@ interface CatalogLibraryGithubT {
 }
 export type CatalogLibraryT = CatalogLibraryNpmT | CatalogLibraryGithubT;
 
-export const catalogLibraries = rawLibraries.filter(
-  (lib) => lib.category !== 'misc' || lib.npm !== null
-) as CatalogLibraryT[];
+export const catalogLibraries = rawLibraries
+  .filter((lib) => lib.category !== 'misc' || lib.npm !== null)
+  .map((lib) => ({
+    ...lib,
+    ...(!lib.npm && { npm: null, isNpmCoreArtifact: null }),
+  })) as CatalogLibraryT[];
 
 /**
  * Find a Catalog entry with Core npm artifact

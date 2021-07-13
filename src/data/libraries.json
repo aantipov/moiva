@@ -306,8 +306,6 @@
   {
     "category": "CSS Frameworks",
     "repoId": "dhg/skeleton",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Skeleton",
     "framework": null
   },
@@ -538,24 +536,18 @@
   {
     "category": "JavaScript frameworks for Desktop Applications",
     "repoId": "tauri-apps/tauri",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Tauri",
     "framework": null
   },
   {
     "category": "JavaScript frameworks for Desktop Applications",
     "repoId": "neutralinojs/neutralinojs",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Neutralinojs",
     "framework": null
   },
   {
     "category": "JavaScript frameworks for Desktop Applications",
     "repoId": "nwjs/nw.js",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Nw.js",
     "framework": null
   },
@@ -570,24 +562,18 @@
   {
     "category": "JavaScript frameworks for Desktop Applications",
     "repoId": "nodegui/vue-nodegui",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "vue-nodegui",
     "framework": "vue"
   },
   {
     "category": "JavaScript frameworks for Desktop Applications",
     "repoId": "nodegui/react-nodegui",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "react-nodegui",
     "framework": "react"
   },
   {
     "category": "JavaScript frameworks for Desktop Applications",
     "repoId": "nodegui/svelte-nodegui",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "svelte-nodegui",
     "framework": "svelte"
   },
@@ -1266,8 +1252,6 @@
   {
     "category": "misc",
     "repoId": "sass/node-sass",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "node-sass",
     "framework": null
   },
@@ -1650,8 +1634,6 @@
   {
     "category": "misc",
     "repoId": "ajaxorg/ace",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Ace (Ajax.org Cloud9 Editor)",
     "framework": null
   },
@@ -3050,752 +3032,564 @@
   {
     "category": "misc",
     "repoId": "tensorflow/tensorflow",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Tensorflow",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "microsoft/vscode",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "VSCode",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tensorflow/models",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Models",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "laravel/laravel",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Laravel",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "kubernetes/kubernetes",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Kubernetes",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "m4cs/babysploit",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "BabySploit",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "panjiachen/vue-element-admin",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "vue-element-admin",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "atom/atom",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Atom",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "apple/swift",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Swift",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "nvbn/thefuck",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Thefuck",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "getlantern/lantern",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Lantern",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "spring-projects/spring-boot",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "spring-boot",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "adam-p/markdown-here",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "markdown-here",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "bitcoin/bitcoin",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Bitcoin",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tonsky/firacode",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "FiraCode",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "shadowsocks/shadowsocks-windows",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "shadowsocks-windows",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "rust-lang/rust",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Rust",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "rails/rails",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Rails",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "microsoft/powertoys",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "PowerToys",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ansible/ansible",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Ansible",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ytdl-org/youtube-dl",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "youtube-dl",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "macrozheng/mall",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mall",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "gin-gonic/gin",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Gin",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "pytorch/pytorch",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Pytorch",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "elastic/elasticsearch",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Elasticsearch",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "scikit-learn/scikit-learn",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "scikit-learn",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "kelseyhightower/nocode",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Nocode",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "redis/redis",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Redis",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "neovim/neovim",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Neovim",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "opencv/opencv",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Opencv",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "genymobile/scrcpy",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Scrcpy",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "reactivex/rxjava",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "RxJava",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "spring-projects/spring-framework",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "spring-framework",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "fatedier/frp",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Frp",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "google/guava",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Guava",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "scrapy/scrapy",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Scrapy",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "torvalds/linux",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Linux",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ohmyzsh/ohmyzsh",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Ohmyzsh",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "golang/go",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "go",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "chrislgarry/apollo-11",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Apollo-11",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "meteor/meteor",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Meteor",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "django/django",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Django",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "python/cpython",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Cpython",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "azl397985856/leetcode",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Leetcode",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "soimort/you-get",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "you-get",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "x64dbg/x64dbg",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "X64dbg",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "microsoft/terminal",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Terminal",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "square/retrofit",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Retrofit",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tesseract-ocr/tesseract",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Tesseract",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "pallets/flask",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Flask",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "v2ray/v2ray-core",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "v2ray-core",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ageitgey/face_recognition",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Face_recognition",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "adobe/brackets",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Brackets",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "grafana/grafana",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Grafana",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "521xueweihan/hellogithub",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "HelloGitHub",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "alamofire/alamofire",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Alamofire",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "afnetworking/afnetworking",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "AFNetworking",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "prometheus/prometheus",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Prometheus",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "junegunn/fzf",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Fzf",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "xx-net/xx-net",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "XX-Net",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jekyll/jekyll",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Jekyll",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "bvlc/caffe",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Caffe",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "gohugoio/hugo",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Hugo",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "nvm-sh/nvm",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Nvm",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "godotengine/godot",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Godot",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "deepfakes/faceswap",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Faceswap",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "philjay/mpandroidchart",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "MPAndroidChart",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "julialang/julia",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Julia",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "mozilla/pdf.js",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Pdf.js",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "shadowsocks/shadowsocks-android",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "shadowsocks-android",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "shadowsocks/shadowsocks",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Shadowsocks",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "syncthing/syncthing",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Syncthing",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "gorhill/ublock",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "UBlock",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "netdata/netdata",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Netdata",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "bumptech/glide",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Glide",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "moby/moby",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Moby",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "isocpp/cppcoreguidelines",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "CppCoreGuidelines",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "exacity/deeplearningbook-chinese",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "deeplearningbook-chinese",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "rocketchat/rocket.chat",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Rocket.Chat",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "airbnb/lottie-android",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "lottie-android",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "3b1b/manim",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Manim",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "blankj/androidutilcode",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "AndroidUtilCode",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "danielmiessler/seclists",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "SecLists",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ethereum/go-ethereum",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "go-ethereum",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "keras-team/keras",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Keras",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "chinese-poetry/chinese-poetry",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "chinese-poetry",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "grpc/grpc",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Grpc",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "testersunshine/12306",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "12306",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "gitsquared/edex-ui",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "edex-ui",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "pi-hole/pi-hole",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "pi-hole",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "shadowsocks/shadowsocksx-ng",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "ShadowsocksX-NG",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "huggingface/transformers",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Transformers",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "git/git",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Git",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "square/okhttp",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Okhttp",
     "framework": null
   },
@@ -3810,104 +3604,78 @@
   {
     "category": "misc",
     "repoId": "discourse/discourse",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Discourse",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "dcloudio/uni-app",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "uni-app",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "php/php-src",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "php-src",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "apache/spark",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Apache Spark",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ariya/phantomjs",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Phantomjs",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "psf/requests",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Requests",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "traefik/traefik",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Traefik",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "httpie/httpie",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Httpie",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "protocolbuffers/protobuf",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Protobuf",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tiangolo/fastapi",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "FastAPI",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "zxing/zxing",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Zxing",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ocornut/imgui",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Imgui",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "home-assistant/core",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Home Assistant",
     "framework": null
   },
@@ -3922,72 +3690,54 @@
   {
     "category": "misc",
     "repoId": "homebrew/brew",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Brew",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "nervjs/taro",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Taro",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "definitelytyped/definitelytyped",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "DefinitelyTyped",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "fastlane/fastlane",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Fastlane",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "dkhamsing/open-source-ios-apps",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "open-source-ios-apps",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "pingcap/tidb",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Tidb",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "rethinkdb/rethinkdb",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Rethinkdb",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "symfony/symfony",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Symfony",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "getsentry/sentry",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Sentry",
     "framework": null
   },
@@ -4002,16 +3752,12 @@
   {
     "category": "misc",
     "repoId": "ryanoasis/nerd-fonts",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "nerd-fonts",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "square/leakcanary",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Leakcanary",
     "framework": null
   },
@@ -4026,56 +3772,42 @@
   {
     "category": "misc",
     "repoId": "minio/minio",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Minio",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "alibaba/fastjson",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Fastjson",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "filosottile/mkcert",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mkcert",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "fzaninotto/faker",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Faker (PHP)",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "fxsjy/jieba",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Jieba",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "powershell/powershell",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "PowerShell",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "agalwood/motrix",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Motrix",
     "framework": null
   },
@@ -4090,56 +3822,42 @@
   {
     "category": "misc",
     "repoId": "gogs/gogs",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Gogs",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "hashicorp/terraform",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Terraform",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "istio/istio",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Istio",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "composer/composer",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Composer",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "vercel/hyper",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Hyper",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "skylot/jadx",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Jadx",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "laravel/framework",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Framework",
     "framework": null
   },
@@ -4154,144 +3872,108 @@
   {
     "category": "misc",
     "repoId": "satwikkansal/wtfpython",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Wtfpython",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "cdr/code-server",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "code-server",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "iperov/deepfacelab",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "DeepFaceLab",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ffmpeg/ffmpeg",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "FFmpeg",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "apachecn/ailearning",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "AiLearning",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "greenrobot/eventbus",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "EventBus",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "alibaba/druid",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Druid",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "sharkdp/bat",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Bat",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "go-gitea/gitea",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Gitea",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ctripcorp/apollo",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Apollo (configuration management system)",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "openai/gym",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Gym",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "vim/vim",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Vim",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "beego/beego",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Beego",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "nationalsecurityagency/ghidra",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Ghidra",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "gitlabhq/gitlabhq",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Gitlabhq",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "google-research/bert",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Bert",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "netty/netty",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Netty",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "facebookresearch/detectron",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Detectron",
     "framework": null
   },
@@ -4306,24 +3988,18 @@
   {
     "category": "misc",
     "repoId": "2dust/v2rayn",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "V2rayN",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "nlohmann/json",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Json",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "google/leveldb",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Leveldb",
     "framework": null
   },
@@ -4338,120 +4014,90 @@
   {
     "category": "misc",
     "repoId": "willmcgugan/rich",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Rich",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "metabase/metabase",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Metabase",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "alibaba/arthas",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Arthas",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "syl20bnr/spacemacs",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Spacemacs",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tastejs/todomvc",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Todomvc",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "burntsushi/ripgrep",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Ripgrep",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "junegunn/vim-plug",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "vim-plug",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tootsuite/mastodon",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mastodon",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "commaai/openpilot",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Openpilot",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "koalaman/shellcheck",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Shellcheck",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "cymchad/baserecyclerviewadapterhelper",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "BaseRecyclerViewAdapterHelper",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "nylas/nylas-mail",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "nylas-mail",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "vlang/v",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "v",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "swisskyrepo/payloadsallthethings",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "PayloadsAllTheThings",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "wagoodman/dive",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Dive",
     "framework": null
   },
@@ -4474,64 +4120,48 @@
   {
     "category": "misc",
     "repoId": "scwang90/smartrefreshlayout",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "SmartRefreshLayout",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "pandas-dev/pandas",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Pandas",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "kataras/iris",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Iris",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "bannedbook/fanqiang",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Fanqiang",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jgm/pandoc",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Pandoc",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "facebookresearch/fasttext",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "FastText",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "hankcs/hanlp",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "HanLP",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "cli/cli",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "GitHub CLI",
     "framework": null
   },
@@ -4546,72 +4176,54 @@
   {
     "category": "misc",
     "repoId": "kriasoft/react-starter-kit",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "react-starter-kit",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "google/iosched",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Iosched",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "netflix/hystrix",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Hystrix",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "google/googletest",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Googletest",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "hashicorp/consul",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Consul",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "laurent22/joplin",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Joplin",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "littlecodersh/itchat",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "ItChat",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "sdwebimage/sdwebimage",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "SDWebImage",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "samypesse/how-to-make-a-computer-operating-system",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "How-to-Make-a-Computer-Operating-System",
     "framework": null
   },
@@ -4626,16 +4238,12 @@
   {
     "category": "misc",
     "repoId": "alibaba/flutter-go",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "flutter-go",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "vuejs/vue-next",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "vue-next",
     "framework": null
   },
@@ -4658,304 +4266,228 @@
   {
     "category": "misc",
     "repoId": "nagadomi/waifu2x",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Waifu2x",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tmux/tmux",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Tmux",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "zhangdaiscott/jeecg-boot",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "jeecg-boot",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "guzzle/guzzle",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Guzzle",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "drone/drone",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Drone",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "desktop/desktop",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Desktop",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "chubin/cheat.sh",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Cheat.sh",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "odoo/odoo",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Odoo",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ggreer/the_silver_searcher",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "The_silver_searcher",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "bilibili/ijkplayer",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Ijkplayer",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "reactivecocoa/reactivecocoa",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "ReactiveCocoa",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "aria2/aria2",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Aria2",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "dmlc/xgboost",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Xgboost",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "hashicorp/vault",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Vault",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "localstack/localstack",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Localstack",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "facebookarchive/pop",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Pop",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "bradlarson/gpuimage",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "GPUImage",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "libgdx/libgdx",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Libgdx",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "spf13/cobra",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Cobra",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "hoppscotch/hoppscotch",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Hoppscotch",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "etcd-io/etcd",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Etcd",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "hasura/graphql-engine",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "graphql-engine",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "meituan-dianping/mpvue",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mpvue",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "swiftyjson/swiftyjson",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "SwiftyJSON",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "powerline/fonts",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Fonts",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "sqlmapproject/sqlmap",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Sqlmap",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "trailofbits/algo",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Algo",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "kubernetes/minikube",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Minikube",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "labstack/echo",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Echo",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "cmu-perceptual-computing-lab/openpose",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Openpose",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "google/web-starter-kit",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "web-starter-kit",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "reactivex/rxandroid",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "RxAndroid",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "fastai/fastai",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Fastai",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "heartcombo/devise",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Devise",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "mitmproxy/mitmproxy",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mitmproxy",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "reactivex/rxswift",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "RxSwift",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "vuejs/vue-devtools",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "vue-devtools",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "swiftggteam/the-swift-programming-language-in-chinese",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "the-swift-programming-language-in-chinese",
     "framework": null
   },
@@ -4970,64 +4502,48 @@
   {
     "category": "misc",
     "repoId": "matterport/mask_rcnn",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mask_RCNN",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "alacritty/alacritty",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Alacritty",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "carbon-app/carbon",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Carbon App",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "wox-launcher/wox",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Wox",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "github/hub",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Hub",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "afollestad/material-dialogs",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "material-dialogs",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "binaryify/neteasecloudmusicapi",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "NeteaseCloudMusicApi",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "go-kit/kit",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Kit",
     "framework": null
   },
@@ -5042,48 +4558,36 @@
   {
     "category": "misc",
     "repoId": "facebook/rocksdb",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Rocksdb",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "keon/algorithms",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Algorithms",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "square/picasso",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Picasso",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "johncoates/aerial",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Aerial",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "elixir-lang/elixir",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Elixir",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "verekia/js-stack-from-scratch",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "js-stack-from-scratch",
     "framework": null
   },
@@ -5098,88 +4602,66 @@
   {
     "category": "misc",
     "repoId": "alibaba/easyexcel",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Easyexcel",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "stedolan/jq",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "jq",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "apolloauto/apollo",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Apollo",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "cmderdev/cmder",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Cmder",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "google/python-fire",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "python-fire",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "uglide/redisdesktopmanager",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "RedisDesktopManager",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "cockroachdb/cockroach",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Cockroach",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ycm-core/youcompleteme",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "YouCompleteMe",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "pjreddie/darknet",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Darknet",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "inconshreveable/ngrok",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Ngrok",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "mongodb/mongo",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mongo",
     "framework": null
   },
@@ -5194,72 +4676,54 @@
   {
     "category": "misc",
     "repoId": "ruby/ruby",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Ruby",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "google/gson",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Gson",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ymfe/yapi",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Yapi",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "nostra13/android-universal-image-loader",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Android-Universal-Image-Loader",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jinzhu/gorm",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Gorm",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "v8/v8",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "v8",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "sherlock-project/sherlock",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Sherlock",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "yeasy/docker_practice",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Docker_practice",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "seldaek/monolog",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Monolog",
     "framework": null
   },
@@ -5274,16 +4738,12 @@
   {
     "category": "misc",
     "repoId": "benweet/stackedit",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Stackedit",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "onevcat/kingfisher",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Kingfisher",
     "framework": null
   },
@@ -5306,432 +4766,324 @@
   {
     "category": "misc",
     "repoId": "tencent/wepy",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Wepy",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "obsproject/obs-studio",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "obs-studio",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "teamstuq/skill-map",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "skill-map",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "dromara/hutool",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Hutool",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "marktext/marktext",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Marktext",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "nicolargo/glances",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Glances",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "boostio/boostnote",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Boostnote",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "apache/dubbo",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Dubbo",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "docker/compose",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Compose",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jesseduffield/lazygit",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Lazygit",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "slatedocs/slate",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Slate (API docs generator)",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "baseflow/photoview",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "PhotoView",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "alibaba/canal",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Canal",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "iissnan/hexo-theme-next",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "hexo-theme-next",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jgraph/drawio",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Drawio",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "proxyee-down-org/proxyee-down",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "proxyee-down",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "drklo/telegram",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Telegram",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "google/exoplayer",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "ExoPlayer",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "hellozeronet/zeronet",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "ZeroNet",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "eugeny/terminus",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Terminus",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "xuxueli/xxl-job",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "xxl-job",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "apache/superset",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Superset",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jenkinsci/jenkins",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Jenkins",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "curl/curl",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Curl",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "explosion/spacy",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "SpaCy",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "graphql/graphql-js",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "graphql-js",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "facebook/fresco",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Fresco",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "feliscatus/switchyomega",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "SwitchyOmega",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tqdm/tqdm",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Tqdm",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "halo-dev/halo",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Halo",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "felixrieseberg/windows95",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Windows95",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "phpmailer/phpmailer",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "PHPMailer",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "haizlin/fe-interview",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "fe-interview",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "swoole/swoole-src",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "swoole-src",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "numpy/numpy",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Numpy",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "sebastianruder/nlp-progress",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "NLP-progress",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "phoenixframework/phoenix",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Phoenix",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "fish-shell/fish-shell",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "fish-shell",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "topjohnwu/magisk",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Magisk",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "spacevim/spacevim",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "SpaceVim",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "zyedidia/micro",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "micro (terminal text editor)",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "portainer/portainer",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Portainer",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "getredash/redash",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Redash",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jesseduffield/lazydocker",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Lazydocker",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "snapkit/snapkit",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "SnapKit",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "dwmkerr/hacker-laws",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "hacker-laws",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jcjohnson/neural-style",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "neural-style",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "apache/kafka",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Kafka",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "libuv/libuv",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Libuv",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "cocos2d/cocos2d-x",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "cocos2d-x",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "emscripten-core/emscripten",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Emscripten",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "sebastianbergmann/phpunit",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Phpunit",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "excalidraw/excalidraw",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Excalidraw",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "wordpress/wordpress",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "WordPress",
     "framework": null
   },
@@ -5746,8 +5098,6 @@
   {
     "category": "misc",
     "repoId": "keystonejs/keystone",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Keystone",
     "framework": null
   },
@@ -5762,32 +5112,24 @@
   {
     "category": "misc",
     "repoId": "alibaba/nacos",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Nacos",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "facebook/folly",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Folly",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "google/flexbox-layout",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "flexbox-layout",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "didi/doraemonkit",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "DoraemonKit",
     "framework": null
   },
@@ -5802,32 +5144,24 @@
   {
     "category": "misc",
     "repoId": "microsoft/cntk",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "CNTK",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "yiisoft/yii2",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Yii2",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "coolsnowwolf/lede",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Lede",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "danielgindi/charts",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Charts",
     "framework": null
   },
@@ -5850,104 +5184,78 @@
   {
     "category": "misc",
     "repoId": "mybatis/mybatis-3",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "mybatis-3",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tsenart/vegeta",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Vegeta",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ipython/ipython",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Ipython",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "vapor/vapor",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Vapor",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "mozilla/deepspeech",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "DeepSpeech",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "pyenv/pyenv",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Pyenv",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "telegramdesktop/tdesktop",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Tdesktop",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "google/dagger",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Dagger",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "sharex/sharex",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "ShareX",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "celery/celery",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Celery",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "google/flatbuffers",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Flatbuffers",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "sharkdp/fd",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "fd",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "dotnet/core",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": ".NET Core",
     "framework": null
   },
@@ -5962,48 +5270,36 @@
   {
     "category": "misc",
     "repoId": "pypa/pipenv",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Pipenv",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tencent/tinker",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Tinker",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "wangshub/wechat_jump_game",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Wechat_jump_game",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "designmodo/flat-ui",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Flat-UI",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "kong/kong",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Kong",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "carguo/gsyvideoplayer",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "GSYVideoPlayer",
     "framework": null
   },
@@ -6034,8 +5330,6 @@
   {
     "category": "misc",
     "repoId": "alibaba/ice",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Ice",
     "framework": null
   },
@@ -6050,16 +5344,12 @@
   {
     "category": "misc",
     "repoId": "dnspy/dnspy",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "DnSpy",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "binux/pyspider",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Pyspider",
     "framework": null
   },
@@ -6074,56 +5364,42 @@
   {
     "category": "misc",
     "repoId": "conwnet/github1s",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Github1s",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "dotnet-architecture/eshoponcontainers",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "EShopOnContainers",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "dreamacro/clash",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Clash",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "dgraph-io/dgraph",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Dgraph",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "linlinjava/litemall",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Litemall",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "coreybutler/nvm-windows",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "nvm-windows",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "neoclide/coc.nvim",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Coc.nvim",
     "framework": null
   },
@@ -6138,152 +5414,114 @@
   {
     "category": "misc",
     "repoId": "jaywcjlove/linux-command",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "linux-command",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jdg/mbprogresshud",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "MBProgressHUD",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "nginx/nginx",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Nginx",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "diem/diem",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Diem",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "huginn/huginn",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Huginn",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "vundlevim/vundle.vim",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Vundle.vim",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "philc/vimium",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Vimium",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "hwdsl2/setup-ipsec-vpn",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "setup-ipsec-vpn",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "openssl/openssl",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Openssl",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "apache/flink",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Flink",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "hashicorp/vagrant",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Vagrant",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "spf13/spf13-vim",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "spf13-vim",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "zsh-users/zsh-autosuggestions",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "zsh-autosuggestions",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "mxgmn/wavefunctioncollapse",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "WaveFunctionCollapse",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "microsoft/calculator",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Calculator",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "deezer/spleeter",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Spleeter",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "dbeaver/dbeaver",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Dbeaver",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "microsoft/cascadia-code",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "cascadia-code",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ray-project/ray",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Ray",
     "framework": null
   },
@@ -6298,352 +5536,264 @@
   {
     "category": "misc",
     "repoId": "romkatv/powerlevel10k",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Powerlevel10k",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "shadowsocksrr/shadowsocksr-csharp",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "shadowsocksr-csharp",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "alexeyab/darknet",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Darknet (fork)",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "scala/scala",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Scala",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "locustio/locust",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Locust",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "codermjlee/mjrefresh",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "MJRefresh",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jitsi/jitsi-meet",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "jitsi-meet",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "akveo/ngx-admin",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "ngx-admin",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jgraph/drawio-desktop",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "drawio-desktop",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "codehubapp/codehub",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "CodeHub",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "hackiftekhar/iqkeyboardmanager",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "IQKeyboardManager",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "geeeeeeeeek/electronic-wechat",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "electronic-wechat",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tencent/mars",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mars",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "d2l-ai/d2l-zh",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "d2l-zh",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "yudai/gotty",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Gotty",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "magenta/magenta",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Magenta",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "briannesbitt/carbon",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Carbon (PHP DateTime extension)",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "233boy/v2ray",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "V2ray",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "joewalnes/websocketd",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Websocketd",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "facebookresearch/detectron2",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Detectron2",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "dotnet/roslyn",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Roslyn",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "realm/realm-cocoa",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "realm-cocoa",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "robertdavidgraham/masscan",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Masscan",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "halfrost/leetcode-go",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "LeetCode-Go",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "mpv-player/mpv",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mpv",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "alibaba/sentinel",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Sentinel",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "starship/starship",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Starship",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "rancher/rancher",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Rancher",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "carthage/carthage",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Carthage",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "mustangym/wechatextension-formac",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "WeChatExtension-ForMac",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jumpserver/jumpserver",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Jumpserver",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "perfectlysoft/perfect",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Perfect",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "sqlitebrowser/sqlitebrowser",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Sqlitebrowser",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "pedronauck/docz",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Docz",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "kotlin/anko",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Anko",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "taosdata/tdengine",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "TDengine",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "elunez/eladmin",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Eladmin",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "vnpy/vnpy",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Vnpy",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "diygod/rsshub",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "RSSHub",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "spf13/viper",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Viper",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "valyala/fasthttp",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Fasthttp",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ampproject/amphtml",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Amphtml",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "airbnb/react-sketchapp",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "react-sketchapp",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "bitcoinbook/bitcoinbook",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Bitcoinbook",
     "framework": null
   },
@@ -6658,248 +5808,186 @@
   {
     "category": "misc",
     "repoId": "influxdata/influxdb",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Influxdb",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "shadowsocks/shadowsocks-libev",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "shadowsocks-libev",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "realm/swiftlint",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "SwiftLint",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "acmesh-official/acme.sh",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Acme.sh",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "certbot/certbot",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Certbot",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ustbhuangyi/better-scroll",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "better-scroll",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "dcloudio/mui",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mui",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "iina/iina",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Iina",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "rclone/rclone",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Rclone",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "menzi11/bullshitgenerator",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "BullshitGenerator",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tornadoweb/tornado",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Tornado",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ibireme/yykit",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "YYKit",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "fbsamples/f8app",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "F8app",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "beurtschipper/depix",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Depix",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "nothings/stb",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Stb",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "brettwooldridge/hikaricp",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "HikariCP",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "dianping/cat",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Cat",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "mengto/spring",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Spring",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "trojan-gfw/trojan",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Trojan",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "spotify/luigi",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Luigi",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "nsqio/nsq",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Nsq",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "nondanee/unblockneteasemusic",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "UnblockNeteaseMusic",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "gorilla/websocket",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Websocket",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "eastworld/wechat-app-mall",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "wechat-app-mall",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "redisson/redisson",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Redisson",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "gorilla/mux",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mux",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "python-telegram-bot/python-telegram-bot",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "python-telegram-bot",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "osquery/osquery",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Osquery",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "snapkit/masonry",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Masonry (SnapKit)",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ccgus/fmdb",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Fmdb",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "cmusatyalab/openface",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Openface",
     "framework": null
   },
@@ -6914,80 +6002,60 @@
   {
     "category": "misc",
     "repoId": "matplotlib/matplotlib",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Matplotlib",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "nikic/php-parser",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "PHP-Parser",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "matryer/xbar",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Xbar",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "nextcloud/server",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Server",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "iawia002/annie",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Annie",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "sindresorhus/refined-github",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "refined-github",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "plotly/dash",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Dash",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "asim/go-micro",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Go Micro",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "open-mmlab/mmdetection",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mmdetection",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "adobe-fonts/source-code-pro",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "source-code-pro",
     "framework": null
   },
@@ -7002,72 +6070,54 @@
   {
     "category": "misc",
     "repoId": "fatih/vim-go",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "vim-go",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "quantopian/zipline",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Zipline",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "michmich/magicmirror",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "MagicMirror",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "cocoapods/cocoapods",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "CocoaPods",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "bazelbuild/bazel",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Bazel",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "golang/dep",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Dep",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "sirupsen/logrus",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Logrus",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "firecracker-microvm/firecracker",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Firecracker",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "k3s-io/k3s",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "K3s",
     "framework": null
   },
@@ -7082,328 +6132,246 @@
   {
     "category": "misc",
     "repoId": "wekan/wekan",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Wekan",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "erusev/parsedown",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Parsedown",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "openemu/openemu",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "OpenEmu",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "lmax-exchange/disruptor",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Disruptor",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "kivy/kivy",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Kivy",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "openfaas/faas",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Faas",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "herotransitions/hero",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Hero",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "iamadamdev/bypass-paywalls-chrome",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "bypass-paywalls-chrome",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "zulip/zulip",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Zulip",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "linnovate/mean",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mean",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "pbatard/rufus",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Rufus",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "envoyproxy/envoy",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Envoy",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tkkk-ioser/wechatplugin-macos",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "WeChatPlugin-MacOS",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tpope/vim-fugitive",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "vim-fugitive",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "hdodenhof/circleimageview",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "CircleImageView",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "cool-rr/pysnooper",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "PySnooper",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "simulatedgreg/electron-vue",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "electron-vue",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "statsd/statsd",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Statsd",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "marcuswestin/webviewjavascriptbridge",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "WebViewJavascriptBridge",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "vurtun/nuklear",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Nuklear",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "chubin/wttr.in",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Wttr.in",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "mozilla/send",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Send",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ovity/octotree",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Octotree",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "xi-editor/xi-editor",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "xi-editor",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "wenyan-lang/wenyan",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Wenyan",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "mxcl/promisekit",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "PromiseKit",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "homebridge/homebridge",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Homebridge",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "nickemanarin/screentogif",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "ScreenToGif",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "encode/django-rest-framework",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "django-rest-framework",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "aseprite/aseprite",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Aseprite",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "notepad-plus-plus/notepad-plus-plus",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "notepad-plus-plus",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "streamlit/streamlit",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Streamlit",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "grpc/grpc-go",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "grpc-go",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ventoy/ventoy",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Ventoy",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "swordfish90/cool-retro-term",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "cool-retro-term",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "froala/design-blocks",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "design-blocks",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tzutalin/labelimg",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "LabelImg",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "oracle/graal",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "GraalVM",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "toml-lang/toml",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Toml",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "facebook/hhvm",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Hhvm",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "getgrav/grav",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Grav",
     "framework": null
   },
@@ -7418,8 +6386,6 @@
   {
     "category": "misc",
     "repoId": "redox-os/redox",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Redox",
     "framework": null
   },
@@ -7434,56 +6400,42 @@
   {
     "category": "misc",
     "repoId": "xbmc/xbmc",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Xbmc",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "elastic/kibana",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Kibana",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "sergiobenitez/rocket",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Rocket",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "orhanobut/logger",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Logger",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "esp8266/arduino",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Arduino",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "textmate/textmate",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Textmate",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "erikras/react-redux-universal-hot-example",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "react-redux-universal-hot-example",
     "framework": null
   },
@@ -7498,96 +6450,72 @@
   {
     "category": "misc",
     "repoId": "greenrobot/greendao",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "GreenDAO",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "rupa/z",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "z",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "teamnewpipe/newpipe",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "NewPipe",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "quii/learn-go-with-tests",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "learn-go-with-tests",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "facebook/zstd",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Zstd",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "timgrossmann/instapy",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "InstaPy",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "julienschmidt/httprouter",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Httprouter",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "xtaci/kcptun",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Kcptun",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "equinusocio/material-theme",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "material-theme",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "lighttable/lighttable",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "LightTable",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "alievk/avatarify-python",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "avatarify-python",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "hyperledger/fabric",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Fabric",
     "framework": null
   },
@@ -7602,16 +6530,12 @@
   {
     "category": "misc",
     "repoId": "qishibo/anotherredisdesktopmanager",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "AnotherRedisDesktopManager",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "gofiber/fiber",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Fiber",
     "framework": null
   },
@@ -7626,128 +6550,96 @@
   {
     "category": "misc",
     "repoId": "joke2k/faker",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Faker (Python)",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "boltdb/bolt",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Bolt",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "capistrano/capistrano",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Capistrano",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "wulkano/kap",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Kap",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "be5invis/iosevka",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Iosevka",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "daimajia/androidviewanimations",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "AndroidViewAnimations",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "oldj/switchhosts",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "SwitchHosts",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "mikepenz/materialdrawer",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "MaterialDrawer",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "enterprisequalitycoding/fizzbuzzenterpriseedition",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "FizzBuzzEnterpriseEdition",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "chriskempson/tomorrow-theme",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "tomorrow-theme",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "eczarny/spectacle",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Spectacle",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "lllyasviel/style2paints",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Style2paints",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jfeinstein10/slidingmenu",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "SlidingMenu",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "forem/forem",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Forem",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "lukesampson/scoop",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Scoop",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "fabric/fabric",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Fabric (Python)",
     "framework": null
   },
@@ -7762,80 +6654,60 @@
   {
     "category": "misc",
     "repoId": "preservim/nerdtree",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Nerdtree",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jantic/deoldify",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "DeOldify",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tpope/vim-pathogen",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "vim-pathogen",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "bokeh/bokeh",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Bokeh",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "bcit-ci/codeigniter",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "CodeIgniter",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "apache/hadoop",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Hadoop",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "mhinz/vim-galore",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "vim-galore",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "signalapp/signal-android",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Signal-Android",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "badges/shields",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Shields",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "nickbutcher/plaid",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Plaid",
     "framework": null
   },
@@ -7850,88 +6722,66 @@
   {
     "category": "misc",
     "repoId": "flutter/plugins",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Plugins",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tc39/ecma262",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Ecma262",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "moya/moya",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Moya",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "gradle/gradle",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Gradle",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "material-components/material-components-android",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "material-components-android",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "zhihu/matisse",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Matisse",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "meilisearch/meilisearch",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "MeiliSearch",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "diaspora/diaspora",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Diaspora",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "flarum/flarum",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Flarum",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "lutzroeder/netron",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Netron",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "eosio/eos",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Eos",
     "framework": null
   },
@@ -7946,104 +6796,78 @@
   {
     "category": "misc",
     "repoId": "akveo/blur-admin",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "blur-admin",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "uber-go/zap",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Zap",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "peterq/pan-light",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "pan-light",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tokio-rs/tokio",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Tokio",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "gentilkiwi/mimikatz",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mimikatz",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "google/cadvisor",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Cadvisor",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "flextool/flex",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "FLEX",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "restic/restic",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Restic",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "shopify/dashing",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Dashing",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "phalcon/cphalcon",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Cphalcon",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "mockito/mockito",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mockito",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tencent/weui-wxss",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "weui-wxss",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "miserlou/zappa",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Zappa",
     "framework": null
   },
@@ -8058,8 +6882,6 @@
   {
     "category": "misc",
     "repoId": "phobal/ivideo",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Ivideo",
     "framework": null
   },
@@ -8074,104 +6896,78 @@
   {
     "category": "misc",
     "repoId": "graphql/graphiql",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Graphiql",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ramotion/folding-cell",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "folding-cell",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "koel/koel",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Koel",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "android/uamp",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Uamp",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "rust-lang/rustlings",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Rustlings",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "konloch/bytecode-viewer",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "bytecode-viewer",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ramotion/animated-tab-bar",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "animated-tab-bar",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "openstf/stf",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Stf",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "instagram/iglistkit",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "IGListKit",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "grafana/loki",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Grafana loki",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "schollz/croc",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Croc",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "alibaba/spring-cloud-alibaba",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "spring-cloud-alibaba",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "magicalpanda/magicalrecord",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "MagicalRecord",
     "framework": null
   },
@@ -8186,96 +6982,72 @@
   {
     "category": "misc",
     "repoId": "rasbt/python-machine-learning-book",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "python-machine-learning-book",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "eloston/ungoogled-chromium",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "ungoogled-chromium",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "urfave/cli",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "cli (Go)",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ibotpeaches/apktool",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Apktool",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "apache/rocketmq",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Rocketmq",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "medcl/elasticsearch-analysis-ik",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "elasticsearch-analysis-ik",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "slundberg/shap",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Shap",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "lin-xin/vue-manage-system",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "vue-manage-system",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "barryvdh/laravel-ide-helper",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "laravel-ide-helper",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "android-async-http/android-async-http",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "android-async-http",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "google/jax",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Jax",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "nodebb/nodebb",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "NodeBB",
     "framework": null
   },
@@ -8290,16 +7062,12 @@
   {
     "category": "misc",
     "repoId": "paddlepaddle/paddle",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Paddle",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "k6io/k6",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "k6",
     "framework": null
   },
@@ -8314,8 +7082,6 @@
   {
     "category": "misc",
     "repoId": "davezuko/react-redux-starter-kit",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "react-redux-starter-kit",
     "framework": null
   },
@@ -8330,24 +7096,18 @@
   {
     "category": "misc",
     "repoId": "davidsandberg/facenet",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Facenet",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "nicklockwood/icarousel",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "ICarousel",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "microsoft/ms-dos",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "MS-DOS",
     "framework": null
   },
@@ -8362,112 +7122,84 @@
   {
     "category": "misc",
     "repoId": "octobercms/october",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "October",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "magic-wormhole/magic-wormhole",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "magic-wormhole",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "h5bp/effeckt.css",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Effeckt.css",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "zsh-users/zsh-syntax-highlighting",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "zsh-syntax-highlighting",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "googlechromelabs/squoosh",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Squoosh",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "microsoft/dotnet",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Dotnet",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "cyrildiagne/ar-cutpaste",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "ar-cutpaste",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jhao104/proxy_pool",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Proxy_pool",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "google/yapf",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Yapf",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "realm/realm-java",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "realm-java",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "intervention/image",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Image",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "bang590/jspatch",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "JSPatch",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "akka/akka",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Akka",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "dapr/dapr",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Dapr",
     "framework": null
   },
@@ -8482,8 +7214,6 @@
   {
     "category": "misc",
     "repoId": "facebookarchive/asyncdisplaykit",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "AsyncDisplayKit",
     "framework": null
   },
@@ -8498,24 +7228,18 @@
   {
     "category": "misc",
     "repoId": "tencent/mmkv",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "MMKV",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "kong/insomnia",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Insomnia",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "chriskiehl/gooey",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Gooey",
     "framework": null
   },
@@ -8530,80 +7254,60 @@
   {
     "category": "misc",
     "repoId": "wechat-group/wxjava",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "WxJava",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "react-navigation/react-navigation",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "react-navigation",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "xmartlabs/eureka",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Eureka (Swift form builder)",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "sass/sass",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Sass",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tencent/vassonic",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "VasSonic",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "openzipkin/zipkin",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Zipkin",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "lra/mackup",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mackup",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jaegertracing/jaeger",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Jaeger",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "thephpleague/flysystem",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Flysystem",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "keen/dashboards",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Dashboards",
     "framework": null
   },
@@ -8618,40 +7322,30 @@
   {
     "category": "misc",
     "repoId": "thx/rap",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "RAP",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "gchq/cyberchef",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "CyberChef",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "vlucas/phpdotenv",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Phpdotenv",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "gunthercox/chatterbot",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "ChatterBot",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "yichengchen/clashx",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "ClashX",
     "framework": null
   },
@@ -8666,72 +7360,54 @@
   {
     "category": "misc",
     "repoId": "gabime/spdlog",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Spdlog",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "dokku/dokku",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Dokku",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "pjialin/py12306",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Py12306",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "radareorg/radare2",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Radare2",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "graphql/graphql-spec",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "graphql-spec",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "mattermost/mattermost-server",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "mattermost-server",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tencent/ncnn",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Ncnn",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "paddlepaddle/paddleocr",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "PaddleOCR",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "alexjc/neural-enhance",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "neural-enhance",
     "framework": null
   },
@@ -8746,248 +7422,186 @@
   {
     "category": "misc",
     "repoId": "caddyserver/caddy",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Caddy",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "2dust/v2rayng",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "V2rayNG",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "iovisor/bcc",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Bcc",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "nektos/act",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Act",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "pinpoint-apm/pinpoint",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Pinpoint",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "aws/aws-cli",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "aws-cli",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tensorflow/tensor2tensor",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Tensor2tensor",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "google/mediapipe",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mediapipe",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "leandromoreira/digital_video_introduction",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Digital_video_introduction",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "bcicen/ctop",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Ctop",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "aldanial/cloc",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Cloc",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "chrislusf/seaweedfs",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Seaweedfs",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "microsoft/winget-cli",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "winget-cli",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "kovidgoyal/kitty",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Kitty",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "codelucas/newspaper",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Newspaper",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "dylanaraps/neofetch",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Neofetch",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "gocolly/colly",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Colly",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "go-sql-driver/mysql",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Go-MySQL-Driver",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "zhongyang219/trafficmonitor",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "TrafficMonitor",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "apache/incubator-mxnet",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "incubator-mxnet",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "reactide/reactide",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Reactide",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "meolu/walle-web",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "walle-web",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "postgrest/postgrest",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Postgrest",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "helm/charts",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Helm Charts",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "streisandeffect/streisand",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Streisand",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "youth5201314/banner",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Banner",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "gnachman/iterm2",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "ITerm2",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "mperham/sidekiq",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Sidekiq",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "sinatra/sinatra",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Sinatra",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "fogleman/primitive",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Primitive",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tonybeltramelli/pix2code",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Pix2code",
     "framework": null
   },
@@ -9002,224 +7616,168 @@
   {
     "category": "misc",
     "repoId": "unbug/codelf",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Codelf",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "arut/nginx-rtmp-module",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "nginx-rtmp-module",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "bailicangdu/node-elm",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "node-elm",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "memcached/memcached",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Memcached",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "mkdocs/mkdocs",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mkdocs",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "go-redis/redis",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Redis client for Golang",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "cloudwu/skynet",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Skynet",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "lyswhut/lx-music-desktop",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "lx-music-desktop",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "waditu/tushare",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Tushare",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ramsey/uuid",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "ramsey/uuid (PHP)",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "valeriansaliou/sonic",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Sonic",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ossrs/srs",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Srs",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "twitter/twemproxy",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Twemproxy",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "karpathy/convnetjs",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Convnetjs",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "actix/actix-web",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "actix-web",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "spree/spree",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Spree",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "getpelican/pelican",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Pelican",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "unity-technologies/ml-agents",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "ml-agents",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "android-hacker/virtualxposed",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "VirtualXposed",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "coatisoftware/sourcetrail",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Sourcetrail",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "alibaba/vlayout",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Vlayout",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "the-control-group/voyager",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Voyager",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "outline/outline",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Outline",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "xdissent/ievms",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Ievms",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "baomidou/mybatis-plus",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "mybatis-plus",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "panjiachen/vue-admin-template",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "vue-admin-template",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "cosmicmind/material",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Material",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ipfs/go-ipfs",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "go-ipfs",
     "framework": null
   },
@@ -9234,8 +7792,6 @@
   {
     "category": "misc",
     "repoId": "leanote/leanote",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Leanote",
     "framework": null
   },
@@ -9250,48 +7806,36 @@
   {
     "category": "misc",
     "repoId": "sivel/speedtest-cli",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "speedtest-cli",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "brendangregg/flamegraph",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "FlameGraph",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tj/git-extras",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "git-extras",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "derailed/k9s",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "K9s",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "sfttech/openage",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Openage",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "addyosmani/backbone-fundamentals",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "backbone-fundamentals",
     "framework": null
   },
@@ -9306,64 +7850,48 @@
   {
     "category": "misc",
     "repoId": "mirumee/saleor",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Saleor",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "photoprism/photoprism",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Photoprism",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jessyancoding/androidautosize",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "AndroidAutoSize",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jessesquires/jsqmessagesviewcontroller",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "JSQMessagesViewController",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "yalantis/ucrop",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "UCrop",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "cocoalumberjack/cocoalumberjack",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "CocoaLumberjack",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "magento/magento2",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Magento2",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "revel/revel",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Revel",
     "framework": null
   },
@@ -9378,8 +7906,6 @@
   {
     "category": "misc",
     "repoId": "jaidedai/easyocr",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "EasyOCR",
     "framework": null
   },
@@ -9394,24 +7920,18 @@
   {
     "category": "misc",
     "repoId": "restkit/restkit",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "RestKit",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "alibaba/tengine",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Tengine",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "aleju/imgaug",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Imgaug",
     "framework": null
   },
@@ -9426,80 +7946,60 @@
   {
     "category": "misc",
     "repoId": "foundry376/mailspring",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mailspring",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "apache/airflow",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Airflow",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "google/tink",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Tink",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "liaohuqiu/android-ultra-pull-to-refresh",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "android-Ultra-Pull-To-Refresh",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "google/guice",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Guice",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "anuken/mindustry",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mindustry",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "rusty1s/pytorch_geometric",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Pytorch_geometric",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "code4craft/webmagic",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Webmagic",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "pagehelper/mybatis-pagehelper",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mybatis-PageHelper",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "netflix/eureka",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Eureka",
     "framework": null
   },
@@ -9514,8 +8014,6 @@
   {
     "category": "misc",
     "repoId": "nvlabs/stylegan",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Stylegan",
     "framework": null
   },
@@ -9530,104 +8028,78 @@
   {
     "category": "misc",
     "repoId": "bailicangdu/vue2-manage",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "vue2-manage",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jquery/jquery-mobile",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "jquery-mobile",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "gizak/termui",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Termui",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "deviantony/docker-elk",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "docker-elk",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "kholia/osx-kvm",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "OSX-KVM",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "wangeditor-team/wangeditor",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "WangEditor",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "emilwallner/screenshot-to-code",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Screenshot-to-code",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "imathis/octopress",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Octopress",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "forkingdog/uitableview-fdtemplatelayoutcell",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "UITableView-FDTemplateLayoutCell",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "wasabeef/recyclerview-animators",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "recyclerview-animators",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "junyanz/cyclegan",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "CycleGAN",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "chrisbanes/android-pulltorefresh",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Android-PullToRefresh",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "mame/quine-relay",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "quine-relay",
     "framework": null
   },
@@ -9642,88 +8114,66 @@
   {
     "category": "misc",
     "repoId": "netflix/zuul",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Zuul",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "peachananr/onepage-scroll",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "onepage-scroll",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "h07000223/flycotablayout",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "FlycoTabLayout",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jarun/nnn",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Nnn",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "coryhouse/react-slingshot",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "react-slingshot",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "shiqiyu/libfacedetection",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Libfacedetection",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "railsware/upterm",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Upterm",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "copy/v86",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "V86",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "lingochamp/filedownloader",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "FileDownloader",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "kevinzhow/pnchart",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "PNChart",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "z-song/laravel-admin",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "laravel-admin",
     "framework": null
   },
@@ -9746,160 +8196,120 @@
   {
     "category": "misc",
     "repoId": "electron-react-boilerplate/electron-react-boilerplate",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "electron-react-boilerplate",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "pytorch/fairseq",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Fairseq",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jessyancoding/mvparms",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "MVPArms",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "nvidia/fastphotostyle",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "FastPhotoStyle",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "projectlombok/lombok",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Lombok",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "marlinfirmware/marlin",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Marlin",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "sdelements/lets-chat",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "lets-chat",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "notable/notable",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Notable",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "hashcat/hashcat",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Hashcat",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "lucksiege/pictureselector",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "PictureSelector",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "rakyll/hey",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Hey",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "avaloniaui/avalonia",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Avalonia",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "twbs/ratchet",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Ratchet",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "gopherjs/gopherjs",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Gopherjs",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "playframework/playframework",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Playframework",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tymondesigns/jwt-auth",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "jwt-auth",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "sanic-org/sanic",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Sanic",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "apple/turicreate",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Turicreate",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "nushell/nushell",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Nushell",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tbruyelle/rxpermissions",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "RxPermissions",
     "framework": null
   },
@@ -9914,8 +8324,6 @@
   {
     "category": "misc",
     "repoId": "google/filament",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Filament",
     "framework": null
   },
@@ -9938,120 +8346,90 @@
   {
     "category": "misc",
     "repoId": "vuejs-templates/webpack",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "vue webpack boilerplate",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "dutchcoders/transfer.sh",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Transfer.sh",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tflearn/tflearn",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Tflearn",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "afaqurk/linux-dash",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "linux-dash",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "navasmdc/materialdesignlibrary",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "MaterialDesignLibrary",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "debauchee/barrier",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Barrier",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "puerkitobio/goquery",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Goquery",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "connors/photon",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Photon",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "timescale/timescaledb",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Timescaledb",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "luin/medis",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Medis",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "bash-it/bash-it",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "bash-it",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "powerlevel9k/powerlevel9k",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Powerlevel9k",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "openalpr/openalpr",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Openalpr",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "davisking/dlib",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Dlib",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "andlabs/libui",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Libui",
     "framework": null
   },
@@ -10066,104 +8444,78 @@
   {
     "category": "misc",
     "repoId": "google/grumpy",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Grumpy",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "theano/theano",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Theano",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ssloy/tinyrenderer",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Tinyrenderer",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "kaldi-asr/kaldi",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Kaldi",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "arangodb/arangodb",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Arangodb",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jordansissel/fpm",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Fpm",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "weilanwl/colorui",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "ColorUI",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ksoichiro/android-observablescrollview",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Android-ObservableScrollView",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "serbanghita/mobile-detect",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mobile-Detect",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "google/gvisor",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Gvisor",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "netflix/falcor",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Falcor",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "nathanmarz/storm",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Storm",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "fluent/fluentd",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Fluentd",
     "framework": null
   },
@@ -10178,24 +8530,18 @@
   {
     "category": "misc",
     "repoId": "nltk/nltk",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Nltk",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jmoiron/sqlx",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Sqlx",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "golang/groupcache",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Groupcache",
     "framework": null
   },
@@ -10210,8 +8556,6 @@
   {
     "category": "misc",
     "repoId": "davidshimjs/qrcodejs",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Qrcodejs",
     "framework": null
   },
@@ -10226,120 +8570,90 @@
   {
     "category": "misc",
     "repoId": "netflix/chaosmonkey",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Chaosmonkey",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "derekparker/delve",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Delve",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "vdumoulin/conv_arithmetic",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Conv_arithmetic",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "azure/azure-quickstart-templates",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "azure-quickstart-templates",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "powerline/powerline",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Powerline",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "snail007/goproxy",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Goproxy",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "zadam/trilium",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Trilium",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "keepassxreboot/keepassxc",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Keepassxc",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "facebook/watchman",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Watchman",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "apprenticeharper/dedrm_tools",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "DeDRM_tools",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "yokeyword/fragmentation",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Fragmentation",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jonas/tig",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Tig",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "askmike/gekko",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Gekko",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "doctrine/inflector",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Inflector",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "google/brotli",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Brotli",
     "framework": null
   },
@@ -10354,8 +8668,6 @@
   {
     "category": "misc",
     "repoId": "micro/micro",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Micro",
     "framework": null
   },
@@ -10370,104 +8682,78 @@
   {
     "category": "misc",
     "repoId": "java-decompiler/jd-gui",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "jd-gui",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "git-up/gitup",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "GitUp",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jacomyal/sigma.js",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Sigma.js",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "homebrew/homebrew-cask",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "homebrew-cask",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "81813780/avloadingindicatorview",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "AVLoadingIndicatorView",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "aspnetboilerplate/aspnetboilerplate",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Aspnetboilerplate",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "facebook/yoga",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Yoga",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "redis/jedis",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Jedis",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "dingo/api",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Api",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jeasonlzy/okhttp-okgo",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "okhttp-OkGo",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ninjaprox/nvactivityindicatorview",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "NVActivityIndicatorView",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "werwolv/imhex",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "ImHex",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "googlecontainertools/jib",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Jib",
     "framework": null
   },
@@ -10482,8 +8768,6 @@
   {
     "category": "misc",
     "repoId": "alexjc/neural-doodle",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "neural-doodle",
     "framework": null
   },
@@ -10506,8 +8790,6 @@
   {
     "category": "misc",
     "repoId": "onnx/onnx",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Onnx",
     "framework": null
   },
@@ -10522,16 +8804,12 @@
   {
     "category": "misc",
     "repoId": "rlabbe/kalman-and-bayesian-filters-in-python",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Kalman-and-Bayesian-Filters-in-Python",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "doctrine/lexer",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Lexer",
     "framework": null
   },
@@ -10546,16 +8824,12 @@
   {
     "category": "misc",
     "repoId": "emirpasic/gods",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Gods",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "doctrine/instantiator",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Instantiator",
     "framework": null
   },
@@ -10570,104 +8844,78 @@
   {
     "category": "misc",
     "repoId": "juanpe/skeletonview",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "SkeletonView",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "apache/skywalking",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Skywalking",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "darknessomi/musicbox",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Musicbox",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "kovidgoyal/calibre",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Calibre",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jellyfin/jellyfin",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Jellyfin",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "cookiecutter/cookiecutter",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Cookiecutter",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jupyterlab/jupyterlab",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Jupyterlab",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "reactos/reactos",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Reactos",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "justauth/justauth",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "JustAuth",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "w7corp/easywechat",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Easywechat",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "grpc-ecosystem/grpc-gateway",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "grpc-gateway",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "codecentric/spring-boot-admin",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "spring-boot-admin",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "nim-lang/nim",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Nim",
     "framework": null
   },
@@ -10682,64 +8930,48 @@
   {
     "category": "misc",
     "repoId": "mono/mono",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mono",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "hlissner/doom-emacs",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "doom-emacs",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "asdf-vm/asdf",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Asdf",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "foxlet/macos-simple-kvm",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "macOS-Simple-KVM",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jamiebuilds/the-super-tiny-compiler",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "the-super-tiny-compiler",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "tensorflow/playground",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Playground",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "babun/babun",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Babun",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "lengstrom/fast-style-transfer",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "fast-style-transfer",
     "framework": null
   },
@@ -10754,24 +8986,18 @@
   {
     "category": "misc",
     "repoId": "facebookarchive/shimmer",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Shimmer",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "taye/interact.js",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Interact.js",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ceph/ceph",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Ceph",
     "framework": null
   },
@@ -10786,24 +9012,18 @@
   {
     "category": "misc",
     "repoId": "perwendel/spark",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Spark (Java 8 web framework)",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "brianc/node-postgres",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "node-postgres",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "docker/labs",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Labs",
     "framework": null
   },
@@ -10818,56 +9038,42 @@
   {
     "category": "misc",
     "repoId": "tachiyomiorg/tachiyomi",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Tachiyomi",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "umano/androidslidinguppanel",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "AndroidSlidingUpPanel",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ethereum/solidity",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Solidity",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "maatwebsite/laravel-excel",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Laravel-Excel",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "clojure/clojurescript",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Clojurescript",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "apache/predictionio",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Predictionio",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "source-foundry/hack",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Hack",
     "framework": null
   },
@@ -10882,144 +9088,108 @@
   {
     "category": "misc",
     "repoId": "laverna/laverna",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Laverna",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "openra/openra",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "OpenRA",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "reduxjs/redux-devtools",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "redux-devtools",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "electron/electron-api-demos",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "electron-api-demos",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "wkhtmltopdf/wkhtmltopdf",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Wkhtmltopdf",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "googlecloudplatform/microservices-demo",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "microservices-demo",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "egulias/emailvalidator",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "EmailValidator",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "cakephp/cakephp",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Cakephp",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "ehang-io/nps",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Nps",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "chenshuo/muduo",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Muduo",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "go-martini/martini",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Martini",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "chainsafe/web3.js",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Web3.js",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "asciimoo/wuzz",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Wuzz",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "allenai/allennlp",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Allennlp",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "directus/directus",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Directus",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "rubocop/rubocop",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Rubocop",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "antlr/antlr4",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Antlr4",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "codermjlee/mjextension",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "MJExtension",
     "framework": null
   },
@@ -11034,8 +9204,6 @@
   {
     "category": "misc",
     "repoId": "vim-airline/vim-airline",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "vim-airline",
     "framework": null
   },
@@ -11050,16 +9218,12 @@
   {
     "category": "misc",
     "repoId": "psf/requests-html",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "requests-html",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "apple/foundationdb",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Foundationdb",
     "framework": null
   },
@@ -11074,40 +9238,30 @@
   {
     "category": "misc",
     "repoId": "lokesh/color-thief",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "color-thief",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "rare-technologies/gensim",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Gensim",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "jakewharton/rxbinding",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "RxBinding",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "onevcat/vvdocumenter-xcode",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "VVDocumenter-Xcode",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "adobe-fonts/source-han-sans",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "source-han-sans",
     "framework": null
   },
@@ -11122,8 +9276,6 @@
   {
     "category": "misc",
     "repoId": "phpstan/phpstan",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Phpstan",
     "framework": null
   },
@@ -11154,8 +9306,6 @@
   {
     "category": "misc",
     "repoId": "mozilla/browserquest",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "BrowserQuest",
     "framework": null
   },
@@ -11170,8 +9320,6 @@
   {
     "category": "misc",
     "repoId": "bigkoo/android-pickerview",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Android-PickerView",
     "framework": null
   },
@@ -11186,64 +9334,48 @@
   {
     "category": "misc",
     "repoId": "tpope/vim-surround",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "vim-surround",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "apache/zookeeper",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Zookeeper",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "dbcli/mycli",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mycli",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "torch/torch7",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Torch7",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "clojure/clojure",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Clojure",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "backstage/backstage",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Backstage",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "materializeinc/materialize",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Materialize",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "apache/incubator-pinot",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Apache Pinot",
     "framework": null
   },
@@ -11258,16 +9390,12 @@
   {
     "category": "misc",
     "repoId": "linkedin/datahub",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "DataHub",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "opstrace/opstrace",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Opstrace",
     "framework": null
   },
@@ -11282,8 +9410,6 @@
   {
     "category": "misc",
     "repoId": "vectorizedio/redpanda",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Redpanda",
     "framework": null
   },
@@ -11298,112 +9424,84 @@
   {
     "category": "misc",
     "repoId": "facebook/flipper",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Flipper",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "mlflow/mlflow",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Mlflow",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "google/or-tools",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "or-tools",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "toniblyx/prowler",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Prowler",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "microsoft/pyright",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Pyright",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "gruntwork-io/terratest",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Terratest",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "hashicorp/boundary",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Boundary",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "imgcook/imgcook",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Imgcook",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "longhorn/longhorn",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Longhorn",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "yelp/detect-secrets",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "detect-secrets",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "dagster-io/dagster",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Dagster",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "lvgl/lvgl",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Lvgl",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "online-ml/river",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "River",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "awslabs/aws-data-wrangler",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "aws-data-wrangler",
     "framework": null
   },
@@ -11418,8 +9516,6 @@
   {
     "category": "misc",
     "repoId": "juicedata/juicefs",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "JuiceFS",
     "framework": null
   },
@@ -11458,8 +9554,6 @@
   {
     "category": "misc",
     "repoId": "pnpm/pnpm",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "pnpm",
     "framework": null
   },
@@ -11474,8 +9568,6 @@
   {
     "category": "misc",
     "repoId": "uber/manifold",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Manifold",
     "framework": null
   },
@@ -11498,16 +9590,12 @@
   {
     "category": "misc",
     "repoId": "zalando/zally",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Zally",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "bunit-dev/bunit",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "BUnit",
     "framework": null
   },
@@ -11522,24 +9610,18 @@
   {
     "category": "misc",
     "repoId": "elm/compiler",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Elm",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "purescript/purescript",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "PureScript",
     "framework": null
   },
   {
     "category": "misc",
     "repoId": "reasonml/reason",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Reason",
     "framework": null
   },
@@ -12186,16 +10268,12 @@
   {
     "category": "JavaScript runtimes",
     "repoId": "denoland/deno",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Deno",
     "framework": null
   },
   {
     "category": "JavaScript runtimes",
     "repoId": "nodejs/node",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Node.js",
     "framework": null
   },
@@ -12634,8 +10712,6 @@
   {
     "category": "UI Frameworks for building Mobile Apps (Desktop and Web)",
     "repoId": "flutter/flutter",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "Flutter",
     "framework": null
   },
@@ -12674,8 +10750,6 @@
   {
     "category": "UI Frameworks for building Mobile Apps (Desktop and Web)",
     "repoId": "apache/incubator-weex",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": "incubator-weex",
     "framework": null
   },

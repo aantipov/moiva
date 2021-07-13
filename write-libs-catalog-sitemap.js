@@ -65,11 +65,15 @@ function generateCatalogStr(full = false) {
       const alias = lib.alias && `"${lib.alias}"`;
       const framework = lib.framework && `"${lib.framework}"`;
       const npm = lib.npm && `"${lib.npm}"`;
+      const npmStr = lib.npm
+        ? `
+    "npm": ${npm},
+    "isNpmCoreArtifact": ${lib.isNpmCoreArtifact},`
+        : '';
+
       str += `  {
     "category": "${lib.category}",
-    "repoId": "${lib.repoId.toLowerCase()}",
-    "npm": ${npm},
-    "isNpmCoreArtifact": ${lib.isNpmCoreArtifact},
+    "repoId": "${lib.repoId.toLowerCase()}",${npmStr}
     "alias": ${alias},
     "framework": ${framework}
   }`;
