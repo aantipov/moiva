@@ -106,8 +106,6 @@ export const catalogLibraries = rawLibraries.filter(
   (lib) => lib.category !== 'misc' || lib.npm !== null
 ) as CatalogLibraryT[];
 
-console.log('LEN', catalogLibraries.length);
-
 /**
  * Find a Catalog entry with Core npm artifact
  */
