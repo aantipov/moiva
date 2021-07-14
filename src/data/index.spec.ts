@@ -102,7 +102,7 @@ describe('StateOfJS', () => {
 describe('Catalog libraries', () => {
   it('Contain No duplicates', () => {
     const duplicates = getDuplicates(catalogLibraries);
-    expect(duplicates.length).toBe(0);
+    expect(duplicates).toEqual([]);
   });
 
   it('Use correct frameworks', () => {
@@ -118,7 +118,8 @@ describe('Catalog libraries', () => {
       'angular',
       'angularjs',
     ];
-    expect(allowedFrameworks).toEqual(expect.arrayContaining(frameworks));
+
+    frameworks.forEach(expect(allowedFrameworks).toContain);
   });
 
   it('all repos lowercase', () => {
