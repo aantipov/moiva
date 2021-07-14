@@ -121,7 +121,11 @@ describe('Catalog libraries', () => {
     expect(allowedFrameworks).toEqual(expect.arrayContaining(frameworks));
   });
 
-  it.todo('all repos lowercase - Should or Not?');
+  it('all repos lowercase', () => {
+    catalogLibraries
+      .map((lib) => lib.repoId)
+      .forEach((repoId) => expect(repoId).toBe(repoId.toLowerCase()));
+  });
 });
 
 function getDuplicates(libs: CatalogLibraryT[]) {
