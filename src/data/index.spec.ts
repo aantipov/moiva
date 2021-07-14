@@ -99,13 +99,10 @@ describe('StateOfJS', () => {
   });
 });
 
-describe.skip('Catalog libraries', () => {
+describe('Catalog libraries', () => {
   it('Contain No duplicates', () => {
     const duplicates = getDuplicates(catalogLibraries);
-    if (duplicates.length) {
-      console.error(`Duplicate libraries names: ${duplicates.join('; ')}`);
-      return;
-    }
+    expect(duplicates.length).toBe(0);
   });
 
   it.todo('Use correct frameworks');
