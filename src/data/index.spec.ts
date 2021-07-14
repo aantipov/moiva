@@ -10,7 +10,7 @@ const libsReposIds = catalogLibraries.map((lib) => lib.repoId);
 describe('ThoughtWorks Radar', () => {
   it('repos names match Catalog', () => {
     // List of TechRadar Items exceptions that are not part of Catalog (no npm package)
-    const exceptions = [
+    const exceptionsWithoutNpm = [
       'laravel/laravel',
       'getsentry/sentry',
       'pnpm/pnpm',
@@ -46,8 +46,9 @@ describe('ThoughtWorks Radar', () => {
       'lvgl/lvgl',
       'online-ml/river',
     ];
+
     techRadarItems.forEach((item) => {
-      if (!exceptions.includes(item[0] as string)) {
+      if (!exceptionsWithoutNpm.includes(item[0] as string)) {
         expect(libsReposIds).toContain(item[0]);
       }
     });
@@ -57,10 +58,10 @@ describe('ThoughtWorks Radar', () => {
 describe('Google Trends', () => {
   it('repos names match Catalog', () => {
     // List of Google Trends Items exceptions that are not part of Catalog (no npm package)
-    const exceptions = ['laravel/laravel', 'django/django'];
+    const exceptionsWithoutNpm = ['laravel/laravel', 'django/django'];
 
     googleTrendsItems.forEach((item) => {
-      if (!exceptions.includes(item[0] as string)) {
+      if (!exceptionsWithoutNpm.includes(item[0] as string)) {
         expect(libsReposIds).toContain(item[0]);
       }
     });
@@ -127,6 +128,8 @@ describe('Catalog libraries', () => {
       .map((lib) => lib.repoId)
       .forEach((repoId) => expect(repoId).toBe(repoId.toLowerCase()));
   });
+
+  it('sitemap is generated for each entry', () => {});
 });
 
 function getDuplicates(libs: CatalogLibraryT[]) {
