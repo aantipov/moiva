@@ -105,12 +105,21 @@ describe('Catalog libraries', () => {
     expect(duplicates.length).toBe(0);
   });
 
-  it.todo('Use correct frameworks');
-  // const wrongFrameworks = getWrongFrameworks(categories);
-  // if (wrongFrameworks.length) {
-  //   console.error(`Wrong frameworks found: ${wrongFrameworks.join('; ')}`);
-  //   return;
-  // }
+  it('Use correct frameworks', () => {
+    const frameworks = [
+      ...new Set(catalogLibraries.map(({ framework }) => framework)),
+    ];
+    const allowedFrameworks = [
+      null,
+      'react',
+      'vue',
+      'svelte',
+      'ember',
+      'angular',
+      'angularjs',
+    ];
+    expect(allowedFrameworks).toEqual(expect.arrayContaining(frameworks));
+  });
 
   it.todo('all repos lowercase - Should or Not?');
 });
@@ -151,21 +160,3 @@ function getDuplicatesGeneric(items: string[]) {
 
   return duplicates;
 }
-
-// function getWrongFrameworks(categories) {
-//   const libs = categories.map(({ libs }) => libs).flat();
-//   const frameworks = libs.map(({ framework }) => framework);
-//   const allowedFrameworks = [
-//     null,
-//     'react',
-//     'vue',
-//     'svelte',
-//     'ember',
-//     'angular',
-//     'angularjs',
-//   ];
-
-//   return frameworks.filter(
-//     (framework) => !allowedFrameworks.includes(framework)
-//   );
-// }
