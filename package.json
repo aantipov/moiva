@@ -21,6 +21,7 @@
     "chart.js": "^3.4.1",
     "chartjs-adapter-date-fns": "^2.0.0",
     "date-fns": "^2.22.1",
+    "flexsearch": "^0.7.2",
     "google-trends-api": "^4.9.2",
     "nanoid": "^3.1.23",
     "ramda": "^0.27.1",
