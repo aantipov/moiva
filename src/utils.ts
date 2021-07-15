@@ -4,6 +4,17 @@ import { getYear, getMonth } from 'date-fns';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
+import { Document } from 'flexsearch';
+
+// Init and build search index for catalog libraries
+const index = new Document({
+  document: {
+    id: 'id',
+    content: 'alias',
+    tag: 'tags',
+  },
+});
+catalogLibraries.forEach((lib) => index.add(lib));
 
 const npmQueryParamNameLegacy = 'compare';
 const npmQueryParamName = 'npm';
@@ -253,23 +264,59 @@ ${libB.alias}: &#9733;${libB.starsCount} stars, ${libB.age} old...
 ${libC.alias}: &#9733;${libC.starsCount} stars, ${libC.age} old...
 `;
 }
-function getSuggestions2(libraries: LibrariesReadonlyT): CatalogLibraryT[] {
-  if (!libraries.length) {
-    console.log('new suggestions', []);
+
+interface SearchResultsItemT {
+  tag: string;
+  result: number[];
+}
+interface SearchLibT {
+  lib: CatalogLibraryT;
+  matchedTags: string[];
+  matchedTagsNumber: number; // we need it to sort found libraries
+}
+
+function getSuggestionsNew(
+  selectedLibraries: LibrariesReadonlyT
+): CatalogLibraryT[] {
+  if (!selectedLibraries.length) {
     return [];
   }
-  const tags = [
-    ...new Set(libraries.map((lib) => lib.tags).flat()),
+
+  // Tags of selected libraries
+  const tagsUsed = [
+    ...new Set(selectedLibraries.map((lib) => lib.tags).flat()),
   ] as string[];
-  // console.log('tags', tags);
 
-  // if (categories.length !== 1) {
-  //   return [];
-  // }
+  const tagsResults = index.search({ tag: tagsUsed }) as SearchResultsItemT[];
+  const keyToLibMap = new Map<number, SearchLibT>();
 
-  // TODO: get suggestions
-  // TODO: sort suggestions
-  return [];
+  tagsResults.forEach((tagResultItem) => {
+    const tagLibsKeys = tagResultItem.result; // list of libs ids [0, 4, 8] (indexes in catalogLibraries)
+    const tag = tagResultItem.tag;
+    tagLibsKeys.forEach((libKey) => {
+      if (!keyToLibMap.get(libKey)) {
+        keyToLibMap.set(libKey, {
+          lib: catalogLibraries[libKey],
+          matchedTags: [],
+          matchedTagsNumber: 0,
+        });
+      }
+      const lib = keyToLibMap.get(libKey) as SearchLibT;
+      lib.matchedTags.push(tag);
+      lib.matchedTagsNumber++;
+    });
+  });
+
+  const selectedLibsIds = selectedLibraries.map(
+    (item) => item.catalogLibraryId
+  );
+  const suggestedLibs: CatalogLibraryT[] = [...keyToLibMap.values()]
+    .sort((a, b) => b.matchedTagsNumber - a.matchedTagsNumber)
+    .map((item) => item.lib)
+    // filter out selected libraries
+    .filter((item) => !selectedLibsIds.includes(item.id));
+
+  return suggestedLibs;
 }
 /**
  * Get Library suggestions for the selected libs
@@ -281,7 +328,9 @@ function getSuggestions2(libraries: LibrariesReadonlyT): CatalogLibraryT[] {
 export function getSuggestions(
   libraries: LibrariesReadonlyT
 ): CatalogLibraryT[] {
-  getSuggestions2(libraries);
+  const r = getSuggestionsNew(libraries);
+  // console.log('res', r);
+
   if (!libraries.length) {
     return [];
   }

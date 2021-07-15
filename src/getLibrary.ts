@@ -67,9 +67,10 @@ export type StatusT = 'ACTIVE' | 'INACTIVE' | 'LEGACY' | 'ARCHIVED';
 
 export interface LibraryT {
   id: string;
+  catalogLibraryId: number | null; //index in the catalogLibraries list
   color: string;
   category: string | null;
-  tags: string[];
+  tags: string[]; // tags of the Catalog library
   status: StatusT;
   repo: RepoT;
   alias: string;
@@ -97,22 +98,23 @@ export interface LibraryT {
 export function getLibrary(
   repo: RepoT,
   npmPackage: NpmPackageT | null,
-  library: CatalogLibraryT | null
+  catalogLibrary: CatalogLibraryT | null
 ): LibraryT {
-  const isNpmCoreArtifact = library?.isNpmCoreArtifact ?? null;
-  const category = (library && library.category) || null;
-  const tags = (library && library.tags) || [];
+  const isNpmCoreArtifact = catalogLibrary?.isNpmCoreArtifact ?? null;
+  const category = (catalogLibrary && catalogLibrary.category) || null;
+  const tags = (catalogLibrary && catalogLibrary.tags) || [];
   const id = nanoid();
   const repoIdLC = repo.repoId.toLowerCase();
 
   return {
     id,
+    catalogLibraryId: catalogLibrary?.id ?? null,
     repo,
     npmPackage,
     category,
     tags,
     isNpmCoreArtifact,
-    alias: library?.alias || getSeoLibName(repoIdLC),
+    alias: catalogLibrary?.alias || getSeoLibName(repoIdLC),
     // Use @ts-ignore because the Computed Ref will eventually become Reactive and then Typescript will start arguing
     // @ts-ignore
     status: computed(() => {

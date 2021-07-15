@@ -85,6 +85,7 @@ export const repoIdToTechRadarMap = (
 
 /** ========= LIBRARIES CATALOG ========= **/
 interface CatalogLibraryNpmT {
+  id: number; // index in the catalog libraries list
   npm: string; // unique
   isNpmCoreArtifact: boolean;
   repoId: string; // not unique (e.g. several npm packages from the same repo)
@@ -94,6 +95,7 @@ interface CatalogLibraryNpmT {
   framework: string | null;
 }
 interface CatalogLibraryGithubT {
+  id: number; // index in the catalog libraries list
   npm: null;
   isNpmCoreArtifact: null;
   repoId: string; // unique
@@ -126,9 +128,10 @@ function getAliasFromRepoId(repoId: string): string {
 
 export const catalogLibraries = rawLibraries
   .filter((lib) => lib.category !== 'misc' || lib.npm !== null)
-  .map((lib) => ({
+  .map((lib, index) => ({
     ...lib,
     alias: lib.alias || getAliasFromRepoId(lib.repoId),
+    id: index,
   })) as CatalogLibraryT[];
 
 /**
