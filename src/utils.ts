@@ -4,6 +4,7 @@ import { getYear, getMonth } from 'date-fns';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
+// @ts-ignore
 import { Document } from 'flexsearch';
 
 // Init and build search index for catalog libraries
