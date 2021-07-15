@@ -69,6 +69,7 @@ export interface LibraryT {
   id: string;
   color: string;
   category: string | null;
+  tags: string[];
   status: StatusT;
   repo: RepoT;
   alias: string;
@@ -100,6 +101,7 @@ export function getLibrary(
 ): LibraryT {
   const isNpmCoreArtifact = library?.isNpmCoreArtifact ?? null;
   const category = (library && library.category) || null;
+  const tags = (library && library.tags) || [];
   const id = nanoid();
   const repoIdLC = repo.repoId.toLowerCase();
 
@@ -108,6 +110,7 @@ export function getLibrary(
     repo,
     npmPackage,
     category,
+    tags,
     isNpmCoreArtifact,
     alias: library?.alias || getSeoLibName(repoIdLC),
     // Use @ts-ignore because the Computed Ref will eventually become Reactive and then Typescript will start arguing
