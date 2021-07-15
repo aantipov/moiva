@@ -105,7 +105,8 @@ describe('Catalog libraries', () => {
     catalogLibraries.forEach((lib) => {
       const props = Object.entries(lib);
       const propsNames = props.map((p) => p[0]);
-      expect(propsNames.length).toBe(7);
+      expect(propsNames.length).toBe(8);
+      expect(propsNames).toContain('id');
       expect(propsNames).toContain('category');
       expect(propsNames).toContain('repoId');
       expect(propsNames).toContain('npm');
