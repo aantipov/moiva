@@ -261,7 +261,7 @@ function getSuggestions2(libraries: LibrariesReadonlyT): CatalogLibraryT[] {
   const tags = [
     ...new Set(libraries.map((lib) => lib.tags).flat()),
   ] as string[];
-  console.log('tags', tags);
+  // console.log('tags', tags);
 
   // if (categories.length !== 1) {
   //   return [];
