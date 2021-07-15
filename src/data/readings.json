@@ -28,5 +28,11 @@
     "url": "https://www.netlify.com/blog/2021/06/02/10-static-site-generators-to-watch-in-2021/",
     "npms": ["gatsby", "next", "nuxt", "gridsome", "@docusaurus/core", "@11ty/eleventy"],
     "repos": []
+  },
+  {
+    "title": "Possibilities with Three.js and Babylon.js",
+    "url": "https://www.3pillarglobal.com/insights/3d-graphics-with-webgl-three-js-babylon-js",
+    "npms": ["babylonjs", "three"],
+    "repos": []
   }
 ]

@@ -101,6 +101,21 @@ describe('StateOfJS', () => {
 });
 
 describe('Catalog libraries', () => {
+  it('libs have the same fields', () => {
+    catalogLibraries.forEach((lib) => {
+      const props = Object.entries(lib);
+      const propsNames = props.map((p) => p[0]);
+      expect(propsNames.length).toBe(7);
+      expect(propsNames).toContain('category');
+      expect(propsNames).toContain('repoId');
+      expect(propsNames).toContain('npm');
+      expect(propsNames).toContain('isNpmCoreArtifact');
+      expect(propsNames).toContain('alias');
+      expect(propsNames).toContain('tags');
+      expect(propsNames).toContain('framework');
+    });
+  });
+
   it('Contain No duplicates', () => {
     const duplicates = getDuplicates(catalogLibraries);
     expect(duplicates).toEqual([]);
@@ -129,7 +144,7 @@ describe('Catalog libraries', () => {
       .forEach((repoId) => expect(repoId).toBe(repoId.toLowerCase()));
   });
 
-  it('sitemap is generated for each entry', () => {});
+  it.todo('sitemap is generated for each entry');
 });
 
 function getDuplicates(libs: CatalogLibraryT[]) {

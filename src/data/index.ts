@@ -89,6 +89,7 @@ interface CatalogLibraryNpmT {
   isNpmCoreArtifact: boolean;
   repoId: string; // not unique (e.g. several npm packages from the same repo)
   category: string;
+  tags: string[];
   alias: string;
   framework: string | null;
 }
@@ -97,6 +98,7 @@ interface CatalogLibraryGithubT {
   isNpmCoreArtifact: null;
   repoId: string; // unique
   category: string;
+  tags: string[];
   alias: string;
   framework: string | null;
 }

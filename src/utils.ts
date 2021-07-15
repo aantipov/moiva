@@ -253,7 +253,24 @@ ${libB.alias}: &#9733;${libB.starsCount} stars, ${libB.age} old...
 ${libC.alias}: &#9733;${libC.starsCount} stars, ${libC.age} old...
 `;
 }
+function getSuggestions2(libraries: LibrariesReadonlyT): CatalogLibraryT[] {
+  if (!libraries.length) {
+    console.log('new suggestions', []);
+    return [];
+  }
+  const tags = [
+    ...new Set(libraries.map((lib) => lib.tags).flat()),
+  ] as string[];
+  console.log('tags', tags);
 
+  // if (categories.length !== 1) {
+  //   return [];
+  // }
+
+  // TODO: get suggestions
+  // TODO: sort suggestions
+  return [];
+}
 /**
  * Get Library suggestions for the selected libs
  * based on the category of the selected libs
@@ -264,6 +281,7 @@ ${libC.alias}: &#9733;${libC.starsCount} stars, ${libC.age} old...
 export function getSuggestions(
   libraries: LibrariesReadonlyT
 ): CatalogLibraryT[] {
+  getSuggestions2(libraries);
   if (!libraries.length) {
     return [];
   }
