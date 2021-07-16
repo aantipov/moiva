@@ -941,7 +941,7 @@
     "npm": "relay-runtime",
     "isNpmCoreArtifact": true,
     "alias": "Relay",
-    "tags": [],
+    "tags": ["GraphQL-client", "react"],
     "framework": "react"
   },
   {
@@ -950,7 +950,7 @@
     "npm": "@apollo/client",
     "isNpmCoreArtifact": true,
     "alias": "Apollo Client",
-    "tags": [],
+    "tags": ["GraphQL-client", "react"],
     "framework": "react"
   },
   {
@@ -959,7 +959,7 @@
     "npm": "vue-apollo",
     "isNpmCoreArtifact": true,
     "alias": "Vue Apollo",
-    "tags": [],
+    "tags": ["GraphQL-client", "vue"],
     "framework": "vue"
   },
   {
@@ -968,7 +968,7 @@
     "npm": "svelte-apollo",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["GraphQL-client", "svelte"],
     "framework": "svelte"
   },
   {
@@ -977,7 +977,7 @@
     "npm": "ember-apollo-client",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["GraphQL-client", "ember"],
     "framework": "ember"
   },
   {
@@ -986,17 +986,35 @@
     "npm": "apollo-angular",
     "isNpmCoreArtifact": true,
     "alias": "Apollo Angular",
-    "tags": [],
+    "tags": ["GraphQL-client", "angular"],
     "framework": "angular"
   },
   {
     "category": "GraphQL Client Libraries",
     "repoId": "formidablelabs/urql",
-    "npm": "@urql/core",
-    "isNpmCoreArtifact": true,
+    "npm": "urql",
+    "isNpmCoreArtifact": false,
     "alias": "urql",
-    "tags": [],
-    "framework": null
+    "tags": ["GraphQL-client", "react"],
+    "framework": "react"
+  },
+  {
+    "category": "GraphQL Client Libraries",
+    "repoId": "formidablelabs/urql",
+    "npm": "@urql/preact",
+    "isNpmCoreArtifact": false,
+    "alias": "@urql/preact",
+    "tags": ["GraphQL-client", "preact"],
+    "framework": "preact"
+  },
+  {
+    "category": "GraphQL Client Libraries",
+    "repoId": "formidablelabs/urql",
+    "npm": "@urql/vue",
+    "isNpmCoreArtifact": false,
+    "alias": "@urql/vue",
+    "tags": ["GraphQL-client", "vue"],
+    "framework": "vue"
   },
   {
     "category": "JavaScript Template Engines",
