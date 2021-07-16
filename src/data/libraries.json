@@ -437,7 +437,7 @@
     "npm": "styled-jsx",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["css-in-js"],
     "framework": "react"
   },
   {
@@ -446,7 +446,7 @@
     "npm": "styled-components",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["css-in-js"],
     "framework": "react"
   },
   {
@@ -455,7 +455,7 @@
     "npm": "radium",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["css-in-js"],
     "framework": "react"
   },
   {
@@ -464,7 +464,7 @@
     "npm": "@linaria/core",
     "isNpmCoreArtifact": true,
     "alias": "Linaria",
-    "tags": [],
+    "tags": ["css-in-js"],
     "framework": "react"
   },
   {
@@ -473,7 +473,7 @@
     "npm": "jss",
     "isNpmCoreArtifact": true,
     "alias": "JSS",
-    "tags": [],
+    "tags": ["css-in-js"],
     "framework": null
   },
   {
@@ -482,7 +482,7 @@
     "npm": "@emotion/css",
     "isNpmCoreArtifact": true,
     "alias": "Emotion",
-    "tags": [],
+    "tags": ["css-in-js"],
     "framework": null
   },
   {
@@ -491,7 +491,7 @@
     "npm": "aphrodite",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["css-in-js"],
     "framework": null
   },
   {
@@ -500,7 +500,7 @@
     "npm": "@stitches/core",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["css-in-js"],
     "framework": null
   },
   {
@@ -509,7 +509,7 @@
     "npm": "astroturf",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["css-in-js"],
     "framework": null
   },
   {
@@ -518,7 +518,7 @@
     "npm": "fela",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["css-in-js"],
     "framework": null
   },
   {
@@ -527,7 +527,7 @@
     "npm": "date-fns",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["Date-time"],
     "framework": null
   },
   {
@@ -536,7 +536,7 @@
     "npm": "dayjs",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["Date-time"],
     "framework": null
   },
   {
@@ -545,7 +545,7 @@
     "npm": "luxon",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["Date-time"],
     "framework": null
   },
   {
@@ -554,7 +554,7 @@
     "npm": "moment",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["Date-time"],
     "framework": null
   },
   {
@@ -563,7 +563,7 @@
     "npm": "fecha",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["Date-time"],
     "framework": null
   },
   {
@@ -572,7 +572,7 @@
     "npm": "ms",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["Date-time"],
     "framework": null
   },
   {
@@ -581,7 +581,7 @@
     "npm": "timeago.js",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["Date-time"],
     "framework": null
   },
   {
@@ -590,7 +590,7 @@
     "npm": "date.js",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["Date-time"],
     "framework": null
   },
   {
