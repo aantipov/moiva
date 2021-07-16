@@ -13226,7 +13226,7 @@
     "npm": "forever",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-process-manager", "cli-tool"],
     "framework": null
   },
   {
@@ -13235,7 +13235,7 @@
     "npm": "pm2",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-process-manager", "cli-tool"],
     "framework": null
   },
   {
@@ -13244,7 +13244,7 @@
     "npm": "nodemon",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-process-manager", "cli-tool"],
     "framework": null
   },
   {
