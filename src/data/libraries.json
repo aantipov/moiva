@@ -302,7 +302,7 @@
     "npm": "bootstrap",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["css-framework"],
     "framework": null
   },
   {
@@ -311,7 +311,16 @@
     "npm": "bulma",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["css-framework"],
+    "framework": null
+  },
+  {
+    "category": "CSS Frameworks",
+    "repoId": "windicss/windicss",
+    "npm": "windicss",
+    "isNpmCoreArtifact": true,
+    "alias": "Windi CSS",
+    "tags": ["css-framework"],
     "framework": null
   },
   {
@@ -320,7 +329,7 @@
     "npm": "tailwindcss",
     "isNpmCoreArtifact": true,
     "alias": "Tailwind CSS",
-    "tags": [],
+    "tags": ["css-framework"],
     "framework": null
   },
   {
@@ -329,7 +338,7 @@
     "npm": "purecss",
     "isNpmCoreArtifact": true,
     "alias": "Pure.css",
-    "tags": [],
+    "tags": ["css-framework"],
     "framework": null
   },
   {
@@ -338,7 +347,7 @@
     "npm": "tachyons",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["css-framework"],
     "framework": null
   },
   {
@@ -347,7 +356,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
-    "tags": [],
+    "tags": ["css-framework"],
     "framework": null
   },
   {
@@ -356,16 +365,7 @@
     "npm": "materialize-css",
     "isNpmCoreArtifact": true,
     "alias": "MaterializeCSS",
-    "tags": [],
-    "framework": null
-  },
-  {
-    "category": "CSS Frameworks",
-    "repoId": "h5bp/html5-boilerplate",
-    "npm": "html5-boilerplate",
-    "isNpmCoreArtifact": true,
-    "alias": "HTML5 Boilerplate",
-    "tags": [],
+    "tags": ["css-framework", "material-design"],
     "framework": null
   },
   {
@@ -374,7 +374,7 @@
     "npm": "foundation-sites",
     "isNpmCoreArtifact": true,
     "alias": "Foundation",
-    "tags": [],
+    "tags": ["css-framework"],
     "framework": null
   },
   {
@@ -383,7 +383,7 @@
     "npm": "material-design-lite",
     "isNpmCoreArtifact": true,
     "alias": "Material Design Lite",
-    "tags": [],
+    "tags": ["css-framework", "material-design"],
     "framework": null
   },
   {
@@ -392,7 +392,7 @@
     "npm": "@primer/css",
     "isNpmCoreArtifact": true,
     "alias": "Primer CSS",
-    "tags": [],
+    "tags": ["css-framework"],
     "framework": null
   },
   {
@@ -401,7 +401,7 @@
     "npm": "semantic-ui",
     "isNpmCoreArtifact": true,
     "alias": "Semantic UI",
-    "tags": [],
+    "tags": ["css-framework"],
     "framework": null
   },
   {
@@ -410,7 +410,7 @@
     "npm": "uikit",
     "isNpmCoreArtifact": true,
     "alias": "UIkit",
-    "tags": [],
+    "tags": ["css-framework"],
     "framework": null
   },
   {
@@ -419,7 +419,7 @@
     "npm": "material-components-web",
     "isNpmCoreArtifact": true,
     "alias": "Material Components for the web",
-    "tags": [],
+    "tags": ["css-framework", "material-design"],
     "framework": null
   },
   {
@@ -428,7 +428,7 @@
     "npm": "spectre.css",
     "isNpmCoreArtifact": true,
     "alias": "Spectre.css",
-    "tags": [],
+    "tags": ["css-framework"],
     "framework": null
   },
   {
@@ -14540,6 +14540,15 @@
     "npm": "ws",
     "isNpmCoreArtifact": true,
     "alias": null,
+    "tags": [],
+    "framework": null
+  },
+  {
+    "category": "CSS Frameworks",
+    "repoId": "h5bp/html5-boilerplate",
+    "npm": "html5-boilerplate",
+    "isNpmCoreArtifact": true,
+    "alias": "HTML5 Boilerplate",
     "tags": [],
     "framework": null
   }
