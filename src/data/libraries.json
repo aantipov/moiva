@@ -13136,7 +13136,7 @@
     "npm": "log4js",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-logging"],
     "framework": null
   },
   {
@@ -13145,7 +13145,7 @@
     "npm": "pino",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-logging"],
     "framework": null
   },
   {
@@ -13154,7 +13154,7 @@
     "npm": "winston",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-logging"],
     "framework": null
   },
   {
@@ -13163,7 +13163,7 @@
     "npm": "morgan",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-logging"],
     "framework": null
   },
   {
@@ -13172,7 +13172,7 @@
     "npm": "loglevel",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-logging"],
     "framework": null
   },
   {
@@ -13181,7 +13181,7 @@
     "npm": "bunyan",
     "isNpmCoreArtifact": true,
     "alias": "Bunyan",
-    "tags": [],
+    "tags": ["nodejs-logging"],
     "framework": null
   },
   {
