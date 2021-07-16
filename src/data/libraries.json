@@ -185,7 +185,7 @@
     "npm": "chart.js",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["charts", "canvas"],
     "framework": null
   },
   {
@@ -194,7 +194,7 @@
     "npm": "d3",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["charts", "svg", "canvas"],
     "framework": null
   },
   {
@@ -203,7 +203,7 @@
     "npm": "plotly.js",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["charts", "d3", "3D-charts"],
     "framework": null
   },
   {
@@ -212,7 +212,7 @@
     "npm": "highcharts",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["charts", "svg", "canvas"],
     "framework": null
   },
   {
@@ -221,7 +221,7 @@
     "npm": "recharts",
     "isNpmCoreArtifact": true,
     "alias": "Apache ECharts",
-    "tags": [],
+    "tags": ["charts", "react", "d3", "svg"],
     "framework": null
   },
   {
@@ -230,7 +230,7 @@
     "npm": "echarts",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["charts", "canvas"],
     "framework": null
   },
   {
@@ -239,7 +239,7 @@
     "npm": "billboard.js",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["charts", "d3"],
     "framework": null
   },
   {
@@ -248,7 +248,7 @@
     "npm": "@amcharts/amcharts4",
     "isNpmCoreArtifact": true,
     "alias": "amCharts 4",
-    "tags": [],
+    "tags": ["charts", "svg"],
     "framework": null
   },
   {
@@ -257,7 +257,7 @@
     "npm": "apexcharts",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["charts", "svg"],
     "framework": null
   },
   {
@@ -266,16 +266,7 @@
     "npm": "chartist",
     "isNpmCoreArtifact": true,
     "alias": "Chartist.js",
-    "tags": [],
-    "framework": null
-  },
-  {
-    "category": "JavaScript Charting Libraries",
-    "repoId": "almende/vis",
-    "npm": "vis",
-    "isNpmCoreArtifact": true,
-    "alias": "Vis.js",
-    "tags": [],
+    "tags": ["charts", "svg"],
     "framework": null
   },
   {
@@ -284,7 +275,7 @@
     "npm": "nvd3",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["charts", "d3"],
     "framework": null
   },
   {
@@ -293,7 +284,7 @@
     "npm": "amcharts3",
     "isNpmCoreArtifact": true,
     "alias": "amCharts 3",
-    "tags": [],
+    "tags": ["charts"],
     "framework": null
   },
   {
@@ -302,7 +293,7 @@
     "npm": "peity",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["charts", "jQuery"],
     "framework": null
   },
   {
