@@ -34,5 +34,17 @@
     "url": "https://www.3pillarglobal.com/insights/3d-graphics-with-webgl-three-js-babylon-js",
     "npms": ["babylonjs", "three"],
     "repos": []
+  },
+  {
+    "title": "Comparison of Mock Service Worker with other tools",
+    "url": "https://mswjs.io/docs/comparison",
+    "npms": ["msw", "json-server", "miragejs"],
+    "repos": []
+  },
+  {
+    "title": "Comparison of Mirage with other API mocking tools",
+    "url": "https://miragejs.com/docs/comparison-with-other-tools/",
+    "npms": ["msw", "json-server", "miragejs"],
+    "repos": []
   }
 ]

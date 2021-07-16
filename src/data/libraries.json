@@ -23,7 +23,7 @@
     "npm": "msw",
     "isNpmCoreArtifact": true,
     "alias": "MSW",
-    "tags": [],
+    "tags": ["testing", "mock", "api"],
     "framework": null
   },
   {
@@ -32,7 +32,7 @@
     "npm": "mountebank",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing", "mock", "api"],
     "framework": null
   },
   {
@@ -41,16 +41,7 @@
     "npm": "json-server",
     "isNpmCoreArtifact": true,
     "alias": "JSON Server",
-    "tags": [],
-    "framework": null
-  },
-  {
-    "category": "JavaScript Mocking Libraries, test servers",
-    "repoId": "modernweb-pl/wiremock-standalone",
-    "npm": "wiremock-standalone",
-    "isNpmCoreArtifact": true,
-    "alias": "WireMock",
-    "tags": [],
+    "tags": ["testing", "mock", "api", "http-server"],
     "framework": null
   },
   {
@@ -59,7 +50,16 @@
     "npm": "miragejs",
     "isNpmCoreArtifact": true,
     "alias": "Mirage",
-    "tags": [],
+    "tags": ["testing", "mock", "api"],
+    "framework": null
+  },
+  {
+    "category": "JavaScript Mocking Libraries, test servers",
+    "repoId": "nock/nock",
+    "npm": "nock",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["testing", "mock", "api"],
     "framework": null
   },
   {
@@ -3360,15 +3360,6 @@
     "category": "misc",
     "repoId": "antonmedv/fx",
     "npm": "fx",
-    "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": [],
-    "framework": null
-  },
-  {
-    "category": "misc",
-    "repoId": "nock/nock",
-    "npm": "nock",
     "isNpmCoreArtifact": true,
     "alias": null,
     "tags": [],
