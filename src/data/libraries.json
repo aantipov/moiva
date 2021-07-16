@@ -599,7 +599,7 @@
     "npm": "electron",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["desktop-app"],
     "framework": null
   },
   {
@@ -608,7 +608,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
-    "tags": [],
+    "tags": ["desktop-app"],
     "framework": null
   },
   {
@@ -617,7 +617,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
-    "tags": [],
+    "tags": ["desktop-app"],
     "framework": null
   },
   {
@@ -626,7 +626,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
-    "tags": [],
+    "tags": ["desktop-app"],
     "framework": null
   },
   {
@@ -635,7 +635,7 @@
     "npm": "@nodegui/nodegui",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["desktop-app"],
     "framework": null
   },
   {
@@ -644,7 +644,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
-    "tags": [],
+    "tags": ["desktop-app", "vue"],
     "framework": "vue"
   },
   {
@@ -653,7 +653,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
-    "tags": [],
+    "tags": ["desktop-app", "react"],
     "framework": "react"
   },
   {
@@ -662,7 +662,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
-    "tags": [],
+    "tags": ["desktop-app", "svelte"],
     "framework": "svelte"
   },
   {
