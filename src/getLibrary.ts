@@ -121,7 +121,11 @@ export function getLibrary(
       if (repo.isArchived) {
         return 'ARCHIVED';
       }
-      if (legacyLibraries.find((lib) => lib.repoId === repo.repoId)) {
+      if (
+        legacyLibraries.find(
+          (lib) => lib.repoId === repo.repoId || lib.npm === npmPackage?.name
+        )
+      ) {
         return 'LEGACY';
       }
       const commits = commitsMapR.get(repoIdLC);

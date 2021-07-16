@@ -1,1 +1,6 @@
-[{ "repoId": "sass/node-sass" }, { "repoId": "moment/moment" }, { "repoId": "angular/angular.js" }]
+[
+  { "repoId": "sass/node-sass" },
+  { "repoId": "moment/moment" },
+  { "repoId": "angular/angular.js" },
+  { "npm": "amcharts3" }
+]
