@@ -1112,7 +1112,7 @@
     "npm": "immer",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["immutability"],
     "framework": null
   },
   {
@@ -1121,7 +1121,7 @@
     "npm": "immutable",
     "isNpmCoreArtifact": true,
     "alias": "Immutable.js",
-    "tags": [],
+    "tags": ["immutability"],
     "framework": null
   },
   {
@@ -1130,7 +1130,7 @@
     "npm": "eslint",
     "isNpmCoreArtifact": true,
     "alias": "ESLint",
-    "tags": [],
+    "tags": ["linter"],
     "framework": null
   },
   {
@@ -1139,7 +1139,7 @@
     "npm": "tslint",
     "isNpmCoreArtifact": true,
     "alias": "TSLint",
-    "tags": [],
+    "tags": ["linter"],
     "framework": null
   },
   {
@@ -1148,7 +1148,7 @@
     "npm": "prettier",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["linter", "formatting"],
     "framework": null
   },
   {
@@ -1157,7 +1157,7 @@
     "npm": "jshint",
     "isNpmCoreArtifact": true,
     "alias": "JSHint",
-    "tags": [],
+    "tags": ["linter"],
     "framework": null
   },
   {
@@ -1166,7 +1166,7 @@
     "npm": "js-beautify",
     "isNpmCoreArtifact": true,
     "alias": "JS Beautifier",
-    "tags": [],
+    "tags": ["formatting"],
     "framework": null
   },
   {
