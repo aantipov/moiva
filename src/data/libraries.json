@@ -1175,7 +1175,7 @@
     "npm": "leaflet",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["maps"],
     "framework": null
   },
   {
@@ -1184,7 +1184,7 @@
     "npm": "ol",
     "isNpmCoreArtifact": true,
     "alias": "OpenLayers",
-    "tags": [],
+    "tags": ["maps"],
     "framework": null
   },
   {
@@ -13037,7 +13037,7 @@
     "npm": "express",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-framework"],
     "framework": null
   },
   {
@@ -13046,7 +13046,7 @@
     "npm": "@nestjs/core",
     "isNpmCoreArtifact": true,
     "alias": "NestJS",
-    "tags": [],
+    "tags": ["nodejs-framework"],
     "framework": null
   },
   {
@@ -13055,7 +13055,7 @@
     "npm": "koa",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-framework"],
     "framework": null
   },
   {
@@ -13064,7 +13064,7 @@
     "npm": "fastify",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-framework"],
     "framework": null
   },
   {
@@ -13073,7 +13073,7 @@
     "npm": "@hapi/hapi",
     "isNpmCoreArtifact": true,
     "alias": "Hapi",
-    "tags": [],
+    "tags": ["nodejs-framework"],
     "framework": null
   },
   {
@@ -13082,7 +13082,7 @@
     "npm": "@adonisjs/core",
     "isNpmCoreArtifact": true,
     "alias": "AdonisJS",
-    "tags": [],
+    "tags": ["nodejs-framework"],
     "framework": null
   },
   {
@@ -13091,7 +13091,7 @@
     "npm": "sails",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-framework"],
     "framework": null
   },
   {
@@ -13100,7 +13100,7 @@
     "npm": "restify",
     "isNpmCoreArtifact": true,
     "alias": "Restify",
-    "tags": [],
+    "tags": ["nodejs-framework"],
     "framework": null
   },
   {
@@ -13109,7 +13109,7 @@
     "npm": "@feathersjs/feathers",
     "isNpmCoreArtifact": true,
     "alias": "Feathers",
-    "tags": [],
+    "tags": ["nodejs-framework", "realtime"],
     "framework": null
   },
   {
@@ -13118,7 +13118,7 @@
     "npm": "loopback",
     "isNpmCoreArtifact": true,
     "alias": "LoopBack 3",
-    "tags": [],
+    "tags": ["nodejs-framework"],
     "framework": null
   },
   {
@@ -13127,7 +13127,7 @@
     "npm": "@loopback/core",
     "isNpmCoreArtifact": true,
     "alias": "LoopBack 4",
-    "tags": [],
+    "tags": ["nodejs-framework"],
     "framework": null
   },
   {
