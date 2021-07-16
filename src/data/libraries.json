@@ -13190,7 +13190,7 @@
     "npm": "prom-client",
     "isNpmCoreArtifact": true,
     "alias": "Prometheus client",
-    "tags": [],
+    "tags": ["nodejs-monitoring"],
     "framework": null
   },
   {
@@ -13199,7 +13199,7 @@
     "npm": "express-status-monitor",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-monitoring"],
     "framework": null
   },
   {
@@ -13208,7 +13208,7 @@
     "npm": "clinic",
     "isNpmCoreArtifact": true,
     "alias": "Clinic.js",
-    "tags": [],
+    "tags": ["nodejs-monitoring"],
     "framework": null
   },
   {
@@ -13217,7 +13217,7 @@
     "npm": "appmetrics-dash",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-monitoring"],
     "framework": null
   },
   {
