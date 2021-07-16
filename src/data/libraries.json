@@ -671,7 +671,7 @@
     "npm": "puppeteer",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["browser-automation"],
     "framework": null
   },
   {
@@ -680,7 +680,7 @@
     "npm": "cypress",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing", "browser-automation"],
     "framework": null
   },
   {
@@ -689,7 +689,7 @@
     "npm": "playwright",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["browser-automation"],
     "framework": null
   },
   {
@@ -698,7 +698,7 @@
     "npm": "selenium-webdriver",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["browser-automation"],
     "framework": null
   },
   {
@@ -707,7 +707,7 @@
     "npm": "webdriverio",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["browser-automation"],
     "framework": null
   },
   {
@@ -716,7 +716,7 @@
     "npm": "testcafe",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing", "browser-automation"],
     "framework": null
   },
   {
@@ -725,7 +725,7 @@
     "npm": "nightwatch",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing", "browser-automation"],
     "framework": null
   },
   {
@@ -734,7 +734,7 @@
     "npm": "taiko",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing", "browser-automation"],
     "framework": null
   },
   {
@@ -743,7 +743,7 @@
     "npm": "nightmare",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["browser-automation"],
     "framework": null
   },
   {
@@ -752,7 +752,7 @@
     "npm": "casperjs",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing", "browser-automation"],
     "framework": null
   },
   {
@@ -761,7 +761,7 @@
     "npm": "slimerjs",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["browser-automation"],
     "framework": null
   },
   {
@@ -770,7 +770,7 @@
     "npm": "zombie",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing", "browser-automation"],
     "framework": null
   },
   {
