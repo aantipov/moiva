@@ -68,7 +68,7 @@
     "npm": "@middy/core",
     "isNpmCoreArtifact": true,
     "alias": "Middy",
-    "tags": [],
+    "tags": ["aws-lambda", "serverless-framework", "nodejs"],
     "framework": null
   },
   {
@@ -77,7 +77,7 @@
     "npm": "@laconia/core",
     "isNpmCoreArtifact": true,
     "alias": "Laconia",
-    "tags": [],
+    "tags": ["aws-lambda", "serverless-framework", "nodejs"],
     "framework": null
   },
   {
@@ -86,7 +86,7 @@
     "npm": "vandium",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["aws-lambda", "serverless-framework", "nodejs"],
     "framework": null
   },
   {

@@ -46,5 +46,11 @@
     "url": "https://miragejs.com/docs/comparison-with-other-tools/",
     "npms": ["msw", "json-server", "miragejs"],
     "repos": []
+  },
+  {
+    "title": "Laconia vs. Middy",
+    "url": "https://laconiajs.io/docs/vs/middy",
+    "npms": ["@laconia/core", "@middy/core"],
+    "repos": []
   }
 ]

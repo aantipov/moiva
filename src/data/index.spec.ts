@@ -78,6 +78,8 @@ describe('Readings', () => {
       });
     });
   });
+
+  it.todo('npm names match catalog');
 });
 
 describe('StateOfJS', () => {
