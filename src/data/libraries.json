@@ -14135,7 +14135,7 @@
     "npm": "jest",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing-framework"],
     "framework": null
   },
   {
@@ -14144,7 +14144,7 @@
     "npm": "ava",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing-framework"],
     "framework": null
   },
   {
@@ -14153,7 +14153,7 @@
     "npm": "mocha",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing-framework"],
     "framework": null
   },
   {
@@ -14162,7 +14162,7 @@
     "npm": "jasmine-core",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing-framework"],
     "framework": null
   },
   {
@@ -14171,7 +14171,7 @@
     "npm": "tape",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing-framework"],
     "framework": null
   },
   {
@@ -14180,7 +14180,7 @@
     "npm": "qunit",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing-framework"],
     "framework": null
   },
   {
