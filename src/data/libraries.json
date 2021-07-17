@@ -14553,7 +14553,7 @@
     "framework": null
   },
   {
-    "category": "CSS Frameworks",
+    "category": "misc",
     "repoId": "h5bp/html5-boilerplate",
     "npm": "html5-boilerplate",
     "isNpmCoreArtifact": true,
