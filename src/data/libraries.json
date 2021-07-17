@@ -14189,7 +14189,7 @@
     "npm": "@storybook/core",
     "isNpmCoreArtifact": true,
     "alias": "Storybook",
-    "tags": [],
+    "tags": ["playground", "component-explorer", "component-development-tool"],
     "framework": null
   },
   {
@@ -14198,7 +14198,7 @@
     "npm": "react-styleguidist",
     "isNpmCoreArtifact": true,
     "alias": "React Styleguidist",
-    "tags": [],
+    "tags": ["playground", "component-development-tool", "react"],
     "framework": "react"
   },
   {
