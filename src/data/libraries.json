@@ -406,6 +406,15 @@
   },
   {
     "category": "CSS Frameworks",
+    "repoId": "semantic-org/semantic-ui-react",
+    "npm": "semantic-ui-react",
+    "isNpmCoreArtifact": true,
+    "alias": "Semantic UI React",
+    "tags": ["css-framework", "react"],
+    "framework": null
+  },
+  {
+    "category": "CSS Frameworks",
     "repoId": "uikit/uikit",
     "npm": "uikit",
     "isNpmCoreArtifact": true,
@@ -437,7 +446,7 @@
     "npm": "styled-jsx",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["css-in-js"],
     "framework": "react"
   },
   {
@@ -446,7 +455,7 @@
     "npm": "styled-components",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["css-in-js"],
     "framework": "react"
   },
   {
@@ -455,7 +464,7 @@
     "npm": "radium",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["css-in-js"],
     "framework": "react"
   },
   {
@@ -464,7 +473,7 @@
     "npm": "@linaria/core",
     "isNpmCoreArtifact": true,
     "alias": "Linaria",
-    "tags": [],
+    "tags": ["css-in-js"],
     "framework": "react"
   },
   {
@@ -473,7 +482,7 @@
     "npm": "jss",
     "isNpmCoreArtifact": true,
     "alias": "JSS",
-    "tags": [],
+    "tags": ["css-in-js"],
     "framework": null
   },
   {
@@ -482,7 +491,7 @@
     "npm": "@emotion/css",
     "isNpmCoreArtifact": true,
     "alias": "Emotion",
-    "tags": [],
+    "tags": ["css-in-js"],
     "framework": null
   },
   {
@@ -491,7 +500,7 @@
     "npm": "aphrodite",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["css-in-js"],
     "framework": null
   },
   {
@@ -500,7 +509,7 @@
     "npm": "@stitches/core",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["css-in-js"],
     "framework": null
   },
   {
@@ -509,7 +518,7 @@
     "npm": "astroturf",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["css-in-js"],
     "framework": null
   },
   {
@@ -518,7 +527,7 @@
     "npm": "fela",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["css-in-js"],
     "framework": null
   },
   {
@@ -527,7 +536,7 @@
     "npm": "date-fns",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["Date-time"],
     "framework": null
   },
   {
@@ -536,7 +545,7 @@
     "npm": "dayjs",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["Date-time"],
     "framework": null
   },
   {
@@ -545,7 +554,7 @@
     "npm": "luxon",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["Date-time"],
     "framework": null
   },
   {
@@ -554,7 +563,7 @@
     "npm": "moment",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["Date-time"],
     "framework": null
   },
   {
@@ -563,7 +572,7 @@
     "npm": "fecha",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["Date-time"],
     "framework": null
   },
   {
@@ -572,7 +581,7 @@
     "npm": "ms",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["Date-time"],
     "framework": null
   },
   {
@@ -581,7 +590,7 @@
     "npm": "timeago.js",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["Date-time"],
     "framework": null
   },
   {
@@ -590,7 +599,7 @@
     "npm": "date.js",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["Date-time"],
     "framework": null
   },
   {
@@ -599,7 +608,7 @@
     "npm": "electron",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["desktop-app"],
     "framework": null
   },
   {
@@ -608,7 +617,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
-    "tags": [],
+    "tags": ["desktop-app"],
     "framework": null
   },
   {
@@ -617,7 +626,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
-    "tags": [],
+    "tags": ["desktop-app"],
     "framework": null
   },
   {
@@ -626,7 +635,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
-    "tags": [],
+    "tags": ["desktop-app"],
     "framework": null
   },
   {
@@ -635,7 +644,7 @@
     "npm": "@nodegui/nodegui",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["desktop-app"],
     "framework": null
   },
   {
@@ -644,7 +653,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
-    "tags": [],
+    "tags": ["desktop-app", "vue"],
     "framework": "vue"
   },
   {
@@ -653,7 +662,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
-    "tags": [],
+    "tags": ["desktop-app", "react"],
     "framework": "react"
   },
   {
@@ -662,7 +671,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
-    "tags": [],
+    "tags": ["desktop-app", "svelte"],
     "framework": "svelte"
   },
   {
@@ -671,7 +680,7 @@
     "npm": "puppeteer",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["browser-automation"],
     "framework": null
   },
   {
@@ -680,7 +689,7 @@
     "npm": "cypress",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing", "browser-automation"],
     "framework": null
   },
   {
@@ -689,7 +698,7 @@
     "npm": "playwright",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["browser-automation"],
     "framework": null
   },
   {
@@ -698,7 +707,7 @@
     "npm": "selenium-webdriver",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["browser-automation"],
     "framework": null
   },
   {
@@ -707,7 +716,7 @@
     "npm": "webdriverio",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["browser-automation"],
     "framework": null
   },
   {
@@ -716,7 +725,7 @@
     "npm": "testcafe",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing", "browser-automation"],
     "framework": null
   },
   {
@@ -725,7 +734,7 @@
     "npm": "nightwatch",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing", "browser-automation"],
     "framework": null
   },
   {
@@ -734,7 +743,7 @@
     "npm": "taiko",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing", "browser-automation"],
     "framework": null
   },
   {
@@ -743,7 +752,7 @@
     "npm": "nightmare",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["browser-automation"],
     "framework": null
   },
   {
@@ -752,7 +761,7 @@
     "npm": "casperjs",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing", "browser-automation"],
     "framework": null
   },
   {
@@ -761,7 +770,7 @@
     "npm": "slimerjs",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["browser-automation"],
     "framework": null
   },
   {
@@ -770,7 +779,7 @@
     "npm": "zombie",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing", "browser-automation"],
     "framework": null
   },
   {
@@ -779,7 +788,7 @@
     "npm": "react",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["ui-framework"],
     "framework": null
   },
   {
@@ -788,7 +797,7 @@
     "npm": "vue",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["ui-framework"],
     "framework": null
   },
   {
@@ -797,7 +806,7 @@
     "npm": "@angular/core",
     "isNpmCoreArtifact": true,
     "alias": "Angular",
-    "tags": [],
+    "tags": ["ui-framework"],
     "framework": null
   },
   {
@@ -806,7 +815,7 @@
     "npm": "svelte",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["ui-framework"],
     "framework": null
   },
   {
@@ -815,7 +824,7 @@
     "npm": "ember-source",
     "isNpmCoreArtifact": true,
     "alias": "Ember",
-    "tags": [],
+    "tags": ["ui-framework"],
     "framework": null
   },
   {
@@ -824,7 +833,7 @@
     "npm": "alpinejs",
     "isNpmCoreArtifact": true,
     "alias": "Alpine.js",
-    "tags": [],
+    "tags": ["ui-framework"],
     "framework": null
   },
   {
@@ -833,7 +842,7 @@
     "npm": "inferno",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["ui-framework"],
     "framework": null
   },
   {
@@ -842,7 +851,7 @@
     "npm": "preact",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["ui-framework"],
     "framework": null
   },
   {
@@ -851,7 +860,7 @@
     "npm": "hyperapp",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["ui-framework"],
     "framework": null
   },
   {
@@ -860,7 +869,7 @@
     "npm": "riot",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["ui-framework"],
     "framework": null
   },
   {
@@ -869,7 +878,7 @@
     "npm": "angular",
     "isNpmCoreArtifact": true,
     "alias": "AngularJS",
-    "tags": [],
+    "tags": ["ui-framework"],
     "framework": null
   },
   {
@@ -878,7 +887,7 @@
     "npm": "backbone.marionette",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["ui-framework"],
     "framework": null
   },
   {
@@ -887,7 +896,7 @@
     "npm": "knockout",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["ui-framework"],
     "framework": null
   },
   {
@@ -896,7 +905,7 @@
     "npm": "solid-js",
     "isNpmCoreArtifact": true,
     "alias": "Solid",
-    "tags": [],
+    "tags": ["ui-framework"],
     "framework": null
   },
   {
@@ -905,7 +914,7 @@
     "npm": "mithril",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["ui-framework"],
     "framework": null
   },
   {
@@ -914,7 +923,7 @@
     "npm": "aurelia-framework",
     "isNpmCoreArtifact": true,
     "alias": "Aurelia",
-    "tags": [],
+    "tags": ["ui-framework"],
     "framework": null
   },
   {
@@ -923,7 +932,7 @@
     "npm": "stimulus",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["ui-framework"],
     "framework": null
   },
   {
@@ -932,7 +941,7 @@
     "npm": "marko",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["ui-framework"],
     "framework": null
   },
   {
@@ -941,7 +950,7 @@
     "npm": "relay-runtime",
     "isNpmCoreArtifact": true,
     "alias": "Relay",
-    "tags": [],
+    "tags": ["GraphQL-client", "react"],
     "framework": "react"
   },
   {
@@ -950,7 +959,7 @@
     "npm": "@apollo/client",
     "isNpmCoreArtifact": true,
     "alias": "Apollo Client",
-    "tags": [],
+    "tags": ["GraphQL-client", "react"],
     "framework": "react"
   },
   {
@@ -959,7 +968,7 @@
     "npm": "vue-apollo",
     "isNpmCoreArtifact": true,
     "alias": "Vue Apollo",
-    "tags": [],
+    "tags": ["GraphQL-client", "vue"],
     "framework": "vue"
   },
   {
@@ -968,7 +977,7 @@
     "npm": "svelte-apollo",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["GraphQL-client", "svelte"],
     "framework": "svelte"
   },
   {
@@ -977,7 +986,7 @@
     "npm": "ember-apollo-client",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["GraphQL-client", "ember"],
     "framework": "ember"
   },
   {
@@ -986,17 +995,35 @@
     "npm": "apollo-angular",
     "isNpmCoreArtifact": true,
     "alias": "Apollo Angular",
-    "tags": [],
+    "tags": ["GraphQL-client", "angular"],
     "framework": "angular"
   },
   {
     "category": "GraphQL Client Libraries",
     "repoId": "formidablelabs/urql",
-    "npm": "@urql/core",
-    "isNpmCoreArtifact": true,
+    "npm": "urql",
+    "isNpmCoreArtifact": false,
     "alias": "urql",
-    "tags": [],
-    "framework": null
+    "tags": ["GraphQL-client", "react"],
+    "framework": "react"
+  },
+  {
+    "category": "GraphQL Client Libraries",
+    "repoId": "formidablelabs/urql",
+    "npm": "@urql/preact",
+    "isNpmCoreArtifact": false,
+    "alias": "@urql/preact",
+    "tags": ["GraphQL-client", "preact"],
+    "framework": "preact"
+  },
+  {
+    "category": "GraphQL Client Libraries",
+    "repoId": "formidablelabs/urql",
+    "npm": "@urql/vue",
+    "isNpmCoreArtifact": false,
+    "alias": "@urql/vue",
+    "tags": ["GraphQL-client", "vue"],
+    "framework": "vue"
   },
   {
     "category": "JavaScript Template Engines",
@@ -1004,7 +1031,7 @@
     "npm": "ejs",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["templating"],
     "framework": null
   },
   {
@@ -1013,7 +1040,7 @@
     "npm": "handlebars",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["templating"],
     "framework": null
   },
   {
@@ -1022,7 +1049,7 @@
     "npm": "mustache",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["templating"],
     "framework": null
   },
   {
@@ -1031,7 +1058,7 @@
     "npm": "pug",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["templating"],
     "framework": null
   },
   {
@@ -1040,7 +1067,7 @@
     "npm": "nunjucks",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["templating"],
     "framework": null
   },
   {
@@ -1049,7 +1076,7 @@
     "npm": "blueimp-tmpl",
     "isNpmCoreArtifact": true,
     "alias": "blueimp/JavaScript-Templates",
-    "tags": [],
+    "tags": ["templating"],
     "framework": null
   },
   {
@@ -1058,7 +1085,7 @@
     "npm": "dot",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["templating"],
     "framework": null
   },
   {
@@ -1067,7 +1094,7 @@
     "npm": "xtemplate",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["templating"],
     "framework": null
   },
   {
@@ -1076,7 +1103,7 @@
     "npm": "dustjs-linkedin",
     "isNpmCoreArtifact": true,
     "alias": "Dust.js",
-    "tags": [],
+    "tags": ["templating"],
     "framework": null
   },
   {
@@ -1085,7 +1112,7 @@
     "npm": "ehtml",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["templating"],
     "framework": null
   },
   {
@@ -1094,7 +1121,7 @@
     "npm": "immer",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["immutability"],
     "framework": null
   },
   {
@@ -1103,7 +1130,7 @@
     "npm": "immutable",
     "isNpmCoreArtifact": true,
     "alias": "Immutable.js",
-    "tags": [],
+    "tags": ["immutability"],
     "framework": null
   },
   {
@@ -1112,7 +1139,7 @@
     "npm": "eslint",
     "isNpmCoreArtifact": true,
     "alias": "ESLint",
-    "tags": [],
+    "tags": ["linter"],
     "framework": null
   },
   {
@@ -1121,7 +1148,7 @@
     "npm": "tslint",
     "isNpmCoreArtifact": true,
     "alias": "TSLint",
-    "tags": [],
+    "tags": ["linter"],
     "framework": null
   },
   {
@@ -1130,7 +1157,7 @@
     "npm": "prettier",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["linter", "formatting"],
     "framework": null
   },
   {
@@ -1139,7 +1166,7 @@
     "npm": "jshint",
     "isNpmCoreArtifact": true,
     "alias": "JSHint",
-    "tags": [],
+    "tags": ["linter"],
     "framework": null
   },
   {
@@ -1148,7 +1175,7 @@
     "npm": "js-beautify",
     "isNpmCoreArtifact": true,
     "alias": "JS Beautifier",
-    "tags": [],
+    "tags": ["formatting"],
     "framework": null
   },
   {
@@ -1157,7 +1184,7 @@
     "npm": "leaflet",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["maps"],
     "framework": null
   },
   {
@@ -1166,7 +1193,7 @@
     "npm": "ol",
     "isNpmCoreArtifact": true,
     "alias": "OpenLayers",
-    "tags": [],
+    "tags": ["maps"],
     "framework": null
   },
   {
@@ -13019,7 +13046,7 @@
     "npm": "express",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-framework"],
     "framework": null
   },
   {
@@ -13028,7 +13055,7 @@
     "npm": "@nestjs/core",
     "isNpmCoreArtifact": true,
     "alias": "NestJS",
-    "tags": [],
+    "tags": ["nodejs-framework"],
     "framework": null
   },
   {
@@ -13037,7 +13064,7 @@
     "npm": "koa",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-framework"],
     "framework": null
   },
   {
@@ -13046,7 +13073,7 @@
     "npm": "fastify",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-framework"],
     "framework": null
   },
   {
@@ -13055,7 +13082,7 @@
     "npm": "@hapi/hapi",
     "isNpmCoreArtifact": true,
     "alias": "Hapi",
-    "tags": [],
+    "tags": ["nodejs-framework"],
     "framework": null
   },
   {
@@ -13064,7 +13091,7 @@
     "npm": "@adonisjs/core",
     "isNpmCoreArtifact": true,
     "alias": "AdonisJS",
-    "tags": [],
+    "tags": ["nodejs-framework"],
     "framework": null
   },
   {
@@ -13073,7 +13100,7 @@
     "npm": "sails",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-framework"],
     "framework": null
   },
   {
@@ -13082,7 +13109,7 @@
     "npm": "restify",
     "isNpmCoreArtifact": true,
     "alias": "Restify",
-    "tags": [],
+    "tags": ["nodejs-framework"],
     "framework": null
   },
   {
@@ -13091,7 +13118,7 @@
     "npm": "@feathersjs/feathers",
     "isNpmCoreArtifact": true,
     "alias": "Feathers",
-    "tags": [],
+    "tags": ["nodejs-framework", "realtime"],
     "framework": null
   },
   {
@@ -13100,7 +13127,7 @@
     "npm": "loopback",
     "isNpmCoreArtifact": true,
     "alias": "LoopBack 3",
-    "tags": [],
+    "tags": ["nodejs-framework"],
     "framework": null
   },
   {
@@ -13109,7 +13136,7 @@
     "npm": "@loopback/core",
     "isNpmCoreArtifact": true,
     "alias": "LoopBack 4",
-    "tags": [],
+    "tags": ["nodejs-framework"],
     "framework": null
   },
   {
@@ -13118,7 +13145,7 @@
     "npm": "log4js",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-logging"],
     "framework": null
   },
   {
@@ -13127,7 +13154,7 @@
     "npm": "pino",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-logging"],
     "framework": null
   },
   {
@@ -13136,7 +13163,7 @@
     "npm": "winston",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-logging"],
     "framework": null
   },
   {
@@ -13145,7 +13172,7 @@
     "npm": "morgan",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-logging"],
     "framework": null
   },
   {
@@ -13154,7 +13181,7 @@
     "npm": "loglevel",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-logging"],
     "framework": null
   },
   {
@@ -13163,7 +13190,7 @@
     "npm": "bunyan",
     "isNpmCoreArtifact": true,
     "alias": "Bunyan",
-    "tags": [],
+    "tags": ["nodejs-logging"],
     "framework": null
   },
   {
@@ -13172,7 +13199,7 @@
     "npm": "prom-client",
     "isNpmCoreArtifact": true,
     "alias": "Prometheus client",
-    "tags": [],
+    "tags": ["nodejs-monitoring"],
     "framework": null
   },
   {
@@ -13181,7 +13208,7 @@
     "npm": "express-status-monitor",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-monitoring"],
     "framework": null
   },
   {
@@ -13190,7 +13217,7 @@
     "npm": "clinic",
     "isNpmCoreArtifact": true,
     "alias": "Clinic.js",
-    "tags": [],
+    "tags": ["nodejs-monitoring"],
     "framework": null
   },
   {
@@ -13199,7 +13226,7 @@
     "npm": "appmetrics-dash",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-monitoring"],
     "framework": null
   },
   {
@@ -13208,7 +13235,7 @@
     "npm": "forever",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-process-manager", "cli-tool"],
     "framework": null
   },
   {
@@ -13217,7 +13244,7 @@
     "npm": "pm2",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-process-manager", "cli-tool"],
     "framework": null
   },
   {
@@ -13226,7 +13253,7 @@
     "npm": "nodemon",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-process-manager", "cli-tool"],
     "framework": null
   },
   {
@@ -13235,7 +13262,7 @@
     "npm": "joi",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["schema-validation"],
     "framework": null
   },
   {
@@ -13244,7 +13271,7 @@
     "npm": "ajv",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["schema-validation"],
     "framework": null
   },
   {
@@ -13253,7 +13280,7 @@
     "npm": "yup",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["schema-validation"],
     "framework": null
   },
   {
@@ -13262,7 +13289,7 @@
     "npm": "knex",
     "isNpmCoreArtifact": true,
     "alias": "knex.js",
-    "tags": [],
+    "tags": ["orm"],
     "framework": null
   },
   {
@@ -13271,7 +13298,7 @@
     "npm": "sequelize",
     "isNpmCoreArtifact": true,
     "alias": "Sequelize",
-    "tags": [],
+    "tags": ["orm"],
     "framework": null
   },
   {
@@ -13280,7 +13307,7 @@
     "npm": "bookshelf",
     "isNpmCoreArtifact": true,
     "alias": "bookshelf.js",
-    "tags": [],
+    "tags": ["orm"],
     "framework": null
   },
   {
@@ -13289,7 +13316,7 @@
     "npm": "waterline",
     "isNpmCoreArtifact": true,
     "alias": "Waterline",
-    "tags": [],
+    "tags": ["orm"],
     "framework": null
   },
   {
@@ -13298,7 +13325,7 @@
     "npm": "objection",
     "isNpmCoreArtifact": true,
     "alias": "Objection.js",
-    "tags": [],
+    "tags": ["orm"],
     "framework": null
   },
   {
@@ -13307,7 +13334,7 @@
     "npm": "mongoose",
     "isNpmCoreArtifact": true,
     "alias": "Mongoose",
-    "tags": [],
+    "tags": ["orm"],
     "framework": null
   },
   {
@@ -13316,7 +13343,7 @@
     "npm": "@typegoose/typegoose",
     "isNpmCoreArtifact": true,
     "alias": "Typegoose",
-    "tags": [],
+    "tags": ["orm"],
     "framework": null
   },
   {
@@ -13325,7 +13352,7 @@
     "npm": "typeorm",
     "isNpmCoreArtifact": true,
     "alias": "TypeORM",
-    "tags": [],
+    "tags": ["orm"],
     "framework": null
   },
   {
@@ -13334,7 +13361,7 @@
     "npm": "@mikro-orm/core",
     "isNpmCoreArtifact": true,
     "alias": "MikroORM",
-    "tags": [],
+    "tags": ["orm"],
     "framework": null
   },
   {
@@ -13343,7 +13370,7 @@
     "npm": "@prisma/client",
     "isNpmCoreArtifact": true,
     "alias": "Prisma",
-    "tags": [],
+    "tags": ["orm"],
     "framework": null
   },
   {
@@ -13352,7 +13379,7 @@
     "npm": "@popperjs/core",
     "isNpmCoreArtifact": true,
     "alias": "Popper",
-    "tags": [],
+    "tags": ["tooltip"],
     "framework": null
   },
   {
@@ -13361,7 +13388,7 @@
     "npm": "hint.css",
     "isNpmCoreArtifact": true,
     "alias": "Hint.css",
-    "tags": [],
+    "tags": ["tooltip"],
     "framework": null
   },
   {
@@ -13370,7 +13397,7 @@
     "npm": "balloon-css",
     "isNpmCoreArtifact": true,
     "alias": "Balloon.css",
-    "tags": [],
+    "tags": ["tooltip"],
     "framework": null
   },
   {
@@ -13379,7 +13406,7 @@
     "npm": "tooltipster",
     "isNpmCoreArtifact": true,
     "alias": "Tooltipster",
-    "tags": [],
+    "tags": ["tooltip"],
     "framework": null
   },
   {
@@ -13388,7 +13415,7 @@
     "npm": "rc-tooltip",
     "isNpmCoreArtifact": true,
     "alias": "rc-tooltip",
-    "tags": [],
+    "tags": ["tooltip"],
     "framework": "react"
   },
   {
@@ -13397,7 +13424,7 @@
     "npm": "react-tooltip",
     "isNpmCoreArtifact": true,
     "alias": "react-tooltip",
-    "tags": [],
+    "tags": ["tooltip"],
     "framework": "react"
   },
   {
@@ -13406,7 +13433,7 @@
     "npm": "react-popper",
     "isNpmCoreArtifact": true,
     "alias": "React Popper",
-    "tags": [],
+    "tags": ["tooltip"],
     "framework": "react"
   },
   {
@@ -13415,7 +13442,7 @@
     "npm": "@tippyjs/react",
     "isNpmCoreArtifact": true,
     "alias": "Tippy.js for React",
-    "tags": [],
+    "tags": ["tooltip"],
     "framework": "react"
   },
   {
@@ -13424,7 +13451,7 @@
     "npm": "tippy.js",
     "isNpmCoreArtifact": true,
     "alias": "Tippy.js",
-    "tags": [],
+    "tags": ["tooltip"],
     "framework": null
   },
   {
@@ -13433,7 +13460,7 @@
     "npm": "@material-ui/core",
     "isNpmCoreArtifact": true,
     "alias": "Material-UI",
-    "tags": [],
+    "tags": ["component-library", "material-design", "react"],
     "framework": null
   },
   {
@@ -13442,7 +13469,7 @@
     "npm": "react-bootstrap",
     "isNpmCoreArtifact": true,
     "alias": "React Bootstrap",
-    "tags": [],
+    "tags": ["component-library", "bootstrap", "react"],
     "framework": null
   },
   {
@@ -13451,7 +13478,7 @@
     "npm": "@chakra-ui/react",
     "isNpmCoreArtifact": true,
     "alias": "Chakra UI",
-    "tags": [],
+    "tags": ["component-library", "react"],
     "framework": null
   },
   {
@@ -13460,7 +13487,7 @@
     "npm": "reactstrap",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["component-library", "react", "bootstrap"],
     "framework": null
   },
   {
@@ -13469,16 +13496,7 @@
     "npm": "rebass",
     "isNpmCoreArtifact": true,
     "alias": "Rebass",
-    "tags": [],
-    "framework": null
-  },
-  {
-    "category": "React Component Libraries",
-    "repoId": "semantic-org/semantic-ui-react",
-    "npm": "semantic-ui-react",
-    "isNpmCoreArtifact": true,
-    "alias": "Semantic UI React",
-    "tags": [],
+    "tags": ["component-library", "react"],
     "framework": null
   },
   {
@@ -13487,7 +13505,7 @@
     "npm": "grommet",
     "isNpmCoreArtifact": true,
     "alias": "Grommet",
-    "tags": [],
+    "tags": ["component-library", "react"],
     "framework": null
   },
   {
@@ -13496,7 +13514,7 @@
     "npm": "@fluentui/react",
     "isNpmCoreArtifact": false,
     "alias": "Fluent UI React",
-    "tags": [],
+    "tags": ["component-library", "react"],
     "framework": null
   },
   {
@@ -13505,7 +13523,7 @@
     "npm": "evergreen-ui",
     "isNpmCoreArtifact": true,
     "alias": "Evergreen",
-    "tags": [],
+    "tags": ["component-library", "react"],
     "framework": null
   },
   {
@@ -13514,7 +13532,7 @@
     "npm": "react-datepicker",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["date-picker", "react"],
     "framework": null
   },
   {
@@ -13523,7 +13541,7 @@
     "npm": "react-date-picker",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["date-picker", "react"],
     "framework": null
   },
   {
@@ -13532,7 +13550,7 @@
     "npm": "react-dates",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["date-picker", "react"],
     "framework": null
   },
   {
@@ -13541,7 +13559,7 @@
     "npm": "react-datetime",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["date-picker", "react"],
     "framework": null
   },
   {
@@ -13550,7 +13568,7 @@
     "npm": "react-day-picker",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["date-picker", "react"],
     "framework": null
   },
   {
@@ -13559,7 +13577,7 @@
     "npm": "react-calendar",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["date-picker", "react"],
     "framework": null
   },
   {
@@ -13568,7 +13586,7 @@
     "npm": "react-helmet",
     "isNpmCoreArtifact": true,
     "alias": "React Helmet",
-    "tags": [],
+    "tags": ["react"],
     "framework": null
   },
   {
@@ -13577,7 +13595,7 @@
     "npm": "react-helmet-async",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["react"],
     "framework": null
   },
   {
@@ -13586,7 +13604,7 @@
     "npm": "formik",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["form", "react"],
     "framework": null
   },
   {
@@ -13595,7 +13613,7 @@
     "npm": "react-hook-form",
     "isNpmCoreArtifact": true,
     "alias": "React Hook Form",
-    "tags": [],
+    "tags": ["form", "react"],
     "framework": null
   },
   {
@@ -13604,7 +13622,7 @@
     "npm": "redux-form",
     "isNpmCoreArtifact": true,
     "alias": "Redux Form",
-    "tags": [],
+    "tags": ["form", "react"],
     "framework": null
   },
   {
@@ -13613,7 +13631,7 @@
     "npm": "final-form",
     "isNpmCoreArtifact": true,
     "alias": "React Final Form",
-    "tags": [],
+    "tags": ["form", "react"],
     "framework": null
   },
   {
@@ -13622,7 +13640,7 @@
     "npm": "blitz",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["fullstack-framework", "react", "nodejs-framework"],
     "framework": "react"
   },
   {
@@ -13631,7 +13649,7 @@
     "npm": "@redwoodjs/core",
     "isNpmCoreArtifact": true,
     "alias": "RedwoodJS",
-    "tags": [],
+    "tags": ["fullstack-framework", "react", "JAMstack", "serverless-framework", "nodejs-framework", "hmr"],
     "framework": "react"
   },
   {
@@ -13640,16 +13658,7 @@
     "npm": "hermes-engine",
     "isNpmCoreArtifact": true,
     "alias": "Hermes",
-    "tags": [],
-    "framework": null
-  },
-  {
-    "category": "React Native Libraries for Android",
-    "repoId": "react-native-community/jsc-android-buildscripts",
-    "npm": "jsc-android",
-    "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": [],
+    "tags": ["runtime", "react-native", "android"],
     "framework": null
   },
   {
@@ -13658,7 +13667,7 @@
     "npm": "react-native-v8",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["runtime", "react-native"],
     "framework": null
   },
   {
@@ -13667,7 +13676,7 @@
     "npm": "enzyme",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing", "react"],
     "framework": null
   },
   {
@@ -13676,7 +13685,7 @@
     "npm": "@testing-library/react",
     "isNpmCoreArtifact": true,
     "alias": "React Testing Library",
-    "tags": [],
+    "tags": ["testing", "react"],
     "framework": null
   },
   {
@@ -13685,7 +13694,7 @@
     "npm": "io-ts",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["runtime-types-checking"],
     "framework": null
   },
   {
@@ -13694,7 +13703,7 @@
     "npm": "runtypes",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["runtime-types-checking"],
     "framework": null
   },
   {
@@ -13703,7 +13712,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
-    "tags": [],
+    "tags": ["runtime", "types"],
     "framework": null
   },
   {
@@ -13712,7 +13721,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": "Node.js",
-    "tags": [],
+    "tags": ["runtime"],
     "framework": null
   },
   {
@@ -13721,7 +13730,7 @@
     "npm": "downshift",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["autocomplete", "react"],
     "framework": "react"
   },
   {
@@ -13730,7 +13739,7 @@
     "npm": "react-select",
     "isNpmCoreArtifact": true,
     "alias": "React Select",
-    "tags": [],
+    "tags": ["autocomplete", "react"],
     "framework": "react"
   },
   {
@@ -13739,7 +13748,7 @@
     "npm": "select2",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["autocomplete", "react"],
     "framework": null
   },
   {
@@ -13748,7 +13757,7 @@
     "npm": "react-autosuggest",
     "isNpmCoreArtifact": true,
     "alias": "React Autosuggest",
-    "tags": [],
+    "tags": ["autocomplete", "react"],
     "framework": "react"
   },
   {
@@ -13757,7 +13766,7 @@
     "npm": "react-autocomplete",
     "isNpmCoreArtifact": true,
     "alias": "React Autocomplete",
-    "tags": [],
+    "tags": ["autocomplete", "react"],
     "framework": "react"
   },
   {
@@ -13766,7 +13775,7 @@
     "npm": "react-virtualized-select",
     "isNpmCoreArtifact": true,
     "alias": "React Virtualized Select",
-    "tags": [],
+    "tags": ["autocomplete", "react"],
     "framework": "react"
   },
   {
@@ -13775,7 +13784,7 @@
     "npm": "react-dropdown",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["autocomplete", "react"],
     "framework": "react"
   },
   {
@@ -13784,7 +13793,7 @@
     "npm": "redux",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["state-management"],
     "framework": null
   },
   {
@@ -13793,7 +13802,7 @@
     "npm": "mobx",
     "isNpmCoreArtifact": true,
     "alias": "MobX",
-    "tags": [],
+    "tags": ["state-management"],
     "framework": null
   },
   {
@@ -13802,7 +13811,7 @@
     "npm": "rxjs",
     "isNpmCoreArtifact": true,
     "alias": "RxJS",
-    "tags": [],
+    "tags": ["state-management"],
     "framework": null
   },
   {
@@ -13811,7 +13820,7 @@
     "npm": "recoil",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["state-management"],
     "framework": null
   },
   {
@@ -13820,7 +13829,7 @@
     "npm": "xstate",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["state-management"],
     "framework": null
   },
   {
@@ -13829,7 +13838,7 @@
     "npm": "vuex",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["state-management", "vue"],
     "framework": "vue"
   },
   {
@@ -13838,7 +13847,7 @@
     "npm": "@ngrx/store",
     "isNpmCoreArtifact": true,
     "alias": "NgRx",
-    "tags": [],
+    "tags": ["state-management", "angular"],
     "framework": "angular"
   },
   {
@@ -13847,7 +13856,7 @@
     "npm": "react-query",
     "isNpmCoreArtifact": true,
     "alias": "React Query",
-    "tags": [],
+    "tags": ["state-management", "react", "date-fetching"],
     "framework": "react"
   },
   {
@@ -13856,7 +13865,7 @@
     "npm": "zustand",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["state-management", "react"],
     "framework": "react"
   },
   {
@@ -13865,7 +13874,7 @@
     "npm": "jotai",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["state-management", "react"],
     "framework": "react"
   },
   {
@@ -13874,7 +13883,7 @@
     "npm": "@datorama/akita",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["state-management"],
     "framework": null
   },
   {
@@ -13883,7 +13892,7 @@
     "npm": "@ngxs/store",
     "isNpmCoreArtifact": true,
     "alias": "NGXS",
-    "tags": [],
+    "tags": ["state-management", "angular"],
     "framework": "angular"
   },
   {
@@ -13892,7 +13901,7 @@
     "npm": "mobx-state-tree",
     "isNpmCoreArtifact": true,
     "alias": "mobx-state-tree",
-    "tags": [],
+    "tags": ["state-management"],
     "framework": null
   },
   {
@@ -13901,7 +13910,7 @@
     "npm": "easy-peasy",
     "isNpmCoreArtifact": true,
     "alias": "Easy Peasy",
-    "tags": [],
+    "tags": ["state-management", "react"],
     "framework": "react"
   },
   {
@@ -13910,7 +13919,7 @@
     "npm": "effector",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["state-management"],
     "framework": null
   },
   {
@@ -13919,7 +13928,7 @@
     "npm": "storeon",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["state-management"],
     "framework": null
   },
   {
@@ -13928,7 +13937,7 @@
     "npm": "constate",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["state-management", "react"],
     "framework": "react"
   },
   {
@@ -13937,7 +13946,7 @@
     "npm": "swr",
     "isNpmCoreArtifact": true,
     "alias": "SWR",
-    "tags": [],
+    "tags": ["state-management", "react", "date-fetching"],
     "framework": "react"
   },
   {
@@ -13946,7 +13955,7 @@
     "npm": "overmind",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["state-management"],
     "framework": null
   },
   {
@@ -13955,7 +13964,7 @@
     "npm": "nanostores",
     "isNpmCoreArtifact": true,
     "alias": "Nano Stores",
-    "tags": [],
+    "tags": ["state-management"],
     "framework": null
   },
   {
@@ -13964,7 +13973,7 @@
     "npm": "gatsby",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["static-site-generator", "react"],
     "framework": "react"
   },
   {
@@ -13973,7 +13982,7 @@
     "npm": "next",
     "isNpmCoreArtifact": true,
     "alias": "Next.js",
-    "tags": [],
+    "tags": ["nodejs-framework", "static-site-generator-SSD", "react", "server-side-rendering-SSR", "JAMstack"],
     "framework": "react"
   },
   {
@@ -13982,7 +13991,7 @@
     "npm": "nuxt",
     "isNpmCoreArtifact": true,
     "alias": "Nuxt.js",
-    "tags": [],
+    "tags": ["nodejs-framework", "static-site-generator-SSD", "server-side-rendering-SSR", "vue", "JAMstack"],
     "framework": "vue"
   },
   {
@@ -13991,7 +14000,7 @@
     "npm": "sapper",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-framework", "server-side-rendering-SSR", "hmr", "svelte", "JAMstack", "static-site-generator-SSD"],
     "framework": "svelte"
   },
   {
@@ -14000,7 +14009,7 @@
     "npm": "@11ty/eleventy",
     "isNpmCoreArtifact": true,
     "alias": "11ty",
-    "tags": [],
+    "tags": ["static-site-generator-SSD"],
     "framework": null
   },
   {
@@ -14009,7 +14018,7 @@
     "npm": "hexo",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["static-site-generator", "blog"],
     "framework": null
   },
   {
@@ -14018,7 +14027,7 @@
     "npm": "@docusaurus/core",
     "isNpmCoreArtifact": true,
     "alias": "Docusaurus",
-    "tags": [],
+    "tags": ["documentation", "react", "markdown", "static-site-generator"],
     "framework": "react"
   },
   {
@@ -14027,7 +14036,7 @@
     "npm": "vuepress",
     "isNpmCoreArtifact": true,
     "alias": "VuePress",
-    "tags": [],
+    "tags": ["static-site-generator", "vue"],
     "framework": "vue"
   },
   {
@@ -14036,7 +14045,7 @@
     "npm": "docsify",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["server-side-rendering-SSR", "markdown"],
     "framework": null
   },
   {
@@ -14045,7 +14054,7 @@
     "npm": "umi",
     "isNpmCoreArtifact": true,
     "alias": "UmiJS",
-    "tags": [],
+    "tags": ["ui-framework"],
     "framework": "react"
   },
   {
@@ -14054,7 +14063,7 @@
     "npm": "react-static",
     "isNpmCoreArtifact": true,
     "alias": "React Static",
-    "tags": [],
+    "tags": ["static-site-generator", "react"],
     "framework": "react"
   },
   {
@@ -14063,7 +14072,7 @@
     "npm": "gridsome",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["static-site-generator", "vue", "JAMstack"],
     "framework": "vue"
   },
   {
@@ -14072,7 +14081,7 @@
     "npm": "astro",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["static-site-generator", "JAMstack"],
     "framework": null
   },
   {
@@ -14081,7 +14090,7 @@
     "npm": "typescript",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["compiler", "static-type-checker"],
     "framework": null
   },
   {
@@ -14090,7 +14099,7 @@
     "npm": "flow-bin",
     "isNpmCoreArtifact": true,
     "alias": "Flow",
-    "tags": [],
+    "tags": ["compiler", "static-type-checker"],
     "framework": null
   },
   {
@@ -14099,7 +14108,7 @@
     "npm": "@cucumber/cucumber",
     "isNpmCoreArtifact": true,
     "alias": "Cucumber.js",
-    "tags": [],
+    "tags": ["testing", "bdd-testing"],
     "framework": null
   },
   {
@@ -14108,7 +14117,7 @@
     "npm": "mocha-cakes-2",
     "isNpmCoreArtifact": true,
     "alias": "Mocha Cakes 2",
-    "tags": [],
+    "tags": ["testing", "bdd-testing"],
     "framework": null
   },
   {
@@ -14117,7 +14126,7 @@
     "npm": "livedoc-mocha",
     "isNpmCoreArtifact": true,
     "alias": "LiveDoc",
-    "tags": [],
+    "tags": ["testing", "bdd-testing"],
     "framework": null
   },
   {
@@ -14126,7 +14135,7 @@
     "npm": "jest",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing-framework"],
     "framework": null
   },
   {
@@ -14135,7 +14144,7 @@
     "npm": "ava",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing-framework"],
     "framework": null
   },
   {
@@ -14144,7 +14153,7 @@
     "npm": "mocha",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing-framework"],
     "framework": null
   },
   {
@@ -14153,7 +14162,7 @@
     "npm": "jasmine-core",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing-framework"],
     "framework": null
   },
   {
@@ -14162,7 +14171,7 @@
     "npm": "tape",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing-framework"],
     "framework": null
   },
   {
@@ -14171,7 +14180,7 @@
     "npm": "qunit",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing-framework"],
     "framework": null
   },
   {
@@ -14180,7 +14189,7 @@
     "npm": "@storybook/core",
     "isNpmCoreArtifact": true,
     "alias": "Storybook",
-    "tags": [],
+    "tags": ["playground", "component-explorer", "component-development-tool"],
     "framework": null
   },
   {
@@ -14189,7 +14198,7 @@
     "npm": "react-styleguidist",
     "isNpmCoreArtifact": true,
     "alias": "React Styleguidist",
-    "tags": [],
+    "tags": ["playground", "component-development-tool", "react"],
     "framework": "react"
   },
   {
@@ -14198,7 +14207,7 @@
     "npm": "@ionic/core",
     "isNpmCoreArtifact": true,
     "alias": "Ionic Framework",
-    "tags": [],
+    "tags": ["mobile", "pwa", "web", "ui-toolkit", "web-components"],
     "framework": null
   },
   {
@@ -14207,7 +14216,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
-    "tags": [],
+    "tags": ["ui-toolkit", "mobile", "desktop", "web"],
     "framework": null
   },
   {
@@ -14216,7 +14225,7 @@
     "npm": "react-native",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["ui-toolkit", "mobile", "react"],
     "framework": "react"
   },
   {
@@ -14225,7 +14234,7 @@
     "npm": "@nativescript/core",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["mobile"],
     "framework": null
   },
   {
@@ -14234,7 +14243,7 @@
     "npm": "framework7",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["ui-toolkit", "mobile", "desktop", "web"],
     "framework": null
   },
   {
@@ -14242,8 +14251,8 @@
     "repoId": "onsenui/onsenui",
     "npm": "onsenui",
     "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": [],
+    "alias": "OnsenUI",
+    "tags": ["web-components", "hybrid", "cordova", "mobile", "web"],
     "framework": null
   },
   {
@@ -14252,7 +14261,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
-    "tags": [],
+    "tags": ["ui-toolkit", "mobile"],
     "framework": null
   },
   {
@@ -14261,7 +14270,7 @@
     "npm": "@testing-library/dom",
     "isNpmCoreArtifact": true,
     "alias": "DOM Testing Library",
-    "tags": [],
+    "tags": ["testing"],
     "framework": null
   },
   {
@@ -14270,7 +14279,7 @@
     "npm": "@testing-library/jest-dom",
     "isNpmCoreArtifact": true,
     "alias": "jest-dom",
-    "tags": [],
+    "tags": ["testing"],
     "framework": null
   },
   {
@@ -14279,7 +14288,7 @@
     "npm": "@testing-library/svelte",
     "isNpmCoreArtifact": true,
     "alias": "Svelte Testing Library",
-    "tags": [],
+    "tags": ["testing", "svelte"],
     "framework": "svelte"
   },
   {
@@ -14288,7 +14297,7 @@
     "npm": "@testing-library/angular",
     "isNpmCoreArtifact": true,
     "alias": "Angular Testing Library",
-    "tags": [],
+    "tags": ["testing", "angular"],
     "framework": "angular"
   },
   {
@@ -14297,7 +14306,7 @@
     "npm": "chai",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing-framework"],
     "framework": null
   },
   {
@@ -14306,7 +14315,7 @@
     "npm": "sinon",
     "isNpmCoreArtifact": true,
     "alias": "Sinon.js",
-    "tags": [],
+    "tags": ["testing"],
     "framework": null
   },
   {
@@ -14315,7 +14324,7 @@
     "npm": "karma",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["test-runner"],
     "framework": null
   },
   {
@@ -14324,7 +14333,7 @@
     "npm": "lodash",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["utils"],
     "framework": null
   },
   {
@@ -14333,7 +14342,7 @@
     "npm": "ramda",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["utils"],
     "framework": null
   },
   {
@@ -14342,7 +14351,7 @@
     "npm": "underscore",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["utils"],
     "framework": null
   },
   {
@@ -14351,7 +14360,7 @@
     "npm": "rambda",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["utils"],
     "framework": null
   },
   {
@@ -14360,7 +14369,7 @@
     "npm": "mout",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["utils"],
     "framework": null
   },
   {
@@ -14369,7 +14378,7 @@
     "npm": "sugar",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["utils"],
     "framework": null
   },
   {
@@ -14378,7 +14387,7 @@
     "npm": "lazy.js",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["utils"],
     "framework": null
   },
   {
@@ -14387,7 +14396,7 @@
     "npm": "backstopjs",
     "isNpmCoreArtifact": true,
     "alias": "BackstopJS",
-    "tags": [],
+    "tags": ["testing", "visual-regression"],
     "framework": null
   },
   {
@@ -14396,7 +14405,7 @@
     "npm": "loki",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing", "visual-regression", "storybook"],
     "framework": null
   },
   {
@@ -14405,7 +14414,7 @@
     "npm": "gemini",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing", "visual-regression"],
     "framework": null
   },
   {
@@ -14414,7 +14423,7 @@
     "npm": "vuetify",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["component-library", "vue", "material-design"],
     "framework": null
   },
   {
@@ -14423,7 +14432,7 @@
     "npm": "quasar",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["component-library", "vue"],
     "framework": null
   },
   {
@@ -14432,7 +14441,7 @@
     "npm": "bootstrap-vue",
     "isNpmCoreArtifact": true,
     "alias": "BootstrapVue",
-    "tags": [],
+    "tags": ["component-library", "vue", "bootstrap"],
     "framework": null
   },
   {
@@ -14441,7 +14450,7 @@
     "npm": "primevue",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["component-library", "vue"],
     "framework": null
   },
   {
@@ -14450,7 +14459,7 @@
     "npm": "vue-material",
     "isNpmCoreArtifact": true,
     "alias": "Vue Material",
-    "tags": [],
+    "tags": ["component-library", "material-design", "vue"],
     "framework": null
   },
   {
@@ -14459,7 +14468,7 @@
     "npm": "element-ui",
     "isNpmCoreArtifact": true,
     "alias": "Element UI",
-    "tags": [],
+    "tags": ["component-library", "vue"],
     "framework": null
   },
   {
@@ -14468,7 +14477,7 @@
     "npm": "element-plus",
     "isNpmCoreArtifact": true,
     "alias": "Element Plus",
-    "tags": [],
+    "tags": ["component-library", "vue"],
     "framework": null
   },
   {
@@ -14477,7 +14486,7 @@
     "npm": "iview",
     "isNpmCoreArtifact": true,
     "alias": "iView",
-    "tags": [],
+    "tags": ["component-library", "vue"],
     "framework": null
   },
   {
@@ -14486,7 +14495,7 @@
     "npm": "ant-design-vue",
     "isNpmCoreArtifact": true,
     "alias": "Ant Design Vue",
-    "tags": [],
+    "tags": ["component-library", "vue"],
     "framework": null
   },
   {
@@ -14495,7 +14504,7 @@
     "npm": "@vue/test-utils",
     "isNpmCoreArtifact": true,
     "alias": "Vue Test Utils",
-    "tags": [],
+    "tags": ["testing", "vue"],
     "framework": null
   },
   {
@@ -14504,7 +14513,7 @@
     "npm": "@testing-library/vue",
     "isNpmCoreArtifact": true,
     "alias": "Vue Testing Library",
-    "tags": [],
+    "tags": ["testing", "vue"],
     "framework": null
   },
   {
@@ -14513,7 +14522,7 @@
     "npm": "@stencil/core",
     "isNpmCoreArtifact": true,
     "alias": "Stencil",
-    "tags": [],
+    "tags": ["ui-framework", "web-components", "pwa"],
     "framework": null
   },
   {
@@ -14522,7 +14531,7 @@
     "npm": "lit-element",
     "isNpmCoreArtifact": true,
     "alias": "LitElement",
-    "tags": [],
+    "tags": ["web-components"],
     "framework": null
   },
   {
@@ -14531,7 +14540,7 @@
     "npm": "socket.io",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["realtime", "websocket"],
     "framework": null
   },
   {
@@ -14540,11 +14549,11 @@
     "npm": "ws",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["realtime", "websocket"],
     "framework": null
   },
   {
-    "category": "CSS Frameworks",
+    "category": "misc",
     "repoId": "h5bp/html5-boilerplate",
     "npm": "html5-boilerplate",
     "isNpmCoreArtifact": true,
