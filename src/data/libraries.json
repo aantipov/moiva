@@ -13532,7 +13532,7 @@
     "npm": "react-datepicker",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["date-picker", "react"],
     "framework": null
   },
   {
@@ -13541,7 +13541,7 @@
     "npm": "react-date-picker",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["date-picker", "react"],
     "framework": null
   },
   {
@@ -13550,7 +13550,7 @@
     "npm": "react-dates",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["date-picker", "react"],
     "framework": null
   },
   {
@@ -13559,7 +13559,7 @@
     "npm": "react-datetime",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["date-picker", "react"],
     "framework": null
   },
   {
@@ -13568,7 +13568,7 @@
     "npm": "react-day-picker",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["date-picker", "react"],
     "framework": null
   },
   {
@@ -13577,7 +13577,7 @@
     "npm": "react-calendar",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["date-picker", "react"],
     "framework": null
   },
   {
