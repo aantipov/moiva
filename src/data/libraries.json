@@ -14270,7 +14270,7 @@
     "npm": "@testing-library/dom",
     "isNpmCoreArtifact": true,
     "alias": "DOM Testing Library",
-    "tags": [],
+    "tags": ["testing"],
     "framework": null
   },
   {
@@ -14279,7 +14279,7 @@
     "npm": "@testing-library/jest-dom",
     "isNpmCoreArtifact": true,
     "alias": "jest-dom",
-    "tags": [],
+    "tags": ["testing"],
     "framework": null
   },
   {
@@ -14288,7 +14288,7 @@
     "npm": "@testing-library/svelte",
     "isNpmCoreArtifact": true,
     "alias": "Svelte Testing Library",
-    "tags": [],
+    "tags": ["testing", "svelte"],
     "framework": "svelte"
   },
   {
@@ -14297,7 +14297,7 @@
     "npm": "@testing-library/angular",
     "isNpmCoreArtifact": true,
     "alias": "Angular Testing Library",
-    "tags": [],
+    "tags": ["testing", "angular"],
     "framework": "angular"
   },
   {
@@ -14306,7 +14306,7 @@
     "npm": "chai",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing-framework"],
     "framework": null
   },
   {
@@ -14315,7 +14315,7 @@
     "npm": "sinon",
     "isNpmCoreArtifact": true,
     "alias": "Sinon.js",
-    "tags": [],
+    "tags": ["testing"],
     "framework": null
   },
   {
@@ -14324,7 +14324,7 @@
     "npm": "karma",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["test-runner"],
     "framework": null
   },
   {
@@ -14333,7 +14333,7 @@
     "npm": "lodash",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["utils"],
     "framework": null
   },
   {
@@ -14342,7 +14342,7 @@
     "npm": "ramda",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["utils"],
     "framework": null
   },
   {
@@ -14351,7 +14351,7 @@
     "npm": "underscore",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["utils"],
     "framework": null
   },
   {
@@ -14360,7 +14360,7 @@
     "npm": "rambda",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["utils"],
     "framework": null
   },
   {
@@ -14369,7 +14369,7 @@
     "npm": "mout",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["utils"],
     "framework": null
   },
   {
@@ -14378,7 +14378,7 @@
     "npm": "sugar",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["utils"],
     "framework": null
   },
   {
@@ -14387,7 +14387,7 @@
     "npm": "lazy.js",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["utils"],
     "framework": null
   },
   {
