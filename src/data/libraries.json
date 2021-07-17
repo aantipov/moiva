@@ -406,6 +406,15 @@
   },
   {
     "category": "CSS Frameworks",
+    "repoId": "semantic-org/semantic-ui-react",
+    "npm": "semantic-ui-react",
+    "isNpmCoreArtifact": true,
+    "alias": "Semantic UI React",
+    "tags": ["css-framework", "react"],
+    "framework": null
+  },
+  {
+    "category": "CSS Frameworks",
     "repoId": "uikit/uikit",
     "npm": "uikit",
     "isNpmCoreArtifact": true,
@@ -13451,7 +13460,7 @@
     "npm": "@material-ui/core",
     "isNpmCoreArtifact": true,
     "alias": "Material-UI",
-    "tags": [],
+    "tags": ["component-library", "material-design", "react"],
     "framework": null
   },
   {
@@ -13460,7 +13469,7 @@
     "npm": "react-bootstrap",
     "isNpmCoreArtifact": true,
     "alias": "React Bootstrap",
-    "tags": [],
+    "tags": ["component-library", "bootstrap", "react"],
     "framework": null
   },
   {
@@ -13469,7 +13478,7 @@
     "npm": "@chakra-ui/react",
     "isNpmCoreArtifact": true,
     "alias": "Chakra UI",
-    "tags": [],
+    "tags": ["component-library", "react"],
     "framework": null
   },
   {
@@ -13478,7 +13487,7 @@
     "npm": "reactstrap",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["component-library", "react", "bootstrap"],
     "framework": null
   },
   {
@@ -13487,16 +13496,7 @@
     "npm": "rebass",
     "isNpmCoreArtifact": true,
     "alias": "Rebass",
-    "tags": [],
-    "framework": null
-  },
-  {
-    "category": "React Component Libraries",
-    "repoId": "semantic-org/semantic-ui-react",
-    "npm": "semantic-ui-react",
-    "isNpmCoreArtifact": true,
-    "alias": "Semantic UI React",
-    "tags": [],
+    "tags": ["component-library", "react"],
     "framework": null
   },
   {
@@ -13505,7 +13505,7 @@
     "npm": "grommet",
     "isNpmCoreArtifact": true,
     "alias": "Grommet",
-    "tags": [],
+    "tags": ["component-library", "react"],
     "framework": null
   },
   {
@@ -13514,7 +13514,7 @@
     "npm": "@fluentui/react",
     "isNpmCoreArtifact": false,
     "alias": "Fluent UI React",
-    "tags": [],
+    "tags": ["component-library", "react"],
     "framework": null
   },
   {
@@ -13523,7 +13523,7 @@
     "npm": "evergreen-ui",
     "isNpmCoreArtifact": true,
     "alias": "Evergreen",
-    "tags": [],
+    "tags": ["component-library", "react"],
     "framework": null
   },
   {
