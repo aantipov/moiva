@@ -14423,7 +14423,7 @@
     "npm": "vuetify",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["component-library", "vue", "material-design"],
     "framework": null
   },
   {
@@ -14432,7 +14432,7 @@
     "npm": "quasar",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["component-library", "vue"],
     "framework": null
   },
   {
@@ -14441,7 +14441,7 @@
     "npm": "bootstrap-vue",
     "isNpmCoreArtifact": true,
     "alias": "BootstrapVue",
-    "tags": [],
+    "tags": ["component-library", "vue", "bootstrap"],
     "framework": null
   },
   {
@@ -14450,7 +14450,7 @@
     "npm": "primevue",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["component-library", "vue"],
     "framework": null
   },
   {
@@ -14459,7 +14459,7 @@
     "npm": "vue-material",
     "isNpmCoreArtifact": true,
     "alias": "Vue Material",
-    "tags": [],
+    "tags": ["component-library", "material-design", "vue"],
     "framework": null
   },
   {
@@ -14468,7 +14468,7 @@
     "npm": "element-ui",
     "isNpmCoreArtifact": true,
     "alias": "Element UI",
-    "tags": [],
+    "tags": ["component-library", "vue"],
     "framework": null
   },
   {
@@ -14477,7 +14477,7 @@
     "npm": "element-plus",
     "isNpmCoreArtifact": true,
     "alias": "Element Plus",
-    "tags": [],
+    "tags": ["component-library", "vue"],
     "framework": null
   },
   {
@@ -14486,7 +14486,7 @@
     "npm": "iview",
     "isNpmCoreArtifact": true,
     "alias": "iView",
-    "tags": [],
+    "tags": ["component-library", "vue"],
     "framework": null
   },
   {
@@ -14495,7 +14495,7 @@
     "npm": "ant-design-vue",
     "isNpmCoreArtifact": true,
     "alias": "Ant Design Vue",
-    "tags": [],
+    "tags": ["component-library", "vue"],
     "framework": null
   },
   {
