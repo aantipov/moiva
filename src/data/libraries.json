@@ -13973,7 +13973,7 @@
     "npm": "gatsby",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["static-site-generator", "react"],
     "framework": "react"
   },
   {
@@ -13982,7 +13982,7 @@
     "npm": "next",
     "isNpmCoreArtifact": true,
     "alias": "Next.js",
-    "tags": [],
+    "tags": ["nodejs-framework", "static-site-generator-SSD", "react", "server-side-rendering-SSR", "JAMstack"],
     "framework": "react"
   },
   {
@@ -13991,7 +13991,7 @@
     "npm": "nuxt",
     "isNpmCoreArtifact": true,
     "alias": "Nuxt.js",
-    "tags": [],
+    "tags": ["nodejs-framework", "static-site-generator-SSD", "server-side-rendering-SSR", "vue", "JAMstack"],
     "framework": "vue"
   },
   {
@@ -14000,7 +14000,7 @@
     "npm": "sapper",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["nodejs-framework", "server-side-rendering-SSR", "hmr", "svelte", "JAMstack", "static-site-generator-SSD"],
     "framework": "svelte"
   },
   {
@@ -14009,7 +14009,7 @@
     "npm": "@11ty/eleventy",
     "isNpmCoreArtifact": true,
     "alias": "11ty",
-    "tags": [],
+    "tags": ["static-site-generator-SSD"],
     "framework": null
   },
   {
@@ -14018,7 +14018,7 @@
     "npm": "hexo",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["static-site-generator", "blog"],
     "framework": null
   },
   {
@@ -14027,7 +14027,7 @@
     "npm": "@docusaurus/core",
     "isNpmCoreArtifact": true,
     "alias": "Docusaurus",
-    "tags": [],
+    "tags": ["documentation", "react", "markdown", "static-site-generator"],
     "framework": "react"
   },
   {
@@ -14036,7 +14036,7 @@
     "npm": "vuepress",
     "isNpmCoreArtifact": true,
     "alias": "VuePress",
-    "tags": [],
+    "tags": ["static-site-generator", "vue"],
     "framework": "vue"
   },
   {
@@ -14045,7 +14045,7 @@
     "npm": "docsify",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["server-side-rendering-SSR", "markdown"],
     "framework": null
   },
   {
@@ -14054,7 +14054,7 @@
     "npm": "umi",
     "isNpmCoreArtifact": true,
     "alias": "UmiJS",
-    "tags": [],
+    "tags": ["ui-framework"],
     "framework": "react"
   },
   {
@@ -14063,7 +14063,7 @@
     "npm": "react-static",
     "isNpmCoreArtifact": true,
     "alias": "React Static",
-    "tags": [],
+    "tags": ["static-site-generator", "react"],
     "framework": "react"
   },
   {
@@ -14072,7 +14072,7 @@
     "npm": "gridsome",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["static-site-generator", "vue", "JAMstack"],
     "framework": "vue"
   },
   {
@@ -14081,7 +14081,7 @@
     "npm": "astro",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["static-site-generator", "JAMstack"],
     "framework": null
   },
   {
