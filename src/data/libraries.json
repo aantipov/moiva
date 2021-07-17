@@ -14396,7 +14396,7 @@
     "npm": "backstopjs",
     "isNpmCoreArtifact": true,
     "alias": "BackstopJS",
-    "tags": [],
+    "tags": ["testing", "visual-regression"],
     "framework": null
   },
   {
@@ -14405,7 +14405,7 @@
     "npm": "loki",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing", "visual-regression", "storybook"],
     "framework": null
   },
   {
@@ -14414,7 +14414,7 @@
     "npm": "gemini",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["testing", "visual-regression"],
     "framework": null
   },
   {
