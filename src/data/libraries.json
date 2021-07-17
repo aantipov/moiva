@@ -14108,7 +14108,7 @@
     "npm": "@cucumber/cucumber",
     "isNpmCoreArtifact": true,
     "alias": "Cucumber.js",
-    "tags": [],
+    "tags": ["testing", "bdd-testing"],
     "framework": null
   },
   {
@@ -14117,7 +14117,7 @@
     "npm": "mocha-cakes-2",
     "isNpmCoreArtifact": true,
     "alias": "Mocha Cakes 2",
-    "tags": [],
+    "tags": ["testing", "bdd-testing"],
     "framework": null
   },
   {
@@ -14126,7 +14126,7 @@
     "npm": "livedoc-mocha",
     "isNpmCoreArtifact": true,
     "alias": "LiveDoc",
-    "tags": [],
+    "tags": ["testing", "bdd-testing"],
     "framework": null
   },
   {
