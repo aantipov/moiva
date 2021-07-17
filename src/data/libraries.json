@@ -14207,7 +14207,7 @@
     "npm": "@ionic/core",
     "isNpmCoreArtifact": true,
     "alias": "Ionic Framework",
-    "tags": [],
+    "tags": ["mobile", "pwa", "web", "ui-toolkit", "web-components"],
     "framework": null
   },
   {
@@ -14216,7 +14216,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
-    "tags": [],
+    "tags": ["ui-toolkit", "mobile", "desktop", "web"],
     "framework": null
   },
   {
@@ -14225,7 +14225,7 @@
     "npm": "react-native",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["ui-toolkit", "mobile", "react"],
     "framework": "react"
   },
   {
@@ -14234,7 +14234,7 @@
     "npm": "@nativescript/core",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["mobile"],
     "framework": null
   },
   {
@@ -14243,7 +14243,7 @@
     "npm": "framework7",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["ui-toolkit", "mobile", "desktop", "web"],
     "framework": null
   },
   {
@@ -14251,8 +14251,8 @@
     "repoId": "onsenui/onsenui",
     "npm": "onsenui",
     "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": [],
+    "alias": "OnsenUI",
+    "tags": ["web-components", "hybrid", "cordova", "mobile", "web"],
     "framework": null
   },
   {
@@ -14261,7 +14261,7 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
-    "tags": [],
+    "tags": ["ui-toolkit", "mobile"],
     "framework": null
   },
   {
