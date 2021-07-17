@@ -13280,7 +13280,7 @@
     "npm": "knex",
     "isNpmCoreArtifact": true,
     "alias": "knex.js",
-    "tags": [],
+    "tags": ["orm"],
     "framework": null
   },
   {
@@ -13289,7 +13289,7 @@
     "npm": "sequelize",
     "isNpmCoreArtifact": true,
     "alias": "Sequelize",
-    "tags": [],
+    "tags": ["orm"],
     "framework": null
   },
   {
@@ -13298,7 +13298,7 @@
     "npm": "bookshelf",
     "isNpmCoreArtifact": true,
     "alias": "bookshelf.js",
-    "tags": [],
+    "tags": ["orm"],
     "framework": null
   },
   {
@@ -13307,7 +13307,7 @@
     "npm": "waterline",
     "isNpmCoreArtifact": true,
     "alias": "Waterline",
-    "tags": [],
+    "tags": ["orm"],
     "framework": null
   },
   {
@@ -13316,7 +13316,7 @@
     "npm": "objection",
     "isNpmCoreArtifact": true,
     "alias": "Objection.js",
-    "tags": [],
+    "tags": ["orm"],
     "framework": null
   },
   {
@@ -13325,7 +13325,7 @@
     "npm": "mongoose",
     "isNpmCoreArtifact": true,
     "alias": "Mongoose",
-    "tags": [],
+    "tags": ["orm"],
     "framework": null
   },
   {
@@ -13334,7 +13334,7 @@
     "npm": "@typegoose/typegoose",
     "isNpmCoreArtifact": true,
     "alias": "Typegoose",
-    "tags": [],
+    "tags": ["orm"],
     "framework": null
   },
   {
@@ -13343,7 +13343,7 @@
     "npm": "typeorm",
     "isNpmCoreArtifact": true,
     "alias": "TypeORM",
-    "tags": [],
+    "tags": ["orm"],
     "framework": null
   },
   {
@@ -13352,7 +13352,7 @@
     "npm": "@mikro-orm/core",
     "isNpmCoreArtifact": true,
     "alias": "MikroORM",
-    "tags": [],
+    "tags": ["orm"],
     "framework": null
   },
   {
@@ -13361,7 +13361,7 @@
     "npm": "@prisma/client",
     "isNpmCoreArtifact": true,
     "alias": "Prisma",
-    "tags": [],
+    "tags": ["orm"],
     "framework": null
   },
   {
