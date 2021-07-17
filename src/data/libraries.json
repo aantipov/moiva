@@ -14090,7 +14090,7 @@
     "npm": "typescript",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["compiler", "static-type-checker"],
     "framework": null
   },
   {
@@ -14099,7 +14099,7 @@
     "npm": "flow-bin",
     "isNpmCoreArtifact": true,
     "alias": "Flow",
-    "tags": [],
+    "tags": ["compiler", "static-type-checker"],
     "framework": null
   },
   {
