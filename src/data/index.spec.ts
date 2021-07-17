@@ -131,6 +131,7 @@ describe('Catalog libraries', () => {
     const allowedFrameworks = [
       null,
       'react',
+      'preact',
       'vue',
       'svelte',
       'ember',
