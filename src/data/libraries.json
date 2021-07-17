@@ -13253,7 +13253,7 @@
     "npm": "joi",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["schema-validation"],
     "framework": null
   },
   {
@@ -13262,7 +13262,7 @@
     "npm": "ajv",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["schema-validation"],
     "framework": null
   },
   {
@@ -13271,7 +13271,7 @@
     "npm": "yup",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["schema-validation"],
     "framework": null
   },
   {
