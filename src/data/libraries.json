@@ -13586,7 +13586,7 @@
     "npm": "react-helmet",
     "isNpmCoreArtifact": true,
     "alias": "React Helmet",
-    "tags": [],
+    "tags": ["react"],
     "framework": null
   },
   {
@@ -13595,7 +13595,7 @@
     "npm": "react-helmet-async",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["react"],
     "framework": null
   },
   {
@@ -13604,7 +13604,7 @@
     "npm": "formik",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["form", "react"],
     "framework": null
   },
   {
@@ -13613,7 +13613,7 @@
     "npm": "react-hook-form",
     "isNpmCoreArtifact": true,
     "alias": "React Hook Form",
-    "tags": [],
+    "tags": ["form", "react"],
     "framework": null
   },
   {
@@ -13622,7 +13622,7 @@
     "npm": "redux-form",
     "isNpmCoreArtifact": true,
     "alias": "Redux Form",
-    "tags": [],
+    "tags": ["form", "react"],
     "framework": null
   },
   {
@@ -13631,7 +13631,7 @@
     "npm": "final-form",
     "isNpmCoreArtifact": true,
     "alias": "React Final Form",
-    "tags": [],
+    "tags": ["form", "react"],
     "framework": null
   },
   {
