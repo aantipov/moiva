@@ -13370,7 +13370,7 @@
     "npm": "@popperjs/core",
     "isNpmCoreArtifact": true,
     "alias": "Popper",
-    "tags": [],
+    "tags": ["tooltip"],
     "framework": null
   },
   {
@@ -13379,7 +13379,7 @@
     "npm": "hint.css",
     "isNpmCoreArtifact": true,
     "alias": "Hint.css",
-    "tags": [],
+    "tags": ["tooltip"],
     "framework": null
   },
   {
@@ -13388,7 +13388,7 @@
     "npm": "balloon-css",
     "isNpmCoreArtifact": true,
     "alias": "Balloon.css",
-    "tags": [],
+    "tags": ["tooltip"],
     "framework": null
   },
   {
@@ -13397,7 +13397,7 @@
     "npm": "tooltipster",
     "isNpmCoreArtifact": true,
     "alias": "Tooltipster",
-    "tags": [],
+    "tags": ["tooltip"],
     "framework": null
   },
   {
@@ -13406,7 +13406,7 @@
     "npm": "rc-tooltip",
     "isNpmCoreArtifact": true,
     "alias": "rc-tooltip",
-    "tags": [],
+    "tags": ["tooltip"],
     "framework": "react"
   },
   {
@@ -13415,7 +13415,7 @@
     "npm": "react-tooltip",
     "isNpmCoreArtifact": true,
     "alias": "react-tooltip",
-    "tags": [],
+    "tags": ["tooltip"],
     "framework": "react"
   },
   {
@@ -13424,7 +13424,7 @@
     "npm": "react-popper",
     "isNpmCoreArtifact": true,
     "alias": "React Popper",
-    "tags": [],
+    "tags": ["tooltip"],
     "framework": "react"
   },
   {
@@ -13433,7 +13433,7 @@
     "npm": "@tippyjs/react",
     "isNpmCoreArtifact": true,
     "alias": "Tippy.js for React",
-    "tags": [],
+    "tags": ["tooltip"],
     "framework": "react"
   },
   {
@@ -13442,7 +13442,7 @@
     "npm": "tippy.js",
     "isNpmCoreArtifact": true,
     "alias": "Tippy.js",
-    "tags": [],
+    "tags": ["tooltip"],
     "framework": null
   },
   {
