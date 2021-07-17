@@ -14522,7 +14522,7 @@
     "npm": "@stencil/core",
     "isNpmCoreArtifact": true,
     "alias": "Stencil",
-    "tags": [],
+    "tags": ["ui-framework", "web-components", "pwa"],
     "framework": null
   },
   {
@@ -14531,7 +14531,7 @@
     "npm": "lit-element",
     "isNpmCoreArtifact": true,
     "alias": "LitElement",
-    "tags": [],
+    "tags": ["web-components"],
     "framework": null
   },
   {
@@ -14540,7 +14540,7 @@
     "npm": "socket.io",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["realtime", "websocket"],
     "framework": null
   },
   {
@@ -14549,7 +14549,7 @@
     "npm": "ws",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["realtime", "websocket"],
     "framework": null
   },
   {
