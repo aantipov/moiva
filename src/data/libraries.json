@@ -13658,16 +13658,7 @@
     "npm": "hermes-engine",
     "isNpmCoreArtifact": true,
     "alias": "Hermes",
-    "tags": [],
-    "framework": null
-  },
-  {
-    "category": "React Native Libraries for Android",
-    "repoId": "react-native-community/jsc-android-buildscripts",
-    "npm": "jsc-android",
-    "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": [],
+    "tags": ["runtime", "react-native", "android"],
     "framework": null
   },
   {
@@ -13676,7 +13667,7 @@
     "npm": "react-native-v8",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["runtime", "react-native"],
     "framework": null
   },
   {
