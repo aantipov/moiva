@@ -13730,7 +13730,7 @@
     "npm": "downshift",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["autocomplete", "react"],
     "framework": "react"
   },
   {
@@ -13739,7 +13739,7 @@
     "npm": "react-select",
     "isNpmCoreArtifact": true,
     "alias": "React Select",
-    "tags": [],
+    "tags": ["autocomplete", "react"],
     "framework": "react"
   },
   {
@@ -13748,7 +13748,7 @@
     "npm": "select2",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["autocomplete", "react"],
     "framework": null
   },
   {
@@ -13757,7 +13757,7 @@
     "npm": "react-autosuggest",
     "isNpmCoreArtifact": true,
     "alias": "React Autosuggest",
-    "tags": [],
+    "tags": ["autocomplete", "react"],
     "framework": "react"
   },
   {
@@ -13766,7 +13766,7 @@
     "npm": "react-autocomplete",
     "isNpmCoreArtifact": true,
     "alias": "React Autocomplete",
-    "tags": [],
+    "tags": ["autocomplete", "react"],
     "framework": "react"
   },
   {
@@ -13775,7 +13775,7 @@
     "npm": "react-virtualized-select",
     "isNpmCoreArtifact": true,
     "alias": "React Virtualized Select",
-    "tags": [],
+    "tags": ["autocomplete", "react"],
     "framework": "react"
   },
   {
@@ -13784,7 +13784,7 @@
     "npm": "react-dropdown",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["autocomplete", "react"],
     "framework": "react"
   },
   {
