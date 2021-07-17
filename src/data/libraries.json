@@ -13640,7 +13640,7 @@
     "npm": "blitz",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["fullstack-framework", "react", "nodejs-framework"],
     "framework": "react"
   },
   {
@@ -13649,7 +13649,7 @@
     "npm": "@redwoodjs/core",
     "isNpmCoreArtifact": true,
     "alias": "RedwoodJS",
-    "tags": [],
+    "tags": ["fullstack-framework", "react", "JAMstack", "serverless-framework", "nodejs-framework", "hmr"],
     "framework": "react"
   },
   {
