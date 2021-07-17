@@ -14504,7 +14504,7 @@
     "npm": "@vue/test-utils",
     "isNpmCoreArtifact": true,
     "alias": "Vue Test Utils",
-    "tags": [],
+    "tags": ["testing", "vue"],
     "framework": null
   },
   {
@@ -14513,7 +14513,7 @@
     "npm": "@testing-library/vue",
     "isNpmCoreArtifact": true,
     "alias": "Vue Testing Library",
-    "tags": [],
+    "tags": ["testing", "vue"],
     "framework": null
   },
   {
