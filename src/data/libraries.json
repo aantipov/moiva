@@ -13793,7 +13793,7 @@
     "npm": "redux",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["state-management"],
     "framework": null
   },
   {
@@ -13802,7 +13802,7 @@
     "npm": "mobx",
     "isNpmCoreArtifact": true,
     "alias": "MobX",
-    "tags": [],
+    "tags": ["state-management"],
     "framework": null
   },
   {
@@ -13811,7 +13811,7 @@
     "npm": "rxjs",
     "isNpmCoreArtifact": true,
     "alias": "RxJS",
-    "tags": [],
+    "tags": ["state-management"],
     "framework": null
   },
   {
@@ -13820,7 +13820,7 @@
     "npm": "recoil",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["state-management"],
     "framework": null
   },
   {
@@ -13829,7 +13829,7 @@
     "npm": "xstate",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["state-management"],
     "framework": null
   },
   {
@@ -13838,7 +13838,7 @@
     "npm": "vuex",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["state-management", "vue"],
     "framework": "vue"
   },
   {
@@ -13847,7 +13847,7 @@
     "npm": "@ngrx/store",
     "isNpmCoreArtifact": true,
     "alias": "NgRx",
-    "tags": [],
+    "tags": ["state-management", "angular"],
     "framework": "angular"
   },
   {
@@ -13856,7 +13856,7 @@
     "npm": "react-query",
     "isNpmCoreArtifact": true,
     "alias": "React Query",
-    "tags": [],
+    "tags": ["state-management", "react", "date-fetching"],
     "framework": "react"
   },
   {
@@ -13865,7 +13865,7 @@
     "npm": "zustand",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["state-management", "react"],
     "framework": "react"
   },
   {
@@ -13874,7 +13874,7 @@
     "npm": "jotai",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["state-management", "react"],
     "framework": "react"
   },
   {
@@ -13883,7 +13883,7 @@
     "npm": "@datorama/akita",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["state-management"],
     "framework": null
   },
   {
@@ -13892,7 +13892,7 @@
     "npm": "@ngxs/store",
     "isNpmCoreArtifact": true,
     "alias": "NGXS",
-    "tags": [],
+    "tags": ["state-management", "angular"],
     "framework": "angular"
   },
   {
@@ -13901,7 +13901,7 @@
     "npm": "mobx-state-tree",
     "isNpmCoreArtifact": true,
     "alias": "mobx-state-tree",
-    "tags": [],
+    "tags": ["state-management"],
     "framework": null
   },
   {
@@ -13910,7 +13910,7 @@
     "npm": "easy-peasy",
     "isNpmCoreArtifact": true,
     "alias": "Easy Peasy",
-    "tags": [],
+    "tags": ["state-management", "react"],
     "framework": "react"
   },
   {
@@ -13919,7 +13919,7 @@
     "npm": "effector",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["state-management"],
     "framework": null
   },
   {
@@ -13928,7 +13928,7 @@
     "npm": "storeon",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["state-management"],
     "framework": null
   },
   {
@@ -13937,7 +13937,7 @@
     "npm": "constate",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["state-management", "react"],
     "framework": "react"
   },
   {
@@ -13946,7 +13946,7 @@
     "npm": "swr",
     "isNpmCoreArtifact": true,
     "alias": "SWR",
-    "tags": [],
+    "tags": ["state-management", "react", "date-fetching"],
     "framework": "react"
   },
   {
@@ -13955,7 +13955,7 @@
     "npm": "overmind",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": [],
+    "tags": ["state-management"],
     "framework": null
   },
   {
@@ -13964,7 +13964,7 @@
     "npm": "nanostores",
     "isNpmCoreArtifact": true,
     "alias": "Nano Stores",
-    "tags": [],
+    "tags": ["state-management"],
     "framework": null
   },
   {
