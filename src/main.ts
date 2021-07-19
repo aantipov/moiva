@@ -39,14 +39,19 @@ app.component('MLoaderNew', LoaderNew);
 app.component('MExtLink', ExternalLink);
 app.component('MChart', ChartPresentation);
 app.component('MChartMenu', ChartMenu);
-app.directive('tooltip', (el, binding) => {
-  tippy(el as HTMLElement, {
-    content: binding.value,
-    delay: 150,
-    interactive: 'ni' in binding.modifiers ? !binding.modifiers.ni : true, // non-interactive
-    allowHTML: binding.modifiers.html,
-    appendTo: document.body,
-  });
+app.directive('tooltip', {
+  mounted(el, binding) {
+    tippy(el as HTMLElement, {
+      content: binding.value,
+      delay: 150,
+      interactive: 'ni' in binding.modifiers ? !binding.modifiers.ni : true, // non-interactive
+      allowHTML: binding.modifiers.html,
+      appendTo: document.body,
+    });
+  },
+  updated(el, binding) {
+    el._tippy.setContent(binding.value);
+  },
 });
 
 const appCatalog = new URL(window.location.href).searchParams.get('appcatalog');

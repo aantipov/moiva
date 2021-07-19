@@ -40,9 +40,9 @@ export default defineComponent({
       tooltip: computed(() => {
         let txt;
         if (value.value === 'ACTIVE') {
-          txt = `<p>- there have been commits in the last 6 months <br> - the repository is not tagged as Legacy or Archived</p>`;
+          txt = `<p>There were commits in the last 6 months</p>`;
         } else if (value.value === 'INACTIVE') {
-          txt = `<p>- no commits in the last 6 months <br> - the repository is not tagged as Legacy or Archived.</p>`;
+          txt = `<p>No commits in the last 6 months</p>`;
         } else if (value.value === 'LEGACY') {
           txt = `<p>The project is marked as Legacy.</p> <p>It is no longer under active development.</p> <p>Better use alternative solutions.</p>`;
         } else if (value.value === 'ARCHIVED') {
