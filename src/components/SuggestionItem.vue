@@ -92,7 +92,7 @@ export default defineComponent({
         content: contentRef.value as unknown as HTMLElement,
         // concatenates the two SVG strings together to style Arrow border
         arrow: roundArrow + roundArrow,
-        delay: [400, 50],
+        delay: [200, 50],
         interactive: false,
         allowHTML: true,
         theme: 'suggestion-tp',
