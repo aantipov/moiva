@@ -8,22 +8,27 @@
       >+ {{ catalogLibrary.alias }}</a
     >
     <div ref="contentRef">
-      <div v-if="catalogLibrary.npm" class="flex">
-        <m-npm-icon class="mr-2" />
-        <span class="font-mono">{{ catalogLibrary.npm }}</span>
-      </div>
-      <div v-else class="flex items-center">
-        <m-github-icon class="mr-2" />
-        <span class="font-mono">{{ catalogLibrary.repoId }}</span>
+      <!-- Name -->
+      <div class="mb-1">
+        <div v-if="catalogLibrary.npm" class="flex">
+          <m-npm-icon class="mr-2" />
+          <span class="font-mono">{{ catalogLibrary.npm }}</span>
+        </div>
+        <div v-else class="flex items-center">
+          <m-github-icon class="mr-2" />
+          <span class="font-mono">{{ catalogLibrary.repoId }}</span>
+        </div>
       </div>
 
-      <div v-if="isLoading">Loading...</div>
+      <div v-if="isLoading" class="my-1">Loading...</div>
+
+      <!-- Description + stats -->
       <template v-else>
         <div class="mb-1">
           {{ lib?.npmPackage?.description || lib?.repo.description }}
         </div>
 
-        <div class="flex">
+        <div class="flex text-sm">
           <div class="flex items-center font-normal">
             <m-star-icon />
             {{ stars }}
@@ -37,6 +42,26 @@
           </div>
         </div>
       </template>
+
+      <!-- Tags -->
+      <div class="flex mt-2">
+        <div
+          v-for="tag in catalogLibrary.tags"
+          :key="tag"
+          class="
+            flex
+            justify-center
+            items-center
+            rounded-full
+            border border-blue-300
+            bg-blue-200
+            m-1
+            px-2
+          "
+        >
+          {{ tag }}
+        </div>
+      </div>
     </div>
   </div>
 </template>
