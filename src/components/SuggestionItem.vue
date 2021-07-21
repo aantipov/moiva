@@ -20,7 +20,10 @@
         </div>
       </div>
 
-      <div v-if="isLoading" class="my-1">Loading...</div>
+      <!-- Loading -->
+      <div v-if="isLoading" class="flex justify-center my-3">
+        <m-loader-tail-spin />
+      </div>
 
       <!-- Description + stats -->
       <template v-else>
