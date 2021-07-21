@@ -7,7 +7,7 @@
     </template>
 
     <template v-if="type === 'repo'">
-      <GitHubIcon
+      <m-github-icon
         v-tooltip.html="github"
         class="w-8"
         label="GitHub repository"
@@ -171,7 +171,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import GitHubIcon from '@/components/icons/Github.vue';
 import TagIcon from '@/components/icons/Tag.vue';
 import SearchIcon from '@/components/icons/Search.vue';
 import WorkerIcon from '@/components/icons/Worker.vue';
@@ -195,7 +194,6 @@ export default defineComponent({
   name: 'ReportMetricHeader',
 
   components: {
-    GitHubIcon,
     SearchIcon,
     WorkerIcon,
     TagIcon,

@@ -8,9 +8,18 @@
       >+ {{ catalogLibrary.alias }}</a
     >
     <div ref="contentRef">
+      <div v-if="catalogLibrary.npm" class="flex">
+        <m-npm-icon class="mr-2" />
+        <span class="font-mono">{{ catalogLibrary.npm }}</span>
+      </div>
+      <div v-else class="flex items-center">
+        <m-github-icon class="mr-2" />
+        <span class="font-mono">{{ catalogLibrary.repoId }}</span>
+      </div>
+
       <div v-if="isLoading">Loading...</div>
       <template v-else>
-        <div>
+        <div class="mb-1">
           {{ lib?.npmPackage?.description || lib?.repo.description }}
         </div>
 
@@ -83,7 +92,7 @@ export default defineComponent({
         content: contentRef.value as unknown as HTMLElement,
         // concatenates the two SVG strings together to style Arrow border
         arrow: roundArrow + roundArrow,
-        delay: [400, 50],
+        delay: [200, 50],
         interactive: false,
         allowHTML: true,
         theme: 'suggestion-tp',
