@@ -3,6 +3,7 @@ import rawTechRadarItems from '@/data/techradar.json';
 import rawLibraries from '@/data/libraries.json';
 import rawGoogleTrendsItems from '@/data/google-trends.json';
 import legacyItems from '@/data/legacy.json';
+export * from '@/data/tags';
 
 /** ========= STATE OF JS CSS ========= **/
 /**

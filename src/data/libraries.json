@@ -13973,7 +13973,7 @@
     "npm": "gatsby",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["static-site-generator", "react"],
+    "tags": ["static-site-generator-SSD", "react"],
     "framework": "react"
   },
   {
@@ -14018,7 +14018,7 @@
     "npm": "hexo",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["static-site-generator", "blog"],
+    "tags": ["static-site-generator-SSD", "blog"],
     "framework": null
   },
   {
@@ -14027,7 +14027,7 @@
     "npm": "@docusaurus/core",
     "isNpmCoreArtifact": true,
     "alias": "Docusaurus",
-    "tags": ["documentation", "react", "markdown", "static-site-generator"],
+    "tags": ["documentation", "react", "markdown", "static-site-generator-SSD"],
     "framework": "react"
   },
   {
@@ -14036,7 +14036,7 @@
     "npm": "vuepress",
     "isNpmCoreArtifact": true,
     "alias": "VuePress",
-    "tags": ["static-site-generator", "vue"],
+    "tags": ["static-site-generator-SSD", "vue"],
     "framework": "vue"
   },
   {
@@ -14063,7 +14063,7 @@
     "npm": "react-static",
     "isNpmCoreArtifact": true,
     "alias": "React Static",
-    "tags": ["static-site-generator", "react"],
+    "tags": ["static-site-generator-SSD", "react"],
     "framework": "react"
   },
   {
@@ -14072,7 +14072,7 @@
     "npm": "gridsome",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["static-site-generator", "vue", "JAMstack"],
+    "tags": ["static-site-generator-SSD", "vue", "JAMstack"],
     "framework": "vue"
   },
   {
@@ -14081,7 +14081,7 @@
     "npm": "astro",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["static-site-generator", "JAMstack"],
+    "tags": ["static-site-generator-SSD", "JAMstack"],
     "framework": null
   },
   {
