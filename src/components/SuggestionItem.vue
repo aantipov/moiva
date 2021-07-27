@@ -47,7 +47,7 @@
       </template>
 
       <!-- Tags -->
-      <div class="flex mt-2">
+      <div class="flex flex-wrap mt-2">
         <div
           v-for="tag in catalogLibrary.tags"
           :key="tag"
