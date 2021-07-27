@@ -152,7 +152,6 @@ describe('Catalog libraries', () => {
     const libsTags = catalogLibraries.map((lib) => lib.tags).flat();
     const libsTagsDedup = [...new Set(libsTags)];
     libsTagsDedup.forEach(expect(tags).toContain);
-    // catalogLibraries.forEach((lib) => lib.tags.forEach(expect(tags).toContain));
   });
 
   it('all defined tags are used', () => {
