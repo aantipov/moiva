@@ -105,6 +105,7 @@ export function getLibrary(
   const tags = (catalogLibrary && catalogLibrary.tags) || [];
   const id = nanoid();
   const repoIdLC = repo.repoId.toLowerCase();
+  console.log('legacy', legacyLibraries);
 
   return {
     id,
@@ -123,7 +124,9 @@ export function getLibrary(
       }
       if (
         legacyLibraries.find(
-          (lib) => lib.repoId === repo.repoId || lib.npm === npmPackage?.name
+          (lib) =>
+            (lib.repoId && lib.repoId === repo.repoId) ||
+            (lib.npm && lib.npm === npmPackage?.name)
         )
       ) {
         return 'LEGACY';
