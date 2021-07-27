@@ -2,7 +2,7 @@ import techRadarItems from './techradar.json';
 import googleTrendsItems from './google-trends.json';
 import readingsItems from './readings.json';
 import stateofjsItems from './stateofjscss.json';
-import { catalogLibraries, CatalogLibraryT } from './index';
+import { catalogLibraries, tags, CatalogLibraryT } from './index';
 
 // @ts-ignore
 const libsReposIds = catalogLibraries.map((lib) => lib.repoId);
@@ -146,6 +146,32 @@ describe('Catalog libraries', () => {
     catalogLibraries
       .map((lib) => lib.repoId)
       .forEach((repoId) => expect(repoId).toBe(repoId.toLowerCase()));
+  });
+
+  it('uses only specified tags', () => {
+    const libsTags = catalogLibraries.map((lib) => lib.tags).flat();
+    const libsTagsDedup = [...new Set(libsTags)];
+    libsTagsDedup.forEach(expect(tags).toContain);
+    // catalogLibraries.forEach((lib) => lib.tags.forEach(expect(tags).toContain));
+  });
+
+  it('all defined tags are used', () => {
+    const libsTags = catalogLibraries.map((lib) => lib.tags).flat();
+    const libsTagsDedup = [...new Set(libsTags)];
+    tags.forEach(expect(libsTagsDedup).toContain);
+  });
+
+  it('no duplicate tag', () => {
+    const tagsDeduped: string[] = [];
+    const tagsDuplicates: string[] = [];
+    tags.forEach((tag) => {
+      if (tagsDeduped.includes(tag)) {
+        tagsDuplicates.push(tag);
+      } else {
+        tagsDeduped.push(tag);
+      }
+    });
+    expect(tagsDuplicates).toEqual([]);
   });
 
   it.todo('sitemap is generated for each entry');
