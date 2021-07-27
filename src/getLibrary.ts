@@ -123,7 +123,9 @@ export function getLibrary(
       }
       if (
         legacyLibraries.find(
-          (lib) => lib.repoId === repo.repoId || lib.npm === npmPackage?.name
+          (lib) =>
+            (lib.repoId && lib.repoId === repo.repoId) ||
+            (lib.npm && lib.npm === npmPackage?.name)
         )
       ) {
         return 'LEGACY';
