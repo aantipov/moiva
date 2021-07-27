@@ -105,7 +105,6 @@ export function getLibrary(
   const tags = (catalogLibrary && catalogLibrary.tags) || [];
   const id = nanoid();
   const repoIdLC = repo.repoId.toLowerCase();
-  console.log('legacy', legacyLibraries);
 
   return {
     id,
