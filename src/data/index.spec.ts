@@ -2,7 +2,12 @@ import techRadarItems from './techradar.json';
 import googleTrendsItems from './google-trends.json';
 import readingsItems from './readings.json';
 import stateofjsItems from './stateofjscss.json';
-import { catalogLibraries, tags, CatalogLibraryT } from './index';
+import {
+  catalogLibraries,
+  tags,
+  frameworksTags,
+  CatalogLibraryT,
+} from './index';
 
 // @ts-ignore
 const libsReposIds = catalogLibraries.map((lib) => lib.repoId);
@@ -124,20 +129,11 @@ describe('Catalog libraries', () => {
     expect(duplicates).toEqual([]);
   });
 
-  it('Use correct frameworks', () => {
+  it('Uses correct frameworks', () => {
     const frameworks = [
       ...new Set(catalogLibraries.map(({ framework }) => framework)),
     ];
-    const allowedFrameworks = [
-      null,
-      'react',
-      'preact',
-      'vue',
-      'svelte',
-      'ember',
-      'angular',
-      'angularjs',
-    ];
+    const allowedFrameworks = [null, ...frameworksTags];
 
     frameworks.forEach(expect(allowedFrameworks).toContain);
   });
