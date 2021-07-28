@@ -19,6 +19,7 @@ import DotsIcon from '@/icons/Dots.vue';
 import NpmIcon from '@/icons/Npm.vue';
 import GithubIcon from '@/icons/Github.vue';
 import DownloadIcon from '@/components/icons/Download.vue';
+import Tag from '@/components/Tag.vue';
 import ChartInfo from '@/components/ChartInfo.vue';
 import ChartMenu from '@/components/ChartMenu.vue';
 import ChartPresentation from '@/components/ChartPresentation.vue';
@@ -31,6 +32,7 @@ import './assets/tailwind.css';
 const app = createApp(App);
 
 app.component('MClose', Close);
+app.component('MTag', Tag);
 app.component('MDotsIcon', DotsIcon);
 app.component('MStarIcon', StarIcon);
 app.component('MNpmIcon', NpmIcon);
