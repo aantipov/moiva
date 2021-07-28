@@ -1,4 +1,8 @@
-import { catalogLibraries, CatalogLibraryT } from '@/data/index';
+import {
+  catalogLibraries,
+  CatalogLibraryT,
+  frameworksTags,
+} from '@/data/index';
 import { LibraryReadonlyT, LibrariesReadonlyT } from '@/libraryApis';
 import { getYear, getMonth } from 'date-fns';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
@@ -276,7 +280,11 @@ interface SearchLibT {
   matchedTagsNumber: number; // we need it to sort found libraries
 }
 
-function getSuggestionsNew(
+/**
+ * Get Library suggestions for the selected libs
+ * based on tags
+ */
+export function getSuggestions(
   selectedLibraries: LibrariesReadonlyT
 ): CatalogLibraryT[] {
   if (!selectedLibraries.length) {
@@ -288,7 +296,16 @@ function getSuggestionsNew(
     ...new Set(selectedLibraries.map((lib) => lib.tags).flat()),
   ] as string[];
 
-  const tagsResults = index.search({ tag: tagsUsed }) as SearchResultsItemT[];
+  const tagsUsedNoFrameworks = tagsUsed.filter(
+    (tag) => !frameworksTags.includes(tag)
+  ) as string[];
+  const tagsUsedFrameworks = tagsUsed.filter((tag) =>
+    frameworksTags.includes(tag)
+  ) as string[];
+
+  const tagsResults = index.search({
+    tag: tagsUsedNoFrameworks,
+  }) as SearchResultsItemT[];
   const keyToLibMap = new Map<number, SearchLibT>();
 
   tagsResults.forEach((tagResultItem) => {
@@ -312,56 +329,19 @@ function getSuggestionsNew(
     (item) => item.catalogLibraryId
   );
   const suggestedLibs: CatalogLibraryT[] = [...keyToLibMap.values()]
+    // TODO: sort libs by more specific tags, e.g. browser-automation vs testing (e2e libs)
+    // TODO: sort libs by stars rate
     .sort((a, b) => b.matchedTagsNumber - a.matchedTagsNumber)
     .map((item) => item.lib)
     // filter out selected libraries
-    .filter((item) => !selectedLibsIds.includes(item.id));
+    .filter((item) => !selectedLibsIds.includes(item.id))
+    // Exclude framework specific libs which do not match currently selected
+    .filter(
+      (lib) =>
+        lib.framework === null || tagsUsedFrameworks.includes(lib.framework)
+    );
 
   return suggestedLibs;
-}
-/**
- * Get Library suggestions for the selected libs
- * based on the category of the selected libs
- * - show nothing if there are more than 2 categories involved
- * - show the rest category libraries otherwise
- *
- */
-export function getSuggestions(
-  libraries: LibrariesReadonlyT
-): CatalogLibraryT[] {
-  const r = getSuggestionsNew(libraries);
-  // console.log('res', r);
-
-  if (!libraries.length) {
-    return [];
-  }
-
-  const categories = [...new Set(libraries.map((lib) => lib.category))].filter(
-    (cat) => cat && cat !== 'misc'
-  ) as string[];
-
-  if (categories.length !== 1) {
-    return [];
-  }
-
-  const category = categories[0];
-
-  const selectedNpmNames = libraries
-    .map((lib) => lib.npmPackage?.name)
-    .filter((npmName) => !!npmName);
-
-  const selectedReposIds = libraries
-    .filter((lib) => !lib.npmPackage)
-    .map((lib) => lib.repo.repoId.toLowerCase());
-
-  return catalogLibraries
-    .filter((lib) => lib.category === category)
-    .filter((catalogLib) => {
-      if (catalogLib.npm) {
-        return !selectedNpmNames.includes(catalogLib.npm);
-      }
-      return !selectedReposIds.includes(catalogLib.repoId);
-    });
 }
 
 export function getBundlephobiaUrl(libName: string): string {

@@ -3,6 +3,7 @@ import rawTechRadarItems from '@/data/techradar.json';
 import rawLibraries from '@/data/libraries.json';
 import rawGoogleTrendsItems from '@/data/google-trends.json';
 import legacyItems from '@/data/legacy.json';
+import { frameworksTags } from '@/data/tags';
 export * from '@/data/tags';
 
 /** ========= STATE OF JS CSS ========= **/
@@ -132,6 +133,7 @@ export const catalogLibraries = rawLibraries
   .map((lib, index) => ({
     ...lib,
     alias: lib.alias || getAliasFromRepoId(lib.repoId),
+    framework: lib.tags.find((tag) => frameworksTags.includes(tag)) || null,
     id: index,
   })) as CatalogLibraryT[];
 
