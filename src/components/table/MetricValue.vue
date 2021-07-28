@@ -25,6 +25,13 @@
     <StatusBadge :value="lib.status" />
   </div>
 
+  <div v-else-if="type === 'tags'" class="flex flex-wrap justify-center">
+    <template v-if="lib.tags.length > 0">
+      <m-tag v-for="tag in lib.tags" :key="tag" :value="tag" />
+    </template>
+    <template v-else>-</template>
+  </div>
+
   <div v-else-if="type === 'stars'">
     <div class="flex justify-end">
       {{ formatNumber(lib.repo.stars) }}

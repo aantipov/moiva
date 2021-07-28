@@ -24,6 +24,8 @@
       <div v-tooltip.html="status" class="label">Status</div>
     </template>
 
+    <template v-if="type === 'tags'"> </template>
+
     <template v-if="type === 'stars'">
       <m-star-icon v-tooltip="stars" class="w-8" :label="stars" />
       <div v-tooltip="stars" class="text-left label">

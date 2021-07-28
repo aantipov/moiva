@@ -98,6 +98,7 @@ const METRICS = [
   'npm',
   'repo',
   'status',
+  'tags',
   'stars',
   'downloads',
   'searchInterest',
@@ -115,6 +116,7 @@ const METRICS = [
   'license',
 ] as const;
 
+// Metrics which are removed if there are no npm packages
 const NPM_METRICS = [
   'npm',
   'downloads',
@@ -132,6 +134,7 @@ const ROWS: { metric: MetricT; cat: CategoryT; classVal: string }[] = [
   { metric: 'npm', cat: '', classVal: '' },
   { metric: 'repo', cat: '', classVal: '' },
   { metric: 'status', cat: '', classVal: '' },
+  { metric: 'tags', cat: '', classVal: '' },
   { metric: 'stars', cat: 'Popularity', classVal: 'bg-green-100' },
   { metric: 'downloads', cat: 'Popularity', classVal: 'bg-green-100' },
   { metric: 'searchInterest', cat: 'Popularity', classVal: 'bg-green-100' },
@@ -160,10 +163,16 @@ export default defineComponent({
   setup() {
     const rowsRef = computed(() => {
       const hasNpm = libraries.some((lib) => !!lib.npmPackage);
-      if (hasNpm) {
-        return ROWS;
-      }
-      return ROWS.filter((row) => !NPM_METRICS.includes(row.metric));
+      const hasTags = libraries.some((lib) => !!lib.tags.length);
+      let filteredRows = ROWS;
+      filteredRows = hasTags
+        ? filteredRows
+        : filteredRows.filter((row) => row.metric !== 'tags');
+      filteredRows = hasNpm
+        ? filteredRows
+        : filteredRows.filter((row) => !NPM_METRICS.includes(row.metric));
+
+      return filteredRows;
     });
 
     const catsSpanMapRef = computed(() => {
