@@ -12593,6 +12593,7 @@
   },
   {
     "category": "JavaScript Testing Frameworks",
+    "repoId": "substack/tape",
     "npm": "tape",
     "isNpmCoreArtifact": true,
     "alias": null,
