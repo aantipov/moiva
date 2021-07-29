@@ -1,4 +1,4 @@
-  <template>
+<template>
   <div>
     <div ref="triggerRef" class="px-1 cursor-pointer">
       <m-dots-icon class="text-gray-500" />
