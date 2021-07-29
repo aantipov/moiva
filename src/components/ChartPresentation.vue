@@ -186,10 +186,8 @@ export default defineComponent({
 
       download(): void {
         chartEl.value?.toBlob((blob) => {
-          const chartURL = URL.createObjectURL(blob);
-
           const link = document.createElement('a');
-          link.href = chartURL;
+          link.href = URL.createObjectURL(blob);
           link.download = props.title.replace(',', '');
           document.body.appendChild(link);
           link.click();
