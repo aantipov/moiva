@@ -1,4 +1,4 @@
-<template>
+  <template>
   <div>
     <div ref="triggerRef" class="px-1 cursor-pointer">
       <m-dots-icon class="text-gray-500" />
@@ -15,10 +15,12 @@
       "
       @click="hide"
     >
-      <div class="menu-item" @click="$emit('copyShare')">
+      <div v-if="canCopy" class="menu-item" @click="$emit('copyShare')">
         Copy and Share (Twitter)
       </div>
-      <div class="menu-item" @click="$emit('copy')">Copy to clipboard</div>
+      <div v-if="canCopy" class="menu-item" @click="$emit('copy')">
+        Copy to clipboard
+      </div>
       <div class="menu-item" @click="$emit('download')">Download</div>
     </div>
   </div>
@@ -56,6 +58,8 @@ export default defineComponent({
       hide() {
         t.hide();
       },
+      // @ts-ignore
+      canCopy: !!window.chrome,
     };
   },
 });
