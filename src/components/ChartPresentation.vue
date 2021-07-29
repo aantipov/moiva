@@ -185,7 +185,7 @@ export default defineComponent({
       },
 
       download(): void {
-        chartEl.value?.toBlob(async (blob) => {
+        chartEl.value?.toBlob((blob) => {
           const chartURL = URL.createObjectURL(blob);
 
           const link = document.createElement('a');
