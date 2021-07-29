@@ -22,7 +22,6 @@
         </m-chart-info>
 
         <m-chart-menu
-          v-if="canCopy"
           class="absolute right-2"
           @copy="copy"
           @copyShare="copyShare"
@@ -150,8 +149,6 @@ export default defineComponent({
       onDateRangeChange(): void {
         ctx.emit('sinceChange', dateRangeSince.value);
       },
-      // @ts-ignore
-      canCopy: !!window.chrome,
 
       copy(): void {
         chartEl.value?.toBlob(async (blob) => {
