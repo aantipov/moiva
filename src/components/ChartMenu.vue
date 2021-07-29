@@ -19,6 +19,7 @@
         Copy and Share (Twitter)
       </div>
       <div class="menu-item" @click="$emit('copy')">Copy to clipboard</div>
+      <div class="menu-item" @click="$emit('download')">Download</div>
     </div>
   </div>
 </template>
@@ -30,7 +31,7 @@ import tippy, { Instance } from 'tippy.js';
 export default defineComponent({
   name: 'ChartMenu',
 
-  emits: ['copy', 'copyShare'],
+  emits: ['copy', 'copyShare', 'download'],
 
   setup() {
     const contentRef = ref(null);

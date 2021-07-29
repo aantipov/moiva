@@ -26,6 +26,7 @@
           class="absolute right-2"
           @copy="copy"
           @copyShare="copyShare"
+          @download="download"
         />
       </div>
 
@@ -106,7 +107,6 @@ export default defineComponent({
       default: () => [],
     },
   },
-
   emits: ['sinceChange'],
 
   setup(props, ctx) {
@@ -152,6 +152,7 @@ export default defineComponent({
       },
       // @ts-ignore
       canCopy: !!window.chrome,
+
       copy(): void {
         chartEl.value?.toBlob(async (blob) => {
           // @ts-ignore
@@ -161,6 +162,7 @@ export default defineComponent({
           ]);
         });
       },
+
       copyShare(): void {
         chartEl.value?.toBlob(async (blob) => {
           // @ts-ignore
@@ -179,6 +181,19 @@ export default defineComponent({
             `https://twitter.com/intent/tweet?text=${title}: ${libsAliases}&url=${url}`,
             '_blank'
           );
+        });
+      },
+
+      download(): void {
+        chartEl.value?.toBlob(async (blob) => {
+          const chartURL = URL.createObjectURL(blob);
+
+          const link = document.createElement('a');
+          link.href = chartURL;
+          link.download = props.title.replace(',', '');
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
         });
       },
     };
