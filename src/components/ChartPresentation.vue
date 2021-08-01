@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="relative z-10">
+    <div v-if="showTitle" class="relative z-10 -mb-5">
       <!-- Header -->
       <div class="flex items-center justify-center relative">
         <h3 class="my-0">
@@ -43,7 +43,7 @@
     </div>
 
     <!-- Chart -->
-    <div class="relative -mt-5" style="height: 350px">
+    <div class="relative" style="height: 350px">
       <m-loader v-if="isLoading" />
 
       <div v-else-if="isError || !libsNames.length" class="chart-error-new">
@@ -104,6 +104,11 @@ export default defineComponent({
       type: Array as PropType<string[]>,
       required: false,
       default: () => [],
+    },
+    showTitle: {
+      type: Boolean,
+      required: false,
+      default: true,
     },
   },
   emits: ['sinceChange'],

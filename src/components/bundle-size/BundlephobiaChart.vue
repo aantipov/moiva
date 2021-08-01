@@ -23,7 +23,7 @@
 import { defineComponent, toRefs, computed, watchEffect, PropType } from 'vue';
 import { ChartConfiguration } from 'chart.js';
 import { BundlephobiaT } from './api';
-import { numbersFormatter } from '@/utils';
+import { numbersFormatter, roundBytesFn } from '@/utils';
 import whitelistedCategories from './whitelist.json';
 import {
   COLOR_GREEN,
@@ -42,8 +42,6 @@ interface FilteredLibT extends LibraryReadonlyT {
   npmPackage: NpmPackageT;
   bundlesize: BundlephobiaT;
 }
-
-const roundBytesFn = (bytes: number): number => Math.round(bytes / 102.4) / 10;
 
 export default defineComponent({
   name: 'BundlephobiaChart',

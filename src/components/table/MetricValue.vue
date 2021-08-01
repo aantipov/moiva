@@ -122,20 +122,23 @@
   <div
     v-else-if="type === 'contributors'"
     class="flex items-center"
-    :class="{ 'justify-end': !!contributors, 'justify-center': !contributors }"
+    :class="{
+      'justify-end': contributors !== '-',
+      'justify-center': contributors === '-',
+    }"
   >
-    {{ contributors?.contributors ?? '-' }}
+    {{ contributors }}
   </div>
 
   <div
     v-else-if="type === 'dependencies'"
     class="flex items-center"
     :class="{
-      'justify-end': !!lib.npmPackage,
-      'justify-center': !lib.npmPackage,
+      'justify-end': npmDependencies !== '-',
+      'justify-center': npmDependencies === '-',
     }"
   >
-    {{ lib.npmPackage?.dependencies.length ?? '-' }}
+    {{ npmDependencies }}
   </div>
 
   <div v-else-if="type === 'ts'" class="flex items-center justify-center">
@@ -214,17 +217,15 @@ import {
   sanitizeHTML,
 } from '@/utils';
 import { MetricT } from './Table.vue';
-import { subQuarters, isSameQuarter } from 'date-fns';
 import StatusBadge from '@/components/StatusBadge.vue';
 import TRadarBadge from '@/components/TRadarBadge.vue';
 import TypeBadge from '@/components/TypeBadge.vue';
 import LicenseBadge from '@/components/LicenseBadge.vue';
 
-const prevQuarterDate = subQuarters(new Date(), 1);
 const roundBytesFn = (bytes: number): number => Math.round(bytes / 102.4) / 10;
 
 export default defineComponent({
-  name: 'ReportMetricValue',
+  name: 'MetricValue',
 
   components: {
     StatusBadge,
@@ -327,10 +328,11 @@ export default defineComponent({
       }),
 
       contributors: computed(() => {
-        if (!lib.value.contributors) {
-          return null;
-        }
-        return lib.value.contributors.slice(-1)[0];
+        return lib.value.contributorsLastQ ?? '-';
+      }),
+
+      npmDependencies: computed(() => {
+        return lib.value.npmDependencies ?? '-';
       }),
 
       npmReleases: computed(() => {
@@ -341,15 +343,7 @@ export default defineComponent({
       }),
 
       commits: computed<string | number>(() => {
-        if (!lib.value.commits) {
-          return '-';
-        }
-
-        // Get the numer of commits in the last quarter
-        // Filter by the quarter and summarize
-        return lib.value.commits
-          .filter(({ week }) => isSameQuarter(week * 1000, prevQuarterDate))
-          .reduce((acc, { total }) => acc + total, 0);
+        return lib.value.commitsLastQ ?? '-';
       }),
 
       devUsage: computed(() => {

@@ -111,6 +111,23 @@ export function getLibraryHref(library: CatalogLibraryT): string {
 
 export const numbersFormatter = new Intl.NumberFormat('en-US', {
   notation: 'compact',
+  maximumFractionDigits: 2,
+});
+
+export const roundBytesFn = (bytes: number): number =>
+  Math.round(bytes / 102.4) / 10;
+
+export const getAge = (createdAt: string): string => {
+  return formatDistanceToNowStrict(new Date(createdAt));
+};
+
+export const getFormattedAgeFromAgeInMs = (ageInMs: number): string => {
+  return formatDistanceToNowStrict(new Date().getTime() - ageInMs);
+};
+
+export const numbersStandardFormatter = new Intl.NumberFormat('en-US', {
+  notation: 'standard',
+  maximumFractionDigits: 0,
 });
 
 export function formatPercent(value: number, withSign = false): string {
