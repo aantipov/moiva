@@ -19,7 +19,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'DotsIcon',
+  name: 'ChartIcon',
 
   props: {
     label: {
