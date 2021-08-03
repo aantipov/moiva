@@ -91,9 +91,7 @@ export default defineComponent({
     return {
       triggerRef,
       contentRef,
-      hide() {
-        t.hide();
-      },
+      hide: () => t.hide(),
       libsNames: libsNamesRef,
 
       // @ts-ignore
