@@ -16,7 +16,6 @@
           :libs-names="libsNames"
           :failed-libs-names="[]"
           :chart-config="chartConfig"
-          :aria-label="''"
         >
           <p>NPM downloads monthly.</p>
           <p>

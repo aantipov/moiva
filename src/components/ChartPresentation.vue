@@ -93,7 +93,8 @@ export default defineComponent({
     },
     ariaLabel: {
       type: String,
-      required: true,
+      required: false,
+      default: '',
     },
     since: {
       type: String,
