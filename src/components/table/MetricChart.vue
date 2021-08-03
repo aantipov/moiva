@@ -70,7 +70,7 @@ export default defineComponent({
     });
 
     const pickDataFn = path<number>(metricConfig.path.split('.'));
-    const sortFn = metricConfig.sortDirFn(pickDataFn);
+    const sortFn = (metricConfig.sortDirFn || descend)(pickDataFn);
 
     const librariesSortedRR = computed(() => {
       const filteredLibraries = librariesRR.filter(
@@ -168,7 +168,7 @@ interface ConfigT {
   metric: MetricT;
   title: string;
   path: string;
-  sortDirFn: (arg: unknown) => unknown;
+  sortDirFn?: (arg: unknown) => unknown;
   percent?: boolean;
 }
 
@@ -178,45 +178,38 @@ function getConfigs(): ConfigT[] {
       metric: 'stars',
       title: 'GitHub Stars',
       path: 'repo.stars',
-      sortDirFn: descend,
     },
     {
       metric: 'downloads',
       title: 'Npm Downloads, monthly',
       path: 'npmDownloadsAvg',
-      sortDirFn: descend,
     },
     {
       metric: 'searchInterest',
       title: 'Search Interest, %',
       path: 'googleTrends.average',
-      sortDirFn: descend,
       percent: true,
     },
     {
       metric: 'devusage',
       title: 'Developer Usage, %',
       path: 'devUsageLast',
-      sortDirFn: descend,
       percent: true,
     },
     {
       metric: 'releases',
       title: `Npm Releases in ${prevQuarter}`,
       path: 'npmReleasesLastQ',
-      sortDirFn: descend,
     },
     {
       metric: 'commits',
       title: `Commits in ${prevQuarter}`,
       path: 'commitsLastQ',
-      sortDirFn: descend,
     },
     {
       metric: 'contributors',
       title: `Contributors in ${prevQuarter}`,
       path: 'contributorsLastQ',
-      sortDirFn: descend,
     },
     {
       metric: 'dependencies',
@@ -234,7 +227,6 @@ function getConfigs(): ConfigT[] {
       metric: 'age',
       title: 'Age',
       path: 'age',
-      sortDirFn: descend,
     },
   ] as ConfigT[];
 }
