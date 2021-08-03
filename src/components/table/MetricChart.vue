@@ -11,14 +11,12 @@
     >
       <div style="width: 500px; max-width: 100%; height: 350px">
         <m-chart
-          title=""
           :is-loading="false"
           :is-error="false"
           :libs-names="libsNames"
           :failed-libs-names="[]"
           :chart-config="chartConfig"
           :aria-label="''"
-          :show-title="false"
         >
           <p>NPM downloads monthly.</p>
           <p>

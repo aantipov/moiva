@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="showTitle" class="relative z-10 -mb-5">
+    <div v-if="title" class="relative z-10 -mb-5">
       <!-- Header -->
       <div class="flex items-center justify-center relative">
         <h3 class="my-0">
@@ -81,7 +81,7 @@ export default defineComponent({
   name: 'ChartPresentation',
 
   props: {
-    title: { type: String, required: true },
+    title: { type: String, required: false, default: null },
     subtitle: { type: String, required: false, default: '' },
     isLoading: { type: Boolean, required: true },
     isError: { type: Boolean, required: true },
@@ -104,11 +104,6 @@ export default defineComponent({
       type: Array as PropType<string[]>,
       required: false,
       default: () => [],
-    },
-    showTitle: {
-      type: Boolean,
-      required: false,
-      default: true,
     },
   },
   emits: ['sinceChange'],
