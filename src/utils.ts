@@ -117,13 +117,11 @@ export const numbersFormatter = new Intl.NumberFormat('en-US', {
 export const roundBytesFn = (bytes: number): number =>
   Math.round(bytes / 102.4) / 10;
 
-export const getAge = (createdAt: string): string => {
-  return formatDistanceToNowStrict(new Date(createdAt));
-};
+export const getAge = (createdAt: string): string =>
+  formatDistanceToNowStrict(new Date(createdAt));
 
-export const getFormattedAgeFromAgeInMs = (ageInMs: number): string => {
-  return formatDistanceToNowStrict(new Date().getTime() - ageInMs);
-};
+export const getFormattedAgeFromAgeInMs = (ageInMs: number): string =>
+  formatDistanceToNowStrict(new Date().getTime() - ageInMs);
 
 export const numbersStandardFormatter = new Intl.NumberFormat('en-US', {
   notation: 'standard',
