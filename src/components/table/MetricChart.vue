@@ -10,19 +10,11 @@
       @click="hide"
     >
       <div style="width: 500px; max-width: 100%; height: 350px">
-        <m-chart
-          :is-loading="false"
-          :is-error="false"
-          :libs-names="libsNames"
-          :failed-libs-names="[]"
-          :chart-config="chartConfig"
-        >
-          <p>NPM downloads monthly.</p>
-          <p>
-            Data source:
-            <a href="https://www.npmjs.com/" target="_blank">NPM</a>
-          </p>
-        </m-chart>
+        <div v-if="!libsNames.length">
+          <m-loader-new class="items-center" />
+        </div>
+
+        <m-chart v-else :libs-names="libsNames" :chart-config="chartConfig" />
       </div>
     </div>
   </div>

@@ -83,10 +83,14 @@ export default defineComponent({
   props: {
     title: { type: String, required: false, default: null },
     subtitle: { type: String, required: false, default: '' },
-    isLoading: { type: Boolean, required: true },
-    isError: { type: Boolean, required: true },
+    isLoading: { type: Boolean, required: false, default: false },
+    isError: { type: Boolean, required: false, default: false },
     libsNames: { type: Array as () => string[], required: true },
-    failedLibsNames: { type: Array as () => string[], required: true },
+    failedLibsNames: {
+      type: Array as () => string[],
+      required: false,
+      default: () => [],
+    },
     chartConfig: {
       type: Object as PropType<ChartConfiguration>,
       required: true,
