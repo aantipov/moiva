@@ -114,7 +114,7 @@ export const numbersFormatter = new Intl.NumberFormat('en-US', {
   maximumFractionDigits: 2,
 });
 
-export const roundBytesFn = (bytes: number): number =>
+export const convertBytesToKb = (bytes: number): number =>
   Math.round(bytes / 102.4) / 10;
 
 export const getAge = (createdAt: string): string =>

@@ -222,8 +222,6 @@ import TRadarBadge from '@/components/TRadarBadge.vue';
 import TypeBadge from '@/components/TypeBadge.vue';
 import LicenseBadge from '@/components/LicenseBadge.vue';
 
-const roundBytesFn = (bytes: number): number => Math.round(bytes / 102.4) / 10;
-
 export default defineComponent({
   name: 'MetricValue',
 
@@ -366,7 +364,7 @@ export default defineComponent({
           return '-';
         }
 
-        return roundBytesFn(lib.value.bundlesize.gzip) + ' kB';
+        return lib.value.bundlesize.gzipKb + ' kB';
       }),
     };
   },

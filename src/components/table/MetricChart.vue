@@ -30,7 +30,6 @@ import {
   getFormattedAgeFromAgeInMs,
   numbersFormatter,
   numbersStandardFormatter,
-  roundBytesFn,
 } from '@/utils';
 import { librariesRR } from '@/store/libraries';
 
@@ -117,13 +116,13 @@ export default defineComponent({
                 ticks: {
                   beginAtZero: true,
                   callback: (() => {
-                    if (metricConfig.bytes) {
-                      return roundBytesFn;
+                    if (metricConfig.metric === 'bundlesize') {
+                      return (val: number) => val;
                     }
                     if (metricConfig.metric === 'age') {
                       return getFormattedAgeFromAgeInMs;
                     }
-                    return numbersFormatter.format as () => string;
+                    return numbersFormatter.format;
                   })(),
                 },
               },
@@ -143,9 +142,8 @@ export default defineComponent({
                     if (metricConfig.percent) {
                       // @ts-ignore
                       val = numbersStandardFormatter.format(context.raw) + '%';
-                    } else if (metricConfig.bytes) {
-                      // @ts-ignore
-                      val = roundBytesFn(context.raw) + ' kB';
+                    } else if (metricConfig.metric === 'bundlesize') {
+                      val = context.raw + ' kB';
                     } else if (metricConfig.metric === 'age') {
                       // @ts-ignore
                       val = getFormattedAgeFromAgeInMs(context.raw);
@@ -171,7 +169,6 @@ interface ConfigT {
   path: string;
   sortDirFn: (arg: unknown) => unknown;
   percent?: boolean;
-  bytes?: boolean;
 }
 
 function getConfigs(): ConfigT[] {
@@ -228,10 +225,9 @@ function getConfigs(): ConfigT[] {
     },
     {
       metric: 'bundlesize',
-      title: 'Npm package bundle size (gzipped and modified), kB',
-      path: 'bundlesize.gzip',
+      title: 'Npm package bundle size (gzipped and minified), kB',
+      path: 'bundlesize.gzipKb',
       sortDirFn: ascend,
-      bytes: true,
     },
     {
       metric: 'age',

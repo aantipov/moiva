@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { reportSentry } from '@/apis';
 import { reactive } from 'vue';
+import { convertBytesToKb } from '@/utils';
 
 interface ResponseT {
   gzip: number;
@@ -8,6 +9,7 @@ interface ResponseT {
 }
 
 export interface BundlephobiaT extends ResponseT {
+  gzipKb: number;
   react?: ResponseT;
   reactDom?: ResponseT;
 }
@@ -43,8 +45,9 @@ export function fetchBundlephobiaData(
 
   return request
     .then((data) => {
-      cacheR.set(pkgName, data);
-      return data;
+      const res = { ...data, gzipKb: convertBytesToKb(data.gzip) };
+      cacheR.set(pkgName, res);
+      return res;
     })
     .catch((err) => {
       const errorCode =
