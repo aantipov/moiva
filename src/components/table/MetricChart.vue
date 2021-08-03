@@ -15,7 +15,7 @@
       "
       @click="hide"
     >
-      <div style="width: 500px; height: 350px">
+      <div style="width: 500px; max-width: 100%; height: 350px">
         <m-chart
           title=""
           :is-loading="false"
@@ -51,80 +51,7 @@ import {
 } from '@/utils';
 import { librariesRR } from '@/store/libraries';
 
-interface ConfigT {
-  metric: MetricT;
-  title: string;
-  path: string;
-  sortDirFn: () => unknown;
-  percent?: boolean;
-  bytes?: boolean;
-}
-
-const configs = [
-  {
-    metric: 'stars',
-    title: 'GitHub Stars',
-    path: 'repo.stars',
-    sortDirFn: descend,
-  },
-  {
-    metric: 'downloads',
-    title: 'Npm Downloads, monthly',
-    path: 'npmDownloadsAvg',
-    sortDirFn: descend,
-  },
-  {
-    metric: 'searchInterest',
-    title: 'Search Interest, %',
-    path: 'googleTrends.average',
-    sortDirFn: descend,
-    percent: true,
-  },
-  {
-    metric: 'devusage',
-    title: 'Developer Usage, %',
-    path: 'devUsageLast',
-    sortDirFn: descend,
-    percent: true,
-  },
-  {
-    metric: 'releases',
-    title: 'Npm Releases in the previous quarter',
-    path: 'npmReleasesLastQ',
-    sortDirFn: descend,
-  },
-  {
-    metric: 'commits',
-    title: 'Commits in the previous quarter',
-    path: 'commitsLastQ',
-    sortDirFn: descend,
-  },
-  {
-    metric: 'contributors',
-    title: 'Contributors in the previous quarter',
-    path: 'contributorsLastQ',
-    sortDirFn: descend,
-  },
-  {
-    metric: 'dependencies',
-    title: 'Npm Dependencies',
-    path: 'npmDependencies',
-    sortDirFn: ascend,
-  },
-  {
-    metric: 'bundlesize',
-    title: 'Npm package bundle size (gzipped and modified), kB',
-    path: 'bundlesize.gzip',
-    sortDirFn: ascend,
-    bytes: true,
-  },
-  {
-    metric: 'age',
-    title: 'Age',
-    path: 'age',
-    sortDirFn: descend,
-  },
-] as ConfigT[];
+const configs = getConfigs();
 
 export default defineComponent({
   name: 'MetricChart',
@@ -256,11 +183,88 @@ export default defineComponent({
     };
   },
 });
+
+interface ConfigT {
+  metric: MetricT;
+  title: string;
+  path: string;
+  sortDirFn: () => unknown;
+  percent?: boolean;
+  bytes?: boolean;
+}
+
+function getConfigs(): ConfigT[] {
+  return [
+    {
+      metric: 'stars',
+      title: 'GitHub Stars',
+      path: 'repo.stars',
+      sortDirFn: descend,
+    },
+    {
+      metric: 'downloads',
+      title: 'Npm Downloads, monthly',
+      path: 'npmDownloadsAvg',
+      sortDirFn: descend,
+    },
+    {
+      metric: 'searchInterest',
+      title: 'Search Interest, %',
+      path: 'googleTrends.average',
+      sortDirFn: descend,
+      percent: true,
+    },
+    {
+      metric: 'devusage',
+      title: 'Developer Usage, %',
+      path: 'devUsageLast',
+      sortDirFn: descend,
+      percent: true,
+    },
+    {
+      metric: 'releases',
+      title: 'Npm Releases in the previous quarter',
+      path: 'npmReleasesLastQ',
+      sortDirFn: descend,
+    },
+    {
+      metric: 'commits',
+      title: 'Commits in the previous quarter',
+      path: 'commitsLastQ',
+      sortDirFn: descend,
+    },
+    {
+      metric: 'contributors',
+      title: 'Contributors in the previous quarter',
+      path: 'contributorsLastQ',
+      sortDirFn: descend,
+    },
+    {
+      metric: 'dependencies',
+      title: 'Npm Dependencies',
+      path: 'npmDependencies',
+      sortDirFn: ascend,
+    },
+    {
+      metric: 'bundlesize',
+      title: 'Npm package bundle size (gzipped and modified), kB',
+      path: 'bundlesize.gzip',
+      sortDirFn: ascend,
+      bytes: true,
+    },
+    {
+      metric: 'age',
+      title: 'Age',
+      path: 'age',
+      sortDirFn: descend,
+    },
+  ] as ConfigT[];
+}
 </script>
 
 <style lang="postcss">
 .tippy-box[data-theme~='metric-chart'] {
-  max-width: 80vw !important;
+  max-width: 90vw !important;
   max-height: 80vh !important;
   padding: 0px;
   @apply bg-gray-50 border-gray-200 border shadow;
