@@ -6,13 +6,7 @@
 
     <div
       ref="contentRef"
-      class="
-        cursor-pointer
-        text-gray-800
-        font-normal
-        -mx-2
-        divide-gray-300 divide-y
-      "
+      class="text-gray-800 font-normal -mx-2 divide-gray-300 divide-y"
       @click="hide"
     >
       <div style="width: 500px; max-width: 100%; height: 350px">
