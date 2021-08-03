@@ -1,6 +1,7 @@
 import { computed } from 'vue';
 import { getSeoLibName } from '@/utils';
 import { nanoid } from 'nanoid';
+import { isSameQuarter, subQuarters, differenceInMilliseconds } from 'date-fns';
 import {
   ContributorsT,
   cacheR as contributorsMapR,
@@ -65,6 +66,8 @@ export interface LicenseT {
 
 export type StatusT = 'ACTIVE' | 'INACTIVE' | 'LEGACY' | 'ARCHIVED';
 
+const prevQuarterDate = subQuarters(new Date(), 1);
+
 export interface LibraryT {
   id: string;
   catalogLibraryId: number | null; //index in the catalogLibraries list
@@ -74,22 +77,28 @@ export interface LibraryT {
   status: StatusT;
   repo: RepoT;
   alias: string;
+  age: number; // number of seconds since creation
   tradar: TechRadarT | null;
   isNpmCoreArtifact: boolean | null;
   npmPackage: NpmPackageT | null;
   npmCreationDate: string | null | undefined;
+  npmDependencies: number | undefined;
   npmReleases: NpmPackageReleasesT[] | null | undefined;
+  npmReleasesLastQ: number | undefined;
   npmDownloads: LibNpmDownloadsT;
   npmDownloadsAvg: number | null | undefined;
   npmDownloadsGrowth: number | null | undefined;
   bundlesize: BundlephobiaT | null | undefined;
   contributors: ContributorsT[] | null | undefined; // null for errors, undefined for not loaded yet
+  contributorsLastQ: number | undefined;
   commits: LibCommitsT;
+  commitsLastQ: number | undefined;
   languages: LanguagesT | null | undefined;
   license: LicenseT | null | undefined;
   googleTrendsDef: GTrendDefT | null; // null if no config
   googleTrends: LibGTrendsT | undefined | null; // null for errors, undefined for not loaded yet
   devUsage: StateOfJSItemT | undefined;
+  devUsageLast: number | undefined;
   stars: LibStarsT;
   starsNewAvg: number | null | undefined;
   readings: ReadingT[];
@@ -116,6 +125,10 @@ export function getLibrary(
     isNpmCoreArtifact,
     alias: catalogLibrary?.alias || getSeoLibName(repoIdLC),
     // Use @ts-ignore because the Computed Ref will eventually become Reactive and then Typescript will start arguing
+    // @ts-ignore
+    age: computed(() =>
+      differenceInMilliseconds(new Date(), new Date(repo.createdAt))
+    ),
     // @ts-ignore
     status: computed(() => {
       if (repo.isArchived) {
@@ -158,12 +171,32 @@ export function getLibrary(
     // @ts-ignore
     contributors: computed(() => contributorsMapR.get(repoIdLC)),
     // @ts-ignore
+    contributorsLastQ: computed(() => {
+      const contributors = contributorsMapR.get(repoIdLC);
+
+      if (!contributors) {
+        return undefined;
+      }
+
+      return contributors.slice(-1)[0].contributors;
+    }),
+    // @ts-ignore
     npmCreationDate: computed(() =>
       npmPackage ? npmCreationDatesMapR.get(npmPackage.name) : null
     ),
     // @ts-ignore
+    npmDependencies: computed(
+      () => npmPackage?.dependencies.length ?? undefined
+    ),
+    // @ts-ignore
     npmReleases: computed(() =>
       npmPackage ? npmReleasesMapR.get(npmPackage.name) : null
+    ),
+    // @ts-ignore
+    npmReleasesLastQ: computed(() =>
+      npmPackage
+        ? npmReleasesMapR.get(npmPackage.name)?.slice(-1)[0].releases
+        : undefined
     ),
     // @ts-ignore
     npmDownloads: computed(() =>
@@ -230,11 +263,26 @@ export function getLibrary(
       npmPackage ? bundlesizeMapR.get(npmPackage.name) : null
     ),
     devUsage: repoIdToDevUsageDataMap[repoIdLC],
+    devUsageLast: repoIdToDevUsageDataMap[repoIdLC]?.usage.slice(-1)[0].value,
     googleTrendsDef: repoToGTrendDefMap[repoIdLC] || null,
     // @ts-ignore
     googleTrends: computed(() => googleTrendsMapR.get(repoIdLC)),
     // @ts-ignore
     commits: computed(() => commitsMapR.get(repoIdLC)),
+    // @ts-ignore
+    commitsLastQ: computed(() => {
+      const commits = commitsMapR.get(repoIdLC);
+
+      if (!Array.isArray(commits)) {
+        return undefined;
+      }
+
+      // Get the numer of commits in the last quarter
+      // Filter by the quarter and summarize
+      return commits
+        .filter(({ week }) => isSameQuarter(week * 1000, prevQuarterDate))
+        .reduce((acc, { total }) => acc + total, 0);
+    }),
     // @ts-ignore
     languages: computed(() => languagesMapR.get(repoIdLC)),
     // @ts-ignore

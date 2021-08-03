@@ -6,6 +6,7 @@ import {
 import { LibraryReadonlyT, LibrariesReadonlyT } from '@/libraryApis';
 import { getYear, getMonth } from 'date-fns';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
+import { subQuarters, format } from 'date-fns';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
 // @ts-ignore
@@ -111,6 +112,21 @@ export function getLibraryHref(library: CatalogLibraryT): string {
 
 export const numbersFormatter = new Intl.NumberFormat('en-US', {
   notation: 'compact',
+  maximumFractionDigits: 2,
+});
+
+export const convertBytesToKb = (bytes: number): number =>
+  Math.round(bytes / 102.4) / 10;
+
+export const getAge = (createdAt: string): string =>
+  formatDistanceToNowStrict(new Date(createdAt));
+
+export const getFormattedAgeFromAgeInMs = (ageInMs: number): string =>
+  formatDistanceToNowStrict(new Date().getTime() - ageInMs);
+
+export const numbersStandardFormatter = new Intl.NumberFormat('en-US', {
+  notation: 'standard',
+  maximumFractionDigits: 0,
 });
 
 export function formatPercent(value: number, withSign = false): string {
@@ -406,6 +422,8 @@ export function getQuarterMonthFromDate(date: string): string {
   }
   return `${year + 1}-01`;
 }
+
+export const prevQuarter = format(subQuarters(new Date(), 1), 'yyyy-QQQ');
 
 /**
  * date argument in the format '2020-06'

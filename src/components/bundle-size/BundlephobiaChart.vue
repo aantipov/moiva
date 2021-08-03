@@ -23,7 +23,7 @@
 import { defineComponent, toRefs, computed, watchEffect, PropType } from 'vue';
 import { ChartConfiguration } from 'chart.js';
 import { BundlephobiaT } from './api';
-import { numbersFormatter } from '@/utils';
+import { numbersFormatter, convertBytesToKb } from '@/utils';
 import whitelistedCategories from './whitelist.json';
 import {
   COLOR_GREEN,
@@ -42,8 +42,6 @@ interface FilteredLibT extends LibraryReadonlyT {
   npmPackage: NpmPackageT;
   bundlesize: BundlephobiaT;
 }
-
-const roundBytesFn = (bytes: number): number => Math.round(bytes / 102.4) / 10;
 
 export default defineComponent({
   name: 'BundlephobiaChart',
@@ -83,9 +81,7 @@ export default defineComponent({
         datasets: [
           {
             label: 'minified + gzipped',
-            data: filteredLibsRef.value.map((lib) =>
-              roundBytesFn(lib.bundlesize.gzip)
-            ),
+            data: filteredLibsRef.value.map((lib) => lib.bundlesize.gzipKb),
             backgroundColor: COLOR_GREEN,
             borderColor: COLOR_GREEN_DARK,
             borderWidth: 1,
@@ -93,7 +89,7 @@ export default defineComponent({
           {
             label: 'minified',
             data: filteredLibsRef.value.map((lib) =>
-              roundBytesFn(lib.bundlesize.raw)
+              convertBytesToKb(lib.bundlesize.raw)
             ),
             backgroundColor: COLOR_GRAY,
             borderColor: COLOR_GRAY_DARK,
@@ -149,9 +145,7 @@ export default defineComponent({
         const str = filteredLibsRef.value
           .map(
             (lib) =>
-              `The size of minified and gzipped ${
-                lib.alias
-              } npm package is ${roundBytesFn(lib.bundlesize.gzip)}Kb.`
+              `The size of minified and gzipped ${lib.alias} npm package is ${lib.bundlesize.gzipKb}Kb.`
           )
           .join(' ');
         return `Npm Bundle Size data. ${str}`;
@@ -163,9 +157,11 @@ export default defineComponent({
         );
         if (reactLib) {
           // @ts-ignore
-          const reactSize = roundBytesFn(reactLib.bundlesize.react.gzip);
-          // @ts-ignore
-          const reactDomSize = roundBytesFn(reactLib.bundlesize.reactDom.gzip);
+          const reactSize = convertBytesToKb(reactLib.bundlesize.react.gzip);
+          const reactDomSize = convertBytesToKb(
+            // @ts-ignore
+            reactLib.bundlesize.reactDom.gzip
+          );
           return `React's size is comprised of 2 packages - react and react-dom. React: ${reactSize}kB (minified + gzipped). React-dom: ${reactDomSize}kB (minified + gzipped)`;
         }
         return null;

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="relative z-10">
+    <div v-if="title" class="relative z-10 -mb-5">
       <!-- Header -->
       <div class="flex items-center justify-center relative">
         <h3 class="my-0">
@@ -43,7 +43,7 @@
     </div>
 
     <!-- Chart -->
-    <div class="relative -mt-5" style="height: 350px">
+    <div class="relative" style="height: 350px">
       <m-loader v-if="isLoading" />
 
       <div v-else-if="isError || !libsNames.length" class="chart-error-new">
@@ -81,19 +81,24 @@ export default defineComponent({
   name: 'ChartPresentation',
 
   props: {
-    title: { type: String, required: true },
+    title: { type: String, required: false, default: null },
     subtitle: { type: String, required: false, default: '' },
-    isLoading: { type: Boolean, required: true },
-    isError: { type: Boolean, required: true },
+    isLoading: { type: Boolean, required: false, default: false },
+    isError: { type: Boolean, required: false, default: false },
     libsNames: { type: Array as () => string[], required: true },
-    failedLibsNames: { type: Array as () => string[], required: true },
+    failedLibsNames: {
+      type: Array as () => string[],
+      required: false,
+      default: () => [],
+    },
     chartConfig: {
       type: Object as PropType<ChartConfiguration>,
       required: true,
     },
     ariaLabel: {
       type: String,
-      required: true,
+      required: false,
+      default: '',
     },
     since: {
       type: String,
