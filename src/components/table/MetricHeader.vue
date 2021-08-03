@@ -201,9 +201,7 @@ import BugIcon from '@/components/icons/Bug.vue';
 import HeartBeatIcon from '@/icons/Heart.vue';
 import MetricChart from './MetricChart.vue';
 import { MetricT } from './Table.vue';
-import { subQuarters, format } from 'date-fns';
-
-const prevQuarter = format(subQuarters(new Date(), 1), 'yyyy-QQQ');
+import { prevQuarter } from '@/utils';
 
 export default defineComponent({
   name: 'MetricHeader',

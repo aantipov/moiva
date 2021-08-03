@@ -30,6 +30,7 @@ import {
   getFormattedAgeFromAgeInMs,
   numbersFormatter,
   numbersStandardFormatter,
+  prevQuarter,
 } from '@/utils';
 import { librariesRR } from '@/store/libraries';
 
@@ -201,19 +202,19 @@ function getConfigs(): ConfigT[] {
     },
     {
       metric: 'releases',
-      title: 'Npm Releases in the previous quarter',
+      title: `Npm Releases in ${prevQuarter}`,
       path: 'npmReleasesLastQ',
       sortDirFn: descend,
     },
     {
       metric: 'commits',
-      title: 'Commits in the previous quarter',
+      title: `Commits in ${prevQuarter}`,
       path: 'commitsLastQ',
       sortDirFn: descend,
     },
     {
       metric: 'contributors',
-      title: 'Contributors in the previous quarter',
+      title: `Contributors in ${prevQuarter}`,
       path: 'contributorsLastQ',
       sortDirFn: descend,
     },

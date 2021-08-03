@@ -6,6 +6,7 @@ import {
 import { LibraryReadonlyT, LibrariesReadonlyT } from '@/libraryApis';
 import { getYear, getMonth } from 'date-fns';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
+import { subQuarters, format } from 'date-fns';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
 // @ts-ignore
@@ -421,6 +422,8 @@ export function getQuarterMonthFromDate(date: string): string {
   }
   return `${year + 1}-01`;
 }
+
+export const prevQuarter = format(subQuarters(new Date(), 1), 'yyyy-QQQ');
 
 /**
  * date argument in the format '2020-06'
