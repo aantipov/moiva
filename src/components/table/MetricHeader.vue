@@ -259,7 +259,6 @@ export default defineComponent({
       bundlesize:
         'Bundle size of the npm package minified+gzipped. Data source: <a href="https://bundlephobia.com/" target="_blank">Bundlephobia.com</a>',
       hasChart: computed(() => {
-        // TODO: check if data is already there
         return [
           'stars',
           'downloads',
