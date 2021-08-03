@@ -158,8 +158,8 @@ export default defineComponent({
         if (reactLib) {
           // @ts-ignore
           const reactSize = convertBytesToKb(reactLib.bundlesize.react.gzip);
-          // @ts-ignore
           const reactDomSize = convertBytesToKb(
+            // @ts-ignore
             reactLib.bundlesize.reactDom.gzip
           );
           return `React's size is comprised of 2 packages - react and react-dom. React: ${reactSize}kB (minified + gzipped). React-dom: ${reactDomSize}kB (minified + gzipped)`;
