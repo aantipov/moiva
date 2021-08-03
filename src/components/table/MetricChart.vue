@@ -69,20 +69,20 @@ export default defineComponent({
       });
     });
 
-    // @ts-ignore
-    const sortFn = metricConfig.sortDirFn(path(metricConfig.path.split('.')));
+    const pickDataFn = path<number>(metricConfig.path.split('.'));
+    const sortFn = metricConfig.sortDirFn(pickDataFn);
 
     const librariesSortedRR = computed(() => {
       const filteredLibraries = librariesRR.filter(
-        (lib) => path(metricConfig.path.split('.'), lib) !== undefined
+        (lib) => pickDataFn(lib) !== undefined
       );
       // @ts-ignore
       return sort(sortFn, filteredLibraries);
     });
 
-    const libsNamesRef = computed(() => {
-      return librariesSortedRR.value.map((lib) => lib.alias);
-    });
+    const libsNamesRef = computed(() =>
+      librariesSortedRR.value.map((lib) => lib.alias)
+    );
 
     return {
       triggerRef,
@@ -171,7 +171,7 @@ interface ConfigT {
   metric: MetricT;
   title: string;
   path: string;
-  sortDirFn: () => unknown;
+  sortDirFn: (arg: unknown) => unknown;
   percent?: boolean;
   bytes?: boolean;
 }
