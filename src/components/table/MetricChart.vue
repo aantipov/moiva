@@ -25,7 +25,7 @@ import { computed, defineComponent, onMounted, ref } from 'vue';
 import tippy, { Instance, roundArrow } from 'tippy.js';
 import { MetricT } from './Table.vue';
 import { ChartConfiguration } from 'chart.js';
-import { descend, ascend, sort, path } from 'ramda';
+import { descend, ascend, sort, path, prop } from 'ramda';
 import {
   getFormattedAgeFromAgeInMs,
   numbersFormatter,
@@ -81,7 +81,11 @@ export default defineComponent({
     });
 
     const libsNamesRef = computed(() =>
-      librariesSortedRR.value.map((lib) => lib.alias)
+      librariesSortedRR.value.map(prop('alias'))
+    );
+    const libsDataRef = computed(() => librariesSortedRR.value.map(pickDataFn));
+    const libsColorsRef = computed(() =>
+      librariesSortedRR.value.map(prop('color'))
     );
 
     return {
@@ -100,12 +104,8 @@ export default defineComponent({
             labels: libsNamesRef.value,
             datasets: [
               {
-                data: librariesSortedRR.value.map(
-                  path(metricConfig.path.split('.'))
-                ),
-                backgroundColor: librariesSortedRR.value.map(
-                  (lib) => lib.color
-                ),
+                data: libsDataRef.value,
+                backgroundColor: libsColorsRef.value,
                 borderColor: 'gray',
                 borderWidth: 1,
               },
