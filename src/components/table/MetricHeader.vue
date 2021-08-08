@@ -10,13 +10,13 @@
       "
     >
       <template v-if="type === 'npm'">
-        <div class="sm:ml-9">Npm</div>
+        <div class="ml-2 sm:ml-1">Npm</div>
       </template>
 
       <template v-if="type === 'repo'">
         <m-github-icon
           v-tooltip.html="github"
-          class="w-8"
+          class="w-8 sm:hidden block"
           label="GitHub repository"
         />
         <div v-tooltip.html="github" class="label">GitHub</div>
@@ -25,7 +25,7 @@
       <template v-if="type === 'status'">
         <HeartBeatIcon
           v-tooltip.html="status"
-          class="w-8"
+          class="w-8 sm:hidden block"
           label="An icon denoting a status of a library"
         />
         <div v-tooltip.html="status" class="label">Status</div>
@@ -34,7 +34,11 @@
       <template v-if="type === 'tags'"> </template>
 
       <template v-if="type === 'stars'">
-        <m-star-icon v-tooltip="stars" class="w-8" :label="stars" />
+        <m-star-icon
+          v-tooltip="stars"
+          class="w-8 sm:hidden block"
+          :label="stars"
+        />
         <div v-tooltip="stars" class="text-left label">
           <div>
             Stars
@@ -47,7 +51,7 @@
       <template v-else-if="type === 'downloads'">
         <m-download-icon
           v-tooltip="npmDownloads"
-          class="w-8"
+          class="w-8 sm:hidden block"
           :label="npmDownloads"
         />
         <div v-tooltip="npmDownloads" class="text-left label">
@@ -60,14 +64,18 @@
       </template>
 
       <template v-else-if="type === 'searchInterest'">
-        <SearchIcon v-tooltip="searchInfo" class="w-8" :label="searchInfo" />
+        <SearchIcon
+          v-tooltip="searchInfo"
+          class="w-8 sm:hidden block"
+          :label="searchInfo"
+        />
         <div v-tooltip="searchInfo" class="label">Search Interest, %</div>
       </template>
 
       <template v-else-if="type === 'devusage'">
         <UserGroupIcon
           v-tooltip.html="devUsageInfo"
-          class="w-8"
+          class="w-8 sm:hidden block"
           label="An icon denoting percentage of developers using a library"
         />
         <div v-tooltip.html="devUsageInfo" class="label">
@@ -78,7 +86,7 @@
       <template v-else-if="type === 'tradar'">
         <TWIcon
           v-tooltip.html="tradarTooltip"
-          class="w-8 h-3"
+          class="w-8 h-3 sm:hidden block"
           label="An icon denoting Thoughtworks techradar ring assigned to a library"
         />
         <div v-tooltip.html="tradarTooltip" class="label">Tech Radar</div>
@@ -87,7 +95,7 @@
       <template v-else-if="type === 'releases'">
         <TagIcon
           v-tooltip="npmReleasesTooltip"
-          class="w-8"
+          class="w-8 sm:hidden block"
           :label="npmReleasesTooltip"
         />
         <div v-tooltip="npmReleasesTooltip" class="label whitespace-nowrap">
@@ -99,7 +107,7 @@
       <template v-else-if="type === 'commits'">
         <CommitsIcon
           v-tooltip="commitsTooltip"
-          class="flex-shrink-0 w-8"
+          class="flex-shrink-0 w-8 sm:hidden block"
           :label="commitsTooltip"
         />
         <div v-tooltip="commitsTooltip" class="label">
@@ -111,7 +119,7 @@
       <template v-else-if="type === 'contributors'">
         <WorkerIcon
           v-tooltip="contributorsTooltip"
-          class="flex-shrink-0 w-8"
+          class="flex-shrink-0 w-8 sm:hidden block"
           :label="contributorsTooltip"
         />
         <div v-tooltip="contributorsTooltip" class="label whitespace-nowrap">
@@ -123,7 +131,7 @@
       <template v-else-if="type === 'dependencies'">
         <DependencyIcon
           v-tooltip="'Npm dependencies number'"
-          class="w-8"
+          class="w-8 sm:hidden block"
           label="Npm dependencies number"
         />
         <div v-tooltip="'Npm dependencies number'" class="label">
@@ -132,7 +140,7 @@
       </template>
 
       <template v-else-if="type === 'ts'">
-        <div class="flex justify-center w-8">
+        <div class="flex justify-center w-8 sm:hidden">
           <TSIcon
             v-tooltip.html="tsTooltip"
             label="An icon denoting TypeScript support"
@@ -144,7 +152,7 @@
       <template v-else-if="type === 'bundlesize'">
         <CubeIcon
           v-tooltip.html="bundlesize"
-          class="w-8"
+          class="w-8 sm:hidden block"
           label="An icon denoting bundle size of an npm package"
         />
         <div v-tooltip.html="bundlesize" class="label">Bundle Size</div>
@@ -153,7 +161,7 @@
       <template v-else-if="type === 'security'">
         <ShieldIcon
           v-tooltip.html="secScore"
-          class="w-8"
+          class="w-8 sm:hidden block"
           label="An icon denoting Security Score of an Npm package"
         />
         <div v-tooltip.html="secScore" class="label">Security score</div>
@@ -162,19 +170,23 @@
       <template v-else-if="type === 'vulnerability'">
         <BugIcon
           v-tooltip.html="vulnInfo"
-          class="w-8"
+          class="w-8 sm:hidden block"
           label="An icon denoting vulnerabilities number of an Npm package"
         />
         <div v-tooltip.html="vulnInfo" class="label">Vulnerabilities</div>
       </template>
 
       <template v-else-if="type === 'age'">
-        <OldIcon v-tooltip="'Age'" class="w-8" label="Age" />
+        <OldIcon v-tooltip="'Age'" class="w-8 sm:hidden block" label="Age" />
         <div v-tooltip="'Age'" class="label">Age</div>
       </template>
 
       <template v-else-if="type === 'license'">
-        <DocumentIcon v-tooltip="'License'" class="w-8" label="License" />
+        <DocumentIcon
+          v-tooltip="'License'"
+          class="w-8 sm:hidden block"
+          label="License"
+        />
         <div v-tooltip="'License'" class="label">License</div>
       </template>
     </div>
