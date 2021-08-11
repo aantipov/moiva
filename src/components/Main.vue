@@ -86,25 +86,12 @@
               "
             />
             <TechRadar />
-            <Bundlephobia :category="category" />
           </template>
           <template v-else-if="miscChartsNumber === 2">
             <Languages
               class="col-span-12 md:col-span-6 xl:col-span-4 xl:col-start-3"
             />
             <TechRadar class="col-span-12 md:col-span-6 xl:col-span-4" />
-            <Bundlephobia
-              :category="category"
-              class="col-span-12 md:col-span-6 xl:col-span-4"
-            />
-          </template>
-          <template v-else>
-            <Languages class="col-span-12 md:col-span-6 xl:col-span-4" />
-            <TechRadar class="col-span-12 md:col-span-6 xl:col-span-4" />
-            <Bundlephobia
-              :category="category"
-              class="col-span-12 md:col-span-6 xl:col-span-4"
-            />
           </template>
         </div>
       </section>
@@ -126,7 +113,6 @@ import Releases from './npm-releases/ReleasesChart.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './google-trends/GTrendsChart.vue';
 import Stars from './github-stars/StarsChart.vue';
-import Bundlephobia from './bundle-size/BundlephobiaChart.vue';
 import Languages from './languages/LanguagesChart.vue';
 import Contributors from './github-contributors/ContributorsChart.vue';
 import DevelopersUsage from './developer-usage/DeveloperUsageChart.vue';
@@ -165,7 +151,6 @@ export default defineComponent({
     Table,
     Readings,
 
-    Bundlephobia,
     Stars,
     Commits,
     Contributors,
@@ -258,12 +243,7 @@ export default defineComponent({
           ].filter(Boolean).length
       ),
       miscChartsNumber: computed(
-        () =>
-          [
-            chartsVisibility.techRadar,
-            chartsVisibility.bundlephobia,
-            true,
-          ].filter(Boolean).length
+        () => [chartsVisibility.techRadar, true].filter(Boolean).length
       ),
       category: categoryRef,
       clearSelection() {
