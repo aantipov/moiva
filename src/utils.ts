@@ -184,11 +184,11 @@ export function getSeoLibName(repoId: string): string {
 }
 
 export function updateTitle(libraries: LibrariesReadonlyT): void {
-  let title = 'Moiva.io - Discover and Compare GitHub and NPM packages';
+  let title = 'Moiva.io - Discover and Compare NPM packages';
 
   if (libraries.length) {
     const aliases = libraries.map(({ alias }) => alias).sort();
-    title = `${aliases[0]}: Stats and Trends from GitHub, Google Trends... - Moiva.io`;
+    title = `${aliases[0]}: Stats and Trends from NPM, GitHub, ... - Moiva.io`;
 
     if (aliases.length > 1) {
       title = `${aliases.join(' vs ')}: Which One to Choose? - Moiva.io`;
@@ -209,8 +209,8 @@ interface LibForDescriptionT {
 }
 
 export function updateMetaDescription(libraries: LibrariesReadonlyT): void {
-  let descr = `Which Library or Framework to use? Need to find the best alternatives?
-    Compare Stats and Trends - Google Trends, Contributors, Releases, Commits, Developer usage, Npm Downloads, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
+  let descr = `A complete side-by-side Comparison of NPM packages.
+     Stats and Historical Trends - Bundle size, Downloads, GitHub Stars, License, Contributors, Releases, Commits, Developer usage, Google Trends, Vulnerabilities, Dependencies, Issues, Age and more`;
 
   const libs = [...libraries].sort(sortLibsByAlias).map((lib) => {
     const { description, stars, createdAt } = lib.repo;
@@ -231,7 +231,7 @@ export function updateMetaDescription(libraries: LibrariesReadonlyT): void {
     descr = getThreeLibsDescription(libs[0], libs[1], libs[2]);
   } else if (libs.length > 3) {
     const aliasesStr = libs.map(({ alias }) => alias).join(', ');
-    descr = `Compare ${aliasesStr}. Stats and Trends - Google Trends, Contributors, Releases, Commits, Developer usage, Npm Downloads, Bundle size, Vulnerabilities, Dependencies, Issues, GitHub Stars, License, Age and more`;
+    descr = `Compare ${aliasesStr}. Stats and Historical Trends - Bundle size, Downloads, GitHub Stars, License, Contributors, Releases, Commits, Developer usage, Google Trends, Vulnerabilities, Dependencies, Issues, Age and more`;
   }
 
   (
@@ -261,14 +261,14 @@ function getSingleLibDescription(lib: LibForDescriptionT): string {
 
   return `${seoDescrIntroCut} 
     &#9733;${starsCount} stars, ${age} old...
-    Discover the best ${alias} alternatives and compare them side by side`;
+    Discover alternatives and compare them side-by-side`;
 }
 
 function getTwoLibsDescription(
   libA: LibForDescriptionT,
   libB: LibForDescriptionT
 ): string {
-  return `Which is better ${libA.alias} or ${libB.alias}? Compare Stats and Trends side by side.
+  return `Compare ${libA.alias} and ${libB.alias} side-by-side. Stats and Historical Trends.
 ${libA.alias}: &#9733;${libA.starsCount} stars, ${libA.age} old...
 ${libB.alias}: &#9733;${libB.starsCount} stars, ${libB.age} old...
 `;
@@ -279,7 +279,7 @@ function getThreeLibsDescription(
   libB: LibForDescriptionT,
   libC: LibForDescriptionT
 ): string {
-  return `Which is better ${libA.alias}, ${libB.alias}, or ${libC.alias}? Compare Stats and Trends side by side.
+  return `Which is better ${libA.alias}, ${libB.alias}, or ${libC.alias}? Compare Stats and Trends side-by-side.
 ${libA.alias}: &#9733;${libA.starsCount} stars, ${libA.age} old...
 ${libB.alias}: &#9733;${libB.starsCount} stars, ${libB.age} old...
 ${libC.alias}: &#9733;${libC.starsCount} stars, ${libC.age} old...

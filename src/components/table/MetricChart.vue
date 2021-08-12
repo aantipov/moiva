@@ -113,7 +113,6 @@ export default defineComponent({
           options: {
             scales: {
               y: {
-                max: metricConfig.percent ? 100 : null,
                 ticks: {
                   beginAtZero: true,
                   callback: (() => {
