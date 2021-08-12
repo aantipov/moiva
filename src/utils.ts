@@ -261,7 +261,7 @@ function getSingleLibDescription(lib: LibForDescriptionT): string {
 
   return `${seoDescrIntroCut} 
     &#9733;${starsCount} stars, ${age} old...
-    Discover alternatives and compare them side by side`;
+    Discover alternatives and compare them side-by-side`;
 }
 
 function getTwoLibsDescription(
@@ -279,7 +279,7 @@ function getThreeLibsDescription(
   libB: LibForDescriptionT,
   libC: LibForDescriptionT
 ): string {
-  return `Which is better ${libA.alias}, ${libB.alias}, or ${libC.alias}? Compare Stats and Trends side by side.
+  return `Which is better ${libA.alias}, ${libB.alias}, or ${libC.alias}? Compare Stats and Trends side-by-side.
 ${libA.alias}: &#9733;${libA.starsCount} stars, ${libA.age} old...
 ${libB.alias}: &#9733;${libB.starsCount} stars, ${libB.age} old...
 ${libC.alias}: &#9733;${libC.starsCount} stars, ${libC.age} old...
