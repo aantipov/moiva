@@ -1,9 +1,6 @@
 <template>
   <div>
     <div>
-      <div class="mb-1 text-xl text-center opacity-80">
-        Add GitHub repository or Npm package
-      </div>
       <!-- progressbar for non-mobile screens -->
       <div
         class="
