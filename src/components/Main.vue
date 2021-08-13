@@ -4,7 +4,7 @@
     <Suggestions @select="select" />
 
     <!--  Popular Comparisons    -->
-    <div v-if="!libraries.length">
+    <div v-if="!librariesRR.length">
       <Popular v-if="!isLoading" @select="selectMultiple" />
 
       <div
@@ -99,8 +99,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, watchEffect, computed } from 'vue';
+<script setup lang="ts">
+import { onMounted, watchEffect, computed } from 'vue';
 import NpmDownloads from './downloads/NpmDownloadsChart.vue';
 import Title from './Title.vue';
 import Search from './search/Search.vue';
@@ -133,7 +133,6 @@ import {
   isLoading,
   librariesRR,
   librariesIds,
-  categoryRef,
   addLibraryByNpmPackage,
   addLibraryByRepo,
   removeAllLibraries,
@@ -141,115 +140,89 @@ import {
 import useExtraDataApi from '@/composables/useExtraDataApi';
 import * as Sentry from '@sentry/vue';
 
-export default defineComponent({
-  name: 'Main',
-  components: {
-    Title,
-    Popular,
-    Search,
-    Suggestions,
-    Table,
-    Readings,
+// Do not allow Google index pages with >=3 libraries
+setNoFollowTag();
 
-    Stars,
-    Commits,
-    Contributors,
-    DevelopersUsage,
-    GoogleTrends,
-    Languages,
-    NpmDownloads,
-    Releases,
-    TechRadar,
-  },
+// Keep up-to-date the mapping Library <=> Color
+watchEffect(() => updateLibrariesColors(librariesIds.value));
 
-  setup() {
-    // Do not allow Google index pages with >=3 libraries
-    setNoFollowTag();
+onMounted(() => {
+  // Load the libraries defined in the URL
+  const npmPackagesNamesFromUrl = getNpmPackagesFromUrl();
+  const reposIdsFromUrl = getReposIdsFromUrl();
+  Promise.all([
+    ...npmPackagesNamesFromUrl.map(addLibraryByNpmPackage),
+    ...reposIdsFromUrl.map(addLibraryByRepo),
+  ]).catch(() => {
+    // Redirect a user to 404 if there was a wrong lib in the url
+    // This is needed for SEO - Google should not crawl "bad" pages
+    window.location.href = '/not-found';
+  });
 
-    // Keep up-to-date the mapping Library <=> Color
-    watchEffect(() => updateLibrariesColors(librariesIds.value));
-
-    onMounted(() => {
-      // Load the libraries defined in the URL
-      const npmPackagesNamesFromUrl = getNpmPackagesFromUrl();
-      const reposIdsFromUrl = getReposIdsFromUrl();
-      Promise.all([
-        ...npmPackagesNamesFromUrl.map(addLibraryByNpmPackage),
-        ...reposIdsFromUrl.map(addLibraryByRepo),
-      ]).catch(() => {
-        // Redirect a user to 404 if there was a wrong lib in the url
-        // This is needed for SEO - Google should not crawl "bad" pages
-        window.location.href = '/not-found';
-      });
-
-      // On every Library change (load, de-load) update url, title, description
-      watchEffect(() => {
-        if (isLoading.value) {
-          return;
-        }
-
-        // Update URL, Title and Meta Description
-        updateUrl(librariesRR);
-        updateTitle(librariesRR);
-        updateMetaDescription(librariesRR);
-      });
-
-      // Load libraries extra data
-      useExtraDataApi();
-    });
-
-    function selectNpmPackage(npmPackageName: string): void {
-      addLibraryByNpmPackage(npmPackageName).catch(() => {
-        showErrorMsg(
-          `Sorry, we couldn't fetch data for <span class="font-mono">${npmPackageName}</span>`
-        );
-        const err = new Error(`npmPackage: ${npmPackageName}`);
-        err.name = 'UI: Select Npm Package Error';
-        Sentry.captureException(err, {
-          tags: { npmPackage: npmPackageName },
-        });
-        return null;
-      });
+  // On every Library change (load, de-load) update url, title, description
+  watchEffect(() => {
+    if (isLoading.value) {
+      return;
     }
 
-    function selectRepo(repoId: string): void {
-      addLibraryByRepo(repoId).catch(() => {
-        showErrorMsg(`Sorry, we couldn't fetch data for ${repoId}`);
-        return Promise.reject();
-      });
-    }
+    // Update URL, Title and Meta Description
+    updateUrl(librariesRR);
+    updateTitle(librariesRR);
+    updateMetaDescription(librariesRR);
+  });
 
-    return {
-      libraries: librariesRR,
-      isLoading,
-      chartsVisibility,
-      select: (id: string, isNpm: boolean) => {
-        if (isNpm) {
-          selectNpmPackage(id);
-        } else {
-          selectRepo(id);
-        }
-      },
-      selectMultiple(npmPackagesNames: string[]): void {
-        npmPackagesNames.forEach(selectNpmPackage);
-      },
-      popularChartsNumber: computed(
-        () =>
-          [
-            chartsVisibility.npmDownloads,
-            chartsVisibility.googleTrends,
-            chartsVisibility.developerUsage,
-            true,
-          ].filter(Boolean).length
-      ),
-      miscChartsNumber: computed(
-        () => [chartsVisibility.techRadar, true].filter(Boolean).length
-      ),
-      category: categoryRef,
-      clearSelection() {
-        removeAllLibraries();
-      },
-    };
-  },
+  // Load libraries extra data
+  useExtraDataApi();
 });
+
+const popularChartsNumber = computed(
+  () =>
+    [
+      chartsVisibility.npmDownloads,
+      chartsVisibility.googleTrends,
+      chartsVisibility.developerUsage,
+      true,
+    ].filter(Boolean).length
+);
+
+const miscChartsNumber = computed(
+  () => [chartsVisibility.techRadar, true].filter(Boolean).length
+);
+
+function selectNpmPackage(npmPackageName: string): void {
+  addLibraryByNpmPackage(npmPackageName).catch(() => {
+    showErrorMsg(
+      `Sorry, we couldn't fetch data for <span class="font-mono">${npmPackageName}</span>`
+    );
+    const err = new Error(`npmPackage: ${npmPackageName}`);
+    err.name = 'UI: Select Npm Package Error';
+    Sentry.captureException(err, {
+      tags: { npmPackage: npmPackageName },
+    });
+    return null;
+  });
+}
+
+function selectRepo(repoId: string): void {
+  addLibraryByRepo(repoId).catch(() => {
+    showErrorMsg(`Sorry, we couldn't fetch data for ${repoId}`);
+    return Promise.reject();
+  });
+}
+
+function select(id: string, isNpm: boolean) {
+  if (isNpm) {
+    selectNpmPackage(id);
+  } else {
+    selectRepo(id);
+  }
+}
+
+function selectMultiple(npmPackagesNames: string[]): void {
+  npmPackagesNames.forEach(selectNpmPackage);
+}
+
+function clearSelection() {
+  removeAllLibraries();
+}
 </script>
