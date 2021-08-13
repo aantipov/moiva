@@ -195,8 +195,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent } from 'vue';
+<script setup lang="ts">
+import { computed } from 'vue';
 import TagIcon from '@/components/icons/Tag.vue';
 import SearchIcon from '@/components/icons/Search.vue';
 import WorkerIcon from '@/components/icons/Worker.vue';
@@ -215,77 +215,48 @@ import MetricChart from './MetricChart.vue';
 import { MetricT } from './Table.vue';
 import { prevQuarter } from '@/utils';
 
-export default defineComponent({
-  name: 'MetricHeader',
+const props = defineProps<{
+  type: MetricT;
+}>();
 
-  components: {
-    MetricChart,
-    SearchIcon,
-    WorkerIcon,
-    TagIcon,
-    UserGroupIcon,
-    CommitsIcon,
-    DocumentIcon,
-    DependencyIcon,
-    HeartBeatIcon,
-    CubeIcon,
-    OldIcon,
-    ShieldIcon,
-    BugIcon,
-    TWIcon,
-    TSIcon,
-  },
-
-  props: {
-    type: {
-      type: String as () => MetricT,
-      required: true,
-    },
-  },
-
-  setup(props) {
-    return {
-      quarter: prevQuarter,
-      github: 'GitHub repository',
-      status:
-        '<p>Library status. Possible values:</p><p>- "Active"<br> - "Inactive" if no commits in the last 6 months<br> - "Legacy" if library authors called it so<br> - "Archived" if the repository is archived</p>',
-      stars:
-        'The total number of GitHub stars and the average number of new stars per month over the last 3 months',
-      npmDownloads:
-        'The average number of Npm downloads per month over the last 3 months. The average monthly Npm downloads growth over the last 6 months',
-      tsTooltip:
-        '<p>TypeScript support.</p> <p>"BUNDLED" - typings are bundled together with the package.</p> <p>"SEPARATE" - typings are published to the @types organization on Npm</p>',
-      secScore:
-        '<p>Security score of the Npm package.</p> <p><a href="https://snyk.io/" target="_blank">Snyk.io</a> calculates it based on the number of vulnerabilities and their severity.</p> "A" - no vulnerabilities, "F" - the least secure level.',
-      vulnInfo:
-        '<p>Vulnerabilities found in the repository.</p> <p>Data source: <a href="https://snyk.io/" target="_blank">Snyk.io</a></p>',
-      contributorsTooltip: `Contributors number in ${prevQuarter}`,
-      npmReleasesTooltip: `Npm releases number in ${prevQuarter}`,
-      commitsTooltip: `Repository commits number in ${prevQuarter}`,
-      tradarTooltip:
-        '<p>A ThoughtWorks tech radar “ring” assigned to the library.</p> <p>Four possible rings - “Adopt”, “Trial”, “Assess”, and “Hold”.</p>',
-      searchInfo:
-        'An average Google search interest in relation to other libraries.',
-      devUsageInfo:
-        'Percentage of developers using the library according to the latest <a href="https://stateofjs.com/" target="_blank">StateOfJS 2020</a> survey',
-      bundlesize:
-        'Bundle size of the npm package minified+gzipped. Data source: <a href="https://bundlephobia.com/" target="_blank">Bundlephobia.com</a>',
-      hasChart: computed(() => {
-        return [
-          'stars',
-          'downloads',
-          'searchInterest',
-          'devusage',
-          'releases',
-          'commits',
-          'contributors',
-          'dependencies',
-          'bundlesize',
-          'age',
-        ].includes(props.type);
-      }),
-    };
-  },
+const quarter = prevQuarter;
+const github = 'GitHub repository';
+const status =
+  '<p>Library status. Possible values:</p><p>- "Active"<br> - "Inactive" if no commits in the last 6 months<br> - "Legacy" if library authors called it so<br> - "Archived" if the repository is archived</p>';
+const stars =
+  'The total number of GitHub stars and the average number of new stars per month over the last 3 months';
+const npmDownloads =
+  'The average number of Npm downloads per month over the last 3 months. The average monthly Npm downloads growth over the last 6 months';
+const tsTooltip =
+  '<p>TypeScript support.</p> <p>"BUNDLED" - typings are bundled together with the package.</p> <p>"SEPARATE" - typings are published to the @types organization on Npm</p>';
+const secScore =
+  '<p>Security score of the Npm package.</p> <p><a href="https://snyk.io/" target="_blank">Snyk.io</a> calculates it based on the number of vulnerabilities and their severity.</p> "A" - no vulnerabilities, "F" - the least secure level.';
+const vulnInfo =
+  '<p>Vulnerabilities found in the repository.</p> <p>Data source: <a href="https://snyk.io/" target="_blank">Snyk.io</a></p>';
+const contributorsTooltip = `Contributors number in ${prevQuarter}`;
+const npmReleasesTooltip = `Npm releases number in ${prevQuarter}`;
+const commitsTooltip = `Repository commits number in ${prevQuarter}`;
+const tradarTooltip =
+  '<p>A ThoughtWorks tech radar “ring” assigned to the library.</p> <p>Four possible rings - “Adopt”, “Trial”, “Assess”, and “Hold”.</p>';
+const searchInfo =
+  'An average Google search interest in relation to other libraries.';
+const devUsageInfo =
+  'Percentage of developers using the library according to the latest <a href="https://stateofjs.com/" target="_blank">StateOfJS 2020</a> survey';
+const bundlesize =
+  'Bundle size of the npm package minified+gzipped. Data source: <a href="https://bundlephobia.com/" target="_blank">Bundlephobia.com</a>';
+const hasChart = computed(() => {
+  return [
+    'stars',
+    'downloads',
+    'searchInterest',
+    'devusage',
+    'releases',
+    'commits',
+    'contributors',
+    'dependencies',
+    'bundlesize',
+    'age',
+  ].includes(props.type);
 });
 </script>
 
