@@ -6,10 +6,9 @@ import 'tippy.js/dist/svg-arrow.css';
 import 'tippy.js/themes/light.css';
 import 'tippy.js/themes/light-border.css';
 import 'tippy.js/animations/shift-away.css';
-import * as Sentry from '@sentry/browser';
-import '../chartjs.config';
-// import { Vue as VueIntegration } from '@sentry/integrations';
+import * as Sentry from '@sentry/vue';
 import { Integrations } from '@sentry/tracing';
+import '../chartjs.config';
 import App from './App.vue';
 import CatalogApp from './CatalogApp.vue';
 import AboutApp from './AboutApp.vue';
@@ -31,6 +30,24 @@ import LoaderNew from '@/components/LoaderNew.vue';
 import './assets/tailwind.css';
 
 const app = createApp(App);
+
+if (process.env.NODE_ENV !== 'development') {
+  Sentry.init({
+    app,
+    dsn: 'https://185bd9a836b146318babbd956881e8a0@o477177.ingest.sentry.io/5517696',
+    logErrors: true,
+    integrations: [
+      new Integrations.BrowserTracing({
+        tracingOrigins: ['localhost', 'moiva.io', /^\//],
+      }),
+    ],
+    // process.env.NODE_ENV is being replaced by the value during build
+    environment: process.env.NODE_ENV,
+    // We recommend adjusting this value in production, or using tracesSampler
+    // for finer control
+    tracesSampleRate: 1.0,
+  });
+}
 
 app.component('MClose', Close);
 app.component('MTag', Tag);
@@ -71,23 +88,4 @@ if (appCatalog) {
   createApp(AboutApp).mount('#app');
 } else {
   app.mount('#app');
-}
-
-if (process.env.NODE_ENV !== 'development') {
-  Sentry.init({
-    dsn: 'https://185bd9a836b146318babbd956881e8a0@o477177.ingest.sentry.io/5517696',
-    integrations: [
-      // new VueIntegration({
-      //   app,
-      //   tracing: true,
-      //   logErrors: true,
-      // }),
-      new Integrations.BrowserTracing(),
-    ],
-    // process.env.NODE_ENV is being replaced by the value during build
-    environment: process.env.NODE_ENV,
-    // We recommend adjusting this value in production, or using tracesSampler
-    // for finer control
-    tracesSampleRate: 1.0,
-  });
 }

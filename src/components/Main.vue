@@ -139,7 +139,7 @@ import {
   removeAllLibraries,
 } from '@/store/libraries';
 import useExtraDataApi from '@/composables/useExtraDataApi';
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/vue';
 
 export default defineComponent({
   name: 'Main',

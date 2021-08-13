@@ -2,7 +2,7 @@ import { ref, onMounted, watch, Ref, computed } from 'vue';
 import { librariesRR, isLoading } from '@/store/libraries';
 import { fetchGTrendsData } from '@/components/google-trends/api';
 import { GOOGLE_TRENDS_LIBS_LIMIT } from '@/data/index';
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/vue';
 
 export function useChartApi<T>(
   itemsIds: Ref<string[]>,
