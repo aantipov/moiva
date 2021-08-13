@@ -1,6 +1,6 @@
 import { DeepReadonly } from 'vue';
 import axios, { AxiosError } from 'axios';
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/vue';
 import {
   ERROR_CODE_NO_GITHUB_DATA,
   ERROR_CODE_FETCH_GITHUB_REPO_FAILED,

@@ -1,5 +1,5 @@
 import { AxiosError } from 'axios';
-import * as Sentry from '@sentry/browser';
+import * as Sentry from '@sentry/vue';
 
 export function reportSentry(err: AxiosError, methodName: string): void {
   err.name = `UI API (${methodName})`;
