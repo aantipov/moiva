@@ -19,40 +19,27 @@
   </span>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType, toRefs, computed } from 'vue';
+<script setup lang="ts">
+import { computed } from 'vue';
 import { StatusT } from '@/getLibrary';
 
-export default defineComponent({
-  name: 'StatusBadge',
+const props = defineProps<{
+  value: StatusT;
+}>();
 
-  props: {
-    value: {
-      type: String as PropType<StatusT>,
-      required: true,
-    },
-  },
+const tooltip = computed(() => {
+  let txt;
+  if (props.value === 'ACTIVE') {
+    txt = `<p>There were commits in the last 6 months</p>`;
+  } else if (props.value === 'INACTIVE') {
+    txt = `<p>No commits in the last 6 months</p>`;
+  } else if (props.value === 'LEGACY') {
+    txt = `<p>The project is marked as Legacy.</p> <p>It is no longer under active development.</p> <p>Better use alternative solutions.</p>`;
+  } else if (props.value === 'ARCHIVED') {
+    txt = `<p>The repository is Archived and is not recommended for usage.</p><p>Look for alternatives.</p>`;
+  }
 
-  setup(props) {
-    const { value } = toRefs(props);
-
-    return {
-      tooltip: computed(() => {
-        let txt;
-        if (value.value === 'ACTIVE') {
-          txt = `<p>There were commits in the last 6 months</p>`;
-        } else if (value.value === 'INACTIVE') {
-          txt = `<p>No commits in the last 6 months</p>`;
-        } else if (value.value === 'LEGACY') {
-          txt = `<p>The project is marked as Legacy.</p> <p>It is no longer under active development.</p> <p>Better use alternative solutions.</p>`;
-        } else if (value.value === 'ARCHIVED') {
-          txt = `<p>The repository is Archived and is not recommended for usage.</p><p>Look for alternatives.</p>`;
-        }
-
-        return `${txt}`;
-      }),
-    };
-  },
+  return `${txt}`;
 });
 </script>
 
