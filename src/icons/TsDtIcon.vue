@@ -20,13 +20,7 @@
   </svg>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'TsDtIcon',
-});
-</script>
+<script setup lang="ts"></script>
 
 <style lang="postcss" scoped>
 .st0 {

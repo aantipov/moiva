@@ -14,19 +14,12 @@
   </svg>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+interface Props {
+  label: string;
+}
 
-export default defineComponent({
-  name: 'HeartBeatIcon',
-
-  props: {
-    label: {
-      type: String,
-      required: true,
-    },
-  },
-});
+defineProps<Props>();
 </script>
 
 <style lang="postcss" scoped></style>

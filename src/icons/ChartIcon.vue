@@ -15,19 +15,13 @@
   </svg>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+interface Props {
+  label?: string;
+}
 
-export default defineComponent({
-  name: 'ChartIcon',
-
-  props: {
-    label: {
-      type: String,
-      required: false,
-      default: '',
-    },
-  },
+withDefaults(defineProps<Props>(), {
+  label: '',
 });
 </script>
 

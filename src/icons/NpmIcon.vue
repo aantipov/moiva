@@ -12,12 +12,6 @@
   </svg>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'NpmIcon',
-});
-</script>
+<script setup lang="ts"></script>
 
 <style lang="postcss" scoped></style>

@@ -210,7 +210,7 @@ import CubeIcon from '@/components/icons/Cube.vue';
 import DependencyIcon from '@/components/icons/Dependency.vue';
 import ShieldIcon from '@/components/icons/Shield.vue';
 import BugIcon from '@/components/icons/Bug.vue';
-import HeartBeatIcon from '@/icons/Heart.vue';
+import HeartBeatIcon from '@/icons/HeartBeatIcon.vue';
 import MetricChart from './MetricChart.vue';
 import { MetricT } from './Table.vue';
 import { prevQuarter } from '@/utils';
