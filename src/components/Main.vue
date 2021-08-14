@@ -109,7 +109,7 @@ import Popular from './Popular.vue';
 import Table from './table/Table.vue';
 import Readings from './Readings.vue';
 
-import Releases from './npm-releases/ReleasesChart.vue';
+import Releases from './npm-releases/NpmReleasesChart.vue';
 import TechRadar from './TechRadar.vue';
 import GoogleTrends from './google-trends/GTrendsChart.vue';
 import Stars from './github-stars/StarsChart.vue';
