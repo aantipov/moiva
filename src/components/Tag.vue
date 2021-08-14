@@ -17,19 +17,10 @@
   </span>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'StatusBadge',
-
-  props: {
-    value: {
-      type: String,
-      required: true,
-    },
-  },
-});
+<script setup lang="ts">
+defineProps<{
+  value: string;
+}>();
 </script>
 
 <style lang="postcss" scoped></style>
