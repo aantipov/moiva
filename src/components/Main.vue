@@ -110,7 +110,7 @@ import Table from './table/Table.vue';
 import Readings from './Readings.vue';
 
 import Releases from './npm-releases/NpmReleasesChart.vue';
-import TechRadar from './TechRadar.vue';
+import TechRadar from './TechRadarChart.vue';
 import GoogleTrends from './google-trends/GTrendsChart.vue';
 import Stars from './github-stars/StarsChart.vue';
 import Languages from './languages/LanguagesChart.vue';
