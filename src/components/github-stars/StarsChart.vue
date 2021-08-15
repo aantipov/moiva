@@ -1,7 +1,7 @@
 <template>
   <m-chart
     title="New Github Stars monthly"
-    :is-loading="isLoading"
+    :is-loading="isLoadingRef"
     :is-error="isError"
     :libs-names="reposIds"
     :failed-libs-names="failedReposIds"
@@ -13,8 +13,8 @@
   </m-chart>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed } from 'vue';
+<script setup lang="ts">
+import { computed } from 'vue';
 import { ChartConfiguration } from 'chart.js';
 import { getEarliestMonth, getPrevMonth, formatNumber } from '@/utils';
 import { StarsT } from './api';
@@ -30,84 +30,73 @@ interface FilteredLibT extends LibraryReadonlyT {
   starsNewAvg: number;
 }
 
-export default defineComponent({
-  name: 'StarsChart',
+const filteredLibsRef = computed(
+  () => librariesRR.filter((lib) => !!lib.stars) as FilteredLibT[]
+);
 
-  setup() {
-    const filteredLibsRef = computed(
-      () => librariesRR.filter((lib) => !!lib.stars) as FilteredLibT[]
-    );
+// Calculate startMonth based on repos creation date
+const startMonthRef = computed(() => {
+  const validCreationDates = filteredLibsRef.value
+    .map((lib) => lib.repo.createdAt)
+    .filter((date) => !!date) as string[];
 
-    // Calculate startMonth based on repos creation date
-    const startMonthRef = computed(() => {
-      const validCreationDates = filteredLibsRef.value
-        .map((lib) => lib.repo.createdAt)
-        .filter((date) => !!date) as string[];
+  return getPrevMonth(getEarliestMonth(validCreationDates, '2020-01'));
+});
 
-      return getPrevMonth(getEarliestMonth(validCreationDates, '2020-01'));
-    });
-
-    const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
-      type: 'line',
-      data: {
-        datasets: filteredLibsRef.value.map((lib) => ({
-          label: lib.repo.repoName,
-          data: lib.stars
-            .filter((item) => item.month >= startMonthRef.value)
-            .map(({ month, stars }) => ({
-              x: month as unknown as number,
-              y: stars,
-            })),
-          backgroundColor: lib.color,
-          borderColor: lib.color,
+const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
+  type: 'line',
+  data: {
+    datasets: filteredLibsRef.value.map((lib) => ({
+      label: lib.repo.repoName,
+      data: lib.stars
+        .filter((item) => item.month >= startMonthRef.value)
+        .map(({ month, stars }) => ({
+          x: month as unknown as number,
+          y: stars,
         })),
-      },
-      options: {
-        scales: {
-          x: {
-            type: 'time',
-            time: { unit: 'month', tooltipFormat: 'MMM, yyyy' },
-            adapters: { date: { locale: enUS } },
-          },
-        },
-      },
-    }));
-
-    const isLoadingRef = computed(
-      () =>
-        isLoadingLibraries.value ||
-        librariesRR.filter((lib) => lib.stars === undefined).length > 0
-    );
-
-    return {
-      isError: computed(() => filteredLibsRef.value.length === 0),
-      isLoading: isLoadingRef,
-      chartConfig,
-      ariaLabel: computed(() => {
-        const valuesStr = filteredLibsRef.value
-          .map(
-            (lib) =>
-              `${
-                lib.alias
-              } stars number increase, on average, by ${formatNumber(
-                lib.starsNewAvg
-              )} new stars each month.`
-          )
-          .join(' ');
-
-        return `GitHub Stars statistics. ${valuesStr}`;
-      }),
-      reposIds: computed(() =>
-        filteredLibsRef.value.map((lib) => lib.repo.repoId)
-      ),
-      failedReposIds: computed<string[]>(() => {
-        return isLoadingRef.value
-          ? []
-          : librariesRR
-              .filter((lib) => !lib.stars)
-              .map((lib) => lib.repo.repoId);
-      }),
-    };
+      backgroundColor: lib.color,
+      borderColor: lib.color,
+    })),
   },
+  options: {
+    scales: {
+      x: {
+        type: 'time',
+        time: { unit: 'month', tooltipFormat: 'MMM, yyyy' },
+        adapters: { date: { locale: enUS } },
+      },
+    },
+  },
+}));
+
+const isLoadingRef = computed(
+  () =>
+    isLoadingLibraries.value ||
+    librariesRR.filter((lib) => lib.stars === undefined).length > 0
+);
+
+const isError = computed(() => filteredLibsRef.value.length === 0);
+
+const ariaLabel = computed(() => {
+  const valuesStr = filteredLibsRef.value
+    .map(
+      (lib) =>
+        `${lib.alias} stars number increase, on average, by ${formatNumber(
+          lib.starsNewAvg
+        )} new stars each month.`
+    )
+    .join(' ');
+
+  return `GitHub Stars statistics. ${valuesStr}`;
+});
+
+const reposIds = computed(() =>
+  filteredLibsRef.value.map((lib) => lib.repo.repoId)
+);
+
+const failedReposIds = computed<string[]>(() => {
+  return isLoadingRef.value
+    ? []
+    : librariesRR.filter((lib) => !lib.stars).map((lib) => lib.repo.repoId);
 });
 </script>

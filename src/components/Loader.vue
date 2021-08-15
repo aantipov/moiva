@@ -24,12 +24,7 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-export default defineComponent({
-  name: 'Loader',
-});
-</script>
+<script setup lang="ts"></script>
 
 <style lang="postcss" scoped>
 .lds-grid {

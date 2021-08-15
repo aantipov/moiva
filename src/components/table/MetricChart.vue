@@ -20,8 +20,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, onMounted, ref } from 'vue';
+<script setup lang="ts">
+import { computed, onMounted, ref } from 'vue';
 import tippy, { Instance, roundArrow } from 'tippy.js';
 import { MetricT } from './Table.vue';
 import { ChartConfiguration } from 'chart.js';
@@ -36,131 +36,115 @@ import { librariesRR } from '@/store/libraries';
 
 const configs = getConfigs();
 
-export default defineComponent({
-  name: 'MetricChart',
+const props = defineProps<{
+  type: MetricT;
+}>();
 
-  props: {
-    type: {
-      type: String as () => MetricT,
-      required: true,
+const contentRef = ref(null);
+const triggerRef = ref(null);
+let t: Instance;
+
+const metricConfig = configs.find(
+  (config) => config.metric === props.type
+) as ConfigT;
+
+onMounted(() => {
+  t = tippy(triggerRef.value as unknown as HTMLElement, {
+    content: contentRef.value as unknown as HTMLElement,
+    appendTo: () => document.body,
+    trigger: 'click',
+    arrow: roundArrow + roundArrow,
+    delay: [0, 150],
+    interactive: true,
+    allowHTML: true,
+    theme: 'metric-chart',
+    hideOnClick: true,
+  });
+});
+
+const pickDataFn = path<number>(metricConfig.path.split('.'));
+const sortFn = (metricConfig.sortDirFn || descend)(pickDataFn);
+
+const librariesSortedRR = computed(() => {
+  const filteredLibraries = librariesRR.filter(
+    (lib) => pickDataFn(lib) !== undefined
+  );
+  // @ts-ignore
+  return sort(sortFn, filteredLibraries);
+});
+
+const libsNamesRef = computed(() => librariesSortedRR.value.map(prop('alias')));
+const libsDataRef = computed(() => librariesSortedRR.value.map(pickDataFn));
+const libsColorsRef = computed(() =>
+  librariesSortedRR.value.map(prop('color'))
+);
+const hide = () => t.hide();
+const libsNames = libsNamesRef;
+
+// @ts-ignore
+const chartConfig = computed<ChartConfiguration<'bar'>>(() => {
+  return {
+    type: 'bar',
+    data: {
+      labels: libsNamesRef.value,
+      datasets: [
+        {
+          data: libsDataRef.value,
+          backgroundColor: libsColorsRef.value,
+          borderColor: 'gray',
+          borderWidth: 1,
+        },
+      ],
     },
-  },
 
-  setup(props) {
-    const contentRef = ref(null);
-    const triggerRef = ref(null);
-    let t: Instance;
-
-    const metricConfig = configs.find(
-      (config) => config.metric === props.type
-    ) as ConfigT;
-
-    onMounted(() => {
-      t = tippy(triggerRef.value as unknown as HTMLElement, {
-        content: contentRef.value as unknown as HTMLElement,
-        appendTo: () => document.body,
-        trigger: 'click',
-        arrow: roundArrow + roundArrow,
-        delay: [0, 150],
-        interactive: true,
-        allowHTML: true,
-        theme: 'metric-chart',
-        hideOnClick: true,
-      });
-    });
-
-    const pickDataFn = path<number>(metricConfig.path.split('.'));
-    const sortFn = (metricConfig.sortDirFn || descend)(pickDataFn);
-
-    const librariesSortedRR = computed(() => {
-      const filteredLibraries = librariesRR.filter(
-        (lib) => pickDataFn(lib) !== undefined
-      );
-      // @ts-ignore
-      return sort(sortFn, filteredLibraries);
-    });
-
-    const libsNamesRef = computed(() =>
-      librariesSortedRR.value.map(prop('alias'))
-    );
-    const libsDataRef = computed(() => librariesSortedRR.value.map(pickDataFn));
-    const libsColorsRef = computed(() =>
-      librariesSortedRR.value.map(prop('color'))
-    );
-
-    return {
-      triggerRef,
-      contentRef,
-      hide: () => t.hide(),
-      libsNames: libsNamesRef,
-
-      // @ts-ignore
-      chartConfig: computed<ChartConfiguration<'bar'>>(() => {
-        return {
-          type: 'bar',
-          data: {
-            labels: libsNamesRef.value,
-            datasets: [
-              {
-                data: libsDataRef.value,
-                backgroundColor: libsColorsRef.value,
-                borderColor: 'gray',
-                borderWidth: 1,
-              },
-            ],
+    options: {
+      scales: {
+        y: {
+          ticks: {
+            beginAtZero: true,
+            callback: (() => {
+              if (metricConfig.metric === 'bundlesize') {
+                return (val: number) => val;
+              }
+              if (metricConfig.metric === 'age') {
+                return getFormattedAgeFromAgeInMs;
+              }
+              return numbersFormatter.format;
+            })(),
           },
+        },
+      },
 
-          options: {
-            scales: {
-              y: {
-                ticks: {
-                  beginAtZero: true,
-                  callback: (() => {
-                    if (metricConfig.metric === 'bundlesize') {
-                      return (val: number) => val;
-                    }
-                    if (metricConfig.metric === 'age') {
-                      return getFormattedAgeFromAgeInMs;
-                    }
-                    return numbersFormatter.format;
-                  })(),
-                },
-              },
-            },
-
-            plugins: {
-              legend: { display: false },
-              title: {
-                text: metricConfig.title,
-                display: true,
-                padding: { top: 0, bottom: 25 },
-              },
-              tooltip: {
-                callbacks: {
-                  label: (context): string => {
-                    let val;
-                    if (metricConfig.percent) {
-                      // @ts-ignore
-                      val = numbersStandardFormatter.format(context.raw) + '%';
-                    } else if (metricConfig.metric === 'bundlesize') {
-                      val = context.raw + ' kB';
-                    } else if (metricConfig.metric === 'age') {
-                      // @ts-ignore
-                      val = getFormattedAgeFromAgeInMs(context.raw);
-                    } else {
-                      // @ts-ignore
-                      val = numbersStandardFormatter.format(context.raw);
-                    }
-                    return ` ${context.label}: ${val}`;
-                  },
-                },
-              },
+      plugins: {
+        legend: { display: false },
+        title: {
+          text: metricConfig.title,
+          display: true,
+          padding: { top: 0, bottom: 25 },
+        },
+        tooltip: {
+          callbacks: {
+            label: (context): string => {
+              let val;
+              if (metricConfig.percent) {
+                // @ts-ignore
+                val = numbersStandardFormatter.format(context.raw) + '%';
+              } else if (metricConfig.metric === 'bundlesize') {
+                val = context.raw + ' kB';
+              } else if (metricConfig.metric === 'age') {
+                // @ts-ignore
+                val = getFormattedAgeFromAgeInMs(context.raw);
+              } else {
+                // @ts-ignore
+                val = numbersStandardFormatter.format(context.raw);
+              }
+              return ` ${context.label}: ${val}`;
             },
           },
-        };
-      }),
-    };
-  },
+        },
+      },
+    },
+  };
 });
 
 interface ConfigT {

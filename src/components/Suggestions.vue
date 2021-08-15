@@ -24,53 +24,39 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed, ref } from 'vue';
+<script setup lang="ts">
+import { computed, ref } from 'vue';
 import { getSuggestions } from '@/utils';
 import { CatalogLibraryT } from '@/data/index';
 import { libraries } from '@/store/libraries';
 import SuggestionItem from './SuggestionItem.vue';
-import ChevronDownIcon from '@/components/icons/ChevronDown.vue';
-import ChevronUpIcon from '@/components/icons/ChevronUp.vue';
+import ChevronDownIcon from '@/components/icons/ChevronDownIcon.vue';
+import ChevronUpIcon from '@/components/icons/ChevronUpIcon.vue';
 
 // The Number of Suggestions shown in the "SHOW LESS" mode
 const size = 5;
 
-export default defineComponent({
-  name: 'Suggestions',
+const emit = defineEmits(['select']);
 
-  components: {
-    SuggestionItem,
-    ChevronDownIcon,
-    ChevronUpIcon,
-  },
+const showAll = ref(false);
 
-  emits: ['select'],
+const allSuggestions = computed<CatalogLibraryT[]>(() =>
+  getSuggestions(libraries)
+);
 
-  setup(_props, { emit }) {
-    const showAll = ref(false);
-    const allSuggestions = computed<CatalogLibraryT[]>(() =>
-      getSuggestions(libraries)
-    );
+const hasMore = computed<boolean>(() => allSuggestions.value.length > size);
 
-    return {
-      showAll,
-      hasMore: computed<boolean>(() => allSuggestions.value.length > size),
-      suggestions: computed<CatalogLibraryT[]>(() =>
-        showAll.value
-          ? allSuggestions.value
-          : allSuggestions.value.slice(0, size)
-      ),
-      onSelect(catalogLibrary: CatalogLibraryT) {
-        if (catalogLibrary.npm) {
-          emit('select', catalogLibrary.npm, true);
-        } else {
-          emit('select', catalogLibrary.repoId, false);
-        }
-      },
-    };
-  },
-});
+const suggestions = computed<CatalogLibraryT[]>(() =>
+  showAll.value ? allSuggestions.value : allSuggestions.value.slice(0, size)
+);
+
+function onSelect(catalogLibrary: CatalogLibraryT) {
+  if (catalogLibrary.npm) {
+    emit('select', catalogLibrary.npm, true);
+  } else {
+    emit('select', catalogLibrary.repoId, false);
+  }
+}
 </script>
 
 <style lang="postcss"></style>

@@ -14,36 +14,30 @@
   </section>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed } from 'vue';
+<script setup lang="ts">
+import { computed } from 'vue';
 import { librariesRR } from '@/store/libraries';
 import { NpmPackageT } from '@/libraryApis';
 import { ReadingT } from '@/getLibrary';
-import readings from '@/data/readings.json';
+import _readings from '@/data/readings.json';
 
-export default defineComponent({
-  name: 'Readings',
+const npmsRef = computed<string[]>(() =>
+  librariesRR
+    .filter((lib) => !!lib.npmPackage)
+    .map((lib) => (lib.npmPackage as NpmPackageT).name)
+);
 
-  setup() {
-    const npmsRef = computed<string[]>(() =>
-      librariesRR
-        .filter((lib) => !!lib.npmPackage)
-        .map((lib) => (lib.npmPackage as NpmPackageT).name)
-    );
-    const reposRef = computed<string[]>(() =>
-      librariesRR.filter((lib) => !lib.npmPackage).map((lib) => lib.repo.repoId)
-    );
-    return {
-      readings: computed<ReadingT[]>(() =>
-        (readings as ReadingT[]).filter(
-          (reading) =>
-            npmsRef.value.some((npm) => reading.npms.includes(npm)) ||
-            reposRef.value.some((repoId) => reading.repos.includes(repoId))
-        )
-      ),
-    };
-  },
-});
+const reposRef = computed<string[]>(() =>
+  librariesRR.filter((lib) => !lib.npmPackage).map((lib) => lib.repo.repoId)
+);
+
+const readings = computed<ReadingT[]>(() =>
+  (_readings as ReadingT[]).filter(
+    (reading) =>
+      npmsRef.value.some((npm) => reading.npms.includes(npm)) ||
+      reposRef.value.some((repoId) => reading.repos.includes(repoId))
+  )
+);
 </script>
 
 <style lang="postcss">

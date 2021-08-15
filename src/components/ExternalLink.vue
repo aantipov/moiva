@@ -5,27 +5,19 @@
   </a>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-import Icon from '@/components/icons/Link.vue';
+<script setup lang="ts">
+import Icon from '@/components/icons/LinkIcon.vue';
 
-export default defineComponent({
-  name: 'ExternalLink',
-
-  components: { Icon },
-
-  props: {
-    href: {
-      type: String,
-      required: true,
-    },
-    txt: {
-      type: String,
-      required: true,
-    },
-    truncate: Boolean,
-  },
-});
+withDefaults(
+  defineProps<{
+    href: string;
+    txt: string;
+    truncate?: boolean;
+  }>(),
+  {
+    truncate: false,
+  }
+);
 </script>
 
 <style lang="postcss">

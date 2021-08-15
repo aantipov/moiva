@@ -8,7 +8,7 @@
           <span class="text-base">{{ subtitle }}</span>
         </h3>
 
-        <m-chart-info v-if="hasInfo" class="ml-2"><slot /></m-chart-info>
+        <m-chart-info v-if="$slots.default" class="ml-2"><slot /></m-chart-info>
 
         <m-chart-info v-if="failedLibsNames.length" class="ml-2" type="WARNING">
           <div>
@@ -66,139 +66,125 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, toRefs, onMounted, watch, PropType } from 'vue';
+<script setup lang="ts">
+import { ref, toRef, onMounted, watch } from 'vue';
 import {
   Chart,
-  ChartData,
   ChartDataset,
   ChartConfiguration,
   ChartOptions,
 } from 'chart.js';
 import { librariesRR } from '@/store/libraries';
 
-export default defineComponent({
-  name: 'ChartPresentation',
+interface Props {
+  title?: string;
+  subtitle?: string;
+  isLoading?: boolean;
+  isError?: boolean;
+  libsNames: string[];
+  failedLibsNames?: string[];
+  chartConfig: ChartConfiguration;
+  ariaLabel?: string;
+  since?: string;
+  sinceValues?: string[];
+}
 
-  props: {
-    title: { type: String, required: false, default: null },
-    subtitle: { type: String, required: false, default: '' },
-    isLoading: { type: Boolean, required: false, default: false },
-    isError: { type: Boolean, required: false, default: false },
-    libsNames: { type: Array as () => string[], required: true },
-    failedLibsNames: {
-      type: Array as () => string[],
-      required: false,
-      default: () => [],
-    },
-    chartConfig: {
-      type: Object as PropType<ChartConfiguration>,
-      required: true,
-    },
-    ariaLabel: {
-      type: String,
-      required: false,
-      default: '',
-    },
-    since: {
-      type: String,
-      required: false,
-      default: null,
-    },
-    sinceValues: {
-      type: Array as PropType<string[]>,
-      required: false,
-      default: () => [],
-    },
-  },
-  emits: ['sinceChange'],
-
-  setup(props, ctx) {
-    const { isLoading, chartConfig, isError, since, sinceValues } =
-      toRefs(props);
-    const chartEl = ref<null | HTMLCanvasElement>(null);
-    const hasInfo = ref(!!ctx.slots.default);
-    let mychart: Chart;
-
-    function initChart(): void {
-      const ctx = chartEl.value as HTMLCanvasElement;
-      mychart = new Chart(ctx, chartConfig.value as ChartConfiguration);
-      fillOneLineCharts(mychart, chartConfig.value.type) && mychart.update();
-    }
-
-    onMounted(initChart);
-
-    watch([chartConfig, isLoading, isError], () => {
-      const { data, options, type } = chartConfig.value;
-
-      if (!isLoading.value && !isError.value) {
-        mychart.data = data as ChartData;
-        mychart.options = options as ChartOptions;
-        fillOneLineCharts(mychart, type);
-        mychart.update();
-      }
-    });
-
-    const dateRangeSince = ref(since.value);
-
-    watch(sinceValues, () => {
-      // sinceValues list changes on adding/removing a library.
-      // reset the since value
-      dateRangeSince.value = sinceValues.value[0];
-    });
-
-    return {
-      chartEl,
-      hasInfo,
-      dateRangeSince,
-      onDateRangeChange(): void {
-        ctx.emit('sinceChange', dateRangeSince.value);
-      },
-
-      copy(): void {
-        chartEl.value?.toBlob(async (blob) => {
-          // @ts-ignore
-          await navigator.clipboard.write([
-            // @ts-ignore
-            new ClipboardItem({ 'image/png': blob }), // eslint-disable-line
-          ]);
-        });
-      },
-
-      copyShare(): void {
-        chartEl.value?.toBlob(async (blob) => {
-          // @ts-ignore
-          await navigator.clipboard.write([
-            // @ts-ignore
-            new ClipboardItem({ 'image/png': blob }), // eslint-disable-line
-          ]);
-
-          const title = encodeURIComponent(props.title.replace(',', ''));
-          const libsAliases = encodeURIComponent(
-            librariesRR.map((lib) => lib.alias).join(' vs ')
-          );
-          const url = encodeURIComponent(window.location.href);
-
-          window.open(
-            `https://twitter.com/intent/tweet?text=${title}: ${libsAliases}&url=${url}`,
-            '_blank'
-          );
-        });
-      },
-
-      download(): void {
-        chartEl.value?.toBlob((blob) => {
-          const link = document.createElement('a');
-          link.href = URL.createObjectURL(blob);
-          link.download = props.title.replace(',', '');
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-        });
-      },
-    };
-  },
+const props = withDefaults(defineProps<Props>(), {
+  title: '',
+  subtitle: '',
+  isLoading: false,
+  isError: false,
+  failedLibsNames: () => [],
+  ariaLabel: '',
+  // @ts-ignore
+  since: null,
+  sinceValues: () => [],
 });
+
+const emit = defineEmits(['sinceChange']);
+
+const chartEl = ref<null | HTMLCanvasElement>(null);
+let mychart: Chart;
+
+function initChart(): void {
+  const ctx = chartEl.value as HTMLCanvasElement;
+  mychart = new Chart(ctx, props.chartConfig);
+  fillOneLineCharts(mychart, props.chartConfig.type) && mychart.update();
+}
+
+onMounted(initChart);
+
+watch(
+  [
+    toRef(props, 'chartConfig'),
+    toRef(props, 'isLoading'),
+    toRef(props, 'isError'),
+  ],
+  () => {
+    if (!props.isLoading && !props.isError) {
+      mychart.data = props.chartConfig.data;
+      mychart.options = props.chartConfig.options as ChartOptions;
+      fillOneLineCharts(mychart, props.chartConfig.type);
+      mychart.update();
+    }
+  }
+);
+
+const dateRangeSince = ref(props.since);
+
+watch(toRef(props, 'sinceValues'), () => {
+  // sinceValues list changes on adding/removing a library.
+  // reset the since value
+  if (props.sinceValues) {
+    dateRangeSince.value = props.sinceValues[0];
+  }
+});
+
+function onDateRangeChange(): void {
+  emit('sinceChange', dateRangeSince.value);
+}
+
+function copy(): void {
+  chartEl.value?.toBlob(async (blob) => {
+    // @ts-ignore
+    await navigator.clipboard.write([
+      // @ts-ignore
+      new ClipboardItem({ 'image/png': blob }), // eslint-disable-line
+    ]);
+  });
+}
+
+function copyShare(): void {
+  chartEl.value?.toBlob(async (blob) => {
+    // @ts-ignore
+    await navigator.clipboard.write([
+      // @ts-ignore
+      new ClipboardItem({ 'image/png': blob }), // eslint-disable-line
+    ]);
+
+    const title = encodeURIComponent((props.title as string).replace(',', ''));
+    const libsAliases = encodeURIComponent(
+      librariesRR.map((lib) => lib.alias).join(' vs ')
+    );
+    const url = encodeURIComponent(window.location.href);
+
+    window.open(
+      `https://twitter.com/intent/tweet?text=${title}: ${libsAliases}&url=${url}`,
+      '_blank'
+    );
+  });
+}
+
+function download(): void {
+  chartEl.value?.toBlob((blob) => {
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = (props.title as string).replace(',', '');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
+}
 
 /**
  * Make sure one line charts are always filled.

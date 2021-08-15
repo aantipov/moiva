@@ -69,15 +69,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import {
-  computed,
-  defineComponent,
-  onMounted,
-  PropType,
-  ref,
-  toRefs,
-} from 'vue';
+<script setup lang="ts">
+import { computed, onMounted, PropType, ref } from 'vue';
 import { constructHref, numbersFormatter } from '@/utils';
 import { CatalogLibraryT } from '@/data/index';
 import { libraries } from '@/store/libraries';
@@ -86,95 +79,76 @@ import { fetchNpmDownloads } from '@/components/downloads/api';
 import tippy, { roundArrow } from 'tippy.js';
 import { LibraryT } from '@/getLibrary';
 
-export default defineComponent({
-  name: 'SuggestionItem',
+defineEmits(['select']);
 
-  props: {
-    catalogLibrary: {
-      type: Object as PropType<CatalogLibraryT>,
-      required: true,
-    },
-  },
-
-  emits: ['select'],
-
-  setup(props) {
-    const { catalogLibrary } = toRefs(props);
-    const contentRef = ref(null);
-    const triggerRef = ref(null);
-    const isLoading = ref(false);
-    let lib = ref<LibraryT | null>(null);
-
-    async function fetchData() {
-      isLoading.value = true;
-      if (catalogLibrary.value.npm) {
-        lib.value = await fetchLibraryByNpm(catalogLibrary.value.npm);
-      } else {
-        lib.value = await fetchLibraryByRepo(catalogLibrary.value.repoId);
-      }
-      isLoading.value = false;
-    }
-
-    onMounted(() => {
-      tippy(triggerRef.value as unknown as HTMLElement, {
-        content: contentRef.value as unknown as HTMLElement,
-        // concatenates the two SVG strings together to style Arrow border
-        arrow: roundArrow + roundArrow,
-        delay: [200, 50],
-        interactive: false,
-        allowHTML: true,
-        theme: 'suggestion-tp',
-        hideOnClick: true,
-        onShow() {
-          if (!lib.value && !isLoading.value) {
-            fetchData();
-            if (catalogLibrary.value.npm) {
-              fetchNpmDownloads(catalogLibrary.value.npm);
-            }
-          }
-        },
-      });
-    });
-
-    return {
-      lib,
-      isLoading,
-      triggerRef,
-      contentRef,
-      stars: computed(() =>
-        numbersFormatter.format(lib.value?.repo.stars as number)
-      ),
-      downloads: computed(() =>
-        numbersFormatter.format(lib.value?.npmDownloadsAvg as number)
-      ),
-
-      getHrefForAdditionalLib(catalogLibrary: CatalogLibraryT): string {
-        const npmPackagesNames = [] as string[];
-        const reposIds = [] as string[];
-
-        libraries.forEach((library) => {
-          if (library.npmPackage) {
-            npmPackagesNames.push(library.npmPackage.name);
-          } else {
-            reposIds.push(library.repo.repoId);
-          }
-        });
-
-        if (catalogLibrary.npm) {
-          return constructHref(
-            [...npmPackagesNames, catalogLibrary.npm],
-            reposIds
-          );
-        }
-
-        return constructHref(npmPackagesNames, [
-          ...reposIds,
-          catalogLibrary.repoId,
-        ]);
-      },
-    };
+const props = defineProps({
+  catalogLibrary: {
+    type: Object as PropType<CatalogLibraryT>,
+    required: true,
   },
 });
+
+const contentRef = ref(null);
+const triggerRef = ref(null);
+const isLoading = ref(false);
+let lib = ref<LibraryT | null>(null);
+
+onMounted(() => {
+  tippy(triggerRef.value as unknown as HTMLElement, {
+    content: contentRef.value as unknown as HTMLElement,
+    // concatenates the two SVG strings together to style Arrow border
+    arrow: roundArrow + roundArrow,
+    delay: [200, 50],
+    interactive: false,
+    allowHTML: true,
+    theme: 'suggestion-tp',
+    hideOnClick: true,
+    onShow() {
+      if (!lib.value && !isLoading.value) {
+        _fetchData();
+        if (props.catalogLibrary.npm) {
+          fetchNpmDownloads(props.catalogLibrary.npm);
+        }
+      }
+    },
+  });
+});
+
+const stars = computed(() =>
+  numbersFormatter.format(lib.value?.repo.stars as number)
+);
+const downloads = computed(() =>
+  numbersFormatter.format(lib.value?.npmDownloadsAvg as number)
+);
+
+function getHrefForAdditionalLib(catalogLibrary: CatalogLibraryT): string {
+  const npmPackagesNames = [] as string[];
+  const reposIds = [] as string[];
+
+  libraries.forEach((library) => {
+    if (library.npmPackage) {
+      npmPackagesNames.push(library.npmPackage.name);
+    } else {
+      reposIds.push(library.repo.repoId);
+    }
+  });
+
+  if (catalogLibrary.npm) {
+    return constructHref([...npmPackagesNames, catalogLibrary.npm], reposIds);
+  }
+
+  return constructHref(npmPackagesNames, [...reposIds, catalogLibrary.repoId]);
+}
+
+async function _fetchData() {
+  isLoading.value = true;
+  if (props.catalogLibrary.npm) {
+    lib.value = await fetchLibraryByNpm(props.catalogLibrary.npm);
+  } else {
+    lib.value = await fetchLibraryByRepo(props.catalogLibrary.repoId);
+  }
+  isLoading.value = false;
+}
 </script>
 
 <style lang="postcss">

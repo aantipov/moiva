@@ -19,41 +19,26 @@
   </span>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType, computed, toRefs } from 'vue';
+<script setup lang="ts">
+import { computed } from 'vue';
 
-type TypeT = 'bundled' | 'separate';
+interface Props {
+  value: 'bundled' | 'separate';
+  typesPackage?: string;
+}
 
-export default defineComponent({
-  name: 'TypeBadge',
+const props = withDefaults(defineProps<Props>(), {
+  typesPackage: '',
+});
 
-  props: {
-    value: {
-      type: String as PropType<TypeT>,
-      required: true,
-    },
-    typesPackage: {
-      type: String,
-      required: false,
-      default: null,
-    },
-  },
-
-  setup(props) {
-    const { value, typesPackage } = toRefs(props);
-
-    return {
-      tooltip: computed(() => {
-        if (value.value === 'bundled') {
-          // we need tippy-content here for Tailwind to recognize the class
-          return '<div class="tippy-content">Types definitions are bundled with the npm package</div>';
-        } else if (value.value === 'separate') {
-          return `Types definitions are provided via a separate npm package: ${typesPackage.value}`;
-        }
-        return '';
-      }),
-    };
-  },
+const tooltip = computed(() => {
+  if (props.value === 'bundled') {
+    // we need tippy-content here for Tailwind to recognize the class
+    return '<div class="tippy-content">Types definitions are bundled with the npm package</div>';
+  } else if (props.value === 'separate') {
+    return `Types definitions are provided via a separate npm package: ${props.typesPackage}`;
+  }
+  return '';
 });
 </script>
 

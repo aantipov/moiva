@@ -81,7 +81,14 @@
     "rules": {
       "@typescript-eslint/ban-ts-comment": "off",
       "@typescript-eslint/no-use-before-define": "off",
-      "no-sparse-arrays": "off"
+      "no-sparse-arrays": "off",
+      "vue/script-setup-uses-vars": "error"
+    },
+    "globals": {
+      "defineProps": "readonly",
+      "defineEmits": "readonly",
+      "defineExpose": "readonly",
+      "withDefaults": "readonly"
     },
     "overrides": [
       {

@@ -37,28 +37,25 @@
   </transition>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
+<script setup lang="ts">
+import { watch } from 'vue';
 
-export default defineComponent({
-  name: 'Modal',
-  props: {
-    showModal: {
-      type: Boolean,
-      required: true,
-    },
-  },
-  emits: ['close'],
-  watch: {
-    showModal(): void {
-      if (this.showModal) {
-        document.body.classList.add('showing-modal');
-      } else {
-        document.body.classList.remove('showing-modal');
-      }
-    },
-  },
-});
+const props = defineProps<{
+  showModal: boolean;
+}>();
+
+defineEmits(['close']);
+
+watch(
+  () => props.showModal,
+  () => {
+    if (props.showModal) {
+      document.body.classList.add('showing-modal');
+    } else {
+      document.body.classList.remove('showing-modal');
+    }
+  }
+);
 </script>
 
 <style lang="scss">

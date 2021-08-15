@@ -108,11 +108,7 @@ function fetchNpmPackage(packageName: string): Promise<NpmPackageT> {
 
   return fetchPackageFunc(packageName)
     .then((data) => {
-      npmPackageCache.set(packageName, {
-        ...data,
-        hasOtherTypes: false,
-        typesPackageName: '',
-      });
+      npmPackageCache.set(packageName, data);
 
       return data;
     })

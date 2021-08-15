@@ -10,55 +10,39 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue';
-import InfoIcon from '@/components/icons/Info.vue';
-import WarningIcon from '@/components/icons/Warning.vue';
+<script setup lang="ts">
+import { onMounted, ref } from 'vue';
+import InfoIcon from '@/components/icons/InfoIcon.vue';
+import WarningIcon from '@/components/icons/WarningIcon.vue';
 import tippy, { animateFill } from 'tippy.js';
 
-export default defineComponent({
-  name: 'ChartInfo',
+interface Props {
+  type?: 'INFO' | 'WARNING';
+}
 
-  components: {
-    InfoIcon,
-    WarningIcon,
-  },
+withDefaults(defineProps<Props>(), {
+  type: 'INFO',
+});
 
-  props: {
-    type: {
-      type: String as () => 'INFO' | 'WARNING',
-      required: false,
-      default: 'INFO',
-    },
-  },
+const contentRef = ref(null);
+const triggerRef = ref(null);
 
-  setup() {
-    const contentRef = ref(null);
-    const triggerRef = ref(null);
-
-    onMounted(() => {
-      tippy(triggerRef.value as unknown as HTMLElement, {
-        content: contentRef.value as unknown as HTMLElement,
-        // trigger: 'click',
-        animateFill: true,
-        plugins: [animateFill],
-        delay: [300, 150],
-        interactive: true,
-        allowHTML: true,
-        theme: 'moiva',
-        hideOnClick: 'toggle',
-      });
-    });
-
-    return { triggerRef, contentRef };
-  },
+onMounted(() => {
+  tippy(triggerRef.value as unknown as HTMLElement, {
+    content: contentRef.value as unknown as HTMLElement,
+    // trigger: 'click',
+    animateFill: true,
+    plugins: [animateFill],
+    delay: [300, 150],
+    interactive: true,
+    allowHTML: true,
+    theme: 'moiva',
+    hideOnClick: 'toggle',
+  });
 });
 </script>
 
 <style lang="postcss">
-.tippy-box[data-theme~='moiva'] {
-  /* @apply bg-black bg-opacity-10 border border-gray-200 shadow text-base; */
-}
 .tippy-box[data-theme~='moiva'] > .tippy-arrow {
   @apply hidden;
 }

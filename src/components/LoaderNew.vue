@@ -6,12 +6,7 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-export default defineComponent({
-  name: 'LoaderNew',
-});
-</script>
+<script setup lang="ts"></script>
 
 <style lang="postcss" scoped>
 .root {

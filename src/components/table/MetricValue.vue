@@ -206,8 +206,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, toRefs, computed } from 'vue';
+<script setup lang="ts">
+import { toRefs, computed } from 'vue';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import { LibraryReadonlyT } from '@/libraryApis';
 import {
@@ -222,152 +222,122 @@ import TRadarBadge from '@/components/TRadarBadge.vue';
 import TypeBadge from '@/components/TypeBadge.vue';
 import LicenseBadge from '@/components/LicenseBadge.vue';
 
-export default defineComponent({
-  name: 'MetricValue',
+const props = defineProps<{
+  type: MetricT;
+  lib: LibraryReadonlyT;
+}>();
 
-  components: {
-    StatusBadge,
-    TRadarBadge,
-    TypeBadge,
-    LicenseBadge,
-  },
+const { lib } = toRefs(props);
+const npmNameEncoded = computed(() =>
+  encodeURIComponent(lib.value.npmPackage?.name ?? '')
+);
+const npmTooltip = computed<string>(() => {
+  return `<p class="f-mono">${
+    lib.value.npmPackage?.name ?? ''
+  }</p><p>${sanitizeHTML(lib.value.npmPackage?.description ?? '')}</p>`;
+});
+const githubTooltip = computed<string>(() => {
+  return `<p class="f-mono">${lib.value.repo.repoId}</p><p>${sanitizeHTML(
+    lib.value.repo.description
+  )}</p>`;
+});
+const starsGrowth = computed<string>(() => {
+  if (!lib.value.stars || !lib.value.repo.stars) {
+    return '-';
+  }
 
-  props: {
-    type: {
-      type: String as () => MetricT,
-      required: true,
-    },
-    lib: {
-      type: Object as () => LibraryReadonlyT,
-      required: true,
-    },
-  },
+  const newStarsAvg = lib.value.starsNewAvg as number;
 
-  setup(props) {
-    const { lib } = toRefs(props);
-    const npmNameEncoded = computed(() =>
-      encodeURIComponent(lib.value.npmPackage?.name ?? '')
-    );
+  if (newStarsAvg < 1) {
+    return '0';
+  }
 
-    return {
-      npmTooltip: computed<string>(() => {
-        return `<p class="f-mono">${
-          lib.value.npmPackage?.name ?? ''
-        }</p><p>${sanitizeHTML(lib.value.npmPackage?.description ?? '')}</p>`;
-      }),
-      githubTooltip: computed<string>(() => {
-        return `<p class="f-mono">${lib.value.repo.repoId}</p><p>${sanitizeHTML(
-          lib.value.repo.description
-        )}</p>`;
-      }),
-      starsGrowth: computed<string>(() => {
-        if (!lib.value.stars || !lib.value.repo.stars) {
-          return '-';
-        }
+  const total = lib.value.repo.stars - newStarsAvg;
+  const percentage = (100 * newStarsAvg) / total;
+  const percentageFormatted = numbersFormatter.format(percentage);
 
-        const newStarsAvg = lib.value.starsNewAvg as number;
+  return `${formatNumber(newStarsAvg, true)} = +${percentageFormatted}%`;
+});
 
-        if (newStarsAvg < 1) {
-          return '0';
-        }
+const npmDownloads = computed<string | null>(() => {
+  if (!lib.value.npmDownloadsAvg) {
+    return null;
+  }
 
-        const total = lib.value.repo.stars - newStarsAvg;
-        const percentage = (100 * newStarsAvg) / total;
-        const percentageFormatted = numbersFormatter.format(percentage);
+  return numbersFormatter.format(lib.value.npmDownloadsAvg);
+});
 
-        return `${formatNumber(newStarsAvg, true)} = +${percentageFormatted}%`;
-      }),
+const npmDownloadsGrowth = computed<string>(() => {
+  return lib.value.npmDownloadsGrowth
+    ? formatPercent(lib.value.npmDownloadsGrowth, true)
+    : '-';
+});
 
-      npmDownloads: computed<string | null>(() => {
-        if (!lib.value.npmDownloadsAvg) {
-          return null;
-        }
+function getAge(createdAt: string): string {
+  return formatDistanceToNowStrict(new Date(createdAt));
+}
 
-        return numbersFormatter.format(lib.value.npmDownloadsAvg);
-      }),
+const snykUrl = computed(
+  () =>
+    `https://snyk-widget.herokuapp.com/badge/npm/${npmNameEncoded.value}/badge.svg`
+);
+const snykVulnUrl = computed(
+  () => `https://snyk.io/test/github/${lib.value.repo.repoId}/`
+);
+const vulnTooltip = computed(
+  () =>
+    `Vulnerabilities found in the ${lib.value.repo.repoId} repository. Data source: Snyk.io`
+);
+const npmUrl = computed(
+  () => `https://www.npmjs.com/package/${npmNameEncoded.value}`
+);
+const githubUrl = computed(() => `https://github.com/${lib.value.repo.repoId}`);
 
-      npmDownloadsGrowth: computed<string>(() => {
-        return lib.value.npmDownloadsGrowth
-          ? formatPercent(lib.value.npmDownloadsGrowth, true)
-          : '-';
-      }),
+const tradar = computed(() => {
+  if (!lib.value.tradar) {
+    return null;
+  }
 
-      getAge(createdAt: string): string {
-        return formatDistanceToNowStrict(new Date(createdAt));
-      },
-      formatNumber(stars: number): string {
-        return numbersFormatter.format(stars);
-      },
-      snykUrl: computed(
-        () =>
-          `https://snyk-widget.herokuapp.com/badge/npm/${npmNameEncoded.value}/badge.svg`
-      ),
-      snykVulnUrl: computed(
-        () => `https://snyk.io/test/github/${lib.value.repo.repoId}/`
-      ),
-      vulnTooltip: computed(
-        () =>
-          `Vulnerabilities found in the ${lib.value.repo.repoId} repository. Data source: Snyk.io`
-      ),
-      npmUrl: computed(
-        () => `https://www.npmjs.com/package/${npmNameEncoded.value}`
-      ),
-      githubUrl: computed(() => `https://github.com/${lib.value.repo.repoId}`),
+  return {
+    ...lib.value.tradar.entries.slice(-1)[0],
+    url: lib.value.tradar.link,
+  };
+});
 
-      tradar: computed(() => {
-        if (!lib.value.tradar) {
-          return null;
-        }
+const contributors = computed(() => lib.value.contributorsLastQ ?? '-');
 
-        return {
-          ...lib.value.tradar.entries.slice(-1)[0],
-          url: lib.value.tradar.link,
-        };
-      }),
+const npmDependencies = computed(() => lib.value.npmDependencies ?? '-');
 
-      contributors: computed(() => {
-        return lib.value.contributorsLastQ ?? '-';
-      }),
+const npmReleases = computed(() => {
+  if (!lib.value.npmReleases) {
+    return null;
+  }
+  return lib.value.npmReleases.slice(-1)[0];
+});
 
-      npmDependencies: computed(() => {
-        return lib.value.npmDependencies ?? '-';
-      }),
+const commits = computed<string | number>(() => lib.value.commitsLastQ ?? '-');
 
-      npmReleases: computed(() => {
-        if (!lib.value.npmReleases) {
-          return null;
-        }
-        return lib.value.npmReleases.slice(-1)[0];
-      }),
+const devUsage = computed(() => {
+  if (!lib.value.devUsage) {
+    return null;
+  }
 
-      commits: computed<string | number>(() => {
-        return lib.value.commitsLastQ ?? '-';
-      }),
+  return lib.value.devUsage.usage.slice(-1)[0].value;
+});
 
-      devUsage: computed(() => {
-        if (!lib.value.devUsage) {
-          return null;
-        }
+const searchInterest = computed<string>(() => {
+  if (!lib.value.googleTrends || !lib.value.googleTrends.average) {
+    return '-';
+  }
+  return lib.value.googleTrends.average + '%';
+});
 
-        return lib.value.devUsage.usage.slice(-1)[0].value;
-      }),
+const bundlesize = computed<string>(() => {
+  if (!lib.value.bundlesize) {
+    return '-';
+  }
 
-      searchInterest: computed<string>(() => {
-        if (!lib.value.googleTrends || !lib.value.googleTrends.average) {
-          return '-';
-        }
-        return lib.value.googleTrends.average + '%';
-      }),
-
-      bundlesize: computed<string>(() => {
-        if (!lib.value.bundlesize) {
-          return '-';
-        }
-
-        return lib.value.bundlesize.gzipKb + ' kB';
-      }),
-    };
-  },
+  return lib.value.bundlesize.gzipKb + ' kB';
 });
 </script>
 

@@ -82,17 +82,11 @@
   </section>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed } from 'vue';
+<script setup lang="ts">
+import { computed } from 'vue';
 import MetricHeader from './MetricHeader.vue';
 import MetricValue from './MetricValue.vue';
-import { libraryToColorMap } from '@/store/librariesColors';
-import {
-  libraries,
-  isLoading,
-  removeLibrary,
-  removeAllLibraries,
-} from '@/store/libraries';
+import { libraries, isLoading, removeLibrary } from '@/store/libraries';
 
 const METRICS = [
   'npm',
@@ -152,66 +146,42 @@ const ROWS: { metric: MetricT; cat: CategoryT; classVal: string }[] = [
   { metric: 'license', cat: 'Miscellaneous', classVal: 'bg-purple-100' },
 ];
 
-export default defineComponent({
-  name: 'Table',
+const rows = computed(() => {
+  const hasNpm = libraries.some((lib) => !!lib.npmPackage);
+  const hasTags = libraries.some((lib) => !!lib.tags.length);
+  let filteredRows = ROWS;
+  filteredRows = hasTags
+    ? filteredRows
+    : filteredRows.filter((row) => row.metric !== 'tags');
+  filteredRows = hasNpm
+    ? filteredRows
+    : filteredRows.filter((row) => !NPM_METRICS.includes(row.metric));
 
-  components: {
-    MetricHeader,
-    MetricValue,
-  },
-
-  setup() {
-    const rowsRef = computed(() => {
-      const hasNpm = libraries.some((lib) => !!lib.npmPackage);
-      const hasTags = libraries.some((lib) => !!lib.tags.length);
-      let filteredRows = ROWS;
-      filteredRows = hasTags
-        ? filteredRows
-        : filteredRows.filter((row) => row.metric !== 'tags');
-      filteredRows = hasNpm
-        ? filteredRows
-        : filteredRows.filter((row) => !NPM_METRICS.includes(row.metric));
-
-      return filteredRows;
-    });
-
-    const catsSpanMapRef = computed(() => {
-      return rowsRef.value.reduce((acc, row) => {
-        if (!acc[row.cat]) {
-          acc[row.cat] = 0;
-        }
-        acc[row.cat]++;
-        return acc;
-      }, {} as Record<CategoryT, number>);
-    });
-
-    return {
-      libraries,
-      isLoading,
-      removeLibrary,
-      rows: rowsRef,
-      catsSpanMap: catsSpanMapRef,
-      getLibColor(libraryId: string): string {
-        return libraryToColorMap.value[libraryId];
-      },
-      clearSelection() {
-        removeAllLibraries();
-      },
-      getCatMargin(cat: CategoryT): { marginTop?: string } {
-        if (cat === 'Popularity') {
-          return { marginTop: '60px' };
-        }
-        if (cat === 'Maintenance') {
-          return { marginTop: '77px' };
-        }
-        if (cat === 'Miscellaneous') {
-          return { marginTop: '87px' };
-        }
-        return {};
-      },
-    };
-  },
+  return filteredRows;
 });
+
+const catsSpanMap = computed(() => {
+  return rows.value.reduce((acc, row) => {
+    if (!acc[row.cat]) {
+      acc[row.cat] = 0;
+    }
+    acc[row.cat]++;
+    return acc;
+  }, {} as Record<CategoryT, number>);
+});
+
+function getCatMargin(cat: CategoryT): { marginTop?: string } {
+  if (cat === 'Popularity') {
+    return { marginTop: '60px' };
+  }
+  if (cat === 'Maintenance') {
+    return { marginTop: '77px' };
+  }
+  if (cat === 'Miscellaneous') {
+    return { marginTop: '87px' };
+  }
+  return {};
+}
 </script>
 
 <style lang="postcss" scoped>
