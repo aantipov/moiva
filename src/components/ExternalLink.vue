@@ -8,11 +8,16 @@
 <script setup lang="ts">
 import Icon from '@/components/icons/LinkIcon.vue';
 
-defineProps<{
-  href: string;
-  txt: string;
-  truncate: boolean;
-}>();
+withDefaults(
+  defineProps<{
+    href: string;
+    txt: string;
+    truncate?: boolean;
+  }>(),
+  {
+    truncate: false,
+  }
+);
 </script>
 
 <style lang="postcss">

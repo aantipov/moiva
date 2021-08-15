@@ -26,43 +26,33 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue';
+<script setup lang="ts">
+import { onMounted, ref } from 'vue';
 import tippy, { Instance } from 'tippy.js';
 
-export default defineComponent({
-  name: 'ChartMenu',
+defineEmits(['copy', 'copyShare', 'download']);
 
-  emits: ['copy', 'copyShare', 'download'],
+const contentRef = ref(null);
+const triggerRef = ref(null);
+// @ts-ignore
+const canCopy = !!window.chrome;
+let _t: Instance;
 
-  setup() {
-    const contentRef = ref(null);
-    const triggerRef = ref(null);
-    let t: Instance;
-
-    onMounted(() => {
-      t = tippy(triggerRef.value as unknown as HTMLElement, {
-        content: contentRef.value as unknown as HTMLElement,
-        trigger: 'click',
-        delay: [0, 150],
-        interactive: true,
-        allowHTML: true,
-        theme: 'chart-menu',
-        hideOnClick: true,
-      });
-    });
-
-    return {
-      triggerRef,
-      contentRef,
-      hide() {
-        t.hide();
-      },
-      // @ts-ignore
-      canCopy: !!window.chrome,
-    };
-  },
+onMounted(() => {
+  _t = tippy(triggerRef.value as unknown as HTMLElement, {
+    content: contentRef.value as unknown as HTMLElement,
+    trigger: 'click',
+    delay: [0, 150],
+    interactive: true,
+    allowHTML: true,
+    theme: 'chart-menu',
+    hideOnClick: true,
+  });
 });
+
+function hide() {
+  _t.hide();
+}
 </script>
 
 <style lang="postcss">
