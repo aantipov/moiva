@@ -118,8 +118,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, ref, computed } from 'vue';
+<script setup lang="ts">
+import { onMounted, ref, computed } from 'vue';
 import autocomplete, { AutocompleteItem } from 'autocompleter';
 import { numbersFormatter, sanitizeHTML } from '@/utils';
 import 'autocompleter/autocomplete.css';
@@ -138,96 +138,89 @@ interface SearchItemT {
 
 type OptionT = SearchItemT & AutocompleteItem;
 
-export default defineComponent({
-  name: 'Search',
+const emit = defineEmits(['select']);
 
-  components: {
-    ChevronDownIcon,
-  },
-  emits: ['select'],
+const searchValue = ref('');
+const searchType = ref<'GITHUB' | 'NPM'>('NPM');
+const isNpmSearch = computed(() => searchType.value === 'NPM');
+const isError = ref(false);
+const isLoading = ref(false);
+const isFocused = ref(true);
+let dataPromise: null | Promise<void> = null;
 
-  setup(_props, { emit }) {
-    const searchValue = ref('');
-    const searchType = ref<'GITHUB' | 'NPM'>('NPM');
-    const isNpmSearch = computed(() => searchType.value === 'NPM');
-    const isError = ref(false);
-    const isLoading = ref(false);
-    const isFocused = ref(true);
-    let dataPromise: null | Promise<void> = null;
+onMounted(() => {
+  autocomplete<OptionT>({
+    input: document.getElementById('lib-search') as HTMLInputElement,
+    debounceWaitMs: 200,
 
-    onMounted(() => {
-      autocomplete<OptionT>({
-        input: document.getElementById('lib-search') as HTMLInputElement,
-        debounceWaitMs: 200,
+    fetch: (text: string, update: (items: SearchItemT[]) => void) => {
+      const q = text.trim();
+      let localPromise: Promise<void>;
 
-        fetch: (text: string, update: (items: SearchItemT[]) => void) => {
-          const q = text.trim();
-          let localPromise: Promise<void>;
+      if (q.length < 1) {
+        return;
+      }
 
-          if (q.length < 1) {
-            return;
+      isLoading.value = true;
+
+      localPromise = dataPromise = isNpmSearch.value
+        ? // NPM SEARCH
+          fetchNpmSearch(q).then((searchItems): void => {
+            isError.value = false;
+            update(
+              searchItems.map((searchItem) => ({
+                ...searchItem,
+                isNpm: true,
+              }))
+            );
+          })
+        : // GITHUB SEARCH
+          fetchGithubSearch(q).then((searchItems) => {
+            isError.value = false;
+            update(
+              searchItems.map(({ repoId, description, stars }) => ({
+                name: repoId,
+                description,
+                stars,
+                isNpm: false,
+              }))
+            );
+          });
+
+      localPromise
+        .catch(() => {
+          isError.value = true;
+        })
+        .finally(() => {
+          // We should remove loading indicator
+          // only after last call resolved
+          if (localPromise === dataPromise) {
+            isLoading.value = false;
           }
+        });
+    },
 
-          isLoading.value = true;
+    onSelect: (item: SearchItemT) => {
+      emit('select', item.name, item.isNpm);
+      searchValue.value = '';
+    },
 
-          localPromise = dataPromise = isNpmSearch.value
-            ? // NPM SEARCH
-              fetchNpmSearch(q).then((searchItems): void => {
-                isError.value = false;
-                update(
-                  searchItems.map((searchItem) => ({
-                    ...searchItem,
-                    isNpm: true,
-                  }))
-                );
-              })
-            : // GITHUB SEARCH
-              fetchGithubSearch(q).then((searchItems) => {
-                isError.value = false;
-                update(
-                  searchItems.map(({ repoId, description, stars }) => ({
-                    name: repoId,
-                    description,
-                    stars,
-                    isNpm: false,
-                  }))
-                );
-              });
+    className: 'ac',
 
-          localPromise
-            .catch(() => {
-              isError.value = true;
-            })
-            .finally(() => {
-              // We should remove loading indicator
-              // only after last call resolved
-              if (localPromise === dataPromise) {
-                isLoading.value = false;
-              }
-            });
-        },
+    render(item) {
+      const divWrapper = document.createElement('div');
 
-        onSelect: (item: SearchItemT) => {
-          emit('select', item.name, item.isNpm);
-          searchValue.value = '';
-        },
+      divWrapper.className = 'ac-option';
 
-        className: 'ac',
-
-        render(item) {
-          const divWrapper = document.createElement('div');
-
-          divWrapper.className = 'ac-option';
-
-          const stars = item.isNpm
-            ? ''
-            : `
+      const stars = item.isNpm
+        ? ''
+        : `
               <span>&#9733;${numbersFormatter.format(
                 item.stars as number
               )}</span>
           `;
 
-          const html = `
+      const html = `
           <div>
             <!-- Title -->
             <div class="text-black text-opacity-80 text-sm mb-0.5">
@@ -245,32 +238,22 @@ export default defineComponent({
           </div>
           `;
 
-          divWrapper.innerHTML = html;
+      divWrapper.innerHTML = html;
 
-          return divWrapper;
-        },
+      return divWrapper;
+    },
 
-        customize(input, inputRect, container, maxHeight) {
-          if (maxHeight > 400) {
-            container.style.maxHeight = '383px';
-          }
-        },
-        preventSubmit: true,
-        showOnFocus: true,
-      });
-    });
-
-    return {
-      inputRef: ref<HTMLInputElement>(null as unknown as HTMLInputElement),
-      searchType,
-      searchValue,
-      isNpmSearch,
-      isLoading,
-      isError,
-      isFocused,
-    };
-  },
+    customize(input, inputRect, container, maxHeight) {
+      if (maxHeight > 400) {
+        container.style.maxHeight = '383px';
+      }
+    },
+    preventSubmit: true,
+    showOnFocus: true,
+  });
 });
+
+const inputRef = ref<HTMLInputElement>(null as unknown as HTMLInputElement);
 </script>
 
 <style lang="postcss">
