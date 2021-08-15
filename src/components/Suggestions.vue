@@ -30,8 +30,8 @@ import { getSuggestions } from '@/utils';
 import { CatalogLibraryT } from '@/data/index';
 import { libraries } from '@/store/libraries';
 import SuggestionItem from './SuggestionItem.vue';
-import ChevronDownIcon from '@/components/icons/ChevronDown.vue';
-import ChevronUpIcon from '@/components/icons/ChevronUp.vue';
+import ChevronDownIcon from '@/components/icons/ChevronDownIcon.vue';
+import ChevronUpIcon from '@/components/icons/ChevronUpIcon.vue';
 
 // The Number of Suggestions shown in the "SHOW LESS" mode
 const size = 5;

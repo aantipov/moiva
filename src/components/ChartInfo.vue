@@ -12,8 +12,8 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import InfoIcon from '@/components/icons/Info.vue';
-import WarningIcon from '@/components/icons/Warning.vue';
+import InfoIcon from '@/components/icons/InfoIcon.vue';
+import WarningIcon from '@/components/icons/WarningIcon.vue';
 import tippy, { animateFill } from 'tippy.js';
 
 interface Props {

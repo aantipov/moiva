@@ -197,19 +197,19 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import TagIcon from '@/components/icons/Tag.vue';
-import SearchIcon from '@/components/icons/Search.vue';
-import WorkerIcon from '@/components/icons/Worker.vue';
-import OldIcon from '@/components/icons/Old.vue';
-import DocumentIcon from '@/components/icons/Document.vue';
-import TSIcon from '@/components/icons/TS.vue';
-import UserGroupIcon from '@/components/icons/UserGroup.vue';
-import CommitsIcon from '@/components/icons/Commits.vue';
-import TWIcon from '@/components/icons/Thoughtworks.vue';
-import CubeIcon from '@/components/icons/Cube.vue';
-import DependencyIcon from '@/components/icons/Dependency.vue';
-import ShieldIcon from '@/components/icons/Shield.vue';
-import BugIcon from '@/components/icons/Bug.vue';
+import TagIcon from '@/components/icons/TagIcon.vue';
+import SearchIcon from '@/components/icons/SearchIcon.vue';
+import WorkerIcon from '@/components/icons/WorkerIcon.vue';
+import OldIcon from '@/components/icons/OldIcon.vue';
+import DocumentIcon from '@/components/icons/DocumentIcon.vue';
+import TSIcon from '@/components/icons/TSIcon.vue';
+import UserGroupIcon from '@/components/icons/UserGroupIcon.vue';
+import CommitsIcon from '@/components/icons/CommitsIcon.vue';
+import TWIcon from '@/components/icons/ThoughtworksIcon.vue';
+import CubeIcon from '@/components/icons/CubeIcon.vue';
+import DependencyIcon from '@/components/icons/DependencyIcon.vue';
+import ShieldIcon from '@/components/icons/ShieldIcon.vue';
+import BugIcon from '@/components/icons/BugIcon.vue';
 import HeartBeatIcon from '@/icons/HeartBeatIcon.vue';
 import MetricChart from './MetricChart.vue';
 import { MetricT } from './Table.vue';

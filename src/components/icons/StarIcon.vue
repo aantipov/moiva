@@ -13,20 +13,13 @@
   </svg>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'StarIcon',
-
-  props: {
-    label: {
-      type: String,
-      required: false,
-      default: 'Star icon',
-    },
-  },
-});
+<script setup lang="ts">
+withDefaults(
+  defineProps<{
+    label?: string;
+  }>(),
+  {
+    label: 'Star icon',
+  }
+);
 </script>
-
-<style lang="postcss" scoped></style>

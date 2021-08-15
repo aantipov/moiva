@@ -15,20 +15,13 @@
   </svg>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'DownloadIcon',
-
-  props: {
-    label: {
-      type: String,
-      required: false,
-      default: 'Download icon',
-    },
-  },
-});
+<script setup lang="ts">
+withDefaults(
+  defineProps<{
+    label?: string;
+  }>(),
+  {
+    label: 'Download icon',
+  }
+);
 </script>
-
-<style lang="postcss" scoped></style>

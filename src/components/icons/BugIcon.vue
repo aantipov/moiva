@@ -17,19 +17,10 @@
   </svg>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue';
-
-export default defineComponent({
-  name: 'BugIcon',
-
-  props: {
-    label: {
-      type: String,
-      required: true,
-    },
-  },
-});
+<script setup lang="ts">
+defineProps<{
+  label: string;
+}>();
 </script>
 
 <style lang="postcss" scoped></style>

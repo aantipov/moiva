@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import Icon from '@/components/icons/Link.vue';
+import Icon from '@/components/icons/LinkIcon.vue';
 
 export default defineComponent({
   name: 'ExternalLink',
