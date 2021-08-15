@@ -19,33 +19,23 @@
   </span>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType, toRefs, computed } from 'vue';
+<script setup lang="ts">
+import { computed } from 'vue';
 import { LicenseT } from '@/getLibrary';
 
-export default defineComponent({
-  name: 'LicenseBadge',
+const props = defineProps<{
+  value: LicenseT;
+}>();
 
-  props: {
-    value: { type: Object as PropType<LicenseT>, required: true },
-  },
-
-  setup(props) {
-    const { value } = toRefs(props);
-
-    return {
-      classname: computed(() => {
-        const licenseKey = value.value.key;
-        if (licenseKey === 'mit') {
-          return 'permissive';
-        } else if (licenseKey === 'apache-2.0') {
-          return 'warning';
-        } else {
-          return 'unknown';
-        }
-      }),
-    };
-  },
+const classname = computed(() => {
+  const licenseKey = props.value.key;
+  if (licenseKey === 'mit') {
+    return 'permissive';
+  } else if (licenseKey === 'apache-2.0') {
+    return 'warning';
+  } else {
+    return 'unknown';
+  }
 });
 </script>
 
