@@ -58,6 +58,7 @@ export const tags = [
 
   // misc
   'ui-framework',
+  'react-hooks',
   'immutability',
   'templating',
   'GraphQL-client',

@@ -1905,14 +1905,6 @@
   },
   {
     "category": "misc",
-    "repoId": "streamich/react-use",
-    "npm": "react-use",
-    "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
     "repoId": "popmotion/popmotion",
     "npm": "popmotion",
     "isNpmCoreArtifact": true,
@@ -11977,6 +11969,14 @@
   },
   {
     "category": "React Component Libraries",
+    "repoId": "rsuite/rsuite",
+    "npm": "rsuite",
+    "isNpmCoreArtifact": true,
+    "alias": "React Suite",
+    "tags": ["component-library", "react"]
+  },
+  {
+    "category": "React Component Libraries",
     "repoId": "chakra-ui/chakra-ui",
     "npm": "@chakra-ui/react",
     "isNpmCoreArtifact": true,
@@ -12285,7 +12285,7 @@
     "npm": "recoil",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["state-management"]
+    "tags": ["state-management", "react"]
   },
   {
     "category": "JavaScript State Management Libraries",
@@ -12333,6 +12333,14 @@
     "npm": "jotai",
     "isNpmCoreArtifact": true,
     "alias": null,
+    "tags": ["state-management", "react"]
+  },
+  {
+    "category": "JavaScript State Management Libraries",
+    "repoId": "bluebill1049/little-state-machine",
+    "npm": "little-state-machine",
+    "isNpmCoreArtifact": true,
+    "alias": "Little State Machine",
     "tags": ["state-management", "react"]
   },
   {
@@ -12825,6 +12833,14 @@
   },
   {
     "category": "VueJS Component Libraries",
+    "repoId": "epicmaxco/vuestic-ui",
+    "npm": "vuestic-ui",
+    "isNpmCoreArtifact": true,
+    "alias": "Vuestic UI",
+    "tags": ["component-library", "vue", "material-design"]
+  },
+  {
+    "category": "VueJS Component Libraries",
     "repoId": "quasarframework/quasar",
     "npm": "quasar",
     "isNpmCoreArtifact": true,
@@ -12942,5 +12958,29 @@
     "isNpmCoreArtifact": true,
     "alias": "HTML5 Boilerplate",
     "tags": []
+  },
+  {
+    "category": "React hooks collections",
+    "repoId": "imbhargav5/rooks",
+    "npm": "rooks",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["react-hooks", "react"]
+  },
+  {
+    "category": "React hooks collections",
+    "repoId": "alibaba/hooks",
+    "npm": "ahooks",
+    "isNpmCoreArtifact": true,
+    "alias": "ahooks",
+    "tags": ["react-hooks", "react"]
+  },
+  {
+    "category": "React hooks collections",
+    "repoId": "streamich/react-use",
+    "npm": "react-use",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["react-hooks", "react"]
   }
 ]
