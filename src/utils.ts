@@ -2,6 +2,7 @@ import {
   catalogLibraries,
   CatalogLibraryT,
   frameworksTags,
+  genericTags,
 } from '@/data/index';
 import { LibraryReadonlyT, LibrariesReadonlyT } from '@/libraryApis';
 import { getYear, getMonth } from 'date-fns';
@@ -288,11 +289,12 @@ ${libC.alias}: &#9733;${libC.starsCount} stars, ${libC.age} old...
 
 interface SearchResultsItemT {
   tag: string;
-  result: number[];
+  result: number[]; // List of libs ids [100, 258, 264] - indexes in Libraries Catalog Index
 }
 interface SearchLibT {
   lib: CatalogLibraryT;
-  matchedTags: string[];
+  hasMatchedWorthyTags: boolean; // A flag denoting if a library has a "worthy" tag in common with the selected libraries
+  matchedTags: string[]; // A list of tags in common with the selected libraries (worthy and non-worthy)
   matchedTagsNumber: number; // we need it to sort found libraries
 }
 
@@ -315,13 +317,20 @@ export function getSuggestions(
   const tagsUsedNoFrameworks = tagsUsed.filter(
     (tag) => !frameworksTags.includes(tag)
   ) as string[];
+
+  const tagsUsedWorthy = tagsUsed.filter(
+    (tag) => !frameworksTags.includes(tag) && !genericTags.includes(tag)
+  ) as string[];
+
   const tagsUsedFrameworks = tagsUsed.filter((tag) =>
     frameworksTags.includes(tag)
   ) as string[];
 
+  // Search Libs Catalog Index for tags
   const tagsResults = index.search({
     tag: tagsUsedNoFrameworks,
   }) as SearchResultsItemT[];
+
   const keyToLibMap = new Map<number, SearchLibT>();
 
   tagsResults.forEach((tagResultItem) => {
@@ -331,11 +340,15 @@ export function getSuggestions(
       if (!keyToLibMap.get(libKey)) {
         keyToLibMap.set(libKey, {
           lib: catalogLibraries[libKey],
+          hasMatchedWorthyTags: tagsUsedWorthy.includes(tag),
           matchedTags: [],
           matchedTagsNumber: 0,
         });
       }
       const lib = keyToLibMap.get(libKey) as SearchLibT;
+      if (!lib.hasMatchedWorthyTags) {
+        lib.hasMatchedWorthyTags = tagsUsedWorthy.includes(tag);
+      }
       lib.matchedTags.push(tag);
       lib.matchedTagsNumber++;
     });
@@ -347,6 +360,8 @@ export function getSuggestions(
   const suggestedLibs: CatalogLibraryT[] = [...keyToLibMap.values()]
     // TODO: sort libs by more specific tags, e.g. browser-automation vs testing (e2e libs)
     // TODO: sort libs by stars rate
+    // Do not include libraries which don't have any worhy tags in common with the selected libraries
+    .filter((item) => item.hasMatchedWorthyTags)
     .sort((a, b) => b.matchedTagsNumber - a.matchedTagsNumber)
     .map((item) => item.lib)
     // filter out selected libraries

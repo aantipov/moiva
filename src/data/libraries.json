@@ -1600,12 +1600,36 @@
     "tags": []
   },
   {
-    "category": "misc",
+    "category": "Markdown parsers",
     "repoId": "markedjs/marked",
     "npm": "marked",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": []
+    "tags": ["markdown", "markdown-parser", "cli-tool"]
+  },
+  {
+    "category": "Markdown parsers",
+    "repoId": "jonschlinkert/remarkable",
+    "npm": "remarkable",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["markdown", "markdown-parser"]
+  },
+  {
+    "category": "Markdown parsers",
+    "repoId": "showdownjs/showdown",
+    "npm": "showdown",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["markdown", "markdown-parser", "cli-tool"]
+  },
+  {
+    "category": "Markdown parsers",
+    "repoId": "remarkjs/remark",
+    "npm": "remark-parse",
+    "isNpmCoreArtifact": false,
+    "alias": "remark-parse",
+    "tags": ["markdown", "markdown-parser"]
   },
   {
     "category": "misc",
@@ -2816,12 +2840,12 @@
     "tags": []
   },
   {
-    "category": "misc",
+    "category": "Markdown parsers",
     "repoId": "markdown-it/markdown-it",
     "npm": "markdown-it",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": []
+    "tags": ["markdown", "markdown-parser"]
   },
   {
     "category": "misc",
