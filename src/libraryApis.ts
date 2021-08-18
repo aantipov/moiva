@@ -157,8 +157,8 @@ function getRepoId(repository: RepT | null): string | null {
     return null;
   }
 
-  const endRepoUrlIndex =
-    (repository as RepT).url.slice(-4) === '.git' ? -4 : 400;
+  const dotGitIndex = (repository as RepT).url.indexOf('.git');
+  const endRepoUrlIndex = dotGitIndex !== -1 ? dotGitIndex : 400;
 
   const repoId = (repository as RepT).url.slice(
     (repository as RepT).url.indexOf('github.com') + 11,
