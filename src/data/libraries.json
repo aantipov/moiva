@@ -1617,6 +1617,14 @@
   },
   {
     "category": "Markdown parsers",
+    "repoId": "micromark/micromark",
+    "npm": "micromark",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["markdown", "markdown-parser"]
+  },
+  {
+    "category": "Markdown parsers",
     "repoId": "showdownjs/showdown",
     "npm": "showdown",
     "isNpmCoreArtifact": true,
