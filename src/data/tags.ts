@@ -9,8 +9,13 @@ export const frameworksTags = [
   'jQuery',
 ];
 
+// Too generic tags to be used in suggestions on their own (they always need to be accompanied with more specific tags)
+// TODO: create tests to ensure that libs always accompany these tags with other tags
+export const genericTags = ['markdown', 'cli-tool'];
+
 export const tags = [
   ...frameworksTags,
+  ...genericTags,
   // 3D libs
   '3D',
   'WebXR',
@@ -69,7 +74,6 @@ export const tags = [
   'web-components',
   'pwa',
   'nodejs-process-manager',
-  'cli-tool',
   'schema-validation',
   'orm',
   'tooltip',
@@ -89,12 +93,12 @@ export const tags = [
   'bootstrap',
   'web',
   'test-runner',
+  'markdown-parser',
 
   // static site generators
   'static-site-generator-SSD',
   'server-side-rendering-SSR',
   'documentation',
-  'markdown',
   'blog',
 
   // nodejs frameworks
