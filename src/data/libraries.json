@@ -10401,14 +10401,6 @@
   },
   {
     "category": "misc",
-    "repoId": "showdownjs/showdown",
-    "npm": "showdown",
-    "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
     "repoId": "java-decompiler/jd-gui",
     "npm": null,
     "isNpmCoreArtifact": null,
@@ -13014,5 +13006,37 @@
     "isNpmCoreArtifact": true,
     "alias": null,
     "tags": ["react-hooks", "react"]
+  },
+  {
+    "category": "Utilities to work with Numbers",
+    "repoId": "mikemcl/bignumber.js",
+    "npm": "bignumber.js",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["bigdecimal", "bignumber", "math"]
+  },
+  {
+    "category": "Utilities to work with Numbers",
+    "repoId": "mikemcl/big.js",
+    "npm": "big.js",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["bigdecimal", "bignumber", "math"]
+  },
+  {
+    "category": "Utilities to work with Numbers",
+    "repoId": "mikemcl/decimal.js",
+    "npm": "decimal.js",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["bigdecimal", "bignumber", "math"]
+  },
+  {
+    "category": "Utilities to work with Numbers",
+    "repoId": "indutny/bn.js",
+    "npm": "bn.js",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["bigdecimal", "bignumber", "math"]
   }
 ]
