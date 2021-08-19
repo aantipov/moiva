@@ -11985,6 +11985,14 @@
   },
   {
     "category": "React Component Libraries",
+    "repoId": "geist-org/react",
+    "npm": "@geist-ui/react",
+    "isNpmCoreArtifact": true,
+    "alias": "Geist UI",
+    "tags": ["component-library", "react"]
+  },
+  {
+    "category": "React Component Libraries",
     "repoId": "react-bootstrap/react-bootstrap",
     "npm": "react-bootstrap",
     "isNpmCoreArtifact": true,
