@@ -127,4 +127,9 @@ export const tags = [
   'desktop',
   'hybrid',
   'cordova',
+
+  // Numbers
+  'bigdecimal',
+  'bignumber',
+  'math',
 ];
