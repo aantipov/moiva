@@ -61,7 +61,7 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
   type: 'line',
   data: {
     datasets: filteredExtLibsRef.value.map((lib) => ({
-      label: lib.repo.repoName,
+      label: lib.repo.repoId,
       data: lib.aggrCommits.map(({ total, week }) => ({
         x: week,
         y: total,
