@@ -44,7 +44,7 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
   type: 'line',
   data: {
     datasets: filteredLibsRef.value.map((lib) => ({
-      label: lib.repo.repoName,
+      label: lib.repo.repoId,
       data: lib.contributors.map((item) => ({
         x: item.month as unknown as number,
         y: item.contributors,

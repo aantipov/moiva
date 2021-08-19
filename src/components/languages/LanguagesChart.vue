@@ -107,7 +107,7 @@ const langToColorMap = computed<Record<string, string>>(() =>
 const chartConfig = computed<ChartConfiguration<'bar'>>(() => ({
   type: 'bar',
   data: {
-    labels: filteredLibsRef.value.map((lib) => lib.repo.repoName),
+    labels: filteredLibsRef.value.map((lib) => lib.repo.repoId),
     datasets: (languagesNames.value || []).map((langName) => ({
       label: langName,
       data: filteredExtLibsRef.value.map(
