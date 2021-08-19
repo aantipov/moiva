@@ -10,7 +10,6 @@ export const frameworksTags = [
 ];
 
 // Too generic tags to be used in suggestions on their own (they always need to be accompanied with more specific tags)
-// TODO: create tests to ensure that libs always accompany these tags with other tags
 export const genericTags = ['markdown', 'cli-tool'];
 
 export const tags = [
@@ -63,6 +62,7 @@ export const tags = [
 
   // misc
   'ui-framework',
+  'document-head-manager',
   'react-hooks',
   'immutability',
   'templating',
