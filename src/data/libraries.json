@@ -12101,7 +12101,7 @@
     "npm": "react-helmet",
     "isNpmCoreArtifact": true,
     "alias": "React Helmet",
-    "tags": ["react"]
+    "tags": ["react", "document-head-manager"]
   },
   {
     "category": "ReactJS Document Head Managers",
@@ -12109,7 +12109,7 @@
     "npm": "react-helmet-async",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["react"]
+    "tags": ["react", "document-head-manager"]
   },
   {
     "category": "ReactJS Form Libraries",
