@@ -2913,14 +2913,6 @@
   },
   {
     "category": "misc",
-    "repoId": "josdejong/mathjs",
-    "npm": "mathjs",
-    "isNpmCoreArtifact": true,
-    "alias": "Math.js",
-    "tags": []
-  },
-  {
-    "category": "misc",
     "repoId": "wickynilliams/headroom.js",
     "npm": "headroom.js",
     "isNpmCoreArtifact": true,
@@ -11161,14 +11153,6 @@
   },
   {
     "category": "misc",
-    "repoId": "gabrielbull/react-desktop",
-    "npm": "react-desktop",
-    "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
     "repoId": "googlechromelabs/ndb",
     "npm": "ndb",
     "isNpmCoreArtifact": true,
@@ -11900,7 +11884,7 @@
     "repoId": "prisma/prisma",
     "npm": "@prisma/client",
     "isNpmCoreArtifact": true,
-    "alias": "Prisma",
+    "alias": "Prisma Client",
     "tags": ["orm"]
   },
   {
@@ -11982,6 +11966,14 @@
     "isNpmCoreArtifact": true,
     "alias": "Material-UI",
     "tags": ["component-library", "material-design", "react"]
+  },
+  {
+    "category": "React Component Libraries",
+    "repoId": "gabrielbull/react-desktop",
+    "npm": "react-desktop",
+    "isNpmCoreArtifact": true,
+    "alias": "React Desktop",
+    "tags": ["component-library", "react"]
   },
   {
     "category": "React Component Libraries",
@@ -13046,5 +13038,21 @@
     "isNpmCoreArtifact": true,
     "alias": null,
     "tags": ["bigdecimal", "bignumber", "math"]
+  },
+  {
+    "category": "Utilities to work with Numbers",
+    "repoId": "josdejong/mathjs",
+    "npm": "mathjs",
+    "isNpmCoreArtifact": true,
+    "alias": "Math.js",
+    "tags": ["bigdecimal", "bignumber", "math", "matrices", "complex-numbers"]
+  },
+  {
+    "category": "Tailwind CSS Components",
+    "repoId": "saadeghi/daisyui",
+    "npm": "daisyui",
+    "isNpmCoreArtifact": true,
+    "alias": "daisyUI",
+    "tags": ["tailwindcss-components", "css-framework"]
   }
 ]
