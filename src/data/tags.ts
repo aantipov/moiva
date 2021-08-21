@@ -94,6 +94,7 @@ export const tags = [
   'web',
   'test-runner',
   'markdown-parser',
+  'tailwindcss-components',
 
   // static site generators
   'static-site-generator-SSD',
@@ -132,4 +133,6 @@ export const tags = [
   'bigdecimal',
   'bignumber',
   'math',
+  'matrices',
+  'complex-numbers',
 ];
