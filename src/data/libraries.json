@@ -13048,6 +13048,30 @@
     "tags": ["bigdecimal", "bignumber", "math", "matrices", "complex-numbers"]
   },
   {
+    "category": "React Components to render Markdown",
+    "repoId": "remarkjs/react-markdown",
+    "npm": "react-markdown",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["markdown-to-react"]
+  },
+  {
+    "category": "React Components to render Markdown",
+    "repoId": "probablyup/markdown-to-jsx",
+    "npm": "markdown-to-jsx",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["markdown-to-react"]
+  },
+  {
+    "category": "React Components to render Markdown",
+    "repoId": "jerolimov/react-showdown",
+    "npm": "react-showdown",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["markdown-to-react"]
+  },
+  {
     "category": "Tailwind CSS Components",
     "repoId": "saadeghi/daisyui",
     "npm": "daisyui",
