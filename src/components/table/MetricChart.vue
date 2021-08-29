@@ -23,7 +23,7 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
 import tippy, { Instance, roundArrow } from 'tippy.js';
-import { MetricT } from './Table.vue';
+import { MetricT } from './TableConfig';
 import { ChartConfiguration } from 'chart.js';
 import { descend, ascend, sort, path, prop } from 'ramda';
 import {

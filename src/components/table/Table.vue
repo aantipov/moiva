@@ -40,7 +40,10 @@
                 :class="{ 'border-b': row.cat !== rows[rows.length - 1].cat }"
                 scope="row"
               >
-                <div class="w-6" :style="getCatMargin(row.cat)">
+                <div
+                  class="w-6"
+                  :style="{ marginTop: CAT_CONFIG[row.cat].marginTop }"
+                >
                   <div class="text-center transform -rotate-90">
                     {{ row.cat }}
                   </div>
@@ -59,7 +62,7 @@
                 :class="{
                   'border-b':
                     index < rows.length - 1 && row.cat !== rows[index + 1].cat,
-                  [row.classVal]: true,
+                  [CAT_CONFIG[row.cat].bgColor]: true,
                 }"
               >
                 <MetricHeader :type="row.metric" :row="row" />
@@ -87,7 +90,7 @@ import { computed } from 'vue';
 import MetricHeader from './MetricHeader.vue';
 import MetricValue from './MetricValue.vue';
 import { libraries, isLoading, removeLibrary } from '@/store/libraries';
-import { ROWS, NPM_METRICS, CategoryT } from './TableConfig';
+import { ROWS, NPM_METRICS, CAT_CONFIG, CategoryT } from './TableConfig';
 
 const rows = computed(() => {
   const hasNpm = libraries.some((lib) => !!lib.npmPackage);
@@ -112,19 +115,6 @@ const catsSpanMap = computed(() => {
     return acc;
   }, {} as Record<CategoryT, number>);
 });
-
-function getCatMargin(cat: CategoryT): { marginTop?: string } {
-  if (cat === 'Popularity') {
-    return { marginTop: '60px' };
-  }
-  if (cat === 'Maintenance') {
-    return { marginTop: '77px' };
-  }
-  if (cat === 'Miscellaneous') {
-    return { marginTop: '87px' };
-  }
-  return {};
-}
 </script>
 
 <style lang="postcss" scoped>
