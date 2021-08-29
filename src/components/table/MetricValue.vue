@@ -216,7 +216,7 @@ import {
   formatNumber,
   sanitizeHTML,
 } from '@/utils';
-import { MetricT } from './Table.vue';
+import { MetricT } from './TableConfig';
 import StatusBadge from '@/components/StatusBadge.vue';
 import TRadarBadge from '@/components/TRadarBadge.vue';
 import TypeBadge from '@/components/TypeBadge.vue';

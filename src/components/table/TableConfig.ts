@@ -49,6 +49,7 @@ export interface MetricDataT {
 
 export const ROWS: MetricDataT[] = [
   { metric: 'npm', cat: '', classVal: '', label: 'Npm' },
+
   {
     metric: 'repo',
     cat: '',
@@ -56,6 +57,7 @@ export const ROWS: MetricDataT[] = [
     label: 'GitHub',
     tooltip: 'GitHub repository',
   },
+
   {
     metric: 'status',
     cat: '',
@@ -64,7 +66,9 @@ export const ROWS: MetricDataT[] = [
     tooltip:
       '<p>Library status. Possible values:</p><p>- "Active"<br> - "Inactive" if no commits in the last 6 months<br> - "Legacy" if library authors called it so<br> - "Archived" if the repository is archived</p>',
   },
+
   { metric: 'tags', cat: '', classVal: '', label: 'Tags' },
+
   {
     metric: 'stars',
     cat: 'Popularity',
@@ -95,6 +99,7 @@ export const ROWS: MetricDataT[] = [
     tooltip:
       'An average Google search interest in relation to other libraries.',
   },
+
   {
     metric: 'devusage',
     cat: 'Popularity',
@@ -103,6 +108,7 @@ export const ROWS: MetricDataT[] = [
     tooltip:
       'Percentage of developers using the library according to the latest <a href="https://stateofjs.com/" target="_blank">StateOfJS 2020</a> survey',
   },
+
   {
     metric: 'releases',
     cat: 'Maintenance',
@@ -111,6 +117,7 @@ export const ROWS: MetricDataT[] = [
     labelSub: `in ${prevQuarter}`,
     tooltip: `Npm releases number in ${prevQuarter}`,
   },
+
   {
     metric: 'commits',
     cat: 'Maintenance',
@@ -119,6 +126,7 @@ export const ROWS: MetricDataT[] = [
     labelSub: `in ${prevQuarter}`,
     tooltip: `Repository commits number in ${prevQuarter}`,
   },
+
   {
     metric: 'contributors',
     cat: 'Maintenance',
@@ -127,6 +135,7 @@ export const ROWS: MetricDataT[] = [
     labelSub: `in ${prevQuarter}`,
     tooltip: `Contributors number in ${prevQuarter}`,
   },
+
   {
     metric: 'dependencies',
     cat: 'Miscellaneous',
@@ -134,6 +143,7 @@ export const ROWS: MetricDataT[] = [
     label: 'Dependencies',
     tooltip: 'Npm dependencies number',
   },
+
   {
     metric: 'bundlesize',
     cat: 'Miscellaneous',
@@ -142,6 +152,7 @@ export const ROWS: MetricDataT[] = [
     tooltip:
       'Bundle size of the npm package minified+gzipped. Data source: <a href="https://bundlephobia.com/" target="_blank">Bundlephobia.com</a>',
   },
+
   {
     metric: 'ts',
     cat: 'Miscellaneous',
@@ -150,6 +161,7 @@ export const ROWS: MetricDataT[] = [
     tooltip:
       '<p>TypeScript support.</p> <p>"BUNDLED" - typings are bundled together with the package.</p> <p>"SEPARATE" - typings are published to the @types organization on Npm</p>',
   },
+
   {
     metric: 'tradar',
     cat: 'Miscellaneous',
@@ -167,6 +179,7 @@ export const ROWS: MetricDataT[] = [
     tooltip:
       '<p>Security score of the Npm package.</p> <p><a href="https://snyk.io/" target="_blank">Snyk.io</a> calculates it based on the number of vulnerabilities and their severity.</p> "A" - no vulnerabilities, "F" - the least secure level.',
   },
+
   {
     metric: 'vulnerability',
     cat: 'Miscellaneous',
@@ -175,12 +188,14 @@ export const ROWS: MetricDataT[] = [
     tooltip:
       '<p>Vulnerabilities found in the repository.</p> <p>Data source: <a href="https://snyk.io/" target="_blank">Snyk.io</a></p>',
   },
+
   {
     metric: 'age',
     cat: 'Miscellaneous',
     classVal: 'bg-purple-100',
     label: 'Age',
   },
+
   {
     metric: 'license',
     cat: 'Miscellaneous',
