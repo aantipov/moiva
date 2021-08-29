@@ -11,7 +11,7 @@
     >
       <NpmIcon
         v-if="type === 'npm'"
-        v-tooltip.html="row.tooltip"
+        v-tooltip.html="row.tooltip || row.label"
         class="w-8 sm:hidden block"
         :label="row.label"
       />
@@ -120,7 +120,7 @@
 
       <OldIcon
         v-else-if="type === 'age'"
-        v-tooltip="row.tooltip"
+        v-tooltip="row.tooltip || row.label"
         class="w-8 sm:hidden block"
         :label="row.label"
       />
@@ -129,7 +129,7 @@
         v-else-if="type === 'license'"
         v-tooltip="row.tooltip"
         class="w-8 sm:hidden block"
-        :label="row.label"
+        :label="row.label || row.label"
       />
 
       <div v-tooltip.html="row.tooltip || row.label" class="text-left label">
