@@ -62,7 +62,7 @@
                   [row.classVal]: true,
                 }"
               >
-                <MetricHeader :type="row.metric" />
+                <MetricHeader :type="row.metric" :row="row" />
               </th>
 
               <!-- Libs values -->
@@ -87,64 +87,7 @@ import { computed } from 'vue';
 import MetricHeader from './MetricHeader.vue';
 import MetricValue from './MetricValue.vue';
 import { libraries, isLoading, removeLibrary } from '@/store/libraries';
-
-const METRICS = [
-  'npm',
-  'repo',
-  'status',
-  'tags',
-  'stars',
-  'downloads',
-  'searchInterest',
-  'devusage',
-  'releases',
-  'commits',
-  'contributors',
-  'dependencies',
-  'bundlesize',
-  'ts',
-  'tradar',
-  'security',
-  'vulnerability',
-  'age',
-  'license',
-] as const;
-
-// Metrics which are removed if there are no npm packages
-const NPM_METRICS = [
-  'npm',
-  'downloads',
-  'releases',
-  'dependencies',
-  'bundlesize',
-  'ts',
-  'security',
-];
-
-export type MetricT = typeof METRICS[number];
-type CategoryT = '' | 'Popularity' | 'Maintenance' | 'Miscellaneous';
-
-const ROWS: { metric: MetricT; cat: CategoryT; classVal: string }[] = [
-  { metric: 'npm', cat: '', classVal: '' },
-  { metric: 'repo', cat: '', classVal: '' },
-  { metric: 'status', cat: '', classVal: '' },
-  { metric: 'tags', cat: '', classVal: '' },
-  { metric: 'stars', cat: 'Popularity', classVal: 'bg-green-100' },
-  { metric: 'downloads', cat: 'Popularity', classVal: 'bg-green-100' },
-  { metric: 'searchInterest', cat: 'Popularity', classVal: 'bg-green-100' },
-  { metric: 'devusage', cat: 'Popularity', classVal: 'bg-green-100' },
-  { metric: 'releases', cat: 'Maintenance', classVal: 'bg-yellow-100' },
-  { metric: 'commits', cat: 'Maintenance', classVal: 'bg-yellow-100' },
-  { metric: 'contributors', cat: 'Maintenance', classVal: 'bg-yellow-100' },
-  { metric: 'dependencies', cat: 'Miscellaneous', classVal: 'bg-purple-100' },
-  { metric: 'bundlesize', cat: 'Miscellaneous', classVal: 'bg-purple-100' },
-  { metric: 'ts', cat: 'Miscellaneous', classVal: 'bg-purple-100' },
-  { metric: 'tradar', cat: 'Miscellaneous', classVal: 'bg-purple-100' },
-  { metric: 'security', cat: 'Miscellaneous', classVal: 'bg-purple-100' },
-  { metric: 'vulnerability', cat: 'Miscellaneous', classVal: 'bg-purple-100' },
-  { metric: 'age', cat: 'Miscellaneous', classVal: 'bg-purple-100' },
-  { metric: 'license', cat: 'Miscellaneous', classVal: 'bg-purple-100' },
-];
+import { ROWS, NPM_METRICS, CategoryT } from './TableConfig';
 
 const rows = computed(() => {
   const hasNpm = libraries.some((lib) => !!lib.npmPackage);

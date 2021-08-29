@@ -9,186 +9,142 @@
         whitespace-nowrap
       "
     >
-      <template v-if="type === 'npm'">
-        <div class="ml-2 sm:ml-1">Npm</div>
-      </template>
+      <NpmIcon
+        v-if="type === 'npm'"
+        v-tooltip.html="row.tooltip"
+        class="w-8 sm:hidden block"
+        :label="row.label"
+      />
 
-      <template v-if="type === 'repo'">
-        <m-github-icon
-          v-tooltip.html="github"
-          class="w-8 sm:hidden block"
-          label="GitHub repository"
-        />
-        <div v-tooltip.html="github" class="label">GitHub</div>
-      </template>
+      <m-github-icon
+        v-if="type === 'repo'"
+        v-tooltip.html="row.tooltip"
+        class="w-8 sm:hidden block"
+        :label="row.label"
+      />
 
-      <template v-if="type === 'status'">
-        <HeartBeatIcon
-          v-tooltip.html="status"
-          class="w-8 sm:hidden block"
-          label="An icon denoting a status of a library"
-        />
-        <div v-tooltip.html="status" class="label">Status</div>
-      </template>
+      <HeartBeatIcon
+        v-if="type === 'status'"
+        v-tooltip.html="row.tooltip"
+        class="w-8 sm:hidden block"
+        :label="row.label"
+      />
 
-      <template v-if="type === 'tags'"> </template>
+      <m-star-icon
+        v-if="type === 'stars'"
+        v-tooltip="row.tooltip"
+        class="w-8 sm:hidden block"
+        :label="row.label"
+      />
 
-      <template v-if="type === 'stars'">
-        <m-star-icon
-          v-tooltip="stars"
-          class="w-8 sm:hidden block"
-          :label="stars"
-        />
-        <div v-tooltip="stars" class="text-left label">
-          <div>
-            Stars
-            <span class="text-sm font-normal opacity-80">in total</span>
-          </div>
-          <div class="text-sm font-normal opacity-80">and monthly growth</div>
+      <m-download-icon
+        v-else-if="type === 'downloads'"
+        v-tooltip="row.tooltip"
+        class="w-8 sm:hidden block"
+        :label="row.label"
+      />
+
+      <SearchIcon
+        v-else-if="type === 'searchInterest'"
+        v-tooltip="row.tooltip"
+        class="w-8 sm:hidden block"
+        :label="row.label"
+      />
+
+      <UserGroupIcon
+        v-else-if="type === 'devusage'"
+        v-tooltip.html="row.tooltip"
+        class="w-8 sm:hidden block"
+        :label="row.label"
+      />
+
+      <TWIcon
+        v-else-if="type === 'tradar'"
+        v-tooltip.html="row.tooltip"
+        class="w-8 h-3 sm:hidden block"
+        :label="row.label"
+      />
+
+      <TagIcon
+        v-else-if="type === 'releases'"
+        v-tooltip="row.tooltip"
+        class="w-8 sm:hidden block"
+        :label="row.label"
+      />
+
+      <CommitsIcon
+        v-else-if="type === 'commits'"
+        v-tooltip="row.tooltip"
+        class="flex-shrink-0 w-8 sm:hidden block"
+        :label="row.label"
+      />
+
+      <WorkerIcon
+        v-else-if="type === 'contributors'"
+        v-tooltip="row.tooltip"
+        class="flex-shrink-0 w-8 sm:hidden block"
+        :label="row.label"
+      />
+
+      <DependencyIcon
+        v-else-if="type === 'dependencies'"
+        v-tooltip="row.tooltip"
+        class="w-8 sm:hidden block"
+        :label="row.label"
+      />
+
+      <div v-else-if="type === 'ts'" class="flex justify-center w-8 sm:hidden">
+        <TSIcon v-tooltip.html="row.tooltip" :label="row.label" />
+      </div>
+
+      <CubeIcon
+        v-else-if="type === 'bundlesize'"
+        v-tooltip.html="row.tooltip"
+        class="w-8 sm:hidden block"
+        :label="row.label"
+      />
+
+      <ShieldIcon
+        v-else-if="type === 'security'"
+        v-tooltip.html="row.tooltip"
+        class="w-8 sm:hidden block"
+        :label="row.label"
+      />
+
+      <BugIcon
+        v-else-if="type === 'vulnerability'"
+        v-tooltip.html="row.tooltip"
+        class="w-8 sm:hidden block"
+        :label="row.label"
+      />
+
+      <OldIcon
+        v-else-if="type === 'age'"
+        v-tooltip="row.tooltip"
+        class="w-8 sm:hidden block"
+        :label="row.label"
+      />
+
+      <DocumentIcon
+        v-else-if="type === 'license'"
+        v-tooltip="row.tooltip"
+        class="w-8 sm:hidden block"
+        :label="row.label"
+      />
+
+      <div v-tooltip.html="row.tooltip || row.label" class="text-left label">
+        <div>
+          {{ row.label }}
+
+          <span v-if="row.labelSub" class="text-sm font-normal opacity-80">{{
+            row.labelSub
+          }}</span>
         </div>
-      </template>
 
-      <template v-else-if="type === 'downloads'">
-        <m-download-icon
-          v-tooltip="npmDownloads"
-          class="w-8 sm:hidden block"
-          :label="npmDownloads"
-        />
-        <div v-tooltip="npmDownloads" class="text-left label">
-          <div>
-            Npm Downloads
-            <span class="text-sm font-normal opacity-80">monthly</span>
-          </div>
-          <div class="text-sm font-normal opacity-80">and monthly growth</div>
+        <div v-if="row.labelMore" class="text-sm font-normal opacity-80">
+          {{ row.labelMore }}
         </div>
-      </template>
-
-      <template v-else-if="type === 'searchInterest'">
-        <SearchIcon
-          v-tooltip="searchInfo"
-          class="w-8 sm:hidden block"
-          :label="searchInfo"
-        />
-        <div v-tooltip="searchInfo" class="label">Search Interest, %</div>
-      </template>
-
-      <template v-else-if="type === 'devusage'">
-        <UserGroupIcon
-          v-tooltip.html="devUsageInfo"
-          class="w-8 sm:hidden block"
-          label="An icon denoting percentage of developers using a library"
-        />
-        <div v-tooltip.html="devUsageInfo" class="label">
-          Developer Usage, %
-        </div>
-      </template>
-
-      <template v-else-if="type === 'tradar'">
-        <TWIcon
-          v-tooltip.html="tradarTooltip"
-          class="w-8 h-3 sm:hidden block"
-          label="An icon denoting Thoughtworks techradar ring assigned to a library"
-        />
-        <div v-tooltip.html="tradarTooltip" class="label">Tech Radar</div>
-      </template>
-
-      <template v-else-if="type === 'releases'">
-        <TagIcon
-          v-tooltip="npmReleasesTooltip"
-          class="w-8 sm:hidden block"
-          :label="npmReleasesTooltip"
-        />
-        <div v-tooltip="npmReleasesTooltip" class="label whitespace-nowrap">
-          Npm releases
-          <span class="text-sm font-normal opacity-80">in {{ quarter }}</span>
-        </div>
-      </template>
-
-      <template v-else-if="type === 'commits'">
-        <CommitsIcon
-          v-tooltip="commitsTooltip"
-          class="flex-shrink-0 w-8 sm:hidden block"
-          :label="commitsTooltip"
-        />
-        <div v-tooltip="commitsTooltip" class="label">
-          Commits
-          <span class="text-sm font-normal opacity-80">in {{ quarter }}</span>
-        </div>
-      </template>
-
-      <template v-else-if="type === 'contributors'">
-        <WorkerIcon
-          v-tooltip="contributorsTooltip"
-          class="flex-shrink-0 w-8 sm:hidden block"
-          :label="contributorsTooltip"
-        />
-        <div v-tooltip="contributorsTooltip" class="label whitespace-nowrap">
-          Contributors
-          <span class="text-sm font-normal opacity-80">in {{ quarter }}</span>
-        </div>
-      </template>
-
-      <template v-else-if="type === 'dependencies'">
-        <DependencyIcon
-          v-tooltip="'Npm dependencies number'"
-          class="w-8 sm:hidden block"
-          label="Npm dependencies number"
-        />
-        <div v-tooltip="'Npm dependencies number'" class="label">
-          Dependencies
-        </div>
-      </template>
-
-      <template v-else-if="type === 'ts'">
-        <div class="flex justify-center w-8 sm:hidden">
-          <TSIcon
-            v-tooltip.html="tsTooltip"
-            label="An icon denoting TypeScript support"
-          />
-        </div>
-        <div v-tooltip.html="tsTooltip" class="label">Types</div>
-      </template>
-
-      <template v-else-if="type === 'bundlesize'">
-        <CubeIcon
-          v-tooltip.html="bundlesize"
-          class="w-8 sm:hidden block"
-          label="An icon denoting bundle size of an npm package"
-        />
-        <div v-tooltip.html="bundlesize" class="label">Bundle Size</div>
-      </template>
-
-      <template v-else-if="type === 'security'">
-        <ShieldIcon
-          v-tooltip.html="secScore"
-          class="w-8 sm:hidden block"
-          label="An icon denoting Security Score of an Npm package"
-        />
-        <div v-tooltip.html="secScore" class="label">Security score</div>
-      </template>
-
-      <template v-else-if="type === 'vulnerability'">
-        <BugIcon
-          v-tooltip.html="vulnInfo"
-          class="w-8 sm:hidden block"
-          label="An icon denoting vulnerabilities number of an Npm package"
-        />
-        <div v-tooltip.html="vulnInfo" class="label">Vulnerabilities</div>
-      </template>
-
-      <template v-else-if="type === 'age'">
-        <OldIcon v-tooltip="'Age'" class="w-8 sm:hidden block" label="Age" />
-        <div v-tooltip="'Age'" class="label">Age</div>
-      </template>
-
-      <template v-else-if="type === 'license'">
-        <DocumentIcon
-          v-tooltip="'License'"
-          class="w-8 sm:hidden block"
-          label="License"
-        />
-        <div v-tooltip="'License'" class="label">License</div>
-      </template>
+      </div>
     </div>
 
     <MetricChart v-if="hasChart" :type="type" />
@@ -210,40 +166,16 @@ import CubeIcon from '@/components/icons/CubeIcon.vue';
 import DependencyIcon from '@/components/icons/DependencyIcon.vue';
 import ShieldIcon from '@/components/icons/ShieldIcon.vue';
 import BugIcon from '@/components/icons/BugIcon.vue';
+import NpmIcon from '@/icons/NpmIcon.vue';
 import HeartBeatIcon from '@/icons/HeartBeatIcon.vue';
 import MetricChart from './MetricChart.vue';
-import { MetricT } from './Table.vue';
-import { prevQuarter } from '@/utils';
+import { MetricT, MetricDataT } from './TableConfig';
 
 const props = defineProps<{
   type: MetricT;
+  row: MetricDataT;
 }>();
 
-const quarter = prevQuarter;
-const github = 'GitHub repository';
-const status =
-  '<p>Library status. Possible values:</p><p>- "Active"<br> - "Inactive" if no commits in the last 6 months<br> - "Legacy" if library authors called it so<br> - "Archived" if the repository is archived</p>';
-const stars =
-  'The total number of GitHub stars and the average number of new stars per month over the last 3 months';
-const npmDownloads =
-  'The average number of Npm downloads per month over the last 3 months. The average monthly Npm downloads growth over the last 6 months';
-const tsTooltip =
-  '<p>TypeScript support.</p> <p>"BUNDLED" - typings are bundled together with the package.</p> <p>"SEPARATE" - typings are published to the @types organization on Npm</p>';
-const secScore =
-  '<p>Security score of the Npm package.</p> <p><a href="https://snyk.io/" target="_blank">Snyk.io</a> calculates it based on the number of vulnerabilities and their severity.</p> "A" - no vulnerabilities, "F" - the least secure level.';
-const vulnInfo =
-  '<p>Vulnerabilities found in the repository.</p> <p>Data source: <a href="https://snyk.io/" target="_blank">Snyk.io</a></p>';
-const contributorsTooltip = `Contributors number in ${prevQuarter}`;
-const npmReleasesTooltip = `Npm releases number in ${prevQuarter}`;
-const commitsTooltip = `Repository commits number in ${prevQuarter}`;
-const tradarTooltip =
-  '<p>A ThoughtWorks tech radar “ring” assigned to the library.</p> <p>Four possible rings - “Adopt”, “Trial”, “Assess”, and “Hold”.</p>';
-const searchInfo =
-  'An average Google search interest in relation to other libraries.';
-const devUsageInfo =
-  'Percentage of developers using the library according to the latest <a href="https://stateofjs.com/" target="_blank">StateOfJS 2020</a> survey';
-const bundlesize =
-  'Bundle size of the npm package minified+gzipped. Data source: <a href="https://bundlephobia.com/" target="_blank">Bundlephobia.com</a>';
 const hasChart = computed(() => {
   return [
     'stars',
