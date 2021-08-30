@@ -124,7 +124,7 @@ import autocomplete, { AutocompleteItem } from 'autocompleter';
 import { numbersFormatter, sanitizeHTML } from '@/utils';
 import 'autocompleter/autocomplete.css';
 import { fetchNpmSearch, fetchGithubSearch } from './search-api';
-import ChevronDownIcon from '@/components/icons/ChevronDownIcon.vue';
+import ChevronDownIcon from '@/icons/ChevronDownIcon.vue';
 
 interface SearchItemT {
   isNpm: boolean;
