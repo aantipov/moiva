@@ -41,32 +41,16 @@
     </div>
 
     <!-- Chart Icon -->
-    <MetricChart v-if="hasChart" :type="type" />
+    <MetricChart v-if="row.chart" :metric-data="row" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
 import MetricChart from './MetricChart.vue';
 import { MetricT, MetricDataT } from './TableConfig';
 
-const props = defineProps<{
+defineProps<{
   type: MetricT;
   row: MetricDataT;
 }>();
-
-const hasChart = computed(() => {
-  return [
-    'stars',
-    'downloads',
-    'searchInterest',
-    'devusage',
-    'releases',
-    'commits',
-    'contributors',
-    'dependencies',
-    'bundlesize',
-    'age',
-  ].includes(props.type);
-});
 </script>
