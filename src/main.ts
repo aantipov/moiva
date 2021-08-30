@@ -19,6 +19,20 @@ import NpmIcon from '@/icons/NpmIcon.vue';
 import ChartIcon from '@/icons/ChartIcon.vue';
 import GithubIcon from '@/icons/GithubIcon.vue';
 import DownloadIcon from '@/components/icons/DownloadIcon.vue';
+import TagIcon from '@/components/icons/TagIcon.vue';
+import SearchIcon from '@/components/icons/SearchIcon.vue';
+import WorkerIcon from '@/components/icons/WorkerIcon.vue';
+import OldIcon from '@/components/icons/OldIcon.vue';
+import DocumentIcon from '@/components/icons/DocumentIcon.vue';
+import TSIcon from '@/components/icons/TSIcon.vue';
+import UserGroupIcon from '@/components/icons/UserGroupIcon.vue';
+import CommitsIcon from '@/components/icons/CommitsIcon.vue';
+import TWIcon from '@/components/icons/ThoughtworksIcon.vue';
+import CubeIcon from '@/components/icons/CubeIcon.vue';
+import DependencyIcon from '@/components/icons/DependencyIcon.vue';
+import ShieldIcon from '@/components/icons/ShieldIcon.vue';
+import BugIcon from '@/components/icons/BugIcon.vue';
+import HeartBeatIcon from '@/icons/HeartBeatIcon.vue';
 import Tag from '@/components/Tag.vue';
 import ChartInfo from '@/components/ChartInfo.vue';
 import ChartMenu from '@/components/ChartMenu.vue';
@@ -49,21 +63,43 @@ if (process.env.NODE_ENV !== 'development') {
   });
 }
 
-app.component('MClose', Close);
-app.component('MTag', Tag);
-app.component('MDotsIcon', DotsIcon);
-app.component('MStarIcon', StarIcon);
-app.component('MNpmIcon', NpmIcon);
-app.component('MChartIcon', ChartIcon);
-app.component('MGithubIcon', GithubIcon);
-app.component('MDownloadIcon', DownloadIcon);
-app.component('MChartInfo', ChartInfo);
-app.component('MLoaderTailSpin', LoaderTailSpin);
-app.component('MLoader', Loader);
-app.component('MLoaderNew', LoaderNew);
-app.component('MExtLink', ExternalLink);
-app.component('MChart', ChartPresentation);
-app.component('MChartMenu', ChartMenu);
+// Table metrics icons
+app
+  .component('MRepoIcon', GithubIcon)
+  .component('MStatusIcon', HeartBeatIcon)
+  .component('MStarsIcon', StarIcon)
+  .component('MDownloadsIcon', DownloadIcon)
+  .component('MSearchIcon', SearchIcon)
+  .component('MDevusageIcon', UserGroupIcon)
+  .component('MTradarIcon', TWIcon)
+  .component('MReleasesIcon', TagIcon)
+  .component('MCommitsIcon', CommitsIcon)
+  .component('MContributorsIcon', WorkerIcon)
+  .component('MDependenciesIcon', DependencyIcon)
+  .component('MLicenseIcon', DocumentIcon)
+  .component('MAgeIcon', OldIcon)
+  .component('MVulnerabilityIcon', BugIcon)
+  .component('MSecurityIcon', ShieldIcon)
+  .component('MBundlesizeIcon', CubeIcon)
+  .component('MTsIcon', TSIcon);
+
+app
+  .component('MClose', Close)
+  .component('MTag', Tag)
+  .component('MDotsIcon', DotsIcon)
+  .component('MStarIcon', StarIcon)
+  .component('MNpmIcon', NpmIcon)
+  .component('MChartIcon', ChartIcon)
+  .component('MGithubIcon', GithubIcon)
+  .component('MDownloadIcon', DownloadIcon)
+  .component('MChartInfo', ChartInfo)
+  .component('MLoaderTailSpin', LoaderTailSpin)
+  .component('MLoader', Loader)
+  .component('MLoaderNew', LoaderNew)
+  .component('MExtLink', ExternalLink)
+  .component('MChart', ChartPresentation)
+  .component('MChartMenu', ChartMenu);
+
 app.directive('tooltip', {
   mounted(el, binding) {
     tippy(el as HTMLElement, {
