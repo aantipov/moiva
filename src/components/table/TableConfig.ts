@@ -56,15 +56,16 @@ export interface MetricDataT {
   labelSub?: string;
   labelMore?: string;
   tooltip?: string;
+  icon?: string;
 }
 
 export const ROWS: MetricDataT[] = [
-  { metric: 'npm', cat: '', label: 'Npm' },
-  { metric: 'repo', cat: '', label: 'GitHub', tooltip: 'GitHub repository' },
+  { cat: '', metric: 'npm', label: 'Npm' },
+  { cat: '', metric: 'repo', label: 'GitHub', tooltip: 'GitHub repository' },
 
   {
-    metric: 'status',
     cat: '',
+    metric: 'status',
     label: 'Status',
     tooltip:
       '<p>Library status. Possible values:</p><p>- "Active"<br> - "Inactive" if no commits in the last 6 months<br> - "Legacy" if library authors called it so<br> - "Archived" if the repository is archived</p>',
@@ -73,8 +74,8 @@ export const ROWS: MetricDataT[] = [
   { metric: 'tags', cat: '', label: 'Tags' },
 
   {
-    metric: 'stars',
     cat: 'Popularity',
+    metric: 'stars',
     label: 'Stars',
     labelSub: 'in total',
     labelMore: 'and monthly growth',
@@ -83,8 +84,8 @@ export const ROWS: MetricDataT[] = [
   },
 
   {
-    metric: 'downloads',
     cat: 'Popularity',
+    metric: 'downloads',
     label: 'Npm Downloads',
     labelSub: 'monthly',
     labelMore: 'and monthly growth',
@@ -93,92 +94,93 @@ export const ROWS: MetricDataT[] = [
   },
 
   {
-    metric: 'searchInterest',
     cat: 'Popularity',
+    metric: 'searchInterest',
     label: 'Search Interest, %',
     tooltip:
       'An average Google search interest in relation to other libraries.',
+    icon: 'm-search-icon',
   },
 
   {
-    metric: 'devusage',
     cat: 'Popularity',
+    metric: 'devusage',
     label: 'Developer Usage, %',
     tooltip:
       'Percentage of developers using the library according to the latest <a href="https://stateofjs.com/" target="_blank">StateOfJS 2020</a> survey',
   },
 
   {
-    metric: 'releases',
     cat: 'Maintenance',
+    metric: 'releases',
     label: 'Npm releases',
     labelSub: `in ${prevQuarter}`,
     tooltip: `Npm releases number in ${prevQuarter}`,
   },
 
   {
-    metric: 'commits',
     cat: 'Maintenance',
+    metric: 'commits',
     label: 'Commits',
     labelSub: `in ${prevQuarter}`,
     tooltip: `Repository commits number in ${prevQuarter}`,
   },
 
   {
-    metric: 'contributors',
     cat: 'Maintenance',
+    metric: 'contributors',
     label: 'Contributors',
     labelSub: `in ${prevQuarter}`,
     tooltip: `Contributors number in ${prevQuarter}`,
   },
 
   {
-    metric: 'dependencies',
     cat: 'Miscellaneous',
+    metric: 'dependencies',
     label: 'Dependencies',
     tooltip: 'Npm dependencies number',
   },
 
   {
-    metric: 'bundlesize',
     cat: 'Miscellaneous',
+    metric: 'bundlesize',
     label: 'Bundle size',
     tooltip:
       'Bundle size of the npm package minified+gzipped. Data source: <a href="https://bundlephobia.com/" target="_blank">Bundlephobia.com</a>',
   },
 
   {
-    metric: 'ts',
     cat: 'Miscellaneous',
+    metric: 'ts',
     label: 'Types',
     tooltip:
       '<p>TypeScript support.</p> <p>"BUNDLED" - typings are bundled together with the package.</p> <p>"SEPARATE" - typings are published to the @types organization on Npm</p>',
   },
 
   {
-    metric: 'tradar',
     cat: 'Miscellaneous',
+    metric: 'tradar',
     label: 'Tech Radar',
     tooltip:
       '<p>A ThoughtWorks tech radar “ring” assigned to the library.</p> <p>Four possible rings - “Adopt”, “Trial”, “Assess”, and “Hold”.</p>',
   },
 
   {
-    metric: 'security',
     cat: 'Miscellaneous',
+    metric: 'security',
     label: 'Security score',
     tooltip:
       '<p>Security score of the Npm package.</p> <p><a href="https://snyk.io/" target="_blank">Snyk.io</a> calculates it based on the number of vulnerabilities and their severity.</p> "A" - no vulnerabilities, "F" - the least secure level.',
   },
 
   {
-    metric: 'vulnerability',
     cat: 'Miscellaneous',
+    metric: 'vulnerability',
     label: 'Vulnerabilities',
     tooltip:
       '<p>Vulnerabilities found in the repository.</p> <p>Data source: <a href="https://snyk.io/" target="_blank">Snyk.io</a></p>',
   },
 
-  { metric: 'age', cat: 'Miscellaneous', label: 'Age' },
-  { metric: 'license', cat: 'Miscellaneous', label: 'License' },
+  { cat: 'Miscellaneous', metric: 'age', label: 'Age' },
+  { cat: 'Miscellaneous', metric: 'license', label: 'License' },
 ];
