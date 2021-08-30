@@ -1,4 +1,5 @@
 import { prevQuarter } from '@/utils';
+import { ascend } from 'ramda';
 
 const METRICS = [
   'npm',
@@ -49,6 +50,13 @@ export const CAT_CONFIG: Record<CategoryT, CategoryConfigT> = {
   Miscellaneous: { bgColor: 'bg-purple-100', marginTop: '87px' },
 };
 
+export interface MetricDataChartT {
+  title: string;
+  path: string;
+  percent?: boolean;
+  sortDirFn?: (arg: any) => any;
+}
+
 export interface MetricDataT {
   metric: MetricT;
   cat: CategoryT;
@@ -57,6 +65,7 @@ export interface MetricDataT {
   labelMore?: string;
   tooltip?: string;
   icon?: string;
+  chart?: MetricDataChartT;
 }
 
 export const ROWS: MetricDataT[] = [
@@ -81,6 +90,10 @@ export const ROWS: MetricDataT[] = [
     labelMore: 'and monthly growth',
     tooltip:
       'The total number of GitHub stars and the average number of new stars per month over the last 3 months',
+    chart: {
+      title: 'GitHub Stars',
+      path: 'repo.stars',
+    },
   },
 
   {
@@ -91,6 +104,10 @@ export const ROWS: MetricDataT[] = [
     labelMore: 'and monthly growth',
     tooltip:
       'The average number of Npm downloads per month over the last 3 months. The average monthly Npm downloads growth over the last 6 months',
+    chart: {
+      title: 'Npm Downloads, monthly',
+      path: 'npmDownloadsAvg',
+    },
   },
 
   {
@@ -100,6 +117,11 @@ export const ROWS: MetricDataT[] = [
     tooltip:
       'An average Google search interest in relation to other libraries.',
     icon: 'm-search-icon',
+    chart: {
+      title: 'Search Interest, %',
+      path: 'googleTrends.average',
+      percent: true,
+    },
   },
 
   {
@@ -108,6 +130,11 @@ export const ROWS: MetricDataT[] = [
     label: 'Developer Usage, %',
     tooltip:
       'Percentage of developers using the library according to the latest <a href="https://stateofjs.com/" target="_blank">StateOfJS 2020</a> survey',
+    chart: {
+      title: 'Developer Usage, %',
+      path: 'devUsageLast',
+      percent: true,
+    },
   },
 
   {
@@ -116,6 +143,10 @@ export const ROWS: MetricDataT[] = [
     label: 'Npm releases',
     labelSub: `in ${prevQuarter}`,
     tooltip: `Npm releases number in ${prevQuarter}`,
+    chart: {
+      title: `Npm Releases in ${prevQuarter}`,
+      path: 'npmReleasesLastQ',
+    },
   },
 
   {
@@ -124,6 +155,10 @@ export const ROWS: MetricDataT[] = [
     label: 'Commits',
     labelSub: `in ${prevQuarter}`,
     tooltip: `Repository commits number in ${prevQuarter}`,
+    chart: {
+      title: `Commits in ${prevQuarter}`,
+      path: 'commitsLastQ',
+    },
   },
 
   {
@@ -132,6 +167,10 @@ export const ROWS: MetricDataT[] = [
     label: 'Contributors',
     labelSub: `in ${prevQuarter}`,
     tooltip: `Contributors number in ${prevQuarter}`,
+    chart: {
+      title: `Contributors in ${prevQuarter}`,
+      path: 'contributorsLastQ',
+    },
   },
 
   {
@@ -139,6 +178,11 @@ export const ROWS: MetricDataT[] = [
     metric: 'dependencies',
     label: 'Dependencies',
     tooltip: 'Npm dependencies number',
+    chart: {
+      title: 'Npm Dependencies',
+      path: 'npmDependencies',
+      sortDirFn: ascend,
+    },
   },
 
   {
@@ -147,6 +191,11 @@ export const ROWS: MetricDataT[] = [
     label: 'Bundle size',
     tooltip:
       'Bundle size of the npm package minified+gzipped. Data source: <a href="https://bundlephobia.com/" target="_blank">Bundlephobia.com</a>',
+    chart: {
+      title: 'Npm package bundle size (gzipped and minified), kB',
+      path: 'bundlesize.gzipKb',
+      sortDirFn: ascend,
+    },
   },
 
   {
@@ -181,6 +230,14 @@ export const ROWS: MetricDataT[] = [
       '<p>Vulnerabilities found in the repository.</p> <p>Data source: <a href="https://snyk.io/" target="_blank">Snyk.io</a></p>',
   },
 
-  { cat: 'Miscellaneous', metric: 'age', label: 'Age' },
+  {
+    cat: 'Miscellaneous',
+    metric: 'age',
+    label: 'Age',
+    chart: {
+      title: 'Age',
+      path: 'age',
+    },
+  },
   { cat: 'Miscellaneous', metric: 'license', label: 'License' },
 ];

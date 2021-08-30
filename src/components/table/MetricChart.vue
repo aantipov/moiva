@@ -23,30 +23,26 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from 'vue';
 import tippy, { Instance, roundArrow } from 'tippy.js';
-import { MetricT } from './TableConfig';
 import { ChartConfiguration } from 'chart.js';
-import { descend, ascend, sort, path, prop } from 'ramda';
+import { descend, sort, path, prop } from 'ramda';
 import {
   getFormattedAgeFromAgeInMs,
   numbersFormatter,
   numbersStandardFormatter,
-  prevQuarter,
 } from '@/utils';
 import { librariesRR } from '@/store/libraries';
-
-const configs = getConfigs();
+import { MetricDataT, MetricDataChartT } from '@/components/table/TableConfig';
 
 const props = defineProps<{
-  type: MetricT;
+  metricData: MetricDataT;
 }>();
 
 const contentRef = ref(null);
 const triggerRef = ref(null);
 let t: Instance;
 
-const metricConfig = configs.find(
-  (config) => config.metric === props.type
-) as ConfigT;
+const metric = props.metricData.metric;
+const metricConfig = props.metricData.chart as MetricDataChartT;
 
 onMounted(() => {
   t = tippy(triggerRef.value as unknown as HTMLElement, {
@@ -103,10 +99,10 @@ const chartConfig = computed<ChartConfiguration<'bar'>>(() => {
           ticks: {
             beginAtZero: true,
             callback: (() => {
-              if (metricConfig.metric === 'bundlesize') {
+              if (metric === 'bundlesize') {
                 return (val: number) => val;
               }
-              if (metricConfig.metric === 'age') {
+              if (metric === 'age') {
                 return getFormattedAgeFromAgeInMs;
               }
               return numbersFormatter.format;
@@ -129,9 +125,9 @@ const chartConfig = computed<ChartConfiguration<'bar'>>(() => {
               if (metricConfig.percent) {
                 // @ts-ignore
                 val = numbersStandardFormatter.format(context.raw) + '%';
-              } else if (metricConfig.metric === 'bundlesize') {
+              } else if (metric === 'bundlesize') {
                 val = context.raw + ' kB';
-              } else if (metricConfig.metric === 'age') {
+              } else if (metric === 'age') {
                 // @ts-ignore
                 val = getFormattedAgeFromAgeInMs(context.raw);
               } else {
@@ -146,73 +142,6 @@ const chartConfig = computed<ChartConfiguration<'bar'>>(() => {
     },
   };
 });
-
-interface ConfigT {
-  metric: MetricT;
-  title: string;
-  path: string;
-  sortDirFn?: (arg: unknown) => unknown;
-  percent?: boolean;
-}
-
-function getConfigs(): ConfigT[] {
-  return [
-    {
-      metric: 'stars',
-      title: 'GitHub Stars',
-      path: 'repo.stars',
-    },
-    {
-      metric: 'downloads',
-      title: 'Npm Downloads, monthly',
-      path: 'npmDownloadsAvg',
-    },
-    {
-      metric: 'searchInterest',
-      title: 'Search Interest, %',
-      path: 'googleTrends.average',
-      percent: true,
-    },
-    {
-      metric: 'devusage',
-      title: 'Developer Usage, %',
-      path: 'devUsageLast',
-      percent: true,
-    },
-    {
-      metric: 'releases',
-      title: `Npm Releases in ${prevQuarter}`,
-      path: 'npmReleasesLastQ',
-    },
-    {
-      metric: 'commits',
-      title: `Commits in ${prevQuarter}`,
-      path: 'commitsLastQ',
-    },
-    {
-      metric: 'contributors',
-      title: `Contributors in ${prevQuarter}`,
-      path: 'contributorsLastQ',
-    },
-    {
-      metric: 'dependencies',
-      title: 'Npm Dependencies',
-      path: 'npmDependencies',
-      sortDirFn: ascend,
-    },
-    {
-      metric: 'bundlesize',
-      title: 'Npm package bundle size (gzipped and minified), kB',
-      path: 'bundlesize.gzipKb',
-      sortDirFn: ascend,
-    },
-    {
-      metric: 'age',
-      title: 'Age',
-      path: 'age',
-    },
-  ] as ConfigT[];
-}
 </script>
 
 <style lang="postcss">
