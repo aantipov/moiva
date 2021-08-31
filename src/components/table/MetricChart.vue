@@ -49,7 +49,7 @@ const triggerRef = ref(null);
 let t: Instance;
 
 const metric = props.metricData.metric;
-const metricConfig = props.metricData.chart as MetricDataChartT;
+const metricConfig = props.metricData.chart;
 
 onMounted(() => {
   t = tippy(triggerRef.value as unknown as HTMLElement, {
