@@ -68,6 +68,10 @@ export interface MetricDataT {
   chart?: MetricDataChartT;
 }
 
+export interface MetricDataWithChartT extends MetricDataT {
+  chart: MetricDataChartT;
+}
+
 export const ROWS: MetricDataT[] = [
   { cat: '', metric: 'npm', label: 'Npm' },
   { cat: '', metric: 'repo', label: 'GitHub', tooltip: 'GitHub repository' },

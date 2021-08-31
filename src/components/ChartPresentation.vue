@@ -1,6 +1,14 @@
 <template>
   <div>
-    <div v-if="title" class="relative z-10 -mb-5">
+    <div v-if="showActions" class="flex justify-center mt-4">
+      <span class="link" @click="copyShare">Copy and Share (Twitter)</span>
+      <span class="mx-2">/</span>
+      <span class="link" @click="copy">Copy to Clipboard</span>
+      <span class="mx-2">/</span>
+      <span class="link" @click="download">Download</span>
+    </div>
+
+    <div v-if="title && showTitle" class="relative z-10 -mb-5">
       <!-- Header -->
       <div class="flex items-center justify-center relative">
         <h3 class="my-0">
@@ -78,6 +86,7 @@ import { librariesRR } from '@/store/libraries';
 
 interface Props {
   title?: string;
+  showTitle?: boolean;
   subtitle?: string;
   isLoading?: boolean;
   isError?: boolean;
@@ -87,10 +96,12 @@ interface Props {
   ariaLabel?: string;
   since?: string;
   sinceValues?: string[];
+  showActions?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   title: '',
+  showTitle: true,
   subtitle: '',
   isLoading: false,
   isError: false,
@@ -99,6 +110,7 @@ const props = withDefaults(defineProps<Props>(), {
   // @ts-ignore
   since: null,
   sinceValues: () => [],
+  showActions: false,
 });
 
 const emit = defineEmits(['sinceChange']);

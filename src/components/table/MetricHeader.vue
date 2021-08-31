@@ -41,16 +41,18 @@
     </div>
 
     <!-- Chart Icon -->
-    <MetricChart v-if="row.chart" :metric-data="row" />
+    <MetricChart v-if="row.chart" :metric-data="rowWithChart" />
   </div>
 </template>
 
 <script setup lang="ts">
 import MetricChart from './MetricChart.vue';
-import { MetricT, MetricDataT } from './TableConfig';
+import { MetricT, MetricDataT, MetricDataWithChartT } from './TableConfig';
 
-defineProps<{
+const props = defineProps<{
   type: MetricT;
   row: MetricDataT;
 }>();
+
+const rowWithChart = props.row as MetricDataWithChartT;
 </script>

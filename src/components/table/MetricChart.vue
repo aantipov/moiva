@@ -14,7 +14,14 @@
           <m-loader-new class="items-center" />
         </div>
 
-        <m-chart v-else :libs-names="libsNames" :chart-config="chartConfig" />
+        <m-chart
+          v-else
+          :libs-names="libsNames"
+          :chart-config="chartConfig"
+          :title="metricData.chart.title"
+          :show-title="false"
+          show-actions
+        />
       </div>
     </div>
   </div>
@@ -31,10 +38,10 @@ import {
   numbersStandardFormatter,
 } from '@/utils';
 import { librariesRR } from '@/store/libraries';
-import { MetricDataT, MetricDataChartT } from '@/components/table/TableConfig';
+import { MetricDataWithChartT } from '@/components/table/TableConfig';
 
 const props = defineProps<{
-  metricData: MetricDataT;
+  metricData: MetricDataWithChartT;
 }>();
 
 const contentRef = ref(null);
