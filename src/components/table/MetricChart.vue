@@ -9,12 +9,19 @@
       class="text-gray-800 font-normal -mx-2 divide-gray-300 divide-y"
       @click="hide"
     >
-      <div style="width: 500px; max-width: 100%; height: 350px">
+      <div style="width: 500px; max-width: 100%; height: 380px">
         <div v-if="!libsNames.length">
           <m-loader-new class="items-center" />
         </div>
 
-        <m-chart v-else :libs-names="libsNames" :chart-config="chartConfig" />
+        <m-chart
+          v-else
+          :libs-names="libsNames"
+          :chart-config="chartConfig"
+          :title="metricData.chart.title"
+          :show-title="false"
+          show-actions
+        />
       </div>
     </div>
   </div>
@@ -31,10 +38,10 @@ import {
   numbersStandardFormatter,
 } from '@/utils';
 import { librariesRR } from '@/store/libraries';
-import { MetricDataT, MetricDataChartT } from '@/components/table/TableConfig';
+import { MetricDataWithChartT } from '@/components/table/TableConfig';
 
 const props = defineProps<{
-  metricData: MetricDataT;
+  metricData: MetricDataWithChartT;
 }>();
 
 const contentRef = ref(null);
@@ -42,7 +49,7 @@ const triggerRef = ref(null);
 let t: Instance;
 
 const metric = props.metricData.metric;
-const metricConfig = props.metricData.chart as MetricDataChartT;
+const metricConfig = props.metricData.chart;
 
 onMounted(() => {
   t = tippy(triggerRef.value as unknown as HTMLElement, {
