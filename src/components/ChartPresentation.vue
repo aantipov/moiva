@@ -1,11 +1,13 @@
 <template>
   <div>
-    <div v-if="showActions" class="flex justify-center mt-4">
-      <span class="link" @click="copyShare">Copy and Share (Twitter)</span>
-      <span class="mx-2">/</span>
-      <span class="link" @click="copy">Copy to Clipboard</span>
-      <span class="mx-2">/</span>
-      <span class="link" @click="download">Download</span>
+    <div v-if="showActions" class="flex justify-center mt-4 mx-2">
+      <span class="link text-center w-1/3 px-2" @click="copyShare"
+        >Copy and Share (Twitter)</span
+      >
+      <span class="link text-center w-1/3 px-2" @click="copy"
+        >Copy to Clipboard</span
+      >
+      <span class="link text-center w-1/3" @click="download">Download</span>
     </div>
 
     <div v-if="title && showTitle" class="relative z-10 -mb-5">
