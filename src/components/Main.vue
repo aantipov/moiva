@@ -68,6 +68,7 @@
         </h2>
         <div class="grid grid-cols-12 gap-8">
           <template v-if="maintChartsNumber === 2">
+            <Releases />
             <Contributors
               class="col-span-12 md:col-span-6 xl:col-span-5 xl:col-start-2"
             />
