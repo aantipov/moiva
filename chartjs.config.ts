@@ -48,7 +48,7 @@ Chart.register(
       const ctx = chart.canvas.getContext('2d');
       ctx.save();
       ctx.globalCompositeOperation = 'destination-over';
-      ctx.fillStyle = 'rgba(249, 250, 251)';
+      ctx.fillStyle = 'rgba(243, 244, 246)'; // bg-gray-100
       ctx.fillRect(0, 0, chart.width, chart.height);
       ctx.restore();
     },

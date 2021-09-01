@@ -9,7 +9,10 @@
       class="text-gray-800 font-normal -mx-2 divide-gray-300 divide-y"
       @click="hide"
     >
-      <div style="width: 500px; max-width: 100%; height: 380px">
+      <div
+        style="width: 500px; max-width: 100%; height: 370px"
+        class="overflow-y-hidden"
+      >
         <div v-if="!libsNames.length">
           <m-loader-new class="items-center" />
         </div>
@@ -156,7 +159,7 @@ const chartConfig = computed<ChartConfiguration<'bar'>>(() => {
   max-width: 90vw !important;
   max-height: 80vh !important;
   padding: 0px;
-  @apply bg-gray-50 border-gray-200 border shadow;
+  @apply bg-gray-100 border-gray-300 border shadow;
 }
 
 /* The border */
@@ -166,6 +169,6 @@ const chartConfig = computed<ChartConfiguration<'bar'>>(() => {
 
 /* The fill */
 .tippy-box[data-theme~='metric-chart'] > .tippy-svg-arrow > svg:last-child {
-  @apply fill-current text-gray-50;
+  @apply fill-current text-gray-100;
 }
 </style>
