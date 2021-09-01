@@ -67,9 +67,17 @@
           <span class="text-lg font-normal">over time</span>
         </h2>
         <div class="grid grid-cols-12 gap-8">
-          <Releases class="col-span-12 md:col-span-6 xl:col-span-4" />
-          <Contributors class="col-span-12 md:col-span-6 xl:col-span-4" />
-          <Commits class="col-span-12 md:col-span-6 xl:col-span-4" />
+          <template v-if="maintChartsNumber === 2">
+            <Contributors
+              class="col-span-12 md:col-span-6 xl:col-span-5 xl:col-start-2"
+            />
+            <Commits class="col-span-12 md:col-span-6 xl:col-span-5" />
+          </template>
+          <template v-else-if="maintChartsNumber === 3">
+            <Releases class="col-span-12 md:col-span-6 xl:col-span-4" />
+            <Contributors class="col-span-12 md:col-span-6 xl:col-span-4" />
+            <Commits class="col-span-12 md:col-span-6 xl:col-span-4" />
+          </template>
         </div>
       </section>
 
@@ -78,20 +86,14 @@
 
         <div class="grid grid-cols-12 gap-8">
           <template v-if="miscChartsNumber === 1">
-            <Languages
-              class="
-                col-span-12
-                md:col-span-6 md:col-start-4
-                xl:col-span-4 xl:col-start-5
-              "
-            />
+            <Languages class="col-span-12 md:col-span-6 md:col-start-4" />
             <TechRadar />
           </template>
           <template v-else-if="miscChartsNumber === 2">
             <Languages
-              class="col-span-12 md:col-span-6 xl:col-span-4 xl:col-start-3"
+              class="col-span-12 md:col-span-6 xl:col-span-5 xl:col-start-2"
             />
-            <TechRadar class="col-span-12 md:col-span-6 xl:col-span-4" />
+            <TechRadar class="col-span-12 md:col-span-6 xl:col-span-5" />
           </template>
         </div>
       </section>
@@ -183,6 +185,10 @@ const popularChartsNumber = computed(
       chartsVisibility.developerUsage,
       true,
     ].filter(Boolean).length
+);
+
+const maintChartsNumber = computed(
+  () => [chartsVisibility.npmReleases, true, true].filter(Boolean).length
 );
 
 const miscChartsNumber = computed(
