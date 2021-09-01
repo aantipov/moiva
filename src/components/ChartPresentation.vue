@@ -1,6 +1,9 @@
 <template>
-  <div>
-    <div v-if="showActions" class="flex justify-center mt-4 mx-2">
+  <div class="bg-gray-100 pt-2">
+    <div
+      v-if="showActions"
+      class="flex justify-center mx-2 relative z-10 -mb-4"
+    >
       <span class="link text-center w-1/3 px-2" @click="copyShare"
         >Copy and Share (Twitter)</span
       >
