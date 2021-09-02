@@ -55,6 +55,7 @@ export interface MetricDataChartT {
   path: string;
   percent?: boolean;
   sortDirFn?: (arg: any) => any;
+  stepPrecision?: number; // number of decimals
 }
 
 export interface MetricDataT {
@@ -150,6 +151,7 @@ export const ROWS: MetricDataT[] = [
     chart: {
       title: `Npm Releases in ${prevQuarter}`,
       path: 'npmReleasesLastQ',
+      stepPrecision: 0,
     },
   },
 
@@ -162,6 +164,7 @@ export const ROWS: MetricDataT[] = [
     chart: {
       title: `Commits in ${prevQuarter}`,
       path: 'commitsLastQ',
+      stepPrecision: 0,
     },
   },
 
@@ -174,6 +177,7 @@ export const ROWS: MetricDataT[] = [
     chart: {
       title: `Contributors in ${prevQuarter}`,
       path: 'contributorsLastQ',
+      stepPrecision: 0,
     },
   },
 
@@ -186,6 +190,7 @@ export const ROWS: MetricDataT[] = [
       title: 'Npm Dependencies',
       path: 'npmDependencies',
       sortDirFn: ascend,
+      stepPrecision: 0,
     },
   },
 

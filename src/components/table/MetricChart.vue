@@ -107,6 +107,7 @@ const chartConfig = computed<ChartConfiguration<'bar'>>(() => {
       scales: {
         y: {
           ticks: {
+            precision: metricConfig.stepPrecision,
             beginAtZero: true,
             callback: (() => {
               if (metric === 'bundlesize') {
