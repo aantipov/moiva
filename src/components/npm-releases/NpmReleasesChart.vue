@@ -52,13 +52,29 @@ const startQuarterRef = computed(() => {
   return getPrevQuater(getEarliestQuarter(validCreationDates, '2017-04'));
 });
 
+const unitRef = computed(() => {
+  return filteredLibsRef.value.length && startQuarterRef.value >= '2019-10'
+    ? 'quarter'
+    : 'year';
+});
+
+function getMonth(month: string) {
+  if (unitRef.value !== 'quarter') {
+    return month;
+  }
+  // Fix tick's position by shifting dates
+  const quarterDate = new Date(month);
+  quarterDate.setUTCMonth(quarterDate.getUTCMonth() - 2, 1);
+  return quarterDate.toISOString().slice(0, 7);
+}
+
 const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
   type: 'line',
   data: {
     datasets: filteredLibsRef.value.map((lib) => ({
       label: lib.npmPackage.name,
       data: lib.npmReleases.map((npmRelease) => ({
-        x: npmRelease.month as unknown as number,
+        x: getMonth(npmRelease.month) as unknown as number,
         y: npmRelease.releases,
       })),
       backgroundColor: lib.color,
@@ -71,12 +87,7 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
     scales: {
       x: {
         type: 'time',
-        time: {
-          unit:
-            filteredLibsRef.value.length && startQuarterRef.value >= '2019-10'
-              ? 'quarter'
-              : 'year',
-        },
+        time: { unit: unitRef.value },
         adapters: { date: { locale: enUS } },
         min: startQuarterRef.value as unknown as number,
       },

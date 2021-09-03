@@ -23,19 +23,19 @@ export function fetchNpmPackageReleases(
     )
     .then(({ data }) => {
       // fix quarters and add 1 month to correspond to the values used by the chart library
-      const items = data.items.map((item) => ({
-        ...item,
-        month: (() => {
-          const quarterDate = new Date(item.month);
-          quarterDate.setUTCMonth(quarterDate.getUTCMonth() + 1, 1);
-          return quarterDate.toISOString().slice(0, 7);
-        })(),
-      }));
+      // const items = data.items.map((item) => ({
+      //   ...item,
+      //   month: (() => {
+      //     const quarterDate = new Date(item.month);
+      //     quarterDate.setUTCMonth(quarterDate.getUTCMonth() + 1, 1);
+      //     return quarterDate.toISOString().slice(0, 7);
+      //   })(),
+      // }));
 
-      cacheR.set(pkg, items);
+      cacheR.set(pkg, data.items);
       creationDatesCacheR.set(pkg, data.created || null);
 
-      return items;
+      return data.items;
     })
     .catch((err) => {
       reportSentry(err, 'fetchNpmPackageReleases');
