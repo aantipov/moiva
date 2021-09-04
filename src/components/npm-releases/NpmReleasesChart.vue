@@ -48,24 +48,20 @@ const startQuarterRef = computed(() => {
   const validCreationDates = filteredLibsRef.value
     .map((lib) => lib.npmCreationDate)
     .filter((date) => !!date) as string[];
+  const quarter = getEarliestQuarter(validCreationDates, '2017-04');
+  const prevQuarter = getPrevQuater(quarter);
 
-  return getPrevQuater(getEarliestQuarter(validCreationDates, '2017-04'));
+  return prevQuarter >= '2017-04' ? getPrevQuater(prevQuarter) : prevQuarter;
 });
 
 const unitRef = computed(() => {
-  return filteredLibsRef.value.length && startQuarterRef.value >= '2019-10'
-    ? 'quarter'
-    : 'year';
+  return startQuarterRef.value >= '2019-10' ? 'quarter' : 'year';
 });
 
-function getMonth(month: string) {
-  if (unitRef.value !== 'quarter') {
-    return month;
-  }
-  // Fix tick's position by shifting dates
-  const quarterDate = new Date(month);
-  quarterDate.setUTCMonth(quarterDate.getUTCMonth() - 2, 1);
-  return quarterDate.toISOString().slice(0, 7);
+function getTwoMonthsEarlier(month: string): string {
+  const date = new Date(month);
+  date.setUTCMonth(date.getUTCMonth() - 2, 1);
+  return date.toISOString().slice(0, 7);
 }
 
 const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
@@ -74,7 +70,7 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
     datasets: filteredLibsRef.value.map((lib) => ({
       label: lib.npmPackage.name,
       data: lib.npmReleases.map((npmRelease) => ({
-        x: getMonth(npmRelease.month) as unknown as number,
+        x: getTwoMonthsEarlier(npmRelease.month) as unknown as number,
         y: npmRelease.releases,
       })),
       backgroundColor: lib.color,
@@ -97,7 +93,7 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
         callbacks: {
           title: (tooltipItems) => {
             const time = tooltipItems[0].parsed.x;
-            return format(new Date(time - 1000000000), 'QQQ yyyy');
+            return format(new Date(time), 'QQQ yyyy');
           },
         },
       },
