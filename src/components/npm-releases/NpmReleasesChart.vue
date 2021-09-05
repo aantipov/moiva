@@ -54,13 +54,21 @@ const startQuarterRef = computed(() => {
   return prevQuarter >= '2017-04' ? getPrevQuater(prevQuarter) : prevQuarter;
 });
 
-const unitRef = computed(() => {
-  return startQuarterRef.value >= '2019-10' ? 'quarter' : 'year';
-});
+type UnitT = 'quarter' | 'year';
 
-function getTwoMonthsEarlier(month: string): string {
+const unitRef = computed<UnitT>(() =>
+  startQuarterRef.value >= '2019-10' ? 'quarter' : 'year'
+);
+
+function getQuarterFirstMonth(month: string): string {
   const date = new Date(month);
   date.setUTCMonth(date.getUTCMonth() - 2, 1);
+  return date.toISOString().slice(0, 7);
+}
+
+function getNextQuarterFirstMonth(month: string) {
+  const date = new Date(month);
+  date.setUTCMonth(date.getUTCMonth() + 1, 1);
   return date.toISOString().slice(0, 7);
 }
 
@@ -70,7 +78,10 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
     datasets: filteredLibsRef.value.map((lib) => ({
       label: lib.npmPackage.name,
       data: lib.npmReleases.map((npmRelease) => ({
-        x: getTwoMonthsEarlier(npmRelease.month) as unknown as number,
+        x:
+          unitRef.value === 'quarter'
+            ? (getQuarterFirstMonth(npmRelease.month) as unknown as number)
+            : (getNextQuarterFirstMonth(npmRelease.month) as unknown as number),
         y: npmRelease.releases,
       })),
       backgroundColor: lib.color,
@@ -93,7 +104,13 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
         callbacks: {
           title: (tooltipItems) => {
             const time = tooltipItems[0].parsed.x;
-            return format(new Date(time), 'QQQ yyyy');
+            const date = new Date(time);
+            if (unitRef.value !== 'quarter') {
+              // For better represesentation the month in 'year' mode was shift to the next quarter first month
+              // Hence, we need to revert it to the original quarter
+              date.setUTCMonth(date.getUTCMonth() - 1, 1);
+            }
+            return format(date, 'QQQ yyyy');
           },
         },
       },
