@@ -92,9 +92,7 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
         type: 'time',
         time: {
           unit: unitRef.value,
-          displayFormats: {
-            quarter: 'QQQ yyyy',
-          },
+          displayFormats: { quarter: 'QQQ yyyy' },
         },
         adapters: { date: { locale: enUS } },
         min:
