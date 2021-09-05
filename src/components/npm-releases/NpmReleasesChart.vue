@@ -90,7 +90,10 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
     scales: {
       x: {
         type: 'time',
-        time: { unit: unitRef.value },
+        time: {
+          unit: unitRef.value,
+          displayFormats: { quarter: 'QQQ/yy' },
+        },
         adapters: { date: { locale: enUS } },
         min:
           unitRef.value === 'quarter'
