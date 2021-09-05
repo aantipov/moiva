@@ -19,7 +19,11 @@ import { ChartConfiguration } from 'chart.js';
 import { ContributorsT } from './api';
 import { format } from 'date-fns';
 import { enUS } from 'date-fns/locale';
-import { getEarliestQuarter, getPrevQuater } from '@/utils';
+import {
+  getFirstNonZeroValueMonth,
+  getPrevQuater,
+  getQuarterFirstMonthFromDate,
+} from '@/utils';
 import { LibraryReadonlyT } from '@/libraryApis';
 import {
   librariesRR,
@@ -34,25 +38,24 @@ const filteredLibsRef = computed(
   () => librariesRR.filter((lib) => !!lib.contributors) as FilteredLibT[]
 );
 
-const startQuarterRef = computed(() => {
-  const creationDates = filteredLibsRef.value.map((lib) => lib.repo.createdAt);
-  const quarter = getEarliestQuarter(creationDates, '2017-04');
-  const prevQuarter = getPrevQuater(quarter);
-
-  return prevQuarter >= '2017-04' ? getPrevQuater(prevQuarter) : prevQuarter;
-});
-
-type UnitT = 'quarter' | 'year';
-
-const unitRef = computed<UnitT>(() =>
-  startQuarterRef.value >= '2019-10' ? 'quarter' : 'year'
+const firstNonZeroQuarterRef = computed(() =>
+  getQuarterFirstMonthFromDate(
+    getFirstNonZeroValueMonth(
+      filteredLibsRef.value.map((lib) => lib.contributors),
+      'contributors'
+    )
+  )
 );
 
-function getQuarterFirstMonth(month: string): string {
-  const date = new Date(month);
-  date.setUTCMonth(date.getUTCMonth() - 2, 1);
-  return date.toISOString().slice(0, 7);
-}
+const unitRef = computed<'quarter' | 'year'>(() =>
+  firstNonZeroQuarterRef.value >= '2019-10' ? 'quarter' : 'year'
+);
+
+const chartMinDateRef = computed(() =>
+  unitRef.value === 'quarter'
+    ? getPrevQuater(firstNonZeroQuarterRef.value)
+    : firstNonZeroQuarterRef.value
+);
 
 function getNextQuarterFirstMonth(month: string) {
   const date = new Date(month);
@@ -68,7 +71,7 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
       data: lib.contributors.map((item) => ({
         x:
           unitRef.value === 'quarter'
-            ? (getQuarterFirstMonth(item.month) as unknown as number)
+            ? (getQuarterFirstMonthFromDate(item.month) as unknown as number)
             : (getNextQuarterFirstMonth(item.month) as unknown as number),
         y: item.contributors,
       })),
@@ -82,7 +85,7 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
       x: {
         type: 'time',
         time: { unit: unitRef.value },
-        min: startQuarterRef.value as unknown as number,
+        min: chartMinDateRef.value as unknown as number,
         adapters: { date: { locale: enUS } },
       },
     },

@@ -422,20 +422,21 @@ export function getNamesStr(names: string[]): string {
   return items.join(', ') + ', and ' + last;
 }
 
-export function getQuarterMonthFromDate(date: string): string {
+// Get Quarter's first month
+export function getQuarterFirstMonthFromDate(date: string): string {
   const dateObj = new Date(date);
   const month = dateObj.getUTCMonth();
   const year = dateObj.getUTCFullYear();
   if (month <= 2) {
-    return `${year}-04`;
+    return `${year}-01`;
   }
   if (month <= 5) {
-    return `${year}-07`;
+    return `${year}-04`;
   }
   if (month <= 8) {
-    return `${year}-10`;
+    return `${year}-07`;
   }
-  return `${year + 1}-01`;
+  return `${year}-10`;
 }
 
 export const prevQuarter = format(subQuarters(new Date(), 1), 'yyyy-QQQ');
@@ -480,36 +481,6 @@ export function getEarliestMonth(dates: string[], limitMonth: string): string {
   return month > limitMonth ? month : limitMonth;
 }
 
-/**
- * Get the earliest quarter month from the list of dates
- * But not earlier than the provided limitDate
- * Returns month in the ISO format, like 2020-04
- */
-export function getEarliestQuarter(
-  dates: string[],
-  limitMonth: string
-): string {
-  limitMonth = limitMonth.slice(0, 7);
-  if (!dates.length) {
-    return limitMonth;
-  }
-  const month = dates
-    .sort((a, b) => {
-      if (a > b) {
-        return 1;
-      } else if (a < b) {
-        return -1;
-      } else {
-        return 0;
-      }
-    })[0]
-    .slice(0, 7);
-
-  const quarterMonth = getQuarterMonthFromDate(month);
-
-  return quarterMonth > limitMonth ? quarterMonth : limitMonth;
-}
-
 export function getDateRanges(since: string): string[] {
   const dates = [since];
   const cYear = getYear(new Date());
@@ -528,4 +499,30 @@ export function sanitizeHTML(text: string): string {
   const element = document.createElement('div');
   element.innerText = text;
   return element.innerHTML;
+}
+
+type LibsValues =
+  | { month: string; contributors: number }
+  | { month: string; releases: number };
+
+export function getFirstNonZeroValueMonth(
+  libs: LibsValues[][],
+  prop: 'contributors' | 'releases'
+): string {
+  const defaultMonth = '2017-01';
+
+  if (!libs.length) {
+    return defaultMonth;
+  }
+
+  const months = libs.map((libValues) => {
+    const nonZeroMonths = libValues
+      .filter((libValue) => libValue[prop] > 0)
+      .map((libValue) => libValue.month);
+    return nonZeroMonths.length ? nonZeroMonths[0] : libValues[0].month;
+  });
+
+  // Get earliest month
+  const month = months.sort()[0];
+  return month > defaultMonth ? month : defaultMonth;
 }

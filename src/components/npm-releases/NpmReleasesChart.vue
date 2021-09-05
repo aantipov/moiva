@@ -22,7 +22,11 @@ import { ChartConfiguration } from 'chart.js';
 import { NpmPackageReleasesT } from './api';
 import { format } from 'date-fns';
 import { enUS } from 'date-fns/locale';
-import { getEarliestQuarter, getPrevQuater } from '@/utils';
+import {
+  getFirstNonZeroValueMonth,
+  getPrevQuater,
+  getQuarterFirstMonthFromDate,
+} from '@/utils';
 import { NpmPackageT, LibraryReadonlyT } from '@/libraryApis';
 import { chartsVisibility } from '@/store/chartsVisibility';
 import {
@@ -43,28 +47,24 @@ watchEffect(() => {
   chartsVisibility.npmReleases = filteredLibsRef.value.length > 0;
 });
 
-// Calculate startQuater based on packages creation date
-const startQuarterRef = computed(() => {
-  const validCreationDates = filteredLibsRef.value
-    .map((lib) => lib.npmCreationDate)
-    .filter((date) => !!date) as string[];
-  const quarter = getEarliestQuarter(validCreationDates, '2017-04');
-  const prevQuarter = getPrevQuater(quarter);
-
-  return prevQuarter >= '2017-04' ? getPrevQuater(prevQuarter) : prevQuarter;
-});
-
-type UnitT = 'quarter' | 'year';
-
-const unitRef = computed<UnitT>(() =>
-  startQuarterRef.value >= '2019-10' ? 'quarter' : 'year'
+const firstNonZeroQuarterRef = computed(() =>
+  getQuarterFirstMonthFromDate(
+    getFirstNonZeroValueMonth(
+      filteredLibsRef.value.map((lib) => lib.npmReleases),
+      'releases'
+    )
+  )
 );
 
-function getQuarterFirstMonth(month: string): string {
-  const date = new Date(month);
-  date.setUTCMonth(date.getUTCMonth() - 2, 1);
-  return date.toISOString().slice(0, 7);
-}
+const unitRef = computed<'quarter' | 'year'>(() =>
+  firstNonZeroQuarterRef.value >= '2019-10' ? 'quarter' : 'year'
+);
+
+const chartMinDateRef = computed(() =>
+  unitRef.value === 'quarter'
+    ? getPrevQuater(firstNonZeroQuarterRef.value)
+    : firstNonZeroQuarterRef.value
+);
 
 function getNextQuarterFirstMonth(month: string) {
   const date = new Date(month);
@@ -80,7 +80,9 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
       data: lib.npmReleases.map((npmRelease) => ({
         x:
           unitRef.value === 'quarter'
-            ? (getQuarterFirstMonth(npmRelease.month) as unknown as number)
+            ? (getQuarterFirstMonthFromDate(
+                npmRelease.month
+              ) as unknown as number)
             : (getNextQuarterFirstMonth(npmRelease.month) as unknown as number),
         y: npmRelease.releases,
       })),
@@ -96,7 +98,7 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
         type: 'time',
         time: { unit: unitRef.value },
         adapters: { date: { locale: enUS } },
-        min: startQuarterRef.value as unknown as number,
+        min: chartMinDateRef.value as unknown as number,
       },
     },
     plugins: {
