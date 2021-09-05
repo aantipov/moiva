@@ -517,6 +517,7 @@ export function getFirstNonZeroValueMonth(
 
   const months = libs.map((libValues) => {
     const nonZeroMonths = libValues
+      // @ts-ignore
       .filter((libValue) => libValue[prop] > 0)
       .map((libValue) => libValue.month);
     return nonZeroMonths.length ? nonZeroMonths[0] : libValues[0].month;
