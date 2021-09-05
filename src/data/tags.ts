@@ -95,7 +95,7 @@ export const tags = [
   'test-runner',
   'markdown-parser',
   'tailwindcss-components',
-  'react-markdown',
+  'markdown-to-react',
 
   // static site generators
   'static-site-generator-SSD',
