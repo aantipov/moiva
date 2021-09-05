@@ -22,7 +22,11 @@ import { ChartConfiguration } from 'chart.js';
 import { NpmPackageReleasesT } from './api';
 import { format } from 'date-fns';
 import { enUS } from 'date-fns/locale';
-import { getEarliestQuarter, getPrevQuater } from '@/utils';
+import {
+  getFirstNonZeroValueMonth,
+  getPrevQuater,
+  getQuarterFirstMonthFromDate,
+} from '@/utils';
 import { NpmPackageT, LibraryReadonlyT } from '@/libraryApis';
 import { chartsVisibility } from '@/store/chartsVisibility';
 import {
@@ -43,14 +47,24 @@ watchEffect(() => {
   chartsVisibility.npmReleases = filteredLibsRef.value.length > 0;
 });
 
-// Calculate startQuater based on packages creation date
-const startQuarterRef = computed(() => {
-  const validCreationDates = filteredLibsRef.value
-    .map((lib) => lib.npmCreationDate)
-    .filter((date) => !!date) as string[];
+const firstNonZeroQuarterRef = computed(() =>
+  getQuarterFirstMonthFromDate(
+    getFirstNonZeroValueMonth(
+      filteredLibsRef.value.map((lib) => lib.npmReleases),
+      'releases'
+    )
+  )
+);
 
-  return getPrevQuater(getEarliestQuarter(validCreationDates, '2017-04'));
-});
+const unitRef = computed<'quarter' | 'year'>(() =>
+  firstNonZeroQuarterRef.value >= '2019-10' ? 'quarter' : 'year'
+);
+
+function getNextQuarterFirstMonth(month: string) {
+  const date = new Date(month);
+  date.setUTCMonth(date.getUTCMonth() + 1, 1);
+  return date.toISOString().slice(0, 7);
+}
 
 const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
   type: 'line',
@@ -58,7 +72,12 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
     datasets: filteredLibsRef.value.map((lib) => ({
       label: lib.npmPackage.name,
       data: lib.npmReleases.map((npmRelease) => ({
-        x: npmRelease.month as unknown as number,
+        x:
+          unitRef.value === 'quarter'
+            ? (getQuarterFirstMonthFromDate(
+                npmRelease.month
+              ) as unknown as number)
+            : (getNextQuarterFirstMonth(npmRelease.month) as unknown as number),
         y: npmRelease.releases,
       })),
       backgroundColor: lib.color,
@@ -71,14 +90,12 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
     scales: {
       x: {
         type: 'time',
-        time: {
-          unit:
-            filteredLibsRef.value.length && startQuarterRef.value >= '2019-10'
-              ? 'quarter'
-              : 'year',
-        },
+        time: { unit: unitRef.value },
         adapters: { date: { locale: enUS } },
-        min: startQuarterRef.value as unknown as number,
+        min:
+          unitRef.value === 'quarter'
+            ? (getPrevQuater(firstNonZeroQuarterRef.value) as unknown as number)
+            : (firstNonZeroQuarterRef.value as unknown as number),
       },
     },
     plugins: {
@@ -86,7 +103,13 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
         callbacks: {
           title: (tooltipItems) => {
             const time = tooltipItems[0].parsed.x;
-            return format(new Date(time - 1000000000), 'QQQ yyyy');
+            const date = new Date(time);
+            if (unitRef.value !== 'quarter') {
+              // For better represesentation the month in 'year' mode was shift to the next quarter first month
+              // Hence, we need to revert it to the original quarter
+              date.setUTCMonth(date.getUTCMonth() - 1, 1);
+            }
+            return format(date, 'QQQ yyyy');
           },
         },
       },
