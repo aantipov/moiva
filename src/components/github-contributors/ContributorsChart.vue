@@ -78,7 +78,12 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
     scales: {
       x: {
         type: 'time',
-        time: { unit: unitRef.value },
+        time: {
+          unit: unitRef.value,
+          displayFormats: {
+            quarter: 'QQQ yyyy',
+          },
+        },
         min:
           unitRef.value === 'quarter'
             ? (getPrevQuater(firstNonZeroQuarterRef.value) as unknown as number)
