@@ -60,12 +60,6 @@ const unitRef = computed<'quarter' | 'year'>(() =>
   firstNonZeroQuarterRef.value >= '2019-10' ? 'quarter' : 'year'
 );
 
-const chartMinDateRef = computed(() =>
-  unitRef.value === 'quarter'
-    ? getPrevQuater(firstNonZeroQuarterRef.value)
-    : firstNonZeroQuarterRef.value
-);
-
 function getNextQuarterFirstMonth(month: string) {
   const date = new Date(month);
   date.setUTCMonth(date.getUTCMonth() + 1, 1);
@@ -98,7 +92,10 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
         type: 'time',
         time: { unit: unitRef.value },
         adapters: { date: { locale: enUS } },
-        min: chartMinDateRef.value as unknown as number,
+        min:
+          unitRef.value === 'quarter'
+            ? (getPrevQuater(firstNonZeroQuarterRef.value) as unknown as number)
+            : (firstNonZeroQuarterRef.value as unknown as number),
       },
     },
     plugins: {
