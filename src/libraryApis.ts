@@ -18,6 +18,7 @@ const githubCache = new Map();
 export interface RepoT {
   repoId: string;
   repoName: string;
+  homepageUrl: string;
   description: string;
   isArchived?: boolean; // optional for transitional period (api cache expiration)
   stars: number;

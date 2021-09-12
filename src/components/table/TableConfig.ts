@@ -4,6 +4,7 @@ import { ascend } from 'ramda';
 const METRICS = [
   'npm',
   'repo',
+  'homepage',
   'status',
   'tags',
   'stars',
@@ -76,6 +77,7 @@ export interface MetricDataWithChartT extends MetricDataT {
 export const ROWS: MetricDataT[] = [
   { cat: '', metric: 'npm', label: 'Npm' },
   { cat: '', metric: 'repo', label: 'GitHub', tooltip: 'GitHub repository' },
+  { cat: '', metric: 'homepage', label: 'Homepage', icon: 'm-home-icon' },
 
   {
     cat: '',
