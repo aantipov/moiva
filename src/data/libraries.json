@@ -397,7 +397,7 @@
     "npm": "styled-jsx",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["css-in-js"]
+    "tags": ["react", "css-in-js"]
   },
   {
     "category": "CSS-in-JS Libraries",
@@ -405,7 +405,7 @@
     "npm": "styled-components",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["css-in-js"]
+    "tags": ["react", "css-in-js"]
   },
   {
     "category": "CSS-in-JS Libraries",
@@ -413,7 +413,7 @@
     "npm": "radium",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["css-in-js"]
+    "tags": ["react", "css-in-js"]
   },
   {
     "category": "CSS-in-JS Libraries",
@@ -454,6 +454,14 @@
     "isNpmCoreArtifact": true,
     "alias": null,
     "tags": ["css-in-js"]
+  },
+  {
+    "category": "CSS-in-JS Libraries",
+    "repoId": "modulz/stitches",
+    "npm": "@stitches/react",
+    "isNpmCoreArtifact": false,
+    "alias": "Stitches React",
+    "tags": ["react", "css-in-js"]
   },
   {
     "category": "CSS-in-JS Libraries",
@@ -1801,22 +1809,6 @@
   },
   {
     "category": "misc",
-    "repoId": "bvaughn/react-virtualized",
-    "npm": "react-virtualized",
-    "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "bvaughn/react-window",
-    "npm": "react-window",
-    "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
     "repoId": "bevacqua/dragula",
     "npm": "dragula",
     "isNpmCoreArtifact": true,
@@ -2297,14 +2289,6 @@
   },
   {
     "category": "misc",
-    "repoId": "handsontable/handsontable",
-    "npm": "handsontable",
-    "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
     "repoId": "acdlite/recompose",
     "npm": "recompose",
     "isNpmCoreArtifact": true,
@@ -2445,14 +2429,6 @@
     "npm": "nodemailer",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "tannerlinsley/react-table",
-    "npm": "react-table",
-    "isNpmCoreArtifact": true,
-    "alias": "React Table",
     "tags": []
   },
   {
@@ -8633,6 +8609,14 @@
   },
   {
     "category": "misc",
+    "repoId": "SigNoz/signoz",
+    "npm": null,
+    "isNpmCoreArtifact": null,
+    "alias": null,
+    "tags": []
+  },
+  {
+    "category": "misc",
     "repoId": "thephpleague/flysystem",
     "npm": null,
     "isNpmCoreArtifact": null,
@@ -11744,6 +11728,14 @@
     "tags": ["nodejs-logging"]
   },
   {
+    "category": "Node.js Logging libraries",
+    "repoId": "gajus/roarr",
+    "npm": "roarr",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["nodejs-logging"]
+  },
+  {
     "category": "Node.js Monitoring tools and libraries",
     "repoId": "siimon/prom-client",
     "npm": "prom-client",
@@ -12304,6 +12296,134 @@
     "tags": ["autocomplete", "react"]
   },
   {
+    "category": "Large datasets rendering",
+    "repoId": "bvaughn/react-virtualized",
+    "npm": "react-virtualized",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["react", "list", "virtualization", "react-component"]
+  },
+  {
+    "category": "Large datasets rendering",
+    "repoId": "bvaughn/react-window",
+    "npm": "react-window",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["react", "list", "virtualization", "react-component"]
+  },
+  {
+    "category": "Large datasets rendering",
+    "repoId": "wellyshen/react-cool-virtual",
+    "npm": "react-cool-virtual",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["react", "list", "virtualization", "react-hook"]
+  },
+  {
+    "category": "Large datasets rendering",
+    "repoId": "caseywebdev/react-list",
+    "npm": "react-list",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["react", "list", "virtualization", "react-component"]
+  },
+  {
+    "category": "misc",
+    "repoId": "tannerlinsley/react-table",
+    "npm": "react-table",
+    "isNpmCoreArtifact": true,
+    "alias": "React Table",
+    "tags": ["react", "table", "grid", "virtualization", "pagination"]
+  },
+  {
+    "category": "misc",
+    "repoId": "adazzle/react-data-grid",
+    "npm": "react-data-grid",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["react", "table", "grid", "virtualization"]
+  },
+  {
+    "category": "misc",
+    "repoId": "nadbm/react-datasheet",
+    "npm": "react-datasheet",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["react", "table", "grid", "react-component"]
+  },
+  {
+    "category": "misc",
+    "repoId": "ag-grid/ag-grid",
+    "npm": "ag-grid-community",
+    "isNpmCoreArtifact": true,
+    "alias": "AG Grid",
+    "tags": ["table", "grid", "virtualization", "pagination"]
+  },
+  {
+    "category": "misc",
+    "repoId": "ag-grid/ag-grid",
+    "npm": "ag-grid-react",
+    "isNpmCoreArtifact": false,
+    "alias": "AG Grid React",
+    "tags": ["react", "table", "grid", "virtualization", "pagination"]
+  },
+  {
+    "category": "misc",
+    "repoId": "ag-grid/ag-grid",
+    "npm": "ag-grid-vue",
+    "isNpmCoreArtifact": false,
+    "alias": "AG Grid Vue",
+    "tags": ["vue", "table", "grid", "virtualization", "pagination"]
+  },
+  {
+    "category": "misc",
+    "repoId": "ag-grid/ag-grid",
+    "npm": "ag-grid-vue3",
+    "isNpmCoreArtifact": false,
+    "alias": "AG Grid Vue3",
+    "tags": ["vue", "table", "grid", "virtualization", "pagination"]
+  },
+  {
+    "category": "misc",
+    "repoId": "ag-grid/ag-grid",
+    "npm": "ag-grid-angular",
+    "isNpmCoreArtifact": false,
+    "alias": "AG Grid Angular",
+    "tags": ["angular", "table", "grid", "virtualization", "pagination"]
+  },
+  {
+    "category": "misc",
+    "repoId": "handsontable/handsontable",
+    "npm": "handsontable",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["table", "grid", "virtualization", "pagination"]
+  },
+  {
+    "category": "misc",
+    "repoId": "handsontable/handsontable",
+    "npm": "@handsontable/vue",
+    "isNpmCoreArtifact": false,
+    "alias": "Handsontable Vue",
+    "tags": ["vue", "table", "grid", "virtualization", "pagination"]
+  },
+  {
+    "category": "misc",
+    "repoId": "handsontable/handsontable",
+    "npm": "@handsontable/angular",
+    "isNpmCoreArtifact": false,
+    "alias": "Handsontable Angular",
+    "tags": ["angular", "table", "grid", "virtualization", "pagination"]
+  },
+  {
+    "category": "misc",
+    "repoId": "handsontable/handsontable",
+    "npm": "@handsontable/react",
+    "isNpmCoreArtifact": false,
+    "alias": "Handsontable React",
+    "tags": ["react", "table", "grid", "virtualization", "pagination"]
+  },
+  {
     "category": "JavaScript State Management Libraries",
     "repoId": "reduxjs/redux",
     "npm": "redux",
@@ -12347,6 +12467,14 @@
     "category": "JavaScript State Management Libraries",
     "repoId": "vuejs/vuex",
     "npm": "vuex",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["state-management", "vue"]
+  },
+  {
+    "category": "JavaScript State Management Libraries",
+    "repoId": "andrewcourtice/harlem",
+    "npm": "@harlem/core",
     "isNpmCoreArtifact": true,
     "alias": null,
     "tags": ["state-management", "vue"]
@@ -12502,6 +12630,14 @@
     "isNpmCoreArtifact": true,
     "alias": null,
     "tags": ["nodejs-framework", "server-side-rendering-SSR", "hmr", "svelte", "JAMstack", "static-site-generator-SSD"]
+  },
+  {
+    "category": "Static Site Generators / JAMStack",
+    "repoId": "elderjs/elderjs",
+    "npm": "@elderjs/elderjs",
+    "isNpmCoreArtifact": true,
+    "alias": "Elder.js",
+    "tags": ["svelte", "JAMstack", "server-side-rendering-SSR", "static-site-generator-SSD"]
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -12977,6 +13113,14 @@
   },
   {
     "category": "Web Components UI Libraries",
+    "repoId": "shoelace-style/shoelace",
+    "npm": "@shoelace-style/shoelace",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["web-components"]
+  },
+  {
+    "category": "Web Components UI Libraries",
     "repoId": "lit/lit-element",
     "npm": "lit-element",
     "isNpmCoreArtifact": true,
@@ -13072,6 +13216,62 @@
     "tags": ["bigdecimal", "bignumber", "math", "matrices", "complex-numbers"]
   },
   {
+    "category": "Utilities to work with money",
+    "repoId": "dinerojs/dinero.js",
+    "npm": "dinero.js",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["money", "currency", "math"]
+  },
+  {
+    "category": "Utilities to work with money",
+    "repoId": "ericelliott/moneysafe",
+    "npm": "moneysafe",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["money", "currency", "math"]
+  },
+  {
+    "category": "Utilities to work with money",
+    "repoId": "scurker/currency.js",
+    "npm": "currency.js",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["money", "currency", "math"]
+  },
+  {
+    "category": "Utilities to work with money",
+    "repoId": "openexchangerates/money.js",
+    "npm": "money",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["currency", "conversion"]
+  },
+  {
+    "category": "Geospatial operations",
+    "repoId": "turfjs/turf",
+    "npm": "@turf/turf",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["GEO utility"]
+  },
+  {
+    "category": "Geospatial operations",
+    "repoId": "manuelbieh/geolib",
+    "npm": "geolib",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["GEO utility"]
+  },
+  {
+    "category": "Geospatial operations",
+    "repoId": "cmoncrief/geodist",
+    "npm": "geodist",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["GEO utility"]
+  },
+  {
     "category": "React Components to render Markdown",
     "repoId": "remarkjs/react-markdown",
     "npm": "react-markdown",
@@ -13134,5 +13334,21 @@
     "isNpmCoreArtifact": true,
     "alias": null,
     "tags": ["react", "notification", "snackbar", "toast", "material-design"]
+  },
+  {
+    "category": "Vue Select Components",
+    "repoId": "sagalbot/vue-select",
+    "npm": "vue-select",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["vue", "select", "multiselect"]
+  },
+  {
+    "category": "Vue Select Components",
+    "repoId": "shentao/vue-multiselect",
+    "npm": "vue-multiselect",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["vue", "select", "multiselect"]
   }
 ]

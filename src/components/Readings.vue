@@ -5,7 +5,7 @@
       <div
         v-for="(reading, index) in readings"
         :key="reading.url"
-        class="mb-1 flex"
+        class="mb-1 flex text-lg"
       >
         <span class="mr-1">{{ index + 1 }}.</span>
         <m-ext-link :href="reading.url" :txt="reading.title" />
