@@ -11705,6 +11705,14 @@
   },
   {
     "category": "Node.js Logging libraries",
+    "repoId": "bevry/caterpillar",
+    "npm": "caterpillar",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["nodejs-logging"]
+  },
+  {
+    "category": "Node.js Logging libraries",
     "repoId": "winstonjs/winston",
     "npm": "winston",
     "isNpmCoreArtifact": true,
