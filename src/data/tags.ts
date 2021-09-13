@@ -98,6 +98,11 @@ export const tags = [
   'markdown-to-react',
   'node-version-manager',
 
+  // notifications, toasts
+  'notification',
+  'snackbar',
+  'toast',
+
   // static site generators
   'static-site-generator-SSD',
   'server-side-rendering-SSR',
