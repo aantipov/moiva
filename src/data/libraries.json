@@ -11881,6 +11881,14 @@
   },
   {
     "category": "JavaScript/Node.js ORMs",
+    "repoId": "craigmichaelmartin/pure-orm",
+    "npm": "pure-orm",
+    "isNpmCoreArtifact": true,
+    "alias": "PureORM",
+    "tags": ["orm"]
+  },
+  {
+    "category": "JavaScript/Node.js ORMs",
     "repoId": "typeorm/typeorm",
     "npm": "typeorm",
     "isNpmCoreArtifact": true,
