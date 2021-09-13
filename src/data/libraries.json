@@ -3584,12 +3584,20 @@
     "tags": []
   },
   {
-    "category": "misc",
+    "category": "NodeJS version managers",
     "repoId": "nvm-sh/nvm",
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
-    "tags": []
+    "tags": ["node-version-manager"]
+  },
+  {
+    "category": "NodeJS version managers",
+    "repoId": "schniz/fnm",
+    "npm": null,
+    "isNpmCoreArtifact": null,
+    "alias": null,
+    "tags": ["node-version-manager"]
   },
   {
     "category": "misc",
@@ -11697,6 +11705,14 @@
   },
   {
     "category": "Node.js Logging libraries",
+    "repoId": "bevry/caterpillar",
+    "npm": "caterpillar",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["nodejs-logging"]
+  },
+  {
+    "category": "Node.js Logging libraries",
     "repoId": "winstonjs/winston",
     "npm": "winston",
     "isNpmCoreArtifact": true,
@@ -11861,6 +11877,14 @@
     "npm": "@typegoose/typegoose",
     "isNpmCoreArtifact": true,
     "alias": "Typegoose",
+    "tags": ["orm"]
+  },
+  {
+    "category": "JavaScript/Node.js ORMs",
+    "repoId": "craigmichaelmartin/pure-orm",
+    "npm": "pure-orm",
+    "isNpmCoreArtifact": true,
+    "alias": "PureORM",
     "tags": ["orm"]
   },
   {
@@ -13078,5 +13102,37 @@
     "isNpmCoreArtifact": true,
     "alias": "daisyUI",
     "tags": ["tailwindcss-components", "css-framework"]
+  },
+  {
+    "category": "ReactJS Notification Libraries",
+    "repoId": "fkhadra/react-toastify",
+    "npm": "react-toastify",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["react", "notification", "snackbar", "toast"]
+  },
+  {
+    "category": "ReactJS Notification Libraries",
+    "repoId": "timolins/react-hot-toast",
+    "npm": "react-hot-toast",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["react", "notification", "snackbar", "toast"]
+  },
+  {
+    "category": "ReactJS Notification Libraries",
+    "repoId": "louisbarranqueiro/reapop",
+    "npm": "reapop",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["react", "notification", "snackbar", "toast"]
+  },
+  {
+    "category": "ReactJS Notification Libraries",
+    "repoId": "iamhosseindhv/notistack",
+    "npm": "notistack",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["react", "notification", "snackbar", "toast", "material-design"]
   }
 ]

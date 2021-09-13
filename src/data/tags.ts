@@ -96,6 +96,12 @@ export const tags = [
   'markdown-parser',
   'tailwindcss-components',
   'markdown-to-react',
+  'node-version-manager',
+
+  // notifications, toasts
+  'notification',
+  'snackbar',
+  'toast',
 
   // static site generators
   'static-site-generator-SSD',
