@@ -3584,12 +3584,20 @@
     "tags": []
   },
   {
-    "category": "misc",
+    "category": "NodeJS version managers",
     "repoId": "nvm-sh/nvm",
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
-    "tags": []
+    "tags": ["node-version-manager"]
+  },
+  {
+    "category": "NodeJS version managers",
+    "repoId": "schniz/fnm",
+    "npm": null,
+    "isNpmCoreArtifact": null,
+    "alias": null,
+    "tags": ["node-version-manager"]
   },
   {
     "category": "misc",
