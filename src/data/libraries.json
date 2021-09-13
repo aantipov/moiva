@@ -13094,5 +13094,37 @@
     "isNpmCoreArtifact": true,
     "alias": "daisyUI",
     "tags": ["tailwindcss-components", "css-framework"]
+  },
+  {
+    "category": "ReactJS Notification Libraries",
+    "repoId": "fkhadra/react-toastify",
+    "npm": "react-toastify",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["react", "notification", "snackbar", "toast"]
+  },
+  {
+    "category": "ReactJS Notification Libraries",
+    "repoId": "timolins/react-hot-toast",
+    "npm": "react-hot-toast",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["react", "notification", "snackbar", "toast"]
+  },
+  {
+    "category": "ReactJS Notification Libraries",
+    "repoId": "LouisBarranqueiro/reapop",
+    "npm": "reapop",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["react", "notification", "snackbar", "toast"]
+  },
+  {
+    "category": "ReactJS Notification Libraries",
+    "repoId": "iamhosseindhv/notistack",
+    "npm": "notistack",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["react", "notification", "snackbar", "toast", "material-design"]
   }
 ]
