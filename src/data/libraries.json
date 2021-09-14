@@ -12605,7 +12605,7 @@
     "npm": "gatsby",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["static-site-generator-SSD", "react"]
+    "tags": ["static-site-generator-SSG", "react"]
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -12613,7 +12613,7 @@
     "npm": "next",
     "isNpmCoreArtifact": true,
     "alias": "Next.js",
-    "tags": ["nodejs-framework", "static-site-generator-SSD", "react", "server-side-rendering-SSR", "JAMstack"]
+    "tags": ["nodejs-framework", "static-site-generator-SSG", "react", "server-side-rendering-SSR", "JAMstack"]
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -12621,7 +12621,7 @@
     "npm": "nuxt",
     "isNpmCoreArtifact": true,
     "alias": "Nuxt.js",
-    "tags": ["nodejs-framework", "static-site-generator-SSD", "server-side-rendering-SSR", "vue", "JAMstack"]
+    "tags": ["nodejs-framework", "static-site-generator-SSG", "server-side-rendering-SSR", "vue", "JAMstack"]
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -12629,7 +12629,7 @@
     "npm": "sapper",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["nodejs-framework", "server-side-rendering-SSR", "hmr", "svelte", "JAMstack", "static-site-generator-SSD"]
+    "tags": ["nodejs-framework", "server-side-rendering-SSR", "hmr", "svelte", "JAMstack", "static-site-generator-SSG"]
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -12637,7 +12637,7 @@
     "npm": "@elderjs/elderjs",
     "isNpmCoreArtifact": true,
     "alias": "Elder.js",
-    "tags": ["svelte", "JAMstack", "server-side-rendering-SSR", "static-site-generator-SSD"]
+    "tags": ["svelte", "JAMstack", "server-side-rendering-SSR", "static-site-generator-SSG"]
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -12645,7 +12645,7 @@
     "npm": "@11ty/eleventy",
     "isNpmCoreArtifact": true,
     "alias": "11ty",
-    "tags": ["static-site-generator-SSD"]
+    "tags": ["static-site-generator-SSG"]
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -12653,7 +12653,7 @@
     "npm": "hexo",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["static-site-generator-SSD", "blog"]
+    "tags": ["static-site-generator-SSG", "blog"]
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -12661,7 +12661,7 @@
     "npm": "@docusaurus/core",
     "isNpmCoreArtifact": true,
     "alias": "Docusaurus",
-    "tags": ["documentation", "react", "markdown", "static-site-generator-SSD"]
+    "tags": ["documentation", "react", "markdown", "static-site-generator-SSG"]
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -12669,7 +12669,7 @@
     "npm": "vuepress",
     "isNpmCoreArtifact": true,
     "alias": "VuePress",
-    "tags": ["static-site-generator-SSD", "vue"]
+    "tags": ["static-site-generator-SSG", "vue"]
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -12693,7 +12693,7 @@
     "npm": "react-static",
     "isNpmCoreArtifact": true,
     "alias": "React Static",
-    "tags": ["static-site-generator-SSD", "react"]
+    "tags": ["static-site-generator-SSG", "react"]
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -12701,7 +12701,7 @@
     "npm": "gridsome",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["static-site-generator-SSD", "vue", "JAMstack"]
+    "tags": ["static-site-generator-SSG", "vue", "JAMstack"]
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -12709,7 +12709,7 @@
     "npm": "astro",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["static-site-generator-SSD", "JAMstack"]
+    "tags": ["static-site-generator-SSG", "JAMstack"]
   },
   {
     "category": "JavaScript Static Types Checking Tools",

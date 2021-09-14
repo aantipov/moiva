@@ -110,7 +110,7 @@ export const tags = [
   'toast',
 
   // static site generators
-  'static-site-generator-SSD',
+  'static-site-generator-SSG',
   'server-side-rendering-SSR',
   'documentation',
   'blog',
