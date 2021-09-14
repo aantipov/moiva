@@ -8,13 +8,14 @@
           <thead class="text-white bg-primary">
             <tr>
               <td></td>
-              <td class="flex justify-center px-1 py-2 font-bold">Metric</td>
+              <td class="text-center px-1 py-2 font-bold">Metric</td>
 
               <th
                 v-for="lib in libraries"
                 :key="lib.id"
                 scope="col"
                 class="relative px-8"
+                style="max-width: 220px; overflow: hidden"
               >
                 <div>{{ lib.alias }}</div>
                 <m-close
@@ -74,6 +75,7 @@
                 :key="lib.id"
                 class="p-2 bg-white border-r border-gray-300"
                 :class="{ 'bg-gray-200': index % 2 }"
+                style="max-width: 220px; overflow: hidden"
               >
                 <MetricValue :type="row.metric" :lib="lib" />
               </td>
