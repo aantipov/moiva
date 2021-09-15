@@ -11,20 +11,9 @@
     :since="sinceRef"
     :since-values="sinceValues"
     @sinceChange="onSinceChange"
+    data-source-txt="Google Trends"
+    :data-source-url="gTrendsLink"
   >
-    <p>Google Search Interest Over Time.</p>
-    <p>
-      Data are provided for popular libraries only. The list is manually
-      curated.
-    </p>
-    <p>
-      Feel free to submit a
-      <a href="https://github.com/aantipov/moiva" target="_blank" rel="noopener"
-        >request</a
-      >
-      to add a library.
-    </p>
-    <p>Data source: <a :href="gTrendsLink" target="_blank">Google Trends</a></p>
   </m-chart>
 </template>
 

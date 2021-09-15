@@ -8,30 +8,26 @@
     :failed-libs-names="[]"
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
+    data-source-txt="ThoughtWorks"
+    data-source-url="https://www.thoughtworks.com/radar/languages-and-frameworks"
   >
-    <p>ThoughtWorks' levels definitions:</p>
-    <p>
-      <i>Adopt</i> - We feel strongly that the industry should be adopting these
-      items. We use them when appropriate on our projects.
-    </p>
-    <p>
-      <i>Trial</i> - Worth pursuing. It is important to understand how to build
-      up this capability. Enterprises should try this technology on a project
-      that can handle the risk.
-    </p>
-    <p>
-      <i>Assess</i> - Worth exploring with the goal of understanding how it will
-      affect your enterprise.
-    </p>
-    <p><i>Hold</i> - Proceed with caution.</p>
-    <p>
-      Data source:
-      <a
-        href="https://www.thoughtworks.com/radar/languages-and-frameworks"
-        target="_blank"
-        >ThoughtWorks</a
-      >
-    </p>
+    <template #info>
+      <div>ThoughtWorks' levels definitions:</div>
+      <div>
+        <i>Adopt</i> - We feel strongly that the industry should be adopting
+        these items. We use them when appropriate on our projects.
+      </div>
+      <div>
+        <i>Trial</i> - Worth pursuing. It is important to understand how to
+        build up this capability. Enterprises should try this technology on a
+        project that can handle the risk.
+      </div>
+      <div>
+        <i>Assess</i> - Worth exploring with the goal of understanding how it
+        will affect your enterprise.
+      </div>
+      <div><i>Hold</i> - Proceed with caution.</div>
+    </template>
   </m-chart>
 </template>
 

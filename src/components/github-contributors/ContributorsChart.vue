@@ -8,8 +8,12 @@
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
   >
-    <p>Amount of developers contributed to a repository per quarter.</p>
-    <p>Data source: <a href="https://github.com/" target="_blank">GitHub</a></p>
+    <template #footer>
+      <div>Amount of developers contributed to a repository per quarter.</div>
+      <div>
+        Data source: <a href="https://github.com/" target="_blank">GitHub</a>
+      </div>
+    </template>
   </m-chart>
 </template>
 

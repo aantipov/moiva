@@ -10,11 +10,10 @@
     :aria-label="ariaLabel"
     :since="sinceRef"
     :since-values="sinceValues"
+    data-source-txt="NPM"
+    data-source-url="https://www.npmjs.com/"
     @sinceChange="onSinceChange"
-  >
-    <p>NPM downloads monthly.</p>
-    <p>Data source: <a href="https://www.npmjs.com/" target="_blank">NPM</a></p>
-  </m-chart>
+  />
 </template>
 
 <script setup lang="ts">

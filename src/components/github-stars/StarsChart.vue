@@ -7,10 +7,9 @@
     :failed-libs-names="failedReposIds"
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
-  >
-    <p>New GitHub Stars monthly.</p>
-    <p>Data source: <a href="https://github.com/" target="_blank">GitHub</a></p>
-  </m-chart>
+    data-source-txt="GitHub"
+    data-source-url="https://github.com/"
+  />
 </template>
 
 <script setup lang="ts">

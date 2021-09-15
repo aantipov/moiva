@@ -8,12 +8,14 @@
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
   >
-    <p>Repository Commits number aggregated by 4 weeks interval.</p>
-    <p>
-      Only commits to the default repository branch are included. Merge commits
-      are excluded.
-    </p>
-    <p>Data source: <a href="https://github.com/" target="_blank">GitHub</a></p>
+    <template #footer>
+      <div>Repository commits aggregated by 4 weeks interval.</div>
+      <div>Count only commits to default repository branch.</div>
+      <div>Merge commits excluded.</div>
+      <div>
+        Data source: <a href="https://github.com/" target="_blank">GitHub</a>
+      </div>
+    </template>
   </m-chart>
 </template>
 

@@ -9,10 +9,14 @@
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
   >
-    <p>New NPM Releases quarterly.</p>
-    <p>Major, minor and bugfix releases count.</p>
-    <p>Pre-releases are not included.</p>
-    <p>Data source: <a href="https://www.npmjs.com/" target="_blank">NPM</a></p>
+    <template #footer>
+      <div>Major, minor and bugfix releases count.</div>
+      <div>Pre-releases are not included.</div>
+      <div class="flex justify-center">
+        Data source:
+        <m-ext-link class="mx-1" href="https://www.npmjs.com/" txt="NPM" />
+      </div>
+    </template>
   </m-chart>
 </template>
 

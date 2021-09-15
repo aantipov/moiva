@@ -1,7 +1,6 @@
 <template>
   <m-chart
-    title="Languages,"
-    subtitle="%"
+    title="Languages, %"
     :is-loading="isLoadingRef"
     :is-error="isError"
     :libs-names="reposIds"
@@ -9,12 +8,16 @@
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
   >
-    <p>Distribution of languages per repostory.</p>
-    <p>
-      Calculation is based on the number of bytes of code written in each
-      language.
-    </p>
-    <p>Data source: <a href="https://github.com/" target="_blank">GitHub</a></p>
+    <template #footer>
+      <div>Languages distribution per repostory.</div>
+      <div>
+        Calculation based on number of bytes of code written in each language.
+      </div>
+      <div class="flex justify-center">
+        Data source:
+        <m-ext-link class="mx-1" href="https://github.com/" txt="GitHub" />
+      </div>
+    </template>
   </m-chart>
 </template>
 
