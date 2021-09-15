@@ -10,7 +10,12 @@ export const frameworksTags = [
 ];
 
 // Too generic tags to be used in suggestions on their own (they always need to be accompanied with more specific tags)
-export const genericTags = ['markdown', 'cli-tool'];
+export const genericTags = [
+  'markdown',
+  'cli-tool',
+  'react-hook',
+  'react-component',
+];
 
 export const tags = [
   ...frameworksTags,
@@ -97,6 +102,7 @@ export const tags = [
   'tailwindcss-components',
   'markdown-to-react',
   'node-version-manager',
+  'GEO utility',
 
   // notifications, toasts
   'notification',
@@ -142,4 +148,19 @@ export const tags = [
   'math',
   'matrices',
   'complex-numbers',
+
+  // Money utiilties
+  'money',
+  'currency',
+  'conversion',
+
+  // virtual lists, infinite scrolling, tables
+  'list',
+  'virtualization',
+  'table',
+  'grid',
+  'pagination',
+
+  'select',
+  'multiselect',
 ];

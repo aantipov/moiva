@@ -23,11 +23,7 @@
 
   <div v-else-if="type === 'homepage'" class="flex justify-center">
     <template v-if="lib.repo.homepageUrl">
-      <m-ext-link
-        :href="lib.repo.homepageUrl"
-        :txt="strippedHomepageUrl"
-        truncate
-      />
+      <m-ext-link :href="lib.repo.homepageUrl" :txt="strippedHomepageUrl" />
     </template>
     <template v-else>-</template>
   </div>

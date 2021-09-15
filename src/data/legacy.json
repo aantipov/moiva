@@ -2,5 +2,6 @@
   { "repoId": "sass/node-sass" },
   { "repoId": "moment/moment" },
   { "repoId": "angular/angular.js" },
-  { "npm": "amcharts3" }
+  { "npm": "amcharts3" },
+  { "npm": "radium" }
 ]

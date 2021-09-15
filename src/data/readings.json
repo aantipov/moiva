@@ -52,5 +52,11 @@
     "url": "https://laconiajs.io/docs/vs/middy",
     "npms": ["@laconia/core", "@middy/core"],
     "repos": []
+  },
+  {
+    "title": "Best Practices for Logging in Node.js",
+    "url": "https://blog.appsignal.com/2021/09/01/best-practices-for-logging-in-nodejs.html",
+    "npms": ["winston", "pino", "bunyan"],
+    "repos": []
   }
 ]
