@@ -3,6 +3,15 @@
     class="bg-gray-100 rounded relative overflow-hidden"
     :class="{ withBorder: !popupMode }"
   >
+    <m-loader v-if="isLoading" />
+
+    <div v-else-if="isError || !libsNames.length" class="chart-error-new">
+      <div>
+        Sorry we couldn't load the data. <br />
+        Try reload the page or check later
+      </div>
+    </div>
+
     <div
       v-if="!popupMode || $slots.info || failedLibsNames.length"
       class="absolute top-4 right-4 z-30 flex"
@@ -33,18 +42,10 @@
 
     <!-- Chart -->
     <div style="height: 350px">
-      <m-loader v-if="isLoading" />
-
-      <div v-else-if="isError || !libsNames.length" class="chart-error-new">
-        <div>
-          Sorry we couldn't load the data. <br />
-          Try reload the page or check later
-        </div>
-      </div>
-
       <canvas
         v-show="!isError && libsNames.length"
         ref="chartEl"
+        class="-mt-2 -mb-2"
         role="img"
         :aria-label="ariaLabel"
         ><div>
@@ -54,7 +55,7 @@
     </div>
 
     <!--  Timerange selector -->
-    <div v-if="since" class="relative flex justify-center z-50 -mt-3 mb-5">
+    <div v-if="since" class="flex justify-center mb-3 relative">
       <select
         v-model="dateRangeSince"
         name="date-range"
@@ -67,7 +68,11 @@
     </div>
 
     <!--  Chart Actions -->
-    <div v-if="popupMode" class="flex justify-center" style="height: 50px">
+    <div
+      v-if="popupMode"
+      class="flex justify-center relative"
+      style="height: 50px"
+    >
       <span class="link text-center w-1/3 px-2" @click="copyShare"
         >Copy and Share (Twitter)</span
       >
@@ -80,7 +85,7 @@
     <!--  Footer -->
     <div
       v-if="$slots.footer || dataSourceTxt"
-      class="relative text-center mb-3 -mt-3 text-gray-700"
+      class="relative text-center mb-3 text-gray-700"
     >
       <slot name="footer">
         <div v-if="dataSourceTxt" class="flex justify-center">
