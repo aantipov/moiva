@@ -42,6 +42,6 @@ const readings = computed<ReadingT[]>(() =>
 
 <style lang="postcss">
 .root {
-  max-width: 600px;
+  max-width: 700px;
 }
 </style>
