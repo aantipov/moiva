@@ -1,10 +1,10 @@
 <template>
   <div
     class="bg-gray-100 rounded relative overflow-hidden"
-    :class="{ withBorder: !hideBorder }"
+    :class="{ withBorder: !popupMode }"
   >
     <div
-      v-if="!showActions || $slots.info || failedLibsNames.length"
+      v-if="!popupMode || $slots.info || failedLibsNames.length"
       class="absolute top-4 right-4 z-30 flex"
     >
       <!--   Warning Icon with Failures description   -->
@@ -67,7 +67,7 @@
     </div>
 
     <!--  Chart Actions -->
-    <div v-if="showActions" class="flex justify-center" style="height: 50px">
+    <div v-if="popupMode" class="flex justify-center" style="height: 50px">
       <span class="link text-center w-1/3 px-2" @click="copyShare"
         >Copy and Share (Twitter)</span
       >
@@ -103,9 +103,7 @@ import {
 import { librariesRR } from '@/store/libraries';
 
 interface Props {
-  title?: string;
-  hideLegend?: boolean;
-  hideBorder?: boolean;
+  title: string;
   isLoading?: boolean;
   isError?: boolean;
   libsNames: string[];
@@ -114,15 +112,12 @@ interface Props {
   ariaLabel?: string;
   since?: string;
   sinceValues?: string[];
-  showActions?: boolean;
   dataSourceTxt?: string;
   dataSourceUrl?: string;
+  popupMode?: boolean;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  title: '',
-  hideLegend: false,
-  hideBorder: false,
   isLoading: false,
   isError: false,
   failedLibsNames: () => [],
@@ -130,9 +125,9 @@ const props = withDefaults(defineProps<Props>(), {
   // @ts-ignore
   since: null,
   sinceValues: () => [],
-  showActions: false,
   dataSourceTxt: '',
   dataSourceUrl: '',
+  popupMode: false,
 });
 
 const emit = defineEmits(['sinceChange']);
@@ -150,7 +145,7 @@ function enchanceChartConfig(
   chartConfig.options.plugins.title.text = title;
   chartConfig.options.plugins.title.display = true;
   chartConfig.options.plugins.title.padding = { top: 0, bottom: 4 };
-  if (props.hideLegend) {
+  if (props.popupMode) {
     chartConfig.options.plugins.legend = { display: false };
     chartConfig.options.plugins.title.padding.bottom = 16;
   }

@@ -2,6 +2,8 @@
   <m-chart
     v-if="isDisplayed"
     title="Google Search Interest"
+    data-source-txt="Google Trends"
+    :data-source-url="gTrendsLink"
     :is-loading="isLoadingRef"
     :is-error="isError"
     :libs-names="libsKeywordsAliases"
@@ -11,8 +13,6 @@
     :since="sinceRef"
     :since-values="sinceValues"
     @sinceChange="onSinceChange"
-    data-source-txt="Google Trends"
-    :data-source-url="gTrendsLink"
   >
   </m-chart>
 </template>

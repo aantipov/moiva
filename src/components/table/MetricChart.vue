@@ -19,9 +19,7 @@
           :libs-names="libsNames"
           :chart-config="chartConfig"
           :title="metricData.chart.title"
-          show-actions
-          hide-legend
-          hide-border
+          popup-mode
         />
       </div>
     </div>
