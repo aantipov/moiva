@@ -10,8 +10,9 @@
   >
     <template #footer>
       <div>Developers contributed to a repository per quarter.</div>
-      <div>
-        Data source: <a href="https://github.com/" target="_blank">GitHub</a>
+      <div class="flex justify-center">
+        Data source:
+        <m-ext-link class="mx-1" href="https://github.com/" txt="GitHub" />
       </div>
     </template>
   </m-chart>

@@ -12,8 +12,9 @@
       <div>Repository commits aggregated by 4 weeks interval.</div>
       <div>Count only commits to default repository branch.</div>
       <div>Merge commits excluded.</div>
-      <div>
-        Data source: <a href="https://github.com/" target="_blank">GitHub</a>
+      <div class="flex justify-center">
+        Data source:
+        <m-ext-link class="mx-1" href="https://github.com/" txt="GitHub" />
       </div>
     </template>
   </m-chart>
