@@ -9,7 +9,7 @@
     :aria-label="ariaLabel"
   >
     <template #footer>
-      <div>Amount of developers contributed to a repository per quarter.</div>
+      <div>Developers contributed to a repository per quarter.</div>
       <div>
         Data source: <a href="https://github.com/" target="_blank">GitHub</a>
       </div>
