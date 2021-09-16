@@ -11,7 +11,7 @@
   >
     <template #footer>
       <div>Major, minor and bugfix releases count.</div>
-      <div>Pre-releases are not included.</div>
+      <div>Pre-releases not included.</div>
       <div class="flex justify-center">
         Data source:
         <m-ext-link class="mx-1" href="https://www.npmjs.com/" txt="NPM" />
