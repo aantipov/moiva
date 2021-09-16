@@ -22,8 +22,8 @@
         style="margin-top: -2px"
         type="WARNING"
       >
-        <div>
-          Sorry, we couldn't fetch data for the following packages:
+        <div style="min-width: 300px">
+          We couldn't fetch data for the following packages:
           <div v-for="libName in failedLibsNames" :key="libName">
             - {{ libName }}
           </div>
@@ -33,7 +33,7 @@
       </m-chart-info>
 
       <!-- Info Icon -->
-      <m-chart-info v-if="$slots.info" style="margin-top: -2px">
+      <m-chart-info v-if="$slots.info" style="margin-top: -4px">
         <slot name="info" />
       </m-chart-info>
 

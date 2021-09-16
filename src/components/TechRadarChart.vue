@@ -12,21 +12,24 @@
     data-source-url="https://www.thoughtworks.com/radar/languages-and-frameworks"
   >
     <template #info>
-      <div>ThoughtWorks' levels definitions:</div>
-      <div>
-        <i>Adopt</i> - We feel strongly that the industry should be adopting
-        these items. We use them when appropriate on our projects.
+      <div style="min-width: 300px">
+        <div>ThoughtWorks' levels definitions:</div>
+        <div class="mt-1">
+          <i class="underline">Adopt</i> - We feel strongly that the industry
+          should be adopting these items. We use them when appropriate on our
+          projects.
+        </div>
+        <div class="mt-1">
+          <i class="underline">Trial</i> - Worth pursuing. It is important to
+          understand how to build up this capability. Enterprises should try
+          this technology on a project that can handle the risk.
+        </div>
+        <div class="mt-1">
+          <i class="underline">Assess</i> - Worth exploring with the goal of
+          understanding how it will affect your enterprise.
+        </div>
+        <div class="mt-1"><i>Hold</i> - Proceed with caution.</div>
       </div>
-      <div>
-        <i>Trial</i> - Worth pursuing. It is important to understand how to
-        build up this capability. Enterprises should try this technology on a
-        project that can handle the risk.
-      </div>
-      <div>
-        <i>Assess</i> - Worth exploring with the goal of understanding how it
-        will affect your enterprise.
-      </div>
-      <div><i>Hold</i> - Proceed with caution.</div>
     </template>
   </m-chart>
 </template>
