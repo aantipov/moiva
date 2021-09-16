@@ -8,6 +8,7 @@
       w-full
       h-full
       bg-white bg-opacity-40
+      z-50
     "
   >
     <div class="lds-grid">

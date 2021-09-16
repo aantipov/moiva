@@ -1,9 +1,10 @@
 <template>
-  <div ref="triggerRef">
-    <div class="cursor-default">
+  <div>
+    <div ref="triggerRef" class="cursor-default">
       <InfoIcon v-if="type === 'INFO'" />
       <WarningIcon v-else />
     </div>
+
     <div ref="contentRef">
       <slot></slot>
     </div>

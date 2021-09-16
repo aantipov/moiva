@@ -60,7 +60,7 @@ Chart.defaults.font.size = 14;
 Chart.defaults.font.family =
   'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
 Chart.defaults.plugins.title.padding = 0;
-Chart.defaults.plugins.title.font.size = 14;
+Chart.defaults.plugins.title.font.size = 16;
 Chart.defaults.plugins.title.font.family =
   'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
 

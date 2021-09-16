@@ -9,10 +9,7 @@
       class="text-gray-800 font-normal -mx-2 divide-gray-300 divide-y"
       @click="hide"
     >
-      <div
-        style="width: 500px; max-width: 100%; height: 370px"
-        class="overflow-y-hidden"
-      >
+      <div style="width: 500px; max-width: 100%" class="overflow-y-hidden">
         <div v-if="!libsNames.length">
           <m-loader-new class="items-center" />
         </div>
@@ -22,8 +19,7 @@
           :libs-names="libsNames"
           :chart-config="chartConfig"
           :title="metricData.chart.title"
-          :show-title="false"
-          show-actions
+          popup-mode
         />
       </div>
     </div>
@@ -123,12 +119,6 @@ const chartConfig = computed<ChartConfiguration<'bar'>>(() => {
       },
 
       plugins: {
-        legend: { display: false },
-        title: {
-          text: metricConfig.title,
-          display: true,
-          padding: { top: 0, bottom: 25 },
-        },
         tooltip: {
           callbacks: {
             label: (context): string => {
