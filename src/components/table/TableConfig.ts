@@ -83,6 +83,7 @@ export const ROWS: MetricDataT[] = [
     cat: '',
     metric: 'status',
     label: 'Status',
+    labelMore: 'and last commit date',
     tooltip:
       '<p>Library status. Possible values:</p><p>- "Active"<br> - "Inactive" if no commits in the last 6 months<br> - "Legacy" if library authors called it so<br> - "Archived" if the repository is archived</p>',
   },

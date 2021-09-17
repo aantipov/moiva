@@ -5,9 +5,14 @@ import {
   genericTags,
 } from '@/data/index';
 import { LibraryReadonlyT, LibrariesReadonlyT } from '@/libraryApis';
-import { getYear, getMonth } from 'date-fns';
+import {
+  getYear,
+  getMonth,
+  subQuarters,
+  format,
+  formatDistance,
+} from 'date-fns';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
-import { subQuarters, format } from 'date-fns';
 import Swal from 'sweetalert2';
 import 'sweetalert2/dist/sweetalert2.css';
 // @ts-ignore
@@ -139,6 +144,10 @@ export function formatNumber(value: number, withSign = false): string {
   const sign = withSign && value >= 0 ? '+' : '';
 
   return `${sign}${numbersFormatter.format(value)}`;
+}
+
+export function formatDateFromNow(date: string): string {
+  return formatDistance(new Date(date), new Date(), { addSuffix: true });
 }
 
 // Do not allow Google index pages with GitHub (we don't have enough data for SEO there)

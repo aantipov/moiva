@@ -28,7 +28,9 @@
           <i class="underline">Assess</i> - Worth exploring with the goal of
           understanding how it will affect your enterprise.
         </div>
-        <div class="mt-1"><i>Hold</i> - Proceed with caution.</div>
+        <div class="mt-1">
+          <i class="underline">Hold</i> - Proceed with caution.
+        </div>
       </div>
     </template>
   </m-chart>

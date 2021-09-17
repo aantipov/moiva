@@ -23,6 +23,7 @@ export interface RepoT {
   isArchived?: boolean; // optional for transitional period (api cache expiration)
   stars: number;
   createdAt: string;
+  lastCommitAt: string;
   closedIssues: number;
   closedBugIssues: number;
   openIssues: number;
