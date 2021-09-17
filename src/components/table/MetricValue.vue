@@ -32,8 +32,11 @@
     <template v-else>-</template>
   </div>
 
-  <div v-else-if="type === 'status'" class="flex justify-center">
-    <StatusBadge :value="lib.status" />
+  <div v-else-if="type === 'status'">
+    <div class="flex justify-center">
+      <StatusBadge :value="lib.status" />
+    </div>
+    <div class="text-center text-sm opacity-80 mt-1">{{ lastCommitAt }}</div>
   </div>
 
   <div v-else-if="type === 'tags'" class="flex flex-wrap justify-center">
@@ -225,6 +228,7 @@ import {
   numbersFormatter,
   formatPercent,
   formatNumber,
+  formatDate,
   sanitizeHTML,
 } from '@/utils';
 import { MetricT } from './TableConfig';
@@ -239,6 +243,7 @@ const props = defineProps<{
 }>();
 
 const { lib } = toRefs(props);
+const lastCommitAt = computed(() => formatDate(lib.value.repo.lastCommitAt));
 const npmNameEncoded = computed(() =>
   encodeURIComponent(lib.value.npmPackage?.name ?? '')
 );
