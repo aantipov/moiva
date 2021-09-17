@@ -228,7 +228,7 @@ import {
   numbersFormatter,
   formatPercent,
   formatNumber,
-  formatDate,
+  formatDateFromNow,
   sanitizeHTML,
 } from '@/utils';
 import { MetricT } from './TableConfig';
@@ -243,7 +243,9 @@ const props = defineProps<{
 }>();
 
 const { lib } = toRefs(props);
-const lastCommitAt = computed(() => formatDate(lib.value.repo.lastCommitAt));
+const lastCommitAt = computed(() =>
+  formatDateFromNow(lib.value.repo.lastCommitAt)
+);
 const npmNameEncoded = computed(() =>
   encodeURIComponent(lib.value.npmPackage?.name ?? '')
 );
