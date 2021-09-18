@@ -9,11 +9,25 @@
     :aria-label="ariaLabel"
     data-source-txt="GitHub"
     data-source-url="https://github.com/"
-  />
+  >
+    <template #footer>
+      <div>
+        <label>
+          Cumulative
+          <input v-model="isCumulative" type="checkbox" />
+        </label>
+      </div>
+
+      <div class="flex justify-center">
+        Data source:
+        <m-ext-link class="mx-1" href="https://github.com/" txt="GitHub" />
+      </div>
+    </template>
+  </m-chart>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { ChartConfiguration } from 'chart.js';
 import { getEarliestMonth, getPrevMonth, formatNumber } from '@/utils';
 import { StarsT } from './api';
@@ -26,11 +40,46 @@ import {
 
 interface FilteredLibT extends LibraryReadonlyT {
   stars: StarsT[];
+  starsCumulate: StarsT[];
   starsNewAvg: number;
 }
 
 const filteredLibsRef = computed(
   () => librariesRR.filter((lib) => !!lib.stars) as FilteredLibT[]
+);
+
+const filteredCumulativeLibsRef = computed(
+  () => librariesRR.filter((lib) => !!lib.starsCumulate) as FilteredLibT[]
+);
+
+const isCumulative = ref(false);
+
+const datasetsRef = computed(() =>
+  filteredLibsRef.value.map((lib) => ({
+    label: lib.repo.repoId,
+    data: lib.stars
+      .filter((item) => item.month >= startMonthRef.value)
+      .map(({ month, stars }) => ({
+        x: month as unknown as number,
+        y: stars,
+      })),
+    backgroundColor: lib.color,
+    borderColor: lib.color,
+  }))
+);
+
+const cumulativeDatasetsRef = computed(() =>
+  filteredCumulativeLibsRef.value.map((lib) => ({
+    label: lib.repo.repoId,
+    data: lib.starsCumulate
+      .filter((item) => item.month >= startMonthRef.value)
+      .map(({ month, stars }) => ({
+        x: month as unknown as number,
+        y: stars,
+      })),
+    backgroundColor: lib.color,
+    borderColor: lib.color,
+  }))
 );
 
 // Calculate startMonth based on repos creation date
@@ -45,17 +94,9 @@ const startMonthRef = computed(() => {
 const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
   type: 'line',
   data: {
-    datasets: filteredLibsRef.value.map((lib) => ({
-      label: lib.repo.repoId,
-      data: lib.stars
-        .filter((item) => item.month >= startMonthRef.value)
-        .map(({ month, stars }) => ({
-          x: month as unknown as number,
-          y: stars,
-        })),
-      backgroundColor: lib.color,
-      borderColor: lib.color,
-    })),
+    datasets: isCumulative.value
+      ? cumulativeDatasetsRef.value
+      : datasetsRef.value,
   },
   options: {
     scales: {
