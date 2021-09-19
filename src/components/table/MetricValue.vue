@@ -58,6 +58,7 @@
         'justify-center': starsGrowth === '-',
       }"
     >
+      <span v-if="showStarsGrowthBoostIcon" class="mr-1">&#128640;</span>
       {{ starsGrowth }}
     </div>
   </div>
@@ -80,6 +81,7 @@
         'text-red-700': lib.npmDownloadsGrowth && lib.npmDownloadsGrowth < 0,
       }"
     >
+      <span v-if="showNpmDownloadsGrowthBoostIcon" class="mr-1">&#128640;</span>
       {{ npmDownloadsGrowth }}
     </div>
   </div>
@@ -278,6 +280,22 @@ const starsGrowth = computed<string>(() => {
   return `${formatNumber(newStarsAvg, true)} = +${percentageFormatted}%`;
 });
 
+const showStarsGrowthBoostIcon = computed<boolean>(() => {
+  if (!lib.value.stars || !lib.value.repo.stars) {
+    return false;
+  }
+  const newStarsAvg = lib.value.starsNewAvg as number;
+  const total = lib.value.repo.stars - newStarsAvg;
+  const growth = (100 * newStarsAvg) / total;
+  return (
+    (total > 100000 && growth > 3) ||
+    (total > 50000 && growth > 5) ||
+    (total > 10000 && growth > 8) ||
+    (total > 5000 && growth > 10) ||
+    (total > 1000 && growth > 15)
+  );
+});
+
 const npmDownloads = computed<string | null>(() => {
   if (!lib.value.npmDownloadsAvg) {
     return null;
@@ -290,6 +308,16 @@ const npmDownloadsGrowth = computed<string>(() => {
   return lib.value.npmDownloadsGrowth
     ? formatPercent(lib.value.npmDownloadsGrowth, true)
     : '-';
+});
+
+const showNpmDownloadsGrowthBoostIcon = computed<boolean>(() => {
+  const val = lib.value.npmDownloadsAvg;
+  const growth = lib.value.npmDownloadsGrowth;
+  return (
+    (val > 1000000 && growth > 3) ||
+    (val > 100000 && growth > 5) ||
+    (val > 10000 && growth > 10)
+  );
 });
 
 function getAge(createdAt: string): string {
