@@ -2,23 +2,32 @@
   <m-chart
     v-if="isDisplayed"
     title="Google Search Interest"
-    data-source-txt="Google Trends"
-    :data-source-url="gTrendsLink"
     :is-loading="isLoadingRef"
     :is-error="isError"
     :libs-names="libsKeywordsAliases"
     :failed-libs-names="[]"
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
-    :since="sinceRef"
-    :since-values="sinceValues"
-    @sinceChange="onSinceChange"
   >
+    <template #footer>
+      <div class="flex justify-center mb-3 relative">
+        <select v-model="selectedSinceRef" name="date-range">
+          <option v-for="val in sinceValues" :key="val" :value="val">
+            since {{ val }}
+          </option>
+        </select>
+      </div>
+
+      <div class="flex justify-center">
+        Data source:
+        <m-ext-link class="mx-1" :href="gTrendsLink" txt="Google Trends" />
+      </div>
+    </template>
   </m-chart>
 </template>
 
 <script setup lang="ts">
-import { computed, watchEffect, ref } from 'vue';
+import { computed, watchEffect, ref, watch } from 'vue';
 import { ChartConfiguration, ChartDataset } from 'chart.js';
 import { GTrendDefT, GOOGLE_TRENDS_LIBS_LIMIT } from '@/data/index';
 import { numbersFormatter, getDateRanges } from '@/utils';
@@ -58,11 +67,11 @@ const minMonthRef = computed(() => {
   return '2017-01';
 });
 
-const selectedSinceRef = ref<string | null>(null);
-
-const sinceRef = computed<string>(
-  () => selectedSinceRef.value || minMonthRef.value
-);
+const selectedSinceRef = ref<string>(minMonthRef.value);
+const sinceValues = computed<string[]>(() => getDateRanges(minMonthRef.value));
+watch(sinceValues, () => {
+  selectedSinceRef.value = sinceValues.value[0];
+});
 
 // Have "datasets" separate for better animation when changing "since" date
 const datasets = computed<ChartDataset<'line'>[]>(() =>
@@ -91,10 +100,10 @@ const chartConfig = computed<ChartConfiguration>(() => ({
       x: {
         type: 'time',
         time: {
-          unit: sinceRef.value > '2019-10' ? 'month' : 'year',
+          unit: selectedSinceRef.value > '2019-10' ? 'month' : 'year',
           tooltipFormat: 'MMM, yyyy',
         },
-        min: sinceRef.value as unknown as number,
+        min: selectedSinceRef.value as unknown as number,
         adapters: { date: { locale: enUS } },
       },
       y: { ticks: { callback: numbersFormatter.format as () => string } },
@@ -145,10 +154,4 @@ const ariaLabel = computed(() => {
   }
   return '';
 });
-
-const sinceValues = computed<string[]>(() => getDateRanges(minMonthRef.value));
-
-function onSinceChange(since: string) {
-  selectedSinceRef.value = since;
-}
 </script>
