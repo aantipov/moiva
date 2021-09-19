@@ -152,7 +152,7 @@
     :class="{
       'justify-end': npmDependencies !== '-',
       'justify-center': npmDependencies === '-',
-      'text-red-700': lib.npmDependencies !== '-' && lib.npmDependencies > 10,
+      'text-red-700': lib.npmDependencies && lib.npmDependencies > 10,
     }"
   >
     {{ npmDependencies }}
@@ -281,7 +281,7 @@ const starsGrowth = computed<string>(() => {
 });
 
 const showStarsGrowthBoostIcon = computed<boolean>(() => {
-  if (!lib.value.stars || !lib.value.repo.stars) {
+  if (!lib.value.stars || !lib.value.repo.stars || !lib.value.starsNewAvg) {
     return false;
   }
   const newStarsAvg = lib.value.starsNewAvg as number;
@@ -313,6 +313,9 @@ const npmDownloadsGrowth = computed<string>(() => {
 const showNpmDownloadsGrowthBoostIcon = computed<boolean>(() => {
   const val = lib.value.npmDownloadsAvg;
   const growth = lib.value.npmDownloadsGrowth;
+  if (!val || !growth) {
+    return false;
+  }
   return (
     (val > 1000000 && growth > 3) ||
     (val > 100000 && growth > 5) ||
