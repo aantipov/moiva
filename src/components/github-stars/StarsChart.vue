@@ -1,6 +1,6 @@
 <template>
   <m-chart
-    title="New Github Stars monthly"
+    :title="isCumulative ? 'GitHub Stars' : 'New Github Stars monthly'"
     :is-loading="isLoadingRef"
     :is-error="isError"
     :libs-names="reposIds"
@@ -50,7 +50,7 @@ const filteredCumulativeLibsRef = computed(
   () => librariesRR.filter((lib) => !!lib.starsCumulate) as FilteredLibT[]
 );
 
-const isCumulative = ref(false);
+const isCumulative = ref(true);
 
 const datasetsRef = computed(() =>
   filteredLibsRef.value.map((lib) => ({
