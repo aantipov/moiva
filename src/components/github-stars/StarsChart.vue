@@ -7,8 +7,6 @@
     :failed-libs-names="failedReposIds"
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
-    data-source-txt="GitHub"
-    data-source-url="https://github.com/"
   >
     <template #footer>
       <div>
