@@ -30,7 +30,7 @@ const props = defineProps<{
 const tooltip = computed(() => {
   let txt;
   if (props.value === 'ACTIVE') {
-    txt = `<p>There were commits in the last 6 months</p>`;
+    txt = ``;
   } else if (props.value === 'INACTIVE') {
     txt = `<p>No commits in the last 6 months</p>`;
   } else if (props.value === 'LEGACY') {
