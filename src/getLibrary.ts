@@ -41,7 +41,11 @@ import {
   LanguagesT,
   cacheR as languagesMapR,
 } from '@/components/languages/api';
-import { StarsT, cacheR as starsMapR } from '@/components/github-stars/api';
+import {
+  StarsT,
+  cacheR as starsMapR,
+  starsCumulateCacheR,
+} from '@/components/github-stars/api';
 import { libraryToColorMapR } from '@/store/librariesColors';
 import { RepoT, NpmPackageT } from '@/libraryApis';
 import readings from '@/data/readings.json';
@@ -100,6 +104,7 @@ export interface LibraryT {
   devUsage: StateOfJSItemT | undefined;
   devUsageLast: number | undefined;
   stars: LibStarsT;
+  starsCumulate: LibStarsT;
   starsNewAvg: number | null | undefined;
   readings: ReadingT[];
 }
@@ -244,6 +249,8 @@ export function getLibrary(
     }) as unknown as number | undefined | null,
     // @ts-ignore
     stars: computed(() => starsMapR.get(repoIdLC)),
+    // @ts-ignore
+    starsCumulate: computed(() => starsCumulateCacheR.get(repoIdLC)),
     // @ts-ignore
     starsNewAvg: computed(() => {
       // Get avg number of new stars monthly (in the last 3 months)

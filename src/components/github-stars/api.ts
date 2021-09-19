@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { reportSentry } from '@/apis';
 import { reactive } from 'vue';
 
@@ -7,28 +7,86 @@ export interface StarsT {
   stars: number;
 }
 
-export const cacheR = reactive(new Map<string, StarsT[] | null>());
+interface StarsTotalsT {
+  month: string;
+  count: number;
+}
 
-export function fetchRepoStars(repoId: string): Promise<StarsT[] | null> {
+interface ResponseT {
+  items: StarsT[];
+  totals: StarsTotalsT[];
+}
+
+export const cacheR = reactive(new Map<string, StarsT[] | null>());
+export const starsCumulateCacheR = reactive(new Map<string, StarsT[] | null>());
+
+export async function fetchRepoStars(repoId: string): Promise<StarsT[] | null> {
   const repoIdLC = repoId.toLowerCase();
+
   if (cacheR.get(repoIdLC)) {
     return Promise.resolve(cacheR.get(repoIdLC) as StarsT[]);
   }
 
-  return axios
-    .get<{ items: StarsT[] }>(
+  try {
+    const { data } = await axios.get<ResponseT>(
       `https://github-stars.moiva.workers.dev/?repo=${repoIdLC}`
-    )
-    .then(({ data }) => {
-      const items = fillMissingData(data.items);
-      cacheR.set(repoIdLC, items);
-      return items;
-    })
-    .catch((err) => {
-      reportSentry(err, 'fetchGithubStars');
-      cacheR.set(repoIdLC, null);
-      return null;
-    });
+    );
+    const items = fillMissingData(data.items);
+    cacheR.set(repoIdLC, items);
+    starsCumulateCacheR.set(repoIdLC, getCummulateStars(items, data.totals));
+    return items;
+  } catch (error) {
+    reportSentry(error as AxiosError<unknown>, 'fetchGithubStars');
+    cacheR.set(repoIdLC, null);
+    return null;
+  }
+}
+
+function getCummulateStars(
+  items: StarsT[],
+  totals: StarsTotalsT[]
+): StarsT[] | null {
+  if (!items.length || !totals.length) {
+    return null;
+  }
+  const lastMonthTotals = getLastMonthStarsTotal(items, totals);
+  const monthToTotalMap = totals.reduce((acc, libTotal) => {
+    acc.set(libTotal.month, libTotal.count);
+    return acc;
+  }, new Map<string, number>());
+
+  if (!lastMonthTotals) {
+    return null;
+  }
+
+  return items.reduceRight(
+    (acc, val) => {
+      const prevMonth = getPrevMonth(val.month);
+      const stars = monthToTotalMap.get(prevMonth) || acc[0].stars - val.stars;
+      return [
+        {
+          month: prevMonth,
+          stars: stars > 0 ? stars : 0,
+        },
+        ...acc,
+      ];
+    },
+    [lastMonthTotals]
+  );
+}
+
+function getLastMonthStarsTotal(
+  items: StarsT[],
+  totals: StarsTotalsT[]
+): StarsT | null {
+  const lastMonth = items.slice(-1)[0].month;
+  const lastTotal = totals.slice(-1)[0];
+  return lastTotal.month === lastMonth
+    ? {
+        stars: lastTotal.count,
+        month: lastMonth,
+      }
+    : null;
 }
 
 function fillMissingData(items: StarsT[]): StarsT[] {
@@ -59,5 +117,11 @@ function fillMissingData(items: StarsT[]): StarsT[] {
 function getNextMonth(month: string) {
   const date = month ? new Date(month) : new Date();
   date.setUTCMonth(date.getUTCMonth() + 1, 1);
+  return date.toISOString().slice(0, 7);
+}
+
+function getPrevMonth(month: string) {
+  const date = month ? new Date(month) : new Date();
+  date.setUTCMonth(date.getUTCMonth() - 1, 1);
   return date.toISOString().slice(0, 7);
 }
