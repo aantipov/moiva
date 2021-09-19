@@ -1,4 +1,4 @@
-import { createApp } from 'vue';
+import { createApp, DirectiveBinding } from 'vue';
 import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/dist/backdrop.css';
@@ -104,18 +104,28 @@ app
 
 app.directive('tooltip', {
   mounted(el, binding) {
-    tippy(el as HTMLElement, {
-      content: binding.value,
-      delay: 150,
-      interactive: 'ni' in binding.modifiers ? !binding.modifiers.ni : true, // non-interactive
-      allowHTML: binding.modifiers.html,
-      appendTo: document.body,
-    });
+    if (binding.value) {
+      initTooltip(el, binding);
+    }
   },
   updated(el, binding) {
-    el._tippy.setContent(binding.value);
+    if (el._tippy) {
+      el._tippy.setContent(binding.value);
+    } else {
+      initTooltip(el, binding);
+    }
   },
 });
+
+function initTooltip(el: unknown, binding: DirectiveBinding<any>) {
+  tippy(el as HTMLElement, {
+    content: binding.value,
+    delay: 150,
+    interactive: 'ni' in binding.modifiers ? !binding.modifiers.ni : true, // non-interactive
+    allowHTML: binding.modifiers.html,
+    appendTo: document.body,
+  });
+}
 
 const appCatalog = new URL(window.location.href).searchParams.get('appcatalog');
 const appAbout = new URL(window.location.href).searchParams.get('appabout');
