@@ -8,16 +8,26 @@
     :failed-libs-names="failedPackagesNames"
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
-    :since="sinceRef"
-    :since-values="sinceValues"
-    data-source-txt="NPM"
-    data-source-url="https://www.npmjs.com/"
-    @sinceChange="onSinceChange"
-  />
+  >
+    <template #footer>
+      <div class="flex justify-center mb-3 relative">
+        <select v-model="selectedSinceRef" name="date-range">
+          <option v-for="val in sinceValues" :key="val" :value="val">
+            since {{ val }}
+          </option>
+        </select>
+      </div>
+
+      <div class="flex justify-center">
+        Data source:
+        <m-ext-link class="mx-1" href="https://www.npmjs.com/" txt="NPM" />
+      </div>
+    </template>
+  </m-chart>
 </template>
 
 <script setup lang="ts">
-import { computed, watchEffect, ref } from 'vue';
+import { computed, watchEffect, ref, watch } from 'vue';
 import { ChartDataset, ChartConfiguration } from 'chart.js';
 import { NpmDownloadT } from './api';
 import {
@@ -61,11 +71,11 @@ const minMonthRef = computed(() => {
   return minMonth === '2017-01' ? minMonth : getPrevMonth(minMonth);
 });
 
-const selectedSinceRef = ref<string | null>(null);
-
-const sinceRef = computed<string>(
-  () => selectedSinceRef.value || minMonthRef.value
-);
+const selectedSinceRef = ref<string>(minMonthRef.value);
+const sinceValues = computed<string[]>(() => getDateRanges(minMonthRef.value));
+watch(sinceValues, () => {
+  selectedSinceRef.value = sinceValues.value[0];
+});
 
 // Have "datasets" separate for better animation when changing "since" date
 const datasets = computed<ChartDataset<'line'>[]>(() =>
@@ -92,10 +102,10 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
       x: {
         type: 'time',
         time: {
-          unit: sinceRef.value > '2019-10' ? 'month' : 'year',
+          unit: selectedSinceRef.value > '2019-10' ? 'month' : 'year',
           tooltipFormat: 'MMM, yyyy',
         },
-        min: sinceRef.value as unknown as number,
+        min: selectedSinceRef.value as unknown as number,
         adapters: { date: { locale: enUS } },
       },
       y: { ticks: { callback: numbersFormatter.format as () => string } },
@@ -142,10 +152,4 @@ const failedPackagesNames = computed<string[]>(() => {
     .filter((lib) => !!lib.npmPackage && !lib.npmDownloads)
     .map((lib) => (lib.npmPackage as NpmPackageT).name);
 });
-
-const sinceValues = computed<string[]>(() => getDateRanges(minMonthRef.value));
-
-function onSinceChange(since: string) {
-  selectedSinceRef.value = since;
-}
 </script>
