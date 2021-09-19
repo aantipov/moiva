@@ -150,6 +150,7 @@
     :class="{
       'justify-end': npmDependencies !== '-',
       'justify-center': npmDependencies === '-',
+      'text-red-700': lib.npmDependencies !== '-' && lib.npmDependencies > 10,
     }"
   >
     {{ npmDependencies }}
