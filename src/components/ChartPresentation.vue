@@ -54,19 +54,6 @@
       >
     </div>
 
-    <!--  Timerange selector -->
-    <div v-if="since" class="flex justify-center mb-3 relative">
-      <select
-        v-model="dateRangeSince"
-        name="date-range"
-        @change="onDateRangeChange"
-      >
-        <option v-for="val in sinceValues" :key="val" :value="val">
-          since {{ val }}
-        </option>
-      </select>
-    </div>
-
     <!--  Chart Actions -->
     <div
       v-if="popupMode"
@@ -115,8 +102,6 @@ interface Props {
   failedLibsNames?: string[];
   chartConfig: ChartConfiguration;
   ariaLabel?: string;
-  since?: string;
-  sinceValues?: string[];
   dataSourceTxt?: string;
   dataSourceUrl?: string;
   popupMode?: boolean;
@@ -127,15 +112,10 @@ const props = withDefaults(defineProps<Props>(), {
   isError: false,
   failedLibsNames: () => [],
   ariaLabel: '',
-  // @ts-ignore
-  since: null,
-  sinceValues: () => [],
   dataSourceTxt: '',
   dataSourceUrl: '',
   popupMode: false,
 });
-
-const emit = defineEmits(['sinceChange']);
 
 const chartEl = ref<null | HTMLCanvasElement>(null);
 let mychart: Chart;
@@ -181,20 +161,6 @@ watch(
     }
   }
 );
-
-const dateRangeSince = ref(props.since);
-
-watch(toRef(props, 'sinceValues'), () => {
-  // sinceValues list changes on adding/removing a library.
-  // reset the since value
-  if (props.sinceValues) {
-    dateRangeSince.value = props.sinceValues[0];
-  }
-});
-
-function onDateRangeChange(): void {
-  emit('sinceChange', dateRangeSince.value);
-}
 
 function copy(): void {
   chartEl.value?.toBlob(async (blob) => {
