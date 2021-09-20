@@ -9,7 +9,7 @@
     :aria-label="ariaLabel"
   >
     <template #footer>
-      <div>
+      <div class="mb-2">
         <label>
           Cumulative
           <input v-model="isCumulative" type="checkbox" />
