@@ -44,6 +44,7 @@
     <div style="height: 350px">
       <canvas
         v-show="!isError && libsNames.length"
+        :id="canvasId"
         ref="chartEl"
         class="-mt-2 -mb-2"
         role="img"
@@ -117,6 +118,7 @@ const props = withDefaults(defineProps<Props>(), {
   popupMode: false,
 });
 
+const canvasId = props.title + ' ' + getRandom();
 const chartEl = ref<null | HTMLCanvasElement>(null);
 let mychart: Chart;
 
@@ -217,6 +219,12 @@ function fillOneLineCharts(chart: Chart, type: string): boolean {
     return true;
   }
   return false;
+}
+
+function getRandom() {
+  const min = 1000;
+  const max = 9999;
+  return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
 }
 </script>
 
