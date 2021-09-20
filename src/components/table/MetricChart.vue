@@ -15,7 +15,7 @@
         </div>
 
         <m-chart
-          v-else
+          v-show="libsNames.length"
           :libs-names="libsNames"
           :chart-config="chartConfig"
           :title="metricData.chart.title"
