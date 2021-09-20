@@ -86,7 +86,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, toRef, onMounted, onUnmounted, watch } from 'vue';
+import {
+  ref,
+  toRef,
+  onMounted,
+  onUnmounted,
+  onBeforeUnmount,
+  watch,
+} from 'vue';
 import {
   Chart,
   ChartDataset,
@@ -148,6 +155,7 @@ function initChart(): void {
 }
 
 onUnmounted(() => console.log('unmounted', canvasId));
+onBeforeUnmount(() => console.log('BEFORE unmounted', canvasId));
 
 onMounted(initChart);
 
