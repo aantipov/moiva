@@ -163,7 +163,6 @@ watch(
       mychart.data = chartConfig.data;
       mychart.options = chartConfig.options as ChartOptions;
       fillOneLineCharts(mychart, props.chartConfig.type);
-      console.log('chartUpdate');
       mychart.update();
     }
   }
