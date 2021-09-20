@@ -142,7 +142,7 @@ function enchanceChartConfig(
 
 function initChart(): void {
   const ctx = chartEl.value as HTMLCanvasElement;
-  console.log('initChart', chartEl.value.id);
+  console.log('initChart', chartEl.value?.id);
   mychart = new Chart(ctx, enchanceChartConfig(props.chartConfig, props.title));
   fillOneLineCharts(mychart, props.chartConfig.type) && mychart.update();
 }
