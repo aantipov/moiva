@@ -11,7 +11,6 @@
     >
       <div style="width: 500px; max-width: 100%" class="overflow-y-hidden">
         <m-chart
-          v-show="libsNames.length"
           :is-loading="!libsNames.length"
           :libs-names="libsNames"
           :chart-config="chartConfig"
