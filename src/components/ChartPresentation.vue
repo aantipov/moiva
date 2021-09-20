@@ -119,6 +119,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const canvasId = props.title + ' ' + getRandom();
+console.log('canvasId', canvasId);
 const chartEl = ref<null | HTMLCanvasElement>(null);
 let mychart: Chart;
 
@@ -141,6 +142,7 @@ function enchanceChartConfig(
 
 function initChart(): void {
   const ctx = chartEl.value as HTMLCanvasElement;
+  console.log('initChart', chartEl.value.id);
   mychart = new Chart(ctx, enchanceChartConfig(props.chartConfig, props.title));
   fillOneLineCharts(mychart, props.chartConfig.type) && mychart.update();
 }
@@ -159,6 +161,7 @@ watch(
       mychart.data = chartConfig.data;
       mychart.options = chartConfig.options as ChartOptions;
       fillOneLineCharts(mychart, props.chartConfig.type);
+      console.log('chartUpdate');
       mychart.update();
     }
   }
