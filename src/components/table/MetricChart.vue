@@ -10,12 +10,8 @@
       @click="hide"
     >
       <div style="width: 500px; max-width: 100%" class="overflow-y-hidden">
-        <div v-if="!libsNames.length">
-          <m-loader-new class="items-center" />
-        </div>
-
         <m-chart
-          v-else
+          :is-loading="!libsNames.length"
           :libs-names="libsNames"
           :chart-config="chartConfig"
           :title="metricData.chart.title"

@@ -85,7 +85,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, toRef, onMounted, watch } from 'vue';
+import { ref, toRef, onMounted, onBeforeUnmount, watch } from 'vue';
 import {
   Chart,
   ChartDataset,
@@ -119,6 +119,7 @@ const props = withDefaults(defineProps<Props>(), {
 
 const chartEl = ref<null | HTMLCanvasElement>(null);
 let mychart: Chart;
+let toBeUnmounted = false;
 
 function enchanceChartConfig(
   chartConfig: ChartConfiguration,
@@ -138,10 +139,15 @@ function enchanceChartConfig(
 }
 
 function initChart(): void {
+  if (toBeUnmounted) {
+    return;
+  }
   const ctx = chartEl.value as HTMLCanvasElement;
   mychart = new Chart(ctx, enchanceChartConfig(props.chartConfig, props.title));
   fillOneLineCharts(mychart, props.chartConfig.type) && mychart.update();
 }
+
+onBeforeUnmount(() => (toBeUnmounted = true));
 
 onMounted(initChart);
 
