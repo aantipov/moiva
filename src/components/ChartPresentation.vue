@@ -86,7 +86,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, toRef, onMounted, watch } from 'vue';
+import { ref, toRef, onMounted, onUnmounted, watch } from 'vue';
 import {
   Chart,
   ChartDataset,
@@ -142,10 +142,12 @@ function enchanceChartConfig(
 
 function initChart(): void {
   const ctx = chartEl.value as HTMLCanvasElement;
-  console.log('initChart', chartEl.value?.id, canvasId);
+  console.log('initChart', chartEl.value?.id, chartEl.value, canvasId);
   mychart = new Chart(ctx, enchanceChartConfig(props.chartConfig, props.title));
   fillOneLineCharts(mychart, props.chartConfig.type) && mychart.update();
 }
+
+onUnmounted(() => console.log('unmounted', canvasId));
 
 onMounted(initChart);
 
