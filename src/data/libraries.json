@@ -1101,7 +1101,23 @@
     "npm": "axios",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": []
+    "tags": ["http-client", "promise"]
+  },
+  {
+    "category": "misc",
+    "repoId": "developit/redaxios",
+    "npm": "redaxios",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["http-client", "promise"]
+  },
+  {
+    "category": "misc",
+    "repoId": "node-fetch/node-fetch",
+    "npm": "node-fetch",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["http-client", "promise"]
   },
   {
     "category": "misc",
@@ -1219,14 +1235,6 @@
     "category": "misc",
     "repoId": "isaacs/node-mkdirp",
     "npm": "mkdirp",
-    "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "node-fetch/node-fetch",
-    "npm": "node-fetch",
     "isNpmCoreArtifact": true,
     "alias": null,
     "tags": []

@@ -15,6 +15,7 @@ export const genericTags = [
   'cli-tool',
   'react-hook',
   'react-component',
+  'promise',
 ];
 
 export const tags = [
@@ -102,6 +103,7 @@ export const tags = [
   'markdown-to-react',
   'node-version-manager',
   'GEO utility',
+  'http-client',
 
   // compilers
   'compiler',
