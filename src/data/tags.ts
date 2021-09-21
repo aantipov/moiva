@@ -89,7 +89,6 @@ export const tags = [
   'autocomplete',
   'state-management',
   'date-fetching',
-  'compiler',
   'static-type-checker',
   'bdd-testing',
   'testing-framework',
@@ -103,6 +102,10 @@ export const tags = [
   'markdown-to-react',
   'node-version-manager',
   'GEO utility',
+
+  // compilers
+  'compiler',
+  'typescript/javascript',
 
   // notifications, toasts
   'notification',

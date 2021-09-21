@@ -85,7 +85,7 @@
     "npm": "webpack",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["build-tool", "module-bundler", "dev-server"]
+    "tags": ["build-tool", "module-bundler", "dev-server", "compiler", "typescript/javascript"]
   },
   {
     "category": "JavaScript Build Tools, Module Bundlers",
@@ -93,7 +93,7 @@
     "npm": "rollup",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["build-tool", "module-bundler", "esm"]
+    "tags": ["build-tool", "module-bundler", "esm", "compiler", "typescript/javascript"]
   },
   {
     "category": "JavaScript Build Tools, Module Bundlers",
@@ -101,7 +101,7 @@
     "npm": "@parcel/core",
     "isNpmCoreArtifact": true,
     "alias": "Parcel",
-    "tags": ["build-tool", "module-bundler"]
+    "tags": ["build-tool", "module-bundler", "compiler", "typescript/javascript"]
   },
   {
     "category": "JavaScript Build Tools, Module Bundlers",
@@ -109,7 +109,7 @@
     "npm": "snowpack",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["build-tool", "module-bundler", "esm"]
+    "tags": ["build-tool", "module-bundler", "esm", "compiler", "typescript/javascript"]
   },
   {
     "category": "JavaScript Build Tools, Module Bundlers",
@@ -117,7 +117,7 @@
     "npm": "vite",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["build-tool", "module-bundler", "esm", "hmr", "dev-server"]
+    "tags": ["build-tool", "module-bundler", "esm", "hmr", "dev-server", "typescript/javascript"]
   },
   {
     "category": "JavaScript Build Tools, Module Bundlers",
@@ -125,7 +125,7 @@
     "npm": "esbuild",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["build-tool", "module-bundler", "esm", "cjs"]
+    "tags": ["build-tool", "module-bundler", "esm", "cjs", "compiler", "typescript/javascript"]
   },
   {
     "category": "JavaScript Build Tools, Module Bundlers",
@@ -1421,7 +1421,7 @@
     "npm": "@babel/core",
     "isNpmCoreArtifact": true,
     "alias": "Babel",
-    "tags": []
+    "tags": ["compiler", "typescript/javascript"]
   },
   {
     "category": "misc",
@@ -2957,14 +2957,6 @@
     "npm": "@antv/g2plot",
     "isNpmCoreArtifact": true,
     "alias": "G2Plot",
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "swc-project/swc",
-    "npm": "@swc/core",
-    "isNpmCoreArtifact": true,
-    "alias": "swc",
     "tags": []
   },
   {
@@ -12717,7 +12709,7 @@
     "npm": "typescript",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["compiler", "static-type-checker"]
+    "tags": ["compiler", "static-type-checker", "typescript/javascript"]
   },
   {
     "category": "JavaScript Static Types Checking Tools",
@@ -12726,6 +12718,14 @@
     "isNpmCoreArtifact": true,
     "alias": "Flow",
     "tags": ["compiler", "static-type-checker"]
+  },
+  {
+    "category": "misc",
+    "repoId": "swc-project/swc",
+    "npm": "@swc/core",
+    "isNpmCoreArtifact": true,
+    "alias": "swc",
+    "tags": ["compiler", "typescript/javascript"]
   },
   {
     "category": "JavaScript BDD Testing tools",
