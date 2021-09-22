@@ -1096,7 +1096,7 @@
     "tags": []
   },
   {
-    "category": "misc",
+    "category": "HTTP clients",
     "repoId": "axios/axios",
     "npm": "axios",
     "isNpmCoreArtifact": true,
@@ -1104,7 +1104,7 @@
     "tags": ["http-client", "promise"]
   },
   {
-    "category": "misc",
+    "category": "HTTP clients",
     "repoId": "developit/redaxios",
     "npm": "redaxios",
     "isNpmCoreArtifact": true,
@@ -1112,12 +1112,44 @@
     "tags": ["http-client", "promise"]
   },
   {
-    "category": "misc",
+    "category": "HTTP clients",
     "repoId": "node-fetch/node-fetch",
     "npm": "node-fetch",
     "isNpmCoreArtifact": true,
     "alias": null,
     "tags": ["http-client", "promise"]
+  },
+  {
+    "category": "HTTP clients",
+    "repoId": "sindresorhus/got",
+    "npm": "got",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["http-client", "promise", "nodejs"]
+  },
+  {
+    "category": "HTTP clients",
+    "repoId": "request/request",
+    "npm": "request",
+    "isNpmCoreArtifact": true,
+    "alias": "Request (deprecated)",
+    "tags": ["http-client", "promise", "nodejs"]
+  },
+  {
+    "category": "HTTP clients",
+    "repoId": "sindresorhus/ky",
+    "npm": "ky",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["http-client", "promise"]
+  },
+  {
+    "category": "HTTP clients",
+    "repoId": "visionmedia/superagent",
+    "npm": "superagent",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["http-client"]
   },
   {
     "category": "misc",
@@ -1308,14 +1340,6 @@
     "repoId": "sass/node-sass",
     "npm": null,
     "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "visionmedia/superagent",
-    "npm": "superagent",
-    "isNpmCoreArtifact": true,
     "alias": null,
     "tags": []
   },
@@ -1571,14 +1595,6 @@
     "category": "misc",
     "repoId": "nolimits4web/swiper",
     "npm": "swiper",
-    "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "request/request",
-    "npm": "request",
     "isNpmCoreArtifact": true,
     "alias": null,
     "tags": []
