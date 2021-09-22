@@ -62,7 +62,7 @@
   {
     "title": "HTTP clients comparison",
     "url": "https://github.com/sindresorhus/got#comparison",
-    "npms": ["axios", "got", "node-fetch"],
+    "npms": ["axios", "got", "node-fetch", "superagent", "ky", "request"],
     "repos": []
   }
 ]
