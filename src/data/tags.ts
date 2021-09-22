@@ -7,6 +7,7 @@ export const frameworksTags = [
   'ember',
   'nodejs',
   'jQuery',
+  'browser',
 ];
 
 // Too generic tags to be used in suggestions on their own (they always need to be accompanied with more specific tags)

@@ -1101,7 +1101,7 @@
     "npm": "axios",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["http-client", "promise"]
+    "tags": ["http-client", "promise", "browser", "nodejs"]
   },
   {
     "category": "HTTP clients",
@@ -1109,7 +1109,7 @@
     "npm": "redaxios",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["http-client", "promise"]
+    "tags": ["http-client", "promise", "browser", "nodejs"]
   },
   {
     "category": "HTTP clients",
@@ -1117,7 +1117,7 @@
     "npm": "node-fetch",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["http-client", "promise"]
+    "tags": ["http-client", "promise", "browser", "nodejs"]
   },
   {
     "category": "HTTP clients",
@@ -1141,7 +1141,7 @@
     "npm": "ky",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["http-client", "promise"]
+    "tags": ["http-client", "promise", "browser", "nodejs"]
   },
   {
     "category": "HTTP clients",
@@ -1149,7 +1149,7 @@
     "npm": "superagent",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["http-client"]
+    "tags": ["http-client", "promise", "browser", "nodejs"]
   },
   {
     "category": "misc",
