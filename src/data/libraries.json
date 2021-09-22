@@ -4661,7 +4661,7 @@
     "npm": "rx",
     "isNpmCoreArtifact": true,
     "alias": "RxJS (legacy)",
-    "tags": []
+    "tags": ["reactive"]
   },
   {
     "category": "misc",
@@ -12445,7 +12445,23 @@
     "npm": "rxjs",
     "isNpmCoreArtifact": true,
     "alias": "RxJS",
-    "tags": ["state-management"]
+    "tags": ["state-management", "reactive"]
+  },
+  {
+    "category": "misc",
+    "repoId": "baconjs/bacon.js",
+    "npm": "baconjs",
+    "isNpmCoreArtifact": true,
+    "alias": "Bacon.js",
+    "tags": ["reactive"]
+  },
+  {
+    "category": "misc",
+    "repoId": "kefirjs/kefir",
+    "npm": "kefir",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["reactive"]
   },
   {
     "category": "JavaScript State Management Libraries",

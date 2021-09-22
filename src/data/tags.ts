@@ -104,6 +104,7 @@ export const tags = [
   'node-version-manager',
   'GEO utility',
   'http-client',
+  'reactive',
 
   // compilers
   'compiler',
