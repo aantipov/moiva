@@ -89,6 +89,14 @@
   },
   {
     "category": "JavaScript Build Tools, Module Bundlers",
+    "repoId": "gulpjs/gulp",
+    "npm": "gulp",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["build-tool"]
+  },
+  {
+    "category": "JavaScript Build Tools, Module Bundlers",
     "repoId": "rollup/rollup",
     "npm": "rollup",
     "isNpmCoreArtifact": true,
@@ -1227,14 +1235,6 @@
     "category": "misc",
     "repoId": "gruntjs/grunt",
     "npm": "grunt",
-    "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "gulpjs/gulp",
-    "npm": "gulp",
     "isNpmCoreArtifact": true,
     "alias": null,
     "tags": []

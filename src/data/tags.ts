@@ -10,13 +10,14 @@ export const frameworksTags = [
   'browser',
 ];
 
-// Too generic tags to be used in suggestions on their own (they always need to be accompanied with more specific tags)
+// Too generic or secondary tags to be used in suggestions on their own (they always need to be accompanied with more specific tags)
 export const genericTags = [
   'markdown',
   'cli-tool',
   'react-hook',
   'react-component',
   'promise',
+  'typescript/javascript',
 ];
 
 export const tags = [
