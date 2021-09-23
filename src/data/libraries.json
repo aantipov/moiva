@@ -11705,6 +11705,22 @@
   },
   {
     "category": "Node.js Logging libraries",
+    "repoId": "unjs/consola",
+    "npm": "consola",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["nodejs-logging"]
+  },
+  {
+    "category": "Node.js Logging libraries",
+    "repoId": "klaussinani/signale",
+    "npm": "signale",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["nodejs-logging"]
+  },
+  {
+    "category": "Node.js Logging libraries",
     "repoId": "bevry/caterpillar",
     "npm": "caterpillar",
     "isNpmCoreArtifact": true,
