@@ -26,7 +26,7 @@
 
 <script setup lang="ts">
 import { computed, ref } from 'vue';
-import { getSuggestions } from '@/utils';
+import { getSuggestions } from '@/suggestionsHelper';
 import { CatalogLibraryT } from '@/data/index';
 import { libraries } from '@/store/libraries';
 import SuggestionItem from './SuggestionItem.vue';

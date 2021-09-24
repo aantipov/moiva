@@ -58,5 +58,11 @@
     "url": "https://blog.appsignal.com/2021/09/01/best-practices-for-logging-in-nodejs.html",
     "npms": ["winston", "pino", "bunyan"],
     "repos": []
+  },
+  {
+    "title": "HTTP clients comparison",
+    "url": "https://github.com/sindresorhus/got#comparison",
+    "npms": ["axios", "got", "node-fetch", "superagent", "ky", "request"],
+    "repos": []
   }
 ]

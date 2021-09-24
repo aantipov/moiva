@@ -89,6 +89,14 @@
   },
   {
     "category": "JavaScript Build Tools, Module Bundlers",
+    "repoId": "gulpjs/gulp",
+    "npm": "gulp",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["build-tool"]
+  },
+  {
+    "category": "JavaScript Build Tools, Module Bundlers",
     "repoId": "rollup/rollup",
     "npm": "rollup",
     "isNpmCoreArtifact": true,
@@ -1096,28 +1104,60 @@
     "tags": []
   },
   {
-    "category": "misc",
+    "category": "HTTP clients",
     "repoId": "axios/axios",
     "npm": "axios",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["http-client", "promise"]
+    "tags": ["http-client", "promise", "browser", "nodejs"]
   },
   {
-    "category": "misc",
+    "category": "HTTP clients",
     "repoId": "developit/redaxios",
     "npm": "redaxios",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["http-client", "promise"]
+    "tags": ["http-client", "promise", "browser", "nodejs"]
   },
   {
-    "category": "misc",
+    "category": "HTTP clients",
     "repoId": "node-fetch/node-fetch",
     "npm": "node-fetch",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["http-client", "promise"]
+    "tags": ["http-client", "promise", "browser", "nodejs"]
+  },
+  {
+    "category": "HTTP clients",
+    "repoId": "sindresorhus/got",
+    "npm": "got",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["http-client", "promise", "nodejs"]
+  },
+  {
+    "category": "HTTP clients",
+    "repoId": "request/request",
+    "npm": "request",
+    "isNpmCoreArtifact": true,
+    "alias": "Request (deprecated)",
+    "tags": ["http-client", "promise", "nodejs"]
+  },
+  {
+    "category": "HTTP clients",
+    "repoId": "sindresorhus/ky",
+    "npm": "ky",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["http-client", "promise", "browser", "nodejs"]
+  },
+  {
+    "category": "HTTP clients",
+    "repoId": "visionmedia/superagent",
+    "npm": "superagent",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["http-client", "promise", "browser", "nodejs"]
   },
   {
     "category": "misc",
@@ -1195,14 +1235,6 @@
     "category": "misc",
     "repoId": "gruntjs/grunt",
     "npm": "grunt",
-    "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "gulpjs/gulp",
-    "npm": "gulp",
     "isNpmCoreArtifact": true,
     "alias": null,
     "tags": []
@@ -1308,14 +1340,6 @@
     "repoId": "sass/node-sass",
     "npm": null,
     "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "visionmedia/superagent",
-    "npm": "superagent",
-    "isNpmCoreArtifact": true,
     "alias": null,
     "tags": []
   },
@@ -1571,14 +1595,6 @@
     "category": "misc",
     "repoId": "nolimits4web/swiper",
     "npm": "swiper",
-    "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "request/request",
-    "npm": "request",
     "isNpmCoreArtifact": true,
     "alias": null,
     "tags": []
@@ -4661,7 +4677,7 @@
     "npm": "rx",
     "isNpmCoreArtifact": true,
     "alias": "RxJS (legacy)",
-    "tags": []
+    "tags": ["reactive"]
   },
   {
     "category": "misc",
@@ -11689,6 +11705,22 @@
   },
   {
     "category": "Node.js Logging libraries",
+    "repoId": "unjs/consola",
+    "npm": "consola",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["nodejs-logging"]
+  },
+  {
+    "category": "Node.js Logging libraries",
+    "repoId": "klaussinani/signale",
+    "npm": "signale",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["nodejs-logging"]
+  },
+  {
+    "category": "Node.js Logging libraries",
     "repoId": "bevry/caterpillar",
     "npm": "caterpillar",
     "isNpmCoreArtifact": true,
@@ -12445,7 +12477,23 @@
     "npm": "rxjs",
     "isNpmCoreArtifact": true,
     "alias": "RxJS",
-    "tags": ["state-management"]
+    "tags": ["state-management", "reactive"]
+  },
+  {
+    "category": "misc",
+    "repoId": "baconjs/bacon.js",
+    "npm": "baconjs",
+    "isNpmCoreArtifact": true,
+    "alias": "Bacon.js",
+    "tags": ["reactive"]
+  },
+  {
+    "category": "misc",
+    "repoId": "kefirjs/kefir",
+    "npm": "kefir",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["reactive"]
   },
   {
     "category": "JavaScript State Management Libraries",
