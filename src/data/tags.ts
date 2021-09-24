@@ -110,7 +110,6 @@ export const tags = [
 
   // compilers
   'compiler',
-  'typescript/javascript',
 
   // notifications, toasts
   'notification',
