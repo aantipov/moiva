@@ -99,11 +99,18 @@ export function getSuggestions(
     .map((item) => item.lib)
     // filter out selected libraries
     .filter((item) => !selectedLibsIds.includes(item.id))
-    // Exclude framework specific libs which do not match currently selected
-    .filter(
-      (lib) =>
-        lib.framework === null || tagsUsedFrameworks.includes(lib.framework)
-    );
+    // Sort to the end framework specific libs which do not match currently selected
+    .sort((libA, libB) => {
+      const isLibAFavourable =
+        libA.framework === null || tagsUsedFrameworks.includes(libA.framework);
+      const isLibBFavourable =
+        libB.framework === null || tagsUsedFrameworks.includes(libB.framework);
+      if (isLibAFavourable && isLibBFavourable) {
+        return 0;
+      }
+      if (isLibAFavourable) return -1;
+      return 1;
+    });
 
   return suggestedLibs;
 }
