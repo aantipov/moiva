@@ -64,5 +64,11 @@
     "url": "https://github.com/sindresorhus/got#comparison",
     "npms": ["axios", "got", "node-fetch", "superagent", "ky", "request"],
     "repos": []
+  },
+  {
+    "title": "The State of Developer Ecosystem 2021",
+    "url": "https://www.jetbrains.com/lp/devecosystem-2021/javascript/",
+    "npms": ["react", "vue", "express", "angular", "@angular/core", "svelte", "electron"],
+    "repos": []
   }
 ]
