@@ -104,7 +104,13 @@
   {
     "title": "You might not need Lodash",
     "url": "https://youmightnotneed.com/lodash/",
-    "npms": ["lodash"],
+    "npms": ["lodash", "underscore"],
+    "repos": []
+  },
+  {
+    "title": "You don't (may not) need Lodash/Underscore",
+    "url": "https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore",
+    "npms": ["lodash", "underscore"],
     "repos": []
   },
   {
