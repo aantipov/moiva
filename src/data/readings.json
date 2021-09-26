@@ -12,6 +12,18 @@
     "repos": []
   },
   {
+    "title": "You don't (may not) need Moment.js",
+    "url": "https://github.com/you-dont-need/You-Dont-Need-Momentjs",
+    "npms": ["moment", "date-fns", "luxon", "dayjs"],
+    "repos": []
+  },
+  {
+    "title": "You might not need date-fns",
+    "url": "https://youmightnotneed.com/date-fns/",
+    "npms": ["date-fns"],
+    "repos": []
+  },
+  {
     "title": "AngularJS Long Term Support ends on December 31, 2021",
     "url": "https://blog.angular.io/stable-angularjs-and-long-term-support-7e077635ee9c",
     "npms": ["angular"],
@@ -66,6 +78,12 @@
     "repos": []
   },
   {
+    "title": "You may not need Axios",
+    "url": "https://danlevy.net/you-may-not-need-axios/",
+    "npms": ["axios", "got", "node-fetch", "superagent", "ky", "request", "r2"],
+    "repos": []
+  },
+  {
     "title": "JetBrains: The State of Developer Ecosystem 2021",
     "url": "https://www.jetbrains.com/lp/devecosystem-2021/javascript/",
     "npms": ["react", "vue", "express", "angular", "@angular/core", "svelte", "electron"],
@@ -76,5 +94,23 @@
     "url": "https://insights.stackoverflow.com/survey/2021#section-most-loved-dreaded-and-wanted-web-frameworks",
     "npms": ["react", "vue", "express", "angular", "@angular/core", "svelte"],
     "repos": ["tiangolo/fastapi"]
+  },
+  {
+    "title": "You might not need jQuery",
+    "url": "https://youmightnotneedjquery.com/",
+    "npms": ["jquery"],
+    "repos": []
+  },
+  {
+    "title": "You might not need Lodash",
+    "url": "https://youmightnotneed.com/lodash/",
+    "npms": ["lodash"],
+    "repos": []
+  },
+  {
+    "title": "You Might Not Need Redux",
+    "url": "https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367",
+    "npms": ["redux"],
+    "repos": []
   }
 ]

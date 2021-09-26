@@ -1145,6 +1145,14 @@
   },
   {
     "category": "HTTP clients",
+    "repoId": "mikeal/r2",
+    "npm": "r2",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["http-client", "promise", "nodejs"]
+  },
+  {
+    "category": "HTTP clients",
     "repoId": "sindresorhus/ky",
     "npm": "ky",
     "isNpmCoreArtifact": true,
