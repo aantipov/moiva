@@ -1,14 +1,18 @@
 <template>
-  <section v-if="readings.length > 0" class="px-3 mx-auto root">
+  <section
+    v-if="readings.length > 0"
+    class="px-3 mx-auto"
+    style="max-width: 700px"
+  >
     <h2>Recommended reading</h2>
-    <div>
+    <div class="mx-auto w-max max-w-full">
       <div
         v-for="(reading, index) in readings"
         :key="reading.url"
-        class="mb-1 flex text-lg"
+        class="mb-1 w-max text-lg max-w-full"
       >
         <span class="mr-1">{{ index + 1 }}.</span>
-        <m-ext-link :href="reading.url" :txt="reading.title" />
+        <a :href="reading.url" target="_blank">{{ reading.title }}</a>
       </div>
     </div>
   </section>
@@ -39,9 +43,3 @@ const readings = computed<ReadingT[]>(() =>
   )
 );
 </script>
-
-<style lang="postcss">
-.root {
-  max-width: 700px;
-}
-</style>
