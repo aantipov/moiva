@@ -12544,7 +12544,7 @@
     "tags": ["state-management", "angular"]
   },
   {
-    "category": "JavaScript State Management Libraries",
+    "category": "Data fetching libraries",
     "repoId": "tannerlinsley/react-query",
     "npm": "react-query",
     "isNpmCoreArtifact": true,
@@ -12552,11 +12552,43 @@
     "tags": ["state-management", "react", "date-fetching"]
   },
   {
-    "category": "misc",
+    "category": "Data fetching libraries",
     "repoId": "slorber/react-async-hook",
     "npm": "react-async-hook",
     "isNpmCoreArtifact": true,
     "alias": "React-Async-Hook",
+    "tags": ["react", "date-fetching", "react-hook"]
+  },
+  {
+    "category": "Data fetching libraries",
+    "repoId": "async-library/react-async",
+    "npm": "react-async",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["react", "date-fetching", "react-hook"]
+  },
+  {
+    "category": "Data fetching libraries",
+    "repoId": "ilyalesik/react-fetch-hook",
+    "npm": "react-fetch-hook",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["react", "date-fetching", "react-hook"]
+  },
+  {
+    "category": "Data fetching libraries",
+    "repoId": "coinbase/rest-hooks",
+    "npm": "rest-hooks",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["react", "date-fetching", "react-hook"]
+  },
+  {
+    "category": "Data fetching libraries",
+    "repoId": "ava/use-http",
+    "npm": "use-http",
+    "isNpmCoreArtifact": true,
+    "alias": null,
     "tags": ["react", "date-fetching", "react-hook"]
   },
   {
@@ -12640,7 +12672,7 @@
     "tags": ["state-management", "react"]
   },
   {
-    "category": "JavaScript State Management Libraries",
+    "category": "Data fetching libraries",
     "repoId": "vercel/swr",
     "npm": "swr",
     "isNpmCoreArtifact": true,
