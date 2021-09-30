@@ -12552,6 +12552,14 @@
     "tags": ["state-management", "react", "date-fetching"]
   },
   {
+    "category": null,
+    "repoId": "slorber/react-async-hook",
+    "npm": "react-async-hook",
+    "isNpmCoreArtifact": true,
+    "alias": "React-Async-Hook",
+    "tags": ["react", "date-fetching", "react-hook"]
+  },
+  {
     "category": "JavaScript State Management Libraries",
     "repoId": "pmndrs/zustand",
     "npm": "zustand",
