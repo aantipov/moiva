@@ -196,6 +196,20 @@ const miscChartsNumber = computed(
   () => [chartsVisibility.techRadar, true].filter(Boolean).length
 );
 
+// User uses Back/Forward Browser buttons
+window.onpopstate = () => {
+  const urlParams = new URLSearchParams(document.location.search);
+  const npmPackages = urlParams.get('npm')?.split(' ');
+  const githubRepos = urlParams.get('github')?.split(' ');
+  removeAllLibraries();
+  if (npmPackages) {
+    npmPackages.forEach((name) => selectNpmPackage(name));
+  }
+  if (githubRepos) {
+    githubRepos.forEach((name) => selectRepo(name));
+  }
+};
+
 function selectNpmPackage(npmPackageName: string): void {
   addLibraryByNpmPackage(npmPackageName).catch(() => {
     showErrorMsg(
