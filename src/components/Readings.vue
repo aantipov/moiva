@@ -1,9 +1,5 @@
 <template>
-  <section
-    v-if="readings.length > 0"
-    class="px-3 mx-auto"
-    style="max-width: 700px"
-  >
+  <section v-if="readings.length > 0" style="max-width: 700px">
     <h2>Recommended reading</h2>
     <div class="mx-auto w-max max-w-full">
       <div

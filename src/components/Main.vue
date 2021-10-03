@@ -1,24 +1,26 @@
 <template>
-  <div>
-    <Search class="w-full mx-auto lg:w-9/12 xl:w-2/4" @select="select" />
-    <Suggestions @select="select" />
+  <div style="min-height: 564px">
+    <div class="container mt-8 antialiased content">
+      <Search class="w-full mx-auto lg:w-9/12 xl:w-2/4" @select="select" />
+      <Suggestions @select="select" />
 
-    <!--  Popular Comparisons    -->
-    <div v-if="!librariesRR.length">
-      <Popular v-if="!isLoading" @select="selectMultiple" />
+      <!--  Popular Comparisons    -->
+      <div v-if="!librariesRR.length">
+        <Popular v-if="!isLoading" class="mb-8" @select="selectMultiple" />
 
-      <div
-        v-else
-        class="relative w-full mx-auto lg:w-9/12 xl:w-2/4"
-        style="min-height: 200px"
-      >
-        <m-loader-new class="items-center" />
+        <div
+          v-else
+          class="relative w-full mx-auto lg:w-9/12 xl:w-2/4"
+          style="min-height: 200px"
+        >
+          <m-loader-new class="items-center" />
+        </div>
       </div>
     </div>
 
     <!--  Selected Libraries and Charts    -->
-    <section v-else>
-      <div class="mx-auto mt-4 text-center lg:w-9/12 xl:w-2/4">
+    <section v-if="librariesRR.length">
+      <div class="container mt-4 text-center lg:w-9/12 xl:w-2/4">
         <Title />
 
         <a
@@ -29,73 +31,79 @@
         >
       </div>
 
-      <Table class="w-full mx-auto mt-4 mb-12 lg:w-3/4" />
+      <Table class="container mt-4 mb-12 lg:w-3/4" />
 
-      <Readings class="mb-12" />
+      <Readings class="container mb-12" />
 
       <!-- Charts -->
-      <section class="mb-12">
-        <h2>
-          Popularity
-          <span class="text-lg font-normal">over time</span>
-        </h2>
-        <div class="grid grid-cols-12 gap-8">
-          <template v-if="popularChartsNumber === 1">
-            <Stars
-              class="
-                col-span-12
-                md:col-span-8 md:col-start-3
-                lg:col-span-6 lg:col-start-4
-              "
-            />
-            <NpmDownloads />
-            <GoogleTrends />
-            <DevelopersUsage />
-          </template>
-          <template v-else>
-            <NpmDownloads class="col-span-12 md:col-span-6" />
-            <GoogleTrends class="col-span-12 md:col-span-6" />
-            <Stars class="col-span-12 md:col-span-6" />
-            <DevelopersUsage class="col-span-12 md:col-span-6" />
-          </template>
+      <section class="pb-12 pt-8 bg-green-500">
+        <div class="container">
+          <h2 class="mt-0 mb-6 text-white">
+            Popularity
+            <span class="text-lg font-normal">over time</span>
+          </h2>
+          <div class="grid grid-cols-12 gap-8">
+            <template v-if="popularChartsNumber === 1">
+              <Stars
+                class="
+                  col-span-12
+                  md:col-span-8 md:col-start-3
+                  lg:col-span-6 lg:col-start-4
+                "
+              />
+              <NpmDownloads />
+              <GoogleTrends />
+              <DevelopersUsage />
+            </template>
+            <template v-else>
+              <NpmDownloads class="col-span-12 md:col-span-6" />
+              <GoogleTrends class="col-span-12 md:col-span-6" />
+              <Stars class="col-span-12 md:col-span-6" />
+              <DevelopersUsage class="col-span-12 md:col-span-6" />
+            </template>
+          </div>
         </div>
       </section>
 
-      <section class="mb-12">
-        <h2>
-          Maintenance and Development Activity
-          <span class="text-lg font-normal">over time</span>
-        </h2>
-        <div class="grid grid-cols-12 gap-8">
-          <template v-if="maintChartsNumber === 2">
-            <Releases />
-            <Contributors
-              class="col-span-12 md:col-span-6 xl:col-span-5 xl:col-start-2"
-            />
-            <Commits class="col-span-12 md:col-span-6 xl:col-span-5" />
-          </template>
-          <template v-else-if="maintChartsNumber === 3">
-            <Releases class="col-span-12 md:col-span-6 xl:col-span-4" />
-            <Contributors class="col-span-12 md:col-span-6 xl:col-span-4" />
-            <Commits class="col-span-12 md:col-span-6 xl:col-span-4" />
-          </template>
+      <section class="pb-12 pt-8 bg-yellow-400">
+        <div class="container">
+          <h2 class="mt-0 mb-6">
+            Maintenance and Development Activity
+            <span class="text-lg font-normal">over time</span>
+          </h2>
+          <div class="grid grid-cols-12 gap-8">
+            <template v-if="maintChartsNumber === 2">
+              <Releases />
+              <Contributors
+                class="col-span-12 md:col-span-6 xl:col-span-5 xl:col-start-2"
+              />
+              <Commits class="col-span-12 md:col-span-6 xl:col-span-5" />
+            </template>
+            <template v-else-if="maintChartsNumber === 3">
+              <Releases class="col-span-12 md:col-span-6 xl:col-span-4" />
+              <Contributors class="col-span-12 md:col-span-6 xl:col-span-4" />
+              <Commits class="col-span-12 md:col-span-6 xl:col-span-4" />
+            </template>
+          </div>
         </div>
       </section>
 
-      <section>
-        <h2>Miscellaneous</h2>
+      <section class="pb-12 pt-8 bg-indigo-500">
+        <div class="container">
+          <h2 class="mt-0 mb-6 text-white">Miscellaneous</h2>
 
-        <div class="grid grid-cols-12 gap-8">
-          <template v-if="miscChartsNumber === 1">
-            <Languages class="col-span-12 md:col-span-6 md:col-start-4" />
-            <TechRadar />
-          </template>
-          <template v-else-if="miscChartsNumber === 2">
-            <Languages
-              class="col-span-12 md:col-span-6 xl:col-span-5 xl:col-start-2"
-            />
-            <TechRadar class="col-span-12 md:col-span-6 xl:col-span-5" />
-          </template>
+          <div class="grid grid-cols-12 gap-8">
+            <template v-if="miscChartsNumber === 1">
+              <Languages class="col-span-12 md:col-span-6 md:col-start-4" />
+              <TechRadar />
+            </template>
+            <template v-else-if="miscChartsNumber === 2">
+              <Languages
+                class="col-span-12 md:col-span-6 xl:col-span-5 xl:col-start-2"
+              />
+              <TechRadar class="col-span-12 md:col-span-6 xl:col-span-5" />
+            </template>
+          </div>
         </div>
       </section>
     </section>
