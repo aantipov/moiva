@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="min-height: 50vh">
     <div class="container mt-8 antialiased content">
       <Search class="w-full mx-auto lg:w-9/12 xl:w-2/4" @select="select" />
       <Suggestions @select="select" />
