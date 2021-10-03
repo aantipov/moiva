@@ -1,6 +1,5 @@
 <template>
-  <!--  Min-width is used to take into account Popular libraries height to avoid layout shifts  -->
-  <div style="min-height: 564px">
+  <div>
     <div class="container mt-8 antialiased content">
       <Search class="w-full mx-auto lg:w-9/12 xl:w-2/4" @select="select" />
       <Suggestions @select="select" />
