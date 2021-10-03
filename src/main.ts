@@ -9,7 +9,7 @@ import 'tippy.js/animations/shift-away.css';
 import * as Sentry from '@sentry/vue';
 import { Integrations } from '@sentry/tracing';
 import '../chartjs.config';
-import App from './App.vue';
+import App from '@/components/Main.vue';
 import CatalogApp from './CatalogApp.vue';
 import AboutApp from './AboutApp.vue';
 import Close from '@/icons/CloseIcon.vue';
