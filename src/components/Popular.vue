@@ -82,6 +82,11 @@ const items = [
     libsStr: 'Next.js, Gatsby, Nuxt.js',
   },
   {
+    name: 'Documentation Generators',
+    libs: ['@docusaurus/core', 'vuepress', 'docsify'],
+    libsStr: 'Docusaurus, VuePress, Docsify',
+  },
+  {
     name: 'Testing Frameworks',
     libs: ['jest', 'ava', 'jasmine'],
     libsStr: 'Jest, Ava, Jasmine',

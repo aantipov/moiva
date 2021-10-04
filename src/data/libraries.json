@@ -12753,11 +12753,27 @@
   },
   {
     "category": "Static Site Generators / JAMStack",
+    "repoId": "shuding/nextra",
+    "npm": "nextra",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["documentation", "markdown", "mdx", "static-site-generator-SSG", "Next.js", "react"]
+  },
+  {
+    "category": "Static Site Generators / JAMStack",
     "repoId": "facebook/docusaurus",
     "npm": "@docusaurus/core",
     "isNpmCoreArtifact": true,
     "alias": "Docusaurus",
-    "tags": ["documentation", "react", "markdown", "static-site-generator-SSG"]
+    "tags": ["documentation", "markdown", "mdx", "static-site-generator-SSG", "react"]
+  },
+  {
+    "category": "Static Site Generators / JAMStack",
+    "repoId": "vuejs/vitepress",
+    "npm": "vitepress",
+    "isNpmCoreArtifact": true,
+    "alias": "VitePress",
+    "tags": ["documentation", "markdown", "static-site-generator-SSG", "vue"]
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -12765,7 +12781,7 @@
     "npm": "vuepress",
     "isNpmCoreArtifact": true,
     "alias": "VuePress",
-    "tags": ["static-site-generator-SSG", "vue"]
+    "tags": ["documentation", "markdown", "static-site-generator-SSG", "vue"]
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -12773,7 +12789,7 @@
     "npm": "docsify",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["server-side-rendering-SSR", "markdown"]
+    "tags": ["documentation", "markdown", "server-side-rendering-SSR"]
   },
   {
     "category": "Static Site Generators / JAMStack",
