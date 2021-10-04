@@ -112,22 +112,22 @@
 
 <script setup lang="ts">
 import { onMounted, watchEffect, computed } from 'vue';
-import NpmDownloads from './downloads/NpmDownloadsChart.vue';
-import Title from './Title.vue';
-import Search from './search/Search.vue';
-import Suggestions from './Suggestions.vue';
-import Popular from './Popular.vue';
-import Table from './table/Table.vue';
-import Readings from './Readings.vue';
+import NpmDownloads from './components/downloads/NpmDownloadsChart.vue';
+import Title from './components/Title.vue';
+import Search from './components/search/Search.vue';
+import Suggestions from './components/Suggestions.vue';
+import Popular from './components/Popular.vue';
+import Table from './components/table/Table.vue';
+import Readings from './components/Readings.vue';
 
-import Releases from './npm-releases/NpmReleasesChart.vue';
-import TechRadar from './TechRadarChart.vue';
-import GoogleTrends from './google-trends/GTrendsChart.vue';
-import Stars from './github-stars/StarsChart.vue';
-import Languages from './languages/LanguagesChart.vue';
-import Contributors from './github-contributors/ContributorsChart.vue';
-import DevelopersUsage from './developer-usage/DeveloperUsageChart.vue';
-import Commits from './commits/CommitsChart.vue';
+import Releases from './components/npm-releases/NpmReleasesChart.vue';
+import TechRadar from './components/TechRadarChart.vue';
+import GoogleTrends from './components/google-trends/GTrendsChart.vue';
+import Stars from './components/github-stars/StarsChart.vue';
+import Languages from './components/languages/LanguagesChart.vue';
+import Contributors from './components/github-contributors/ContributorsChart.vue';
+import DevelopersUsage from './components/developer-usage/DeveloperUsageChart.vue';
+import Commits from './components/commits/CommitsChart.vue';
 
 import { chartsVisibility } from '@/store/chartsVisibility';
 import {
