@@ -112,22 +112,22 @@
 
 <script setup lang="ts">
 import { onMounted, watchEffect, computed } from 'vue';
-import NpmDownloads from './components/downloads/NpmDownloadsChart.vue';
-import Title from './components/Title.vue';
-import Search from './components/search/Search.vue';
-import Suggestions from './components/Suggestions.vue';
-import Popular from './components/Popular.vue';
-import Table from './components/table/Table.vue';
-import Readings from './components/Readings.vue';
+import NpmDownloads from '@/components/downloads/NpmDownloadsChart.vue';
+import Title from '@/components/Title.vue';
+import Search from '@/components/search/Search.vue';
+import Suggestions from '@/components/Suggestions.vue';
+import Popular from '@/components/Popular.vue';
+import Table from '@/components/table/Table.vue';
+import Readings from '@/components/Readings.vue';
 
-import Releases from './components/npm-releases/NpmReleasesChart.vue';
-import TechRadar from './components/TechRadarChart.vue';
-import GoogleTrends from './components/google-trends/GTrendsChart.vue';
-import Stars from './components/github-stars/StarsChart.vue';
-import Languages from './components/languages/LanguagesChart.vue';
-import Contributors from './components/github-contributors/ContributorsChart.vue';
-import DevelopersUsage from './components/developer-usage/DeveloperUsageChart.vue';
-import Commits from './components/commits/CommitsChart.vue';
+import Releases from '@/components/npm-releases/NpmReleasesChart.vue';
+import TechRadar from '@/components/TechRadarChart.vue';
+import GoogleTrends from '@/components/google-trends/GTrendsChart.vue';
+import Stars from '@/components/github-stars/StarsChart.vue';
+import Languages from '@/components/languages/LanguagesChart.vue';
+import Contributors from '@/components/github-contributors/ContributorsChart.vue';
+import DevelopersUsage from '@/components/developer-usage/DeveloperUsageChart.vue';
+import Commits from '@/components/commits/CommitsChart.vue';
 
 import { chartsVisibility } from '@/store/chartsVisibility';
 import {
