@@ -5,6 +5,7 @@ export const frameworksTags = [
   'vue',
   'svelte',
   'ember',
+  'Next.js',
   'nodejs',
   'jQuery',
   'browser',
@@ -107,6 +108,7 @@ export const tags = [
   'GEO utility',
   'http-client',
   'reactive',
+  'mdx',
 
   // compilers
   'compiler',
