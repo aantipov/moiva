@@ -179,7 +179,12 @@
       'justify-center': bundlesize === '-',
     }"
   >
-    {{ bundlesize }}
+    <m-ext-link
+      v-if="bundlesize !== '-'"
+      :href="bundlephobiaUrl"
+      :txt="bundlesize"
+    />
+    <span v-else>{{ bundlesize }}</span>
     <span
       v-if="lib.npmPackage && lib.npmPackage.name === 'react'"
       v-tooltip="'React’s bundle size includes react-dom package'"
@@ -340,6 +345,9 @@ const vulnTooltip = computed(
 );
 const npmUrl = computed(
   () => `https://www.npmjs.com/package/${npmNameEncoded.value}`
+);
+const bundlephobiaUrl = computed(
+  () => `https://bundlephobia.com/package/${npmNameEncoded.value}`
 );
 const githubUrl = computed(() => `https://github.com/${lib.value.repo.repoId}`);
 
