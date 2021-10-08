@@ -179,7 +179,12 @@
       'justify-center': bundlesize === '-',
     }"
   >
-    <m-ext-link :href="bundlephobiaUrl" :txt="bundlesize" />
+    <m-ext-link
+      v-if="bundlesize !== '-'"
+      :href="bundlephobiaUrl"
+      :txt="bundlesize"
+    />
+    <span v-else>{{ bundlesize }}</span>
     <span
       v-if="lib.npmPackage && lib.npmPackage.name === 'react'"
       v-tooltip="'React’s bundle size includes react-dom package'"
