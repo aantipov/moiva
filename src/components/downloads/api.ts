@@ -17,7 +17,9 @@ export function fetchNpmDownloads(
   }
 
   return axios
-    .get(`https://npm-downloads.moiva.workers.dev/?pkg=${libName}`)
+    .get<{ items: NpmDownloadT[] }>(
+      `https://npm-downloads.moiva.workers.dev/?pkg=${libName}`
+    )
     .then(({ data }) => {
       const dataWOLastMonth = data.items.slice(0, -1);
       cacheR.set(libName, dataWOLastMonth);

@@ -24,7 +24,9 @@ export function fetchGithubSearch(q: string): Promise<GithubSearchItem[]> {
   }
 
   return axios
-    .get(`https://github-search.moiva.workers.dev/?q=${q}`)
+    .get<{ items: GithubSearchItem[] }>(
+      `https://github-search.moiva.workers.dev/?q=${q}`
+    )
     .then(({ data }) => {
       githubSearchCache.set(q, data.items);
       return data.items;
@@ -63,7 +65,9 @@ export function fetchNpmSearch(keyword: string): Promise<NpmSearchItemT[]> {
 
 function fetchNpmJSSuggestions(keyword: string): Promise<NpmSearchItemT[]> {
   return axios
-    .get(`https://npm-search.moiva.workers.dev/?q=${keyword}`)
+    .get<{ items: NpmSearchItemT[] }>(
+      `https://npm-search.moiva.workers.dev/?q=${keyword}`
+    )
     .then(({ data }) => data.items);
 }
 
