@@ -40,6 +40,10 @@ export interface NpmPackageT {
   description: string;
   license: string;
   repoId: string;
+  repository?: {
+    type: string;
+    url: string;
+  };
   version: string;
   dependencies: string[];
   hasBuiltinTypes: boolean;
@@ -129,7 +133,9 @@ function fetchNpmPackage(packageName: string): Promise<NpmPackageT> {
 
 function fetchNpmJSPackage(packageName: string): Promise<NpmPackageT> {
   return axios
-    .get(`https://npm-details.moiva.workers.dev/?pkg=${packageName}`)
+    .get<NpmPackageT>(
+      `https://npm-details.moiva.workers.dev/?pkg=${packageName}`
+    )
     .then(({ data }) => {
       const catalogLibrary = getNpmLibraryByNpm(packageName);
       const repoId = catalogLibrary
@@ -149,7 +155,7 @@ interface RepT {
   url: string;
 }
 
-function getRepoId(repository: RepT | null): string | null {
+function getRepoId(repository: RepT | null | undefined): string | null {
   const hasPackageGithub =
     repository &&
     repository.type === 'git' &&
@@ -213,7 +219,10 @@ function getRepoId(repository: RepT | null): string | null {
 //     });
 // }
 
-function reportSentry(err: AxiosError, methodName: string): void {
+function reportSentry(
+  err: AxiosError<{ error?: string }>,
+  methodName: string
+): void {
   err.name = `UI API (${methodName})`;
 
   Sentry.captureException(err, {

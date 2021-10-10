@@ -36,7 +36,7 @@ export async function fetchRepoStars(repoId: string): Promise<StarsT[] | null> {
     starsCumulateCacheR.set(repoIdLC, getCummulateStars(items, data.totals));
     return items;
   } catch (error) {
-    reportSentry(error as AxiosError<unknown>, 'fetchGithubStars');
+    reportSentry(error as AxiosError<{ error?: string }>, 'fetchGithubStars');
     cacheR.set(repoIdLC, null);
     return null;
   }

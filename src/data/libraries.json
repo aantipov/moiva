@@ -12701,7 +12701,7 @@
     "npm": "gatsby",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["static-site-generator-SSG", "react"]
+    "tags": ["static-site-generator-SSG", "server-side-rendering-SSR", "react"]
   },
   {
     "category": "Static Site Generators / JAMStack",
@@ -12741,7 +12741,7 @@
     "npm": "@11ty/eleventy",
     "isNpmCoreArtifact": true,
     "alias": "11ty",
-    "tags": ["static-site-generator-SSG"]
+    "tags": ["JAMstack", "documentation", "static-site-generator-SSG"]
   },
   {
     "category": "Static Site Generators / JAMStack",
