@@ -93,7 +93,7 @@
     "title": "Stack Overflow: Developer Survey 2021",
     "url": "https://insights.stackoverflow.com/survey/2021#section-most-loved-dreaded-and-wanted-web-frameworks",
     "npms": ["react", "vue", "express", "angular", "@angular/core", "svelte"],
-    "repos": ["tiangolo/fastapi"]
+    "repos": []
   },
   {
     "title": "You might not need jQuery",
