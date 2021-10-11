@@ -13109,7 +13109,7 @@
     "npm": "backstopjs",
     "isNpmCoreArtifact": true,
     "alias": "BackstopJS",
-    "tags": ["testing", "visual-regression"]
+    "tags": ["testing", "visual-regression", "image-comparison"]
   },
   {
     "category": "JavaScript Visual Regression Testing Tools",
@@ -13117,7 +13117,7 @@
     "npm": "loki",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["testing", "visual-regression", "storybook"]
+    "tags": ["testing", "visual-regression", "image-comparison", "storybook", "nodejs"]
   },
   {
     "category": "JavaScript Visual Regression Testing Tools",
@@ -13125,7 +13125,31 @@
     "npm": "gemini",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["testing", "visual-regression"]
+    "tags": ["testing", "visual-regression", "image-comparison"]
+  },
+  {
+    "category": "JavaScript Visual Regression Testing Tools",
+    "repoId": "americanexpress/jest-image-snapshot",
+    "npm": "jest-image-snapshot",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["image-comparison", "nodejs"]
+  },
+  {
+    "category": "JavaScript Visual Regression Testing Tools",
+    "repoId": "mapbox/pixelmatch",
+    "npm": "pixelmatch",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["image-comparison", "nodejs", "browser"]
+  },
+  {
+    "category": "JavaScript Visual Regression Testing Tools",
+    "repoId": "NimaSoroush/differencify",
+    "npm": "differencify",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["testing", "image-comparison", "visual-regression", "nodejs"]
   },
   {
     "category": "VueJS Component Libraries",

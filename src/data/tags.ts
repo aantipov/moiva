@@ -97,6 +97,7 @@ export const tags = [
   'bdd-testing',
   'testing-framework',
   'visual-regression',
+  'image-comparison',
   'utils',
   'bootstrap',
   'web',
