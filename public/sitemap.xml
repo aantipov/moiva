@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://moiva.io</loc>
-    <lastmod>2021-06-04</lastmod>
+    <lastmod>2021-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -15,8 +15,13 @@
 
   <url>
     <loc>https://moiva.io/blog/</loc>
-    <lastmod>2021-06-10</lastmod>
+    <lastmod>2021-10-11</lastmod>
     <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://moiva.io/blog/2021-10-update/</loc>
+    <lastmod>2021-10-11</lastmod>
   </url>
 
   <url>
