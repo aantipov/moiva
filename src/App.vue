@@ -132,7 +132,6 @@ import Commits from '@/components/commits/CommitsChart.vue';
 import { chartsVisibility } from '@/store/chartsVisibility';
 import {
   updateUrl,
-  updateMetaDescription,
   getNpmPackagesFromUrl,
   getReposIdsFromUrl,
   setNoFollowTag,
@@ -149,6 +148,7 @@ import {
 } from '@/store/libraries';
 import useExtraDataApi from '@/composables/useExtraDataApi';
 import { useDocumentTitle } from '@/composables/useDocumentTitle';
+import { useDocumentDescription } from '@/composables/useDocumentDescription';
 import * as Sentry from '@sentry/vue';
 
 // Do not allow Google index pages with >=3 libraries
@@ -171,6 +171,7 @@ onMounted(() => {
   });
 
   useDocumentTitle();
+  useDocumentDescription();
 
   // On every Library change (load, de-load) update url, title, description
   watchEffect(() => {
@@ -180,7 +181,6 @@ onMounted(() => {
 
     // Update URL, Title and Meta Description
     updateUrl(librariesRR);
-    updateMetaDescription(librariesRR);
   });
 
   // Load libraries extra data

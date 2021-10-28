@@ -17,6 +17,7 @@
     "@sentry/vue": "^6.13.3",
     "@tailwindcss/typography": "^0.4.1",
     "@vueuse/core": "^6.7.3",
+    "@vueuse/shared": "^6.7.4",
     "autocompleter": "^6.1.2",
     "axios": "^0.22.0",
     "chart.js": "^3.4.1",
