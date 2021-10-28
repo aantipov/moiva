@@ -176,24 +176,6 @@ export function getSeoLibName(repoId: string): string {
   return repoName;
 }
 
-export function updateTitle(libraries: LibrariesReadonlyT): void {
-  let title = 'Moiva.io - Discover and Compare NPM packages';
-
-  if (libraries.length) {
-    const aliases = libraries.map(({ alias }) => alias).sort();
-    title = `${aliases[0]}: Stats and Trends from NPM, GitHub, ... - Moiva.io`;
-
-    if (aliases.length > 1) {
-      title = `${aliases.join(' vs ')}: Which One to Choose? - Moiva.io`;
-    }
-  }
-
-  window.document.title = title;
-  (
-    document.querySelector('meta[name="twitter:title"]') as HTMLElement
-  ).setAttribute('content', title);
-}
-
 interface LibForDescriptionT {
   alias: string;
   description: string;
