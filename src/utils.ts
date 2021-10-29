@@ -16,35 +16,6 @@ const npmQueryParamName = 'npm';
 const githubQueryParamName = 'github';
 const delimiter = ' ';
 const encodedDelimiter = '+';
-let hasCanonicalUrlCheckProcessed = false;
-
-// Update the URL whenever a user selects/deselects a library
-export function updateUrl(libraries: LibrariesReadonlyT): void {
-  const Url = new URL(window.location.href);
-  const originalHref = '/' + Url.search;
-  const npmPackagesNames = [] as string[];
-  const reposIds = [] as string[];
-
-  libraries.forEach((library) => {
-    if (library.npmPackage) {
-      npmPackagesNames.push(library.npmPackage.name);
-    } else {
-      reposIds.push(library.repo.repoId);
-    }
-  });
-
-  const newHref = constructHref(npmPackagesNames, reposIds);
-
-  if (!hasCanonicalUrlCheckProcessed) {
-    // Let GoogleBot know the canonical URL
-    setCanonicalUrl(newHref);
-    hasCanonicalUrlCheckProcessed = true;
-  }
-
-  if (newHref !== originalHref) {
-    window.history.pushState(null, '', newHref);
-  }
-}
 
 export function getNpmPackagesFromUrl(): string[] {
   const Url = new URL(window.location.href);
@@ -146,14 +117,6 @@ export function setNoFollowTag(): void {
     metaRobots.content = 'noindex';
     document.head.appendChild(metaRobots);
   }
-}
-
-// Let Google Bot know the canonical URL of the page
-function setCanonicalUrl(url: string): void {
-  const link = document.createElement('link');
-  link.setAttribute('rel', 'canonical');
-  link.setAttribute('href', 'https://moiva.io' + url);
-  document.head.appendChild(link);
 }
 
 /**

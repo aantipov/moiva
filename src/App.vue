@@ -131,7 +131,6 @@ import Commits from '@/components/commits/CommitsChart.vue';
 
 import { chartsVisibility } from '@/store/chartsVisibility';
 import {
-  updateUrl,
   getNpmPackagesFromUrl,
   getReposIdsFromUrl,
   setNoFollowTag,
@@ -149,6 +148,7 @@ import {
 import useExtraDataApi from '@/composables/useExtraDataApi';
 import { useDocumentTitle } from '@/composables/useDocumentTitle';
 import { useDocumentDescription } from '@/composables/useDocumentDescription';
+import { useUrl } from '@/composables/useUrl';
 import * as Sentry from '@sentry/vue';
 
 // Do not allow Google index pages with >=3 libraries
@@ -170,22 +170,14 @@ onMounted(() => {
     window.location.href = '/not-found';
   });
 
-  useDocumentTitle();
-  useDocumentDescription();
-
-  // On every Library change (load, de-load) update url, title, description
-  watchEffect(() => {
-    if (isLoading.value) {
-      return;
-    }
-
-    // Update URL, Title and Meta Description
-    updateUrl(librariesRR);
-  });
-
   // Load libraries extra data
   useExtraDataApi();
 });
+
+// Keep Title, Description and Url in sync with the selected libraries
+useDocumentTitle();
+useDocumentDescription();
+useUrl();
 
 const popularChartsNumber = computed(
   () =>
