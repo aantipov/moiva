@@ -201,7 +201,10 @@
     "mswjs/msw",
     "Mock Service Worker",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/mock-service-worker",
-    [{ "month": "2020-10", "level": "Assess" }]
+    [
+      { "month": "2020-10", "level": "Assess" },
+      { "month": "2021-10", "level": "Trial" }
+    ]
   ],
   [
     "vercel/swr",
@@ -243,7 +246,10 @@
     "tailwindlabs/tailwindcss",
     "Tailwind CSS",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/tailwind-css",
-    [{ "month": "2020-05", "level": "Assess" }]
+    [
+      { "month": "2020-05", "level": "Assess" },
+      { "month": "2021-10", "level": "Trial" }
+    ]
   ],
   [
     "devexpress/testcafe",
@@ -399,7 +405,10 @@
     "gatsbyjs/gatsby",
     "Gatsby.js",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/gatsby-js",
-    [{ "month": "2019-11", "level": "Assess" }]
+    [
+      { "month": "2019-11", "level": "Assess" },
+      { "month": "2021-10", "level": "Trial" }
+    ]
   ],
   [
     "sideway/joi",
@@ -727,5 +736,41 @@
     "River",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/river",
     [{ "month": "2021-04", "level": "Assess" }]
+  ],
+  [
+    "Microsoft/dowhy",
+    "DoWhy",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/dowhy",
+    [{ "month": "2021-10", "level": "Trial" }]
+  ],
+  [
+    "CamDavidsonPilon/lifelines",
+    "lifelines",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/lifelines",
+    [{ "month": "2021-10", "level": "Trial" }]
+  ],
+  [
+    "ngrx/platform",
+    "NgRx",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/ngrx",
+    [{ "month": "2021-10", "level": "Trial" }]
+  ],
+  [
+    "samuelcolvin/pydantic",
+    "pydantic",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/pydantic",
+    [{ "month": "2021-10", "level": "Trial" }]
+  ],
+  [
+    "tannerlinsley/react-query",
+    "React Query",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/react-query",
+    [{ "month": "2021-10", "level": "Trial" }]
+  ],
+  [
+    "chakra-ui/chakra-ui",
+    "Chakra UI",
+    "https://www.thoughtworks.com/en-au/radar/languages-and-frameworks/chakra-ui",
+    [{ "month": "2021-10", "level": "Trial" }]
   ]
 ]
