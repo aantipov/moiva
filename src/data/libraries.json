@@ -12033,6 +12033,14 @@
   },
   {
     "category": "React Component Libraries",
+    "repoId": "tailwindlabs/headlessui",
+    "npm": "@headlessui/react",
+    "isNpmCoreArtifact": false,
+    "alias": "Headless UI React",
+    "tags": ["component-library", "react"]
+  },
+  {
+    "category": "React Component Libraries",
     "repoId": "geist-org/react",
     "npm": "@geist-ui/react",
     "isNpmCoreArtifact": true,
@@ -13145,7 +13153,7 @@
   },
   {
     "category": "JavaScript Visual Regression Testing Tools",
-    "repoId": "NimaSoroush/differencify",
+    "repoId": "nimasoroush/differencify",
     "npm": "differencify",
     "isNpmCoreArtifact": true,
     "alias": null,
@@ -13158,6 +13166,14 @@
     "isNpmCoreArtifact": true,
     "alias": null,
     "tags": ["component-library", "vue", "material-design"]
+  },
+  {
+    "category": "VueJS Component Libraries",
+    "repoId": "tailwindlabs/headlessui",
+    "npm": "@headlessui/vue",
+    "isNpmCoreArtifact": false,
+    "alias": "Headless UI Vue",
+    "tags": ["component-library", "vue"]
   },
   {
     "category": "VueJS Component Libraries",
@@ -13494,5 +13510,61 @@
     "isNpmCoreArtifact": true,
     "alias": null,
     "tags": ["vue", "select", "multiselect"]
+  },
+  {
+    "category": "Python libraries",
+    "repoId": "microsoft/dowhy",
+    "npm": null,
+    "isNpmCoreArtifact": false,
+    "alias": "DoWhy",
+    "tags": ["causal-inference", "data-science", "machine-learning"]
+  },
+  {
+    "category": "Python libraries",
+    "repoId": "camdavidsonpilon/lifelines",
+    "npm": null,
+    "isNpmCoreArtifact": false,
+    "alias": null,
+    "tags": ["survival-analysis", "data-science", "machine-learning"]
+  },
+  {
+    "category": "Python libraries",
+    "repoId": "samuelcolvin/pydantic",
+    "npm": null,
+    "isNpmCoreArtifact": false,
+    "alias": null,
+    "tags": ["python-validation", "python-parsing"]
+  },
+  {
+    "category": "Go libraries",
+    "repoId": "uber-go/zap",
+    "npm": null,
+    "isNpmCoreArtifact": false,
+    "alias": null,
+    "tags": ["go-logging"]
+  },
+  {
+    "category": "Python libraries",
+    "repoId": "deepinsight/insightface",
+    "npm": null,
+    "isNpmCoreArtifact": false,
+    "alias": null,
+    "tags": ["python-face-detection"]
+  },
+  {
+    "category": "Python libraries",
+    "repoId": "facebookresearch/kats",
+    "npm": null,
+    "isNpmCoreArtifact": false,
+    "alias": null,
+    "tags": ["python-time-series"]
+  },
+  {
+    "category": "Kafka libraries",
+    "repoId": "confluentinc/ksql",
+    "npm": null,
+    "isNpmCoreArtifact": false,
+    "alias": null,
+    "tags": ["kafka-stream-processing"]
   }
 ]

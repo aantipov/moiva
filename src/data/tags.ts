@@ -173,4 +173,20 @@ export const tags = [
 
   'select',
   'multiselect',
+
+  // python machine learning
+  'causal-inference',
+  'data-science',
+  'survival-analysis',
+  'machine-learning',
+  'python-validation',
+  'python-parsing',
+  'python-face-detection',
+  'python-time-series',
+
+  // Go
+  'go-logging',
+
+  // Kafka
+  'kafka-stream-processing',
 ];

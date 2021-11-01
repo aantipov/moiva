@@ -738,13 +738,13 @@
     [{ "month": "2021-04", "level": "Assess" }]
   ],
   [
-    "Microsoft/dowhy",
+    "microsoft/dowhy",
     "DoWhy",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/dowhy",
     [{ "month": "2021-10", "level": "Trial" }]
   ],
   [
-    "CamDavidsonPilon/lifelines",
+    "camdavidsonpilon/lifelines",
     "lifelines",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/lifelines",
     [{ "month": "2021-10", "level": "Trial" }]
@@ -796,7 +796,7 @@
     [{ "month": "2021-10", "level": "Assess" }]
   ],
   [
-    "facebookresearch/Kats",
+    "facebookresearch/kats",
     "Kats",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/kats",
     [{ "month": "2021-10", "level": "Assess" }]
