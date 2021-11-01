@@ -768,6 +768,76 @@
     [{ "month": "2021-10", "level": "Trial" }]
   ],
   [
+    "mrdoob/three.js",
+    "Three.js",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/three-js",
+    [
+      { "month": "2016-11", "level": "Assess" },
+      { "month": "2017-03", "level": "Assess" },
+      { "month": "2021-10", "level": "Trial" }
+    ]
+  ],
+  [
+    "uber-go/zap",
+    "Zap",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/zap",
+    [{ "month": "2021-10", "level": "Trial" }]
+  ],
+  [
+    "tailwindlabs/headlessui",
+    "Headless UI",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/headless-ui",
+    [{ "month": "2021-10", "level": "Assess" }]
+  ],
+  [
+    "deepinsight/insightface",
+    "InsightFace",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/insightface",
+    [{ "month": "2021-10", "level": "Assess" }]
+  ],
+  [
+    "facebookresearch/Kats",
+    "Kats",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/kats",
+    [{ "month": "2021-10", "level": "Assess" }]
+  ],
+  [
+    "confluentinc/ksql",
+    "ksqlDB",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/ksqldb",
+    [{ "month": "2021-10", "level": "Assess" }]
+  ],
+  [
+    "pola-rs/polars",
+    "Polars",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/polars",
+    [{ "month": "2021-10", "level": "Assess" }]
+  ],
+  [
+    "umijs/qiankun",
+    "Qiankun",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/qiankun",
+    [{ "month": "2021-10", "level": "Assess" }]
+  ],
+  [
+    "pmndrs/react-three-fiber",
+    "React Three Fiber",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/react-three-fiber",
+    [{ "month": "2021-10", "level": "Assess" }]
+  ],
+  [
+    "tauri-apps/tauri",
+    "Tauri",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/tauri",
+    [{ "month": "2021-10", "level": "Assess" }]
+  ],
+  [
+    "ngneat/transloco",
+    "Transloco",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/transloco",
+    [{ "month": "2021-10", "level": "Assess" }]
+  ],
+  [
     "chakra-ui/chakra-ui",
     "Chakra UI",
     "https://www.thoughtworks.com/en-au/radar/languages-and-frameworks/chakra-ui",
