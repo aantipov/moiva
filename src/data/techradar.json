@@ -338,6 +338,7 @@
       { "month": "2016-11", "level": "Trial" }
     ]
   ],
+  ["vitejs/vite", "Vite", "https://www.thoughtworks.com/radar/tools/vite", [{ "month": "2021-10", "level": "Adopt" }]],
   [
     "prettier/prettier",
     "Prettier",
