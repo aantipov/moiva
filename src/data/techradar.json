@@ -201,7 +201,10 @@
     "mswjs/msw",
     "Mock Service Worker",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/mock-service-worker",
-    [{ "month": "2020-10", "level": "Assess" }]
+    [
+      { "month": "2020-10", "level": "Assess" },
+      { "month": "2021-10", "level": "Trial" }
+    ]
   ],
   [
     "vercel/swr",
@@ -243,7 +246,10 @@
     "tailwindlabs/tailwindcss",
     "Tailwind CSS",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/tailwind-css",
-    [{ "month": "2020-05", "level": "Assess" }]
+    [
+      { "month": "2020-05", "level": "Assess" },
+      { "month": "2021-10", "level": "Trial" }
+    ]
   ],
   [
     "devexpress/testcafe",
@@ -338,6 +344,7 @@
       { "month": "2016-11", "level": "Trial" }
     ]
   ],
+  ["vitejs/vite", "Vite", "https://www.thoughtworks.com/radar/tools/vite", [{ "month": "2021-10", "level": "Adopt" }]],
   [
     "prettier/prettier",
     "Prettier",
@@ -398,7 +405,10 @@
     "gatsbyjs/gatsby",
     "Gatsby.js",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/gatsby-js",
-    [{ "month": "2019-11", "level": "Assess" }]
+    [
+      { "month": "2019-11", "level": "Assess" },
+      { "month": "2021-10", "level": "Trial" }
+    ]
   ],
   [
     "sideway/joi",
@@ -726,5 +736,111 @@
     "River",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/river",
     [{ "month": "2021-04", "level": "Assess" }]
+  ],
+  [
+    "microsoft/dowhy",
+    "DoWhy",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/dowhy",
+    [{ "month": "2021-10", "level": "Trial" }]
+  ],
+  [
+    "camdavidsonpilon/lifelines",
+    "lifelines",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/lifelines",
+    [{ "month": "2021-10", "level": "Trial" }]
+  ],
+  [
+    "ngrx/platform",
+    "NgRx",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/ngrx",
+    [{ "month": "2021-10", "level": "Trial" }]
+  ],
+  [
+    "samuelcolvin/pydantic",
+    "pydantic",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/pydantic",
+    [{ "month": "2021-10", "level": "Trial" }]
+  ],
+  [
+    "tannerlinsley/react-query",
+    "React Query",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/react-query",
+    [{ "month": "2021-10", "level": "Trial" }]
+  ],
+  [
+    "mrdoob/three.js",
+    "Three.js",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/three-js",
+    [
+      { "month": "2016-11", "level": "Assess" },
+      { "month": "2017-03", "level": "Assess" },
+      { "month": "2021-10", "level": "Trial" }
+    ]
+  ],
+  [
+    "uber-go/zap",
+    "Zap",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/zap",
+    [{ "month": "2021-10", "level": "Trial" }]
+  ],
+  [
+    "tailwindlabs/headlessui",
+    "Headless UI",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/headless-ui",
+    [{ "month": "2021-10", "level": "Assess" }]
+  ],
+  [
+    "deepinsight/insightface",
+    "InsightFace",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/insightface",
+    [{ "month": "2021-10", "level": "Assess" }]
+  ],
+  [
+    "facebookresearch/kats",
+    "Kats",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/kats",
+    [{ "month": "2021-10", "level": "Assess" }]
+  ],
+  [
+    "confluentinc/ksql",
+    "ksqlDB",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/ksqldb",
+    [{ "month": "2021-10", "level": "Assess" }]
+  ],
+  [
+    "pola-rs/polars",
+    "Polars",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/polars",
+    [{ "month": "2021-10", "level": "Assess" }]
+  ],
+  [
+    "umijs/qiankun",
+    "Qiankun",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/qiankun",
+    [{ "month": "2021-10", "level": "Assess" }]
+  ],
+  [
+    "pmndrs/react-three-fiber",
+    "React Three Fiber",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/react-three-fiber",
+    [{ "month": "2021-10", "level": "Assess" }]
+  ],
+  [
+    "tauri-apps/tauri",
+    "Tauri",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/tauri",
+    [{ "month": "2021-10", "level": "Assess" }]
+  ],
+  [
+    "ngneat/transloco",
+    "Transloco",
+    "https://www.thoughtworks.com/radar/languages-and-frameworks/transloco",
+    [{ "month": "2021-10", "level": "Assess" }]
+  ],
+  [
+    "chakra-ui/chakra-ui",
+    "Chakra UI",
+    "https://www.thoughtworks.com/en-au/radar/languages-and-frameworks/chakra-ui",
+    [{ "month": "2021-10", "level": "Trial" }]
   ]
 ]

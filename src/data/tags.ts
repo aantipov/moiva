@@ -110,6 +110,8 @@ export const tags = [
   'http-client',
   'reactive',
   'mdx',
+  'micro-frontends',
+  'i18n',
 
   // compilers
   'compiler',
@@ -173,4 +175,21 @@ export const tags = [
 
   'select',
   'multiselect',
+
+  // python machine learning
+  'causal-inference',
+  'data-science',
+  'survival-analysis',
+  'machine-learning',
+  'python-validation',
+  'python-parsing',
+  'python-face-detection',
+  'python-time-series',
+  'python-dataframe',
+
+  // Go
+  'go-logging',
+
+  // Kafka
+  'kafka-stream-processing',
 ];
