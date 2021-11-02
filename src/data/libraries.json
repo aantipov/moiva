@@ -11477,7 +11477,15 @@
     "npm": "single-spa",
     "isNpmCoreArtifact": true,
     "alias": "single-spa",
-    "tags": []
+    "tags": ["micro-frontends"]
+  },
+  {
+    "category": "misc",
+    "repoId": "umijs/qiankun",
+    "npm": "qiankun",
+    "isNpmCoreArtifact": true,
+    "alias": "Qiankun",
+    "tags": ["micro-frontends"]
   },
   {
     "category": "misc",
@@ -13560,11 +13568,27 @@
     "tags": ["python-time-series"]
   },
   {
+    "category": "Python libraries",
+    "repoId": "pola-rs/polars",
+    "npm": null,
+    "isNpmCoreArtifact": false,
+    "alias": null,
+    "tags": ["python-dataframe"]
+  },
+  {
     "category": "Kafka libraries",
     "repoId": "confluentinc/ksql",
     "npm": null,
     "isNpmCoreArtifact": false,
     "alias": null,
     "tags": ["kafka-stream-processing"]
+  },
+  {
+    "category": "misc",
+    "repoId": "ngneat/transloco",
+    "npm": "@ngneat/transloco",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["i18n", "angular"]
   }
 ]

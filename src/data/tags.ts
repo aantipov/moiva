@@ -110,6 +110,8 @@ export const tags = [
   'http-client',
   'reactive',
   'mdx',
+  'micro-frontends',
+  'i18n',
 
   // compilers
   'compiler',
@@ -183,6 +185,7 @@ export const tags = [
   'python-parsing',
   'python-face-detection',
   'python-time-series',
+  'python-dataframe',
 
   // Go
   'go-logging',
