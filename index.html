@@ -125,7 +125,7 @@
     ></script>
   </head>
 
-  <body class="bg-gray-50">
+  <body class="bg-gray-50 flex flex-col">
     <noscript>
       <strong
         >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
@@ -268,8 +268,8 @@
     </div>
 
     <!-- Body -->
-    <!--  Min-width is used to take into account Popular libraries height to avoid layout shifts  -->
-    <div id="app">
+    <!--  Min-height is used to take into account Popular libraries height to avoid layout shifts  -->
+    <div id="app" class="flex-grow">
       <div style="height: 672px"></div>
     </div>
 
