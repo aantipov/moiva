@@ -13590,5 +13590,13 @@
     "isNpmCoreArtifact": true,
     "alias": null,
     "tags": ["i18n", "angular"]
+  },
+  {
+    "category": "misc",
+    "repoId": "vuejs/vue-web-component-wrapper",
+    "npm": "@vue/web-component-wrapper",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": []
   }
 ]
