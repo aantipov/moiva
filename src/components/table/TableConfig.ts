@@ -7,6 +7,7 @@ const METRICS = [
   'homepage',
   'status',
   'tags',
+  'playground',
   'stars',
   'downloads',
   'searchInterest',
@@ -89,6 +90,8 @@ export const ROWS: MetricDataT[] = [
   },
 
   { metric: 'tags', cat: '', label: 'Tags' },
+
+  { metric: 'playground', cat: '', label: 'Playground' },
 
   {
     cat: 'Popularity',

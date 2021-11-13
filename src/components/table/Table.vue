@@ -97,6 +97,7 @@ import { ROWS, NPM_METRICS, CAT_CONFIG, CategoryT } from './TableConfig';
 const rows = computed(() => {
   const hasNpm = libraries.some((lib) => !!lib.npmPackage);
   const hasTags = libraries.some((lib) => !!lib.tags.length);
+  const hasPlayground = libraries.some((lib) => !!lib.playground);
   let filteredRows = ROWS;
   filteredRows = hasTags
     ? filteredRows
@@ -104,6 +105,9 @@ const rows = computed(() => {
   filteredRows = hasNpm
     ? filteredRows
     : filteredRows.filter((row) => !NPM_METRICS.includes(row.metric));
+  filteredRows = hasPlayground
+    ? filteredRows
+    : filteredRows.filter((row) => row.metric !== 'playground');
 
   return filteredRows;
 });

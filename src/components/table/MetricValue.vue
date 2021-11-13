@@ -46,6 +46,13 @@
     <template v-else>-</template>
   </div>
 
+  <div v-else-if="type === 'playground'" class="flex flex-wrap justify-center">
+    <template v-if="lib.playground">
+      <m-ext-link truncate :href="lib.playground" txt="Playground" />
+    </template>
+    <template v-else>-</template>
+  </div>
+
   <div v-else-if="type === 'stars'">
     <div class="flex justify-end">
       {{ formatNumber(lib.repo.stars) }}

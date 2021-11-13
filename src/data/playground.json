@@ -1,0 +1,10 @@
+[
+  ["vue", "https://stackblitz.com/fork/vue"],
+  ["next", "https://stackblitz.com/fork/nextjs"],
+  ["nuxt", "https://stackblitz.com/fork/github/nuxt/starter/tree/stackblitz"],
+  ["angular", "https://stackblitz.com/fork/angularjs"],
+  ["rxjs", "https://stackblitz.com/fork/rxjs?devtoolsheight=60"],
+  ["svelte", "https://stackblitz.com/fork/svelte"],
+  ["@angular/core", "https://stackblitz.com/fork/angular-ivy"],
+  ["react", "https://stackblitz.com/fork/react-ts"]
+]

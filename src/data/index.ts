@@ -3,6 +3,7 @@ import rawTechRadarItems from '@/data/techradar.json';
 import rawLibraries from '@/data/libraries.json';
 import rawGoogleTrendsItems from '@/data/google-trends.json';
 import legacyItems from '@/data/legacy.json';
+import pgItems from '@/data/playground.json';
 import { frameworksTags } from '@/data/tags';
 export * from '@/data/tags';
 
@@ -84,6 +85,17 @@ export const repoIdToTechRadarMap = (
   accum[repo.toLowerCase()] = { repo, alias, link, entries };
   return accum;
 }, {} as Record<string, TechRadarT>);
+
+/** ========= PLAYGROUND ITEMS ========= **/
+type pgNpmT = string;
+type pgLink = string;
+export const npmToPlaygroundMap = (pgItems as [pgNpmT, pgLink][]).reduce(
+  (accum, [npm, link]) => {
+    accum[npm] = link;
+    return accum;
+  },
+  {} as Record<pgNpmT, pgLink>
+);
 
 /** ========= LIBRARIES CATALOG ========= **/
 interface CatalogLibraryNpmT {

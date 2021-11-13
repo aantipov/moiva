@@ -27,6 +27,7 @@ import {
   repoIdToDevUsageDataMap,
   repoIdToTechRadarMap,
   repoToGTrendDefMap,
+  npmToPlaygroundMap,
   legacyLibraries,
   StateOfJSItemT,
   TechRadarT,
@@ -82,6 +83,7 @@ export interface LibraryT {
   repo: RepoT;
   alias: string;
   age: number; // number of seconds since creation
+  playground: string | null;
   tradar: TechRadarT | null;
   isNpmCoreArtifact: boolean | null;
   npmPackage: NpmPackageT | null;
@@ -160,6 +162,7 @@ export function getLibrary(
       }
       return 'ACTIVE';
     }),
+    playground: (npmPackage && npmToPlaygroundMap[npmPackage.name]) || null,
     tradar: repoIdToTechRadarMap[repoIdLC] || null,
     // @ts-ignore
     license: computed(() => {
