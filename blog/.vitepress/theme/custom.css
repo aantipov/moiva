@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --c-brand: #646cff;
+  --c-brand-light: #747bff;
+}
+
+/* h1 {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  text-align: center;
+} */
+
+@layer components {
+  .myprose {
+    @apply prose sm:prose-sm lg:prose-xl mx-auto;
+  }
+  a,
+  .link,
+  .myprose a,
+  .myprose .link {
+    @apply font-medium cursor-pointer text-primary;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.15s;
+  }
+  a:hover,
+  .link:hover {
+    @apply underline text-primary-dark;
+  }
+}
