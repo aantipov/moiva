@@ -2,6 +2,7 @@ export const frameworksTags = [
   'react',
   'preact',
   'angular',
+  'angularjs',
   'vue',
   'svelte',
   'ember',
@@ -112,6 +113,7 @@ export const tags = [
   'mdx',
   'micro-frontends',
   'i18n',
+  'router',
 
   // compilers
   'compiler',

@@ -1317,7 +1317,15 @@
     "npm": "react-router",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": []
+    "tags": ["router", "react"]
+  },
+  {
+    "category": "misc",
+    "repoId": "tannerlinsley/react-location",
+    "npm": "react-location",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["router", "react"]
   },
   {
     "category": "misc",
@@ -2005,7 +2013,7 @@
     "npm": "vue-router",
     "isNpmCoreArtifact": true,
     "alias": "Vue Router",
-    "tags": []
+    "tags": ["router", "vue"]
   },
   {
     "category": "misc",
@@ -6333,7 +6341,7 @@
     "npm": "@uirouter/angularjs",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": []
+    "tags": ["router", "angularjs"]
   },
   {
     "category": "misc",
