@@ -12,9 +12,9 @@
     "update": "npx npm-upgrade check"
   },
   "dependencies": {
-    "@sentry/node": "^6.14.3",
-    "@sentry/tracing": "^6.14.3",
-    "@sentry/vue": "^6.14.3",
+    "@sentry/node": "^6.15.0",
+    "@sentry/tracing": "^6.15.0",
+    "@sentry/vue": "^6.15.0",
     "@tailwindcss/typography": "^0.4.1",
     "@vueuse/core": "^6.9.1",
     "@vueuse/shared": "^6.9.1",
@@ -29,7 +29,7 @@
     "ramda": "^0.27.1",
     "sweetalert2": "^11.1.10",
     "tippy.js": "^6.3.7",
-    "vue": "^3.2.12"
+    "vue": "^3.2.22"
   },
   "devDependencies": {
     "@netlify/functions": "^0.8.0",
@@ -39,7 +39,7 @@
     "@typescript-eslint/parser": "^5.4.0",
     "@vitejs/plugin-vue": "^1.9.4",
     "@vue/compiler-sfc": "^3.2.22",
-    "@vue/eslint-config-typescript": "^9.0.1",
+    "@vue/eslint-config-typescript": "^9.1.0",
     "autoprefixer": "^10.4.0",
     "eslint": "^8.2.0",
     "eslint-config-prettier": "^8.3.0",
