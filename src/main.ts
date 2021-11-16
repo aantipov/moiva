@@ -40,7 +40,7 @@ import ChartMenu from '@/components/ChartMenu.vue';
 import ChartPresentation from '@/components/ChartPresentation.vue';
 import LoaderTailSpin from '@/components/LoaderTailSpin.vue';
 import ExternalLink from '@/components/ExternalLink.vue';
-import Loader from '@/components/Loader.vue';
+import Loader from '@/components/LoadingView.vue';
 import LoaderNew from '@/components/LoaderNew.vue';
 import './assets/tailwind.css';
 

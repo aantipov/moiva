@@ -56,7 +56,9 @@ Chart.register(
 );
 
 Chart.defaults.layout.padding = 24;
+// @ts-ignore
 Chart.defaults.font.size = 14;
+// @ts-ignore
 Chart.defaults.font.family =
   'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"';
 Chart.defaults.plugins.title.padding = 0;
