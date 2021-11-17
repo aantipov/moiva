@@ -5,10 +5,9 @@
         Cumulative Stars chart, colorized charts sections, fixed back-forward
         navigation
       </BlogItem> -->
-      <!-- <h2>
+      <h2>
         <a href="./2021-10-update/">HHHH</a>
-      </h2> -->
-      <h2>Hello</h2>
+      </h2>
     </section>
     <!-- <Footer /> -->
   </div>
