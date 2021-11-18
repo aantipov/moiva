@@ -18,10 +18,10 @@ const { frontmatter: data } = useData();
 </script>
 
 <style scoped>
-.root >>> h2 {
+.root :deep(h2) {
   border: none;
 }
-.root >>> img {
+.root :deep(img) {
   border: 1px solid #d1d5db;
   border-radius: 5px;
   margin: 0 auto;
