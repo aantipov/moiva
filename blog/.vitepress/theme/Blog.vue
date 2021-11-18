@@ -1,13 +1,14 @@
 <template>
   <div class="container pt-10">
     <section>
+      <h1>Hello</h1>
       <!-- <BlogItem title="October 2021 update" link="/blog/2021-10-update/">
         Cumulative Stars chart, colorized charts sections, fixed back-forward
         navigation
       </BlogItem> -->
-      <h2>
+      <!-- <h2>
         <a href="./2021-10-update/">HHHH</a>
-      </h2>
+      </h2> -->
     </section>
     <!-- <Footer /> -->
   </div>
