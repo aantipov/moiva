@@ -1,6 +1,6 @@
 <template>
   <div class="antialiased myprose">
-    <Header />
+    <!-- <Header /> -->
     <Blog v-if="isIndex" />
     <Article v-else />
   </div>
@@ -14,7 +14,6 @@ import Article from './Article.vue';
 
 const route = useRoute();
 const isIndex = computed(() => {
-  console.log('route', route.path);
   return route.path.replace(/index.html$/, '') === '/blog/';
 });
 </script>
