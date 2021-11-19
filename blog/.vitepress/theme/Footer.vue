@@ -31,6 +31,7 @@
         </div>
 
         <div class="flex items-center justify-between text-xl">
+          <a class="primary-link" href="https://moiva.io">Moiva.io</a>
           <a class="primary-link" href="https://moiva.io/about/">About</a>
           <a class="primary-link" href="https://moiva.io/catalog/">Catalog</a>
           <a class="primary-link" href="/blog/">Blog</a>
