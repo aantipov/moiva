@@ -1,12 +1,10 @@
 <template>
   <article class="container pt-10 sm:pt-20 root">
-    <main class="myprose">
+    <main>
       <h1 class="header">{{ data.title }}</h1>
 
       <Content class="mt-6" />
     </main>
-
-    <Footer />
   </article>
 </template>
 

@@ -1,7 +1,11 @@
 <template>
-  <div class="antialiased myprose">
-    <Header />
-    <Article />
+  <div class="antialiased h-full flex flex-col">
+    <div class="myprose flex-grow">
+      <Header />
+      <Article />
+    </div>
+
+    <Footer class="flex-shrink-0" />
   </div>
 </template>
 
