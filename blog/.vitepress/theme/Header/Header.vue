@@ -1,5 +1,5 @@
 <template>
-  <div class="flex items-center">
+  <div class="container flex items-center">
     <img
       src="./moiva-head.jpg"
       alt="Moiva.io logo"
@@ -7,12 +7,14 @@
       height="100"
       style="margin: 0 20px 0 0"
     />
-    <div class="text-4xl">
-      <a href="https://moiva.io/" title="Home" class="link">MOIVA.IO</a>
-      Blog
-    </div>
+    <a :href="url" title="Home" class="sm:text-5xl text-4xl"> MOIVA.IO Blog </a>
   </div>
 </template>
+
+<script setup lang="ts">
+import { withBase } from 'vitepress';
+const url = withBase('/');
+</script>
 
 <style scoped>
 a {

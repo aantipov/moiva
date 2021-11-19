@@ -1,8 +1,6 @@
 <template>
-  <article class="container pt-10 root">
-    <a href="/blog/" title="Home" class="text-2xl">← all posts</a>
-
-    <main class="mt-10 myprose">
+  <article class="container pt-10 sm:pt-20 root">
+    <main class="myprose">
       <h1 class="header">{{ data.title }}</h1>
 
       <Content class="mt-6" />

@@ -1,3 +1,5 @@
 ---
-title: 'Moiva.io Blog'
+title: 'Posts'
 ---
+
+<Blog />

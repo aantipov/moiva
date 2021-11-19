@@ -1,28 +1,24 @@
 <template>
-  <div class="container pt-10">
-    <section>
-      <h1>Hello</h1>
-      <!-- <BlogItem title="October 2021 update" link="/blog/2021-10-update/">
-        Cumulative Stars chart, colorized charts sections, fixed back-forward
-        navigation
-      </BlogItem> -->
-      <!-- <h2>
-        <a href="./2021-10-update/">HHHH</a>
-      </h2> -->
-    </section>
-    <!-- <Footer /> -->
-  </div>
+  <section>
+    <BlogItem
+      v-for="article in articles"
+      :title="article.title"
+      :link="article.link"
+    >
+      {{ article.descr }}
+    </BlogItem>
+  </section>
 </template>
 
-<style scoped>
-h2 {
-  @apply border-0 mb-2;
-}
-h2 a {
-  color: inherit;
-  text-decoration: none;
-}
-.readmore {
-  @apply mt-1;
-}
-</style>
+<script setup lang="ts">
+import { withBase } from 'vitepress';
+const url = withBase('/');
+const articles = [
+  {
+    title: 'October 2021 update',
+    link: withBase('/2021-10-update/'),
+    descr:
+      'Cumulative Stars chart, colorized charts sections, fixed back-forward',
+  },
+];
+</script>
