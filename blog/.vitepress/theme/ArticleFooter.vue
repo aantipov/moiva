@@ -1,6 +1,6 @@
 <template>
   <div class="mt-8 mb-14">
-    <a href="/blog/" title="Home" class="text-2xl">← all posts</a>
+    <a :href="url" title="Home" class="text-2xl">← all posts</a>
 
     <h2>Subscribe to the monthly newsletter</h2>
 
@@ -42,7 +42,10 @@
   </div>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { withBase } from 'vitepress';
+const url = withBase('/');
+</script>
 
 <style scoped>
 /**  styles for the Subscribe block   **/
