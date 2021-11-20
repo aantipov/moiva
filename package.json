@@ -5,11 +5,16 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
+    "build-new": "vue-tsc --noEmit && vite build && npm run blog:build && npm run blog:move",
     "build-old": "vite-jest && vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "test": "vite-jest && vue-tsc --noEmit && eslint --ext .ts,.js,.vue src/ && prettier --check src/.",
     "format": "prettier --write src/.",
-    "update": "npx npm-upgrade check"
+    "update": "npx npm-upgrade check",
+    "blog:dev": "vitepress dev blog",
+    "blog:build": "vitepress build blog",
+    "blog:serve": "vitepress serve blog",
+    "blog:move": "rm -rf ./dist/blog && mv ./blog/.vitepress/dist/ ./dist/blog/"
   },
   "dependencies": {
     "@sentry/node": "^6.15.0",
@@ -51,6 +56,7 @@
     "typescript": "~4.4.4",
     "vite": "^2.6.14",
     "vite-jest": "^0.0.4",
+    "vitepress": "^0.20.1",
     "vue-eslint-parser": "^8.0.1",
     "vue-tsc": "^0.29.5"
   },
@@ -84,6 +90,7 @@
       "@typescript-eslint/ban-ts-comment": "off",
       "@typescript-eslint/no-use-before-define": "off",
       "no-sparse-arrays": "off",
+      "no-unused-vars": "error",
       "vue/script-setup-uses-vars": "error"
     },
     "globals": {

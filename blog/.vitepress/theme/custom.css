@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --c-brand: #646cff;
+  --c-brand-light: #747bff;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+@layer components {
+  .myprose {
+    @apply prose sm:prose-sm lg:prose-xl mx-auto;
+  }
+  a,
+  .link,
+  .myprose a,
+  .myprose .link {
+    @apply font-medium cursor-pointer text-primary;
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.15s;
+  }
+  h2 {
+    border: none;
+  }
+  a:hover,
+  .link:hover {
+    @apply underline text-primary-dark;
+  }
+}
