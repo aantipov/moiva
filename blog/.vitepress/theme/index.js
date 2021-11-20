@@ -7,6 +7,7 @@ import Blog from './Blog.vue';
 import ArticleDate from './ArticleDate.vue';
 import Header from './Header/Header.vue';
 import Figure from './Figure.vue';
+import ArticleFooter from './ArticleFooter.vue';
 
 export default {
   ...DefaultTheme,
@@ -15,6 +16,7 @@ export default {
   enhanceApp({ app }) {
     app
       .component('Footer', Footer)
+      .component('ArticleFooter', ArticleFooter)
       .component('Blog', Blog)
       .component('ArticleDate', ArticleDate)
       .component('Header', Header)

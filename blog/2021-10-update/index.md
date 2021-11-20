@@ -86,8 +86,4 @@ Moiva started to recommend such resources in the _“Recommended reading”_ sec
 
 ---
 
-Have any feedback or ideas about the project? I'm keen to know!
-
-If you find the project interesting, stay tuned and Subscribe to Moiva's monthly newsletter.
-
-<a href="/blog/" title="Home" class="text-2xl">← all posts</a>
+<ArticleFooter />
