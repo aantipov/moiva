@@ -4,7 +4,7 @@ date: '2021-10-11'
 summary: 'Cumulative Stars chart, colorized charts sections, fixed back-forward navigation'
 ---
 
-<ArticleDate />
+<!-- <ArticleDate /> -->
 
 This is an October report on the progress of [Moiva.io](/).
 
@@ -86,4 +86,4 @@ Moiva started to recommend such resources in the _“Recommended reading”_ sec
 
 ---
 
-<ArticleFooter />
+<!-- <ArticleFooter /> -->
