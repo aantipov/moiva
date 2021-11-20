@@ -2,6 +2,31 @@
 title: 'October 2021 update'
 date: '2021-10-11'
 summary: 'Cumulative Stars chart, colorized charts sections, fixed back-forward navigation'
+head:
+  - - meta
+    - name: description
+      content: 'Cumulative Stars chart, colorized charts sections, fixed back-forward navigation'
+  - - meta
+    - property: og:description
+      content: 'Cumulative Stars chart, colorized charts sections, fixed back-forward navigation'
+  - - meta
+    - name: twitter:description
+      content: 'Cumulative Stars chart, colorized charts sections, fixed back-forward navigation'
+  - - meta
+    - property: og:image
+      content: https://moiva.io/images/moiva-head.jpg
+  - - meta
+    - name: twitter:image
+      content: https://moiva.io/images/moiva-head.jpg
+  - - meta
+    - property: og:url
+      content: https://moiva.io/blog/2021-10-update/
+  - - meta
+    - property: twitter:url
+      content: https://moiva.io/blog/2021-10-update/
+  - - link
+    - rel: canonical
+      href: https://moiva.io/blog/2021-10-update/
 ---
 
 This is an October report on the progress of [Moiva.io](https://moiva.io/).

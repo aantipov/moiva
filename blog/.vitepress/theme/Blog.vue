@@ -21,7 +21,7 @@ const articles = [
     title: 'October 2021 update',
     link: withBase('/2021-10-update/'),
     descr:
-      'Cumulative Stars chart, colorized charts sections, fixed back-forward',
+      'Cumulative Stars chart, colorized charts sections, fixed back-forward navigation',
   },
 ];
 </script>
