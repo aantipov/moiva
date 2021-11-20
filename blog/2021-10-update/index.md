@@ -6,7 +6,7 @@ summary: 'Cumulative Stars chart, colorized charts sections, fixed back-forward 
 
 <!-- <ArticleDate /> -->
 
-This is an October report on the progress of [Moiva.io](/).
+<!-- This is an October report on the progress of [Moiva.io](/). -->
 
 ## Library Homepage link and Last Commit date
 
