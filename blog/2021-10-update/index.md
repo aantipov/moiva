@@ -67,7 +67,7 @@ I added a “Cumulative” control to quickly switch between the two modes.
 
 I wanted to add a similar control to the _“Contributors”_ chart but turned out that it’s not that simple. After a prolonged conversation with GitHub Support, I realized that the API I use doesn’t suit the cumulative version of the chart. The proper implementation seems a bit complex. So I decided to put the implementation of this idea on hold.
 
-## Signifies for Trendy libraries
+## Signifiers for Trendy libraries
 
 The Table presents a lot of factual numerical information. To help users make sense of that information, Moiva does the following:
 

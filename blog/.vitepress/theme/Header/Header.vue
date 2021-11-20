@@ -1,5 +1,5 @@
 <template>
-  <div class="container flex items-center">
+  <div class="container flex items-center sm:pt-4">
     <img
       src="./moiva-head.jpg"
       alt="Moiva.io logo"
