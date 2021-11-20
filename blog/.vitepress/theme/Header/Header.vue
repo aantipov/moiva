@@ -7,7 +7,7 @@
       height="100"
       style="margin: 0 20px 0 0"
     />
-    <a :href="url" title="Home" class="sm:text-5xl text-4xl"> MOIVA.IO Blog </a>
+    <a :href="url" title="Home" class="sm:text-5xl text-4xl"> Moiva.io Blog </a>
   </div>
 </template>
 
@@ -19,5 +19,6 @@ const url = withBase('/');
 <style scoped>
 a {
   text-decoration: none;
+  font-weight: 400;
 }
 </style>
