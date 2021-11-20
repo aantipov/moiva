@@ -1,5 +1,7 @@
 <template>
   <section>
+    <h2>Articles</h2>
+
     <BlogItem
       v-for="article in articles"
       :title="article.title"

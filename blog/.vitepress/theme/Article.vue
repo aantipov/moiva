@@ -14,9 +14,6 @@ const { frontmatter: data } = useData();
 </script>
 
 <style scoped>
-.root :deep(h2) {
-  border: none;
-}
 .root :deep(img) {
   border: 1px solid #d1d5db;
   border-radius: 5px;

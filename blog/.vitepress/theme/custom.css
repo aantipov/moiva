@@ -26,6 +26,9 @@ body,
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 0.15s;
   }
+  h2 {
+    border: none;
+  }
   a:hover,
   .link:hover {
     @apply underline text-primary-dark;

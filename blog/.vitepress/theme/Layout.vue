@@ -2,7 +2,8 @@
   <div class="antialiased h-full flex flex-col">
     <div class="myprose flex-grow">
       <Header />
-      <Article />
+      <Blog v-if="isIndex" />
+      <Article v-else />
     </div>
 
     <Footer class="flex-shrink-0" />
@@ -11,5 +12,13 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useRoute } from 'vitepress';
+import Blog from './Blog.vue';
 import Article from './Article.vue';
+
+const route = useRoute();
+const isIndex = computed(() => {
+  const strippedPath = route.path.replace(/index.html$/, '');
+  return strippedPath === '/' || strippedPath === '/blog/';
+});
 </script>

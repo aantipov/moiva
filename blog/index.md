@@ -1,5 +1,3 @@
 ---
 title: 'Posts'
 ---
-
-<Blog />
