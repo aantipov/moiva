@@ -13601,6 +13601,14 @@
   },
   {
     "category": "misc",
+    "repoId": "sveltejs/kit",
+    "npm": "@sveltejs/kit",
+    "isNpmCoreArtifact": true,
+    "alias": "SvelteKit",
+    "tags": ["svelte", "nodejs-framework", "static-site-generator-SSG", "server-side-rendering-SSR", "JAMstack"]
+  },
+  {
+    "category": "misc",
     "repoId": "vuejs/vue-web-component-wrapper",
     "npm": "@vue/web-component-wrapper",
     "isNpmCoreArtifact": true,

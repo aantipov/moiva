@@ -214,7 +214,10 @@ window.onpopstate = () => {
 function selectNpmPackage(npmPackageName: string): void {
   addLibraryByNpmPackage(npmPackageName).catch(() => {
     showErrorMsg(
-      `Sorry, we couldn't fetch data for <span class="font-mono">${npmPackageName}</span>`
+      `Sorry, we couldn't fetch data for
+      <span class="font-mono">${npmPackageName}</span>:
+      npm package doesn't have repository information
+      `
     );
     const err = new Error(`npmPackage: ${npmPackageName}`);
     err.name = 'UI: Select Npm Package Error';
