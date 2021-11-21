@@ -106,5 +106,3 @@ That’s why I love resources like [https://youmightnotneed.com](https://youmigh
 Moiva started to recommend such resources in the _“Recommended reading”_ section when evaluating the corresponding libraries.
 
 !['Recommended reading' section with the links to 'You might not need ...' resources](./you-dont-need.png)
-
----

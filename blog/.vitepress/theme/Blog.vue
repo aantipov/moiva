@@ -23,6 +23,12 @@ const articles = [
     descr:
       'Cumulative Stars chart, colorized charts sections, fixed back-forward navigation',
   },
+  {
+    title: 'September 2021 update',
+    link: withBase('/2021-09-update--actions-in-table-charts/'),
+    descr:
+      'Actions menu in Table charts. Inner refactorings, fixes and stylistic changes.',
+  },
 ];
 </script>
 

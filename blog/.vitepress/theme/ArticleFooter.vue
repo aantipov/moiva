@@ -1,5 +1,6 @@
 <template>
   <div class="mt-8 mb-14">
+    <hr />
     <a :href="url" title="Home" class="text-2xl">← all posts</a>
 
     <h2>Subscribe to the monthly newsletter</h2>
