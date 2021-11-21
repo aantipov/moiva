@@ -27,6 +27,10 @@ head:
   - - link
     - rel: canonical
       href: https://moiva.io/blog/2021-06-update-improved-table-view-seo-fixes/
+  - - script
+    - async: true
+      src: https://platform.twitter.com/widgets.js
+      charset: utf-8
 ---
 
 This is a June report on the progress of [Moiva.io](http://moiva.io).
@@ -45,7 +49,7 @@ Moiva evaluates Npm packages and GitHub repositories using roughly 20 metrics. A
 
 I also added a new metric called "Vulnerabilities". It shows a number of vulnerabilities in the repository. Thank you to [Snyk.io](https://snyk.io/) for providing the data.
 
-<!-- {{< tweet 1392947957964623874 >}} -->
+<Tweet id="youyuxi/status/1392947957964623874 " />
 
 ## "Issues" chart removal
 
