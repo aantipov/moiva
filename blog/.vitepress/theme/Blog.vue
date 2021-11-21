@@ -41,6 +41,12 @@ const articles = [
     descr:
       'New metric "Status", UX improvements, code refactoring and more tests.',
   },
+  {
+    title: 'June 2021 update',
+    link: withBase('/2021-06-update-improved-table-view-seo-fixes/'),
+    descr:
+      'Improved Table view, new section “Recommended reading”, removal of Issues chart, SEO fixes, scripts in Deno, migration to Netlify.',
+  },
 ];
 </script>
 
