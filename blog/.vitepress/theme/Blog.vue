@@ -35,6 +35,12 @@ const articles = [
     descr:
       'Ability to copy/share/download charts, rewritten suggestions mechanism, and many new charts.',
   },
+  {
+    title: 'July 2021 update',
+    link: withBase('/2021-07-update-new-metric-status/'),
+    descr:
+      'New metric "Status", UX improvements, code refactoring and more tests.',
+  },
 ];
 </script>
 

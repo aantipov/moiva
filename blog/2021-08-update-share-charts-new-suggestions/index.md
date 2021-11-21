@@ -1,5 +1,5 @@
 ---
-title: 'August 2021 update: shareable and downloadable charts, new charts for metrics in the Table'
+title: August 2021 update
 date: 2021-08-08
 summary: Ability to copy/share/download charts, rewritten suggestions mechanism, and many new charts.
 head:
