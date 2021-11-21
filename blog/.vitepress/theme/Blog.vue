@@ -29,6 +29,12 @@ const articles = [
     descr:
       'Actions menu in Table charts. Inner refactorings, fixes and stylistic changes.',
   },
+  {
+    title: 'August 2021 update',
+    link: withBase('/2021-08-update-share-charts-new-suggestions/'),
+    descr:
+      'Ability to copy/share/download charts, rewritten suggestions mechanism, and many new charts.',
+  },
 ];
 </script>
 

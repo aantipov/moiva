@@ -1,6 +1,6 @@
 ---
 title: September 2021 update
-date: 2021-09-09,
+date: 2021-09-09
 summary: Actions menu in Table charts. Inner refactorings, fixes and stylistic changes.
 head:
   - - meta
