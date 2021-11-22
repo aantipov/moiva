@@ -16,38 +16,13 @@
 
 <script setup lang="ts">
 import { withBase } from 'vitepress';
-const articles = [
-  {
-    title: 'October 2021 update',
-    link: withBase('/2021-10-update/'),
-    descr:
-      'Cumulative Stars chart, colorized charts sections, fixed back-forward navigation',
-  },
-  {
-    title: 'September 2021 update',
-    link: withBase('/2021-09-update--actions-in-table-charts/'),
-    descr:
-      'Actions menu in Table charts. Inner refactorings, fixes and stylistic changes.',
-  },
-  {
-    title: 'August 2021 update',
-    link: withBase('/2021-08-update-share-charts-new-suggestions/'),
-    descr:
-      'Ability to copy/share/download charts, rewritten suggestions mechanism, and many new charts.',
-  },
-  {
-    title: 'July 2021 update',
-    link: withBase('/2021-07-update-new-metric-status/'),
-    descr:
-      'New metric "Status", UX improvements, code refactoring and more tests.',
-  },
-  {
-    title: 'June 2021 update',
-    link: withBase('/2021-06-update-improved-table-view-seo-fixes/'),
-    descr:
-      'Improved Table view, new section “Recommended reading”, removal of Issues chart, SEO fixes, scripts in Deno, migration to Netlify.',
-  },
-];
+import posts from '../metadata.json';
+
+const articles = posts.map(({ title, href, summary }) => ({
+  title,
+  link: withBase(href),
+  descr: summary,
+}));
 </script>
 
 <style scoped>
