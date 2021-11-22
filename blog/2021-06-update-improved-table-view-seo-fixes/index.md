@@ -49,7 +49,7 @@ Moiva evaluates Npm packages and GitHub repositories using roughly 20 metrics. A
 
 I also added a new metric called "Vulnerabilities". It shows a number of vulnerabilities in the repository. Thank you to [Snyk.io](https://snyk.io/) for providing the data.
 
-<Tweet id="youyuxi/status/1392947957964623874 " />
+<Tweet id="youyuxi/status/1392947957964623874" />
 
 ## "Issues" chart removal
 
@@ -90,11 +90,9 @@ I took a number of steps to resolve the problem.
 - all charts received fallback textual information.
 - improved the page's internal structure by careful use of headers and sections.
 
-<!-- {{% msg %}} -->
-
+::: info Along the way...
 Along the way, I refactored the code and extended the usage of [Vue's Reactivity APIs](https://v3.vuejs.org/api/basic-reactivity.html). I love it! It greatly simplified the logic, eliminated a number of pain points, and made it possible to build more advanced functionality in the future.
-
-<!-- {{% /msg %}} -->
+:::
 
 It is still too early to say if my tweaks helped in any way in improving the SEO. Keeping my fingers crossed 🤞
 
@@ -136,3 +134,5 @@ I'd like to highlight the following wonderful people:
 - [@muratsutunc](https://twitter.com/muratsutunc) for the feedback and pointing out the problem with legacy libraries.
 - [@devtheory\_](https://twitter.com/devtheory_) for publishing a youtube video with Moiva (starts at 8:35)
   <!-- {{< youtube id="4AxQ8Ft7VzU?start=517s" >}} -->
+
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/4AxQ8Ft7VzU?start=515" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
