@@ -5,13 +5,13 @@ summary: 'Statistics and trends in Q1 2021: Npm Downloads, GitHub Stars, Google 
 head:
   - - meta
     - name: description
-      content: 'Statistics and trends in Q1 2021: Npm Downloads, GitHub Stars, Google Trends, Security, Releases, and more. Puppeteer or Cypress? How about Playwright?'
+      content: 'Statistics and trends in Q1 2021: Npm Downloads, GitHub Stars, Google Trends, Releases, and more. Find out what frameworks are popular and in active development, and which you better avoid.'
   - - meta
     - property: og:description
-      content: 'Statistics and trends in Q1 2021: Npm Downloads, GitHub Stars, Google Trends, Security, Releases, and more. Puppeteer or Cypress? How about Playwright?'
+      content: 'Statistics and trends in Q1 2021: Npm Downloads, GitHub Stars, Google Trends, Releases, and more. Find out what frameworks are popular and in active development, and which you better avoid.'
   - - meta
     - name: twitter:description
-      content: 'Statistics and trends in Q1 2021: Npm Downloads, GitHub Stars, Google Trends, Security, Releases, and more. Puppeteer or Cypress? How about Playwright?'
+      content: 'Statistics and trends in Q1 2021: Npm Downloads, GitHub Stars, Google Trends, Releases, and more. Find out what frameworks are popular and in active development, and which you better avoid.'
   - - meta
     - property: og:image
       content: https://moiva.io/images/moiva-head.jpg
