@@ -1,15 +1,13 @@
 <template>
   <section class="container">
     <article v-for="article in articles">
-      <h2>
-        <a :href="article.link">{{ article.title }}</a>
-      </h2>
+      <a :href="article.link" class="link">
+        <h2>
+          {{ article.title }}
+        </h2>
 
-      <p>{{ article.descr }}</p>
-
-      <a class="readmore" aria-label="read more" :href="article.link"
-        >Read more →</a
-      >
+        <p>{{ article.descr }}</p>
+      </a>
     </article>
   </section>
 </template>
@@ -27,14 +25,12 @@ const articles = posts.map(({ title, href, summary }) => ({
 
 <style scoped>
 h2 {
-  @apply border-0 mb-2;
+  @apply border-0 mb-0 sm:mb-1 text-2xl;
 }
-h2 a {
+.link {
   color: inherit;
   text-decoration: none;
-}
-.readmore {
-  @apply mt-1;
+  @apply font-normal;
 }
 p {
   @apply mb-2;
