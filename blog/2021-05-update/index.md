@@ -43,12 +43,12 @@ The idea appealed to me also for another reason - I saw it as a test drive for M
 
 As a result, I published six reports for different categories of JavaScript libraries:
 
-<!-- - [Q1 2021 State of JS Frameworks]({{< relref "./2021-04-13-report-q1-2021-js-frameworks.md" >}})
-- [Q1 2021 JavaScript State Management Libraries report]({{< relref "./2021-04-14-report-q1-2021-js-state-management.md">}})
-- [Q1 2021 JavaScript Testing Libraries and Frameworks Report]({{< relref "./2021-04-16-report-q1-2021-js-testing.md" >}})
-- [Q1 2021 JavaScript Build Tools and Module Bundlers report]({{< relref "./2021-04-19-report-q1-2021-js-build-tools-bundlers.md" >}})
-- [Q1 2021 Static Site Generators (JAMStack) report]({{< relref "./2021-04-20-report-q1-2021-js-jam-stack-libraries.md" >}})
-- [Q1 2021 JavaScript End-to-end Testing frameworks report]({{< relref "./2021-04-20-report-q1-2021-js-end-to-end-frameworks.md" >}}) -->
+- [Q1 2021 State of JS Frameworks](../2021-q1-state-of-js-frameworks/)
+- [Q1 2021 JavaScript State Management Libraries report](../2021-q1-report-state-management/)
+- [Q1 2021 JavaScript Testing Libraries and Frameworks Report](../2021-q1-report-js-testing-libraries/)
+- [Q1 2021 JavaScript Build Tools and Module Bundlers report](../2021-q1-report-js-build-tools-bundlers/)
+- [Q1 2021 Static Site Generators (JAMStack) report](../2021-q1-report-js-jamstack/)
+- [Q1 2021 JavaScript End-to-end Testing frameworks report](../2021-q1-report-end-to-end-testing-frameworks/)
 
 <Tweet id="_aantipov/status/1381917386312462339" />
 
