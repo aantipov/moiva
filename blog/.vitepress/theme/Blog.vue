@@ -25,14 +25,21 @@ const articles = posts.map(({ title, href, summary }) => ({
 
 <style scoped>
 h2 {
-  @apply border-0 mb-0 sm:mb-1 text-2xl;
+  @apply border-0 my-0 sm:mb-1 text-2xl;
+}
+p {
+  @apply my-0;
+}
+article {
+  @apply mb-14;
+}
+article:hover h2,
+article:hover p {
+  @apply text-primary;
 }
 .link {
   color: inherit;
   text-decoration: none;
   @apply font-normal;
-}
-p {
-  @apply mb-2;
 }
 </style>

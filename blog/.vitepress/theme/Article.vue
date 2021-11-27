@@ -1,5 +1,5 @@
 <template>
-  <article class="container pt-10 sm:pt-20 root">
+  <article class="container root">
     <main>
       <ArticleDate />
 

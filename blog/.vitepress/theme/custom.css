@@ -15,7 +15,7 @@ body,
 
 @layer components {
   .myprose {
-    @apply prose lg:prose-xl mx-auto;
+    @apply prose md:prose-lg lg:prose-xl mx-auto;
   }
   a,
   .link,
