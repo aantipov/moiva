@@ -5,13 +5,13 @@ summary: 'Migration of API endpoints to Cloudflare workers, more sophisticated c
 head:
   - - meta
     - name: description
-      content: Improved Table view, new section "Recommended reading", removal of Issues chart, SEO fixes, scripts in Deno, migration to Netlify.
+      content: Migration of API endpoints to Cloudflare workers, more sophisticated cache management, Google Trends chart fixes and more...
   - - meta
     - property: og:description
-      content: Improved Table view, new section "Recommended reading", removal of Issues chart, SEO fixes, scripts in Deno, migration to Netlify.
+      content: Migration of API endpoints to Cloudflare workers, more sophisticated cache management, Google Trends chart fixes and more...
   - - meta
     - name: twitter:description
-      content: Improved Table view, new section "Recommended reading", removal of Issues chart, SEO fixes, scripts in Deno, migration to Netlify.
+      content: Migration of API endpoints to Cloudflare workers, more sophisticated cache management, Google Trends chart fixes and more...
   - - meta
     - property: og:image
       content: https://moiva.io/images/moiva-head.jpg

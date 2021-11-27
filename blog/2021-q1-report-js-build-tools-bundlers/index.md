@@ -33,7 +33,7 @@ head:
 import Table from './Table.vue';
 </script>
 
-![](logo.png)
+![main picture](logo.png)
 
 ## Intro
 

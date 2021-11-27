@@ -33,7 +33,7 @@ head:
 import Table from './Table.vue';
 </script>
 
-![](logo.png)
+![main picture](logo.png)
 
 _2020-04-21 Update: Added Security information from Snyk. Made ThoughtWorks Technology Radar values clickable._
 

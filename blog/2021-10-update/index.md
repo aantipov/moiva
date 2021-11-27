@@ -1,17 +1,17 @@
 ---
-title: 'October 2021 update'
-date: '2021-10-11'
-summary: 'Cumulative Stars chart, colorized charts sections, fixed back-forward navigation'
+title: October 2021 update
+date: 2021-10-11
+summary: Cumulative Stars chart, colorized charts sections, fixed back-forward navigation
 head:
   - - meta
     - name: description
-      content: 'Cumulative Stars chart, colorized charts sections, fixed back-forward navigation'
+      content: Cumulative Stars chart, colorized charts sections, fixed back-forward navigation
   - - meta
     - property: og:description
-      content: 'Cumulative Stars chart, colorized charts sections, fixed back-forward navigation'
+      content: Cumulative Stars chart, colorized charts sections, fixed back-forward navigation
   - - meta
     - name: twitter:description
-      content: 'Cumulative Stars chart, colorized charts sections, fixed back-forward navigation'
+      content: Cumulative Stars chart, colorized charts sections, fixed back-forward navigation
   - - meta
     - property: og:image
       content: https://moiva.io/images/moiva-head.jpg
