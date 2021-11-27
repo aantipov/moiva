@@ -13,7 +13,7 @@
     "blog:dev": "vitepress dev blog",
     "blog:build": "vitepress build blog",
     "blog:serve": "vitepress serve blog",
-    "blog:move": "mkdir ./dist/blog && mv ./blog/.vitepress/dist/ ./dist/blog/",
+    "blog:move": "mkdir ./dist/blog && mv ./blog/.vitepress/dist/* ./dist/blog",
     "blog:metadata": "node ./blog/.vitepress/genMetadata.js",
     "blog:ci": "npm run blog:metadata && npm run blog:build && npm run blog:move"
   },
