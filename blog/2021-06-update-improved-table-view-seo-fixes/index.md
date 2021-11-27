@@ -41,9 +41,9 @@ About a month ago I introduced a table view for presenting data. I found out tha
 
 Moiva evaluates Npm packages and GitHub repositories using roughly 20 metrics. And the number keeps growing. To help users navigate through those metrics, I grouped them into three categories: "Popularity", "Maintenance" and "Miscellaneous". Each category got highlighted with a different background color.
 
-![a screenshot of Moiva.io's old table view with data for Webpack, Vite and Snowpack](tabular-view-old.png)
+![a screenshot of Moiva.io's old table view with data for Webpack, Vite and Snowpack](./tabular-view-old.png)
 
-![a screenshot of Moiva.io's new table view with data for Webpack, Vite and Snowpack](tabular-view.png)
+![a screenshot of Moiva.io's new table view with data for Webpack, Vite and Snowpack](./tabular-view.png)
 
 "Stars" and "New Stars" metrics were combined into a single row. The same was done for "Downloads" and "Downloads Growth".
 
@@ -55,7 +55,7 @@ I also added a new metric called "Vulnerabilities". It shows a number of vulnera
 
 The "Recently updated issues" chart was available on Moiva.
 
-![a screenshot of Moiva.io's Issues chart with data for Moment, DayJS and date-fns libraries](issues-chart.png)
+![a screenshot of Moiva.io's Issues chart with data for Moment, DayJS and date-fns libraries](./issues-chart.png)
 
 My idea was to show the number of bug reports and other types of issues being opened and closed. It should have indicated how quickly the issues are being resolved, as well as a proportion of bugs to the remainder of the issues.
 
@@ -81,7 +81,7 @@ Moreover, Moiva had content-related SEO issues: Google considered Moiva's pages 
 
 As a result, Google flagged Moiva's pages as duplicates, and they were removed from the Index.
 
-![A screenshot from Google Search Console showing the drop of Moiva.io's page coverage from 1.5k to 23 pages](google-coverage.png)
+![A screenshot from Google Search Console showing the drop of Moiva.io's page coverage from 1.5k to 23 pages](./google-coverage.png)
 
 I took a number of steps to resolve the problem.
 

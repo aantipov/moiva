@@ -35,7 +35,7 @@ This is an August report on the progress of [Moiva.io](https://moiva.io/).
 
 This is the feature I'm mostly excited about - all charts now include a popup menu that allows users to copy charts to the clipboard, share charts on Twitter, and download charts.
 
-![The new charts menu in action](chart-menu.gif)
+![The new charts menu in action](./chart-menu.gif)
 
 It should make it easier for users to use the findings of comparisons elsewhere.
 
@@ -45,13 +45,13 @@ A table view is useful for presenting static and numerical data. When the number
 
 Thinking that way, I added a small icon to every numeric metric in the Table. Clicking on the icon invokes a pop-up window with a bar chart where all the libraries are sorted by the metric’s value.
 
-![a screenshot of Moiva.io's new feature - a chart for numeric metrics in the Table](metric-chart.png)
+![a screenshot of Moiva.io's new feature - a chart for numeric metrics in the Table](./metric-chart.png)
 
 ## New Suggestions mechanism
 
 When a user evaluates a library, Moiva suggests alternatives to compare.
 
-![a screenshot of how Moiva.io's suggestions feature works](suggestions.png)
+![a screenshot of how Moiva.io's suggestions feature works](./suggestions.png)
 
 In the past, the mechanism of suggestions used Moiva’s Catalog which categorised its libraries. The process of adding new libraries was tiresome because the mechanism had several downsides:
 
@@ -78,7 +78,7 @@ On that basis, I added tooltips to the list of suggested alternatives. The toolt
 - stars and npm downloads numbers
 - tags
 
-![a screenshot of how Moiva.io's suggestions tooltips work](suggestion-tooltip.png)
+![a screenshot of how Moiva.io's suggestions tooltips work](./suggestion-tooltip.png)
 
 ## “About” page
 

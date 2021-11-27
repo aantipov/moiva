@@ -57,7 +57,7 @@ I believe such changes should improve Moiva's efficiency and it will become more
 
 When I was doing the major refactoring of Moiva in January-February, I accidentally changed the way Google Trends Chart works - it lost optimization tricks I implemented before. That led to more requests being issued to get data for the chart. As a result, Google blocked Moiva completely and the chart stopped working, most probably it was blocked by the IP address.
 
-![a screenshot of the failing Google Trends chart](failed-google-trends-chart.png)
+![a screenshot of the failing Google Trends chart](./failed-google-trends-chart.png)
 
 I think Google Chart is one of the major metrics in evaluating popularity and I couldn't afford losing such a metric so easily.
 
@@ -80,7 +80,7 @@ The tweet turned to be quite popular with 20k impressions. It was my most popula
 In Google Search results Moiva didn't perform well for a while and it concerned me. I did many improvements but nothing really was changing and Google didn't want to digest my sitemap.
 Fortunately, the results of the last month bring some hope.
 
-![a screenshot from the Google Search console showing an increase of "clicks" at the Google Search results](google-search.png)
+![a screenshot from the Google Search console showing an increase of "clicks" at the Google Search results](./google-search.png)
 
 ## Last but not least
 

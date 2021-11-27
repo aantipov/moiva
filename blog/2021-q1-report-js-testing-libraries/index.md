@@ -33,7 +33,7 @@ head:
 import Table from './Table.vue';
 </script>
 
-![main picture](logo.png)
+![main picture](./logo.png)
 
 _2020-04-21 Update: Added Security information from Snyk. Made ThoughtWorks Technology Radar values clickable._
 
@@ -100,32 +100,32 @@ Each library has two links - Moiva and GitHub links. Use Moiva link to see more 
 
 ## Popularity: GitHub Stars
 
-![a bar chart showing numbers of JavaScript libraries' GitHub stars in total](stars.png)
+![a bar chart showing numbers of JavaScript libraries' GitHub stars in total](./stars.png)
 
 <span></span>
 
-![a bar chart showing numbers of JavaScript libraries' new stars in Q1 2021](new-stars.png)
+![a bar chart showing numbers of JavaScript libraries' new stars in Q1 2021](./new-stars.png)
 
 <span></span>
 
-![a bar chart showing percentage of JavaScript libraries' new stars in Q1 2021 compared to the total value](new-stars-percentage.png)
+![a bar chart showing percentage of JavaScript libraries' new stars in Q1 2021 compared to the total value](./new-stars-percentage.png)
 
 ## Popularity: NPM Downloads
 
-![a bar chart showing numbers of JavaScript libraries monthly npm downloads in Q1 2021](npm-downloads.png)
+![a bar chart showing numbers of JavaScript libraries monthly npm downloads in Q1 2021](./npm-downloads.png)
 
 <span></span>
 
-![a bar chart showing percentage of JavaScript libraries monthly npm downloads in Q1 2021 compared to the value in Q4 2020](npm-downloads-percentage.png)
+![a bar chart showing percentage of JavaScript libraries monthly npm downloads in Q1 2021 compared to the value in Q4 2020](./npm-downloads-percentage.png)
 
 ## Development Activity: commits, releases, and contributors
 
-![a bar chart showing numbers of JavaScript libraries commits in Q1 2021](commits.png)
+![a bar chart showing numbers of JavaScript libraries commits in Q1 2021](./commits.png)
 
 <span></span>
 
-![a bar chart showing numbers of JavaScript libraries releases in Q1 2021](npm-releases.png)
+![a bar chart showing numbers of JavaScript libraries releases in Q1 2021](./npm-releases.png)
 
 <span></span>
 
-![a bar chart showing numbers of JavaScript libraries contributors in Q1 2021](contributors.png)
+![a bar chart showing numbers of JavaScript libraries contributors in Q1 2021](./contributors.png)

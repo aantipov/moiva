@@ -33,7 +33,7 @@ head:
 import Table from './Table.vue';
 </script>
 
-![main picture](logo.png)
+![main picture](./logo.png)
 
 ## Intro
 
@@ -86,37 +86,37 @@ Each library has two links - Moiva and GitHub links. Use Moiva link to see more 
 ## Popularity: GitHub Stars
 
 The most number of GitHub stars belongs to [Next.js](https://github.com/vercel/next.js), a React framework. [Gatsby](https://github.com/gatsbyjs/gatsby), another React framework, and [Nuxt.js](https://github.com/vercel/next.js), a Vue.js framework, go next with 50K and 36K stars respectively.
-![a bar chart showing numbers of JavaScript libraries' GitHub stars in total](stars.png)
+![a bar chart showing numbers of JavaScript libraries' GitHub stars in total](./stars.png)
 
 [Next.js](https://github.com/vercel/next.js) got 6.3K stars in Q1 2021 and outnumbered competitors by a convincing ~4K stars margin.
-![a bar chart showing numbers of JavaScript libraries' new stars in Q1 2021](new-stars.png)
+![a bar chart showing numbers of JavaScript libraries' new stars in Q1 2021](./new-stars.png)
 
 Comparing relative growth, [Next.js](https://github.com/vercel/next.js) and [11ty](https://github.com/11ty/eleventy) were on par with 11% growth. Though it's important to take into consideration, that 11% for Next.js meant 6.3K stars, while 11% for 11ty meant 891 stars.
-![a bar chart showing percentage of JavaScript libraries' new stars in Q1 2021 compared to the total value](new-stars-percentage.png)
+![a bar chart showing percentage of JavaScript libraries' new stars in Q1 2021 compared to the total value](./new-stars-percentage.png)
 
 ## Popularity: NPM Downloads
 
 Only 3 frameworks had >1M of average monthly downloads: [Next.js](https://github.com/vercel/next.js), [Gatsby](https://github.com/gatsbyjs/gatsby) and [Nuxt.js](https://github.com/vercel/next.js).
 
 [Next.js](https://github.com/vercel/next.js) holds 3M downloads lead over [Gatsby](https://github.com/gatsbyjs/gatsby) and ~4M downloads lead over [Nuxt.js](https://github.com/vercel/next.js).
-![a bar chart showing numbers of JavaScript libraries monthly npm downloads in Q1 2021](npm-downloads.png)
+![a bar chart showing numbers of JavaScript libraries monthly npm downloads in Q1 2021](./npm-downloads.png)
 
 It was a very successful quarter for [Docusaurus](https://github.com/facebook/docusaurus) which NPM downloads almost doubled (83% of the increase).
 
 Downloads of [11ty](https://github.com/11ty/eleventy) decreased by 2% which looks strange taken that the number its stars increased by 11%.
 
 [React Static](https://github.com/react-static/react-static) seems to be not in a good shape - its downloads decreased by 1% and it got the least number of new stars, 268.
-![a bar chart showing percentage of JavaScript libraries monthly npm downloads in Q1 2021 compared to the value in Q4 2020](npm-downloads-percentage.png)
+![a bar chart showing percentage of JavaScript libraries monthly npm downloads in Q1 2021 compared to the value in Q4 2020](./npm-downloads-percentage.png)
 
 ## Development Activity: commits, releases, and contributors
 
 [Gatsby](https://github.com/gatsbyjs/gatsby), [Next.js](https://github.com/vercel/next.js), and [Docusaurus](https://github.com/facebook/docusaurus) were the most actively developed projects in Q1 2021.
 
 [Gatsby](https://github.com/gatsbyjs/gatsby) got more than 600 commits from 25 contributors.
-![a bar chart showing numbers of JavaScript libraries commits in Q1 2021](commits.png)
+![a bar chart showing numbers of JavaScript libraries commits in Q1 2021](./commits.png)
 
 [Gatsby](https://github.com/gatsbyjs/gatsby) was also leading in the "Number of NPM releases" category - it published 28 new versions.
-![a bar chart showing numbers of JavaScript libraries releases in Q1 2021](npm-releases.png)
+![a bar chart showing numbers of JavaScript libraries releases in Q1 2021](./npm-releases.png)
 
 26 developers contributed to [Docusaurus](https://github.com/facebook/docusaurus) repository in Q1 2021. That number supports the trend of [Docusaurus](https://github.com/facebook/docusaurus) being widely adopted.
-![a bar chart showing numbers of JavaScript libraries contributors in Q1 2021](contributors.png)
+![a bar chart showing numbers of JavaScript libraries contributors in Q1 2021](./contributors.png)

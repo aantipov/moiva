@@ -68,7 +68,7 @@ First of all, both platforms use a so-called Edge Network of thousands of server
 
 In **Cloudflare Workers** every Function during deployment gets replicated in every data center. Every request is load-balanced and routed to the nearest data center, which executes the Function and sends the response back to the user.
 
-![An illustration of how a serverless function request is propagated within Cloudflare Edge Network](cloudflare.png)
+![An illustration of how a serverless function request is propagated within Cloudflare Edge Network](./cloudflare.png)
 
 It's important to note here that Functions are executed on **every** request, even if the response has been cached. The cache works on a deeper more granular level:
 
@@ -80,11 +80,11 @@ It's important to note here that Functions are executed on **every** request, ev
 Similar to Cloudflare, every request is being routed to the nearest data center. Here similarities end and the following steps are being processed:
 
 1. If the data center has a cache for the request, then the cached response is sent back to the user immediately. The Function is not executed. The request processing is finished.
-   ![An illustration of how a serverless function request is propagated within Vercel Edge Network if the Edge has cached data](vercel-cached.png)
+   ![An illustration of how a serverless function request is propagated within Vercel Edge Network if the Edge has cached data](./vercel-cached.png)
 2. If the data center doesn't have the Function aboard, then it finds the nearest data center which has it and forwards the request there.
 3. The Function is executed and the response is sent back to the original server.
 4. The original server caches the response (according to headers specified by the developer) and sends the response back to the user.
-   ![An illustration of how a serverless function request is propagated within Vercel Edge Network if the Edge's cache doesn't have the requested data](vercel.png)
+   ![An illustration of how a serverless function request is propagated within Vercel Edge Network if the Edge's cache doesn't have the requested data](./vercel.png)
 
 ## Requests Travel Time
 
@@ -94,12 +94,12 @@ One of its constituents is Travel Time. The less time the request spends traveli
 
 **Cloudflare Workers**, as we saw above, route every request to the nearest data center which processes it and sends the response back. Cloudflare [says](https://www.cloudflare.com/network/) its Network spans over 200 cities in more than 100 countries. That guarantees the least Travel Time.
 
-![A screenshot from Cloudflare website with a world map showing locations of Cloudflare Network Datacenters](cloudflare-network.png)
+![A screenshot from Cloudflare website with a world map showing locations of Cloudflare Network Datacenters](./cloudflare-network.png)
 
 **Vercel**'s Network is significantly less dense and spans [less than 20 locations](https://vercel.com/docs/edge-network/regions). It means that on average requests will spend more time traveling.
 Moreover, requests will end on the nearest server only in the happy case of a pre-existing cache. Other times, as we saw above, the request will be forwarded further to the data center which contains the Function. It diminishes all advantages of having a global network of data centers.
 
-![An image of Vercel Edge Network map](vercel-network.png)
+![An image of Vercel Edge Network map](./vercel-network.png)
 
 ## Function Execution time
 
@@ -143,7 +143,7 @@ If you use Vercel for website deployment, but want to use Cloudflare Workers for
 Cloudflare provides really great documentation with many easy-to-follow examples and "Starters" (GitHub repositories) for different use cases.
 It also provides a [Playground](https://developers.cloudflare.com/workers/learning/playground) to preview, debug and develop your functions. I find it very helpful and use it frequently.
 
-![A screenshot from the Cloudflare Workers playground](cf-playground.png)
+![A screenshot from the Cloudflare Workers playground](./cf-playground.png)
 
 ## Cache management
 

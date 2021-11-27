@@ -35,7 +35,7 @@ I rewrote [Moiva.io](https://moiva.io/) from scratch and made it a Universal and
 
 This article marks a third major release of Moiva.
 
-![A screenshot of Moiva.io showing comparison of Vue and Svelte npm packages](full.png)
+![A screenshot of Moiva.io showing comparison of Vue and Svelte npm packages](./full.png)
 
 ## What's new (in short)
 
@@ -77,7 +77,7 @@ The default search is for GitHub.
 
 The search prefixed with `n:` is for npm packages.
 
-![A gif showing how Search field at Moiva.io works: search for NPM packages and GitHub repositories](search.gif)
+![A gif showing how Search field at Moiva.io works: search for NPM packages and GitHub repositories](./search.gif)
 
 What I like about that solution is that it can be easily extended in the future to search for other things as well.
 

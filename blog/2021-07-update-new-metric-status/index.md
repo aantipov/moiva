@@ -37,7 +37,7 @@ Users asked for an indication to identify libraries that are no longer active or
 
 I added a new metric and called it _"Status"_.
 
-![a screenshot of Moiva.io's table view with the new metric 'Status' highlighted](status-badge.png)
+![a screenshot of Moiva.io's table view with the new metric 'Status' highlighted](./status-badge.png)
 
 Four possible values:
 
@@ -54,7 +54,7 @@ I made small UX improvements to help users get the most out of the Table view.
 
 - metrics "_Types_", "_Tech Radar_" and "_License_" were converted into badges of different colors depending on the value
 - each badge got a tooltip
-  ![a screenshot of Moiva.io's table view showing a tooltip fot Tech Radar badge](badges.png)
+  ![a screenshot of Moiva.io's table view showing a tooltip fot Tech Radar badge](./badges.png)
 
 - external links acquired a distinct icon
 

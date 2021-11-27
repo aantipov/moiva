@@ -33,7 +33,7 @@ head:
 import Table from './Table.vue';
 </script>
 
-![main picture](logo.png)
+![main picture](./logo.png)
 
 ## Intro
 
@@ -86,37 +86,37 @@ Each library has two links - Moiva and GitHub links. Use Moiva link to see more 
 
 [Webpack](https://github.com/webpack/webpack) is the oldest tool in the report (after [Browserify](https://github.com/browserify/browserify)), it is very mature and it holds the biggest number of GitHub stars, 58k stars in total.
 
-![a bar chart showing numbers of JavaScript libraries' GitHub stars in total](stars.png)
+![a bar chart showing numbers of JavaScript libraries' GitHub stars in total](./stars.png)
 
 The situation changes quickly though and new tools gain popularity at lightning speed. [Vite](https://github.com/vitejs/vite), a year-old project, has already acquired 24k stars and doesn't show any signs of slowing down - it obtained a phenomenal number of stars in Q1 2021, 9.4K stars.
 
-![a bar chart showing numbers of JavaScript libraries' new stars in Q1 2021](new-stars.png)
+![a bar chart showing numbers of JavaScript libraries' new stars in Q1 2021](./new-stars.png)
 
 [Vite](https://github.com/vitejs/vite) is not only a leader in absolute growth (by GitHub stars), but it is also a leader in relative growth. It grew by 68% in Q1 2021.
 
 [Esbuild](https://github.com/evanw/esbuild) also grew significantly by 38%.
 
-![a bar chart showing percentage of JavaScript libraries' new stars in Q1 2021 compared to the total value](new-stars-percentage.png)
+![a bar chart showing percentage of JavaScript libraries' new stars in Q1 2021 compared to the total value](./new-stars-percentage.png)
 
 ## Popularity: NPM Downloads
 
 [Webpack](https://github.com/webpack/webpack)'s 64M monthly downloads leave other libraries far away. It definitely is the most adopted tool so far.
-![a bar chart showing numbers of JavaScript libraries monthly npm downloads in Q1 2021](npm-downloads.png)
+![a bar chart showing numbers of JavaScript libraries monthly npm downloads in Q1 2021](./npm-downloads.png)
 
 [Vite](https://github.com/vitejs/vite)'s monthly downloads increased by 260% till 168K. [Esbuild](https://github.com/evanw/esbuild)'s downloads also grew significantly by 189% till 1.1M.
 
 [Snowpack](https://github.com/snowpackjs/snowpack) showed a nice growth of 101% till 142K monthly downloads.
-![a bar chart showing percentage of JavaScript libraries monthly npm downloads in Q1 2021 compared to the value in Q4 2020](npm-downloads-percentage.png)
+![a bar chart showing percentage of JavaScript libraries monthly npm downloads in Q1 2021 compared to the value in Q4 2020](./npm-downloads-percentage.png)
 
 ## Development Activity: commits, releases, and contributors
 
 [Vite](https://github.com/vitejs/vite) is leading in almost every metric. The same with Development Activity metric. In Q1 2021 Vite got an astonishing amount of commits, 1002 commits, that is 11 commits per day on average.
 The commits came from 58 contributors.
-![a bar chart showing numbers of JavaScript libraries commits in Q1 2021](commits.png)
+![a bar chart showing numbers of JavaScript libraries commits in Q1 2021](./commits.png)
 
 [Esbuild](https://github.com/evanw/esbuild) on the other hand produced the biggest number of new versions - 43.
-![a bar chart showing numbers of JavaScript libraries releases in Q1 2021](npm-releases.png)
-![a bar chart showing numbers of JavaScript libraries contributors in Q1 2021](contributors.png)
+![a bar chart showing numbers of JavaScript libraries releases in Q1 2021](./npm-releases.png)
+![a bar chart showing numbers of JavaScript libraries contributors in Q1 2021](./contributors.png)
 
 ## Further Reading
 
