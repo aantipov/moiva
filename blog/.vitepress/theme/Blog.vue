@@ -1,43 +1,45 @@
 <template>
   <section class="container">
     <article v-for="article in articles">
-      <h2>
-        <a :href="article.link">{{ article.title }}</a>
-      </h2>
+      <a :href="article.link" class="link">
+        <h2>
+          {{ article.title }}
+        </h2>
 
-      <p>{{ article.descr }}</p>
-
-      <a class="readmore" aria-label="read more" :href="article.link"
-        >Read more →</a
-      >
+        <p>{{ article.descr }}</p>
+      </a>
     </article>
   </section>
 </template>
 
 <script setup lang="ts">
 import { withBase } from 'vitepress';
-const articles = [
-  {
-    title: 'October 2021 update',
-    link: withBase('/2021-10-update/'),
-    descr:
-      'Cumulative Stars chart, colorized charts sections, fixed back-forward navigation',
-  },
-];
+import posts from '../metadata.json';
+
+const articles = posts.map(({ title, href, summary }) => ({
+  title,
+  link: withBase(href),
+  descr: summary,
+}));
 </script>
 
 <style scoped>
 h2 {
-  @apply border-0 mb-2;
-}
-h2 a {
-  color: inherit;
-  text-decoration: none;
-}
-.readmore {
-  @apply mt-1;
+  @apply border-0 my-0 sm:mb-1 text-2xl;
 }
 p {
-  @apply mb-2;
+  @apply my-0;
+}
+article {
+  @apply mb-14;
+}
+article:hover h2,
+article:hover p {
+  @apply text-primary;
+}
+.link {
+  color: inherit;
+  text-decoration: none;
+  @apply font-normal;
 }
 </style>

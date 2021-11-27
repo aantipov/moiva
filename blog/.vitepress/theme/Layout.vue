@@ -1,7 +1,7 @@
 <template>
   <div class="antialiased h-full flex flex-col">
-    <div class="myprose flex-grow">
-      <Header />
+    <div class="myprose flex-grow mb-8">
+      <Header class="mb-16" />
       <Blog v-if="isIndex" />
       <Article v-else />
     </div>

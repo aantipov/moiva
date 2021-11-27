@@ -1,17 +1,17 @@
 ---
-title: 'October 2021 update'
-date: '2021-10-11'
-summary: 'Cumulative Stars chart, colorized charts sections, fixed back-forward navigation'
+title: October 2021 update
+date: 2021-10-11
+summary: Cumulative Stars chart, colorized charts sections, fixed back-forward navigation
 head:
   - - meta
     - name: description
-      content: 'Cumulative Stars chart, colorized charts sections, fixed back-forward navigation'
+      content: Cumulative Stars chart, colorized charts sections, fixed back-forward navigation
   - - meta
     - property: og:description
-      content: 'Cumulative Stars chart, colorized charts sections, fixed back-forward navigation'
+      content: Cumulative Stars chart, colorized charts sections, fixed back-forward navigation
   - - meta
     - name: twitter:description
-      content: 'Cumulative Stars chart, colorized charts sections, fixed back-forward navigation'
+      content: Cumulative Stars chart, colorized charts sections, fixed back-forward navigation
   - - meta
     - property: og:image
       content: https://moiva.io/images/moiva-head.jpg
@@ -106,5 +106,3 @@ That’s why I love resources like [https://youmightnotneed.com](https://youmigh
 Moiva started to recommend such resources in the _“Recommended reading”_ section when evaluating the corresponding libraries.
 
 !['Recommended reading' section with the links to 'You might not need ...' resources](./you-dont-need.png)
-
----

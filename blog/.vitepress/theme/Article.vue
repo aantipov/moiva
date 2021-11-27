@@ -1,5 +1,5 @@
 <template>
-  <article class="container pt-10 sm:pt-20 root">
+  <article class="container root">
     <main>
       <ArticleDate />
 
@@ -20,6 +20,9 @@ const { frontmatter: data } = useData();
 </script>
 
 <style scoped>
+.root {
+  max-width: 100vw;
+}
 .root :deep(img) {
   border: 1px solid #d1d5db;
   border-radius: 5px;
