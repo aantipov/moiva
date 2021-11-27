@@ -25,6 +25,7 @@
             class="primary-link"
             href="https://alexei.me"
             target="_blank"
+            rel="noopener"
             style="margin-left: 4px"
             >Alexey Antipov</a
           >
@@ -41,6 +42,7 @@
           <a
             class="primary-link flex items-center"
             href="https://github.com/aantipov/moiva"
+            rel="noopener"
             target="_blank"
           >
             <svg
@@ -61,6 +63,7 @@
             class="primary-link flex items-center"
             href="https://twitter.com/_aantipov"
             target="_blank"
+            rel="noopener"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
