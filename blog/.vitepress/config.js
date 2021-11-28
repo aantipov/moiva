@@ -4,6 +4,15 @@ module.exports = {
   title: 'Moiva.io Blog',
   head: [
     [
+      'script',
+      {},
+      `
+    if (window.location.href.endsWith('/blog')) {
+      window.location.assign(window.location.href + '/');
+    }
+    `,
+    ],
+    [
       'link',
       {
         rel: 'icon',
