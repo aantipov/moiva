@@ -35,7 +35,7 @@
           <a class="primary-link" href="https://moiva.io">Moiva.io</a>
           <a class="primary-link" href="https://moiva.io/about/">About</a>
           <a class="primary-link" href="https://moiva.io/catalog/">Catalog</a>
-          <a class="primary-link" href="/blog/">Blog</a>
+          <a class="primary-link" :href="blogUrl">Blog</a>
         </div>
 
         <div class="flex flex-wrap items-center justify-around mt-6 text-xl">
@@ -88,7 +88,9 @@
 </template>
 
 <script setup lang="ts">
+import { withBase } from 'vitepress';
 const year = new Date().getFullYear();
+const blogUrl = withBase('/');
 </script>
 
 <style scoped>
