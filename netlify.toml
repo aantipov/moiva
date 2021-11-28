@@ -24,7 +24,8 @@
 [[redirects]]
   from = "/blog"
   to = "/blog/"
-  force = false
+  status = 301
+  force = true
 
 [[headers]]
   for = "/blog/assets/*"
