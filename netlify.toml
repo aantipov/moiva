@@ -20,3 +20,10 @@
   to = "/:splat/"
   status = 301
   force = true
+
+[[headers]]
+  for = "/blog/assets/*"
+  [headers.values]
+    cache-control = '''
+    max-age=31536000
+    immutable'''
