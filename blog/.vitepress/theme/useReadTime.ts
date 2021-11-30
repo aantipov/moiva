@@ -7,5 +7,6 @@ export function useReadTime(): Ref<string> {
   const relativePath = page.value.relativePath;
   const path = relativePath.slice(0, relativePath.indexOf('/'));
   const pageMetadata = metadata.find(({ href }) => href === `/${[path]}/`);
+  // @ts-ignore
   return ref(pageMetadata.readTime);
 }
