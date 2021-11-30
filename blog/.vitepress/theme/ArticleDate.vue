@@ -1,5 +1,5 @@
 <template>
-  <div class="opacity-50">{{ date }}</div>
+  <div>{{ date }}</div>
 </template>
 
 <script setup lang="ts">

@@ -1,7 +1,7 @@
 .DS_Store
 node_modules
 dist
-blog/.vitepress/metadata.json
+# blog/.vitepress/metadata.json
 /public/blog/page
 /public/blog/sitemap.xml
 

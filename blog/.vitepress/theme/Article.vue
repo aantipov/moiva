@@ -1,9 +1,13 @@
 <template>
   <article class="container root">
     <main>
-      <ArticleDate />
+      <div class="flex opacity-60 mb-2">
+        <ArticleDate class="mr-4" />
 
-      <h1 class="header">{{ data.title }}</h1>
+        <span>{{ readTime }}</span>
+      </div>
+
+      <h1>{{ data.title }}</h1>
 
       <Content class="mt-6" />
 
@@ -16,7 +20,9 @@
 import ArticleDate from './ArticleDate.vue';
 import ArticleFooter from './ArticleFooter.vue';
 import { useData } from 'vitepress';
+import { useReadTime } from './useReadTime';
 const { frontmatter: data } = useData();
+const readTime = useReadTime();
 </script>
 
 <style scoped>

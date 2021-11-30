@@ -89,7 +89,6 @@
 
 <script setup lang="ts">
 import { withBase } from 'vitepress';
-const year = new Date().getFullYear();
 const blogUrl = withBase('/');
 </script>
 
