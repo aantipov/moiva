@@ -18,6 +18,14 @@
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "blog/**/*.vue", "blog/.vitepress/**/*.vue"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "blog/**/*.vue",
+    "blog/**/*.ts",
+    "blog/.vitepress/**/*.vue",
+    "blog/.vitepress/**/*.ts"
+  ],
   "exclude": ["node_modules", "src/components/report/*"]
 }

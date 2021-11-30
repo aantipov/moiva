@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
 const readingTime = require('reading-time');
-let n = 1;
 
 function getPost(file, postDir) {
   const fullpath = path.join(postDir, file) + '/index.md';
@@ -19,7 +18,6 @@ function getPost(file, postDir) {
     readTime: stats.text,
   };
 
-  console.log('getPost', post);
   return post;
 }
 
