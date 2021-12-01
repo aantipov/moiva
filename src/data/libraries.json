@@ -25,6 +25,14 @@
   },
   {
     "category": "JavaScript Mocking Libraries, test servers",
+    "repoId": "Netflix/pollyjs",
+    "npm": "@pollyjs/core",
+    "isNpmCoreArtifact": true,
+    "alias": "Polly.JS",
+    "tags": ["testing", "mock", "api"]
+  },
+  {
+    "category": "JavaScript Mocking Libraries, test servers",
     "repoId": "bbyars/mountebank",
     "npm": "mountebank",
     "isNpmCoreArtifact": true,
@@ -8073,14 +8081,6 @@
   },
   {
     "category": "misc",
-    "repoId": "mockito/mockito",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
     "repoId": "tencent/weui-wxss",
     "npm": null,
     "isNpmCoreArtifact": null,
@@ -12726,6 +12726,14 @@
     "isNpmCoreArtifact": true,
     "alias": null,
     "tags": ["static-site-generator-SSG", "server-side-rendering-SSR", "react"]
+  },
+  {
+    "category": "misc",
+    "repoId": "remix-run/remix",
+    "npm": "remix",
+    "isNpmCoreArtifact": true,
+    "alias": "Remix",
+    "tags": ["nodejs-framework", "react", "server-side-rendering-SSR"]
   },
   {
     "category": "Static Site Generators / JAMStack",
