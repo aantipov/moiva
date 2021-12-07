@@ -39,7 +39,7 @@ I was so excited about VitePress, that I migrated Moiva's blog from Hugo to Vite
 
 ## New Tech Radar data
 
-Thoughtworks released a new version of the famouse Tech Radar. I incorporated its data into Moiva.
+Thoughtworks released a new version of the famous Tech Radar. I incorporated its data into Moiva.
 
 ![ThoughtWorks Tech Radar data for Vite, React Query, Tailwind CSS and Three.js](./new-tech-radar-release.png)
 
