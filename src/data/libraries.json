@@ -13121,6 +13121,14 @@
   },
   {
     "category": "JavaScript Utility Libraries",
+    "repoId": "mobily/ts-belt",
+    "npm": "@mobily/ts-belt",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["utils"]
+  },
+  {
+    "category": "JavaScript Utility Libraries",
     "repoId": "andrewplummer/sugar",
     "npm": "sugar",
     "isNpmCoreArtifact": true,
