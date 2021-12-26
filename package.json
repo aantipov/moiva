@@ -14,8 +14,7 @@
     "blog:build": "vitepress build blog",
     "blog:serve": "vitepress serve blog",
     "blog:move": "mkdir ./dist/blog && mv ./blog/.vitepress/dist/* ./dist/blog",
-    "blog:metadata": "node ./blog/.vitepress/genMetadata.js",
-    "blog:ci": "npm run blog:metadata && npm run blog:build && npm run blog:move"
+    "blog:ci": "npm run blog:build && npm run blog:move"
   },
   "dependencies": {
     "@sentry/node": "^6.15.0",
@@ -58,7 +57,7 @@
     "typescript": "~4.4.4",
     "vite": "^2.6.14",
     "vite-jest": "^0.0.4",
-    "vitepress": "^0.20.1",
+    "vitepress": "^0.20.10",
     "vue-eslint-parser": "^8.0.1",
     "vue-tsc": "^0.29.5"
   },

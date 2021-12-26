@@ -3,9 +3,18 @@
     <img
       src="./moiva-head.jpg"
       alt="Moiva.io logo"
+      width="70"
+      height="70"
+      style="margin: 0 20px 0 0"
+      class="inline md:hidden"
+    />
+    <img
+      src="./moiva-head.jpg"
+      alt="Moiva.io logo"
       width="100"
       height="100"
       style="margin: 0 20px 0 0"
+      class="hidden md:inline"
     />
     <a :href="url" title="Home" class="sm:text-5xl text-4xl"> Moiva.io Blog </a>
   </div>

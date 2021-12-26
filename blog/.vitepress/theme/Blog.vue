@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { withBase } from 'vitepress';
-import posts from '../metadata.json';
+import { data as posts } from '../posts.data';
 
 const articles = posts.map(({ title, href, summary }) => ({
   title,
