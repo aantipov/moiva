@@ -1,9 +1,11 @@
 <template>
   <article class="container root">
     <main>
-      <ClientOnly>
-        <ArticleMeta />
-      </ClientOnly>
+      <div class="mb-2 h-9">
+        <ClientOnly>
+          <ArticleMeta />
+        </ClientOnly>
+      </div>
 
       <h1>{{ data.title }}</h1>
 
