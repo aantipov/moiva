@@ -13097,6 +13097,14 @@
   },
   {
     "category": "JavaScript Utility Libraries",
+    "repoId": "remeda/remeda",
+    "npm": "remeda",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["utils"]
+  },
+  {
+    "category": "JavaScript Utility Libraries",
     "repoId": "jashkenas/underscore",
     "npm": "underscore",
     "isNpmCoreArtifact": true,
