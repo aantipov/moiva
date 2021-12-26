@@ -14,8 +14,7 @@
     "blog:build": "vitepress build blog",
     "blog:serve": "vitepress serve blog",
     "blog:move": "mkdir ./dist/blog && mv ./blog/.vitepress/dist/* ./dist/blog",
-    "blog:metadata": "node ./blog/.vitepress/genMetadata.js",
-    "blog:ci": "npm run blog:metadata && npm run blog:build && npm run blog:move"
+    "blog:ci": "npm run blog:build && npm run blog:move"
   },
   "dependencies": {
     "@sentry/node": "^6.15.0",
