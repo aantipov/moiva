@@ -202,7 +202,7 @@ function copyShare(): void {
 function download(): void {
   chartEl.value?.toBlob((blob) => {
     const link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
+    link.href = URL.createObjectURL(blob as Blob);
     link.download = (props.title as string).replace(',', '');
     document.body.appendChild(link);
     link.click();

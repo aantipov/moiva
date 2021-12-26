@@ -7,7 +7,7 @@ import * as Sentry from '@sentry/vue';
 export function useChartApi<T>(
   itemsIds: Ref<string[]>,
   isNotReadyToCall: Ref<boolean>,
-  apiMethod: (dataKey: string) => Promise<T | null>
+  apiMethod: (_dataKey: string) => Promise<T | null>
 ): {
   isLoading: Ref<boolean>;
   isError: Ref<boolean>;

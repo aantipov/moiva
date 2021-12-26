@@ -1,13 +1,7 @@
 <template>
   <div class="flex justify-between items-center">
     <div
-      class="
-        flex
-        items-center
-        justify-center
-        sm:justify-start
-        whitespace-nowrap
-      "
+      class="flex items-center justify-center sm:justify-start whitespace-nowrap"
     >
       <!--  Icon  -->
       <component

@@ -6,13 +6,7 @@
 
     <div
       ref="contentRef"
-      class="
-        cursor-pointer
-        text-gray-800
-        font-normal
-        -mx-2
-        divide-gray-300 divide-y
-      "
+      class="cursor-pointer text-gray-800 font-normal -mx-2 divide-gray-300 divide-y"
       @click="hide"
     >
       <div v-if="canCopy" class="menu-item" @click="$emit('copyShare')">

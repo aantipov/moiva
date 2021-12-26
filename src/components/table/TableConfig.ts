@@ -56,7 +56,7 @@ export interface MetricDataChartT {
   title: string;
   path: string;
   percent?: boolean;
-  sortDirFn?: (arg: any) => any;
+  sortDirFn?: (_arg: any) => any;
   stepPrecision?: number; // number of decimals
 }
 

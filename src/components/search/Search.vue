@@ -3,16 +3,7 @@
     <div>
       <!-- progressbar for non-mobile screens -->
       <div
-        class="
-          relative
-          hidden
-          w-full
-          h-1
-          overflow-hidden
-          rounded-full
-          sm:block
-          indeterminate
-        "
+        class="relative hidden w-full h-1 overflow-hidden rounded-full sm:block indeterminate"
       >
         <div
           v-if="isLoading"
@@ -27,17 +18,7 @@
         <!--   GitHub/NPM switch       -->
         <div class="relative inline-flex w-full mb-2 sm:w-auto sm:mb-0">
           <ChevronDownIcon
-            class="
-              absolute
-              top-0
-              right-0
-              w-6
-              h-6
-              mx-3
-              my-4
-              text-white
-              pointer-events-none
-            "
+            class="absolute top-0 right-0 w-6 h-6 mx-3 my-4 text-white pointer-events-none"
           />
           <select
             v-model="searchType"
@@ -51,15 +32,7 @@
 
         <!-- progressbar for mobile screens -->
         <div
-          class="
-            relative
-            w-full
-            h-1
-            overflow-hidden
-            rounded-full
-            sm:hidden
-            indeterminate
-          "
+          class="relative w-full h-1 overflow-hidden rounded-full sm:hidden indeterminate"
         >
           <div
             v-if="isLoading"
@@ -90,20 +63,7 @@
           />
           <button
             v-if="searchValue"
-            class="
-              absolute
-              top-0
-              right-0
-              z-10
-              flex
-              items-center
-              justify-end
-              h-full
-              py-3
-              pr-3
-              w-14
-              focus:outline-none
-            "
+            class="absolute top-0 right-0 z-10 flex items-center justify-end h-full py-3 pr-3 w-14 focus:outline-none"
             @click="searchValue = ''"
           >
             <m-close class="w-6 h-6 opacity-80" />
@@ -153,7 +113,7 @@ onMounted(() => {
     input: document.getElementById('lib-search') as HTMLInputElement,
     debounceWaitMs: 200,
 
-    fetch: (text: string, update: (items: SearchItemT[]) => void) => {
+    fetch: (text: string, update: (_items: SearchItemT[]) => void) => {
       const q = text.trim();
       let localPromise: Promise<void>;
 

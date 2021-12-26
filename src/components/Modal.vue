@@ -6,19 +6,7 @@
           <!--  Header  -->
           <div class="flex justify-end bg-gray-100 border">
             <button
-              class="
-                px-4
-                py-2
-                my-2
-                mr-1
-                text-sm
-                font-bold
-                text-gray-500
-                uppercase
-                outline-none
-                background-transparent
-                focus:outline-none
-              "
+              class="px-4 py-2 my-2 mr-1 text-sm font-bold text-gray-500 uppercase outline-none background-transparent focus:outline-none"
               type="button"
               style="transition: all 0.15s ease"
               @click="$emit('close')"

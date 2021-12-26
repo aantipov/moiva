@@ -45,7 +45,7 @@ Chart.register(
     id: 'custom_canvas_background_color',
     // @ts-ignore
     beforeDraw: (chart) => {
-      const ctx = chart.canvas.getContext('2d');
+      const ctx = chart.canvas.getContext('2d') as CanvasRenderingContext2D;
       ctx.save();
       ctx.globalCompositeOperation = 'destination-over';
       ctx.fillStyle = 'rgba(243, 244, 246)'; // bg-gray-100
