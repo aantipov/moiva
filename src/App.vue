@@ -31,7 +31,7 @@
       <Readings class="container mb-12" />
 
       <!-- Charts -->
-      <section class="pb-12 pt-8 bg-green-500">
+      <section class="pb-12 pt-8 bg-green-600 bg-opacity-95">
         <div class="container">
           <h2 class="mt-0 mb-6 text-white">
             Popularity
@@ -40,23 +40,28 @@
           <div class="grid grid-cols-12 gap-8">
             <template v-if="popularChartsNumber === 1">
               <Stars
-                class="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4"
+                class="
+                  col-span-12
+                  md:col-span-8 md:col-start-3
+                  lg:col-span-6 lg:col-start-4
+                  shadow-xl
+                "
               />
-              <NpmDownloads />
-              <GoogleTrends />
-              <DevelopersUsage />
+              <NpmDownloads class="shadow-xl" />
+              <GoogleTrends class="shadow-xl" />
+              <DevelopersUsage class="shadow-xl" />
             </template>
             <template v-else>
-              <NpmDownloads class="col-span-12 md:col-span-6" />
-              <GoogleTrends class="col-span-12 md:col-span-6" />
-              <Stars class="col-span-12 md:col-span-6" />
-              <DevelopersUsage class="col-span-12 md:col-span-6" />
+              <NpmDownloads class="col-span-12 md:col-span-6 shadow-xl" />
+              <GoogleTrends class="col-span-12 md:col-span-6 shadow-xl" />
+              <Stars class="col-span-12 md:col-span-6 shadow-xl" />
+              <DevelopersUsage class="col-span-12 md:col-span-6 shadow-xl" />
             </template>
           </div>
         </div>
       </section>
 
-      <section class="pb-12 pt-8 bg-yellow-400">
+      <section class="pb-12 pt-8 bg-yellow-500 bg-opacity-80">
         <div class="container">
           <h2 class="mt-0 mb-6">
             Maintenance and Development Activity
@@ -64,35 +69,57 @@
           </h2>
           <div class="grid grid-cols-12 gap-8">
             <template v-if="maintChartsNumber === 2">
-              <Releases />
+              <Releases class="shadow-xl" />
               <Contributors
-                class="col-span-12 md:col-span-6 xl:col-span-5 xl:col-start-2"
+                class="
+                  col-span-12
+                  md:col-span-6
+                  xl:col-span-5 xl:col-start-2
+                  shadow-xl
+                "
               />
-              <Commits class="col-span-12 md:col-span-6 xl:col-span-5" />
+              <Commits
+                class="col-span-12 md:col-span-6 xl:col-span-5 shadow-xl"
+              />
             </template>
             <template v-else-if="maintChartsNumber === 3">
-              <Releases class="col-span-12 md:col-span-6 xl:col-span-4" />
-              <Contributors class="col-span-12 md:col-span-6 xl:col-span-4" />
-              <Commits class="col-span-12 md:col-span-6 xl:col-span-4" />
+              <Releases
+                class="col-span-12 md:col-span-6 xl:col-span-4 shadow-xl"
+              />
+              <Contributors
+                class="col-span-12 md:col-span-6 xl:col-span-4 shadow-xl"
+              />
+              <Commits
+                class="col-span-12 md:col-span-6 xl:col-span-4 shadow-xl"
+              />
             </template>
           </div>
         </div>
       </section>
 
-      <section class="pb-12 pt-8 bg-indigo-500">
+      <section class="pb-12 pt-8 bg-indigo-600 bg-opacity-90">
         <div class="container">
           <h2 class="mt-0 mb-6 text-white">Miscellaneous</h2>
 
           <div class="grid grid-cols-12 gap-8">
             <template v-if="miscChartsNumber === 1">
-              <Languages class="col-span-12 md:col-span-6 md:col-start-4" />
-              <TechRadar />
+              <Languages
+                class="col-span-12 md:col-span-6 md:col-start-4 shadow-xl"
+              />
+              <TechRadar class="shadow-xl" />
             </template>
             <template v-else-if="miscChartsNumber === 2">
               <Languages
-                class="col-span-12 md:col-span-6 xl:col-span-5 xl:col-start-2"
+                class="
+                  col-span-12
+                  md:col-span-6
+                  xl:col-span-5 xl:col-start-2
+                  shadow-xl
+                "
               />
-              <TechRadar class="col-span-12 md:col-span-6 xl:col-span-5" />
+              <TechRadar
+                class="col-span-12 md:col-span-6 xl:col-span-5 shadow-xl"
+              />
             </template>
           </div>
         </div>
