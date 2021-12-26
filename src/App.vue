@@ -40,11 +40,7 @@
           <div class="grid grid-cols-12 gap-8">
             <template v-if="popularChartsNumber === 1">
               <Stars
-                class="
-                  col-span-12
-                  md:col-span-8 md:col-start-3
-                  lg:col-span-6 lg:col-start-4
-                "
+                class="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4"
               />
               <NpmDownloads />
               <GoogleTrends />

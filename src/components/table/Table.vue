@@ -32,12 +32,7 @@
               <th
                 v-if="index === 0 || row.cat !== rows[index - 1].cat"
                 :rowspan="catsSpanMap[row.cat]"
-                class="
-                  text-white
-                  border-r border-gray-300
-                  bg-primary
-                  first-header
-                "
+                class="text-white border-r border-gray-300 bg-primary first-header"
                 :class="{ 'border-b': row.cat !== rows[rows.length - 1].cat }"
                 scope="row"
               >
@@ -54,12 +49,7 @@
               <!-- Metric header -->
               <th
                 scope="row"
-                class="
-                  px-2
-                  bg-gray-200
-                  border-r border-separate border-gray-300
-                  second-header
-                "
+                class="px-2 bg-gray-200 border-r border-separate border-gray-300 second-header"
                 :class="{
                   'border-b':
                     index < rows.length - 1 && row.cat !== rows[index + 1].cat,

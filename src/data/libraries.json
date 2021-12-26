@@ -25,7 +25,7 @@
   },
   {
     "category": "JavaScript Mocking Libraries, test servers",
-    "repoId": "Netflix/pollyjs",
+    "repoId": "netflix/pollyjs",
     "npm": "@pollyjs/core",
     "isNpmCoreArtifact": true,
     "alias": "Polly.JS",
@@ -11509,14 +11509,6 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": "pnpm",
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "netflix/pollyjs",
-    "npm": "@pollyjs/core",
-    "isNpmCoreArtifact": true,
-    "alias": "Polly.JS",
     "tags": []
   },
   {

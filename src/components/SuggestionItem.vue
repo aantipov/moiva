@@ -51,16 +51,7 @@
         <div
           v-for="tag in catalogLibrary.tags"
           :key="tag"
-          class="
-            flex
-            justify-center
-            items-center
-            rounded-full
-            border border-blue-300
-            bg-blue-200
-            m-1
-            px-2
-          "
+          class="flex justify-center items-center rounded-full border border-blue-300 bg-blue-200 m-1 px-2"
         >
           {{ tag }}
         </div>

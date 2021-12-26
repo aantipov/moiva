@@ -90,7 +90,12 @@
       "@typescript-eslint/ban-ts-comment": "off",
       "@typescript-eslint/no-use-before-define": "off",
       "no-sparse-arrays": "off",
-      "no-unused-vars": "error",
+      "no-unused-vars": [
+        "error",
+        {
+          "argsIgnorePattern": "^_"
+        }
+      ],
       "vue/script-setup-uses-vars": "error"
     },
     "globals": {
