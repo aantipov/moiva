@@ -118,5 +118,11 @@
     "url": "https://medium.com/@dan_abramov/you-might-not-need-redux-be46360cf367",
     "npms": ["redux"],
     "repos": []
+  },
+  {
+    "title": "Comparing the New Generation of Build Tools",
+    "url": "https://css-tricks.com/comparing-the-new-generation-of-build-tools/",
+    "npms": ["esbuild", "snowpack", "vite", "wmr"],
+    "repos": []
   }
 ]
