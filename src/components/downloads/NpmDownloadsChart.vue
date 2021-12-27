@@ -11,7 +11,11 @@
   >
     <template #footer>
       <div class="flex justify-center mb-3 relative">
-        <select v-model="selectedSinceRef" name="date-range">
+        <select
+          v-model="selectedSinceRef"
+          name="date-range"
+          class="bg-gray-200 border rounded-md p-1 border-gray-300"
+        >
           <option v-for="val in sinceValues" :key="val" :value="val">
             since {{ val }}
           </option>

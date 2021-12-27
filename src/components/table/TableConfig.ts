@@ -42,14 +42,41 @@ export type CategoryT = '' | 'Popularity' | 'Maintenance' | 'Miscellaneous';
 
 interface CategoryConfigT {
   bgColor: string;
-  marginTop: string;
+  bgHeaderColor: string;
+  borderColor: string;
+  textColor: string;
+  separatorColor: string;
 }
 
 export const CAT_CONFIG: Record<CategoryT, CategoryConfigT> = {
-  '': { bgColor: '', marginTop: '0px' },
-  Popularity: { bgColor: 'bg-green-100', marginTop: '60px' },
-  Maintenance: { bgColor: 'bg-yellow-100', marginTop: '77px' },
-  Miscellaneous: { bgColor: 'bg-purple-100', marginTop: '87px' },
+  '': {
+    bgColor: 'bg-gray-200',
+    borderColor: 'border-primary',
+    bgHeaderColor: 'bg-primary',
+    textColor: 'text-white',
+    separatorColor: 'border-white border-opacity-40',
+  },
+  Popularity: {
+    bgColor: 'bg-green-200',
+    borderColor: 'border-white border-opacity-40',
+    bgHeaderColor: 'bg-green-700',
+    textColor: 'text-white',
+    separatorColor: 'border-white border-opacity-40',
+  },
+  Maintenance: {
+    bgColor: 'bg-orange-200',
+    borderColor: 'border-white border-opacity-40',
+    bgHeaderColor: 'bg-orange-700',
+    textColor: 'text-white',
+    separatorColor: 'border-white border-opacity-80',
+  },
+  Miscellaneous: {
+    bgColor: 'bg-indigo-200',
+    borderColor: 'border-white border-opacity-40',
+    bgHeaderColor: 'bg-indigo-700',
+    textColor: 'text-white',
+    separatorColor: 'border-white border-opacity-40',
+  },
 };
 
 export interface MetricDataChartT {
@@ -95,20 +122,6 @@ export const ROWS: MetricDataT[] = [
 
   {
     cat: 'Popularity',
-    metric: 'stars',
-    label: 'Stars',
-    labelSub: 'in total',
-    labelMore: 'and monthly growth',
-    tooltip:
-      'The total number of GitHub stars and the average number of new stars per month over the last 3 months',
-    chart: {
-      title: 'GitHub Stars',
-      path: 'repo.stars',
-    },
-  },
-
-  {
-    cat: 'Popularity',
     metric: 'downloads',
     label: 'Npm Downloads',
     labelSub: 'monthly',
@@ -132,6 +145,20 @@ export const ROWS: MetricDataT[] = [
       title: 'Search Interest, %',
       path: 'googleTrends.average',
       percent: true,
+    },
+  },
+
+  {
+    cat: 'Popularity',
+    metric: 'stars',
+    label: 'Stars',
+    labelSub: 'in total',
+    labelMore: 'and monthly growth',
+    tooltip:
+      'The total number of GitHub stars and the average number of new stars per month over the last 3 months',
+    chart: {
+      title: 'GitHub Stars',
+      path: 'repo.stars',
     },
   },
 
@@ -163,19 +190,6 @@ export const ROWS: MetricDataT[] = [
 
   {
     cat: 'Maintenance',
-    metric: 'commits',
-    label: 'Commits',
-    labelSub: `in ${prevQuarter}`,
-    tooltip: `Repository commits number in ${prevQuarter}`,
-    chart: {
-      title: `Commits in ${prevQuarter}`,
-      path: 'commitsLastQ',
-      stepPrecision: 0,
-    },
-  },
-
-  {
-    cat: 'Maintenance',
     metric: 'contributors',
     label: 'Contributors',
     labelSub: `in ${prevQuarter}`,
@@ -183,6 +197,19 @@ export const ROWS: MetricDataT[] = [
     chart: {
       title: `Contributors in ${prevQuarter}`,
       path: 'contributorsLastQ',
+      stepPrecision: 0,
+    },
+  },
+
+  {
+    cat: 'Maintenance',
+    metric: 'commits',
+    label: 'Commits',
+    labelSub: `in ${prevQuarter}`,
+    tooltip: `Repository commits number in ${prevQuarter}`,
+    chart: {
+      title: `Commits in ${prevQuarter}`,
+      path: 'commitsLastQ',
       stepPrecision: 0,
     },
   },

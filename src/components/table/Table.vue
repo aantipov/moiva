@@ -3,18 +3,32 @@
     <m-loader-new v-if="isLoading" class="z-10 pt-40" />
 
     <div class="flex justify-center">
-      <div class="overflow-scroll border rounded border-primary bg-primary">
+      <div
+        class="overflow-scroll border rounded-md shadow-xl"
+        :class="{
+          [CAT_CONFIG[category].borderColor]: true,
+        }"
+      >
         <table>
-          <thead class="text-white bg-primary">
+          <thead
+            :class="{
+              [CAT_CONFIG[category].bgHeaderColor]: true,
+              [CAT_CONFIG[category].textColor]: true,
+            }"
+          >
             <tr>
-              <td class="text-center px-1 py-2 font-bold">Metric</td>
+              <td
+                class="text-center px-1 py-2 font-bold"
+                :class="{
+                  [CAT_CONFIG[category].bgHeaderColor]: true,
+                }"
+              ></td>
 
               <th
                 v-for="lib in libraries"
                 :key="lib.id"
                 scope="col"
-                class="relative px-8"
-                style="max-width: 220px; overflow: hidden"
+                class="relative px-8 py-2 col"
               >
                 <div>{{ lib.alias }}</div>
                 <m-close
@@ -30,7 +44,7 @@
               <!-- Metric header -->
               <th
                 scope="row"
-                class="px-2 bg-gray-200 border-r border-separate border-gray-300 second-header"
+                class="px-2 border-r border-separate border-black border-opacity-10"
                 :class="{
                   'border-b':
                     index < rows.length - 1 && row.cat !== rows[index + 1].cat,
@@ -44,9 +58,12 @@
               <td
                 v-for="lib in libraries"
                 :key="lib.id"
-                class="p-2 bg-white border-r border-gray-300"
-                :class="{ 'bg-gray-200': index % 2 }"
-                style="max-width: 220px; overflow: hidden"
+                class="p-2 bg-white border-r col"
+                :class="{
+                  'bg-opacity-80': index % 2,
+                  'bg-opacity-70': !(index % 2),
+                  [CAT_CONFIG[category].separatorColor]: true,
+                }"
               >
                 <MetricValue :type="row.metric" :lib="lib" />
               </td>
@@ -72,7 +89,6 @@ const props = defineProps({
     default: null,
   },
 });
-console.log({ cat: props.category });
 
 const rows = computed(() => {
   const hasNpm = libraries.some((lib) => !!lib.npmPackage);
@@ -106,28 +122,21 @@ table {
   @apply table-fixed border-separate;
 }
 table thead td:first-child {
-  @apply bg-primary;
   position: sticky;
   left: 0;
-  z-index: 2;
-}
-table thead td:nth-child(2) {
-  @apply bg-primary;
-  position: sticky;
-  left: 0px;
   z-index: 2;
 }
 table thead th {
   z-index: 1;
 }
-table tbody tr th.first-header {
+table tbody tr th {
   position: sticky;
   left: 0;
   z-index: 2;
 }
-table tbody tr th.second-header {
-  position: sticky;
-  left: 0px;
-  z-index: 2;
+.col {
+  min-width: 170px;
+  max-width: 220px;
+  overflow: hidden;
 }
 </style>
