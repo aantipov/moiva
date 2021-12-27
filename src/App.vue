@@ -57,9 +57,11 @@
       </section>
 
       <!-- MAINTENANCE -->
-      <section class="pb-12 pt-8 bg-yellow-500 bg-opacity-80">
+      <section class="pb-12 pt-8 bg-orange-600">
         <div class="container">
-          <h2 class="mt-0 mb-6">Maintenance and Development Activity</h2>
+          <h2 class="mt-0 mb-6 text-white">
+            Maintenance and Development Activity
+          </h2>
 
           <Table category="Maintenance" class="mt-4 mb-12" />
 

@@ -64,10 +64,10 @@ export const CAT_CONFIG: Record<CategoryT, CategoryConfigT> = {
     separatorColor: 'border-white border-opacity-40',
   },
   Maintenance: {
-    bgColor: 'bg-amber-100',
-    borderColor: 'border-yellow-500',
-    bgHeaderColor: 'bg-yellow-500',
-    textColor: 'text-black text-opacity-80',
+    bgColor: 'bg-orange-200',
+    borderColor: 'border-orange-700',
+    bgHeaderColor: 'bg-orange-700',
+    textColor: 'text-white',
     separatorColor: 'border-white border-opacity-80',
   },
   Miscellaneous: {
@@ -122,20 +122,6 @@ export const ROWS: MetricDataT[] = [
 
   {
     cat: 'Popularity',
-    metric: 'stars',
-    label: 'Stars',
-    labelSub: 'in total',
-    labelMore: 'and monthly growth',
-    tooltip:
-      'The total number of GitHub stars and the average number of new stars per month over the last 3 months',
-    chart: {
-      title: 'GitHub Stars',
-      path: 'repo.stars',
-    },
-  },
-
-  {
-    cat: 'Popularity',
     metric: 'downloads',
     label: 'Npm Downloads',
     labelSub: 'monthly',
@@ -159,6 +145,20 @@ export const ROWS: MetricDataT[] = [
       title: 'Search Interest, %',
       path: 'googleTrends.average',
       percent: true,
+    },
+  },
+
+  {
+    cat: 'Popularity',
+    metric: 'stars',
+    label: 'Stars',
+    labelSub: 'in total',
+    labelMore: 'and monthly growth',
+    tooltip:
+      'The total number of GitHub stars and the average number of new stars per month over the last 3 months',
+    chart: {
+      title: 'GitHub Stars',
+      path: 'repo.stars',
     },
   },
 
@@ -190,19 +190,6 @@ export const ROWS: MetricDataT[] = [
 
   {
     cat: 'Maintenance',
-    metric: 'commits',
-    label: 'Commits',
-    labelSub: `in ${prevQuarter}`,
-    tooltip: `Repository commits number in ${prevQuarter}`,
-    chart: {
-      title: `Commits in ${prevQuarter}`,
-      path: 'commitsLastQ',
-      stepPrecision: 0,
-    },
-  },
-
-  {
-    cat: 'Maintenance',
     metric: 'contributors',
     label: 'Contributors',
     labelSub: `in ${prevQuarter}`,
@@ -210,6 +197,19 @@ export const ROWS: MetricDataT[] = [
     chart: {
       title: `Contributors in ${prevQuarter}`,
       path: 'contributorsLastQ',
+      stepPrecision: 0,
+    },
+  },
+
+  {
+    cat: 'Maintenance',
+    metric: 'commits',
+    label: 'Commits',
+    labelSub: `in ${prevQuarter}`,
+    tooltip: `Repository commits number in ${prevQuarter}`,
+    chart: {
+      title: `Commits in ${prevQuarter}`,
+      path: 'commitsLastQ',
       stepPrecision: 0,
     },
   },
