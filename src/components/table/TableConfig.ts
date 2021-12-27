@@ -45,6 +45,7 @@ interface CategoryConfigT {
   bgHeaderColor: string;
   borderColor: string;
   textColor: string;
+  separatorColor: string;
 }
 
 export const CAT_CONFIG: Record<CategoryT, CategoryConfigT> = {
@@ -53,24 +54,28 @@ export const CAT_CONFIG: Record<CategoryT, CategoryConfigT> = {
     borderColor: 'border-primary',
     bgHeaderColor: 'bg-primary',
     textColor: 'text-white',
+    separatorColor: 'border-white border-opacity-40',
   },
   Popularity: {
     bgColor: 'bg-green-200',
     borderColor: 'border-green-600',
     bgHeaderColor: 'bg-green-700',
     textColor: 'text-white',
+    separatorColor: 'border-white border-opacity-40',
   },
   Maintenance: {
     bgColor: 'bg-amber-100',
     borderColor: 'border-yellow-500',
     bgHeaderColor: 'bg-yellow-500',
     textColor: 'text-black text-opacity-80',
+    separatorColor: 'border-white border-opacity-80',
   },
   Miscellaneous: {
     bgColor: 'bg-indigo-200',
     borderColor: 'border-indigo-600',
     bgHeaderColor: 'bg-indigo-700',
     textColor: 'text-white',
+    separatorColor: 'border-white border-opacity-40',
   },
 };
 

@@ -44,7 +44,7 @@
               <!-- Metric header -->
               <th
                 scope="row"
-                class="px-2 border-r border-separate border-gray-300"
+                class="px-2 border-r border-separate border-black border-opacity-10"
                 :class="{
                   'border-b':
                     index < rows.length - 1 && row.cat !== rows[index + 1].cat,
@@ -58,10 +58,11 @@
               <td
                 v-for="lib in libraries"
                 :key="lib.id"
-                class="p-2 bg-white border-r border-gray-300 col"
+                class="p-2 bg-white border-r col"
                 :class="{
                   'bg-opacity-80': index % 2,
                   'bg-opacity-70': !(index % 2),
+                  [CAT_CONFIG[category].separatorColor]: true,
                 }"
               >
                 <MetricValue :type="row.metric" :lib="lib" />
