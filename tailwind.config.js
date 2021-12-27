@@ -1,17 +1,11 @@
 module.exports = {
-  purge: {
-    content: [
-      './index.html',
-      './src/**/*.vue',
-      './src/**/*.ts',
-      './blog/.vitepress/theme/**/*.vue',
-    ],
-    safelist: [
-      'toast-error-popup',
-      'toast-error-title',
-      'toast-error-close-btn',
-    ],
-  },
+  content: [
+    './index.html',
+    './src/**/*.vue',
+    './src/**/*.ts',
+    './blog/.vitepress/theme/**/*.vue',
+  ],
+  safelist: ['toast-error-popup', 'toast-error-title', 'toast-error-close-btn'],
   theme: {
     container: {
       center: true,
