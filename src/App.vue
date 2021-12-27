@@ -26,7 +26,7 @@
         <a href="/" @click.prevent="clearSelection">[Clear selection]</a>
       </div>
 
-      <Table class="container mt-4 mb-12 lg:w-3/4" />
+      <Table category="" class="container mt-4 mb-12 lg:w-3/4" />
 
       <Readings class="container mb-12" />
 
@@ -37,15 +37,13 @@
             Popularity
             <span class="text-lg font-normal">over time</span>
           </h2>
+
+          <Table category="Popularity" class="container mt-4 mb-12 lg:w-3/4" />
+
           <div class="grid grid-cols-12 gap-8">
             <template v-if="popularChartsNumber === 1">
               <Stars
-                class="
-                  col-span-12
-                  md:col-span-8 md:col-start-3
-                  lg:col-span-6 lg:col-start-4
-                  shadow-xl
-                "
+                class="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4 shadow-xl"
               />
               <NpmDownloads class="shadow-xl" />
               <GoogleTrends class="shadow-xl" />
@@ -67,16 +65,14 @@
             Maintenance and Development Activity
             <span class="text-lg font-normal">over time</span>
           </h2>
+
+          <Table category="Maintenance" class="container mt-4 mb-12 lg:w-3/4" />
+
           <div class="grid grid-cols-12 gap-8">
             <template v-if="maintChartsNumber === 2">
               <Releases class="shadow-xl" />
               <Contributors
-                class="
-                  col-span-12
-                  md:col-span-6
-                  xl:col-span-5 xl:col-start-2
-                  shadow-xl
-                "
+                class="col-span-12 md:col-span-6 xl:col-span-5 xl:col-start-2 shadow-xl"
               />
               <Commits
                 class="col-span-12 md:col-span-6 xl:col-span-5 shadow-xl"
@@ -101,6 +97,11 @@
         <div class="container">
           <h2 class="mt-0 mb-6 text-white">Miscellaneous</h2>
 
+          <Table
+            category="Miscellaneous"
+            class="container mt-4 mb-12 lg:w-3/4"
+          />
+
           <div class="grid grid-cols-12 gap-8">
             <template v-if="miscChartsNumber === 1">
               <Languages
@@ -110,12 +111,7 @@
             </template>
             <template v-else-if="miscChartsNumber === 2">
               <Languages
-                class="
-                  col-span-12
-                  md:col-span-6
-                  xl:col-span-5 xl:col-start-2
-                  shadow-xl
-                "
+                class="col-span-12 md:col-span-6 xl:col-span-5 xl:col-start-2 shadow-xl"
               />
               <TechRadar
                 class="col-span-12 md:col-span-6 xl:col-span-5 shadow-xl"
