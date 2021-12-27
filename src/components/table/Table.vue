@@ -7,7 +7,6 @@
         <table>
           <thead class="text-white bg-primary">
             <tr>
-              <td></td>
               <td class="text-center px-1 py-2 font-bold">Metric</td>
 
               <th
@@ -28,24 +27,6 @@
 
           <tbody>
             <tr v-for="(row, index) in rows" :key="row.metric">
-              <!--  Category header (e.g. Popularity, Maintenance, Misc.)  -->
-              <th
-                v-if="index === 0 || row.cat !== rows[index - 1].cat"
-                :rowspan="catsSpanMap[row.cat]"
-                class="text-white border-r border-gray-300 bg-primary first-header"
-                :class="{ 'border-b': row.cat !== rows[rows.length - 1].cat }"
-                scope="row"
-              >
-                <div
-                  class="w-6"
-                  :style="{ marginTop: CAT_CONFIG[row.cat].marginTop }"
-                >
-                  <div class="text-center transform -rotate-90">
-                    {{ row.cat }}
-                  </div>
-                </div>
-              </th>
-
               <!-- Metric header -->
               <th
                 scope="row"
@@ -84,6 +65,15 @@ import MetricValue from './MetricValue.vue';
 import { libraries, isLoading, removeLibrary } from '@/store/libraries';
 import { ROWS, NPM_METRICS, CAT_CONFIG, CategoryT } from './TableConfig';
 
+const props = defineProps({
+  category: {
+    type: String as () => CategoryT,
+    required: false,
+    default: null,
+  },
+});
+console.log({ cat: props.category });
+
 const rows = computed(() => {
   const hasNpm = libraries.some((lib) => !!lib.npmPackage);
   const hasTags = libraries.some((lib) => !!lib.tags.length);
@@ -98,18 +88,12 @@ const rows = computed(() => {
   filteredRows = hasPlayground
     ? filteredRows
     : filteredRows.filter((row) => row.metric !== 'playground');
+  filteredRows =
+    props.category !== null
+      ? filteredRows.filter((row) => row.cat === props.category)
+      : filteredRows;
 
   return filteredRows;
-});
-
-const catsSpanMap = computed(() => {
-  return rows.value.reduce((acc, row) => {
-    if (!acc[row.cat]) {
-      acc[row.cat] = 0;
-    }
-    acc[row.cat]++;
-    return acc;
-  }, {} as Record<CategoryT, number>);
 });
 </script>
 
@@ -130,7 +114,7 @@ table thead td:first-child {
 table thead td:nth-child(2) {
   @apply bg-primary;
   position: sticky;
-  left: 27px;
+  left: 0px;
   z-index: 2;
 }
 table thead th {
@@ -143,7 +127,7 @@ table tbody tr th.first-header {
 }
 table tbody tr th.second-header {
   position: sticky;
-  left: 27px;
+  left: 0px;
   z-index: 2;
 }
 </style>
