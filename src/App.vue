@@ -30,15 +30,12 @@
 
       <Readings class="container mb-12" />
 
-      <!-- Charts -->
+      <!-- POPULARITY -->
       <section class="pb-12 pt-8 bg-green-600 bg-opacity-95">
         <div class="container">
-          <h2 class="mt-0 mb-6 text-white">
-            Popularity
-            <span class="text-lg font-normal">over time</span>
-          </h2>
+          <h2 class="mt-0 mb-6 text-white">Popularity</h2>
 
-          <Table category="Popularity" class="mt-4 mb-12 lg:w-3/4" />
+          <Table category="Popularity" class="mt-4 mb-12" />
 
           <div class="grid grid-cols-12 gap-8">
             <template v-if="popularChartsNumber === 1">
@@ -59,14 +56,12 @@
         </div>
       </section>
 
+      <!-- MAINTENANCE -->
       <section class="pb-12 pt-8 bg-yellow-500 bg-opacity-80">
         <div class="container">
-          <h2 class="mt-0 mb-6">
-            Maintenance and Development Activity
-            <span class="text-lg font-normal">over time</span>
-          </h2>
+          <h2 class="mt-0 mb-6">Maintenance and Development Activity</h2>
 
-          <Table category="Maintenance" class="mt-4 mb-12 lg:w-3/4" />
+          <Table category="Maintenance" class="mt-4 mb-12" />
 
           <div class="grid grid-cols-12 gap-8">
             <template v-if="maintChartsNumber === 2">
@@ -93,11 +88,12 @@
         </div>
       </section>
 
+      <!-- MISC -->
       <section class="pb-12 pt-8 bg-indigo-600 bg-opacity-90">
         <div class="container">
           <h2 class="mt-0 mb-6 text-white">Miscellaneous</h2>
 
-          <Table category="Miscellaneous" class="mt-4 mb-12 lg:w-3/4" />
+          <Table category="Miscellaneous" class="mt-4 mb-12" />
 
           <div class="grid grid-cols-12 gap-8">
             <template v-if="miscChartsNumber === 1">

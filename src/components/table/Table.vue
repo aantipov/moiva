@@ -4,7 +4,13 @@
 
     <div class="flex justify-center">
       <div
-        class="overflow-scroll border rounded border-primary bg-primary shadow-xl"
+        class="overflow-scroll border rounded-md bg-primary shadow-xl"
+        :class="{
+          'border-green-600': category === 'Popularity',
+          'border-yellow-500': category === 'Maintenance',
+          'border-indigo-600': category === 'Miscellaneous',
+          'border-primary': category === '',
+        }"
       >
         <table>
           <thead class="text-white bg-primary">
