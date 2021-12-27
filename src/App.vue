@@ -38,7 +38,7 @@
             <span class="text-lg font-normal">over time</span>
           </h2>
 
-          <Table category="Popularity" class="container mt-4 mb-12 lg:w-3/4" />
+          <Table category="Popularity" class="mt-4 mb-12 lg:w-3/4" />
 
           <div class="grid grid-cols-12 gap-8">
             <template v-if="popularChartsNumber === 1">
@@ -66,7 +66,7 @@
             <span class="text-lg font-normal">over time</span>
           </h2>
 
-          <Table category="Maintenance" class="container mt-4 mb-12 lg:w-3/4" />
+          <Table category="Maintenance" class="mt-4 mb-12 lg:w-3/4" />
 
           <div class="grid grid-cols-12 gap-8">
             <template v-if="maintChartsNumber === 2">
@@ -97,10 +97,7 @@
         <div class="container">
           <h2 class="mt-0 mb-6 text-white">Miscellaneous</h2>
 
-          <Table
-            category="Miscellaneous"
-            class="container mt-4 mb-12 lg:w-3/4"
-          />
+          <Table category="Miscellaneous" class="mt-4 mb-12 lg:w-3/4" />
 
           <div class="grid grid-cols-12 gap-8">
             <template v-if="miscChartsNumber === 1">

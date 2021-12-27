@@ -3,18 +3,19 @@
     <m-loader-new v-if="isLoading" class="z-10 pt-40" />
 
     <div class="flex justify-center">
-      <div class="overflow-scroll border rounded border-primary bg-primary">
+      <div
+        class="overflow-scroll border rounded border-primary bg-primary shadow-xl"
+      >
         <table>
           <thead class="text-white bg-primary">
             <tr>
-              <td class="text-center px-1 py-2 font-bold">Metric</td>
+              <td class="text-center px-1 py-2 font-bold"></td>
 
               <th
                 v-for="lib in libraries"
                 :key="lib.id"
                 scope="col"
-                class="relative px-8"
-                style="max-width: 220px; overflow: hidden"
+                class="relative px-8 py-2 col"
               >
                 <div>{{ lib.alias }}</div>
                 <m-close
@@ -44,9 +45,8 @@
               <td
                 v-for="lib in libraries"
                 :key="lib.id"
-                class="p-2 bg-white border-r border-gray-300"
+                class="p-2 bg-white border-r border-gray-300 col"
                 :class="{ 'bg-gray-200': index % 2 }"
-                style="max-width: 220px; overflow: hidden"
               >
                 <MetricValue :type="row.metric" :lib="lib" />
               </td>
@@ -72,7 +72,6 @@ const props = defineProps({
     default: null,
   },
 });
-console.log({ cat: props.category });
 
 const rows = computed(() => {
   const hasNpm = libraries.some((lib) => !!lib.npmPackage);
@@ -129,5 +128,10 @@ table tbody tr th.second-header {
   position: sticky;
   left: 0px;
   z-index: 2;
+}
+.col {
+  min-width: 170px;
+  max-width: 220px;
+  overflow: hidden;
 }
 </style>
