@@ -4,18 +4,25 @@
 
     <div class="flex justify-center">
       <div
-        class="overflow-scroll border rounded-md bg-primary shadow-xl"
+        class="overflow-scroll border rounded-md shadow-xl"
         :class="{
-          'border-green-600': category === 'Popularity',
-          'border-yellow-500': category === 'Maintenance',
-          'border-indigo-600': category === 'Miscellaneous',
-          'border-primary': category === '',
+          [CAT_CONFIG[category].borderColor]: true,
         }"
       >
         <table>
-          <thead class="text-white bg-primary">
+          <thead
+            :class="{
+              [CAT_CONFIG[category].bgHeaderColor]: true,
+              [CAT_CONFIG[category].textColor]: true,
+            }"
+          >
             <tr>
-              <td class="text-center px-1 py-2 font-bold"></td>
+              <td
+                class="text-center px-1 py-2 font-bold"
+                :class="{
+                  [CAT_CONFIG[category].bgHeaderColor]: true,
+                }"
+              ></td>
 
               <th
                 v-for="lib in libraries"
@@ -37,7 +44,7 @@
               <!-- Metric header -->
               <th
                 scope="row"
-                class="px-2 bg-gray-200 border-r border-separate border-gray-300 second-header"
+                class="px-2 border-r border-separate border-gray-300"
                 :class="{
                   'border-b':
                     index < rows.length - 1 && row.cat !== rows[index + 1].cat,
@@ -52,7 +59,10 @@
                 v-for="lib in libraries"
                 :key="lib.id"
                 class="p-2 bg-white border-r border-gray-300 col"
-                :class="{ 'bg-gray-200': index % 2 }"
+                :class="{
+                  'bg-opacity-80': index % 2,
+                  'bg-opacity-70': !(index % 2),
+                }"
               >
                 <MetricValue :type="row.metric" :lib="lib" />
               </td>
@@ -111,28 +121,16 @@ table {
   @apply table-fixed border-separate;
 }
 table thead td:first-child {
-  @apply bg-primary;
   position: sticky;
   left: 0;
-  z-index: 2;
-}
-table thead td:nth-child(2) {
-  @apply bg-primary;
-  position: sticky;
-  left: 0px;
   z-index: 2;
 }
 table thead th {
   z-index: 1;
 }
-table tbody tr th.first-header {
+table tbody tr th {
   position: sticky;
   left: 0;
-  z-index: 2;
-}
-table tbody tr th.second-header {
-  position: sticky;
-  left: 0px;
   z-index: 2;
 }
 .col {

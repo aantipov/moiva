@@ -42,14 +42,36 @@ export type CategoryT = '' | 'Popularity' | 'Maintenance' | 'Miscellaneous';
 
 interface CategoryConfigT {
   bgColor: string;
-  marginTop: string;
+  bgHeaderColor: string;
+  borderColor: string;
+  textColor: string;
 }
 
 export const CAT_CONFIG: Record<CategoryT, CategoryConfigT> = {
-  '': { bgColor: '', marginTop: '0px' },
-  Popularity: { bgColor: 'bg-green-100', marginTop: '60px' },
-  Maintenance: { bgColor: 'bg-yellow-100', marginTop: '77px' },
-  Miscellaneous: { bgColor: 'bg-purple-100', marginTop: '87px' },
+  '': {
+    bgColor: 'bg-gray-200',
+    borderColor: 'border-primary',
+    bgHeaderColor: 'bg-primary',
+    textColor: 'text-white',
+  },
+  Popularity: {
+    bgColor: 'bg-green-200',
+    borderColor: 'border-green-600',
+    bgHeaderColor: 'bg-green-700',
+    textColor: 'text-white',
+  },
+  Maintenance: {
+    bgColor: 'bg-amber-100',
+    borderColor: 'border-yellow-500',
+    bgHeaderColor: 'bg-yellow-500',
+    textColor: 'text-black text-opacity-80',
+  },
+  Miscellaneous: {
+    bgColor: 'bg-indigo-200',
+    borderColor: 'border-indigo-600',
+    bgHeaderColor: 'bg-indigo-700',
+    textColor: 'text-white',
+  },
 };
 
 export interface MetricDataChartT {
