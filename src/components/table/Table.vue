@@ -44,11 +44,11 @@
               <!-- Metric header -->
               <th
                 scope="row"
-                class="px-2 border-r border-separate border-black border-opacity-10"
+                class="px-2 border-r border-separate"
                 :class="{
                   'border-b':
                     index < rows.length - 1 && row.cat !== rows[index + 1].cat,
-                  [CAT_CONFIG[row.cat].bgColor]: true,
+                  [CAT_CONFIG[row.cat].bgMetricColor]: true,
                 }"
               >
                 <MetricHeader :type="row.metric" :row="row" />
@@ -56,13 +56,14 @@
 
               <!-- Libs values -->
               <td
-                v-for="lib in libraries"
+                v-for="(lib, i) in libraries"
                 :key="lib.id"
-                class="p-2 bg-white border-r col"
+                class="p-2 bg-white col"
                 :class="{
                   'bg-opacity-80': index % 2,
                   'bg-opacity-70': !(index % 2),
-                  [CAT_CONFIG[category].separatorColor]: true,
+                  ['border-r ' + CAT_CONFIG[category].separatorColor]:
+                    libraries.length > i + 1,
                 }"
               >
                 <MetricValue :type="row.metric" :lib="lib" />
