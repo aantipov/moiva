@@ -31,7 +31,10 @@
       <Readings class="container mb-12" />
 
       <!-- POPULARITY -->
-      <section class="bg-green-600/90 pb-12 pt-8">
+      <section
+        class="bg-green-600/90 pb-12 pt-8"
+        :class="{ [CAT_CONFIG['Popularity'].bgColor]: true }"
+      >
         <div class="container">
           <h2 class="mt-0 mb-6 text-white">Popularity</h2>
 
@@ -57,7 +60,10 @@
       </section>
 
       <!-- MAINTENANCE -->
-      <section class="bg-orange-600/80 pb-12 pt-8">
+      <section
+        class="bg-orange-600/80 pb-12 pt-8"
+        :class="{ [CAT_CONFIG['Maintenance'].bgColor]: true }"
+      >
         <div class="container">
           <h2 class="mt-0 mb-6 text-black/80">
             Maintenance and Development Activity
@@ -91,7 +97,10 @@
       </section>
 
       <!-- MISC -->
-      <section class="bg-indigo-600/80 pb-12 pt-8">
+      <section
+        class="bg-indigo-600/80 pb-12 pt-8"
+        :class="{ [CAT_CONFIG['Miscellaneous'].bgColor]: true }"
+      >
         <div class="container">
           <h2 class="mt-0 mb-6 text-white">Miscellaneous</h2>
 
@@ -138,6 +147,7 @@ import Contributors from '@/components/github-contributors/ContributorsChart.vue
 import DevelopersUsage from '@/components/developer-usage/DeveloperUsageChart.vue';
 import Commits from '@/components/commits/CommitsChart.vue';
 
+import { CAT_CONFIG } from '@/components/table/TableConfig';
 import { chartsVisibility } from '@/store/chartsVisibility';
 import {
   getNpmPackagesFromUrl,

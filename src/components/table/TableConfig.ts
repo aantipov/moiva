@@ -43,6 +43,7 @@ export type CategoryT = '' | 'Popularity' | 'Maintenance' | 'Miscellaneous';
 interface CategoryConfigT {
   bgColor: string;
   bgHeaderColor: string;
+  bgMetricColor: string;
   borderColor: string;
   textColor: string;
   separatorColor: string;
@@ -50,32 +51,39 @@ interface CategoryConfigT {
 
 export const CAT_CONFIG: Record<CategoryT, CategoryConfigT> = {
   '': {
-    bgColor: 'bg-gray-200',
-    borderColor: 'border-primary',
+    bgColor: 'bg-green-600/90',
     bgHeaderColor: 'bg-primary',
+    bgMetricColor: 'bg-gray-200',
+    borderColor: 'border-primary',
     textColor: 'text-white',
-    separatorColor: 'border-white border-opacity-40',
+    separatorColor: 'border-white/40',
   },
+
   Popularity: {
-    bgColor: 'bg-green-200',
-    borderColor: 'border-white border-opacity-40',
+    bgColor: 'bg-green-600/90',
     bgHeaderColor: 'bg-green-700',
+    bgMetricColor: 'bg-green-200 border-black/10',
+    borderColor: 'border-black/10',
     textColor: 'text-white',
-    separatorColor: 'border-white border-opacity-40',
+    separatorColor: 'border-white/40',
   },
+
   Maintenance: {
-    bgColor: 'bg-orange-200',
-    borderColor: 'border-white border-opacity-40',
+    bgColor: 'bg-orange-600/80',
     bgHeaderColor: 'bg-orange-700',
+    bgMetricColor: 'bg-orange-200 border-black/10',
+    borderColor: 'border-black/5',
     textColor: 'text-white',
-    separatorColor: 'border-white border-opacity-80',
+    separatorColor: 'border-white/40',
   },
+
   Miscellaneous: {
-    bgColor: 'bg-indigo-200',
-    borderColor: 'border-white border-opacity-40',
+    bgColor: 'bg-indigo-600/80',
     bgHeaderColor: 'bg-indigo-700',
+    bgMetricColor: 'bg-indigo-200 border-black/10',
+    borderColor: 'border-black/10',
     textColor: 'text-white',
-    separatorColor: 'border-white border-opacity-40',
+    separatorColor: 'border-white/40',
   },
 };
 
