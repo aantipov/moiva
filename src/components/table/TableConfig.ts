@@ -1,3 +1,4 @@
+import { LibraryT, StatusT } from '@/getLibrary';
 import { prevQuarter } from '@/utils';
 import { ascend } from 'ramda';
 
@@ -104,6 +105,7 @@ export interface MetricDataT {
   tooltip?: string;
   icon?: string;
   chart?: MetricDataChartT;
+  sortFn?: (_a: LibraryT, _b: LibraryT) => number; // Sort from Best to Worst
 }
 
 export interface MetricDataWithChartT extends MetricDataT {
@@ -120,6 +122,15 @@ export const ROWS: MetricDataT[] = [
     metric: 'status',
     label: 'Status',
     labelMore: 'and last commit date',
+    sortFn: (a, b) => {
+      const statusToValueMap: Record<StatusT, number> = {
+        ACTIVE: 0,
+        INACTIVE: 1,
+        LEGACY: 2,
+        ARCHIVED: 3,
+      };
+      return statusToValueMap[a.status] - statusToValueMap[b.status];
+    },
     tooltip:
       '<p>Library status. Possible values:</p><p>- "Active"<br> - "Inactive" if no commits in the last 6 months<br> - "Legacy" if library authors called it so<br> - "Archived" if the repository is archived</p>',
   },

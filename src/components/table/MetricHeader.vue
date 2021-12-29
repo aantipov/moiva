@@ -36,11 +36,15 @@
 
     <!-- Chart Icon -->
     <MetricChart v-if="row.chart" :metric-data="rowWithChart" />
+
+    <!-- Sorting button -->
+    <MetricSort v-if="row.sortFn" :sort-fn="row.sortFn" />
   </div>
 </template>
 
 <script setup lang="ts">
 import MetricChart from './MetricChart.vue';
+import MetricSort from './MetricSort.vue';
 import { MetricT, MetricDataT, MetricDataWithChartT } from './TableConfig';
 
 const props = defineProps<{
