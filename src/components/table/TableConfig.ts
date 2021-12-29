@@ -122,6 +122,8 @@ export const ROWS: MetricDataT[] = [
     metric: 'status',
     label: 'Status',
     labelMore: 'and last commit date',
+    tooltip:
+      '<p>Library status. Possible values:</p><p>- "Active"<br> - "Inactive" if no commits in the last 6 months<br> - "Legacy" if library authors called it so<br> - "Archived" if the repository is archived</p>',
     sortFn: (a, b) => {
       const statusToValueMap: Record<StatusT, number> = {
         ACTIVE: 0,
@@ -131,8 +133,6 @@ export const ROWS: MetricDataT[] = [
       };
       return statusToValueMap[a.status] - statusToValueMap[b.status];
     },
-    tooltip:
-      '<p>Library status. Possible values:</p><p>- "Active"<br> - "Inactive" if no commits in the last 6 months<br> - "Legacy" if library authors called it so<br> - "Archived" if the repository is archived</p>',
   },
 
   { metric: 'tags', cat: '', label: 'Tags' },
@@ -151,6 +151,12 @@ export const ROWS: MetricDataT[] = [
       title: 'Npm Downloads, monthly',
       path: 'npmDownloadsAvg',
     },
+    sortFn: (a, b) => {
+      if (a.npmDownloadsAvg && b.npmDownloadsAvg) {
+        return b.npmDownloadsAvg - a.npmDownloadsAvg;
+      }
+      return 0;
+    },
   },
 
   {
@@ -164,6 +170,20 @@ export const ROWS: MetricDataT[] = [
       title: 'Search Interest, %',
       path: 'googleTrends.average',
       percent: true,
+    },
+    sortFn: (a, b) => {
+      if (!a.googleTrends && !b.googleTrends) {
+        return 0;
+      }
+      if (!a.googleTrends) {
+        return 1;
+      }
+      if (!b.googleTrends) {
+        return -1;
+      }
+
+      // @ts-ignore
+      return b.googleTrends.average - a.googleTrends.average;
     },
   },
 
@@ -179,6 +199,7 @@ export const ROWS: MetricDataT[] = [
       title: 'GitHub Stars',
       path: 'repo.stars',
     },
+    sortFn: (a, b) => b.repo.stars - a.repo.stars,
   },
 
   {
@@ -191,6 +212,23 @@ export const ROWS: MetricDataT[] = [
       title: 'Developer Usage, %',
       path: 'devUsageLast',
       percent: true,
+    },
+    sortFn: (a, b) => {
+      if (!a.devUsage && !b.devUsage) {
+        return 0;
+      }
+      if (!a.devUsage) {
+        return 1;
+      }
+      if (!b.devUsage) {
+        return -1;
+      }
+
+      const aValue = a.devUsage.usage.slice(-1)[0].value;
+      const bValue = b.devUsage.usage.slice(-1)[0].value;
+
+      // @ts-ignore
+      return bValue - aValue;
     },
   },
 
