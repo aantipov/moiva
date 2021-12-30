@@ -36,12 +36,14 @@
 
     <div class="flex ml-2">
       <!-- Chart Icon -->
-      <MetricChart v-if="row.chart" :metric-data="rowWithChart" />
+      <MetricChart
+        v-if="row.chart && librariesIds.length > 1"
+        :metric-data="rowWithChart"
+      />
 
       <!-- Sorting button -->
-      <!-- TODO: Show the icon if >= 3 libs and values are different -->
       <MetricSort
-        v-if="row.sortFn"
+        v-if="row.sortFn && librariesIds.length > 2"
         class="hidden sm:block"
         :sort-fn="row.sortFn"
       />
@@ -53,6 +55,7 @@
 import MetricChart from './MetricChart.vue';
 import MetricSort from './MetricSort.vue';
 import { MetricT, MetricDataT, MetricDataWithChartT } from './TableConfig';
+import { librariesIds } from '@/store/libraries';
 
 const props = defineProps<{
   type: MetricT;
