@@ -34,11 +34,18 @@
       </div>
     </div>
 
-    <!-- Chart Icon -->
-    <MetricChart v-if="row.chart" :metric-data="rowWithChart" />
+    <div class="flex ml-2">
+      <!-- Chart Icon -->
+      <MetricChart v-if="row.chart" :metric-data="rowWithChart" />
 
-    <!-- Sorting button -->
-    <MetricSort v-if="row.sortFn" :sort-fn="row.sortFn" />
+      <!-- Sorting button -->
+      <!-- TODO: Show the icon if >= 3 libs and values are different -->
+      <MetricSort
+        v-if="row.sortFn"
+        class="hidden sm:block"
+        :sort-fn="row.sortFn"
+      />
+    </div>
   </div>
 </template>
 
