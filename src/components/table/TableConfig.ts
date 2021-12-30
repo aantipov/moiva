@@ -1,4 +1,5 @@
-import { LibraryT, StatusT } from '@/getLibrary';
+import { TRadarLevelT } from '@/data';
+import { LibraryT, LicenseTypeT, StatusT } from '@/getLibrary';
 import { prevQuarter } from '@/utils';
 import { ascend } from 'ramda';
 
@@ -243,6 +244,16 @@ export const ROWS: MetricDataT[] = [
       path: 'npmReleasesLastQ',
       stepPrecision: 0,
     },
+    sortFn: (a, b) => {
+      if (
+        Number.isInteger(a.npmReleasesLastQ) &&
+        Number.isInteger(b.npmReleasesLastQ)
+      ) {
+        // @ts-ignore
+        return b.npmReleasesLastQ - a.npmReleasesLastQ;
+      }
+      return 0;
+    },
   },
 
   {
@@ -255,6 +266,16 @@ export const ROWS: MetricDataT[] = [
       title: `Contributors in ${prevQuarter}`,
       path: 'contributorsLastQ',
       stepPrecision: 0,
+    },
+    sortFn: (a, b) => {
+      if (
+        Number.isInteger(a.contributorsLastQ) &&
+        Number.isInteger(b.contributorsLastQ)
+      ) {
+        // @ts-ignore
+        return b.contributorsLastQ - a.contributorsLastQ;
+      }
+      return 0;
     },
   },
 
@@ -269,6 +290,16 @@ export const ROWS: MetricDataT[] = [
       path: 'commitsLastQ',
       stepPrecision: 0,
     },
+    sortFn: (a, b) => {
+      if (
+        Number.isInteger(a.commitsLastQ) &&
+        Number.isInteger(b.commitsLastQ)
+      ) {
+        // @ts-ignore
+        return b.commitsLastQ - a.commitsLastQ;
+      }
+      return 0;
+    },
   },
 
   {
@@ -281,6 +312,16 @@ export const ROWS: MetricDataT[] = [
       path: 'npmDependencies',
       sortDirFn: ascend,
       stepPrecision: 0,
+    },
+    sortFn: (a, b) => {
+      if (
+        Number.isInteger(a.npmDependencies) &&
+        Number.isInteger(b.npmDependencies)
+      ) {
+        // @ts-ignore
+        return a.npmDependencies - b.npmDependencies;
+      }
+      return 0;
     },
   },
 
@@ -295,6 +336,16 @@ export const ROWS: MetricDataT[] = [
       path: 'bundlesize.gzipKb',
       sortDirFn: ascend,
     },
+    sortFn: (a, b) => {
+      if (
+        Number.isInteger(a.bundlesize?.gzip) &&
+        Number.isInteger(b.bundlesize?.gzip)
+      ) {
+        // @ts-ignore
+        return a.bundlesize.gzip - b.bundlesize.gzip;
+      }
+      return 0;
+    },
   },
 
   {
@@ -303,6 +354,18 @@ export const ROWS: MetricDataT[] = [
     label: 'Types',
     tooltip:
       '<p>TypeScript support.</p> <p>"BUNDLED" - typings are bundled together with the package.</p> <p>"SEPARATE" - typings are published to the @types organization on Npm</p>',
+    sortFn: (a, b) => {
+      const getValue = (x: LibraryT) => {
+        if (x.npmPackage?.hasBuiltinTypes) {
+          return 2;
+        }
+        if (x.npmPackage?.hasOtherTypes) {
+          return 1;
+        }
+        return 0;
+      };
+      return getValue(a) - getValue(b);
+    },
   },
 
   {
@@ -311,6 +374,19 @@ export const ROWS: MetricDataT[] = [
     label: 'Tech Radar',
     tooltip:
       '<p>A ThoughtWorks tech radar “ring” assigned to the library.</p> <p>Four possible rings - “Adopt”, “Trial”, “Assess”, and “Hold”.</p>',
+    sortFn: (a, b) => {
+      const tradarToValMap: Record<TRadarLevelT, number> = {
+        Adopt: 0,
+        Trial: 1,
+        Assess: 2,
+        Hold: 3,
+      };
+      const getValue = (x: LibraryT) => {
+        const tradar = x.tradar?.entries.slice(-1)[0].level;
+        return tradar ? tradarToValMap[tradar] : 4;
+      };
+      return getValue(a) - getValue(b);
+    },
   },
 
   {
@@ -337,6 +413,20 @@ export const ROWS: MetricDataT[] = [
       title: 'Age',
       path: 'age',
     },
+    sortFn: (a, b) => b.age - a.age,
   },
-  { cat: 'Miscellaneous', metric: 'license', label: 'License' },
+  {
+    cat: 'Miscellaneous',
+    metric: 'license',
+    label: 'License',
+
+    sortFn: (a, b) => {
+      const licenseToValMap: Record<LicenseTypeT, number> = {
+        permissive: 0,
+        restrictive: 1,
+        unknown: 2,
+      };
+      return licenseToValMap[a.licenseType] - licenseToValMap[b.licenseType];
+    },
+  },
 ];
