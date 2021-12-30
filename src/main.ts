@@ -34,6 +34,7 @@ import DependencyIcon from '@/icons/DependencyIcon.vue';
 import ShieldIcon from '@/icons/ShieldIcon.vue';
 import BugIcon from '@/icons/BugIcon.vue';
 import HeartBeatIcon from '@/icons/HeartBeatIcon.vue';
+import SortIcon from '@/icons/SortIcon.vue';
 import Tag from '@/components/Tag.vue';
 import ChartInfo from '@/components/ChartInfo.vue';
 import ChartMenu from '@/components/ChartMenu.vue';
@@ -83,7 +84,8 @@ app
   .component('MVulnerabilityIcon', BugIcon)
   .component('MSecurityIcon', ShieldIcon)
   .component('MBundlesizeIcon', CubeIcon)
-  .component('MTsIcon', TSIcon);
+  .component('MTsIcon', TSIcon)
+  .component('MSortIcon', SortIcon);
 
 app
   .component('MClose', Close)

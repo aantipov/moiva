@@ -31,10 +31,14 @@
                 class="relative px-8 py-2 col"
               >
                 <div>{{ lib.alias }}</div>
-                <m-close
-                  class="absolute top-0 right-0 w-8 h-full px-2 cursor-pointer"
-                  @click="() => removeLibrary(lib.id)"
-                />
+                <div
+                  class="absolute top-0 right-0 w-10 h-full pl-2 cursor-pointer flex items-center"
+                >
+                  <m-close
+                    class="p-1 rounded-md hover:bg-black/20 hover:shadow-md active:shadow-none active:bg-black/40"
+                    @click="() => removeLibrary(lib.id)"
+                  />
+                </div>
               </th>
             </tr>
           </thead>

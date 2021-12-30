@@ -2,7 +2,7 @@
   <div class="inline-block">
     <a
       ref="triggerRef"
-      class="inline-block mt-2 mr-3 text-base"
+      class="inline-block mt-2 mr-1 px-1 rounded text-base hover:bg-black/10 hover:shadow-md active:bg-black/20 active:shadow-none"
       :href="getHrefForAdditionalLib(catalogLibrary)"
       @click.prevent="$emit('select', catalogLibrary)"
       >+ {{ catalogLibrary.alias }}</a

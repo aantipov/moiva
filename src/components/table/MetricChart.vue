@@ -1,7 +1,10 @@
 <template>
   <div>
-    <div ref="triggerRef" class="px-1 cursor-pointer">
-      <m-chart-icon class="text-gray-600 hover:text-black" />
+    <div
+      ref="triggerRef"
+      class="p-1 cursor-pointer hover:bg-black/20 rounded-md text-gray-600 hover:text-black hover:shadow-md"
+    >
+      <m-chart-icon />
     </div>
 
     <div

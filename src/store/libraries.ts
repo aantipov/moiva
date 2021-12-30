@@ -13,6 +13,16 @@ const librariesR = reactive<LibraryT[]>([]);
 const npmPackagesLoading = reactive<string[]>([]);
 const reposLoading = reactive<string[]>([]);
 
+export function sortLibraries(
+  sortFn: (_a: LibraryT, _b: LibraryT) => number,
+  isReverse = false
+): void {
+  librariesR.sort(sortFn);
+  if (isReverse) {
+    librariesR.reverse();
+  }
+}
+
 // ====== COMPUTED ======
 // deprecated in favor of librariesRR to make the value clear - reactive readonly
 export const libraries = readonly(librariesR);

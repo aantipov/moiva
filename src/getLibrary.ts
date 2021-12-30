@@ -69,6 +69,8 @@ export interface LicenseT {
   url: string;
 }
 
+export type LicenseTypeT = 'permissive' | 'restrictive' | 'unknown';
+
 export type StatusT = 'ACTIVE' | 'INACTIVE' | 'LEGACY' | 'ARCHIVED';
 
 const prevQuarterDate = subQuarters(new Date(), 1);
@@ -101,6 +103,7 @@ export interface LibraryT {
   commitsLastQ: number | undefined;
   languages: LanguagesT | null | undefined;
   license: LicenseT | null | undefined;
+  licenseType: LicenseTypeT;
   googleTrendsDef: GTrendDefT | null; // null if no config
   googleTrends: LibGTrendsT | undefined | null; // null for errors, undefined for not loaded yet
   devUsage: StateOfJSItemT | undefined;
@@ -121,6 +124,13 @@ export function getLibrary(
   const tags = (catalogLibrary && catalogLibrary.tags) || [];
   const id = nanoid();
   const repoIdLC = repo.repoId.toLowerCase();
+  const license = (() => {
+    const licenseKey =
+      npmPackage?.license?.toLowerCase() ||
+      repo.licenseInfo?.key?.toLowerCase();
+
+    return licenseKey ? licenses.find((item) => item.key === licenseKey) : null;
+  })() as LicenseT | null;
 
   return {
     id,
@@ -165,15 +175,16 @@ export function getLibrary(
     playground: (npmPackage && npmToPlaygroundMap[npmPackage.name]) || null,
     tradar: repoIdToTechRadarMap[repoIdLC] || null,
     // @ts-ignore
-    license: computed(() => {
-      const licenseKey =
-        npmPackage?.license?.toLowerCase() ||
-        repo.licenseInfo?.key?.toLowerCase();
-
-      return licenseKey
-        ? licenses.find((item) => item.key === licenseKey)
-        : null;
-    }),
+    license,
+    licenseType: (() => {
+      if (license?.key === 'mit') {
+        return 'permissive';
+      } else if (license?.key === 'apache-2.0') {
+        return 'restrictive';
+      } else {
+        return 'unknown';
+      }
+    })(),
     // @ts-ignore
     color: computed(() => libraryToColorMapR.get(id) || '#ffffff'),
     // @ts-ignore

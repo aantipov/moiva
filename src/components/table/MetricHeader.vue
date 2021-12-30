@@ -34,14 +34,28 @@
       </div>
     </div>
 
-    <!-- Chart Icon -->
-    <MetricChart v-if="row.chart" :metric-data="rowWithChart" />
+    <div class="flex ml-2">
+      <!-- Chart Icon -->
+      <MetricChart
+        v-if="row.chart && librariesIds.length > 1"
+        :metric-data="rowWithChart"
+      />
+
+      <!-- Sorting button -->
+      <MetricSort
+        v-if="row.sortFn && librariesIds.length > 2"
+        class="hidden sm:block"
+        :sort-fn="row.sortFn"
+      />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import MetricChart from './MetricChart.vue';
+import MetricSort from './MetricSort.vue';
 import { MetricT, MetricDataT, MetricDataWithChartT } from './TableConfig';
+import { librariesIds } from '@/store/libraries';
 
 const props = defineProps<{
   type: MetricT;

@@ -72,7 +72,7 @@ export function getLibraryHref(library: CatalogLibraryT): string {
 
 export const numbersFormatter = new Intl.NumberFormat('en-US', {
   notation: 'compact',
-  maximumFractionDigits: 2,
+  maximumFractionDigits: 1,
 });
 
 export const convertBytesToKb = (bytes: number): number =>
