@@ -274,9 +274,9 @@ export function getLibrary(
       }
       const lastStars = stars.slice(-3);
 
-      return (
+      return Math.round(
         lastStars.map((val) => val.stars).reduce((acc, val) => acc + val, 0) /
-        lastStars.length
+          lastStars.length
       );
     }),
     // @ts-ignore

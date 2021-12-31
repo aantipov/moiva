@@ -293,7 +293,7 @@ const starsGrowth = computed<string>(() => {
   const percentage = (100 * newStarsAvg) / total;
   const percentageFormatted = numbersFormatter.format(percentage);
 
-  return `${formatNumber(newStarsAvg, true)} = +${percentageFormatted}%`;
+  return `${formatNumber(newStarsAvg, true)} / +${percentageFormatted}%`;
 });
 
 const showStarsGrowthBoostIcon = computed<boolean>(() => {
