@@ -881,7 +881,7 @@
   },
   {
     "category": "GraphQL Client Libraries",
-    "repoId": "vuejs/vue-apollo",
+    "repoId": "vuejs/apollo",
     "npm": "vue-apollo",
     "isNpmCoreArtifact": true,
     "alias": "Vue Apollo",
@@ -1233,7 +1233,7 @@
   },
   {
     "category": "misc",
-    "repoId": "visionmedia/debug",
+    "repoId": "debug-js/debug",
     "npm": "debug",
     "isNpmCoreArtifact": true,
     "alias": null,
@@ -1321,7 +1321,7 @@
   },
   {
     "category": "misc",
-    "repoId": "reacttraining/react-router",
+    "repoId": "remix-run/react-router",
     "npm": "react-router",
     "isNpmCoreArtifact": true,
     "alias": null,
@@ -1841,7 +1841,7 @@
   },
   {
     "category": "misc",
-    "repoId": "mrrio/jspdf",
+    "repoId": "parallax/jspdf",
     "npm": "jspdf",
     "isNpmCoreArtifact": true,
     "alias": "jsPDF",
@@ -11697,7 +11697,7 @@
   },
   {
     "category": "NodeJS Frameworks",
-    "repoId": "strongloop/loopback-next",
+    "repoId": "loopbackio/loopback-next",
     "npm": "@loopback/core",
     "isNpmCoreArtifact": true,
     "alias": "LoopBack 4",
@@ -11953,7 +11953,7 @@
   },
   {
     "category": "Tooltips, Popovers, Modals",
-    "repoId": "popperjs/popper-core",
+    "repoId": "floating-ui/floating-ui",
     "npm": "@popperjs/core",
     "isNpmCoreArtifact": true,
     "alias": "Popper",
@@ -12001,7 +12001,7 @@
   },
   {
     "category": "Tooltips, Popovers, Modals",
-    "repoId": "popperjs/react-popper",
+    "repoId": "floating-ui/react-popper",
     "npm": "react-popper",
     "isNpmCoreArtifact": true,
     "alias": "React Popper",
@@ -12185,7 +12185,7 @@
   },
   {
     "category": "ReactJS Form Libraries",
-    "repoId": "formium/formik",
+    "repoId": "jaredpalmer/formik",
     "npm": "formik",
     "isNpmCoreArtifact": true,
     "alias": null,
@@ -12841,7 +12841,7 @@
   },
   {
     "category": "Static Site Generators / JAMStack",
-    "repoId": "snowpackjs/astro",
+    "repoId": "withastro/astro",
     "npm": "astro",
     "isNpmCoreArtifact": true,
     "alias": null,
