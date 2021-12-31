@@ -423,7 +423,7 @@
     [{ "month": "2018-05", "level": "Assess" }]
   ],
   [
-    "formium/formik",
+    "jaredpalmer/formik",
     "Formik",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/formik",
     [{ "month": "2019-04", "level": "Trial" }]
