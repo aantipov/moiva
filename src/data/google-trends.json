@@ -52,11 +52,11 @@
   ["leaflet/leaflet", "/m/0w532pk", "Leaflet"],
   ["openlayers/openlayers", "/m/026mggv", "OpenLayers"],
   ["gulpjs/gulp", "/g/11byyl8mbg", "gulp.js"],
-  ["reacttraining/react-router", "react router", "react router"],
+  ["remix-run/react-router", "react router", "react router"],
   ["babel/babel", "/g/11ghnfnyfx", "Babel"],
   ["unitech/pm2", "/g/11c0q_hyv5", "PM2"],
   ["remy/nodemon", "nodemon", "nodemon"],
-  ["formium/formik", "formik", "formik"],
+  ["jaredpalmer/formik", "formik", "formik"],
   ["enzymejs/enzyme", "/m/02jgw", "Enzyme"],
   ["avajs/ava", "ava", "ava"]
 ]
