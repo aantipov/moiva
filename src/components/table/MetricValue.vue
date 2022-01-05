@@ -53,6 +53,13 @@
     <template v-else>-</template>
   </div>
 
+  <div
+    v-else-if="type === 'description'"
+    class="flex flex-wrap justify-center text-sm text-center"
+  >
+    {{ lib.npmPackage?.description }}
+  </div>
+
   <div v-else-if="type === 'stars'">
     <div class="flex justify-end">
       {{ formatNumber(lib.repo.stars) }}
