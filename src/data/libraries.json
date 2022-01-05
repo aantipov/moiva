@@ -881,6 +881,14 @@
   },
   {
     "category": "GraphQL Client Libraries",
+    "repoId": "prisma-labs/graphql-request",
+    "npm": "graphql-request",
+    "isNpmCoreArtifact": true,
+    "alias": "graphql-request",
+    "tags": ["GraphQL-client"]
+  },
+  {
+    "category": "GraphQL Client Libraries",
     "repoId": "vuejs/apollo",
     "npm": "vue-apollo",
     "isNpmCoreArtifact": true,
