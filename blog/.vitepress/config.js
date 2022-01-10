@@ -7,7 +7,7 @@ module.exports = {
       'script',
       {},
       `
-    if (!window.location.href.endsWith('/')) {
+    if (!window.location.href.endsWith('/') && !window.location.href.includes('#')) {
       window.location.assign(window.location.href + '/');
     }
     `,
