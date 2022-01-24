@@ -9,6 +9,7 @@ import 'tippy.js/animations/shift-away.css';
 import * as Sentry from '@sentry/vue';
 import { Integrations } from '@sentry/tracing';
 import '../chartjs.config';
+import { VueQueryPlugin } from 'vue-query';
 import App from '@/App.vue';
 import CatalogApp from './CatalogApp.vue';
 import AboutApp from './AboutApp.vue';
@@ -64,6 +65,8 @@ if (process.env.NODE_ENV !== 'development') {
     tracesSampleRate: 1.0,
   });
 }
+
+app.use(VueQueryPlugin);
 
 // Table metrics icons
 app

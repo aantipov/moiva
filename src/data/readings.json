@@ -124,11 +124,5 @@
     "url": "https://css-tricks.com/comparing-the-new-generation-of-build-tools/",
     "npms": ["esbuild", "snowpack", "vite", "wmr"],
     "repos": []
-  },
-  {
-    "title": "Web Almanac 2021: Jamstack",
-    "url": "https://almanac.httparchive.org/en/2021/jamstack",
-    "npms": ["next", "gatsby", "nuxt", "@11ty/eleventy"],
-    "repos": ["gohugoio/hugo", "jekyll/jekyll", "hexojs/hexo"]
   }
 ]

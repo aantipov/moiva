@@ -23,6 +23,8 @@ import {
   LibGTrendsT,
   cacheR as googleTrendsMapR,
 } from '@/components/google-trends/api';
+import { gTrendsQueryRef } from '@/composables/useExtraDataApi';
+import { LibGTrendsDataT } from '@/queries/useGTrendsQuery';
 import {
   repoIdToDevUsageDataMap,
   repoIdToTechRadarMap,
@@ -106,6 +108,12 @@ export interface LibraryT {
   licenseType: LicenseTypeT;
   googleTrendsDef: GTrendDefT | null; // null if no config
   googleTrends: LibGTrendsT | undefined | null; // null for errors, undefined for not loaded yet
+  googleTrendsNew: {
+    data: LibGTrendsDataT | undefined;
+    isFetching: boolean;
+    isError: boolean;
+    meta: GTrendDefT;
+  } | null;
   devUsage: StateOfJSItemT | undefined;
   devUsageLast: number | undefined;
   stars: LibStarsT;
@@ -288,6 +296,19 @@ export function getLibrary(
     googleTrendsDef: repoToGTrendDefMap[repoIdLC] || null,
     // @ts-ignore
     googleTrends: computed(() => googleTrendsMapR.get(repoIdLC)),
+    // @ts-ignore
+    googleTrendsNew: computed(() => {
+      if (!repoToGTrendDefMap[repoIdLC] || !gTrendsQueryRef.value) {
+        return null;
+      }
+      const { data, isFetching, isError } = gTrendsQueryRef.value;
+      return {
+        data: data?.get(repoIdLC),
+        isFetching,
+        isError,
+        meta: repoToGTrendDefMap[repoIdLC],
+      };
+    }),
     // @ts-ignore
     commits: computed(() => commitsMapR.get(repoIdLC)),
     // @ts-ignore
