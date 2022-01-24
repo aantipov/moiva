@@ -1,5 +1,7 @@
 <template>
   <div style="min-height: 50vh">
+    <VueQueryDevTools />
+
     <div class="container mt-8 antialiased content">
       <Search class="w-full mx-auto lg:w-9/12 xl:w-2/4" @select="select" />
       <Suggestions @select="select" />
@@ -130,6 +132,8 @@
 
 <script setup lang="ts">
 import { onMounted, watchEffect, computed } from 'vue';
+import { VueQueryDevTools } from 'vue-query/devtools';
+
 import NpmDownloads from '@/components/downloads/NpmDownloadsChart.vue';
 import Title from '@/components/Title.vue';
 import Search from '@/components/search/Search.vue';
@@ -164,7 +168,9 @@ import {
   addLibraryByRepo,
   removeAllLibraries,
 } from '@/store/libraries';
-import useExtraDataApi from '@/composables/useExtraDataApi';
+import useExtraDataApiLegacy, {
+  useExtraDataApi,
+} from '@/composables/useExtraDataApi';
 import { useDocumentTitle } from '@/composables/useDocumentTitle';
 import { useDocumentDescription } from '@/composables/useDocumentDescription';
 import { useUrl } from '@/composables/useUrl';
@@ -190,13 +196,14 @@ onMounted(() => {
   });
 
   // Load libraries extra data
-  useExtraDataApi();
+  useExtraDataApiLegacy();
 });
 
 // Keep Title, Description and Url in sync with the selected libraries
 useDocumentTitle();
 useDocumentDescription();
 useUrl();
+useExtraDataApi();
 
 const popularChartsNumber = computed(
   () =>
