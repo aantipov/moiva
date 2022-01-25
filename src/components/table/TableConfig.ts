@@ -174,18 +174,18 @@ export const ROWS: MetricDataT[] = [
       percent: true,
     },
     sortFn: (a, b) => {
-      if (!a._googleTrends && !b._googleTrends) {
+      if (!a.googleTrends?.data && !b.googleTrends?.data) {
         return 0;
       }
-      if (!a._googleTrends) {
+      if (!a.googleTrends?.data) {
         return 1;
       }
-      if (!b._googleTrends) {
+      if (!b.googleTrends?.data) {
         return -1;
       }
 
       // @ts-ignore
-      return b._googleTrends.average - a._googleTrends.average;
+      return b.googleTrends.data.average - a.googleTrends.data.average;
     },
   },
 

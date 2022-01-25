@@ -19,10 +19,6 @@ import {
   NpmDownloadT,
   cacheR as npmDownloadsMapR,
 } from '@/components/downloads/api';
-import {
-  LibGTrendsT,
-  cacheR as googleTrendsMapR,
-} from '@/components/google-trends/api';
 import { gTrendsQueryRef } from '@/composables/useExtraDataApi';
 import { LibGTrendsDataT } from '@/queries/useGTrendsQuery';
 import {
@@ -106,8 +102,6 @@ export interface LibraryT {
   languages: LanguagesT | null | undefined;
   license: LicenseT | null | undefined;
   licenseType: LicenseTypeT;
-  _googleTrendsDef: GTrendDefT | null; // null if no config
-  _googleTrends: LibGTrendsT | undefined | null; // null for errors, undefined for not loaded yet
   googleTrends: {
     data: LibGTrendsDataT | undefined;
     isFetching: boolean;
@@ -293,9 +287,6 @@ export function getLibrary(
     ),
     devUsage: repoIdToDevUsageDataMap[repoIdLC],
     devUsageLast: repoIdToDevUsageDataMap[repoIdLC]?.usage.slice(-1)[0].value,
-    _googleTrendsDef: repoToGTrendDefMap[repoIdLC] || null,
-    // @ts-ignore
-    _googleTrends: computed(() => googleTrendsMapR.get(repoIdLC)),
     // @ts-ignore
     googleTrends: computed(() => {
       if (!repoToGTrendDefMap[repoIdLC] || !gTrendsQueryRef.value) {
