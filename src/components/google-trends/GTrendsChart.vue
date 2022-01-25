@@ -45,7 +45,7 @@ interface FilteredLibT extends Omit<LibraryReadonlyT, 'googleTrends'> {
   readonly googleTrends: NonNullable<LibraryReadonlyT['googleTrends']>;
 }
 interface FilteredLibWithDataT extends Omit<FilteredLibT, 'googleTrends'> {
-  readonly googleTrends: LibraryReadonlyT['googleTrends'] & {
+  readonly googleTrends: Omit<FilteredLibT['googleTrends'], 'data'> & {
     readonly data: NonNullable<FilteredLibT['googleTrends']['data']>;
   };
 }
