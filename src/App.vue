@@ -43,20 +43,21 @@
           <Table category="Popularity" class="mt-4 mb-12" />
 
           <div class="grid grid-cols-12 gap-8">
-            <template v-if="popularChartsNumber === 1">
-              <Stars
-                class="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4 shadow-xl"
-              />
-              <NpmDownloads class="shadow-xl" />
-              <GoogleTrends class="shadow-xl" />
-              <DevelopersUsage class="shadow-xl" />
-            </template>
-            <template v-else>
-              <NpmDownloads class="col-span-12 md:col-span-6 shadow-xl" />
-              <GoogleTrends class="col-span-12 md:col-span-6 shadow-xl" />
-              <Stars class="col-span-12 md:col-span-6 shadow-xl" />
-              <DevelopersUsage class="col-span-12 md:col-span-6 shadow-xl" />
-            </template>
+            <NpmDownloads
+              v-if="chartsVisibilityRO.npmDownloads"
+              class="popchartmany"
+            />
+            <Stars
+              :class="popularChartsNumber === 1 ? 'popchart1' : 'popchartmany'"
+            />
+            <GoogleTrends
+              v-if="chartsVisibilityRO.googleTrends"
+              class="popchartmany"
+            />
+            <DevelopersUsage
+              v-if="chartsVisibilityRO.developerUsage"
+              class="popchartmany"
+            />
           </div>
         </div>
       </section>
@@ -74,26 +75,16 @@
           <Table category="Maintenance" class="mt-4 mb-12" />
 
           <div class="grid grid-cols-12 gap-8">
-            <template v-if="maintChartsNumber === 2">
-              <Releases class="shadow-xl" />
-              <Contributors
-                class="col-span-12 md:col-span-6 xl:col-span-5 xl:col-start-2 shadow-xl"
-              />
-              <Commits
-                class="col-span-12 md:col-span-6 xl:col-span-5 shadow-xl"
-              />
-            </template>
-            <template v-else-if="maintChartsNumber === 3">
-              <Releases
-                class="col-span-12 md:col-span-6 xl:col-span-4 shadow-xl"
-              />
-              <Contributors
-                class="col-span-12 md:col-span-6 xl:col-span-4 shadow-xl"
-              />
-              <Commits
-                class="col-span-12 md:col-span-6 xl:col-span-4 shadow-xl"
-              />
-            </template>
+            <Releases
+              v-if="chartsVisibilityRO.npmReleases"
+              class="maintchart3"
+            />
+            <Contributors
+              :class="maintChartsNumber === 2 ? 'maintchart2' : 'maintchart3'"
+            />
+            <Commits
+              :class="maintChartsNumber === 2 ? 'maintchart2' : 'maintchart3'"
+            />
           </div>
         </div>
       </section>
@@ -109,20 +100,13 @@
           <Table category="Miscellaneous" class="mt-4 mb-12" />
 
           <div class="grid grid-cols-12 gap-8">
-            <template v-if="miscChartsNumber === 1">
-              <Languages
-                class="col-span-12 md:col-span-6 md:col-start-4 shadow-xl"
-              />
-              <TechRadar class="shadow-xl" />
-            </template>
-            <template v-else-if="miscChartsNumber === 2">
-              <Languages
-                class="col-span-12 md:col-span-6 xl:col-span-5 xl:col-start-2 shadow-xl"
-              />
-              <TechRadar
-                class="col-span-12 md:col-span-6 xl:col-span-5 shadow-xl"
-              />
-            </template>
+            <Languages
+              :class="miscChartsNumber === 1 ? 'miscchart1' : 'miscchartmany'"
+            />
+            <TechRadar
+              v-if="chartsVisibilityRO.techRadar"
+              class="miscchartmany"
+            />
           </div>
         </div>
       </section>
@@ -131,7 +115,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, watchEffect, computed } from 'vue';
+import { onMounted, watchEffect, computed, readonly } from 'vue';
 import { VueQueryDevTools } from 'vue-query/devtools';
 
 import NpmDownloads from '@/components/downloads/NpmDownloadsChart.vue';
@@ -152,7 +136,6 @@ import DevelopersUsage from '@/components/developer-usage/DeveloperUsageChart.vu
 import Commits from '@/components/commits/CommitsChart.vue';
 
 import { CAT_CONFIG } from '@/components/table/TableConfig';
-import { chartsVisibility } from '@/store/chartsVisibility';
 import {
   getNpmPackagesFromUrl,
   getReposIdsFromUrl,
@@ -175,6 +158,7 @@ import { useDocumentTitle } from '@/composables/useDocumentTitle';
 import { useDocumentDescription } from '@/composables/useDocumentDescription';
 import { useUrl } from '@/composables/useUrl';
 import * as Sentry from '@sentry/vue';
+import { useChartsVisibility } from './composables/useChartsVisibility';
 
 // Do not allow Google index pages with >=3 libraries
 setNoFollowTag();
@@ -204,23 +188,24 @@ useDocumentTitle();
 useDocumentDescription();
 useUrl();
 useExtraDataApi();
+const chartsVisibilityRO = readonly(useChartsVisibility());
 
 const popularChartsNumber = computed(
   () =>
     [
-      chartsVisibility.npmDownloads,
-      chartsVisibility.googleTrends,
-      chartsVisibility.developerUsage,
+      chartsVisibilityRO.npmDownloads,
+      chartsVisibilityRO.googleTrends,
+      chartsVisibilityRO.developerUsage,
       true,
     ].filter(Boolean).length
 );
 
 const maintChartsNumber = computed(
-  () => [chartsVisibility.npmReleases, true, true].filter(Boolean).length
+  () => [chartsVisibilityRO.npmReleases, true, true].filter(Boolean).length
 );
 
 const miscChartsNumber = computed(
-  () => [chartsVisibility.techRadar, true].filter(Boolean).length
+  () => [chartsVisibilityRO.techRadar, true].filter(Boolean).length
 );
 
 // User uses Back/Forward Browser buttons
@@ -277,3 +262,30 @@ function clearSelection() {
   removeAllLibraries();
 }
 </script>
+
+<style lang="postcss" scoped>
+.popchart1 {
+  @apply col-span-12 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4 shadow-xl;
+}
+.popchartmany {
+  @apply col-span-12 md:col-span-6 shadow-xl;
+}
+.maintchart2 {
+  @apply col-span-12 md:col-span-6 xl:col-span-5 shadow-xl;
+}
+.maintchart2:first-child {
+  @apply xl:col-start-2;
+}
+.maintchart3 {
+  @apply col-span-12 md:col-span-6 xl:col-span-4 shadow-xl;
+}
+.miscchart1 {
+  @apply col-span-12 md:col-span-6 md:col-start-4 shadow-xl;
+}
+.miscchartmany {
+  @apply col-span-12 md:col-span-6 xl:col-span-5 shadow-xl;
+}
+.miscchartmany:first-child {
+  @apply xl:col-start-2;
+}
+</style>

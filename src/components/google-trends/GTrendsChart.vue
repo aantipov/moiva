@@ -1,6 +1,5 @@
 <template>
   <m-chart
-    v-if="isDisplayed"
     title="Google Search Interest"
     :is-loading="isLoadingRef"
     :is-error="isError"
@@ -31,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, watchEffect, ref, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { ChartConfiguration, ChartDataset } from 'chart.js';
 import { GTrendDefT, GOOGLE_TRENDS_LIBS_LIMIT } from '@/data/index';
 import { numbersFormatter, getDateRanges } from '@/utils';
@@ -43,17 +42,11 @@ import {
   librariesRR,
   isLoading as isLoadingLibraries,
 } from '@/store/libraries';
-import { chartsVisibility } from '@/store/chartsVisibility';
 
 interface FilteredLibT extends LibraryReadonlyT {
   googleTrendsDef: GTrendDefT;
   googleTrends: LibGTrendsT;
 }
-
-watchEffect(() => {
-  chartsVisibility.googleTrends =
-    librariesRR.filter((lib) => !!lib.googleTrendsDef).length > 0;
-});
 
 const filteredLibsRef = computed(
   () => librariesRR.filter((lib) => !!lib.googleTrends) as FilteredLibT[]
@@ -124,8 +117,6 @@ const isLoadingRef = computed(
       librariesRR.filter((lib) => !!lib.googleTrends).length <
         GOOGLE_TRENDS_LIBS_LIMIT)
 );
-
-const isDisplayed = computed(() => chartsVisibility.googleTrends);
 
 const isError = computed(() => filteredLibsRef.value.length === 0);
 

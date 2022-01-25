@@ -1,6 +1,5 @@
 <template>
   <m-chart
-    v-if="isDisplayed"
     title="Developer Usage, %"
     :is-loading="isLoading"
     :is-error="false"
@@ -31,12 +30,11 @@
 </template>
 
 <script setup lang="ts">
-import { computed, watchEffect } from 'vue';
+import { computed } from 'vue';
 import { ChartConfiguration } from 'chart.js';
 import { StateOfJSItemT } from '@/data/index';
 import { LibraryReadonlyT } from '@/libraryApis';
 import { librariesRR, isLoading } from '@/store/libraries';
-import { chartsVisibility } from '@/store/chartsVisibility';
 
 interface FilteredLibT extends LibraryReadonlyT {
   devUsage: StateOfJSItemT;
@@ -44,15 +42,6 @@ interface FilteredLibT extends LibraryReadonlyT {
 const filteredLibsRef = computed(
   () => librariesRR.filter((lib) => !!lib.devUsage) as FilteredLibT[]
 );
-
-watchEffect(() => {
-  chartsVisibility.developerUsage =
-    filteredLibsRef.value.length > 0 &&
-    !(
-      filteredLibsRef.value.length === 1 &&
-      filteredLibsRef.value[0].devUsage.usage.length === 1
-    );
-});
 
 const chartConfig = computed<ChartConfiguration>(() => ({
   type: 'line',
@@ -95,8 +84,6 @@ const chartConfig = computed<ChartConfiguration>(() => ({
     },
   },
 }));
-
-const isDisplayed = computed(() => chartsVisibility.developerUsage);
 
 const libsNames = computed(() =>
   filteredLibsRef.value.map((lib) => lib.devUsage.name)
