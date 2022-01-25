@@ -2,14 +2,14 @@
   <div>
     <div
       ref="triggerRef"
-      class="p-1 cursor-pointer hover:bg-black/20 rounded-md text-gray-600 hover:text-black hover:shadow-md"
+      class="cursor-pointer rounded-md p-1 text-gray-600 hover:bg-black/20 hover:text-black hover:shadow-md"
     >
       <m-chart-icon />
     </div>
 
     <div
       ref="contentRef"
-      class="text-gray-800 font-normal -mx-2 divide-gray-300 divide-y"
+      class="-mx-2 divide-y divide-gray-300 font-normal text-gray-800"
       @click="hide"
     >
       <div style="width: 500px; max-width: 100%" class="overflow-y-hidden">
@@ -149,7 +149,7 @@ const chartConfig = computed<ChartConfiguration<'bar'>>(() => {
   max-width: 90vw !important;
   max-height: 80vh !important;
   padding: 0px;
-  @apply bg-gray-100 border-gray-300 border shadow;
+  @apply border border-gray-300 bg-gray-100 shadow;
 }
 
 /* The border */

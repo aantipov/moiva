@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full mx-auto lg:w-9/12 xl:w-2/4">
+  <div class="mx-auto w-full lg:w-9/12 xl:w-2/4">
     <!-- Catalog Header -->
     <div class="flex items-center justify-start">
       <img
@@ -9,7 +9,7 @@
         height="100"
         class="mr-4"
       />
-      <h1 class="w-auto m-0 text-5xl">
+      <h1 class="m-0 w-auto text-5xl">
         <a href="/" title="Home">Moiva.io</a>
       </h1>
     </div>

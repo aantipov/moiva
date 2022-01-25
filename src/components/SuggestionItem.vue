@@ -2,7 +2,7 @@
   <div class="inline-block">
     <a
       ref="triggerRef"
-      class="inline-block mt-2 mr-1 px-1 rounded text-base hover:bg-black/10 hover:shadow-md active:bg-black/20 active:shadow-none"
+      class="mt-2 mr-1 inline-block rounded px-1 text-base hover:bg-black/10 hover:shadow-md active:bg-black/20 active:shadow-none"
       :href="getHrefForAdditionalLib(catalogLibrary)"
       @click.prevent="$emit('select', catalogLibrary)"
       >+ {{ catalogLibrary.alias }}</a
@@ -21,7 +21,7 @@
       </div>
 
       <!-- Loading -->
-      <div v-if="isLoading" class="flex justify-center my-3">
+      <div v-if="isLoading" class="my-3 flex justify-center">
         <m-loader-tail-spin />
       </div>
 
@@ -38,7 +38,7 @@
           </div>
           <div
             v-if="lib?.npmDownloadsAvg"
-            class="flex items-center font-normal ml-3"
+            class="ml-3 flex items-center font-normal"
           >
             <m-download-icon />
             {{ downloads }}/mo
@@ -47,11 +47,11 @@
       </template>
 
       <!-- Tags -->
-      <div class="flex flex-wrap mt-2">
+      <div class="mt-2 flex flex-wrap">
         <div
           v-for="tag in catalogLibrary.tags"
           :key="tag"
-          class="flex justify-center items-center rounded-full border border-blue-300 bg-blue-200 m-1 px-2"
+          class="m-1 flex items-center justify-center rounded-full border border-blue-300 bg-blue-200 px-2"
         >
           {{ tag }}
         </div>
@@ -144,13 +144,13 @@ async function _fetchData() {
 
 <style lang="postcss">
 .tippy-box[data-theme~='suggestion-tp'] {
-  @apply bg-gray-200 border border-gray-300 shadow-md;
+  @apply border border-gray-300 bg-gray-200 shadow-md;
 }
 .tippy-box[data-theme~='suggestion-tp'] .tippy-content {
   @apply text-base text-gray-800;
 }
 .tippy-box[data-theme~='suggestion-tp'] .menu-item {
-  @apply whitespace-nowrap text-xl sm:text-base py-2 px-2 hover:bg-gray-600 hover:text-white;
+  @apply whitespace-nowrap py-2 px-2 text-xl hover:bg-gray-600 hover:text-white sm:text-base;
 }
 /* Arrow border */
 .tippy-box[data-theme~='suggestion-tp'] > .tippy-svg-arrow > svg:first-child {

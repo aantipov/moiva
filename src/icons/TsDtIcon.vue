@@ -1,7 +1,7 @@
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    class="w-5 h-5"
+    class="h-5 w-5"
     viewBox="0 0 256 256"
     style="enable-background: new 0 0 256 256"
   >

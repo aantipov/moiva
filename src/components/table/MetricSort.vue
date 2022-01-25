@@ -1,6 +1,6 @@
 <template>
   <div
-    class="p-1 cursor-pointer rounded-md text-gray-600 hover:text-black hover:shadow-md active:shadow-none hover:bg-black/20 active:bg-black/40"
+    class="cursor-pointer rounded-md p-1 text-gray-600 hover:bg-black/20 hover:text-black hover:shadow-md active:bg-black/40 active:shadow-none"
     @click="sortFn"
   >
     <m-sort-icon />

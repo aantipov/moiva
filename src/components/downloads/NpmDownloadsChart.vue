@@ -9,11 +9,11 @@
     :aria-label="ariaLabel"
   >
     <template #footer>
-      <div class="flex justify-center mb-3 relative">
+      <div class="relative mb-3 flex justify-center">
         <select
           v-model="selectedSinceRef"
           name="date-range"
-          class="bg-gray-200 border rounded-md p-1 border-gray-300"
+          class="rounded-md border border-gray-300 bg-gray-200 p-1"
         >
           <option v-for="val in sinceValues" :key="val" :value="val">
             since {{ val }}

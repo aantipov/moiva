@@ -5,7 +5,7 @@
       <div
         v-for="(reading, index) in readings"
         :key="reading.url"
-        class="mb-1 w-max text-lg max-w-full"
+        class="mb-1 w-max max-w-full text-lg"
       >
         <span class="mr-1">{{ index + 1 }}.</span>
         <a :href="reading.url" target="_blank">{{ reading.title }}</a>

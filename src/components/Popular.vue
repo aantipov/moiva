@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-col items-start mx-2 sm:items-center">
-    <h2 class="self-center mt-4 mb-2 sm:mt-8">Popular comparisons</h2>
+  <div class="mx-2 flex flex-col items-start sm:items-center">
+    <h2 class="mt-4 mb-2 self-center sm:mt-8">Popular comparisons</h2>
 
     <div v-for="item in items" :key="item.name" class="mb-2">
       <a

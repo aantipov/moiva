@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-gray-100 rounded relative overflow-hidden"
+    class="relative overflow-hidden rounded bg-gray-100"
     :class="{ withBorder: !popupMode }"
   >
     <m-loader v-if="isLoading" />
@@ -57,22 +57,22 @@
     <!--  Chart Actions -->
     <div
       v-if="popupMode"
-      class="flex justify-center relative"
+      class="relative flex justify-center"
       style="height: 50px"
     >
-      <span class="link text-center w-1/3 px-2" @click="copyShare"
+      <span class="link w-1/3 px-2 text-center" @click="copyShare"
         >Copy and Share (Twitter)</span
       >
-      <span class="link text-center w-1/3 px-2" @click="copy"
+      <span class="link w-1/3 px-2 text-center" @click="copy"
         >Copy to Clipboard</span
       >
-      <span class="link text-center w-1/3" @click="download">Download</span>
+      <span class="link w-1/3 text-center" @click="download">Download</span>
     </div>
 
     <!--  Footer -->
     <div
       v-if="$slots.footer || dataSourceTxt"
-      class="relative text-center mb-3 text-gray-700"
+      class="relative mb-3 text-center text-gray-700"
     >
       <slot name="footer">
         <div v-if="dataSourceTxt" class="flex justify-center">

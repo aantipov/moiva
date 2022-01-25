@@ -4,7 +4,7 @@
 
     <div class="flex justify-center">
       <div
-        class="overflow-scroll border rounded-md shadow-xl"
+        class="overflow-scroll rounded-md border shadow-xl"
         :class="{
           [CAT_CONFIG[category].borderColor]: true,
         }"
@@ -18,7 +18,7 @@
           >
             <tr>
               <td
-                class="text-center px-1 py-2 font-bold"
+                class="px-1 py-2 text-center font-bold"
                 :class="{
                   [CAT_CONFIG[category].bgHeaderColor]: true,
                 }"
@@ -28,14 +28,14 @@
                 v-for="lib in libraries"
                 :key="lib.id"
                 scope="col"
-                class="relative px-8 py-2 col"
+                class="col relative px-8 py-2"
               >
                 <div>{{ lib.alias }}</div>
                 <div
-                  class="absolute top-0 right-0 w-10 h-full pl-2 cursor-pointer flex items-center"
+                  class="absolute top-0 right-0 flex h-full w-10 cursor-pointer items-center pl-2"
                 >
                   <m-close
-                    class="p-1 rounded-md hover:bg-black/20 hover:shadow-md active:shadow-none active:bg-black/40"
+                    class="rounded-md p-1 hover:bg-black/20 hover:shadow-md active:bg-black/40 active:shadow-none"
                     @click="() => removeLibrary(lib.id)"
                   />
                 </div>
@@ -48,7 +48,7 @@
               <!-- Metric header -->
               <th
                 scope="row"
-                class="px-2 border-r border-separate"
+                class="border-separate border-r px-2"
                 :class="{
                   'border-b':
                     index < rows.length - 1 && row.cat !== rows[index + 1].cat,
@@ -62,7 +62,7 @@
               <td
                 v-for="(lib, i) in libraries"
                 :key="lib.id"
-                class="p-2 bg-white col"
+                class="col bg-white p-2"
                 :class="{
                   'bg-opacity-80': index % 2,
                   'bg-opacity-70': !(index % 2),
@@ -120,7 +120,7 @@ const rows = computed(() => {
 
 <style lang="postcss" scoped>
 .link {
-  @apply font-mono text-sm sm:text-base font-medium;
+  @apply font-mono text-sm font-medium sm:text-base;
 }
 table {
   border-spacing: 0;

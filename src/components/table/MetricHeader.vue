@@ -1,13 +1,13 @@
 <template>
-  <div class="flex justify-between items-center">
+  <div class="flex items-center justify-between">
     <div
-      class="flex items-center justify-center sm:justify-start whitespace-nowrap"
+      class="flex items-center justify-center whitespace-nowrap sm:justify-start"
     >
       <!--  Icon  -->
       <component
         :is="row.icon || `m-${type}-icon`"
         v-tooltip.html="row.tooltip || row.label"
-        class="w-8 sm:hidden block"
+        class="block w-8 sm:hidden"
         :class="{
           'h-3': type === 'tradar',
           'flex-shrink-0': type === 'commits' || type === 'contributors',
@@ -18,7 +18,7 @@
       <!-- Label -->
       <div
         v-tooltip.html="row.tooltip || row.label"
-        class="text-left hidden sm:block sm:ml-1"
+        class="hidden text-left sm:ml-1 sm:block"
       >
         <div>
           {{ row.label }}
@@ -34,7 +34,7 @@
       </div>
     </div>
 
-    <div class="flex ml-2">
+    <div class="ml-2 flex">
       <!-- Chart Icon -->
       <MetricChart
         v-if="row.chart && librariesIds.length > 1"

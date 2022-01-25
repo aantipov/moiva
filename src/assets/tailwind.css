@@ -6,24 +6,24 @@
 
 @layer components {
   h1 {
-    @apply w-10/12 mx-auto mt-5 mb-2 text-2xl font-normal leading-normal text-center text-black text-opacity-80 sm:mt-8 sm:w-full sm:text-3xl;
+    @apply mx-auto mt-5 mb-2 w-10/12 text-center text-2xl font-normal leading-normal text-black text-opacity-80 sm:mt-8 sm:w-full sm:text-3xl;
   }
   h2 {
-    @apply mt-8 mb-2 text-2xl font-semibold leading-normal text-center text-black text-opacity-80 sm:mb-3;
+    @apply mt-8 mb-2 text-center text-2xl font-semibold leading-normal text-black text-opacity-80 sm:mb-3;
   }
   h3 {
     @apply text-xl font-normal text-black text-opacity-80;
   }
   .p {
-    @apply mt-0 mb-1 text-base font-light text-black text-opacity-90 leading-6;
+    @apply mt-0 mb-1 text-base font-light leading-6 text-black text-opacity-90;
   }
   a,
   .link {
-    @apply font-normal cursor-pointer text-primary;
+    @apply cursor-pointer font-normal text-primary;
   }
   a:hover,
   .link:hover {
-    @apply underline text-primary-dark;
+    @apply text-primary-dark underline;
   }
 
   a.primary-link {
@@ -37,16 +37,16 @@
   }
 
   .chart-error-new {
-    @apply flex items-center justify-center text-red-700 h-5/6;
+    @apply flex h-5/6 items-center justify-center text-red-700;
   }
   .toast-error-popup {
-    @apply bg-red-500 text-white py-3 !important;
+    @apply bg-red-500 py-3 text-white !important;
   }
   .toast-error-title {
-    @apply text-white mr-8 font-normal !important;
+    @apply mr-8 font-normal text-white !important;
   }
   .toast-error-close-btn {
-    @apply text-white static text-2xl font-semibold leading-none mr-1 outline-none focus:outline-none focus:shadow-none !important;
+    @apply static mr-1 text-2xl font-semibold leading-none text-white outline-none focus:shadow-none focus:outline-none !important;
   }
   .tippy-content,
   .tippy-content p {
