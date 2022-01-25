@@ -43,26 +43,33 @@
           <Table category="Popularity" class="mt-4 mb-12" />
 
           <div class="grid grid-cols-12 gap-8">
-            <template v-if="popularChartsNumber === 1">
-              <Stars
-                class="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4 shadow-xl"
-              />
-              <NpmDownloads class="shadow-xl" />
-              <GoogleTrends
-                v-if="chartsVisibilityRO.googleTrends"
-                class="shadow-xl"
-              />
-              <DevelopersUsage class="shadow-xl" />
-            </template>
-            <template v-else>
-              <NpmDownloads class="col-span-12 md:col-span-6 shadow-xl" />
-              <GoogleTrends
-                v-if="chartsVisibilityRO.googleTrends"
-                class="col-span-12 md:col-span-6 shadow-xl"
-              />
-              <Stars class="col-span-12 md:col-span-6 shadow-xl" />
-              <DevelopersUsage class="col-span-12 md:col-span-6 shadow-xl" />
-            </template>
+            <NpmDownloads
+              v-if="chartsVisibilityRO.npmDownloads"
+              :class="{
+                popchart1: popularChartsNumber === 1,
+                popchartmany: popularChartsNumber > 1,
+              }"
+            />
+            <Stars
+              :class="{
+                popchart1: popularChartsNumber === 1,
+                popchartmany: popularChartsNumber > 1,
+              }"
+            />
+            <GoogleTrends
+              v-if="chartsVisibilityRO.googleTrends"
+              :class="{
+                popchart1: popularChartsNumber === 1,
+                popchartmany: popularChartsNumber > 1,
+              }"
+            />
+            <DevelopersUsage
+              v-if="chartsVisibilityRO.developerUsage"
+              :class="{
+                popchart1: popularChartsNumber === 1,
+                popchartmany: popularChartsNumber > 1,
+              }"
+            />
           </div>
         </div>
       </section>
@@ -216,9 +223,9 @@ const chartsVisibilityRO = readonly(useChartsVisibility());
 const popularChartsNumber = computed(
   () =>
     [
-      chartsVisibility.npmDownloads,
+      chartsVisibilityRO.npmDownloads,
       chartsVisibilityRO.googleTrends,
-      chartsVisibility.developerUsage,
+      chartsVisibilityRO.developerUsage,
       true,
     ].filter(Boolean).length
 );
@@ -285,3 +292,12 @@ function clearSelection() {
   removeAllLibraries();
 }
 </script>
+
+<style lang="postcss" scoped>
+.popchart1 {
+  @apply col-span-12 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4 shadow-xl;
+}
+.popchartmany {
+  @apply col-span-12 md:col-span-6 shadow-xl;
+}
+</style>

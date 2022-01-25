@@ -1,6 +1,5 @@
 <template>
   <m-chart
-    v-if="isDisplayed"
     title="NPM Downloads monthly"
     :is-loading="isLoadingRef"
     :is-error="isError"
@@ -31,7 +30,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, watchEffect, ref, watch } from 'vue';
+import { computed, ref, watch } from 'vue';
 import { ChartDataset, ChartConfiguration } from 'chart.js';
 import { NpmDownloadT } from './api';
 import {
@@ -44,7 +43,6 @@ import {
 } from '@/utils';
 import { enUS } from 'date-fns/locale';
 import { NpmPackageT, LibraryReadonlyT } from '@/libraryApis';
-import { chartsVisibility } from '@/store/chartsVisibility';
 import {
   librariesRR,
   isLoading as isLoadingLibraries,
@@ -59,10 +57,6 @@ interface FilteredLibT extends LibraryReadonlyT {
 const filteredLibsRef = computed(
   () => librariesRR.filter((lib) => !!lib.npmDownloads) as FilteredLibT[]
 );
-
-watchEffect(() => {
-  chartsVisibility.npmDownloads = filteredLibsRef.value.length > 0;
-});
 
 // Calculate startMonth based on packages creation date
 const minMonthRef = computed(() => {
@@ -129,8 +123,6 @@ const isLoadingRef = computed(
     isLoadingLibraries.value ||
     librariesRR.filter((lib) => lib.npmDownloads === undefined).length > 0
 );
-
-const isDisplayed = computed(() => chartsVisibility.npmDownloads);
 
 const isError = computed(() => filteredLibsRef.value.length === 0);
 
