@@ -75,26 +75,16 @@
           <Table category="Maintenance" class="mt-4 mb-12" />
 
           <div class="grid grid-cols-12 gap-8">
-            <template v-if="maintChartsNumber === 2">
-              <Releases class="shadow-xl" />
-              <Contributors
-                class="col-span-12 md:col-span-6 xl:col-span-5 xl:col-start-2 shadow-xl"
-              />
-              <Commits
-                class="col-span-12 md:col-span-6 xl:col-span-5 shadow-xl"
-              />
-            </template>
-            <template v-else-if="maintChartsNumber === 3">
-              <Releases
-                class="col-span-12 md:col-span-6 xl:col-span-4 shadow-xl"
-              />
-              <Contributors
-                class="col-span-12 md:col-span-6 xl:col-span-4 shadow-xl"
-              />
-              <Commits
-                class="col-span-12 md:col-span-6 xl:col-span-4 shadow-xl"
-              />
-            </template>
+            <Releases
+              v-if="chartsVisibilityRO.npmReleases"
+              class="maintchart3"
+            />
+            <Contributors
+              :class="maintChartsNumber === 2 ? 'maintchart2' : 'maintchart3'"
+            />
+            <Commits
+              :class="maintChartsNumber === 2 ? 'maintchart2' : 'maintchart3'"
+            />
           </div>
         </div>
       </section>
@@ -219,7 +209,7 @@ const popularChartsNumber = computed(
 );
 
 const maintChartsNumber = computed(
-  () => [chartsVisibility.npmReleases, true, true].filter(Boolean).length
+  () => [chartsVisibilityRO.npmReleases, true, true].filter(Boolean).length
 );
 
 const miscChartsNumber = computed(
@@ -287,5 +277,14 @@ function clearSelection() {
 }
 .popchartmany {
   @apply col-span-12 md:col-span-6 shadow-xl;
+}
+.maintchart2 {
+  @apply col-span-12 md:col-span-6 xl:col-span-5 shadow-xl;
+}
+.maintchart2:first-child {
+  @apply xl:col-start-2;
+}
+.maintchart3 {
+  @apply col-span-12 md:col-span-6 xl:col-span-4 shadow-xl;
 }
 </style>

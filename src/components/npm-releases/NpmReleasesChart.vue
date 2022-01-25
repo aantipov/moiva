@@ -1,6 +1,5 @@
 <template>
   <m-chart
-    v-if="isDisplayed"
     title="NPM Releases quarterly"
     :is-loading="isLoadingRef"
     :is-error="isError"
@@ -21,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { watchEffect, computed } from 'vue';
+import { computed } from 'vue';
 import { ChartConfiguration } from 'chart.js';
 import { NpmPackageReleasesT } from './api';
 import { format } from 'date-fns';
@@ -32,7 +31,6 @@ import {
   getQuarterFirstMonthFromDate,
 } from '@/utils';
 import { NpmPackageT, LibraryReadonlyT } from '@/libraryApis';
-import { chartsVisibility } from '@/store/chartsVisibility';
 import {
   librariesRR,
   isLoading as isLoadingLibraries,
@@ -46,10 +44,6 @@ interface FilteredLibT extends LibraryReadonlyT {
 const filteredLibsRef = computed(
   () => librariesRR.filter((lib) => !!lib.npmReleases) as FilteredLibT[]
 );
-
-watchEffect(() => {
-  chartsVisibility.npmReleases = filteredLibsRef.value.length > 0;
-});
 
 const firstNonZeroQuarterRef = computed(() =>
   getQuarterFirstMonthFromDate(
@@ -129,8 +123,6 @@ const isLoadingRef = computed(
     isLoadingLibraries.value ||
     librariesRR.filter((lib) => lib.npmReleases === undefined).length > 0
 );
-
-const isDisplayed = computed(() => chartsVisibility.npmReleases);
 
 const packagesNames = computed(() =>
   filteredLibsRef.value.map((lib) => lib.npmPackage.name)

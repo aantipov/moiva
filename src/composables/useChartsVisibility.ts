@@ -30,5 +30,8 @@ export function useChartsVisibility() {
         )
       );
     }),
+    npmReleases: computed(
+      () => librariesRR.filter((lib) => !!lib.npmReleases).length > 0
+    ),
   };
 }
