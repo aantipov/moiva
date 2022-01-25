@@ -48,12 +48,18 @@
                 class="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4 shadow-xl"
               />
               <NpmDownloads class="shadow-xl" />
-              <GoogleTrends class="shadow-xl" />
+              <GoogleTrends
+                v-if="chartsVisibilityRO.googleTrends"
+                class="shadow-xl"
+              />
               <DevelopersUsage class="shadow-xl" />
             </template>
             <template v-else>
               <NpmDownloads class="col-span-12 md:col-span-6 shadow-xl" />
-              <GoogleTrends class="col-span-12 md:col-span-6 shadow-xl" />
+              <GoogleTrends
+                v-if="chartsVisibilityRO.googleTrends"
+                class="col-span-12 md:col-span-6 shadow-xl"
+              />
               <Stars class="col-span-12 md:col-span-6 shadow-xl" />
               <DevelopersUsage class="col-span-12 md:col-span-6 shadow-xl" />
             </template>
@@ -131,7 +137,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, watchEffect, computed } from 'vue';
+import { onMounted, watchEffect, computed, readonly } from 'vue';
 import { VueQueryDevTools } from 'vue-query/devtools';
 
 import NpmDownloads from '@/components/downloads/NpmDownloadsChart.vue';
@@ -175,6 +181,7 @@ import { useDocumentTitle } from '@/composables/useDocumentTitle';
 import { useDocumentDescription } from '@/composables/useDocumentDescription';
 import { useUrl } from '@/composables/useUrl';
 import * as Sentry from '@sentry/vue';
+import { useChartsVisibility } from './composables/useChartsVisibility';
 
 // Do not allow Google index pages with >=3 libraries
 setNoFollowTag();
@@ -204,12 +211,13 @@ useDocumentTitle();
 useDocumentDescription();
 useUrl();
 useExtraDataApi();
+const chartsVisibilityRO = readonly(useChartsVisibility());
 
 const popularChartsNumber = computed(
   () =>
     [
       chartsVisibility.npmDownloads,
-      chartsVisibility.googleTrends,
+      chartsVisibilityRO.googleTrends,
       chartsVisibility.developerUsage,
       true,
     ].filter(Boolean).length
