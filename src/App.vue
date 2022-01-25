@@ -45,30 +45,18 @@
           <div class="grid grid-cols-12 gap-8">
             <NpmDownloads
               v-if="chartsVisibilityRO.npmDownloads"
-              :class="{
-                popchart1: popularChartsNumber === 1,
-                popchartmany: popularChartsNumber > 1,
-              }"
+              class="popchartmany"
             />
             <Stars
-              :class="{
-                popchart1: popularChartsNumber === 1,
-                popchartmany: popularChartsNumber > 1,
-              }"
+              :class="popularChartsNumber === 1 ? 'popchart1' : 'popchartmany'"
             />
             <GoogleTrends
               v-if="chartsVisibilityRO.googleTrends"
-              :class="{
-                popchart1: popularChartsNumber === 1,
-                popchartmany: popularChartsNumber > 1,
-              }"
+              class="popchartmany"
             />
             <DevelopersUsage
               v-if="chartsVisibilityRO.developerUsage"
-              :class="{
-                popchart1: popularChartsNumber === 1,
-                popchartmany: popularChartsNumber > 1,
-              }"
+              class="popchartmany"
             />
           </div>
         </div>
