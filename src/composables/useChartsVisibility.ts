@@ -33,5 +33,8 @@ export function useChartsVisibility() {
     npmReleases: computed(
       () => librariesRR.filter((lib) => !!lib.npmReleases).length > 0
     ),
+    techRadar: computed(
+      () => librariesRR.filter((lib) => !!lib.tradar).length > 0
+    ),
   };
 }

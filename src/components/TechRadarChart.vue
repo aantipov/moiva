@@ -1,6 +1,5 @@
 <template>
   <m-chart
-    v-if="isDisplayed"
     title="ThoughtWorks TechRadar"
     :is-loading="isLoading"
     :is-error="false"
@@ -37,11 +36,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, watchEffect } from 'vue';
+import { computed } from 'vue';
 import { format } from 'date-fns';
 import { ChartConfiguration } from 'chart.js';
 import { TRADAR_LEVELS, TechRadarT, DateT } from '@/data/index';
-import { chartsVisibility } from '@/store/chartsVisibility';
 import { LibraryReadonlyT } from '@/libraryApis';
 import { librariesRR, isLoading } from '@/store/libraries';
 
@@ -52,10 +50,6 @@ interface FilteredLibT extends LibraryReadonlyT {
 const filteredLibsRef = computed(
   () => librariesRR.filter((lib) => !!lib.tradar) as FilteredLibT[]
 );
-
-watchEffect(() => {
-  chartsVisibility.techRadar = filteredLibsRef.value.length > 0;
-});
 
 const uniqDates = computed<DateT[]>(() => {
   const dates = filteredLibsRef.value
@@ -118,8 +112,6 @@ function formatDate2(month: string): string {
 const tradarAliases = computed<string[]>(() =>
   filteredLibsRef.value.map((lib) => lib.tradar.alias)
 );
-
-const isDisplayed = computed(() => chartsVisibility.techRadar);
 
 const ariaLabel = computed(() => {
   const str = filteredLibsRef.value

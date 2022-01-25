@@ -100,20 +100,13 @@
           <Table category="Miscellaneous" class="mt-4 mb-12" />
 
           <div class="grid grid-cols-12 gap-8">
-            <template v-if="miscChartsNumber === 1">
-              <Languages
-                class="col-span-12 md:col-span-6 md:col-start-4 shadow-xl"
-              />
-              <TechRadar class="shadow-xl" />
-            </template>
-            <template v-else-if="miscChartsNumber === 2">
-              <Languages
-                class="col-span-12 md:col-span-6 xl:col-span-5 xl:col-start-2 shadow-xl"
-              />
-              <TechRadar
-                class="col-span-12 md:col-span-6 xl:col-span-5 shadow-xl"
-              />
-            </template>
+            <Languages
+              :class="miscChartsNumber === 1 ? 'miscchart1' : 'miscchartmany'"
+            />
+            <TechRadar
+              v-if="chartsVisibilityRO.techRadar"
+              class="miscchartmany"
+            />
           </div>
         </div>
       </section>
@@ -143,7 +136,6 @@ import DevelopersUsage from '@/components/developer-usage/DeveloperUsageChart.vu
 import Commits from '@/components/commits/CommitsChart.vue';
 
 import { CAT_CONFIG } from '@/components/table/TableConfig';
-import { chartsVisibility } from '@/store/chartsVisibility';
 import {
   getNpmPackagesFromUrl,
   getReposIdsFromUrl,
@@ -213,7 +205,7 @@ const maintChartsNumber = computed(
 );
 
 const miscChartsNumber = computed(
-  () => [chartsVisibility.techRadar, true].filter(Boolean).length
+  () => [chartsVisibilityRO.techRadar, true].filter(Boolean).length
 );
 
 // User uses Back/Forward Browser buttons
@@ -286,5 +278,14 @@ function clearSelection() {
 }
 .maintchart3 {
   @apply col-span-12 md:col-span-6 xl:col-span-4 shadow-xl;
+}
+.miscchart1 {
+  @apply col-span-12 md:col-span-6 md:col-start-4 shadow-xl;
+}
+.miscchartmany {
+  @apply col-span-12 md:col-span-6 xl:col-span-5 shadow-xl;
+}
+.miscchartmany:first-child {
+  @apply xl:col-start-2;
 }
 </style>
