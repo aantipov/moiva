@@ -2,8 +2,8 @@
   <div style="min-height: 50vh">
     <VueQueryDevTools />
 
-    <div class="container mt-8 antialiased content">
-      <Search class="w-full mx-auto lg:w-9/12 xl:w-2/4" @select="select" />
+    <div class="content container mt-8 antialiased">
+      <Search class="mx-auto w-full lg:w-9/12 xl:w-2/4" @select="select" />
       <Suggestions @select="select" />
 
       <!--  Popular Comparisons    -->
@@ -12,7 +12,7 @@
 
         <div
           v-else
-          class="relative w-full mx-auto lg:w-9/12 xl:w-2/4"
+          class="relative mx-auto w-full lg:w-9/12 xl:w-2/4"
           style="min-height: 200px"
         >
           <m-loader-new class="items-center" />
@@ -265,25 +265,25 @@ function clearSelection() {
 
 <style lang="postcss" scoped>
 .popchart1 {
-  @apply col-span-12 md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4 shadow-xl;
+  @apply col-span-12 shadow-xl md:col-span-8 md:col-start-3 lg:col-span-6 lg:col-start-4;
 }
 .popchartmany {
-  @apply col-span-12 md:col-span-6 shadow-xl;
+  @apply col-span-12 shadow-xl md:col-span-6;
 }
 .maintchart2 {
-  @apply col-span-12 md:col-span-6 xl:col-span-5 shadow-xl;
+  @apply col-span-12 shadow-xl md:col-span-6 xl:col-span-5;
 }
 .maintchart2:first-child {
   @apply xl:col-start-2;
 }
 .maintchart3 {
-  @apply col-span-12 md:col-span-6 xl:col-span-4 shadow-xl;
+  @apply col-span-12 shadow-xl md:col-span-6 xl:col-span-4;
 }
 .miscchart1 {
-  @apply col-span-12 md:col-span-6 md:col-start-4 shadow-xl;
+  @apply col-span-12 shadow-xl md:col-span-6 md:col-start-4;
 }
 .miscchartmany {
-  @apply col-span-12 md:col-span-6 xl:col-span-5 shadow-xl;
+  @apply col-span-12 shadow-xl md:col-span-6 xl:col-span-5;
 }
 .miscchartmany:first-child {
   @apply xl:col-start-2;

@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div ref="triggerRef" class="px-1 cursor-pointer">
+    <div ref="triggerRef" class="cursor-pointer px-1">
       <m-dots-icon class="text-gray-500" />
     </div>
 
     <div
       ref="contentRef"
-      class="cursor-pointer text-gray-800 font-normal -mx-2 divide-gray-300 divide-y"
+      class="-mx-2 cursor-pointer divide-y divide-gray-300 font-normal text-gray-800"
       @click="hide"
     >
       <div v-if="canCopy" class="menu-item" @click="$emit('copyShare')">
@@ -51,12 +51,12 @@ function hide() {
 
 <style lang="postcss">
 .tippy-box[data-theme~='chart-menu'] {
-  @apply bg-gray-200 border border-gray-300 shadow text-base text-gray-800;
+  @apply border border-gray-300 bg-gray-200 text-base text-gray-800 shadow;
 }
 .tippy-box[data-theme~='chart-menu'] > .tippy-arrow {
   @apply hidden;
 }
 .tippy-box[data-theme~='chart-menu'] .menu-item {
-  @apply whitespace-nowrap text-xl sm:text-base py-2 px-2 hover:bg-gray-600 hover:text-white;
+  @apply whitespace-nowrap py-2 px-2 text-xl hover:bg-gray-600 hover:text-white sm:text-base;
 }
 </style>

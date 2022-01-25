@@ -36,7 +36,7 @@
     <div class="flex justify-center">
       <StatusBadge :value="lib.status" />
     </div>
-    <div class="text-center text-sm opacity-80 mt-1">{{ lastCommitAt }}</div>
+    <div class="mt-1 text-center text-sm opacity-80">{{ lastCommitAt }}</div>
   </div>
 
   <div v-else-if="type === 'tags'" class="flex flex-wrap justify-center">
@@ -55,7 +55,7 @@
 
   <div
     v-else-if="type === 'description'"
-    class="flex flex-wrap justify-center text-sm text-center"
+    class="flex flex-wrap justify-center text-center text-sm"
   >
     {{ lib.npmPackage?.description }}
   </div>

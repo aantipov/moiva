@@ -1,6 +1,6 @@
 <template>
   <div
-    class="absolute flex items-center justify-center w-full h-full bg-white bg-opacity-40 z-50"
+    class="absolute z-50 flex h-full w-full items-center justify-center bg-white bg-opacity-40"
   >
     <div class="lds-grid">
       <div></div>

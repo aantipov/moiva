@@ -1,7 +1,7 @@
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    class="w-8 mt-1"
+    class="mt-1 w-8"
     viewBox="0 0 780 250"
     fill="currentColor"
   >

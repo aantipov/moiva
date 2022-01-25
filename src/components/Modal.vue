@@ -2,11 +2,11 @@
   <transition name="modal">
     <div v-show="showModal" class="modal-mask" @click="$emit('close')">
       <div class="modal-wrapper">
-        <div class="overflow-hidden rounded-md modal-container" @click.stop>
+        <div class="modal-container overflow-hidden rounded-md" @click.stop>
           <!--  Header  -->
-          <div class="flex justify-end bg-gray-100 border">
+          <div class="flex justify-end border bg-gray-100">
             <button
-              class="px-4 py-2 my-2 mr-1 text-sm font-bold text-gray-500 uppercase outline-none background-transparent focus:outline-none"
+              class="background-transparent my-2 mr-1 px-4 py-2 text-sm font-bold uppercase text-gray-500 outline-none focus:outline-none"
               type="button"
               style="transition: all 0.15s ease"
               @click="$emit('close')"
@@ -16,7 +16,7 @@
           </div>
 
           <!--  Body  -->
-          <div class="p-4 modal-body">
+          <div class="modal-body p-4">
             <slot></slot>
           </div>
         </div>

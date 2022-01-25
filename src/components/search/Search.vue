@@ -3,22 +3,22 @@
     <div>
       <!-- progressbar for non-mobile screens -->
       <div
-        class="relative hidden w-full h-1 overflow-hidden rounded-full sm:block indeterminate"
+        class="indeterminate relative hidden h-1 w-full overflow-hidden rounded-full sm:block"
       >
         <div
           v-if="isLoading"
-          class="absolute top-0 h-full rounded-full bg-primary progressbar"
+          class="progressbar absolute top-0 h-full rounded-full bg-primary"
           :style="{ width: `80%` }"
         >
-          <span class="flex items-center h-full"><slot></slot></span>
+          <span class="flex h-full items-center"><slot></slot></span>
         </div>
       </div>
 
       <div class="w-full sm:flex">
         <!--   GitHub/NPM switch       -->
-        <div class="relative inline-flex w-full mb-2 sm:w-auto sm:mb-0">
+        <div class="relative mb-2 inline-flex w-full sm:mb-0 sm:w-auto">
           <ChevronDownIcon
-            class="absolute top-0 right-0 w-6 h-6 mx-3 my-4 text-white pointer-events-none"
+            class="pointer-events-none absolute top-0 right-0 mx-3 my-4 h-6 w-6 text-white"
           />
           <select
             v-model="searchType"
@@ -32,14 +32,14 @@
 
         <!-- progressbar for mobile screens -->
         <div
-          class="relative w-full h-1 overflow-hidden rounded-full sm:hidden indeterminate"
+          class="indeterminate relative h-1 w-full overflow-hidden rounded-full sm:hidden"
         >
           <div
             v-if="isLoading"
-            class="absolute top-0 h-full rounded-full bg-primary progressbar"
+            class="progressbar absolute top-0 h-full rounded-full bg-primary"
             :style="{ width: `80%` }"
           >
-            <span class="flex items-center h-full"><slot></slot></span>
+            <span class="flex h-full items-center"><slot></slot></span>
           </div>
         </div>
 
@@ -63,10 +63,10 @@
           />
           <button
             v-if="searchValue"
-            class="absolute top-0 right-0 z-10 flex items-center justify-end h-full py-3 pr-3 w-14 focus:outline-none"
+            class="absolute top-0 right-0 z-10 flex h-full w-14 items-center justify-end py-3 pr-3 focus:outline-none"
             @click="searchValue = ''"
           >
-            <m-close class="w-6 h-6 opacity-80" />
+            <m-close class="h-6 w-6 opacity-80" />
           </button>
         </div>
       </div>
@@ -221,7 +221,7 @@ const inputRef = ref<HTMLInputElement>(null as unknown as HTMLInputElement);
   @apply rounded rounded-t-none border border-t-0 border-primary border-opacity-60;
 }
 .ac > .ac-option {
-  @apply flex items-center h-auto px-5 py-1 sm:py-2 border-b border-primary border-opacity-20;
+  @apply flex h-auto items-center border-b border-primary border-opacity-20 px-5 py-1 sm:py-2;
 }
 .ac-option-icon {
   @apply mx-3 fill-current text-black text-opacity-60;
@@ -231,19 +231,19 @@ const inputRef = ref<HTMLInputElement>(null as unknown as HTMLInputElement);
   @apply bg-black bg-opacity-10;
 }
 .select {
-  @apply pl-3 pr-14 w-full text-lg rounded text-white focus:outline-none bg-primary appearance-none;
+  @apply w-full appearance-none rounded bg-primary pl-3 pr-14 text-lg text-white focus:outline-none;
 }
 .select {
-  @apply sm:rounded-l sm:rounded-r-none h-14 sm:pl-5;
+  @apply h-14 sm:rounded-l sm:rounded-r-none sm:pl-5;
 }
 .myinput {
-  @apply bg-opacity-5 placeholder-opacity-60 ring-0 border border-primary border-opacity-40 relative w-full h-14 px-3 text-xl font-light text-gray-700 rounded outline-none md:text-2xl;
+  @apply relative h-14 w-full rounded border border-primary border-opacity-40 bg-opacity-5 px-3 text-xl font-light text-gray-700 placeholder-opacity-60 outline-none ring-0 md:text-2xl;
 }
 .myinput {
   @apply sm:rounded-r sm:rounded-l-none;
 }
 .myinput:focus {
-  @apply bg-white ring-0 outline-none border-primary border;
+  @apply border border-primary bg-white outline-none ring-0;
 }
 
 @keyframes progress-indeterminate {

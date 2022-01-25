@@ -1,5 +1,5 @@
 <template>
-  <div v-if="suggestions.length" class="w-full px-3 mx-auto lg:w-9/12 xl:w-2/4">
+  <div v-if="suggestions.length" class="mx-auto w-full px-3 lg:w-9/12 xl:w-2/4">
     <div>
       <SuggestionItem
         v-for="suggestedLibrary in suggestions"
@@ -9,15 +9,15 @@
       />
       <span
         v-if="hasMore"
-        class="inline-block px-1 mt-2 border rounded link border-primary"
+        class="link mt-2 inline-block rounded border border-primary px-1"
         @click="showAll = !showAll"
       >
         <template v-if="!showAll"
-          ><ChevronDownIcon class="inline-block w-6 h-6 align-bottom" /> Show
+          ><ChevronDownIcon class="inline-block h-6 w-6 align-bottom" /> Show
           More
         </template>
         <template v-else>
-          <ChevronUpIcon class="inline-block w-6 h-6 align-top" /> Show Less
+          <ChevronUpIcon class="inline-block h-6 w-6 align-top" /> Show Less
         </template>
       </span>
     </div>
