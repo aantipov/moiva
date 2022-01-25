@@ -75,7 +75,7 @@ export function useGoogleTrendsApi(): void {
   // Google Trends allows to compare only 5 terms at max
   const filteredReposIds = computed<string[]>(() =>
     librariesRR
-      .filter((lib) => !!lib.googleTrendsDef)
+      .filter((lib) => !!lib._googleTrendsDef)
       .slice(0, GOOGLE_TRENDS_LIBS_LIMIT)
       .map((lib) => lib.repo.repoId)
   );

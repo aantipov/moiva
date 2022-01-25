@@ -44,19 +44,19 @@ import {
 } from '@/store/libraries';
 
 interface FilteredLibT extends LibraryReadonlyT {
-  googleTrendsDef: GTrendDefT;
-  googleTrends: LibGTrendsT;
+  _googleTrendsDef: GTrendDefT;
+  _googleTrends: LibGTrendsT;
 }
 
 const filteredLibsRef = computed(
-  () => librariesRR.filter((lib) => !!lib.googleTrends) as FilteredLibT[]
+  () => librariesRR.filter((lib) => !!lib._googleTrends) as FilteredLibT[]
 );
 
 // Calculate startMonth based on packages creation date
 const minMonthRef = computed(() => {
   if (filteredLibsRef.value.length) {
     const date = new Date(
-      1000 * Number(filteredLibsRef.value[0].googleTrends.timeline[0].time)
+      1000 * Number(filteredLibsRef.value[0]._googleTrends.timeline[0].time)
     );
     return format(date, 'yyyy-MM');
   }
@@ -73,8 +73,8 @@ watch(sinceValues, () => {
 // Have "datasets" separate for better animation when changing "since" date
 const datasets = computed<ChartDataset<'line'>[]>(() =>
   filteredLibsRef.value.map((lib) => ({
-    label: lib.googleTrendsDef.alias,
-    data: lib.googleTrends.timeline.map((tl) => tl.value),
+    label: lib._googleTrendsDef.alias,
+    data: lib._googleTrends.timeline.map((tl) => tl.value),
     backgroundColor: lib.color,
     borderColor: lib.color,
     pointRadius: 0,
@@ -85,7 +85,7 @@ const chartConfig = computed<ChartConfiguration>(() => ({
   type: 'line',
   data: {
     labels: filteredLibsRef.value.length
-      ? filteredLibsRef.value[0].googleTrends.timeline.map(
+      ? filteredLibsRef.value[0]._googleTrends.timeline.map(
           (tl) => Number(tl.time) * 1000
         )
       : [],
@@ -112,21 +112,21 @@ const isLoadingRef = computed(
   () =>
     isLoadingLibraries.value ||
     (librariesRR.filter(
-      (lib) => !!lib.googleTrendsDef && lib.googleTrends === undefined
+      (lib) => !!lib._googleTrendsDef && lib._googleTrends === undefined
     ).length > 0 &&
-      librariesRR.filter((lib) => !!lib.googleTrends).length <
+      librariesRR.filter((lib) => !!lib._googleTrends).length <
         GOOGLE_TRENDS_LIBS_LIMIT)
 );
 
 const isError = computed(() => filteredLibsRef.value.length === 0);
 
 const libsKeywordsAliases = computed<string[]>(() =>
-  filteredLibsRef.value.map((lib) => lib.googleTrendsDef.alias)
+  filteredLibsRef.value.map((lib) => lib._googleTrendsDef.alias)
 );
 
 const gTrendsLink = computed<string>(() => {
   const keywords = filteredLibsRef.value.map(
-    (lib) => lib.googleTrendsDef.keyword
+    (lib) => lib._googleTrendsDef.keyword
   );
   const datesQueryParam = encodeURIComponent(
     '2017-01-01 ' + format(new Date(), 'yyyy-MM-dd')
@@ -143,7 +143,7 @@ const ariaLabel = computed(() => {
   if (filteredLibsRef.value.length > 1) {
     const prefix = `Google Search Interest statistics. The average relative values - `;
     const averages = filteredLibsRef.value.map((lib) => {
-      return `${lib.googleTrendsDef.alias}: ${lib.googleTrends.average}%`;
+      return `${lib._googleTrendsDef.alias}: ${lib._googleTrends.average}%`;
     });
     return `${prefix}${averages.join(', ')}`;
   }
