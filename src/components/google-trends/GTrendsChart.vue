@@ -32,9 +32,7 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { ChartConfiguration, ChartDataset } from 'chart.js';
-import { GTrendDefT, GOOGLE_TRENDS_LIBS_LIMIT } from '@/data/index';
 import { numbersFormatter, getDateRanges } from '@/utils';
-import { LibGTrendsT } from './api';
 import { enUS } from 'date-fns/locale';
 import { format } from 'date-fns';
 import { LibraryReadonlyT } from '@/libraryApis';
@@ -43,20 +41,34 @@ import {
   isLoading as isLoadingLibraries,
 } from '@/store/libraries';
 
-interface FilteredLibT extends LibraryReadonlyT {
-  googleTrendsDef: GTrendDefT;
-  googleTrends: LibGTrendsT;
+interface FilteredLibT extends Omit<LibraryReadonlyT, 'googleTrends'> {
+  readonly googleTrends: NonNullable<LibraryReadonlyT['googleTrends']>;
+}
+interface FilteredLibWithDataT extends Omit<FilteredLibT, 'googleTrends'> {
+  readonly googleTrends: Omit<FilteredLibT['googleTrends'], 'data'> & {
+    readonly data: NonNullable<FilteredLibT['googleTrends']['data']>;
+  };
 }
 
 const filteredLibsRef = computed(
   () => librariesRR.filter((lib) => !!lib.googleTrends) as FilteredLibT[]
 );
 
+const filteredLibsWithDataRef = computed(
+  () =>
+    librariesRR.filter(
+      (lib) => !!lib.googleTrends?.data
+    ) as FilteredLibWithDataT[]
+);
+
 // Calculate startMonth based on packages creation date
 const minMonthRef = computed(() => {
-  if (filteredLibsRef.value.length) {
+  if (filteredLibsWithDataRef.value.length) {
     const date = new Date(
-      1000 * Number(filteredLibsRef.value[0].googleTrends.timeline[0].time)
+      1000 *
+        Number(
+          filteredLibsWithDataRef.value[0].googleTrends.data.timeline[0].time
+        )
     );
     return format(date, 'yyyy-MM');
   }
@@ -72,9 +84,9 @@ watch(sinceValues, () => {
 
 // Have "datasets" separate for better animation when changing "since" date
 const datasets = computed<ChartDataset<'line'>[]>(() =>
-  filteredLibsRef.value.map((lib) => ({
-    label: lib.googleTrendsDef.alias,
-    data: lib.googleTrends.timeline.map((tl) => tl.value),
+  filteredLibsWithDataRef.value.map((lib) => ({
+    label: lib.googleTrends.meta.alias,
+    data: lib.googleTrends.data.timeline.map((tl) => tl.value),
     backgroundColor: lib.color,
     borderColor: lib.color,
     pointRadius: 0,
@@ -84,8 +96,8 @@ const datasets = computed<ChartDataset<'line'>[]>(() =>
 const chartConfig = computed<ChartConfiguration>(() => ({
   type: 'line',
   data: {
-    labels: filteredLibsRef.value.length
-      ? filteredLibsRef.value[0].googleTrends.timeline.map(
+    labels: filteredLibsWithDataRef.value.length
+      ? filteredLibsWithDataRef.value[0].googleTrends.data.timeline.map(
           (tl) => Number(tl.time) * 1000
         )
       : [],
@@ -111,22 +123,20 @@ const chartConfig = computed<ChartConfiguration>(() => ({
 const isLoadingRef = computed(
   () =>
     isLoadingLibraries.value ||
-    (librariesRR.filter(
-      (lib) => !!lib.googleTrendsDef && lib.googleTrends === undefined
-    ).length > 0 &&
-      librariesRR.filter((lib) => !!lib.googleTrends).length <
-        GOOGLE_TRENDS_LIBS_LIMIT)
+    filteredLibsRef.value.some((lib) => lib.googleTrends.isFetching)
 );
 
-const isError = computed(() => filteredLibsRef.value.length === 0);
+const isError = computed(() =>
+  filteredLibsRef.value.some((lib) => lib.googleTrends.isError)
+);
 
 const libsKeywordsAliases = computed<string[]>(() =>
-  filteredLibsRef.value.map((lib) => lib.googleTrendsDef.alias)
+  filteredLibsWithDataRef.value.map((lib) => lib.googleTrends.meta.alias)
 );
 
 const gTrendsLink = computed<string>(() => {
   const keywords = filteredLibsRef.value.map(
-    (lib) => lib.googleTrendsDef.keyword
+    (lib) => lib.googleTrends.meta.keyword
   );
   const datesQueryParam = encodeURIComponent(
     '2017-01-01 ' + format(new Date(), 'yyyy-MM-dd')
@@ -137,13 +147,14 @@ const gTrendsLink = computed<string>(() => {
 });
 
 const ariaLabel = computed(() => {
-  if (filteredLibsRef.value.length === 1) {
-    return `Google Search Interest statistics for ${filteredLibsRef.value[0].alias}`;
+  const libs = filteredLibsWithDataRef.value;
+  if (libs.length === 1) {
+    return `Google Search Interest statistics for ${libs[0].googleTrends.meta.alias}`;
   }
-  if (filteredLibsRef.value.length > 1) {
+  if (libs.length > 1) {
     const prefix = `Google Search Interest statistics. The average relative values - `;
-    const averages = filteredLibsRef.value.map((lib) => {
-      return `${lib.googleTrendsDef.alias}: ${lib.googleTrends.average}%`;
+    const averages = libs.map((lib) => {
+      return `${lib.googleTrends.meta.alias}: ${lib.googleTrends.data.average}%`;
     });
     return `${prefix}${averages.join(', ')}`;
   }

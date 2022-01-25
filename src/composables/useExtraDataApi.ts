@@ -7,7 +7,7 @@ import { fetchRepoCommits } from '@/components/commits/api';
 import { fetchRepoLanguages } from '@/components/languages/api';
 import { fetchBundlephobiaData } from '@/components/bundle-size/api';
 import { useGTrendsQuery } from '@/queries/useGTrendsQuery';
-import { useChartApi, useGoogleTrendsApi } from '@/composables/useChartApi';
+import { useChartApi } from '@/composables/useChartApi';
 import {
   isLoading as isLoadingLibraries,
   npmPackagesNames,
@@ -29,7 +29,6 @@ export default function useExtraDataApiLegacy(): void {
   useChartApi(reposIds, isLoadingLibraries, fetchContributors);
   useChartApi(reposIds, isLoadingLibraries, fetchRepoCommits);
   useChartApi(reposIds, isLoadingLibraries, fetchRepoLanguages);
-  useGoogleTrendsApi();
 }
 
 export function useExtraDataApi(): void {

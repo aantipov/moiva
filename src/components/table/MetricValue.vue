@@ -402,10 +402,10 @@ const devUsage = computed(() => {
 });
 
 const searchInterest = computed<string>(() => {
-  if (!lib.value.googleTrends || !lib.value.googleTrends.average) {
+  if (!lib.value.googleTrends?.data?.average) {
     return '-';
   }
-  return lib.value.googleTrends.average + '%';
+  return lib.value.googleTrends.data.average + '%';
 });
 
 const bundlesize = computed<string>(() => {
