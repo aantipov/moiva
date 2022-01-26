@@ -46,8 +46,8 @@ const contentRef = ref(null);
 const triggerRef = ref(null);
 let t: Instance;
 
-const metric = props.metricData.metric;
-const metricConfig = props.metricData.chart;
+const metricRef = computed(() => props.metricData.metric);
+const metricConfigRef = computed(() => props.metricData.chart);
 
 onMounted(() => {
   t = tippy(triggerRef.value as unknown as HTMLElement, {
@@ -63,8 +63,8 @@ onMounted(() => {
   });
 });
 
-const pickDataFn = path<number>(metricConfig.path.split('.'));
-const sortFn = (metricConfig.sortDirFn || descend)(pickDataFn);
+const pickDataFn = path<number>(metricConfigRef.value.path.split('.'));
+const sortFn = (metricConfigRef.value.sortDirFn || descend)(pickDataFn);
 
 const librariesSortedRR = computed(() => {
   const filteredLibraries = librariesRR.filter(
@@ -102,13 +102,13 @@ const chartConfig = computed<ChartConfiguration<'bar'>>(() => {
       scales: {
         y: {
           ticks: {
-            precision: metricConfig.stepPrecision,
+            precision: metricConfigRef.value.stepPrecision,
             beginAtZero: true,
             callback: (() => {
-              if (metric === 'bundlesize') {
+              if (metricRef.value === 'bundlesize') {
                 return (val: number) => val;
               }
-              if (metric === 'age') {
+              if (metricRef.value === 'age') {
                 return getFormattedAgeFromAgeInMs;
               }
               return numbersFormatter.format;
@@ -122,12 +122,12 @@ const chartConfig = computed<ChartConfiguration<'bar'>>(() => {
           callbacks: {
             label: (context): string => {
               let val;
-              if (metricConfig.percent) {
+              if (metricConfigRef.value.percent) {
                 // @ts-ignore
                 val = numbersStandardFormatter.format(context.raw) + '%';
-              } else if (metric === 'bundlesize') {
+              } else if (metricRef.value === 'bundlesize') {
                 val = context.raw + ' kB';
-              } else if (metric === 'age') {
+              } else if (metricRef.value === 'age') {
                 // @ts-ignore
                 val = getFormattedAgeFromAgeInMs(context.raw);
               } else {

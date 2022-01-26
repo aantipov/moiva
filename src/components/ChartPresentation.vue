@@ -37,7 +37,7 @@
         <slot name="info" />
       </m-chart-info>
 
-      <m-chart-menu @copy="copy" @copyShare="copyShare" @download="download" />
+      <m-chart-menu @copy="copy" @copy-share="copyShare" @download="download" />
     </div>
 
     <!-- Chart -->
