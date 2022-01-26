@@ -7,7 +7,8 @@
     "build": "vue-tsc --noEmit && vite build && npm run blog:ci",
     "build-old": "vite-jest && vue-tsc --noEmit && vite build",
     "preview": "vite preview --port 5001",
-    "test": "vite-jest && vue-tsc --noEmit && eslint --ext .ts,.js,.vue src/ && prettier --check src/.",
+    "test": "vite-jest && vue-tsc --noEmit && npm run lint && prettier --check src/.",
+    "lint": "eslint --ext .ts,.js,.vue src/ && prettier --check src/.",
     "typecheck": "vue-tsc --noEmit",
     "format": "prettier --write src/.",
     "update": "npx npm-upgrade check",
@@ -66,60 +67,6 @@
   "engineStrict": true,
   "engines": {
     "node": ">=16"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "es2020": true,
-      "browser": true,
-      "node": true
-    },
-    "parser": "vue-eslint-parser",
-    "plugins": [
-      "vue",
-      "@typescript-eslint"
-    ],
-    "extends": [
-      "eslint:recommended",
-      "@vue/typescript",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:vue/recommended",
-      "prettier"
-    ],
-    "parserOptions": {
-      "parser": "@typescript-eslint/parser"
-    },
-    "rules": {
-      "@typescript-eslint/ban-ts-comment": "off",
-      "@typescript-eslint/no-use-before-define": "off",
-      "no-sparse-arrays": "off",
-      "no-unused-vars": [
-        "error",
-        {
-          "argsIgnorePattern": "^_"
-        }
-      ],
-      "vue/script-setup-uses-vars": "error"
-    },
-    "globals": {
-      "defineProps": "readonly",
-      "defineEmits": "readonly",
-      "defineExpose": "readonly",
-      "withDefaults": "readonly"
-    },
-    "overrides": [
-      {
-        "files": [
-          "**/__tests__/*.{j,t}s?(x)",
-          "**/*.spec.{j,t}s?(x)",
-          "src/main.spec.ts",
-          "**/tests/unit/**/*.spec.{j,t}s?(x)"
-        ],
-        "env": {
-          "jest": true
-        }
-      }
-    ]
   },
   "prettier": {
     "singleQuote": true,
