@@ -12633,6 +12633,14 @@
   },
   {
     "category": "JavaScript State Management Libraries",
+    "repoId": "pmndrs/valtio",
+    "npm": "valtio",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["state-management", "react"]
+  },
+  {
+    "category": "JavaScript State Management Libraries",
     "repoId": "bluebill1049/little-state-machine",
     "npm": "little-state-machine",
     "isNpmCoreArtifact": true,
@@ -12909,6 +12917,22 @@
     "npm": "jest",
     "isNpmCoreArtifact": true,
     "alias": null,
+    "tags": ["testing-framework"]
+  },
+  {
+    "category": "JavaScript Testing Frameworks",
+    "repoId": "akryum/peeky",
+    "npm": "@peeky/test",
+    "isNpmCoreArtifact": true,
+    "alias": "Peeky",
+    "tags": ["testing-framework"]
+  },
+  {
+    "category": "JavaScript Testing Frameworks",
+    "repoId": "vitest-dev/vitest",
+    "npm": "vitest",
+    "isNpmCoreArtifact": true,
+    "alias": "Vitest",
     "tags": ["testing-framework"]
   },
   {
