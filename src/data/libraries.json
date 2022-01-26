@@ -12921,10 +12921,10 @@
   },
   {
     "category": "JavaScript Testing Frameworks",
-    "repoId": "Akryum/peeky",
+    "repoId": "akryum/peeky",
     "npm": "@peeky/test",
     "isNpmCoreArtifact": true,
-    "alias": null,
+    "alias": "Peeky",
     "tags": ["testing-framework"]
   },
   {
