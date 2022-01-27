@@ -288,16 +288,20 @@ export const ROWS: MetricDataT[] = [
     tooltip: `Repository commits number in ${prevQuarter}`,
     chart: {
       title: `Commits in ${prevQuarter}`,
-      path: 'commitsLastQ',
+      path: 'commitsQuery.data.commitsLastQuarter',
       stepPrecision: 0,
     },
     sortFn: (a, b) => {
       if (
-        Number.isInteger(a.commitsLastQ) &&
-        Number.isInteger(b.commitsLastQ)
+        Number.isInteger(a.commitsQuery.data?.commitsLastQuarter) &&
+        Number.isInteger(b.commitsQuery.data?.commitsLastQuarter)
       ) {
-        // @ts-ignore
-        return b.commitsLastQ - a.commitsLastQ;
+        return (
+          // @ts-ignore
+          b.commitsQuery.data?.commitsLastQuarter -
+          // @ts-ignore
+          a.commitsQuery.data?.commitsLastQuarter
+        );
       }
       return 0;
     },

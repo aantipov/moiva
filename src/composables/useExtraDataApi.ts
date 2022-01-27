@@ -3,7 +3,6 @@ import { fetchNpmDownloads } from '@/components/downloads/api';
 import { fetchRepoStars } from '@/components/github-stars/api';
 import { fetchNpmPackageReleases } from '@/components/npm-releases/api';
 import { fetchContributors } from '@/components/github-contributors/api';
-import { fetchRepoCommits } from '@/components/commits/api';
 import { fetchRepoLanguages } from '@/components/languages/api';
 import { fetchBundlephobiaData } from '@/components/bundle-size/api';
 import { useGTrendsQuery } from '@/queries/useGTrendsQuery';
@@ -31,7 +30,6 @@ export default function useExtraDataApiLegacy(): void {
   useChartApi(npmPackagesNames, isLoadingLibraries, fetchBundlephobiaData);
   useChartApi(reposIds, isLoadingLibraries, fetchRepoStars);
   useChartApi(reposIds, isLoadingLibraries, fetchContributors);
-  useChartApi(reposIds, isLoadingLibraries, fetchRepoCommits);
   useChartApi(reposIds, isLoadingLibraries, fetchRepoLanguages);
 }
 

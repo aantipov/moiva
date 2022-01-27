@@ -391,7 +391,9 @@ const npmReleases = computed(() => {
   return lib.value.npmReleases.slice(-1)[0];
 });
 
-const commits = computed<string | number>(() => lib.value.commitsLastQ ?? '-');
+const commits = computed<string | number>(
+  () => lib.value.commitsQuery.data?.commitsLastQuarter ?? '-'
+);
 
 const devUsage = computed(() => {
   if (!lib.value.devUsage) {
