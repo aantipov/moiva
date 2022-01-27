@@ -34,7 +34,6 @@
 
       <!-- POPULARITY -->
       <section
-        v-if="false"
         class="bg-green-600/90 pb-12 pt-8"
         :class="{ [CAT_CONFIG['Popularity'].bgColor]: true }"
       >
