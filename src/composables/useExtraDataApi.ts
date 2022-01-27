@@ -7,6 +7,7 @@ import { fetchRepoCommits } from '@/components/commits/api';
 import { fetchRepoLanguages } from '@/components/languages/api';
 import { fetchBundlephobiaData } from '@/components/bundle-size/api';
 import { useGTrendsQuery } from '@/queries/useGTrendsQuery';
+import { useCommitsQueries } from '@/queries/useCommitsQueries';
 import { useChartApi } from '@/composables/useChartApi';
 import {
   isLoading as isLoadingLibraries,
@@ -15,10 +16,13 @@ import {
 } from '@/store/libraries';
 
 type GTrendsQueryResultT = ReturnType<typeof useGTrendsQuery>;
-
 export const gTrendsQueryRef: Ref<
   UnwrapNestedRefs<GTrendsQueryResultT> | undefined
 > = ref();
+
+export const commitsQueriesRef: Ref<
+  Map<string, ReturnType<typeof useCommitsQueries>[number]>
+> = ref(new Map());
 
 // TODO: refactor into hooks
 export default function useExtraDataApiLegacy(): void {
@@ -33,6 +37,7 @@ export default function useExtraDataApiLegacy(): void {
 
 export function useExtraDataApi(): void {
   useGTrends();
+  useCommits();
 }
 
 function useGTrends(): void {
@@ -43,4 +48,17 @@ function useGTrends(): void {
 
   // @ts-ignore
   watchEffect(() => (gTrendsQueryRef.value = result));
+}
+
+function useCommits(): void {
+  const queries = useCommitsQueries(
+    reposIds,
+    computed(() => !isLoadingLibraries.value)
+  );
+
+  watchEffect(() => {
+    commitsQueriesRef.value = new Map(
+      reposIds.value.map((repoId, i) => [repoId, queries[i]])
+    );
+  });
 }

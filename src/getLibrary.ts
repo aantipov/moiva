@@ -19,8 +19,12 @@ import {
   NpmDownloadT,
   cacheR as npmDownloadsMapR,
 } from '@/components/downloads/api';
-import { gTrendsQueryRef } from '@/composables/useExtraDataApi';
+import {
+  gTrendsQueryRef,
+  commitsQueriesRef,
+} from '@/composables/useExtraDataApi';
 import { LibGTrendsDataT } from '@/queries/useGTrendsQuery';
+import { UseCommitsQueriesResultT } from '@/queries/useCommitsQueries';
 import {
   repoIdToDevUsageDataMap,
   repoIdToTechRadarMap,
@@ -98,6 +102,7 @@ export interface LibraryT {
   contributors: ContributorsT[] | null | undefined; // null for errors, undefined for not loaded yet
   contributorsLastQ: number | undefined;
   commits: LibCommitsT;
+  commitsQuery: UseCommitsQueriesResultT[number];
   commitsLastQ: number | undefined;
   languages: LanguagesT | null | undefined;
   license: LicenseT | null | undefined;
@@ -300,6 +305,8 @@ export function getLibrary(
         meta: repoToGTrendDefMap[repoIdLC],
       };
     }),
+    // @ts-ignore
+    commitsQuery: computed(() => commitsQueriesRef.value.get(repoIdLC)),
     // @ts-ignore
     commits: computed(() => commitsMapR.get(repoIdLC)),
     // @ts-ignore
