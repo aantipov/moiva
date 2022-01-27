@@ -1,6 +1,6 @@
 <template>
   <m-chart
-    title="Commits per ~month"
+    title="~Commits per month"
     :is-loading="isLoadingRef"
     :is-error="isError"
     :libs-names="reposIds"
@@ -9,7 +9,7 @@
     :aria-label="ariaLabel"
   >
     <template #footer>
-      <div>Repository commits aggregated by 4 weeks interval.</div>
+      <div>Repository commits aggregated by month.</div>
       <div>Count only commits to default repository branch.</div>
       <div>Merge commits excluded.</div>
       <div class="flex justify-center">
@@ -23,11 +23,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { ChartConfiguration } from 'chart.js';
-import {
-  CommitsResponseItemT,
-  getNormalisedData,
-  getAggregatedCommits,
-} from './api';
 import { enUS } from 'date-fns/locale';
 import { LibraryReadonlyT } from '@/libraryApis';
 import {
@@ -35,38 +30,22 @@ import {
   isLoading as isLoadingLibraries,
 } from '@/store/libraries';
 
-interface FilteredLibT extends LibraryReadonlyT {
-  commits: CommitsResponseItemT[];
+interface FilteredLibT extends Omit<LibraryReadonlyT, 'commitsQuery'> {
+  commitsQuery: Omit<LibraryReadonlyT['commitsQuery'], 'data'> & {
+    data: NonNullable<LibraryReadonlyT['commitsQuery']['data']>;
+  };
 }
-interface FilteredExtLibT extends LibraryReadonlyT {
-  commits: CommitsResponseItemT[];
-  aggrCommits: CommitsResponseItemT[];
-}
-
 const filteredLibsRef = computed(
-  () => librariesRR.filter((lib) => !!lib.commits) as FilteredLibT[]
-);
-
-const aggregatedNormalisedCommitsRef = computed(() =>
-  getAggregatedCommits(
-    getNormalisedData(filteredLibsRef.value.map((lib) => lib.commits))
-  )
-);
-
-const filteredExtLibsRef = computed<FilteredExtLibT[]>(() =>
-  filteredLibsRef.value.map((lib, libIndex) => ({
-    ...lib,
-    aggrCommits: aggregatedNormalisedCommitsRef.value[libIndex],
-  }))
+  () => librariesRR.filter((lib) => !!lib.commitsQuery.data) as FilteredLibT[]
 );
 
 const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
   type: 'line',
   data: {
-    datasets: filteredExtLibsRef.value.map((lib) => ({
+    datasets: filteredLibsRef.value.map((lib) => ({
       label: lib.repo.repoId,
-      data: lib.aggrCommits.map(({ total, week }) => ({
-        x: week,
+      data: lib.commitsQuery.data.monthlyCommits.map(({ total, month }) => ({
+        x: month,
         y: total,
       })),
       backgroundColor: lib.color,
@@ -77,7 +56,7 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
     scales: {
       x: {
         type: 'time',
-        time: { tooltipFormat: 'PP' },
+        time: { tooltipFormat: 'MMM yyyy' },
         adapters: { date: { locale: enUS } },
       },
     },
@@ -87,28 +66,30 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
 const isLoadingRef = computed(
   () =>
     isLoadingLibraries.value ||
-    librariesRR.filter((lib) => lib.commits === undefined).length > 0
+    librariesRR.some((lib) => lib.commitsQuery.isFetching)
 );
 
 const reposIds = computed(() =>
-  filteredExtLibsRef.value.map((lib) => lib.repo.repoId)
+  filteredLibsRef.value.map((lib) => lib.repo.repoId)
 );
 
 const failedReposIds = computed<string[]>(() => {
   return isLoadingRef.value
     ? []
-    : librariesRR.filter((lib) => !lib.commits).map((lib) => lib.repo.repoId);
+    : librariesRR
+        .filter((lib) => lib.commitsQuery.isError)
+        .map((lib) => lib.repo.repoId);
 });
 
 const isError = computed(() => filteredLibsRef.value.length === 0);
 
 const ariaLabel = computed(() => {
-  const str = filteredExtLibsRef.value
+  const str = filteredLibsRef.value
     .map(
       (lib) =>
         `${lib.alias} got ${
-          lib.aggrCommits.slice(-1)[0].total
-        } commit(s) in the last 4 weeks.`
+          lib.commitsQuery.data.monthlyCommits.slice(-1)[0].total
+        } commit(s) in the last month.`
     )
     .join(' ');
 

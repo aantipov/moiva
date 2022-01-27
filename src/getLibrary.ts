@@ -1,7 +1,7 @@
 import { computed } from 'vue';
 import { getSeoLibName } from '@/utils';
 import { nanoid } from 'nanoid';
-import { isSameQuarter, subQuarters, differenceInMilliseconds } from 'date-fns';
+import { differenceInMilliseconds } from 'date-fns';
 import {
   ContributorsT,
   cacheR as contributorsMapR,
@@ -11,10 +11,6 @@ import {
   cacheR as npmReleasesMapR,
   creationDatesCacheR as npmCreationDatesMapR,
 } from '@/components/npm-releases/api';
-import {
-  CommitsResponseItemT,
-  cacheR as commitsMapR,
-} from '@/components/commits/api';
 import {
   NpmDownloadT,
   cacheR as npmDownloadsMapR,
@@ -54,7 +50,6 @@ import { RepoT, NpmPackageT } from '@/libraryApis';
 import readings from '@/data/readings.json';
 import licenses from '@/data/licenses.json';
 
-type LibCommitsT = CommitsResponseItemT[] | null | undefined;
 type LibNpmDownloadsT = NpmDownloadT[] | null | undefined;
 type LibStarsT = StarsT[] | null | undefined;
 
@@ -74,8 +69,6 @@ export interface LicenseT {
 export type LicenseTypeT = 'permissive' | 'restrictive' | 'unknown';
 
 export type StatusT = 'ACTIVE' | 'INACTIVE' | 'LEGACY' | 'ARCHIVED';
-
-const prevQuarterDate = subQuarters(new Date(), 1);
 
 export interface LibraryT {
   id: string;
@@ -101,9 +94,7 @@ export interface LibraryT {
   bundlesize: BundlephobiaT | null | undefined;
   contributors: ContributorsT[] | null | undefined; // null for errors, undefined for not loaded yet
   contributorsLastQ: number | undefined;
-  commits: LibCommitsT;
   commitsQuery: UseCommitsQueriesResultT[number];
-  commitsLastQ: number | undefined;
   languages: LanguagesT | null | undefined;
   license: LicenseT | null | undefined;
   licenseType: LicenseTypeT;
@@ -167,9 +158,9 @@ export function getLibrary(
       ) {
         return 'LEGACY';
       }
-      const commits = commitsMapR.get(repoIdLC);
-      if (commits) {
-        const lastSixMonthCommits = commits.slice(-26);
+      const commits = commitsQueriesRef.value.get(repoIdLC);
+      if (commits?.data) {
+        const lastSixMonthCommits = commits.data.commits.slice(-26);
         const hasNoCommits = lastSixMonthCommits.every(
           (item) => item.total === 0
         );
@@ -307,22 +298,6 @@ export function getLibrary(
     }),
     // @ts-ignore
     commitsQuery: computed(() => commitsQueriesRef.value.get(repoIdLC)),
-    // @ts-ignore
-    commits: computed(() => commitsMapR.get(repoIdLC)),
-    // @ts-ignore
-    commitsLastQ: computed(() => {
-      const commits = commitsMapR.get(repoIdLC);
-
-      if (!Array.isArray(commits)) {
-        return undefined;
-      }
-
-      // Get the numer of commits in the last quarter
-      // Filter by the quarter and summarize
-      return commits
-        .filter(({ week }) => isSameQuarter(week * 1000, prevQuarterDate))
-        .reduce((acc, { total }) => acc + total, 0);
-    }),
     // @ts-ignore
     languages: computed(() => languagesMapR.get(repoIdLC)),
     // @ts-ignore
