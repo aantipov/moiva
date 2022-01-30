@@ -6,6 +6,7 @@ import { fetchContributors } from '@/components/github-contributors/api';
 import { fetchRepoLanguages } from '@/components/languages/api';
 import { fetchBundlephobiaData } from '@/components/bundle-size/api';
 import { useGTrendsQuery } from '@/queries/useGTrendsQuery';
+import { useStarsQueries } from '@/queries/useStarsQueries';
 import { useCommitsQueries } from '@/queries/useCommitsQueries';
 import { useChartApi } from '@/composables/useChartApi';
 import {
@@ -23,6 +24,10 @@ export const commitsQueriesRef: Ref<
   Map<string, ReturnType<typeof useCommitsQueries>[number]>
 > = ref(new Map());
 
+export const starsQueriesRef: Ref<
+  Map<string, ReturnType<typeof useStarsQueries>[number]>
+> = ref(new Map());
+
 // TODO: refactor into hooks
 export default function useExtraDataApiLegacy(): void {
   useChartApi(npmPackagesNames, isLoadingLibraries, fetchNpmDownloads);
@@ -36,6 +41,20 @@ export default function useExtraDataApiLegacy(): void {
 export function useExtraDataApi(): void {
   useGTrends();
   useCommits();
+  useStars();
+}
+
+function useStars(): void {
+  const queries = useStarsQueries(
+    reposIds,
+    computed(() => !isLoadingLibraries.value)
+  );
+
+  watchEffect(() => {
+    starsQueriesRef.value = new Map(
+      reposIds.value.map((repoId, i) => [repoId, queries[i]])
+    );
+  });
 }
 
 function useGTrends(): void {

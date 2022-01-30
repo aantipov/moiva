@@ -18,9 +18,11 @@ import {
 import {
   gTrendsQueryRef,
   commitsQueriesRef,
+  starsQueriesRef,
 } from '@/composables/useExtraDataApi';
 import { LibGTrendsDataT } from '@/queries/useGTrendsQuery';
 import { UseCommitsQueriesResultT } from '@/queries/useCommitsQueries';
+import { UseStarsQueriesResultT } from '@/queries/useStarsQueries';
 import {
   repoIdToDevUsageDataMap,
   repoIdToTechRadarMap,
@@ -106,6 +108,7 @@ export interface LibraryT {
   } | null;
   devUsage: StateOfJSItemT | undefined;
   devUsageLast: number | undefined;
+  starsQuery: UseStarsQueriesResultT[number];
   stars: LibStarsT;
   starsCumulate: LibStarsT;
   starsNewAvg: number | null | undefined;
@@ -259,6 +262,8 @@ export function getLibrary(
 
       return 100 * (Math.pow(last / first, 1 / 6) - 1);
     }) as unknown as number | undefined | null,
+    // @ts-ignore
+    starsQuery: computed(() => starsQueriesRef.value.get(repoIdLC)),
     // @ts-ignore
     stars: computed(() => starsMapR.get(repoIdLC)),
     // @ts-ignore
