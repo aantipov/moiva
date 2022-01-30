@@ -286,30 +286,33 @@ const githubTooltip = computed<string>(() => {
   )}</p>`;
 });
 const starsGrowth = computed<string>(() => {
-  if (!lib.value.stars || !lib.value.repo.stars) {
+  const { starsQuery, repo } = lib.value;
+
+  if (!repo.stars || !starsQuery.data) {
     return '-';
   }
 
-  const newStarsAvg = lib.value.starsNewAvg as number;
-
-  if (newStarsAvg < 1) {
+  if (starsQuery.data.monthlyAvg < 1) {
     return '0';
   }
 
-  const total = lib.value.repo.stars - newStarsAvg;
-  const percentage = (100 * newStarsAvg) / total;
-  const percentageFormatted = numbersFormatter.format(percentage);
+  const percentageFormatted = numbersFormatter.format(starsQuery.data.growth);
 
-  return `${formatNumber(newStarsAvg, true)} / +${percentageFormatted}%`;
+  return `${formatNumber(
+    starsQuery.data.monthlyAvg,
+    true
+  )} / +${percentageFormatted}%`;
 });
 
 const showStarsGrowthBoostIcon = computed<boolean>(() => {
-  if (!lib.value.stars || !lib.value.repo.stars || !lib.value.starsNewAvg) {
+  const { starsQuery, repo } = lib.value;
+
+  if (!repo.stars || !starsQuery.data) {
     return false;
   }
-  const newStarsAvg = lib.value.starsNewAvg as number;
-  const total = lib.value.repo.stars - newStarsAvg;
-  const growth = (100 * newStarsAvg) / total;
+
+  const total = repo.stars - starsQuery.data.monthlyAvg;
+  const growth = starsQuery.data.growth;
   return (
     (total > 100000 && growth > 3) ||
     (total > 50000 && growth > 5) ||

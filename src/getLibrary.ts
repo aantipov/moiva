@@ -42,18 +42,12 @@ import {
   LanguagesT,
   cacheR as languagesMapR,
 } from '@/components/languages/api';
-import {
-  StarsT,
-  cacheR as starsMapR,
-  starsCumulateCacheR,
-} from '@/components/github-stars/api';
 import { libraryToColorMapR } from '@/store/librariesColors';
 import { RepoT, NpmPackageT } from '@/libraryApis';
 import readings from '@/data/readings.json';
 import licenses from '@/data/licenses.json';
 
 type LibNpmDownloadsT = NpmDownloadT[] | null | undefined;
-type LibStarsT = StarsT[] | null | undefined;
 
 export interface ReadingT {
   url: string;
@@ -109,9 +103,6 @@ export interface LibraryT {
   devUsage: StateOfJSItemT | undefined;
   devUsageLast: number | undefined;
   starsQuery: UseStarsQueriesResultT[number];
-  stars: LibStarsT;
-  starsCumulate: LibStarsT;
-  starsNewAvg: number | null | undefined;
   readings: ReadingT[];
 }
 
@@ -264,24 +255,6 @@ export function getLibrary(
     }) as unknown as number | undefined | null,
     // @ts-ignore
     starsQuery: computed(() => starsQueriesRef.value.get(repoIdLC)),
-    // @ts-ignore
-    stars: computed(() => starsMapR.get(repoIdLC)),
-    // @ts-ignore
-    starsCumulate: computed(() => starsCumulateCacheR.get(repoIdLC)),
-    // @ts-ignore
-    starsNewAvg: computed(() => {
-      // Get avg number of new stars monthly (in the last 3 months)
-      const stars = starsMapR.get(repoIdLC);
-      if (!stars) {
-        return stars; // null or undefined
-      }
-      const lastStars = stars.slice(-3);
-
-      return Math.round(
-        lastStars.map((val) => val.stars).reduce((acc, val) => acc + val, 0) /
-          lastStars.length
-      );
-    }),
     // @ts-ignore
     bundlesize: computed(() =>
       npmPackage ? bundlesizeMapR.get(npmPackage.name) : null

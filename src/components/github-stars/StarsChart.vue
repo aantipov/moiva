@@ -28,7 +28,6 @@
 import { computed, ref } from 'vue';
 import { ChartConfiguration } from 'chart.js';
 import { getEarliestMonth, getPrevMonth, formatNumber } from '@/utils';
-import { StarsT } from './api';
 import { enUS } from 'date-fns/locale';
 import { LibraryReadonlyT } from '@/libraryApis';
 import {
@@ -36,49 +35,17 @@ import {
   isLoading as isLoadingLibraries,
 } from '@/store/libraries';
 
-interface FilteredLibT extends LibraryReadonlyT {
-  stars: StarsT[];
-  starsCumulate: StarsT[];
-  starsNewAvg: number;
+interface FilteredLibT extends Omit<LibraryReadonlyT, 'starsQuery'> {
+  starsQuery: Omit<LibraryReadonlyT['starsQuery'], 'data'> & {
+    data: NonNullable<LibraryReadonlyT['starsQuery']['data']>;
+  };
 }
 
 const filteredLibsRef = computed(
-  () => librariesRR.filter((lib) => !!lib.stars) as FilteredLibT[]
-);
-
-const filteredCumulativeLibsRef = computed(
-  () => librariesRR.filter((lib) => !!lib.starsCumulate) as FilteredLibT[]
+  () => librariesRR.filter((lib) => !!lib.starsQuery.data) as FilteredLibT[]
 );
 
 const isCumulative = ref(true);
-
-const datasetsRef = computed(() =>
-  filteredLibsRef.value.map((lib) => ({
-    label: lib.repo.repoId,
-    data: lib.stars
-      .filter((item) => item.month >= startMonthRef.value)
-      .map(({ month, stars }) => ({
-        x: month as unknown as number,
-        y: stars,
-      })),
-    backgroundColor: lib.color,
-    borderColor: lib.color,
-  }))
-);
-
-const cumulativeDatasetsRef = computed(() =>
-  filteredCumulativeLibsRef.value.map((lib) => ({
-    label: lib.repo.repoId,
-    data: lib.starsCumulate
-      .filter((item) => item.month >= startMonthRef.value)
-      .map(({ month, stars }) => ({
-        x: month as unknown as number,
-        y: stars,
-      })),
-    backgroundColor: lib.color,
-    borderColor: lib.color,
-  }))
-);
 
 // Calculate startMonth based on repos creation date
 const startMonthRef = computed(() => {
@@ -88,6 +55,34 @@ const startMonthRef = computed(() => {
 
   return getPrevMonth(getEarliestMonth(validCreationDates, '2020-01'));
 });
+
+const datasetsRef = computed(() =>
+  filteredLibsRef.value.map((lib) => ({
+    label: lib.repo.repoId,
+    data: lib.starsQuery.data.items
+      .filter((item) => item.month >= startMonthRef.value)
+      .map(({ month, newStars }) => ({
+        x: month as unknown as number,
+        y: newStars,
+      })),
+    backgroundColor: lib.color,
+    borderColor: lib.color,
+  }))
+);
+
+const cumulativeDatasetsRef = computed(() =>
+  filteredLibsRef.value.map((lib) => ({
+    label: lib.repo.repoId,
+    data: lib.starsQuery.data.items
+      .filter((item) => item.month >= startMonthRef.value)
+      .map(({ month, total }) => ({
+        x: month as unknown as number,
+        y: total,
+      })),
+    backgroundColor: lib.color,
+    borderColor: lib.color,
+  }))
+);
 
 const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
   type: 'line',
@@ -110,7 +105,7 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
 const isLoadingRef = computed(
   () =>
     isLoadingLibraries.value ||
-    librariesRR.filter((lib) => lib.stars === undefined).length > 0
+    librariesRR.some((lib) => lib.starsQuery.isFetching)
 );
 
 const isError = computed(() => filteredLibsRef.value.length === 0);
@@ -120,7 +115,7 @@ const ariaLabel = computed(() => {
     .map(
       (lib) =>
         `${lib.alias} stars number increase, on average, by ${formatNumber(
-          lib.starsNewAvg
+          lib.starsQuery.data.monthlyAvg
         )} new stars each month.`
     )
     .join(' ');
@@ -135,6 +130,8 @@ const reposIds = computed(() =>
 const failedReposIds = computed<string[]>(() => {
   return isLoadingRef.value
     ? []
-    : librariesRR.filter((lib) => !lib.stars).map((lib) => lib.repo.repoId);
+    : librariesRR
+        .filter((lib) => lib.starsQuery.isError)
+        .map((lib) => lib.repo.repoId);
 });
 </script>
