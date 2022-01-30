@@ -59,7 +59,7 @@ export function useStarsQueries(
           items.unshift({
             month: prevMonth,
             newStars,
-            total,
+            total: total > 0 ? total : 0,
           });
           prevMonth = getPrevMonth(prevMonth);
         }
