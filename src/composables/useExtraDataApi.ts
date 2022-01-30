@@ -50,7 +50,6 @@ function useStars(): void {
     computed(() => !isLoadingLibraries.value)
   );
 
-  // @ts-ignore
   watchEffect(() => {
     starsQueriesRef.value = new Map(
       reposIds.value.map((repoId, i) => [repoId, queries[i]])
