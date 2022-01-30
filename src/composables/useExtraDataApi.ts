@@ -1,6 +1,5 @@
 import { computed, ref, watchEffect, UnwrapNestedRefs, Ref } from 'vue';
 import { fetchNpmDownloads } from '@/components/downloads/api';
-import { fetchRepoStars } from '@/components/github-stars/api';
 import { fetchNpmPackageReleases } from '@/components/npm-releases/api';
 import { fetchContributors } from '@/components/github-contributors/api';
 import { fetchRepoLanguages } from '@/components/languages/api';
@@ -33,7 +32,6 @@ export default function useExtraDataApiLegacy(): void {
   useChartApi(npmPackagesNames, isLoadingLibraries, fetchNpmDownloads);
   useChartApi(npmPackagesNames, isLoadingLibraries, fetchNpmPackageReleases);
   useChartApi(npmPackagesNames, isLoadingLibraries, fetchBundlephobiaData);
-  useChartApi(reposIds, isLoadingLibraries, fetchRepoStars);
   useChartApi(reposIds, isLoadingLibraries, fetchContributors);
   useChartApi(reposIds, isLoadingLibraries, fetchRepoLanguages);
 }

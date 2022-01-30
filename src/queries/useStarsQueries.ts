@@ -13,6 +13,7 @@ interface ResponseT {
 
 interface ResultT {
   monthlyAvg: number; // average number of new stars per month
+  growth: number; // percentage
   items: {
     month: string;
     newStars: number;
@@ -74,6 +75,15 @@ export function useStarsQueries(
         return {
           monthlyAvg,
           items,
+          growth: (() => {
+            const total = items.slice(-1)[0].total - monthlyAvg;
+
+            if (monthlyAvg < 1 || total === 0) {
+              return 0;
+            }
+
+            return (100 * monthlyAvg) / total;
+          })(),
         };
       },
       onError(err: AxiosError) {
