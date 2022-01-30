@@ -38,7 +38,7 @@ export function useCommitsQueries(
 
   const queriesConfigs = computed(() =>
     repoIds.value.map((repoId) => ({
-      queryKey: ['commit', repoId],
+      queryKey: ['commits', repoId],
       queryFn: () =>
         axios.get<{ items: RepoCommitsResponseItemT[] }>(
           `https://github-commits.moiva.workers.dev/?repo=${repoId}`
