@@ -2,21 +2,22 @@
   "name": "moiva",
   "version": "1.0.1",
   "private": true,
+  "packageManager": "pnpm@8.5.1",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc --noEmit && vite build && npm run blog:ci",
+    "build": "vue-tsc --noEmit && vite build && pnpm run blog:ci",
     "build-old": "vite-jest && vue-tsc --noEmit && vite build",
     "preview": "vite preview --port 5001",
-    "test": "vite-jest && vue-tsc --noEmit && npm run lint && prettier --check src/.",
+    "test": "vite-jest && vue-tsc --noEmit && pnpm run lint && prettier --check src/.",
     "lint": "eslint --ext .ts,.js,.vue src/ && prettier --check src/.",
     "typecheck": "vue-tsc --noEmit",
     "format": "prettier --write src/.",
-    "update": "npx npm-upgrade check",
+    "update-old": "npx npm-upgrade check",
     "blog:dev": "vitepress dev blog",
     "blog:build": "vitepress build blog",
     "blog:serve": "vitepress serve blog --port 5002",
     "blog:move": "mkdir ./dist/blog && mv ./blog/.vitepress/dist/* ./dist/blog",
-    "blog:ci": "npm run blog:build && npm run blog:move"
+    "blog:ci": "pnpm run blog:build && pnpm run blog:move"
   },
   "dependencies": {
     "@sentry/node": "^6.16.1",
