@@ -69,6 +69,9 @@ devDependencies:
   '@types/jest':
     specifier: ^27.0.3
     version: 27.0.3
+  '@types/node':
+    specifier: ^20.2.5
+    version: 20.2.5
   '@types/ramda':
     specifier: ^0.27.62
     version: 0.27.62

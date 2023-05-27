@@ -12,6 +12,7 @@
     "resolveJsonModule": true,
     "sourceMap": true,
     "baseUrl": ".",
+    "typeRoots": ["node_modules/@types", "types"],
     "types": ["vite/client", "node", "jest"],
     "paths": {
       "@/*": ["src/*"]
