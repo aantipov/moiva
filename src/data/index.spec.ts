@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import techRadarItems from './techradar.json';
 import googleTrendsItems from './google-trends.json';
 import readingsItems from './readings.json';

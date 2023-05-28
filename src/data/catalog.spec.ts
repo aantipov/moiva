@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest';
 import {
   catalogLibraries,
   tags,
@@ -35,7 +36,7 @@ describe('Catalog libraries', () => {
     ];
     const allowedFrameworks = [null, ...frameworksTags];
 
-    frameworks.forEach(expect(allowedFrameworks).toContain);
+    frameworks.forEach((val) => expect(allowedFrameworks).toContain(val));
   });
 
   it('all repos lowercase', () => {
@@ -47,13 +48,13 @@ describe('Catalog libraries', () => {
   it('uses only specified tags', () => {
     const libsTags = catalogLibraries.map((lib) => lib.tags).flat();
     const libsTagsDedup = [...new Set(libsTags)];
-    libsTagsDedup.forEach(expect(tags).toContain);
+    libsTagsDedup.forEach((val) => expect(tags).toContain(val));
   });
 
   it('all defined tags are used', () => {
     const libsTags = catalogLibraries.map((lib) => lib.tags).flat();
     const libsTagsDedup = [...new Set(libsTags)];
-    tags.forEach(expect(libsTagsDedup).toContain);
+    tags.forEach((val) => expect(libsTagsDedup).toContain(val));
   });
 
   it('no duplicate tag', () => {
