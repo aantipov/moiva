@@ -43,9 +43,7 @@ module.exports = {
         'src/main.spec.ts',
         '**/tests/unit/**/*.spec.{j,t}s?(x)',
       ],
-      env: {
-        jest: true,
-      },
+      env: {},
     },
   ],
 };
