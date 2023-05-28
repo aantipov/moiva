@@ -1,6 +1,13 @@
 .DS_Store
 node_modules
 dist
+
+# astro stuff
+dist-astro
+src/pages
+src/env.d.ts
+astro.config.mjs
+
 # blog/.vitepress/metadata.json
 /public/blog/page
 /public/blog/sitemap.xml
