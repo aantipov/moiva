@@ -29,14 +29,14 @@ dependencies:
     specifier: ^0.24.0
     version: 0.24.0
   chart.js:
-    specifier: ^3.7.0
-    version: 3.7.0
+    specifier: ^4.3.0
+    version: 4.3.0
   chartjs-adapter-date-fns:
-    specifier: ^2.0.0
-    version: 2.0.0(chart.js@3.7.0)
+    specifier: ^3.0.0
+    version: 3.0.0(chart.js@4.3.0)(date-fns@2.30.0)
   date-fns:
-    specifier: ^2.27.0
-    version: 2.27.0
+    specifier: ^2.30.0
+    version: 2.30.0
   flexsearch:
     specifier: ^0.7.21
     version: 0.7.21
@@ -81,9 +81,6 @@ devDependencies:
   '@typescript-eslint/parser':
     specifier: ^5.8.0
     version: 5.8.0(eslint@8.5.0)(typescript@4.5.4)
-  '@vitejs/plugin-vue':
-    specifier: ^4.2.3
-    version: 4.2.3(vite@4.3.9)(vue@3.3.4)
   '@vue/eslint-config-typescript':
     specifier: ^10.0.0
     version: 10.0.0(eslint-plugin-vue@8.2.0)(eslint@8.5.0)(typescript@4.5.4)
@@ -114,9 +111,6 @@ devDependencies:
   typescript:
     specifier: ~4.5.4
     version: 4.5.4
-  vite:
-    specifier: ^4.3.9
-    version: 4.3.9(@types/node@20.2.5)
   vitepress:
     specifier: ^0.22.4
     version: 0.22.4(@algolia/client-search@4.17.1)(react@18.2.0)
@@ -959,6 +953,10 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: false
 
+  /@kurkle/color@0.3.2:
+    resolution: {integrity: sha512-fuscdXJ9G1qb7W8VdHi+IwRqij3lBkosAm4ydQtEmbY58OzHXqQhvlxqEkoz0yssNVn38bcpRWgA9PP+OGoisw==}
+    dev: false
+
   /@ljharb/has-package-exports-patterns@0.0.2:
     resolution: {integrity: sha512-4/RWEeXDO6bocPONheFe6gX/oQdP/bEpv0oL4HqjPP5DCenBSt0mHgahppY49N0CpsaqffdwPq+TlX9CYOq2Dw==}
     dev: false
@@ -1355,6 +1353,7 @@ packages:
     dependencies:
       vite: 4.3.9(@types/node@20.2.5)
       vue: 3.3.4
+    dev: false
 
   /@vitest/expect@0.31.1:
     resolution: {integrity: sha512-BV1LyNvhnX+eNYzJxlHIGPWZpwJFZaCcOIzp2CNG0P+bbetenTupk6EO0LANm4QFt0TTit+yqx7Rxd1qxi/SQA==}
@@ -2060,16 +2059,21 @@ packages:
       is-regex: 1.1.4
     dev: true
 
-  /chart.js@3.7.0:
-    resolution: {integrity: sha512-31gVuqqKp3lDIFmzpKIrBeum4OpZsQjSIAqlOpgjosHDJZlULtvwLEZKtEhIAZc7JMPaHlYMys40Qy9Mf+1AAg==}
+  /chart.js@4.3.0:
+    resolution: {integrity: sha512-ynG0E79xGfMaV2xAHdbhwiPLczxnNNnasrmPEXriXsPJGjmhOBYzFVEsB65w2qMDz+CaBJJuJD0inE/ab/h36g==}
+    engines: {pnpm: '>=7'}
+    dependencies:
+      '@kurkle/color': 0.3.2
     dev: false
 
-  /chartjs-adapter-date-fns@2.0.0(chart.js@3.7.0):
-    resolution: {integrity: sha512-rmZINGLe+9IiiEB0kb57vH3UugAtYw33anRiw5kS2Tu87agpetDDoouquycWc9pRsKtQo5j+vLsYHyr8etAvFw==}
+  /chartjs-adapter-date-fns@3.0.0(chart.js@4.3.0)(date-fns@2.30.0):
+    resolution: {integrity: sha512-Rs3iEB3Q5pJ973J93OBTpnP7qoGwvq3nUnoMdtxO+9aoJof7UFcRbWcIDteXuYd1fgAvct/32T9qaLyLuZVwCg==}
     peerDependencies:
-      chart.js: ^3.0.0
+      chart.js: '>=2.8.0'
+      date-fns: '>=2.0.0'
     dependencies:
-      chart.js: 3.7.0
+      chart.js: 4.3.0
+      date-fns: 2.30.0
     dev: false
 
   /check-error@1.0.2:
@@ -2206,9 +2210,11 @@ packages:
   /csstype@3.1.2:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
 
-  /date-fns@2.27.0:
-    resolution: {integrity: sha512-sj+J0Mo2p2X1e306MHq282WS4/A8Pz/95GIFcsPNMPMZVI3EUrAdSv90al1k+p74WGLCruMXk23bfEDZa71X9Q==}
+  /date-fns@2.30.0:
+    resolution: {integrity: sha512-fnULvOpxnC5/Vg3NCiWelDsLiUc9bRwAPs/+LfTLNvetFCtCTN+yQz15C/fs4AwX1R9K5GLtLfn8QW+dWisaAw==}
     engines: {node: '>=0.11'}
+    dependencies:
+      '@babel/runtime': 7.22.3
     dev: false
 
   /date-time@3.1.0:
