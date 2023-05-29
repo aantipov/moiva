@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "astro dev",
     "build": "pnpm run typecheck && astro build",
-    "buildd": "astro build",
     "build-old": "vitest run && vue-tsc --noEmit && vite build",
     "preview": "astro build && astro preview",
     "test": "vitest run && pnpm run typecheck && pnpm run lint && prettier --check src/.",
