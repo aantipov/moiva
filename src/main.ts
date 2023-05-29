@@ -1,12 +1,6 @@
 import { DirectiveBinding } from 'vue';
 import type { App } from 'vue';
 import tippy from 'tippy.js';
-import 'tippy.js/dist/tippy.css';
-import 'tippy.js/dist/backdrop.css';
-import 'tippy.js/dist/svg-arrow.css';
-import 'tippy.js/themes/light.css';
-import 'tippy.js/themes/light-border.css';
-import 'tippy.js/animations/shift-away.css';
 import * as Sentry from '@sentry/vue';
 import { Integrations } from '@sentry/tracing';
 import '../chartjs.config';

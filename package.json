@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "build": "pnpm run typecheck && astro build",
     "build-old": "vitest run && vue-tsc --noEmit && vite build",
-    "preview": "astro build && astro preview",
+    "preview": "astro preview",
     "test": "vitest run && pnpm run typecheck && pnpm run lint && prettier --check src/.",
     "lint": "eslint --ext .ts,.js,.vue src/ && prettier --check src/.",
     "typecheck": "astro check && vue-tsc --noEmit",
