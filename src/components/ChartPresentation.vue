@@ -3,7 +3,7 @@
     class="relative overflow-hidden rounded bg-gray-100"
     :class="{ withBorder: !popupMode }"
   >
-    <m-loader v-if="isLoading" />
+    <Loader v-if="isLoading" />
 
     <div v-else-if="isError || !libsNames.length" class="chart-error-new">
       <div>
@@ -17,7 +17,7 @@
       class="absolute top-4 right-4 z-30 flex"
     >
       <!--   Warning Icon with Failures description   -->
-      <m-chart-info
+      <ChartInfo
         v-if="failedLibsNames.length"
         style="margin-top: -2px"
         type="WARNING"
@@ -30,14 +30,14 @@
 
           Try reload the page or check later.
         </div>
-      </m-chart-info>
+      </ChartInfo>
 
       <!-- Info Icon -->
-      <m-chart-info v-if="$slots.info" style="margin-top: -4px">
+      <ChartInfo v-if="$slots.info" style="margin-top: -4px">
         <slot name="info" />
-      </m-chart-info>
+      </ChartInfo>
 
-      <m-chart-menu @copy="copy" @copy-share="copyShare" @download="download" />
+      <ChartMenu @copy="copy" @copy-share="copyShare" @download="download" />
     </div>
 
     <!-- Chart -->
@@ -77,7 +77,11 @@
       <slot name="footer">
         <div v-if="dataSourceTxt" class="flex justify-center">
           Data source:
-          <m-ext-link class="ml-1" :href="dataSourceUrl" :txt="dataSourceTxt" />
+          <ExternalLink
+            class="ml-1"
+            :href="dataSourceUrl"
+            :txt="dataSourceTxt"
+          />
         </div>
       </slot>
     </div>
@@ -85,6 +89,10 @@
 </template>
 
 <script setup lang="ts">
+import ExternalLink from '@/components/ExternalLink.vue';
+import Loader from '@/components/LoadingView.vue';
+import ChartInfo from '@/components/ChartInfo.vue';
+import ChartMenu from '@/components/ChartMenu.vue';
 import { ref, toRef, onMounted, onBeforeUnmount, watch } from 'vue';
 import {
   Chart,

@@ -22,7 +22,7 @@
 
       <!-- Loading -->
       <div v-if="isLoading" class="my-3 flex justify-center">
-        <m-loader-tail-spin />
+        <LoaderTailSpin />
       </div>
 
       <!-- Description + stats -->
@@ -61,6 +61,7 @@
 </template>
 
 <script setup lang="ts">
+import LoaderTailSpin from '@/components/LoaderTailSpin.vue';
 import { computed, onMounted, PropType, ref } from 'vue';
 import { constructHref, numbersFormatter } from '@/utils';
 import { CatalogLibraryT } from '@/data/index';

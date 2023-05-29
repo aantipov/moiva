@@ -31,13 +31,6 @@ import BugIcon from '@/icons/BugIcon.vue';
 import HeartBeatIcon from '@/icons/HeartBeatIcon.vue';
 import SortIcon from '@/icons/SortIcon.vue';
 import Tag from '@/components/Tag.vue';
-import ChartInfo from '@/components/ChartInfo.vue';
-import ChartMenu from '@/components/ChartMenu.vue';
-import ChartPresentation from '@/components/ChartPresentation.vue';
-import LoaderTailSpin from '@/components/LoaderTailSpin.vue';
-import ExternalLink from '@/components/ExternalLink.vue';
-import Loader from '@/components/LoadingView.vue';
-import LoaderNew from '@/components/LoaderNew.vue';
 
 export default (app: App) => {
   if (process.env.NODE_ENV !== 'development') {
@@ -90,14 +83,7 @@ export default (app: App) => {
     .component('MNpmIcon', NpmIcon)
     .component('MChartIcon', ChartIcon)
     .component('MGithubIcon', GithubIcon)
-    .component('MDownloadIcon', DownloadIcon)
-    .component('MChartInfo', ChartInfo)
-    .component('MLoaderTailSpin', LoaderTailSpin)
-    .component('MLoader', Loader)
-    .component('MLoaderNew', LoaderNew)
-    .component('MExtLink', ExternalLink)
-    .component('MChart', ChartPresentation)
-    .component('MChartMenu', ChartMenu);
+    .component('MDownloadIcon', DownloadIcon);
 
   app.directive('tooltip', {
     mounted(el, binding) {

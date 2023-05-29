@@ -1,5 +1,5 @@
 <template>
-  <m-chart
+  <ChartPresentation
     :title="isCumulative ? 'GitHub Stars' : 'New Github Stars monthly'"
     :is-loading="isLoadingRef"
     :is-error="isError"
@@ -18,13 +18,15 @@
 
       <div class="flex justify-center">
         Data source:
-        <m-ext-link class="mx-1" href="https://github.com/" txt="GitHub" />
+        <ExternalLink class="mx-1" href="https://github.com/" txt="GitHub" />
       </div>
     </template>
-  </m-chart>
+  </ChartPresentation>
 </template>
 
 <script setup lang="ts">
+import ExternalLink from '@/components/ExternalLink.vue';
+import ChartPresentation from '@/components/ChartPresentation.vue';
 import { computed, ref } from 'vue';
 import { ChartConfiguration } from 'chart.js';
 import { getEarliestMonth, getPrevMonth, formatNumber } from '@/utils';

@@ -1,5 +1,5 @@
 <template>
-  <m-chart
+  <ChartPresentation
     title="NPM Releases quarterly"
     :is-loading="isLoadingRef"
     :is-error="isError"
@@ -13,13 +13,15 @@
       <div>Pre-releases not included.</div>
       <div class="flex justify-center">
         Data source:
-        <m-ext-link class="mx-1" href="https://www.npmjs.com/" txt="NPM" />
+        <ExternalLink class="mx-1" href="https://www.npmjs.com/" txt="NPM" />
       </div>
     </template>
-  </m-chart>
+  </ChartPresentation>
 </template>
 
 <script setup lang="ts">
+import ExternalLink from '@/components/ExternalLink.vue';
+import ChartPresentation from '@/components/ChartPresentation.vue';
 import { computed } from 'vue';
 import { ChartConfiguration } from 'chart.js';
 import { NpmPackageReleasesT } from './api';

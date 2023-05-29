@@ -1,6 +1,6 @@
 <template>
   <section class="relative">
-    <m-loader-new v-if="isLoading" class="z-10 pt-40" />
+    <LoaderNew v-if="isLoading" class="z-10 pt-40" />
 
     <div class="flex justify-center">
       <div
@@ -82,6 +82,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import LoaderNew from '@/components/LoaderNew.vue';
 import MetricHeader from './MetricHeader.vue';
 import MetricValue from './MetricValue.vue';
 import { libraries, isLoading, removeLibrary } from '@/store/libraries';

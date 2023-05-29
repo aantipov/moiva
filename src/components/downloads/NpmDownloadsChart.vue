@@ -1,5 +1,5 @@
 <template>
-  <m-chart
+  <ChartPresentation
     title="NPM Downloads monthly"
     :is-loading="isLoadingRef"
     :is-error="isError"
@@ -23,13 +23,15 @@
 
       <div class="flex justify-center">
         Data source:
-        <m-ext-link class="mx-1" href="https://www.npmjs.com/" txt="NPM" />
+        <ExternalLink class="mx-1" href="https://www.npmjs.com/" txt="NPM" />
       </div>
     </template>
-  </m-chart>
+  </ChartPresentation>
 </template>
 
 <script setup lang="ts">
+import ExternalLink from '@/components/ExternalLink.vue';
+import ChartPresentation from '@/components/ChartPresentation.vue';
 import { computed, ref, watch } from 'vue';
 import { ChartDataset, ChartConfiguration } from 'chart.js';
 import { NpmDownloadT } from './api';

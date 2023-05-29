@@ -58,5 +58,3 @@ function onSelect(catalogLibrary: CatalogLibraryT) {
   }
 }
 </script>
-
-<style lang="postcss"></style>

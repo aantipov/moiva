@@ -13,7 +13,7 @@
       @click="hide"
     >
       <div style="width: 500px; max-width: 100%" class="overflow-y-hidden">
-        <m-chart
+        <ChartPresentation
           :is-loading="!libsNames.length"
           :libs-names="libsNames"
           :chart-config="chartConfig"
@@ -26,6 +26,7 @@
 </template>
 
 <script setup lang="ts">
+import ChartPresentation from '@/components/ChartPresentation.vue';
 import { computed, onMounted, ref } from 'vue';
 import tippy, { Instance, roundArrow } from 'tippy.js';
 import { ChartConfiguration } from 'chart.js';
