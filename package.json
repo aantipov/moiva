@@ -5,7 +5,7 @@
   "packageManager": "pnpm@8.5.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "pnpm run typecheck && astro build && pnpm run blog:ci",
+    "build": "pnpm run typecheck && astro build",
     "buildd": "astro build",
     "build-old": "vitest run && vue-tsc --noEmit && vite build",
     "preview": "astro build && astro preview",
