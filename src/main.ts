@@ -44,7 +44,6 @@ import LoaderTailSpin from '@/components/LoaderTailSpin.vue';
 import ExternalLink from '@/components/ExternalLink.vue';
 import Loader from '@/components/LoadingView.vue';
 import LoaderNew from '@/components/LoaderNew.vue';
-import './assets/tailwind.css';
 
 export default (app: App) => {
   if (process.env.NODE_ENV !== 'development') {
