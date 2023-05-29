@@ -1,5 +1,5 @@
 <template>
-  <m-chart
+  <ChartPresentation
     title="Developer Usage, %"
     :is-loading="isLoading"
     :is-error="false"
@@ -12,13 +12,13 @@
       <div>Percentage of developers using the library.</div>
       <div class="flex justify-center">
         Data source:
-        <m-ext-link
+        <ExternalLink
           class="mx-1"
           href="https://stateofjs.com/"
           txt="StateOfJS"
         />
         and
-        <m-ext-link
+        <ExternalLink
           class="mx-1"
           href="https://stateofcss.com/"
           txt="StateOfCSS"
@@ -26,10 +26,12 @@
         surveys
       </div>
     </template>
-  </m-chart>
+  </ChartPresentation>
 </template>
 
 <script setup lang="ts">
+import ExternalLink from '@/components/ExternalLink.vue';
+import ChartPresentation from '@/components/ChartPresentation.vue';
 import { computed } from 'vue';
 import { ChartConfiguration } from 'chart.js';
 import { StateOfJSItemT } from '@/data/index';

@@ -1,11 +1,11 @@
-import rawStateOfJsItems from '@/data/stateofjscss.json';
-import rawTechRadarItems from '@/data/techradar.json';
-import rawLibraries from '@/data/libraries.json';
-import rawGoogleTrendsItems from '@/data/google-trends.json';
-import legacyItems from '@/data/legacy.json';
-import pgItems from '@/data/playground.json';
-import { frameworksTags } from '@/data/tags';
-export * from '@/data/tags';
+import rawStateOfJsItems from './stateofjscss.json';
+import rawTechRadarItems from './techradar.json';
+import rawLibraries from './libraries.json';
+import rawGoogleTrendsItems from './google-trends.json';
+import legacyItems from './legacy.json';
+import pgItems from './playground.json';
+import { frameworksTags } from './tags';
+export * from './tags';
 
 /** ========= STATE OF JS CSS ========= **/
 /**

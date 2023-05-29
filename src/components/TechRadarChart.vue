@@ -1,5 +1,5 @@
 <template>
-  <m-chart
+  <ChartPresentation
     title="ThoughtWorks TechRadar"
     :is-loading="isLoading"
     :is-error="false"
@@ -32,10 +32,11 @@
         </div>
       </div>
     </template>
-  </m-chart>
+  </ChartPresentation>
 </template>
 
 <script setup lang="ts">
+import ChartPresentation from '@/components/ChartPresentation.vue';
 import { computed } from 'vue';
 import { format } from 'date-fns';
 import { ChartConfiguration } from 'chart.js';

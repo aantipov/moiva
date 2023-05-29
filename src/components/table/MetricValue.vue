@@ -1,7 +1,7 @@
 <template>
   <div v-if="type === 'npm'" class="flex flex-col items-center">
     <template v-if="lib.npmPackage">
-      <m-ext-link
+      <ExternalLink
         v-tooltip.html.ni="npmTooltip"
         :href="npmUrl"
         :txt="lib.npmPackage.name"
@@ -13,7 +13,7 @@
   </div>
 
   <div v-else-if="type === 'repo'" class="flex justify-center">
-    <m-ext-link
+    <ExternalLink
       v-tooltip.html.ni="githubTooltip"
       :href="githubUrl"
       :txt="lib.repo.repoId"
@@ -23,7 +23,7 @@
 
   <div v-else-if="type === 'homepage'" class="flex justify-center">
     <template v-if="lib.repo.homepageUrl">
-      <m-ext-link
+      <ExternalLink
         truncate
         :href="lib.repo.homepageUrl"
         :txt="strippedHomepageUrl"
@@ -48,7 +48,7 @@
 
   <div v-else-if="type === 'playground'" class="flex flex-wrap justify-center">
     <template v-if="lib.playground">
-      <m-ext-link truncate :href="lib.playground" txt="Playground" />
+      <ExternalLink truncate :href="lib.playground" txt="Playground" />
     </template>
     <template v-else>-</template>
   </div>
@@ -125,7 +125,11 @@
   >
     <template v-if="tradar">
       <t-radar-badge :value="tradar.level" />
-      <m-ext-link :href="tradar.url" :txt="tradar.month" class="mt-1 text-sm" />
+      <ExternalLink
+        :href="tradar.url"
+        :txt="tradar.month"
+        class="mt-1 text-sm"
+      />
     </template>
     <template v-else> - </template>
   </div>
@@ -193,7 +197,7 @@
       'justify-center': bundlesize === '-',
     }"
   >
-    <m-ext-link
+    <ExternalLink
       v-if="bundlesize !== '-'"
       :href="bundlephobiaUrl"
       :txt="bundlesize"
@@ -247,6 +251,7 @@
 </template>
 
 <script setup lang="ts">
+import ExternalLink from '@/components/ExternalLink.vue';
 import { toRefs, computed } from 'vue';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import { LibraryReadonlyT } from '@/libraryApis';

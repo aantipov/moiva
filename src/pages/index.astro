@@ -1,4 +1,12 @@
-<!DOCTYPE html>
+---
+import App from '@/App.vue'
+import 'tippy.js/dist/tippy.css';
+import 'tippy.js/dist/backdrop.css';
+import 'tippy.js/dist/svg-arrow.css';
+import 'tippy.js/themes/light.css';
+import 'tippy.js/themes/light-border.css';
+import 'tippy.js/animations/shift-away.css';
+---
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -139,7 +147,7 @@
     <div class="container mt-5 antialiased md:mt-8">
       <div class="text-center">
         <a
-          style="font-family: 'Oswald', sans-serif"
+          style="font-family: Oswald, sans-serif"
           class="text-7xl text-black text-opacity-80 no-underline hover:text-black hover:no-underline sm:text-9xl"
           href="/"
           >MOIVA</a
@@ -252,7 +260,9 @@
     <!-- Body -->
     <div id="app" class="flex-grow">
       <!-- Fixed height is used to take into account Popular libraries height to avoid layout shifts  -->
+    <App client:only="vue">
       <div style="height: 672px"></div>
+    </App>
     </div>
 
     <!-- Footer -->
@@ -344,6 +354,5 @@
         </div>
       </div>
     </div>
-    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

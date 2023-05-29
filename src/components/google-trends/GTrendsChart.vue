@@ -1,5 +1,5 @@
 <template>
-  <m-chart
+  <ChartPresentation
     title="Google Search Interest"
     :is-loading="isLoadingRef"
     :is-error="isError"
@@ -23,13 +23,15 @@
 
       <div class="flex justify-center">
         Data source:
-        <m-ext-link class="mx-1" :href="gTrendsLink" txt="Google Trends" />
+        <ExternalLink class="mx-1" :href="gTrendsLink" txt="Google Trends" />
       </div>
     </template>
-  </m-chart>
+  </ChartPresentation>
 </template>
 
 <script setup lang="ts">
+import ExternalLink from '@/components/ExternalLink.vue';
+import ChartPresentation from '@/components/ChartPresentation.vue';
 import { computed, ref, watch } from 'vue';
 import { ChartConfiguration, ChartDataset } from 'chart.js';
 import { numbersFormatter, getDateRanges } from '@/utils';

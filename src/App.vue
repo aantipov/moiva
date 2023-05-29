@@ -15,7 +15,7 @@
           class="relative mx-auto w-full lg:w-9/12 xl:w-2/4"
           style="min-height: 200px"
         >
-          <m-loader-new class="items-center" />
+          <LoaderNew class="items-center" />
         </div>
       </div>
     </div>
@@ -117,6 +117,8 @@
 <script setup lang="ts">
 import { onMounted, watchEffect, computed, readonly } from 'vue';
 import { VueQueryDevTools } from 'vue-query/devtools';
+
+import LoaderNew from '@/components/LoaderNew.vue';
 
 import NpmDownloads from '@/components/downloads/NpmDownloadsChart.vue';
 import Title from '@/components/Title.vue';

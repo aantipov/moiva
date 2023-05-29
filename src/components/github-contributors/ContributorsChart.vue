@@ -1,5 +1,5 @@
 <template>
-  <m-chart
+  <ChartPresentation
     title="Contributors quarterly"
     :is-loading="isLoadingRef"
     :is-error="isError"
@@ -12,13 +12,15 @@
       <div>Developers contributed to a repository per quarter.</div>
       <div class="flex justify-center">
         Data source:
-        <m-ext-link class="mx-1" href="https://github.com/" txt="GitHub" />
+        <ExternalLink class="mx-1" href="https://github.com/" txt="GitHub" />
       </div>
     </template>
-  </m-chart>
+  </ChartPresentation>
 </template>
 
 <script setup lang="ts">
+import ExternalLink from '@/components/ExternalLink.vue';
+import ChartPresentation from '@/components/ChartPresentation.vue';
 import { computed } from 'vue';
 import { ChartConfiguration } from 'chart.js';
 import { ContributorsT } from './api';
