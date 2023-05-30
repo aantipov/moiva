@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "include": ["/"],
+  "exclude": [
+    "/_astro/*",
+    "/_worker.js",
+    "/about/*",
+    "/blog/*",
+    "/catalog/*",
+    "/favicon/*",
+    "/images/*",
+    "/moiva.svg",
+    "/robots.txt",
+    "/sitemap.xml"
+  ]
+}
