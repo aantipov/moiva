@@ -6,6 +6,7 @@ dist
 /public/blog/page
 /public/blog/sitemap.xml
 
+functions/\[\[path]].js
 
 # local env files
 .env
