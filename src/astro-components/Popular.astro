@@ -1,30 +1,5 @@
-<template>
-  <div class="mx-2 flex flex-col items-start sm:items-center">
-    <h2 class="mt-4 mb-2 self-center sm:mt-8">Popular comparisons</h2>
-
-    <div v-for="item in items" :key="item.name" class="mb-2">
-      <a
-        class="text-lg"
-        :href="makeHref(item.libs)"
-        @click.prevent="$emit('select', item.libs)"
-        >{{ item.name }}</a
-      >:
-      {{ ' ' }}
-      <span class="text-base text-black text-opacity-80 sm:text-lg">{{
-        item.libsStr
-      }}</span>
-    </div>
-
-    <div class="mt-4 font-light">
-      Check out our <a href="/catalog/">Catalog</a> for inspiration.
-    </div>
-  </div>
-</template>
-
-<script setup lang="ts">
+---
 import { constructHref } from '@/utils';
-
-defineEmits(['select']);
 
 function makeHref(libs: string[]): string {
   return constructHref(libs, []);
@@ -92,4 +67,26 @@ const items = [
     libsStr: 'Jest, Ava, Jasmine',
   },
 ];
-</script>
+---
+
+<div class="mx-2 flex flex-col items-start sm:items-center">
+  <h2 class="mt-4 mb-2 self-center sm:mt-8">Popular comparisons</h2>
+
+  {
+    items.map((item) => (
+      <div class="mb-2">
+        <a class="text-lg" href={makeHref(item.libs)}>
+          {item.name}
+        </a>
+        :{' '}
+        <span class="text-base text-black text-opacity-80 sm:text-lg">
+          {item.libsStr}
+        </span>
+      </div>
+    ))
+  }
+
+  <div class="mt-4 font-light">
+    Check out our <a href="/catalog/">Catalog</a> for inspiration.
+  </div>
+</div>

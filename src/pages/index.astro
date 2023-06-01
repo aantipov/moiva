@@ -1,12 +1,17 @@
 ---
 import App from '@/App.vue';
+import SearchApp from '@/SearchApp.vue';
+import PopularApp from '@/astro-components/Popular.astro';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/dist/backdrop.css';
 import 'tippy.js/dist/svg-arrow.css';
 import 'tippy.js/themes/light.css';
 import 'tippy.js/themes/light-border.css';
 import 'tippy.js/animations/shift-away.css';
-console.log('===== Log request =====');
+
+const isHomePage =
+  Astro.url.searchParams.get('npm') === null &&
+  Astro.url.searchParams.get('github') === null;
 ---
 
 <html lang="en">
@@ -258,12 +263,17 @@ console.log('===== Log request =====');
     </div>
 
     <!-- Body -->
-    <div id="app" class="flex-grow">
-      <script src="@/chartjs.config.ts"></script>
-      <!-- Fixed height is used to take into account Popular libraries height to avoid layout shifts  -->
-      <App client:only="vue">
-        <div style="height: 672px"></div>
-      </App>
+    <div class="flex-grow">
+      {
+        isHomePage ? (
+          <div class="content container mt-8 mb-10 antialiased">
+            <SearchApp client:load />
+            <PopularApp />
+          </div>
+        ) : (
+          <App client:only="vue"> </App>
+        )
+      }
     </div>
 
     <!-- Footer -->
