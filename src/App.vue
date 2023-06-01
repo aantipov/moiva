@@ -5,18 +5,12 @@
     <div class="content container mt-8 antialiased">
       <Search class="mx-auto w-full lg:w-9/12 xl:w-2/4" @select="select" />
       <Suggestions @select="select" />
-
-      <!--  Popular Comparisons    -->
-      <div v-if="!librariesRR.length">
-        <Popular v-if="!isLoading" class="mb-8" @select="selectMultiple" />
-
-        <div
-          v-else
-          class="relative mx-auto w-full lg:w-9/12 xl:w-2/4"
-          style="min-height: 200px"
-        >
-          <LoaderNew class="items-center" />
-        </div>
+      <div
+        v-if="isLoading && !librariesRR.length"
+        class="relative mx-auto w-full lg:w-9/12 xl:w-2/4"
+        style="min-height: 200px"
+      >
+        <LoaderNew class="items-center" />
       </div>
     </div>
 
@@ -25,7 +19,7 @@
       <div class="container mt-4 text-center lg:w-9/12 xl:w-2/4">
         <Title />
 
-        <a href="/" @click.prevent="clearSelection">[Clear selection]</a>
+        <a href="/">[Clear selection]</a>
       </div>
 
       <Table category="" class="container mt-4 mb-12 lg:w-3/4" />
@@ -115,6 +109,7 @@
 </template>
 
 <script setup lang="ts">
+import '@/chartjs.config';
 import { onMounted, watchEffect, computed, readonly } from 'vue';
 import { VueQueryDevTools } from 'vue-query/devtools';
 
@@ -124,7 +119,6 @@ import NpmDownloads from '@/components/downloads/NpmDownloadsChart.vue';
 import Title from '@/components/Title.vue';
 import Search from '@/components/search/Search.vue';
 import Suggestions from '@/components/Suggestions.vue';
-import Popular from '@/components/Popular.vue';
 import Table from '@/components/table/Table.vue';
 import Readings from '@/components/Readings.vue';
 
@@ -254,14 +248,6 @@ function select(id: string, isNpm: boolean) {
   } else {
     selectRepo(id);
   }
-}
-
-function selectMultiple(npmPackagesNames: string[]): void {
-  npmPackagesNames.forEach(selectNpmPackage);
-}
-
-function clearSelection() {
-  removeAllLibraries();
 }
 </script>
 

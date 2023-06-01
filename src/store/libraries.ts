@@ -160,6 +160,10 @@ export function addLibraryByNpmPackage(pkgName: string): Promise<void> {
 }
 
 export function removeLibrary(libraryId: string): void {
+  if (librariesIds.value.length === 1) {
+    window.location.assign('/');
+    return;
+  }
   librariesR.splice(librariesIds.value.indexOf(libraryId), 1);
 }
 
