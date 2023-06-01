@@ -3,7 +3,6 @@ import type { App } from 'vue';
 import tippy from 'tippy.js';
 import * as Sentry from '@sentry/vue';
 import { Integrations } from '@sentry/tracing';
-import '../chartjs.config';
 import { VueQueryPlugin } from 'vue-query';
 // import CatalogApp from './CatalogApp.vue';
 // import AboutApp from './AboutApp.vue';
