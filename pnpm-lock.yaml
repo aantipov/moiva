@@ -10,6 +10,9 @@ dependencies:
   '@astrojs/vue':
     specifier: ^2.2.0
     version: 2.2.0(@babel/core@7.22.1)(astro@2.5.5)(vite@4.3.9)(vue@3.3.4)
+  '@nanostores/vue':
+    specifier: ^0.9.0
+    version: 0.9.0(nanostores@0.9.1)(vue@3.3.4)
   '@sentry/node':
     specifier: ^7.53.1
     version: 7.53.1
@@ -52,6 +55,9 @@ dependencies:
   nanoid:
     specifier: ^3.1.30
     version: 3.1.30
+  nanostores:
+    specifier: ^0.9.1
+    version: 0.9.1
   ramda:
     specifier: ^0.27.1
     version: 0.27.1
@@ -1261,6 +1267,21 @@ packages:
 
   /@ljharb/has-package-exports-patterns@0.0.2:
     resolution: {integrity: sha512-4/RWEeXDO6bocPONheFe6gX/oQdP/bEpv0oL4HqjPP5DCenBSt0mHgahppY49N0CpsaqffdwPq+TlX9CYOq2Dw==}
+    dev: false
+
+  /@nanostores/vue@0.9.0(nanostores@0.9.1)(vue@3.3.4):
+    resolution: {integrity: sha512-VUD1yYjgU6OtRYPSSgl+KUc0KGbC4luGQJ4FpBhq5d4K0lLokYFFEM1oc03z5rqZsQAZb7M9YExnxYwn09+gVA==}
+    engines: {node: ^16.0.0 || >=18.0.0}
+    peerDependencies:
+      '@vue/devtools-api': '>=6.1.4'
+      nanostores: '>=0.8.1'
+      vue: '>=3.3.1'
+    peerDependenciesMeta:
+      '@vue/devtools-api':
+        optional: true
+    dependencies:
+      nanostores: 0.9.1
+      vue: 3.3.4
     dev: false
 
   /@netlify/functions@0.10.0:
@@ -4587,6 +4608,11 @@ packages:
     resolution: {integrity: sha512-BGcqMMJuToF7i1rt+2PWSNVnWIkGCU78jBG3RxO/bZlnZPK2Cmi2QaffxGO/2RvWi9sL+FAiRiXMgsyxQ1DIDA==}
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
+
+  /nanostores@0.9.1:
+    resolution: {integrity: sha512-DmAL3oTieICqnl2XVq5wegFE7EXIoPnIv1CNWNGEhXpwrHk7Prctch4/nX5x95i95WHdesI5sPeoNAUFpFsGtg==}
+    engines: {node: ^16.0.0 || ^18.0.0 || >=20.0.0}
+    dev: false
 
   /napi-build-utils@1.0.2:
     resolution: {integrity: sha512-ONmRUqK7zj7DWX0D9ADe03wbwOBZxNAfF20PlGfCWQcD3+/MakShIHrMqx9YwPTfxDdF1zLeL+RGZiR9kGMLdg==}

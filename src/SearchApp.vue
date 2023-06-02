@@ -5,12 +5,21 @@
 <script setup lang="ts">
 import Search from '@/components/search/Search.vue';
 import { constructHref } from '@/utils';
+import {
+  $addedSearchNpmPackage,
+  $addedSearchRepo,
+} from '@/nanostore/addedSearchValue.js';
+const props = defineProps<{
+  isHomePage: boolean;
+}>();
 
 function select(id: string, isNpm: boolean) {
   if (isNpm) {
-    window.location.assign(constructHref([id], []));
+    props.isHomePage && window.location.assign(constructHref([id], []));
+    !props.isHomePage && $addedSearchNpmPackage.set(id);
   } else {
-    window.location.assign(constructHref([], [id]));
+    props.isHomePage && window.location.assign(constructHref([], [id]));
+    !props.isHomePage && $addedSearchRepo.set(id);
   }
 }
 </script>
