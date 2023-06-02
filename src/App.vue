@@ -116,7 +116,6 @@ import LoaderNew from '@/components/LoaderNew.vue';
 
 import NpmDownloads from '@/components/downloads/NpmDownloadsChart.vue';
 import Title from '@/components/Title.vue';
-// import Search from '@/components/search/Search.vue';
 import Suggestions from '@/components/Suggestions.vue';
 import Table from '@/components/table/Table.vue';
 import Readings from '@/components/Readings.vue';
