@@ -267,11 +267,16 @@ const isHomePage =
       {
         isHomePage ? (
           <div class="content container mt-8 mb-10 antialiased">
-            <SearchApp client:load />
+            <SearchApp isHomePage={true} client:load />
             <PopularApp />
           </div>
         ) : (
-          <App client:only="vue"> </App>
+          <div>
+            <div class="content container mt-8 antialiased">
+              <SearchApp isHomePage={false} client:load />
+            </div>
+            <App client:only="vue"> </App>
+          </div>
         )
       }
     </div>

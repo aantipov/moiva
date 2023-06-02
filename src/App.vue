@@ -2,8 +2,7 @@
   <div style="min-height: 50vh">
     <VueQueryDevTools />
 
-    <div class="content container mt-8 antialiased">
-      <Search class="mx-auto w-full lg:w-9/12 xl:w-2/4" @select="select" />
+    <div class="content container antialiased">
       <Suggestions @select="select" />
       <div
         v-if="isLoading && !librariesRR.length"
@@ -117,7 +116,6 @@ import LoaderNew from '@/components/LoaderNew.vue';
 
 import NpmDownloads from '@/components/downloads/NpmDownloadsChart.vue';
 import Title from '@/components/Title.vue';
-import Search from '@/components/search/Search.vue';
 import Suggestions from '@/components/Suggestions.vue';
 import Table from '@/components/table/Table.vue';
 import Readings from '@/components/Readings.vue';
@@ -155,6 +153,18 @@ import { useDocumentDescription } from '@/composables/useDocumentDescription';
 import { useUrl } from '@/composables/useUrl';
 import * as Sentry from '@sentry/vue';
 import { useChartsVisibility } from './composables/useChartsVisibility';
+import {
+  $addedSearchNpmPackage,
+  $addedSearchRepo,
+} from '@/nanostore/addedSearchValue';
+import { onSet } from 'nanostores';
+
+onSet($addedSearchNpmPackage, ({ newValue }) => {
+  addLibraryByNpmPackage(newValue as string);
+});
+onSet($addedSearchRepo, ({ newValue }) => {
+  addLibraryByRepo(newValue as string);
+});
 
 // Do not allow Google index pages with >=3 libraries
 setNoFollowTag();
