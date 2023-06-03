@@ -3,7 +3,7 @@
     <div>
       <SuggestionItem
         v-for="suggestedLibrary in suggestions"
-        :key="suggestedLibrary.repoId"
+        :key="suggestedLibrary.id"
         :catalog-library="suggestedLibrary"
         @select="onSelect"
       />
@@ -28,7 +28,7 @@
 import { computed, ref } from 'vue';
 import { getSuggestions } from '@/suggestionsHelper';
 import { CatalogLibraryT } from '@/data/index';
-import { libraries } from '@/store/libraries';
+import { $trimmedLibraries } from '@/nanostore/trimmedLibraries';
 import SuggestionItem from './SuggestionItem.vue';
 import ChevronDownIcon from '@/icons/ChevronDownIcon.vue';
 import ChevronUpIcon from '@/icons/ChevronUpIcon.vue';
@@ -40,9 +40,11 @@ const emit = defineEmits(['select']);
 
 const showAll = ref(false);
 
-const allSuggestions = computed<CatalogLibraryT[]>(() =>
-  getSuggestions(libraries)
-);
+const allSuggestions = ref<CatalogLibraryT[]>([]);
+
+$trimmedLibraries.subscribe((trimmedLibraries) => {
+  allSuggestions.value = getSuggestions(trimmedLibraries);
+});
 
 const hasMore = computed<boolean>(() => allSuggestions.value.length > size);
 
