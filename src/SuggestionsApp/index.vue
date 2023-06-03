@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import Suggestions from '@/components/Suggestions.vue';
+import Suggestions from './Suggestions.vue';
 import {
   $addedSearchNpmPackage,
   $addedSearchRepo,

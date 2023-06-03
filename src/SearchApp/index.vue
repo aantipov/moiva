@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import Search from '@/components/search/Search.vue';
+import Search from './Search.vue';
 import { constructHref } from '@/utils';
 import {
   $addedSearchNpmPackage,
