@@ -1,0 +1,147 @@
+---
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta
+      name="Description"
+      content="A complete side-by-side Comparison of NPM packages. Stats and Historical Trends - Bundle size, Downloads, GitHub Stars, License, Contributors, Releases, Commits, Developer usage, Google Trends, Vulnerabilities, Dependencies, Issues, Age and more"
+    />
+
+    <!-- Open Graph Tags -->
+    <meta
+      property="og:title"
+      content="Moiva.io - Discover and Compare NPM packages"
+    />
+    <meta
+      property="og:description"
+      content="A complete side-by-side Comparison of NPM packages. Stats and Historical Trends - Bundle size, Downloads, GitHub Stars, License, Contributors, Releases, Commits, Developer usage, Google Trends, Vulnerabilities, Dependencies, Issues, Age and more"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://moiva.io/images/moiva-head.jpg"
+    />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@_aantipov" />
+    <meta
+      name="twitter:title"
+      content="Moiva.io - Discover and Compare NPM packages"
+    />
+    <meta
+      name="twitter:description"
+      content="A complete side-by-side Comparison of NPM packages. Stats and Historical Trends - Bundle size, Downloads, GitHub Stars, License, Contributors, Releases, Commits, Developer usage, Google Trends, Vulnerabilities, Dependencies, Issues, Age and more"
+    />
+    <meta
+      name="twitter:image"
+      content="https://moiva.io/images/moiva-head.jpg"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicon/apple-touch-icon.png?v=lkvYMB9erB"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/favicon/favicon-32x32.png?v=lkvYMB9erB"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/favicon/favicon-16x16.png?v=lkvYMB9erB"
+    />
+    <link rel="manifest" href="/favicon/site.webmanifest?v=lkvYMB9erB" />
+    <link
+      rel="mask-icon"
+      href="/favicon/safari-pinned-tab.svg?v=lkvYMB9erB"
+      color="#404040"
+    />
+    <link rel="shortcut icon" href="/favicon/favicon.ico?v=lkvYMB9erB" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta
+      name="msapplication-config"
+      content="/favicon/browserconfig.xml?v=lkvYMB9erB"
+    />
+    <meta name="theme-color" content="#ffffff" />
+
+    <title>Moiva.io - Discover and Compare GitHub and NPM packages</title>
+
+    <style type="text/css" media="screen">
+      html,
+      body {
+        height: 100%;
+        min-height: 640px;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+      .content {
+        flex: 1 0 auto;
+      }
+      .footer-wrapper {
+        flex-shrink: 0;
+      }
+      .goal-item:before {
+        content: '\A';
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: black;
+        display: inline-block;
+        margin: 0 6px 3px;
+      }
+      @media only screen and (min-width: 640px) {
+        .goal-item:before {
+          content: '\A';
+          width: 9px;
+          height: 9px;
+          border-radius: 50%;
+          background: black;
+          display: inline-block;
+          margin: 0 10px 4px;
+        }
+      }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap"
+      rel="stylesheet"
+    />
+
+    <script
+      async
+      defer
+      data-domain="moiva.io"
+      src="https://plausible.io/js/plausible.js"></script>
+  </head>
+
+  <body class="flex flex-col bg-gray-50">
+    <noscript>
+      <p style="padding: 20px; font-size: 30px">
+        <strong
+          >We're sorry but our website doesn't work properly without JavaScript
+          enabled. Please enable it to continue.</strong
+        >
+      </p>
+    </noscript>
+
+    <Header />
+
+    <slot />
+
+    <Footer />
+  </body>
+</html>

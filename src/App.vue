@@ -159,6 +159,13 @@ import {
 } from '@/nanostore/addedSearchValue';
 import { onSet } from 'nanostores';
 
+import 'tippy.js/dist/tippy.css';
+import 'tippy.js/dist/backdrop.css';
+import 'tippy.js/dist/svg-arrow.css';
+import 'tippy.js/themes/light.css';
+import 'tippy.js/themes/light-border.css';
+import 'tippy.js/animations/shift-away.css';
+
 onSet($addedSearchNpmPackage, ({ newValue }) => {
   addLibraryByNpmPackage(newValue as string);
 });
