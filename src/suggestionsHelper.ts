@@ -6,6 +6,7 @@ import {
 } from '@/data/index';
 import { LibrariesReadonlyT } from '@/libraryApis';
 import 'sweetalert2/dist/sweetalert2.css';
+import { TrimmedLibraryT } from '@/nanostore/trimmedLibraries';
 // @ts-ignore
 import { Document } from 'flexsearch';
 
@@ -36,7 +37,7 @@ catalogLibraries.forEach((lib) => index.add(lib));
  * based on tags
  */
 export function getSuggestions(
-  selectedLibraries: LibrariesReadonlyT
+  selectedLibraries: readonly TrimmedLibraryT[]
 ): CatalogLibraryT[] {
   if (!selectedLibraries.length) {
     return [];

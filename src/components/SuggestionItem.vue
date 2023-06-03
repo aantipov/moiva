@@ -65,7 +65,7 @@ import LoaderTailSpin from '@/components/LoaderTailSpin.vue';
 import { computed, onMounted, PropType, ref } from 'vue';
 import { constructHref, numbersFormatter } from '@/utils';
 import { CatalogLibraryT } from '@/data/index';
-import { libraries } from '@/store/libraries';
+import { $trimmedLibraries } from '@/nanostore/trimmedLibraries';
 import { fetchLibraryByNpm, fetchLibraryByRepo } from '@/libraryApis';
 import { fetchNpmDownloads } from '@/components/downloads/api';
 import tippy, { roundArrow } from 'tippy.js';
@@ -117,7 +117,7 @@ function getHrefForAdditionalLib(catalogLibrary: CatalogLibraryT): string {
   const npmPackagesNames = [] as string[];
   const reposIds = [] as string[];
 
-  libraries.forEach((library) => {
+  $trimmedLibraries.get().forEach((library) => {
     if (library.npmPackage) {
       npmPackagesNames.push(library.npmPackage.name);
     } else {

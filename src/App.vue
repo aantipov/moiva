@@ -3,7 +3,6 @@
     <VueQueryDevTools />
 
     <div class="content container antialiased">
-      <Suggestions @select="select" />
       <div
         v-if="isLoading && !librariesRR.length"
         class="relative mx-auto w-full lg:w-9/12 xl:w-2/4"
@@ -116,7 +115,6 @@ import LoaderNew from '@/components/LoaderNew.vue';
 
 import NpmDownloads from '@/components/downloads/NpmDownloadsChart.vue';
 import Title from '@/components/Title.vue';
-import Suggestions from '@/components/Suggestions.vue';
 import Table from '@/components/table/Table.vue';
 import Readings from '@/components/Readings.vue';
 
@@ -166,11 +164,11 @@ import 'tippy.js/themes/light.css';
 import 'tippy.js/themes/light-border.css';
 import 'tippy.js/animations/shift-away.css';
 
-onSet($addedSearchNpmPackage, ({ newValue }) => {
-  addLibraryByNpmPackage(newValue as string);
+onSet($addedSearchNpmPackage, ({ newValue: npmPackageName }) => {
+  addLibraryByNpmPackage(npmPackageName as string);
 });
-onSet($addedSearchRepo, ({ newValue }) => {
-  addLibraryByRepo(newValue as string);
+onSet($addedSearchRepo, ({ newValue: repoId }) => {
+  addLibraryByRepo(repoId as string);
 });
 
 // Do not allow Google index pages with >=3 libraries
@@ -257,14 +255,6 @@ function selectRepo(repoId: string): void {
     showErrorMsg(`Sorry, we couldn't fetch data for ${repoId}`);
     return Promise.reject();
   });
-}
-
-function select(id: string, isNpm: boolean) {
-  if (isNpm) {
-    selectNpmPackage(id);
-  } else {
-    selectRepo(id);
-  }
 }
 </script>
 

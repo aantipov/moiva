@@ -1,4 +1,4 @@
-import { reactive, computed, readonly } from 'vue';
+import { reactive, computed, readonly, watch } from 'vue';
 import {
   RepoT,
   fetchLibraryByRepo,
@@ -6,6 +6,7 @@ import {
   NpmPackageT,
 } from '@/libraryApis';
 import { LibraryT } from '@/getLibrary';
+import { $trimmedLibraries } from '@/nanostore/trimmedLibraries';
 
 // ====== STATE ======
 const librariesR = reactive<LibraryT[]>([]);
@@ -22,6 +23,23 @@ export function sortLibraries(
     librariesR.reverse();
   }
 }
+
+watch(
+  librariesR,
+  (newLibraries) => {
+    const trimmedLibraries = newLibraries.map(
+      ({ id, tags, catalogLibraryId, repo, npmPackage }) => ({
+        id,
+        tags,
+        catalogLibraryId,
+        repo,
+        npmPackage,
+      })
+    );
+    $trimmedLibraries.set(trimmedLibraries);
+  },
+  { deep: true }
+);
 
 // ====== COMPUTED ======
 // deprecated in favor of librariesRR to make the value clear - reactive readonly
