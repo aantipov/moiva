@@ -1,5 +1,5 @@
 <template>
-  <div style="min-height: 50vh">
+  <div>
     <VueQueryDevTools />
 
     <div class="content container antialiased">

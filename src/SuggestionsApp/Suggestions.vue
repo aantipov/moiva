@@ -1,5 +1,5 @@
 <template>
-  <div v-if="suggestions.length" class="mx-auto w-full px-3 lg:w-9/12 xl:w-2/4">
+  <div v-if="suggestions.length">
     <div>
       <SuggestionItem
         v-for="suggestedLibrary in suggestions"
