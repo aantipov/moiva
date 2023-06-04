@@ -16,9 +16,9 @@
 
       <div class="w-full sm:flex">
         <!--   GitHub/NPM switch       -->
-        <div class="relative mb-2 inline-flex w-full sm:mb-0 sm:w-auto">
+        <div class="w-full sm:w-auto relative mb-2 inline-flex sm:mb-0">
           <ChevronDownIcon
-            class="pointer-events-none absolute top-0 right-0 mx-3 my-4 h-6 w-6 text-white"
+            class="pointer-events-none absolute top-0 right-0 mx-2 my-2 h-6 w-6 text-white"
           />
           <select
             v-model="searchType"
@@ -231,13 +231,11 @@ const inputRef = ref<HTMLInputElement>(null as unknown as HTMLInputElement);
   @apply bg-black bg-opacity-10;
 }
 .select {
-  @apply w-full appearance-none rounded bg-primary pl-3 pr-14 text-lg text-white focus:outline-none;
-}
-.select {
-  @apply h-14 sm:rounded-l sm:rounded-r-none sm:pl-5;
+  @apply w-full appearance-none rounded bg-primary pl-3 pr-10 text-lg text-white focus:outline-none;
+  @apply h-10 sm:rounded-l sm:rounded-r-none;
 }
 .myinput {
-  @apply relative h-14 w-full rounded border border-primary border-opacity-40 bg-opacity-5 px-3 text-xl font-light text-gray-700 placeholder-opacity-60 outline-none ring-0 md:text-2xl;
+  @apply relative h-10 w-full rounded border border-primary border-opacity-40 bg-opacity-5 px-3 text-xl font-light text-gray-700 placeholder-opacity-60 outline-none ring-0 md:text-lg;
 }
 .myinput {
   @apply sm:rounded-r sm:rounded-l-none;

@@ -1,5 +1,5 @@
 <template>
-  <Search class="mx-auto w-full lg:w-9/12 xl:w-2/4" @select="select" />
+  <Search class="w-full" @select="select" />
 </template>
 
 <script setup lang="ts">
