@@ -26,6 +26,14 @@
           <ChevronUpIcon class="inline-block h-6 w-6 align-top" /> Show Less
         </template>
       </span>
+
+      <a
+        v-if="trimmedLibraries.length > 1"
+        class="link mt-2 ml-1 inline-block rounded border border-primary px-1 hover:bg-black/10"
+        href="/"
+      >
+        Clear selection
+      </a>
     </div>
   </div>
 </template>

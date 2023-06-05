@@ -16,8 +16,6 @@
     <section v-if="librariesRR.length">
       <div class="container mt-4 text-center lg:w-9/12 xl:w-2/4">
         <Title />
-
-        <a href="/">[Clear selection]</a>
       </div>
 
       <Table category="" class="container mt-4 mb-12 lg:w-3/4" />
