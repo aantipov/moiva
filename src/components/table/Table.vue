@@ -31,14 +31,6 @@
                 class="col relative px-8 py-2"
               >
                 <div>{{ lib.alias }}</div>
-                <div
-                  class="absolute top-0 right-0 flex h-full w-10 cursor-pointer items-center pl-2"
-                >
-                  <m-close
-                    class="rounded-md p-1 hover:bg-black/20 hover:shadow-md active:bg-black/40 active:shadow-none"
-                    @click="() => removeLibrary(lib.id)"
-                  />
-                </div>
               </th>
             </tr>
           </thead>
@@ -85,7 +77,7 @@ import { computed } from 'vue';
 import LoaderNew from '@/components/LoaderNew.vue';
 import MetricHeader from './MetricHeader.vue';
 import MetricValue from './MetricValue.vue';
-import { libraries, isLoading, removeLibrary } from '@/store/libraries';
+import { libraries, isLoading } from '@/store/libraries';
 import { ROWS, NPM_METRICS, CAT_CONFIG, CategoryT } from './TableConfig';
 
 const props = defineProps({

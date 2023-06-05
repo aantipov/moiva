@@ -28,12 +28,13 @@ watch(
   librariesR,
   (newLibraries) => {
     const trimmedLibraries = newLibraries.map(
-      ({ id, tags, catalogLibraryId, repo, npmPackage }) => ({
+      ({ id, tags, catalogLibraryId, repo, npmPackage, alias }) => ({
         id,
         tags,
         catalogLibraryId,
         repo,
         npmPackage,
+        alias,
       })
     );
     $trimmedLibraries.set(trimmedLibraries);
