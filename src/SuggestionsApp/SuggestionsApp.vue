@@ -53,12 +53,10 @@ import {
 // The Number of Suggestions shown in the "SHOW LESS" mode
 const size = 5;
 const showAll = ref(false);
-const allSuggestions = ref<CatalogLibraryT[]>([]);
 const trimmedLibraries = useStore($trimmedLibraries);
-
-$trimmedLibraries.subscribe((trimmedLibraries) => {
-  allSuggestions.value = getSuggestions(trimmedLibraries);
-});
+const allSuggestions = computed<CatalogLibraryT[]>(() =>
+  getSuggestions(trimmedLibraries.value)
+);
 
 const hasMore = computed<boolean>(() => allSuggestions.value.length > size);
 

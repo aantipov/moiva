@@ -1,8 +1,16 @@
 import { atom } from 'nanostores';
 import { LibraryT } from '@/getLibrary';
 
-export type TrimmedLibraryT = Pick<
-  LibraryT,
-  'tags' | 'catalogLibraryId' | 'id' | 'npmPackage' | 'repo' | 'alias'
+type DeepReadonly<T> = T extends (infer R)[]
+  ? ReadonlyArray<DeepReadonly<R>>
+  : T extends object
+  ? { readonly [K in keyof T]: DeepReadonly<T[K]> }
+  : T;
+
+export type TrimmedLibraryT = DeepReadonly<
+  Pick<
+    LibraryT,
+    'tags' | 'catalogLibraryId' | 'id' | 'npmPackage' | 'repo' | 'alias'
+  >
 >;
 export const $trimmedLibraries = atom<TrimmedLibraryT[]>([]);
