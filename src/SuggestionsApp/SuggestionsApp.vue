@@ -1,6 +1,12 @@
 <template>
   <div v-if="suggestions.length">
     <div>
+      <LibraryItem
+        v-for="lib in trimmedLibraries"
+        :key="lib.id"
+        :library="lib"
+        @select="onRemove"
+      />
       <SuggestionItem
         v-for="suggestedLibrary in suggestions"
         :key="suggestedLibrary.id"
@@ -9,7 +15,7 @@
       />
       <span
         v-if="hasMore"
-        class="link mt-2 inline-block rounded border border-primary px-1"
+        class="link mt-2 inline-block rounded border border-primary px-1 hover:bg-black/10"
         @click="showAll = !showAll"
       >
         <template v-if="!showAll"
@@ -28,23 +34,29 @@
 import { computed, ref } from 'vue';
 import { getSuggestions } from '@/suggestionsHelper';
 import { CatalogLibraryT } from '@/data/index';
-import { $trimmedLibraries } from '@/nanostore/trimmedLibraries';
+import {
+  $trimmedLibraries,
+  TrimmedLibraryT,
+} from '@/nanostore/trimmedLibraries';
+import { useStore } from '@nanostores/vue';
 import SuggestionItem from './SuggestionItem.vue';
+import LibraryItem from './LibraryItem.vue';
 import ChevronDownIcon from '@/icons/ChevronDownIcon.vue';
 import ChevronUpIcon from '@/icons/ChevronUpIcon.vue';
 
+import {
+  $addedNpmPackage,
+  $addedRepo,
+  $removedLibrary,
+} from '@/nanostore/crudLibrary';
+
 // The Number of Suggestions shown in the "SHOW LESS" mode
 const size = 5;
-
-const emit = defineEmits(['select']);
-
 const showAll = ref(false);
-
-const allSuggestions = ref<CatalogLibraryT[]>([]);
-
-$trimmedLibraries.subscribe((trimmedLibraries) => {
-  allSuggestions.value = getSuggestions(trimmedLibraries);
-});
+const trimmedLibraries = useStore($trimmedLibraries);
+const allSuggestions = computed<CatalogLibraryT[]>(() =>
+  getSuggestions(trimmedLibraries.value)
+);
 
 const hasMore = computed<boolean>(() => allSuggestions.value.length > size);
 
@@ -54,9 +66,12 @@ const suggestions = computed<CatalogLibraryT[]>(() =>
 
 function onSelect(catalogLibrary: CatalogLibraryT) {
   if (catalogLibrary.npm) {
-    emit('select', catalogLibrary.npm, true);
+    $addedNpmPackage.set(catalogLibrary.npm);
   } else {
-    emit('select', catalogLibrary.repoId, false);
+    $addedRepo.set(catalogLibrary.repoId);
   }
+}
+function onRemove(catalogLibrary: TrimmedLibraryT) {
+  $removedLibrary.set(catalogLibrary.id);
 }
 </script>

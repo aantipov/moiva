@@ -4,7 +4,6 @@ import {
   frameworksTags,
   genericTags,
 } from '@/data/index';
-import { LibrariesReadonlyT } from '@/libraryApis';
 import 'sweetalert2/dist/sweetalert2.css';
 import { TrimmedLibraryT } from '@/nanostore/trimmedLibraries';
 // @ts-ignore

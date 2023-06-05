@@ -141,6 +141,7 @@ import {
   librariesIds,
   addLibraryByNpmPackage,
   addLibraryByRepo,
+  removeLibrary,
   removeAllLibraries,
 } from '@/store/libraries';
 import useExtraDataApiLegacy, {
@@ -152,9 +153,10 @@ import { useUrl } from '@/composables/useUrl';
 import * as Sentry from '@sentry/vue';
 import { useChartsVisibility } from './composables/useChartsVisibility';
 import {
-  $addedSearchNpmPackage,
-  $addedSearchRepo,
-} from '@/nanostore/addedSearchValue';
+  $addedNpmPackage,
+  $addedRepo,
+  $removedLibrary,
+} from '@/nanostore/crudLibrary';
 import { onSet } from 'nanostores';
 
 import 'tippy.js/dist/tippy.css';
@@ -164,11 +166,14 @@ import 'tippy.js/themes/light.css';
 import 'tippy.js/themes/light-border.css';
 import 'tippy.js/animations/shift-away.css';
 
-onSet($addedSearchNpmPackage, ({ newValue: npmPackageName }) => {
+onSet($addedNpmPackage, ({ newValue: npmPackageName }) => {
   addLibraryByNpmPackage(npmPackageName as string);
 });
-onSet($addedSearchRepo, ({ newValue: repoId }) => {
+onSet($addedRepo, ({ newValue: repoId }) => {
   addLibraryByRepo(repoId as string);
+});
+onSet($removedLibrary, ({ newValue: libraryId }) => {
+  removeLibrary(libraryId as string);
 });
 
 // Do not allow Google index pages with >=3 libraries

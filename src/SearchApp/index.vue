@@ -5,10 +5,7 @@
 <script setup lang="ts">
 import Search from './Search.vue';
 import { constructHref } from '@/utils';
-import {
-  $addedSearchNpmPackage,
-  $addedSearchRepo,
-} from '@/nanostore/addedSearchValue.js';
+import { $addedNpmPackage, $addedRepo } from '@/nanostore/crudLibrary.js';
 const props = defineProps<{
   isHomePage: boolean;
 }>();
@@ -16,10 +13,10 @@ const props = defineProps<{
 function select(id: string, isNpm: boolean) {
   if (isNpm) {
     props.isHomePage && window.location.assign(constructHref([id], []));
-    !props.isHomePage && $addedSearchNpmPackage.set(id);
+    !props.isHomePage && $addedNpmPackage.set(id);
   } else {
     props.isHomePage && window.location.assign(constructHref([], [id]));
-    !props.isHomePage && $addedSearchRepo.set(id);
+    !props.isHomePage && $addedRepo.set(id);
   }
 }
 </script>
