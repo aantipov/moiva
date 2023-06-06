@@ -12,21 +12,12 @@
     "allowSyntheticDefaultImports": true,
     "resolveJsonModule": true,
     "sourceMap": true,
-    "baseUrl": ".",
+    "baseUrl": "./",
     "typeRoots": ["node_modules/@types", "types"],
     "paths": {
       "@/*": ["src/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "blog/**/*.vue",
-    "blog/**/*.ts",
-    "blog/.vitepress/**/*.vue",
-    "blog/.vitepress/**/*.ts"
-  ],
   "exclude": ["node_modules", "src/components/report/*"]
 }

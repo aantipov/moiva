@@ -2,27 +2,24 @@
 import Footer from './Footer.astro';
 import SearchApp from '@/SearchApp/index.vue';
 import SuggestionsApp from '@/SuggestionsApp/SuggestionsApp.vue';
+import { isSEOPage, getSEOTitle, getSEODescription } from '@/ssrHelper';
+const npmPackages = Astro.url.searchParams.get('npm')?.split(' ') || [];
+const repos = Astro.url.searchParams.get('github')?.split(' ') || [];
+const isSEO = isSEOPage(npmPackages, repos);
 ---
 
 <html lang="en">
   <head>
+    <title>{getSEOTitle(npmPackages)}</title>
+    <meta name="Description" content={getSEODescription(npmPackages)} />
+    {!isSEO && <meta name="robots" content="noindex" />}
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <meta
-      name="Description"
-      content="A complete side-by-side Comparison of NPM packages. Stats and Historical Trends - Bundle size, Downloads, GitHub Stars, License, Contributors, Releases, Commits, Developer usage, Google Trends, Vulnerabilities, Dependencies, Issues, Age and more"
-    />
 
     <!-- Open Graph Tags -->
-    <meta
-      property="og:title"
-      content="Moiva.io - Discover and Compare NPM packages"
-    />
-    <meta
-      property="og:description"
-      content="A complete side-by-side Comparison of NPM packages. Stats and Historical Trends - Bundle size, Downloads, GitHub Stars, License, Contributors, Releases, Commits, Developer usage, Google Trends, Vulnerabilities, Dependencies, Issues, Age and more"
-    />
+    <meta property="og:title" content={getSEOTitle(npmPackages)} />
+    <meta property="og:description" content={getSEODescription(npmPackages)} />
     <meta property="og:type" content="website" />
     <meta
       property="og:image"
@@ -32,14 +29,8 @@ import SuggestionsApp from '@/SuggestionsApp/SuggestionsApp.vue';
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@_aantipov" />
-    <meta
-      name="twitter:title"
-      content="Moiva.io - Discover and Compare NPM packages"
-    />
-    <meta
-      name="twitter:description"
-      content="A complete side-by-side Comparison of NPM packages. Stats and Historical Trends - Bundle size, Downloads, GitHub Stars, License, Contributors, Releases, Commits, Developer usage, Google Trends, Vulnerabilities, Dependencies, Issues, Age and more"
-    />
+    <meta name="twitter:title" content={getSEOTitle(npmPackages)} />
+    <meta name="twitter:description" content={getSEODescription(npmPackages)} />
     <meta
       name="twitter:image"
       content="https://moiva.io/images/moiva-head.jpg"
@@ -75,8 +66,6 @@ import SuggestionsApp from '@/SuggestionsApp/SuggestionsApp.vue';
       content="/favicon/browserconfig.xml?v=lkvYMB9erB"
     />
     <meta name="theme-color" content="#ffffff" />
-
-    <title>Moiva.io - Discover and Compare GitHub and NPM packages</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
