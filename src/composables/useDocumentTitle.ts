@@ -1,7 +1,7 @@
 import { watchEffect } from 'vue';
 import { useTitle } from '@vueuse/core';
-import { LibrariesReadonlyT } from '@/libraryApis';
 import { isLoading, librariesRR } from '@/store/libraries';
+import { getSEOTitle } from '@/ssrHelper';
 
 export function useDocumentTitle(): void {
   const title = useTitle();
@@ -12,20 +12,10 @@ export function useDocumentTitle(): void {
       return;
     }
 
-    title.value = getTitle(librariesRR);
+    const npmPackages = librariesRR
+      .filter(({ npmPackage }) => !!npmPackage)
+      .map(({ npmPackage }) => npmPackage!.name as string)
+      .sort();
+    title.value = getSEOTitle(npmPackages);
   });
-}
-
-function getTitle(libraries: LibrariesReadonlyT): string {
-  if (!libraries.length) {
-    return 'Moiva.io - Discover and Compare NPM packages';
-  }
-
-  if (libraries.length === 1) {
-    return `${libraries[0].alias}: Stats and Trends from NPM, GitHub, ... - Moiva.io`;
-  }
-
-  const aliases = libraries.map(({ alias }) => alias).sort();
-
-  return `${aliases.join(' vs ')}: Which One to Choose? - Moiva.io`;
 }

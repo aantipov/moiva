@@ -145,7 +145,6 @@ import useExtraDataApiLegacy, {
   useExtraDataApi,
 } from '@/composables/useExtraDataApi';
 import { useDocumentTitle } from '@/composables/useDocumentTitle';
-import { useDocumentDescription } from '@/composables/useDocumentDescription';
 import { useUrl } from '@/composables/useUrl';
 import * as Sentry from '@sentry/vue';
 import { useChartsVisibility } from './composables/useChartsVisibility';
@@ -195,7 +194,6 @@ onMounted(() => {
 
 // Keep Title, Description and Url in sync with the selected libraries
 useDocumentTitle();
-useDocumentDescription();
 useUrl();
 useExtraDataApi();
 const chartsVisibilityRO = readonly(useChartsVisibility());
