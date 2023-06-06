@@ -104,21 +104,6 @@ export function formatDateFromNow(date: string): string {
   return formatDistance(new Date(date), new Date(), { addSuffix: true });
 }
 
-// Do not allow Google index pages with GitHub (we don't have enough data for SEO there)
-// Do not allow Google to index pages with >=3 libraries
-// To avoid spamming Google and the user with useless and duplicated links
-export function setNoFollowTag(): void {
-  const npmPackagesFromUrl = getNpmPackagesFromUrl();
-  const reposIdsFromUrl = getReposIdsFromUrl();
-
-  if (reposIdsFromUrl.length > 0 || npmPackagesFromUrl.length >= 3) {
-    const metaRobots = document.createElement('meta');
-    metaRobots.name = 'robots';
-    metaRobots.content = 'noindex';
-    document.head.appendChild(metaRobots);
-  }
-}
-
 /**
  * Get Alias using the alias from the catalog or repository's name
  *

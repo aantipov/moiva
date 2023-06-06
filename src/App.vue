@@ -129,7 +129,6 @@ import { CAT_CONFIG } from '@/components/table/TableConfig';
 import {
   getNpmPackagesFromUrl,
   getReposIdsFromUrl,
-  setNoFollowTag,
   showErrorMsg,
 } from '@/utils';
 import { updateLibrariesColors } from '@/store/librariesColors';
@@ -173,9 +172,6 @@ onSet($addedRepo, ({ newValue: repoId }) => {
 onSet($removedLibrary, ({ newValue: libraryId }) => {
   removeLibrary(libraryId as string);
 });
-
-// Do not allow Google index pages with >=3 libraries
-setNoFollowTag();
 
 // Keep up-to-date the mapping Library <=> Color
 watchEffect(() => updateLibrariesColors(librariesIds.value));
