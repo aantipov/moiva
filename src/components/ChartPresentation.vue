@@ -14,7 +14,7 @@
 
     <div
       v-if="!popupMode || $slots.info || failedLibsNames.length"
-      class="absolute top-4 right-4 z-30 flex"
+      class="absolute right-4 top-4 z-30 flex"
     >
       <!--   Warning Icon with Failures description   -->
       <ChartInfo
@@ -45,7 +45,7 @@
       <canvas
         v-show="!isError && libsNames.length"
         ref="chartEl"
-        class="-mt-2 -mb-2"
+        class="-mb-2 -mt-2"
         role="img"
         :aria-label="ariaLabel"
         ><div>

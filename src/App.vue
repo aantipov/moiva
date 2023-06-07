@@ -18,7 +18,7 @@
         <Title />
       </div>
 
-      <Table category="" class="container mt-4 mb-12 lg:w-3/4" />
+      <Table category="" class="container mb-12 mt-4 lg:w-3/4" />
 
       <Readings class="container mb-12" />
 
@@ -28,9 +28,9 @@
         :class="{ [CAT_CONFIG['Popularity'].bgColor]: true }"
       >
         <div class="container">
-          <h2 class="mt-0 mb-6 text-white">Popularity</h2>
+          <h2 class="mb-6 mt-0 text-white">Popularity</h2>
 
-          <Table category="Popularity" class="mt-4 mb-12" />
+          <Table category="Popularity" class="mb-12 mt-4" />
 
           <div class="grid grid-cols-12 gap-8">
             <NpmDownloads
@@ -58,11 +58,11 @@
         :class="{ [CAT_CONFIG['Maintenance'].bgColor]: true }"
       >
         <div class="container">
-          <h2 class="mt-0 mb-6 text-black/80">
+          <h2 class="mb-6 mt-0 text-black/80">
             Maintenance and Development Activity
           </h2>
 
-          <Table category="Maintenance" class="mt-4 mb-12" />
+          <Table category="Maintenance" class="mb-12 mt-4" />
 
           <div class="grid grid-cols-12 gap-8">
             <Releases
@@ -85,9 +85,9 @@
         :class="{ [CAT_CONFIG['Miscellaneous'].bgColor]: true }"
       >
         <div class="container">
-          <h2 class="mt-0 mb-6 text-white">Miscellaneous</h2>
+          <h2 class="mb-6 mt-0 text-white">Miscellaneous</h2>
 
-          <Table category="Miscellaneous" class="mt-4 mb-12" />
+          <Table category="Miscellaneous" class="mb-12 mt-4" />
 
           <div class="grid grid-cols-12 gap-8">
             <Languages
