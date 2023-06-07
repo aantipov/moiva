@@ -16,6 +16,7 @@
     "typecheck": "astro check && vue-tsc --noEmit",
     "format": "prettier --write --plugin-search-dir=. src/.",
     "update": "pnpx npm-upgrade check",
+    "logs": "wrangler pages deployment tail",
     "blog:dev": "vitepress dev blog",
     "blog:build": "vitepress build blog",
     "blog:serve": "vitepress serve blog --port 5002",

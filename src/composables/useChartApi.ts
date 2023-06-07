@@ -1,5 +1,6 @@
 import { ref, onMounted, watch, Ref, computed } from 'vue';
-import * as Sentry from '@sentry/vue';
+// import * as Sentry from '@sentry/vue';
+// TODO: SENTRY
 
 export function useChartApi<T>(
   itemsIds: Ref<string[]>,
@@ -37,13 +38,12 @@ export function useChartApi<T>(
         }
       })
       .catch((err) => {
-        Sentry.captureException(err);
-
-        // Do nothing if there is a new request already in place
-        if (lastFetchPromise === fetchPromise) {
-          isError.value = true;
-          isLoading.value = false;
-        }
+        // Sentry.captureException(err);
+        // // Do nothing if there is a new request already in place
+        // if (lastFetchPromise === fetchPromise) {
+        //   isError.value = true;
+        //   isLoading.value = false;
+        // }
       }));
   }
 

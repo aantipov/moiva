@@ -1,6 +1,7 @@
 import { DeepReadonly } from 'vue';
 import axios, { AxiosError } from 'axios';
-import * as Sentry from '@sentry/vue';
+// import * as Sentry from '@sentry/vue';
+// TODO: SENTRY
 import {
   ERROR_CODE_NO_GITHUB_DATA,
   ERROR_CODE_FETCH_GITHUB_REPO_FAILED,
@@ -225,10 +226,10 @@ function reportSentry(
 ): void {
   err.name = `UI API (${methodName})`;
 
-  Sentry.captureException(err, {
-    tags: {
-      apiResponseMessage: err.response?.data?.error || '',
-      apiRequestUrl: err.config?.url || '',
-    },
-  });
+  // Sentry.captureException(err, {
+  //   tags: {
+  //     apiResponseMessage: err.response?.data?.error || '',
+  //     apiRequestUrl: err.config?.url || '',
+  //   },
+  // });
 }
