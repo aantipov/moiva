@@ -16,9 +16,9 @@
 
       <div class="w-full sm:flex">
         <!--   GitHub/NPM switch       -->
-        <div class="w-full sm:w-auto relative mb-2 inline-flex sm:mb-0">
+        <div class="relative mb-2 inline-flex w-full sm:mb-0 sm:w-auto">
           <ChevronDownIcon
-            class="pointer-events-none absolute top-0 right-0 mx-2 my-2 h-6 w-6 text-white"
+            class="pointer-events-none absolute right-0 top-0 mx-2 my-2 h-6 w-6 text-white"
           />
           <select
             v-model="searchType"
@@ -63,7 +63,7 @@
           />
           <button
             v-if="searchValue"
-            class="absolute top-0 right-0 z-10 flex h-full w-14 items-center justify-end py-3 pr-3 focus:outline-none"
+            class="absolute right-0 top-0 z-10 flex h-full w-14 items-center justify-end py-3 pr-3 focus:outline-none"
             @click="searchValue = ''"
           >
             <m-close class="h-6 w-6 opacity-80" />
@@ -238,7 +238,7 @@ const inputRef = ref<HTMLInputElement>(null as unknown as HTMLInputElement);
   @apply relative h-10 w-full rounded border border-primary border-opacity-40 bg-opacity-5 px-3 text-xl font-light text-gray-700 placeholder-opacity-60 outline-none ring-0 md:text-lg;
 }
 .myinput {
-  @apply sm:rounded-r sm:rounded-l-none;
+  @apply sm:rounded-l-none sm:rounded-r;
 }
 .myinput:focus {
   @apply border border-primary bg-white outline-none ring-0;

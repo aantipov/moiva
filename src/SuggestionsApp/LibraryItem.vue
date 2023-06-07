@@ -1,7 +1,7 @@
 <template>
   <div class="inline-block">
     <a
-      class="border border-primary bg-primary text-white mt-2 mr-2 inline-block rounded px-1 text-base hover:bg-black/10 hover:shadow-md active:bg-black/20 active:shadow-none"
+      class="mr-2 mt-2 inline-block rounded border border-primary bg-primary px-1 text-base text-white hover:bg-black/10 hover:shadow-md active:bg-black/20 active:shadow-none"
       :href="getHref(library)"
       @click.prevent="$emit('select', library)"
       >- {{ library.alias }}</a

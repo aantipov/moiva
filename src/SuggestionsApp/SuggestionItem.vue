@@ -2,7 +2,7 @@
   <div class="inline-block">
     <a
       ref="triggerRef"
-      class="mt-2 mr-1 inline-block rounded px-1 text-base hover:bg-black/10 hover:shadow-md active:bg-black/20 active:shadow-none"
+      class="mr-1 mt-2 inline-block rounded px-1 text-base hover:bg-black/10 hover:shadow-md active:bg-black/20 active:shadow-none"
       :href="getHrefForAdditionalLib(catalogLibrary)"
       @click.prevent="$emit('select', catalogLibrary)"
       >+ {{ catalogLibrary.alias }}</a
@@ -151,7 +151,7 @@ async function _fetchData() {
   @apply text-base text-gray-800;
 }
 .tippy-box[data-theme~='suggestion-tp'] .menu-item {
-  @apply whitespace-nowrap py-2 px-2 text-xl hover:bg-gray-600 hover:text-white sm:text-base;
+  @apply whitespace-nowrap px-2 py-2 text-xl hover:bg-gray-600 hover:text-white sm:text-base;
 }
 /* Arrow border */
 .tippy-box[data-theme~='suggestion-tp'] > .tippy-svg-arrow > svg:first-child {

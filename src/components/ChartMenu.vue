@@ -57,6 +57,6 @@ function hide() {
   @apply hidden;
 }
 .tippy-box[data-theme~='chart-menu'] .menu-item {
-  @apply whitespace-nowrap py-2 px-2 text-xl hover:bg-gray-600 hover:text-white sm:text-base;
+  @apply whitespace-nowrap px-2 py-2 text-xl hover:bg-gray-600 hover:text-white sm:text-base;
 }
 </style>

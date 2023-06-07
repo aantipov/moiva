@@ -29,7 +29,7 @@
 
       <a
         v-if="trimmedLibraries.length > 1"
-        class="link mt-2 ml-1 inline-block rounded border border-primary px-1 hover:bg-black/10"
+        class="link ml-1 mt-2 inline-block rounded border border-primary px-1 hover:bg-black/10"
         href="/"
       >
         Clear selection

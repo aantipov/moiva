@@ -28,7 +28,7 @@ const METRICS = [
   'license',
 ] as const;
 
-export type MetricT = typeof METRICS[number];
+export type MetricT = (typeof METRICS)[number];
 
 // Metrics which are removed if there are no npm packages
 export const NPM_METRICS: MetricT[] = [

@@ -14,7 +14,7 @@
       </h1>
     </div>
 
-    <article class="prose prose-lg mt-5 mb-20">
+    <article class="prose prose-lg mb-20 mt-5">
       <h1 class="text-left">About</h1>
       <p>Hi 👋</p>
 
