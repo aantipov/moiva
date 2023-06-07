@@ -8,7 +8,7 @@ export default defineConfig({
   outDir: './dist',
   site: 'https://moiva.io/',
   integrations: [vue({ appEntrypoint: '/src/main' }), tailwind()],
-  experimental: { inlineStylesheets: 'auto' },
+  build: { inlineStylesheets: 'auto' },
   // vite: {
   // build: { minify: false },
   //   resolve: { alias: { '@': '/src' } },
