@@ -5,11 +5,12 @@
   "packageManager": "pnpm@8.5.1",
   "scripts": {
     "wrangler": "wrangler",
+    "astro": "astro",
     "dev": "astro dev",
     "build": "pnpm run typecheck && astro build",
     "build:pure": "astro build",
     "build-old": "vitest run && vue-tsc --noEmit && vite build",
-    "preview": "astro build && wrangler pages dev ./dist",
+    "preview": "astro build && wrangler pages dev ./dist --kv=aiPkgDescription",
     "publish": "astro build && wrangler pages deploy ./dist",
     "test": "vitest run && pnpm run typecheck && pnpm run lint && prettier --check src/.",
     "lint": "eslint --ext .ts,.js,.vue src/ && prettier --check src/.",
@@ -51,6 +52,7 @@
     "vue-query": "^1.26.0"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20230518.0",
     "@netlify/functions": "^0.10.0",
     "@types/node": "^20.2.5",
     "@types/ramda": "^0.27.66",

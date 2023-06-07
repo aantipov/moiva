@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 dist
+.wrangler
 
 # blog/.vitepress/metadata.json
 /public/blog/page
