@@ -78,6 +78,9 @@ dependencies:
     version: 1.26.0(react@18.2.0)(vue@3.3.4)
 
 devDependencies:
+  '@cloudflare/workers-types':
+    specifier: ^4.20230518.0
+    version: 4.20230518.0
   '@netlify/functions':
     specifier: ^0.10.0
     version: 0.10.0
@@ -756,6 +759,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@cloudflare/workers-types@4.20230518.0:
+    resolution: {integrity: sha512-A0w1V+5SUawGaaPRlhFhSC/SCDT9oQG8TMoWOKFLA4qbqagELqEAFD4KySBIkeVOvCBLT1DZSYBMCxbXddl0kw==}
+    dev: true
 
   /@docsearch/css@3.4.0:
     resolution: {integrity: sha512-Hg8Xfma+rFwRi6Y/pfei4FJoQ1hdVURmmNs/XPoMTCPAImU+d5yxj+M+qdLtNjWRpfWziU4dQcqY94xgFBn2dg==}
