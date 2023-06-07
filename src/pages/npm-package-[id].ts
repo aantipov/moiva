@@ -1,9 +1,20 @@
 import { getRuntime } from '@astrojs/cloudflare/runtime';
+import { getNpmLibraryByNpm } from '@/data/index';
 import type { KVNamespace } from '@cloudflare/workers-types/experimental';
 import type { APIContext } from 'astro';
-import { getNpmLibraryByNpm } from '@/data/index';
 
-export async function get({ params, request }: APIContext) {
+export async function get(ctx: APIContext) {
+  try {
+    return await handleRequest(ctx);
+  } catch (error) {
+    return new Response(null, {
+      status: 500,
+      statusText: 'Internal Server Error',
+    });
+  }
+}
+
+async function handleRequest({ params, request }: APIContext) {
   const npmPackage = params.id as string;
   const runtime = getRuntime(request);
   const { aiPkgDescription: aiPkgDescBinding } = runtime.env as {
