@@ -1,8 +1,9 @@
 import { DirectiveBinding } from 'vue';
 import type { App } from 'vue';
 import tippy from 'tippy.js';
-import * as Sentry from '@sentry/vue';
-import { Integrations } from '@sentry/tracing';
+// import * as Sentry from '@sentry/vue';
+// TODO: SENTRY
+// import { Integrations } from '@sentry/tracing';
 import { VueQueryPlugin } from 'vue-query';
 // import CatalogApp from './CatalogApp.vue';
 // import AboutApp from './AboutApp.vue';
@@ -33,21 +34,21 @@ import Tag from '@/components/Tag.vue';
 
 export default (app: App) => {
   if (process.env.NODE_ENV !== 'development') {
-    Sentry.init({
-      app,
-      dsn: 'https://185bd9a836b146318babbd956881e8a0@o477177.ingest.sentry.io/5517696',
-      logErrors: true,
-      integrations: [
-        new Integrations.BrowserTracing({
-          tracingOrigins: ['localhost', 'moiva.io', /^\//],
-        }),
-      ],
-      // process.env.NODE_ENV is being replaced by the value during build
-      environment: process.env.NODE_ENV,
-      // We recommend adjusting this value in production, or using tracesSampler
-      // for finer control
-      tracesSampleRate: 1.0,
-    });
+    // Sentry.init({
+    //   app,
+    //   dsn: 'https://185bd9a836b146318babbd956881e8a0@o477177.ingest.sentry.io/5517696',
+    //   logErrors: true,
+    //   integrations: [
+    //     new Integrations.BrowserTracing({
+    //       tracingOrigins: ['localhost', 'moiva.io', /^\//],
+    //     }),
+    //   ],
+    //   // process.env.NODE_ENV is being replaced by the value during build
+    //   environment: process.env.NODE_ENV,
+    //   // We recommend adjusting this value in production, or using tracesSampler
+    //   // for finer control
+    //   tracesSampleRate: 1.0,
+    // });
   }
 
   app.use(VueQueryPlugin);

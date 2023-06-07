@@ -146,7 +146,8 @@ import useExtraDataApiLegacy, {
 } from '@/composables/useExtraDataApi';
 import { useDocumentTitle } from '@/composables/useDocumentTitle';
 import { useUrl } from '@/composables/useUrl';
-import * as Sentry from '@sentry/vue';
+// import * as Sentry from '@sentry/vue';
+// TODO: SENTRY
 import { useChartsVisibility } from './composables/useChartsVisibility';
 import {
   $addedNpmPackage,
@@ -240,9 +241,9 @@ function selectNpmPackage(npmPackageName: string): void {
     );
     const err = new Error(`npmPackage: ${npmPackageName}`);
     err.name = 'UI: Select Npm Package Error';
-    Sentry.captureException(err, {
-      tags: { npmPackage: npmPackageName },
-    });
+    // Sentry.captureException(err, {
+    //   tags: { npmPackage: npmPackageName },
+    // });
     return null;
   });
 }
