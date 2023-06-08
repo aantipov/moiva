@@ -133,22 +133,18 @@ function fetchNpmPackage(packageName: string): Promise<NpmPackageT> {
 }
 
 function fetchNpmJSPackage(packageName: string): Promise<NpmPackageT> {
-  return axios
-    .get<NpmPackageT>(
-      `https://npm-details.moiva.workers.dev/?pkg=${packageName}`
-    )
-    .then(({ data }) => {
-      const catalogLibrary = getNpmLibraryByNpm(packageName);
-      const repoId = catalogLibrary
-        ? catalogLibrary.repoId
-        : getRepoId(data.repository);
+  return axios.get<NpmPackageT>(`/npm-info/${packageName}`).then(({ data }) => {
+    const catalogLibrary = getNpmLibraryByNpm(packageName);
+    const repoId = catalogLibrary
+      ? catalogLibrary.repoId
+      : getRepoId(data.repository);
 
-      if (!repoId) {
-        return Promise.reject('NO GITHUB DATA');
-      }
+    if (!repoId) {
+      return Promise.reject('NO GITHUB DATA');
+    }
 
-      return { ...data, repoId };
-    });
+    return { ...data, repoId };
+  });
 }
 
 interface RepT {

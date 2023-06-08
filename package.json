@@ -11,6 +11,7 @@
     "build:pure": "astro build",
     "build-old": "vitest run && vue-tsc --noEmit && vite build",
     "preview": "astro build && wrangler pages dev ./dist --kv=aiPkgDescription",
+    "preview:pure": "wrangler pages dev ./dist --kv=aiPkgDescription",
     "publish": "astro build && wrangler pages deploy ./dist",
     "test": "vitest run && pnpm run typecheck && pnpm run lint && prettier --check src/.",
     "lint": "eslint --ext .ts,.js,.vue src/ && prettier --check src/.",
