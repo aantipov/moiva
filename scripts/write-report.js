@@ -208,10 +208,9 @@ async function fetchCommits(repo) {
 }
 
 async function fetchNpmDetails(pkg) {
-  const response = await fetch(
-    `https://npm-details.moiva.workers.dev/?pkg=${pkg}`,
-    { headers: { 'Content-Type': 'application/json' } }
-  );
+  const response = await fetch(`https://moiva.io/npm-info/${pkg}`, {
+    headers: { 'Content-Type': 'application/json' },
+  });
 
   if (!response.ok) {
     throw response;

@@ -19,5 +19,5 @@
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
   },
-  "exclude": ["node_modules", "src/components/report/*", "scripts/*", "api/gtrends.ts"]
+  "exclude": ["node_modules", "src/components/report/*", "scripts/*", "api/gtrends.ts", "functions/**/*"]
 }
