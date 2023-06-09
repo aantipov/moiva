@@ -50,6 +50,11 @@ export interface NpmPackageT {
   hasBuiltinTypes: boolean;
   hasOtherTypes: boolean;
   typesPackageName: string;
+  ai: {
+    description: string[];
+    tags: string[];
+    alternativeNames: string[];
+  } | null;
 }
 
 export type LibraryReadonlyT = DeepReadonly<LibraryT>;

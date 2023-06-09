@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="min-h-[100px]">
     <VueQueryDevTools />
 
     <div class="content container antialiased">
@@ -14,10 +14,6 @@
 
     <!--  Selected Libraries and Charts    -->
     <section v-if="librariesRR.length">
-      <div class="container mt-4 text-center lg:w-9/12 xl:w-2/4">
-        <Title />
-      </div>
-
       <Table category="" class="container mb-12 mt-4 lg:w-3/4" />
 
       <Readings class="container mb-12" />
@@ -112,7 +108,6 @@ import { VueQueryDevTools } from 'vue-query/devtools';
 import LoaderNew from '@/components/LoaderNew.vue';
 
 import NpmDownloads from '@/components/downloads/NpmDownloadsChart.vue';
-import Title from '@/components/Title.vue';
 import Table from '@/components/table/Table.vue';
 import Readings from '@/components/Readings.vue';
 
@@ -136,6 +131,7 @@ import {
   isLoading,
   librariesRR,
   librariesIds,
+  addInitialLibrariesByNpm,
   addLibraryByNpmPackage,
   addLibraryByRepo,
   removeLibrary,
@@ -181,7 +177,8 @@ onMounted(() => {
   const npmPackagesNamesFromUrl = getNpmPackagesFromUrl();
   const reposIdsFromUrl = getReposIdsFromUrl();
   Promise.all([
-    ...npmPackagesNamesFromUrl.map(addLibraryByNpmPackage),
+    addInitialLibrariesByNpm(npmPackagesNamesFromUrl),
+    // ...npmPackagesNamesFromUrl.map((pkg, i) => addLibraryByNpmPackage(pkg, i)),
     ...reposIdsFromUrl.map(addLibraryByRepo),
   ]).catch(() => {
     // Redirect a user to 404 if there was a wrong lib in the url

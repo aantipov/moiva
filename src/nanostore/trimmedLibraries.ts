@@ -14,3 +14,4 @@ export type TrimmedLibraryT = DeepReadonly<
   >
 >;
 export const $trimmedLibraries = atom<TrimmedLibraryT[]>([]);
+export const $isLoading = atom<boolean>(false);

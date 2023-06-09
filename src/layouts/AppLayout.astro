@@ -1,5 +1,6 @@
 ---
 import Footer from './Footer.astro';
+import AiPackageInfo from '@/astro-components/AiPackageInfo.astro';
 import SearchApp from '@/SearchApp/index.vue';
 import SuggestionsApp from '@/SuggestionsApp/SuggestionsApp.vue';
 import { isSEOPage, getSEOTitle, getSEODescription } from '@/ssrHelper';
@@ -81,15 +82,6 @@ const isSEO = isSEOPage(npmPackages, repos);
   </head>
 
   <body class="bg-gray-50 min-h-screen flex flex-col">
-    <noscript>
-      <p style="padding: 20px; font-size: 30px">
-        <strong
-          >We're sorry but our website doesn't work properly without JavaScript
-          enabled. Please enable it to continue.</strong
-        >
-      </p>
-    </noscript>
-
     <!-- <Header /> -->
     <div class="w-full top-0 z-50 sticky">
       <div class="bg-black">
@@ -112,14 +104,26 @@ const isSEO = isSEOPage(npmPackages, repos);
           </div>
         </div>
       </div>
-      <div class="bg-gray-100 w-full flex justify-center border">
+      <div class="bg-gray-100 w-full flex justify-center border min-h-[36px]">
         <div class="sm:w-5/6 xl:w-3/4 flex justify-center px-5 -mt-1 mb-1">
           <SuggestionsApp client:only />
         </div>
       </div>
     </div>
 
+    <noscript>
+      <p style="padding: 20px; font-size: 30px">
+        <strong
+          >We're sorry but our website doesn't work properly without JavaScript
+          enabled. Please enable it to continue.</strong
+        >
+      </p>
+    </noscript>
+
     <div class="grow">
+      <!--    Title + text content    -->
+      <AiPackageInfo npmPackages={npmPackages} />
+      <!--    Sections with tables    -->
       <slot />
     </div>
 
