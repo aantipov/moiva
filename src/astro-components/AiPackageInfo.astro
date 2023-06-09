@@ -7,43 +7,20 @@ interface Props {
   npmPackages: string[];
 }
 const { npmPackages } = Astro.props;
-
 const runtime = getRuntime(Astro.request);
 const { aiPkgDescription: aiPkgDescBinding } = runtime.env as {
   aiPkgDescription: KVNamespace;
 };
-const kvData = {
-  description: [
-    "Vue is a JavaScript framework used for building user interfaces. It is known for its simplicity, lightweight nature and easy to learn syntax. One of the strongest points of Vue is its reactivity system, which updates the page automatically and allows for quick development. The downside of Vue is its limited scalability, as it's not the best fit for large-scale applications. Compared to Angular and React, Vue is a good middle ground in terms of performance, ease of use and scalability.",
-    'Vue is constantly updated and maintained by a large active community, which provides a great support system. It also has a wide range of plugins and libraries which can be easily integrated with the framework to tailor it to individual needs. Overall, Vue is a great choice for small to medium-sized projects due to its simplicity, but larger projects may require more features and better performance.',
-  ],
-  tags: ['vue', 'javascript', 'web development', 'frontend'],
-  alternatives: ['react', 'angular', 'ember'],
-};
-const reactData = {
-  description: [
-    'React is a popular JavaScript library for building user interfaces. It provides a simple and efficient way to create reusable components and manage their state. React uses a virtual DOM and a one-way data flow model that makes it performant and easy to reason about. It has a large and vibrant ecosystem with many third-party libraries and tools available. One downside of React is the potential for a steep learning curve with the many concepts and patterns it introduces. Compared to alternatives such as Vue or Angular, React is generally faster and more lightweight. React is also well-maintained and has a strong community backing that ensures continued development.',
-    'Overall, React is a great choice for building complex and dynamic web applications, providing a powerful set of tools and a supportive community.',
-  ],
-  tags: ['javascript', 'frontend', 'library', 'ui'],
-  alternatives: ['vue', 'angular', 'ember'],
-};
-await aiPkgDescBinding.put('vue', JSON.stringify(kvData));
-await aiPkgDescBinding.put('react', JSON.stringify(reactData));
 const promises = npmPackages.map((pkg) => aiPkgDescBinding.get(pkg));
 const result = await Promise.all(promises);
-const data = npmPackages
-  .map((pkg, i) => {
-    const pkgData = JSON.parse(result[i] || '{}');
-    return {
-      name: pkg,
-      alias: getNpmLibraryByNpm(pkg)?.alias || pkg,
-      description: pkgData.description || null,
-      tags: pkgData.tags || null,
-      alternatives: pkgData.alternatives || null,
-    };
-  })
-  .filter(Boolean) as PackageData[];
+const data = npmPackages.map((pkg, i) => {
+  const pkgData = JSON.parse(result[i] || '{}');
+  return {
+    name: pkg,
+    alias: getNpmLibraryByNpm(pkg)?.alias || pkg,
+    description: pkgData.description || null,
+  };
+});
 ---
 
 <div class="container antialiased content flex flex-col items-center">

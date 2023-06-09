@@ -1,7 +1,7 @@
 <template>
   <div
     class="container text-center lg:w-9/12 xl:w-2/4"
-    :class="items.length === 1 && 'mb-4'"
+    :class="showItems && items.length === 1 && 'mb-4'"
   >
     <h1>{{ title }}</h1>
   </div>
@@ -59,6 +59,7 @@ const showItems = computed(() =>
   items.value.some((item) => !!item.description)
 );
 
+// This is a hack to avoid mis-hidration issues
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 watch([title, items], () => {}, { immediate: true, deep: true });
 
