@@ -67,9 +67,16 @@ const allSuggestions = computed<CatalogLibraryT[]>(() =>
 );
 
 const hasMore = computed<boolean>(() => allSuggestions.value.length > size);
+const numberTrimmedSuggestionsToShow = computed<number>(() =>
+  trimmedLibraries.value.length > size
+    ? 0
+    : size - trimmedLibraries.value.length
+);
 
 const suggestions = computed<CatalogLibraryT[]>(() =>
-  showAll.value ? allSuggestions.value : allSuggestions.value.slice(0, size)
+  showAll.value
+    ? allSuggestions.value
+    : allSuggestions.value.slice(0, numberTrimmedSuggestionsToShow.value)
 );
 
 function onSelect(catalogLibrary: CatalogLibraryT) {
