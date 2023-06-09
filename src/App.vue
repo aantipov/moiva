@@ -178,7 +178,6 @@ onMounted(() => {
   const reposIdsFromUrl = getReposIdsFromUrl();
   Promise.all([
     addInitialLibrariesByNpm(npmPackagesNamesFromUrl),
-    // ...npmPackagesNamesFromUrl.map((pkg, i) => addLibraryByNpmPackage(pkg, i)),
     ...reposIdsFromUrl.map(addLibraryByRepo),
   ]).catch(() => {
     // Redirect a user to 404 if there was a wrong lib in the url
