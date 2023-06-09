@@ -1,0 +1,28 @@
+---
+import { getRuntime } from '@astrojs/cloudflare/runtime';
+import type { KVNamespace } from '@cloudflare/workers-types/experimental';
+import ContentApp from '@/AiContentApp/AiContentApp.vue';
+import { getNpmLibraryByNpm } from '@/data/index';
+interface Props {
+  npmPackages: string[];
+}
+const { npmPackages } = Astro.props;
+const runtime = getRuntime(Astro.request);
+const { aiPkgDescription: aiPkgDescBinding } = runtime.env as {
+  aiPkgDescription: KVNamespace;
+};
+const promises = npmPackages.map((pkg) => aiPkgDescBinding.get(pkg));
+const result = await Promise.all(promises);
+const data = npmPackages.map((pkg, i) => {
+  const pkgData = JSON.parse(result[i] || '{}');
+  return {
+    name: pkg,
+    alias: getNpmLibraryByNpm(pkg)?.alias || pkg,
+    description: pkgData.description || null,
+  };
+});
+---
+
+<div class="container antialiased content flex flex-col items-center">
+  <ContentApp data={data} client:idle />
+</div>

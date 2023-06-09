@@ -6,7 +6,7 @@ import {
   NpmPackageT,
 } from '@/libraryApis';
 import { LibraryT } from '@/getLibrary';
-import { $trimmedLibraries } from '@/nanostore/trimmedLibraries';
+import { $trimmedLibraries, $isLoading } from '@/nanostore/trimmedLibraries';
 
 // ====== STATE ======
 const librariesR = reactive<LibraryT[]>([]);
@@ -49,6 +49,7 @@ export const librariesRR = libraries;
 export const isLoading = computed(
   () => !!npmPackagesLoading.length || !!reposLoading.length
 );
+watch(isLoading, (isLoadingValue) => $isLoading.set(isLoadingValue));
 export const librariesIds = computed<string[]>(() =>
   librariesR.map((lib) => lib.id)
 );
@@ -151,6 +152,17 @@ export function addLibraryByRepo(repoId: string): Promise<void> {
       }
     })
     .finally(() => reposLoading.splice(reposLoading.indexOf(repoId), 1));
+}
+
+export async function addInitialLibrariesByNpm(
+  npmPackages: string[]
+): Promise<void> {
+  npmPackagesLoading.push(...npmPackages);
+  const libs = await Promise.all(
+    npmPackages.map((pkgName) => fetchLibraryByNpm(pkgName))
+  );
+  librariesR.push(...libs);
+  npmPackagesLoading.length = 0;
 }
 
 /**
