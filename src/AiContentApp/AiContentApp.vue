@@ -1,6 +1,6 @@
 <template>
   <div
-    class="container text-center lg:w-9/12 xl:w-2/4"
+    class="container text-center lg:w-9/12 xl:w-3/4"
     :class="showItems && items.length === 1 && 'mb-4'"
   >
     <h1>{{ title }}</h1>
@@ -41,11 +41,6 @@ interface Item {
 const props = defineProps<{ data: Item[] }>();
 const libs = useStore($trimmedLibraries);
 const firstLoadingFinished = ref(false);
-const title = computed(() =>
-  firstLoadingFinished.value
-    ? libs.value.map((item) => item.alias).join(' vs ')
-    : props.data.map((item) => item.alias).join(' vs ')
-);
 const items = computed(() =>
   firstLoadingFinished.value
     ? libs.value.map((item) => ({
@@ -54,6 +49,13 @@ const items = computed(() =>
         description: item.npmPackage?.ai?.description || null,
       }))
     : props.data
+);
+const title = computed(() =>
+  items.value.length === 1
+    ? `${items.value[0].alias}: Detailed Overview & Metrics`
+    : `Head-to-Head: ${items.value
+        .map((item) => item.alias)
+        .join(' vs ')} Analysis`
 );
 const showItems = computed(() =>
   items.value.some((item) => !!item.description)
