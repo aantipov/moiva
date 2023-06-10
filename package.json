@@ -45,6 +45,7 @@
     "google-trends-api": "^4.9.2",
     "nanoid": "^3.3.6",
     "nanostores": "^0.9.1",
+    "openai-edge": "^1.0.0",
     "ramda": "^0.27.2",
     "reading-time": "^1.5.0",
     "sweetalert2": "^11.7.11",

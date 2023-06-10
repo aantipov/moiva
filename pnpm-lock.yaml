@@ -58,6 +58,9 @@ dependencies:
   nanostores:
     specifier: ^0.9.1
     version: 0.9.1
+  openai-edge:
+    specifier: ^1.0.0
+    version: 1.0.0
   ramda:
     specifier: ^0.27.2
     version: 0.27.2
@@ -4762,6 +4765,11 @@ packages:
       define-lazy-prop: 3.0.0
       is-inside-container: 1.0.0
       is-wsl: 2.2.0
+
+  /openai-edge@1.0.0:
+    resolution: {integrity: sha512-psrC4fxpP87tWIUaALkqn9cW/8WxvAUOuHG93iXDzXaGsxba/+0QD1RJu2KBiwVTyB6/9q/JxIPRmrCQXD/59Q==}
+    engines: {node: '>=12'}
+    dev: false
 
   /optionator@0.9.1:
     resolution: {integrity: sha512-74RlY5FCnhq4jRxVUPKDaRwrVNXMqsGsiW6AJw4XK8hmtm10wC0ypZBLw5IIp85NZMr91+qd1RvvENwg7jjRFw==}
