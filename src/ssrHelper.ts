@@ -201,4 +201,5 @@ Constraints:
   } else {
     console.log('AI generation failed', pkgName);
   }
+  return result;
 }
