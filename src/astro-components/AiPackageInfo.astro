@@ -21,12 +21,12 @@ const promises = npmPackages.map((pkg) =>
   aiPkgDescBinding.get<KV_AI>(pkg, { type: 'json' })
 );
 const result = await Promise.all(promises);
-const data = result.map((res, i) => {
-  const pkg = npmPackages[i];
+const data = npmPackages.map((pkgName, i) => {
+  const pkgData = result[i];
   return {
-    name: pkg,
-    alias: getNpmLibraryByNpm(pkg)?.alias || pkg,
-    description: res?.description || null,
+    name: pkgName,
+    alias: getNpmLibraryByNpm(pkgName)?.alias || pkgName,
+    description: pkgData?.description || null,
   };
 });
 
