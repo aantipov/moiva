@@ -38,7 +38,7 @@ const isBot =
 if (!isBot) {
   const missingPkg = data.find((pkg) => !pkg.description);
   if (missingPkg) {
-    setPkgAIInfo(missingPkg.name, aiPkgDescBinding);
+    runtime.waitUntil(setPkgAIInfo(missingPkg.name, aiPkgDescBinding));
   }
 }
 ---

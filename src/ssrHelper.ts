@@ -197,5 +197,8 @@ Constraints:
         createdAt: new Date().toISOString().slice(0, 10),
       } as KV_AI)
     );
+    console.log('AI response saved to KV', pkgName);
+  } else {
+    console.log('AI generation failed', pkgName);
   }
 }
