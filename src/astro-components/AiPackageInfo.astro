@@ -35,6 +35,10 @@ const data = npmPackages.map((pkgName, i) => {
 const userAgent = Astro.request.headers.get('user-agent');
 const isBot =
   !!userAgent && userAgent.match(/bot|crawler|slurp|spider|google|bing|yahoo/i);
+console.log(
+  'THE KEY',
+  import.meta.env.OPENAI_API_KEY && import.meta.env.OPENAI_API_KEY.slice(0, 5)
+);
 if (!isBot) {
   const missingPkg = data.find((pkg) => !pkg.description);
   if (missingPkg) {
