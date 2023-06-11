@@ -10,8 +10,9 @@ interface Props {
 }
 const { npmPackages } = Astro.props;
 const runtime = getRuntime(Astro.request);
-const { aiPkgDescription: aiPkgDescBinding } = runtime.env as {
+const { aiPkgDescription: aiPkgDescBinding, OPENAI_API_KEY } = runtime.env as {
   aiPkgDescription: KVNamespace;
+  OPENAI_API_KEY: string;
 };
 
 // Add cacheTtl to reduce latency
@@ -39,14 +40,16 @@ if (!isBot) {
   const missingPkg = data.find((pkg) => !pkg.description);
   if (missingPkg) {
     runtime.waitUntil(
-      setPkgAIInfo(missingPkg.name, aiPkgDescBinding).catch((error: any) => {
-        if (error.response) {
-          console.log('[AiPackageInfo]', error.response.status);
-          console.log('[AiPackageInfo]', error.response.data);
-        } else {
-          console.error('[AiPackageInfo]', error?.message);
+      setPkgAIInfo(missingPkg.name, aiPkgDescBinding, OPENAI_API_KEY).catch(
+        (error: any) => {
+          if (error.response) {
+            console.log('[AiPackageInfo]', error.response.status);
+            console.log('[AiPackageInfo]', error.response.data);
+          } else {
+            console.error('[AiPackageInfo]', error?.message);
+          }
         }
-      })
+      )
     );
   }
 } else {

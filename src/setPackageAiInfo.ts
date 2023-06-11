@@ -44,11 +44,15 @@ export interface KV_AI extends AI_RESPONSE {
 }
    */
 
-export async function setPkgAIInfo(pkgName: string, KV: KVNamespace) {
+export async function setPkgAIInfo(
+  pkgName: string,
+  KV: KVNamespace,
+  openAiAPIKey: string
+) {
   const version = 1;
   const model = 'gpt-3.5-turbo';
   const configuration = new Configuration({
-    apiKey: import.meta.env.OPENAI_API_KEY,
+    apiKey: openAiAPIKey,
   });
   const openai = new OpenAIApi(configuration);
 
