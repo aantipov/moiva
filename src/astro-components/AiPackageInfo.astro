@@ -36,8 +36,6 @@ const data = npmPackages.map((pkgName, i) => {
 const userAgent = Astro.request.headers.get('user-agent');
 const isBot =
   !!userAgent && userAgent.match(/bot|crawler|slurp|spider|google|bing|yahoo/i);
-// console.log('THE KEY', process.env);
-// console.log('THE KEY', import.meta.env);
 if (!isBot) {
   const missingPkg = data.find((pkg) => !pkg.description);
   if (missingPkg) {

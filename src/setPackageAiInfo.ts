@@ -53,7 +53,6 @@ export async function setPkgAIInfo(
   const model = 'gpt-3.5-turbo';
   const configuration = new Configuration({
     apiKey: openAiAPIKey,
-    // apiKey: import.meta.env.OPENAI_API_KEY,
   });
   const openai = new OpenAIApi(configuration);
 

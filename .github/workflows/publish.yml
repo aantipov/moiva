@@ -34,10 +34,6 @@ jobs:
         run: pnpm install
 
       - name: Build Application
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          PRIVATE_KEY: theKey
-          PUBLIC_KEY: thePublicKey
         run: pnpm run build
 
       - name: Publish to Cloudflare Pages
