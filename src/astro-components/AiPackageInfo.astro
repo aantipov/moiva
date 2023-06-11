@@ -3,6 +3,8 @@ import { getRuntime } from '@astrojs/cloudflare/runtime';
 import type { KVNamespace } from '@cloudflare/workers-types/experimental';
 import ContentApp from '@/AiContentApp/AiContentApp.vue';
 import { getNpmLibraryByNpm } from '@/data/index';
+import { setPkgAIInfo, KV_AI } from '@/setPackageAiInfo';
+
 interface Props {
   npmPackages: string[];
 }
@@ -11,16 +13,38 @@ const runtime = getRuntime(Astro.request);
 const { aiPkgDescription: aiPkgDescBinding } = runtime.env as {
   aiPkgDescription: KVNamespace;
 };
-const promises = npmPackages.map((pkg) => aiPkgDescBinding.get(pkg));
+
+// Add cacheTtl to reduce latency
+// aiPkgDescBinding.get<KV_AI>(pkg, { type: 'json', cacheTtl: 60 * 60 * 24 })
+
+const promises = npmPackages.map((pkg) =>
+  aiPkgDescBinding.get<KV_AI>(pkg, { type: 'json' })
+);
 const result = await Promise.all(promises);
-const data = npmPackages.map((pkg, i) => {
-  const pkgData = JSON.parse(result[i] || '{}');
+const data = npmPackages.map((pkgName, i) => {
+  const pkgData = result[i];
   return {
-    name: pkg,
-    alias: getNpmLibraryByNpm(pkg)?.alias || pkg,
-    description: pkgData.description || null,
+    name: pkgName,
+    alias: getNpmLibraryByNpm(pkgName)?.alias || pkgName,
+    description: pkgData?.description || null,
   };
 });
+
+// If there is a package with no data in KV,
+// Request that data and put it in KV
+const userAgent = Astro.request.headers.get('user-agent');
+const isBot =
+  !!userAgent && userAgent.match(/bot|crawler|slurp|spider|google|bing|yahoo/i);
+if (!isBot) {
+  const missingPkg = data.find((pkg) => !pkg.description);
+  if (missingPkg) {
+    runtime.waitUntil(
+      setPkgAIInfo(missingPkg.name, aiPkgDescBinding).catch((error: any) => {
+        console.error('[AiPackageInfo]', error?.message);
+      })
+    );
+  }
+}
 ---
 
 <div class="container antialiased content flex flex-col items-center">
