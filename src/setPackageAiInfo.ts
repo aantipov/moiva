@@ -60,7 +60,9 @@ export async function setPkgAIInfo(pkgName: string, KV: KVNamespace) {
   });
 
   if (!response.ok) {
-    throw new Error('[setPkgAIInfo] AI response not ok - network issue');
+    throw new Error(
+      `[setPkgAIInfo] AI response not ok - network issue: status ${response.status}, statusText ${response.statusText}`
+    );
   }
   if (response.status !== 200) {
     throw new Error(
