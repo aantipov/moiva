@@ -3,7 +3,7 @@ import { getRuntime } from '@astrojs/cloudflare/runtime';
 import type { KVNamespace } from '@cloudflare/workers-types/experimental';
 import ContentApp from '@/AiContentApp/AiContentApp.vue';
 import { getNpmLibraryByNpm } from '@/data/index';
-import { setPkgAIInfo, KV_AI } from '@/ssrHelper';
+import { setPkgAIInfo, KV_AI } from '@/setPackageAiInfo';
 
 interface Props {
   npmPackages: string[];
@@ -38,7 +38,11 @@ const isBot =
 if (!isBot) {
   const missingPkg = data.find((pkg) => !pkg.description);
   if (missingPkg) {
-    runtime.waitUntil(setPkgAIInfo(missingPkg.name, aiPkgDescBinding));
+    runtime.waitUntil(
+      setPkgAIInfo(missingPkg.name, aiPkgDescBinding).catch((error: any) => {
+        console.error('[AiPackageInfo]', error?.message);
+      })
+    );
   }
 }
 ---
