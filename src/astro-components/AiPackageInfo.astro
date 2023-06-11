@@ -40,7 +40,12 @@ if (!isBot) {
   if (missingPkg) {
     runtime.waitUntil(
       setPkgAIInfo(missingPkg.name, aiPkgDescBinding).catch((error: any) => {
-        console.error('[AiPackageInfo]', error?.message);
+        if (error.response) {
+          console.log('[AiPackageInfo]', error.response.status);
+          console.log('[AiPackageInfo]', error.response.data);
+        } else {
+          console.error('[AiPackageInfo]', error?.message);
+        }
       })
     );
   }
