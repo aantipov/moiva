@@ -61,13 +61,9 @@ const showItems = computed(() =>
   items.value.some((item) => !!item.description)
 );
 
-// This is a hack to avoid mis-hidration issues
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-watch([title, items], () => {}, { immediate: true, deep: true });
-
 // After first load, we need to recompute title and items (make them reactive)
 $isLoading.subscribe((isLoading) => {
-  if (!isLoading && !firstLoadingFinished.value) {
+  if (!isLoading && libs.value.length > 0) {
     firstLoadingFinished.value = true;
   }
 });
