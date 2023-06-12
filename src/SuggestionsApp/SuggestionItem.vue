@@ -1,11 +1,10 @@
 <template>
   <div class="inline-block">
-    <a
+    <span
       ref="triggerRef"
-      class="mr-1 mt-2 inline-block rounded px-1 text-base hover:bg-black/10 hover:shadow-md active:bg-black/20 active:shadow-none"
-      :href="getHrefForAdditionalLib(catalogLibrary)"
+      class="mr-1 mt-2 inline-block cursor-pointer rounded px-1 text-base text-primary hover:bg-black/10 hover:underline hover:shadow-md active:bg-black/20 active:shadow-none"
       @click.prevent="$emit('select', catalogLibrary)"
-      >+ {{ catalogLibrary.alias }}</a
+      >+ {{ catalogLibrary.alias }}</span
     >
     <div ref="contentRef">
       <!-- Name -->
@@ -63,9 +62,8 @@
 <script setup lang="ts">
 import LoaderTailSpin from '@/components/LoaderTailSpin.vue';
 import { computed, onMounted, PropType, ref } from 'vue';
-import { constructHref, numbersFormatter } from '@/utils';
+import { numbersFormatter } from '@/utils';
 import { CatalogLibraryT } from '@/data/index';
-import { $trimmedLibraries } from '@/nanostore/trimmedLibraries';
 import { fetchLibraryByNpm, fetchLibraryByRepo } from '@/libraryApis';
 import { fetchNpmDownloads } from '@/components/downloads/api';
 import tippy, { roundArrow } from 'tippy.js';
@@ -112,25 +110,6 @@ const stars = computed(() =>
 const downloads = computed(() =>
   numbersFormatter.format(lib.value?.npmDownloadsAvg as number)
 );
-
-function getHrefForAdditionalLib(catalogLibrary: CatalogLibraryT): string {
-  const npmPackagesNames = [] as string[];
-  const reposIds = [] as string[];
-
-  $trimmedLibraries.get().forEach((library) => {
-    if (library.npmPackage) {
-      npmPackagesNames.push(library.npmPackage.name);
-    } else {
-      reposIds.push(library.repo.repoId);
-    }
-  });
-
-  if (catalogLibrary.npm) {
-    return constructHref([...npmPackagesNames, catalogLibrary.npm], reposIds);
-  }
-
-  return constructHref(npmPackagesNames, [...reposIds, catalogLibrary.repoId]);
-}
 
 async function _fetchData() {
   isLoading.value = true;
