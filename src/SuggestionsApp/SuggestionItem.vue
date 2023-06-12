@@ -1,11 +1,10 @@
 <template>
   <div class="inline-block">
-    <a
+    <span
       ref="triggerRef"
-      class="mr-1 mt-2 inline-block rounded px-1 text-base hover:bg-black/10 hover:shadow-md active:bg-black/20 active:shadow-none"
-      :href="getHrefForAdditionalLib(catalogLibrary)"
+      class="mr-1 mt-2 inline-block cursor-pointer rounded px-1 text-base text-primary hover:bg-black/10 hover:underline hover:shadow-md active:bg-black/20 active:shadow-none"
       @click.prevent="$emit('select', catalogLibrary)"
-      >+ {{ catalogLibrary.alias }}</a
+      >+ {{ catalogLibrary.alias }}</span
     >
     <div ref="contentRef">
       <!-- Name -->
