@@ -5,66 +5,81 @@ function makeHref(libs: string[]): string {
   return constructHref(libs, []);
 }
 
-const items = [
+const items: { name: string; libs: string[][] }[] = [
   {
     name: 'Frontend frameworks',
-    libs: ['react', 'svelte', 'vue'],
-    libsStr: 'React, Svelte, Vue',
+    libs: [
+      ['react', 'svelte'],
+      ['vue', 'solid-js'],
+    ],
   },
   {
     name: 'State Management',
-    libs: ['redux', 'mobx', 'xstate'],
-    libsStr: 'Redux, MobX, Xstate',
+    libs: [
+      ['redux', 'mobx'],
+      ['xstate', 'redux'],
+    ],
   },
   {
-    libs: ['bootstrap', 'tailwindcss', 'bulma'],
     name: 'CSS frameworks',
-    libsStr: 'Bootstrap, Tailwind CSS, Bulma',
+    libs: [
+      ['bootstrap', 'tailwindcss'],
+      ['bulma', 'foundation-sites'],
+    ],
   },
   {
     name: 'Date utilities',
-    libs: ['moment', 'dayjs', 'date-fns'],
-    libsStr: 'Moment.js, Day.js, date-fns',
+    libs: [
+      ['moment', 'dayjs'],
+      ['date-fns', 'luxon'],
+    ],
   },
   {
     name: 'Utilities',
-    libs: ['lodash', 'ramda'],
-    libsStr: 'Lodash, Ramda',
+    libs: [['lodash', 'ramda']],
   },
   {
     name: 'Charts',
-    libs: ['chart.js', 'd3', 'highcharts'],
-    libsStr: 'Chart.js, D3, Highcharts',
+    libs: [
+      ['chart.js', 'd3'],
+      ['highcharts', 'plotly.js'],
+    ],
   },
   {
     name: 'End-to-end testing',
-    libs: ['puppeteer', 'cypress', 'playwright'],
-    libsStr: 'Puppeteer, Cypress, Playwright',
+    libs: [
+      ['puppeteer', 'selenium-webdriver'],
+      ['playwright', 'cypress'],
+    ],
   },
   {
     name: 'Node.js frameworks',
-    libs: ['koa', '@nestjs/core', 'fastify'],
-    libsStr: 'Koa, NestJS, Fastify',
+    libs: [
+      ['koa', 'express'],
+      ['@nestjs/core', 'fastify'],
+    ],
   },
   {
     name: 'Build Tools and Module Bundlers',
-    libs: ['webpack', 'snowpack', 'vite'],
-    libsStr: 'Webpack, Snowpack, Vite',
+    libs: [
+      ['webpack', 'vite'],
+      ['esbuild', 'rollup'],
+    ],
   },
   {
     name: 'Static Sites Generators',
-    libs: ['next', 'gatsby', 'nuxt'],
-    libsStr: 'Next.js, Gatsby, Nuxt.js',
+    libs: [['next', 'remix']],
   },
   {
     name: 'Documentation Generators',
-    libs: ['@docusaurus/core', 'vuepress', 'docsify'],
-    libsStr: 'Docusaurus, VuePress, Docsify',
+    libs: [
+      ['@11ty/eleventy', '@docusaurus/core'],
+      ['vuepress', 'astro'],
+    ],
   },
   {
     name: 'Testing Frameworks',
-    libs: ['jest', 'ava', 'jasmine'],
-    libsStr: 'Jest, Ava, Jasmine',
+    libs: [['jest', 'vitest']],
   },
 ];
 ---
@@ -74,14 +89,14 @@ const items = [
 
   {
     items.map((item) => (
-      <div class="mb-2">
-        <a class="text-lg" href={makeHref(item.libs)}>
-          {item.name}
-        </a>
-        :{' '}
-        <span class="text-base text-black text-opacity-80 sm:text-lg">
-          {item.libsStr}
-        </span>
+      <div class="mb-2 flex flex-wrap gap-1">
+        <span>{item.name}: </span>
+        {item.libs.map((libs, i) => (
+          <span class="flex">
+            <a href={makeHref(libs)}>{libs.join('-vs-')}</a>
+            {i < item.libs.length - 1 && ', '}
+          </span>
+        ))}
       </div>
     ))
   }
