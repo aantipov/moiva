@@ -1,5 +1,5 @@
 <template>
-  <div v-if="suggestions.length">
+  <div>
     <div>
       <LibraryItem
         v-for="lib in trimmedLibraries"
