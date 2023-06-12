@@ -33,6 +33,7 @@ const data = npmPackages.map((pkgName, i) => {
 
 // If there is a package with no data in KV,
 // Request that data and put it in KV
+// TODO: do not ai check for new packages
 const userAgent = Astro.request.headers.get('user-agent');
 const isBot =
   !!userAgent && userAgent.match(/bot|crawler|slurp|spider|google|bing|yahoo/i);
