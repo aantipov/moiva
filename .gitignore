@@ -10,7 +10,6 @@ dist
 functions/\[\[path]].js
 
 # local env files
-.env
 .env.local
 .env.*.local
 

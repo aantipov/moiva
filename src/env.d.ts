@@ -2,6 +2,7 @@
 
 interface ImportMetaEnv {
   readonly OPENAI_API_KEY: string;
+  readonly LOCAL: string;
 }
 
 interface ImportMeta {
