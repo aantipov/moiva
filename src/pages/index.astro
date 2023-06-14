@@ -3,11 +3,16 @@ import App from '@/App.vue';
 import SearchApp from '@/SearchApp/SearchApp.vue';
 import PopularApp from '@/astro-components/Popular.astro';
 import MainLayout from '@/layouts/Main.astro';
-import AppLayout from '@/layouts/AppLayout.astro';
+import WithSearchHeader from '@/layouts/WithSearchHeaderLayout.astro';
+import AiPackageInfo from '@/astro-components/AiPackageInfo.astro';
+import { isSEOPage, getSEOTitle, getSEODescription } from '@/ssrHelper';
 
-const isHomePage =
-  Astro.url.searchParams.get('npm') === null &&
-  Astro.url.searchParams.get('github') === null;
+const npmPackages = Astro.url.searchParams.get('npm')?.split(' ') || [];
+const repos = Astro.url.searchParams.get('github')?.split(' ') || [];
+const isSEO = isSEOPage(npmPackages, repos);
+const seoTitle = getSEOTitle(npmPackages);
+const seoDescription = getSEODescription(npmPackages);
+const isHomePage = !npmPackages.length && !repos.length;
 ---
 
 {
@@ -17,7 +22,7 @@ const isHomePage =
         <div class="content container mb-10 mt-8 antialiased">
           <div class="flex justify-center">
             <div class="w-11/12 sm:w-3/4 xl:w-1/2">
-              <SearchApp isHomePage={true} client:load />
+              <SearchApp isMainAppPage={false} client:load />
             </div>
           </div>
           <PopularApp />
@@ -25,8 +30,14 @@ const isHomePage =
       </div>
     </MainLayout>
   ) : (
-    <AppLayout>
+    <WithSearchHeader
+      isMainAppPage={true}
+      seoTitle={seoTitle}
+      seoDescription={seoDescription}
+      allowSearchEngineCrawling={isSEO}
+    >
+      <AiPackageInfo npmPackages={npmPackages} slot="before-default" />
       <App client:only="vue" />
-    </AppLayout>
+    </WithSearchHeader>
   )
 }
