@@ -7,20 +7,20 @@ import Search from './Search.vue';
 import { constructHref } from '@/utils';
 import { $addedNpmPackage, $addedRepo } from '@/nanostore/crudLibrary.js';
 const props = defineProps<{
-  isHomePage: boolean;
+  isMainAppPage: boolean;
 }>();
 
-const placeholder = props.isHomePage
-  ? 'Search for an npm package'
-  : 'Add an npm package to comparison';
+const placeholder = props.isMainAppPage
+  ? 'Add an npm package to comparison'
+  : 'Search for an npm package';
 
 function select(id: string, isNpm: boolean) {
   if (isNpm) {
-    props.isHomePage && window.location.assign(constructHref([id], []));
-    !props.isHomePage && $addedNpmPackage.set(id);
+    props.isMainAppPage && $addedNpmPackage.set(id);
+    !props.isMainAppPage && window.location.assign(constructHref([id], []));
   } else {
-    props.isHomePage && window.location.assign(constructHref([], [id]));
-    !props.isHomePage && $addedRepo.set(id);
+    props.isMainAppPage && $addedRepo.set(id);
+    !props.isMainAppPage && window.location.assign(constructHref([], [id]));
   }
 }
 </script>
