@@ -15,21 +15,6 @@
       </div>
 
       <div class="w-full sm:flex">
-        <!--   GitHub/NPM switch       -->
-        <div class="relative mb-2 inline-flex w-full sm:mb-0 sm:w-auto">
-          <ChevronDownIcon
-            class="pointer-events-none absolute right-0 top-0 mx-2 my-2 h-6 w-6 text-white"
-          />
-          <select
-            v-model="searchType"
-            class="select"
-            @change="() => inputRef.focus()"
-          >
-            <option value="NPM">NPM</option>
-            <option value="GITHUB">GitHub</option>
-          </select>
-        </div>
-
         <!-- progressbar for mobile screens -->
         <div
           class="indeterminate relative h-1 w-full overflow-hidden rounded-full sm:hidden"
@@ -50,11 +35,7 @@
             ref="inputRef"
             v-model="searchValue"
             type="text"
-            :placeholder="
-              isNpmSearch
-                ? 'search for NPM packages'
-                : 'search for GitHub repositories'
-            "
+            :placeholder="placeholder"
             autofocus
             autocomplete="off"
             class="myinput"
@@ -84,7 +65,6 @@ import autocomplete, { AutocompleteItem } from 'autocompleter';
 import { numbersFormatter, sanitizeHTML } from '@/utils';
 import 'autocompleter/autocomplete.css';
 import { fetchNpmSearch, fetchGithubSearch } from './search-api';
-import ChevronDownIcon from '@/icons/ChevronDownIcon.vue';
 
 interface SearchItemT {
   isNpm: boolean;
@@ -97,6 +77,10 @@ interface SearchItemT {
 }
 
 type OptionT = SearchItemT & AutocompleteItem;
+
+defineProps<{
+  placeholder: string;
+}>();
 
 const emit = defineEmits(['select']);
 
@@ -231,14 +215,13 @@ const inputRef = ref<HTMLInputElement>(null as unknown as HTMLInputElement);
   @apply bg-black bg-opacity-10;
 }
 .select {
-  @apply w-full appearance-none rounded bg-primary pl-3 pr-10 text-lg text-white focus:outline-none;
-  @apply h-10 sm:rounded-l sm:rounded-r-none;
+  @apply h-10 w-full appearance-none rounded bg-primary pl-3 pr-10 text-lg text-white focus:outline-none;
 }
 .myinput {
   @apply relative h-10 w-full rounded border border-primary border-opacity-40 bg-opacity-5 px-3 text-xl font-light text-gray-700 placeholder-opacity-60 outline-none ring-0 md:text-lg;
 }
 .myinput {
-  @apply sm:rounded-l-none sm:rounded-r;
+  @apply sm:rounded;
 }
 .myinput:focus {
   @apply border border-primary bg-white outline-none ring-0;

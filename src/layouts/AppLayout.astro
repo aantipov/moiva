@@ -1,7 +1,7 @@
 ---
 import Footer from './Footer.astro';
 import AiPackageInfo from '@/astro-components/AiPackageInfo.astro';
-import SearchApp from '@/SearchApp/index.vue';
+import SearchApp from '@/SearchApp/SearchApp.vue';
 import SuggestionsApp from '@/SuggestionsApp/SuggestionsApp.vue';
 import { isSEOPage, getSEOTitle, getSEODescription } from '@/ssrHelper';
 const npmPackages = Astro.url.searchParams.get('npm')?.split(' ') || [];
