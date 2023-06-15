@@ -111,18 +111,16 @@ export async function setPkgAIInfo(
   try {
     await KV.put(
       pkgName,
-      JSON.stringify(
-        {
-          ...content,
-          version,
-          model: data.model,
-          tokensUsed: data.usage?.total_tokens,
-          createdAt: new Date().toISOString().slice(0, 10),
-        } as KV_AI,
-        {
-          expirationTtl: packageExists ? 60 * 60 * 24 * 90 : 60 * 60 * 24 * 7,
-        }
-      )
+      JSON.stringify({
+        ...content,
+        version,
+        model: data.model,
+        tokensUsed: data.usage?.total_tokens,
+        createdAt: new Date().toISOString().slice(0, 10),
+      } as KV_AI),
+      {
+        expirationTtl: packageExists ? 60 * 60 * 24 * 90 : 60 * 60 * 24 * 7,
+      }
     );
   } catch (error: any) {
     throw new Error(`[setPkgAIInfo] KV.put failed - ${error?.message}`);
