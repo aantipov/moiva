@@ -8017,14 +8017,6 @@
   },
   {
     "category": "misc",
-    "repoId": "uber-go/zap",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
     "repoId": "peterq/pan-light",
     "npm": null,
     "isNpmCoreArtifact": null,
@@ -8649,7 +8641,7 @@
   },
   {
     "category": "misc",
-    "repoId": "SigNoz/signoz",
+    "repoId": "signoz/signoz",
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,

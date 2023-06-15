@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import {
-  catalogLibraries,
+  allCatalogLibraries as catalogLibraries,
   tags,
   genericTags,
   frameworksTags,

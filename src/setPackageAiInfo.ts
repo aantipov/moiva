@@ -6,18 +6,20 @@ import {
   ResponseTypes,
 } from 'openai-edge';
 
-interface AI_RESPONSE {
-  description: string[];
-  tags: string[];
-  alternatives: string[];
-}
+type AI_RESPONSE =
+  | {
+      description: string[];
+      tags: string[];
+      alternatives: string[];
+    }
+  | { notFound: true };
 
-export interface KV_AI extends AI_RESPONSE {
+export type KV_AI = AI_RESPONSE & {
   version: number;
   model: string;
   tokensUsed: number | undefined;
   createdAt: string;
-}
+};
 
 // Example of AI response:
 /** 
@@ -49,7 +51,7 @@ export async function setPkgAIInfo(
   KV: KVNamespace,
   openAiAPIKey: string
 ) {
-  const version = 1;
+  const version = 1.1;
   const model = 'gpt-3.5-turbo';
   const configuration = new Configuration({
     apiKey: openAiAPIKey,
@@ -91,7 +93,16 @@ export async function setPkgAIInfo(
   } catch (error) {
     throw new Error('[setPkgAIInfo] AI reply is not a valid JSON');
   }
-  if (!content.description || !content.tags || !content.alternatives) {
+  const packageExists = !('notFound' in content);
+  if ('notFound' in content && content.notFound !== true) {
+    throw new Error(
+      '[setPkgAIInfo] AI reply doesnt match schema - ' + contentRaw
+    );
+  }
+  if (
+    !('notFound' in content) &&
+    (!content.description || !content.tags || !content.alternatives)
+  ) {
     throw new Error(
       '[setPkgAIInfo] AI reply doesnt match schema - ' + contentRaw
     );
@@ -106,7 +117,10 @@ export async function setPkgAIInfo(
         model: data.model,
         tokensUsed: data.usage?.total_tokens,
         createdAt: new Date().toISOString().slice(0, 10),
-      } as KV_AI)
+      } as KV_AI),
+      {
+        expirationTtl: packageExists ? 60 * 60 * 24 * 90 : 60 * 60 * 24 * 7,
+      }
     );
   } catch (error: any) {
     throw new Error(`[setPkgAIInfo] KV.put failed - ${error?.message}`);
@@ -119,43 +133,53 @@ function getMessages(pkgName: string): ChatCompletionRequestMessage[] {
     {
       role: 'system',
       content: `
-I'm building a website to provide a comprehensive analysis of requested npm package.
+      I'm building a website to provide a comprehensive analysis of requested npm package.
 
-It aggregates information from Google Trends, Github, Thoughtworks Tech Radar, Snyk, Bundlephobia, State-of-js report to provide the following information:
-- bundle size, 
-- npm downloads trends, 
-- Google search interest,
-- GitHub Stars, 
-- License, 
-- Contributors activity, 
-- Commits per month
-- number of dependencies
-- age
-- security score
-- Thoughtworks tech radar blip
-- languages used to build the package
-- Releases
-
-The information is presented via numbers and charts (a trend over time).
-
-I want to add some textual descriptive information.
-
-You are the endpoint to provide that information : 
-- short and concise description outlining the main distinct characteristics. No bullshit, stay objective
-- consider comparison with the main alternative solutions
-
-Provide the response as a JSON object:
-{
-"description": [paragraph1, paragraph2, ...],
-"tags": [tag1, tag2, ...],
-"alternatives": [npmPackage1, npmPackage2, ...]
-}
-
-"alternatives" field contains a list  of npm packages names considered alternatives.
-
-Constraints: 
-1. 125 words as a maximum for the whole response.
-2. At least 2 paragraphs in a "description" field`,
+      It aggregates information from Google Trends, Github, Thoughtworks Tech Radar, Snyk, Bundlephobia, State-of-js report to provide the following information:
+      - bundle size, 
+      - npm downloads trends, 
+      - Google search interest,
+      - GitHub Stars, 
+      - License, 
+      - Contributors activity, 
+      - Commits per month
+      - number of dependencies
+      - age
+      - security score
+      - Thoughtworks tech radar blip
+      - languages used to build the package
+      - Releases
+      
+      The information is presented via numbers and charts (a trend over time).
+      
+      I want to add some textual descriptive information.
+      
+      You are the endpoint to provide that information : 
+      - short and concise description outlining the main distinct characteristics. No bullshit, stay objective
+      - consider comparison with the main alternative solutions
+      - consider if the package is actively maintained and if it is marked as deprecated or legacy and if there are recommendations to use different libraries.
+      
+      Provide the response as a JSON object:
+      {
+      "description": [paragraph1, paragraph2, ...],
+      "tags": [tag1, tag2, ...],
+      "alternatives": [npmPackage1, npmPackage2, ...]
+      "isDeprecated": true/false
+      }
+      
+      "alternatives" field contains a list  of npm packages names considered alternatives.
+      
+      "isDeprecated" field should be set to true if a package is deprecated or superseded by another package. Otherwise set it to false
+      
+      If you don't have any information about the package, return:
+      {
+        "notFound": true
+      }
+      
+      Constraints: 
+      1. 125 words as a maximum for the whole response.
+      2. At least 2 paragraphs in a "description" field
+`,
     },
     {
       role: 'user',
@@ -181,8 +205,49 @@ Constraints:
           "angular",
           "svelte"
           ]
+          "isDeprecated": false
           }
 `,
+    },
+    {
+      role: 'user',
+      content: `Provide information about some-non-existing-package npm package`,
+    },
+    {
+      role: 'assistant',
+      content: `
+      {
+        "notFound": true
+      }
+      `,
+    },
+    {
+      role: 'user',
+      content: `Provide information about moment npm package`,
+    },
+    {
+      role: 'assistant',
+      content: `
+      {
+        "description": [
+        "Moment is a lightweight JavaScript library for parsing, validating, and formatting date and time values. Its simple and powerful API makes it easy to work with dates and perform common date-related tasks like adding or subtracting time units, formatting dates, and working with timezones. Moment supports parsing and formatting dates in various standard and custom formats.",
+        "Compared to native JavaScript date handling, Moment provides a more convenient and consistent interface, as well as additional features like date range and duration calculation. However, Moment is marked as a legacy package, and its development has been discontinued. It is recommended to use other modern and actively maintained alternatives like Luxon or Day.js."
+        ],
+        "tags": [
+        "javascript",
+        "date",
+        "time",
+        "formatting",
+        "parsing"
+        ],
+        "alternatives": [
+        "luxon",
+        "day.js",
+        "date-fns"
+        ],
+        "isDeprecated": true
+}
+      `,
     },
     {
       role: 'user',

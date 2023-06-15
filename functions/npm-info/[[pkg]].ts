@@ -9,6 +9,7 @@ interface RawPkgInfo {
   license: string;
   version: string;
   repository: string | Record<string, unknown>;
+  homepage: string;
   typings: string;
   types: string;
 }
@@ -100,6 +101,7 @@ async function fetchPkgInfo(pkgName: string) {
     name,
     description,
     dependencies = {},
+    homepage = '',
     license,
     version,
     repository,
@@ -112,6 +114,7 @@ async function fetchPkgInfo(pkgName: string) {
     description,
     dependencies: Object.keys(dependencies),
     license,
+    homepage,
     version,
     repository,
     hasBuiltinTypes: !!typings || !!types,
