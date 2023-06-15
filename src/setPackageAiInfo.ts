@@ -159,7 +159,7 @@ function getMessages(pkgName: string): ChatCompletionRequestMessage[] {
       You are the endpoint to provide that information : 
       - short and concise description outlining the main distinct characteristics. No bullshit, stay objective
       - consider comparison with the main alternative solutions
-      - consider if the package is actively maintained and if it is marked as deprecated or legacy.
+      - consider if the package is actively maintained and if it is marked as deprecated or legacy and if there are recommendations to use different libraries.
       
       Provide the response as a JSON object:
       {
