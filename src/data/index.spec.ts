@@ -3,7 +3,7 @@ import techRadarItems from './techradar.json';
 import googleTrendsItems from './google-trends.json';
 import readingsItems from './readings.json';
 import stateofjsItems from './stateofjscss.json';
-import { catalogLibraries } from './index';
+import { allCatalogLibraries as catalogLibraries } from './index';
 
 // @ts-ignore
 const libsReposIds = catalogLibraries.map((lib) => lib.repoId);

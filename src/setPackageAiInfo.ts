@@ -14,12 +14,12 @@ type AI_RESPONSE =
     }
   | { notFound: true };
 
-export interface KV_AI extends AI_RESPONSE {
+export type KV_AI = AI_RESPONSE & {
   version: number;
   model: string;
   tokensUsed: number | undefined;
   createdAt: string;
-}
+};
 
 // Example of AI response:
 /** 

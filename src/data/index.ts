@@ -149,6 +149,15 @@ export const catalogLibraries = rawLibraries
     id: index,
   })) as CatalogLibraryT[];
 
+export const allCatalogLibraries = rawLibraries
+  // .filter((lib) => lib.category !== 'misc' || lib.npm !== null)
+  .map((lib, index) => ({
+    ...lib,
+    alias: lib.alias || getAliasFromRepoId(lib.repoId),
+    framework: lib.tags.find((tag) => frameworksTags.includes(tag)) || null,
+    id: index,
+  })) as CatalogLibraryT[];
+
 /**
  * Find a Catalog entry with Core npm artifact
  */
