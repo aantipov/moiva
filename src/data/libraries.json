@@ -1,6 +1,6 @@
 [
   {
-    "category": "JavaScript 3D Libraries",
+    "category": "3D Libraries",
     "repoId": "babylonjs/babylon.js",
     "npm": "babylonjs",
     "isNpmCoreArtifact": true,
@@ -8,7 +8,7 @@
     "tags": ["3D", "WebXR", "Game Engine", "WebGL"]
   },
   {
-    "category": "JavaScript 3D Libraries",
+    "category": "3D Libraries",
     "repoId": "mrdoob/three.js",
     "npm": "three",
     "isNpmCoreArtifact": true,
@@ -16,7 +16,7 @@
     "tags": ["3D", "WebGL"]
   },
   {
-    "category": "JavaScript Mocking Libraries, test servers",
+    "category": "Mocking Libraries",
     "repoId": "mswjs/msw",
     "npm": "msw",
     "isNpmCoreArtifact": true,
@@ -24,7 +24,7 @@
     "tags": ["testing", "mock", "api"]
   },
   {
-    "category": "JavaScript Mocking Libraries, test servers",
+    "category": "Mocking Libraries",
     "repoId": "netflix/pollyjs",
     "npm": "@pollyjs/core",
     "isNpmCoreArtifact": true,
@@ -32,7 +32,7 @@
     "tags": ["testing", "mock", "api"]
   },
   {
-    "category": "JavaScript Mocking Libraries, test servers",
+    "category": "Mocking Libraries",
     "repoId": "bbyars/mountebank",
     "npm": "mountebank",
     "isNpmCoreArtifact": true,
@@ -40,7 +40,7 @@
     "tags": ["testing", "mock", "api"]
   },
   {
-    "category": "JavaScript Mocking Libraries, test servers",
+    "category": "Mocking Libraries",
     "repoId": "typicode/json-server",
     "npm": "json-server",
     "isNpmCoreArtifact": true,
@@ -48,7 +48,7 @@
     "tags": ["testing", "mock", "api", "http-server"]
   },
   {
-    "category": "JavaScript Mocking Libraries, test servers",
+    "category": "Mocking Libraries",
     "repoId": "miragejs/miragejs",
     "npm": "miragejs",
     "isNpmCoreArtifact": true,
@@ -56,7 +56,7 @@
     "tags": ["testing", "mock", "api"]
   },
   {
-    "category": "JavaScript Mocking Libraries, test servers",
+    "category": "Mocking Libraries",
     "repoId": "nock/nock",
     "npm": "nock",
     "isNpmCoreArtifact": true,
@@ -64,7 +64,7 @@
     "tags": ["testing", "mock", "api"]
   },
   {
-    "category": "AWS Lambda Frameworks",
+    "category": "Serverless Middleware",
     "repoId": "middyjs/middy",
     "npm": "@middy/core",
     "isNpmCoreArtifact": true,
@@ -72,7 +72,7 @@
     "tags": ["aws-lambda", "serverless-framework", "nodejs"]
   },
   {
-    "category": "AWS Lambda Frameworks",
+    "category": "Serverless Middleware",
     "repoId": "laconiajs/laconia",
     "npm": "@laconia/core",
     "isNpmCoreArtifact": true,
@@ -80,7 +80,7 @@
     "tags": ["aws-lambda", "serverless-framework", "nodejs"]
   },
   {
-    "category": "AWS Lambda Frameworks",
+    "category": "Serverless Middleware",
     "repoId": "vandium-io/vandium-node",
     "npm": "vandium",
     "isNpmCoreArtifact": true,
@@ -88,7 +88,7 @@
     "tags": ["aws-lambda", "serverless-framework", "nodejs"]
   },
   {
-    "category": "JavaScript Build Tools, Module Bundlers",
+    "category": "Build and Bundling Tools",
     "repoId": "webpack/webpack",
     "npm": "webpack",
     "isNpmCoreArtifact": true,
@@ -96,7 +96,7 @@
     "tags": ["build-tool", "module-bundler", "dev-server", "compiler", "typescript/javascript"]
   },
   {
-    "category": "JavaScript Build Tools, Module Bundlers",
+    "category": "Build and Bundling Tools",
     "repoId": "gulpjs/gulp",
     "npm": "gulp",
     "isNpmCoreArtifact": true,
@@ -104,7 +104,7 @@
     "tags": ["build-tool"]
   },
   {
-    "category": "JavaScript Build Tools, Module Bundlers",
+    "category": "Build and Bundling Tools",
     "repoId": "rollup/rollup",
     "npm": "rollup",
     "isNpmCoreArtifact": true,
@@ -112,7 +112,7 @@
     "tags": ["build-tool", "module-bundler", "esm", "compiler", "typescript/javascript"]
   },
   {
-    "category": "JavaScript Build Tools, Module Bundlers",
+    "category": "Build and Bundling Tools",
     "repoId": "parcel-bundler/parcel",
     "npm": "@parcel/core",
     "isNpmCoreArtifact": true,
@@ -120,7 +120,7 @@
     "tags": ["build-tool", "module-bundler", "compiler", "typescript/javascript"]
   },
   {
-    "category": "JavaScript Build Tools, Module Bundlers",
+    "category": "Build and Bundling Tools",
     "repoId": "snowpackjs/snowpack",
     "npm": "snowpack",
     "isNpmCoreArtifact": true,
@@ -128,7 +128,7 @@
     "tags": ["build-tool", "module-bundler", "esm", "compiler", "typescript/javascript"]
   },
   {
-    "category": "JavaScript Build Tools, Module Bundlers",
+    "category": "Build and Bundling Tools",
     "repoId": "vitejs/vite",
     "npm": "vite",
     "isNpmCoreArtifact": true,
@@ -136,7 +136,7 @@
     "tags": ["build-tool", "module-bundler", "esm", "hmr", "dev-server", "typescript/javascript"]
   },
   {
-    "category": "JavaScript Build Tools, Module Bundlers",
+    "category": "Build and Bundling Tools",
     "repoId": "evanw/esbuild",
     "npm": "esbuild",
     "isNpmCoreArtifact": true,
@@ -144,7 +144,7 @@
     "tags": ["build-tool", "module-bundler", "esm", "cjs", "compiler", "typescript/javascript"]
   },
   {
-    "category": "JavaScript Build Tools, Module Bundlers",
+    "category": "Build and Bundling Tools",
     "repoId": "preactjs/wmr",
     "npm": "wmr",
     "isNpmCoreArtifact": true,
@@ -152,7 +152,7 @@
     "tags": ["build-tool", "module-bundler", "esm", "hmr", "dev-server", "preact"]
   },
   {
-    "category": "JavaScript Build Tools, Module Bundlers",
+    "category": "Build and Bundling Tools",
     "repoId": "browserify/browserify",
     "npm": "browserify",
     "isNpmCoreArtifact": true,
@@ -160,7 +160,7 @@
     "tags": ["build-tool", "module-bundler"]
   },
   {
-    "category": "JavaScript Build Tools, Module Bundlers",
+    "category": "Build and Bundling Tools",
     "repoId": "developit/microbundle",
     "npm": "microbundle",
     "isNpmCoreArtifact": true,
@@ -168,7 +168,7 @@
     "tags": ["build-tool", "module-bundler", "esm", "cjs", "umd"]
   },
   {
-    "category": "JavaScript Build Tools, Module Bundlers",
+    "category": "Build and Bundling Tools",
     "repoId": "egoist/poi",
     "npm": "poi",
     "isNpmCoreArtifact": true,
@@ -176,7 +176,7 @@
     "tags": ["build-tool", "module-bundler"]
   },
   {
-    "category": "JavaScript Charting Libraries",
+    "category": "Charting Libraries",
     "repoId": "chartjs/chart.js",
     "npm": "chart.js",
     "isNpmCoreArtifact": true,
@@ -184,7 +184,7 @@
     "tags": ["charts", "canvas"]
   },
   {
-    "category": "JavaScript Charting Libraries",
+    "category": "Charting Libraries",
     "repoId": "d3/d3",
     "npm": "d3",
     "isNpmCoreArtifact": true,
@@ -192,7 +192,7 @@
     "tags": ["charts", "svg", "canvas"]
   },
   {
-    "category": "JavaScript Charting Libraries",
+    "category": "Charting Libraries",
     "repoId": "plotly/plotly.js",
     "npm": "plotly.js",
     "isNpmCoreArtifact": true,
@@ -200,7 +200,7 @@
     "tags": ["charts", "d3", "3D-charts"]
   },
   {
-    "category": "JavaScript Charting Libraries",
+    "category": "Charting Libraries",
     "repoId": "highcharts/highcharts",
     "npm": "highcharts",
     "isNpmCoreArtifact": true,
@@ -208,7 +208,7 @@
     "tags": ["charts", "svg", "canvas"]
   },
   {
-    "category": "JavaScript Charting Libraries",
+    "category": "Charting Libraries",
     "repoId": "recharts/recharts",
     "npm": "recharts",
     "isNpmCoreArtifact": true,
@@ -216,7 +216,7 @@
     "tags": ["charts", "react", "d3", "svg"]
   },
   {
-    "category": "JavaScript Charting Libraries",
+    "category": "Charting Libraries",
     "repoId": "apache/echarts",
     "npm": "echarts",
     "isNpmCoreArtifact": true,
@@ -224,7 +224,7 @@
     "tags": ["charts", "canvas"]
   },
   {
-    "category": "JavaScript Charting Libraries",
+    "category": "Charting Libraries",
     "repoId": "naver/billboard.js",
     "npm": "billboard.js",
     "isNpmCoreArtifact": true,
@@ -232,7 +232,7 @@
     "tags": ["charts", "d3"]
   },
   {
-    "category": "JavaScript Charting Libraries",
+    "category": "Charting Libraries",
     "repoId": "amcharts/amcharts4",
     "npm": "@amcharts/amcharts4",
     "isNpmCoreArtifact": true,
@@ -240,7 +240,7 @@
     "tags": ["charts", "svg"]
   },
   {
-    "category": "JavaScript Charting Libraries",
+    "category": "Charting Libraries",
     "repoId": "apexcharts/apexcharts.js",
     "npm": "apexcharts",
     "isNpmCoreArtifact": true,
@@ -248,7 +248,7 @@
     "tags": ["charts", "svg"]
   },
   {
-    "category": "JavaScript Charting Libraries",
+    "category": "Charting Libraries",
     "repoId": "gionkunz/chartist-js",
     "npm": "chartist",
     "isNpmCoreArtifact": true,
@@ -256,7 +256,7 @@
     "tags": ["charts", "svg"]
   },
   {
-    "category": "JavaScript Charting Libraries",
+    "category": "Charting Libraries",
     "repoId": "novus/nvd3",
     "npm": "nvd3",
     "isNpmCoreArtifact": true,
@@ -264,7 +264,7 @@
     "tags": ["charts", "d3"]
   },
   {
-    "category": "JavaScript Charting Libraries",
+    "category": "Charting Libraries",
     "repoId": "amcharts/amcharts3",
     "npm": "amcharts3",
     "isNpmCoreArtifact": true,
@@ -272,7 +272,7 @@
     "tags": ["charts"]
   },
   {
-    "category": "JavaScript Charting Libraries",
+    "category": "Charting Libraries",
     "repoId": "benpickles/peity",
     "npm": "peity",
     "isNpmCoreArtifact": true,
@@ -280,7 +280,7 @@
     "tags": ["charts", "jQuery"]
   },
   {
-    "category": "CSS Frameworks",
+    "category": "CSS Frameworks and Tools",
     "repoId": "twbs/bootstrap",
     "npm": "bootstrap",
     "isNpmCoreArtifact": true,
@@ -288,7 +288,7 @@
     "tags": ["css-framework"]
   },
   {
-    "category": "CSS Frameworks",
+    "category": "CSS Frameworks and Tools",
     "repoId": "jgthms/bulma",
     "npm": "bulma",
     "isNpmCoreArtifact": true,
@@ -296,7 +296,7 @@
     "tags": ["css-framework"]
   },
   {
-    "category": "CSS Frameworks",
+    "category": "CSS Frameworks and Tools",
     "repoId": "windicss/windicss",
     "npm": "windicss",
     "isNpmCoreArtifact": true,
@@ -304,7 +304,7 @@
     "tags": ["css-framework"]
   },
   {
-    "category": "CSS Frameworks",
+    "category": "CSS Frameworks and Tools",
     "repoId": "tailwindlabs/tailwindcss",
     "npm": "tailwindcss",
     "isNpmCoreArtifact": true,
@@ -312,7 +312,7 @@
     "tags": ["css-framework"]
   },
   {
-    "category": "CSS Frameworks",
+    "category": "CSS Frameworks and Tools",
     "repoId": "pure-css/pure",
     "npm": "purecss",
     "isNpmCoreArtifact": true,
@@ -320,7 +320,7 @@
     "tags": ["css-framework"]
   },
   {
-    "category": "CSS Frameworks",
+    "category": "CSS Frameworks and Tools",
     "repoId": "tachyons-css/tachyons",
     "npm": "tachyons",
     "isNpmCoreArtifact": true,
@@ -328,7 +328,7 @@
     "tags": ["css-framework"]
   },
   {
-    "category": "CSS Frameworks",
+    "category": "misc",
     "repoId": "dhg/skeleton",
     "npm": null,
     "isNpmCoreArtifact": null,
@@ -336,7 +336,7 @@
     "tags": ["css-framework"]
   },
   {
-    "category": "CSS Frameworks",
+    "category": "CSS Frameworks and Tools",
     "repoId": "dogfalo/materialize",
     "npm": "materialize-css",
     "isNpmCoreArtifact": true,
@@ -344,7 +344,7 @@
     "tags": ["css-framework", "material-design"]
   },
   {
-    "category": "CSS Frameworks",
+    "category": "CSS Frameworks and Tools",
     "repoId": "foundation/foundation-sites",
     "npm": "foundation-sites",
     "isNpmCoreArtifact": true,
@@ -352,7 +352,7 @@
     "tags": ["css-framework"]
   },
   {
-    "category": "CSS Frameworks",
+    "category": "CSS Frameworks and Tools",
     "repoId": "google/material-design-lite",
     "npm": "material-design-lite",
     "isNpmCoreArtifact": true,
@@ -360,7 +360,7 @@
     "tags": ["css-framework", "material-design"]
   },
   {
-    "category": "CSS Frameworks",
+    "category": "CSS Frameworks and Tools",
     "repoId": "primer/css",
     "npm": "@primer/css",
     "isNpmCoreArtifact": true,
@@ -368,7 +368,7 @@
     "tags": ["css-framework"]
   },
   {
-    "category": "CSS Frameworks",
+    "category": "CSS Frameworks and Tools",
     "repoId": "semantic-org/semantic-ui",
     "npm": "semantic-ui",
     "isNpmCoreArtifact": true,
@@ -376,7 +376,7 @@
     "tags": ["css-framework"]
   },
   {
-    "category": "CSS Frameworks",
+    "category": "CSS Frameworks and Tools",
     "repoId": "semantic-org/semantic-ui-react",
     "npm": "semantic-ui-react",
     "isNpmCoreArtifact": true,
@@ -384,7 +384,7 @@
     "tags": ["css-framework", "react"]
   },
   {
-    "category": "CSS Frameworks",
+    "category": "CSS Frameworks and Tools",
     "repoId": "uikit/uikit",
     "npm": "uikit",
     "isNpmCoreArtifact": true,
@@ -392,7 +392,7 @@
     "tags": ["css-framework"]
   },
   {
-    "category": "CSS Frameworks",
+    "category": "CSS Frameworks and Tools",
     "repoId": "material-components/material-components-web",
     "npm": "material-components-web",
     "isNpmCoreArtifact": true,
@@ -400,7 +400,7 @@
     "tags": ["css-framework", "material-design"]
   },
   {
-    "category": "CSS Frameworks",
+    "category": "CSS Frameworks and Tools",
     "repoId": "picturepan2/spectre",
     "npm": "spectre.css",
     "isNpmCoreArtifact": true,
@@ -408,7 +408,7 @@
     "tags": ["css-framework"]
   },
   {
-    "category": "CSS-in-JS Libraries",
+    "category": "CSS Frameworks and Tools",
     "repoId": "vercel/styled-jsx",
     "npm": "styled-jsx",
     "isNpmCoreArtifact": true,
@@ -416,7 +416,7 @@
     "tags": ["react", "css-in-js"]
   },
   {
-    "category": "CSS-in-JS Libraries",
+    "category": "CSS Frameworks and Tools",
     "repoId": "styled-components/styled-components",
     "npm": "styled-components",
     "isNpmCoreArtifact": true,
@@ -424,7 +424,7 @@
     "tags": ["react", "css-in-js"]
   },
   {
-    "category": "CSS-in-JS Libraries",
+    "category": "CSS Frameworks and Tools",
     "repoId": "formidablelabs/radium",
     "npm": "radium",
     "isNpmCoreArtifact": true,
@@ -432,7 +432,7 @@
     "tags": ["react", "css-in-js"]
   },
   {
-    "category": "CSS-in-JS Libraries",
+    "category": "CSS Frameworks and Tools",
     "repoId": "callstack/linaria",
     "npm": "@linaria/core",
     "isNpmCoreArtifact": true,
@@ -440,7 +440,7 @@
     "tags": ["css-in-js"]
   },
   {
-    "category": "CSS-in-JS Libraries",
+    "category": "CSS Frameworks and Tools",
     "repoId": "cssinjs/jss",
     "npm": "jss",
     "isNpmCoreArtifact": true,
@@ -448,7 +448,7 @@
     "tags": ["css-in-js"]
   },
   {
-    "category": "CSS-in-JS Libraries",
+    "category": "CSS Frameworks and Tools",
     "repoId": "emotion-js/emotion",
     "npm": "@emotion/css",
     "isNpmCoreArtifact": true,
@@ -456,7 +456,7 @@
     "tags": ["css-in-js"]
   },
   {
-    "category": "CSS-in-JS Libraries",
+    "category": "CSS Frameworks and Tools",
     "repoId": "khan/aphrodite",
     "npm": "aphrodite",
     "isNpmCoreArtifact": true,
@@ -464,7 +464,7 @@
     "tags": ["css-in-js"]
   },
   {
-    "category": "CSS-in-JS Libraries",
+    "category": "CSS Frameworks and Tools",
     "repoId": "modulz/stitches",
     "npm": "@stitches/core",
     "isNpmCoreArtifact": true,
@@ -472,7 +472,7 @@
     "tags": ["css-in-js"]
   },
   {
-    "category": "CSS-in-JS Libraries",
+    "category": "CSS Frameworks and Tools",
     "repoId": "modulz/stitches",
     "npm": "@stitches/react",
     "isNpmCoreArtifact": false,
@@ -480,7 +480,7 @@
     "tags": ["react", "css-in-js"]
   },
   {
-    "category": "CSS-in-JS Libraries",
+    "category": "CSS Frameworks and Tools",
     "repoId": "4catalyzer/astroturf",
     "npm": "astroturf",
     "isNpmCoreArtifact": true,
@@ -488,7 +488,7 @@
     "tags": ["css-in-js"]
   },
   {
-    "category": "CSS-in-JS Libraries",
+    "category": "CSS Frameworks and Tools",
     "repoId": "robinweser/fela",
     "npm": "fela",
     "isNpmCoreArtifact": true,
@@ -496,7 +496,7 @@
     "tags": ["css-in-js"]
   },
   {
-    "category": "JavaScript Date Utility Libraries",
+    "category": "Date and Time Libraries",
     "repoId": "date-fns/date-fns",
     "npm": "date-fns",
     "isNpmCoreArtifact": true,
@@ -504,7 +504,7 @@
     "tags": ["Date-time"]
   },
   {
-    "category": "JavaScript Date Utility Libraries",
+    "category": "Date and Time Libraries",
     "repoId": "iamkun/dayjs",
     "npm": "dayjs",
     "isNpmCoreArtifact": true,
@@ -512,7 +512,7 @@
     "tags": ["Date-time"]
   },
   {
-    "category": "JavaScript Date Utility Libraries",
+    "category": "Date and Time Libraries",
     "repoId": "moment/luxon",
     "npm": "luxon",
     "isNpmCoreArtifact": true,
@@ -520,7 +520,7 @@
     "tags": ["Date-time"]
   },
   {
-    "category": "JavaScript Date Utility Libraries",
+    "category": "Date and Time Libraries",
     "repoId": "moment/moment",
     "npm": "moment",
     "isNpmCoreArtifact": true,
@@ -528,7 +528,7 @@
     "tags": ["Date-time"]
   },
   {
-    "category": "JavaScript Date Utility Libraries",
+    "category": "Date and Time Libraries",
     "repoId": "taylorhakes/fecha",
     "npm": "fecha",
     "isNpmCoreArtifact": true,
@@ -536,7 +536,7 @@
     "tags": ["Date-time"]
   },
   {
-    "category": "JavaScript Date Utility Libraries",
+    "category": "Date and Time Libraries",
     "repoId": "vercel/ms",
     "npm": "ms",
     "isNpmCoreArtifact": true,
@@ -544,7 +544,7 @@
     "tags": ["Date-time"]
   },
   {
-    "category": "JavaScript Date Utility Libraries",
+    "category": "Date and Time Libraries",
     "repoId": "hustcc/timeago.js",
     "npm": "timeago.js",
     "isNpmCoreArtifact": true,
@@ -552,7 +552,7 @@
     "tags": ["Date-time"]
   },
   {
-    "category": "JavaScript Date Utility Libraries",
+    "category": "Date and Time Libraries",
     "repoId": "matthewmueller/date",
     "npm": "date.js",
     "isNpmCoreArtifact": true,
@@ -560,7 +560,7 @@
     "tags": ["Date-time"]
   },
   {
-    "category": "JavaScript frameworks for Desktop Applications",
+    "category": "Desktop App Frameworks",
     "repoId": "electron/electron",
     "npm": "electron",
     "isNpmCoreArtifact": true,
@@ -592,7 +592,7 @@
     "tags": ["desktop-app"]
   },
   {
-    "category": "JavaScript frameworks for Desktop Applications",
+    "category": "Desktop App Frameworks",
     "repoId": "nodegui/nodegui",
     "npm": "@nodegui/nodegui",
     "isNpmCoreArtifact": true,
@@ -624,7 +624,7 @@
     "tags": ["desktop-app", "svelte"]
   },
   {
-    "category": "JS End-to-End Testing and Browser Automation Libraries",
+    "category": "Testing Tools",
     "repoId": "puppeteer/puppeteer",
     "npm": "puppeteer",
     "isNpmCoreArtifact": true,
@@ -632,7 +632,7 @@
     "tags": ["browser-automation"]
   },
   {
-    "category": "JS End-to-End Testing and Browser Automation Libraries",
+    "category": "Testing Tools",
     "repoId": "cypress-io/cypress",
     "npm": "cypress",
     "isNpmCoreArtifact": true,
@@ -640,7 +640,7 @@
     "tags": ["testing", "browser-automation"]
   },
   {
-    "category": "JS End-to-End Testing and Browser Automation Libraries",
+    "category": "Testing Tools",
     "repoId": "microsoft/playwright",
     "npm": "playwright",
     "isNpmCoreArtifact": true,
@@ -648,7 +648,7 @@
     "tags": ["browser-automation"]
   },
   {
-    "category": "JS End-to-End Testing and Browser Automation Libraries",
+    "category": "Testing Tools",
     "repoId": "seleniumhq/selenium",
     "npm": "selenium-webdriver",
     "isNpmCoreArtifact": true,
@@ -656,7 +656,7 @@
     "tags": ["browser-automation"]
   },
   {
-    "category": "JS End-to-End Testing and Browser Automation Libraries",
+    "category": "Testing Tools",
     "repoId": "webdriverio/webdriverio",
     "npm": "webdriverio",
     "isNpmCoreArtifact": true,
@@ -664,7 +664,7 @@
     "tags": ["browser-automation"]
   },
   {
-    "category": "JS End-to-End Testing and Browser Automation Libraries",
+    "category": "Testing Tools",
     "repoId": "devexpress/testcafe",
     "npm": "testcafe",
     "isNpmCoreArtifact": true,
@@ -672,7 +672,7 @@
     "tags": ["testing", "browser-automation"]
   },
   {
-    "category": "JS End-to-End Testing and Browser Automation Libraries",
+    "category": "Testing Tools",
     "repoId": "nightwatchjs/nightwatch",
     "npm": "nightwatch",
     "isNpmCoreArtifact": true,
@@ -680,7 +680,7 @@
     "tags": ["testing", "browser-automation"]
   },
   {
-    "category": "JS End-to-End Testing and Browser Automation Libraries",
+    "category": "Testing Tools",
     "repoId": "getgauge/taiko",
     "npm": "taiko",
     "isNpmCoreArtifact": true,
@@ -688,7 +688,7 @@
     "tags": ["testing", "browser-automation"]
   },
   {
-    "category": "JS End-to-End Testing and Browser Automation Libraries",
+    "category": "Testing Tools",
     "repoId": "segmentio/nightmare",
     "npm": "nightmare",
     "isNpmCoreArtifact": true,
@@ -696,7 +696,7 @@
     "tags": ["browser-automation"]
   },
   {
-    "category": "JS End-to-End Testing and Browser Automation Libraries",
+    "category": "Testing Tools",
     "repoId": "casperjs/casperjs",
     "npm": "casperjs",
     "isNpmCoreArtifact": true,
@@ -704,7 +704,7 @@
     "tags": ["testing", "browser-automation"]
   },
   {
-    "category": "JS End-to-End Testing and Browser Automation Libraries",
+    "category": "Testing Tools",
     "repoId": "laurentj/slimerjs",
     "npm": "slimerjs",
     "isNpmCoreArtifact": true,
@@ -712,7 +712,7 @@
     "tags": ["browser-automation"]
   },
   {
-    "category": "JS End-to-End Testing and Browser Automation Libraries",
+    "category": "Testing Tools",
     "repoId": "assaf/zombie",
     "npm": "zombie",
     "isNpmCoreArtifact": true,
@@ -720,7 +720,7 @@
     "tags": ["testing", "browser-automation"]
   },
   {
-    "category": "JavaScript UI Frameworks and Libraries",
+    "category": "Frontend Frameworks",
     "repoId": "facebook/react",
     "npm": "react",
     "isNpmCoreArtifact": true,
@@ -728,7 +728,7 @@
     "tags": ["ui-framework"]
   },
   {
-    "category": "JavaScript UI Frameworks and Libraries",
+    "category": "Frontend Frameworks",
     "repoId": "vuejs/vue",
     "npm": "vue",
     "isNpmCoreArtifact": true,
@@ -736,7 +736,7 @@
     "tags": ["ui-framework"]
   },
   {
-    "category": "JavaScript UI Frameworks and Libraries",
+    "category": "Frontend Frameworks",
     "repoId": "angular/angular",
     "npm": "@angular/core",
     "isNpmCoreArtifact": true,
@@ -744,7 +744,7 @@
     "tags": ["ui-framework"]
   },
   {
-    "category": "JavaScript UI Frameworks and Libraries",
+    "category": "Frontend Frameworks",
     "repoId": "sveltejs/svelte",
     "npm": "svelte",
     "isNpmCoreArtifact": true,
@@ -752,7 +752,7 @@
     "tags": ["ui-framework"]
   },
   {
-    "category": "JavaScript UI Frameworks and Libraries",
+    "category": "Frontend Frameworks",
     "repoId": "emberjs/ember.js",
     "npm": "ember-source",
     "isNpmCoreArtifact": true,
@@ -760,7 +760,7 @@
     "tags": ["ui-framework"]
   },
   {
-    "category": "JavaScript UI Frameworks and Libraries",
+    "category": "Frontend Frameworks",
     "repoId": "alpinejs/alpine",
     "npm": "alpinejs",
     "isNpmCoreArtifact": true,
@@ -768,7 +768,7 @@
     "tags": ["ui-framework"]
   },
   {
-    "category": "JavaScript UI Frameworks and Libraries",
+    "category": "Frontend Frameworks",
     "repoId": "infernojs/inferno",
     "npm": "inferno",
     "isNpmCoreArtifact": true,
@@ -776,7 +776,7 @@
     "tags": ["ui-framework"]
   },
   {
-    "category": "JavaScript UI Frameworks and Libraries",
+    "category": "Frontend Frameworks",
     "repoId": "preactjs/preact",
     "npm": "preact",
     "isNpmCoreArtifact": true,
@@ -784,7 +784,7 @@
     "tags": ["ui-framework"]
   },
   {
-    "category": "JavaScript UI Frameworks and Libraries",
+    "category": "Frontend Frameworks",
     "repoId": "jorgebucaran/hyperapp",
     "npm": "hyperapp",
     "isNpmCoreArtifact": true,
@@ -792,7 +792,7 @@
     "tags": ["ui-framework"]
   },
   {
-    "category": "JavaScript UI Frameworks and Libraries",
+    "category": "Frontend Frameworks",
     "repoId": "riot/riot",
     "npm": "riot",
     "isNpmCoreArtifact": true,
@@ -800,23 +800,23 @@
     "tags": ["ui-framework"]
   },
   {
-    "category": "JavaScript UI Frameworks and Libraries",
+    "category": "Frontend Frameworks",
     "repoId": "angular/angular.js",
     "npm": "angular",
     "isNpmCoreArtifact": true,
-    "alias": "AngularJS",
+    "alias": "AngularJS (deprecated)",
     "tags": ["ui-framework"]
   },
   {
-    "category": "JavaScript UI Frameworks and Libraries",
+    "category": "Frontend Frameworks",
     "repoId": "marionettejs/backbone.marionette",
     "npm": "backbone.marionette",
     "isNpmCoreArtifact": true,
-    "alias": null,
+    "alias": "Backbone (deprecated)",
     "tags": ["ui-framework"]
   },
   {
-    "category": "JavaScript UI Frameworks and Libraries",
+    "category": "Frontend Frameworks",
     "repoId": "knockout/knockout",
     "npm": "knockout",
     "isNpmCoreArtifact": true,
@@ -824,7 +824,7 @@
     "tags": ["ui-framework"]
   },
   {
-    "category": "JavaScript UI Frameworks and Libraries",
+    "category": "Frontend Frameworks",
     "repoId": "solidjs/solid",
     "npm": "solid-js",
     "isNpmCoreArtifact": true,
@@ -832,7 +832,7 @@
     "tags": ["ui-framework"]
   },
   {
-    "category": "JavaScript UI Frameworks and Libraries",
+    "category": "Frontend Frameworks",
     "repoId": "mithriljs/mithril.js",
     "npm": "mithril",
     "isNpmCoreArtifact": true,
@@ -840,7 +840,7 @@
     "tags": ["ui-framework"]
   },
   {
-    "category": "JavaScript UI Frameworks and Libraries",
+    "category": "Frontend Frameworks",
     "repoId": "aurelia/framework",
     "npm": "aurelia-framework",
     "isNpmCoreArtifact": true,
@@ -848,7 +848,7 @@
     "tags": ["ui-framework"]
   },
   {
-    "category": "JavaScript UI Frameworks and Libraries",
+    "category": "Frontend Frameworks",
     "repoId": "hotwired/stimulus",
     "npm": "stimulus",
     "isNpmCoreArtifact": true,
@@ -856,7 +856,7 @@
     "tags": ["ui-framework"]
   },
   {
-    "category": "JavaScript UI Frameworks and Libraries",
+    "category": "Frontend Frameworks",
     "repoId": "marko-js/marko",
     "npm": "marko",
     "isNpmCoreArtifact": true,
@@ -864,7 +864,7 @@
     "tags": ["ui-framework"]
   },
   {
-    "category": "GraphQL Client Libraries",
+    "category": "GraphQL Libraries",
     "repoId": "facebook/relay",
     "npm": "relay-runtime",
     "isNpmCoreArtifact": true,
@@ -872,7 +872,7 @@
     "tags": ["GraphQL-client", "react"]
   },
   {
-    "category": "GraphQL Client Libraries",
+    "category": "GraphQL Libraries",
     "repoId": "apollographql/apollo-client",
     "npm": "@apollo/client",
     "isNpmCoreArtifact": true,
@@ -880,7 +880,7 @@
     "tags": ["GraphQL-client", "react"]
   },
   {
-    "category": "GraphQL Client Libraries",
+    "category": "GraphQL Libraries",
     "repoId": "prisma-labs/graphql-request",
     "npm": "graphql-request",
     "isNpmCoreArtifact": true,
@@ -888,7 +888,7 @@
     "tags": ["GraphQL-client"]
   },
   {
-    "category": "GraphQL Client Libraries",
+    "category": "GraphQL Libraries",
     "repoId": "vuejs/apollo",
     "npm": "vue-apollo",
     "isNpmCoreArtifact": true,
@@ -896,7 +896,7 @@
     "tags": ["GraphQL-client", "vue"]
   },
   {
-    "category": "GraphQL Client Libraries",
+    "category": "GraphQL Libraries",
     "repoId": "timhall/svelte-apollo",
     "npm": "svelte-apollo",
     "isNpmCoreArtifact": true,
@@ -904,7 +904,7 @@
     "tags": ["GraphQL-client", "svelte"]
   },
   {
-    "category": "GraphQL Client Libraries",
+    "category": "GraphQL Libraries",
     "repoId": "ember-graphql/ember-apollo-client",
     "npm": "ember-apollo-client",
     "isNpmCoreArtifact": true,
@@ -912,7 +912,7 @@
     "tags": ["GraphQL-client", "ember"]
   },
   {
-    "category": "GraphQL Client Libraries",
+    "category": "GraphQL Libraries",
     "repoId": "kamilkisiela/apollo-angular",
     "npm": "apollo-angular",
     "isNpmCoreArtifact": true,
@@ -920,7 +920,7 @@
     "tags": ["GraphQL-client", "angular"]
   },
   {
-    "category": "GraphQL Client Libraries",
+    "category": "GraphQL Libraries",
     "repoId": "formidablelabs/urql",
     "npm": "urql",
     "isNpmCoreArtifact": false,
@@ -928,7 +928,7 @@
     "tags": ["GraphQL-client", "react"]
   },
   {
-    "category": "GraphQL Client Libraries",
+    "category": "GraphQL Libraries",
     "repoId": "formidablelabs/urql",
     "npm": "@urql/preact",
     "isNpmCoreArtifact": false,
@@ -936,7 +936,7 @@
     "tags": ["GraphQL-client", "preact"]
   },
   {
-    "category": "GraphQL Client Libraries",
+    "category": "GraphQL Libraries",
     "repoId": "formidablelabs/urql",
     "npm": "@urql/vue",
     "isNpmCoreArtifact": false,
@@ -944,7 +944,7 @@
     "tags": ["GraphQL-client", "vue"]
   },
   {
-    "category": "JavaScript Template Engines",
+    "category": "Template Engines",
     "repoId": "mde/ejs",
     "npm": "ejs",
     "isNpmCoreArtifact": true,
@@ -952,7 +952,7 @@
     "tags": ["templating"]
   },
   {
-    "category": "JavaScript Template Engines",
+    "category": "Template Engines",
     "repoId": "handlebars-lang/handlebars.js",
     "npm": "handlebars",
     "isNpmCoreArtifact": true,
@@ -960,7 +960,7 @@
     "tags": ["templating"]
   },
   {
-    "category": "JavaScript Template Engines",
+    "category": "Template Engines",
     "repoId": "janl/mustache.js",
     "npm": "mustache",
     "isNpmCoreArtifact": true,
@@ -968,7 +968,7 @@
     "tags": ["templating"]
   },
   {
-    "category": "JavaScript Template Engines",
+    "category": "Template Engines",
     "repoId": "pugjs/pug",
     "npm": "pug",
     "isNpmCoreArtifact": true,
@@ -976,7 +976,7 @@
     "tags": ["templating"]
   },
   {
-    "category": "JavaScript Template Engines",
+    "category": "Template Engines",
     "repoId": "mozilla/nunjucks",
     "npm": "nunjucks",
     "isNpmCoreArtifact": true,
@@ -984,7 +984,7 @@
     "tags": ["templating"]
   },
   {
-    "category": "JavaScript Template Engines",
+    "category": "Template Engines",
     "repoId": "blueimp/javascript-templates",
     "npm": "blueimp-tmpl",
     "isNpmCoreArtifact": true,
@@ -992,7 +992,7 @@
     "tags": ["templating"]
   },
   {
-    "category": "JavaScript Template Engines",
+    "category": "Template Engines",
     "repoId": "olado/dot",
     "npm": "dot",
     "isNpmCoreArtifact": true,
@@ -1000,7 +1000,7 @@
     "tags": ["templating"]
   },
   {
-    "category": "JavaScript Template Engines",
+    "category": "Template Engines",
     "repoId": "xtemplate/xtemplate",
     "npm": "xtemplate",
     "isNpmCoreArtifact": true,
@@ -1008,7 +1008,7 @@
     "tags": ["templating"]
   },
   {
-    "category": "JavaScript Template Engines",
+    "category": "Template Engines",
     "repoId": "linkedin/dustjs",
     "npm": "dustjs-linkedin",
     "isNpmCoreArtifact": true,
@@ -1016,7 +1016,7 @@
     "tags": ["templating"]
   },
   {
-    "category": "JavaScript Template Engines",
+    "category": "Template Engines",
     "repoId": "guseyn/ehtml",
     "npm": "ehtml",
     "isNpmCoreArtifact": true,
@@ -1024,7 +1024,7 @@
     "tags": ["templating"]
   },
   {
-    "category": "JavaScript Immutability Libraries",
+    "category": "Immutability Libraries",
     "repoId": "immerjs/immer",
     "npm": "immer",
     "isNpmCoreArtifact": true,
@@ -1032,7 +1032,7 @@
     "tags": ["immutability"]
   },
   {
-    "category": "JavaScript Immutability Libraries",
+    "category": "Immutability Libraries",
     "repoId": "immutable-js/immutable-js",
     "npm": "immutable",
     "isNpmCoreArtifact": true,
@@ -1040,7 +1040,7 @@
     "tags": ["immutability"]
   },
   {
-    "category": "JavaScript Linting and Formatting Tools",
+    "category": "Linting and Formatting Tools",
     "repoId": "eslint/eslint",
     "npm": "eslint",
     "isNpmCoreArtifact": true,
@@ -1048,15 +1048,15 @@
     "tags": ["linter"]
   },
   {
-    "category": "JavaScript Linting and Formatting Tools",
+    "category": "Linting and Formatting Tools",
     "repoId": "palantir/tslint",
     "npm": "tslint",
     "isNpmCoreArtifact": true,
-    "alias": "TSLint",
+    "alias": "TSLint (deprecated)",
     "tags": ["linter"]
   },
   {
-    "category": "JavaScript Linting and Formatting Tools",
+    "category": "Linting and Formatting Tools",
     "repoId": "prettier/prettier",
     "npm": "prettier",
     "isNpmCoreArtifact": true,
@@ -1064,7 +1064,7 @@
     "tags": ["linter", "formatting"]
   },
   {
-    "category": "JavaScript Linting and Formatting Tools",
+    "category": "Linting and Formatting Tools",
     "repoId": "jshint/jshint",
     "npm": "jshint",
     "isNpmCoreArtifact": true,
@@ -1072,7 +1072,7 @@
     "tags": ["linter"]
   },
   {
-    "category": "JavaScript Linting and Formatting Tools",
+    "category": "Linting and Formatting Tools",
     "repoId": "beautify-web/js-beautify",
     "npm": "js-beautify",
     "isNpmCoreArtifact": true,
@@ -1080,7 +1080,7 @@
     "tags": ["formatting"]
   },
   {
-    "category": "JavaScript Maps Libraries",
+    "category": "Maps Libraries",
     "repoId": "leaflet/leaflet",
     "npm": "leaflet",
     "isNpmCoreArtifact": true,
@@ -1088,7 +1088,7 @@
     "tags": ["maps"]
   },
   {
-    "category": "JavaScript Maps Libraries",
+    "category": "Maps Libraries",
     "repoId": "openlayers/openlayers",
     "npm": "ol",
     "isNpmCoreArtifact": true,
@@ -1120,7 +1120,7 @@
     "tags": []
   },
   {
-    "category": "HTTP clients",
+    "category": "HTTP Request Libraries",
     "repoId": "axios/axios",
     "npm": "axios",
     "isNpmCoreArtifact": true,
@@ -1128,7 +1128,7 @@
     "tags": ["http-client", "promise", "browser", "nodejs"]
   },
   {
-    "category": "HTTP clients",
+    "category": "HTTP Request Libraries",
     "repoId": "developit/redaxios",
     "npm": "redaxios",
     "isNpmCoreArtifact": true,
@@ -1136,7 +1136,7 @@
     "tags": ["http-client", "promise", "browser", "nodejs"]
   },
   {
-    "category": "HTTP clients",
+    "category": "HTTP Request Libraries",
     "repoId": "node-fetch/node-fetch",
     "npm": "node-fetch",
     "isNpmCoreArtifact": true,
@@ -1144,7 +1144,7 @@
     "tags": ["http-client", "promise", "browser", "nodejs"]
   },
   {
-    "category": "HTTP clients",
+    "category": "HTTP Request Libraries",
     "repoId": "sindresorhus/got",
     "npm": "got",
     "isNpmCoreArtifact": true,
@@ -1152,7 +1152,7 @@
     "tags": ["http-client", "promise", "nodejs"]
   },
   {
-    "category": "HTTP clients",
+    "category": "HTTP Request Libraries",
     "repoId": "request/request",
     "npm": "request",
     "isNpmCoreArtifact": true,
@@ -1160,7 +1160,7 @@
     "tags": ["http-client", "promise", "nodejs"]
   },
   {
-    "category": "HTTP clients",
+    "category": "HTTP Request Libraries",
     "repoId": "mikeal/r2",
     "npm": "r2",
     "isNpmCoreArtifact": true,
@@ -1168,7 +1168,7 @@
     "tags": ["http-client", "promise", "nodejs"]
   },
   {
-    "category": "HTTP clients",
+    "category": "HTTP Request Libraries",
     "repoId": "sindresorhus/ky",
     "npm": "ky",
     "isNpmCoreArtifact": true,
@@ -1176,7 +1176,7 @@
     "tags": ["http-client", "promise", "browser", "nodejs"]
   },
   {
-    "category": "HTTP clients",
+    "category": "HTTP Request Libraries",
     "repoId": "visionmedia/superagent",
     "npm": "superagent",
     "isNpmCoreArtifact": true,
@@ -1664,7 +1664,7 @@
     "tags": []
   },
   {
-    "category": "Markdown parsers",
+    "category": "Markdown Parsers",
     "repoId": "markedjs/marked",
     "npm": "marked",
     "isNpmCoreArtifact": true,
@@ -1672,7 +1672,7 @@
     "tags": ["markdown", "markdown-parser", "cli-tool"]
   },
   {
-    "category": "Markdown parsers",
+    "category": "Markdown Parsers",
     "repoId": "jonschlinkert/remarkable",
     "npm": "remarkable",
     "isNpmCoreArtifact": true,
@@ -1680,7 +1680,7 @@
     "tags": ["markdown", "markdown-parser"]
   },
   {
-    "category": "Markdown parsers",
+    "category": "Markdown Parsers",
     "repoId": "micromark/micromark",
     "npm": "micromark",
     "isNpmCoreArtifact": true,
@@ -1688,7 +1688,7 @@
     "tags": ["markdown", "markdown-parser"]
   },
   {
-    "category": "Markdown parsers",
+    "category": "Markdown Parsers",
     "repoId": "showdownjs/showdown",
     "npm": "showdown",
     "isNpmCoreArtifact": true,
@@ -1696,7 +1696,7 @@
     "tags": ["markdown", "markdown-parser", "cli-tool"]
   },
   {
-    "category": "Markdown parsers",
+    "category": "Markdown Parsers",
     "repoId": "remarkjs/remark",
     "npm": "remark-parse",
     "isNpmCoreArtifact": false,
@@ -2880,7 +2880,7 @@
     "tags": []
   },
   {
-    "category": "Markdown parsers",
+    "category": "Markdown Parsers",
     "repoId": "markdown-it/markdown-it",
     "npm": "markdown-it",
     "isNpmCoreArtifact": true,
@@ -11624,7 +11624,7 @@
     "tags": []
   },
   {
-    "category": "NodeJS Frameworks",
+    "category": "Backend Frameworks",
     "repoId": "expressjs/express",
     "npm": "express",
     "isNpmCoreArtifact": true,
@@ -11632,7 +11632,7 @@
     "tags": ["nodejs-framework"]
   },
   {
-    "category": "NodeJS Frameworks",
+    "category": "Backend Frameworks",
     "repoId": "nestjs/nest",
     "npm": "@nestjs/core",
     "isNpmCoreArtifact": true,
@@ -11640,7 +11640,7 @@
     "tags": ["nodejs-framework"]
   },
   {
-    "category": "NodeJS Frameworks",
+    "category": "Backend Frameworks",
     "repoId": "koajs/koa",
     "npm": "koa",
     "isNpmCoreArtifact": true,
@@ -11648,7 +11648,7 @@
     "tags": ["nodejs-framework"]
   },
   {
-    "category": "NodeJS Frameworks",
+    "category": "Backend Frameworks",
     "repoId": "fastify/fastify",
     "npm": "fastify",
     "isNpmCoreArtifact": true,
@@ -11656,7 +11656,7 @@
     "tags": ["nodejs-framework"]
   },
   {
-    "category": "NodeJS Frameworks",
+    "category": "Backend Frameworks",
     "repoId": "hapijs/hapi",
     "npm": "@hapi/hapi",
     "isNpmCoreArtifact": true,
@@ -11664,7 +11664,7 @@
     "tags": ["nodejs-framework"]
   },
   {
-    "category": "NodeJS Frameworks",
+    "category": "Backend Frameworks",
     "repoId": "adonisjs/core",
     "npm": "@adonisjs/core",
     "isNpmCoreArtifact": true,
@@ -11672,7 +11672,7 @@
     "tags": ["nodejs-framework"]
   },
   {
-    "category": "NodeJS Frameworks",
+    "category": "Backend Frameworks",
     "repoId": "balderdashy/sails",
     "npm": "sails",
     "isNpmCoreArtifact": true,
@@ -11680,7 +11680,7 @@
     "tags": ["nodejs-framework"]
   },
   {
-    "category": "NodeJS Frameworks",
+    "category": "Backend Frameworks",
     "repoId": "restify/node-restify",
     "npm": "restify",
     "isNpmCoreArtifact": true,
@@ -11688,7 +11688,7 @@
     "tags": ["nodejs-framework"]
   },
   {
-    "category": "NodeJS Frameworks",
+    "category": "Backend Frameworks",
     "repoId": "feathersjs/feathers",
     "npm": "@feathersjs/feathers",
     "isNpmCoreArtifact": true,
@@ -11696,15 +11696,15 @@
     "tags": ["nodejs-framework", "realtime"]
   },
   {
-    "category": "NodeJS Frameworks",
+    "category": "Backend Frameworks",
     "repoId": "strongloop/loopback",
     "npm": "loopback",
     "isNpmCoreArtifact": true,
-    "alias": "LoopBack 3",
+    "alias": "LoopBack 3 (deprecated)",
     "tags": ["nodejs-framework"]
   },
   {
-    "category": "NodeJS Frameworks",
+    "category": "Backend Frameworks",
     "repoId": "loopbackio/loopback-next",
     "npm": "@loopback/core",
     "isNpmCoreArtifact": true,
@@ -11712,7 +11712,7 @@
     "tags": ["nodejs-framework"]
   },
   {
-    "category": "Node.js Logging libraries",
+    "category": "Logging libraries",
     "repoId": "log4js-node/log4js-node",
     "npm": "log4js",
     "isNpmCoreArtifact": true,
@@ -11720,7 +11720,7 @@
     "tags": ["nodejs-logging"]
   },
   {
-    "category": "Node.js Logging libraries",
+    "category": "Logging libraries",
     "repoId": "pinojs/pino",
     "npm": "pino",
     "isNpmCoreArtifact": true,
@@ -11728,7 +11728,7 @@
     "tags": ["nodejs-logging"]
   },
   {
-    "category": "Node.js Logging libraries",
+    "category": "Logging libraries",
     "repoId": "unjs/consola",
     "npm": "consola",
     "isNpmCoreArtifact": true,
@@ -11736,7 +11736,7 @@
     "tags": ["nodejs-logging"]
   },
   {
-    "category": "Node.js Logging libraries",
+    "category": "Logging libraries",
     "repoId": "klaussinani/signale",
     "npm": "signale",
     "isNpmCoreArtifact": true,
@@ -11744,7 +11744,7 @@
     "tags": ["nodejs-logging"]
   },
   {
-    "category": "Node.js Logging libraries",
+    "category": "Logging libraries",
     "repoId": "bevry/caterpillar",
     "npm": "caterpillar",
     "isNpmCoreArtifact": true,
@@ -11752,7 +11752,7 @@
     "tags": ["nodejs-logging"]
   },
   {
-    "category": "Node.js Logging libraries",
+    "category": "Logging libraries",
     "repoId": "winstonjs/winston",
     "npm": "winston",
     "isNpmCoreArtifact": true,
@@ -11760,7 +11760,7 @@
     "tags": ["nodejs-logging"]
   },
   {
-    "category": "Node.js Logging libraries",
+    "category": "Logging libraries",
     "repoId": "expressjs/morgan",
     "npm": "morgan",
     "isNpmCoreArtifact": true,
@@ -11768,7 +11768,7 @@
     "tags": ["nodejs-logging"]
   },
   {
-    "category": "Node.js Logging libraries",
+    "category": "Logging libraries",
     "repoId": "pimterry/loglevel",
     "npm": "loglevel",
     "isNpmCoreArtifact": true,
@@ -11776,7 +11776,7 @@
     "tags": ["nodejs-logging"]
   },
   {
-    "category": "Node.js Logging libraries",
+    "category": "Logging libraries",
     "repoId": "trentm/node-bunyan",
     "npm": "bunyan",
     "isNpmCoreArtifact": true,
@@ -11784,7 +11784,7 @@
     "tags": ["nodejs-logging"]
   },
   {
-    "category": "Node.js Logging libraries",
+    "category": "Logging libraries",
     "repoId": "gajus/roarr",
     "npm": "roarr",
     "isNpmCoreArtifact": true,
@@ -11792,7 +11792,7 @@
     "tags": ["nodejs-logging"]
   },
   {
-    "category": "Node.js Monitoring tools and libraries",
+    "category": "Monitoring and Performance Tools",
     "repoId": "siimon/prom-client",
     "npm": "prom-client",
     "isNpmCoreArtifact": true,
@@ -11800,7 +11800,7 @@
     "tags": ["nodejs-monitoring"]
   },
   {
-    "category": "Node.js Monitoring tools and libraries",
+    "category": "Monitoring and Performance Tools",
     "repoId": "rafalwilinski/express-status-monitor",
     "npm": "express-status-monitor",
     "isNpmCoreArtifact": true,
@@ -11808,7 +11808,7 @@
     "tags": ["nodejs-monitoring"]
   },
   {
-    "category": "Node.js Monitoring tools and libraries",
+    "category": "Monitoring and Performance Tools",
     "repoId": "clinicjs/node-clinic",
     "npm": "clinic",
     "isNpmCoreArtifact": true,
@@ -11816,7 +11816,7 @@
     "tags": ["nodejs-monitoring"]
   },
   {
-    "category": "Node.js Monitoring tools and libraries",
+    "category": "Monitoring and Performance Tools",
     "repoId": "runtimetools/appmetrics-dash",
     "npm": "appmetrics-dash",
     "isNpmCoreArtifact": true,
@@ -11824,7 +11824,7 @@
     "tags": ["nodejs-monitoring"]
   },
   {
-    "category": "Node.js Process Managers",
+    "category": "Process Management",
     "repoId": "foreversd/forever",
     "npm": "forever",
     "isNpmCoreArtifact": true,
@@ -11832,7 +11832,7 @@
     "tags": ["nodejs-process-manager", "cli-tool"]
   },
   {
-    "category": "Node.js Process Managers",
+    "category": "Process Management",
     "repoId": "unitech/pm2",
     "npm": "pm2",
     "isNpmCoreArtifact": true,
@@ -11840,7 +11840,7 @@
     "tags": ["nodejs-process-manager", "cli-tool"]
   },
   {
-    "category": "Node.js Process Managers",
+    "category": "Process Management",
     "repoId": "remy/nodemon",
     "npm": "nodemon",
     "isNpmCoreArtifact": true,
@@ -11848,7 +11848,7 @@
     "tags": ["nodejs-process-manager", "cli-tool"]
   },
   {
-    "category": "JavaScript Schema Validation Libraries",
+    "category": "Validation Libraries",
     "repoId": "sideway/joi",
     "npm": "joi",
     "isNpmCoreArtifact": true,
@@ -11856,7 +11856,7 @@
     "tags": ["schema-validation"]
   },
   {
-    "category": "JavaScript Schema Validation Libraries",
+    "category": "Validation Libraries",
     "repoId": "ajv-validator/ajv",
     "npm": "ajv",
     "isNpmCoreArtifact": true,
@@ -11864,7 +11864,7 @@
     "tags": ["schema-validation"]
   },
   {
-    "category": "JavaScript Schema Validation Libraries",
+    "category": "Validation Libraries",
     "repoId": "jquense/yup",
     "npm": "yup",
     "isNpmCoreArtifact": true,
@@ -11872,7 +11872,7 @@
     "tags": ["schema-validation"]
   },
   {
-    "category": "JavaScript/Node.js ORMs",
+    "category": "SQL and ORM Libraries",
     "repoId": "knex/knex",
     "npm": "knex",
     "isNpmCoreArtifact": true,
@@ -11880,7 +11880,7 @@
     "tags": ["orm"]
   },
   {
-    "category": "JavaScript/Node.js ORMs",
+    "category": "SQL and ORM Libraries",
     "repoId": "sequelize/sequelize",
     "npm": "sequelize",
     "isNpmCoreArtifact": true,
@@ -11888,7 +11888,7 @@
     "tags": ["orm"]
   },
   {
-    "category": "JavaScript/Node.js ORMs",
+    "category": "SQL and ORM Libraries",
     "repoId": "bookshelf/bookshelf",
     "npm": "bookshelf",
     "isNpmCoreArtifact": true,
@@ -11896,7 +11896,7 @@
     "tags": ["orm"]
   },
   {
-    "category": "JavaScript/Node.js ORMs",
+    "category": "SQL and ORM Libraries",
     "repoId": "balderdashy/waterline",
     "npm": "waterline",
     "isNpmCoreArtifact": true,
@@ -11904,7 +11904,7 @@
     "tags": ["orm"]
   },
   {
-    "category": "JavaScript/Node.js ORMs",
+    "category": "SQL and ORM Libraries",
     "repoId": "vincit/objection.js",
     "npm": "objection",
     "isNpmCoreArtifact": true,
@@ -11912,7 +11912,7 @@
     "tags": ["orm"]
   },
   {
-    "category": "JavaScript/Node.js ORMs",
+    "category": "SQL and ORM Libraries",
     "repoId": "automattic/mongoose",
     "npm": "mongoose",
     "isNpmCoreArtifact": true,
@@ -11920,7 +11920,7 @@
     "tags": ["orm"]
   },
   {
-    "category": "JavaScript/Node.js ORMs",
+    "category": "SQL and ORM Libraries",
     "repoId": "typegoose/typegoose",
     "npm": "@typegoose/typegoose",
     "isNpmCoreArtifact": true,
@@ -11928,7 +11928,7 @@
     "tags": ["orm"]
   },
   {
-    "category": "JavaScript/Node.js ORMs",
+    "category": "SQL and ORM Libraries",
     "repoId": "craigmichaelmartin/pure-orm",
     "npm": "pure-orm",
     "isNpmCoreArtifact": true,
@@ -11936,7 +11936,7 @@
     "tags": ["orm"]
   },
   {
-    "category": "JavaScript/Node.js ORMs",
+    "category": "SQL and ORM Libraries",
     "repoId": "typeorm/typeorm",
     "npm": "typeorm",
     "isNpmCoreArtifact": true,
@@ -11944,7 +11944,7 @@
     "tags": ["orm"]
   },
   {
-    "category": "JavaScript/Node.js ORMs",
+    "category": "SQL and ORM Libraries",
     "repoId": "mikro-orm/mikro-orm",
     "npm": "@mikro-orm/core",
     "isNpmCoreArtifact": true,
@@ -11952,7 +11952,7 @@
     "tags": ["orm"]
   },
   {
-    "category": "JavaScript/Node.js ORMs",
+    "category": "SQL and ORM Libraries",
     "repoId": "prisma/prisma",
     "npm": "@prisma/client",
     "isNpmCoreArtifact": true,
@@ -11960,7 +11960,7 @@
     "tags": ["orm"]
   },
   {
-    "category": "Tooltips, Popovers, Modals",
+    "category": "Tooltip Libraries",
     "repoId": "floating-ui/floating-ui",
     "npm": "@popperjs/core",
     "isNpmCoreArtifact": true,
@@ -11968,7 +11968,7 @@
     "tags": ["tooltip"]
   },
   {
-    "category": "Tooltips, Popovers, Modals",
+    "category": "Tooltip Libraries",
     "repoId": "chinchang/hint.css",
     "npm": "hint.css",
     "isNpmCoreArtifact": true,
@@ -11976,7 +11976,7 @@
     "tags": ["tooltip"]
   },
   {
-    "category": "Tooltips, Popovers, Modals",
+    "category": "Tooltip Libraries",
     "repoId": "kazzkiq/balloon.css",
     "npm": "balloon-css",
     "isNpmCoreArtifact": true,
@@ -11984,7 +11984,7 @@
     "tags": ["tooltip"]
   },
   {
-    "category": "Tooltips, Popovers, Modals",
+    "category": "Tooltip Libraries",
     "repoId": "calebjacob/tooltipster",
     "npm": "tooltipster",
     "isNpmCoreArtifact": true,
@@ -11992,7 +11992,7 @@
     "tags": ["tooltip"]
   },
   {
-    "category": "Tooltips, Popovers, Modals",
+    "category": "Tooltip Libraries",
     "repoId": "react-component/tooltip",
     "npm": "rc-tooltip",
     "isNpmCoreArtifact": true,
@@ -12000,7 +12000,7 @@
     "tags": ["tooltip"]
   },
   {
-    "category": "Tooltips, Popovers, Modals",
+    "category": "Tooltip Libraries",
     "repoId": "wwayne/react-tooltip",
     "npm": "react-tooltip",
     "isNpmCoreArtifact": true,
@@ -12008,7 +12008,7 @@
     "tags": ["tooltip"]
   },
   {
-    "category": "Tooltips, Popovers, Modals",
+    "category": "Tooltip Libraries",
     "repoId": "floating-ui/react-popper",
     "npm": "react-popper",
     "isNpmCoreArtifact": true,
@@ -12016,7 +12016,7 @@
     "tags": ["tooltip"]
   },
   {
-    "category": "Tooltips, Popovers, Modals",
+    "category": "Tooltip Libraries",
     "repoId": "atomiks/tippyjs-react",
     "npm": "@tippyjs/react",
     "isNpmCoreArtifact": true,
@@ -12024,7 +12024,7 @@
     "tags": ["tooltip"]
   },
   {
-    "category": "Tooltips, Popovers, Modals",
+    "category": "Tooltip Libraries",
     "repoId": "atomiks/tippyjs",
     "npm": "tippy.js",
     "isNpmCoreArtifact": true,
@@ -12032,7 +12032,7 @@
     "tags": ["tooltip"]
   },
   {
-    "category": "React Component Libraries",
+    "category": "React UI Libraries and Components",
     "repoId": "mui-org/material-ui",
     "npm": "@material-ui/core",
     "isNpmCoreArtifact": true,
@@ -12040,7 +12040,7 @@
     "tags": ["component-library", "material-design", "react"]
   },
   {
-    "category": "React Component Libraries",
+    "category": "React UI Libraries and Components",
     "repoId": "gabrielbull/react-desktop",
     "npm": "react-desktop",
     "isNpmCoreArtifact": true,
@@ -12048,7 +12048,7 @@
     "tags": ["component-library", "react"]
   },
   {
-    "category": "React Component Libraries",
+    "category": "React UI Libraries and Components",
     "repoId": "tailwindlabs/headlessui",
     "npm": "@headlessui/react",
     "isNpmCoreArtifact": false,
@@ -12056,7 +12056,7 @@
     "tags": ["component-library", "react"]
   },
   {
-    "category": "React Component Libraries",
+    "category": "React UI Libraries and Components",
     "repoId": "geist-org/react",
     "npm": "@geist-ui/react",
     "isNpmCoreArtifact": true,
@@ -12064,7 +12064,7 @@
     "tags": ["component-library", "react"]
   },
   {
-    "category": "React Component Libraries",
+    "category": "React UI Libraries and Components",
     "repoId": "react-bootstrap/react-bootstrap",
     "npm": "react-bootstrap",
     "isNpmCoreArtifact": true,
@@ -12072,7 +12072,7 @@
     "tags": ["component-library", "bootstrap", "react"]
   },
   {
-    "category": "React Component Libraries",
+    "category": "React UI Libraries and Components",
     "repoId": "rsuite/rsuite",
     "npm": "rsuite",
     "isNpmCoreArtifact": true,
@@ -12080,7 +12080,7 @@
     "tags": ["component-library", "react"]
   },
   {
-    "category": "React Component Libraries",
+    "category": "React UI Libraries and Components",
     "repoId": "chakra-ui/chakra-ui",
     "npm": "@chakra-ui/react",
     "isNpmCoreArtifact": true,
@@ -12088,7 +12088,7 @@
     "tags": ["component-library", "react"]
   },
   {
-    "category": "React Component Libraries",
+    "category": "React UI Libraries and Components",
     "repoId": "reactstrap/reactstrap",
     "npm": "reactstrap",
     "isNpmCoreArtifact": true,
@@ -12096,7 +12096,7 @@
     "tags": ["component-library", "react", "bootstrap"]
   },
   {
-    "category": "React Component Libraries",
+    "category": "React UI Libraries and Components",
     "repoId": "rebassjs/rebass",
     "npm": "rebass",
     "isNpmCoreArtifact": true,
@@ -12104,7 +12104,7 @@
     "tags": ["component-library", "react"]
   },
   {
-    "category": "React Component Libraries",
+    "category": "React UI Libraries and Components",
     "repoId": "grommet/grommet",
     "npm": "grommet",
     "isNpmCoreArtifact": true,
@@ -12112,7 +12112,7 @@
     "tags": ["component-library", "react"]
   },
   {
-    "category": "React Component Libraries",
+    "category": "React UI Libraries and Components",
     "repoId": "microsoft/fluentui",
     "npm": "@fluentui/react",
     "isNpmCoreArtifact": false,
@@ -12120,7 +12120,7 @@
     "tags": ["component-library", "react"]
   },
   {
-    "category": "React Component Libraries",
+    "category": "React UI Libraries and Components",
     "repoId": "segmentio/evergreen",
     "npm": "evergreen-ui",
     "isNpmCoreArtifact": true,
@@ -12128,7 +12128,7 @@
     "tags": ["component-library", "react"]
   },
   {
-    "category": "ReactJS Datepickers",
+    "category": "React UI Libraries and Components",
     "repoId": "hacker0x01/react-datepicker",
     "npm": "react-datepicker",
     "isNpmCoreArtifact": true,
@@ -12136,7 +12136,7 @@
     "tags": ["date-picker", "react"]
   },
   {
-    "category": "ReactJS Datepickers",
+    "category": "React UI Libraries and Components",
     "repoId": "wojtekmaj/react-date-picker",
     "npm": "react-date-picker",
     "isNpmCoreArtifact": true,
@@ -12144,7 +12144,7 @@
     "tags": ["date-picker", "react"]
   },
   {
-    "category": "ReactJS Datepickers",
+    "category": "React UI Libraries and Components",
     "repoId": "airbnb/react-dates",
     "npm": "react-dates",
     "isNpmCoreArtifact": true,
@@ -12152,7 +12152,7 @@
     "tags": ["date-picker", "react"]
   },
   {
-    "category": "ReactJS Datepickers",
+    "category": "React UI Libraries and Components",
     "repoId": "arqex/react-datetime",
     "npm": "react-datetime",
     "isNpmCoreArtifact": true,
@@ -12160,7 +12160,7 @@
     "tags": ["date-picker", "react"]
   },
   {
-    "category": "ReactJS Datepickers",
+    "category": "React UI Libraries and Components",
     "repoId": "gpbl/react-day-picker",
     "npm": "react-day-picker",
     "isNpmCoreArtifact": true,
@@ -12168,7 +12168,7 @@
     "tags": ["date-picker", "react"]
   },
   {
-    "category": "ReactJS Datepickers",
+    "category": "React UI Libraries and Components",
     "repoId": "wojtekmaj/react-calendar",
     "npm": "react-calendar",
     "isNpmCoreArtifact": true,
@@ -12176,7 +12176,7 @@
     "tags": ["date-picker", "react"]
   },
   {
-    "category": "ReactJS Document Head Managers",
+    "category": "React UI Libraries and Components",
     "repoId": "nfl/react-helmet",
     "npm": "react-helmet",
     "isNpmCoreArtifact": true,
@@ -12184,7 +12184,7 @@
     "tags": ["react", "document-head-manager"]
   },
   {
-    "category": "ReactJS Document Head Managers",
+    "category": "React UI Libraries and Components",
     "repoId": "staylor/react-helmet-async",
     "npm": "react-helmet-async",
     "isNpmCoreArtifact": true,
@@ -12192,7 +12192,7 @@
     "tags": ["react", "document-head-manager"]
   },
   {
-    "category": "ReactJS Form Libraries",
+    "category": "React Form Libraries",
     "repoId": "jaredpalmer/formik",
     "npm": "formik",
     "isNpmCoreArtifact": true,
@@ -12200,7 +12200,7 @@
     "tags": ["form", "react"]
   },
   {
-    "category": "ReactJS Form Libraries",
+    "category": "React Form Libraries",
     "repoId": "react-hook-form/react-hook-form",
     "npm": "react-hook-form",
     "isNpmCoreArtifact": true,
@@ -12208,7 +12208,7 @@
     "tags": ["form", "react"]
   },
   {
-    "category": "ReactJS Form Libraries",
+    "category": "React Form Libraries",
     "repoId": "redux-form/redux-form",
     "npm": "redux-form",
     "isNpmCoreArtifact": true,
@@ -12216,7 +12216,7 @@
     "tags": ["form", "react"]
   },
   {
-    "category": "ReactJS Form Libraries",
+    "category": "React Form Libraries",
     "repoId": "final-form/final-form",
     "npm": "final-form",
     "isNpmCoreArtifact": true,
@@ -12224,7 +12224,7 @@
     "tags": ["form", "react"]
   },
   {
-    "category": "Fullstack Serverless ReactJS Frameworks",
+    "category": "Fullstack Frameworks",
     "repoId": "blitz-js/blitz",
     "npm": "blitz",
     "isNpmCoreArtifact": true,
@@ -12232,7 +12232,7 @@
     "tags": ["fullstack-framework", "react", "nodejs-framework"]
   },
   {
-    "category": "Fullstack Serverless ReactJS Frameworks",
+    "category": "Fullstack Frameworks",
     "repoId": "redwoodjs/redwood",
     "npm": "@redwoodjs/core",
     "isNpmCoreArtifact": true,
@@ -12240,7 +12240,7 @@
     "tags": ["fullstack-framework", "react", "JAMstack", "serverless-framework", "nodejs-framework", "hmr"]
   },
   {
-    "category": "React Native Libraries for Android",
+    "category": "React Native JS Engines",
     "repoId": "facebook/hermes",
     "npm": "hermes-engine",
     "isNpmCoreArtifact": true,
@@ -12248,7 +12248,7 @@
     "tags": ["runtime", "react-native", "android"]
   },
   {
-    "category": "React Native Libraries for Android",
+    "category": "React Native JS Engines",
     "repoId": "kudo/react-native-v8",
     "npm": "react-native-v8",
     "isNpmCoreArtifact": true,
@@ -12256,15 +12256,15 @@
     "tags": ["runtime", "react-native"]
   },
   {
-    "category": "ReactJS Unit-Testing Libraries",
+    "category": "React Testing Tools",
     "repoId": "enzymejs/enzyme",
     "npm": "enzyme",
     "isNpmCoreArtifact": true,
-    "alias": null,
+    "alias": "Enzyme (deprecated)",
     "tags": ["testing", "react"]
   },
   {
-    "category": "ReactJS Unit-Testing Libraries",
+    "category": "React Testing Tools",
     "repoId": "testing-library/react-testing-library",
     "npm": "@testing-library/react",
     "isNpmCoreArtifact": true,
@@ -12272,7 +12272,7 @@
     "tags": ["testing", "react"]
   },
   {
-    "category": "Runtime Types Checking Libraries",
+    "category": "Runtime Type Systems",
     "repoId": "gcanti/io-ts",
     "npm": "io-ts",
     "isNpmCoreArtifact": true,
@@ -12280,7 +12280,7 @@
     "tags": ["runtime-types-checking"]
   },
   {
-    "category": "Runtime Types Checking Libraries",
+    "category": "Runtime Type Systems",
     "repoId": "pelotom/runtypes",
     "npm": "runtypes",
     "isNpmCoreArtifact": true,
@@ -12304,7 +12304,7 @@
     "tags": ["runtime"]
   },
   {
-    "category": "ReactJS Select/Autocomplete Components",
+    "category": "React Select Components",
     "repoId": "downshift-js/downshift",
     "npm": "downshift",
     "isNpmCoreArtifact": true,
@@ -12312,7 +12312,7 @@
     "tags": ["autocomplete", "react"]
   },
   {
-    "category": "ReactJS Select/Autocomplete Components",
+    "category": "React Select Components",
     "repoId": "jedwatson/react-select",
     "npm": "react-select",
     "isNpmCoreArtifact": true,
@@ -12320,7 +12320,7 @@
     "tags": ["autocomplete", "react"]
   },
   {
-    "category": "ReactJS Select/Autocomplete Components",
+    "category": "React Select Components",
     "repoId": "select2/select2",
     "npm": "select2",
     "isNpmCoreArtifact": true,
@@ -12328,7 +12328,7 @@
     "tags": ["autocomplete", "react"]
   },
   {
-    "category": "ReactJS Select/Autocomplete Components",
+    "category": "React Select Components",
     "repoId": "moroshko/react-autosuggest",
     "npm": "react-autosuggest",
     "isNpmCoreArtifact": true,
@@ -12336,7 +12336,7 @@
     "tags": ["autocomplete", "react"]
   },
   {
-    "category": "ReactJS Select/Autocomplete Components",
+    "category": "React Select Components",
     "repoId": "reactjs/react-autocomplete",
     "npm": "react-autocomplete",
     "isNpmCoreArtifact": true,
@@ -12344,7 +12344,7 @@
     "tags": ["autocomplete", "react"]
   },
   {
-    "category": "ReactJS Select/Autocomplete Components",
+    "category": "React Select Components",
     "repoId": "bvaughn/react-virtualized-select",
     "npm": "react-virtualized-select",
     "isNpmCoreArtifact": true,
@@ -12352,7 +12352,7 @@
     "tags": ["autocomplete", "react"]
   },
   {
-    "category": "ReactJS Select/Autocomplete Components",
+    "category": "React Select Components",
     "repoId": "fraserxu/react-dropdown",
     "npm": "react-dropdown",
     "isNpmCoreArtifact": true,
@@ -12360,7 +12360,7 @@
     "tags": ["autocomplete", "react"]
   },
   {
-    "category": "Large datasets rendering",
+    "category": "React Select Components",
     "repoId": "bvaughn/react-virtualized",
     "npm": "react-virtualized",
     "isNpmCoreArtifact": true,
@@ -12368,7 +12368,7 @@
     "tags": ["react", "list", "virtualization", "react-component"]
   },
   {
-    "category": "Large datasets rendering",
+    "category": "React Select Components",
     "repoId": "bvaughn/react-window",
     "npm": "react-window",
     "isNpmCoreArtifact": true,
@@ -12376,7 +12376,7 @@
     "tags": ["react", "list", "virtualization", "react-component"]
   },
   {
-    "category": "Large datasets rendering",
+    "category": "React Select Components",
     "repoId": "wellyshen/react-cool-virtual",
     "npm": "react-cool-virtual",
     "isNpmCoreArtifact": true,
@@ -12384,7 +12384,7 @@
     "tags": ["react", "list", "virtualization", "react-hook"]
   },
   {
-    "category": "Large datasets rendering",
+    "category": "React Select Components",
     "repoId": "caseywebdev/react-list",
     "npm": "react-list",
     "isNpmCoreArtifact": true,
@@ -12488,7 +12488,7 @@
     "tags": ["react", "table", "grid", "virtualization", "pagination"]
   },
   {
-    "category": "JavaScript State Management Libraries",
+    "category": "State Management Libraries",
     "repoId": "reduxjs/redux",
     "npm": "redux",
     "isNpmCoreArtifact": true,
@@ -12496,7 +12496,7 @@
     "tags": ["state-management"]
   },
   {
-    "category": "JavaScript State Management Libraries",
+    "category": "State Management Libraries",
     "repoId": "mobxjs/mobx",
     "npm": "mobx",
     "isNpmCoreArtifact": true,
@@ -12504,7 +12504,7 @@
     "tags": ["state-management"]
   },
   {
-    "category": "JavaScript State Management Libraries",
+    "category": "State Management Libraries",
     "repoId": "reactivex/rxjs",
     "npm": "rxjs",
     "isNpmCoreArtifact": true,
@@ -12528,7 +12528,7 @@
     "tags": ["reactive"]
   },
   {
-    "category": "JavaScript State Management Libraries",
+    "category": "State Management Libraries",
     "repoId": "facebookexperimental/recoil",
     "npm": "recoil",
     "isNpmCoreArtifact": true,
@@ -12536,7 +12536,7 @@
     "tags": ["state-management", "react"]
   },
   {
-    "category": "JavaScript State Management Libraries",
+    "category": "State Management Libraries",
     "repoId": "statelyai/xstate",
     "npm": "xstate",
     "isNpmCoreArtifact": true,
@@ -12544,7 +12544,7 @@
     "tags": ["state-management"]
   },
   {
-    "category": "JavaScript State Management Libraries",
+    "category": "State Management Libraries",
     "repoId": "vuejs/vuex",
     "npm": "vuex",
     "isNpmCoreArtifact": true,
@@ -12552,7 +12552,7 @@
     "tags": ["state-management", "vue"]
   },
   {
-    "category": "JavaScript State Management Libraries",
+    "category": "State Management Libraries",
     "repoId": "andrewcourtice/harlem",
     "npm": "@harlem/core",
     "isNpmCoreArtifact": true,
@@ -12560,7 +12560,7 @@
     "tags": ["state-management", "vue"]
   },
   {
-    "category": "JavaScript State Management Libraries",
+    "category": "State Management Libraries",
     "repoId": "ngrx/platform",
     "npm": "@ngrx/store",
     "isNpmCoreArtifact": true,
@@ -12568,7 +12568,7 @@
     "tags": ["state-management", "angular"]
   },
   {
-    "category": "Data fetching libraries",
+    "category": "State Management Libraries",
     "repoId": "tannerlinsley/react-query",
     "npm": "react-query",
     "isNpmCoreArtifact": true,
@@ -12576,7 +12576,7 @@
     "tags": ["state-management", "react", "date-fetching"]
   },
   {
-    "category": "Data fetching libraries",
+    "category": "State Management Libraries",
     "repoId": "slorber/react-async-hook",
     "npm": "react-async-hook",
     "isNpmCoreArtifact": true,
@@ -12584,7 +12584,7 @@
     "tags": ["react", "date-fetching", "react-hook"]
   },
   {
-    "category": "Data fetching libraries",
+    "category": "State Management Libraries",
     "repoId": "async-library/react-async",
     "npm": "react-async",
     "isNpmCoreArtifact": true,
@@ -12592,7 +12592,7 @@
     "tags": ["react", "date-fetching", "react-hook"]
   },
   {
-    "category": "Data fetching libraries",
+    "category": "State Management Libraries",
     "repoId": "ilyalesik/react-fetch-hook",
     "npm": "react-fetch-hook",
     "isNpmCoreArtifact": true,
@@ -12600,7 +12600,7 @@
     "tags": ["react", "date-fetching", "react-hook"]
   },
   {
-    "category": "Data fetching libraries",
+    "category": "State Management Libraries",
     "repoId": "coinbase/rest-hooks",
     "npm": "rest-hooks",
     "isNpmCoreArtifact": true,
@@ -12608,7 +12608,7 @@
     "tags": ["react", "date-fetching", "react-hook"]
   },
   {
-    "category": "Data fetching libraries",
+    "category": "State Management Libraries",
     "repoId": "ava/use-http",
     "npm": "use-http",
     "isNpmCoreArtifact": true,
@@ -12616,7 +12616,7 @@
     "tags": ["react", "date-fetching", "react-hook"]
   },
   {
-    "category": "JavaScript State Management Libraries",
+    "category": "State Management Libraries",
     "repoId": "pmndrs/zustand",
     "npm": "zustand",
     "isNpmCoreArtifact": true,
@@ -12624,7 +12624,7 @@
     "tags": ["state-management", "react"]
   },
   {
-    "category": "JavaScript State Management Libraries",
+    "category": "State Management Libraries",
     "repoId": "pmndrs/jotai",
     "npm": "jotai",
     "isNpmCoreArtifact": true,
@@ -12632,7 +12632,7 @@
     "tags": ["state-management", "react"]
   },
   {
-    "category": "JavaScript State Management Libraries",
+    "category": "State Management Libraries",
     "repoId": "pmndrs/valtio",
     "npm": "valtio",
     "isNpmCoreArtifact": true,
@@ -12640,7 +12640,7 @@
     "tags": ["state-management", "react"]
   },
   {
-    "category": "JavaScript State Management Libraries",
+    "category": "State Management Libraries",
     "repoId": "bluebill1049/little-state-machine",
     "npm": "little-state-machine",
     "isNpmCoreArtifact": true,
@@ -12648,7 +12648,7 @@
     "tags": ["state-management", "react"]
   },
   {
-    "category": "JavaScript State Management Libraries",
+    "category": "State Management Libraries",
     "repoId": "datorama/akita",
     "npm": "@datorama/akita",
     "isNpmCoreArtifact": true,
@@ -12656,7 +12656,7 @@
     "tags": ["state-management"]
   },
   {
-    "category": "JavaScript State Management Libraries",
+    "category": "State Management Libraries",
     "repoId": "ngxs/store",
     "npm": "@ngxs/store",
     "isNpmCoreArtifact": true,
@@ -12664,7 +12664,7 @@
     "tags": ["state-management", "angular"]
   },
   {
-    "category": "JavaScript State Management Libraries",
+    "category": "State Management Libraries",
     "repoId": "mobxjs/mobx-state-tree",
     "npm": "mobx-state-tree",
     "isNpmCoreArtifact": true,
@@ -12672,7 +12672,7 @@
     "tags": ["state-management"]
   },
   {
-    "category": "JavaScript State Management Libraries",
+    "category": "State Management Libraries",
     "repoId": "ctrlplusb/easy-peasy",
     "npm": "easy-peasy",
     "isNpmCoreArtifact": true,
@@ -12680,7 +12680,7 @@
     "tags": ["state-management", "react"]
   },
   {
-    "category": "JavaScript State Management Libraries",
+    "category": "State Management Libraries",
     "repoId": "effector/effector",
     "npm": "effector",
     "isNpmCoreArtifact": true,
@@ -12688,7 +12688,7 @@
     "tags": ["state-management"]
   },
   {
-    "category": "JavaScript State Management Libraries",
+    "category": "State Management Libraries",
     "repoId": "storeon/storeon",
     "npm": "storeon",
     "isNpmCoreArtifact": true,
@@ -12696,7 +12696,7 @@
     "tags": ["state-management"]
   },
   {
-    "category": "JavaScript State Management Libraries",
+    "category": "State Management Libraries",
     "repoId": "diegohaz/constate",
     "npm": "constate",
     "isNpmCoreArtifact": true,
@@ -12712,7 +12712,7 @@
     "tags": ["state-management", "react", "date-fetching"]
   },
   {
-    "category": "JavaScript State Management Libraries",
+    "category": "State Management Libraries",
     "repoId": "cerebral/overmind",
     "npm": "overmind",
     "isNpmCoreArtifact": true,
@@ -12720,7 +12720,7 @@
     "tags": ["state-management"]
   },
   {
-    "category": "JavaScript State Management Libraries",
+    "category": "State Management Libraries",
     "repoId": "nanostores/nanostores",
     "npm": "nanostores",
     "isNpmCoreArtifact": true,
@@ -12728,7 +12728,7 @@
     "tags": ["state-management"]
   },
   {
-    "category": "Static Site Generators / JAMStack",
+    "category": "Static Site Generators",
     "repoId": "gatsbyjs/gatsby",
     "npm": "gatsby",
     "isNpmCoreArtifact": true,
@@ -12744,7 +12744,7 @@
     "tags": ["nodejs-framework", "react", "server-side-rendering-SSR"]
   },
   {
-    "category": "Static Site Generators / JAMStack",
+    "category": "Static Site Generators",
     "repoId": "vercel/next.js",
     "npm": "next",
     "isNpmCoreArtifact": true,
@@ -12752,7 +12752,7 @@
     "tags": ["nodejs-framework", "static-site-generator-SSG", "react", "server-side-rendering-SSR", "JAMstack"]
   },
   {
-    "category": "Static Site Generators / JAMStack",
+    "category": "Static Site Generators",
     "repoId": "nuxt/nuxt.js",
     "npm": "nuxt",
     "isNpmCoreArtifact": true,
@@ -12760,7 +12760,7 @@
     "tags": ["nodejs-framework", "static-site-generator-SSG", "server-side-rendering-SSR", "vue", "JAMstack"]
   },
   {
-    "category": "Static Site Generators / JAMStack",
+    "category": "Static Site Generators",
     "repoId": "sveltejs/sapper",
     "npm": "sapper",
     "isNpmCoreArtifact": true,
@@ -12768,7 +12768,7 @@
     "tags": ["nodejs-framework", "server-side-rendering-SSR", "hmr", "svelte", "JAMstack", "static-site-generator-SSG"]
   },
   {
-    "category": "Static Site Generators / JAMStack",
+    "category": "Static Site Generators",
     "repoId": "elderjs/elderjs",
     "npm": "@elderjs/elderjs",
     "isNpmCoreArtifact": true,
@@ -12776,7 +12776,7 @@
     "tags": ["svelte", "JAMstack", "server-side-rendering-SSR", "static-site-generator-SSG"]
   },
   {
-    "category": "Static Site Generators / JAMStack",
+    "category": "Static Site Generators",
     "repoId": "11ty/eleventy",
     "npm": "@11ty/eleventy",
     "isNpmCoreArtifact": true,
@@ -12784,7 +12784,7 @@
     "tags": ["JAMstack", "documentation", "static-site-generator-SSG"]
   },
   {
-    "category": "Static Site Generators / JAMStack",
+    "category": "Static Site Generators",
     "repoId": "hexojs/hexo",
     "npm": "hexo",
     "isNpmCoreArtifact": true,
@@ -12792,7 +12792,7 @@
     "tags": ["static-site-generator-SSG", "blog"]
   },
   {
-    "category": "Static Site Generators / JAMStack",
+    "category": "Static Site Generators",
     "repoId": "shuding/nextra",
     "npm": "nextra",
     "isNpmCoreArtifact": true,
@@ -12800,7 +12800,7 @@
     "tags": ["documentation", "markdown", "mdx", "static-site-generator-SSG", "Next.js", "react"]
   },
   {
-    "category": "Static Site Generators / JAMStack",
+    "category": "Static Site Generators",
     "repoId": "facebook/docusaurus",
     "npm": "@docusaurus/core",
     "isNpmCoreArtifact": true,
@@ -12808,7 +12808,7 @@
     "tags": ["documentation", "markdown", "mdx", "static-site-generator-SSG", "react"]
   },
   {
-    "category": "Static Site Generators / JAMStack",
+    "category": "Static Site Generators",
     "repoId": "vuejs/vitepress",
     "npm": "vitepress",
     "isNpmCoreArtifact": true,
@@ -12816,7 +12816,7 @@
     "tags": ["documentation", "markdown", "static-site-generator-SSG", "vue"]
   },
   {
-    "category": "Static Site Generators / JAMStack",
+    "category": "Static Site Generators",
     "repoId": "vuejs/vuepress",
     "npm": "vuepress",
     "isNpmCoreArtifact": true,
@@ -12824,7 +12824,7 @@
     "tags": ["documentation", "markdown", "static-site-generator-SSG", "vue"]
   },
   {
-    "category": "Static Site Generators / JAMStack",
+    "category": "Static Site Generators",
     "repoId": "docsifyjs/docsify",
     "npm": "docsify",
     "isNpmCoreArtifact": true,
@@ -12832,7 +12832,7 @@
     "tags": ["documentation", "markdown", "server-side-rendering-SSR"]
   },
   {
-    "category": "Static Site Generators / JAMStack",
+    "category": "Static Site Generators",
     "repoId": "umijs/umi",
     "npm": "umi",
     "isNpmCoreArtifact": true,
@@ -12840,7 +12840,7 @@
     "tags": ["ui-framework"]
   },
   {
-    "category": "Static Site Generators / JAMStack",
+    "category": "Static Site Generators",
     "repoId": "react-static/react-static",
     "npm": "react-static",
     "isNpmCoreArtifact": true,
@@ -12848,7 +12848,7 @@
     "tags": ["static-site-generator-SSG", "react"]
   },
   {
-    "category": "Static Site Generators / JAMStack",
+    "category": "Static Site Generators",
     "repoId": "gridsome/gridsome",
     "npm": "gridsome",
     "isNpmCoreArtifact": true,
@@ -12856,7 +12856,7 @@
     "tags": ["static-site-generator-SSG", "vue", "JAMstack"]
   },
   {
-    "category": "Static Site Generators / JAMStack",
+    "category": "Static Site Generators",
     "repoId": "withastro/astro",
     "npm": "astro",
     "isNpmCoreArtifact": true,
@@ -12864,7 +12864,7 @@
     "tags": ["static-site-generator-SSG", "JAMstack"]
   },
   {
-    "category": "JavaScript Static Types Checking Tools",
+    "category": "Type Checking Libraries",
     "repoId": "microsoft/typescript",
     "npm": "typescript",
     "isNpmCoreArtifact": true,
@@ -12872,7 +12872,7 @@
     "tags": ["compiler", "static-type-checker", "typescript/javascript"]
   },
   {
-    "category": "JavaScript Static Types Checking Tools",
+    "category": "Type Checking Libraries",
     "repoId": "facebook/flow",
     "npm": "flow-bin",
     "isNpmCoreArtifact": true,
@@ -12888,7 +12888,7 @@
     "tags": ["compiler", "typescript/javascript"]
   },
   {
-    "category": "JavaScript BDD Testing tools",
+    "category": "Testing Frameworks",
     "repoId": "cucumber/cucumber-js",
     "npm": "@cucumber/cucumber",
     "isNpmCoreArtifact": true,
@@ -12896,7 +12896,7 @@
     "tags": ["testing", "bdd-testing"]
   },
   {
-    "category": "JavaScript BDD Testing tools",
+    "category": "Testing Frameworks",
     "repoId": "iensu/mocha-cakes-2",
     "npm": "mocha-cakes-2",
     "isNpmCoreArtifact": true,
@@ -12904,7 +12904,7 @@
     "tags": ["testing", "bdd-testing"]
   },
   {
-    "category": "JavaScript BDD Testing tools",
+    "category": "Testing Frameworks",
     "repoId": "dotnetprofessional/livedoc",
     "npm": "livedoc-mocha",
     "isNpmCoreArtifact": true,
@@ -12912,7 +12912,7 @@
     "tags": ["testing", "bdd-testing"]
   },
   {
-    "category": "JavaScript Testing Frameworks",
+    "category": "Testing Frameworks",
     "repoId": "facebook/jest",
     "npm": "jest",
     "isNpmCoreArtifact": true,
@@ -12920,7 +12920,7 @@
     "tags": ["testing-framework"]
   },
   {
-    "category": "JavaScript Testing Frameworks",
+    "category": "Testing Frameworks",
     "repoId": "akryum/peeky",
     "npm": "@peeky/test",
     "isNpmCoreArtifact": true,
@@ -12928,7 +12928,7 @@
     "tags": ["testing-framework"]
   },
   {
-    "category": "JavaScript Testing Frameworks",
+    "category": "Testing Frameworks",
     "repoId": "vitest-dev/vitest",
     "npm": "vitest",
     "isNpmCoreArtifact": true,
@@ -12936,7 +12936,7 @@
     "tags": ["testing-framework"]
   },
   {
-    "category": "JavaScript Testing Frameworks",
+    "category": "Testing Frameworks",
     "repoId": "avajs/ava",
     "npm": "ava",
     "isNpmCoreArtifact": true,
@@ -12944,7 +12944,7 @@
     "tags": ["testing-framework"]
   },
   {
-    "category": "JavaScript Testing Frameworks",
+    "category": "Testing Frameworks",
     "repoId": "mochajs/mocha",
     "npm": "mocha",
     "isNpmCoreArtifact": true,
@@ -12952,7 +12952,7 @@
     "tags": ["testing-framework"]
   },
   {
-    "category": "JavaScript Testing Frameworks",
+    "category": "Testing Frameworks",
     "repoId": "jasmine/jasmine",
     "npm": "jasmine-core",
     "isNpmCoreArtifact": true,
@@ -12960,7 +12960,7 @@
     "tags": ["testing-framework"]
   },
   {
-    "category": "JavaScript Testing Frameworks",
+    "category": "Testing Frameworks",
     "repoId": "substack/tape",
     "npm": "tape",
     "isNpmCoreArtifact": true,
@@ -12968,7 +12968,7 @@
     "tags": ["testing-framework"]
   },
   {
-    "category": "JavaScript Testing Frameworks",
+    "category": "Testing Frameworks",
     "repoId": "qunitjs/qunit",
     "npm": "qunit",
     "isNpmCoreArtifact": true,
@@ -12976,7 +12976,7 @@
     "tags": ["testing-framework"]
   },
   {
-    "category": "JavaScript UI Component Development Tools",
+    "category": "Component Explorer Tools",
     "repoId": "storybookjs/storybook",
     "npm": "@storybook/core",
     "isNpmCoreArtifact": true,
@@ -12984,7 +12984,7 @@
     "tags": ["playground", "component-explorer", "component-development-tool"]
   },
   {
-    "category": "JavaScript UI Component Development Tools",
+    "category": "Component Explorer Tools",
     "repoId": "styleguidist/react-styleguidist",
     "npm": "react-styleguidist",
     "isNpmCoreArtifact": true,
@@ -12992,7 +12992,7 @@
     "tags": ["playground", "component-development-tool", "react"]
   },
   {
-    "category": "UI Frameworks for building Mobile Apps (Desktop and Web)",
+    "category": "Mobile Frameworks",
     "repoId": "ionic-team/ionic-framework",
     "npm": "@ionic/core",
     "isNpmCoreArtifact": true,
@@ -13000,7 +13000,7 @@
     "tags": ["mobile", "pwa", "web", "ui-toolkit", "web-components"]
   },
   {
-    "category": "UI Frameworks for building Mobile Apps (Desktop and Web)",
+    "category": "Mobile Frameworks",
     "repoId": "flutter/flutter",
     "npm": null,
     "isNpmCoreArtifact": null,
@@ -13008,7 +13008,7 @@
     "tags": ["ui-toolkit", "mobile", "desktop", "web"]
   },
   {
-    "category": "UI Frameworks for building Mobile Apps (Desktop and Web)",
+    "category": "Mobile Frameworks",
     "repoId": "facebook/react-native",
     "npm": "react-native",
     "isNpmCoreArtifact": true,
@@ -13016,7 +13016,7 @@
     "tags": ["ui-toolkit", "mobile", "react"]
   },
   {
-    "category": "UI Frameworks for building Mobile Apps (Desktop and Web)",
+    "category": "Mobile Frameworks",
     "repoId": "nativescript/nativescript",
     "npm": "@nativescript/core",
     "isNpmCoreArtifact": true,
@@ -13024,7 +13024,7 @@
     "tags": ["mobile"]
   },
   {
-    "category": "UI Frameworks for building Mobile Apps (Desktop and Web)",
+    "category": "Mobile Frameworks",
     "repoId": "framework7io/framework7",
     "npm": "framework7",
     "isNpmCoreArtifact": true,
@@ -13032,7 +13032,7 @@
     "tags": ["ui-toolkit", "mobile", "desktop", "web"]
   },
   {
-    "category": "UI Frameworks for building Mobile Apps (Desktop and Web)",
+    "category": "Mobile Frameworks",
     "repoId": "onsenui/onsenui",
     "npm": "onsenui",
     "isNpmCoreArtifact": true,
@@ -13048,7 +13048,7 @@
     "tags": ["ui-toolkit", "mobile"]
   },
   {
-    "category": "Unit-Testing Libraries",
+    "category": "Testing Library Wrappers",
     "repoId": "testing-library/dom-testing-library",
     "npm": "@testing-library/dom",
     "isNpmCoreArtifact": true,
@@ -13056,7 +13056,7 @@
     "tags": ["testing"]
   },
   {
-    "category": "Unit-Testing Libraries",
+    "category": "Testing Library Wrappers",
     "repoId": "testing-library/jest-dom",
     "npm": "@testing-library/jest-dom",
     "isNpmCoreArtifact": true,
@@ -13064,7 +13064,7 @@
     "tags": ["testing"]
   },
   {
-    "category": "Unit-Testing Libraries",
+    "category": "Testing Library Wrappers",
     "repoId": "testing-library/svelte-testing-library",
     "npm": "@testing-library/svelte",
     "isNpmCoreArtifact": true,
@@ -13072,7 +13072,7 @@
     "tags": ["testing", "svelte"]
   },
   {
-    "category": "Unit-Testing Libraries",
+    "category": "Testing Library Wrappers",
     "repoId": "testing-library/angular-testing-library",
     "npm": "@testing-library/angular",
     "isNpmCoreArtifact": true,
@@ -13080,7 +13080,7 @@
     "tags": ["testing", "angular"]
   },
   {
-    "category": "Unit-Testing Libraries",
+    "category": "Assertion Libraries",
     "repoId": "chaijs/chai",
     "npm": "chai",
     "isNpmCoreArtifact": true,
@@ -13088,7 +13088,7 @@
     "tags": ["testing-framework"]
   },
   {
-    "category": "Unit-Testing Libraries",
+    "category": "Assertion Libraries",
     "repoId": "sinonjs/sinon",
     "npm": "sinon",
     "isNpmCoreArtifact": true,
@@ -13096,7 +13096,7 @@
     "tags": ["testing"]
   },
   {
-    "category": "Unit-Testing Libraries",
+    "category": "Test Runner",
     "repoId": "karma-runner/karma",
     "npm": "karma",
     "isNpmCoreArtifact": true,
@@ -13104,7 +13104,7 @@
     "tags": ["test-runner"]
   },
   {
-    "category": "JavaScript Utility Libraries",
+    "category": "Utility Libraries",
     "repoId": "lodash/lodash",
     "npm": "lodash",
     "isNpmCoreArtifact": true,
@@ -13112,7 +13112,7 @@
     "tags": ["utils"]
   },
   {
-    "category": "JavaScript Utility Libraries",
+    "category": "Utility Libraries",
     "repoId": "ramda/ramda",
     "npm": "ramda",
     "isNpmCoreArtifact": true,
@@ -13120,7 +13120,7 @@
     "tags": ["utils"]
   },
   {
-    "category": "JavaScript Utility Libraries",
+    "category": "Utility Libraries",
     "repoId": "remeda/remeda",
     "npm": "remeda",
     "isNpmCoreArtifact": true,
@@ -13128,7 +13128,7 @@
     "tags": ["utils"]
   },
   {
-    "category": "JavaScript Utility Libraries",
+    "category": "Utility Libraries",
     "repoId": "jashkenas/underscore",
     "npm": "underscore",
     "isNpmCoreArtifact": true,
@@ -13136,7 +13136,7 @@
     "tags": ["utils"]
   },
   {
-    "category": "JavaScript Utility Libraries",
+    "category": "Utility Libraries",
     "repoId": "selfrefactor/rambda",
     "npm": "rambda",
     "isNpmCoreArtifact": true,
@@ -13144,7 +13144,7 @@
     "tags": ["utils"]
   },
   {
-    "category": "JavaScript Utility Libraries",
+    "category": "Utility Libraries",
     "repoId": "mout/mout",
     "npm": "mout",
     "isNpmCoreArtifact": true,
@@ -13152,7 +13152,7 @@
     "tags": ["utils"]
   },
   {
-    "category": "JavaScript Utility Libraries",
+    "category": "Utility Libraries",
     "repoId": "mobily/ts-belt",
     "npm": "@mobily/ts-belt",
     "isNpmCoreArtifact": true,
@@ -13160,7 +13160,7 @@
     "tags": ["utils"]
   },
   {
-    "category": "JavaScript Utility Libraries",
+    "category": "Utility Libraries",
     "repoId": "andrewplummer/sugar",
     "npm": "sugar",
     "isNpmCoreArtifact": true,
@@ -13168,7 +13168,7 @@
     "tags": ["utils"]
   },
   {
-    "category": "JavaScript Utility Libraries",
+    "category": "Utility Libraries",
     "repoId": "dtao/lazy.js",
     "npm": "lazy.js",
     "isNpmCoreArtifact": true,
@@ -13176,7 +13176,7 @@
     "tags": ["utils"]
   },
   {
-    "category": "JavaScript Visual Regression Testing Tools",
+    "category": "Visual Regression Testing Tools",
     "repoId": "garris/backstopjs",
     "npm": "backstopjs",
     "isNpmCoreArtifact": true,
@@ -13184,7 +13184,7 @@
     "tags": ["testing", "visual-regression", "image-comparison"]
   },
   {
-    "category": "JavaScript Visual Regression Testing Tools",
+    "category": "Visual Regression Testing Tools",
     "repoId": "oblador/loki",
     "npm": "loki",
     "isNpmCoreArtifact": true,
@@ -13192,7 +13192,7 @@
     "tags": ["testing", "visual-regression", "image-comparison", "storybook", "nodejs"]
   },
   {
-    "category": "JavaScript Visual Regression Testing Tools",
+    "category": "Visual Regression Testing Tools",
     "repoId": "gemini-testing/gemini",
     "npm": "gemini",
     "isNpmCoreArtifact": true,
@@ -13200,7 +13200,7 @@
     "tags": ["testing", "visual-regression", "image-comparison"]
   },
   {
-    "category": "JavaScript Visual Regression Testing Tools",
+    "category": "Visual Regression Testing Tools",
     "repoId": "americanexpress/jest-image-snapshot",
     "npm": "jest-image-snapshot",
     "isNpmCoreArtifact": true,
@@ -13208,7 +13208,7 @@
     "tags": ["image-comparison", "nodejs"]
   },
   {
-    "category": "JavaScript Visual Regression Testing Tools",
+    "category": "Visual Regression Testing Tools",
     "repoId": "mapbox/pixelmatch",
     "npm": "pixelmatch",
     "isNpmCoreArtifact": true,
@@ -13216,7 +13216,7 @@
     "tags": ["image-comparison", "nodejs", "browser"]
   },
   {
-    "category": "JavaScript Visual Regression Testing Tools",
+    "category": "Visual Regression Testing Tools",
     "repoId": "nimasoroush/differencify",
     "npm": "differencify",
     "isNpmCoreArtifact": true,
@@ -13224,7 +13224,7 @@
     "tags": ["testing", "image-comparison", "visual-regression", "nodejs"]
   },
   {
-    "category": "VueJS Component Libraries",
+    "category": "VueJS UI Libraries",
     "repoId": "vuetifyjs/vuetify",
     "npm": "vuetify",
     "isNpmCoreArtifact": true,
@@ -13232,7 +13232,7 @@
     "tags": ["component-library", "vue", "material-design"]
   },
   {
-    "category": "VueJS Component Libraries",
+    "category": "VueJS UI Libraries",
     "repoId": "tailwindlabs/headlessui",
     "npm": "@headlessui/vue",
     "isNpmCoreArtifact": false,
@@ -13240,7 +13240,7 @@
     "tags": ["component-library", "vue"]
   },
   {
-    "category": "VueJS Component Libraries",
+    "category": "VueJS UI Libraries",
     "repoId": "epicmaxco/vuestic-ui",
     "npm": "vuestic-ui",
     "isNpmCoreArtifact": true,
@@ -13248,7 +13248,7 @@
     "tags": ["component-library", "vue", "material-design"]
   },
   {
-    "category": "VueJS Component Libraries",
+    "category": "VueJS UI Libraries",
     "repoId": "quasarframework/quasar",
     "npm": "quasar",
     "isNpmCoreArtifact": true,
@@ -13256,7 +13256,7 @@
     "tags": ["component-library", "vue"]
   },
   {
-    "category": "VueJS Component Libraries",
+    "category": "VueJS UI Libraries",
     "repoId": "bootstrap-vue/bootstrap-vue",
     "npm": "bootstrap-vue",
     "isNpmCoreArtifact": true,
@@ -13264,7 +13264,7 @@
     "tags": ["component-library", "vue", "bootstrap"]
   },
   {
-    "category": "VueJS Component Libraries",
+    "category": "VueJS UI Libraries",
     "repoId": "primefaces/primevue",
     "npm": "primevue",
     "isNpmCoreArtifact": true,
@@ -13272,7 +13272,7 @@
     "tags": ["component-library", "vue"]
   },
   {
-    "category": "VueJS Component Libraries",
+    "category": "VueJS UI Libraries",
     "repoId": "vuematerial/vue-material",
     "npm": "vue-material",
     "isNpmCoreArtifact": true,
@@ -13280,7 +13280,7 @@
     "tags": ["component-library", "material-design", "vue"]
   },
   {
-    "category": "VueJS Component Libraries",
+    "category": "VueJS UI Libraries",
     "repoId": "elemefe/element",
     "npm": "element-ui",
     "isNpmCoreArtifact": true,
@@ -13288,7 +13288,7 @@
     "tags": ["component-library", "vue"]
   },
   {
-    "category": "VueJS Component Libraries",
+    "category": "VueJS UI Libraries",
     "repoId": "element-plus/element-plus",
     "npm": "element-plus",
     "isNpmCoreArtifact": true,
@@ -13296,7 +13296,7 @@
     "tags": ["component-library", "vue"]
   },
   {
-    "category": "VueJS Component Libraries",
+    "category": "VueJS UI Libraries",
     "repoId": "iview/iview",
     "npm": "iview",
     "isNpmCoreArtifact": true,
@@ -13304,7 +13304,7 @@
     "tags": ["component-library", "vue"]
   },
   {
-    "category": "VueJS Component Libraries",
+    "category": "VueJS UI Libraries",
     "repoId": "vuecomponent/ant-design-vue",
     "npm": "ant-design-vue",
     "isNpmCoreArtifact": true,
@@ -13312,7 +13312,7 @@
     "tags": ["component-library", "vue"]
   },
   {
-    "category": "VueJS Unit-Testing Libraries",
+    "category": "Vue Testing Tools",
     "repoId": "vuejs/vue-test-utils",
     "npm": "@vue/test-utils",
     "isNpmCoreArtifact": true,
@@ -13328,7 +13328,7 @@
     "tags": ["testing", "vue"]
   },
   {
-    "category": "Web Components UI Libraries",
+    "category": "Web Components Libraries",
     "repoId": "ionic-team/stencil",
     "npm": "@stencil/core",
     "isNpmCoreArtifact": true,
@@ -13336,7 +13336,7 @@
     "tags": ["ui-framework", "web-components", "pwa"]
   },
   {
-    "category": "Web Components UI Libraries",
+    "category": "Web Components Libraries",
     "repoId": "shoelace-style/shoelace",
     "npm": "@shoelace-style/shoelace",
     "isNpmCoreArtifact": true,
@@ -13344,7 +13344,7 @@
     "tags": ["web-components"]
   },
   {
-    "category": "Web Components UI Libraries",
+    "category": "Web Components Libraries",
     "repoId": "lit/lit-element",
     "npm": "lit-element",
     "isNpmCoreArtifact": true,
@@ -13352,7 +13352,7 @@
     "tags": ["web-components"]
   },
   {
-    "category": "Web Sockets for JavaScript",
+    "category": "Websocket Libraries",
     "repoId": "socketio/socket.io",
     "npm": "socket.io",
     "isNpmCoreArtifact": true,
@@ -13360,7 +13360,7 @@
     "tags": ["realtime", "websocket"]
   },
   {
-    "category": "Web Sockets for JavaScript",
+    "category": "Websocket Libraries",
     "repoId": "websockets/ws",
     "npm": "ws",
     "isNpmCoreArtifact": true,
@@ -13376,7 +13376,7 @@
     "tags": []
   },
   {
-    "category": "React hooks collections",
+    "category": "React Hook Libraries",
     "repoId": "imbhargav5/rooks",
     "npm": "rooks",
     "isNpmCoreArtifact": true,
@@ -13384,7 +13384,7 @@
     "tags": ["react-hooks", "react"]
   },
   {
-    "category": "React hooks collections",
+    "category": "React Hook Libraries",
     "repoId": "alibaba/hooks",
     "npm": "ahooks",
     "isNpmCoreArtifact": true,
@@ -13392,7 +13392,7 @@
     "tags": ["react-hooks", "react"]
   },
   {
-    "category": "React hooks collections",
+    "category": "React Hook Libraries",
     "repoId": "streamich/react-use",
     "npm": "react-use",
     "isNpmCoreArtifact": true,
@@ -13400,7 +13400,7 @@
     "tags": ["react-hooks", "react"]
   },
   {
-    "category": "Utilities to work with Numbers",
+    "category": "Arithmetic Libraries",
     "repoId": "mikemcl/bignumber.js",
     "npm": "bignumber.js",
     "isNpmCoreArtifact": true,
@@ -13408,7 +13408,7 @@
     "tags": ["bigdecimal", "bignumber", "math"]
   },
   {
-    "category": "Utilities to work with Numbers",
+    "category": "Arithmetic Libraries",
     "repoId": "mikemcl/big.js",
     "npm": "big.js",
     "isNpmCoreArtifact": true,
@@ -13416,7 +13416,7 @@
     "tags": ["bigdecimal", "bignumber", "math"]
   },
   {
-    "category": "Utilities to work with Numbers",
+    "category": "Arithmetic Libraries",
     "repoId": "mikemcl/decimal.js",
     "npm": "decimal.js",
     "isNpmCoreArtifact": true,
@@ -13424,7 +13424,7 @@
     "tags": ["bigdecimal", "bignumber", "math"]
   },
   {
-    "category": "Utilities to work with Numbers",
+    "category": "Arithmetic Libraries",
     "repoId": "indutny/bn.js",
     "npm": "bn.js",
     "isNpmCoreArtifact": true,
@@ -13432,7 +13432,7 @@
     "tags": ["bigdecimal", "bignumber", "math"]
   },
   {
-    "category": "Utilities to work with Numbers",
+    "category": "Arithmetic Libraries",
     "repoId": "josdejong/mathjs",
     "npm": "mathjs",
     "isNpmCoreArtifact": true,
@@ -13440,7 +13440,7 @@
     "tags": ["bigdecimal", "bignumber", "math", "matrices", "complex-numbers"]
   },
   {
-    "category": "Utilities to work with money",
+    "category": "Arithmetic Libraries",
     "repoId": "dinerojs/dinero.js",
     "npm": "dinero.js",
     "isNpmCoreArtifact": true,
@@ -13448,7 +13448,7 @@
     "tags": ["money", "currency", "math"]
   },
   {
-    "category": "Utilities to work with money",
+    "category": "Arithmetic Libraries",
     "repoId": "ericelliott/moneysafe",
     "npm": "moneysafe",
     "isNpmCoreArtifact": true,
@@ -13456,7 +13456,7 @@
     "tags": ["money", "currency", "math"]
   },
   {
-    "category": "Utilities to work with money",
+    "category": "Arithmetic Libraries",
     "repoId": "scurker/currency.js",
     "npm": "currency.js",
     "isNpmCoreArtifact": true,
@@ -13464,7 +13464,7 @@
     "tags": ["money", "currency", "math"]
   },
   {
-    "category": "Utilities to work with money",
+    "category": "Arithmetic Libraries",
     "repoId": "openexchangerates/money.js",
     "npm": "money",
     "isNpmCoreArtifact": true,
@@ -13472,7 +13472,7 @@
     "tags": ["currency", "conversion"]
   },
   {
-    "category": "Geospatial operations",
+    "category": "Geolocation and Distance Libraries",
     "repoId": "turfjs/turf",
     "npm": "@turf/turf",
     "isNpmCoreArtifact": true,
@@ -13480,7 +13480,7 @@
     "tags": ["GEO utility"]
   },
   {
-    "category": "Geospatial operations",
+    "category": "Geolocation and Distance Libraries",
     "repoId": "manuelbieh/geolib",
     "npm": "geolib",
     "isNpmCoreArtifact": true,
@@ -13488,7 +13488,7 @@
     "tags": ["GEO utility"]
   },
   {
-    "category": "Geospatial operations",
+    "category": "Geolocation and Distance Libraries",
     "repoId": "cmoncrief/geodist",
     "npm": "geodist",
     "isNpmCoreArtifact": true,
@@ -13496,7 +13496,7 @@
     "tags": ["GEO utility"]
   },
   {
-    "category": "React Components to render Markdown",
+    "category": "Markdown Components for React",
     "repoId": "remarkjs/react-markdown",
     "npm": "react-markdown",
     "isNpmCoreArtifact": true,
@@ -13504,7 +13504,7 @@
     "tags": ["markdown-to-react"]
   },
   {
-    "category": "React Components to render Markdown",
+    "category": "Markdown Components for React",
     "repoId": "probablyup/markdown-to-jsx",
     "npm": "markdown-to-jsx",
     "isNpmCoreArtifact": true,
@@ -13512,7 +13512,7 @@
     "tags": ["markdown-to-react"]
   },
   {
-    "category": "React Components to render Markdown",
+    "category": "Markdown Components for React",
     "repoId": "jerolimov/react-showdown",
     "npm": "react-showdown",
     "isNpmCoreArtifact": true,
@@ -13520,7 +13520,7 @@
     "tags": ["markdown-to-react"]
   },
   {
-    "category": "Tailwind CSS Components",
+    "category": "UI Libraries for Tailwind CSS",
     "repoId": "saadeghi/daisyui",
     "npm": "daisyui",
     "isNpmCoreArtifact": true,

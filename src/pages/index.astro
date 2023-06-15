@@ -7,6 +7,8 @@ import WithSearchHeader from '@/layouts/WithSearchHeaderLayout.astro';
 import AiPackageInfo from '@/astro-components/AiPackageInfo.astro';
 import { isSEOPage, getSEOTitle, getSEODescription } from '@/ssrHelper';
 
+export const prerender = false;
+
 const npmPackages = Astro.url.searchParams.get('npm')?.split(' ') || [];
 const repos = Astro.url.searchParams.get('github')?.split(' ') || [];
 const isSEO = isSEOPage(npmPackages, repos);

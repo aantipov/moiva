@@ -141,7 +141,7 @@ function getAliasFromRepoId(repoId: string): string {
 }
 
 export const catalogLibraries = rawLibraries
-  .filter((lib) => lib.category !== 'misc' || lib.npm !== null)
+  .filter((lib) => lib.category !== 'misc' && lib.npm !== null)
   .map((lib, index) => ({
     ...lib,
     alias: lib.alias || getAliasFromRepoId(lib.repoId),
