@@ -1,0 +1,59 @@
+---
+import CatalogApp from '@/CatalogApp/CatalogApp.vue';
+import WithSearchHeader from '@/layouts/WithSearchHeaderLayout.astro';
+import { getLibraryHref } from '@/utils';
+import { catalogLibraries } from '@/data/index';
+import { sortBy, prop } from 'ramda';
+
+interface CatalogCategoryT {
+  category: string;
+  libraries: {
+    repoId: string;
+    alias: string;
+    href: string;
+  }[];
+}
+
+const _catalogEntries = catalogLibraries
+  // group by category
+  .reduce((acc, lib) => {
+    let entry = acc.find((item) => item.category === lib.category);
+
+    if (!entry) {
+      entry = { category: lib.category, libraries: [] };
+      acc.push(entry);
+    }
+
+    entry.libraries.push({
+      repoId: lib.repoId,
+      alias: lib.alias,
+      href: getLibraryHref(lib),
+    });
+
+    return acc;
+  }, [] as CatalogCategoryT[])
+  // sort libraries withing each category
+  .map(({ category, libraries }) => ({
+    category,
+    libraries: sortBy(prop('alias'), libraries),
+  }));
+
+const catalogEntries = sortBy(prop('category'), _catalogEntries);
+---
+
+{
+  (
+    <WithSearchHeader
+      isMainAppPage={false}
+      seoTitle={'title'}
+      seoDescription={'description'}
+      allowSearchEngineCrawling={true}
+    >
+      <div class="content container mb-10 mt-8 flex justify-center">
+        <div class="w-5/6 antialiased sm:w-3/5">
+          <CatalogApp entries={catalogEntries} />
+        </div>
+      </div>
+    </WithSearchHeader>
+  )
+}

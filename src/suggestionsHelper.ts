@@ -7,7 +7,9 @@ import {
 import 'sweetalert2/dist/sweetalert2.css';
 import { TrimmedLibraryT } from '@/nanostore/trimmedLibraries';
 // @ts-ignore
-import { Document } from 'flexsearch';
+// import { Document } from 'flexsearch';
+import pkg from 'flexsearch';
+const { Document } = pkg;
 
 interface SearchResultsItemT {
   tag: string;

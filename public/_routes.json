@@ -1,12 +1,11 @@
 {
   "version": 1,
-  "include": ["/", "/npm-info/*"],
+  "include": ["/", "/catalog", "/npm-info/*"],
   "exclude": [
     "/_astro/*",
     "/_worker.js",
     "/about/*",
     "/blog/*",
-    "/catalog/*",
     "/favicon/*",
     "/images/*",
     "/moiva.svg",

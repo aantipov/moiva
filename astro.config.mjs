@@ -13,6 +13,6 @@ export default defineConfig({
   // build: { minify: false },
   //   resolve: { alias: { '@': '/src' } },
   // },
-  output: 'server',
+  output: 'hybrid',
   adapter: cloudflare({ mode: 'directory' }),
 });
