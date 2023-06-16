@@ -1,5 +1,8 @@
+import { setPkgAIInfo, KV_AI } from '../../src/setPackageAiInfo';
+
 interface Env {
   aiPkgDescription: KVNamespace;
+  OPENAI_API_KEY: string;
 }
 type CTX = EventContext<Env, 'pkg', Record<string, unknown>>;
 interface RawPkgInfo {
@@ -40,7 +43,8 @@ async function handleRequest(ctx: CTX) {
   }
 
   const pkgName = typeof pkg === 'string' ? pkg : pkg.join('/');
-  const aiInfo = await fetchAiInfo(ctx.env.aiPkgDescription, pkgName);
+  const KV = ctx.env.aiPkgDescription;
+  const aiInfoPromise = KV.get<KV_AI>(pkgName, { type: 'json' });
   const pkgInfo = await fetchPkgInfo(pkgName);
 
   if (!pkgInfo) {
@@ -50,25 +54,19 @@ async function handleRequest(ctx: CTX) {
     });
   }
 
-  const res = { ...pkgInfo, ai: aiInfo };
+  const aiInfo = await aiInfoPromise;
+  if (!aiInfo) {
+    ctx.waitUntil(setPkgAIInfo(pkgName, KV, ctx.env.OPENAI_API_KEY));
+  }
+
+  const res = { ...pkgInfo, ai: aiInfo, thisIs: 'npm-info' };
 
   return new Response(JSON.stringify(res), {
     headers: {
       'content-type': 'application/json;charset=UTF-8',
-      // 'Access-Control-Allow-Origin': '*',
       'Cache-Control': `max-age=0, s-maxage=${cacheTtl}`,
     },
   });
-}
-
-async function fetchAiInfo(KV: KVNamespace, pkgName: string) {
-  const result = await KV.get(pkgName);
-
-  if (!result) {
-    return null;
-  }
-
-  return JSON.parse(result);
 }
 
 /**
