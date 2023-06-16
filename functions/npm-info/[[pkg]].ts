@@ -59,7 +59,7 @@ async function handleRequest(ctx: CTX) {
     ctx.waitUntil(setPkgAIInfo(pkgName, KV, ctx.env.OPENAI_API_KEY));
   }
 
-  const res = { ...pkgInfo, ai: aiInfo, thisIs: 'npm-info' };
+  const res = { ...pkgInfo, ai: aiInfo };
 
   return new Response(JSON.stringify(res), {
     headers: {
