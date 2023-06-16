@@ -33,3 +33,4 @@ pnpm-debug.log*
 
 # Local Netlify folder
 .netlify
+.dev.vars
