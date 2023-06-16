@@ -251,7 +251,7 @@ function getMessages(pkgName: string): ChatCompletionRequestMessage[] {
     },
     {
       role: 'user',
-      content: `Provide information about ${pkgName} npm package`,
+      content: `Provide information about '${pkgName}' npm package`,
     },
   ];
 }
