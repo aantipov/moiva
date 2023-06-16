@@ -6089,14 +6089,6 @@
   },
   {
     "category": "misc",
-    "repoId": "iview/iview-admin",
-    "npm": "iview-admin",
-    "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
     "repoId": "alibaba/ice",
     "npm": null,
     "isNpmCoreArtifact": null,
