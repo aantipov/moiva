@@ -12,6 +12,7 @@ import {
   getNpmLibraryByNpm,
 } from '@/data/index';
 import { getLibrary, LibraryT } from '@/getLibrary';
+import type { KV_AI } from '@/setPackageAiInfo';
 
 const npmPackageCache = new Map();
 const githubCache = new Map();
@@ -50,11 +51,7 @@ export interface NpmPackageT {
   hasBuiltinTypes: boolean;
   hasOtherTypes: boolean;
   typesPackageName: string;
-  ai: {
-    description: string[];
-    tags: string[];
-    alternativeNames: string[];
-  } | null;
+  ai: KV_AI;
 }
 
 export type LibraryReadonlyT = DeepReadonly<LibraryT>;
