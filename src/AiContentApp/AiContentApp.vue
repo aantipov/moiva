@@ -10,12 +10,20 @@
     <div
       v-for="item in items"
       :key="item.name"
-      class="content container flex flex-col items-center antialiased"
+      class="content container flex flex-col antialiased"
     >
-      <h2 v-if="items.length > 1">{{ item.name }}</h2>
+      <h2 class="self-center" v-if="items.length > 1">{{ item.name }}</h2>
       <template v-if="item.description">
         <p v-for="(p, i) in item.description" :key="i" class="max-w-3xl pb-2">
           {{ p }}
+        </p>
+        <p>
+          <span class="font-bold">Alternatives</span>:
+          {{ item.alternatives?.join(', ') }}
+        </p>
+        <p>
+          <span class="font-bold">Tags</span>:
+          <Tag v-for="(tag, i) in item.tags" :key="i" :value="tag" />
         </p>
       </template>
       <template v-else>
@@ -31,11 +39,15 @@
 import { computed, ref } from 'vue';
 import { $trimmedLibraries, $isLoading } from '@/nanostore/trimmedLibraries';
 import { useStore } from '@nanostores/vue';
+// import Tag component here
+import Tag from '@/components/Tag.vue';
 
 interface Item {
   name: string;
   alias: string;
   description: readonly string[] | null;
+  tags: readonly string[] | null;
+  alternatives: readonly string[] | null;
 }
 // eslint-disable-next-line vue/no-setup-props-destructure
 const props = defineProps<{ data: Item[] }>();
@@ -44,9 +56,11 @@ const firstLoadingFinished = ref(false);
 const items = computed(() =>
   firstLoadingFinished.value
     ? libs.value.map((item) => ({
-        name: item.npmPackage?.name || item.repo?.repoId,
+        name: item.npmPackage?.name,
         alias: item.alias,
         description: item.npmPackage?.ai?.description || null,
+        tags: item.npmPackage?.ai?.tags || null,
+        alternatives: item.npmPackage?.ai?.alternatives || null,
       }))
     : props.data
 );

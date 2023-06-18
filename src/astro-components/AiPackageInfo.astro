@@ -29,6 +29,10 @@ const data = npmPackages.map((pkgName, i) => {
     alias: getNpmLibraryByNpm(pkgName)?.alias || pkgName,
     // @ts-ignore
     description: pkgData?.description || null,
+    // @ts-ignore
+    tags: pkgData?.tags || [],
+    // @ts-ignore
+    alternatives: pkgData?.alternatives || [],
   };
 });
 
