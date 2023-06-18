@@ -58,8 +58,11 @@ const items = computed(() =>
     ? libs.value.map((item) => ({
         name: item.npmPackage?.name,
         alias: item.alias,
+        // @ts-ignore
         description: item.npmPackage?.ai?.description || null,
+        // @ts-ignore
         tags: item.npmPackage?.ai?.tags || null,
+        // @ts-ignore
         alternatives: item.npmPackage?.ai?.alternatives || null,
       }))
     : props.data
