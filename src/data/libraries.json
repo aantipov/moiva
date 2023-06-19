@@ -729,7 +729,7 @@
   },
   {
     "category": "Frontend Frameworks",
-    "repoId": "vuejs/vue",
+    "repoId": "vuejs/core",
     "npm": "vue",
     "isNpmCoreArtifact": true,
     "alias": null,
