@@ -732,7 +732,7 @@
     "repoId": "vuejs/core",
     "npm": "vue",
     "isNpmCoreArtifact": true,
-    "alias": null,
+    "alias": "Vue",
     "tags": ["ui-framework"]
   },
   {
