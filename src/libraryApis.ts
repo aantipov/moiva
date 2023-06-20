@@ -12,7 +12,7 @@ import {
   getNpmLibraryByNpm,
 } from '@/data/index';
 import { getLibrary, LibraryT } from '@/getLibrary';
-import type { KV_AI } from '@/setPackageAiInfo';
+import type { ResultT as NpmInfoResultT } from '@/../functions/npm-info/[[pkg]]';
 
 const npmPackageCache = new Map();
 const githubCache = new Map();
@@ -37,22 +37,9 @@ export interface RepoT {
   } | null;
 }
 
-export interface NpmPackageT {
-  name: string;
-  description: string;
-  license: string;
-  repoId: string;
-  repository?: {
-    type: string;
-    url: string;
-  };
-  version: string;
-  dependencies: string[];
-  hasBuiltinTypes: boolean;
-  hasOtherTypes: boolean;
-  typesPackageName: string;
-  ai: KV_AI;
-}
+export type NpmPackageT = NpmInfoResultT;
+
+export type ReadonlyNpmPackageT = DeepReadonly<NpmPackageT>;
 
 export type LibraryReadonlyT = DeepReadonly<LibraryT>;
 export type LibrariesReadonlyT = DeepReadonly<LibraryT[]>;

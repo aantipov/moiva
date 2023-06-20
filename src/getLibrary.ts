@@ -79,7 +79,7 @@ export interface LibraryT {
   playground: string | null;
   tradar: TechRadarT | null;
   isNpmCoreArtifact: boolean | null;
-  npmPackage: NpmPackageT | null;
+  npmPackage: NpmPackageT;
   npmCreationDate: string | null | undefined;
   npmDependencies: number | undefined;
   npmReleases: NpmPackageReleasesT[] | null | undefined;
@@ -108,7 +108,7 @@ export interface LibraryT {
 
 export function getLibrary(
   repo: RepoT,
-  npmPackage: NpmPackageT | null,
+  npmPackage: NpmPackageT,
   catalogLibrary: CatalogLibraryT | null
 ): LibraryT {
   const isNpmCoreArtifact = catalogLibrary?.isNpmCoreArtifact ?? null;

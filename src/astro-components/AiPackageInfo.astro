@@ -1,69 +1,22 @@
 ---
-import { getRuntime } from '@astrojs/cloudflare/runtime';
-import type { KVNamespace } from '@cloudflare/workers-types/experimental';
 import ContentApp from '@/AiContentApp/AiContentApp.vue';
-import { getNpmLibraryByNpm } from '@/data/index';
-import { setPkgAIInfo, KV_AI } from '@/setPackageAiInfo';
+import type { ResultT as NpmInfoResultT } from '@/../functions/npm-info/[[pkg]]';
 
 interface Props {
   npmPackages: string[];
 }
 const { npmPackages } = Astro.props;
-const runtime = getRuntime(Astro.request);
-const { aiPkgDescription: aiPkgDescBinding, OPENAI_API_KEY } = runtime.env as {
-  aiPkgDescription: KVNamespace;
-  OPENAI_API_KEY: string;
-};
 
-// Add cacheTtl to reduce latency
-// aiPkgDescBinding.get<KV_AI>(pkg, { type: 'json', cacheTtl: 60 * 60 * 24 })
-
-const promises = npmPackages.map((pkg) =>
-  aiPkgDescBinding.get<KV_AI>(pkg, { type: 'json' })
+const promises = npmPackages.map(
+  (pkg) =>
+    fetch(`${Astro.url.origin}/npm-info/${pkg}`).then((res) =>
+      res.json()
+    ) as Promise<NpmInfoResultT>
 );
-const result = await Promise.all(promises);
-const data = npmPackages.map((pkgName, i) => {
-  const pkgData = result[i];
-  return {
-    name: pkgName,
-    alias: getNpmLibraryByNpm(pkgName)?.alias || pkgName,
-    // @ts-ignore
-    description: pkgData?.description || null,
-    // @ts-ignore
-    tags: pkgData?.tags || [],
-    // @ts-ignore
-    alternatives: pkgData?.alternatives || [],
-  };
-});
-
-// If there is a package with no data in KV,
-// Request that data and put it in KV
-// TODO: do not ai check for new packages
-const userAgent = Astro.request.headers.get('user-agent');
-const isBot =
-  !!userAgent && userAgent.match(/bot|crawler|slurp|spider|google|bing|yahoo/i);
-const missingPkg = data.find((pkg) => !pkg.description);
-
-if (isBot) {
-  console.log('[AiPackageInfo] Bot detected, skipping KV update');
-}
-
-if (!isBot && missingPkg) {
-  runtime.waitUntil(
-    setPkgAIInfo(missingPkg.name, aiPkgDescBinding, OPENAI_API_KEY).catch(
-      (error: any) => {
-        if (error.response) {
-          console.log('[AiPackageInfo]', error.response.status);
-          console.log('[AiPackageInfo]', error.response.data);
-        } else {
-          console.error('[AiPackageInfo]', error?.message);
-        }
-      }
-    )
-  );
-}
+// All errors will be handled in UI in order to achieve better SSR performance for happy cases
+const data = await Promise.all(promises).catch((error) => null);
 ---
 
 <div class="container antialiased content flex flex-col items-center">
-  <ContentApp data={data} client:idle />
+  <ContentApp data={data || []} client:idle />
 </div>

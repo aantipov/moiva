@@ -1,21 +1,35 @@
 import { setPkgAIInfo, KV_AI } from '../../src/setPackageAiInfo';
 
-interface Env {
-  aiPkgDescription: KVNamespace;
-  OPENAI_API_KEY: string;
-}
 type CTX = EventContext<Env, 'pkg', Record<string, unknown>>;
-interface RawPkgInfo {
+interface RawPkgInfoT {
   name: string;
   description: string;
   dependencies?: Record<string, string>;
   license: string;
   version: string;
-  repository: string | Record<string, unknown>;
+  repository?: {
+    type: string;
+    url: string;
+  };
   homepage: string;
   typings: string;
   types: string;
 }
+export type ResultT = Omit<
+  RawPkgInfoT,
+  'types' | 'typings' | 'dependencies'
+> & {
+  dependencies: string[];
+  hasBuiltinTypes: boolean;
+  hasOtherTypes: boolean;
+  typesPackageName: string;
+  repoId: string;
+  ai: KV_AI;
+};
+type KvCacheValueT = {
+  data: ResultT;
+  createdAt: string;
+};
 
 const cacheTtl = 3600 * 24 * 1; // 1 day in seconds
 const errorPrefix = 'API-NPM-INFO';
@@ -32,8 +46,8 @@ export const onRequest: PagesFunction<Env, 'pkg'> = async (ctx) => {
   }
 };
 
-async function handleRequest(ctx: CTX) {
-  const { pkg } = ctx.params;
+async function handleRequest(ctx: CTX): Promise<Response> {
+  const pkg = ctx.params.pkg;
 
   if (!pkg) {
     return new Response(null, {
@@ -43,23 +57,35 @@ async function handleRequest(ctx: CTX) {
   }
 
   const pkgName = typeof pkg === 'string' ? pkg : pkg.join('/');
-  const KV = ctx.env.aiPkgDescription;
-  const aiInfoPromise = KV.get<KV_AI>(pkgName, { type: 'json' });
-  const pkgInfo = await fetchPkgInfo(pkgName);
+  const cachedValue = await getCachedValue(pkgName, ctx);
 
-  if (!pkgInfo) {
+  if (cachedValue) {
+    // Update cache in the background if it's older than 1 day or if it doesn't have AI info.
+    const cacheAge = Date.now() - new Date(cachedValue.createdAt).getTime();
+    if (!cachedValue.data.ai || cacheAge > 3600 * 24 * 1000) {
+      // Update cached data in the background while serving stale cached data.
+      ctx.waitUntil(fetchDataAndUpdateCache(pkgName, ctx));
+    }
+
+    return new Response(JSON.stringify(cachedValue.data), {
+      headers: {
+        'content-type': 'application/json;charset=UTF-8',
+        'Cache-Control': `max-age=0, s-maxage=${cacheTtl}`,
+      },
+    });
+  }
+
+  const res = await fetchData(pkgName, ctx);
+
+  // TODO: Cache in KV the error response for 1 hour.
+  if (!res) {
     return new Response(null, {
       status: 404,
       statusText: 'Not found',
     });
   }
 
-  const aiInfo = await aiInfoPromise;
-  if (!aiInfo) {
-    ctx.waitUntil(setPkgAIInfo(pkgName, KV, ctx.env.OPENAI_API_KEY));
-  }
-
-  const res = { ...pkgInfo, ai: aiInfo };
+  ctx.waitUntil(updateCache(pkgName, res, ctx));
 
   return new Response(JSON.stringify(res), {
     headers: {
@@ -69,10 +95,66 @@ async function handleRequest(ctx: CTX) {
   });
 }
 
+async function fetchDataAndUpdateCache(
+  pkgName: string,
+  ctx: CTX
+): Promise<null> {
+  const res = await fetchData(pkgName, ctx);
+  if (res) {
+    await updateCache(pkgName, res, ctx);
+  }
+  return null;
+}
+
+async function getCachedValue(
+  pkgName: string,
+  ctx: CTX
+): Promise<KvCacheValueT | null> {
+  const KV_CACHE = ctx.env.CACHE_KV;
+  const KV_CACHE_KEY = `npm-info-${pkgName}`;
+  const cachedValue = await KV_CACHE.get<KvCacheValueT>(KV_CACHE_KEY, {
+    type: 'json',
+  });
+  return cachedValue;
+}
+
+async function updateCache(pkgName: string, res: ResultT, ctx: CTX) {
+  const kvAiBinding = ctx.env.aiPkgDescription;
+  const kvCacheBinding = ctx.env.CACHE_KV;
+  const kvCacheKey = `npm-info-${pkgName}`;
+  const newKvCacheValue: KvCacheValueT = {
+    data: res,
+    createdAt: new Date().toISOString(),
+  };
+
+  return Promise.all([
+    kvCacheBinding.put(kvCacheKey, JSON.stringify(newKvCacheValue)),
+    res.ai ? null : setPkgAIInfo(pkgName, kvAiBinding, ctx.env.OPENAI_API_KEY),
+  ]);
+}
+
+async function fetchData(pkgName: string, ctx: CTX): Promise<ResultT | null> {
+  const kvAiBinding = ctx.env.aiPkgDescription;
+  const aiInfoPromise = kvAiBinding.get<KV_AI>(pkgName, { type: 'json' });
+  const pkgInfo = await fetchPkgInfo(pkgName);
+
+  // TODO: Cache in KV the error response for 1 hour.
+  if (!pkgInfo) {
+    return null;
+  }
+
+  const aiInfo = await aiInfoPromise;
+  const res: ResultT = { ...pkgInfo, ai: aiInfo };
+
+  return res;
+}
+
 /**
  * @param {Request} request
  */
-async function fetchPkgInfo(pkgName: string) {
+async function fetchPkgInfo(
+  pkgName: string
+): Promise<Omit<ResultT, 'ai'> | null> {
   // Try fetch types package in case the package doesn't have built-in types data.
   const typesPackage = '@types/' + pkgName.replace('@', '').replace('/', '__');
   const typesPromise = fetch(
@@ -105,7 +187,7 @@ async function fetchPkgInfo(pkgName: string) {
     repository,
     typings,
     types,
-  } = (await response.json()) as RawPkgInfo;
+  } = (await response.json()) as RawPkgInfoT;
 
   const result = {
     name,
@@ -118,6 +200,7 @@ async function fetchPkgInfo(pkgName: string) {
     hasBuiltinTypes: !!typings || !!types,
     hasOtherTypes: false,
     typesPackageName: typesPackage,
+    repoId: getRepoId(repository),
   };
 
   if (!result.hasBuiltinTypes) {
@@ -128,4 +211,25 @@ async function fetchPkgInfo(pkgName: string) {
   }
 
   return result;
+}
+
+function getRepoId(repository: RepT | null | undefined): string | null {
+  const hasPackageGithub =
+    repository &&
+    repository.type === 'git' &&
+    repository.url.indexOf('github.com') !== -1;
+
+  if (!hasPackageGithub) {
+    return null;
+  }
+
+  const dotGitIndex = (repository as RepT).url.indexOf('.git');
+  const endRepoUrlIndex = dotGitIndex !== -1 ? dotGitIndex : 400;
+
+  const repoId = (repository as RepT).url.slice(
+    (repository as RepT).url.indexOf('github.com') + 11,
+    endRepoUrlIndex
+  );
+
+  return repoId;
 }
