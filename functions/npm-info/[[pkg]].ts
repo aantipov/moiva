@@ -23,7 +23,7 @@ export type ResultT = Omit<
   hasBuiltinTypes: boolean;
   hasOtherTypes: boolean;
   typesPackageName: string;
-  repoId: string;
+  repoId: string | null;
   ai: KV_AI;
 };
 type KvCacheValueT = {
@@ -213,23 +213,22 @@ async function fetchPkgInfo(
   return result;
 }
 
-function getRepoId(repository: RepT | null | undefined): string | null {
+function getRepoId(repository: RawPkgInfoT['repository']): string | null {
+  if (!repository) {
+    return null;
+  }
+
   const hasPackageGithub =
-    repository &&
-    repository.type === 'git' &&
-    repository.url.indexOf('github.com') !== -1;
+    repository.type === 'git' && repository.url.indexOf('github.com') !== -1;
 
   if (!hasPackageGithub) {
     return null;
   }
 
-  const dotGitIndex = (repository as RepT).url.indexOf('.git');
+  const dotGitIndex = repository.url.indexOf('.git');
   const endRepoUrlIndex = dotGitIndex !== -1 ? dotGitIndex : 400;
-
-  const repoId = (repository as RepT).url.slice(
-    (repository as RepT).url.indexOf('github.com') + 11,
-    endRepoUrlIndex
-  );
+  const startRepoUrlIndex = repository.url.indexOf('github.com') + 11;
+  const repoId = repository.url.slice(startRepoUrlIndex, endRepoUrlIndex);
 
   return repoId;
 }
