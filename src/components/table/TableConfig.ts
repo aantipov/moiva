@@ -4,7 +4,6 @@ import { prevQuarter } from '@/utils';
 import { ascend } from 'ramda';
 
 const METRICS = [
-  'npm',
   'repo',
   'homepage',
   'status',
@@ -32,7 +31,6 @@ export type MetricT = (typeof METRICS)[number];
 
 // Metrics which are removed if there are no npm packages
 export const NPM_METRICS: MetricT[] = [
-  'npm',
   'downloads',
   'releases',
   'dependencies',
@@ -115,7 +113,6 @@ export interface MetricDataWithChartT extends MetricDataT {
 }
 
 export const ROWS: MetricDataT[] = [
-  { cat: '', metric: 'npm', label: 'Npm' },
   { cat: '', metric: 'repo', label: 'GitHub', tooltip: 'GitHub repository' },
   { cat: '', metric: 'homepage', label: 'Homepage', icon: 'm-home-icon' },
 

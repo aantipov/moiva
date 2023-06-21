@@ -1,18 +1,5 @@
 <template>
-  <div v-if="type === 'npm'" class="flex flex-col items-center">
-    <template v-if="lib.npmPackage">
-      <ExternalLink
-        v-tooltip.html.ni="npmTooltip"
-        :href="npmUrl"
-        :txt="lib.npmPackage.name"
-        truncate
-      />
-      <div class="text-sm opacity-80">v{{ lib.npmPackage.version }}</div>
-    </template>
-    <template v-else>-</template>
-  </div>
-
-  <div v-else-if="type === 'repo'" class="flex justify-center">
+  <div v-if="type === 'repo'" class="flex justify-center">
     <ExternalLink
       v-tooltip.html.ni="githubTooltip"
       :href="githubUrl"
@@ -280,11 +267,6 @@ const lastCommitAt = computed(() =>
 const npmNameEncoded = computed(() =>
   encodeURIComponent(lib.value.npmPackage?.name ?? '')
 );
-const npmTooltip = computed<string>(() => {
-  return `<p class="f-mono">${
-    lib.value.npmPackage?.name ?? ''
-  }</p><p>${sanitizeHTML(lib.value.npmPackage?.description ?? '')}</p>`;
-});
 const githubTooltip = computed<string>(() => {
   return `<p class="f-mono">${lib.value.repo.repoId}</p><p>${sanitizeHTML(
     lib.value.repo.description
@@ -368,9 +350,6 @@ const snykVulnUrl = computed(
 const vulnTooltip = computed(
   () =>
     `Vulnerabilities found in the ${lib.value.repo.repoId} repository. Data source: Snyk.io`
-);
-const npmUrl = computed(
-  () => `https://www.npmjs.com/package/${npmNameEncoded.value}`
 );
 const bundlephobiaUrl = computed(
   () => `https://bundlephobia.com/package/${npmNameEncoded.value}`
