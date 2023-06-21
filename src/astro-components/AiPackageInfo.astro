@@ -1,6 +1,6 @@
 ---
 import ContentApp from '@/AiContentApp/AiContentApp.vue';
-import type { ResultT as NpmInfoResultT } from '@/../functions/npm-info/[[pkg]]';
+import type { NpmInfoApiResponseT } from '@/shared-types';
 
 interface Props {
   npmPackages: string[];
@@ -11,7 +11,7 @@ const promises = npmPackages.map(
   (pkg) =>
     fetch(`${Astro.url.origin}/npm-info/${pkg}`).then((res) =>
       res.json()
-    ) as Promise<NpmInfoResultT>
+    ) as Promise<NpmInfoApiResponseT>
 );
 // All errors will be handled in UI in order to achieve better SSR performance for happy cases
 const data = await Promise.all(promises).catch((error) => null);

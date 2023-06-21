@@ -5,38 +5,7 @@ import {
   OpenAIApi,
   ResponseTypes,
 } from 'openai-edge';
-import { DeepReadonly } from 'vue';
-
-type AI_RESPONSE_META = {
-  version: number;
-  model: string;
-  tokensUsed: number | undefined;
-  createdAt: string;
-};
-
-// AI response when it finds the package abnd generates a proper answer
-type AI_RESPONSE = {
-  description: string[];
-  tags: string[];
-  alternatives: string[];
-} & AI_RESPONSE_META;
-
-// AI response when it doesn't find the package
-type AI_RESPONSE_NOT_FOUND = {
-  notFound: true;
-} & AI_RESPONSE_META;
-
-// null when the AI response is not yet generated
-export type KV_AI =
-  | AI_RESPONSE
-  | DeepReadonly<AI_RESPONSE>
-  | AI_RESPONSE_NOT_FOUND
-  | DeepReadonly<AI_RESPONSE_NOT_FOUND>
-  | null;
-
-export function hasAiInfo(obj: KV_AI): obj is AI_RESPONSE {
-  return obj && (obj as AI_RESPONSE).description !== undefined;
-}
+import type { KvAiT, AiResponseT } from '@/shared-types';
 
 // Example of AI response:
 /** 
@@ -104,9 +73,9 @@ export async function setPkgAIInfo(
   if (!contentRaw) {
     throw new Error('[setPkgAIInfo] No message content in AI reponse');
   }
-  let content: AI_RESPONSE;
+  let content: AiResponseT;
   try {
-    content = JSON.parse(contentRaw) as AI_RESPONSE;
+    content = JSON.parse(contentRaw) as AiResponseT;
   } catch (error) {
     throw new Error('[setPkgAIInfo] AI reply is not a valid JSON');
   }
@@ -134,7 +103,7 @@ export async function setPkgAIInfo(
         model: data.model,
         tokensUsed: data.usage?.total_tokens,
         createdAt: new Date().toISOString().slice(0, 10),
-      } as KV_AI),
+      } as KvAiT),
       {
         expirationTtl: packageExists ? 60 * 60 * 24 * 90 : 60 * 60 * 24 * 7,
       }

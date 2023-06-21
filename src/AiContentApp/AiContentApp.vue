@@ -40,7 +40,7 @@ import { NpmPackageT, ReadonlyNpmPackageT } from '@/libraryApis';
 import { useStore } from '@nanostores/vue';
 import Tag from '@/components/Tag.vue';
 import { getNpmLibraryByNpm } from '@/data';
-import { hasAiInfo } from '@/setPackageAiInfo';
+import { hasAiInfo } from '@/shared-types';
 
 const props = defineProps<{ data: NpmPackageT[] }>();
 const libs = useStore($trimmedLibraries);

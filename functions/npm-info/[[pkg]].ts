@@ -1,36 +1,12 @@
-import { setPkgAIInfo, KV_AI } from '../../src/setPackageAiInfo';
+import { setPkgAIInfo } from '../../functions-helpers/setPackageAiInfo';
+import {
+  KvAiT,
+  NpmJsResponseT,
+  NpmInfoApiResponseT,
+  KvNpmInfoT,
+} from '../../src/shared-types';
 
 type CTX = EventContext<Env, 'pkg', Record<string, unknown>>;
-interface RawPkgInfoT {
-  name: string;
-  description: string;
-  dependencies?: Record<string, string>;
-  license: string;
-  version: string;
-  repository?: {
-    type: string;
-    url: string;
-  };
-  homepage: string;
-  typings: string;
-  types: string;
-}
-export type ResultT = Omit<
-  RawPkgInfoT,
-  'types' | 'typings' | 'dependencies'
-> & {
-  dependencies: string[];
-  hasBuiltinTypes: boolean;
-  hasOtherTypes: boolean;
-  typesPackageName: string;
-  repoId: string | null;
-  ai: KV_AI;
-};
-type KvCacheValueT = {
-  data: ResultT;
-  createdAt: string;
-};
-
 const cacheTtl = 3600 * 24 * 1; // 1 day in seconds
 const errorPrefix = 'API-NPM-INFO';
 
@@ -109,20 +85,24 @@ async function fetchDataAndUpdateCache(
 async function getCachedValue(
   pkgName: string,
   ctx: CTX
-): Promise<KvCacheValueT | null> {
+): Promise<KvNpmInfoT | null> {
   const KV_CACHE = ctx.env.CACHE_KV;
   const KV_CACHE_KEY = `npm-info-${pkgName}`;
-  const cachedValue = await KV_CACHE.get<KvCacheValueT>(KV_CACHE_KEY, {
+  const cachedValue = await KV_CACHE.get<KvNpmInfoT>(KV_CACHE_KEY, {
     type: 'json',
   });
   return cachedValue;
 }
 
-async function updateCache(pkgName: string, res: ResultT, ctx: CTX) {
+async function updateCache(
+  pkgName: string,
+  res: NpmInfoApiResponseT,
+  ctx: CTX
+) {
   const kvAiBinding = ctx.env.aiPkgDescription;
   const kvCacheBinding = ctx.env.CACHE_KV;
   const kvCacheKey = `npm-info-${pkgName}`;
-  const newKvCacheValue: KvCacheValueT = {
+  const newKvCacheValue: KvNpmInfoT = {
     data: res,
     createdAt: new Date().toISOString(),
   };
@@ -133,9 +113,12 @@ async function updateCache(pkgName: string, res: ResultT, ctx: CTX) {
   ]);
 }
 
-async function fetchData(pkgName: string, ctx: CTX): Promise<ResultT | null> {
+async function fetchData(
+  pkgName: string,
+  ctx: CTX
+): Promise<NpmInfoApiResponseT | null> {
   const kvAiBinding = ctx.env.aiPkgDescription;
-  const aiInfoPromise = kvAiBinding.get<KV_AI>(pkgName, { type: 'json' });
+  const aiInfoPromise = kvAiBinding.get<KvAiT>(pkgName, { type: 'json' });
   const pkgInfo = await fetchPkgInfo(pkgName);
 
   // TODO: Cache in KV the error response for 1 hour.
@@ -144,7 +127,7 @@ async function fetchData(pkgName: string, ctx: CTX): Promise<ResultT | null> {
   }
 
   const aiInfo = await aiInfoPromise;
-  const res: ResultT = { ...pkgInfo, ai: aiInfo };
+  const res: NpmInfoApiResponseT = { ...pkgInfo, ai: aiInfo };
 
   return res;
 }
@@ -154,7 +137,7 @@ async function fetchData(pkgName: string, ctx: CTX): Promise<ResultT | null> {
  */
 async function fetchPkgInfo(
   pkgName: string
-): Promise<Omit<ResultT, 'ai'> | null> {
+): Promise<Omit<NpmInfoApiResponseT, 'ai'> | null> {
   // Try fetch types package in case the package doesn't have built-in types data.
   const typesPackage = '@types/' + pkgName.replace('@', '').replace('/', '__');
   const typesPromise = fetch(
@@ -187,7 +170,7 @@ async function fetchPkgInfo(
     repository,
     typings,
     types,
-  } = (await response.json()) as RawPkgInfoT;
+  } = (await response.json()) as NpmJsResponseT;
 
   const result = {
     name,
@@ -213,16 +196,18 @@ async function fetchPkgInfo(
   return result;
 }
 
-function getRepoId(repository: RawPkgInfoT['repository']): string | null {
+function getRepoId(repository: NpmJsResponseT['repository']): string {
   if (!repository) {
-    return null;
+    // return null;
+    throw new Error('Npm package is missing repository info');
   }
 
   const hasPackageGithub =
     repository.type === 'git' && repository.url.indexOf('github.com') !== -1;
 
   if (!hasPackageGithub) {
-    return null;
+    // return null;
+    throw new Error('Npm Package is missing proper github repository info');
   }
 
   const dotGitIndex = repository.url.indexOf('.git');
