@@ -6,26 +6,26 @@
     <h1>{{ title }}</h1>
   </div>
 
-  <div class="mb-6">
+  <div class="content container mb-6 lg:w-9/12 xl:w-3/4">
     <div
       v-for="item in items"
       :key="item.name"
-      class="content container flex flex-col antialiased"
+      class="flex flex-col antialiased"
     >
       <h2 v-if="items.length > 1" class="self-center">{{ item.name }}</h2>
 
       <p
         v-for="(p, i) in getItemDescription(item)"
         :key="i"
-        class="max-w-3xl self-center pb-2"
+        class="self-center pb-2"
       >
         {{ p }}
       </p>
-      <p v-if="getItemAlternatives(item).length">
+      <p v-if="getItemAlternatives(item).length" class="flex flex-wrap">
         <span class="font-bold">Alternatives</span>:
         {{ getItemAlternatives(item).join(', ') }}
       </p>
-      <p v-if="getItemTags(item).length">
+      <p v-if="getItemTags(item).length" class="flex flex-wrap">
         <span class="font-bold">Tags</span>:
         <Tag v-for="(tag, i) in getItemTags(item)" :key="i" :value="tag" />
       </p>
