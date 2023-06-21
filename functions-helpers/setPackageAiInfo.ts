@@ -5,21 +5,7 @@ import {
   OpenAIApi,
   ResponseTypes,
 } from 'openai-edge';
-
-type AI_RESPONSE =
-  | {
-      description: string[];
-      tags: string[];
-      alternatives: string[];
-    }
-  | { notFound: true };
-
-export type KV_AI = AI_RESPONSE & {
-  version: number;
-  model: string;
-  tokensUsed: number | undefined;
-  createdAt: string;
-};
+import type { KvAiT, AiResponseT } from '@/shared-types';
 
 // Example of AI response:
 /** 
@@ -87,9 +73,9 @@ export async function setPkgAIInfo(
   if (!contentRaw) {
     throw new Error('[setPkgAIInfo] No message content in AI reponse');
   }
-  let content: AI_RESPONSE;
+  let content: AiResponseT;
   try {
-    content = JSON.parse(contentRaw) as AI_RESPONSE;
+    content = JSON.parse(contentRaw) as AiResponseT;
   } catch (error) {
     throw new Error('[setPkgAIInfo] AI reply is not a valid JSON');
   }
@@ -117,7 +103,7 @@ export async function setPkgAIInfo(
         model: data.model,
         tokensUsed: data.usage?.total_tokens,
         createdAt: new Date().toISOString().slice(0, 10),
-      } as KV_AI),
+      } as KvAiT),
       {
         expirationTtl: packageExists ? 60 * 60 * 24 * 90 : 60 * 60 * 24 * 7,
       }

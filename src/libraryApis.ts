@@ -12,7 +12,7 @@ import {
   getNpmLibraryByNpm,
 } from '@/data/index';
 import { getLibrary, LibraryT } from '@/getLibrary';
-import type { KV_AI } from '@/setPackageAiInfo';
+import type { NpmInfoApiResponseT } from '@/shared-types';
 
 const npmPackageCache = new Map();
 const githubCache = new Map();
@@ -37,22 +37,9 @@ export interface RepoT {
   } | null;
 }
 
-export interface NpmPackageT {
-  name: string;
-  description: string;
-  license: string;
-  repoId: string;
-  repository?: {
-    type: string;
-    url: string;
-  };
-  version: string;
-  dependencies: string[];
-  hasBuiltinTypes: boolean;
-  hasOtherTypes: boolean;
-  typesPackageName: string;
-  ai: KV_AI;
-}
+export type NpmPackageT = NpmInfoApiResponseT;
+
+export type ReadonlyNpmPackageT = DeepReadonly<NpmPackageT>;
 
 export type LibraryReadonlyT = DeepReadonly<LibraryT>;
 export type LibrariesReadonlyT = DeepReadonly<LibraryT[]>;
@@ -88,6 +75,7 @@ export async function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
     fetchNpmPromise,
   ]);
 
+  // @ts-ignore
   return getLibrary(repo, npmPackage, library);
 }
 
@@ -135,44 +123,9 @@ function fetchNpmPackage(packageName: string): Promise<NpmPackageT> {
 }
 
 function fetchNpmJSPackage(packageName: string): Promise<NpmPackageT> {
-  return axios.get<NpmPackageT>(`/npm-info/${packageName}`).then(({ data }) => {
-    const catalogLibrary = getNpmLibraryByNpm(packageName);
-    const repoId = catalogLibrary
-      ? catalogLibrary.repoId
-      : getRepoId(data.repository);
-
-    if (!repoId) {
-      return Promise.reject('NO GITHUB DATA');
-    }
-
-    return { ...data, repoId };
-  });
-}
-
-interface RepT {
-  type: string;
-  url: string;
-}
-
-function getRepoId(repository: RepT | null | undefined): string | null {
-  const hasPackageGithub =
-    repository &&
-    repository.type === 'git' &&
-    repository.url.indexOf('github.com') !== -1;
-
-  if (!hasPackageGithub) {
-    return null;
-  }
-
-  const dotGitIndex = (repository as RepT).url.indexOf('.git');
-  const endRepoUrlIndex = dotGitIndex !== -1 ? dotGitIndex : 400;
-
-  const repoId = (repository as RepT).url.slice(
-    (repository as RepT).url.indexOf('github.com') + 11,
-    endRepoUrlIndex
-  );
-
-  return repoId;
+  return axios
+    .get<NpmPackageT>(`/npm-info/${packageName}`)
+    .then(({ data }) => data);
 }
 
 // interface NpmsIOPackageResponseT {

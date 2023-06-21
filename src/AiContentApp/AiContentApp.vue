@@ -1,36 +1,34 @@
 <template>
   <div
     class="container text-center lg:w-9/12 xl:w-3/4"
-    :class="showItems && items.length === 1 && 'mb-4'"
+    :class="items.length === 1 && 'mb-4'"
   >
     <h1>{{ title }}</h1>
   </div>
 
-  <div v-if="showItems" class="mb-6">
+  <div class="mb-6">
     <div
       v-for="item in items"
       :key="item.name"
       class="content container flex flex-col antialiased"
     >
-      <h2 class="self-center" v-if="items.length > 1">{{ item.name }}</h2>
-      <template v-if="item.description">
-        <p v-for="(p, i) in item.description" :key="i" class="max-w-3xl pb-2">
-          {{ p }}
-        </p>
-        <p>
-          <span class="font-bold">Alternatives</span>:
-          {{ item.alternatives?.join(', ') }}
-        </p>
-        <p>
-          <span class="font-bold">Tags</span>:
-          <Tag v-for="(tag, i) in item.tags" :key="i" :value="tag" />
-        </p>
-      </template>
-      <template v-else>
-        <p class="max-w-3xl">
-          Information about the package will be available soon.
-        </p>
-      </template>
+      <h2 v-if="items.length > 1" class="self-center">{{ item.name }}</h2>
+
+      <p
+        v-for="(p, i) in getItemDescription(item)"
+        :key="i"
+        class="max-w-3xl self-center pb-2"
+      >
+        {{ p }}
+      </p>
+      <p v-if="getItemAlternatives(item).length">
+        <span class="font-bold">Alternatives</span>:
+        {{ getItemAlternatives(item).join(', ') }}
+      </p>
+      <p v-if="getItemTags(item).length">
+        <span class="font-bold">Tags</span>:
+        <Tag v-for="(tag, i) in getItemTags(item)" :key="i" :value="tag" />
+      </p>
     </div>
   </div>
 </template>
@@ -38,45 +36,37 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { $trimmedLibraries, $isLoading } from '@/nanostore/trimmedLibraries';
+import { NpmPackageT, ReadonlyNpmPackageT } from '@/libraryApis';
 import { useStore } from '@nanostores/vue';
-// import Tag component here
 import Tag from '@/components/Tag.vue';
+import { getNpmLibraryByNpm } from '@/data';
+import { hasAiInfo } from '@/shared-types';
 
-interface Item {
-  name: string;
-  alias: string;
-  description: readonly string[] | null;
-  tags: readonly string[] | null;
-  alternatives: readonly string[] | null;
-}
-// eslint-disable-next-line vue/no-setup-props-destructure
-const props = defineProps<{ data: Item[] }>();
+const props = defineProps<{ data: NpmPackageT[] }>();
 const libs = useStore($trimmedLibraries);
 const firstLoadingFinished = ref(false);
 const items = computed(() =>
   firstLoadingFinished.value
-    ? libs.value.map((item) => ({
-        name: item.npmPackage?.name,
-        alias: item.alias,
-        // @ts-ignore
-        description: item.npmPackage?.ai?.description || null,
-        // @ts-ignore
-        tags: item.npmPackage?.ai?.tags || null,
-        // @ts-ignore
-        alternatives: item.npmPackage?.ai?.alternatives || null,
-      }))
+    ? libs.value.map((item) => item.npmPackage)
     : props.data
+);
+const aliases = computed(() =>
+  items.value.map((item) => getNpmLibraryByNpm(item.name)?.alias || item.name)
 );
 const title = computed(() =>
   items.value.length === 1
-    ? `${items.value[0].alias}: Detailed Overview & Metrics`
-    : `Head-to-Head: ${items.value
-        .map((item) => item.alias)
-        .join(' vs ')} Analysis`
+    ? `${aliases.value[0]}: Detailed Overview & Metrics`
+    : `Head-to-Head: ${aliases.value.join(' vs ')} Analysis`
 );
-const showItems = computed(() =>
-  items.value.some((item) => !!item.description)
-);
+function getItemDescription(item: NpmPackageT | ReadonlyNpmPackageT) {
+  return hasAiInfo(item.ai) ? item.ai.description : [item.description];
+}
+function getItemTags(item: NpmPackageT | ReadonlyNpmPackageT) {
+  return hasAiInfo(item.ai) ? item.ai.tags : [];
+}
+function getItemAlternatives(item: NpmPackageT | ReadonlyNpmPackageT) {
+  return hasAiInfo(item.ai) ? item.ai.alternatives : [];
+}
 
 // After first load, we need to recompute title and items (make them reactive)
 $isLoading.subscribe((isLoading) => {

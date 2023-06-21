@@ -15,6 +15,9 @@ const isSEO = isSEOPage(npmPackages, repos);
 const seoTitle = getSEOTitle(npmPackages);
 const seoDescription = getSEODescription(npmPackages);
 const isHomePage = !npmPackages.length && !repos.length;
+// const userAgent = Astro.request.headers.get('user-agent');
+// const isBot =
+//   !!userAgent && userAgent.match(/bot|crawler|slurp|spider|google|bing|yahoo/i);
 ---
 
 {
