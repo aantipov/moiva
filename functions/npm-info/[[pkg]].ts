@@ -1,5 +1,5 @@
 import { setPkgAIInfo } from '../../functions-helpers/setPackageAiInfo';
-import {
+import type {
   KvAiT,
   NpmJsResponseT,
   NpmInfoApiResponseT,
@@ -39,7 +39,6 @@ async function handleRequest(ctx: CTX): Promise<Response> {
     // Update cache in the background if it's older than 1 day or if it doesn't have AI info.
     const cacheAge = Date.now() - new Date(cachedValue.createdAt).getTime();
     if (!cachedValue.data.ai || cacheAge > 3600 * 24 * 1000) {
-      // Update cached data in the background while serving stale cached data.
       ctx.waitUntil(fetchDataAndUpdateCache(pkgName, ctx));
     }
 

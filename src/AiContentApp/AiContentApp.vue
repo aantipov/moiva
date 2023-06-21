@@ -50,16 +50,13 @@ const items = computed(() =>
     ? libs.value.map((item) => item.npmPackage)
     : props.data
 );
-const title = computed(() =>
-  items.value.length === 1
-    ? //alias: getNpmLibraryByNpm(pkgName)?.alias || pkgName,
-      `${aliases.value[0]}: Detailed Overview & Metrics`
-    : `Head-to-Head: ${items.value
-        .map((_, i) => aliases.value[i])
-        .join(' vs ')} Analysis`
-);
 const aliases = computed(() =>
   items.value.map((item) => getNpmLibraryByNpm(item.name)?.alias || item.name)
+);
+const title = computed(() =>
+  items.value.length === 1
+    ? `${aliases.value[0]}: Detailed Overview & Metrics`
+    : `Head-to-Head: ${aliases.value.join(' vs ')} Analysis`
 );
 function getItemDescription(item: NpmPackageT | ReadonlyNpmPackageT) {
   return hasAiInfo(item.ai) ? item.ai.description : [item.description];
