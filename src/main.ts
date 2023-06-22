@@ -9,7 +9,6 @@ import { VueQueryPlugin } from 'vue-query';
 // import AboutApp from './AboutApp.vue';
 import Close from '@/icons/CloseIcon.vue';
 import StarIcon from '@/icons/StarIcon.vue';
-import HomeIcon from '@/icons/HomeIcon.vue';
 import DotsIcon from '@/icons/DotsIcon.vue';
 import NpmIcon from '@/icons/NpmIcon.vue';
 import ChartIcon from '@/icons/ChartIcon.vue';
@@ -58,7 +57,6 @@ export default (app: App) => {
     .component('MRepoIcon', GithubIcon)
     .component('MStatusIcon', HeartBeatIcon)
     .component('MStarsIcon', StarIcon)
-    .component('MHomeIcon', HomeIcon)
     .component('MDownloadsIcon', DownloadIcon)
     .component('MSearchIcon', SearchIcon)
     .component('MDevusageIcon', UserGroupIcon)

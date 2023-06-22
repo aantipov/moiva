@@ -5,11 +5,8 @@ import { ascend } from 'ramda';
 
 const METRICS = [
   'repo',
-  'homepage',
   'status',
-  'tags',
   'playground',
-  'description',
   'stars',
   'downloads',
   'searchInterest',
@@ -114,7 +111,6 @@ export interface MetricDataWithChartT extends MetricDataT {
 
 export const ROWS: MetricDataT[] = [
   { cat: '', metric: 'repo', label: 'GitHub', tooltip: 'GitHub repository' },
-  { cat: '', metric: 'homepage', label: 'Homepage', icon: 'm-home-icon' },
 
   {
     cat: '',
@@ -134,9 +130,7 @@ export const ROWS: MetricDataT[] = [
     },
   },
 
-  { metric: 'tags', cat: '', label: 'Tags' },
   { metric: 'playground', cat: '', label: 'Playground' },
-  { metric: 'description', cat: '', label: 'Description' },
 
   {
     cat: 'Popularity',

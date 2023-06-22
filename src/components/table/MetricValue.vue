@@ -8,17 +8,6 @@
     />
   </div>
 
-  <div v-else-if="type === 'homepage'" class="flex justify-center">
-    <template v-if="lib.repo.homepageUrl">
-      <ExternalLink
-        truncate
-        :href="lib.repo.homepageUrl"
-        :txt="strippedHomepageUrl"
-      />
-    </template>
-    <template v-else>-</template>
-  </div>
-
   <div v-else-if="type === 'status'">
     <div class="flex justify-center">
       <StatusBadge :value="lib.status" />
@@ -404,24 +393,6 @@ const bundlesize = computed<string>(() => {
 
   return lib.value.bundlesize.gzipKb + ' kB';
 });
-
-function trimLastSlash(url: string): string {
-  if (url.endsWith('/')) {
-    return url.slice(0, -1);
-  }
-  return url;
-}
-
-function trimHttp(url: string): string {
-  return url.replace(
-    /(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)/,
-    ''
-  );
-}
-
-const strippedHomepageUrl = computed<string>(() =>
-  trimLastSlash(trimHttp(lib.value.repo.homepageUrl))
-);
 </script>
 
 <style lang="postcss">
