@@ -8,17 +8,6 @@
     />
   </div>
 
-  <div v-else-if="type === 'homepage'" class="flex justify-center">
-    <template v-if="lib.repo.homepageUrl">
-      <ExternalLink
-        truncate
-        :href="lib.repo.homepageUrl"
-        :txt="strippedHomepageUrl"
-      />
-    </template>
-    <template v-else>-</template>
-  </div>
-
   <div v-else-if="type === 'status'">
     <div class="flex justify-center">
       <StatusBadge :value="lib.status" />
@@ -26,25 +15,11 @@
     <div class="mt-1 text-center text-sm opacity-80">{{ lastCommitAt }}</div>
   </div>
 
-  <div v-else-if="type === 'tags'" class="flex flex-wrap justify-center">
-    <template v-if="lib.tags.length > 0">
-      <m-tag v-for="tag in lib.tags" :key="tag" :value="tag" />
-    </template>
-    <template v-else>-</template>
-  </div>
-
   <div v-else-if="type === 'playground'" class="flex flex-wrap justify-center">
     <template v-if="lib.playground">
       <ExternalLink truncate :href="lib.playground" txt="Playground" />
     </template>
     <template v-else>-</template>
-  </div>
-
-  <div
-    v-else-if="type === 'description'"
-    class="flex flex-wrap justify-center text-center text-sm"
-  >
-    {{ lib.npmPackage?.description }}
   </div>
 
   <div v-else-if="type === 'stars'">
@@ -404,24 +379,6 @@ const bundlesize = computed<string>(() => {
 
   return lib.value.bundlesize.gzipKb + ' kB';
 });
-
-function trimLastSlash(url: string): string {
-  if (url.endsWith('/')) {
-    return url.slice(0, -1);
-  }
-  return url;
-}
-
-function trimHttp(url: string): string {
-  return url.replace(
-    /(https:\/\/www\.|http:\/\/www\.|https:\/\/|http:\/\/)/,
-    ''
-  );
-}
-
-const strippedHomepageUrl = computed<string>(() =>
-  trimLastSlash(trimHttp(lib.value.repo.homepageUrl))
-);
 </script>
 
 <style lang="postcss">

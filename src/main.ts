@@ -9,7 +9,6 @@ import { VueQueryPlugin } from 'vue-query';
 // import AboutApp from './AboutApp.vue';
 import Close from '@/icons/CloseIcon.vue';
 import StarIcon from '@/icons/StarIcon.vue';
-import HomeIcon from '@/icons/HomeIcon.vue';
 import DotsIcon from '@/icons/DotsIcon.vue';
 import NpmIcon from '@/icons/NpmIcon.vue';
 import ChartIcon from '@/icons/ChartIcon.vue';
@@ -30,7 +29,6 @@ import ShieldIcon from '@/icons/ShieldIcon.vue';
 import BugIcon from '@/icons/BugIcon.vue';
 import HeartBeatIcon from '@/icons/HeartBeatIcon.vue';
 import SortIcon from '@/icons/SortIcon.vue';
-import Tag from '@/components/Tag.vue';
 
 export default (app: App) => {
   if (process.env.NODE_ENV !== 'development') {
@@ -58,7 +56,6 @@ export default (app: App) => {
     .component('MRepoIcon', GithubIcon)
     .component('MStatusIcon', HeartBeatIcon)
     .component('MStarsIcon', StarIcon)
-    .component('MHomeIcon', HomeIcon)
     .component('MDownloadsIcon', DownloadIcon)
     .component('MSearchIcon', SearchIcon)
     .component('MDevusageIcon', UserGroupIcon)
@@ -77,7 +74,6 @@ export default (app: App) => {
 
   app
     .component('MClose', Close)
-    .component('MTag', Tag)
     .component('MDotsIcon', DotsIcon)
     .component('MStarIcon', StarIcon)
     .component('MNpmIcon', NpmIcon)

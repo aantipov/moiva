@@ -4,13 +4,23 @@
 
     <p class="flex">
       <a
+        v-if="showHomeLink"
+        v-tooltip.html="'Home Page'"
+        :href="pkg.homepage"
+        target="_blank"
+        rel="noopener"
+        class="flex items-end text-black"
+      >
+        <HomeIcon />
+      </a>
+      <a
         v-tooltip.html="'View package info on npmjs.com'"
         :href="npmjsLink"
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener"
         class="flex items-end text-black"
       >
-        <NpmIcon class="h-12 w-12 sm:h-6 sm:w-6" />
+        <NpmIcon />
         <span class="font-mono text-sm"> v{{ pkg.version }} </span>
       </a>
     </p>
@@ -36,6 +46,7 @@ import { computed } from 'vue';
 import { ReadonlyNpmPackageT } from '@/libraryApis';
 import Tag from '@/components/Tag.vue';
 import NpmIcon from '@/icons/NpmMDIIcon.vue';
+import HomeIcon from '@/icons/HomeIcon.vue';
 import { hasAiInfo } from '@/shared-types';
 
 const props = defineProps<{ pkg: ReadonlyNpmPackageT; showTitle: boolean }>();
@@ -48,5 +59,11 @@ const alternatives = computed(() =>
 );
 const npmjsLink = computed(
   () => `https://www.npmjs.com/package/${encodeURIComponent(props.pkg.name)}`
+);
+const showHomeLink = computed(
+  () =>
+    !!props.pkg.homepage &&
+    props.pkg.homepage.startsWith('https://') &&
+    !props.pkg.homepage.includes('github.com')
 );
 </script>

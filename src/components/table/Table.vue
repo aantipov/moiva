@@ -90,12 +90,8 @@ const props = defineProps({
 
 const rows = computed(() => {
   const hasNpm = libraries.some((lib) => !!lib.npmPackage);
-  const hasTags = libraries.some((lib) => !!lib.tags.length);
   const hasPlayground = libraries.some((lib) => !!lib.playground);
   let filteredRows = ROWS;
-  filteredRows = hasTags
-    ? filteredRows
-    : filteredRows.filter((row) => row.metric !== 'tags');
   filteredRows = hasNpm
     ? filteredRows
     : filteredRows.filter((row) => !NPM_METRICS.includes(row.metric));
