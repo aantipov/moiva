@@ -29,7 +29,6 @@ import ShieldIcon from '@/icons/ShieldIcon.vue';
 import BugIcon from '@/icons/BugIcon.vue';
 import HeartBeatIcon from '@/icons/HeartBeatIcon.vue';
 import SortIcon from '@/icons/SortIcon.vue';
-import Tag from '@/components/Tag.vue';
 
 export default (app: App) => {
   if (process.env.NODE_ENV !== 'development') {
@@ -75,7 +74,6 @@ export default (app: App) => {
 
   app
     .component('MClose', Close)
-    .component('MTag', Tag)
     .component('MDotsIcon', DotsIcon)
     .component('MStarIcon', StarIcon)
     .component('MNpmIcon', NpmIcon)
