@@ -1,14 +1,5 @@
 <template>
-  <div v-if="type === 'repo'" class="flex justify-center">
-    <ExternalLink
-      v-tooltip.html.ni="githubTooltip"
-      :href="githubUrl"
-      :txt="lib.repo.repoId"
-      truncate
-    />
-  </div>
-
-  <div v-else-if="type === 'status'">
+  <div v-if="type === 'status'">
     <div class="flex justify-center">
       <StatusBadge :value="lib.status" />
     </div>
@@ -222,7 +213,6 @@ import {
   formatPercent,
   formatNumber,
   formatDateFromNow,
-  sanitizeHTML,
 } from '@/utils';
 import { MetricT } from './TableConfig';
 import StatusBadge from '@/components/StatusBadge.vue';
@@ -242,11 +232,6 @@ const lastCommitAt = computed(() =>
 const npmNameEncoded = computed(() =>
   encodeURIComponent(lib.value.npmPackage?.name ?? '')
 );
-const githubTooltip = computed<string>(() => {
-  return `<p class="f-mono">${lib.value.repo.repoId}</p><p>${sanitizeHTML(
-    lib.value.repo.description
-  )}</p>`;
-});
 const starsGrowth = computed<string>(() => {
   const { starsQuery, repo } = lib.value;
 
@@ -329,7 +314,6 @@ const vulnTooltip = computed(
 const bundlephobiaUrl = computed(
   () => `https://bundlephobia.com/package/${npmNameEncoded.value}`
 );
-const githubUrl = computed(() => `https://github.com/${lib.value.repo.repoId}`);
 
 const tradar = computed(() => {
   if (!lib.value.tradar) {
