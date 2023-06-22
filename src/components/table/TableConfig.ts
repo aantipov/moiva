@@ -4,7 +4,6 @@ import { prevQuarter } from '@/utils';
 import { ascend } from 'ramda';
 
 const METRICS = [
-  'repo',
   'status',
   'playground',
   'stars',
@@ -110,8 +109,6 @@ export interface MetricDataWithChartT extends MetricDataT {
 }
 
 export const ROWS: MetricDataT[] = [
-  { cat: '', metric: 'repo', label: 'GitHub', tooltip: 'GitHub repository' },
-
   {
     cat: '',
     metric: 'status',

@@ -9,7 +9,7 @@
         :href="pkg.homepage"
         target="_blank"
         rel="noopener"
-        class="flex items-end text-black"
+        class="mr-1 text-black"
       >
         <HomeIcon />
       </a>
@@ -18,10 +18,19 @@
         :href="npmjsLink"
         target="_blank"
         rel="noopener"
-        class="flex items-end text-black"
+        class="mr-1 flex items-end text-black"
       >
         <NpmIcon />
         <span class="font-mono text-sm"> v{{ pkg.version }} </span>
+      </a>
+      <a
+        v-tooltip.html="'GitHub Repository'"
+        :href="`https://github.com/${pkg.repoId}`"
+        target="_blank"
+        rel="noopener"
+        class="text-black"
+      >
+        <GithubIcon />
       </a>
     </p>
 
@@ -47,6 +56,7 @@ import { ReadonlyNpmPackageT } from '@/libraryApis';
 import Tag from '@/components/Tag.vue';
 import NpmIcon from '@/icons/NpmMDIIcon.vue';
 import HomeIcon from '@/icons/HomeIcon.vue';
+import GithubIcon from '@/icons/GithubIcon.vue';
 import { hasAiInfo } from '@/shared-types';
 
 const props = defineProps<{ pkg: ReadonlyNpmPackageT; showTitle: boolean }>();
