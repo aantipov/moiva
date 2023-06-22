@@ -53,7 +53,6 @@ export default (app: App) => {
 
   // Table metrics icons
   app
-    .component('MRepoIcon', GithubIcon)
     .component('MStatusIcon', HeartBeatIcon)
     .component('MStarsIcon', StarIcon)
     .component('MDownloadsIcon', DownloadIcon)
