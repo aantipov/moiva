@@ -33,13 +33,11 @@
         <GithubIcon />
       </a>
 
-      <object
-        :id="'badge-' + props.pkg.name"
-        v-tooltip.html="snykTooltip"
-        :data="snykUrl"
-        type="image/svg+xml"
-        style="max-width: 131px; max-height: 20px"
-      ></object>
+      <img
+        v-tooltip.html="pkgTypes.tooltip"
+        :alt="pkgTypes.alt"
+        :src="`https://img.shields.io/badge/types-${pkgTypes.name}-${pkgTypes.color}?logo=typescript&logoColor=FFFFFF`"
+      />
     </p>
 
     <p v-for="(p, i) in description" :key="i" class="self-center pb-2">
@@ -84,13 +82,29 @@ const showHomeLink = computed(
     props.pkg.homepage.startsWith('https://') &&
     !props.pkg.homepage.includes('github.com')
 );
-
-const snykUrl = computed(
-  () =>
-    `https://snyk-widget.herokuapp.com/badge/npm/${encodeURIComponent(
-      props.pkg.name
-    )}/badge.svg`
-);
-const snykTooltip =
-  '<p>Security score of the Npm package.</p> <p><a href="https://snyk.io/" target="_blank">Snyk.io</a> calculates it based on the number of vulnerabilities and their severity.</p> "A" - no vulnerabilities, "F" - the least secure level.';
+const pkgTypes = computed(() => {
+  if (props.pkg.hasBuiltinTypes) {
+    return {
+      name: 'bundled',
+      color: '449824',
+      tooltip:
+        '<div class="tippy-content"> Types definitions are bundled with the npm package</div>',
+      alt: 'Types definitions are bundled with the npm package',
+    };
+  } else if (props.pkg.hasOtherTypes) {
+    return {
+      name: 'separate',
+      color: 'yellow',
+      tooltip: `Types definitions are provided via a separate npm package: <span class="font-mono">${props.pkg.typesPackageName}</span>`,
+      alt: `Types definitions are provided via a separate npm package: ${props.pkg.typesPackageName}`,
+    };
+  } else {
+    return {
+      name: 'missing',
+      color: 'E34F26',
+      tooltip: "The package doesn't have any types definitions",
+      alt: "The package doesn't have any types definitions",
+    };
+  }
+});
 </script>
