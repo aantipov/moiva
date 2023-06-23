@@ -35,7 +35,8 @@ async function handleRequest(ctx: CTX): Promise<Response> {
   const pkgName = decodeURIComponent(pkg);
   const cachedValue = await getCachedValue(pkgName, ctx);
 
-  if (cachedValue) {
+  // Replace `&& cachedValue.data.npm` with ZOD scheme validataion: if cache value doesn't comply with the scheme, then re-fetch
+  if (cachedValue && cachedValue.data.npm) {
     // Update cache in the background if it's older than 1 day or if it doesn't have AI info.
     const cacheAge = Date.now() - new Date(cachedValue.createdAt).getTime();
     if (!cachedValue.data.ai || cacheAge > 3600 * 24 * 1000) {
@@ -117,18 +118,17 @@ async function fetchData(
   ctx: CTX
 ): Promise<NpmInfoApiResponseT | null> {
   const kvAiBinding = ctx.env.aiPkgDescription;
-  const aiInfoPromise = kvAiBinding.get<KvAiT>(pkgName, { type: 'json' });
-  const pkgInfo = await fetchPkgInfo(pkgName);
+  const aiPromise = kvAiBinding.get<KvAiT>(pkgName, { type: 'json' });
+  const npm = await fetchPkgInfo(pkgName);
 
   // TODO: Cache in KV the error response for 1 hour.
-  if (!pkgInfo) {
+  if (!npm) {
     return null;
   }
+  const repo = await fetchRepoInfo(npm.repoId, ctx);
+  const ai = await aiPromise;
 
-  const aiInfo = await aiInfoPromise;
-  const res: NpmInfoApiResponseT = { ...pkgInfo, ai: aiInfo };
-
-  return res;
+  return { npm, ai, repo };
 }
 
 /**
@@ -136,7 +136,7 @@ async function fetchData(
  */
 async function fetchPkgInfo(
   pkgName: string
-): Promise<Omit<NpmInfoApiResponseT, 'ai'> | null> {
+): Promise<NpmInfoApiResponseT['npm'] | null> {
   // Try fetch types package in case the package doesn't have built-in types data.
   const typesPackage = '@types/' + pkgName.replace('@', '').replace('/', '__');
   const typesPromise = fetch(
@@ -193,6 +193,95 @@ async function fetchPkgInfo(
   }
 
   return result;
+}
+
+async function fetchRepoInfo(repoId: string, ctx: CTX) {
+  const url = 'https://api.github.com/graphql';
+  const [owner, name] = repoId.split('/');
+  const response = await fetch(url, getRepoFetchParams(name, owner, ctx));
+
+  if (!response.ok) {
+    throw response;
+  }
+
+  // @ts-ignore
+  const { errors, data } = await response.json();
+
+  if (errors) {
+    throw { statusCode: 500, message: JSON.stringify(errors) };
+  }
+
+  const { repository } = data;
+
+  return {
+    ...repository,
+    lastCommitAt: repository.lastCommitData.target.committedDate,
+    openIssues: repository.openIssues.totalCount,
+    openBugIssues: repository.openBugIssues.totalCount,
+    closedIssues: repository.closedIssues.totalCount,
+    closedBugIssues: repository.closedBugIssues.totalCount,
+    repoId: `${owner}/${name}`,
+    repoName: name,
+  };
+}
+
+function getRepoFetchParams(name: string, owner: string, ctx: CTX) {
+  // 'Type: Bug' - React; 'triage: bug' - Svelte; 'type: bug/fix' - Angular; 'Bug-fix' - Moment; 'issue: bug' - Luxon
+  // '☢️Bug' - Dayjs; '🐜 Bug fix' & '🐛 Bug' - date-fns; 'type: bug' - chart.js; 'P2-bug' - Playwright
+  // 'type: bug :sob:' - nestjs/nest
+  const bugLabels =
+    'labels: ["bug", "Bug", "Type: Bug", "triage: bug", "type: bug/fix", "Bug-fix", "issue: bug", "☢️Bug", "🐜 Bug fix", "🐛 Bug", "type: bug", "P2-bug", "type: bug :sob:"]';
+  const halfAYearAgo = new Date(Date.now() - 1000 * 3600 * 24 * 183);
+  const since = `since: "${halfAYearAgo.toISOString()}"`;
+
+  return {
+    headers: {
+      'content-type': 'application/json;charset=UTF-8',
+      'User-Agent': ctx.env.GITHUB_USER_AGENT,
+      Authorization: `Bearer ${ctx.env.GITHUB_TOKEN}`,
+    },
+    method: 'POST',
+    cf: { cacheEverything: true, cacheTtl },
+    body: JSON.stringify({
+      operationName: null,
+      variables: {},
+      query: `
+        {
+          repository(name: "${name}", owner: "${owner}") {
+            homepageUrl
+            isArchived
+            licenseInfo {
+              name
+              key
+              url
+            }
+            description
+            stars: stargazerCount
+            createdAt
+            lastCommitData: defaultBranchRef {
+              target {
+                ... on Commit {
+                  committedDate
+                }
+              }
+            }
+            openIssues: issues(filterBy: { states: [OPEN], ${since} }) {
+              totalCount
+            }
+            openBugIssues: issues(filterBy: { states: [OPEN], ${since}, ${bugLabels} }) {
+              totalCount
+            }
+            closedIssues: issues(filterBy: { states: [CLOSED], ${since} }) {
+              totalCount
+            }
+            closedBugIssues: issues(filterBy: { states: [CLOSED], ${since}, ${bugLabels} }) {
+              totalCount
+            }
+          }
+        }
+      `,
+    }),
+  };
 }
 
 function getRepoId(repository: NpmJsResponseT['repository']): string {

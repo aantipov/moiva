@@ -9,8 +9,9 @@
   <div class="content container mb-6 lg:w-9/12 xl:w-3/4">
     <NpmContent
       v-for="item in items"
-      :key="item.name"
-      :pkg="item"
+      :key="item.npm.name"
+      :npm="item.npm"
+      :ai="item.ai"
       :show-title="items.length > 1"
     />
   </div>
@@ -20,20 +21,20 @@
 import { computed, ref } from 'vue';
 import NpmContent from './NpmContent.vue';
 import { $trimmedLibraries, $isLoading } from '@/nanostore/trimmedLibraries';
-import { NpmPackageT } from '@/libraryApis';
 import { useStore } from '@nanostores/vue';
 import { getNpmLibraryByNpm } from '@/data';
+import { NpmInfoApiResponseT } from '@/shared-types';
 
-const props = defineProps<{ data: NpmPackageT[] }>();
+const props = defineProps<{ data: NpmInfoApiResponseT[] }>();
 const libs = useStore($trimmedLibraries);
 const firstLoadingFinished = ref(false);
 const items = computed(() =>
-  firstLoadingFinished.value
-    ? libs.value.map((item) => item.npmPackage)
-    : props.data
+  firstLoadingFinished.value ? libs.value : props.data
 );
 const aliases = computed(() =>
-  items.value.map((item) => getNpmLibraryByNpm(item.name)?.alias || item.name)
+  items.value.map(
+    (item) => getNpmLibraryByNpm(item.npm.name)?.alias || item.npm.name
+  )
 );
 const title = computed(() =>
   items.value.length === 1

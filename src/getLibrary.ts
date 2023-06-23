@@ -43,9 +43,9 @@ import {
   cacheR as languagesMapR,
 } from '@/components/languages/api';
 import { libraryToColorMapR } from '@/store/librariesColors';
-import { RepoT, NpmPackageT } from '@/libraryApis';
 import readings from '@/data/readings.json';
 import licenses from '@/data/licenses.json';
+import { NpmInfoApiResponseT } from './shared-types';
 
 type LibNpmDownloadsT = NpmDownloadT[] | null | undefined;
 
@@ -73,13 +73,18 @@ export interface LibraryT {
   category: string | null;
   tags: string[]; // tags of the Catalog library
   status: StatusT;
-  repo: RepoT;
+  repo: NpmInfoApiResponseT['repo'];
   alias: string;
   age: number; // number of seconds since creation
   playground: string | null;
   tradar: TechRadarT | null;
   isNpmCoreArtifact: boolean | null;
-  npmPackage: NpmPackageT;
+  /**
+   * @deprecated use 'npm' field instead
+   */
+  npmPackage: NpmInfoApiResponseT['npm']; // deprecated. Duplicate of 'npm' below
+  npm: NpmInfoApiResponseT['npm'];
+  ai: NpmInfoApiResponseT['ai'];
   npmCreationDate: string | null | undefined;
   npmDependencies: number | undefined;
   npmReleases: NpmPackageReleasesT[] | null | undefined;
@@ -107,10 +112,10 @@ export interface LibraryT {
 }
 
 export function getLibrary(
-  repo: RepoT,
-  npmPackage: NpmPackageT,
+  npmApiResponse: NpmInfoApiResponseT,
   catalogLibrary: CatalogLibraryT | null
 ): LibraryT {
+  const { npm, repo, ai } = npmApiResponse;
   const isNpmCoreArtifact = catalogLibrary?.isNpmCoreArtifact ?? null;
   const category = (catalogLibrary && catalogLibrary.category) || null;
   const tags = (catalogLibrary && catalogLibrary.tags) || [];
@@ -118,8 +123,7 @@ export function getLibrary(
   const repoIdLC = repo.repoId.toLowerCase();
   const license = (() => {
     const licenseKey =
-      npmPackage?.license?.toLowerCase() ||
-      repo.licenseInfo?.key?.toLowerCase();
+      npm.license?.toLowerCase() || repo.licenseInfo?.key?.toLowerCase();
 
     return licenseKey ? licenses.find((item) => item.key === licenseKey) : null;
   })() as LicenseT | null;
@@ -128,7 +132,9 @@ export function getLibrary(
     id,
     catalogLibraryId: catalogLibrary?.id ?? null,
     repo,
-    npmPackage,
+    npmPackage: npm, // deprecated in favor of 'npm' prop
+    npm,
+    ai,
     category,
     tags,
     isNpmCoreArtifact,
@@ -146,8 +152,7 @@ export function getLibrary(
       if (
         legacyLibraries.find(
           (lib) =>
-            (lib.repoId && lib.repoId === repo.repoId) ||
-            (lib.npm && lib.npm === npmPackage?.name)
+            (lib.repoId && lib.repoId === repo.repoId) || lib.npm === npm.name
         )
       ) {
         return 'LEGACY';
@@ -164,7 +169,7 @@ export function getLibrary(
       }
       return 'ACTIVE';
     }),
-    playground: (npmPackage && npmToPlaygroundMap[npmPackage.name]) || null,
+    playground: npmToPlaygroundMap[npm.name] || null,
     tradar: repoIdToTechRadarMap[repoIdLC] || null,
     // @ts-ignore
     license,
@@ -192,35 +197,21 @@ export function getLibrary(
       return contributors.slice(-1)[0].contributors;
     }),
     // @ts-ignore
-    npmCreationDate: computed(() =>
-      npmPackage ? npmCreationDatesMapR.get(npmPackage.name) : null
+    npmCreationDate: computed(() => npmCreationDatesMapR.get(npm.name)),
+    // @ts-ignore
+    npmDependencies: computed(() => npm.dependencies.length ?? undefined),
+    // @ts-ignore
+    npmReleases: computed(() => npmReleasesMapR.get(npm.name)),
+    // @ts-ignore
+    npmReleasesLastQ: computed(
+      () => npmReleasesMapR.get(npm.name)?.slice(-1)[0].releases
     ),
     // @ts-ignore
-    npmDependencies: computed(
-      () => npmPackage?.dependencies.length ?? undefined
-    ),
-    // @ts-ignore
-    npmReleases: computed(() =>
-      npmPackage ? npmReleasesMapR.get(npmPackage.name) : null
-    ),
-    // @ts-ignore
-    npmReleasesLastQ: computed(() =>
-      npmPackage
-        ? npmReleasesMapR.get(npmPackage.name)?.slice(-1)[0].releases
-        : undefined
-    ),
-    // @ts-ignore
-    npmDownloads: computed(() =>
-      npmPackage ? npmDownloadsMapR.get(npmPackage.name) : null
-    ),
+    npmDownloads: computed(() => npmDownloadsMapR.get(npm.name)),
 
     // @ts-ignore
     npmDownloadsAvg: computed(() => {
-      if (!npmPackage) {
-        return null;
-      }
-
-      const npmDownloads = npmDownloadsMapR.get(npmPackage.name);
+      const npmDownloads = npmDownloadsMapR.get(npm.name);
 
       if (!npmDownloads) {
         return undefined;
@@ -235,10 +226,7 @@ export function getLibrary(
     }),
 
     npmDownloadsGrowth: computed(() => {
-      if (!npmPackage) {
-        return null;
-      }
-      const npmDownloads = npmDownloadsMapR.get(npmPackage.name);
+      const npmDownloads = npmDownloadsMapR.get(npm.name);
       if (!npmDownloads) {
         return undefined;
       }
@@ -256,9 +244,7 @@ export function getLibrary(
     // @ts-ignore
     starsQuery: computed(() => starsQueriesRef.value.get(repoIdLC)),
     // @ts-ignore
-    bundlesize: computed(() =>
-      npmPackage ? bundlesizeMapR.get(npmPackage.name) : null
-    ),
+    bundlesize: computed(() => bundlesizeMapR.get(npm.name)),
     devUsage: repoIdToDevUsageDataMap[repoIdLC],
     devUsageLast: repoIdToDevUsageDataMap[repoIdLC]?.usage.slice(-1)[0].value,
     // @ts-ignore
@@ -280,13 +266,8 @@ export function getLibrary(
     languages: computed(() => languagesMapR.get(repoIdLC)),
     // @ts-ignore
     readings: computed(() => {
-      if (npmPackage) {
-        return (readings as ReadingT[]).filter((item) =>
-          item.npms.includes(npmPackage.name)
-        );
-      }
       return (readings as ReadingT[]).filter((item) =>
-        item.repos.includes(repoIdLC)
+        item.npms.includes(npm.name)
       );
     }),
   };
