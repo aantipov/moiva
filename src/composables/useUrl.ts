@@ -22,18 +22,9 @@ export function useUrl(): void {
 function updateUrl(libraries: LibrariesReadonlyT): void {
   const Url = new URL(window.location.href);
   const originalHref = '/' + Url.search;
-  const npmPackagesNames = [] as string[];
-  const reposIds = [] as string[];
+  const npmPackagesNames = libraries.map((library) => library.npmPackage.name);
 
-  libraries.forEach((library) => {
-    if (library.npmPackage) {
-      npmPackagesNames.push(library.npmPackage.name);
-    } else {
-      reposIds.push(library.repo.repoId);
-    }
-  });
-
-  const newHref = constructHref(npmPackagesNames, reposIds);
+  const newHref = constructHref(npmPackagesNames);
 
   if (!hasCanonicalUrlCheckProcessed) {
     // Let GoogleBot know the canonical URL

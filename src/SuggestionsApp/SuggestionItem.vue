@@ -64,7 +64,7 @@ import LoaderTailSpin from '@/components/LoaderTailSpin.vue';
 import { computed, onMounted, PropType, ref } from 'vue';
 import { numbersFormatter } from '@/utils';
 import { CatalogLibraryT } from '@/data/index';
-import { fetchLibraryByNpm, fetchLibraryByRepo } from '@/libraryApis';
+import { fetchLibraryByNpm } from '@/libraryApis';
 import { fetchNpmDownloads } from '@/components/downloads/api';
 import tippy, { roundArrow } from 'tippy.js';
 import { LibraryT } from '@/getLibrary';
@@ -113,11 +113,7 @@ const downloads = computed(() =>
 
 async function _fetchData() {
   isLoading.value = true;
-  if (props.catalogLibrary.npm) {
-    lib.value = await fetchLibraryByNpm(props.catalogLibrary.npm);
-  } else {
-    lib.value = await fetchLibraryByRepo(props.catalogLibrary.repoId);
-  }
+  lib.value = await fetchLibraryByNpm(props.catalogLibrary.npm);
   isLoading.value = false;
 }
 </script>

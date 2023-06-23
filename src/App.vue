@@ -121,11 +121,7 @@ import DevelopersUsage from '@/components/developer-usage/DeveloperUsageChart.vu
 import Commits from '@/components/commits/CommitsChart.vue';
 
 import { CAT_CONFIG } from '@/components/table/TableConfig';
-import {
-  getNpmPackagesFromUrl,
-  getReposIdsFromUrl,
-  showErrorMsg,
-} from '@/utils';
+import { getNpmPackagesFromUrl, showErrorMsg } from '@/utils';
 import { updateLibrariesColors } from '@/store/librariesColors';
 import {
   isLoading,
@@ -133,7 +129,6 @@ import {
   librariesIds,
   addInitialLibrariesByNpm,
   addLibraryByNpmPackage,
-  addLibraryByRepo,
   removeLibrary,
   removeAllLibraries,
 } from '@/store/libraries';
@@ -145,11 +140,7 @@ import { useUrl } from '@/composables/useUrl';
 // import * as Sentry from '@sentry/vue';
 // TODO: SENTRY
 import { useChartsVisibility } from './composables/useChartsVisibility';
-import {
-  $addedNpmPackage,
-  $addedRepo,
-  $removedLibrary,
-} from '@/nanostore/crudLibrary';
+import { $addedNpmPackage, $removedLibrary } from '@/nanostore/crudLibrary';
 import { onSet } from 'nanostores';
 
 import 'tippy.js/dist/tippy.css';
@@ -162,9 +153,6 @@ import 'tippy.js/animations/shift-away.css';
 onSet($addedNpmPackage, ({ newValue: npmPackageName }) => {
   addLibraryByNpmPackage(npmPackageName as string);
 });
-onSet($addedRepo, ({ newValue: repoId }) => {
-  addLibraryByRepo(repoId as string);
-});
 onSet($removedLibrary, ({ newValue: libraryId }) => {
   removeLibrary(libraryId as string);
 });
@@ -175,11 +163,7 @@ watchEffect(() => updateLibrariesColors(librariesIds.value));
 onMounted(() => {
   // Load the libraries defined in the URL
   const npmPackagesNamesFromUrl = getNpmPackagesFromUrl();
-  const reposIdsFromUrl = getReposIdsFromUrl();
-  Promise.all([
-    addInitialLibrariesByNpm(npmPackagesNamesFromUrl),
-    ...reposIdsFromUrl.map(addLibraryByRepo),
-  ]).catch(() => {
+  addInitialLibrariesByNpm(npmPackagesNamesFromUrl).catch(() => {
     // Redirect a user to 404 if there was a wrong lib in the url
     // This is needed for SEO - Google should not crawl "bad" pages
     window.location.href = '/not-found';
@@ -217,13 +201,9 @@ const miscChartsNumber = computed(
 window.onpopstate = () => {
   const urlParams = new URLSearchParams(document.location.search);
   const npmPackages = urlParams.get('npm')?.split(' ');
-  const githubRepos = urlParams.get('github')?.split(' ');
   removeAllLibraries();
   if (npmPackages) {
     npmPackages.forEach((name) => selectNpmPackage(name));
-  }
-  if (githubRepos) {
-    githubRepos.forEach((name) => selectRepo(name));
   }
 };
 
@@ -241,13 +221,6 @@ function selectNpmPackage(npmPackageName: string): void {
     //   tags: { npmPackage: npmPackageName },
     // });
     return null;
-  });
-}
-
-function selectRepo(repoId: string): void {
-  addLibraryByRepo(repoId).catch(() => {
-    showErrorMsg(`Sorry, we couldn't fetch data for ${repoId}`);
-    return Promise.reject();
   });
 }
 </script>

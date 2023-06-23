@@ -1,10 +1,5 @@
 import { reactive, computed, readonly, watch } from 'vue';
-import {
-  RepoT,
-  fetchLibraryByRepo,
-  fetchLibraryByNpm,
-  NpmPackageT,
-} from '@/libraryApis';
+import { RepoT, fetchLibraryByNpm, NpmPackageT } from '@/libraryApis';
 import { LibraryT } from '@/getLibrary';
 import { $trimmedLibraries, $isLoading } from '@/nanostore/trimmedLibraries';
 
@@ -132,26 +127,6 @@ function hasLibraryADuplicate(library: LibraryT): boolean {
       repo.repoId === library.repo.repoId &&
       npmPackage?.name === library.npmPackage?.name
   );
-}
-
-/**
- * Add a library via a Github repository
- */
-export function addLibraryByRepo(repoId: string): Promise<void> {
-  repoId = repoId.toLowerCase();
-  if (!repoId || reposLoading.includes(repoId)) {
-    return Promise.resolve();
-  }
-
-  reposLoading.push(repoId);
-
-  return fetchLibraryByRepo(repoId)
-    .then((lib) => {
-      if (!hasLibraryADuplicate(lib)) {
-        librariesR.push(lib);
-      }
-    })
-    .finally(() => reposLoading.splice(reposLoading.indexOf(repoId), 1));
 }
 
 export async function addInitialLibrariesByNpm(
