@@ -23,7 +23,7 @@ export const onRequest: PagesFunction<Env, 'pkg'> = async (ctx) => {
 };
 
 async function handleRequest(ctx: CTX): Promise<Response> {
-  const pkg = ctx.params.pkg;
+  const pkg = ctx.params.pkg as string;
 
   if (!pkg) {
     return new Response(null, {
@@ -32,7 +32,7 @@ async function handleRequest(ctx: CTX): Promise<Response> {
     });
   }
 
-  const pkgName = typeof pkg === 'string' ? pkg : pkg.join('/');
+  const pkgName = decodeURIComponent(pkg);
   const cachedValue = await getCachedValue(pkgName, ctx);
 
   if (cachedValue) {

@@ -11,7 +11,7 @@ const libsFiltered = libsAll.filter(
 );
 const libs = libsFiltered.slice(0, 50).map((lib) => lib.npm);
 const libsPromises = libs.map((lib) =>
-  fetch(`https://moiva.io/npm-info/${lib}`)
+  fetch(`https://moiva.io/npm-info/${encodeURIComponent(lib)}`)
 );
 const libsResponses = await Promise.all(libsPromises);
 const libsJsons = await Promise.all(libsResponses.map((res) => res.json()));
