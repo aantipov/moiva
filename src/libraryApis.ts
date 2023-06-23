@@ -93,7 +93,7 @@ function fetchNpmPackage(packageName: string): Promise<NpmPackageT> {
 
 function fetchNpmJSPackage(packageName: string): Promise<NpmPackageT> {
   return axios
-    .get<NpmPackageT>(`/npm-info/${packageName}`)
+    .get<NpmPackageT>(`/npm-info/${encodeURIComponent(packageName)}`)
     .then(({ data }) => data);
 }
 

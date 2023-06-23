@@ -9,8 +9,8 @@ const { npmPackages } = Astro.props;
 
 const promises = npmPackages.map(
   (pkg) =>
-    fetch(`${Astro.url.origin}/npm-info/${pkg}`).then((res) =>
-      res.json()
+    fetch(`${Astro.url.origin}/npm-info/${encodeURIComponent(pkg)}`).then(
+      (res) => res.json()
     ) as Promise<NpmInfoApiResponseT>
 );
 // All errors will be handled in UI in order to achieve better SSR performance for happy cases
