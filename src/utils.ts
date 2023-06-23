@@ -33,11 +33,9 @@ export function constructHref(npmPackagesNames: string[]): string {
     return '/';
   }
 
-  const paramsStr = `${npmQueryParamName}=${[...npmPackagesNames]
+  return `/?${npmQueryParamName}=${[...npmPackagesNames]
     .sort()
     .join(encodedDelimiter)}`;
-
-  return `/?${paramsStr}`;
 }
 
 export function getLibraryHref(library: CatalogLibraryT): string {
