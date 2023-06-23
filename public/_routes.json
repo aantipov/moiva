@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "include": ["/", "/npm-info/*"],
+  "include": ["/", "/npm-info/*", "/repo-info/*"],
   "exclude": [
     "/_astro/*",
     "/_worker.js",

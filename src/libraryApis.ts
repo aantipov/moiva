@@ -33,7 +33,7 @@ export interface RepoT {
   } | null;
 }
 
-export type NpmPackageT = NpmInfoApiResponseT;
+export type NpmPackageT = NpmInfoApiResponseT['npm'];
 
 export type ReadonlyNpmPackageT = DeepReadonly<NpmPackageT>;
 
@@ -43,9 +43,9 @@ export type LibrariesReadonlyT = DeepReadonly<LibraryT[]>;
 export async function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
   const catalogLibrary = getNpmLibraryByNpm(pkgName) || null;
   const npmPackage = await fetchNpmPackage(pkgName);
-  const repo = await fetchGithubRepo(npmPackage.repoId);
+  const repo = await fetchGithubRepo(npmPackage.npm.repoId);
 
-  return getLibrary(repo, npmPackage, catalogLibrary);
+  return getLibrary(repo, npmPackage.npm, npmPackage.ai, catalogLibrary);
 }
 
 function fetchGithubRepo(repoId: string): Promise<RepoT> {
@@ -65,7 +65,7 @@ function fetchGithubRepo(repoId: string): Promise<RepoT> {
     });
 }
 
-function fetchNpmPackage(packageName: string): Promise<NpmPackageT> {
+function fetchNpmPackage(packageName: string): Promise<NpmInfoApiResponseT> {
   const fetchPackageFunc = fetchNpmJSPackage; // Another alternative: fetchNpmsIOPackage;
 
   if (npmPackageCache.get(packageName)) {
@@ -91,9 +91,9 @@ function fetchNpmPackage(packageName: string): Promise<NpmPackageT> {
     });
 }
 
-function fetchNpmJSPackage(packageName: string): Promise<NpmPackageT> {
+function fetchNpmJSPackage(packageName: string): Promise<NpmInfoApiResponseT> {
   return axios
-    .get<NpmPackageT>(`/npm-info/${encodeURIComponent(packageName)}`)
+    .get<NpmInfoApiResponseT>(`/npm-info/${encodeURIComponent(packageName)}`)
     .then(({ data }) => data);
 }
 

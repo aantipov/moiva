@@ -46,6 +46,7 @@ import { libraryToColorMapR } from '@/store/librariesColors';
 import { RepoT, NpmPackageT } from '@/libraryApis';
 import readings from '@/data/readings.json';
 import licenses from '@/data/licenses.json';
+import { NpmInfoApiResponseT } from './shared-types';
 
 type LibNpmDownloadsT = NpmDownloadT[] | null | undefined;
 
@@ -80,6 +81,7 @@ export interface LibraryT {
   tradar: TechRadarT | null;
   isNpmCoreArtifact: boolean | null;
   npmPackage: NpmPackageT;
+  ai: NpmInfoApiResponseT['ai'];
   npmCreationDate: string | null | undefined;
   npmDependencies: number | undefined;
   npmReleases: NpmPackageReleasesT[] | null | undefined;
@@ -108,7 +110,8 @@ export interface LibraryT {
 
 export function getLibrary(
   repo: RepoT,
-  npmPackage: NpmPackageT,
+  npmPackage: NpmInfoApiResponseT['npm'],
+  ai: NpmInfoApiResponseT['ai'],
   catalogLibrary: CatalogLibraryT | null
 ): LibraryT {
   const isNpmCoreArtifact = catalogLibrary?.isNpmCoreArtifact ?? null;
@@ -129,6 +132,7 @@ export function getLibrary(
     catalogLibraryId: catalogLibrary?.id ?? null,
     repo,
     npmPackage,
+    ai,
     category,
     tags,
     isNpmCoreArtifact,

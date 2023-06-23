@@ -1,12 +1,12 @@
 <template>
   <div class="flex flex-col antialiased">
-    <h2 v-if="showTitle" class="self-center font-mono">{{ pkg.name }}</h2>
+    <h2 v-if="showTitle" class="self-center font-mono">{{ npm.name }}</h2>
 
     <p class="flex items-center">
       <a
         v-if="showHomeLink"
         v-tooltip.html="'Home Page'"
-        :href="pkg.homepage"
+        :href="npm.homepage"
         target="_blank"
         rel="noopener"
         class="mr-1 text-black"
@@ -21,11 +21,11 @@
         class="mr-1 flex items-end text-black"
       >
         <NpmIcon />
-        <span class="font-mono text-sm"> v{{ pkg.version }} </span>
+        <span class="font-mono text-sm"> v{{ npm.version }} </span>
       </a>
       <a
         v-tooltip.html="'GitHub Repository'"
-        :href="`https://github.com/${pkg.repoId}`"
+        :href="`https://github.com/${npm.repoId}`"
         target="_blank"
         rel="noopener"
         class="mr-1 text-black"
@@ -63,27 +63,31 @@ import Tag from '@/components/Tag.vue';
 import NpmIcon from '@/icons/NpmMDIIcon.vue';
 import HomeIcon from '@/icons/HomeIcon.vue';
 import GithubIcon from '@/icons/GithubIcon.vue';
-import { hasAiInfo } from '@/shared-types';
+import { NpmInfoApiResponseT, hasAiInfo } from '@/shared-types';
 
-const props = defineProps<{ pkg: ReadonlyNpmPackageT; showTitle: boolean }>();
+const props = defineProps<{
+  npm: ReadonlyNpmPackageT;
+  ai: NpmInfoApiResponseT['ai'];
+  showTitle: boolean;
+}>();
 const description = computed(() =>
-  hasAiInfo(props.pkg.ai) ? props.pkg.ai.description : [props.pkg.description]
+  hasAiInfo(props.ai) ? props.ai.description : [props.npm.description]
 );
-const tags = computed(() => (hasAiInfo(props.pkg.ai) ? props.pkg.ai.tags : []));
+const tags = computed(() => (hasAiInfo(props.ai) ? props.ai.tags : []));
 const alternatives = computed(() =>
-  hasAiInfo(props.pkg.ai) ? props.pkg.ai.alternatives : []
+  hasAiInfo(props.ai) ? props.ai.alternatives : []
 );
 const npmjsLink = computed(
-  () => `https://www.npmjs.com/package/${encodeURIComponent(props.pkg.name)}`
+  () => `https://www.npmjs.com/package/${encodeURIComponent(props.npm.name)}`
 );
 const showHomeLink = computed(
   () =>
-    !!props.pkg.homepage &&
-    props.pkg.homepage.startsWith('https://') &&
-    !props.pkg.homepage.includes('github.com')
+    !!props.npm.homepage &&
+    props.npm.homepage.startsWith('https://') &&
+    !props.npm.homepage.includes('github.com')
 );
 const pkgTypes = computed(() => {
-  if (props.pkg.hasBuiltinTypes) {
+  if (props.npm.hasBuiltinTypes) {
     return {
       name: 'bundled',
       color: '449824',
@@ -91,12 +95,12 @@ const pkgTypes = computed(() => {
         '<div class="tippy-content"> Types definitions are bundled with the npm package</div>',
       alt: 'Types definitions are bundled with the npm package',
     };
-  } else if (props.pkg.hasOtherTypes) {
+  } else if (props.npm.hasOtherTypes) {
     return {
       name: 'separate',
       color: 'yellow',
-      tooltip: `Types definitions are provided via a separate npm package: <span class="font-mono">${props.pkg.typesPackageName}</span>`,
-      alt: `Types definitions are provided via a separate npm package: ${props.pkg.typesPackageName}`,
+      tooltip: `Types definitions are provided via a separate npm package: <span class="font-mono">${props.npm.typesPackageName}</span>`,
+      alt: `Types definitions are provided via a separate npm package: ${props.npm.typesPackageName}`,
     };
   } else {
     return {

@@ -53,16 +53,16 @@ export interface NpmJsResponseT {
   typings: string;
   types: string;
 }
-export type NpmInfoApiResponseT = Omit<
-  NpmJsResponseT,
-  'types' | 'typings' | 'dependencies'
-> & {
-  dependencies: string[];
-  hasBuiltinTypes: boolean;
-  hasOtherTypes: boolean;
-  typesPackageName: string;
-  repoId: string; // we only allow packages with github repos info
+export type NpmInfoApiResponseT = {
+  npm: Omit<NpmJsResponseT, 'types' | 'typings' | 'dependencies'> & {
+    dependencies: string[];
+    hasBuiltinTypes: boolean;
+    hasOtherTypes: boolean;
+    typesPackageName: string;
+    repoId: string; // we only allow packages with github repos info
+  };
   ai: KvAiT;
+  repo: any;
 };
 export type KvNpmInfoT = {
   data: NpmInfoApiResponseT;
