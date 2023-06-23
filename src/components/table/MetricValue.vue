@@ -130,15 +130,12 @@
   </div>
 
   <div v-else-if="type === 'ts'" class="flex items-center justify-center">
-    <template v-if="lib.npmPackage">
-      <type-badge v-if="lib.npmPackage.hasBuiltinTypes" value="bundled" />
-      <type-badge
-        v-else-if="lib.npmPackage.hasOtherTypes"
-        value="separate"
-        :types-package="lib.npmPackage.typesPackageName"
-      />
-      <template v-else>-</template>
-    </template>
+    <type-badge v-if="lib.npmPackage.hasBuiltinTypes" value="bundled" />
+    <type-badge
+      v-else-if="lib.npmPackage.hasOtherTypes"
+      value="separate"
+      :types-package="lib.npmPackage.typesPackageName"
+    />
     <template v-else>-</template>
   </div>
 
@@ -157,7 +154,7 @@
     />
     <span v-else>{{ bundlesize }}</span>
     <span
-      v-if="lib.npmPackage && lib.npmPackage.name === 'react'"
+      v-if="lib.npmPackage.name === 'react'"
       v-tooltip="'React’s bundle size includes react-dom package'"
       class="cursor-default"
       >*</span
@@ -166,14 +163,12 @@
 
   <div v-else-if="type === 'security'" class="flex items-center justify-center">
     <object
-      v-if="lib.npmPackage"
       :id="'badge-' + lib.npmPackage.name"
       v-tooltip="'Snyk Security Score badge. \'A\' means no vulnerabilities.'"
       :data="snykUrl"
       type="image/svg+xml"
       style="max-width: 131px; max-height: 20px"
     ></object>
-    <template v-else>-</template>
   </div>
 
   <div
@@ -230,7 +225,7 @@ const lastCommitAt = computed(() =>
   formatDateFromNow(lib.value.repo.lastCommitAt)
 );
 const npmNameEncoded = computed(() =>
-  encodeURIComponent(lib.value.npmPackage?.name ?? '')
+  encodeURIComponent(lib.value.npmPackage.name)
 );
 const starsGrowth = computed<string>(() => {
   const { starsQuery, repo } = lib.value;

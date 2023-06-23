@@ -2,7 +2,7 @@
   <div class="flex flex-col antialiased">
     <h2 v-if="showTitle" class="self-center font-mono">{{ pkg.name }}</h2>
 
-    <p class="flex">
+    <p class="flex items-center">
       <a
         v-if="showHomeLink"
         v-tooltip.html="'Home Page'"
@@ -28,10 +28,16 @@
         :href="`https://github.com/${pkg.repoId}`"
         target="_blank"
         rel="noopener"
-        class="text-black"
+        class="mr-1 text-black"
       >
         <GithubIcon />
       </a>
+
+      <img
+        v-tooltip.html="pkgTypes.tooltip"
+        :alt="pkgTypes.alt"
+        :src="`https://img.shields.io/badge/types-${pkgTypes.name}-${pkgTypes.color}?logo=typescript&logoColor=FFFFFF`"
+      />
     </p>
 
     <p v-for="(p, i) in description" :key="i" class="self-center pb-2">
@@ -76,4 +82,29 @@ const showHomeLink = computed(
     props.pkg.homepage.startsWith('https://') &&
     !props.pkg.homepage.includes('github.com')
 );
+const pkgTypes = computed(() => {
+  if (props.pkg.hasBuiltinTypes) {
+    return {
+      name: 'bundled',
+      color: '449824',
+      tooltip:
+        '<div class="tippy-content"> Types definitions are bundled with the npm package</div>',
+      alt: 'Types definitions are bundled with the npm package',
+    };
+  } else if (props.pkg.hasOtherTypes) {
+    return {
+      name: 'separate',
+      color: 'yellow',
+      tooltip: `Types definitions are provided via a separate npm package: <span class="font-mono">${props.pkg.typesPackageName}</span>`,
+      alt: `Types definitions are provided via a separate npm package: ${props.pkg.typesPackageName}`,
+    };
+  } else {
+    return {
+      name: 'missing',
+      color: 'E34F26',
+      tooltip: "The package doesn't have any types definitions",
+      alt: "The package doesn't have any types definitions",
+    };
+  }
+});
 </script>
