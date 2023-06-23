@@ -2,39 +2,15 @@ import { DeepReadonly } from 'vue';
 import axios, { AxiosError } from 'axios';
 // import * as Sentry from '@sentry/vue';
 // TODO: SENTRY
-import {
-  ERROR_CODE_NO_GITHUB_DATA,
-  ERROR_CODE_FETCH_GITHUB_REPO_FAILED,
-} from '@/constants';
+import { ERROR_CODE_NO_GITHUB_DATA } from '@/constants';
 import { getNpmLibraryByNpm } from '@/data/index';
 import { getLibrary, LibraryT } from '@/getLibrary';
 import type { NpmInfoApiResponseT } from '@/shared-types';
 
 const npmPackageCache = new Map();
-const githubCache = new Map();
 
-export interface RepoT {
-  repoId: string;
-  repoName: string;
-  homepageUrl: string;
-  description: string;
-  isArchived?: boolean; // optional for transitional period (api cache expiration)
-  stars: number;
-  createdAt: string;
-  lastCommitAt: string;
-  closedIssues: number;
-  closedBugIssues: number;
-  openIssues: number;
-  openBugIssues: number;
-  licenseInfo: {
-    key: string;
-    name: string;
-    url: string;
-  } | null;
-}
-
+export type RepoT = NpmInfoApiResponseT['repo'];
 export type NpmPackageT = NpmInfoApiResponseT['npm'];
-
 export type ReadonlyNpmPackageT = DeepReadonly<NpmPackageT>;
 
 export type LibraryReadonlyT = DeepReadonly<LibraryT>;
@@ -43,26 +19,8 @@ export type LibrariesReadonlyT = DeepReadonly<LibraryT[]>;
 export async function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
   const catalogLibrary = getNpmLibraryByNpm(pkgName) || null;
   const npmPackage = await fetchNpmPackage(pkgName);
-  const repo = await fetchGithubRepo(npmPackage.npm.repoId);
 
-  return getLibrary(repo, npmPackage.npm, npmPackage.ai, catalogLibrary);
-}
-
-function fetchGithubRepo(repoId: string): Promise<RepoT> {
-  if (githubCache.get(repoId)) {
-    return Promise.resolve(githubCache.get(repoId));
-  }
-
-  return axios
-    .get<RepoT>(`https://github.moiva.workers.dev/?repo=${repoId}`)
-    .then(({ data }) => {
-      githubCache.set(repoId, data);
-      return data;
-    })
-    .catch((err) => {
-      reportSentry(err, `fetchGithubRepo ${repoId}`);
-      return Promise.reject(ERROR_CODE_FETCH_GITHUB_REPO_FAILED);
-    });
+  return getLibrary(npmPackage, catalogLibrary);
 }
 
 function fetchNpmPackage(packageName: string): Promise<NpmInfoApiResponseT> {

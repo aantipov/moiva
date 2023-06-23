@@ -62,7 +62,25 @@ export type NpmInfoApiResponseT = {
     repoId: string; // we only allow packages with github repos info
   };
   ai: KvAiT;
-  repo: any;
+  repo: {
+    repoId: string;
+    repoName: string;
+    homepageUrl: string;
+    description: string;
+    isArchived?: boolean; // optional for transitional period (api cache expiration)
+    stars: number;
+    createdAt: string;
+    lastCommitAt: string;
+    closedIssues: number;
+    closedBugIssues: number;
+    openIssues: number;
+    openBugIssues: number;
+    licenseInfo: {
+      key: string;
+      name: string;
+      url: string;
+    } | null;
+  };
 };
 export type KvNpmInfoT = {
   data: NpmInfoApiResponseT;
