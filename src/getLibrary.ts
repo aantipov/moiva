@@ -79,6 +79,9 @@ export interface LibraryT {
   playground: string | null;
   tradar: TechRadarT | null;
   isNpmCoreArtifact: boolean | null;
+  /**
+   * @deprecated use 'npm' field instead
+   */
   npmPackage: NpmInfoApiResponseT['npm']; // deprecated. Duplicate of 'npm' below
   npm: NpmInfoApiResponseT['npm'];
   ai: NpmInfoApiResponseT['ai'];
