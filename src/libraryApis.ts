@@ -6,11 +6,7 @@ import {
   ERROR_CODE_NO_GITHUB_DATA,
   ERROR_CODE_FETCH_GITHUB_REPO_FAILED,
 } from '@/constants';
-import {
-  getRepoCoreNpmArtifact,
-  getGithubLibraryByRepo,
-  getNpmLibraryByNpm,
-} from '@/data/index';
+import { getNpmLibraryByNpm } from '@/data/index';
 import { getLibrary, LibraryT } from '@/getLibrary';
 import type { NpmInfoApiResponseT } from '@/shared-types';
 
@@ -50,33 +46,6 @@ export async function fetchLibraryByNpm(pkgName: string): Promise<LibraryT> {
   const repo = await fetchGithubRepo(npmPackage.repoId);
 
   return getLibrary(repo, npmPackage, catalogLibrary);
-}
-
-/**
- * When fetching data by repo,
- * check in the catalog if the repo has an npm package as its Core artifact
- * otherwise try find an entry without npm
- */
-export async function fetchLibraryByRepo(repoId: string): Promise<LibraryT> {
-  const coreNpmLibrary = getRepoCoreNpmArtifact(repoId);
-  let library;
-  let fetchNpmPromise;
-
-  if (coreNpmLibrary) {
-    library = coreNpmLibrary;
-    fetchNpmPromise = fetchNpmPackage(coreNpmLibrary.npm);
-  } else {
-    library = getGithubLibraryByRepo(repoId) || null;
-    fetchNpmPromise = Promise.resolve(null);
-  }
-
-  const [repo, npmPackage] = await Promise.all([
-    fetchGithubRepo(repoId),
-    fetchNpmPromise,
-  ]);
-
-  // @ts-ignore
-  return getLibrary(repo, npmPackage, library);
 }
 
 function fetchGithubRepo(repoId: string): Promise<RepoT> {

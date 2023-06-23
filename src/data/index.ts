@@ -108,17 +108,7 @@ interface CatalogLibraryNpmT {
   alias: string;
   framework: string | null;
 }
-interface CatalogLibraryGithubT {
-  id: number; // index in the catalog libraries list
-  npm: null;
-  isNpmCoreArtifact: null;
-  repoId: string; // unique
-  category: string;
-  tags: string[];
-  alias: string;
-  framework: string | null;
-}
-export type CatalogLibraryT = CatalogLibraryNpmT | CatalogLibraryGithubT;
+export type CatalogLibraryT = CatalogLibraryNpmT;
 
 /**
  * Get Alias using the alias from the catalog or repository's name
@@ -157,30 +147,6 @@ export const allCatalogLibraries = rawLibraries
     framework: lib.tags.find((tag) => frameworksTags.includes(tag)) || null,
     id: index,
   })) as CatalogLibraryT[];
-
-/**
- * Find a Catalog entry with Core npm artifact
- */
-export function getRepoCoreNpmArtifact(
-  repoId: string
-): CatalogLibraryNpmT | undefined {
-  const repoIdLC = repoId.toLowerCase();
-  return catalogLibraries.find(
-    (lib) => lib.repoId === repoIdLC && lib.isNpmCoreArtifact && lib.npm
-  ) as CatalogLibraryNpmT | undefined;
-}
-
-/**
- * Get "pure" GitHub Catalog Library (without npm)
- */
-export function getGithubLibraryByRepo(
-  repoId: string
-): CatalogLibraryGithubT | undefined {
-  const repoIdLC = repoId.toLowerCase();
-  return catalogLibraries.find((lib) => lib.repoId === repoIdLC && !lib.npm) as
-    | CatalogLibraryGithubT
-    | undefined;
-}
 
 /**
  * Get a Npm Catalog Library by npm name

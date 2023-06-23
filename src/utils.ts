@@ -28,39 +28,14 @@ export function getNpmPackagesFromUrl(): string[] {
   return [...new Set(allPackages)];
 }
 
-export function getReposIdsFromUrl(): string[] {
-  const Url = new URL(window.location.href);
-  const repos =
-    Url.searchParams.get(githubQueryParamName)?.split(delimiter) || [];
-
-  return [...new Set(repos)];
-}
-
-export function constructHref(
-  npmPackagesNames: string[],
-  reposIds: string[]
-): string {
-  if (!npmPackagesNames.length && !reposIds.length) {
+export function constructHref(npmPackagesNames: string[]): string {
+  if (!npmPackagesNames.length) {
     return '/';
   }
 
-  const params = [];
-
-  if (npmPackagesNames.length) {
-    params.push(
-      `${npmQueryParamName}=${[...npmPackagesNames]
-        .sort()
-        .join(encodedDelimiter)}`
-    );
-  }
-
-  if (reposIds.length) {
-    params.push(
-      `${githubQueryParamName}=${[...reposIds].sort().join(encodedDelimiter)}`
-    );
-  }
-
-  return `/?${params.join('&')}`;
+  return `/?${npmQueryParamName}=${[...npmPackagesNames]
+    .sort()
+    .join(encodedDelimiter)}`;
 }
 
 export function getLibraryHref(library: CatalogLibraryT): string {

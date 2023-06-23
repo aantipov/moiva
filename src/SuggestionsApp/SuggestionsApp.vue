@@ -52,11 +52,7 @@ import LibraryItem from './LibraryItem.vue';
 import ChevronDownIcon from '@/icons/ChevronDownIcon.vue';
 import ChevronUpIcon from '@/icons/ChevronUpIcon.vue';
 
-import {
-  $addedNpmPackage,
-  $addedRepo,
-  $removedLibrary,
-} from '@/nanostore/crudLibrary';
+import { $addedNpmPackage, $removedLibrary } from '@/nanostore/crudLibrary';
 
 // The Number of Suggestions shown in the "SHOW LESS" mode
 const size = 5;
@@ -80,12 +76,9 @@ const suggestions = computed<CatalogLibraryT[]>(() =>
 );
 
 function onSelect(catalogLibrary: CatalogLibraryT) {
-  if (catalogLibrary.npm) {
-    $addedNpmPackage.set(catalogLibrary.npm);
-  } else {
-    $addedRepo.set(catalogLibrary.repoId);
-  }
+  $addedNpmPackage.set(catalogLibrary.npm);
 }
+
 function onRemove(catalogLibrary: TrimmedLibraryT) {
   $removedLibrary.set(catalogLibrary.id);
 }

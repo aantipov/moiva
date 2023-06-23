@@ -1,10 +1,6 @@
 ---
 import { constructHref } from '@/utils';
 
-function makeHref(libs: string[]): string {
-  return constructHref(libs, []);
-}
-
 const items: { name: string; libs: string[][] }[] = [
   {
     name: 'Frontend frameworks',
@@ -93,7 +89,7 @@ const items: { name: string; libs: string[][] }[] = [
         <span>{item.name}: </span>
         {item.libs.map((libs, i) => (
           <span class="flex">
-            <a href={makeHref(libs)}>{libs.join('-vs-')}</a>
+            <a href={constructHref(libs)}>{libs.join('-vs-')}</a>
             {i < item.libs.length - 1 && ', '}
           </span>
         ))}
