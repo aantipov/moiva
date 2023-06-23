@@ -81,6 +81,7 @@ export interface LibraryT {
   tradar: TechRadarT | null;
   isNpmCoreArtifact: boolean | null;
   npmPackage: NpmPackageT;
+  npm: NpmPackageT;
   ai: NpmInfoApiResponseT['ai'];
   npmCreationDate: string | null | undefined;
   npmDependencies: number | undefined;
@@ -131,7 +132,8 @@ export function getLibrary(
     id,
     catalogLibraryId: catalogLibrary?.id ?? null,
     repo,
-    npmPackage,
+    npmPackage, // deprecated in favor of 'npm' prop
+    npm: npmPackage,
     ai,
     category,
     tags,

@@ -10,7 +10,7 @@ type DeepReadonly<T> = T extends (infer R)[]
 export type TrimmedLibraryT = DeepReadonly<
   Pick<
     LibraryT,
-    'tags' | 'catalogLibraryId' | 'id' | 'npmPackage' | 'repo' | 'alias' | 'ai'
+    'tags' | 'catalogLibraryId' | 'id' | 'npm' | 'repo' | 'alias' | 'ai'
   >
 >;
 export const $trimmedLibraries = atom<TrimmedLibraryT[]>([]);

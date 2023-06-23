@@ -118,16 +118,15 @@ async function fetchData(
   ctx: CTX
 ): Promise<NpmInfoApiResponseT | null> {
   const kvAiBinding = ctx.env.aiPkgDescription;
-  const aiInfoPromise = kvAiBinding.get<KvAiT>(pkgName, { type: 'json' });
+  const aiPromise = kvAiBinding.get<KvAiT>(pkgName, { type: 'json' });
   const npm = await fetchPkgInfo(pkgName);
 
   // TODO: Cache in KV the error response for 1 hour.
   if (!npm) {
     return null;
   }
-  const repoPromise = fetchRepoInfo(npm.repoId, ctx);
-  const aiPromise = aiInfoPromise;
-  const [repo, ai] = await Promise.all([repoPromise, aiPromise]);
+  const repo = await fetchRepoInfo(npm.repoId, ctx);
+  const ai = await aiPromise;
 
   return { npm, ai, repo };
 }
@@ -185,14 +184,6 @@ async function fetchPkgInfo(
     typesPackageName: typesPackage,
     repoId: getRepoId(repository),
   };
-
-  // const response = await fetch(
-  //   `${ct}/${encodeURIComponent(pkgName)}/latest`,
-  //   {
-  //     headers: { 'content-type': 'application/json;charset=UTF-8' },
-  //     cf: { cacheEverything: true, cacheTtl },
-  //   }
-  // );
 
   if (!result.hasBuiltinTypes) {
     const typesResponse = await typesPromise;
