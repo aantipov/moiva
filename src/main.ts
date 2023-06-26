@@ -98,7 +98,7 @@ export default (app: App) => {
   function initTooltip(el: unknown, binding: DirectiveBinding<any>) {
     tippy(el as HTMLElement, {
       content: binding.value,
-      delay: 150,
+      delay: 700,
       interactive: 'ni' in binding.modifiers ? !binding.modifiers.ni : true, // non-interactive
       allowHTML: binding.modifiers.html,
       appendTo: document.body,

@@ -11,6 +11,7 @@
       v-for="item in items"
       :key="item.npm.name"
       :npm="item.npm"
+      :repo="item.repo"
       :ai="item.ai"
       :show-title="items.length > 1"
     />

@@ -1,7 +1,1 @@
-[
-  { "repoId": "sass/node-sass" },
-  { "repoId": "moment/moment" },
-  { "repoId": "angular/angular.js" },
-  { "npm": "amcharts3" },
-  { "npm": "radium" }
-]
+["node-sass", "moment", "amcharts3", "radium"]

@@ -1,12 +1,5 @@
 <template>
-  <div v-if="type === 'status'">
-    <div class="flex justify-center">
-      <StatusBadge :value="lib.status" />
-    </div>
-    <div class="mt-1 text-center text-sm opacity-80">{{ lastCommitAt }}</div>
-  </div>
-
-  <div v-else-if="type === 'playground'" class="flex flex-wrap justify-center">
+  <div v-if="type === 'playground'" class="flex flex-wrap justify-center">
     <template v-if="lib.playground">
       <ExternalLink truncate :href="lib.playground" txt="Playground" />
     </template>
@@ -203,14 +196,8 @@ import ExternalLink from '@/components/ExternalLink.vue';
 import { toRefs, computed } from 'vue';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
 import { LibraryReadonlyT } from '@/libraryApis';
-import {
-  numbersFormatter,
-  formatPercent,
-  formatNumber,
-  formatDateFromNow,
-} from '@/utils';
+import { numbersFormatter, formatPercent, formatNumber } from '@/utils';
 import { MetricT } from './TableConfig';
-import StatusBadge from '@/components/StatusBadge.vue';
 import TRadarBadge from '@/components/TRadarBadge.vue';
 import TypeBadge from '@/components/TypeBadge.vue';
 import LicenseBadge from '@/components/LicenseBadge.vue';
@@ -221,9 +208,6 @@ const props = defineProps<{
 }>();
 
 const { lib } = toRefs(props);
-const lastCommitAt = computed(() =>
-  formatDateFromNow(lib.value.repo.lastCommitAt)
-);
 const npmNameEncoded = computed(() =>
   encodeURIComponent(lib.value.npmPackage.name)
 );

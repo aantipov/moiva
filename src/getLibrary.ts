@@ -28,7 +28,6 @@ import {
   repoIdToTechRadarMap,
   repoToGTrendDefMap,
   npmToPlaygroundMap,
-  legacyLibraries,
   StateOfJSItemT,
   TechRadarT,
   CatalogLibraryT,
@@ -64,15 +63,12 @@ export interface LicenseT {
 
 export type LicenseTypeT = 'permissive' | 'restrictive' | 'unknown';
 
-export type StatusT = 'ACTIVE' | 'INACTIVE' | 'LEGACY' | 'ARCHIVED';
-
 export interface LibraryT {
   id: string;
   catalogLibraryId: number | null; //index in the catalogLibraries list
   color: string;
   category: string | null;
   tags: string[]; // tags of the Catalog library
-  status: StatusT;
   repo: NpmInfoApiResponseT['repo'];
   alias: string;
   age: number; // number of seconds since creation
@@ -144,31 +140,6 @@ export function getLibrary(
     age: computed(() =>
       differenceInMilliseconds(new Date(), new Date(repo.createdAt))
     ),
-    // @ts-ignore
-    status: computed(() => {
-      if (repo.isArchived) {
-        return 'ARCHIVED';
-      }
-      if (
-        legacyLibraries.find(
-          (lib) =>
-            (lib.repoId && lib.repoId === repo.repoId) || lib.npm === npm.name
-        )
-      ) {
-        return 'LEGACY';
-      }
-      const commits = commitsQueriesRef.value.get(repoIdLC);
-      if (commits?.data) {
-        const lastSixMonthCommits = commits.data.commits.slice(-26);
-        const hasNoCommits = lastSixMonthCommits.every(
-          (item) => item.total === 0
-        );
-        if (hasNoCommits) {
-          return 'INACTIVE';
-        }
-      }
-      return 'ACTIVE';
-    }),
     playground: npmToPlaygroundMap[npm.name] || null,
     tradar: repoIdToTechRadarMap[repoIdLC] || null,
     // @ts-ignore
