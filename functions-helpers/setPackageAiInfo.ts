@@ -190,7 +190,7 @@ function getMessages(pkgName: string): ChatCompletionRequestMessage[] {
           "react",
           "angular",
           "svelte"
-          ]
+          ],
           "isDeprecated": false
           }
 `,

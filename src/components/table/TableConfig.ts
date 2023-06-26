@@ -1,10 +1,9 @@
 import { TRadarLevelT } from '@/data';
-import { LibraryT, LicenseTypeT, StatusT } from '@/getLibrary';
+import { LibraryT, LicenseTypeT } from '@/getLibrary';
 import { prevQuarter } from '@/utils';
 import { ascend } from 'ramda';
 
 const METRICS = [
-  'status',
   'playground',
   'stars',
   'downloads',
@@ -35,7 +34,7 @@ export const NPM_METRICS: MetricT[] = [
   'security',
 ];
 
-export type CategoryT = '' | 'Popularity' | 'Maintenance' | 'Miscellaneous';
+export type CategoryT = 'Popularity' | 'Maintenance' | 'Miscellaneous';
 
 interface CategoryConfigT {
   bgColor: string;
@@ -47,15 +46,6 @@ interface CategoryConfigT {
 }
 
 export const CAT_CONFIG: Record<CategoryT, CategoryConfigT> = {
-  '': {
-    bgColor: 'bg-green-600/90',
-    bgHeaderColor: 'bg-primary',
-    bgMetricColor: 'bg-gray-200',
-    borderColor: 'border-primary',
-    textColor: 'text-white',
-    separatorColor: 'border-white/40',
-  },
-
   Popularity: {
     bgColor: 'bg-green-600/90',
     bgHeaderColor: 'bg-green-700',
@@ -109,26 +99,6 @@ export interface MetricDataWithChartT extends MetricDataT {
 }
 
 export const ROWS: MetricDataT[] = [
-  {
-    cat: '',
-    metric: 'status',
-    label: 'Status',
-    labelMore: 'and last commit date',
-    tooltip:
-      '<p>Library status. Possible values:</p><p>- "Active"<br> - "Inactive" if no commits in the last 6 months<br> - "Legacy" if library authors called it so<br> - "Archived" if the repository is archived</p>',
-    sortFn: (a, b) => {
-      const statusToValueMap: Record<StatusT, number> = {
-        ACTIVE: 0,
-        INACTIVE: 1,
-        LEGACY: 2,
-        ARCHIVED: 3,
-      };
-      return statusToValueMap[a.status] - statusToValueMap[b.status];
-    },
-  },
-
-  { metric: 'playground', cat: '', label: 'Playground' },
-
   {
     cat: 'Popularity',
     metric: 'downloads',
@@ -317,6 +287,8 @@ export const ROWS: MetricDataT[] = [
       return 0;
     },
   },
+
+  { cat: 'Miscellaneous', metric: 'playground', label: 'Playground' },
 
   {
     cat: 'Miscellaneous',

@@ -15,6 +15,7 @@ type AiResponseFoundT = {
   description: string[];
   tags: string[];
   alternatives: string[];
+  isDeprecated: boolean;
 };
 type AiResponseNotFoundT = { notFound: true };
 export type AiResponseT = AiResponseFoundT | AiResponseNotFoundT;
@@ -52,14 +53,20 @@ export interface NpmJsResponseT {
   homepage: string;
   typings: string;
   types: string;
+  deprecated?: string;
 }
 export type NpmInfoApiResponseT = {
-  npm: Omit<NpmJsResponseT, 'types' | 'typings' | 'dependencies'> & {
+  npm: Omit<
+    NpmJsResponseT,
+    'types' | 'typings' | 'dependencies' | 'deprecated'
+  > & {
     dependencies: string[];
     hasBuiltinTypes: boolean;
     hasOtherTypes: boolean;
     typesPackageName: string;
     repoId: string; // we only allow packages with github repos info
+    deprecated: string | null;
+    publishedAt?: string; // publishedAt is received from a separate request
   };
   ai: KvAiT;
   repo: {

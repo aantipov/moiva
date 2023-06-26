@@ -36,11 +36,16 @@ async function handleRequest(ctx: CTX): Promise<Response> {
   const cachedValue = await getCachedValue(pkgName, ctx);
 
   // Replace `&& cachedValue.data.npm` with ZOD scheme validataion: if cache value doesn't comply with the scheme, then re-fetch
-  if (cachedValue && cachedValue.data.npm) {
+  if (
+    cachedValue &&
+    cachedValue.data.npm &&
+    cachedValue.data.npm.publishedAt &&
+    Object.hasOwn(cachedValue.data.npm, 'deprecated')
+  ) {
     // Update cache in the background if it's older than 1 day or if it doesn't have AI info.
     const cacheAge = Date.now() - new Date(cachedValue.createdAt).getTime();
     if (!cachedValue.data.ai || cacheAge > 3600 * 24 * 1000) {
-      ctx.waitUntil(fetchDataAndUpdateCache(pkgName, ctx));
+      ctx.waitUntil(fetchDataAndUpdateCache(pkgName, cachedValue, ctx));
     }
 
     return new Response(JSON.stringify(cachedValue.data), {
@@ -51,7 +56,8 @@ async function handleRequest(ctx: CTX): Promise<Response> {
     });
   }
 
-  const res = await fetchData(pkgName, ctx);
+  console.log('[handleRequest::fetchData] Fetching data from NPM API');
+  const res = await fetchData(pkgName, cachedValue, ctx);
 
   // TODO: Cache in KV the error response for 1 hour.
   if (!res) {
@@ -69,17 +75,6 @@ async function handleRequest(ctx: CTX): Promise<Response> {
       'Cache-Control': `max-age=0, s-maxage=${cacheTtl}`,
     },
   });
-}
-
-async function fetchDataAndUpdateCache(
-  pkgName: string,
-  ctx: CTX
-): Promise<null> {
-  const res = await fetchData(pkgName, ctx);
-  if (res) {
-    await updateCache(pkgName, res, ctx);
-  }
-  return null;
 }
 
 async function getCachedValue(
@@ -113,13 +108,33 @@ async function updateCache(
   ]);
 }
 
+async function fetchDataAndUpdateCache(
+  pkgName: string,
+  cachedValue: KvNpmInfoT | null,
+  ctx: CTX
+): Promise<null> {
+  console.log(
+    '[fetchDataAndUpdateCache::fetchData] Fetching data from NPM API'
+  );
+  const res = await fetchData(pkgName, cachedValue, ctx);
+  if (res) {
+    await updateCache(pkgName, res, ctx);
+  }
+  return null;
+}
+
 async function fetchData(
   pkgName: string,
+  cachedValue: KvNpmInfoT | null,
   ctx: CTX
 ): Promise<NpmInfoApiResponseT | null> {
   const kvAiBinding = ctx.env.aiPkgDescription;
   const aiPromise = kvAiBinding.get<KvAiT>(pkgName, { type: 'json' });
-  const npm = await fetchPkgInfo(pkgName);
+  console.log(
+    '[fetchData::fetchPkgInfo] Fetching data from NPM API: ',
+    pkgName
+  );
+  const npm = await fetchPkgInfo(pkgName, cachedValue?.data?.npm);
 
   // TODO: Cache in KV the error response for 1 hour.
   if (!npm) {
@@ -135,8 +150,10 @@ async function fetchData(
  * @param {Request} request
  */
 async function fetchPkgInfo(
-  pkgName: string
+  pkgName: string,
+  cachedNpmValue: NpmInfoApiResponseT['npm'] | undefined
 ): Promise<NpmInfoApiResponseT['npm'] | null> {
+  console.log('[fetchPkgInfo] Fetching data from NPM API');
   // Try fetch types package in case the package doesn't have built-in types data.
   const typesPackage = '@types/' + pkgName.replace('@', '').replace('/', '__');
   const typesPromise = fetch(
@@ -156,7 +173,22 @@ async function fetchPkgInfo(
   );
 
   if (!response.ok) {
-    return null;
+    if (response.status === 404) {
+      return null;
+    }
+    throw new Error('Failed to fetch package info');
+  }
+
+  const responseData = (await response.json()) as NpmJsResponseT;
+
+  // TODO: instead of checking for `cachedValue.publishedAt` check for scheme (ZOD) compliance
+  if (
+    cachedNpmValue &&
+    cachedNpmValue.version === responseData.version &&
+    cachedNpmValue.publishedAt &&
+    Object.hasOwn(cachedNpmValue, 'deprecated')
+  ) {
+    return cachedNpmValue;
   }
 
   const {
@@ -169,9 +201,10 @@ async function fetchPkgInfo(
     repository,
     typings,
     types,
-  } = (await response.json()) as NpmJsResponseT;
+    deprecated,
+  } = responseData;
 
-  const result = {
+  const result: NpmInfoApiResponseT['npm'] = {
     name,
     description,
     dependencies: Object.keys(dependencies),
@@ -183,6 +216,8 @@ async function fetchPkgInfo(
     hasOtherTypes: false,
     typesPackageName: typesPackage,
     repoId: getRepoId(repository),
+    deprecated: deprecated || null,
+    publishedAt: await fetchPkgPublishedAt(name, version),
   };
 
   if (!result.hasBuiltinTypes) {
@@ -193,6 +228,38 @@ async function fetchPkgInfo(
   }
 
   return result;
+}
+
+interface ExtendedPkgDataResponseT {
+  time: Record<string, string>;
+}
+
+// Fetch publishedAt from the npm registry if
+async function fetchPkgPublishedAt(
+  pkgName: string,
+  version: string
+): Promise<string | undefined> {
+  console.log('fetchPkgPublishedAt', pkgName, version);
+  try {
+    const extendedPkgDataResponse = await fetch(
+      `https://registry.npmjs.org/${encodeURIComponent(pkgName)}/`,
+      { headers: { 'content-type': 'application/json;charset=UTF-8' } }
+    );
+    if (!extendedPkgDataResponse.ok) {
+      // TODO: report to sentry
+      console.error(
+        'Failed to fetch publishedAt',
+        extendedPkgDataResponse.statusText
+      );
+      return undefined;
+    }
+    return ((await extendedPkgDataResponse.json()) as ExtendedPkgDataResponseT)
+      .time[version];
+  } catch (error) {
+    // TODO: report error to sentry
+    console.error('Failed to fetch publishedAt', error);
+    return undefined;
+  }
 }
 
 async function fetchRepoInfo(repoId: string, ctx: CTX) {

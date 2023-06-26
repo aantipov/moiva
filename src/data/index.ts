@@ -197,4 +197,5 @@ function capitalise(str: string): string {
 export const GOOGLE_TRENDS_LIBS_LIMIT = 5;
 
 /** =========== LEGACY ============== **/
-export const legacyLibraries: { repoId?: string; npm?: string }[] = legacyItems;
+type NpmNameT = string;
+export const legacyLibraries: NpmNameT[] = legacyItems;

@@ -14,8 +14,6 @@
 
     <!--  Selected Libraries and Charts    -->
     <section v-if="librariesRR.length">
-      <Table category="" class="container mb-12 mt-4 lg:w-3/4" />
-
       <Readings class="container mb-12" />
 
       <!-- POPULARITY -->
