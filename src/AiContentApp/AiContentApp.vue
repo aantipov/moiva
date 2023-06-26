@@ -8,7 +8,7 @@
 
   <div class="content container mb-6 lg:w-9/12 xl:w-3/4">
     <NpmContent
-      v-for="(item, i) in items"
+      v-for="item in items"
       :key="item.npm.name"
       :npm="item.npm"
       :repo="item.repo"
