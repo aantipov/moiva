@@ -56,7 +56,6 @@ async function handleRequest(ctx: CTX): Promise<Response> {
     });
   }
 
-  console.log('[handleRequest::fetchData] Fetching data from NPM API');
   const res = await fetchData(pkgName, cachedValue, ctx);
 
   // TODO: Cache in KV the error response for 1 hour.
@@ -113,9 +112,6 @@ async function fetchDataAndUpdateCache(
   cachedValue: KvNpmInfoT | null,
   ctx: CTX
 ): Promise<null> {
-  console.log(
-    '[fetchDataAndUpdateCache::fetchData] Fetching data from NPM API'
-  );
   const res = await fetchData(pkgName, cachedValue, ctx);
   if (res) {
     await updateCache(pkgName, res, ctx);
@@ -130,10 +126,6 @@ async function fetchData(
 ): Promise<NpmInfoApiResponseT | null> {
   const kvAiBinding = ctx.env.aiPkgDescription;
   const aiPromise = kvAiBinding.get<KvAiT>(pkgName, { type: 'json' });
-  console.log(
-    '[fetchData::fetchPkgInfo] Fetching data from NPM API: ',
-    pkgName
-  );
   const npm = await fetchPkgInfo(pkgName, cachedValue?.data?.npm);
 
   // TODO: Cache in KV the error response for 1 hour.
@@ -153,7 +145,6 @@ async function fetchPkgInfo(
   pkgName: string,
   cachedNpmValue: NpmInfoApiResponseT['npm'] | undefined
 ): Promise<NpmInfoApiResponseT['npm'] | null> {
-  console.log('[fetchPkgInfo] Fetching data from NPM API');
   // Try fetch types package in case the package doesn't have built-in types data.
   const typesPackage = '@types/' + pkgName.replace('@', '').replace('/', '__');
   const typesPromise = fetch(
@@ -239,7 +230,6 @@ async function fetchPkgPublishedAt(
   pkgName: string,
   version: string
 ): Promise<string | undefined> {
-  console.log('fetchPkgPublishedAt', pkgName, version);
   try {
     const extendedPkgDataResponse = await fetch(
       `https://registry.npmjs.org/${encodeURIComponent(pkgName)}/`,
