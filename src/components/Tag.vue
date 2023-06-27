@@ -1,6 +1,6 @@
 <template>
   <span
-    class="m-1 whitespace-nowrap rounded-full border border-blue-300 bg-blue-200 px-2 text-sm"
+    class="m-1 whitespace-nowrap rounded-md border border-gray-500 px-2 py-1 text-sm"
   >
     {{ value }}
   </span>

@@ -62,7 +62,7 @@
       {{ alternatives.join(', ') }}
     </p>
 
-    <p v-if="tags.length" class="flex flex-wrap">
+    <p v-if="tags.length" class="flex flex-wrap items-center">
       <span class="font-bold">Tags</span>:
       <Tag v-for="(tag, i) in tags" :key="i" :value="tag" />
     </p>
