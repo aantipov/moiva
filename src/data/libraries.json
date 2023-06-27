@@ -168,14 +168,6 @@
     "tags": ["build-tool", "module-bundler", "esm", "cjs", "umd"]
   },
   {
-    "category": "Build and Bundling Tools",
-    "repoId": "egoist/poi",
-    "npm": "poi",
-    "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": ["build-tool", "module-bundler"]
-  },
-  {
     "category": "Charting Libraries",
     "repoId": "chartjs/chart.js",
     "npm": "chart.js",
@@ -849,14 +841,6 @@
   },
   {
     "category": "Frontend Frameworks",
-    "repoId": "hotwired/stimulus",
-    "npm": "stimulus",
-    "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": ["ui-framework"]
-  },
-  {
-    "category": "Frontend Frameworks",
     "repoId": "marko-js/marko",
     "npm": "marko",
     "isNpmCoreArtifact": true,
@@ -894,14 +878,6 @@
     "isNpmCoreArtifact": true,
     "alias": "Vue Apollo",
     "tags": ["GraphQL-client", "vue"]
-  },
-  {
-    "category": "GraphQL Libraries",
-    "repoId": "timhall/svelte-apollo",
-    "npm": "svelte-apollo",
-    "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": ["GraphQL-client", "svelte"]
   },
   {
     "category": "GraphQL Libraries",
@@ -1465,14 +1441,6 @@
   },
   {
     "category": "misc",
-    "repoId": "yarnpkg/yarn",
-    "npm": "yarn",
-    "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
     "repoId": "serverless/serverless",
     "npm": "serverless",
     "isNpmCoreArtifact": true,
@@ -1569,8 +1537,8 @@
   },
   {
     "category": "misc",
-    "repoId": "marak/faker.js",
-    "npm": "faker",
+    "repoId": "faker-js/faker",
+    "npm": "@faker-js/faker",
     "isNpmCoreArtifact": true,
     "alias": "Faker.js",
     "tags": []
@@ -11585,14 +11553,6 @@
   },
   {
     "category": "misc",
-    "repoId": "styled-system/styled-system",
-    "npm": "styled-system",
-    "isNpmCoreArtifact": true,
-    "alias": "Styled System",
-    "tags": []
-  },
-  {
-    "category": "misc",
     "repoId": "styletron/styletron",
     "npm": "styletron-react",
     "isNpmCoreArtifact": false,
@@ -11909,14 +11869,6 @@
     "npm": "@typegoose/typegoose",
     "isNpmCoreArtifact": true,
     "alias": "Typegoose",
-    "tags": ["orm"]
-  },
-  {
-    "category": "SQL and ORM Libraries",
-    "repoId": "craigmichaelmartin/pure-orm",
-    "npm": "pure-orm",
-    "isNpmCoreArtifact": true,
-    "alias": "PureORM",
     "tags": ["orm"]
   },
   {
@@ -13496,14 +13448,6 @@
     "tags": ["markdown-to-react"]
   },
   {
-    "category": "Markdown Components for React",
-    "repoId": "jerolimov/react-showdown",
-    "npm": "react-showdown",
-    "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": ["markdown-to-react"]
-  },
-  {
     "category": "UI Libraries for Tailwind CSS",
     "repoId": "saadeghi/daisyui",
     "npm": "daisyui",
@@ -13638,13 +13582,5 @@
     "isNpmCoreArtifact": true,
     "alias": "SvelteKit",
     "tags": ["svelte", "nodejs-framework", "static-site-generator-SSG", "server-side-rendering-SSR", "JAMstack"]
-  },
-  {
-    "category": "misc",
-    "repoId": "vuejs/vue-web-component-wrapper",
-    "npm": "@vue/web-component-wrapper",
-    "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": []
   }
 ]
