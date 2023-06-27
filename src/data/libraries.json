@@ -745,6 +745,30 @@
   },
   {
     "category": "Frontend Frameworks",
+    "repoId": "solidjs/solid",
+    "npm": "solid-js",
+    "isNpmCoreArtifact": true,
+    "alias": "Solid",
+    "tags": ["ui-framework"]
+  },
+  {
+    "category": "Frontend Frameworks",
+    "repoId": "BuilderIO/qwik",
+    "npm": "@builder.io/qwik",
+    "isNpmCoreArtifact": true,
+    "alias": "Qwik",
+    "tags": ["ui-framework"]
+  },
+  {
+    "category": "Frontend Frameworks",
+    "repoId": "preactjs/preact",
+    "npm": "preact",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["ui-framework"]
+  },
+  {
+    "category": "Frontend Frameworks",
     "repoId": "emberjs/ember.js",
     "npm": "ember-source",
     "isNpmCoreArtifact": true,
@@ -763,14 +787,6 @@
     "category": "Frontend Frameworks",
     "repoId": "infernojs/inferno",
     "npm": "inferno",
-    "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": ["ui-framework"]
-  },
-  {
-    "category": "Frontend Frameworks",
-    "repoId": "preactjs/preact",
-    "npm": "preact",
     "isNpmCoreArtifact": true,
     "alias": null,
     "tags": ["ui-framework"]
@@ -813,14 +829,6 @@
     "npm": "knockout",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["ui-framework"]
-  },
-  {
-    "category": "Frontend Frameworks",
-    "repoId": "solidjs/solid",
-    "npm": "solid-js",
-    "isNpmCoreArtifact": true,
-    "alias": "Solid",
     "tags": ["ui-framework"]
   },
   {
