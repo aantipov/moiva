@@ -53,7 +53,7 @@
       />
     </p>
 
-    <p v-for="(p, i) in description" :key="i" class="self-center pb-2">
+    <p v-for="(p, i) in slicedDescription" :key="i" class="self-center pb-2">
       {{ p }}
     </p>
 
@@ -85,9 +85,13 @@ const props = defineProps<{
   repo: NpmInfoApiResponseT['repo'];
   ai: NpmInfoApiResponseT['ai'];
   showTitle: boolean;
+  showAllParagraphs: boolean;
 }>();
 const description = computed(() =>
   hasAiInfo(props.ai) ? props.ai.description : [props.npm.description]
+);
+const slicedDescription = computed(() =>
+  description.value.slice(0, props.showAllParagraphs ? Infinity : 1)
 );
 const tags = computed(() => (hasAiInfo(props.ai) ? props.ai.tags : []));
 const alternatives = computed(() =>

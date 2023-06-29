@@ -38,6 +38,32 @@ export function hasAiInfo(obj: KvAiT): obj is KvAiFoundT {
 }
 
 /**
+ * AI COMPARE HANDLING
+ */
+
+// AI response when it finds the package abnd generates a proper answer
+export type AiCompareResponseFoundT = {
+  title: string;
+  description: string;
+}[];
+export type AiCompareResponseT = AiCompareResponseFoundT | AiResponseNotFoundT;
+export type KvAiCompareT =
+  | ({
+      data: AiCompareResponseFoundT | AiResponseNotFoundT;
+    } & AiResponseMetaT)
+  | null;
+
+export type NpmCompareApiResponseT =
+  | AiCompareResponseFoundT
+  | AiResponseNotFoundT;
+
+export function hasAiCompareInfo(
+  obj: NpmCompareApiResponseT | null
+): obj is AiCompareResponseFoundT {
+  return !!obj && Array.isArray(obj) && obj.length > 0;
+}
+
+/**
  * NPM INFO HANDLING
  */
 export interface NpmJsResponseT {

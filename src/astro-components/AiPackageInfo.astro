@@ -1,6 +1,9 @@
 ---
 import ContentApp from '@/AiContentApp/AiContentApp.vue';
-import type { NpmInfoApiResponseT } from '@/shared-types';
+import type {
+  NpmInfoApiResponseT,
+  NpmCompareApiResponseT,
+} from '@/shared-types';
 
 interface Props {
   npmPackages: string[];
@@ -14,9 +17,35 @@ const promises = npmPackages.map(
     ) as Promise<NpmInfoApiResponseT>
 );
 // All errors will be handled in UI in order to achieve better SSR performance for happy cases
-const data = await Promise.all(promises).catch((error) => null);
+const data = await Promise.all(promises).catch((_error) => null);
+
+let aiComparisonContent = null;
+// Fetch/Generate comparison data only if both packages exist
+if (data && npmPackages.length === 2) {
+  try {
+    const param = encodeURIComponent(npmPackages[0] + '_vs_' + npmPackages[1]);
+    const url = `${Astro.url.origin}/npm-compare/${param}`;
+    aiComparisonContent = (await fetch(url).then((res) => {
+      if (!res.ok) {
+        if (res.status === 404) {
+          return null;
+        }
+        throw new Error(res.statusText);
+      }
+
+      return res.json();
+    })) as NpmCompareApiResponseT;
+  } catch (error: any) {
+    console.error(`[AiPackageInfo.astro]: ${error?.message}`, error);
+  }
+}
 ---
 
 <div class="container antialiased content flex flex-col items-center">
-  <ContentApp data={data || []} client:idle />
+  <ContentApp
+    data={data || []}
+    aiComparison={aiComparisonContent}
+    packages={npmPackages}
+    client:idle
+  />
 </div>
