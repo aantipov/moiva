@@ -12805,7 +12805,7 @@
     "npm": "astro",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": ["static-site-generator-SSG", "JAMstack"]
+    "tags": ["static-site-generator-SSG", "JAMstack", "documentation"]
   },
   {
     "category": "Type Checking Libraries",
