@@ -34,3 +34,4 @@ pnpm-debug.log*
 # Local Netlify folder
 .netlify
 .dev.vars
+scripts/myscript.mjs
