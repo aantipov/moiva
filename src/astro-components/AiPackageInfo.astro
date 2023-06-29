@@ -19,8 +19,6 @@ const promises = npmPackages.map(
 // All errors will be handled in UI in order to achieve better SSR performance for happy cases
 const data = await Promise.all(promises).catch((_error) => null);
 
-// TODO: check if both packages exist
-
 let aiComparisonContent = null;
 // Fetch/Generate comparison data only if both packages exist
 if (data && npmPackages.length === 2) {
