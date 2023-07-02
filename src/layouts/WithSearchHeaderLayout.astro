@@ -6,10 +6,16 @@ interface Props {
   isMainAppPage: boolean;
   seoTitle: string;
   seoDescription: string;
+  canonicalUrl: string;
   allowSearchEngineCrawling: boolean;
 }
-const { isMainAppPage, seoTitle, seoDescription, allowSearchEngineCrawling } =
-  Astro.props;
+const {
+  isMainAppPage,
+  seoTitle,
+  seoDescription,
+  canonicalUrl,
+  allowSearchEngineCrawling,
+} = Astro.props;
 ---
 
 <html lang="en">
@@ -76,6 +82,7 @@ const { isMainAppPage, seoTitle, seoDescription, allowSearchEngineCrawling } =
       href="https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap"
       rel="stylesheet"
     />
+    <link rel="canonical" href={canonicalUrl} />
 
     <script
       async

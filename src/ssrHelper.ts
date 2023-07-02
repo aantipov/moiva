@@ -2,13 +2,10 @@
  *  We should allow Google to index pages with 1 or 2 npm packages only
  *
  * @param npmPackages
- * @param reposIds
  * @returns {boolean}
  */
-export function isSEOPage(npmPackages: string[], reposIds: string[]): boolean {
-  return (
-    (npmPackages.length === 1 || npmPackages.length === 2) && !reposIds.length
-  );
+export function isSEOPage(npmPackages: string[]): boolean {
+  return npmPackages.length <= 2;
 }
 
 export function getSEOTitle(npmPackages: string[]): string {
