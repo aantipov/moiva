@@ -6,15 +6,16 @@ import MainLayout from '@/layouts/Main.astro';
 import WithSearchHeader from '@/layouts/WithSearchHeaderLayout.astro';
 import AiPackageInfo from '@/astro-components/AiPackageInfo.astro';
 import { isSEOPage, getSEOTitle, getSEODescription } from '@/ssrHelper';
+import { constructHref } from '@/utils';
 
 export const prerender = false;
 
 const npmPackages = Astro.url.searchParams.get('npm')?.split(' ') || [];
-const repos = Astro.url.searchParams.get('github')?.split(' ') || [];
-const isSEO = isSEOPage(npmPackages, repos);
+const canonicalUrl = new URL(constructHref(npmPackages), Astro.site).toString();
+const isSEO = isSEOPage(npmPackages);
 const seoTitle = getSEOTitle(npmPackages);
 const seoDescription = getSEODescription(npmPackages);
-const isHomePage = !npmPackages.length && !repos.length;
+const isHomePage = !npmPackages.length;
 // const userAgent = Astro.request.headers.get('user-agent');
 // const isBot =
 //   !!userAgent && userAgent.match(/bot|crawler|slurp|spider|google|bing|yahoo/i);
@@ -39,6 +40,7 @@ const isHomePage = !npmPackages.length && !repos.length;
       isMainAppPage={true}
       seoTitle={seoTitle}
       seoDescription={seoDescription}
+      canonicalUrl={canonicalUrl}
       allowSearchEngineCrawling={isSEO}
     >
       <AiPackageInfo npmPackages={npmPackages} slot="before-default" />

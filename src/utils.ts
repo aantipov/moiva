@@ -28,6 +28,12 @@ export function getNpmPackagesFromUrl(): string[] {
   return [...new Set(allPackages)];
 }
 
+/**
+ * Construct relative url
+ *
+ * @param npmPackagesNames
+ * @returns
+ */
 export function constructHref(npmPackagesNames: string[]): string {
   if (!npmPackagesNames.length) {
     return '/';
