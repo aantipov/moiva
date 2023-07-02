@@ -11,7 +11,7 @@ import { constructHref } from '@/utils';
 export const prerender = false;
 
 const npmPackages = Astro.url.searchParams.get('npm')?.split(' ') || [];
-const canonicalUrl = constructHref(npmPackages);
+const canonicalUrl = new URL(constructHref(npmPackages), Astro.site).toString();
 const isSEO = isSEOPage(npmPackages);
 const seoTitle = getSEOTitle(npmPackages);
 const seoDescription = getSEODescription(npmPackages);
