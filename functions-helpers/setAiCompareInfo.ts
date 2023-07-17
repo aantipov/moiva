@@ -57,7 +57,7 @@ export async function setAICompareInfo(
       model,
       messages: getMessages(pkgName1, pkgName2),
       max_tokens: 900,
-      temperature: 1,
+      temperature: 0.1,
     });
     if (!response.ok) {
       throw new Error(
@@ -139,6 +139,7 @@ function getMessages(
       
       Provide your answer as a JSON object.
       There might be two scenarios.
+      // What if libraries are not comparable???
       1. If you don't have enough information to provide proper comparison, then your answer should be:
       {
           "notFound": true

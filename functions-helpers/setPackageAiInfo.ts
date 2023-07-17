@@ -48,7 +48,7 @@ export async function setPkgAIInfo(
     model,
     messages: getMessages(pkgName),
     max_tokens: 900,
-    temperature: 1,
+    temperature: 0.1,
   });
 
   if (!response.ok) {
