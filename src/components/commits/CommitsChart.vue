@@ -55,7 +55,7 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
     })),
   },
   options: {
-    elements: { point: { radius: 1 } },
+    elements: { point: { radius: 1 }, line: { tension: 0.1 } },
     scales: {
       x: {
         type: 'time',
