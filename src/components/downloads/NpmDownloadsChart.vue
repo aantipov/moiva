@@ -85,6 +85,10 @@ const datasets = computed<ChartDataset<'line'>[]>(() =>
     backgroundColor: lib.color,
     borderColor: lib.color,
     pointRadius: 0,
+    segment: {
+      borderDash: (ctx) =>
+        ctx.p1DataIndex === lib.npmDownloads.length - 1 ? [5, 5] : undefined,
+    },
   }))
 );
 
@@ -102,7 +106,7 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
       x: {
         type: 'time',
         time: {
-          unit: selectedSinceRef.value > '2019-10' ? 'month' : 'year',
+          unit: selectedSinceRef.value > '2020-10' ? 'month' : 'year',
           tooltipFormat: 'MMM, yyyy',
         },
         min: selectedSinceRef.value as unknown as number,
