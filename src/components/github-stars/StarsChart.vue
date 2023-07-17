@@ -98,7 +98,7 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
     scales: {
       x: {
         type: 'time',
-        time: { unit: 'month', tooltipFormat: 'MMM, yyyy' },
+        time: { unit: 'year', tooltipFormat: 'MMM, yyyy' },
         adapters: { date: { locale: enUS } },
       },
     },
