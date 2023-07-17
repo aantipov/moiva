@@ -47,7 +47,7 @@ const filteredLibsRef = computed(
   () => librariesRR.filter((lib) => !!lib.starsQuery.data) as FilteredLibT[]
 );
 
-const isCumulative = ref(true);
+const isCumulative = ref(false);
 
 // Calculate startMonth based on repos creation date
 const startMonthRef = computed(() => {
@@ -94,6 +94,7 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
       : datasetsRef.value,
   },
   options: {
+    elements: { point: { radius: isCumulative.value ? 2 : 1 } },
     scales: {
       x: {
         type: 'time',
