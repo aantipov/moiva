@@ -27,6 +27,7 @@ import {
   // registerables,
 } from 'chart.js';
 import 'chartjs-adapter-date-fns';
+import { numbersFormatter } from '@/utils';
 
 Chart.register(
   LineElement,
@@ -89,5 +90,5 @@ Chart.defaults.plugins.tooltip.position = 'nearest';
 Chart.defaults.plugins.tooltip.intersect = false;
 Chart.defaults.plugins.tooltip.callbacks.label = (context): string => {
   const label = context.dataset.label;
-  return ` ${label}: ${Number(context.parsed.y).toLocaleString()}`;
+  return ` ${label}: ${numbersFormatter.format(Number(context.parsed.y))}`;
 };

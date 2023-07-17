@@ -55,10 +55,11 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
     })),
   },
   options: {
+    elements: { point: { radius: 1 }, line: { tension: 0.1 } },
     scales: {
       x: {
         type: 'time',
-        time: { tooltipFormat: 'MMM yyyy' },
+        time: { unit: 'year', tooltipFormat: 'MMM yyyy' },
         adapters: { date: { locale: enUS } },
       },
     },

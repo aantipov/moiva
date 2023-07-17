@@ -87,6 +87,7 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
 
   options: {
     normalized: true,
+    elements: { point: { radius: 1 }, line: { tension: 0.1 } },
     scales: {
       x: {
         type: 'time',

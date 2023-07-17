@@ -94,11 +94,14 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
       : datasetsRef.value,
   },
   options: {
-    elements: { point: { radius: isCumulative.value ? 2 : 1 } },
+    elements: {
+      point: { radius: isCumulative.value ? 2 : 1 },
+      line: { tension: 0.1 },
+    },
     scales: {
       x: {
         type: 'time',
-        time: { unit: 'month', tooltipFormat: 'MMM, yyyy' },
+        time: { unit: 'year', tooltipFormat: 'MMM, yyyy' },
         adapters: { date: { locale: enUS } },
       },
     },

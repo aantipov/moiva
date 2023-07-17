@@ -21,9 +21,8 @@ export function fetchNpmDownloads(
       `https://npm-downloads.moiva.workers.dev/?pkg=${libName}`
     )
     .then(({ data }) => {
-      const dataWOLastMonth = data.items.slice(0, -1);
-      cacheR.set(libName, dataWOLastMonth);
-      return dataWOLastMonth;
+      cacheR.set(libName, data.items);
+      return data.items;
     })
     .catch((err) => {
       reportSentry(err, 'fetchNpmDownloads');
