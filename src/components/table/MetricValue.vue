@@ -7,8 +7,14 @@
   </div>
 
   <div v-else-if="type === 'stars'">
-    <div class="flex justify-end">
-      {{ formatNumber(lib.repo.stars) }}
+    <div
+      class="flex"
+      :class="{
+        'justify-end': starsGrowth !== '-',
+        'justify-center': starsGrowth === '-',
+      }"
+    >
+      {{ lib.repo ? formatNumber(lib.repo.stars) : '-' }}
     </div>
 
     <div
@@ -123,11 +129,11 @@
   </div>
 
   <div v-else-if="type === 'ts'" class="flex items-center justify-center">
-    <type-badge v-if="lib.npmPackage.hasBuiltinTypes" value="bundled" />
+    <type-badge v-if="lib.npm.hasBuiltinTypes" value="bundled" />
     <type-badge
-      v-else-if="lib.npmPackage.hasOtherTypes"
+      v-else-if="lib.npm.hasOtherTypes"
       value="separate"
-      :types-package="lib.npmPackage.typesPackageName"
+      :types-package="lib.npm.typesPackageName"
     />
     <template v-else>-</template>
   </div>
@@ -147,7 +153,7 @@
     />
     <span v-else>{{ bundlesize }}</span>
     <span
-      v-if="lib.npmPackage.name === 'react'"
+      v-if="lib.npm.name === 'react'"
       v-tooltip="'React’s bundle size includes react-dom package'"
       class="cursor-default"
       >*</span
@@ -156,7 +162,7 @@
 
   <div v-else-if="type === 'security'" class="flex items-center justify-center">
     <object
-      :id="'badge-' + lib.npmPackage.name"
+      :id="'badge-' + lib.npm.name"
       v-tooltip="'Snyk Security Score badge. \'A\' means no vulnerabilities.'"
       :data="snykUrl"
       type="image/svg+xml"
@@ -168,17 +174,20 @@
     v-else-if="type === 'vulnerability'"
     class="flex items-center justify-center"
   >
-    <a v-tooltip="vulnTooltip" :href="snykVulnUrl" target="_blank">
-      <img
-        :src="snykVulnUrl + 'badge.svg'"
-        :alt="'Known ' + lib.alias + ' Vulnerabilities'"
-        style="max-width: 131px; max-height: 20px"
-      />
-    </a>
+    <template v-if="snykVulnUrl">
+      <a v-tooltip="vulnTooltip" :href="snykVulnUrl" target="_blank">
+        <img
+          :src="snykVulnUrl + 'badge.svg'"
+          :alt="'Known ' + lib.alias + ' Vulnerabilities'"
+          style="max-width: 131px; max-height: 20px"
+        />
+      </a>
+    </template>
+    <template v-else>-</template>
   </div>
 
   <div v-else-if="type === 'age'" class="flex items-center justify-center">
-    {{ getAge(lib.repo.createdAt) }}
+    {{ getAge(lib.npm.createdAt) }}
   </div>
 
   <div v-else-if="type === 'license'" class="flex items-center justify-center">
@@ -214,7 +223,7 @@ const npmNameEncoded = computed(() =>
 const starsGrowth = computed<string>(() => {
   const { starsQuery, repo } = lib.value;
 
-  if (!repo.stars || !starsQuery.data) {
+  if (!repo?.stars || !starsQuery?.data) {
     return '-';
   }
 
@@ -233,7 +242,7 @@ const starsGrowth = computed<string>(() => {
 const showStarsGrowthBoostIcon = computed<boolean>(() => {
   const { starsQuery, repo } = lib.value;
 
-  if (!repo.stars || !starsQuery.data) {
+  if (!repo?.stars || !starsQuery?.data) {
     return false;
   }
 
@@ -283,12 +292,15 @@ const snykUrl = computed(
   () =>
     `https://snyk-widget.herokuapp.com/badge/npm/${npmNameEncoded.value}/badge.svg`
 );
-const snykVulnUrl = computed(
-  () => `https://snyk.io/test/github/${lib.value.repo.repoId}/`
+const snykVulnUrl = computed(() =>
+  lib.value.repo
+    ? `https://snyk.io/test/github/${lib.value.repo.repoId}/`
+    : null
 );
-const vulnTooltip = computed(
-  () =>
-    `Vulnerabilities found in the ${lib.value.repo.repoId} repository. Data source: Snyk.io`
+const vulnTooltip = computed(() =>
+  lib.value.repo
+    ? `Vulnerabilities found in the ${lib.value.repo.repoId} repository. Data source: Snyk.io`
+    : null
 );
 const bundlephobiaUrl = computed(
   () => `https://bundlephobia.com/package/${npmNameEncoded.value}`
@@ -317,7 +329,7 @@ const npmReleases = computed(() => {
 });
 
 const commits = computed<string | number>(
-  () => lib.value.commitsQuery.data?.commitsLastQuarter ?? '-'
+  () => lib.value.commitsQuery?.data?.commitsLastQuarter ?? '-'
 );
 
 const devUsage = computed(() => {

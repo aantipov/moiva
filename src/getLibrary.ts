@@ -1,5 +1,4 @@
 import { computed } from 'vue';
-import { getSeoLibName } from '@/utils';
 import { nanoid } from 'nanoid';
 import { differenceInMilliseconds } from 'date-fns';
 import {
@@ -91,7 +90,7 @@ export interface LibraryT {
   bundlesize: BundlephobiaT | null | undefined;
   contributors: ContributorsT[] | null | undefined; // null for errors, undefined for not loaded yet
   contributorsLastQ: number | undefined;
-  commitsQuery: UseCommitsQueriesResultT[number];
+  commitsQuery: UseCommitsQueriesResultT[number] | null;
   languages: LanguagesT | null | undefined;
   license: LicenseT | null | undefined;
   licenseType: LicenseTypeT;
@@ -103,7 +102,7 @@ export interface LibraryT {
   } | null;
   devUsage: StateOfJSItemT | undefined;
   devUsageLast: number | undefined;
-  starsQuery: UseStarsQueriesResultT[number];
+  starsQuery: UseStarsQueriesResultT[number] | null;
   readings: ReadingT[];
 }
 
@@ -116,10 +115,9 @@ export function getLibrary(
   const category = (catalogLibrary && catalogLibrary.category) || null;
   const tags = (catalogLibrary && catalogLibrary.tags) || [];
   const id = nanoid();
-  const repoIdLC = repo.repoId.toLowerCase();
+  const repoIdLC = repo ? repo.repoId.toLowerCase() : null;
   const license = (() => {
-    const licenseKey =
-      npm.license?.toLowerCase() || repo.licenseInfo?.key?.toLowerCase();
+    const licenseKey = npm.license?.toLowerCase();
 
     return licenseKey ? licenses.find((item) => item.key === licenseKey) : null;
   })() as LicenseT | null;
@@ -134,14 +132,14 @@ export function getLibrary(
     category,
     tags,
     isNpmCoreArtifact,
-    alias: catalogLibrary?.alias || getSeoLibName(repoIdLC),
+    alias: catalogLibrary?.alias || npm.name,
     // Use @ts-ignore because the Computed Ref will eventually become Reactive and then Typescript will start arguing
     // @ts-ignore
     age: computed(() =>
-      differenceInMilliseconds(new Date(), new Date(repo.createdAt))
+      differenceInMilliseconds(new Date(), new Date(npm.createdAt))
     ),
     playground: npmToPlaygroundMap[npm.name] || null,
-    tradar: repoIdToTechRadarMap[repoIdLC] || null,
+    tradar: (repoIdLC && repoIdToTechRadarMap[repoIdLC]) || null,
     // @ts-ignore
     license,
     licenseType: (() => {
@@ -156,9 +154,15 @@ export function getLibrary(
     // @ts-ignore
     color: computed(() => libraryToColorMapR.get(id) || '#ffffff'),
     // @ts-ignore
-    contributors: computed(() => contributorsMapR.get(repoIdLC)),
+    contributors: computed(() =>
+      repoIdLC ? contributorsMapR.get(repoIdLC) : null
+    ),
     // @ts-ignore
     contributorsLastQ: computed(() => {
+      if (!repoIdLC) {
+        return undefined;
+      }
+
       const contributors = contributorsMapR.get(repoIdLC);
 
       if (!contributors) {
@@ -213,13 +217,21 @@ export function getLibrary(
       return 100 * (Math.pow(last / first, 1 / 6) - 1);
     }) as unknown as number | undefined | null,
     // @ts-ignore
-    starsQuery: computed(() => starsQueriesRef.value.get(repoIdLC)),
+    starsQuery: computed(() =>
+      repoIdLC ? starsQueriesRef.value.get(repoIdLC) : null
+    ),
     // @ts-ignore
     bundlesize: computed(() => bundlesizeMapR.get(npm.name)),
-    devUsage: repoIdToDevUsageDataMap[repoIdLC],
-    devUsageLast: repoIdToDevUsageDataMap[repoIdLC]?.usage.slice(-1)[0].value,
+    devUsage: (repoIdLC && repoIdToDevUsageDataMap[repoIdLC]) || undefined,
+    devUsageLast:
+      (repoIdLC &&
+        repoIdToDevUsageDataMap[repoIdLC]?.usage.slice(-1)[0].value) ||
+      undefined,
     // @ts-ignore
     googleTrends: computed(() => {
+      if (!repoIdLC) {
+        return null;
+      }
       if (!repoToGTrendDefMap[repoIdLC] || !gTrendsQueryRef.value) {
         return null;
       }
@@ -232,9 +244,11 @@ export function getLibrary(
       };
     }),
     // @ts-ignore
-    commitsQuery: computed(() => commitsQueriesRef.value.get(repoIdLC)),
+    commitsQuery: computed(() =>
+      repoIdLC ? commitsQueriesRef.value.get(repoIdLC) : null
+    ),
     // @ts-ignore
-    languages: computed(() => languagesMapR.get(repoIdLC)),
+    languages: computed(() => (repoIdLC ? languagesMapR.get(repoIdLC) : null)),
     // @ts-ignore
     readings: computed(() => {
       return (readings as ReadingT[]).filter((item) =>

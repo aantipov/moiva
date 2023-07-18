@@ -13,22 +13,36 @@
     </div>
 
     <div
-      v-if="!popupMode || $slots.info || failedLibsNames.length"
+      v-if="
+        !popupMode ||
+        $slots.info ||
+        failedLibsNames.length ||
+        noRepoNpmPackages.length
+      "
       class="absolute right-4 top-4 z-30 flex"
     >
       <!--   Warning Icon with Failures description   -->
       <ChartInfo
-        v-if="failedLibsNames.length"
+        v-if="failedLibsNames.length || noRepoNpmPackages.length"
         style="margin-top: -2px"
         type="WARNING"
       >
         <div style="min-width: 300px">
-          We couldn't fetch data for the following packages:
-          <div v-for="libName in failedLibsNames" :key="libName">
-            - {{ libName }}
+          <div v-if="failedLibsNames.length">
+            We couldn't fetch data for the following packages:
+            <div v-for="libName in failedLibsNames" :key="libName">
+              - {{ libName }}
+            </div>
           </div>
-
-          Try reload the page or check later.
+          <div v-if="noRepoNpmPackages.length">
+            The following npm packages miss GitHub repository info:
+            <div v-for="npmName in noRepoNpmPackages" :key="npmName">
+              - {{ npmName }}
+            </div>
+          </div>
+          <div v-if="failedLibsNames.length">
+            Try reload the page or check later.
+          </div>
         </div>
       </ChartInfo>
 
@@ -108,6 +122,7 @@ interface Props {
   isError?: boolean;
   libsNames: string[];
   failedLibsNames?: string[];
+  noRepoNpmPackages?: string[];
   chartConfig: ChartConfiguration;
   ariaLabel?: string;
   dataSourceTxt?: string;
@@ -119,6 +134,7 @@ const props = withDefaults(defineProps<Props>(), {
   isLoading: false,
   isError: false,
   failedLibsNames: () => [],
+  noRepoNpmPackages: () => [],
   ariaLabel: '',
   dataSourceTxt: '',
   dataSourceUrl: '',

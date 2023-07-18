@@ -40,6 +40,7 @@ async function handleRequest(ctx: CTX): Promise<Response> {
     cachedValue &&
     cachedValue.data.npm &&
     cachedValue.data.npm.publishedAt &&
+    cachedValue.data.npm.createdAt &&
     Object.hasOwn(cachedValue.data.npm, 'deprecated')
   ) {
     // Update cache in the background if it's older than 1 day or if it doesn't have AI info.
@@ -132,7 +133,8 @@ async function fetchData(
   if (!npm) {
     return null;
   }
-  const repo = await fetchRepoInfo(npm.repoId, ctx);
+
+  const repo = npm.repoId ? await fetchRepoInfo(npm.repoId, ctx) : null;
   const ai = await aiPromise;
 
   return { npm, ai, repo };
@@ -177,6 +179,7 @@ async function fetchPkgInfo(
     cachedNpmValue &&
     cachedNpmValue.version === responseData.version &&
     cachedNpmValue.publishedAt &&
+    cachedNpmValue.createdAt &&
     Object.hasOwn(cachedNpmValue, 'deprecated')
   ) {
     return cachedNpmValue;
@@ -195,6 +198,8 @@ async function fetchPkgInfo(
     deprecated,
   } = responseData;
 
+  const dates = await fetchPkgPublishedAt(name, version);
+
   const result: NpmInfoApiResponseT['npm'] = {
     name,
     description,
@@ -208,7 +213,8 @@ async function fetchPkgInfo(
     typesPackageName: typesPackage,
     repoId: getRepoId(repository),
     deprecated: deprecated || null,
-    publishedAt: await fetchPkgPublishedAt(name, version),
+    publishedAt: dates.publishedAt,
+    createdAt: dates.createdAt,
   };
 
   if (!result.hasBuiltinTypes) {
@@ -225,11 +231,16 @@ interface ExtendedPkgDataResponseT {
   time: Record<string, string>;
 }
 
-// Fetch publishedAt from the npm registry if
+/**
+ * Fetch publishedAt and creastedAt from the npm registry if
+ * @param pkgName
+ * @param version
+ * @returns
+ */
 async function fetchPkgPublishedAt(
   pkgName: string,
   version: string
-): Promise<string | undefined> {
+): Promise<{ publishedAt: string; createdAt: string }> {
   try {
     const extendedPkgDataResponse = await fetch(
       `https://registry.npmjs.org/${encodeURIComponent(pkgName)}/`,
@@ -238,21 +249,29 @@ async function fetchPkgPublishedAt(
     if (!extendedPkgDataResponse.ok) {
       // TODO: report to sentry
       console.error(
-        'Failed to fetch publishedAt',
+        'Failed to fetch publishedAt / createdAt',
         extendedPkgDataResponse.statusText
       );
-      return undefined;
+      throw new Error('Failed to fetch publishedAt / createdAt');
     }
-    return ((await extendedPkgDataResponse.json()) as ExtendedPkgDataResponseT)
-      .time[version];
+    const res =
+      (await extendedPkgDataResponse.json()) as ExtendedPkgDataResponseT;
+
+    return {
+      publishedAt: res.time[version],
+      createdAt: res.time.created,
+    };
   } catch (error) {
     // TODO: report error to sentry
-    console.error('Failed to fetch publishedAt', error);
-    return undefined;
+    console.error('Failed to fetch publishedAt / createdAt', error);
+    throw new Error('Failed to fetch publishedAt / createdAt');
   }
 }
 
-async function fetchRepoInfo(repoId: string, ctx: CTX) {
+async function fetchRepoInfo(
+  repoId: string,
+  ctx: CTX
+): Promise<NpmInfoApiResponseT['repo']> {
   const url = 'https://api.github.com/graphql';
   const [owner, name] = repoId.split('/');
   const response = await fetch(url, getRepoFetchParams(name, owner, ctx));
@@ -277,7 +296,7 @@ async function fetchRepoInfo(repoId: string, ctx: CTX) {
     openBugIssues: repository.openBugIssues.totalCount,
     closedIssues: repository.closedIssues.totalCount,
     closedBugIssues: repository.closedBugIssues.totalCount,
-    repoId: `${owner}/${name}`,
+    repoId: `${owner}/${name}`.toLocaleLowerCase(),
     repoName: name,
   };
 }
@@ -341,24 +360,24 @@ function getRepoFetchParams(name: string, owner: string, ctx: CTX) {
   };
 }
 
-function getRepoId(repository: NpmJsResponseT['repository']): string {
+function getRepoId(repository: NpmJsResponseT['repository']): string | null {
   if (!repository) {
-    // return null;
-    throw new Error('Npm package is missing repository info');
+    return null;
   }
 
   const hasPackageGithub =
     repository.type === 'git' && repository.url.indexOf('github.com') !== -1;
 
   if (!hasPackageGithub) {
-    // return null;
-    throw new Error('Npm Package is missing proper github repository info');
+    return null;
   }
 
   const dotGitIndex = repository.url.indexOf('.git');
   const endRepoUrlIndex = dotGitIndex !== -1 ? dotGitIndex : 400;
   const startRepoUrlIndex = repository.url.indexOf('github.com') + 11;
-  const repoId = repository.url.slice(startRepoUrlIndex, endRepoUrlIndex);
+  const repoId = repository.url
+    .slice(startRepoUrlIndex, endRepoUrlIndex)
+    .toLocaleLowerCase();
 
   return repoId;
 }

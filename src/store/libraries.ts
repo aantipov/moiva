@@ -50,7 +50,9 @@ export const librariesIds = computed<string[]>(() =>
   librariesR.map((lib) => lib.id)
 );
 const reposIdsWithDuplicates = computed<string[]>(() =>
-  libraries.map((lib) => lib.repo.repoId.toLowerCase())
+  libraries
+    .filter((lib) => !!lib.repo)
+    .map((lib) => lib.repo!.repoId.toLowerCase())
 );
 export const reposIds = computed<string[]>(() => [
   ...new Set(reposIdsWithDuplicates.value),
@@ -92,7 +94,7 @@ export const repoToLibraryIdMap = computed<Record<string, string>>(() => {
     if (!acc[repoId]) {
       acc[repoId] = (
         librariesR.find(
-          (lib) => lib.repo.repoId.toLowerCase() === repoId
+          (lib) => lib.repo && lib.repo.repoId.toLowerCase() === repoId
         ) as LibraryT
       ).id;
     }
@@ -103,6 +105,10 @@ export const repoToLibraryIdMap = computed<Record<string, string>>(() => {
 
 export const repoIdToRepoMap = computed<Record<string, RepoT>>(() => {
   return librariesR.reduce((acc, library) => {
+    if (library.repo === null) {
+      return acc;
+    }
+
     const repoId = library.repo.repoId.toLowerCase();
     if (!acc[repoId]) {
       acc[repoId] = library.repo;
@@ -124,9 +130,10 @@ export const npmPackageToLibraryIdMap = computed<Record<string, string>>(() => {
 
 function hasLibraryADuplicate(library: LibraryT): boolean {
   return librariesR.some(
-    ({ repo, npmPackage }) =>
-      repo.repoId === library.repo.repoId &&
-      npmPackage?.name === library.npmPackage?.name
+    ({ repo, npm }) =>
+      repo &&
+      repo.repoId === library.repo?.repoId &&
+      npm.name === library.npm.name
   );
 }
 

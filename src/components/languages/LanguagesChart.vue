@@ -5,6 +5,7 @@
     :is-error="isError"
     :libs-names="reposIds"
     :failed-libs-names="failedReposIds"
+    :no-repo-npm-packages="noRepoNpmPackages"
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
   >
@@ -36,9 +37,9 @@ import {
 
 interface FilteredLibT extends LibraryReadonlyT {
   languages: LanguagesT;
+  repo: NonNullable<LibraryReadonlyT['repo']>;
 }
-interface FilteredExtLibT extends LibraryReadonlyT {
-  languages: LanguagesT;
+interface FilteredExtLibT extends FilteredLibT {
   languagesShares: Record<string, number>;
 }
 
@@ -165,8 +166,14 @@ const reposIds = computed(() =>
 const failedReposIds = computed<string[]>(() => {
   return isLoadingRef.value
     ? []
-    : librariesRR.filter((lib) => !lib.languages).map((lib) => lib.repo.repoId);
+    : librariesRR
+        .filter((lib) => !lib.languages && !!lib.repo)
+        .map((lib) => lib.repo!.repoId);
 });
+
+const noRepoNpmPackages = computed(() =>
+  librariesRR.filter((lib) => !lib.repo).map((lib) => lib.npm.name)
+);
 
 const ariaLabel = computed(() => {
   const str = filteredExtLibsRef.value

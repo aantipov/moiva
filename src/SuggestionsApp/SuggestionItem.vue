@@ -27,11 +27,11 @@
       <!-- Description + stats -->
       <template v-else>
         <div class="mb-1">
-          {{ lib?.npmPackage?.description || lib?.repo.description }}
+          {{ lib?.npm.description || lib?.repo?.description || '' }}
         </div>
 
         <div class="flex text-sm">
-          <div class="flex items-center font-normal">
+          <div v-if="stars" class="flex items-center font-normal">
             <m-star-icon />
             {{ stars }}
           </div>
@@ -105,7 +105,9 @@ onMounted(() => {
 });
 
 const stars = computed(() =>
-  numbersFormatter.format(lib.value?.repo.stars as number)
+  lib.value?.repo?.stars
+    ? numbersFormatter.format(lib.value?.repo.stars as number)
+    : null
 );
 const downloads = computed(() =>
   numbersFormatter.format(lib.value?.npmDownloadsAvg as number)
