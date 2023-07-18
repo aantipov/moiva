@@ -159,7 +159,7 @@ export const ROWS: MetricDataT[] = [
       title: 'GitHub Stars',
       path: 'repo.stars',
     },
-    sortFn: (a, b) => b.repo.stars - a.repo.stars,
+    sortFn: (a, b) => Number(b.repo?.stars) - Number(a.repo?.stars),
   },
 
   {
@@ -251,8 +251,8 @@ export const ROWS: MetricDataT[] = [
     },
     sortFn: (a, b) => {
       if (
-        Number.isInteger(a.commitsQuery.data?.commitsLastQuarter) &&
-        Number.isInteger(b.commitsQuery.data?.commitsLastQuarter)
+        Number.isInteger(a.commitsQuery?.data?.commitsLastQuarter) &&
+        Number.isInteger(b.commitsQuery?.data?.commitsLastQuarter)
       ) {
         return (
           // @ts-ignore
