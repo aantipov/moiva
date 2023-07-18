@@ -223,7 +223,7 @@ const npmNameEncoded = computed(() =>
 const starsGrowth = computed<string>(() => {
   const { starsQuery, repo } = lib.value;
 
-  if (!repo || !repo.stars || !starsQuery.data) {
+  if (!repo?.stars || !starsQuery?.data) {
     return '-';
   }
 
@@ -242,7 +242,7 @@ const starsGrowth = computed<string>(() => {
 const showStarsGrowthBoostIcon = computed<boolean>(() => {
   const { starsQuery, repo } = lib.value;
 
-  if (!repo || !repo.stars || !starsQuery.data) {
+  if (!repo?.stars || !starsQuery?.data) {
     return false;
   }
 
