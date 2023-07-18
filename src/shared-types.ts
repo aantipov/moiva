@@ -90,9 +90,10 @@ export type NpmInfoApiResponseT = {
     hasBuiltinTypes: boolean;
     hasOtherTypes: boolean;
     typesPackageName: string;
-    repoId: string; // we only allow packages with github repos info
+    repoId: string | null; // null if package doesn't have proper github repo info
     deprecated: string | null;
-    publishedAt?: string; // publishedAt is received from a separate request
+    publishedAt: string; // publishedAt is received from a separate request
+    createdAt: string; // createdAt is received from a separate request
   };
   ai: KvAiT;
   repo: {
@@ -113,7 +114,7 @@ export type NpmInfoApiResponseT = {
       name: string;
       url: string;
     } | null;
-  };
+  } | null; // null if npm package doesn't contain proper github repo info
 };
 export type KvNpmInfoT = {
   data: NpmInfoApiResponseT;

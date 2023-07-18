@@ -5,6 +5,7 @@
     :is-error="isError"
     :libs-names="reposIds"
     :failed-libs-names="failedReposIds"
+    :no-repo-npm-packages="noRepoNpmPackages"
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
   >
@@ -37,8 +38,9 @@ import {
   isLoading as isLoadingLibraries,
 } from '@/store/libraries';
 
-interface FilteredLibT extends LibraryReadonlyT {
+interface FilteredLibT extends Omit<LibraryReadonlyT, 'repo'> {
   contributors: ContributorsT[];
+  repo: NonNullable<LibraryReadonlyT['repo']>;
 }
 
 const filteredLibsRef = computed(
@@ -120,7 +122,7 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
 const isLoadingRef = computed(
   () =>
     isLoadingLibraries.value ||
-    librariesRR.filter((lib) => lib.npmReleases === undefined).length > 0
+    librariesRR.filter((lib) => lib.contributors === undefined).length > 0
 );
 
 const isError = computed(() => filteredLibsRef.value.length === 0);
@@ -133,9 +135,13 @@ const failedReposIds = computed<string[]>(() => {
   return isLoadingRef.value
     ? []
     : librariesRR
-        .filter((lib) => !lib.contributors)
-        .map((lib) => lib.repo.repoId);
+        .filter((lib) => !lib.contributors && !!lib.repo)
+        .map((lib) => lib.repo!.repoId);
 });
+
+const noRepoNpmPackages = computed(() =>
+  librariesRR.filter((lib) => !lib.repo).map((lib) => lib.npm.name)
+);
 
 const ariaLabel = computed(() => {
   const str = filteredLibsRef.value

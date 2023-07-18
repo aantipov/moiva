@@ -5,6 +5,7 @@
     :is-error="isError"
     :libs-names="reposIds"
     :failed-libs-names="failedReposIds"
+    :no-repo-npm-packages="noRepoNpmPackages"
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
   >
@@ -37,14 +38,15 @@ import {
   isLoading as isLoadingLibraries,
 } from '@/store/libraries';
 
-interface FilteredLibT extends Omit<LibraryReadonlyT, 'starsQuery'> {
+interface FilteredLibT extends Omit<LibraryReadonlyT, 'starsQuery' | 'repo'> {
   starsQuery: Omit<LibraryReadonlyT['starsQuery'], 'data'> & {
-    data: NonNullable<LibraryReadonlyT['starsQuery']['data']>;
+    data: NonNullable<NonNullable<LibraryReadonlyT['starsQuery']>['data']>;
   };
+  repo: NonNullable<LibraryReadonlyT['repo']>;
 }
 
 const filteredLibsRef = computed(
-  () => librariesRR.filter((lib) => !!lib.starsQuery.data) as FilteredLibT[]
+  () => librariesRR.filter((lib) => !!lib.starsQuery?.data) as FilteredLibT[]
 );
 
 const isCumulative = ref(false);
@@ -52,6 +54,7 @@ const isCumulative = ref(false);
 // Calculate startMonth based on repos creation date
 const startMonthRef = computed(() => {
   const validCreationDates = filteredLibsRef.value
+    // assert with ! because we filter out libs without starsQuery.data which assumes repo is there
     .map((lib) => lib.repo.createdAt)
     .filter((date) => !!date) as string[];
 
@@ -111,7 +114,7 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
 const isLoadingRef = computed(
   () =>
     isLoadingLibraries.value ||
-    librariesRR.some((lib) => lib.starsQuery.isFetching)
+    librariesRR.some((lib) => lib.starsQuery && lib.starsQuery.isFetching)
 );
 
 const isError = computed(() => filteredLibsRef.value.length === 0);
@@ -137,7 +140,11 @@ const failedReposIds = computed<string[]>(() => {
   return isLoadingRef.value
     ? []
     : librariesRR
-        .filter((lib) => lib.starsQuery.isError)
-        .map((lib) => lib.repo.repoId);
+        .filter((lib) => lib.starsQuery?.isError)
+        .map((lib) => lib.repo!.repoId);
 });
+
+const noRepoNpmPackages = computed(() =>
+  librariesRR.filter((lib) => !lib.repo).map((lib) => lib.npm.name)
+);
 </script>

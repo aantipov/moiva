@@ -105,7 +105,7 @@ const homepageUrl = computed(() =>
   props.npm.homepage.startsWith('https://') &&
   !props.npm.homepage.includes('github.com')
     ? props.npm.homepage
-    : props.repo.homepageUrl
+    : props.repo?.homepageUrl
     ? props.repo.homepageUrl
     : null
 );

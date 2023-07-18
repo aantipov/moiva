@@ -28,7 +28,7 @@ const npmsRef = computed<string[]>(() =>
 );
 
 const reposRef = computed<string[]>(() =>
-  librariesRR.filter((lib) => !lib.npmPackage).map((lib) => lib.repo.repoId)
+  librariesRR.filter((lib) => !!lib.repo).map((lib) => lib.repo!.repoId)
 );
 
 const readings = computed<ReadingT[]>(() =>

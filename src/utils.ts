@@ -85,26 +85,6 @@ export function formatDateFromNow(date: string): string {
   return formatDistance(new Date(date), new Date(), { addSuffix: true });
 }
 
-/**
- * Get Alias using the alias from the catalog or repository's name
- *
- */
-export function getSeoLibName(repoId: string): string {
-  const [, repoName] = repoId.split('/');
-
-  // Capitalise normal names
-  if (
-    repoName.length > 2 &&
-    !repoName.includes('@') &&
-    !repoName.includes('/') &&
-    !repoName.includes('-')
-  ) {
-    return repoName.charAt(0).toUpperCase() + repoName.slice(1);
-  }
-
-  return repoName;
-}
-
 export function getBundlephobiaUrl(libName: string): string {
   return `https://bundlephobia.com/result?p=${encodeURIComponent(libName)}`;
 }

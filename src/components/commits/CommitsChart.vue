@@ -5,6 +5,7 @@
     :is-error="isError"
     :libs-names="reposIds"
     :failed-libs-names="failedReposIds"
+    :no-repo-npm-packages="noRepoNpmPackages"
     :chart-config="chartConfig"
     :aria-label="ariaLabel"
   >
@@ -32,13 +33,14 @@ import {
   isLoading as isLoadingLibraries,
 } from '@/store/libraries';
 
-interface FilteredLibT extends Omit<LibraryReadonlyT, 'commitsQuery'> {
+interface FilteredLibT extends Omit<LibraryReadonlyT, 'commitsQuery' | 'repo'> {
   commitsQuery: Omit<LibraryReadonlyT['commitsQuery'], 'data'> & {
-    data: NonNullable<LibraryReadonlyT['commitsQuery']['data']>;
+    data: NonNullable<NonNullable<LibraryReadonlyT['commitsQuery']>['data']>;
   };
+  repo: NonNullable<LibraryReadonlyT['repo']>;
 }
 const filteredLibsRef = computed(
-  () => librariesRR.filter((lib) => !!lib.commitsQuery.data) as FilteredLibT[]
+  () => librariesRR.filter((lib) => !!lib.commitsQuery?.data) as FilteredLibT[]
 );
 
 const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
@@ -69,7 +71,7 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
 const isLoadingRef = computed(
   () =>
     isLoadingLibraries.value ||
-    librariesRR.some((lib) => lib.commitsQuery.isFetching)
+    librariesRR.some((lib) => lib.commitsQuery && lib.commitsQuery.isFetching)
 );
 
 const reposIds = computed(() =>
@@ -80,9 +82,13 @@ const failedReposIds = computed<string[]>(() => {
   return isLoadingRef.value
     ? []
     : librariesRR
-        .filter((lib) => lib.commitsQuery.isError)
-        .map((lib) => lib.repo.repoId);
+        .filter((lib) => lib.commitsQuery?.isError)
+        .map((lib) => lib.repo!.repoId);
 });
+
+const noRepoNpmPackages = computed(() =>
+  librariesRR.filter((lib) => !lib.repo).map((lib) => lib.npm.name)
+);
 
 const isError = computed(() => filteredLibsRef.value.length === 0);
 
