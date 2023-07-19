@@ -193,8 +193,13 @@ export function getLibrary(
       }
 
       const qDownloads = npmDownloads
-        .slice(-3)
+        .slice(-4, -1) // we don't take the last one because it's not complete
         .map(({ downloads }) => downloads);
+
+      if (qDownloads.length === 0) {
+        return 0;
+      }
+
       const sum = qDownloads.reduce((sum, val) => sum + val, 0);
 
       return sum / qDownloads.length;
@@ -207,14 +212,14 @@ export function getLibrary(
       }
 
       const downloads = npmDownloads.map((val) => val.downloads);
-      const last = downloads.slice(-1)[0];
-      const first = downloads.slice(-6, -5)[0];
+      const last = downloads.at(-2); // we don't take the last one because it's not complete
+      const first = downloads.at(-7);
 
       if (!first || !last) {
         return null;
       }
 
-      return 100 * (Math.pow(last / first, 1 / 6) - 1);
+      return 100 * (Math.pow(last / first, 1 / 5) - 1);
     }) as unknown as number | undefined | null,
     // @ts-ignore
     starsQuery: computed(() =>
