@@ -31,9 +31,9 @@
       >
         <NpmIcon />
       </a>
-      <span class="mr-1 self-end font-mono text-sm">v{{ npm.version }},</span>
+      <span class="mr-1 self-end font-mono text-sm">v{{ npm.version }}</span>
       <span v-if="npm.publishedAt" class="self-end text-sm"
-        >published {{ publishedAt }}</span
+        >({{ publishedAt }})</span
       >
     </p>
     <p class="mb-3 mt-1 flex h-5 items-center justify-center">
@@ -47,9 +47,17 @@
 
       <img
         v-tooltip.html="pkgTypes.tooltip"
+        class="mr-2"
         height="20"
         :alt="pkgTypes.alt"
         :src="`https://img.shields.io/badge/types-${pkgTypes.name}-${pkgTypes.color}?logo=typescript&logoColor=FFFFFF`"
+      />
+
+      <img
+        v-tooltip="'Number of direct dependencies'"
+        height="20"
+        :alt="`Number of direct dependencies: ${npm.dependencies.length}`"
+        :src="`https://img.shields.io/badge/dependencies-${npm.dependencies.length}-${depsColor}?`"
       />
     </p>
 
@@ -175,6 +183,15 @@ const pkgTypes = computed(() => {
       tooltip: "The package doesn't have any types definitions",
       alt: "The package doesn't have any types definitions",
     };
+  }
+});
+const depsColor = computed(() => {
+  if (props.npm.dependencies.length <= 3) {
+    return '449824';
+  } else if (props.npm.dependencies.length <= 7) {
+    return 'F0AD4E';
+  } else {
+    return 'E34F26';
   }
 });
 </script>
