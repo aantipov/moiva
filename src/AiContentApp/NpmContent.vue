@@ -56,7 +56,7 @@
       <img
         v-tooltip="'Number of direct dependencies'"
         height="20"
-        :alt="status.alt"
+        :alt="`Number of direct dependencies: ${npm.dependencies.length}`"
         :src="`https://img.shields.io/badge/dependencies-${npm.dependencies.length}-${depsColor}?`"
       />
     </p>
