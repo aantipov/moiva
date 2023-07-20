@@ -1,13 +1,16 @@
 import { reactive, computed, readonly, watch } from 'vue';
 import { RepoT, fetchLibraryByNpm, NpmPackageT } from '@/libraryApis';
 import { LibraryT } from '@/getLibrary';
-import { $trimmedLibraries, $isLoading } from '@/nanostore/trimmedLibraries';
+import {
+  $trimmedLibraries,
+  $isLoading,
+  $loadingLibraries,
+} from '@/nanostore/trimmedLibraries';
 
 // ====== STATE ======
 const librariesR = reactive<LibraryT[]>([]);
-// Track Npm packages and Repos currently being loaded to avoid duplicates
-const npmPackagesLoading = reactive<string[]>([]);
-const reposLoading = reactive<string[]>([]);
+// Track Npm packages currently being loaded to avoid duplicates
+export const npmPackagesLoading = reactive<string[]>([]);
 
 export function sortLibraries(
   sortFn: (_a: LibraryT, _b: LibraryT) => number,
@@ -38,13 +41,15 @@ watch(
   { deep: true }
 );
 
+watch(npmPackagesLoading, (newNpmPackagesLoading) => {
+  $loadingLibraries.set([...newNpmPackagesLoading]);
+});
+
 // ====== COMPUTED ======
 // deprecated in favor of librariesRR to make the value clear - reactive readonly
 export const libraries = readonly(librariesR);
 export const librariesRR = libraries;
-export const isLoading = computed(
-  () => !!npmPackagesLoading.length || !!reposLoading.length
-);
+export const isLoading = computed(() => !!npmPackagesLoading.length);
 watch(isLoading, (isLoadingValue) => $isLoading.set(isLoadingValue));
 export const librariesIds = computed<string[]>(() =>
   librariesR.map((lib) => lib.id)
@@ -148,9 +153,6 @@ export async function addInitialLibrariesByNpm(
   npmPackagesLoading.length = 0;
 }
 
-/**
- * Add a library via a Npm package
- */
 export function addLibraryByNpmPackage(pkgName: string): Promise<void> {
   if (
     !pkgName ||
