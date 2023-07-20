@@ -2,7 +2,13 @@
   <div class="inline-block">
     <span
       ref="triggerRef"
-      class="mr-1 mt-2 inline-block cursor-pointer rounded px-1 text-base text-primary hover:bg-black/10 hover:underline hover:shadow-md active:bg-black/20 active:shadow-none"
+      class="mr-1 mt-2 inline-block rounded px-1 text-base"
+      :class="{
+        'cursor-not-allowed border border-primary bg-primary/70 text-white shadow-none':
+          isLibLoading,
+        'cursor-pointer text-primary hover:bg-black/10 hover:underline hover:shadow-md active:bg-black/20 active:shadow-none':
+          !isLibLoading,
+      }"
       @click.prevent="$emit('select', catalogLibrary)"
       >+ {{ catalogLibrary.npm }}</span
     >
@@ -75,6 +81,10 @@ const props = defineProps({
   catalogLibrary: {
     type: Object as PropType<CatalogLibraryT>,
     required: true,
+  },
+  isLibLoading: {
+    type: Boolean,
+    default: false,
   },
 });
 

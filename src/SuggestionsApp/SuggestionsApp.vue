@@ -11,6 +11,7 @@
         v-for="suggestedLibrary in suggestions"
         :key="suggestedLibrary.id"
         :catalog-library="suggestedLibrary"
+        :is-lib-loading="loadingLibraries.includes(suggestedLibrary.npm)"
         @select="onSelect"
       />
       <span
@@ -44,6 +45,7 @@ import { getSuggestions } from '@/suggestionsHelper';
 import { CatalogLibraryT } from '@/data/index';
 import {
   $trimmedLibraries,
+  $loadingLibraries,
   TrimmedLibraryT,
 } from '@/nanostore/trimmedLibraries';
 import { useStore } from '@nanostores/vue';
@@ -58,6 +60,7 @@ import { $addedNpmPackage, $removedLibrary } from '@/nanostore/crudLibrary';
 const size = 5;
 const showAll = ref(false);
 const trimmedLibraries = useStore($trimmedLibraries);
+const loadingLibraries = useStore($loadingLibraries);
 const allSuggestions = computed<CatalogLibraryT[]>(() =>
   getSuggestions(trimmedLibraries.value)
 );
