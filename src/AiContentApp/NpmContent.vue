@@ -42,7 +42,7 @@
         class="mr-2"
         height="20"
         :alt="status.alt"
-        :src="`https://img.shields.io/badge/status-${status.name}-${status.color}?`"
+        :src="`https://img.shields.io/badge/status-${status.name}-${status.color}`"
       />
 
       <img
@@ -55,9 +55,17 @@
 
       <img
         v-tooltip="'Number of direct dependencies'"
+        class="mr-2"
         height="20"
         :alt="`Number of direct dependencies: ${npm.dependencies.length}`"
-        :src="`https://img.shields.io/badge/dependencies-${npm.dependencies.length}-${depsColor}?`"
+        :src="`https://img.shields.io/badge/dependencies-${npm.dependencies.length}-${depsColor}`"
+      />
+
+      <img
+        v-tooltip="'Monthly npm downloads'"
+        height="20"
+        :alt="`Monthly npm downloads`"
+        :src="`https://img.shields.io/npm/dm/${npm.name}.svg?color=449824`"
       />
     </p>
 
