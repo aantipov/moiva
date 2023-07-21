@@ -36,10 +36,9 @@
         >({{ publishedAt }})</span
       >
     </p>
-    <p class="mb-3 mt-1 flex h-5 items-center justify-center">
+    <p class="mb-3 mt-1 flex flex-wrap items-center justify-center gap-2">
       <img
         v-tooltip.html="status.tooltip"
-        class="mr-2"
         height="20"
         :alt="status.alt"
         :src="`https://img.shields.io/badge/status-${status.name}-${status.color}`"
@@ -47,7 +46,6 @@
 
       <img
         v-tooltip.html="pkgTypes.tooltip"
-        class="mr-2"
         height="20"
         :alt="pkgTypes.alt"
         :src="`https://img.shields.io/badge/types-${pkgTypes.name}-${pkgTypes.color}?logo=typescript&logoColor=FFFFFF`"
@@ -55,7 +53,6 @@
 
       <img
         v-tooltip="'Number of direct dependencies'"
-        class="mr-2"
         height="20"
         :alt="`Number of direct dependencies: ${npm.dependencies.length}`"
         :src="`https://img.shields.io/badge/dependencies-${npm.dependencies.length}-${depsColor}`"
