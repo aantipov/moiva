@@ -106,8 +106,8 @@ import { VueQueryDevTools } from 'vue-query/devtools';
 import LoaderNew from '@/components/LoaderNew.vue';
 
 import NpmDownloads from '@/components/downloads/NpmDownloadsChart.vue';
-import Table from '@/components/table/Table.vue';
-import Readings from '@/components/Readings.vue';
+import Table from '@/components/table/TableView.vue';
+import Readings from '@/components/ReadingsList.vue';
 
 import Releases from '@/components/npm-releases/NpmReleasesChart.vue';
 import TechRadar from '@/components/TechRadarChart.vue';

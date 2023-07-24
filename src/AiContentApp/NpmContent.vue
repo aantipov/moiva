@@ -85,7 +85,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { ReadonlyNpmPackageT } from '@/libraryApis';
-import Tag from '@/components/Tag.vue';
+import Tag from '@/components/TagItem.vue';
 import NpmIcon from '@/icons/NpmMDIIcon.vue';
 import HomeIcon from '@/icons/HomeIcon.vue';
 import GithubIcon from '@/icons/GithubIcon.vue';

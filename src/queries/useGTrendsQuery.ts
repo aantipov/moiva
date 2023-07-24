@@ -71,6 +71,7 @@ export function useGTrendsQuery(
         return new Map(entries);
       },
       onError(err: AxiosError) {
+        // @ts-ignore
         reportSentry(err, 'fetchGTrendsData');
       },
     },
