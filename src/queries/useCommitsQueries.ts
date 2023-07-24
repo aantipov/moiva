@@ -73,12 +73,14 @@ export function useCommitsQueries(
       },
       onError(err: AxiosError) {
         const errorCode =
+        // @ts-ignore
           err?.response?.data?.error?.code ||
           err?.response?.status ||
           undefined;
 
         // Report to Sentry unexpected errors only
         if (errorCode !== ERROR_CODE_GITHUB_COMMITS_NEEDS_PROCESSING) {
+          // @ts-ignore
           reportSentry(err, 'fetchGithubCommitsData');
         }
       },

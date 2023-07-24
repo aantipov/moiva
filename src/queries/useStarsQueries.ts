@@ -87,6 +87,7 @@ export function useStarsQueries(
         };
       },
       onError(err: AxiosError) {
+        // @ts-ignore
         reportSentry(err, 'fetchGithubStars');
       },
     })),
