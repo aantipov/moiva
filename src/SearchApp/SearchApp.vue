@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import Search from './Search.vue';
+import Search from './SearchInput.vue';
 import { constructHref } from '@/utils';
 import { $addedNpmPackage } from '@/nanostore/crudLibrary.js';
 const props = defineProps<{
