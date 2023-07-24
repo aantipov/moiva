@@ -46,7 +46,7 @@ interface FilteredLibT extends Omit<LibraryReadonlyT, 'starsQuery' | 'repo'> {
 }
 
 const filteredLibsRef = computed(
-  () => librariesRR.filter((lib) => !!lib.starsQuery?.data) as FilteredLibT[]
+  () => librariesRR.filter((lib) => !!lib.starsQuery?.data) as FilteredLibT[],
 );
 
 const isCumulative = ref(false);
@@ -72,7 +72,7 @@ const datasetsRef = computed(() =>
       })),
     backgroundColor: lib.color,
     borderColor: lib.color,
-  }))
+  })),
 );
 
 const cumulativeDatasetsRef = computed(() =>
@@ -86,7 +86,7 @@ const cumulativeDatasetsRef = computed(() =>
       })),
     backgroundColor: lib.color,
     borderColor: lib.color,
-  }))
+  })),
 );
 
 const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
@@ -114,7 +114,7 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
 const isLoadingRef = computed(
   () =>
     isLoadingLibraries.value ||
-    librariesRR.some((lib) => lib.starsQuery && lib.starsQuery.isFetching)
+    librariesRR.some((lib) => lib.starsQuery && lib.starsQuery.isFetching),
 );
 
 const isError = computed(() => filteredLibsRef.value.length === 0);
@@ -124,8 +124,8 @@ const ariaLabel = computed(() => {
     .map(
       (lib) =>
         `${lib.alias} stars number increase, on average, by ${formatNumber(
-          lib.starsQuery.data.monthlyAvg
-        )} new stars each month.`
+          lib.starsQuery.data.monthlyAvg,
+        )} new stars each month.`,
     )
     .join(' ');
 
@@ -133,7 +133,7 @@ const ariaLabel = computed(() => {
 });
 
 const reposIds = computed(() =>
-  filteredLibsRef.value.map((lib) => lib.repo.repoId)
+  filteredLibsRef.value.map((lib) => lib.repo.repoId),
 );
 
 const failedReposIds = computed<string[]>(() => {
@@ -145,6 +145,6 @@ const failedReposIds = computed<string[]>(() => {
 });
 
 const noRepoNpmPackages = computed(() =>
-  librariesRR.filter((lib) => !lib.repo).map((lib) => lib.npm.name)
+  librariesRR.filter((lib) => !lib.repo).map((lib) => lib.npm.name),
 );
 </script>

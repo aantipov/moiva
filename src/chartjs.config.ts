@@ -53,7 +53,7 @@ Chart.register(
       ctx.fillRect(0, 0, chart.width, chart.height);
       ctx.restore();
     },
-  } as ChartComponentLike
+  } as ChartComponentLike,
 );
 
 Chart.defaults.layout.padding = 24;

@@ -25,7 +25,7 @@ export interface LibGTrendsDataT {
 
 export function useGTrendsQuery(
   reposIds: Lowercase<string>[] | Ref<Lowercase<string>[]>,
-  enabled: Ref<boolean>
+  enabled: Ref<boolean>,
 ): UseQueryReturnType<Map<string, LibGTrendsDataT>, AxiosError> {
   // We need to compare only those libs for which Google trends
   // has sensible data
@@ -42,13 +42,13 @@ export function useGTrendsQuery(
     () => {
       const libsStr = filteredReposIds.value.join(',');
       return axios.get<GTrendsResponseT>(
-        `https://google-trends.moiva.workers.dev/?libs=${libsStr}`
+        `https://google-trends.moiva.workers.dev/?libs=${libsStr}`,
       );
     },
     // options
     {
       enabled: computed(
-        () => enabled.value && filteredReposIds.value.length > 0
+        () => enabled.value && filteredReposIds.value.length > 0,
       ),
       keepPreviousData: true,
       staleTime: Infinity,
@@ -66,13 +66,13 @@ export function useGTrendsQuery(
                   value: value[index],
                 })),
               },
-            ] as const
+            ] as const,
         );
         return new Map(entries);
       },
       onError(err: AxiosError) {
         reportSentry(err, 'fetchGTrendsData');
       },
-    }
+    },
   );
 }

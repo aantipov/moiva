@@ -15,7 +15,7 @@ export function getSEOTitle(npmPackages: string[]): string {
     return `${npmPackages[0]} NPM Package: Comprehensive Analysis, Alternatives, and Usage Statistics | Moiva.io`;
   } else {
     return `${npmPackages.join(
-      ' vs '
+      ' vs ',
     )}: Detailed NPM Packages Comparison | Performance, Security & Trends`;
   }
 }
@@ -29,7 +29,7 @@ export function getSEODescription(npmPackages: string[]): string {
     return `In-depth comparison of ${npmPackages
       .slice(0, -1)
       .join(', ')} and ${npmPackages.at(
-      -1
+      -1,
     )} npm packages, offering insights on bundle size, download trends, Google search interest, GitHub Stars, license, contributors activity, security scores, tech radar blips, and more. Empower your tech stack decisions with data-driven insights.`;
   }
 }

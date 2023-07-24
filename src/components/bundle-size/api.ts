@@ -17,7 +17,7 @@ export interface BundlephobiaT extends ResponseT {
 export const cacheR = reactive(new Map<string, BundlephobiaT | null>());
 
 export function fetchBundlephobiaData(
-  pkgName: string
+  pkgName: string,
 ): Promise<BundlephobiaT | null> {
   if (cacheR.get(pkgName)) {
     return Promise.resolve(cacheR.get(pkgName) as BundlephobiaT);
@@ -29,7 +29,7 @@ export function fetchBundlephobiaData(
     request = Promise.all([
       axios.get<ResponseT>(`https://bundle-size.moiva.workers.dev/?pkg=react`),
       axios.get<ResponseT>(
-        `https://bundle-size.moiva.workers.dev/?pkg=react-dom`
+        `https://bundle-size.moiva.workers.dev/?pkg=react-dom`,
       ),
     ]).then(([reactData, reactDomData]) => ({
       gzip: reactData.data.gzip + reactDomData.data.gzip,

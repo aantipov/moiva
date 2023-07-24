@@ -1,6 +1,6 @@
 [
   [
-    "vuejs/vue",
+    "vuejs/core",
     "Vue.js",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/vue-js",
     [

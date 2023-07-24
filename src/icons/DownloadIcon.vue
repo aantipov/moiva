@@ -22,6 +22,6 @@ withDefaults(
   }>(),
   {
     label: 'Download icon',
-  }
+  },
 );
 </script>

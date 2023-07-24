@@ -4,7 +4,7 @@ import { AxiosError } from 'axios';
 
 export function reportSentry(
   err: AxiosError<{ error?: string }>,
-  methodName: string
+  methodName: string,
 ): void {
   err.name = `UI API (${methodName})`;
 

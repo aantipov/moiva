@@ -147,7 +147,7 @@ let toBeUnmounted = false;
 
 function enchanceChartConfig(
   chartConfig: ChartConfiguration,
-  title: string
+  title: string,
 ): ChartConfiguration {
   chartConfig.options = chartConfig.options || {};
   chartConfig.options.plugins = chartConfig.options.plugins || {};
@@ -189,7 +189,7 @@ watch(
       fillOneLineCharts(mychart, props.chartConfig.type);
       mychart.update();
     }
-  }
+  },
 );
 
 function copy(): void {
@@ -212,13 +212,13 @@ function copyShare(): void {
 
     const title = encodeURIComponent((props.title as string).replace(',', ''));
     const libsAliases = encodeURIComponent(
-      librariesRR.map((lib) => lib.alias).join(' vs ')
+      librariesRR.map((lib) => lib.alias).join(' vs '),
     );
     const url = encodeURIComponent(window.location.href);
 
     window.open(
       `https://twitter.com/intent/tweet?text=${title}: ${libsAliases}&url=${url}`,
-      '_blank'
+      '_blank',
     );
   });
 }

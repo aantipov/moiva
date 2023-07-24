@@ -58,7 +58,7 @@ export type NpmCompareApiResponseT =
   | AiResponseNotFoundT;
 
 export function hasAiCompareInfo(
-  obj: NpmCompareApiResponseT | null
+  obj: NpmCompareApiResponseT | null,
 ): obj is AiCompareResponseFoundT {
   return !!obj && Array.isArray(obj) && obj.length > 0;
 }

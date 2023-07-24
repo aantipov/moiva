@@ -49,7 +49,7 @@ interface FilteredLibT extends LibraryReadonlyT {
 }
 
 const filteredLibsRef = computed(
-  () => librariesRR.filter((lib) => !!lib.tradar) as FilteredLibT[]
+  () => librariesRR.filter((lib) => !!lib.tradar) as FilteredLibT[],
 );
 
 const uniqDates = computed<DateT[]>(() => {
@@ -69,7 +69,7 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
       label: lib.tradar.alias,
       data: uniqDates.value.map(
         (date) =>
-          lib.tradar.entries.find((entry) => entry.month === date)?.level
+          lib.tradar.entries.find((entry) => entry.month === date)?.level,
       ) as unknown as number[],
       backgroundColor: lib.color,
       borderColor: lib.color,
@@ -111,7 +111,7 @@ function formatDate2(month: string): string {
 }
 
 const tradarAliases = computed<string[]>(() =>
-  filteredLibsRef.value.map((lib) => lib.tradar.alias)
+  filteredLibsRef.value.map((lib) => lib.tradar.alias),
 );
 
 const ariaLabel = computed(() => {
@@ -120,7 +120,7 @@ const ariaLabel = computed(() => {
       ({ tradar }) =>
         `${tradar.alias} is in the ${
           tradar.entries.slice(-1)[0].level
-        } ring since ${formatDate2(tradar.entries.slice(-1)[0].month)}.`
+        } ring since ${formatDate2(tradar.entries.slice(-1)[0].month)}.`,
     )
     .join(' ');
 

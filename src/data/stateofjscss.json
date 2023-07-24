@@ -1543,7 +1543,7 @@
     "id": "vuejs",
     "name": "Vue.js",
     "category": "libraries",
-    "repoId": "vuejs/vue",
+    "repoId": "vuejs/core",
     "usage": [
       {
         "year": 2016,

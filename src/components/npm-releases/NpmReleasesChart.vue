@@ -44,20 +44,20 @@ interface FilteredLibT extends LibraryReadonlyT {
 }
 
 const filteredLibsRef = computed(
-  () => librariesRR.filter((lib) => !!lib.npmReleases) as FilteredLibT[]
+  () => librariesRR.filter((lib) => !!lib.npmReleases) as FilteredLibT[],
 );
 
 const firstNonZeroQuarterRef = computed(() =>
   getQuarterFirstMonthFromDate(
     getFirstNonZeroValueMonth(
       filteredLibsRef.value.map((lib) => lib.npmReleases),
-      'releases'
-    )
-  )
+      'releases',
+    ),
+  ),
 );
 
 const unitRef = computed<'quarter' | 'year'>(() =>
-  firstNonZeroQuarterRef.value >= '2019-10' ? 'quarter' : 'year'
+  firstNonZeroQuarterRef.value >= '2019-10' ? 'quarter' : 'year',
 );
 
 function getNextQuarterFirstMonth(month: string) {
@@ -75,7 +75,7 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
         x:
           unitRef.value === 'quarter'
             ? (getQuarterFirstMonthFromDate(
-                npmRelease.month
+                npmRelease.month,
               ) as unknown as number)
             : (getNextQuarterFirstMonth(npmRelease.month) as unknown as number),
         y: npmRelease.releases,
@@ -124,11 +124,11 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
 const isLoadingRef = computed(
   () =>
     isLoadingLibraries.value ||
-    librariesRR.filter((lib) => lib.npmReleases === undefined).length > 0
+    librariesRR.filter((lib) => lib.npmReleases === undefined).length > 0,
 );
 
 const packagesNames = computed(() =>
-  filteredLibsRef.value.map((lib) => lib.npmPackage.name)
+  filteredLibsRef.value.map((lib) => lib.npmPackage.name),
 );
 
 const isError = computed(() => filteredLibsRef.value.length === 0);
@@ -148,7 +148,7 @@ const ariaLabel = computed(() => {
       (lib) =>
         `${lib.alias} had ${
           lib.npmReleases.slice(-1)[0].releases
-        } npm releases in the previous quarter.`
+        } npm releases in the previous quarter.`,
     )
     .join(' ');
   return `NPM Releases statistics. ${str}`;

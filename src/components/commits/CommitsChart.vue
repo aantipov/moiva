@@ -40,7 +40,7 @@ interface FilteredLibT extends Omit<LibraryReadonlyT, 'commitsQuery' | 'repo'> {
   repo: NonNullable<LibraryReadonlyT['repo']>;
 }
 const filteredLibsRef = computed(
-  () => librariesRR.filter((lib) => !!lib.commitsQuery?.data) as FilteredLibT[]
+  () => librariesRR.filter((lib) => !!lib.commitsQuery?.data) as FilteredLibT[],
 );
 
 const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
@@ -71,11 +71,11 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
 const isLoadingRef = computed(
   () =>
     isLoadingLibraries.value ||
-    librariesRR.some((lib) => lib.commitsQuery && lib.commitsQuery.isFetching)
+    librariesRR.some((lib) => lib.commitsQuery && lib.commitsQuery.isFetching),
 );
 
 const reposIds = computed(() =>
-  filteredLibsRef.value.map((lib) => lib.repo.repoId)
+  filteredLibsRef.value.map((lib) => lib.repo.repoId),
 );
 
 const failedReposIds = computed<string[]>(() => {
@@ -87,7 +87,7 @@ const failedReposIds = computed<string[]>(() => {
 });
 
 const noRepoNpmPackages = computed(() =>
-  librariesRR.filter((lib) => !lib.repo).map((lib) => lib.npm.name)
+  librariesRR.filter((lib) => !lib.repo).map((lib) => lib.npm.name),
 );
 
 const isError = computed(() => filteredLibsRef.value.length === 0);
@@ -98,7 +98,7 @@ const ariaLabel = computed(() => {
       (lib) =>
         `${lib.alias} got ${
           lib.commitsQuery.data.monthlyCommits.slice(-1)[0].total
-        } commit(s) in the last month.`
+        } commit(s) in the last month.`,
     )
     .join(' ');
 

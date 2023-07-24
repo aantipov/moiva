@@ -115,7 +115,7 @@ onMounted(() => {
               searchItems.map((searchItem) => ({
                 ...searchItem,
                 isNpm: true,
-              }))
+              })),
             );
           })
         : // GITHUB SEARCH
@@ -127,7 +127,7 @@ onMounted(() => {
                 description,
                 stars,
                 isNpm: false,
-              }))
+              })),
             );
           });
 
@@ -160,7 +160,7 @@ onMounted(() => {
         ? ''
         : `
               <span>&#9733;${numbersFormatter.format(
-                item.stars as number
+                item.stars as number,
               )}</span>
           `;
 

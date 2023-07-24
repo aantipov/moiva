@@ -753,7 +753,7 @@
   },
   {
     "category": "Frontend Frameworks",
-    "repoId": "BuilderIO/qwik",
+    "repoId": "builderio/qwik",
     "npm": "@builder.io/qwik",
     "isNpmCoreArtifact": true,
     "alias": "Qwik",
@@ -851,6 +851,14 @@
     "category": "Frontend Frameworks",
     "repoId": "marko-js/marko",
     "npm": "marko",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["ui-framework"]
+  },
+  {
+    "category": "Frontend Frameworks",
+    "repoId": "hotwired/stimulus",
+    "npm": "stimulus",
     "isNpmCoreArtifact": true,
     "alias": null,
     "tags": ["ui-framework"]
@@ -1200,6 +1208,14 @@
     "tags": []
   },
   {
+    "category": "Runtime Type Systems",
+    "repoId": "colinhacks/zod",
+    "npm": "zod",
+    "isNpmCoreArtifact": true,
+    "alias": "zod",
+    "tags": ["schema-validation"]
+  },
+  {
     "category": "misc",
     "repoId": "jedwatson/classnames",
     "npm": "classnames",
@@ -1387,6 +1403,14 @@
     "category": "misc",
     "repoId": "yargs/yargs",
     "npm": "yargs",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": []
+  },
+  {
+    "category": "misc",
+    "repoId": "yarnpkg/yarn",
+    "npm": "yarn",
     "isNpmCoreArtifact": true,
     "alias": null,
     "tags": []
@@ -13582,6 +13606,14 @@
     "isNpmCoreArtifact": true,
     "alias": null,
     "tags": ["i18n", "angular"]
+  },
+  {
+    "category": "misc",
+    "repoId": "styled-system/styled-system",
+    "npm": "styled-system",
+    "isNpmCoreArtifact": true,
+    "alias": "Styled System",
+    "tags": []
   },
   {
     "category": "misc",

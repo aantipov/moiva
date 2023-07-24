@@ -184,15 +184,15 @@ const popularChartsNumber = computed(
       chartsVisibilityRO.googleTrends,
       chartsVisibilityRO.developerUsage,
       true,
-    ].filter(Boolean).length
+    ].filter(Boolean).length,
 );
 
 const maintChartsNumber = computed(
-  () => [chartsVisibilityRO.npmReleases, true, true].filter(Boolean).length
+  () => [chartsVisibilityRO.npmReleases, true, true].filter(Boolean).length,
 );
 
 const miscChartsNumber = computed(
-  () => [chartsVisibilityRO.techRadar, true].filter(Boolean).length
+  () => [chartsVisibilityRO.techRadar, true].filter(Boolean).length,
 );
 
 // User uses Back/Forward Browser buttons
@@ -211,7 +211,7 @@ function selectNpmPackage(npmPackageName: string): void {
       `Sorry, we couldn't fetch data for
       <span class="font-mono">${npmPackageName}</span>:
       npm package doesn't have repository information
-      `
+      `,
     );
     const err = new Error(`npmPackage: ${npmPackageName}`);
     err.name = 'UI: Select Npm Package Error';

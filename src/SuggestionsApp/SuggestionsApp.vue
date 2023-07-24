@@ -62,20 +62,20 @@ const showAll = ref(false);
 const trimmedLibraries = useStore($trimmedLibraries);
 const loadingLibraries = useStore($loadingLibraries);
 const allSuggestions = computed<CatalogLibraryT[]>(() =>
-  getSuggestions(trimmedLibraries.value)
+  getSuggestions(trimmedLibraries.value),
 );
 
 const hasMore = computed<boolean>(() => allSuggestions.value.length > size);
 const numberTrimmedSuggestionsToShow = computed<number>(() =>
   trimmedLibraries.value.length > size
     ? 0
-    : size - trimmedLibraries.value.length
+    : size - trimmedLibraries.value.length,
 );
 
 const suggestions = computed<CatalogLibraryT[]>(() =>
   showAll.value
     ? allSuggestions.value
-    : allSuggestions.value.slice(0, numberTrimmedSuggestionsToShow.value)
+    : allSuggestions.value.slice(0, numberTrimmedSuggestionsToShow.value),
 );
 
 function onSelect(catalogLibrary: CatalogLibraryT) {

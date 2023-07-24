@@ -53,14 +53,14 @@ interface FilteredLibWithDataT extends Omit<FilteredLibT, 'googleTrends'> {
 }
 
 const filteredLibsRef = computed(
-  () => librariesRR.filter((lib) => !!lib.googleTrends) as FilteredLibT[]
+  () => librariesRR.filter((lib) => !!lib.googleTrends) as FilteredLibT[],
 );
 
 const filteredLibsWithDataRef = computed(
   () =>
     librariesRR.filter(
-      (lib) => !!lib.googleTrends?.data
-    ) as FilteredLibWithDataT[]
+      (lib) => !!lib.googleTrends?.data,
+    ) as FilteredLibWithDataT[],
 );
 
 // Calculate startMonth based on packages creation date
@@ -69,8 +69,8 @@ const minMonthRef = computed(() => {
     const date = new Date(
       1000 *
         Number(
-          filteredLibsWithDataRef.value[0].googleTrends.data.timeline[0].time
-        )
+          filteredLibsWithDataRef.value[0].googleTrends.data.timeline[0].time,
+        ),
     );
     return format(date, 'yyyy-MM');
   }
@@ -92,7 +92,7 @@ const datasets = computed<ChartDataset<'line'>[]>(() =>
     backgroundColor: lib.color,
     borderColor: lib.color,
     pointRadius: 0,
-  }))
+  })),
 );
 
 const chartConfig = computed<ChartConfiguration>(() => ({
@@ -100,7 +100,7 @@ const chartConfig = computed<ChartConfiguration>(() => ({
   data: {
     labels: filteredLibsWithDataRef.value.length
       ? filteredLibsWithDataRef.value[0].googleTrends.data.timeline.map(
-          (tl) => Number(tl.time) * 1000
+          (tl) => Number(tl.time) * 1000,
         )
       : [],
     datasets: datasets.value,
@@ -125,23 +125,23 @@ const chartConfig = computed<ChartConfiguration>(() => ({
 const isLoadingRef = computed(
   () =>
     isLoadingLibraries.value ||
-    filteredLibsRef.value.some((lib) => lib.googleTrends.isFetching)
+    filteredLibsRef.value.some((lib) => lib.googleTrends.isFetching),
 );
 
 const isError = computed(() =>
-  filteredLibsRef.value.some((lib) => lib.googleTrends.isError)
+  filteredLibsRef.value.some((lib) => lib.googleTrends.isError),
 );
 
 const libsKeywordsAliases = computed<string[]>(() =>
-  filteredLibsWithDataRef.value.map((lib) => lib.googleTrends.meta.alias)
+  filteredLibsWithDataRef.value.map((lib) => lib.googleTrends.meta.alias),
 );
 
 const gTrendsLink = computed<string>(() => {
   const keywords = filteredLibsRef.value.map(
-    (lib) => lib.googleTrends.meta.keyword
+    (lib) => lib.googleTrends.meta.keyword,
   );
   const datesQueryParam = encodeURIComponent(
-    '2017-01-01 ' + format(new Date(), 'yyyy-MM-dd')
+    '2017-01-01 ' + format(new Date(), 'yyyy-MM-dd'),
   );
   const libsQueryParam = encodeURIComponent(keywords.join(','));
 

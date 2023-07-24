@@ -45,12 +45,12 @@ export function useExtraDataApi(): void {
 function useStars(): void {
   const queries = useStarsQueries(
     reposIds,
-    computed(() => !isLoadingLibraries.value)
+    computed(() => !isLoadingLibraries.value),
   );
 
   watchEffect(() => {
     starsQueriesRef.value = new Map(
-      reposIds.value.map((repoId, i) => [repoId, queries[i]])
+      reposIds.value.map((repoId, i) => [repoId, queries[i]]),
     );
   });
 }
@@ -58,7 +58,7 @@ function useStars(): void {
 function useGTrends(): void {
   const result = useGTrendsQuery(
     reposIds,
-    computed(() => !isLoadingLibraries.value)
+    computed(() => !isLoadingLibraries.value),
   );
 
   // @ts-ignore
@@ -68,12 +68,12 @@ function useGTrends(): void {
 function useCommits(): void {
   const queries = useCommitsQueries(
     reposIds,
-    computed(() => !isLoadingLibraries.value)
+    computed(() => !isLoadingLibraries.value),
   );
 
   watchEffect(() => {
     commitsQueriesRef.value = new Map(
-      reposIds.value.map((repoId, i) => [repoId, queries[i]])
+      reposIds.value.map((repoId, i) => [repoId, queries[i]]),
     );
   });
 }

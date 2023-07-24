@@ -101,17 +101,17 @@ const props = defineProps<{
   showAllParagraphs: boolean;
 }>();
 const description = computed(() =>
-  hasAiInfo(props.ai) ? props.ai.description : [props.npm.description]
+  hasAiInfo(props.ai) ? props.ai.description : [props.npm.description],
 );
 const slicedDescription = computed(() =>
-  description.value.slice(0, props.showAllParagraphs ? Infinity : 1)
+  description.value.slice(0, props.showAllParagraphs ? Infinity : 1),
 );
 const tags = computed(() => (hasAiInfo(props.ai) ? props.ai.tags : []));
 const alternatives = computed(() =>
-  hasAiInfo(props.ai) ? props.ai.alternatives : []
+  hasAiInfo(props.ai) ? props.ai.alternatives : [],
 );
 const npmjsLink = computed(
-  () => `https://www.npmjs.com/package/${encodeURIComponent(props.npm.name)}`
+  () => `https://www.npmjs.com/package/${encodeURIComponent(props.npm.name)}`,
 );
 const homepageUrl = computed(() =>
   !!props.npm.homepage &&
@@ -120,16 +120,16 @@ const homepageUrl = computed(() =>
     ? props.npm.homepage
     : props.repo?.homepageUrl
     ? props.repo.homepageUrl
-    : null
+    : null,
 );
 const publishedAt = computed(() =>
-  props.npm.publishedAt ? formatDateFromNow(props.npm.publishedAt) : null
+  props.npm.publishedAt ? formatDateFromNow(props.npm.publishedAt) : null,
 );
 const timeInYearsSinceLastPublished = computed(() =>
   props.npm.publishedAt
     ? (new Date().getTime() - new Date(props.npm.publishedAt).getTime()) /
       (1000 * 60 * 60 * 24 * 365)
-    : null
+    : null,
 );
 const status = computed(() => {
   if (

@@ -25,10 +25,13 @@ export interface StateOfJSItemT {
 
 export const repoIdToDevUsageDataMap = (
   rawStateOfJsItems as StateOfJSItemT[]
-).reduce((acc, item) => {
-  acc[item.repoId.toLowerCase()] = item;
-  return acc;
-}, {} as Record<string, StateOfJSItemT>);
+).reduce(
+  (acc, item) => {
+    acc[item.repoId.toLowerCase()] = item;
+    return acc;
+  },
+  {} as Record<string, StateOfJSItemT>,
+);
 
 /** ========= THOUGHWORKS TECH RADAR ========= **/
 const HOLD = 'Hold';
@@ -81,10 +84,13 @@ export interface TechRadarT {
 
 export const repoIdToTechRadarMap = (
   rawTechRadarItems as [RepoNameT, AliasT, LinkT, EntryT[]][]
-).reduce((accum, [repo, alias, link, entries]) => {
-  accum[repo.toLowerCase()] = { repo, alias, link, entries };
-  return accum;
-}, {} as Record<string, TechRadarT>);
+).reduce(
+  (accum, [repo, alias, link, entries]) => {
+    accum[repo.toLowerCase()] = { repo, alias, link, entries };
+    return accum;
+  },
+  {} as Record<string, TechRadarT>,
+);
 
 /** ========= PLAYGROUND ITEMS ========= **/
 type pgNpmT = string;
@@ -94,7 +100,7 @@ export const npmToPlaygroundMap = (pgItems as [pgNpmT, pgLink][]).reduce(
     accum[npm] = link;
     return accum;
   },
-  {} as Record<pgNpmT, pgLink>
+  {} as Record<pgNpmT, pgLink>,
 );
 
 /** ========= LIBRARIES CATALOG ========= **/
@@ -153,7 +159,7 @@ export const allCatalogLibraries = rawLibraries
  * For use by npm-package api to return the correct repo for the npm package
  */
 export function getNpmLibraryByNpm(
-  npm: string
+  npm: string,
 ): CatalogLibraryNpmT | undefined {
   return catalogLibraries.find((lib) => lib.npm === npm) as
     | CatalogLibraryNpmT
@@ -169,7 +175,7 @@ type KeywordAliasT = string; // To display on the chart. If not provided, then R
 const gtrendsDefs = rawGoogleTrendsItems as [
   RepoIdT,
   KeywordT,
-  KeywordAliasT?
+  KeywordAliasT?,
 ][];
 
 export interface GTrendDefT {
@@ -187,7 +193,7 @@ export const repoToGTrendDefMap = gtrendsDefs.reduce(
     };
     return accum;
   },
-  {} as Record<string, GTrendDefT>
+  {} as Record<string, GTrendDefT>,
 );
 
 function capitalise(str: string): string {

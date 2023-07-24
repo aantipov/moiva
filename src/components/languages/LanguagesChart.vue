@@ -44,7 +44,7 @@ interface FilteredExtLibT extends FilteredLibT {
 }
 
 const filteredLibsRef = computed(
-  () => librariesRR.filter((lib) => !!lib.languages) as FilteredLibT[]
+  () => librariesRR.filter((lib) => !!lib.languages) as FilteredLibT[],
 );
 
 // Compute languages shares, counting only those which has >=10% share
@@ -58,10 +58,13 @@ const filteredExtLibsRef = computed(() =>
         langShare: (100 * langBytes) / bytesTotal,
       }))
       .filter(({ langShare }) => langShare >= 10)
-      .reduce((acc, { lang, langShare }) => {
-        acc[lang] = Number.parseFloat(Number(langShare).toFixed(1));
-        return acc;
-      }, {} as Record<string, number>);
+      .reduce(
+        (acc, { lang, langShare }) => {
+          acc[lang] = Number.parseFloat(Number(langShare).toFixed(1));
+          return acc;
+        },
+        {} as Record<string, number>,
+      );
 
     const othersShare =
       100 - Object.values(mainLanguagesShares).reduce((a, b) => a + b, 0);
@@ -72,7 +75,7 @@ const filteredExtLibsRef = computed(() =>
     };
 
     return { ...lib, languagesShares } as FilteredExtLibT;
-  })
+  }),
 );
 
 // Compute languages names that has share >=10%
@@ -107,7 +110,7 @@ const languagesNames = computed<string[]>(() => {
 });
 
 const langToColorMap = computed<Record<string, string>>(() =>
-  getLangToColorMap(languagesNames.value)
+  getLangToColorMap(languagesNames.value),
 );
 
 const chartConfig = computed<ChartConfiguration<'bar'>>(() => ({
@@ -117,7 +120,7 @@ const chartConfig = computed<ChartConfiguration<'bar'>>(() => ({
     datasets: (languagesNames.value || []).map((langName) => ({
       label: langName,
       data: filteredExtLibsRef.value.map(
-        (lib) => lib.languagesShares[langName] || 0
+        (lib) => lib.languagesShares[langName] || 0,
       ),
       backgroundColor: langToColorMap.value[langName],
       borderColor: langToColorMap.value[langName],
@@ -154,13 +157,13 @@ const chartConfig = computed<ChartConfiguration<'bar'>>(() => ({
 const isLoadingRef = computed(
   () =>
     isLoadingLibraries.value ||
-    librariesRR.filter((lib) => lib.languages === undefined).length > 0
+    librariesRR.filter((lib) => lib.languages === undefined).length > 0,
 );
 
 const isError = computed(() => filteredLibsRef.value.length === 0);
 
 const reposIds = computed(() =>
-  filteredLibsRef.value.map((lib) => lib.repo.repoId)
+  filteredLibsRef.value.map((lib) => lib.repo.repoId),
 );
 
 const failedReposIds = computed<string[]>(() => {
@@ -172,7 +175,7 @@ const failedReposIds = computed<string[]>(() => {
 });
 
 const noRepoNpmPackages = computed(() =>
-  librariesRR.filter((lib) => !lib.repo).map((lib) => lib.npm.name)
+  librariesRR.filter((lib) => !lib.repo).map((lib) => lib.npm.name),
 );
 
 const ariaLabel = computed(() => {
@@ -183,7 +186,7 @@ const ariaLabel = computed(() => {
           lib.alias
         } repository: ${Object.entries(lib.languagesShares)
           .map(([lang, share]) => `${lang} ${share}%`)
-          .join(', ')}.`
+          .join(', ')}.`,
     )
     .join(' ');
 

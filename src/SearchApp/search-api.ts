@@ -25,7 +25,7 @@ export function fetchGithubSearch(q: string): Promise<GithubSearchItem[]> {
 
   return axios
     .get<{ items: GithubSearchItem[] }>(
-      `https://github-search.moiva.workers.dev/?q=${q}`
+      `https://github-search.moiva.workers.dev/?q=${q}`,
     )
     .then(({ data }) => {
       githubSearchCache.set(q, data.items);
@@ -66,7 +66,7 @@ export function fetchNpmSearch(keyword: string): Promise<NpmSearchItemT[]> {
 function fetchNpmJSSuggestions(keyword: string): Promise<NpmSearchItemT[]> {
   return axios
     .get<{ items: NpmSearchItemT[] }>(
-      `https://npm-search.moiva.workers.dev/?q=${keyword}`
+      `https://npm-search.moiva.workers.dev/?q=${keyword}`,
     )
     .then(({ data }) => data.items);
 }
@@ -91,7 +91,7 @@ interface NpmsIOSuggestionResponseT {
 function fetchNpmsIOSuggestions(keyword: string): Promise<NpmSearchItemT[]> {
   return axios
     .get<NpmsIOSuggestionResponseT[]>(
-      `https://api.npms.io/v2/search/suggestions?q=${keyword}&size=20`
+      `https://api.npms.io/v2/search/suggestions?q=${keyword}&size=20`,
     )
     .then((resp) => {
       const suggestions = resp.data as NpmsIOSuggestionResponseT[];

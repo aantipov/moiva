@@ -32,7 +32,7 @@ export type UseCommitsQueriesResultT = Readonly<
 
 export function useCommitsQueries(
   repoIds: Ref<string[]>,
-  enabled: Ref<boolean>
+  enabled: Ref<boolean>,
 ): UseCommitsQueriesResultT {
   const prevQuarterDate = subQuarters(new Date(), 1);
 
@@ -41,7 +41,7 @@ export function useCommitsQueries(
       queryKey: ['commits', repoId],
       queryFn: () =>
         axios.get<{ items: RepoCommitsResponseItemT[] }>(
-          `https://github-commits.moiva.workers.dev/?repo=${repoId}`
+          `https://github-commits.moiva.workers.dev/?repo=${repoId}`,
         ),
       enabled: enabled.value,
       staleTime: Infinity,
@@ -82,7 +82,7 @@ export function useCommitsQueries(
           reportSentry(err, 'fetchGithubCommitsData');
         }
       },
-    }))
+    })),
   );
 
   return useQueries(queriesConfigs);

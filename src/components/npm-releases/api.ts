@@ -11,7 +11,7 @@ export const cacheR = reactive(new Map<string, NpmPackageReleasesT[] | null>());
 export const creationDatesCacheR = reactive(new Map<string, string | null>());
 
 export function fetchNpmPackageReleases(
-  pkg: string
+  pkg: string,
 ): Promise<NpmPackageReleasesT[] | null> {
   if (cacheR.get(pkg)) {
     return Promise.resolve(cacheR.get(pkg) as NpmPackageReleasesT[]);
@@ -19,7 +19,7 @@ export function fetchNpmPackageReleases(
 
   return axios
     .get<{ items: NpmPackageReleasesT[]; created?: string }>(
-      `https://npm-releases.moiva.workers.dev/?pkg=${pkg}`
+      `https://npm-releases.moiva.workers.dev/?pkg=${pkg}`,
     )
     .then(({ data }) => {
       cacheR.set(pkg, data.items);
