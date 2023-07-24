@@ -57,7 +57,7 @@ interface FilteredLibT extends LibraryReadonlyT {
 }
 
 const filteredLibsRef = computed(
-  () => librariesRR.filter((lib) => !!lib.npmDownloads) as FilteredLibT[]
+  () => librariesRR.filter((lib) => !!lib.npmDownloads) as FilteredLibT[],
 );
 
 // Calculate startMonth based on packages creation date
@@ -89,7 +89,7 @@ const datasets = computed<ChartDataset<'line'>[]>(() =>
       borderDash: (ctx) =>
         ctx.p1DataIndex === lib.npmDownloads.length - 1 ? [5, 5] : undefined,
     },
-  }))
+  })),
 );
 
 const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
@@ -118,16 +118,16 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
 }));
 
 const packagesNames = computed(() =>
-  filteredLibsRef.value.map((lib) => lib.npmPackage.name)
+  filteredLibsRef.value.map((lib) => lib.npmPackage.name),
 );
 const aliasesRef = computed(() =>
-  filteredLibsRef.value.map((lib) => lib.alias)
+  filteredLibsRef.value.map((lib) => lib.alias),
 );
 
 const isLoadingRef = computed(
   () =>
     isLoadingLibraries.value ||
-    librariesRR.filter((lib) => lib.npmDownloads === undefined).length > 0
+    librariesRR.filter((lib) => lib.npmDownloads === undefined).length > 0,
 );
 
 const isError = computed(() => filteredLibsRef.value.length === 0);
@@ -137,12 +137,12 @@ const ariaLabel = computed<string>(() => {
     .map(
       (lib) =>
         `${lib.alias} npm downloads increase on average by ${formatPercent(
-          lib.npmDownloadsGrowth
-        )} per month.`
+          lib.npmDownloadsGrowth,
+        )} per month.`,
     )
     .join(' ');
   return `Npm Downloads statistics for ${getNamesStr(
-    aliasesRef.value
+    aliasesRef.value,
   )}. ${str}`;
 });
 

@@ -42,7 +42,7 @@ interface FilteredLibT extends LibraryReadonlyT {
   devUsage: StateOfJSItemT;
 }
 const filteredLibsRef = computed(
-  () => librariesRR.filter((lib) => !!lib.devUsage) as FilteredLibT[]
+  () => librariesRR.filter((lib) => !!lib.devUsage) as FilteredLibT[],
 );
 
 const chartConfig = computed<ChartConfiguration>(() => ({
@@ -88,7 +88,7 @@ const chartConfig = computed<ChartConfiguration>(() => ({
 }));
 
 const libsNames = computed(() =>
-  filteredLibsRef.value.map((lib) => lib.devUsage.name)
+  filteredLibsRef.value.map((lib) => lib.devUsage.name),
 );
 
 const ariaLabel = computed(() => {
@@ -97,7 +97,7 @@ const ariaLabel = computed(() => {
       (lib) =>
         `${lib.alias} is used by ${
           lib.devUsage.usage.slice(-1)[0].value
-        }% of developers.`
+        }% of developers.`,
     )
     .join(' ');
   return `Developer Usage statistics according to StateOfJS survey. ${str}`;

@@ -11,7 +11,7 @@ export interface ContributorsT {
 export const cacheR = reactive(new Map<string, ContributorsT[] | null>());
 
 export function fetchContributors(
-  repoId: string
+  repoId: string,
 ): Promise<ContributorsT[] | null> {
   const repoIdLc = repoId.toLowerCase();
   if (cacheR.get(repoIdLc)) {
@@ -20,7 +20,7 @@ export function fetchContributors(
 
   return axios
     .get<{ items: ContributorsT[] }>(
-      `https://github-contributors.moiva.workers.dev/?repo=${repoIdLc}`
+      `https://github-contributors.moiva.workers.dev/?repo=${repoIdLc}`,
     )
     .then(({ data }) => {
       cacheR.set(repoIdLc, data.items);

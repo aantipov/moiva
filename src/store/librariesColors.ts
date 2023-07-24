@@ -17,7 +17,7 @@ export function updateLibrariesColors(librariesIds: string[]): void {
 
   // Get a list of unused colors
   const vacantColors = COLORS.filter(
-    (color) => ![...libraryToColorMapR.values()].includes(color)
+    (color) => ![...libraryToColorMapR.values()].includes(color),
   );
 
   // Update the Map with the colors for new libs

@@ -117,10 +117,10 @@ onMounted(() => {
 const stars = computed(() =>
   lib.value?.repo?.stars
     ? numbersFormatter.format(lib.value?.repo.stars as number)
-    : null
+    : null,
 );
 const downloads = computed(() =>
-  numbersFormatter.format(lib.value?.npmDownloadsAvg as number)
+  numbersFormatter.format(lib.value?.npmDownloadsAvg as number),
 );
 
 async function _fetchData() {

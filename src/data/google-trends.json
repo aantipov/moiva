@@ -1,5 +1,5 @@
 [
-  ["vuejs/vue", "/g/11c0vmgx5d", "Vue.js"],
+  ["vuejs/core", "/g/11c0vmgx5d", "Vue.js"],
   ["facebook/react", "/m/012l1vxv"],
   ["angular/angular", "/g/11c6w0ddw9"],
   ["sveltejs/svelte", "/g/11c5t00h04"],

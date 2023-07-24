@@ -15,7 +15,9 @@
     var(--c), var(--c), var(--c);
   background-size: 16px 16px;
   background-repeat: no-repeat;
-  animation: sh2-1 1s infinite, sh2-2 1s infinite;
+  animation:
+    sh2-1 1s infinite,
+    sh2-2 1s infinite;
 }
 
 @keyframes sh2-1 {
@@ -34,13 +36,29 @@
 @keyframes sh2-2 {
   0%,
   40% {
-    background-position: 0 0, 0 50%, 0 100%, 50% 100%, 100% 100%, 100% 50%,
-      100% 0, 50% 0, 50% 50%;
+    background-position:
+      0 0,
+      0 50%,
+      0 100%,
+      50% 100%,
+      100% 100%,
+      100% 50%,
+      100% 0,
+      50% 0,
+      50% 50%;
   }
   60%,
   100% {
-    background-position: 0 50%, 0 100%, 50% 100%, 100% 100%, 100% 50%, 100% 0,
-      50% 0, 0 0, 50% 50%;
+    background-position:
+      0 50%,
+      0 100%,
+      50% 100%,
+      100% 100%,
+      100% 50%,
+      100% 0,
+      50% 0,
+      0 0,
+      50% 50%;
   }
 }
 </style>

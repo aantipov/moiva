@@ -76,7 +76,7 @@ describe('Catalog libraries', () => {
     catalogLibraries.forEach((lib) => {
       if (lib.tags.length) {
         expect(nonSubstantialTags).not.toEqual(
-          expect.arrayContaining(lib.tags)
+          expect.arrayContaining(lib.tags),
         );
       }
     });
@@ -98,7 +98,7 @@ function getDuplicates(libs: CatalogLibraryT[]) {
   duplicates.push(
     ...getDuplicatesGeneric(libsNpmNames),
     ...getDuplicatesGeneric(libsReposIds),
-    ...getDuplicatesGeneric(libsAliases)
+    ...getDuplicatesGeneric(libsAliases),
   );
 
   return duplicates;

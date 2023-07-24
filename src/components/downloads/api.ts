@@ -10,7 +10,7 @@ export interface NpmDownloadT {
 export const cacheR = reactive(new Map<string, NpmDownloadT[] | null>());
 
 export function fetchNpmDownloads(
-  libName: string
+  libName: string,
 ): Promise<NpmDownloadT[] | null> {
   if (cacheR.get(libName)) {
     return Promise.resolve(cacheR.get(libName) as NpmDownloadT[]);
@@ -18,7 +18,7 @@ export function fetchNpmDownloads(
 
   return axios
     .get<{ items: NpmDownloadT[] }>(
-      `https://npm-downloads.moiva.workers.dev/?pkg=${libName}`
+      `https://npm-downloads.moiva.workers.dev/?pkg=${libName}`,
     )
     .then(({ data }) => {
       cacheR.set(libName, data.items);

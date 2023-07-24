@@ -24,18 +24,18 @@ import _readings from '@/data/readings.json';
 const npmsRef = computed<string[]>(() =>
   librariesRR
     .filter((lib) => !!lib.npmPackage)
-    .map((lib) => (lib.npmPackage as NpmPackageT).name)
+    .map((lib) => (lib.npmPackage as NpmPackageT).name),
 );
 
 const reposRef = computed<string[]>(() =>
-  librariesRR.filter((lib) => !!lib.repo).map((lib) => lib.repo!.repoId)
+  librariesRR.filter((lib) => !!lib.repo).map((lib) => lib.repo!.repoId),
 );
 
 const readings = computed<ReadingT[]>(() =>
   (_readings as ReadingT[]).filter(
     (reading) =>
       npmsRef.value.some((npm) => reading.npms.includes(npm)) ||
-      reposRef.value.some((repoId) => reading.repos.includes(repoId))
-  )
+      reposRef.value.some((repoId) => reading.repos.includes(repoId)),
+  ),
 );
 </script>

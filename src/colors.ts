@@ -64,7 +64,7 @@ export function getLangToColorMap(langs: string[]): Record<string, string> {
 
   // Get a list of unused colors
   const vacantColors = LANGUAGE_COLORS.filter(
-    (color) => !usedColors.includes(color)
+    (color) => !usedColors.includes(color),
   );
 
   // Update the Map with the colors for new langs

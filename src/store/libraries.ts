@@ -14,7 +14,7 @@ export const npmPackagesLoading = reactive<string[]>([]);
 
 export function sortLibraries(
   sortFn: (_a: LibraryT, _b: LibraryT) => number,
-  isReverse = false
+  isReverse = false,
 ): void {
   librariesR.sort(sortFn);
   if (isReverse) {
@@ -34,11 +34,11 @@ watch(
         npm,
         alias,
         ai,
-      })
+      }),
     );
     $trimmedLibraries.set(trimmedLibraries);
   },
-  { deep: true }
+  { deep: true },
 );
 
 watch(npmPackagesLoading, (newNpmPackagesLoading) => {
@@ -52,20 +52,20 @@ export const librariesRR = libraries;
 export const isLoading = computed(() => !!npmPackagesLoading.length);
 watch(isLoading, (isLoadingValue) => $isLoading.set(isLoadingValue));
 export const librariesIds = computed<string[]>(() =>
-  librariesR.map((lib) => lib.id)
+  librariesR.map((lib) => lib.id),
 );
-const reposIdsWithDuplicates = computed<string[]>(() =>
+const reposIdsWithDuplicates = computed<Lowercase<string>[]>(() =>
   libraries
     .filter((lib) => !!lib.repo)
-    .map((lib) => lib.repo!.repoId.toLowerCase())
+    .map((lib) => lib.repo!.repoId.toLowerCase() as Lowercase<string>),
 );
-export const reposIds = computed<string[]>(() => [
+export const reposIds = computed<Lowercase<string>[]>(() => [
   ...new Set(reposIdsWithDuplicates.value),
 ]);
 export const npmPackagesNames = computed<string[]>(() =>
   libraries
     .filter((lib) => !!lib.npmPackage)
-    .map((lib) => (lib.npmPackage as NpmPackageT).name)
+    .map((lib) => (lib.npmPackage as NpmPackageT).name),
 );
 
 /**
@@ -95,42 +95,51 @@ export const categoryRef = computed<string | null>(() => {
  * We take only the first repo.
  */
 export const repoToLibraryIdMap = computed<Record<string, string>>(() => {
-  return reposIds.value.reduce((acc, repoId) => {
-    if (!acc[repoId]) {
-      acc[repoId] = (
-        librariesR.find(
-          (lib) => lib.repo && lib.repo.repoId.toLowerCase() === repoId
-        ) as LibraryT
-      ).id;
-    }
+  return reposIds.value.reduce(
+    (acc, repoId) => {
+      if (!acc[repoId]) {
+        acc[repoId] = (
+          librariesR.find(
+            (lib) => lib.repo && lib.repo.repoId.toLowerCase() === repoId,
+          ) as LibraryT
+        ).id;
+      }
 
-    return acc;
-  }, {} as Record<string, string>);
+      return acc;
+    },
+    {} as Record<string, string>,
+  );
 });
 
 export const repoIdToRepoMap = computed<Record<string, RepoT>>(() => {
-  return librariesR.reduce((acc, library) => {
-    if (library.repo === null) {
+  return librariesR.reduce(
+    (acc, library) => {
+      if (library.repo === null) {
+        return acc;
+      }
+
+      const repoId = library.repo.repoId.toLowerCase();
+      if (!acc[repoId]) {
+        acc[repoId] = library.repo;
+      }
+
       return acc;
-    }
-
-    const repoId = library.repo.repoId.toLowerCase();
-    if (!acc[repoId]) {
-      acc[repoId] = library.repo;
-    }
-
-    return acc;
-  }, {} as Record<string, RepoT>);
+    },
+    {} as Record<string, RepoT>,
+  );
 });
 
 export const npmPackageToLibraryIdMap = computed<Record<string, string>>(() => {
   return libraries
     .filter((lib) => !!lib.npmPackage)
-    .reduce((acc, lib) => {
-      acc[(lib.npmPackage as NpmPackageT).name] = lib.id;
+    .reduce(
+      (acc, lib) => {
+        acc[(lib.npmPackage as NpmPackageT).name] = lib.id;
 
-      return acc;
-    }, {} as Record<string, string>);
+        return acc;
+      },
+      {} as Record<string, string>,
+    );
 });
 
 function hasLibraryADuplicate(library: LibraryT): boolean {
@@ -138,16 +147,16 @@ function hasLibraryADuplicate(library: LibraryT): boolean {
     ({ repo, npm }) =>
       repo &&
       repo.repoId === library.repo?.repoId &&
-      npm.name === library.npm.name
+      npm.name === library.npm.name,
   );
 }
 
 export async function addInitialLibrariesByNpm(
-  npmPackages: string[]
+  npmPackages: string[],
 ): Promise<void> {
   npmPackagesLoading.push(...npmPackages);
   const libs = await Promise.all(
-    npmPackages.map((pkgName) => fetchLibraryByNpm(pkgName))
+    npmPackages.map((pkgName) => fetchLibraryByNpm(pkgName)),
   );
   librariesR.push(...libs);
   npmPackagesLoading.length = 0;
@@ -171,7 +180,7 @@ export function addLibraryByNpmPackage(pkgName: string): Promise<void> {
       }
     })
     .finally(() =>
-      npmPackagesLoading.splice(npmPackagesLoading.indexOf(pkgName), 1)
+      npmPackagesLoading.splice(npmPackagesLoading.indexOf(pkgName), 1),
     );
 }
 

@@ -107,7 +107,7 @@ export function showErrorMsg(msg: string): void {
 
 export function sortLibsByAlias(
   libA: LibraryReadonlyT,
-  libB: LibraryReadonlyT
+  libB: LibraryReadonlyT,
 ): number {
   const aliasA = libA.alias;
   const aliasB = libB.alias;
@@ -220,7 +220,7 @@ type LibsValues =
 
 export function getFirstNonZeroValueMonth(
   libs: LibsValues[][],
-  prop: 'contributors' | 'releases'
+  prop: 'contributors' | 'releases',
 ): string {
   const defaultMonth = '2017-01';
 

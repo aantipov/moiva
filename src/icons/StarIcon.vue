@@ -20,6 +20,6 @@ withDefaults(
   }>(),
   {
     label: 'Star icon',
-  }
+  },
 );
 </script>

@@ -44,20 +44,20 @@ interface FilteredLibT extends Omit<LibraryReadonlyT, 'repo'> {
 }
 
 const filteredLibsRef = computed(
-  () => librariesRR.filter((lib) => !!lib.contributors) as FilteredLibT[]
+  () => librariesRR.filter((lib) => !!lib.contributors) as FilteredLibT[],
 );
 
 const firstNonZeroQuarterRef = computed(() =>
   getQuarterFirstMonthFromDate(
     getFirstNonZeroValueMonth(
       filteredLibsRef.value.map((lib) => lib.contributors),
-      'contributors'
-    )
-  )
+      'contributors',
+    ),
+  ),
 );
 
 const unitRef = computed<'quarter' | 'year'>(() =>
-  firstNonZeroQuarterRef.value >= '2019-10' ? 'quarter' : 'year'
+  firstNonZeroQuarterRef.value >= '2019-10' ? 'quarter' : 'year',
 );
 
 function getNextQuarterFirstMonth(month: string) {
@@ -122,13 +122,13 @@ const chartConfig = computed<ChartConfiguration<'line'>>(() => ({
 const isLoadingRef = computed(
   () =>
     isLoadingLibraries.value ||
-    librariesRR.filter((lib) => lib.contributors === undefined).length > 0
+    librariesRR.filter((lib) => lib.contributors === undefined).length > 0,
 );
 
 const isError = computed(() => filteredLibsRef.value.length === 0);
 
 const reposIds = computed(() =>
-  filteredLibsRef.value.map((lib) => lib.repo.repoId)
+  filteredLibsRef.value.map((lib) => lib.repo.repoId),
 );
 
 const failedReposIds = computed<string[]>(() => {
@@ -140,7 +140,7 @@ const failedReposIds = computed<string[]>(() => {
 });
 
 const noRepoNpmPackages = computed(() =>
-  librariesRR.filter((lib) => !lib.repo).map((lib) => lib.npm.name)
+  librariesRR.filter((lib) => !lib.repo).map((lib) => lib.npm.name),
 );
 
 const ariaLabel = computed(() => {
@@ -149,7 +149,7 @@ const ariaLabel = computed(() => {
       (lib) =>
         `${
           lib.contributors.slice(-1)[0].contributors
-        } developer(s) contributed to ${lib.alias} in the previous quarter.`
+        } developer(s) contributed to ${lib.alias} in the previous quarter.`,
     )
     .join(' ');
 

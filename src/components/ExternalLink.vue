@@ -16,7 +16,7 @@ withDefaults(
   }>(),
   {
     truncate: false,
-  }
+  },
 );
 </script>
 

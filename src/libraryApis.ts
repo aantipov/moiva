@@ -100,7 +100,7 @@ function fetchNpmJSPackage(packageName: string): Promise<NpmInfoApiResponseT> {
 
 function reportSentry(
   err: AxiosError<{ error?: string }>,
-  methodName: string
+  methodName: string,
 ): void {
   err.name = `UI API (${methodName})`;
 

@@ -69,7 +69,7 @@ const sortFn = (metricConfigRef.value.sortDirFn || descend)(pickDataFn);
 
 const librariesSortedRR = computed(() => {
   const filteredLibraries = librariesRR.filter(
-    (lib) => pickDataFn(lib) !== undefined
+    (lib) => pickDataFn(lib) !== undefined,
   );
   // @ts-ignore
   return sort(sortFn, filteredLibraries);
@@ -78,7 +78,7 @@ const librariesSortedRR = computed(() => {
 const libsNamesRef = computed(() => librariesSortedRR.value.map(prop('alias')));
 const libsDataRef = computed(() => librariesSortedRR.value.map(pickDataFn));
 const libsColorsRef = computed(() =>
-  librariesSortedRR.value.map(prop('color'))
+  librariesSortedRR.value.map(prop('color')),
 );
 const hide = () => t.hide();
 const libsNames = libsNamesRef;

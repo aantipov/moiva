@@ -108,7 +108,7 @@ export interface LibraryT {
 
 export function getLibrary(
   npmApiResponse: NpmInfoApiResponseT,
-  catalogLibrary: CatalogLibraryT | null
+  catalogLibrary: CatalogLibraryT | null,
 ): LibraryT {
   const { npm, repo, ai } = npmApiResponse;
   const isNpmCoreArtifact = catalogLibrary?.isNpmCoreArtifact ?? null;
@@ -136,7 +136,7 @@ export function getLibrary(
     // Use @ts-ignore because the Computed Ref will eventually become Reactive and then Typescript will start arguing
     // @ts-ignore
     age: computed(() =>
-      differenceInMilliseconds(new Date(), new Date(npm.createdAt))
+      differenceInMilliseconds(new Date(), new Date(npm.createdAt)),
     ),
     playground: npmToPlaygroundMap[npm.name] || null,
     tradar: (repoIdLC && repoIdToTechRadarMap[repoIdLC]) || null,
@@ -155,7 +155,7 @@ export function getLibrary(
     color: computed(() => libraryToColorMapR.get(id) || '#ffffff'),
     // @ts-ignore
     contributors: computed(() =>
-      repoIdLC ? contributorsMapR.get(repoIdLC) : null
+      repoIdLC ? contributorsMapR.get(repoIdLC) : null,
     ),
     // @ts-ignore
     contributorsLastQ: computed(() => {
@@ -179,7 +179,7 @@ export function getLibrary(
     npmReleases: computed(() => npmReleasesMapR.get(npm.name)),
     // @ts-ignore
     npmReleasesLastQ: computed(
-      () => npmReleasesMapR.get(npm.name)?.slice(-1)[0].releases
+      () => npmReleasesMapR.get(npm.name)?.slice(-1)[0].releases,
     ),
     // @ts-ignore
     npmDownloads: computed(() => npmDownloadsMapR.get(npm.name)),
@@ -223,7 +223,7 @@ export function getLibrary(
     }) as unknown as number | undefined | null,
     // @ts-ignore
     starsQuery: computed(() =>
-      repoIdLC ? starsQueriesRef.value.get(repoIdLC) : null
+      repoIdLC ? starsQueriesRef.value.get(repoIdLC) : null,
     ),
     // @ts-ignore
     bundlesize: computed(() => bundlesizeMapR.get(npm.name)),
@@ -250,14 +250,14 @@ export function getLibrary(
     }),
     // @ts-ignore
     commitsQuery: computed(() =>
-      repoIdLC ? commitsQueriesRef.value.get(repoIdLC) : null
+      repoIdLC ? commitsQueriesRef.value.get(repoIdLC) : null,
     ),
     // @ts-ignore
     languages: computed(() => (repoIdLC ? languagesMapR.get(repoIdLC) : null)),
     // @ts-ignore
     readings: computed(() => {
       return (readings as ReadingT[]).filter((item) =>
-        item.npms.includes(npm.name)
+        item.npms.includes(npm.name),
       );
     }),
   };

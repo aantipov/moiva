@@ -218,7 +218,7 @@ const props = defineProps<{
 
 const { lib } = toRefs(props);
 const npmNameEncoded = computed(() =>
-  encodeURIComponent(lib.value.npmPackage.name)
+  encodeURIComponent(lib.value.npmPackage.name),
 );
 const starsGrowth = computed<string>(() => {
   const { starsQuery, repo } = lib.value;
@@ -235,7 +235,7 @@ const starsGrowth = computed<string>(() => {
 
   return `${formatNumber(
     starsQuery.data.monthlyAvg,
-    true
+    true,
   )} / +${percentageFormatted}%`;
 });
 
@@ -290,20 +290,20 @@ function getAge(createdAt: string): string {
 
 const snykUrl = computed(
   () =>
-    `https://snyk-widget.herokuapp.com/badge/npm/${npmNameEncoded.value}/badge.svg`
+    `https://snyk-widget.herokuapp.com/badge/npm/${npmNameEncoded.value}/badge.svg`,
 );
 const snykVulnUrl = computed(() =>
   lib.value.repo
     ? `https://snyk.io/test/github/${lib.value.repo.repoId}/`
-    : null
+    : null,
 );
 const vulnTooltip = computed(() =>
   lib.value.repo
     ? `Vulnerabilities found in the ${lib.value.repo.repoId} repository. Data source: Snyk.io`
-    : null
+    : null,
 );
 const bundlephobiaUrl = computed(
-  () => `https://bundlephobia.com/package/${npmNameEncoded.value}`
+  () => `https://bundlephobia.com/package/${npmNameEncoded.value}`,
 );
 
 const tradar = computed(() => {
@@ -329,7 +329,7 @@ const npmReleases = computed(() => {
 });
 
 const commits = computed<string | number>(
-  () => lib.value.commitsQuery?.data?.commitsLastQuarter ?? '-'
+  () => lib.value.commitsQuery?.data?.commitsLastQuarter ?? '-',
 );
 
 const devUsage = computed(() => {

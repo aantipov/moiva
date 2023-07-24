@@ -5,7 +5,7 @@ import { ref, onMounted, watch, Ref, computed } from 'vue';
 export function useChartApi<T>(
   itemsIds: Ref<string[]>,
   isNotReadyToCall: Ref<boolean>,
-  apiMethod: (_dataKey: string) => Promise<T | null>
+  apiMethod: (_dataKey: string) => Promise<T | null>,
 ): {
   isLoading: Ref<boolean>;
   isError: Ref<boolean>;
@@ -27,7 +27,7 @@ export function useChartApi<T>(
     isError.value = false;
 
     const fetchPromise = (lastFetchPromise = Promise.all(
-      itemsIds.value.map(apiMethod)
+      itemsIds.value.map(apiMethod),
     )
       .then((data) => {
         // Do nothing if there is a new request already in place
@@ -37,7 +37,7 @@ export function useChartApi<T>(
           isError.value = false;
         }
       })
-      .catch((err) => {
+      .catch((_err) => {
         // Sentry.captureException(err);
         // // Do nothing if there is a new request already in place
         // if (lastFetchPromise === fetchPromise) {
@@ -56,12 +56,12 @@ export function useChartApi<T>(
     isError,
     items: computed(() => items.value.filter((item) => !!item) as T[]),
     successItemsIds: computed(() =>
-      itemsIds.value.filter((_, itemIdIndex) => !!items.value[itemIdIndex])
+      itemsIds.value.filter((_, itemIdIndex) => !!items.value[itemIdIndex]),
     ),
     failedItemsIds: computed(() =>
       isLoading.value
         ? []
-        : itemsIds.value.filter((_, itemIdIndex) => !items.value[itemIdIndex])
+        : itemsIds.value.filter((_, itemIdIndex) => !items.value[itemIdIndex]),
     ),
   };
 }

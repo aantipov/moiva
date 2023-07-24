@@ -38,7 +38,7 @@ catalogLibraries.forEach((lib) => index.add(lib));
  * based on tags
  */
 export function getSuggestions(
-  selectedLibraries: readonly TrimmedLibraryT[]
+  selectedLibraries: readonly TrimmedLibraryT[],
 ): CatalogLibraryT[] {
   if (!selectedLibraries.length) {
     return [];
@@ -50,15 +50,15 @@ export function getSuggestions(
   ] as string[];
 
   const tagsUsedNoFrameworks = tagsUsed.filter(
-    (tag) => !frameworksTags.includes(tag)
+    (tag) => !frameworksTags.includes(tag),
   ) as string[];
 
   const tagsUsedWorthy = tagsUsed.filter(
-    (tag) => !frameworksTags.includes(tag) && !genericTags.includes(tag)
+    (tag) => !frameworksTags.includes(tag) && !genericTags.includes(tag),
   ) as string[];
 
   const tagsUsedFrameworks = tagsUsed.filter((tag) =>
-    frameworksTags.includes(tag)
+    frameworksTags.includes(tag),
   ) as string[];
 
   // Search Libs Catalog Index for tags
@@ -90,7 +90,7 @@ export function getSuggestions(
   });
 
   const selectedLibsIds = selectedLibraries.map(
-    (item) => item.catalogLibraryId
+    (item) => item.catalogLibraryId,
   );
   const suggestedLibs: CatalogLibraryT[] = [...keyToLibMap.values()]
     // TODO: sort libs by more specific tags, e.g. browser-automation vs testing (e2e libs)

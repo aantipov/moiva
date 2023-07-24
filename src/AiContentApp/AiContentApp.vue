@@ -57,27 +57,27 @@ const props = defineProps<{
 const libs = useStore($trimmedLibraries);
 const firstLoadingFinished = ref(false);
 const items = computed(() =>
-  firstLoadingFinished.value ? libs.value : props.data
+  firstLoadingFinished.value ? libs.value : props.data,
 );
 const aliases = computed(() =>
   items.value.map(
-    (item) => getNpmLibraryByNpm(item.npm.name)?.alias || item.npm.name
-  )
+    (item) => getNpmLibraryByNpm(item.npm.name)?.alias || item.npm.name,
+  ),
 );
 const title = computed(() =>
   items.value.length === 1
     ? `${aliases.value[0]}: Detailed Overview & Metrics`
-    : `Head-to-Head: ${aliases.value.join(' vs ')} Analysis`
+    : `Head-to-Head: ${aliases.value.join(' vs ')} Analysis`,
 );
 const aiComparisonData = computed(() =>
-  hasAiCompareInfo(props.aiComparison) ? props.aiComparison : null
+  hasAiCompareInfo(props.aiComparison) ? props.aiComparison : null,
 );
 const showAiCompareData = computed(
   () =>
     !!aiComparisonData.value &&
     items.value.length === 2 &&
     props.packages.includes(items.value[0].npm.name) &&
-    props.packages.includes(items.value[1].npm.name)
+    props.packages.includes(items.value[1].npm.name),
 );
 // After first load, we need to recompute title and items (make them reactive)
 $isLoading.subscribe((isLoading) => {

@@ -42,7 +42,7 @@ watch(
     } else {
       document.body.classList.remove('showing-modal');
     }
-  }
+  },
 );
 </script>
 

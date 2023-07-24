@@ -27,27 +27,27 @@ export type UseStarsQueriesResultT = Readonly<
 
 export function useStarsQueries(
   repoIds: Ref<string[]>,
-  enabled: Ref<boolean>
+  enabled: Ref<boolean>,
 ): UseStarsQueriesResultT {
   const queriesConfigs = computed(() =>
     repoIds.value.map((repoId) => ({
       queryKey: ['stars', repoId],
       queryFn: () =>
         axios.get<ResponseT>(
-          `https://github-stars.moiva.workers.dev/?repo=${repoId}`
+          `https://github-stars.moiva.workers.dev/?repo=${repoId}`,
         ),
       enabled: enabled.value,
       staleTime: Infinity,
       cacheTime: Infinity,
       select({ data }: AxiosResponse<ResponseT>) {
         const newStarsMap = new Map(
-          data.items.map((item) => [item.month, item.stars])
+          data.items.map((item) => [item.month, item.stars]),
         );
         const totalStarsMap = new Map(
           data.totals.map((item) => [
             item.month,
             item.count || item.totalCount || 0,
-          ])
+          ]),
         );
         const items = [] as ResultT['items'];
         let prevMonth = data.items.slice(-1)[0].month;
@@ -69,7 +69,7 @@ export function useStarsQueries(
         const monthlyAvg = Math.round(
           lastItems
             .map((val) => val.newStars)
-            .reduce((acc, val) => acc + val, 0) / lastItems.length
+            .reduce((acc, val) => acc + val, 0) / lastItems.length,
         );
 
         return {
@@ -89,7 +89,7 @@ export function useStarsQueries(
       onError(err: AxiosError) {
         reportSentry(err, 'fetchGithubStars');
       },
-    }))
+    })),
   );
 
   return useQueries(queriesConfigs);

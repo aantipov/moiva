@@ -10,16 +10,16 @@ interface FilteredDevUsageLibT extends LibraryReadonlyT {
 export function useChartsVisibility() {
   return {
     npmDownloads: computed(
-      () => librariesRR.filter((lib) => !!lib.npmDownloads).length > 0
+      () => librariesRR.filter((lib) => !!lib.npmDownloads).length > 0,
     ),
     googleTrends: computed(
       () =>
         reposIds.value.filter((repoId) => !!repoToGTrendDefMap[repoId]).length >
-        0
+        0,
     ),
     developerUsage: computed(() => {
       const filteredLibs = librariesRR.filter(
-        (lib) => !!lib.devUsage
+        (lib) => !!lib.devUsage,
       ) as FilteredDevUsageLibT[];
 
       return (
@@ -31,10 +31,10 @@ export function useChartsVisibility() {
       );
     }),
     npmReleases: computed(
-      () => librariesRR.filter((lib) => !!lib.npmReleases).length > 0
+      () => librariesRR.filter((lib) => !!lib.npmReleases).length > 0,
     ),
     techRadar: computed(
-      () => librariesRR.filter((lib) => !!lib.tradar).length > 0
+      () => librariesRR.filter((lib) => !!lib.tradar).length > 0,
     ),
   };
 }
