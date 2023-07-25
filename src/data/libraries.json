@@ -769,6 +769,14 @@
   },
   {
     "category": "Frontend Frameworks",
+    "repoId": "bigskysoftware/htmx",
+    "npm": "htmx.org",
+    "isNpmCoreArtifact": true,
+    "alias": null,
+    "tags": ["ui-framework"]
+  },
+  {
+    "category": "Frontend Frameworks",
     "repoId": "emberjs/ember.js",
     "npm": "ember-source",
     "isNpmCoreArtifact": true,
@@ -1208,11 +1216,19 @@
     "tags": []
   },
   {
-    "category": "Runtime Type Systems",
+    "category": "Validation Libraries",
     "repoId": "colinhacks/zod",
     "npm": "zod",
     "isNpmCoreArtifact": true,
-    "alias": "zod",
+    "alias": null,
+    "tags": ["schema-validation"]
+  },
+  {
+    "category": "Validation Libraries",
+    "repoId": "sindresorhus/ow",
+    "npm": "ow",
+    "isNpmCoreArtifact": true,
+    "alias": null,
     "tags": ["schema-validation"]
   },
   {
@@ -12240,7 +12256,7 @@
     "tags": ["testing", "react"]
   },
   {
-    "category": "Runtime Type Systems",
+    "category": "Validation Libraries",
     "repoId": "gcanti/io-ts",
     "npm": "io-ts",
     "isNpmCoreArtifact": true,
@@ -12248,7 +12264,7 @@
     "tags": ["runtime-types-checking"]
   },
   {
-    "category": "Runtime Type Systems",
+    "category": "Validation Libraries",
     "repoId": "pelotom/runtypes",
     "npm": "runtypes",
     "isNpmCoreArtifact": true,

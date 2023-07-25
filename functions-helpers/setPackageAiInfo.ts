@@ -48,7 +48,7 @@ export async function setPkgAIInfo(
     model,
     messages: getMessages(pkgName),
     max_tokens: 900,
-    temperature: 0.1,
+    temperature: 0,
   });
 
   if (!response.ok) {
@@ -169,7 +169,7 @@ function getMessages(pkgName: string): ChatCompletionRequestMessage[] {
     },
     {
       role: 'user',
-      content: 'Provide information about vue npm package',
+      content: `Provide information about 'vue' npm package`,
     },
     {
       role: 'assistant',
@@ -197,7 +197,7 @@ function getMessages(pkgName: string): ChatCompletionRequestMessage[] {
     },
     {
       role: 'user',
-      content: `Provide information about some-non-existing-package npm package`,
+      content: `Provide information about 'some-non-existing-package' npm package`,
     },
     {
       role: 'assistant',
@@ -209,7 +209,7 @@ function getMessages(pkgName: string): ChatCompletionRequestMessage[] {
     },
     {
       role: 'user',
-      content: `Provide information about moment npm package`,
+      content: `Provide information about 'moment' npm package`,
     },
     {
       role: 'assistant',
