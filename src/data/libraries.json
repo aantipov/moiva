@@ -1633,6 +1633,14 @@
   },
   {
     "category": "misc",
+    "repoId": "vercel/turbo",
+    "npm": "turbo",
+    "isNpmCoreArtifact": true,
+    "alias": "Turborepo",
+    "tags": []
+  },
+  {
+    "category": "misc",
     "repoId": "nolimits4web/swiper",
     "npm": "swiper",
     "isNpmCoreArtifact": true,
@@ -11641,6 +11649,14 @@
   },
   {
     "category": "SQL and ORM Libraries",
+    "repoId": "mikro-orm/mikro-orm",
+    "npm": "@mikro-orm/core",
+    "isNpmCoreArtifact": true,
+    "alias": "Mikro ORM",
+    "tags": ["orm"]
+  },
+  {
+    "category": "SQL and ORM Libraries",
     "repoId": "bookshelf/bookshelf",
     "npm": "bookshelf",
     "isNpmCoreArtifact": true,
@@ -13326,5 +13342,13 @@
     "isNpmCoreArtifact": true,
     "alias": "SvelteKit",
     "tags": ["svelte", "nodejs-framework", "static-site-generator-SSG", "server-side-rendering-SSR", "JAMstack"]
+  },
+  {
+    "category": "misc",
+    "repoId": "galacean/engine",
+    "npm": "@galacean/engine",
+    "isNpmCoreArtifact": true,
+    "alias": "Galacean Engine",
+    "tags": []
   }
 ]
