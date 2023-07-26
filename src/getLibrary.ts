@@ -139,7 +139,7 @@ export function getLibrary(
       differenceInMilliseconds(new Date(), new Date(npm.createdAt)),
     ),
     playground: npmToPlaygroundMap[npm.name] || null,
-    tradar: (repoIdLC && repoIdToTechRadarMap[repoIdLC]) || null,
+    tradar: repoIdToTechRadarMap[npm.name] || null,
     // @ts-ignore
     license,
     licenseType: (() => {

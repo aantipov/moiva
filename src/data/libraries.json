@@ -561,14 +561,6 @@
   },
   {
     "category": "JavaScript frameworks for Desktop Applications",
-    "repoId": "tauri-apps/tauri",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": ["desktop-app"]
-  },
-  {
-    "category": "JavaScript frameworks for Desktop Applications",
     "repoId": "neutralinojs/neutralinojs",
     "npm": null,
     "isNpmCoreArtifact": null,
@@ -3961,14 +3953,6 @@
   },
   {
     "category": "misc",
-    "repoId": "tiangolo/fastapi",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": "FastAPI",
-    "tags": []
-  },
-  {
-    "category": "misc",
     "repoId": "zxing/zxing",
     "npm": null,
     "isNpmCoreArtifact": null,
@@ -4082,14 +4066,6 @@
   {
     "category": "misc",
     "repoId": "ryanoasis/nerd-fonts",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "square/leakcanary",
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
@@ -5714,14 +5690,6 @@
   {
     "category": "misc",
     "repoId": "portainer/portainer",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "getredash/redash",
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
@@ -7401,14 +7369,6 @@
   },
   {
     "category": "misc",
-    "repoId": "streamlit/streamlit",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
     "repoId": "grpc/grpc-go",
     "npm": null,
     "isNpmCoreArtifact": null,
@@ -7445,14 +7405,6 @@
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "oracle/graal",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": "GraalVM",
     "tags": []
   },
   {
@@ -8346,14 +8298,6 @@
   {
     "category": "misc",
     "repoId": "paddlepaddle/paddle",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "k6io/k6",
     "npm": null,
     "isNpmCoreArtifact": null,
     "alias": null,
@@ -11273,49 +11217,9 @@
   },
   {
     "category": "misc",
-    "repoId": "backstage/backstage",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "materializeinc/materialize",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "apache/incubator-pinot",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": "Apache Pinot",
-    "tags": []
-  },
-  {
-    "category": "misc",
     "repoId": "automerge/automerge",
     "npm": "automerge",
     "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "linkedin/datahub",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": "DataHub",
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "opstrace/opstrace",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": null,
     "tags": []
   },
@@ -11329,129 +11233,9 @@
   },
   {
     "category": "misc",
-    "repoId": "vectorizedio/redpanda",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
     "repoId": "dequelabs/axe-core",
     "npm": "axe-core",
     "isNpmCoreArtifact": true,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "facebook/flipper",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "mlflow/mlflow",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "google/or-tools",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "toniblyx/prowler",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "microsoft/pyright",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "gruntwork-io/terratest",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "hashicorp/boundary",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "imgcook/imgcook",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "longhorn/longhorn",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "yelp/detect-secrets",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "dagster-io/dagster",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "lvgl/lvgl",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "online-ml/river",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "awslabs/aws-data-wrangler",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": null,
     "tags": []
   },
@@ -11461,14 +11245,6 @@
     "npm": "@stoplight/spectral",
     "isNpmCoreArtifact": true,
     "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "juicedata/juicefs",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": "JuiceFS",
     "tags": []
   },
   {
@@ -11514,7 +11290,7 @@
   {
     "category": "misc",
     "repoId": "pnpm/pnpm",
-    "npm": null,
+    "npm": "pnpm",
     "isNpmCoreArtifact": null,
     "alias": "pnpm",
     "tags": []
@@ -11522,8 +11298,8 @@
   {
     "category": "misc",
     "repoId": "uber/manifold",
-    "npm": null,
-    "isNpmCoreArtifact": null,
+    "npm": "@mlvis/manifold",
+    "isNpmCoreArtifact": true,
     "alias": "Manifold",
     "tags": []
   },
@@ -11540,22 +11316,6 @@
     "repoId": "clinicjs/node-clinic-bubbleprof",
     "npm": "@nearform/bubbleprof",
     "isNpmCoreArtifact": false,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "zalando/zally",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": []
-  },
-  {
-    "category": "misc",
-    "repoId": "bunit-dev/bunit",
-    "npm": null,
-    "isNpmCoreArtifact": null,
     "alias": null,
     "tags": []
   },
@@ -12985,14 +12745,6 @@
   },
   {
     "category": "Mobile Frameworks",
-    "repoId": "flutter/flutter",
-    "npm": null,
-    "isNpmCoreArtifact": null,
-    "alias": null,
-    "tags": ["ui-toolkit", "mobile", "desktop", "web"]
-  },
-  {
-    "category": "Mobile Frameworks",
     "repoId": "facebook/react-native",
     "npm": "react-native",
     "isNpmCoreArtifact": true,
@@ -13550,70 +13302,6 @@
     "isNpmCoreArtifact": true,
     "alias": null,
     "tags": ["vue", "select", "multiselect"]
-  },
-  {
-    "category": "Python libraries",
-    "repoId": "microsoft/dowhy",
-    "npm": null,
-    "isNpmCoreArtifact": false,
-    "alias": "DoWhy",
-    "tags": ["causal-inference", "data-science", "machine-learning"]
-  },
-  {
-    "category": "Python libraries",
-    "repoId": "camdavidsonpilon/lifelines",
-    "npm": null,
-    "isNpmCoreArtifact": false,
-    "alias": null,
-    "tags": ["survival-analysis", "data-science", "machine-learning"]
-  },
-  {
-    "category": "Python libraries",
-    "repoId": "samuelcolvin/pydantic",
-    "npm": null,
-    "isNpmCoreArtifact": false,
-    "alias": null,
-    "tags": ["python-validation", "python-parsing"]
-  },
-  {
-    "category": "Go libraries",
-    "repoId": "uber-go/zap",
-    "npm": null,
-    "isNpmCoreArtifact": false,
-    "alias": null,
-    "tags": ["go-logging"]
-  },
-  {
-    "category": "Python libraries",
-    "repoId": "deepinsight/insightface",
-    "npm": null,
-    "isNpmCoreArtifact": false,
-    "alias": null,
-    "tags": ["python-face-detection"]
-  },
-  {
-    "category": "Python libraries",
-    "repoId": "facebookresearch/kats",
-    "npm": null,
-    "isNpmCoreArtifact": false,
-    "alias": null,
-    "tags": ["python-time-series"]
-  },
-  {
-    "category": "Python libraries",
-    "repoId": "pola-rs/polars",
-    "npm": null,
-    "isNpmCoreArtifact": false,
-    "alias": null,
-    "tags": ["python-dataframe"]
-  },
-  {
-    "category": "Kafka libraries",
-    "repoId": "confluentinc/ksql",
-    "npm": null,
-    "isNpmCoreArtifact": false,
-    "alias": null,
-    "tags": ["kafka-stream-processing"]
   },
   {
     "category": "misc",

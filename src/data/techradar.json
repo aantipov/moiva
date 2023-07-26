@@ -1,6 +1,6 @@
 [
   [
-    "vuejs/core",
+    "vue",
     "Vue.js",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/vue-js",
     [
@@ -10,7 +10,7 @@
     ]
   ],
   [
-    "facebook/react",
+    "react",
     "React.js",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/react-js",
     [
@@ -22,13 +22,13 @@
     ]
   ],
   [
-    "sveltejs/svelte",
+    "svelte",
     "Svelte",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/svelte",
     [{ "month": "2020-10", "level": "Assess" }]
   ],
   [
-    "angular/angular",
+    "@angular/core",
     "Angular",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/angular",
     [
@@ -37,7 +37,7 @@
     ]
   ],
   [
-    "angular/angular.js",
+    "angular",
     "AngularJS",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/angularjs",
     [
@@ -49,7 +49,7 @@
     ]
   ],
   [
-    "emberjs/ember.js",
+    "ember-source",
     "Ember.js",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/ember-js",
     [
@@ -61,7 +61,7 @@
     ]
   ],
   [
-    "reduxjs/redux",
+    "redux",
     "Redux",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/redux",
     [
@@ -72,13 +72,13 @@
     ]
   ],
   [
-    "facebookexperimental/recoil",
+    "recoil",
     "Recoil",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/recoil",
     [{ "month": "2020-10", "level": "Assess" }]
   ],
   [
-    "statelyai/xstate",
+    "xstate",
     "XState",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/xstate",
     [
@@ -87,7 +87,7 @@
     ]
   ],
   [
-    "testing-library/react-testing-library",
+    "@testing-library/react",
     "React Testing Library",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/react-testing-library",
     [
@@ -97,7 +97,7 @@
     ]
   ],
   [
-    "enzymejs/enzyme",
+    "enzyme",
     "Enzyme",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/enzyme",
     [
@@ -109,13 +109,13 @@
     ]
   ],
   [
-    "facebook/jest",
+    "jest",
     "Jest",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/jest",
     [{ "month": "2017-11", "level": "Trial" }]
   ],
   [
-    "timkindberg/jest-when",
+    "jest-when",
     "jest-when",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/jest-when",
     [
@@ -124,13 +124,13 @@
     ]
   ],
   [
-    "fastify/fastify",
+    "fastify",
     "Fastify",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/fastify",
     [{ "month": "2020-10", "level": "Trial" }]
   ],
   [
-    "immerjs/immer",
+    "immer",
     "Immer",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/immer",
     [
@@ -139,7 +139,7 @@
     ]
   ],
   [
-    "immutable-js/immutable-js",
+    "immutable",
     "Immutable.js",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/immutable-js",
     [
@@ -148,7 +148,7 @@
     ]
   ],
   [
-    "single-spa/single-spa",
+    "single-spa",
     "single-spa",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/single-spa",
     [
@@ -157,7 +157,7 @@
     ]
   ],
   [
-    "microsoft/typescript",
+    "typescript",
     "TypeScript",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/typescript",
     [
@@ -168,19 +168,19 @@
     ]
   ],
   [
-    "babylonjs/babylon.js",
+    "babylonjs",
     "Babylon.js",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/babylon-js",
     [{ "month": "2020-10", "level": "Assess" }]
   ],
   [
-    "facebook/hermes",
+    "hermes-engine",
     "Hermes",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/hermes",
     [{ "month": "2020-10", "level": "Assess" }]
   ],
   [
-    "gcanti/io-ts",
+    "io-ts",
     "io-ts",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/io-ts",
     [
@@ -189,7 +189,7 @@
     ]
   ],
   [
-    "lit/lit-element",
+    "lit-element",
     "LitElement",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/litelement",
     [
@@ -198,7 +198,7 @@
     ]
   ],
   [
-    "mswjs/msw",
+    "msw",
     "Mock Service Worker",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/mock-service-worker",
     [
@@ -207,7 +207,7 @@
     ]
   ],
   [
-    "vercel/swr",
+    "swr",
     "SWR",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/swr",
     [
@@ -216,7 +216,7 @@
     ]
   ],
   [
-    "yarnpkg/yarn",
+    "yarn",
     "Yarn",
     "https://www.thoughtworks.com/radar/tools/yarn",
     [
@@ -227,8 +227,8 @@
     ]
   ],
   [
-    "npm/cli",
-    "NPM for all the things",
+    "npm",
+    "NPM cli",
     "https://www.thoughtworks.com/radar/techniques/npm-for-all-the-things",
     [
       { "month": "2015-11", "level": "Trial" },
@@ -236,14 +236,14 @@
     ]
   ],
   [
-    "garris/backstopjs",
+    "backstopjs",
     "BackstopJS",
     "https://www.thoughtworks.com/radar/tools/backstopjs",
     [{ "month": "2018-05", "level": "Trial" }]
   ],
-  ["oblador/loki", "Loki", "https://www.thoughtworks.com/radar/tools/loki", [{ "month": "2019-11", "level": "Trial" }]],
+  ["loki", "Loki", "https://www.thoughtworks.com/radar/tools/loki", [{ "month": "2019-11", "level": "Trial" }]],
   [
-    "tailwindlabs/tailwindcss",
+    "tailwindcss",
     "Tailwind CSS",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/tailwind-css",
     [
@@ -252,7 +252,7 @@
     ]
   ],
   [
-    "devexpress/testcafe",
+    "testcafe",
     "TestCafe",
     "https://www.thoughtworks.com/radar/tools/testcafe",
     [
@@ -261,7 +261,7 @@
     ]
   ],
   [
-    "cypress-io/cypress",
+    "cypress",
     "Cypress",
     "https://www.thoughtworks.com/radar/tools/cypress",
     [
@@ -273,7 +273,7 @@
     ]
   ],
   [
-    "puppeteer/puppeteer",
+    "puppeteer",
     "Puppeteer",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/puppeteer",
     [
@@ -282,7 +282,7 @@
     ]
   ],
   [
-    "getsentry/sentry",
+    "@sentry/browser",
     "Sentry",
     "https://www.thoughtworks.com/radar/tools/sentry",
     [
@@ -292,36 +292,26 @@
     ]
   ],
   [
-    "getsentry/sentry-javascript",
-    "Sentry",
-    "https://www.thoughtworks.com/radar/tools/sentry",
-    [
-      { "month": "2018-05", "level": "Assess" },
-      { "month": "2020-10", "level": "Trial" },
-      { "month": "2021-04", "level": "Adopt" }
-    ]
-  ],
-  [
-    "styled-components/styled-components",
+    "styled-components",
     "Styled components",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/styled-components",
     [{ "month": "2019-11", "level": "Trial" }]
   ],
   [
-    "snowpackjs/snowpack",
+    "snowpack",
     "Snowpack",
     "https://www.thoughtworks.com/radar/tools/snowpack",
     [{ "month": "2020-05", "level": "Assess" }]
   ],
   [
-    "styleguidist/react-styleguidist",
+    "react-styleguidist",
     "React Styleguidist",
     "https://www.thoughtworks.com/radar/tools/react-styleguidist",
     [{ "month": "2019-11", "level": "Adopt" }]
   ],
-  ["pnpm/pnpm", "pnpm", "https://www.thoughtworks.com/radar/tools/pnpm", [{ "month": "2020-10", "level": "Assess" }]],
+  ["pnpm", "pnpm", "https://www.thoughtworks.com/radar/tools/pnpm", [{ "month": "2020-10", "level": "Assess" }]],
   [
-    "microsoft/playwright",
+    "playwright",
     "Playwright",
     "https://www.thoughtworks.com/radar/tools/playwright",
     [
@@ -330,13 +320,13 @@
     ]
   ],
   [
-    "parcel-bundler/parcel",
+    "@parcel/core",
     "Parcel",
     "https://www.thoughtworks.com/radar/tools/parcel",
     [{ "month": "2018-05", "level": "Assess" }]
   ],
   [
-    "webpack/webpack",
+    "webpack",
     "Webpack",
     "https://www.thoughtworks.com/radar/tools/webpack",
     [
@@ -344,21 +334,21 @@
       { "month": "2016-11", "level": "Trial" }
     ]
   ],
-  ["vitejs/vite", "Vite", "https://www.thoughtworks.com/radar/tools/vite", [{ "month": "2021-10", "level": "Assess" }]],
+  ["vite", "Vite", "https://www.thoughtworks.com/radar/tools/vite", [{ "month": "2021-10", "level": "Assess" }]],
   [
-    "prettier/prettier",
+    "prettier",
     "Prettier",
     "https://www.thoughtworks.com/radar/tools/prettier",
     [{ "month": "2018-11", "level": "Trial" }]
   ],
   [
-    "netflix/pollyjs",
+    "@pollyjs/core",
     "Polly.js",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/polly-js",
     [{ "month": "2018-11", "level": "Assess" }]
   ],
   [
-    "nestjs/nest",
+    "@nestjs/core",
     "NestJS",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/nestjs",
     [
@@ -367,7 +357,7 @@
     ]
   ],
   [
-    "bbyars/mountebank",
+    "mountebank",
     "Mountebank",
     "https://www.thoughtworks.com/radar/tools/mountebank",
     [
@@ -378,31 +368,31 @@
     ]
   ],
   [
-    "uber/manifold",
+    "@mlvis/manifold",
     "Manifold",
     "https://www.thoughtworks.com/radar/tools/manifold",
     [{ "month": "2020-05", "level": "Assess" }]
   ],
   [
-    "mermaid-js/mermaid",
+    "mermaid",
     "Mermaid",
     "https://www.thoughtworks.com/radar/tools/mermaid",
     [{ "month": "2018-11", "level": "Trial" }]
   ],
   [
-    "laconiajs/laconia",
+    "@laconia/core",
     "Laconia",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/laconia",
     [{ "month": "2019-04", "level": "Trial" }]
   ],
   [
-    "facebook/jscodeshift",
+    "jscodeshift",
     "jscodeshift",
     "https://www.thoughtworks.com/radar/tools/jscodeshift",
     [{ "month": "2020-10", "level": "Trial" }]
   ],
   [
-    "gatsbyjs/gatsby",
+    "gatsby",
     "Gatsby.js",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/gatsby-js",
     [
@@ -411,25 +401,25 @@
     ]
   ],
   [
-    "sideway/joi",
+    "joi",
     "joi",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/joi",
     [{ "month": "2019-04", "level": "Trial" }]
   ],
   [
-    "jorgebucaran/hyperapp",
+    "hyperapp",
     "Hyperapp",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/hyperapp",
     [{ "month": "2018-05", "level": "Assess" }]
   ],
   [
-    "jaredpalmer/formik",
+    "formik",
     "Formik",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/formik",
     [{ "month": "2019-04", "level": "Trial" }]
   ],
   [
-    "facebook/flow",
+    "flow-bin",
     "Flow",
     "https://www.thoughtworks.com/radar/tools/flow",
     [
@@ -438,32 +428,32 @@
     ]
   ],
   [
-    "11ty/eleventy",
+    "@11ty/eleventy",
     "Eleventy",
     "https://www.thoughtworks.com/radar/tools/eleventy",
     [{ "month": "2020-10", "level": "Assess" }]
   ],
   [
-    "eslint/eslint",
+    "eslint",
     "ESLint",
     "https://www.thoughtworks.com/radar/tools/eslint",
     [{ "month": "2019-11", "level": "Adopt" }]
   ],
   [
-    "clinicjs/node-clinic-bubbleprof",
+    "clinic",
     "Clinic.js Bubbleprof",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/clinic-js-bubbleprof",
     [{ "month": "2020-05", "level": "Assess" }]
   ],
   [
-    "commitizen/cz-cli",
+    "commitizen",
     "Commitizen",
     "https://www.thoughtworks.com/radar/tools/commitizen",
     [{ "month": "2019-11", "level": "Adopt" }]
   ],
-  ["avajs/ava", "AVA", "https://www.thoughtworks.com/radar/tools/ava", [{ "month": "2019-04", "level": "Trial" }]],
+  ["ava", "AVA", "https://www.thoughtworks.com/radar/tools/ava", [{ "month": "2019-04", "level": "Trial" }]],
   [
-    "vercel/next.js",
+    "next",
     "Next.js",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/next-js",
     [
@@ -472,55 +462,13 @@
     ]
   ],
   [
-    "backstage/backstage",
-    "Backstage",
-    "https://www.thoughtworks.com/radar/platforms/backstage",
-    [
-      { "month": "2020-10", "level": "Assess" },
-      { "month": "2021-04", "level": "Trial" }
-    ]
-  ],
-  [
-    "materializeinc/materialize",
-    "Materialize",
-    "https://www.thoughtworks.com/radar/platforms/materialize",
-    [
-      { "month": "2020-10", "level": "Assess" },
-      { "month": "2021-04", "level": "Trial" }
-    ]
-  ],
-  [
-    "apache/incubator-pinot",
-    "Apache Pinot",
-    "https://www.thoughtworks.com/radar/platforms/apache-pinot",
-    [{ "month": "2021-04", "level": "Assess" }]
-  ],
-  [
-    "teambit/bit",
+    "bit-bin",
     "Bit.dev",
     "https://www.thoughtworks.com/radar/platforms/bit-dev",
     [{ "month": "2021-04", "level": "Assess" }]
   ],
   [
-    "linkedin/datahub",
-    "DataHub",
-    "https://www.thoughtworks.com/radar/platforms/datahub",
-    [{ "month": "2021-04", "level": "Assess" }]
-  ],
-  [
-    "juicedata/juicefs",
-    "JuiceFS",
-    "https://www.thoughtworks.com/radar/platforms/juicefs",
-    [{ "month": "2021-04", "level": "Assess" }]
-  ],
-  [
-    "opstrace/opstrace",
-    "Opstrace",
-    "https://www.thoughtworks.com/radar/platforms/opstrace",
-    [{ "month": "2021-04", "level": "Assess" }]
-  ],
-  [
-    "pulumi/pulumi",
+    "@pulumi/pulumi",
     "Pulumi",
     "https://www.thoughtworks.com/radar/platforms/pulumi",
     [
@@ -530,245 +478,67 @@
     ]
   ],
   [
-    "vectorizedio/redpanda",
-    "Redpanda",
-    "https://www.thoughtworks.com/radar/platforms/redpanda",
-    [{ "month": "2021-04", "level": "Assess" }]
-  ],
-  [
-    "dequelabs/axe-core",
+    "axe-core",
     "axe-core",
     "https://www.thoughtworks.com/radar/tools/axe-core",
     [{ "month": "2021-04", "level": "Trial" }]
   ],
   [
-    "evanw/esbuild",
+    "esbuild",
     "esbuild",
     "https://www.thoughtworks.com/radar/tools/esbuild",
     [{ "month": "2021-04", "level": "Trial" }]
   ],
   [
-    "facebook/flipper",
-    "Flipper",
-    "https://www.thoughtworks.com/radar/tools/flipper",
-    [{ "month": "2021-04", "level": "Trial" }]
-  ],
-  [
-    "k6io/k6",
-    "k6",
-    "https://www.thoughtworks.com/radar/tools/k6",
-    [
-      { "month": "2020-10", "level": "Assess" },
-      { "month": "2021-04", "level": "Trial" }
-    ]
-  ],
-  [
-    "mlflow/mlflow",
-    "MLflow",
-    "https://www.thoughtworks.com/radar/tools/mlflow",
-    [
-      { "month": "2020-10", "level": "Trial" },
-      { "month": "2021-04", "level": "Trial" }
-    ]
-  ],
-  [
-    "google/or-tools",
-    "OR-Tools",
-    "https://www.thoughtworks.com/radar/tools/or-tools",
-    [{ "month": "2021-04", "level": "Trial" }]
-  ],
-  [
-    "toniblyx/prowler",
-    "Prowler",
-    "https://www.thoughtworks.com/radar/tools/prowler",
-    [{ "month": "2021-04", "level": "Trial" }]
-  ],
-  [
-    "microsoft/pyright",
-    "Pyright",
-    "https://www.thoughtworks.com/radar/tools/pyright",
-    [{ "month": "2021-04", "level": "Trial" }]
-  ],
-  [
-    "getredash/redash",
-    "Redash",
-    "https://www.thoughtworks.com/radar/tools/redash",
-    [{ "month": "2021-04", "level": "Trial" }]
-  ],
-  [
-    "gruntwork-io/terratest",
-    "Terratest",
-    "https://www.thoughtworks.com/radar/tools/terratest",
-    [
-      { "month": "2019-11", "level": "Assess" },
-      { "month": "2021-04", "level": "Trial" }
-    ]
-  ],
-  [
-    "welldone-software/why-did-you-render",
+    "@welldone-software/why-did-you-render",
     "Why Did You Render",
     "https://www.thoughtworks.com/radar/tools/why-did-you-render",
     [{ "month": "2021-04", "level": "Trial" }]
   ],
   [
-    "oracle/graal",
-    "Graal Native Image",
-    "https://www.thoughtworks.com/radar/tools/graal-native-image",
-    [{ "month": "2021-04", "level": "Assess" }]
-  ],
-  [
-    "hashicorp/boundary",
-    "HashiCorp Boundary",
-    "https://www.thoughtworks.com/radar/tools/hashicorp-boundary",
-    [{ "month": "2021-04", "level": "Assess" }]
-  ],
-  [
-    "imgcook/imgcook",
-    "imgcook",
-    "https://www.thoughtworks.com/radar/tools/imgcook",
-    [{ "month": "2021-04", "level": "Assess" }]
-  ],
-  [
-    "longhorn/longhorn",
-    "Longhorn",
-    "https://www.thoughtworks.com/radar/tools/longhorn",
-    [{ "month": "2021-04", "level": "Assess" }]
-  ],
-  [
-    "stoplightio/spectral",
+    "@stoplight/spectral",
     "Spectral",
     "https://www.thoughtworks.com/radar/tools/spectral",
     [{ "month": "2021-04", "level": "Assess" }]
   ],
   [
-    "yelp/detect-secrets",
-    "Yelp detect-secrets",
-    "https://www.thoughtworks.com/radar/tools/yelp-detect-secrets",
-    [{ "month": "2021-04", "level": "Assess" }]
-  ],
-  [
-    "zalando/zally",
-    "Zally",
-    "https://www.thoughtworks.com/radar/tools/zally",
-    [{ "month": "2021-04", "level": "Assess" }]
-  ],
-  [
-    "square/leakcanary",
-    "LeakCanary",
-    "https://www.thoughtworks.com/radar/languages-and-frameworks/leakcanary",
-    [
-      { "month": "2017-11", "level": "Assess" },
-      { "month": "2021-04", "level": "Adopt" }
-    ]
-  ],
-  [
-    "testing-library/angular-testing-library",
+    "@testing-library/angular",
     "Angular Testing Library",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/angular-testing-library",
     [{ "month": "2021-04", "level": "Trial" }]
   ],
   [
-    "awslabs/aws-data-wrangler",
-    "AWS Data Wrangler",
-    "https://www.thoughtworks.com/radar/languages-and-frameworks/aws-data-wrangler",
-    [{ "month": "2021-04", "level": "Trial" }]
-  ],
-  [
-    "tiangolo/fastapi",
-    "FastAPI",
-    "https://www.thoughtworks.com/radar/languages-and-frameworks/fastapi",
-    [{ "month": "2021-04", "level": "Trial" }]
-  ],
-  [
-    "streamlit/streamlit",
-    "Streamlit",
-    "https://www.thoughtworks.com/radar/languages-and-frameworks/streamlit",
-    [{ "month": "2021-04", "level": "Trial" }]
-  ],
-  [
-    "bunit-dev/bunit",
-    "bUnit",
-    "https://www.thoughtworks.com/radar/languages-and-frameworks/bunit",
-    [{ "month": "2021-04", "level": "Assess" }]
-  ],
-  [
-    "dagster-io/dagster",
-    "Dagster",
-    "https://www.thoughtworks.com/radar/languages-and-frameworks/dagster",
-    [{ "month": "2021-04", "level": "Assess" }]
-  ],
-  [
-    "flutter/flutter",
-    "Flutter",
-    "https://www.thoughtworks.com/radar/languages-and-frameworks/flutter",
-    [
-      { "month": "2018-05", "level": "Assess" },
-      { "month": "2018-11", "level": "Assess" },
-      { "month": "2019-11", "level": "Trial" }
-    ]
-  ],
-  [
-    "pmndrs/jotai",
+    "jotai",
     "Jotai",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/jotai-and-zustand",
     [{ "month": "2021-04", "level": "Assess" }]
   ],
   [
-    "pmndrs/zustand",
+    "zustand",
     "Zustand",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/jotai-and-zustand",
     [{ "month": "2021-04", "level": "Assess" }]
   ],
   [
-    "lvgl/lvgl",
-    "LVGL",
-    "https://www.thoughtworks.com/radar/languages-and-frameworks/lvgl",
-    [{ "month": "2021-04", "level": "Assess" }]
-  ],
-  [
-    "react-hook-form/react-hook-form",
+    "react-hook-form",
     "React Hook Form",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/react-hook-form",
     [{ "month": "2021-04", "level": "Assess" }]
   ],
   [
-    "online-ml/river",
-    "River",
-    "https://www.thoughtworks.com/radar/languages-and-frameworks/river",
-    [{ "month": "2021-04", "level": "Assess" }]
-  ],
-  [
-    "microsoft/dowhy",
-    "DoWhy",
-    "https://www.thoughtworks.com/radar/languages-and-frameworks/dowhy",
-    [{ "month": "2021-10", "level": "Trial" }]
-  ],
-  [
-    "camdavidsonpilon/lifelines",
-    "lifelines",
-    "https://www.thoughtworks.com/radar/languages-and-frameworks/lifelines",
-    [{ "month": "2021-10", "level": "Trial" }]
-  ],
-  [
-    "ngrx/platform",
+    "@ngrx/store",
     "NgRx",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/ngrx",
     [{ "month": "2021-10", "level": "Trial" }]
   ],
   [
-    "samuelcolvin/pydantic",
-    "pydantic",
-    "https://www.thoughtworks.com/radar/languages-and-frameworks/pydantic",
-    [{ "month": "2021-10", "level": "Trial" }]
-  ],
-  [
-    "tannerlinsley/react-query",
+    "react-query",
     "React Query",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/react-query",
     [{ "month": "2021-10", "level": "Trial" }]
   ],
   [
-    "mrdoob/three.js",
+    "three",
     "Three.js",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/three-js",
     [
@@ -778,67 +548,31 @@
     ]
   ],
   [
-    "uber-go/zap",
-    "Zap",
-    "https://www.thoughtworks.com/radar/languages-and-frameworks/zap",
-    [{ "month": "2021-10", "level": "Trial" }]
-  ],
-  [
-    "tailwindlabs/headlessui",
+    "@headlessui/react",
     "Headless UI",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/headless-ui",
     [{ "month": "2021-10", "level": "Assess" }]
   ],
   [
-    "deepinsight/insightface",
-    "InsightFace",
-    "https://www.thoughtworks.com/radar/languages-and-frameworks/insightface",
-    [{ "month": "2021-10", "level": "Assess" }]
-  ],
-  [
-    "facebookresearch/kats",
-    "Kats",
-    "https://www.thoughtworks.com/radar/languages-and-frameworks/kats",
-    [{ "month": "2021-10", "level": "Assess" }]
-  ],
-  [
-    "confluentinc/ksql",
-    "ksqlDB",
-    "https://www.thoughtworks.com/radar/languages-and-frameworks/ksqldb",
-    [{ "month": "2021-10", "level": "Assess" }]
-  ],
-  [
-    "pola-rs/polars",
-    "Polars",
-    "https://www.thoughtworks.com/radar/languages-and-frameworks/polars",
-    [{ "month": "2021-10", "level": "Assess" }]
-  ],
-  [
-    "umijs/qiankun",
+    "qiankun",
     "Qiankun",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/qiankun",
     [{ "month": "2021-10", "level": "Assess" }]
   ],
   [
-    "pmndrs/react-three-fiber",
+    "react-three-fiber",
     "React Three Fiber",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/react-three-fiber",
     [{ "month": "2021-10", "level": "Assess" }]
   ],
   [
-    "tauri-apps/tauri",
-    "Tauri",
-    "https://www.thoughtworks.com/radar/languages-and-frameworks/tauri",
-    [{ "month": "2021-10", "level": "Assess" }]
-  ],
-  [
-    "ngneat/transloco",
+    "@ngneat/transloco",
     "Transloco",
     "https://www.thoughtworks.com/radar/languages-and-frameworks/transloco",
     [{ "month": "2021-10", "level": "Assess" }]
   ],
   [
-    "chakra-ui/chakra-ui",
+    "@chakra-ui/react",
     "Chakra UI",
     "https://www.thoughtworks.com/en-au/radar/languages-and-frameworks/chakra-ui",
     [{ "month": "2021-10", "level": "Trial" }]

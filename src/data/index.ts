@@ -66,7 +66,7 @@ export type DateT =
   | '2020-10'
   | '2021-04';
 
-type RepoNameT = string;
+type NpmNameT = string;
 type AliasT = string;
 type LinkT = string;
 
@@ -76,17 +76,17 @@ interface EntryT {
 }
 
 export interface TechRadarT {
-  repo: RepoNameT;
+  npm: NpmNameT;
   alias: AliasT;
   link: LinkT;
   entries: EntryT[];
 }
 
 export const repoIdToTechRadarMap = (
-  rawTechRadarItems as [RepoNameT, AliasT, LinkT, EntryT[]][]
+  rawTechRadarItems as [NpmNameT, AliasT, LinkT, EntryT[]][]
 ).reduce(
-  (accum, [repo, alias, link, entries]) => {
-    accum[repo.toLowerCase()] = { repo, alias, link, entries };
+  (accum, [npm, alias, link, entries]) => {
+    accum[npm] = { npm, alias, link, entries };
     return accum;
   },
   {} as Record<string, TechRadarT>,
@@ -203,5 +203,4 @@ function capitalise(str: string): string {
 export const GOOGLE_TRENDS_LIBS_LIMIT = 5;
 
 /** =========== LEGACY ============== **/
-type NpmNameT = string;
 export const legacyLibraries: NpmNameT[] = legacyItems;
