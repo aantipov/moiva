@@ -334,7 +334,21 @@
       { "month": "2016-11", "level": "Trial" }
     ]
   ],
-  ["vite", "Vite", "https://www.thoughtworks.com/radar/tools/vite", [{ "month": "2021-10", "level": "Assess" }]],
+  [
+    "vite",
+    "Vite",
+    "https://www.thoughtworks.com/radar/tools/vite",
+    [
+      { "month": "2021-10", "level": "Assess" },
+      {
+        "month": "2023-04",
+        "level": "Trial",
+        "info": [
+          "Vite, a front-end build tool, has continued to mature and grow in popularity since we featured it in the Assess ring in the previous Radar. It is rapidly becoming the default choice among our teams when starting a new front-end project. Vite provides a set of defaults for building, bundling and managing dependencies in applications that depend on ES modules in the browser. Because it takes advantage of the native speed of esbuild and the Rollup bundler, Vite significantly improves the front-end developer experience. Moreover, when used with React, Vite offers an attractive alternative to the stalwart but nearly defunct Create React App. Vite relies on ES modules, and unlike most older tools, it doesn’t provide shimming or polyfills, which means you need a different strategy for older browsers that don’t support ES modules. In cases where older browsers had to be supported, some of our teams import polyfills at the module level so that Vite can be used consistently across environments"
+        ]
+      }
+    ]
+  ],
   [
     "prettier",
     "Prettier",
@@ -433,12 +447,7 @@
     "https://www.thoughtworks.com/radar/tools/eleventy",
     [{ "month": "2020-10", "level": "Assess" }]
   ],
-  [
-    "eslint",
-    "ESLint",
-    "https://www.thoughtworks.com/radar/tools/eslint",
-    [{ "month": "2019-11", "level": "Adopt" }]
-  ],
+  ["eslint", "ESLint", "https://www.thoughtworks.com/radar/tools/eslint", [{ "month": "2019-11", "level": "Adopt" }]],
   [
     "clinic",
     "Clinic.js Bubbleprof",
@@ -576,5 +585,103 @@
     "Chakra UI",
     "https://www.thoughtworks.com/en-au/radar/languages-and-frameworks/chakra-ui",
     [{ "month": "2021-10", "level": "Trial" }]
+  ],
+  [
+    "@mikro-orm/core",
+    "Mikro ORM",
+    "https://www.thoughtworks.com/en-au/radar/languages-and-frameworks/mikro-orm",
+    [
+      {
+        "month": "2023-04",
+        "level": "Trial",
+        "info": [
+          "Mikro ORM is an object-relational mapping (ORM) framework that has an interesting TypeScript-centric approach. By leveraging TypeScript throughout the entire stack, it offers a consistent development experience from browser to backend, making it easier for developers to write and maintain code. Notably, Mikro ORM's performance is excellent, enabling rapid query execution and minimizing latency. While Mikro ORM offers appealing features, it’s essential to keep in mind the general caveats associated with object-relational mappers. ORM frameworks are often complex and offer only a leaky abstraction over a relational data store, and so using one is always a balance of trade-offs."
+        ]
+      }
+    ]
+  ],
+  [
+    "@stencil/core",
+    "Stencil",
+    "https://www.thoughtworks.com/en-au/radar/languages-and-frameworks/stencil",
+    [
+      {
+        "month": "2023-04",
+        "level": "Trial",
+        "info": [
+          "Stencil is a library that enables developers to build reusable Web Components using well-established tools such as TypeScript, JSX and JSDoc. According to our teams' experiences, Stencil is a very good choice for building platform-agnostic design systems. For the few browsers that don't support modern browser features, Stencil ensures compatibility by polyfilling unsupported features and APIs on demand."
+        ]
+      }
+    ]
+  ],
+  [
+    "vitest",
+    "Vitest",
+    "https://www.thoughtworks.com/en-au/radar/languages-and-frameworks/vitest",
+    [
+      {
+        "month": "2023-04",
+        "level": "Trial",
+        "info": [
+          "Vitest is a unit testing framework for JavaScript. Up to now, many teams have relied on Jest, but Jest doesn't play well with Vite, a modern front-end build tool. Using Jest and Vite together forced teams to create two pipelines — one for build and development and one for unit testing — which required tedious configuration of the pipelines with duplicate settings. These problems are solved with Vitest. It is designed specifically for Vite and uses Vite as a bundler. As an additional feature, Vitest has Jest-compatible APIs which makes it possible to use Vitest as a drop-in replacement for Jest in various build setups. However, using Vite and Vitest together provides a better developer experience, and although Vitest is fast, in our experience, it isn't necessarily faster than using Jest."
+        ]
+      }
+    ]
+  ],
+  [
+    "@galacean/engine",
+    "Galacean Engine",
+    "https://www.thoughtworks.com/en-au/radar/languages-and-frameworks/galacean-engine",
+    [
+      {
+        "month": "2023-04",
+        "level": "Trial",
+        "info": [
+          "Galacean Engine is a web- and mobile-first interactive engine, designed to provide a seamless way to render component-based architecture and animation in a mobile-friendly manner. With its focus on lightweight and high-performance rendering, it has become an increasingly popular choice for developers creating engaging mobile games. It's a TypeScript-based engine that developers report outperforms alternatives."
+        ]
+      }
+    ]
+  ],
+  [
+    "@builder.io/qwik",
+    "Qwik",
+    "https://www.thoughtworks.com/en-au/radar/languages-and-frameworks/qwik",
+    [
+      {
+        "month": "2023-04",
+        "level": "Assess",
+        "info": [
+          "One of the challenges of creating a rich, interactive browser-based experience is in minimizing the time from first request to full user interactivity. When starting up, the application may need to download large amounts of JavaScript to the browser or execute a lengthy process to restore application state on the server. Qwik is a new front-end framework that serializes application state so it can be rendered on the server without rehydrating and replaying application logic. This is achieved through resumability, which involves pausing execution on the server to resume it on the client. Like other newer front-end frameworks, such as Astro or Svelte, Qwik also speeds up initial page load times by minimizing the amount of JavaScript to load. In Qwik's case, the initial application download is primarily HTML, with most JavaScript loaded dynamically on demand from a local cache, if possible."
+        ]
+      }
+    ]
+  ],
+  [
+    "solid-js",
+    "SolidJS",
+    "https://www.thoughtworks.com/en-au/radar/languages-and-frameworks/solidjs",
+    [
+      {
+        "month": "2023-04",
+        "level": "Assess",
+        "info": [
+          "SolidJS is a declarative JavaScript library for creating user interfaces. In the last year, we've seen an increase in SolidJS's visibility and popularity among developers, particularly those interested in creating richer user interactions. SolidJS compiles its templates to real DOM nodes (instead of using vDOM) and updates them with fine-grained reactions which reduces unnecessary DOM updates and results in faster performance and a better user experience. It has a simple API and great support for TypeScript, which can help catch errors during development. Another benefit of SolidJS is its small bundle size, which is ideal for building fast and lightweight web applications and benefits a mobile-first approach. SolidJS is a relatively new framework, so it doesn't have as large of a community or ecosystem as other frameworks. However, judging by the growing number of useful libraries and tools, it seems to be growing in popularity. Its reactive update system, functional component model and templating system make SolidJS an attractive choice to assess, and we're seeing interest from several teams and communities."
+        ]
+      }
+    ]
+  ],
+  [
+    "turbo",
+    "Turborepo",
+    "https://www.thoughtworks.com/en-au/radar/languages-and-frameworks/turborepo",
+    [
+      {
+        "month": "2023-04",
+        "level": "Assess",
+        "info": [
+          "One of the topics that seems to perennially draw interest in our discussions is the issue of monorepos. Some places have embraced them for the whole organization, while others have applied the concept in certain narrow applications such as mobile applications or combined UI/BFF development. Regardless of whether or where monorepos are appropriate, the industry seems to be revisiting tools that can effectively manage large codebases and build them efficiently into deployable units. Turborepo is a relatively new tool in this category that offers an alternative to Nx or Lerna for large JavaScript or TypeScript codebases. One of the challenges with large repos is executing builds quickly enough that they don't interrupt developer flow or reduce efficiency. Turborepo is written in Rust which makes it highly performant; it also builds incrementally and caches intermediate steps to speed things up further. However, it does require changes to the developer workflow that take time to learn and is probably best suited to large codebases with multiple independent builds where a different approach is warranted. We've found that the documentation is sparse, leading some teams to stick with more established tools for now. However, it's worth assessing and seeing if Turborepo and its newer companion, Turbopack (currently in beta), continue to evolve."
+        ]
+      }
+    ]
   ]
 ]
