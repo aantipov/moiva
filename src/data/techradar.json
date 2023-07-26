@@ -635,7 +635,7 @@
     [
       {
         "month": "2023-04",
-        "level": "Trial",
+        "level": "Assess",
         "info": [
           "Galacean Engine is a web- and mobile-first interactive engine, designed to provide a seamless way to render component-based architecture and animation in a mobile-friendly manner. With its focus on lightweight and high-performance rendering, it has become an increasingly popular choice for developers creating engaging mobile games. It's a TypeScript-based engine that developers report outperforms alternatives."
         ]
