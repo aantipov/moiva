@@ -78,8 +78,8 @@
       {{ alternatives.join(', ') }}
     </p>
 
-    <p
-      v-else-if="alternatives && 'data' in alternatives"
+    <div
+      v-if="alternatives && 'data' in alternatives"
       class="mb-2 flex flex-wrap gap-2"
     >
       <span class="self-center font-bold">Alternatives:</span>
@@ -88,7 +88,7 @@
         :key="item[0]"
         :name="item[0]"
       />
-    </p>
+    </div>
 
     <p v-if="tags.length" class="flex flex-wrap items-center">
       <span class="font-bold">Tags</span>:
