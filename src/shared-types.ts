@@ -1,5 +1,7 @@
 // Types and simple helpers shared between /src project and /functions
 import { DeepReadonly } from 'vue';
+import { AlternativesObjectT } from 'functions-helpers/fetchPackageAIAlternatives';
+
 /**
  * AI HANDLING
  */
@@ -14,7 +16,7 @@ type AiResponseMetaT = {
 type AiResponseFoundT = {
   description: string[];
   tags: string[];
-  alternatives: string[];
+  alternatives: string[] | AlternativesObjectT;
   isDeprecated: boolean;
 };
 type AiResponseNotFoundT = { notFound: true };
