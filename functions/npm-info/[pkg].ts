@@ -1,3 +1,4 @@
+import { AI_INFO_VERSION } from '../../functions-helpers/fetchPackageAIInfo';
 import { setPkgAIInfo } from '../../functions-helpers/setPackageAiInfo';
 import type {
   KvAiT,
@@ -15,6 +16,8 @@ export const onRequest: PagesFunction<Env, 'pkg'> = async (ctx) => {
     return await handleRequest(ctx);
   } catch (error: any) {
     const msg = errorPrefix + ': ' + (error?.message || 'An error occurred!');
+    // TODO: report to sentry
+    console.error(msg, error);
     return new Response(msg, {
       status: 500,
       statusText: 'Internal Server Error',
@@ -45,7 +48,11 @@ async function handleRequest(ctx: CTX): Promise<Response> {
   ) {
     // Update cache in the background if it's older than 1 day or if it doesn't have AI info.
     const cacheAge = Date.now() - new Date(cachedValue.createdAt).getTime();
-    if (!cachedValue.data.ai || cacheAge > 3600 * 24 * 1000) {
+    if (
+      !cachedValue.data.ai ||
+      cacheAge > 3600 * 24 * 1000 ||
+      cachedValue.data.ai.version !== AI_INFO_VERSION
+    ) {
       ctx.waitUntil(fetchDataAndUpdateCache(pkgName, cachedValue, ctx));
     }
 
@@ -79,7 +86,7 @@ async function handleRequest(ctx: CTX): Promise<Response> {
 
 async function getCachedValue(
   pkgName: string,
-  ctx: CTX
+  ctx: CTX,
 ): Promise<KvNpmInfoT | null> {
   const KV_CACHE = ctx.env.CACHE_KV;
   const KV_CACHE_KEY = `npm-info-${pkgName}`;
@@ -92,8 +99,8 @@ async function getCachedValue(
 async function updateCache(
   pkgName: string,
   res: NpmInfoApiResponseT,
-  ctx: CTX
-) {
+  ctx: CTX,
+): Promise<void> {
   const kvAiBinding = ctx.env.aiPkgDescription;
   const kvCacheBinding = ctx.env.CACHE_KV;
   const kvCacheKey = `npm-info-${pkgName}`;
@@ -102,20 +109,28 @@ async function updateCache(
     createdAt: new Date().toISOString(),
   };
 
-  return Promise.all([
+  await Promise.all([
     kvCacheBinding.put(kvCacheKey, JSON.stringify(newKvCacheValue)),
-    res.ai ? null : setPkgAIInfo(pkgName, kvAiBinding, ctx.env.OPENAI_API_KEY),
+    res.ai && res.ai.version == AI_INFO_VERSION
+      ? null
+      : setPkgAIInfo(pkgName, kvAiBinding, ctx.env.OPENAI_API_KEY),
   ]);
+  return;
 }
 
 async function fetchDataAndUpdateCache(
   pkgName: string,
   cachedValue: KvNpmInfoT | null,
-  ctx: CTX
+  ctx: CTX,
 ): Promise<null> {
-  const res = await fetchData(pkgName, cachedValue, ctx);
-  if (res) {
-    await updateCache(pkgName, res, ctx);
+  try {
+    const res = await fetchData(pkgName, cachedValue, ctx);
+    if (res) {
+      await updateCache(pkgName, res, ctx);
+    }
+  } catch (error) {
+    console.log('error fetch and update', error);
+    return null;
   }
   return null;
 }
@@ -123,7 +138,7 @@ async function fetchDataAndUpdateCache(
 async function fetchData(
   pkgName: string,
   cachedValue: KvNpmInfoT | null,
-  ctx: CTX
+  ctx: CTX,
 ): Promise<NpmInfoApiResponseT | null> {
   const kvAiBinding = ctx.env.aiPkgDescription;
   const aiPromise = kvAiBinding.get<KvAiT>(pkgName, { type: 'json' });
@@ -145,7 +160,7 @@ async function fetchData(
  */
 async function fetchPkgInfo(
   pkgName: string,
-  cachedNpmValue: NpmInfoApiResponseT['npm'] | undefined
+  cachedNpmValue: NpmInfoApiResponseT['npm'] | undefined,
 ): Promise<NpmInfoApiResponseT['npm'] | null> {
   // Try fetch types package in case the package doesn't have built-in types data.
   const typesPackage = '@types/' + pkgName.replace('@', '').replace('/', '__');
@@ -154,7 +169,7 @@ async function fetchPkgInfo(
     {
       headers: { 'content-type': 'application/json;charset=UTF-8' },
       cf: { cacheEverything: true, cacheTtl },
-    }
+    },
   );
 
   const response = await fetch(
@@ -162,7 +177,7 @@ async function fetchPkgInfo(
     {
       headers: { 'content-type': 'application/json;charset=UTF-8' },
       cf: { cacheEverything: true, cacheTtl },
-    }
+    },
   );
 
   if (!response.ok) {
@@ -239,18 +254,18 @@ interface ExtendedPkgDataResponseT {
  */
 async function fetchPkgPublishedAt(
   pkgName: string,
-  version: string
+  version: string,
 ): Promise<{ publishedAt: string; createdAt: string }> {
   try {
     const extendedPkgDataResponse = await fetch(
       `https://registry.npmjs.org/${encodeURIComponent(pkgName)}/`,
-      { headers: { 'content-type': 'application/json;charset=UTF-8' } }
+      { headers: { 'content-type': 'application/json;charset=UTF-8' } },
     );
     if (!extendedPkgDataResponse.ok) {
       // TODO: report to sentry
       console.error(
         'Failed to fetch publishedAt / createdAt',
-        extendedPkgDataResponse.statusText
+        extendedPkgDataResponse.statusText,
       );
       throw new Error('Failed to fetch publishedAt / createdAt');
     }
@@ -270,7 +285,7 @@ async function fetchPkgPublishedAt(
 
 async function fetchRepoInfo(
   repoId: string,
-  ctx: CTX
+  ctx: CTX,
 ): Promise<NpmInfoApiResponseT['repo']> {
   const url = 'https://api.github.com/graphql';
   const [owner, name] = repoId.split('/');

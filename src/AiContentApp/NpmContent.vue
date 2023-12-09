@@ -70,10 +70,25 @@
       {{ p }}
     </p>
 
-    <p v-if="alternatives.length" class="flex flex-wrap">
+    <p
+      v-if="Array.isArray(alternatives) && alternatives.length"
+      class="flex flex-wrap"
+    >
       <span class="font-bold">Alternatives</span>:
       {{ alternatives.join(', ') }}
     </p>
+
+    <div
+      v-if="alternatives && 'data' in alternatives"
+      class="mb-2 flex flex-wrap gap-2"
+    >
+      <span class="self-center font-bold">Alternatives:</span>
+      <Alternative
+        v-for="item in alternatives.data"
+        :key="item[0]"
+        :name="item[0]"
+      />
+    </div>
 
     <p v-if="tags.length" class="flex flex-wrap items-center">
       <span class="font-bold">Tags</span>:
@@ -86,6 +101,7 @@
 import { computed } from 'vue';
 import { ReadonlyNpmPackageT } from '@/libraryApis';
 import Tag from '@/components/TagItem.vue';
+import Alternative from '@/components/AlternativeItem.vue';
 import NpmIcon from '@/icons/NpmMDIIcon.vue';
 import HomeIcon from '@/icons/HomeIcon.vue';
 import GithubIcon from '@/icons/GithubIcon.vue';

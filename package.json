@@ -2,7 +2,7 @@
   "name": "moiva",
   "version": "1.0.3",
   "private": true,
-  "packageManager": "pnpm@8.6.2",
+  "packageManager": "pnpm@8.11.0",
   "scripts": {
     "dev": "echo 'To be implemented. For now, use `pr \"/^preview:pure$|^watch$/\"`'",
     "watch": "nodemon -e astro,ts,vue,json --watch ./src --exec 'astro build'",
@@ -45,13 +45,15 @@
     "google-trends-api": "^4.9.2",
     "nanoid": "^4.0.2",
     "nanostores": "^0.9.3",
+    "openai": "^4.20.1",
     "openai-edge": "^1.2.2",
     "ramda": "^0.29.0",
     "reading-time": "^1.5.0",
     "sweetalert2": "^11.7.20",
     "tippy.js": "^6.3.7",
     "vue": "^3.3.4",
-    "vue-query": "^1.26.0"
+    "vue-query": "^1.26.0",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20230717.1",
