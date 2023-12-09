@@ -14,8 +14,8 @@ export async function setPkgAIInfo(
     await KV.put(pkgName, JSON.stringify({ ...content, alternatives }), {
       expirationTtl: 60 * 60 * 24 * 90,
     });
-  } catch (error: any) {
-    throw new Error(`[setPkgAIInfo] KV.put failed - ${error?.message}`);
+  } catch (error) {
+    throw new Error(`[setPkgAIInfo] KV.put failed - ${String(error)}`);
   }
   console.log(`[setPkgAIInfo] KV.put success - ${pkgName}`);
 }

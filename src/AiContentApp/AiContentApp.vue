@@ -56,8 +56,11 @@ const props = defineProps<{
 }>();
 const libs = useStore($trimmedLibraries);
 const firstLoadingFinished = ref(false);
-const items = computed(() =>
-  firstLoadingFinished.value ? libs.value : props.data,
+const items = computed(
+  () =>
+    (firstLoadingFinished.value
+      ? libs.value
+      : props.data) as unknown as NpmInfoApiResponseT[],
 );
 const aliases = computed(() =>
   items.value.map(

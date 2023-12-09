@@ -79,7 +79,7 @@
     </p>
 
     <p
-      v-else-if="alternatives && alternatives.data"
+      v-else-if="alternatives && 'data' in alternatives"
       class="mb-2 flex flex-wrap gap-2"
     >
       <span class="self-center font-bold">Alternatives:</span>

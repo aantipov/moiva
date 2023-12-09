@@ -28,7 +28,7 @@ export interface AlternativesObjectT {
   version: number;
   model: string;
   data: AlternativesDataT;
-  usage: OpenAI.ChatCompletion.Usage;
+  usage: OpenAI.CompletionUsage | undefined;
   createdAt: string;
 }
 
@@ -78,7 +78,7 @@ export async function fetchPkgAIAlternatives(
     alternativesResponse = response.choices[0];
   } catch (error) {
     throw new Error(
-      `${ERR_PREFIX} openai.chat.completions.create failed - ${error?.message}`,
+      `${ERR_PREFIX} openai.chat.completions.create failed - ${String(error)}`,
       { cause: error },
     );
   }
