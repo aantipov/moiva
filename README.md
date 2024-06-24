@@ -18,7 +18,7 @@ Moiva's ambitious 😎 goals:
 
 The Library concept is central to Moiva's architecture.
 
-It allows Moiva to be a _Universal_ and _Agile_, and defines how libraries are differentiated and categorized, how they should be referenced. 
+It allows Moiva to be a _Universal_ and _Agile_, and defines how libraries are differentiated and categorized, how they should be referenced.
 
 Moiva currently supports Github repositories and NPM packages.
 
