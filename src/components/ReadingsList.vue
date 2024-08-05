@@ -17,8 +17,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { librariesRR } from '@/store/libraries';
-import { NpmPackageT } from '@/libraryApis';
-import { ReadingT } from '@/getLibrary';
+import type { NpmPackageT } from '@/libraryApis';
+import type { ReadingT } from '@/getLibrary';
 import _readings from '@/data/readings.json';
 
 const npmsRef = computed<string[]>(() =>

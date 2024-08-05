@@ -1,7 +1,7 @@
 import { computed } from 'vue';
 import { reposIds, librariesRR } from '@/store/libraries';
-import { repoToGTrendDefMap, StateOfJSItemT } from '@/data/index';
-import { LibraryReadonlyT } from '@/libraryApis';
+import { repoToGTrendDefMap, type StateOfJSItemT } from '@/data/index';
+import type { LibraryReadonlyT } from '@/libraryApis';
 
 interface FilteredDevUsageLibT extends LibraryReadonlyT {
   readonly devUsage: StateOfJSItemT;

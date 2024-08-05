@@ -42,11 +42,11 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue';
 import { getSuggestions } from '@/suggestionsHelper';
-import { CatalogLibraryT } from '@/data/index';
+import type { CatalogLibraryT } from '@/data/index';
 import {
   $trimmedLibraries,
   $loadingLibraries,
-  TrimmedLibraryT,
+  type TrimmedLibraryT,
 } from '@/nanostore/trimmedLibraries';
 import { useStore } from '@nanostores/vue';
 import SuggestionItem from './SuggestionItem.vue';

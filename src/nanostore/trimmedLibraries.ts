@@ -1,5 +1,5 @@
 import { atom } from 'nanostores';
-import { LibraryT } from '@/getLibrary';
+import type { LibraryT } from '@/getLibrary';
 
 type DeepReadonly<T> = T extends (infer R)[]
   ? ReadonlyArray<DeepReadonly<R>>

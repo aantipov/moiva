@@ -1,11 +1,11 @@
 import {
   catalogLibraries,
-  CatalogLibraryT,
+  type CatalogLibraryT,
   frameworksTags,
   genericTags,
 } from '@/data/index';
 import 'sweetalert2/dist/sweetalert2.css';
-import { TrimmedLibraryT } from '@/nanostore/trimmedLibraries';
+import type { TrimmedLibraryT } from '@/nanostore/trimmedLibraries';
 // @ts-ignore
 // import { Document } from 'flexsearch';
 import pkg from 'flexsearch';

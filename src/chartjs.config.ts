@@ -1,6 +1,6 @@
 import {
   Chart,
-  ChartComponentLike,
+  type ChartComponentLike,
   // ArcElement,
   LineElement,
   BarElement,

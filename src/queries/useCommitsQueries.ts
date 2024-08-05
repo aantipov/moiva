@@ -1,5 +1,5 @@
-import { computed, Ref } from 'vue';
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import { computed, type Ref } from 'vue';
+import axios, { type AxiosError, type AxiosResponse } from 'axios';
 import {
   isSameQuarter,
   subQuarters,
@@ -8,7 +8,11 @@ import {
 } from 'date-fns';
 import { reportSentry } from '@/apis';
 import { ERROR_CODE_GITHUB_COMMITS_NEEDS_PROCESSING } from '@/constants';
-import { useQueries, UseQueriesResults, UseQueryOptions } from 'vue-query';
+import {
+  useQueries,
+  type UseQueriesResults,
+  type UseQueryOptions,
+} from 'vue-query';
 
 interface RepoCommitsResponseItemT {
   total: number;
@@ -73,7 +77,7 @@ export function useCommitsQueries(
       },
       onError(err: AxiosError) {
         const errorCode =
-        // @ts-ignore
+          // @ts-ignore
           err?.response?.data?.error?.code ||
           err?.response?.status ||
           undefined;

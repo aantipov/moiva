@@ -1,5 +1,5 @@
-import { TRadarLevelT } from '@/data';
-import { LibraryT, LicenseTypeT } from '@/getLibrary';
+import type { TRadarLevelT } from '@/data';
+import type { LibraryT, LicenseTypeT } from '@/getLibrary';
 import { prevQuarter } from '@/utils';
 import { ascend } from 'ramda';
 

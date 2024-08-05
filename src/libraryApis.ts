@@ -1,10 +1,10 @@
-import { DeepReadonly } from 'vue';
+import { type DeepReadonly } from 'vue';
 import axios, { AxiosError } from 'axios';
 // import * as Sentry from '@sentry/vue';
 // TODO: SENTRY
 import { ERROR_CODE_NO_GITHUB_DATA } from '@/constants';
 import { getNpmLibraryByNpm } from '@/data/index';
-import { getLibrary, LibraryT } from '@/getLibrary';
+import { getLibrary, type LibraryT } from '@/getLibrary';
 import type { NpmInfoApiResponseT } from '@/shared-types';
 
 const npmPackageCache = new Map();

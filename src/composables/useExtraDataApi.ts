@@ -1,4 +1,10 @@
-import { computed, ref, watchEffect, UnwrapNestedRefs, Ref } from 'vue';
+import {
+  computed,
+  ref,
+  watchEffect,
+  type UnwrapNestedRefs,
+  type Ref,
+} from 'vue';
 import { fetchNpmDownloads } from '@/components/downloads/api';
 import { fetchNpmPackageReleases } from '@/components/npm-releases/api';
 import { fetchContributors } from '@/components/github-contributors/api';

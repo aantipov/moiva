@@ -67,13 +67,13 @@
 
 <script setup lang="ts">
 import LoaderTailSpin from '@/components/LoaderTailSpin.vue';
-import { computed, onMounted, PropType, ref } from 'vue';
+import { computed, onMounted, type PropType, ref } from 'vue';
 import { numbersFormatter } from '@/utils';
-import { CatalogLibraryT } from '@/data/index';
+import { type CatalogLibraryT } from '@/data/index';
 import { fetchLibraryByNpm } from '@/libraryApis';
 import { fetchNpmDownloads } from '@/components/downloads/api';
 import tippy, { roundArrow } from 'tippy.js';
-import { LibraryT } from '@/getLibrary';
+import { type LibraryT } from '@/getLibrary';
 
 defineEmits(['select']);
 

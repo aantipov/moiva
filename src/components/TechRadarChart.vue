@@ -39,9 +39,9 @@
 import ChartPresentation from '@/components/ChartPresentation.vue';
 import { computed } from 'vue';
 import { format } from 'date-fns';
-import { ChartConfiguration } from 'chart.js';
-import { TRADAR_LEVELS, TechRadarT, DateT } from '@/data/index';
-import { LibraryReadonlyT } from '@/libraryApis';
+import type { ChartConfiguration } from 'chart.js';
+import { TRADAR_LEVELS, type TechRadarT, type DateT } from '@/data/index';
+import type { LibraryReadonlyT } from '@/libraryApis';
 import { librariesRR, isLoading } from '@/store/libraries';
 
 interface FilteredLibT extends LibraryReadonlyT {

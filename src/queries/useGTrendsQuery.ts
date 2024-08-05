@@ -1,8 +1,8 @@
-import axios, { AxiosError } from 'axios';
+import axios, { type AxiosError } from 'axios';
 import { reportSentry } from '@/apis';
-import { useQuery, UseQueryReturnType } from 'vue-query';
+import { useQuery, type UseQueryReturnType } from 'vue-query';
 import { GOOGLE_TRENDS_LIBS_LIMIT, repoToGTrendDefMap } from '@/data/index';
-import { computed, Ref, unref } from 'vue';
+import { computed, type Ref, unref } from 'vue';
 
 interface GTrendPointT {
   time: string;

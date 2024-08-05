@@ -29,10 +29,10 @@
 import ExternalLink from '@/components/ExternalLink.vue';
 import ChartPresentation from '@/components/ChartPresentation.vue';
 import { computed, ref } from 'vue';
-import { ChartConfiguration } from 'chart.js';
+import type { ChartConfiguration } from 'chart.js';
 import { getEarliestMonth, getPrevMonth, formatNumber } from '@/utils';
 import { enUS } from 'date-fns/locale';
-import { LibraryReadonlyT } from '@/libraryApis';
+import type { LibraryReadonlyT } from '@/libraryApis';
 import {
   librariesRR,
   isLoading as isLoadingLibraries,

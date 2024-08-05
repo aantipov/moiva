@@ -33,11 +33,11 @@
 import ExternalLink from '@/components/ExternalLink.vue';
 import ChartPresentation from '@/components/ChartPresentation.vue';
 import { computed, ref, watch } from 'vue';
-import { ChartConfiguration, ChartDataset } from 'chart.js';
+import type { ChartConfiguration, ChartDataset } from 'chart.js';
 import { numbersFormatter, getDateRanges } from '@/utils';
 import { enUS } from 'date-fns/locale';
 import { format } from 'date-fns';
-import { LibraryReadonlyT } from '@/libraryApis';
+import type { LibraryReadonlyT } from '@/libraryApis';
 import {
   librariesRR,
   isLoading as isLoadingLibraries,

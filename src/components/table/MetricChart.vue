@@ -28,8 +28,8 @@
 <script setup lang="ts">
 import ChartPresentation from '@/components/ChartPresentation.vue';
 import { computed, onMounted, ref } from 'vue';
-import tippy, { Instance, roundArrow } from 'tippy.js';
-import { ChartConfiguration } from 'chart.js';
+import tippy, { type Instance, roundArrow } from 'tippy.js';
+import type { ChartConfiguration } from 'chart.js';
 import { descend, sort, path, prop } from 'ramda';
 import {
   getFormattedAgeFromAgeInMs,
@@ -37,7 +37,7 @@ import {
   numbersStandardFormatter,
 } from '@/utils';
 import { librariesRR } from '@/store/libraries';
-import { MetricDataWithChartT } from '@/components/table/TableConfig';
+import type { MetricDataWithChartT } from '@/components/table/TableConfig';
 
 const props = defineProps<{
   metricData: MetricDataWithChartT;

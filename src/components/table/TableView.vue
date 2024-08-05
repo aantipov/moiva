@@ -78,7 +78,7 @@ import LoaderNew from '@/components/LoaderNew.vue';
 import MetricHeader from './MetricHeader.vue';
 import MetricValue from './MetricValue.vue';
 import { libraries, isLoading } from '@/store/libraries';
-import { ROWS, NPM_METRICS, CAT_CONFIG, CategoryT } from './TableConfig';
+import { ROWS, NPM_METRICS, CAT_CONFIG, type CategoryT } from './TableConfig';
 
 const props = defineProps({
   category: {

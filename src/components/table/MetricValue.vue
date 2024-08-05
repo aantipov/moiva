@@ -204,9 +204,9 @@
 import ExternalLink from '@/components/ExternalLink.vue';
 import { toRefs, computed } from 'vue';
 import formatDistanceToNowStrict from 'date-fns/formatDistanceToNowStrict';
-import { LibraryReadonlyT } from '@/libraryApis';
+import type { LibraryReadonlyT } from '@/libraryApis';
 import { numbersFormatter, formatPercent, formatNumber } from '@/utils';
-import { MetricT } from './TableConfig';
+import type { MetricT } from './TableConfig';
 import TRadarBadge from '@/components/TRadarBadge.vue';
 import TypeBadge from '@/components/TypeBadge.vue';
 import LicenseBadge from '@/components/LicenseBadge.vue';

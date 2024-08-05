@@ -1,6 +1,6 @@
 // Types and simple helpers shared between /src project and /functions
-import { DeepReadonly } from 'vue';
-import { AlternativesObjectT } from 'functions-helpers/fetchPackageAIAlternatives';
+import type { DeepReadonly } from 'vue';
+import type { AlternativesObjectT } from 'functions-helpers/fetchPackageAIAlternatives';
 
 /**
  * AI HANDLING

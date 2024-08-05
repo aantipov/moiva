@@ -9,8 +9,8 @@
 </template>
 
 <script setup lang="ts">
-import { PropType } from 'vue';
-import { TrimmedLibraryT } from '@/nanostore/trimmedLibraries';
+import type { PropType } from 'vue';
+import type { TrimmedLibraryT } from '@/nanostore/trimmedLibraries';
 
 defineEmits(['select']);
 

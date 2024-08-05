@@ -1,7 +1,11 @@
-import { computed, Ref } from 'vue';
-import axios, { AxiosError, AxiosResponse } from 'axios';
+import { computed, type Ref } from 'vue';
+import axios, { type AxiosError, type AxiosResponse } from 'axios';
 import { reportSentry } from '@/apis';
-import { useQueries, UseQueriesResults, UseQueryOptions } from 'vue-query';
+import {
+  useQueries,
+  type UseQueriesResults,
+  type UseQueryOptions,
+} from 'vue-query';
 
 interface ResponseT {
   case: 1 | 2 | 3 | 4 | 5;
