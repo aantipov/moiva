@@ -1,9 +1,9 @@
 import type { KVNamespace } from '@cloudflare/workers-types/experimental';
 import {
-  ChatCompletionRequestMessage,
+  type ChatCompletionRequestMessage,
   Configuration,
   OpenAIApi,
-  ResponseTypes,
+  type ResponseTypes,
 } from 'openai-edge';
 import type { KvAiCompareT, AiCompareResponseT } from '@/shared-types';
 
@@ -45,7 +45,7 @@ export async function setAICompareInfo(
   pkgName1: string,
   pkgName2: string,
   KV: KVNamespace,
-  openAiAPIKey: string
+  openAiAPIKey: string,
 ) {
   const version = 1.0;
   const model = 'gpt-3.5-turbo';
@@ -61,19 +61,19 @@ export async function setAICompareInfo(
     });
     if (!response.ok) {
       throw new Error(
-        `Network response was not ok: status ${response.status}, statusText ${response.statusText}`
+        `Network response was not ok: status ${response.status}, statusText ${response.statusText}`,
       );
     }
     data = (await response.json()) as ResponseTypes['createChatCompletion'];
   } catch (error: any) {
     throw new Error(
-      `[setAICompareInfo] error fetching AI data: ${error.message}`
+      `[setAICompareInfo] error fetching AI data: ${error.message}`,
     );
   }
 
   if (data.choices[0].finish_reason !== 'stop') {
     throw new Error(
-      `[setAICompareInfo] AI didn't finish generating. Finish reason: ${data.choices[0].finish_reason}`
+      `[setAICompareInfo] AI didn't finish generating. Finish reason: ${data.choices[0].finish_reason}`,
     );
   }
 
@@ -90,7 +90,7 @@ export async function setAICompareInfo(
   }
   if ('notFound' in content && content.notFound !== true) {
     throw new Error(
-      '[setAICompareInfo] AI reply doesnt match schema - ' + contentRaw
+      '[setAICompareInfo] AI reply doesnt match schema - ' + contentRaw,
     );
   }
   if (
@@ -99,11 +99,12 @@ export async function setAICompareInfo(
       content.length === 0 ||
       !content.every(
         (item) =>
-          typeof item.title === 'string' && typeof item.description === 'string'
+          typeof item.title === 'string' &&
+          typeof item.description === 'string',
       ))
   ) {
     throw new Error(
-      '[setAICompareInfo] AI reply doesnt match schema - ' + contentRaw
+      '[setAICompareInfo] AI reply doesnt match schema - ' + contentRaw,
     );
   }
   try {
@@ -125,7 +126,7 @@ export async function setAICompareInfo(
 
 function getMessages(
   pkgName1: string,
-  pkgName2: string
+  pkgName2: string,
 ): ChatCompletionRequestMessage[] {
   return [
     {

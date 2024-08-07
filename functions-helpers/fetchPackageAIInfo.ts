@@ -1,8 +1,8 @@
 import {
-  ChatCompletionRequestMessage,
+  type ChatCompletionRequestMessage,
   Configuration,
   OpenAIApi,
-  ResponseTypes,
+  type ResponseTypes,
 } from 'openai-edge';
 import type { AiResponseT } from '@/shared-types';
 
