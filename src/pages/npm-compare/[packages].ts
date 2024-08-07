@@ -1,12 +1,16 @@
-import { setAICompareInfo } from '../../functions-helpers/setAiCompareInfo';
-import type { KvAiCompareT } from '../../src/shared-types';
+import type { APIRoute } from 'astro';
+import { setAICompareInfo } from '../../../functions-helpers/setAiCompareInfo';
+import type { KvAiCompareT } from '../../shared-types';
 
-type CTX = EventContext<Env, 'packages', Record<string, unknown>>;
+type Runtime = import('@astrojs/cloudflare').Runtime<Env>;
 const errorPrefix = 'API-NPM-COMPARE';
 
-export const onRequest: PagesFunction<Env, 'packages'> = async (ctx) => {
+export const prerender = false;
+
+export const GET: APIRoute = ({ params, locals }) => {
   try {
-    return await handleRequest(ctx);
+    const packagesStr = decodeURIComponent(params.packages as string);
+    return handleRequest(packagesStr, locals.runtime.ctx, locals.runtime.env);
   } catch (error: any) {
     const msg = errorPrefix + ': ' + (error?.message || 'An error occurred!');
     console.error(msg);
@@ -17,8 +21,11 @@ export const onRequest: PagesFunction<Env, 'packages'> = async (ctx) => {
   }
 };
 
-async function handleRequest(ctx: CTX): Promise<Response> {
-  const packagesStr = decodeURIComponent(ctx.params.packages as string);
+async function handleRequest(
+  packagesStr: string,
+  ctx: Runtime['runtime']['ctx'],
+  env: Runtime['runtime']['env'],
+): Promise<Response> {
   const packages = packagesStr.split('_vs_');
   if (
     packages.length !== 2 ||
@@ -33,7 +40,7 @@ async function handleRequest(ctx: CTX): Promise<Response> {
   }
 
   const [pkgName1, pkgName2] = packages.sort();
-  const kvValue = await getKvValue(pkgName1, pkgName2, ctx);
+  const kvValue = await getKvValue(pkgName1, pkgName2, env);
 
   if (kvValue) {
     // check the creation date and update the value if it's older than 30 days
@@ -42,7 +49,7 @@ async function handleRequest(ctx: CTX): Promise<Response> {
     const diffTime = now.getTime() - creationDate.getTime();
     const diffDays = diffTime / (1000 * 60 * 60 * 24);
     if (diffDays > 30) {
-      ctx.waitUntil(updateKvValue(pkgName1, pkgName2, kvValue, ctx));
+      ctx.waitUntil(updateKvValue(pkgName1, pkgName2, kvValue, env));
     }
 
     return new Response(JSON.stringify(kvValue.data), {
@@ -50,7 +57,7 @@ async function handleRequest(ctx: CTX): Promise<Response> {
     });
   }
 
-  ctx.waitUntil(setKvValue(pkgName1, pkgName2, ctx));
+  ctx.waitUntil(setKvValue(pkgName1, pkgName2, env));
 
   // TODO: Cache in KV the error response for 1 hour.
   return new Response(null, {
@@ -62,9 +69,9 @@ async function handleRequest(ctx: CTX): Promise<Response> {
 async function getKvValue(
   pkgName1: string,
   pkgName2: string,
-  ctx: CTX
+  env: Runtime['runtime']['env'],
 ): Promise<KvAiCompareT> {
-  const KV_AI_COMPARE = ctx.env.AI_COMPARE_KV;
+  const KV_AI_COMPARE = env.AI_COMPARE_KV;
   const kvKey = `${pkgName1}_vs_${pkgName2}`;
   const kvValue = await KV_AI_COMPARE.get<KvAiCompareT>(kvKey, {
     type: 'json',
@@ -84,9 +91,9 @@ async function updateKvValue(
   pkgName1: string,
   pkgName2: string,
   kvValue: KvAiCompareT,
-  ctx: CTX
+  env: Runtime['runtime']['env'],
 ): Promise<void> {
-  const KV_AI_COMPARE = ctx.env.AI_COMPARE_KV;
+  const KV_AI_COMPARE = env.AI_COMPARE_KV;
   const kvKey = `${pkgName1}_vs_${pkgName2}`;
   try {
     await KV_AI_COMPARE.put(
@@ -95,7 +102,7 @@ async function updateKvValue(
         ...kvValue,
         createdAt: new Date().toISOString().slice(0, 10),
       }),
-      { expirationTtl: 60 * 60 * 24 * 30 * 2 } // 2 months
+      { expirationTtl: 60 * 60 * 24 * 30 * 2 }, // 2 months
     );
   } catch (error) {
     console.error('Error updating KV Compare value', error);
@@ -105,14 +112,14 @@ async function updateKvValue(
 async function setKvValue(
   pkgName1: string,
   pkgName2: string,
-  ctx: CTX
+  env: Runtime['runtime']['env'],
 ): Promise<void> {
   try {
     await setAICompareInfo(
       pkgName1,
       pkgName2,
-      ctx.env.AI_COMPARE_KV,
-      ctx.env.OPENAI_API_KEY
+      env.AI_COMPARE_KV,
+      env.OPENAI_API_KEY,
     );
   } catch (error) {
     console.error(`[${errorPrefix}]: Error setting KV value`, error);

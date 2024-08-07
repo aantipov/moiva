@@ -12,8 +12,12 @@ export default defineConfig({
   vite: {
     // build: { minify: false },
     //   resolve: { alias: { '@': '/src' } },
-    ssr: { noExternal: ['path-to-regexp'] },
+    ssr: { external: ['node:buffer'], noExternal: ['path-to-regexp'] },
   },
   output: 'hybrid',
-  adapter: cloudflare({ mode: 'directory' }),
+  adapter: cloudflare({
+    platformProxy: {
+      enabled: true,
+    },
+  }),
 });
