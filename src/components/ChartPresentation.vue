@@ -110,9 +110,9 @@ import ChartMenu from '@/components/ChartMenu.vue';
 import { ref, toRef, onMounted, onBeforeUnmount, watch } from 'vue';
 import {
   Chart,
-  ChartDataset,
-  ChartConfiguration,
-  ChartOptions,
+  type ChartDataset,
+  type ChartConfiguration,
+  type ChartOptions,
 } from 'chart.js';
 import { librariesRR } from '@/store/libraries';
 

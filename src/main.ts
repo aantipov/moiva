@@ -1,4 +1,4 @@
-import { DirectiveBinding } from 'vue';
+import { type DirectiveBinding } from 'vue';
 import type { App } from 'vue';
 import tippy from 'tippy.js';
 // import * as Sentry from '@sentry/vue';

@@ -9,10 +9,15 @@ export default defineConfig({
   site: 'https://moiva.io/',
   integrations: [vue({ appEntrypoint: '/src/main' }), tailwind()],
   build: { inlineStylesheets: 'auto' },
-  // vite: {
-  // build: { minify: false },
-  //   resolve: { alias: { '@': '/src' } },
-  // },
+  vite: {
+    // build: { minify: false },
+    //   resolve: { alias: { '@': '/src' } },
+    ssr: { external: ['node:buffer'], noExternal: ['path-to-regexp'] },
+  },
   output: 'hybrid',
-  adapter: cloudflare({ mode: 'directory' }),
+  adapter: cloudflare({
+    platformProxy: {
+      enabled: true,
+    },
+  }),
 });

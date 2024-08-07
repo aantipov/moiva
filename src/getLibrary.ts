@@ -2,16 +2,16 @@ import { computed } from 'vue';
 import { nanoid } from 'nanoid';
 import { differenceInMilliseconds } from 'date-fns';
 import {
-  ContributorsT,
+  type ContributorsT,
   cacheR as contributorsMapR,
 } from '@/components/github-contributors/api';
 import {
-  NpmPackageReleasesT,
+  type NpmPackageReleasesT,
   cacheR as npmReleasesMapR,
   creationDatesCacheR as npmCreationDatesMapR,
 } from '@/components/npm-releases/api';
 import {
-  NpmDownloadT,
+  type NpmDownloadT,
   cacheR as npmDownloadsMapR,
 } from '@/components/downloads/api';
 import {
@@ -19,31 +19,31 @@ import {
   commitsQueriesRef,
   starsQueriesRef,
 } from '@/composables/useExtraDataApi';
-import { LibGTrendsDataT } from '@/queries/useGTrendsQuery';
-import { UseCommitsQueriesResultT } from '@/queries/useCommitsQueries';
-import { UseStarsQueriesResultT } from '@/queries/useStarsQueries';
+import { type LibGTrendsDataT } from '@/queries/useGTrendsQuery';
+import { type UseCommitsQueriesResultT } from '@/queries/useCommitsQueries';
+import { type UseStarsQueriesResultT } from '@/queries/useStarsQueries';
 import {
   repoIdToDevUsageDataMap,
   repoIdToTechRadarMap,
   repoToGTrendDefMap,
   npmToPlaygroundMap,
-  StateOfJSItemT,
-  TechRadarT,
-  CatalogLibraryT,
-  GTrendDefT,
+  type StateOfJSItemT,
+  type TechRadarT,
+  type CatalogLibraryT,
+  type GTrendDefT,
 } from '@/data/index';
 import {
-  BundlephobiaT,
+  type BundlephobiaT,
   cacheR as bundlesizeMapR,
 } from '@/components/bundle-size/api';
 import {
-  LanguagesT,
+  type LanguagesT,
   cacheR as languagesMapR,
 } from '@/components/languages/api';
 import { libraryToColorMapR } from '@/store/librariesColors';
 import readings from '@/data/readings.json';
 import licenses from '@/data/licenses.json';
-import { NpmInfoApiResponseT } from './shared-types';
+import type { NpmInfoApiResponseT } from './shared-types';
 
 type LibNpmDownloadsT = NpmDownloadT[] | null | undefined;
 

@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { LicenseT, LicenseTypeT } from '@/getLibrary';
+import type { LicenseT, LicenseTypeT } from '@/getLibrary';
 
 const props = defineProps<{
   value: LicenseT;

@@ -1,6 +1,6 @@
 import { reactive, computed, readonly, watch } from 'vue';
-import { RepoT, fetchLibraryByNpm, NpmPackageT } from '@/libraryApis';
-import { LibraryT } from '@/getLibrary';
+import { type RepoT, fetchLibraryByNpm, type NpmPackageT } from '@/libraryApis';
+import { type LibraryT } from '@/getLibrary';
 import {
   $trimmedLibraries,
   $isLoading,

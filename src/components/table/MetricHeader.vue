@@ -54,7 +54,7 @@
 <script setup lang="ts">
 import MetricChart from './MetricChart.vue';
 import MetricSort from './MetricSort.vue';
-import { MetricT, MetricDataT, MetricDataWithChartT } from './TableConfig';
+import type { MetricT, MetricDataT, MetricDataWithChartT } from './TableConfig';
 import { librariesIds } from '@/store/libraries';
 
 const props = defineProps<{

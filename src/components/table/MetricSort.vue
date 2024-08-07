@@ -10,7 +10,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { sortLibraries } from '@/store/libraries';
-import { LibraryT } from '@/getLibrary';
+import type { LibraryT } from '@/getLibrary';
 
 const props = defineProps<{
   sortFn: (_a: LibraryT, _b: LibraryT) => number; // Sort from Best to Worst

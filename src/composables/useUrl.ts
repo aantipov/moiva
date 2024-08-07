@@ -1,6 +1,6 @@
 import { watchEffect, onMounted } from 'vue';
 import { constructHref } from '@/utils';
-import { LibrariesReadonlyT } from '@/libraryApis';
+import type { LibrariesReadonlyT } from '@/libraryApis';
 import { isLoading, librariesRR } from '@/store/libraries';
 
 export function useUrl(): void {

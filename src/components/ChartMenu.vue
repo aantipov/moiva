@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import tippy, { Instance } from 'tippy.js';
+import tippy, { type Instance } from 'tippy.js';
 
 defineEmits(['copy', 'copyShare', 'download']);
 

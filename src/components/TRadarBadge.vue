@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { TRadarLevelT } from '@/data/index';
+import type { TRadarLevelT } from '@/data/index';
 
 const props = defineProps<{
   value: TRadarLevelT;

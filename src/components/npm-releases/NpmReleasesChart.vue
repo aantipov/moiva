@@ -23,8 +23,8 @@
 import ExternalLink from '@/components/ExternalLink.vue';
 import ChartPresentation from '@/components/ChartPresentation.vue';
 import { computed } from 'vue';
-import { ChartConfiguration } from 'chart.js';
-import { NpmPackageReleasesT } from './api';
+import type { ChartConfiguration } from 'chart.js';
+import type { NpmPackageReleasesT } from './api';
 import { format } from 'date-fns';
 import { enUS } from 'date-fns/locale';
 import {
@@ -32,7 +32,7 @@ import {
   getPrevQuater,
   getQuarterFirstMonthFromDate,
 } from '@/utils';
-import { NpmPackageT, LibraryReadonlyT } from '@/libraryApis';
+import type { NpmPackageT, LibraryReadonlyT } from '@/libraryApis';
 import {
   librariesRR,
   isLoading as isLoadingLibraries,

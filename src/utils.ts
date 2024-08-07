@@ -1,5 +1,5 @@
-import { CatalogLibraryT } from '@/data/index';
-import { LibraryReadonlyT } from '@/libraryApis';
+import type { CatalogLibraryT } from '@/data/index';
+import type { LibraryReadonlyT } from '@/libraryApis';
 import {
   getYear,
   getMonth,

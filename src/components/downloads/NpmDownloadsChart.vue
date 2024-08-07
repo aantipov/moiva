@@ -33,8 +33,8 @@
 import ExternalLink from '@/components/ExternalLink.vue';
 import ChartPresentation from '@/components/ChartPresentation.vue';
 import { computed, ref, watch } from 'vue';
-import { ChartDataset, ChartConfiguration } from 'chart.js';
-import { NpmDownloadT } from './api';
+import type { ChartDataset, ChartConfiguration } from 'chart.js';
+import type { NpmDownloadT } from './api';
 import {
   numbersFormatter,
   getEarliestMonth,
@@ -44,7 +44,7 @@ import {
   getDateRanges,
 } from '@/utils';
 import { enUS } from 'date-fns/locale';
-import { NpmPackageT, LibraryReadonlyT } from '@/libraryApis';
+import type { NpmPackageT, LibraryReadonlyT } from '@/libraryApis';
 import {
   librariesRR,
   isLoading as isLoadingLibraries,

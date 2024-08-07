@@ -99,13 +99,13 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { ReadonlyNpmPackageT } from '@/libraryApis';
+import type { ReadonlyNpmPackageT } from '@/libraryApis';
 import Tag from '@/components/TagItem.vue';
 import Alternative from '@/components/AlternativeItem.vue';
 import NpmIcon from '@/icons/NpmMDIIcon.vue';
 import HomeIcon from '@/icons/HomeIcon.vue';
 import GithubIcon from '@/icons/GithubIcon.vue';
-import { NpmInfoApiResponseT, hasAiInfo } from '@/shared-types';
+import { type NpmInfoApiResponseT, hasAiInfo } from '@/shared-types';
 import { legacyLibraries } from '@/data/index';
 import { formatDateFromNow } from '@/utils';
 

@@ -4,7 +4,7 @@ import {
   tags,
   genericTags,
   frameworksTags,
-  CatalogLibraryT,
+  type CatalogLibraryT,
 } from './index';
 
 // @ts-ignore

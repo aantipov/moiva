@@ -43,8 +43,8 @@ import { $trimmedLibraries, $isLoading } from '@/nanostore/trimmedLibraries';
 import { useStore } from '@nanostores/vue';
 import { getNpmLibraryByNpm } from '@/data';
 import {
-  NpmInfoApiResponseT,
-  NpmCompareApiResponseT,
+  type NpmInfoApiResponseT,
+  type NpmCompareApiResponseT,
   hasAiCompareInfo,
 } from '@/shared-types';
 import FightIcon from '@/icons/FightIcon.vue';

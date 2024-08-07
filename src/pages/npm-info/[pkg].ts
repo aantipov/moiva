@@ -1,19 +1,22 @@
-import { AI_INFO_VERSION } from '../../functions-helpers/fetchPackageAIInfo';
-import { setPkgAIInfo } from '../../functions-helpers/setPackageAiInfo';
+import type { APIRoute } from 'astro';
+import { AI_INFO_VERSION } from '../../../functions-helpers/fetchPackageAIInfo';
+import { setPkgAIInfo } from '../../../functions-helpers/setPackageAiInfo';
 import type {
   KvAiT,
   NpmJsResponseT,
   NpmInfoApiResponseT,
   KvNpmInfoT,
-} from '../../src/shared-types';
+} from '../../shared-types';
+type Runtime = import('@astrojs/cloudflare').Runtime<Env>;
 
-type CTX = EventContext<Env, 'pkg', Record<string, unknown>>;
 const cacheTtl = 3600 * 24 * 1; // 1 day in seconds
 const errorPrefix = 'API-NPM-INFO';
 
-export const onRequest: PagesFunction<Env, 'pkg'> = async (ctx) => {
+export const prerender = false;
+
+export const GET: APIRoute = ({ params, locals }) => {
   try {
-    return await handleRequest(ctx);
+    return handleRequest(params.pkg, locals.runtime.ctx, locals.runtime.env);
   } catch (error: any) {
     const msg = errorPrefix + ': ' + (error?.message || 'An error occurred!');
     // TODO: report to sentry
@@ -25,9 +28,11 @@ export const onRequest: PagesFunction<Env, 'pkg'> = async (ctx) => {
   }
 };
 
-async function handleRequest(ctx: CTX): Promise<Response> {
-  const pkg = ctx.params.pkg as string;
-
+async function handleRequest(
+  pkg: string | undefined,
+  ctx: Runtime['runtime']['ctx'],
+  env: Runtime['runtime']['env'],
+): Promise<Response> {
   if (!pkg) {
     return new Response(null, {
       status: 404,
@@ -36,7 +41,7 @@ async function handleRequest(ctx: CTX): Promise<Response> {
   }
 
   const pkgName = decodeURIComponent(pkg);
-  const cachedValue = await getCachedValue(pkgName, ctx);
+  const cachedValue = await getCachedValue(pkgName, env);
 
   // Replace `&& cachedValue.data.npm` with ZOD scheme validataion: if cache value doesn't comply with the scheme, then re-fetch
   if (
@@ -53,7 +58,7 @@ async function handleRequest(ctx: CTX): Promise<Response> {
       cacheAge > 3600 * 24 * 1000 ||
       cachedValue.data.ai.version !== AI_INFO_VERSION
     ) {
-      ctx.waitUntil(fetchDataAndUpdateCache(pkgName, cachedValue, ctx));
+      ctx.waitUntil(fetchDataAndUpdateCache(pkgName, cachedValue, env));
     }
 
     return new Response(JSON.stringify(cachedValue.data), {
@@ -64,7 +69,7 @@ async function handleRequest(ctx: CTX): Promise<Response> {
     });
   }
 
-  const res = await fetchData(pkgName, cachedValue, ctx);
+  const res = await fetchData(pkgName, cachedValue, env);
 
   // TODO: Cache in KV the error response for 1 hour.
   if (!res) {
@@ -74,7 +79,7 @@ async function handleRequest(ctx: CTX): Promise<Response> {
     });
   }
 
-  ctx.waitUntil(updateCache(pkgName, res, ctx));
+  ctx.waitUntil(updateCache(pkgName, res, env));
 
   return new Response(JSON.stringify(res), {
     headers: {
@@ -86,9 +91,9 @@ async function handleRequest(ctx: CTX): Promise<Response> {
 
 async function getCachedValue(
   pkgName: string,
-  ctx: CTX,
+  env: Runtime['runtime']['env'],
 ): Promise<KvNpmInfoT | null> {
-  const KV_CACHE = ctx.env.CACHE_KV;
+  const KV_CACHE = env.CACHE_KV;
   const KV_CACHE_KEY = `npm-info-${pkgName}`;
   const cachedValue = await KV_CACHE.get<KvNpmInfoT>(KV_CACHE_KEY, {
     type: 'json',
@@ -99,10 +104,10 @@ async function getCachedValue(
 async function updateCache(
   pkgName: string,
   res: NpmInfoApiResponseT,
-  ctx: CTX,
+  env: Runtime['runtime']['env'],
 ): Promise<void> {
-  const kvAiBinding = ctx.env.aiPkgDescription;
-  const kvCacheBinding = ctx.env.CACHE_KV;
+  const kvAiBinding = env.aiPkgDescription;
+  const kvCacheBinding = env.CACHE_KV;
   const kvCacheKey = `npm-info-${pkgName}`;
   const newKvCacheValue: KvNpmInfoT = {
     data: res,
@@ -113,7 +118,7 @@ async function updateCache(
     kvCacheBinding.put(kvCacheKey, JSON.stringify(newKvCacheValue)),
     res.ai && res.ai.version == AI_INFO_VERSION
       ? null
-      : setPkgAIInfo(pkgName, kvAiBinding, ctx.env.OPENAI_API_KEY),
+      : setPkgAIInfo(pkgName, kvAiBinding, env.OPENAI_API_KEY),
   ]);
   return;
 }
@@ -121,12 +126,12 @@ async function updateCache(
 async function fetchDataAndUpdateCache(
   pkgName: string,
   cachedValue: KvNpmInfoT | null,
-  ctx: CTX,
+  env: Runtime['runtime']['env'],
 ): Promise<null> {
   try {
-    const res = await fetchData(pkgName, cachedValue, ctx);
+    const res = await fetchData(pkgName, cachedValue, env);
     if (res) {
-      await updateCache(pkgName, res, ctx);
+      await updateCache(pkgName, res, env);
     }
   } catch (error) {
     console.log('error fetch and update', error);
@@ -138,9 +143,9 @@ async function fetchDataAndUpdateCache(
 async function fetchData(
   pkgName: string,
   cachedValue: KvNpmInfoT | null,
-  ctx: CTX,
+  env: Runtime['runtime']['env'],
 ): Promise<NpmInfoApiResponseT | null> {
-  const kvAiBinding = ctx.env.aiPkgDescription;
+  const kvAiBinding = env.aiPkgDescription;
   const aiPromise = kvAiBinding.get<KvAiT>(pkgName, { type: 'json' });
   const npm = await fetchPkgInfo(pkgName, cachedValue?.data?.npm);
 
@@ -149,7 +154,7 @@ async function fetchData(
     return null;
   }
 
-  const repo = npm.repoId ? await fetchRepoInfo(npm.repoId, ctx) : null;
+  const repo = npm.repoId ? await fetchRepoInfo(npm.repoId, env) : null;
   const ai = await aiPromise;
 
   return { npm, ai, repo };
@@ -168,6 +173,7 @@ async function fetchPkgInfo(
     `https://registry.npmjs.org/${encodeURIComponent(typesPackage)}/latest`,
     {
       headers: { 'content-type': 'application/json;charset=UTF-8' },
+      // @ts-ignore
       cf: { cacheEverything: true, cacheTtl },
     },
   );
@@ -176,6 +182,7 @@ async function fetchPkgInfo(
     `https://registry.npmjs.org/${encodeURIComponent(pkgName)}/latest`,
     {
       headers: { 'content-type': 'application/json;charset=UTF-8' },
+      // @ts-ignore
       cf: { cacheEverything: true, cacheTtl },
     },
   );
@@ -285,11 +292,11 @@ async function fetchPkgPublishedAt(
 
 async function fetchRepoInfo(
   repoId: string,
-  ctx: CTX,
+  env: Runtime['runtime']['env'],
 ): Promise<NpmInfoApiResponseT['repo']> {
   const url = 'https://api.github.com/graphql';
   const [owner, name] = repoId.split('/');
-  const response = await fetch(url, getRepoFetchParams(name, owner, ctx));
+  const response = await fetch(url, getRepoFetchParams(name, owner, env));
 
   if (!response.ok) {
     throw response;
@@ -316,7 +323,11 @@ async function fetchRepoInfo(
   };
 }
 
-function getRepoFetchParams(name: string, owner: string, ctx: CTX) {
+function getRepoFetchParams(
+  name: string,
+  owner: string,
+  env: Runtime['runtime']['env'],
+) {
   // 'Type: Bug' - React; 'triage: bug' - Svelte; 'type: bug/fix' - Angular; 'Bug-fix' - Moment; 'issue: bug' - Luxon
   // '☢️Bug' - Dayjs; '🐜 Bug fix' & '🐛 Bug' - date-fns; 'type: bug' - chart.js; 'P2-bug' - Playwright
   // 'type: bug :sob:' - nestjs/nest
@@ -328,8 +339,8 @@ function getRepoFetchParams(name: string, owner: string, ctx: CTX) {
   return {
     headers: {
       'content-type': 'application/json;charset=UTF-8',
-      'User-Agent': ctx.env.GITHUB_USER_AGENT,
-      Authorization: `Bearer ${ctx.env.GITHUB_TOKEN}`,
+      'User-Agent': env.GITHUB_USER_AGENT,
+      Authorization: `Bearer ${env.GITHUB_TOKEN}`,
     },
     method: 'POST',
     cf: { cacheEverything: true, cacheTtl },

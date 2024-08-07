@@ -61,7 +61,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref, computed } from 'vue';
-import autocomplete, { AutocompleteItem } from 'autocompleter';
+import autocomplete, { type AutocompleteItem } from 'autocompleter';
 import { numbersFormatter, sanitizeHTML } from '@/utils';
 import 'autocompleter/autocomplete.css';
 import { fetchNpmSearch, fetchGithubSearch } from './search-api';
